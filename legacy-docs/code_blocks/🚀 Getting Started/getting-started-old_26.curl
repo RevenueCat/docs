@@ -1,0 +1,8 @@
+curl -X POST \
+  https://api.revenuecat.com/v1/receipts \
+  -H 'Content-Type: application/json' \
+  -H 'X-Platform: stripe' \
+  -H 'Authorization: Bearer YOUR_REVENUECAT_API_KEY' \
+  -d '{ "app_user_id": "my_app_user_id",
+  "fetch_token": "sub_xxxxxxxxxx"
+  }'

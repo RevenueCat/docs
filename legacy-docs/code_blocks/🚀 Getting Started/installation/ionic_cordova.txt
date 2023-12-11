@@ -1,0 +1,3 @@
+npm install cordova-plugin-purchases
+
+ionic cordova plugin add cordova-plugin-purchases

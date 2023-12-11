@@ -1,0 +1,23 @@
+{
+    "app_instance_id": "1234567ab8901cd234e56f789gh0i123",
+    "user_id": "1234567890",
+    "events": [
+        {
+            "name": "rc_billing_issue",
+            "params": {
+                "event_id": "12345678-1234-56a7-b8c9-012defg3h4i5",
+                "product_id": "com.subscription_weekly_trial",
+                "period_type": "NORMAL",
+                "purchased_at": 1657734228000000,
+                "environment": "PRODUCTION",
+                "presented_offering_id": "",
+                "transaction_id": "123456789012345",
+                "affiliation": "APP_STORE",
+                "original_transaction_id": "123456789012345",
+                "original_app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+                "expiration_at": 1658857428000000,
+                "grace_period_expires_at": 1658857428000000
+            }
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+curl --request GET \
+  --url https://api.revenuecat.com/v1/subscribers/<app_user_id> \
+  --header 'Accept: application/json' \
+  --header 'Authorization: Bearer REVENUECAT_API_KEY' \
+  --header 'Content-Type: application/json'

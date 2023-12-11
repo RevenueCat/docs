@@ -1,0 +1,52 @@
+{
+    "id": "12345678-1234-1234-1234-123456789012",
+    "total": 29.99,
+    "user": {
+        "userId": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "preferUserId": true,
+        "dataFields": {
+            "subscriber_attributes": {
+                "$email": {
+                    "value": "first_last@gmail.com",
+                    "updated_at_ms": 1644624942354
+                },
+                "$iterableCampaignId": {
+                    "value": "01234",
+                    "updated_at_ms": 1644634297590
+                },
+                "$iterableTemplateId": {
+                    "value": "5678",
+                    "updated_at_ms": 1644634301306
+                }
+            },
+            "app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+            "original_app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c"
+        },
+        "email": "first_last@gmail.com"
+    },
+    "items": [
+        {
+            "id": "annual_sub",
+            "name": "rc_renewal_event",
+            "price": 29.99,
+            "quantity": 1,
+            "dataFields": {
+                "country_code": "US",
+                "currency": "USD",
+                "entitlement_ids": null,
+                "expiration_at_ms": 1644648719000,
+                "environment": "SANDBOX",
+                "is_family_share": false,
+                "offer_code": null,
+                "period_type": "NORMAL",
+                "presented_offering_id": "default",
+                "store": "APP_STORE",
+                "takehome_percentage": 0.7,
+                "original_transaction_id": "123456789012345"
+            }
+        }
+    ],
+    "createdAt": 1644645119000,
+    "campaignId": "01234",
+    "templateId": "5678"
+}

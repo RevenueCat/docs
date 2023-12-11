@@ -1,0 +1,25 @@
+{
+  "app_id": "app1234567890",
+  "event_payload": {
+    "created_at": 1662992969,
+    "event_name": "rc_trial_started_event",
+    "metadata": {
+      "app_id": "app1234567890",
+      "entitlement": "premium",
+      "environment": "production",
+      "expires_at": 1663252169,
+      "product_identifier": "one_week_premium",
+      "store": "APP_STORE"
+    },
+    "user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+  },
+  "product_identifier": "one_week_premium",
+  "user_payload": {
+    "custom_attributes": {
+      "expires_at": 1663252169,
+      "latest_entitlement": "premium",
+      "latest_store": "APP_STORE"
+    },
+    "user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+  }
+}

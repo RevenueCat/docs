@@ -1,0 +1,1 @@
+pod 'RNPurchases', :path => '../node_modules/react-native-purchases', :inhibit_warnings => true, :modular_headers => false

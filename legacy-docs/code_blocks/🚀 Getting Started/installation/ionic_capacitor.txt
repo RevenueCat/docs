@@ -1,0 +1,5 @@
+// Install Capacitor plugin
+npm install @revenuecat/purchases-capacitor
+
+// Update native platform project(s) to include newly added plugin
+ionic cap sync

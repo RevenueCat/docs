@@ -1,0 +1,1 @@
+await Purchases.setup("my_api_key", observerMode: true);

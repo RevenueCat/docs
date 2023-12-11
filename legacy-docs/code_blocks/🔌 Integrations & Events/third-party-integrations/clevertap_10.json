@@ -1,0 +1,43 @@
+{
+  "d": [
+    {
+      "evtData": {
+        "$appsflyerId": "1234567890123-1234567890123456789",
+        "$clevertapId": "12345678-1234-1234-1234-123456789012",
+        "$email": "firstLast@gmail.com",
+        "$idfa": "00000000-0000-0000-0000-000000000000",
+        "$idfv": "12345A6B-C789-0D1E-FG23-456H6I7J890K",
+         "$ip": "123.45.67.89",
+        "amount": 0,
+        "app_id": "1234567890",
+        "cancel_reason": "UNSUBSCRIBE",
+        "currency": "INR"
+      },
+      "evtName": "rc_cancellation_event",
+      "identity": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+      "ts": 1659936775,
+      "type": "event"
+    }
+  ]
+}{
+  "d": [
+    {
+      "evtData": {
+        "$appsflyerId": "1234567890123-1234567890123456789",
+        "$clevertapId": "12345678-1234-1234-1234-123456789012",
+        "$email": "firstLast@gmail.com",
+        "$idfa": "00000000-0000-0000-0000-000000000000",
+        "$idfv": "12345A6B-C789-0D1E-FG23-456H6I7J890K",
+         "$ip": "123.45.67.89",
+        "amount": 0,
+        "app_id": "1234567890",
+        "cancel_reason": "UNSUBSCRIBE",
+        "currency": "INR"
+      },
+      "evtName": "cancellation",
+      "identity": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+      "ts": 1659936775,
+      "type": "event"
+    }
+  ]
+}

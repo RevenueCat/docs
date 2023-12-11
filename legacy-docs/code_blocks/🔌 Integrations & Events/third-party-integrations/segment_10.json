@@ -1,0 +1,63 @@
+{
+    "track_event": {
+        "user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "event": "rc_uncancellation_event",
+        "properties": {
+            "revenue": 0.0,
+            "currency": "USD",
+            "store": "APP_STORE",
+            "purchased_at": 1663820576,
+            "expires_at": 1664425376,
+            "entitlement": null,
+            "entitlements": [
+                "premium"
+            ],
+            "product_id": "annual_3d",
+            "app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+            "original_app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+            "subscriber_attributes": {
+                "$idfa": "00000000-0000-0000-0000-000000000000",
+                "$idfv": "12345A6B-C789-0D1E-FG23-456H6I7J890K",
+                "$email": "firstlast@gmail.com",
+                "$appsflyerId": "1234567890123-1234567890123456789",
+                "updateId": "12345678-9012-3456-7890-123456789012", 
+                "nativeAppVersion": "3.12.0",
+                "nativeBuildVersion": "589"
+            },
+            "period_type": "TRIAL",
+            "environment": "PRODUCTION",
+            "presented_offering_id": "annual_trial",
+            "transaction_id": "123456789012345",
+            "original_transaction_id": "123456789012345",
+            "aliases": [
+                "12abc345d67e890fgh12j3lm456n7890"
+            ],
+            "app_id": "12345678-1234-1234-1234-123456789012"
+        },
+        "context": {
+            "environment": "production",
+            "library": {
+                "name": "RevenueCat Segment events",
+                "version": "1.0"
+            }
+        },
+        "timestamp": "2022-09-23T23:13:28"
+    },
+    "identify": {
+        "user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "traits": {
+            "last_seen_app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+            "aliases": [
+                "12abc345d67e890fgh12j3lm456n7890"
+            ]
+        },
+        "context": {
+            "environment": "production",
+            "library": {
+                "name": "RevenueCat Segment events",
+                "version": "1.0"
+            }
+        },
+        "timestamp": "2022-09-23T23:13:28"
+    }
+}

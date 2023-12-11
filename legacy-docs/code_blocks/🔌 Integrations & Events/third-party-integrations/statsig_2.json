@@ -1,0 +1,40 @@
+{
+    "event": {
+        "event_timestamp_ms": 1637000963815,
+        "product_id": "1_month",
+        "period_type": "NORMAL",
+        "purchased_at_ms": 1637029695000,
+        "expiration_at_ms": 1639621695000,
+        "environment": "PRODUCTION",
+        "entitlement_ids": [
+            "pro"
+        ],
+        "presented_offering_id": null,
+        "transaction_id": "123456789012345",
+        "original_transaction_id": "123456789012345",
+        "is_family_share": false,
+        "country_code": "US",
+        "app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "aliases": [
+            "12abc345d67e890fgh12j3lm456n7890"
+        ],
+        "original_app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "currency": "USD",
+        "is_trial_conversion": false,
+        "price": 14.99,
+        "price_in_purchased_currency": 14.99,
+        "subscriber_attributes": {
+            "$email": {
+                "value": "firstlast@gmail.com",
+                "updated_at_ms": 1599867695969
+            }
+        },
+        "store": "APP_STORE",
+        "takehome_percentage": 0.85,
+        "offer_code": null,
+        "type": "rc_renewal_event",
+        "id": "12345678-1234-1234-1234-123456789012",
+        "app_id": "1234567890",
+    },
+    "api_version": "1.0"
+}

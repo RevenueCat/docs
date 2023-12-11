@@ -1,0 +1,35 @@
+{
+  "api_key": "yourAmplitudeAPIKey",
+  "event": {
+    "event_type": "rc_trial_converted_event",
+    "partner_id": "revenuecat", 
+    "insert_id": "d61ed8b3-d4ed-436e-80b6-a69dabe44855", 
+    "time": 1655322275000, 
+    "platform": "iOS", 
+    "revenue": 139.993, 
+    "productId": "rc_3999_1y_1w0", 
+    "event_properties": {
+      "subscriber_attributes": {
+        "$attConsentStatus": "denied", 
+        "$amplitudeDeviceId": "123a4b56-7890-12cd-345e-67f90gh1ij1k"
+       }, 
+       "period_type": "NORMAL", 
+       "purchased_at": "2022-06-15T19:44:35Z", 
+       "expiration_at": "2022-06-22T19:44:35Z", 
+       "environment": "SANDBOX", 
+       "entitlement_id": null, 
+       "entitlement_ids": ["premium"], 
+       "presented_offering_id": null, 
+       "transaction_id": "2000000080909203", 
+       "original_transaction_id": "2000000080909203", 
+       "aliases": ["$RCAnonymousID:e35dd5b6732f4e1aad8c398d635e83e0"], 
+       "original_app_user_id": "$RCAnonymousID:e35dd5b6732f4e1aad8c398d635e83e0", 
+       "store": "APP_STORE", 
+       "app_user_id": "$RCAnonymousID:e35dd5b6732f4e1aad8c398d635e83e0", 
+       "product_id": "rc_3999_1y_1w0", 
+       "currency": "USD", 
+       "revenue": 139.993
+      }, 
+    "user_id": "$RCAnonymousID:e35dd5b6732f4e1aad8c398d635e83e0""
+  }
+}

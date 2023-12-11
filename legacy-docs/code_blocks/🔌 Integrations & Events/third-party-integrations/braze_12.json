@@ -1,0 +1,16 @@
+{
+    "events": [
+        {
+            "name": "rc_billing_issue_event",
+            "time": "2022-09-13T16: 18: 06.000000",
+            "properties": {
+                "product_id": "monthly.sub.1",
+                "store": "PLAY_STORE",
+                "revenue": 0,
+                "grace_period_expiration_at": "2022-09-27T15: 57: 26.000000",
+                "app_id": "1234567890"
+            },
+            "external_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c"
+        }
+    ]
+}

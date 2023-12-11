@@ -1,0 +1,8 @@
+{
+  "object": "list",
+  "items": [
+    {}
+  ],
+  "next_page": "LIST_BASE_URL?starting_after=LAST_ID",
+  "url": "LIST_BASE_URL"
+}

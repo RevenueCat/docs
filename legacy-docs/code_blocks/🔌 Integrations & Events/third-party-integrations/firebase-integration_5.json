@@ -1,0 +1,23 @@
+{
+    "app_instance_id": "1234567ab8901cd234e56f789gh0i123",
+    "user_id": "1234567890",
+    "events": [
+        {
+            "name": "rc_trial_start",
+            "params": {
+                "event_id": "12345678-1234-56a7-b8c9-012defg3h4i5",
+                "product_id": "com.subscription.weekly.2",
+                "period_type": "TRIAL",
+                "purchased_at": 1660393525000000,
+                "environment": "PRODUCTION",
+                "presented_offering_id": "",
+                "transaction_id": "123456789012345",
+                "affiliation": "APP_STORE",
+                "original_transaction_id": "123456789012345",
+                "original_app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+                "expiration_at": 1660652725000000,
+                "app_id": "app1234567890"
+            }
+        }
+    ]
+}
