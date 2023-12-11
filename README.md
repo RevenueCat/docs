@@ -6,7 +6,7 @@ This documentation website is built using [Docusaurus](https://docusaurus.io/).
 
 ## Sidebars
 
-Each grouping of docs is called a 'sidebar'. The default sidebar is defined in `sidebars.js` and requires each category and page to be defined manually.
+Each grouping of docs is called a 'sidebar'. The default sidebar is defined in `sidebars.js` and requires each category and page to be defined manually. For now, we have only one sidebar indicating one grouping of docs.
 
 ## Pages
 
@@ -16,12 +16,13 @@ If a page uses invalid markdown, or unsupported syntax (readme-flavored, etc.) t
 
 # Migrating legacy docs
 
-1. Find a doc in `legacy-docs`, copy
+1. Find a doc in `legacy-docs/docs_source`, copy
 2. Find the relevant category in `docs/categories`
-3. Add the file
+3. Add the file to the category folder
 4. Add to `sidebars.js` (create the category if it doesn't exist yet)
 5. Edit to make sure it is valid markdown
-6. Save to automatically restart docusaurus
+   - If there are code snippets, comment out the block for now
+7. Save to automatically restart docusaurus
 
 # Development
 
