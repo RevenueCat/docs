@@ -1,0 +1,1 @@
+await Purchases.setup("public_sdk_key", appUserId: "my_app_user_id");

@@ -1,0 +1,20 @@
+{
+    "createdAt": 1663964010781,
+    "dataFields": {
+        "app_id": "app1234567890",
+        "event_properties": {
+            "environment": "PRODUCTION",
+            "expiration_at_ms": 1664050410466,
+            "grace_period_expires_at": 1664580986800,
+            "original_transaction_id": "GPA.1234-5678-9012-34567",
+            "period_type": "TRIAL",
+            "product_id": "annual_sub_one_week_trial",
+            "store": "PLAY_STORE",
+            "transaction_id": "GPA.1234-5678-9012-34567",
+        }
+    },
+    "email": null,
+    "eventName": "rc_billing_issue_event",
+    "id": "12345678-1234-1234-1234-123456789012",
+    "userId": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+}

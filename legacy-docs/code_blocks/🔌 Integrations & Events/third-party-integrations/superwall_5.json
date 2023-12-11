@@ -1,0 +1,58 @@
+{
+    "event": {
+        "event_timestamp_ms": 1642005085499,
+        "product_id": "400_tokens",
+        "period_type": "NORMAL",
+        "purchased_at_ms": 1642005085444,
+        "expiration_at_ms": 1644683485444,
+        "environment": "PRODUCTION",
+        "entitlement_ids": [
+            "premium"
+        ],
+        "presented_offering_id": null,
+        "transaction_id": "123456789012345",
+        "original_transaction_id": "123456789012345",
+        "is_family_share": null,
+        "country_code": "US",
+        "app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "aliases": [
+            "12abc345d67e890fgh12j3lm456n7890"
+        ],
+        "original_app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "currency": "USD",
+        "price": 3.99,
+        "price_in_purchased_currency": 3.99,
+        "subscriber_attributes": {
+            "$ip": {
+                "value": "123.45.67.89",
+                "updated_at_ms": 1605515259156
+            },
+            "$idfa": {
+                "value": "00000000-0000-0000-0000-000000000000",
+                "updated_at_ms": 1605515259155
+            },
+            "$idfv": {
+                "value": "12345A6B-C789-0D1E-FG23-456H6I7J890K",
+                "updated_at_ms": 1605515259156
+            },
+            "$email": {
+                "value": "firstlast@gmail.com",
+                "updated_at_ms": 1608329355624
+            },
+            "$appsflyerId": {
+                "value": "1234567890123-1234567890123456789",
+                "updated_at_ms": 1578134994616
+            },
+            "$displayName": {
+                "value": "FirstLast",   
+                "updated_at_ms": 1608329355625
+            }
+        },
+        "store": "APP_STORE",
+        "takehome_percentage": 1.0,
+        "offer_code": null,
+        "type": "NON_RENEWING_PURCHASE",
+        "id": "12345678-1234-1234-1234-123456789012",
+    },
+    "api_version": "1.0"
+}

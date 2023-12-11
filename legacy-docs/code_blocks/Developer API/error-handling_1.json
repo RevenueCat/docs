@@ -1,0 +1,7 @@
+{
+  "type": "parameter_error",
+  "param": "customer_id",
+  "message": "id is too long",
+  "retryable": false,
+  "doc_url": "https://errors.rev.cat/parameter-error"
+}

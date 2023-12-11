@@ -1,0 +1,26 @@
+{
+    "product_identifier": "annual",
+    "app_id": "12345678-1234-1234-1234-123456789012",
+    "payload": {
+        "channel": "purchases",
+        "username": "RevenueCat",
+        "icon_url": "https://app.revenuecat.com/favicon-96x96.png",
+        "attachments": [
+            {
+                "fallback": "Customer 12345 got a product change from annual to monthly",
+                "color": "#30B296",
+                "fields": [
+                    {
+                        "value": ":smiley_cat: Customer <https://app.revenuecat.com/activity/123abcd45/12345|12345> just changed the product of their subscription."
+                    },
+                    {
+                        "title": "Product",
+                        "value": "monthly",
+                        "short": false
+                    }
+                ],
+                "ts": 1663976617
+            }
+        ]
+    }
+}

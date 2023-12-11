@@ -1,0 +1,1 @@
+github "revenuecat/purchases-ios" ~> 4.15.0

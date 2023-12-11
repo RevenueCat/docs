@@ -1,0 +1,48 @@
+{
+    "id": "12345678-1234-1234-1234-123456789012",
+    "total": 4.99,
+    "user": {
+        "userId": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "preferUserId": true,
+        "dataFields": {
+            "subscriber_attributes": {
+                "$email": {
+                    "value": "first_last@gmail.com",
+                    "updated_at_ms": 1659292070233
+                },
+                "$iterableUserId": {
+                    "value": "12345A6B-C789-0D1E-FG23-456H6I7J890K",
+                    "updated_at_ms": 1659292070233
+                },
+            },
+            "app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+            "original_app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c"
+        },
+        "email": "first_last@gmail.com"
+    },
+    "items": [
+        {
+            "id": "100_tokens",
+            "name": "rc_non_subscription_purchase_event",
+            "price": 4.99,
+            "quantity": 1,
+            "dataFields": {
+                "country_code": null,
+                "currency": "USD",
+                "entitlement_ids": [
+                    "pro"
+                ],
+                "expiration_at_ms": 1659897848466,
+                "environment": "PRODUCTION",
+                "is_family_share": null,
+                "offer_code": null,
+                "period_type": "NORMAL",
+                "presented_offering_id": null,
+                "store": "APP_STORE",
+                "takehome_percentage": 1.0,
+                "original_transaction_id": "123456789012345"
+            }
+        }
+    ],
+    "createdAt": 1659293048466
+}

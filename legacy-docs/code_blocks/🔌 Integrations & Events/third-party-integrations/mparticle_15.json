@@ -1,0 +1,38 @@
+{
+    "events": [
+        {
+            "data": {
+                "event_name": "cancellation",
+                "custom_event_type": "transaction",
+                "source_message_id": "12345678-1234-1234-1234-123456789012",
+                "timestamp_unixtime_ms": 1593507675551,
+                "custom_attributes": {
+                    "revenuecat_product_id": "weekly_sub",
+                    "revenuecat_event": "cancellation"
+                }
+            },
+            "event_type": "custom_event"
+        }
+    ],
+    "source_request_id": "12345678-1234-1234-1234-123456789012",
+    "user_attributes": {
+        "$country": "RU",
+        "revenuecat_aliases": [
+            "12abc345d67e890fgh12j3lm456n7890"
+        ],
+        "revenuecat_app_user_id": "123456789",
+        "revenuecat_original_app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c"
+    },
+    "device_info": {
+        "platform": "iOS",
+        "ios_advertising_id": "12345678-1234-1234-1234-123456789012"
+    },
+    "application_info": {
+        "application_name": "App_Name",
+        "package": "co.appname",
+    },
+    "user_identities": {},
+    "schema_version": 2,
+    "environment": "production",
+    "mpid": "12345678"
+}

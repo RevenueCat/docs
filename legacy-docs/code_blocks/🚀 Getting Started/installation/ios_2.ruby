@@ -1,0 +1,1 @@
+pod 'RevenueCat', '~> 4.15'

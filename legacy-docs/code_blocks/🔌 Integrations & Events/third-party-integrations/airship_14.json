@@ -1,0 +1,53 @@
+[
+  {
+    "body": {
+      "name": "rc_cancellation_event",
+      "properties": {
+        "aliases": [
+          "$RCAnonymousID:8069238d6049ce87cc529853916d624c"
+        ],
+        "app_id": "1234567890",
+        "app_user_id": "1234567890",
+        "cancel_reason": "BILLING_ERROR",
+        "country_code": "US",
+        "currency": "USD",
+        "entitlement_ids": [
+          "Pro"
+        ],
+        "environment": "PRODUCTION",
+        "event_timestamp_ms": 1663083538724,
+        "expiration_at_ms": 1664465906000,
+        "id": "12345678-1234-1234-1234-123456789012",
+        "is_family_share": false,
+        "original_app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "original_transaction_id": "123456789012345",
+        "period_type": "NORMAL",
+        "price_in_purchased_currency": 0,
+        "product_id": "AutoRenewMonthlyBasic",
+        "purchased_at_ms": 1660405106000,
+        "store": "APP_STORE",
+        "subscriber_attributes": {
+          "$appsflyerId": {
+            "updated_at_ms": 1647104232082,
+            "value": "1234567890123-1234567890123456789"
+          },
+          "$email": {
+            "updated_at_ms": 1649936423436,
+            "value": "firstlast@gmail.com"
+          },
+          "$ip": {
+            "updated_at_ms": 1649936467544,
+            "value": "123.45.67.89"
+          }
+        },
+        "takehome_percentage": 0.7,
+        "transaction_id": "123456789012345"
+      },
+      "value": 0
+    },
+    "occurred": "2022-09-13T15:38:58Z",
+    "user": {
+      "named_user_id": "ZYXWVUTSRQ"
+    }
+  }
+]

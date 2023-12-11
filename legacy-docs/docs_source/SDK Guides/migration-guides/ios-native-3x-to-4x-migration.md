@@ -1,0 +1,317 @@
+---
+title: iOS Native - 3.x to 4.x Migration
+slug: ios-native-3x-to-4x-migration
+hidden: false
+---
+[block:callout]
+{
+  "type": "info",
+  "body": "Read the [migration blog post](https://www.revenuecat.com/blog/migrating-our-objective-c-sdk-to-swift) for more information about why we made the switch from Objective-C to Swift."
+}
+[/block]
+
+[block:callout]
+{
+  "type": "info",
+  "body": "View the iOS SDK Reference documentation [here :fa-arrow-right:](https://revenuecat-docs.netlify.app/documentation/Revenuecat)."
+}
+[/block]
+
+Migrating from Objective-C to Swift required a number of API changes, but we feel that the changes resulted in the SDK having a more natural feel for developers.
+
+# Xcode version requirements and updated deployment targets
+`purchases-ios` v4 requires using Xcode 13.2 or newer. It also updates the minimum deployment targets for iOS, macOS and tvOS. 
+
+### Minimum deployment targets
+|  | v3 | v4 |
+| :-: | :-: | :-: |
+| iOS | 9.0 | **11.0** |
+| tvOS | 9.0 | **11.0** |
+| macOS | 10.12 | **10.13** |
+| watchOS | 6.2 | 6.2 (unchanged) |
+
+# Migration Steps
+
+To start us off, our framework name changed from `Purchases` to `RevenueCat`! 😻  You'll now need to explicitly import `RevenueCat` instead of `Purchases`.
+
+## 1. Update Framework references
+
+##### Swift
+| Before | After |
+| :-: | :-: |
+| `import Purchases` | `import RevenueCat` |
+
+##### Objective-C
+| Before | After |
+| :-: | :-: |
+| `@import Purchases;` | `@import RevenueCat;` |
+
+#### 1.1 Update Swift Package Manager dependency (if needed)
+
+Select your target in Xcode, then go to Build Phases, and ensure that your target's `Link Binary with Libraries` section references `RevenueCat`, and remove the reference to `Purchases` if it was still there.
+
+| Before | After |
+| :-: | :-: |
+| [link binary with libraries before](https://github.com/RevenueCat/purchases-ios/raw/main/Sources/DocCDocumentation/DocCDocumentation.docc/Resources/migration_guide_assets/link_binary_with_libraries_before_spm.png) | [link binary with libraries after](https://github.com/RevenueCat/purchases-ios/raw/main/Sources/DocCDocumentation/DocCDocumentation.docc/Resources/migration_guide_assets/link_binary_with_libraries_after_spm.png) |
+
+**Note:**
+
+Due to an Xcode bug, you might run into a Workspace Integrity error after upgrading, with a message that looks like 
+`"Couldn't load project PurchaseTester"`. 
+If this happens, you can fix it with the following steps:
+1. In Xcode, go to Product -> Clean Build Folder
+2. Quit and re-open Xcode
+
+#### 1.2 Update CocoaPods dependency (if needed)
+
+In your Podfile, update the reference to the Pod from `Purchases` to `RevenueCat`. Don't forget to run `pod update` after saving the Podfile.
+
+| Before | After |
+| :-: | :-: |
+| `pod 'Purchases'` | `pod 'RevenueCat'` |
+
+#### 1.3 Update Carthage Framework (if needed)
+
+##### 1.3.1 Using XCFrameworks (recommended)
+
+Select your target in Xcode, then go to Build Phases, and ensure that your target's `Link Binary with Libraries` section
+references `RevenueCat`, and remove the reference to `Purchases` if it was still there.
+Do the same with the Embed Frameworks section. 
+
+| Before | After |
+| :-: | :-: |
+| [link binary with libraries before](https://github.com/RevenueCat/purchases-ios/raw/main/Sources/DocCDocumentation/DocCDocumentation.docc/Resources/migration_guide_assets/link_binary_with_libraries_before_carthage.png) | [link binary with libraries after](https://github.com/RevenueCat/purchases-ios/raw/main/Sources/DocCDocumentation/DocCDocumentation.docc/Resources/migration_guide_assets/link_binary_with_libraries_after_carthage.png) |
+| [embed frameworks before](https://github.com/RevenueCat/purchases-ios/raw/main/Sources/DocCDocumentation/DocCDocumentation.docc/Resources/migration_guide_assets/embed_frameworks_before_carthage.png) | [embed frameworks after](https://github.com/RevenueCat/purchases-ios/raw/main/Sources/DocCDocumentation/DocCDocumentation.docc/Resources/migration_guide_assets/embed_frameworks_after_carthage.png) |
+
+##### 1.3.2 Using Platform-specific frameworks
+
+We highly recommend moving into XCFrameworks, since these have a simpler setup and prevent compatibility issues with 
+multi-platform setups.
+
+Carthage has a [migration guide to move into XCFrameworks available here](https://github.com/carthage/carthage#migrating-a-project-from-framework-bundles-to-xcframeworks).
+
+After migrating into XCFrameworks, follow the steps outlined in 1.3.1 to set up the `RevenueCat.xcframework`. 
+
+If you can't move into XCFrameworks, you will still need to update the `Link Binary with Libraries` phase as outlined
+in 1.3.1 (only using a `.framework` instead of `.xcframework`).
+
+After that, update the your `input.xcfilelist` and `output.xcfilelist` for the Run Script phase of Carthage frameworks, 
+replacing `Purchases.framework` with `RevenueCat.framework`. 
+
+
+## 2. Update code references
+
+### 2.1 Automatic Migration
+
+When building your project using v4, Xcode should automatically provide one-click fixes methods and types that have been renamed. For the most part, the migration should be doable by just building and applying Xcode's automatic fix-its when they pop up.
+
+If you see any issues or new APIs that fix-its didn't cover, we'd appreciate [bug reports](https://github.com/RevenueCat/purchases-ios/issues/new?assignees=&labels=bug&template=bug_report.md&title=)!
+
+### 2.2 Update references to `Purchases.foo` to `RevenueCat.foo`
+
+You might run into compilation errors with a message like `Error: `'_' is not a member type of class 'RevenueCat.Purchases'`. 
+
+The reason is that the class `Purchases` is no longer the parent of classes such as `Offerings`.
+You should reference classes directly or as a child of `RevenueCat`, e.g. `RevenueCat.Offerings`
+instead of `Purchases.Offerings`. You can also omit the framework entirely, i.e.: just using `Offerings` directly.
+
+### 2.3 Import StoreKit (if needed)
+
+Our V3 SDK automatically imported `StoreKit` whenever you did `import Purchases`. Due to Swift limitations, our 
+V4 SDK doesn't do this automatically.
+
+So if you're referencing StoreKit types directly, you might need to add
+`import StoreKit` in Swift, and `@import StoreKit;` in Objective-C.
+
+### 2.4 Update code to use the new types (if needed)
+
+Step 2.1 should automatically help you convert your code into the new types. See the "New Types" section for
+more information on what the new types introduce. 
+
+### 2.5 Take advantage of our new APIs
+
+We introduced new features for Customer Support, as well as
+ [async/await alternatives](https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html) for our APIs.
+These are optional, but could help make your code more readable and easy to maintain.
+
+Some additional changes include:
+- Updated references of `Purchaser` to `Customer` to be more consistent across our platform
+- Further abstraction away from `StoreKit` with new types.
+
+See the "New APIs" section of this guide for more details.
+
+# Known Issues
+
+## ObjC + SPM
+If you expose any Purchases objects from one target to another (see [example project](https://github.com/taquitos/SPMBug) for what this could look like), that second target will not build due to a missing autogenerated header. Currently there is a known bug in SPM whereby Xcode either doesn't pass the RevenueCat ObjC generated interface to SPM, or SPM just doesn't integrate it. You can follow along: [SR-15154](https://bugs.swift.org/browse/SR-15154). 
+
+##### Workaround: 
+You must manually add the autogenerated file we committed to the repository [RevenueCat-Swift.h](https://github.com/RevenueCat/purchases-ios/blob/main/Tests/InstallationTests/CommonFiles/RevenueCat-Swift.h) to your project, and `#import RevenueCat-Swift.h` in your bridging header. You can see how we do this in our [SPMInstallation project](https://github.com/RevenueCat/purchases-ios/tree/main/Tests/InstallationTests/SPMInstallation).
+
+# Automatic Migration
+When building your project using v4, Xcode should automatically provide one-click fixes methods and types that have been renamed. For the most part, the migration should be doable by just building and applying Xcode's automatic fix-its when they pop up.
+
+If you see any issues or new APIs that fix-its didn't cover, we'd appreciate [bug reports](https://github.com/RevenueCat/purchases-ios/issues/new?assignees=&labels=bug&template=bug_report.md&title=)!
+
+## Error: `'_' is not a member type of class 'RevenueCat.Purchases'`
+
+The class `Purchases` is no longer the parent of classes such as `Offering`. You should reference classes directly or as a child of `RevenueCat`, e.g. `RevenueCat.Offering` or just `Offering` instead of `Purchases.Offering`.
+
+# New Types
+
+To better support `StoreKit 2`, `RevenueCat v4` introduces several new types to encapsulate data from `StoreKit 1` and `StoreKit 2`:
+
+- ``StoreProduct``: wraps a `StoreKit.SKProduct` or `StoreKit.Product`
+- ``StoreTransaction``: wraps a `StoreKit.SKPaymentTransaction` or `StoreKit.Transaction`
+- ``StoreProductDiscount``: wraps a `StoreKit.SKProductDiscount` or `StoreKit.Product.SubscriptionOffer`
+
+These types replace native StoreKit types in all public API methods that used them.
+
+# Objective-C
+## Type changes
+
+`@import Purchases` is now `@import RevenueCat`
+
+| v3 | v4 |
+| ------------ | ------------------------------------- | 
+| `RCPurchaserInfo` | `RCCustomerInfo` |
+| `RCTransaction` | `RCStoreTransaction` |
+| `RCTransaction.productId` | `RCStoreTransaction.productIdentifier` |
+| `RCTransaction.revenueCatId` | `RCStoreTransaction.transactionIdentifier` |
+| `RCPackage.product` | `RCPackage.storeProduct` |
+| `(RCPurchasesErrorCode).RCOperationAlreadyInProgressError` | `RCOperationAlreadyInProgressForProductError` |
+| `RCPurchasesErrorDomain` | `RCPurchasesErrorCodeDomain` |
+| `RCBackendError` | <i>REMOVED</i> |
+| `RCErrorUtils` | <i>REMOVED</i> |
+| `RCBackendErrorDomain` | <i>REMOVED</i> |
+| `RCFinishableKey` | <i>REMOVED</i> |
+| `RCReceivePurchaserInfoBlock` | <i>REMOVED</i> |
+| `RCReceiveIntroEligibilityBlock` | <i>REMOVED</i> |
+| `RCReceiveOfferingsBlock` | <i>REMOVED</i> |
+| `RCReceiveProductsBlock` | <i>REMOVED</i> |
+| `RCPurchaseCompletedBlock` | <i>REMOVED</i> |
+| `RCDeferredPromotionalPurchaseBlock` | <i>REMOVED</i> |
+| `RCPaymentDiscountBlock` | <i>REMOVED</i> |
+| `RCPaymentModeNone` | <i>REMOVED</i> |
+
+### PurchasesDelegate
+| v3 | v4 |
+| ------------ | ------------------------------------- | 
+| `purchases:didReceiveUpdatedPurchaserInfo:` | `purchases:receivedUpdatedCustomerInfo:` |
+
+## API changes
+
+| v3 | v4 |
+| ------------ | ------------------------------------- | 
+| `purchaserInfoWithCompletion:` | `getCustomerInfoWithCompletion:` |
+| `invalidatePurchaserInfoCache` | `invalidateCustomerInfoCache` |
+| `restoreTransactionsWithCompletion:` | `restorePurchasesWithCompletion:` |
+| `offeringsWithCompletion:` | `getOfferingsWithCompletion:` |
+| `productsWithIdentifiers:completion:` | `getProductsWithIdentifiers:completion:` |
+| `paymentDiscountForProductDiscount:product:completion:` | *REMOVED* - Check eligibility for a discount using `checkPromotionalOfferEligibility:`, then pass the discount directly to `purchasePackage:withDiscount:completion:` or `purchaseProduct:withDiscount:completion:` |
+| `createAlias:` | `logIn:` |
+| `identify:` | `logIn:` |
+| `reset:` | `logOut:` |
+
+# Swift
+## Type changes
+
+`import Purchases` is now `import RevenueCat`
+
+| v3 | v4 |
+| ------------ | ------------------------------------- | 
+| `Purchases.Offering` | ``Offering`` |
+| `Purchases.ErrorDomain` | See error handling below |
+| `Purchases.ErrorCode.Code` | See error handling below |
+| `Purchases.Package` | ``Package`` |
+| `Purchases.PurchaserInfo` | `CustomerInfo` |
+| `Purchases.EntitlementInfos` | ``EntitlementInfos`` |
+| `Purchases.Transaction` | ``StoreTransaction`` |
+| `Purchases.Transaction.productId` | `StoreTransaction.productIdentifier` |
+| `Purchases.Transaction.revenueCatId` | `StoreTransaction.transactionIdentifier` |
+| `Purchases.EntitlementInfo` | ``EntitlementInfo`` |
+| `Purchases.PeriodType` | ``PeriodType`` |
+| `Purchases.Store` | ``Store`` |
+| `RCPurchaseOwnershipType` | ``PurchaseOwnershipType`` |
+| `RCAttributionNetwork` | ``AttributionNetwork`` |
+| `RCIntroEligibility` | ``IntroEligibility`` |
+| `RCIntroEligibilityStatus` | ``IntroEligibilityStatus`` |
+| `RCPaymentMode` | ``StoreProductDiscount.PaymentMode`` |
+| `RCPaymentModeNone` | <i>REMOVED</i> |
+| `Purchases.LogLevel` | ``LogLevel`` |
+| `Purchases.Offerings` | ``Offerings`` |
+| `Purchases.PackageType` | ``PackageType`` |
+| `Package.product` | ``Package.storeProduct`` |
+| `Package.product.price`: **NSDecimalNumber** | ``StoreProduct.price``: **Decimal** |
+| `Package.localizedIntroductoryPriceString`: **String** | ``Package.localizedIntroductoryPriceString``: **String?** |
+| `RCDeferredPromotionalPurchaseBlock` | ``DeferredPromotionalPurchaseBlock`` |
+| `Purchases.PurchaseCompletedBlock` | ``PurchaseCompletedBlock`` |
+| `Purchases.ReceivePurchaserInfoBlock` | <i>REMOVED</i> |
+| `Purchases.ReceiveOfferingsBlock` | <i>REMOVED</i> |
+| `Purchases.ReceiveProductsBlock` | <i>REMOVED</i> |
+| `Purchases.PaymentDiscountBlock` | <i>REMOVED</i> |
+| `Purchases.RevenueCatBackendErrorCode` | <i>REMOVED</i> |
+| `Purchases.ErrorCode.operationAlreadyInProgressError` | ``RevenueCat.ErrorCode.operationAlreadyInProgressForProductError`` |
+| `Purchases.ErrorUtils` | <i>REMOVED</i> |
+| `ReadableErrorCodeKey` | <i>REMOVED</i> |
+| `RCFinishableKey` | <i>REMOVED</i> |
+
+## API changes
+
+| v3 | v4 |
+| ------------ | ------------------------------------- | 
+| `invalidatePurchaserInfoCache` | `invalidateCustomerInfoCache()` |
+| `logIn(_ appUserId:, _ completion:)` | `logIn(_:completion:)` |
+| `createAlias(_ alias:, _ completion:)` | `logIn(_:completion:)` |
+| `identify(_ appUserID:, _ completion:)` | `logIn(_:completion:)` |
+| `reset(completion:)` | `logOut(completion:)` |
+| `purchaserInfo(_ completion:)` | `getCustomerInfo(completion:)` |
+| `offerings(_ completion:)` | `getOfferings(completion:)` |
+| `products(_ productIdentifiers:, _ completion:)` | `getProducts(_:completion:)` |
+| `purchaseProduct(_ product:, _ completion:)` | `purchase(product:completion:)` |
+| `purchasePackage(_ package:, _ completion:)` | `purchase(package:completion:)` |
+| `restoreTransactions(_ completion:)` | `restorePurchases(completion:)` |
+| `syncPurchases(_ completion:)` | `syncPurchases(completion:)` |
+| `paymentDiscount(for:product:completion:)` | REMOVED - Check eligibility for a discount using `checkPromotionalDiscountEligibility(forProductDiscount:product:)`, then pass the discount directly to `purchase(package:discount:)` or `purchase(product:discount:)` |
+| `purchaseProduct(_:discount:_)` | `purchase(product:discount:completion:)` |
+| `purchasePackage(_:discount:_)` | `purchase(package:discount:completion:)` |
+
+### PurchasesDelegate
+| v3 | v4 |
+| ------------ | ------------------------------------- | 
+| `purchases(_ purchases: Purchases, didReceiveUpdated purchaserInfo: PurchaserInfo)` | ``purchases(_:receivedUpdated:)`` |
+
+## Error handling
+
+Prior to the Swift migration, `Purchases` exposed errors as `NSError`'s, so one could detect errors like this:
+[block:file]
+[
+  {
+    "language": "swift",
+    "name": "",
+    "file": "code_blocks/📘 SDK Guides/migration-guides/ios-native-3x-to-4x-migration_1.swift"
+  }
+]
+[/block]
+Starting from Version 4, this becomes much simpler:
+[block:file]
+[
+  {
+    "language": "swift",
+    "name": "",
+    "file": "code_blocks/📘 SDK Guides/migration-guides/ios-native-3x-to-4x-migration_2.swift"
+  }
+]
+[/block]
+
+# New APIs
+
+- All applicable methods have an alternative [async/await version](https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html).
+- `showManageSuscriptions(completion:)`: Use this method to show the subscription management for the current user. Depending on where they made the purchase and their OS version, this might take them to the `managementURL`, or open the iOS Subscription Management page. 
+- `beginRefundRequestForCurrentEntitlement`: Use this method to begin a refund request for the purchase that granted the current entitlement.
+- `beginRefundRequest(forProduct:)`: Use this method to begin a refund request for a purchase, specifying the product identifier.
+- `beginRefundRequest(forEntitlement:)`: Use this method to begin a refund request for a purchase, specifying the entitlement identifier.
+
+# Reporting undocumented issues
+
+Feel free to file an issue! [New RevenueCat Issue](https://github.com/RevenueCat/purchases-ios/issues/new/).

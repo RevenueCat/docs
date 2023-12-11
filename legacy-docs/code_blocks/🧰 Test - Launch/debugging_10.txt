@@ -1,0 +1,30 @@
+[Purchases] - DEBUG: ℹ️ Debug logging enabled
+[Purchases] - DEBUG: ℹ️ SDK Version - 3.10.1
+[Purchases] - DEBUG: 👤 Initial App User ID - <APP_USER_ID>
+[Purchases] - DEBUG: ℹ️ PurchaserInfo cache is stale, updating caches
+[Purchases] - DEBUG: ℹ️ Offerings cache is stale, updating caches
+[Purchases] - DEBUG: ℹ️ Vending PurchaserInfo from cache.
+[Purchases] - DEBUG: ℹ️ There are no requests currently running, starting request GET /subscribers/<APP_UESR_ID>
+[Purchases] - DEBUG: ℹ️ API request started: GET /v1/subscribers/<APP_UESR_ID>
+[Purchases] - DEBUG: ℹ️ API request started: GET /v1/subscribers/<APP_UESR_ID>/offerings
+[Purchases] - DEBUG: ℹ️ No cached Offerings, fetching from network
+[Purchases] - DEBUG: ℹ️ API request completed with status: GET /v1/subscribers/<APP_UESR_ID>/offerings 200
+[Purchases] - DEBUG: ℹ️ Requesting products from the store with identifiers: {(
+    onetime,
+    annual,
+    onemonth
+)}
+[Purchases] - DEBUG: ℹ️ Products request finished.
+[Purchases] - DEBUG: 💰 Retrieved SKProducts: 
+[Purchases] - DEBUG: 💰 onetime - <SKProduct: 0x600000308980>
+[Purchases] - DEBUG: 💰 annual - <SKProduct: 0x600000308980>
+[Purchases] - DEBUG: 💰 onemonth - <SKProduct: 0x600000308980>
+[Purchases] - WARN: 🍎‼️ Invalid Product Identifiers - (
+)
+[Purchases] - DEBUG: ℹ️ 3 completion handlers waiting on products
+[Purchases] - DEBUG: ℹ️ makePurchase
+[Purchases] - DEBUG: 💰 Purchasing product from package  - annual in Offering main
+[Purchases] - DEBUG: ℹ️ PaymentQueue updatedTransaction: annual <TRANSACTION_ID> ((null)) (null) - 0
+
+[Purchases] - DEBUG: 💰 Finishing transaction annual <TRANSACTION_ID> ((null))
+[Purchases] - DEBUG: ℹ️ PaymentQueue removedTransaction: annual <TRANSACTION_ID> (null (null)) (null) - 1

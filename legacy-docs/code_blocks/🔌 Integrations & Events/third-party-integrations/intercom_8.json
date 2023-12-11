@@ -1,0 +1,25 @@
+{
+  "product_identifier": "one_month_pro",
+  "app_id": "app1234567890",
+  "user_payload": {
+    "user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+    "custom_attributes": {
+      "latest_store": "APP_STORE",
+      "latest_entitlement": "pro",
+      "expires_at": 1652444925
+    }
+  },
+  "event_payload": {
+    "event_name": "rc_expiration_event",
+    "user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+    "created_at": 1652444925,
+    "metadata": {
+      "product_identifier": "one_month_pro",
+      "entitlement": "pro",
+      "store": "APP_STORE",
+      "expires_at": 1652444925,
+      "environment": "production",
+      "expiration_reason": "UNSUBSCRIBE"
+    }
+  }
+}

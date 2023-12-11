@@ -1,0 +1,1 @@
+import Purchases from 'react-native-purchases';
