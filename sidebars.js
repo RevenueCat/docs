@@ -95,6 +95,7 @@ const toolsCategory = new SidebarCategory("🛠 Tools", "tools", true, [
     ],
     new SidebarPage("Experiments", "experiments-v1")
   ),
+  new SidebarPage("Targeting", "targeting"),
 ]);
 
 const supportCategory = new SidebarCategory(
