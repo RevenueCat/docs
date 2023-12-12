@@ -46,3 +46,8 @@ h2 {
 h3 {
   font-size: 1.5rem;
 }
+
+.markdown img {
+  border: 1px solid #ddd;
+  width: 75%;
+}

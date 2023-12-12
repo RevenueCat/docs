@@ -31,6 +31,8 @@ class SidebarCategory {
           return renderedCategory.render(this.path);
         } else if (typeof item === "string") {
           return item;
+        } else if (item instanceof SidebarLink) {
+          return item;
         }
       }),
     };
@@ -45,7 +47,16 @@ class SidebarPage {
   }
 }
 
+class SidebarLink {
+  constructor(label, url) {
+    this.type = "link";
+    this.label = label;
+    this.href = url;
+  }
+}
+
 module.exports = {
   SidebarCategory,
   SidebarPage,
+  SidebarLink,
 };

@@ -45,6 +45,8 @@ function getTabTitle(type) {
       return "Flutter";
     case "csharp":
       return "Unity";
+    case "cordova":
+      return "Cordova";
     default:
       return "Code";
   }

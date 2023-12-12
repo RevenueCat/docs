@@ -10,7 +10,11 @@
  */
 
 // custom sidebar objects to make it easier to read
-import { SidebarCategory, SidebarPage } from "./src/sidebars/sidebar-utils";
+import {
+  SidebarCategory,
+  SidebarLink,
+  SidebarPage,
+} from "./src/sidebars/sidebar-utils";
 
 // The sidebar is a tree of categories and pages.
 // I've separated this top-level category into its own variable for readability.
@@ -71,6 +75,28 @@ const sidebars = {
     migratingCategory,
     new SidebarCategory("🛟 RevenueCat Support", "revenuecat-support", false, [
       new SidebarPage("Support First Steps", "support-first-steps"),
+    ]).render(),
+    new SidebarCategory("📘 SDK Migration Guides", "sdk-guides", true, [
+      new SidebarPage(
+        "Android Native 4x to 5x Migration",
+        "android-native-4x-to-5x-migration"
+      ),
+      new SidebarPage(
+        "Android Native 5x to 6x Migration",
+        "android-native-5x-to-6x-migration"
+      ),
+      new SidebarPage(
+        "Android Native 6x to 7x Migration",
+        "android-native-6x-to-7x-migration"
+      ),
+      new SidebarPage(
+        "iOS Native 3x to 4x Migration",
+        "ios-native-3x-to-4x-migration"
+      ),
+      new SidebarLink(
+        "Capacitor - 5.x to 6.x Migration",
+        "https://github.com/RevenueCat/purchases-capacitor/blob/main/migrations/v6-MIGRATION.md"
+      ),
     ]).render(),
   ],
 };
