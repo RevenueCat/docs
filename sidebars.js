@@ -12,25 +12,36 @@
 // custom sidebar objects to make it easier to read
 import { SidebarCategory, SidebarPage } from "./src/sidebars/sidebar-utils";
 
+// Each page has a title and path. The path is relative to the path of its parent.
+// i.e. Category -> Sub-category -> Page
+// "categories/welcome" -> "projects" -> "collaborators"
+// combined path: "categories/welcome/projects/collaborators"
+const welcomeCategory = new SidebarCategory(
+  "😺 Welcome", // Category title
+  "categories/welcome", // Category path
+  false, // Should the category be collapsed?
+  [
+    // Category pages / items
+    new SidebarPage("Welcome", "welcome"), // page, title and file name. relative to category path
+    new SidebarPage("Adding subscriptions to your app", "building-new"),
+    new SidebarPage("Using RevenueCat in existing apps", "existing-apps"),
+    new SidebarCategory( // Sub-category
+      "Setting up RevenueCat", // Sub-category title
+      "projects", // Sub-category path
+      false, // Sub-category collapsed
+      [
+        new SidebarPage("Invite your team", "collaborators"), // Sub-category pages / items
+        new SidebarPage("Account security", "security"),
+        new SidebarPage("Billing and account settings", "account-management"),
+      ],
+      new SidebarPage("Setting up RevenueCat", "projects")
+    ),
+    new SidebarPage("API Keys & Authentication", "authentication"),
+  ]
+).render(); // call stripped() to remove unsupported convenience properties
+
 const sidebars = {
-  defaultSidebar: [
-    new SidebarCategory("😺 Welcome", "categories/welcome", [
-      new SidebarPage("Welcome", "welcome"),
-      new SidebarPage("Adding subscriptions to your app", "building-new"),
-      new SidebarPage("Using RevenueCat in existing apps", "existing-apps"),
-      new SidebarCategory(
-        "Setting up RevenueCat",
-        "projects",
-        [
-          new SidebarPage("Invite your team", "collaborators"),
-          new SidebarPage("Account security", "security"),
-          new SidebarPage("Billing and account settings", "account-management"),
-        ],
-        new SidebarPage("Setting up RevenueCat", "projects")
-      ),
-      new SidebarPage("API Keys & Authentication", "authentication"),
-    ]).render(), // call stripped() to remove unsupported convenience properties
-  ],
+  defaultSidebar: [welcomeCategory],
 };
 
 console.log(JSON.stringify(sidebars, null, 2));
