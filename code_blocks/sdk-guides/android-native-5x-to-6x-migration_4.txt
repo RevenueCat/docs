@@ -1,0 +1,1 @@
+cordova plugin add cordova-plugin-purchases@4.0.0 --save

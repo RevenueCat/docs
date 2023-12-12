@@ -6,7 +6,7 @@ This documentation website is built using [Docusaurus](https://docusaurus.io/).
 
 ## Sidebars
 
-Each grouping of docs is called a 'sidebar'. The default sidebar is defined in `sidebars.js` and requires each category and page to be defined manually.
+Each grouping of docs is called a 'sidebar'. The default sidebar is defined in `sidebars.js` and requires each category and page to be defined manually. For now, we have only one sidebar indicating one grouping of docs.
 
 ## Pages
 
@@ -22,6 +22,25 @@ If a page uses invalid markdown, or unsupported syntax (readme-flavored, etc.) t
 4. Add to `sidebars.js` (create the category if it doesn't exist yet)
 5. Edit to make sure it is valid markdown
 6. Save to automatically restart docusaurus
+
+## Adding code snippets
+
+There's a custom tabbed code block component called RCCodeBlock.
+**Pages must be `.mdx`.**
+
+Pass a set of values for each tab, reading each code file using `raw-loader` relative to the `@site` root path:
+
+```
+import RCCodeBlock from '@site/src/components/RCCodeBlock';
+import content from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/migrating-existing-subscriptions_1.js";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        content: content,
+    }
+]}/>
+```
 
 # Development
 
