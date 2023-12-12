@@ -24,9 +24,9 @@ import {
 // "categories/welcome" -> "projects" -> "collaborators"
 // combined path: "categories/welcome/projects/collaborators"
 const welcomeCategory = new SidebarCategory(
-  "😺 Welcome", // Category title
-  "welcome", // Category path
-  false, // Should the category be collapsed? (defaults to true)
+  "😺 Welcome to RevenueCat", // Category title
+  "welcome", // Category path, i.e. docs/{path}
+  false, // Should the category be collapsed by default? (defaults to true)
   [
     // Category pages / items
     new SidebarPage("Welcome", "welcome"), // page, title and file name. relative to category path
@@ -45,7 +45,7 @@ const welcomeCategory = new SidebarCategory(
     ),
     new SidebarPage("API Keys & Authentication", "authentication"),
   ]
-).render(); // call render() to remove unsupported convenience properties and prepare for docusaurus
+);
 
 const migratingCategory = new SidebarCategory(
   "➡️ Migrating to RevenueCat",
@@ -65,39 +65,82 @@ const migratingCategory = new SidebarCategory(
     new SidebarPage("Observer Mode", "observer-mode"),
     new SidebarPage("SwiftyStoreKit", "swiftystorekit"),
   ]
-).render();
+);
+
+const toolsCategory = new SidebarCategory("🛠 Tools", "tools", true, [
+  new SidebarCategory(
+    "Offering Metadata",
+    "offering-metadata",
+    true,
+    [
+      new SidebarPage(
+        "Offering Metadata Examples",
+        "offering-metadata-examples"
+      ),
+    ],
+    new SidebarPage("Offering Metadata", "offering-metadata")
+  ),
+  new SidebarCategory(
+    "Experiments",
+    "experiments-v1",
+    true,
+    [
+      new SidebarPage("Experiments Overview", "experiments-overview-v1"),
+      new SidebarPage(
+        "Creating Offerings to Test",
+        "creating-offerings-to-test"
+      ),
+      new SidebarPage("Configuring Experiments", "configuring-experiments-v1"),
+      new SidebarPage("Interpreting Results", "experiments-results-v1"),
+    ],
+    new SidebarPage("Experiments", "experiments-v1")
+  ),
+]);
+
+const supportCategory = new SidebarCategory(
+  "🛟 RevenueCat Support",
+  "revenuecat-support",
+  true,
+  [new SidebarPage("Support First Steps", "support-first-steps")]
+);
+
+const sdkMigrationCategory = new SidebarCategory(
+  "📘 SDK Migration Guides",
+  "sdk-guides",
+  true,
+  [
+    new SidebarPage(
+      "Android Native 4x to 5x Migration",
+      "android-native-4x-to-5x-migration"
+    ),
+    new SidebarPage(
+      "Android Native 5x to 6x Migration",
+      "android-native-5x-to-6x-migration"
+    ),
+    new SidebarPage(
+      "Android Native 6x to 7x Migration",
+      "android-native-6x-to-7x-migration"
+    ),
+    new SidebarPage(
+      "iOS Native 3x to 4x Migration",
+      "ios-native-3x-to-4x-migration"
+    ),
+    new SidebarLink(
+      "Capacitor - 5.x to 6.x Migration",
+      "https://github.com/RevenueCat/purchases-capacitor/blob/main/migrations/v6-MIGRATION.md"
+    ),
+  ]
+);
 
 // Add the top level categories to the defaultSidebar object
 // The defaultSidebar is referenced in docusaurus.config.js
 const sidebars = {
   defaultSidebar: [
-    welcomeCategory,
-    migratingCategory,
-    new SidebarCategory("🛟 RevenueCat Support", "revenuecat-support", false, [
-      new SidebarPage("Support First Steps", "support-first-steps"),
-    ]).render(),
-    new SidebarCategory("📘 SDK Migration Guides", "sdk-guides", true, [
-      new SidebarPage(
-        "Android Native 4x to 5x Migration",
-        "android-native-4x-to-5x-migration"
-      ),
-      new SidebarPage(
-        "Android Native 5x to 6x Migration",
-        "android-native-5x-to-6x-migration"
-      ),
-      new SidebarPage(
-        "Android Native 6x to 7x Migration",
-        "android-native-6x-to-7x-migration"
-      ),
-      new SidebarPage(
-        "iOS Native 3x to 4x Migration",
-        "ios-native-3x-to-4x-migration"
-      ),
-      new SidebarLink(
-        "Capacitor - 5.x to 6.x Migration",
-        "https://github.com/RevenueCat/purchases-capacitor/blob/main/migrations/v6-MIGRATION.md"
-      ),
-    ]).render(),
+    welcomeCategory.render(), // call render() to remove unsupported convenience properties and prepare for docusaurus
+    migratingCategory.render(),
+    toolsCategory.render(),
+    supportCategory.render(),
+    sdkMigrationCategory.render(),
   ],
 };
 
