@@ -108,6 +108,42 @@ const toolsCategory = new SidebarCategory("🛠 Tools", "tools", false, [
   new SidebarPage("Targeting", "targeting"),
 ]);
 
+const serviceCredentialsCategory = new SidebarCategory(
+  "🔑 SERVICE CREDENTIALS",
+  "service-credentials",
+  true,
+  [
+    new SidebarCategory(
+      "Apple App Store",
+      "itunesconnect-app-specific-shared-secret",
+      true,
+      [new SidebarPage(
+        "In-App Purchase Key Configuration", 
+        "in-app-purchase-key-configuration"),
+        new SidebarPage(
+          "In-App Purchase Key Configuration", 
+          "in-app-purchase-key-configuration")],
+      new SidebarPage(
+        "App Store Connect API Key Configuration",
+        "app-store-connect-api-key-configuration"
+      )
+    ),
+    new SidebarCategory(
+      "Google Play Store",
+      "creating-play-service-credentials",
+      true,
+      [new SidebarPage(
+        "Google Play Checklists", 
+        "in-app-purchase-key-configuration")],
+      new SidebarPage(
+        "Google Play Store",
+        "google-play-checklists"
+      )
+    ),
+    new SidebarPage("Amazon Appstore", "amazon-appstore-credentials"),
+  ]
+);
+
 const supportCategory = new SidebarCategory(
   "🛟 RevenueCat Support",
   "revenuecat-support",
