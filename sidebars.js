@@ -67,6 +67,49 @@ const migratingCategory = new SidebarCategory(
   ]
 );
 
+const testAndLaunchCategory = new SidebarCategory(
+  "🧰 Test & Launch",
+  "test-and-launch",
+  true,
+  [
+    new SidebarCategory(
+      "Debugging",
+      "debugging",
+      true,
+      [new SidebarPage("Caching", "caching"),
+      new SidebarPage(
+        "Troubleshooting the SDKs",
+        "troubleshooting-the-sdks"
+      )],
+      new SidebarPage(
+        "Debugging",
+        "debugging"
+      )
+    ),
+    new SidebarPage("Error Handling", "errors"),
+    new SidebarCategory(
+      "Sandbox Testing",
+      "sandbox",
+      true,
+      [new SidebarPage(
+        "Apple App Store & TestFlight", 
+        "apple-app-store"),
+        new SidebarPage(
+          "Google Play Store", 
+          "google-play-store"),
+          new SidebarPage(
+            "Amazon App Store", 
+            "amazon-store-sandbox-testing")],
+      new SidebarPage(
+        "Sandbox Testing",
+        "sandbox"
+      )
+    ),
+    new SidebarPage("App Subscription Launch Checklist", "launch-checklist"),
+    new SidebarPage("App Store Rejections", "app-store-rejections"),
+  ]
+);
+
 const toolsCategory = new SidebarCategory("🛠 Tools", "tools", true, [
   new SidebarCategory(
     "Offering Metadata",
@@ -139,6 +182,7 @@ const sidebars = {
   defaultSidebar: [
     welcomeCategory.render(), // call render() to remove unsupported convenience properties and prepare for docusaurus
     migratingCategory.render(),
+    testAndLaunchCategory.render(),
     toolsCategory.render(),
     supportCategory.render(),
     sdkMigrationCategory.render(),
