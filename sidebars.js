@@ -109,7 +109,7 @@ const toolsCategory = new SidebarCategory("🛠 Tools", "tools", false, [
 ]);
 
 const serviceCredentialsCategory = new SidebarCategory(
-  "🔑 SERVICE CREDENTIALS",
+  "🔑 Service Credentials",
   "service-credentials",
   true,
   [
@@ -121,11 +121,11 @@ const serviceCredentialsCategory = new SidebarCategory(
         "In-App Purchase Key Configuration", 
         "in-app-purchase-key-configuration"),
         new SidebarPage(
-          "In-App Purchase Key Configuration", 
-          "in-app-purchase-key-configuration")],
-      new SidebarPage(
         "App Store Connect API Key Configuration",
-        "app-store-connect-api-key-configuration"
+        "app-store-connect-api-key-configuration")],
+      new SidebarPage(
+        "Apple App Store",
+        "itunesconnect-app-specific-shared-secret"
       )
     ),
     new SidebarCategory(
@@ -134,10 +134,10 @@ const serviceCredentialsCategory = new SidebarCategory(
       true,
       [new SidebarPage(
         "Google Play Checklists", 
-        "in-app-purchase-key-configuration")],
+        "google-play-checklists")],
       new SidebarPage(
         "Google Play Store",
-        "google-play-checklists"
+        "creating-play-service-credentials"
       )
     ),
     new SidebarPage("Amazon Appstore", "amazon-appstore-credentials"),
@@ -186,6 +186,7 @@ const sidebars = {
     welcomeCategory.render(), // call render() to remove unsupported convenience properties and prepare for docusaurus
     migratingCategory.render(),
     toolsCategory.render(),
+    serviceCredentialsCategory.render(),
     supportCategory.render(),
     sdkMigrationCategory.render(),
   ],
