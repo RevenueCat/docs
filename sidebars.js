@@ -41,7 +41,7 @@ const welcomeCategory = new SidebarCategory(
     ),
     new SidebarPage("API Keys & Authentication", "authentication"),
   ]
-).render(); // call stripped() to remove unsupported convenience properties
+).render(); // call render() to remove unsupported convenience properties and prepare for docusaurus
 
 // Add the top level categories to the defaultSidebar object
 // The defaultSidebar is referenced in docusaurus.config.js
