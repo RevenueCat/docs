@@ -4,12 +4,9 @@ slug: app-store-rejections
 excerpt: Your app was rejected. Now what?
 hidden: false
 ---
-[block:callout]
-{
-  "type": "info",
-  "body": "RevenueCat support can explain error messages or help you troubleshoot reproducible issues but don't have other ways of expediting the review process."
-}
-[/block]
+
+> RevenueCat support can explain error messages or help you troubleshoot reproducible issues but don't have other ways of expediting the review process.
+
 Your app is finally complete! 🎉 You're tracking subscriptions in Sandbox, your Testflight users love it, you've followed our [Launch Checklist](https://docs.revenuecat.com/docs/launch-checklist), and you're finally ready to launch your app to the world.
 
 After a few days in review, you get the dreaded 'Rejected' message. Now what? Let's work through some common rejection reasons and the best way to get your app back on track.
@@ -29,50 +26,20 @@ Usually the reviewer will include a screenshot with the problem they encountered
 # Issues fetching products
 
 Often times, purchases will work fine in Sandbox and Testflight, but App Store Review will not be able to fetch products. It's important to ensure that you are submitting your in-app purchases with your app for review. If an app has not previously had in-app purchases approved on the App Store, an option to submit them will appear on the main app version page.
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/bec1d0d-Screen_Shot_2020-06-10_at_1.17.23_PM.png",
-        "Screen Shot 2020-06-10 at 1.17.23 PM.png",
-        2518,
-        1634,
-        "#fbfcfd"
-      ],
-      "border": true,
-      "caption": "Don't forget to submit the products with the first version of your app containing in-app purchases"
-    }
-  ]
-}
-[/block]
+
+![Don't forget to submit the products with the first version of your app containing in-app purchases](https://files.readme.io/bec1d0d-Screen_Shot_2020-06-10_at_1.17.23_PM.png)
+
 To see this option, you must first fill in all required metadata so that the status of any in-app purchases you intend to use is 'Ready to Submit'.
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/e823df0-Screen_Shot_2020-06-10_at_1.33.58_PM.png",
-        "Screen Shot 2020-06-10 at 1.33.58 PM.png",
-        2522,
-        846,
-        "#f9fafc"
-      ],
-      "caption": "Make sure any in-app purchases you intend to use are \"Ready to Submit\"."
-    }
-  ]
-}
-[/block]
+
+![Make sure any in-app purchases you intend to use are "Ready to Submit".](https://files.readme.io/e823df0-Screen_Shot_2020-06-10_at_1.33.58_PM.png)
+
 If you've already released a version of your app containing in-app purchases, you can create new products in App Store Connect without having to release an update to your app. You'll have to submit new products for review independently of a new app version, and they must be in the 'Approved' state before they'll be available for purchase.
 
 If you're having trouble fetching products in Testflight or a local build, see our community article on [the most common reasons this occurs](https://community.revenuecat.com/featured-articles-55/app-rejections-86). 
-[block:callout]
-{
-  "type": "info",
-  "title": "Re-submit for review",
-  "body": "If you're able to test purchases on your device successfully but App Review runs into issues fetching products, it's likely an issue with their environment. There isn't much you can do in these cases- some users have had to re-submit the same build up to a dozen times before being approved."
-}
-[/block]
+
+> **Re-submit for review**
+> If you're able to test purchases on your device successfully but App Review runs into issues fetching products, it's likely an issue with their environment. There isn't much you can do in these cases- some users have had to re-submit the same build up to a dozen times before being approved.
+
 # Error during purchase
 
 If an error occurs during the purchase process, it will be one of the errors outlined in our [Error Handling guide here](https://docs.revenuecat.com/docs/errors). Understanding what error triggered the rejection is the only way to make sure the issue gets resolved. 
