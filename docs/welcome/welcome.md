@@ -17,7 +17,7 @@ RevenueCat is a powerful and reliable in-app purchase server that makes it easy 
 
 ## Adding in-app purchases to your app
 
-<section class="get-started landing"> <div class="get-started-description"> <p>Start selling subscriptions and in-app purchases in your iOS, Android, and Amazon apps.n </p> <a class="cta" href="/docs/building-new" target="_self">Get Started →</a> </div> <div class="get-started-image resources"> <img src="https://revenuecat.dreamhosters.com/wp-content/uploads/2023/11/Powering-existing-subscriptions-with-RevenueCat-1.png" alt="RevenueCat flow diagram" /> </div></section>
+<section class="get-started landing"> <div class="get-started-description"> <p>Start selling subscriptions and in-app purchases in your iOS, Android, and Amazon apps. </p> <a class="cta" href="/docs/building-new" target="_self">Get Started →</a> </div> <div class="get-started-image resources"> <img src="https://revenuecat.dreamhosters.com/wp-content/uploads/2023/11/Powering-existing-subscriptions-with-RevenueCat-1.png" alt="RevenueCat flow diagram" /> </div></section>
 
 ## Migrate existing subscriptions to RevenueCat
 
@@ -25,7 +25,7 @@ RevenueCat is a powerful and reliable in-app purchase server that makes it easy 
 
 ### Browse features
 
-<section class="get-started landing three-column"> <ul class="ctas"> <li> <a href="/docs/entitlements" target="_self"> <div class="name">🔑 Entitlements & Subscription Status</div> <div class="description">n Ensure customers have correct access even if your entitlement structure is complex. </div> </a> </li> <li> <a href="/docs/integrations" target="_self"> <div class="name">📈 Data, Analytics, & Integrations</div> <div class="description">Clean, normalized subscription data at your fingertips and in every system. </div> </a> </li> <li> <a href="/docs/experiments-v1" target="_self"> <div class="name">💰 Paywalls & Experiments</div> <div class="description">Change your product configurations remotely and run price tests.</div> </a> </li> </ul></section>
+<section class="get-started landing three-column"> <ul class="ctas"> <li> <a href="/docs/entitlements" target="_self"> <div class="name">🔑 Entitlements & Subscription Status</div> <div class="description">Ensure customers have correct access even if your entitlement structure is complex. </div> </a> </li> <li> <a href="/docs/integrations" target="_self"> <div class="name">📈 Data, Analytics, & Integrations</div> <div class="description">Clean, normalized subscription data at your fingertips and in every system. </div> </a> </li> <li> <a href="/docs/experiments-v1" target="_self"> <div class="name">💰 Paywalls & Experiments</div> <div class="description">Change your product configurations remotely and run price tests.</div> </a> </li> </ul></section>
 
 ### Not sure where to start
 

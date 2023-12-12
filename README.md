@@ -6,7 +6,7 @@ This documentation website is built using [Docusaurus](https://docusaurus.io/).
 
 ## Sidebars
 
-Each grouping of docs is called a 'sidebar'. The default sidebar is defined in `sidebars.js` and requires each category and page to be defined manually.
+Each grouping of docs is called a 'sidebar'. The default sidebar is defined in `sidebars.js` and requires each category and page to be defined manually. For now, we have only one sidebar indicating one grouping of docs.
 
 ## Pages
 
