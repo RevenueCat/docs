@@ -57,3 +57,7 @@ h3 {
   padding-bottom: 12px;
   border-bottom: 1px solid #ddd;
 }
+
+.menu__list-item-collapsible {
+  font-weight: 700;
+}
