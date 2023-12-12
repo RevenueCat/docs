@@ -91,7 +91,34 @@ No special requirements
 
 ### 1. Configure the SDK
 
-<!-- [block:file]
+import RCCodeBlock from '@site/src/components/RCCodeBlock';
+import om2 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_2.m";
+import om4 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_4.java";
+import om5 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_5.dart";
+import om6 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_6.cs";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'objc',
+        content: om2,
+    },
+    {
+        type: 'java',
+        content: om4,
+    },
+    {
+        type: 'dart',
+        content: om5,
+    },
+    {
+        type: 'csharp',
+        content: om6,
+    },
+]}/>
+
+{/* TODO: missing languages below -> */}
+
+{/* <!-- [block:file]
 [
   {
     "language": "swift",
@@ -132,7 +159,7 @@ No special requirements
     "file": "code_blocks/➡️ Migrating To RevenueCat/observer-mode_6.cs"
   }
 ]
-[/block] -->
+[/block] --> */}
 
 #### Enable Observer Mode in Unity Editor (Unity Only)
 
@@ -156,20 +183,20 @@ No special requirements
 
 On Android with Amazon Store (including cross-platform SDKs running on Android), any time a purchase or restore occurs in your app you should call the `syncObserverModeAmazonPurchase` method to record it in RevenueCat. **Failure to do so will result in no purchases being recorded**.
 
-<!-- [block:file]
-[
-  {
-    "language": "csharp",
-    "name": "Unity",
-    "file": "code_blocks/➡️ Migrating To RevenueCat/observer-mode_7.cs"
-  },
-  {
-    "language": "kotlin",
-    "name": "",
-    "file": "code_blocks/➡️ Migrating To RevenueCat/observer-mode_8.kt"
-  }
-]
-[/block] -->
+import om7 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_7.cs";
+import om8 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_8.kt";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'unity',
+        content: om7,
+    },
+    {
+        type: 'kotlin',
+        content: om8,
+    },
+]}/>
+
 
 ## Configuring Integrations
 

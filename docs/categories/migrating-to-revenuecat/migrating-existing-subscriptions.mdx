@@ -51,15 +51,15 @@ The way to do this is: if your existing subscription code knows you have a subsc
 
 See the following pseudo example.
 
-{/* <!-- [block:file]
-[
-{
-"language": "javascript",
-"name": "Example",
-"file": "code_blocks/➡️ Migrating To RevenueCat/migrating-existing-subscriptions_1.js"
-}
-]
-[/block] --> */}
+import RCCodeBlock from '@site/src/components/RCCodeBlock';
+import content from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/migrating-existing-subscriptions_1.js";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        content: content,
+    }
+]}/>
 
 When a subscriber launches with the first version containing RevenueCat it will trigger a sync. Once the sync is complete, it won't be triggered again.
 

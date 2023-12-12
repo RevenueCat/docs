@@ -23,6 +23,25 @@ If a page uses invalid markdown, or unsupported syntax (readme-flavored, etc.) t
 5. Edit to make sure it is valid markdown
 6. Save to automatically restart docusaurus
 
+## Adding code snippets
+
+There's a custom tabbed code block component called RCCodeBlock.
+**Pages must be `.mdx`.**
+
+Pass a set of values for each tab, reading each code file using `raw-loader` relative to the `@site` root path:
+
+```
+import RCCodeBlock from '@site/src/components/RCCodeBlock';
+import content from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/migrating-existing-subscriptions_1.js";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        content: content,
+    }
+]}/>
+```
+
 # Development
 
 ### Installation
