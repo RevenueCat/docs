@@ -21,7 +21,7 @@ import { SidebarCategory, SidebarPage } from "./src/sidebars/sidebar-utils";
 // combined path: "categories/welcome/projects/collaborators"
 const welcomeCategory = new SidebarCategory(
   "😺 Welcome", // Category title
-  "categories/welcome", // Category path
+  "welcome", // Category path
   false, // Should the category be collapsed? (defaults to true)
   [
     // Category pages / items
@@ -45,7 +45,7 @@ const welcomeCategory = new SidebarCategory(
 
 const migratingCategory = new SidebarCategory(
   "➡️ Migrating to RevenueCat",
-  "categories/migrating-to-revenuecat",
+  "migrating-to-revenuecat",
   true,
   [
     new SidebarCategory(
