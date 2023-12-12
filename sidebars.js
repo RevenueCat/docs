@@ -22,7 +22,7 @@ import { SidebarCategory, SidebarPage } from "./src/sidebars/sidebar-utils";
 const welcomeCategory = new SidebarCategory(
   "😺 Welcome", // Category title
   "categories/welcome", // Category path
-  false, // Should the category be collapsed?
+  false, // Should the category be collapsed? (defaults to true)
   [
     // Category pages / items
     new SidebarPage("Welcome", "welcome"), // page, title and file name. relative to category path
