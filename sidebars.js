@@ -43,10 +43,30 @@ const welcomeCategory = new SidebarCategory(
   ]
 ).render(); // call render() to remove unsupported convenience properties and prepare for docusaurus
 
+const migratingCategory = new SidebarCategory(
+  "➡️ Migrating to RevenueCat",
+  "categories/migrating-to-revenuecat",
+  true,
+  [
+    new SidebarCategory(
+      "Migrating Subscriptions",
+      "migrating-existing-subscriptions",
+      true,
+      [new SidebarPage("Receipt Imports", "receipt-imports")],
+      new SidebarPage(
+        "Migrating Subscriptions",
+        "migrating-existing-subscriptions"
+      )
+    ),
+    new SidebarPage("Observer Mode", "observer-mode"),
+    new SidebarPage("SwiftyStoreKit", "swiftystorekit"),
+  ]
+).render();
+
 // Add the top level categories to the defaultSidebar object
 // The defaultSidebar is referenced in docusaurus.config.js
 const sidebars = {
-  defaultSidebar: [welcomeCategory],
+  defaultSidebar: [welcomeCategory, migratingCategory],
 };
 
 console.log(JSON.stringify(sidebars, null, 2));
