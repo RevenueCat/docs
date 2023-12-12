@@ -6,13 +6,13 @@ hidden: false
 ---
 This document contains a checklist of things to consider before launching subscriptions in your app to production.
 
-# 1. Know your plan limits
+## 1. Know your plan limits
 
 | Plan Limits | iOS | Android |
 |-------------|-----|---------|
 | There are free usage limits on our base plan. When you hit the $2,500 MTR limit, we'll start charging you at 1% of tracked revenue. Consider adding your credit card details early to prevent temporarily losing access to some of our best features. See the [pricing page](https://www.revenuecat.com/pricing) for more details. | ✅ | ✅ |
 
-# 2. Testing user identity in RevenueCat
+## 2. Testing user identity in RevenueCat
 
 | Verify App User IDs are set properly | iOS | Android |
 |-------------------------------------|-----|---------|
@@ -26,7 +26,7 @@ This document contains a checklist of things to consider before launching subscr
 |-----------------------------|-----|---------|
 | For each user, check that there are no unexpected aliases on their customer page. See [our guide](doc:user-ids) for more information on how aliases are created. | ✅ | ✅ |
 
-# 3. Testing purchases
+## 3. Testing purchases
 
 | All products are available | iOS | Android |
 |---------------------------|-----|---------|
@@ -45,7 +45,7 @@ This document contains a checklist of things to consider before launching subscr
 | Uninstall and re-install the app. If you're setting your own App User Id, any active subscriptions should be automatically restored when you log-in.\nIf you're using RevenueCat generated App User IDs on iOS, you won't be able to restore purchases after an uninstall in sandbox until you make another purchase. | ✅ | ✅ |
 
 
-# Verify webhooks and integrations
+## 4. Verify webhooks and integrations
 
 | No webhook failures | iOS | Android |
 |---------------------|-----|---------|
@@ -55,7 +55,7 @@ This document contains a checklist of things to consider before launching subscr
 |---------------------------------------|-----|---------|
 | If you have any integrations configured, ensure that you're receiving test events attached to the expected user | ✅ | ✅ |
 
-# Prepare release
+## 5. Prepare release
 
 | Store description | iOS | Android |
 |-------------------|-----|---------|
