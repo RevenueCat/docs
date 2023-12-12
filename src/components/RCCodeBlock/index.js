@@ -7,14 +7,14 @@ export default function RCCodeBlock(props) {
     <Tabs
       groupId="language"
       values={props.tabs.map((tab) => {
-        let title = props.title || getTabTitle(tab.type);
+        let title = tab.title || getTabTitle(tab.type);
 
-        return { label: title, value: tab.type };
+        return { label: title, value: tab.title || tab.type };
       })}
     >
       {props.tabs.map((tab) => {
         return (
-          <TabItem value={tab.type}>
+          <TabItem value={tab.title || tab.type}>
             <CodeBlock language={tab.type} children={tab.content} />
           </TabItem>
         );
