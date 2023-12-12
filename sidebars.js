@@ -12,6 +12,9 @@
 // custom sidebar objects to make it easier to read
 import { SidebarCategory, SidebarPage } from "./src/sidebars/sidebar-utils";
 
+// The sidebar is a tree of categories and pages.
+// I've separated this top-level category into its own variable for readability.
+// Each category can have sub-categories and pages.
 // Each page has a title and path. The path is relative to the path of its parent.
 // i.e. Category -> Sub-category -> Page
 // "categories/welcome" -> "projects" -> "collaborators"
@@ -40,6 +43,8 @@ const welcomeCategory = new SidebarCategory(
   ]
 ).render(); // call stripped() to remove unsupported convenience properties
 
+// Add the top level categories to the defaultSidebar object
+// The defaultSidebar is referenced in docusaurus.config.js
 const sidebars = {
   defaultSidebar: [welcomeCategory],
 };
