@@ -66,7 +66,13 @@ const migratingCategory = new SidebarCategory(
 // Add the top level categories to the defaultSidebar object
 // The defaultSidebar is referenced in docusaurus.config.js
 const sidebars = {
-  defaultSidebar: [welcomeCategory, migratingCategory],
+  defaultSidebar: [
+    welcomeCategory,
+    migratingCategory,
+    new SidebarCategory("🛟 RevenueCat Support", "revenuecat-support", false, [
+      new SidebarPage("Support First Steps", "support-first-steps"),
+    ]).render(),
+  ],
 };
 
 console.log(JSON.stringify(sidebars, null, 2));
