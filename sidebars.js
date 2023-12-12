@@ -67,7 +67,7 @@ const migratingCategory = new SidebarCategory(
   ]
 );
 
-const toolsCategory = new SidebarCategory("🛠 Tools", "tools", true, [
+const toolsCategory = new SidebarCategory("🛠 Tools", "tools", false, [
   new SidebarCategory(
     "Paywalls",
     "paywalls",
