@@ -69,14 +69,14 @@ const config = {
         title: "RevenueCat",
         logo: {
           alt: "My Site Logo",
-          src: "img/logo.svg",
+          src: "img/logo-rc.svg",
         },
         items: [
           {
             type: "docSidebar",
             sidebarId: "defaultSidebar",
             position: "left",
-            label: "Tutorial",
+            label: "Documentation",
           },
           // { to: "/blog", label: "Blog", position: "left" },
           {
@@ -93,8 +93,8 @@ const config = {
             title: "Docs",
             items: [
               {
-                label: "Tutorial",
-                to: "/docs/intro",
+                label: "Docs",
+                to: "/docs/overview",
               },
             ],
           },

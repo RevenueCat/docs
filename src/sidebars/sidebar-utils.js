@@ -1,31 +1,34 @@
 class SidebarCategory {
-  constructor(label, path, items) {
+  constructor(label, path, collapsed = true, items, defaultPage = null) {
     this.type = "category";
     this.label = label;
     this.path = path;
     this.items = items;
-
-    for (var item of items) {
-      if (item instanceof SidebarPage) {
-        item.id = this.path + "/" + item.id;
-      } else if (item instanceof SidebarCategory) {
-        item.path = this.path + "/" + item.path;
-      } else if (typeof item === "string") {
-        item = this.path + "/" + item;
-      }
-    }
+    this.collapsed = collapsed;
+    this.link = defaultPage || null;
   }
 
-  stripped() {
+  render(pathPrefix = "") {
     // removes the `path` object property
     return {
       type: this.type,
       label: this.label,
+      link: this.link,
       items: this.items.map((item) => {
         if (item instanceof SidebarPage) {
-          return item.id;
+          return (
+            (pathPrefix ? pathPrefix + "/" : "") + this.path + "/" + item.id
+          );
         } else if (item instanceof SidebarCategory) {
-          return item.stripped();
+          let renderedCategory = item;
+          if (renderedCategory.link) {
+            // labels aren't allowed for top-level category pages (uses category name instead)
+            delete renderedCategory.link.label;
+            // prepend the path to the link
+            renderedCategory.link.id =
+              this.path + "/" + renderedCategory.link.id;
+          }
+          return renderedCategory.render(this.path);
         } else if (typeof item === "string") {
           return item;
         }
@@ -35,10 +38,10 @@ class SidebarCategory {
 }
 
 class SidebarPage {
-  constructor(label, path) {
+  constructor(label, file) {
     this.type = "doc";
     this.label = label;
-    this.id = path;
+    this.id = file;
   }
 }
 
