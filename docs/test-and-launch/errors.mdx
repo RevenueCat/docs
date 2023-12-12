@@ -4,12 +4,13 @@ slug: errors
 excerpt: Handling errors in Purchases SDK
 hidden: false
 ---
-[block:callout]
-{
-  "type": "success",
-  "body": "This section assumes you've followed our [Quickstart](doc:getting-started-1) section of our Getting Started guide to install and configure our SDK."
-}
-[/block]
+
+import RCCodeBlock from '@site/src/components/RCCodeBlock';
+
+
+> **Success**
+> This section assumes you've followed our [Quickstart](doc:getting-started-1) section of our Getting Started guide to install and configure our SDK.
+
 # Error Handling
 
 If the completion callbacks or listeners on asynchronous methods receive an error argument that is not nil, an error has occurred. 
@@ -24,20 +25,21 @@ When investigating or logging errors, review the `errorUserInfo` dictionary, pay
 - `NSDebugDescriptionErrorKey` contains a description of the error. This description is meant for the developer.
 
 ### Examples
-[block:file]
-[
-  {
-    "language": "swift",
-    "name": "",
-    "file": "code_blocks/🧰 Test - Launch/errors_1.swift"
-  },
-  {
-    "language": "objectivec",
-    "name": "",
-    "file": "code_blocks/🧰 Test - Launch/errors_2.m"
-  }
-]
-[/block]
+
+import err1 from "!!raw-loader!@site/code_blocks/test-and-launch/errors_1.swift";
+import err2 from "!!raw-loader!@site/code_blocks/test-and-launch/errors_2.m";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        content: err1,
+    },
+    {
+        type: 'objc',
+        content: err2,
+    },
+]}/>
+
 ## Android Errors
 On Android, when an error has occurred, the `onError` listener will receive a `PurchasesError` object.
 
@@ -47,35 +49,26 @@ When investigating or logging errors, review the properties of `PurchasesError`:
 - `underlyingErrorMessage ` contains a description of the underlying error that caused the error in question, if an underlying error is present.
 
 ### Examples
-[block:file]
-[
-  {
-    "language": "kotlin",
-    "name": "",
-    "file": "code_blocks/🧰 Test - Launch/errors_3.kt"
-  }
-]
-[/block]
+
+import err3 from "!!raw-loader!@site/code_blocks/test-and-launch/errors_3.kt";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'kotlin',
+        content: err3,
+    },
+]}/>
+
 # Legend
 When debugging errors, it's important to consider whether the error was thrown by RevenueCat, Apple, or Google. This can help you pinpoint where to look for a resolution. 
-[block:parameters]
-{
-  "data": {
-    "h-0": "Icon",
-    "h-1": "Description",
-    "0-0": "😿",
-    "0-1": "Error generated from RevenueCat",
-    "1-0": "🍎",
-    "1-1": "Error generated from Apple",
-    "2-0": "🤖",
-    "2-1": "Error generated from Google",
-    "3-0": "📦",
-    "3-1": "Error generated from Amazon"
-  },
-  "cols": 2,
-  "rows": 4
-}
-[/block]
+
+| Icon | Description                   |
+|------|-------------------------------|
+| 😿    | Error generated from RevenueCat |
+| 🍎    | Error generated from Apple     |
+| 🤖    | Error generated from Google    |
+| 📦    | Error generated from Amazon    |
+
 # Error codes common to all methods
 
 ####😿 `INVALID_APP_USER_ID`
