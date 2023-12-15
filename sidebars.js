@@ -152,6 +152,42 @@ const toolsCategory = new SidebarCategory("🛠 Tools", "tools", false, [
   new SidebarPage("Targeting", "targeting"),
 ]);
 
+const serviceCredentialsCategory = new SidebarCategory(
+  "🔑 Service Credentials",
+  "service-credentials",
+  true,
+  [
+    new SidebarCategory(
+      "Apple App Store",
+      "itunesconnect-app-specific-shared-secret",
+      true,
+      [new SidebarPage(
+        "In-App Purchase Key Configuration", 
+        "in-app-purchase-key-configuration"),
+        new SidebarPage(
+        "App Store Connect API Key Configuration",
+        "app-store-connect-api-key-configuration")],
+      new SidebarPage(
+        "Apple App Store",
+        "itunesconnect-app-specific-shared-secret"
+      )
+    ),
+    new SidebarCategory(
+      "Google Play Store",
+      "creating-play-service-credentials",
+      true,
+      [new SidebarPage(
+        "Google Play Checklists", 
+        "google-play-checklists")],
+      new SidebarPage(
+        "Google Play Store",
+        "creating-play-service-credentials"
+      )
+    ),
+    new SidebarPage("Amazon Appstore", "amazon-appstore-credentials"),
+  ]
+);
+
 const supportCategory = new SidebarCategory(
   "🛟 RevenueCat Support",
   "revenuecat-support",
@@ -195,6 +231,7 @@ const sidebars = {
     migratingCategory.render(),
     testAndLaunchCategory.render(),
     toolsCategory.render(),
+    serviceCredentialsCategory.render(),
     supportCategory.render(),
     sdkMigrationCategory.render(),
   ],
