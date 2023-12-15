@@ -67,6 +67,50 @@ const migratingCategory = new SidebarCategory(
   ]
 );
 
+
+const testAndLaunchCategory = new SidebarCategory(
+  "🧰 Test & Launch",
+  "test-and-launch",
+  true,
+  [
+    new SidebarCategory(
+      "Debugging",
+      "debugging",
+      true,
+      [new SidebarPage("Caching", "caching"),
+      new SidebarPage(
+        "Troubleshooting the SDKs",
+        "troubleshooting-the-sdks"
+      )],
+      new SidebarPage(
+        "Debugging",
+        "debugging"
+      )
+    ),
+    new SidebarPage("Error Handling", "errors"),
+    new SidebarCategory(
+      "Sandbox Testing",
+      "sandbox",
+      true,
+      [new SidebarPage(
+        "Apple App Store & TestFlight", 
+        "apple-app-store"),
+        new SidebarPage(
+          "Google Play Store", 
+          "google-play-store"),
+          new SidebarPage(
+            "Amazon App Store", 
+            "amazon-store-sandbox-testing")],
+      new SidebarPage(
+        "Sandbox Testing",
+        "sandbox"
+      )
+    ),
+    new SidebarPage("App Subscription Launch Checklist", "launch-checklist"),
+    new SidebarPage("App Store Rejections", "app-store-rejections"),
+  ]
+);
+
 const toolsCategory = new SidebarCategory("🛠 Tools", "tools", false, [
   new SidebarCategory(
     "Paywalls",
@@ -185,6 +229,39 @@ const platformResourcesCategory = new SidebarCategory(
       new SidebarPage("Platform Server Notifications", "server-notifications")
     ),
     new SidebarPage("Sample Apps", "sample-apps"),
+const serviceCredentialsCategory = new SidebarCategory(
+  "🔑 Service Credentials",
+  "service-credentials",
+  true,
+  [
+    new SidebarCategory(
+      "Apple App Store",
+      "itunesconnect-app-specific-shared-secret",
+      true,
+      [new SidebarPage(
+        "In-App Purchase Key Configuration", 
+        "in-app-purchase-key-configuration"),
+        new SidebarPage(
+        "App Store Connect API Key Configuration",
+        "app-store-connect-api-key-configuration")],
+      new SidebarPage(
+        "Apple App Store",
+        "itunesconnect-app-specific-shared-secret"
+      )
+    ),
+    new SidebarCategory(
+      "Google Play Store",
+      "creating-play-service-credentials",
+      true,
+      [new SidebarPage(
+        "Google Play Checklists", 
+        "google-play-checklists")],
+      new SidebarPage(
+        "Google Play Store",
+        "creating-play-service-credentials"
+      )
+    ),
+    new SidebarPage("Amazon Appstore", "amazon-appstore-credentials"),
   ]
 );
 
@@ -229,8 +306,10 @@ const sidebars = {
   defaultSidebar: [
     welcomeCategory.render(), // call render() to remove unsupported convenience properties and prepare for docusaurus
     migratingCategory.render(),
+    testAndLaunchCategory.render(),
     toolsCategory.render(),
     platformResourcesCategory.render(),
+    serviceCredentialsCategory.render(),
     supportCategory.render(),
     sdkMigrationCategory.render(),
   ],
