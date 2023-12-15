@@ -111,6 +111,86 @@ const testAndLaunchCategory = new SidebarCategory(
   ]
 );
 
+const dashboardCategory = new SidebarCategory(
+  "📊 Dashboard & Metrics",
+  "dashboard-and-metrics",
+  true,
+  [
+    new SidebarPage("Overview", "overview"),
+    new SidebarCategory(
+      "Charts",
+      "charts",
+      true,
+      [
+        new SidebarPage(
+          "Active Subscriptions Chart",
+          "active-subscriptions-chart"
+        ),
+        new SidebarPage(
+          "Active Subscriptions Movement Chart",
+          "active-subscriptions-movement-chart"
+        ),
+        new SidebarPage("Active Trials Chart", "active-trials-chart"),
+        new SidebarPage(
+          "Active Trials Movement Chart",
+          "active-trials-movement-chart"
+        ),
+        new SidebarPage(
+          "Annual Recurring Revenue ARR Chart",
+          "annual-recurring-revenue-arr-chart"
+        ),
+        new SidebarPage(
+          "Charts Feature: Incomplete Periods",
+          "charts-feature-incomplete-periods"
+        ),
+        new SidebarPage("Churn Chart", "churn-chart"),
+        new SidebarPage(
+          "Conversion to Paying Chart",
+          "conversion-to-paying-chart"
+        ),
+        new SidebarPage("Initial Conversion Chart", "initial-conversion-chart"),
+        new SidebarPage(
+          "Monthly Recurring Revenue Movement Chart",
+          "monthly-recurring-revenue-movement-chart"
+        ),
+        new SidebarPage(
+          "Monthy Recurring Revenue MRR Chart",
+          "monthly-recurring-revenue-mrr-chart"
+        ),
+        new SidebarPage(
+          "Realized LTV per Customer Chart",
+          "realized-ltv-per-customer-chart"
+        ),
+        new SidebarPage(
+          "Realized LTW per Paying Customer Chart",
+          "realized-ltv-per-paying-customer-chart"
+        ),
+        new SidebarPage("Refund Rate Chart", "refund-rate-chart"),
+        new SidebarPage("Revenue Chart", "revenue-chart"),
+        new SidebarPage(
+          "Subscription Retention Chart",
+          "subscription-retention-chart"
+        ),
+        new SidebarPage("Trial Conversion Chart", "trial-conversion-chart"),
+      ],
+      new SidebarPage("Charts", "charts")
+    ),
+    new SidebarCategory("Customer History", "customers-group", true, [
+      new SidebarPage("Active Entitlements", "active-entitlements"),
+      new SidebarPage("Aliases", "aliases-card"),
+      new SidebarPage("Subscriber Attributes", "attributes"),
+      new SidebarPage("Attribution", "attribution-card"),
+      new SidebarPage("Customer Details", "basic-information"),
+      new SidebarPage("Customer History", "customer-history"),
+      new SidebarPage("Offering Override", "offering-override"),
+      new SidebarPage("Promotionals", "promotionals"),
+      new SidebarPage("Deleting Users", "manage-users"),
+    ]),
+    new SidebarPage("Customer Lists", "customer-lists"),
+    new SidebarPage("Taxes & Commissions", "taxes-and-commissions"),
+  ]
+);
+
 const toolsCategory = new SidebarCategory("🛠 Tools", "tools", false, [
   new SidebarCategory(
     "Paywalls",
@@ -310,6 +390,7 @@ const sidebars = {
     migratingCategory.render(),
     customersCategory.render(),
     testAndLaunchCategory.render(),
+    dashboardCategory.render(),
     toolsCategory.render(),
     platformResourcesCategory.render(),
     serviceCredentialsCategory.render(),
