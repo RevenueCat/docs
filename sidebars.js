@@ -108,6 +108,46 @@ const toolsCategory = new SidebarCategory("🛠 Tools", "tools", false, [
   new SidebarPage("Targeting", "targeting"),
 ]);
 
+const platformResourcesCategory = new SidebarCategory(
+  "📚 Platform Resources",
+  "platform-resources",
+  true,
+  [
+    new SidebarPage(
+      "Implementation Responsibilities",
+      "implementation-responsibilities"
+    ),
+    new SidebarCategory(
+      "Amazon Platform Resources",
+      "amazon-platform-resources",
+      true,
+      [
+        new SidebarPage(
+          "Amazon Small Business Accelerator",
+          "amazon-small-business-accelerator-program"
+        ),
+      ],
+      new SidebarPage("Amazon Platform Resources", "amazon-platform-resources")
+    ),
+    new SidebarCategory(
+      "Apple Platform Resources",
+      "apple-platform-resources",
+      true,
+      [
+        new SidebarPage(
+          "App Store SMall Business Program",
+          "app-store-small-business-program"
+        ),
+        new SidebarPage("Apple App Privacy", "apple-app-privacy"),
+        new SidebarPage("Family Sharing", "apple-family-sharing"),
+        new SidebarPage("Legacy Mac Apps", "legacy-mac-apps"),
+        new SidebarPage("SwiftUI Helpers", "swiftui-helpers"),
+      ],
+      new SidebarPage("Apple Platform Resources", "apple-platform-resources")
+    ),
+  ]
+);
+
 const supportCategory = new SidebarCategory(
   "🛟 RevenueCat Support",
   "revenuecat-support",
@@ -150,6 +190,7 @@ const sidebars = {
     welcomeCategory.render(), // call render() to remove unsupported convenience properties and prepare for docusaurus
     migratingCategory.render(),
     toolsCategory.render(),
+    platformResourcesCategory.render(),
     supportCategory.render(),
     sdkMigrationCategory.render(),
   ],

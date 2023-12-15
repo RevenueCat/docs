@@ -1,0 +1,3 @@
+Purchases.setForceUniversalAppStore(true)
+Purchases.configure()
+// ...
