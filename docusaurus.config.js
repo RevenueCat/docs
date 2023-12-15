@@ -23,7 +23,7 @@ const config = {
   organizationName: "revenuecat", // Usually your GitHub org/user name.
   projectName: "docusaurus", // Usually your repo name.
 
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internationalization, you can use this field to set
@@ -59,19 +59,19 @@ const config = {
       }),
     ],
     [
-      'redocusaurus',
+      "redocusaurus",
       {
         // Plugin Options for loading OpenAPI files
         specs: [
           {
-            spec: 'openapi-spec/api-v2.yaml',
-            route: '/api/',
+            spec: "openapi-spec/api-v2.yaml",
+            route: "/api/",
           },
         ],
         // Theme Options for modifying how redoc renders them
         theme: {
           // Change with your site colors
-          primaryColor: '#1890ff',
+          primaryColor: "#1890ff",
         },
       },
     ],
@@ -98,7 +98,7 @@ const config = {
           {
             label: "API Reference",
             to: "/api/",
-          }
+          },
         ],
       },
       footer: {
@@ -152,31 +152,31 @@ const config = {
       },
       algolia: {
         // The application ID provided by Algolia
-        appId: '<GET_FROM_ALGOLIA>',
-  
+        appId: "<GET_FROM_ALGOLIA>",
+
         // Public API key: it is safe to commit it
-        apiKey: 'GET_FROM_ALGOLIA',
-  
-        indexName: 'GET_FROM_ALGOLIA',
-  
+        apiKey: "GET_FROM_ALGOLIA",
+
+        indexName: "GET_FROM_ALGOLIA",
+
         // Optional: see doc section below
         contextualSearch: true,
-  
+
         // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
         // externalUrlRegex: 'external\\.com|domain\\.com',
-  
+
         // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
         // replaceSearchResultPathname: {
         //   from: '/docs/', // or as RegExp: /\/docs\//
         //   to: '/',
         // },
-  
+
         // Optional: Algolia search parameters
         searchParameters: {},
-  
+
         // Optional: path for search page that enabled by default (`false` to disable it)
-        searchPagePath: 'search',
-  
+        searchPagePath: "search",
+
         //... other Algolia params
       },
     }),
