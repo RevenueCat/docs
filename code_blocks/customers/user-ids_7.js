@@ -1,0 +1,1 @@
+Purchases.configureWith({ apiKey: <public_sdk_key> });

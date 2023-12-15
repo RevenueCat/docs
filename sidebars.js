@@ -67,6 +67,18 @@ const migratingCategory = new SidebarCategory(
   ]
 );
 
+const customersCategory = new SidebarCategory(
+  "👥 Customers",
+  "customers",
+  true,
+  [
+    new SidebarPage("Identifying Customers", "user-ids"),
+    new SidebarPage("Checking Subscription Status", "customer-info"),
+    new SidebarPage("Subscriber Attributes", "subscriber-attributes"),
+    new SidebarPage("Trusted Entitlements", "trusted-entitlements"),
+  ]
+);
+
 const testAndLaunchCategory = new SidebarCategory(
   "🧰 Test & Launch",
   "test-and-launch",
@@ -296,6 +308,7 @@ const sidebars = {
   defaultSidebar: [
     welcomeCategory.render(), // call render() to remove unsupported convenience properties and prepare for docusaurus
     migratingCategory.render(),
+    customersCategory.render(),
     testAndLaunchCategory.render(),
     toolsCategory.render(),
     platformResourcesCategory.render(),
