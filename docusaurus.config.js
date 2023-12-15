@@ -58,6 +58,23 @@ const config = {
         },
       }),
     ],
+    [
+      'redocusaurus',
+      {
+        // Plugin Options for loading OpenAPI files
+        specs: [
+          {
+            spec: 'openapi-spec/api-v2.yaml',
+            route: '/api/',
+          },
+        ],
+        // Theme Options for modifying how redoc renders them
+        theme: {
+          // Change with your site colors
+          primaryColor: '#1890ff',
+        },
+      },
+    ],
   ],
 
   themeConfig:
@@ -78,12 +95,10 @@ const config = {
             position: "left",
             label: "Documentation",
           },
-          // { to: "/blog", label: "Blog", position: "left" },
           {
-            href: "https://github.com/facebook/docusaurus",
-            label: "GitHub",
-            position: "right",
-          },
+            label: "API Reference",
+            to: "/api/",
+          }
         ],
       },
       footer: {
