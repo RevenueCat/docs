@@ -1,0 +1,1 @@
+Purchases.sharedInstance.setAttributes(mapOf("age" to "24", "custom_group_id" to "abc123"))

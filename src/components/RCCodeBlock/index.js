@@ -47,6 +47,8 @@ function getTabTitle(type) {
       return "Unity";
     case "cordova":
       return "Cordova";
+    case "capacitor":
+      return "Capacitor";
     default:
       return "Code";
   }

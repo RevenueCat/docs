@@ -1,0 +1,284 @@
+---
+title: Checking Subscription Status
+slug: customer-info
+excerpt: Determining the subscription status for a user.
+hidden: false
+---
+
+RevenueCat makes it easy to determine subscription status and more with the _Purchases SDK_ and [REST API](https://docs.revenuecat.com/reference).
+
+![Screen Shot 2019-08-19 at 8.44.10 AM.png](https://files.readme.io/8aa5ecd-Screen_Shot_2019-08-19_at_8.44.10_AM.png)
+
+## Get User Information
+
+The CustomerInfo object contains all of the purchase and subscription data available about the user. This object is updated whenever a purchase or restore occurs and periodically throughout the lifecycle of your app. The latest information can always be retrieved by calling `getCustomerInfo()`:
+
+import RCCodeBlock from '@site/src/components/RCCodeBlock';
+
+import content1 from "!!raw-loader!@site/code_blocks/customers/customer-info_1.swift";
+import content2 from "!!raw-loader!@site/code_blocks/customers/customer-info_2.m";
+import content3 from "!!raw-loader!@site/code_blocks/customers/customer-info_3.kt";
+import content4 from "!!raw-loader!@site/code_blocks/customers/customer-info_4.java";
+import content5 from "!!raw-loader!@site/code_blocks/customers/customer-info_5.js";
+import content6 from "!!raw-loader!@site/code_blocks/customers/customer-info_6.js";
+import content7 from "!!raw-loader!@site/code_blocks/customers/customer-info_7.js";
+import contentCapacitor from "!!raw-loader!@site/code_blocks/customers/customer-info_add_listener_capacitor.ts";
+import content8 from "!!raw-loader!@site/code_blocks/customers/customer-info_8.cs";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        content: content1,
+    },
+    {
+        type: 'objc',
+        content: content2,
+    },
+    {
+        type: 'kotlin',
+        content: content3,
+    },
+    {
+        type: 'java',
+        content: content4,
+    },
+    {
+        type: 'flutter',
+        content: content5,
+    },
+    {
+        type: 'rn',
+        content: content6,
+    },
+    {
+        type: 'cordova',
+        content: content7,
+    },
+    {
+        type: 'capacitor',
+        content: contentCapacitor,
+    },
+    {
+        type: 'unity',
+        content: content8,
+    },
+]}/>
+
+
+It's safe to call `getCustomerInfo()` frequently throughout your app. Since the SDK updates and caches the latest CustomerInfo when the app becomes active, the completion block won't need to make a network request in most cases.
+
+:::info Working with the cache
+
+The SDK caches the user's subscription information to reduce your app's reliance on the network. Users who unlock entitlements will be able to access them even without an internet connection. The SDK will update the cache if it's older than 5 minutes, but only if you call `getCustomerInfo()`, make a purchase, or restore purchases, so it's a good idea to call `getCustomerInfo()` any time a user accesses premium content.
+:::
+
+The `CustomerInfo` object gives you access to the following information about a user:
+
+| Name                        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Request Date                | The server date when the current CustomerInfo object was fetched. This is affected by the cache on device so you should not use it when you need the current time to calculate info such as time elapsed since purchase date. For that you should use device time.                                                                                                                                                                                                                                               |
+| Original App User ID        | The original App User ID recorded for this user. May be the same as their current App User ID. See our [Identifying Users](doc:user-ids) guide for more information.                                                                                                                                                                                                                                                                                                                                                                    |
+| First Seen                  | The date this user was first seen in RevenueCat. This is the install date in most cases                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Original Application Version| iOS only. The version number for the first version of the app this user downloaded. Will be `nil` unless a receipt has been recorded for the user through a purchase, restore, or import. \n \nNote in sandbox this will always be "1.0" \n \nUseful for [migrating existing apps to subscriptions](doc:migrating-existing-subscriptions).                                                                                                                                                                                             |
+| Original Purchase Date      | iOS only. The date that the app was first purchased/downloaded by the user. Will be `nil` if no receipt is recorded for the user. Useful for [migrating existing apps to subscriptions](doc:migrating-existing-subscriptions).                                                                                                                                                                                                                                                                                                             |
+| Management URL              | URL to manage the active subscription of the user. If the user has an active iOS subscription, this will point to the App Store, if the user has an active Play Store subscription it will point there. For Stripe subscriptions, there is no Management URL. \n \nIf there are no active subscriptions it will be null. \n \nIf the user has multiple active subscriptions for different platforms, this will take the value of the OS in the X-Platform header into consideration: \n﻿- If the request was made on an OS for which there are active subscriptions, this will return the URL for the store that matches the header. \n﻿- If the request was made on a different OS or the OS was not included in the X-Platform header, this will return the URL for the store of the subscription with the farthest future expiration date. |
+| All Purchased Product Identifiers | An array of product identifiers purchased by the user regardless of expiration.                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Non Consumable Purchases    | An array of all the non-consumable product identifiers purchased by the user.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Active Subscriptions        | An array of subscription product identifiers that are active. You should be using [entitlement](doc:entitlements) though.                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Entitlements                | `EntitlementInfo` objects that contain information about the user's entitlements, such as subscription state. [See more below](doc:customer-info#get-entitlement-information).                                                                                                                                                                                                                                                                                                                                                      |
+
+## Get Entitlement Information
+
+The `EntitlementInfo` object gives you access to all of the information about the status of a user's entitlements.
+
+| Name                        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Identifier                  | The entitlement identifier configured in the RevenueCat dashboard.                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Product Identifier          | The underlying product identifier that unlocked this entitlement.                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Is Active                   | Whether or not the user has access to this entitlement.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Will Renew                  | Whether or not the entitlement is set to renew at the end of the current period. Note there may be a multiple hour delay between the value of this property and the actual state in the App Store / Play Store.                                                                                                                                                                                                                                                                                                                          |
+| Period Type                 | The period type this entitlement is in, can be one of: - Trial: In a free trial period - Promotional: In a promotional period - Intro: In an introductory price period - Normal: In the default period                                                                                                                                                                                                                                                                                                                                  |
+| Latest Purchase Date        | The latest purchase or renewal date for this entitlement.                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Original Purchase Date      | The first date this entitlement was purchased. May be the same as the latest purchase date.                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Expiration Date             | The expiration date for the entitlement, can be null for lifetime access. If the period type is trial then this is the trial expiration date.                                                                                                                                                                                                                                                                                                                                                                                          |
+| Store                       | The store that unlocked this entitlement, can be one of: - App Store - Mac App Store - Play Store - Amazon Appstore - Stripe - Promotional (RevenueCat)                                                                                                                                                                                                                                                                                                                                                                             |
+| Is Sandbox                  | Whether this entitlement was unlocked from a sandbox or production purchase.                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Unsubscribe Detected At     | The date an unsubscribe was detected. An unsubscribe **does not** mean that the entitlement is inactive. Note there may be a multiple hour delay between the value of this property and the actual state in the App Store / Play Store. This delay can be reduced by enabling [Platform Server Notifications](https://docs.revenuecat.com/docs/server-notifications).                                                                                                                                                                               |
+| Billing Issue Detected At   | The date a billing issue was detected, will be null again once billing issue resolved. A billing issue **does not** mean that the entitlement is inactive. Note there may be a multiple hour delay between the value of this property and the actual state in the App Store / Play Store. This delay can be reduced by enabling [Platform Server Notifications](https://docs.revenuecat.com/docs/server-notifications).                                                                                                                                         |
+
+## Checking If A User Is Subscribed
+
+The subscription status for a user can easily be determined with the `CustomerInfo` and `EntitlementInfo` objects.
+
+For most apps that only have one entitlement, the `isActive` status can be quickly checked for your entitlement ID.
+
+import content9 from "!!raw-loader!@site/code_blocks/customers/customer-info_9.swift";
+import content10 from "!!raw-loader!@site/code_blocks/customers/customer-info_10.m";
+import content11 from "!!raw-loader!@site/code_blocks/customers/customer-info_11.kt";
+import content12 from "!!raw-loader!@site/code_blocks/customers/customer-info_12.java";
+import content13 from "!!raw-loader!@site/code_blocks/customers/customer-info_13.js";
+import content14 from "!!raw-loader!@site/code_blocks/customers/customer-info_14.js";
+import content15 from "!!raw-loader!@site/code_blocks/customers/customer-info_15.js";
+import content16 from "!!raw-loader!@site/code_blocks/customers/customer-info_16.cs";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        content: content9,
+    },
+    {
+        type: 'objc',
+        content: content10,
+    },
+    {
+        type: 'kotlin',
+        content: content11,
+    },
+    {
+        type: 'java',
+        content: content12,
+    },
+    {
+        type: 'flutter',
+        content: content13,
+    },
+    {
+        type: 'rn',
+        content: content14,
+    },
+    {
+        type: 'cordova',
+        content: content15,
+    },
+    {
+        type: 'unity',
+        content: content16,
+    },
+]}/>
+
+If your app has multiple entitlements and you need to check if a user is subscribed to at least one you can also check for the entitlement Id in the `active` dictionary of `EntitlementInfo` objects.
+
+import content17 from "!!raw-loader!@site/code_blocks/customers/customer-info_17.swift";
+import content18 from "!!raw-loader!@site/code_blocks/customers/customer-info_18.m";
+import content19 from "!!raw-loader!@site/code_blocks/customers/customer-info_19.kt";
+import content20 from "!!raw-loader!@site/code_blocks/customers/customer-info_20.java";
+import content21 from "!!raw-loader!@site/code_blocks/customers/customer-info_21.js";
+import content22 from "!!raw-loader!@site/code_blocks/customers/customer-info_22.js";
+import content23 from "!!raw-loader!@site/code_blocks/customers/customer-info_23.js";
+import content24 from "!!raw-loader!@site/code_blocks/customers/customer-info_24.cs";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        content: content17,
+    },
+    {
+        type: 'objc',
+        content: content18,
+    },
+    {
+        type: 'kotlin',
+        content: content19,
+    },
+    {
+        type: 'java',
+        content: content20,
+    },
+    {
+        type: 'flutter',
+        content: content21,
+    },
+    {
+        type: 'rn',
+        content: content22,
+    },
+    {
+        type: 'cordova',
+        content: content23,
+    },
+    {
+        type: 'unity',
+        content: content24,
+    },
+]}/>
+
+
+It's important to note that CustomerInfo will be empty if no purchases have been made and no transactions have been synced. This means that entitlements may not exist in CustomerInfo even if they have been set up in the RevenueCat dashboard.
+
+## Listening For CustomerInfo Updates
+
+Since _Purchases_ SDK works seamlessly on any platform, a user's CustomerInfo may change from a variety of sources. You can respond to any changes in CustomerInfo by conforming to an optional delegate method, `purchases:receivedUpdated:`. This will fire whenever we receive a _change_ in CustomerInfo _on the current device_ and you should expect it to be called at launch and throughout the life of the app.
+
+CustomerInfo updates are not pushed to your app from the RevenueCat backend, updates can only happen from an outbound network request to RevenueCat.
+
+Depending on your app, it may be sufficient to ignore the delegate and simply handle changes to customer information the next time your app is launched. Or throughout your app as you request new `CustomerInfo` objects.
+
+import content25 from "!!raw-loader!@site/code_blocks/customers/customer-info_25.swift";
+import content26 from "!!raw-loader!@site/code_blocks/customers/customer-info_26.m";
+import content27 from "!!raw-loader!@site/code_blocks/customers/customer-info_27.kt";
+import content28 from "!!raw-loader!@site/code_blocks/customers/customer-info_28.java";
+import content29 from "!!raw-loader!@site/code_blocks/customers/customer-info_29.js";
+import content30 from "!!raw-loader!@site/code_blocks/customers/customer-info_30.js";
+import content31 from "!!raw-loader!@site/code_blocks/customers/customer-info_31.js";
+import contentCapacitor2 from "!!raw-loader!@site/code_blocks/customers/customer-info_add_listener_capacitor.ts";
+import content32 from "!!raw-loader!@site/code_blocks/customers/customer-info_32.cs";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        content: content25,
+    },
+    {
+        type: 'objc',
+        content: content26,
+    },
+    {
+        type: 'kotlin',
+        content: content27,
+    },
+    {
+        type: 'java',
+        content: content28,
+    },
+    {
+        type: 'flutter',
+        content: content29,
+    },
+    {
+        type: 'rn',
+        content: content30,
+    },
+    {
+        type: 'cordova',
+        content: content31,
+    },
+    {
+        type: 'capacitor',
+        content: contentCapacitor2,
+    },
+    {
+        type: 'unity',
+        content: content32,
+    },
+]}/>
+
+## Web Apps
+
+If you also have a web app, or need to get a user's subscription status from outside of the _Purchases SDK_, you should use the REST API. You can read the full API reference [here](https://docs.revenuecat.com/reference).
+
+import content33 from "!!raw-loader!@site/code_blocks/customers/customer-info_33.curl";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'curl',
+        content: content33,
+    },
+]}/>
+
+## Handling Refunds
+
+RevenueCat can handle refunds across all platforms for both subscription and non-subscription products. As soon as RevenueCat detects a refund, the CustomerInfo will be updated to reflect the correct entitlement status - no action required on your part! If you have questions about refunds, take a look at our [community article](https://community.revenuecat.com/general-questions-7/how-do-i-issue-a-refund-115) covering the topic.
+
+## Next Steps
+
+- Once you're ready to test your integration, you can follow our guides on [testing and debugging ](doc:debugging)
