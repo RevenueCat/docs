@@ -145,6 +145,46 @@ const platformResourcesCategory = new SidebarCategory(
       ],
       new SidebarPage("Apple Platform Resources", "apple-platform-resources")
     ),
+    new SidebarCategory(
+      "Google Platform Resources",
+      "google-platform-resources",
+      true,
+      [
+        new SidebarPage("Google Play Pass", "google-play-pass"),
+        new SidebarPage("Reduced Service Fees", "reduced-service-fee"),
+        new SidebarPage(
+          "Google Play's Data Safety",
+          "google-plays-data-safety"
+        ),
+        new SidebarPage(
+          "Google Play Quota Increase Request",
+          "google-play-quota-increase-request"
+        ),
+      ],
+      new SidebarPage("Google Platform Resources", "google-platform-resources")
+    ),
+    new SidebarPage("Non-subscriptions", "non-subscriptions"),
+    new SidebarCategory(
+      "Platform Server Notifications",
+      "server-notifications",
+      true,
+      [
+        new SidebarPage(
+          "Apple Server Notifications",
+          "apple-server-notifications"
+        ),
+        new SidebarPage(
+          "Google Server Notifications",
+          "google-server-notifications"
+        ),
+        new SidebarPage(
+          "Stripe Server Notifications",
+          "stripe-server-notifications"
+        ),
+      ],
+      new SidebarPage("Platform Server Notifications", "server-notifications")
+    ),
+    new SidebarPage("Sample Apps", "sample-apps"),
   ]
 );
 
