@@ -16,12 +16,7 @@ const config = {
   url: "https://your-docusaurus-site.example.com",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/",
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: "revenuecat", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
+  baseUrl: "/docs/",
 
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
@@ -46,13 +41,6 @@ const config = {
           // editUrl:
           //   "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
-        // blog: {
-        //   showReadingTime: true,
-        //   // Please change this to your repo.
-        //   // Remove this to remove the "edit this page" links.
-        //   editUrl:
-        //     "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-        // },
         theme: {
           customCss: "./src/css/custom.css",
         },
@@ -133,10 +121,6 @@ const config = {
           {
             title: "More",
             items: [
-              // {
-              //   label: "Blog",
-              //   to: "/blog",
-              // },
               {
                 label: "GitHub",
                 href: "https://github.com/revenuecat",
@@ -144,7 +128,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} RevenueCat. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

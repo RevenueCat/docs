@@ -1,4 +1,4 @@
-class SidebarCategory {
+class Category {
   constructor(label, path, collapsed = true, items, defaultPage = null) {
     this.type = "category";
     this.label = label;
@@ -15,11 +15,11 @@ class SidebarCategory {
       label: this.label,
       link: this.link,
       items: this.items.map((item) => {
-        if (item instanceof SidebarPage) {
+        if (item instanceof Page) {
           return (
             (pathPrefix ? pathPrefix + "/" : "") + this.path + "/" + item.id
           );
-        } else if (item instanceof SidebarCategory) {
+        } else if (item instanceof Category) {
           let renderedCategory = item;
           if (renderedCategory.link) {
             // labels aren't allowed for top-level category pages (uses category name instead)
@@ -31,7 +31,7 @@ class SidebarCategory {
           return renderedCategory.render(this.path);
         } else if (typeof item === "string") {
           return item;
-        } else if (item instanceof SidebarLink) {
+        } else if (item instanceof Link) {
           return item;
         }
       }),
@@ -39,15 +39,14 @@ class SidebarCategory {
   }
 }
 
-class SidebarPage {
-  constructor(label, file) {
+class Page {
+  constructor(file) {
     this.type = "doc";
-    this.label = label;
     this.id = file;
   }
 }
 
-class SidebarLink {
+class Link {
   constructor(label, url) {
     this.type = "link";
     this.label = label;
@@ -56,7 +55,7 @@ class SidebarLink {
 }
 
 module.exports = {
-  SidebarCategory,
-  SidebarPage,
-  SidebarLink,
+  Category,
+  Page,
+  Link,
 };
