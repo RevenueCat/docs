@@ -96,6 +96,30 @@ const testAndLaunchCategory = new Category(
   ]
 );
 
+const subscriptionGuidanceCategory = new Category(
+  "📝 Subscription Guidance",
+  "subscription-guidance",
+  true,
+  [
+    new Category(
+      "Free Trials & Promo Offers",
+      "subscription-offers",
+      true,
+      [
+        new Page("ios-subscription-offers"),
+        new Page("google-play-offers"),
+        new Page("stripe-free-trials"),
+      ],
+      new Page("subscription-offers")
+    ),
+    new Page("how-grace-periods-work"),
+    new Page("managing-subscriptions"),
+    new Page("price-changes"),
+    new Page("refunds"),
+    new Page("google-prepaid-plans"),
+  ]
+);
+
 const dashboardCategory = new Category(
   "📊 Dashboard & Metrics",
   "dashboard-and-metrics",
@@ -284,6 +308,7 @@ const sidebars = {
     migratingCategory.render(),
     customersCategory.render(),
     testAndLaunchCategory.render(),
+    subscriptionGuidanceCategory.render(),
     dashboardCategory.render(),
     toolsCategory.render(),
     platformResourcesCategory.render(),
