@@ -17,7 +17,8 @@ RevenueCat can automatically send data deliveries of all of your apps' transacti
 
 # Version Change Log
 
-- [Data Export Version 4](https://www.revenuecat.com/docs/data-export-version-4) (Latest)
+- [Data Export Version 5](https://www.revenuecat.com/docs/data-export-version-5) (Latest)
+- [Data Export Version 4](https://www.revenuecat.com/docs/data-export-version-4)
 - [Data Export Version 3](https://www.revenuecat.com/docs/data-export-version-3)
 
 # Transaction Format
@@ -51,7 +52,7 @@ _Applicable to the latest version_
     "2-2": "string",
     "2-3": "`GB`",
     "2-4": "✅",
-    "3-0": "`country_source`\\*",
+    "3-0": "`country_source`",
     "3-1": "`from_sdk` when the store country of a transaction is known, or `estimated` when `country` is sourced from an IP-based estimate.",
     "3-2": "string",
     "3-3": "`from_sdk`",
@@ -61,12 +62,12 @@ _Applicable to the latest version_
     "4-2": "string",
     "4-3": "`rc_subscription_monthly`",
     "4-4": "",
-    "5-0": "`product_display_name`\\*",
+    "5-0": "`product_display_name`",
     "5-1": "The display name of the product identifier if one has been set",
     "5-2": "string",
     "5-3": "`Monthly $9.99`",
     "5-4": "✅",
-    "6-0": "`product_duration`\\*",
+    "6-0": "`product_duration`",
     "6-1": "The standard duration of the product if one is known by RevenueCat. May be null if RevenueCat does not know the authoritative duration.  \n  \n`product_duration` does not represent the trial or introductory period length of a transaction, it only represents the standard duration of the product that's been subscribed to.",
     "6-2": "string",
     "6-3": "`P1M`",
@@ -87,7 +88,7 @@ _Applicable to the latest version_
     "9-3": "`2023-02-17 08:27:06`",
     "9-4": "✅",
     "10-0": "`effective_end_time`",
-    "10-1": "Single reference point of a subscriber’s expiration and entitlement revocation; inclusive of each store’s logic for cancellations, grace periods, etc.",
+    "10-1": "Single reference point of a subscriber’s expiration and entitlement revocation; inclusive of each store’s logic for refunds, grace periods, etc.",
     "10-2": "datetime",
     "10-3": "`2023-02-17 08:27:06`",
     "10-4": "✅",
@@ -121,7 +122,7 @@ _Applicable to the latest version_
     "16-2": "float",
     "16-3": "`0`",
     "16-4": "✅",
-    "17-0": "`purchase_price_in_usd`\\*",
+    "17-0": "`purchase_price_in_usd`",
     "17-1": "The gross revenue (converted to USD) generated from the transaction. Remains set for refunded transactions. Can be null if product prices haven't been collected from the user's device.",
     "17-2": "float",
     "17-3": "`9.99`",
@@ -176,7 +177,7 @@ _Applicable to the latest version_
     "27-2": "float",
     "27-3": "`0`",
     "27-4": "✅",
-    "28-0": "`purchase_price_in_purchased_currency`\\*",
+    "28-0": "`purchase_price_in_purchased_currency`",
     "28-1": "The gross revenue (in the purchased currency) generated from the transaction. Remains set for refunded transactions. Can be null if product prices haven't been collected from the user's device.",
     "28-2": "float",
     "28-3": "`3.99`",
@@ -221,24 +222,44 @@ _Applicable to the latest version_
     "36-2": "string",
     "36-3": "`android`",
     "36-4": "✅",
-    "37-0": "`experiment_id`\\*",
+    "37-0": "`experiment_id`",
     "37-1": "The unique ID of the Experiment that the subscriber is or was enrolled in. Will be null if the subscriber has not been enrolled in an experiment.  \n  \nLearn more about Experiments [here](https://www.revenuecat.com/docs/experiments-v1).",
     "37-2": "string",
     "37-3": "`prexp3a8a234abc`",
     "37-4": "✅",
-    "38-0": "`experiment_variant`\\*",
+    "38-0": "`experiment_variant`",
     "38-1": "The value of the Experiment variant that the subscriber is or was enrolled in. `a` represents the Control, and `b` represents the Treatment. Will be null if the subscriber has not been enrolled in an experiment.  \n  \nLearn more about Experiments [here](https://www.revenuecat.com/docs/experiments-v1).",
     "38-2": "string",
     "38-3": "`a`",
     "38-4": "✅",
-    "39-0": "`updated_at`\\*",
+    "39-0": "`updated_at`",
     "39-1": "The last time an attribute of the transaction was modified.",
     "39-2": "datetime",
     "39-3": "`2023-02-20 05:47:55`",
-    "39-4": ""
+    "39-4": "",
+    "40-0": "`offer`\\*",
+    "40-1": "The offer that was used for a transaction (if applicable).",
+    "40-2": "string",
+    "40-3": "`black_friday_discount`",
+    "40-4": "✅",
+    "41-0": "`offer_type`\\*",
+    "41-1": "The type of offer that was used for a transaction (if applicable).",
+    "41-2": "string",
+    "41-3": "`offer_code`",
+    "41-4": "✅",
+    "42-0": "`first_seen_time`\\*",
+    "42-1": "The time the customer was first seen by RevenueCat.",
+    "42-2": "datetime",
+    "42-3": "`2023-01-01 03:00:00`",
+    "42-4": "",
+    "43-0": "`auto_resume_time`\\*",
+    "43-1": "The time when a Play Store subscription would resume after being paused.",
+    "43-2": "datetime",
+    "43-3": "`2023-03-20 03:00:00`",
+    "43-4": "✅"
   },
   "cols": 5,
-  "rows": 40,
+  "rows": 44,
   "align": [
     "left",
     "left",
@@ -251,9 +272,9 @@ _Applicable to the latest version_
 
 \*Available only on our most recent export version
 
-> 📘 Re-enable integration to update to latest version
+> 📘 Updating to the latest version
 > 
-> If your exports don't contain all of the columns above, you may be on an older export version. To update to the latest version just delete, and re-add the integration from the RevenueCat dashboard.
+> If you're on an older version of our exports, navigate to your export in the Dashboard where you'll see a prompt to update to the latest version. Be sure to review the documented changes of all prior versions (linked at the top of this doc) before updating to be certain your data ingestion pipeline is setup to handle all changes.
 
 ## A note on transaction data
 
@@ -301,6 +322,11 @@ Scheduled Data Exports are a powerful way to add your own customizations on top 
     "language": "pgsql",
     "name": "Active Subs by Custom Attribute",
     "file": "code_blocks/🔌 Integrations & Events/scheduled-data-exports_4.pgsql"
+  },
+  {
+    "language": "pgsql",
+    "name": "Active Subs by Auto Renew Status",
+    "file": "code_blocks/🔌 Integrations & Events/scheduled-data-exports_9.pgsql"
   },
   {
     "language": "pgsql",

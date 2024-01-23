@@ -4,13 +4,13 @@ slug: event-flows
 excerpt: How webhooks are sent from RevenueCat
 hidden: false
 ---
-You’ll receive many [Webhooks](doc:webhooks) throughout a subscriber’s journey in your app. We’ve compiled a list of several common event flows to illustrate the events you might receive in some common scenarios.
+You’ll receive many [Webhooks](doc:webhooks) throughout a customer’s journey in your app. We’ve compiled a list of several common event flows to illustrate the events you might receive in some common scenarios.
 
 # Subscription Lifecycle
 
 ## Initial Purchase Flow
 
-This flow occurs each time a subscriber purchases a product for the first time. A single subscriber may go through this flow multiple times if they purchase multiple products.
+This flow occurs each time a customer purchases a product for the first time. A single customer may go through this flow multiple times if they purchase multiple products.
 
 [block:image]
 {
@@ -32,7 +32,7 @@ This flow occurs each time a subscriber purchases a product for the first time. 
 
 ## Cancellation Flow
 
-When a subscriber cancels their subscription, a `CANCELLATION` webhook is sent. At the end of the billing cycle, an `EXPIRATION` webhook is sent and entitlements are revoked.
+When a customer cancels their subscription, a `CANCELLATION` webhook is sent. At the end of the billing cycle, an `EXPIRATION` webhook is sent and entitlements are revoked.
 
 [block:image]
 {
@@ -54,7 +54,7 @@ When a subscriber cancels their subscription, a `CANCELLATION` webhook is sent. 
 
 ## Uncancellation Flow
 
-Uncancellations occur when a subscriber cancels their subscription and then resubscribes before the subscription’s expiration occurs. In this scenario, the subscriber never loses entitlements.
+Uncancellations occur when a customer cancels their subscription and then resubscribes before the subscription’s expiration occurs. In this scenario, the customer never loses entitlements.
 
 [block:image]
 {
@@ -76,7 +76,7 @@ Uncancellations occur when a subscriber cancels their subscription and then resu
 
 ## Resubscribe Flow
 
-A subscriber can resubscribe to a subscription if they resume a subscription after it has expired. The webhook event that is triggered depends on the subscription’s platform and subscription group.
+A customer can resubscribe to a subscription if they resume a subscription after it has expired. The webhook event that is triggered depends on the subscription’s platform and subscription group.
 
 [block:image]
 {
@@ -98,7 +98,7 @@ A subscriber can resubscribe to a subscription if they resume a subscription aft
 
 ## Subscription Paused Flow (Android Only)
 
-Android subscribers can pause their subscription, allowing them to halt subscription billing. Their entitlement is revoked at the end of the subscription term. If the subscriber unpauses their subscription, they regain entitlements and the subscription’s billing cycle resumes. If you’d like to disable pausing for your subscriptions, you can do so through the [Google Play Store Console.](https://developer.android.com/google/play/billing/subscriptions#pause)
+Android customers can pause their subscription, allowing them to halt subscription billing. Their entitlement is revoked at the end of the subscription term. If the customer unpauses their subscription, they regain entitlements and the subscription’s billing cycle resumes. If you’d like to disable pausing for your subscriptions, you can do so through the [Google Play Store Console.](https://developer.android.com/google/play/billing/subscriptions#pause)
 
 [block:image]
 {
@@ -120,11 +120,11 @@ Android subscribers can pause their subscription, allowing them to halt subscrip
 
 ## Billing Issue Flow
 
-If a subscriber with an active subscription encounters a billing issue, RevenueCat will immediately dispatch a `BILLING_ISSUE` event and a `CANCELLATION` event with a `cancel_reason` of `BILLING_ERROR`.
+If a customer with an active subscription encounters a billing issue, RevenueCat will immediately dispatch a `BILLING_ISSUE` event and a `CANCELLATION` event with a `cancel_reason` of `BILLING_ERROR`.
 
-If you do not have grace periods enabled, you’ll immediately receive an `EXPIRATION` webhook and the subscriber’s entitlements will be revoked.
+If you do not have grace periods enabled, you’ll immediately receive an `EXPIRATION` webhook and the customer’s entitlements will be revoked.
 
-If you do have grace periods enabled, the subscriber will retain entitlements as the app store retries the subscriber’s billing method. At the end of the grace period, if billing has not been successful, an `EXPIRATION` event will be sent and entitlements will be revoked. If billing succeeds at any point during the grace period, you’ll receive a `RENEWAL` event and entitlements won’t be revoked. (This `RENEWAL` event may show up before the billing issue in the Customer History timeline. Be sure to check the timestamps on the event pages.)
+If you do have grace periods enabled, the customer will retain entitlements as the app store retries the customer’s billing method. At the end of the grace period, if billing has not been successful, an `EXPIRATION` event will be sent and entitlements will be revoked. If billing succeeds at any point during the grace period, you’ll receive a `RENEWAL` event and entitlements won’t be revoked. (This `RENEWAL` event may show up before the billing issue in the Customer History timeline. Be sure to check the timestamps on the event pages.)
 
 It’s important to note that the `BILLING_ISSUE`, `CANCELLATION`, and `EXPIRATION` (if no grace period is involved) webhooks are dispatched in order at the same time, so it is unlikely but possible to receive these events in a different order than described here due to network irregularities.
 
@@ -174,7 +174,7 @@ This event is fired when a Apple App Store or Google Play Store subscription is 
 
 ## Trial Flow (Successful Conversion)
 
-When a user initially signs up for a subscription with a trial, an `INITIAL_PURCHASE` webhook is sent with a `period_type` of `TRIAL`. If the trial period for a subscription lapses without the subscriber canceling the subscription, the trial converts into an active subscription. At this point, a `RENEWAL` event is dispatched and the user is billed for the subscription for the first time.
+When a user initially signs up for a subscription with a trial, an `INITIAL_PURCHASE` webhook is sent with a `period_type` of `TRIAL`. If the trial period for a subscription lapses without the customer canceling the subscription, the trial converts into an active subscription. At this point, a `RENEWAL` event is dispatched and the user is billed for the subscription for the first time.
 
 [block:image]
 {
@@ -196,9 +196,9 @@ When a user initially signs up for a subscription with a trial, an `INITIAL_PURC
 
 ## Trial Flow (Unsuccessful Conversion)
 
-When a user initially signs up for a subscription with a trial, an `INITIAL_PURCHASE` webhook is dispatched. If the subscriber cancels their subscription at any point during the trial period, a `CANCELLATION` event is sent, but the user will retain entitlement access for the remainder of the trial’s duration. Once the trial duration elapses, an `EXPIRATION` event will be sent and the subscriber's entitlements will be revoked.
+When a user initially signs up for a subscription with a trial, an `INITIAL_PURCHASE` webhook is dispatched. If the customer cancels their subscription at any point during the trial period, a `CANCELLATION` event is sent, but the user will retain entitlement access for the remainder of the trial’s duration. Once the trial duration elapses, an `EXPIRATION` event will be sent and the customer's entitlements will be revoked.
 
-Note: Apple requires subscribers to cancel within 24 hours of the trial’s expiration. If a user cancels less than 24 hours before the trial expires, you may unexpectedly receive a `CANCELLATION` event followed by a `RENEWAL` event.
+Note: Apple requires customers to cancel within 24 hours of the trial’s expiration. If a user cancels less than 24 hours before the trial expires, you may unexpectedly receive a `CANCELLATION` event followed by a `RENEWAL` event.
 
 [block:image]
 {
@@ -220,18 +220,24 @@ Note: Apple requires subscribers to cancel within 24 hours of the trial’s expi
 
 # Product Changes
 
-## Product Upgrade Flow
+## Immediate Product Change
 
-If a subscriber upgrades to a higher tier subscription, both a `PRODUCT_CHANGE` and `RENEWAL` event will be dispatched and the subscriber will immediately have access to the new entitlements. The subscriber will then be refunded a prorated amount for the remainder of the lower tier subscription’s term.
+In the case of an immediate product change, both a `PRODUCT_CHANGE` and `RENEWAL` event will be dispatched and the customer will immediately have access to the new entitlements. Depending on the store and the proration setting, the customer might be charged the full or prorated amount for the new product, and/or be refunded a prorated amount for the remainder of the lower tier subscription’s term, and/or the period for the new product might have a prorated duration.
+
+Immediate changes occur:
+- For upgrades on the Apple App Store (new product is in a higher tier of the same subscription group)
+- For crossgrades of the same term length on the Apple App Store (new product is in the same tier of the same subscription group)
+- On the Google Play Store, for all proration modes except `DEFERRED` (ie. all proration modes starting with `IMMEDIATE`)
+- For immediate product changes in Stripe. Please note: The `RENEWAL` event may show the same `purchased_at_ms` as the original subscription (ie. t₀), because that is how Stripe represents the status of the subscription after the product change.
 
 [block:image]
 {
   "images": [
     {
       "image": [
-        "https://files.readme.io/64d9f5b-upgrade.png",
+        "https://github.com/RevenueCat/revenuecat-docs/assets/14286938/461fc856-60c5-4a9b-b568-22ef7295e212",
         null,
-        "upgrade flow"
+        "immediate product change flow"
       ],
       "align": "center",
       "sizing": "500px"
@@ -240,20 +246,24 @@ If a subscriber upgrades to a higher tier subscription, both a `PRODUCT_CHANGE` 
 }
 [/block]
 
+## Product Change at Period End
 
+In the case of a product change at period end, a `PRODUCT_CHANGE` event will immediately be sent informing of the upcoming product change. The customer will retain their entitlement based on the original product. When the customer encounters their next renewal, a `RENEWAL` event will be dispatched, the user will be billed at the new product's price, and the user’s entitlements will be replaced by the entitlements from the new product.
 
-## Product Downgrade Flow
-
-If a subscriber downgrades from a higher tier product to a lower tier product, a `PRODUCT_CHANGE` event will immediately be sent, and the user will retain their higher tier entitlements. When the subscriber encounters their next renewal, a `RENEWAL` event will be dispatched, the user will be billed at the lower product tier’s price, and the user’s entitlements will be replaced by the entitlements from the lower tier product.
+Changes at period end occur:
+- For downgrades on the Apple App Store (new product is in a lower tier of the same subscription group)
+- For crossgrades of a different term length on the Apple App Store (new product is in the same tier of the same subscription group)
+- On the Google Play Store, for the proration mode `DEFERRED`
+- For scheduled product changes in Stripe
 
 [block:image]
 {
   "images": [
     {
       "image": [
-        "https://files.readme.io/ffd1487-downgrade.png",
+        "https://github.com/RevenueCat/revenuecat-docs/assets/14286938/6441cc2b-aef9-4c45-8477-e5154829756a",
         null,
-        "downgrade flow"
+        "product change at end of period flow"
       ],
       "align": "center",
       "sizing": "500px"
@@ -261,51 +271,6 @@ If a subscriber downgrades from a higher tier product to a lower tier product, a
   ]
 }
 [/block]
-
-
-
-## Crossgrade Flow, Same Term Length
-
-If a subscriber crossgrades from one product to another product on the same tier and with the same subscription period, you’ll immediately receive both a `PRODUCT_CHANGE` and a `RENEWAL` event. The subscriber will receive the entitlements from the second product, will be billed for the second product, and will receive a prorated refund for the remainder of the first product’s billing period.
-
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/598a7f4-crossgrade-same-term.png",
-        null,
-        "crossgrade same term flow"
-      ],
-      "align": "center",
-      "sizing": "500px"
-    }
-  ]
-}
-[/block]
-
-
-
-## Crossgrade Flow, Different Term Length
-
-If a subscriber crossgrades from one product to another product on the same tier and with different subscription periods, you’ll immediately receive a `PRODUCT_CHANGE` event. At the end of the first subscription’s billing period, you’ll receive a `RENEWAL` event and the user will be switched to the second product.
-
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/d924a85-crossgrade-different-term.png",
-        null,
-        "crossgrade different term flow"
-      ],
-      "align": "center",
-      "sizing": "500px"
-    }
-  ]
-}
-[/block]
-
 
 
 # Other

@@ -1,5 +1,5 @@
 ---
-title: Apple Search Ads
+title: Apple Search Ads & RevenueCat Integration
 slug: apple-search-ads
 excerpt: Collect and view Apple Search Ads attribution in RevenueCat using AdServices
 hidden: false

@@ -13,9 +13,10 @@ export default function RCCodeBlock(props) {
       })}
     >
       {props.tabs.map((tab) => {
+        var content = tab.content;
         return (
           <TabItem value={tab.title || tab.type}>
-            <CodeBlock language={tab.type} children={tab.content} />
+            <CodeBlock language={tab.type} children={content} />
           </TabItem>
         );
       })}

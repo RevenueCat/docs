@@ -1,73 +1,28 @@
 ---
-title: Data Export Version 4
-slug: data-export-version-4
-excerpt: Available since June 2023
+title: Data Export Version 5
+slug: data-export-version-5
+excerpt: Available since December 2023 (latest version)
 hidden: false
 ---
 > 👍 
 > 
 > Scheduled data exports are available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
 
-# Version 4 Change Log
-
-## Data format improvements
-
-> 🚧 
-> 
-> Please ensure that your data ingestion pipeline is setup to handle these format changes before updating to Version 4.
-
-- Boolean fields such as `is_trial_conversion` have previously been provided with the strings `t` and `f` to represent true and false, but they will now be delivered as true boolean fields with `true` or `false`  as the set values.
-- Fields containing arrays or JSON objects  (`reserved_subscriber_attributes`, `custom_subscriber_attributes`, and `entitlement_identifiers`) will have the values within each key/value pair enclosed in quotes to prevent issues when ingesting the data.
-- Last, for standardization, fields containing arrays (only `entitlement_identifiers`) have also been updated to contain the array within square brackets (`[` and `]`) instead of curly brackets (`{` and `}`). Fields containing JSON objects (`reserved_subscriber_attributes` and `custom_subscriber_attributes`) will continue to use curly brackets
-
-> 📘 
-> 
-> The data table below contains sample values for each field to help ensure your pipeline is setup correctly.
+# Version 5 Change Log
 
 ## Newly added fields
 
-### Measuring gross revenue
+### Measuring Offer usage
 
-When a transaction is refunded, the current `price_in_usd` and `price_in_purchased_currency` fields will be set to `0` while `refunded_at` is set to mark the time of the refund.
+We've added `offer` and `offer_type` so that you can measure the performance of your Offers at your desired level of specificity. To learn more about how Offers are tracked, [click here](https://www.revenuecat.com/docs/charts#understanding-offers).
 
-To instead equip you to measure gross revenue before refunds, we've introduced new `purchase_price_in_usd` and `purchase_price_in_purchased_currency` fields which will remain set at the original purchase price even after a refund.
+### First seen time
 
-By sourcing your analysis' with these fields, you'll be able to measure gross revenue before refunds.
+We've added `first_seen_time` so that you can cohort subscribers by the date they were first seen by RevenueCat. All of RevenueCat's Conversion Rate and Lifetime Value charts use this cohorting definition so you can measure the performance of cohorts of new customers over time.
 
-### Country fields
+## Auto resume time
 
-`country` has been updated to equal the store country of a given transaction when it is known, and to fall back to an IP-based estimated country when it is not known.
-
-- The store country of a transaction is the most accurate way to group a subscription by country because it dictates the price of the subscription, the available offers, how price changes will be handled, etc.
-- Update to iOS SDK version 3.14 and up to ensure store country can be captured by RevenueCat.
-
-`country_source` has been added to distinguish between `country` values that represent the store country of a transaction (`from_sdk`), and those that have been set through an IP-based estimate (`estimated`).
-
-### Product dimensions
-
-`product_duration` represents the standard duration of a subscription product, set using ISO 8601 values (e.g. `P1M` for a 1 month subscription, `P1Y` for a 1 year subscription, etc).
-
-- Trial period or introductory period lengths are not reported through this field. Therefore, when either `is_trial_period` or `is_in_intro_offer_period` are `true`, the `product_duration` does not represent the duration of that specific transaction. It represents the standard duration of the underlying product that has been subscribed to.
-- There may be products where RevenueCat does not authoritatively know the standard duration, such as Stripe products which may have multiple prices (and therefore durations) associated with them. In these cases, `product_duration` will be null.
-  - In our data features, we handle these cases by estimating product duration.
-
-`product_display_name` represents the display name that may be set for a product in the RevenueCat Dashboard.
-
-- Setting a display name may be especially useful for products on stores like Stripe where the `product_identifier` is not easily interpretable.
-
-### Experiment fields
-
-`experiment_id` represents the UUID of a RevenueCat Experiment that the associated App User ID was enrolled in.
-
-`experiment_variant` represents the variant of the experiment that the associated App User ID was assigned to.
-
-> 👍 
-> 
-> Experiments is available on the [Pro](https://www.revenuecat.com/pricing) plan. Get started with Experiments [here](https://www.revenuecat.com/docs/experiments-v1).
-
-### Change tracking
-
-`updated_at` represents the last time an attribute of the transaction was modified (e.g. after a subscriber disables their auto-renewal and a `cancellation_date` is set). This can be used to more easily capture changes to individual transactions between exports.
+In addition, we've added `auto_resume_time` so that you can track when a paused Play Store subscription will be resumed.
 
 # Full export format
 
@@ -98,7 +53,7 @@ By sourcing your analysis' with these fields, you'll be able to measure gross re
     "2-2": "string",
     "2-3": "`GB`",
     "2-4": "✅",
-    "3-0": "`country_source`\\*",
+    "3-0": "`country_source`",
     "3-1": "`from_sdk` when the store country of a transaction is known, or `estimated` when `country` is sourced from an IP-based estimate.",
     "3-2": "string",
     "3-3": "`from_sdk`",
@@ -108,12 +63,12 @@ By sourcing your analysis' with these fields, you'll be able to measure gross re
     "4-2": "string",
     "4-3": "`rc_subscription_monthly`",
     "4-4": "",
-    "5-0": "`product_display_name`\\*",
+    "5-0": "`product_display_name`",
     "5-1": "The display name of the product identifier if one has been set",
     "5-2": "string",
     "5-3": "`Monthly $9.99`",
     "5-4": "✅",
-    "6-0": "`product_duration`\\*",
+    "6-0": "`product_duration`",
     "6-1": "The standard duration of the product if one is known by RevenueCat. May be null if RevenueCat does not know the authoritative duration.  \n  \n`product_duration` does not represent the trial or introductory period length of a transaction, it only represents the standard duration of the product that's been subscribed to.",
     "6-2": "string",
     "6-3": "`P1M`",
@@ -168,7 +123,7 @@ By sourcing your analysis' with these fields, you'll be able to measure gross re
     "16-2": "float",
     "16-3": "`0`",
     "16-4": "✅",
-    "17-0": "`purchase_price_in_usd`\\*",
+    "17-0": "`purchase_price_in_usd`",
     "17-1": "The gross revenue (converted to USD) generated from the transaction. Remains set for refunded transactions. Can be null if product prices haven't been collected from the user's device.",
     "17-2": "float",
     "17-3": "`9.99`",
@@ -223,7 +178,7 @@ By sourcing your analysis' with these fields, you'll be able to measure gross re
     "27-2": "float",
     "27-3": "`0`",
     "27-4": "✅",
-    "28-0": "`purchase_price_in_purchased_currency`\\*",
+    "28-0": "`purchase_price_in_purchased_currency`",
     "28-1": "The gross revenue (in the purchased currency) generated from the transaction. Remains set for refunded transactions. Can be null if product prices haven't been collected from the user's device.",
     "28-2": "float",
     "28-3": "`3.99`",
@@ -268,24 +223,44 @@ By sourcing your analysis' with these fields, you'll be able to measure gross re
     "36-2": "string",
     "36-3": "`android`",
     "36-4": "✅",
-    "37-0": "`experiment_id`\\*",
+    "37-0": "`experiment_id`",
     "37-1": "The unique ID of the Experiment that the subscriber is or was enrolled in. Will be null if the subscriber has not been enrolled in an experiment.  \n  \nLearn more about Experiments [here](https://www.revenuecat.com/docs/experiments-v1).",
     "37-2": "string",
     "37-3": "`prexp3a8a234abc`",
     "37-4": "✅",
-    "38-0": "`experiment_variant`\\*",
+    "38-0": "`experiment_variant`",
     "38-1": "The value of the Experiment variant that the subscriber is or was enrolled in. `a` represents the Control, and `b` represents the Treatment. Will be null if the subscriber has not been enrolled in an experiment.  \n  \nLearn more about Experiments [here](https://www.revenuecat.com/docs/experiments-v1).",
     "38-2": "string",
     "38-3": "`a`",
     "38-4": "✅",
-    "39-0": "`updated_at`\\*",
+    "39-0": "`updated_at`",
     "39-1": "The last time an attribute of the transaction was modified.",
     "39-2": "datetime",
     "39-3": "`2023-02-20 05:47:55`",
-    "39-4": ""
+    "39-4": "",
+    "40-0": "`offer`\\*",
+    "40-1": "The offer that was used for a transaction (if applicable).",
+    "40-2": "string",
+    "40-3": "`black_friday_discount`",
+    "40-4": "✅",
+    "41-0": "`offer_type`\\*",
+    "41-1": "The type of offer that was used for a transaction (if applicable).",
+    "41-2": "string",
+    "41-3": "`offer_code`",
+    "41-4": "✅",
+    "42-0": "`first_seen_time`\\*",
+    "42-1": "The time the customer was first seen by RevenueCat.",
+    "42-2": "datetime",
+    "42-3": "`2023-01-01 03:00:00`",
+    "42-4": "",
+    "43-0": "`auto_resume_time`\\*",
+    "43-1": "The time when a Play Store subscription would resume after being paused.",
+    "43-2": "datetime",
+    "43-3": "`2023-03-20 03:00:00`",
+    "43-4": "✅"
   },
   "cols": 5,
-  "rows": 40,
+  "rows": 44,
   "align": [
     "left",
     "left",
@@ -296,6 +271,7 @@ By sourcing your analysis' with these fields, you'll be able to measure gross re
 }
 [/block]
 
-\*Newly added fields for Version 4
+
+\*Newly added fields for Version 5
 
 To learn more about how to use our transaction data, or get started with sample queries, [click here](https://www.revenuecat.com/docs/scheduled-data-exports).

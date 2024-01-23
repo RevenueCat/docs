@@ -44,11 +44,13 @@ For every auto-renewing subscription event in RevenueCat, the following tags get
     "8-1": "Comma separated string of RevenueCat Entitlement identifiers that the user unlocked",
     "9-0": "`active_subscription`",
     "9-1": "The value will be set to `true` on any purchase/renewal event, and `false` on `EXPIRATION`",
-    "10-0": "`grace_period_expiration_at`",
-    "10-1": "If a billing issue occurs we will send the date of the grace period expiration."
+    "10-0": "`subscription_status`",
+    "10-1": "See Subscription Status Attribute below",
+    "11-0": "`grace_period_expiration_at`",
+    "11-1": "If a billing issue occurs we will send the date of the grace period expiration."
   },
   "cols": 2,
-  "rows": 11,
+  "rows": 12,
   "align": [
     "left",
     "left"
@@ -193,6 +195,11 @@ The OneSignal integration tracks the following events:
 [/block]
 
 # 1. Send device data to RevenueCat
+
+> 📘 Only device-centric API versions of OneSignal (9.0 and below) are supported.
+> 
+> Support for user-centric API versions of OneSignal (11.0 and above) coming soon.
+
 
 The OneSignal integration requires some device-specific data. RevenueCat will only update users in OneSignal if the below data has been added as [Subscriber Attributes](doc:subscriber-attributes) for the user.
 
