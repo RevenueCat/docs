@@ -58,9 +58,10 @@ h3 {
 .theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-1 {
   padding-top: 10px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #9c9c9c29;
+  font-weight: 300;
 }
 
 .menu__list-item-collapsible {
-  /* font-weight: 600; */
+  font-weight: 500;
 }
