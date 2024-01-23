@@ -31,7 +31,7 @@ There's a custom tabbed code block component called RCCodeBlock.
 Pass a set of values for each tab, reading each code file using `raw-loader` relative to the `@site` root path:
 
 ```
-import RCCodeBlock from '@site/src/components/RCCodeBlock';
+
 import content from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/migrating-existing-subscriptions_1.js";
 
 <RCCodeBlock tabs={[
