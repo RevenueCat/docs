@@ -62,13 +62,13 @@ If you're not already sending **price** and **currency** to your server there ar
 1. Update your client-side code to start sending price and currency to your server. However, at this point a client-side Observer Mode setup may be simpler.
 2. Hardcode a mapping of product IDs to their corresponding USD currency on your server. While this system isn't perfect as it won't account for country specific pricing and currency conversion rates, it may be a suitable approximation.
 
-> 🚧 Complete Apple base64 receipt file required
->
-> Observer Mode requires the raw base64 encoded Apple receipt as the `fetch_token`. Partial receipts or the receipt information from the Apple server-to-server notifications is insufficient.
+:::warning Complete Apple base64 receipt file required
+Observer Mode requires the raw base64 encoded Apple receipt as the `fetch_token`. Partial receipts or the receipt information from the Apple server-to-server notifications is insufficient.
+:::
 
-> 🚧 Past subscription history will not be imported for Google and Stripe subscriptions
->
-> Due to limitations in both Google’s and Stripe’s subscription APIs, RevenueCat will not have access to the full past history of your subscription data. This means that metrics such as revenue may not be accurate for past periods. However, data will fill in from the point of migration into the future.
+:::warning Past subscription history will not be imported for Google and Stripe subscriptions
+Due to limitations in both Google’s and Stripe’s subscription APIs, RevenueCat will not have access to the full past history of your subscription data. This means that metrics such as revenue may not be accurate for past periods. However, data will fill in from the point of migration into the future.
+:::
 
 ## Option 2: Client-side
 
@@ -171,13 +171,14 @@ import om6 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer
 
 ![](https://files.readme.io/3e32059-Screen_Shot_2022-08-03_at_3.51.12_PM.png "Screen Shot 2022-08-03 at 3.51.12 PM.png")
 
-> 🚧 Important note regarding InAppBillingService (Android Unity only)
->
-> If using RevenueCat alongside Unity IAP or other plugin that includes the Android InAppBillingService class, follow [these instructions ](doc:unity#installation-with-unity-iap-side-by-side)
+:::warning Important note regarding InAppBillingService (Android Unity only)
+If using RevenueCat alongside Unity IAP or other plugin that includes the Android InAppBillingService class, follow [these instructions ](doc:unity#installation-with-unity-iap-side-by-side)
+:::
 
-> ❗️ Important (Android only)
->
-> On Android, RevenueCat **will not** consume or acknowledge any purchase in Observer Mode so be sure your app is handling that. **Failure to do so will result in your purchases being refunded after 3 days.**
+:::danger Important (Android only)
+On Android, RevenueCat **will not** consume or acknowledge any purchase in Observer Mode so be sure your app is handling that. **Failure to do so will result in your purchases being refunded after 3 days.**
+:::
+
 
 ### 2. Sync purchases with RevenueCat (Amazon Store only)
 
