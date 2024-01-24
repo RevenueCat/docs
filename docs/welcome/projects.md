@@ -31,9 +31,10 @@ You can customize your project by setting a name as well as your global [restore
 
 Once you create a project you'll be prompted to add an App. Select the platform you wish to add and follow the configuration steps for that platform.
 
-> 📘 Projects can include many Apps on the same platform
->
-> It's okay to add many Apps on the same platform under one Project. For example if you have a suite of productivity apps on iOS that share a common subscription you can add them under the same Project in RevenueCat. However, if you have multiple iOS apps that all function independently and don't plan to have a shared subscription you should add them each under different Projects.
+:::info Projects can include many apps on the same platform
+It's okay to add many Apps on the same platform under one Project. For example, if you have a suite of productivity apps on iOS that share a common subscription you can add them under the same Project in RevenueCat. However, if you have multiple iOS apps that all function independently and don't plan to have a shared subscription you should add them each under different Projects.
+
+:::
 
 ### Shared App User ID Namespace
 
