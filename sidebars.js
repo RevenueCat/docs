@@ -15,7 +15,7 @@ import { Category, Link, Page } from "./src/sidebars/sidebar-utils";
 // The sidebar is a tree of categories and pages.
 // I've separated this top-level category into its own variable for readability.
 // Each category can have sub-categories and pages.
-// Each page has a title and path. The path is relative to the path of its parent.
+// Each page has a path. The path is relative to the path of its parent.
 // i.e. Category -> Sub-category -> Page
 // "categories/welcome" -> "projects" -> "collaborators"
 // combined path: "categories/welcome/projects/collaborators"
@@ -167,6 +167,80 @@ const dashboardCategory = new Category(
   ]
 );
 
+const integrationsCategory = new Category(
+  "🔌 Integrations",
+  "integrations",
+  true,
+  [
+    new Page("integrations"),
+    new Category(
+      "Attribution",
+      "attribution",
+      true,
+      [
+        new Page("adjust"),
+        new Page("apple-search-ads"),
+        new Page("appsflyer"),
+        new Page("branch"),
+        new Page("facebook-ads"),
+        new Page("singular"),
+        new Page("splitmetrics-acquire"),
+        new Page("tenjin"),
+      ],
+      new Page("attribution")
+    ),
+    new Category(
+      "Scheduled Data Exports",
+      "scheduled-data-exports",
+      true,
+      [
+        new Page("data-export-version-3"),
+        new Page("data-export-version-4"),
+        new Page("data-export-version-5"),
+        new Page("scheduled-data-exports-gcp"),
+        new Page("scheduled-data-exports-s3"),
+      ],
+      new Page("scheduled-data-exports")
+    ),
+    new Category(
+      "Third-Party Integrations",
+      "third-party-integrations",
+      true,
+      [
+        new Page("airship"),
+        new Page("amplitude"),
+        new Page("braze"),
+        new Page("clevertap"),
+        new Page("discord"),
+        new Page("firebase-integration"),
+        new Page("intercom"),
+        new Page("iterable"),
+        new Page("mixpanel"),
+        new Page("mparticle"),
+        new Page("onesignal"),
+        new Page("segment"),
+        new Page("slack"),
+        new Page("statsig"),
+        new Page("superwall"),
+      ],
+      new Page("third-party-integrations")
+    ),
+    new Category(
+      "Webhooks",
+      "webhooks",
+      true,
+      [
+        new Page("event-flows"),
+        new Page("event-types-and-fields"),
+        new Page("sample-events"),
+      ],
+      new Page("webhooks")
+    ),
+    new Page("partner-built-integrations"),
+    new Page("stripe-app"),
+  ]
+);
+
 const toolsCategory = new Category("🛠 Tools", "tools", false, [
   new Category(
     "Paywalls",
@@ -295,7 +369,7 @@ const sdkMigrationCategory = new Category(
     new Page("ios-native-3x-to-4x-migration"),
     new Link(
       "Capacitor - 5.x to 6.x Migration",
-      "https://github.com/RevenueCat/purchases-capacitor/blob/main/migrations/v6-MIGRATION.md"
+      "https://github.com/RevenueCat/purchases-capacitor/blob/main/migrations/v6-MIGRATION"
     ),
   ]
 );
@@ -311,6 +385,7 @@ const sidebars = {
     subscriptionGuidanceCategory.render(),
     dashboardCategory.render(),
     toolsCategory.render(),
+    integrationsCategory.render(),
     platformResourcesCategory.render(),
     serviceCredentialsCategory.render(),
     supportCategory.render(),

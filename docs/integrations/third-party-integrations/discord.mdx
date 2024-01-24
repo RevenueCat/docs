@@ -1,0 +1,76 @@
+---
+title: Discord
+slug: discord
+excerpt: Send in-app subscription events to Discord
+hidden: false
+---
+
+:::success
+The Discord integration is available to all users signed up after September '23, the legacy Starter and Pro plans, and Enterprise plans. If you're on a legacy Free plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
+:::
+
+Receive instant updates on your Discord server from RevenueCat whenever a new purchase event occurs in your app.
+
+## Events
+
+The Discord integration tracks the following events:
+
+| Event Type                 | Default Event Name (Fallback)                                          | Description                                                                                                                                                                                                                                                       | App Store | Play Store | Amazon | Stripe | Promo |
+|----------------------------|------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|------------|--------|--------|-------|
+| Initial Purchase           | Customer \<user_id> just started a subscription of \<product_id>       | A new subscription has been purchased.                                                                                                                                                                                                                            | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Trial Started              | Customer \<user_id> just started a free trial of \<product_id>         | The start of an auto-renewing subscription product free trial.                                                                                                                                                                                                    | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Trial Converted            | Customer \<user_id> just converted from a free trial of \<product_id>  | When an auto-renewing subscription product converts from a free trial to normal paid period.                                                                                                                                                                       | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Trial Cancelled            | Customer \<user_id> just cancelled their free trial of \<product_id>   | When a user turns off renewals for an auto-renewing subscription product during a free trial period.                                                                                                                                                              | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Renewal                    | Customer \<user_id> just renewed their subscription of \<product_id>   | An existing subscription has been renewed or a lapsed user has resubscribed.                                                                                                                                                                                      | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Cancellation               | Customer \<user_id> just cancelled their subscription of \<product_id> | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](https://www.revenuecat.com/docs/event-types-and-fields#cancellation-and-expiration-reasons) for more details.                                                               | ✅         | ✅          | ✅      | ✅      | ✅     |
+| Non Subscription Purchase  | Customer \<user_id> just purchased \<product_id>                       | A customer has made a purchase that will not auto-renew.                                                                                                                                                                                                          | ✅         | ✅          | ✅      | ✅      | ✅     |
+| Billing Issue              | Customer \<user_id> got a billing issue on \<product_id>               | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR.                                                                 | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Product Change             | Customer \<user_id> got a product change from \<old_product_id> to \<new_product_id> | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](doc:managing-subscriptions) for more details on updates, downgrades, and crossgrades.                 | ✅         | ✅          | ❌      | ✅      | ❌     |
+
+
+## Configure Discord server
+
+You need to configure your Discord server to authorize a webhook to post to your workspace. Please follow this Discord [article](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks) on their website explaining how to set this up.
+
+## Configure RevenueCat Integration
+
+Once you've set up a webhook in your Discord server. Enter the details into the Discord Integration section of your [dashboard](https://app.revenuecat.com).
+
+![](https://github.com/RevenueCat/revenuecat-docs/assets/287089/7764e4de-b9ea-4060-9a59-af0c959bebb0 "Discord integration setup")
+
+:::success
+You're all set! RevenueCat will start sending events into Discord!
+:::
+
+![](https://github.com/RevenueCat/revenuecat-docs/assets/287089/07cde5bd-e440-47d0-a219-aceaac4fd516 "Discord message example")
+
+## Sample Events
+
+Below are sample JSONs that are delivered to Discord for each event type.
+
+import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_1.json";
+import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_2.json";
+import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_3.json";
+import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_4.json";
+import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_5.json";
+import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_6.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: initialPurchaseContent, name: 'Initial Purchase' },
+    { type: 'json', content: trialStartedContent, name: 'Trial Started' },
+    { type: 'json', content: trialConvertedContent, name: 'Trial Converted' },
+    { type: 'json', content: trialCancelledContent, name: 'Trial Cancelled' },
+    { type: 'json', content: renewalContent, name: 'Renewal' },
+    { type: 'json', content: cancellationContent, name: 'Cancellation' }
+]} />
+
+
+import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_7.json";
+import billingIssueContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_8.json";
+import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_9.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: nonSubscriptionPurchaseContent, name: 'Non Subscription Purchase' },
+    { type: 'json', content: billingIssueContent, name: 'Billing Issue' },
+    { type: 'json', content: productChangeContent, name: 'Product Change' }
+]} />

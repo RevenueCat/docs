@@ -1,0 +1,15 @@
+{
+    "app_id": "12345678-1234-1234-1234-123456789012",
+    "tags": {
+        "app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "period_type": "TRIAL",
+        "purchased_at": 1663445025,
+        "expiration_at": 1664049825,
+        "store": "APP_STORE",
+        "environment": "PRODUCTION",
+        "last_event_type": "uncancellation",
+        "last_event_at": 1663969096,
+        "product_id": "annual_sub",
+        "entitlement_ids": "Premium"
+    }
+}

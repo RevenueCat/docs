@@ -1,0 +1,25 @@
+{
+    "track_event": {
+        "event": "rc_trial_converted_event",
+        "properties": {
+            "distinct_id": "12345678-1234-1234-1234-123456789012",
+            "token": "abCdEFg01HiJklMN2OpQ3RStu4v5",
+            "time": 1541033435,
+            "revenue": 44.99,
+            "product_id": "yearly_sub",
+            "store": "APP_STORE"
+        }
+    },
+    "engage_event": {
+        "$append": {
+            "$transactions": {
+                "$time": 1541033435,
+                "$amount": 44.99,
+                "product_id": "yearly_sub",
+                "store": "APP_STORE"
+            }
+        },
+        "$token": "abCdEFg01HiJklMN2OpQ3RStu4v5",
+        "$distinct_id": "12345678-1234-1234-1234-123456789012"
+    }
+}

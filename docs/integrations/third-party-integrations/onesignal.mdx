@@ -1,0 +1,180 @@
+---
+title: OneSignal
+slug: onesignal
+excerpt: Integrate RevenueCat subscription status with OneSignal
+hidden: false
+---
+
+:::success
+The OneSignal integration is available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
+:::
+
+OneSignal can be a useful integration tool for understanding what stage a customer is in to react accordingly. RevenueCat can automatically update user tags in OneSignal with their latest subscription status.
+
+With our OneSignal integration, you can:
+
+- Send an onboarding campaign to a user in a free trial
+- Send a push notification to churned users and [offer them a discount](doc:ios-subscription-offers)
+
+With accurate and up-to-date subscription data in OneSignal, you'll be set to turbocharge your campaigns ⚡️
+
+For every auto-renewing subscription event in RevenueCat, the following tags get added or updated on the user in OneSignal. By leaving the tag blank in the RevenueCat dashboard, you can choose to not send any value for specific tag(s).
+
+| Tag                          | Description                                                                                                                                                |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `app_user_id`                | The RevenueCat App User Id that triggered the event                                                                                                        |
+| `period_type`                | The latest period type for the purchase or renewal. Either: `TRIAL` (for free trials), `INTRO` (or introductory pricing), `NORMAL` (standard subscription) |
+| `purchased_at`               | Epoch time in seconds of the latest subscription purchase or renewal                                                                                       |
+| `expiration_at`              | Epoch time in seconds of the latest subscription expiration date                                                                                           |
+| `store`                      | Either `APP_STORE`, `PLAY_STORE`, or `STRIPE`                                                                                                              |
+| `environment`                | Either `SANDBOX` or `PRODUCTION`                                                                                                                           |
+| `last_event_type`            | The latest event type from the user. Either: `INITIAL_PURCHASE`, `TRIAL_STARTED`, `TRIAL_CONVERTED`, `TRIAL_CANCELLED`, `RENEWAL`, `CANCELLATION`          |
+| `product_id`                 | The latest subscription product identifier that the user has purchased or renewed                                                                          |
+| `entitlement_ids`            | Comma separated string of RevenueCat Entitlement identifiers that the user unlocked                                                                        |
+| `active_subscription`        | The value will be set to `true` on any purchase/renewal event, and `false` on `EXPIRATION`                                                                 |
+| `subscription_status`        | See Subscription Status Attribute below                                                                                                                    |
+| `grace_period_expiration_at` | If a billing issue occurs, we will send the date of the grace period expiration.                                                                           |
+
+:::info Auto-renewing subscriptions only
+RevenueCat only updates data tags in OneSignal in response to auto-renewing subscription events.
+:::
+
+### Integration at a Glance
+
+| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Subscriber Attributes | Sends Transfer Events | Optional Event Types |
+| :--------------: | :-----------------------: | :------------------: | :----------------------------: | :-------------------: | :------------------: |
+|        ❌        |            ❌             |          ✅          |               ❌               |          ❌           |          ❌          |
+
+## Events
+
+The OneSignal integration tracks the following events:
+
+| Event                     | Default Event Name        | Description                                                                                                                                                                                                                                                                                                                                             | App Store | Play Store | Amazon | Stripe | Promo |
+| ------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---------- | ------ | ------ | ----- |
+| Initial Purchase          | initial_purchase          | A new subscription has been purchased.                                                                                                                                                                                                                                                                                                                  | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Trial Started             | trial_started             | The start of an auto-renewing subscription product free trial.                                                                                                                                                                                                                                                                                          | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Trial Converted           | trial_converted           | When an auto-renewing subscription product converts from a free trial to normal paid period.                                                                                                                                                                                                                                                            | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Trial Cancelled           | trial_cancelled           | When a user turns off renewals for an auto-renewing subscription product during a free trial period.                                                                                                                                                                                                                                                    | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Renewal                   | renewal                   | An existing subscription has been renewed or a lapsed user has resubscribed.                                                                                                                                                                                                                                                                            | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Cancellation              | cancellation              | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](https://www.revenuecat.com/docs/event-types-and-fields#cancellation-and-expiration-reasons) for more details.                                                                                                                                                    | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Uncancellation            | uncancellation            | A non-expired cancelled subscription has been re-enabled.                                                                                                                                                                                                                                                                                               | ✅        | ✅         | ✅     | ❌     | ❌    |
+| Non Subscription Purchase | non_subscription_purchase | A customer has made a purchase that will not auto-renew.                                                                                                                                                                                                                                                                                                | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Subscription paused       | subscription_paused       | A subscription has been paused.                                                                                                                                                                                                                                                                                                                         | ❌        | ✅         | ❌     | ❌     | ❌    |
+| Expiration                | expiration                | A subscription has expired and access should be removed. If you have [Platform Server Notifications](https://www.revenuecat.com/docs/server-notifications) configured, this event will occur as soon as we are notified (within seconds to minutes) of the expiration. If you do not have notifications configured, delays may be approximately 1 hour. | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Billing Issue             | billing_issue             | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR.                                                                                                                                                      | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Product Change            | product_change            | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](https://www.revenuecat.com/docs/managing-subscriptions) for more details on updates, downgrades, and crossgrades.                                                                            | ✅        | ✅         | ❌     | ✅     | ❌    |
+
+## 1. Send device data to RevenueCat
+
+:::info Only device-centric API versions of OneSignal (9.0 and below) are supported.
+Support for user-centric API versions of OneSignal (11.0 and above) coming soon.
+:::
+
+The OneSignal integration requires some device-specific data. RevenueCat will only update users in OneSignal if the below data has been added as [Subscriber Attributes](doc:subscriber-attributes) for the user.
+
+| Key            | Description                                                                                       | Required |
+| :------------- | :------------------------------------------------------------------------------------------------ | :------- |
+| `$onesignalId` | The [OneSignal Player Id](https://documentation.onesignal.com/docs/users#player-id) for the user. | ✅       |
+
+This property can be set manually, like any other [Subscriber Attributes](doc:subscriber-attributes), or through the helper method `setOnesignalID()`.
+
+You can listen for changes to the OneSignal Id through their SDK, and send the value to RevenueCat. If you already have OneSignal set up, you should make sure that you're also sending the OneSignal Id for users that are updating to the latest version of your app.
+
+import onesignalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_1.swift";
+
+<RCCodeBlock tabs={[{ type: 'swift', content: onesignalContent }]} />
+
+## 2. Send RevenueCat events into OneSignal
+
+After you've set up the _Purchases SDK_ to send device data to RevenueCat, you can "turn on" the integration and configure the tag names from the RevenueCat dashboard.
+
+1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+
+![](https://files.readme.io/c37e1b7-app.revenuecat.com_projects_85ff18c7_collaborators_1.png)
+
+2. Choose **OneSignal** from the Integrations menu.
+3. Add your **OneSignal App Id** and **OneSignal API key**.
+4. Enter the tag names that RevenueCat should use, or choose the default tag names.
+
+![OneSignal configuration screen](https://files.readme.io/319d5b4-app.revenuecat.com_projects_85ff18c7_integrations_intercom_2.png)
+
+## 3. Testing the OneSignal integration
+
+You can test the OneSignal integration end-to-end before going live. It's recommended that you test the integration is working properly for new users, and any existing users that may update their app to a new version.
+
+### Make a sandbox purchase with a new user
+
+Simulate a new user installing your app, and go through your app flow to complete a sandbox purchase.
+
+### Check that the required device data is collected
+
+Navigate the the [Customer View](doc:customers) for the test user that just made a purchase. Make sure that all of the required data from step 1 above is listed as attributes for the user.
+
+### Check that the OneSignal event delivered successfully
+
+While still on the Customer View, click into the test purchase event in the [Customer History](doc:customer-history) and make sure that the OneSignal integration event exists and was delivered successfully.
+
+![](https://files.readme.io/f052d26-app.revenuecat.com_activity_40779aaf_event_92499ad6-350b-455a-a2ec-4c28c4ca0b28_5.png)
+
+## Sample Events
+
+Below are sample JSONs that are delivered to OneSignal for events.
+
+import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_2.json";
+import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_3.json";
+import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_4.json";
+import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_5.json";
+import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_6.json";
+import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_7.json";
+import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_8.json";
+import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_12.json";
+import subscriptionPausedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_13.json";
+import expirationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_9.json";
+import billingIssueContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_10.json";
+import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_11.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: initialPurchaseContent, name: "Initial Purchase" },
+    { type: 'json', content: trialStartedContent, name: "Trial Started" },
+    { type: 'json', content: trialConvertedContent, name: "Trial Converted" },
+    { type: 'json', content: trialCancelledContent, name: "Trial Cancelled" },
+    { type: 'json', content: renewalContent, name: "Renewal" },
+    { type: 'json', content: cancellationContent, name: "Cancellation" },
+    { type: 'json', content: uncancellationContent, name: "Uncancellation" },
+    { type: 'json', content: nonSubscriptionPurchaseContent, name: "Non Subscription Purchase" },
+    { type: 'json', content: subscriptionPausedContent, name: "Subscription Paused" },
+    { type: 'json', content: expirationContent, name: "Expiration" },
+    { type: 'json', content: billingIssueContent, name: "Billing Issue" },
+    { type: 'json', content: productChangeContent, name: "Product Change" }
+]} />
+
+
+:::warning Why are tags not working?
+If your tags aren't working and RevenueCat is sending events successfully with 200 codes, check out [OneSignal's troubleshooting guide](https://documentation.onesignal.com/docs/add-user-data-tags#why-are-tags-not-working).
+:::
+
+:::success You've done it!
+You should start seeing subscription data from RevenueCat appear on users in OneSignal.
+:::
+
+## Subscription Status Attribute
+
+Whenever RevenueCat sends an event to OneSignal, we'll send a `subscription_status` user attribute with any applicable changes, using one of the following values:
+
+| Status              | Description                                                                                                                        |
+| :------------------ | :--------------------------------------------------------------------------------------------------------------------------------- |
+| active              | The customer has an active, paid subscription which is set to renew at their next renewal date.                                    |
+| intro               | The customer has an active, paid subscription through a paid introductory offer.                                                   |
+| cancelled           | The customer has a paid subscription which is set to expire at their next renewal date.                                            |
+| grace_period        | The customer has a paid subscription which has entered a grace period after failing to renew successfully.                         |
+| trial               | The customer is in a trial period which is set to convert to paid at the end of their trial period.                                |
+| cancelled_trial     | The customer is in a trial period which is set to expire at the end of their trial period.                                         |
+| grace_period_trial  | The customer was in a trial period and has now entered a grace period after failing to renew successfully.                         |
+| expired             | The customer's subscription has expired.                                                                                           |
+| promotional         | The customer has access to an entitlement through a granted RevenueCat promotional subscription.                                   |
+| expired_promotional | The customer previously had access to an entitlement through a granted RevenueCat promotional subscription that has since expired. |
+| paused              | The customer has a paid subscription which has been paused and is set to resume at some future date.                               |
+
+For customers with multiple active subscriptions, this attribute will represent the status of only the subscription for which the most recent event occurred.
+
+Please note that since this attribute is set and updated when events are delivered, subscribers with events prior to our release of this attribute (during November 2023) will not have this attribute set until/unless a future event (renewal, cancellation, etc) occurs.

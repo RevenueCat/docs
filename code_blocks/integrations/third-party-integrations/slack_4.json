@@ -1,0 +1,26 @@
+{
+    "product_identifier": "monthly_3d_trial",
+    "app_id": "12345678-1234-1234-1234-123456789012",
+    "payload": {
+        "channel": "purchases",
+        "username": "RevenueCat",
+        "icon_url": "https://app.revenuecat.com/favicon-96x96.png",
+        "attachments": [
+            {
+                "fallback": "Customer 12345 just cancelled their free trial of monthly_3d_trial",
+                "color": "#F2545B",
+                "fields": [
+                    {
+                        "value": ":pouting_cat: Customer <https://app.revenuecat.com/activity/123abcd45/12345|12345> just cancelled their free trial."
+                    },
+                    {
+                        "title": "Product",
+                        "value": "monthly_3d_trial",
+                        "short": false
+                    }
+                ],
+                "ts": 1554502133
+            }
+        ]
+    }
+}

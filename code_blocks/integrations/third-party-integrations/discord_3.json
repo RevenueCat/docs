@@ -1,0 +1,27 @@
+{
+    "product_identifier": "monthly_1",
+    "app_id": "12345678-1234-1234-1234-123456789012",
+    "payload": {
+        "username": "RevenueCat",
+        "avatar_url": "https://app.revenuecat.com/favicon-96x96.png",
+        "embeds": [
+            {
+                "description": ":smiley_cat: Customer <https://app.revenuecat.com/activity/123abcd45/12345|12345> just converted from a free trial.",
+                "color": 5763719,
+                "fields": [
+                    {
+                        "name": "Product",
+                        "value": "monthly_1",
+                        "inline": true
+                    },
+                    {
+                        "name": "Revenue",
+                        "value": "$5.99",
+                        "inline": true
+                    }
+                ],
+                "timestamp": "2023-10-26T17:21:32Z"
+            }
+        ]
+    }
+}

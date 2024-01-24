@@ -1,0 +1,32 @@
+{
+    "app_instance_id": "1234567ab8901cd234e56f789gh0i123",
+    "user_id": "1234567890",
+    "events": [
+        {
+            "name": "purchase",
+            "params": {
+                "event_id": "12345678-1234-56a7-b8c9-012defg3h4i5",
+                "product_id": "com.tokens.1000",
+                "period_type": "NORMAL",
+                "purchased_at": 1658338961415000,
+                "environment": "PRODUCTION",
+                "presented_offering_id": "",
+                "transaction_id": "GPA.1234-5678-9012-34567",
+                "affiliation": "PLAY_STORE",
+                "original_transaction_id": "GPA.1234-5678-9012-34567",
+                "original_app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+                "currency": "USD",
+                "value": 1.99,
+                "coupon": "",
+                "is_trial_conversion": false,
+                "is_renewal": false,
+                "items": [
+                    {
+                        "item_id": "com.tokens.1000",
+                        "affiliation": "PLAY_STORE"
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+  "app_id": "app1234567890",
+  "event_payload": {
+    "created_at": 1662993557,
+    "event_name": "rc_cancellation_event",
+    "metadata": {
+      "app_id": "app1234567890",
+      "cancellation_reason": "UNSUBSCRIBE",
+      "entitlement": "premium",
+      "environment": "production",
+      "expires_at": 1663529651,
+      "product_identifier": "one_week_premium",
+      "store": "APP_STORE"
+    },
+    "user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+  },
+  "product_identifier": "one_week_premium",
+  "user_payload": {
+    "custom_attributes": {
+      "expires_at": 1663529651,
+      "latest_entitlement": "premium",
+      "latest_store": "APP_STORE"
+    },
+    "user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+  }
+}

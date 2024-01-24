@@ -1,0 +1,60 @@
+{
+    "event": {
+        "event_timestamp_ms": 1641990066553,
+        "product_id": "weekly",
+        "period_type": "NORMAL",
+        "purchased_at_ms": 1642018648000,
+        "expiration_at_ms": 1642623448000,
+        "environment": "PRODUCTION",
+        "entitlement_ids": [
+            "premium"
+        ],
+        "presented_offering_id": null,
+        "transaction_id": "123456789012345",
+        "original_transaction_id": "123456789012345",
+        "is_family_share": false,
+        "country_code": "US",
+        "app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "aliases": [
+            "12abc345d67e890fgh12j3lm456n7890"
+        ],
+        "original_app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "currency": "USD",
+        "is_trial_conversion": false,
+        "price": 4.99,
+        "price_in_purchased_currency": 4.99,
+        "subscriber_attributes": {
+            "$ip": {
+                "value": "123.45.67.89",
+                "updated_at_ms": 1635966996059
+            },
+            "$idfa": {
+                "value": "00000000-0000-0000-0000-000000000000",
+                "updated_at_ms": 1635966996058
+            },
+            "$idfv": {
+                "value": "12345A6B-C789-0D1E-FG23-456H6I7J890K",
+                "updated_at_ms": 1634600054627
+            },
+            "$email": {
+                "value": "firstlast@gmail.com",
+                "updated_at_ms": 1635967259599
+            },
+            "$appsflyerId": {
+                "value": "1234567890123-1234567890123456789",
+                "updated_at_ms": 1634600054630
+            },
+            "$displayName": {
+                "value": "FirstLast",   
+                "updated_at_ms": 1635967185821
+            }
+        },
+        "store": "APP_STORE",
+        "takehome_percentage": 0.7,
+        "offer_code": null,
+        "type": "RENEWAL",
+        "id": "12345678-1234-1234-1234-123456789012",
+        "app_id": "1234567890"
+    },
+    "api_version": "1.0"
+}

@@ -1,0 +1,20 @@
+{
+  "d": [
+    {
+      "type": "event",
+      "evtName": "rc_uncancellation_event",
+      "evtData": {
+         "$ip": "123.45.67.89",
+        "$idfv": "12345A6B-C789-0D1E-FG23-456H6I7J890K",
+        "$email": "firstLast@gmail.com",
+        "$adjustId": "12abc345d67e890fgh12j3lm456n7890",
+        "$displayName": "first last",
+        "$mediaSource": "Organic",
+        "amount": 0.0,
+        "currency": "USD"
+      },
+      "ts": 1632188342,
+      "objectId": "abCdEFg01HiJklMN2OpQ3RStu4v5"
+    }
+  ]
+}

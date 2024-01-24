@@ -1,0 +1,103 @@
+---
+title: Slack
+slug: slack
+excerpt: Send in-app subscription events to Slack
+hidden: false
+---
+
+:::success
+The Slack integration is available to all users signed up after September '23, the legacy Starter and Pro plans, and Enterprise plans. If you're on a legacy Free plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
+:::
+
+RevenueCat can send you Slack message to a channel any time an event happens in your app. This lets you keep a close pulse on your app and celebrate those money making moments!
+
+### Integration at a Glance
+
+| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events  | Includes Subscriber Attributes | Sends Transfer Events | Optional Event Types |
+| :--------------: | :-----------------------: | :-------------------: | :----------------------------: | :-------------------: | :------------------: |
+|        ✅        |            ❌             | Toggle on in Settings |               ❌               |          ❌           |          ❌          |
+
+## Events
+
+The Slack integration tracks the following events:
+
+| Event Type           | Default Event Name (Fallback)                                      | Description                                                                                                                                                      | App Store | Play Store | Amazon | Stripe | Promo |
+|----------------------|-------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|------------|--------|--------|-------|
+| Initial Purchase      | Customer `<user_id>` just started a subscription of `<product_id>` | A new subscription has been purchased.                                                                                                                           | ✅        | ✅         | ✅     | ✅     | ❌   |
+| Trial Started         | Customer `<user_id>` just started a free trial of `<product_id>`   | The start of an auto-renewing subscription product free trial.                                                                                                   | ✅        | ✅         | ✅     | ✅     | ❌   |
+| Trial Converted       | Customer `<user_id>` just converted from a free trial of `<product_id>` | When an auto-renewing subscription product converts from a free trial to normal paid period.                                                                    | ✅        | ✅         | ✅     | ✅     | ❌   |
+| Trial Cancelled       | Customer `<user_id>` just cancelled their free trial of `<product_id>` | When a user turns off renewals for an auto-renewing subscription product during a free trial period.                                                           | ✅        | ✅         | ✅     | ✅     | ❌   |
+| Renewal               | Customer `<user_id>` just renewed their subscription of `<product_id>` | An existing subscription has been renewed or a lapsed user has resubscribed.                                                                                     | ✅        | ✅         | ✅     | ✅     | ❌   |
+| Cancellation          | Customer `<user_id>` just cancelled their subscription of `<product_id>` | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](https://www.revenuecat.com/docs/event-types-and-fields#cancellation-and-expiration-reasons) for more details. | ✅        | ✅         | ✅     | ✅     | ✅   |
+| Non Subscription Purchase | Customer `<user_id>` just purchased `<product_id>` | A customer has made a purchase that will not auto-renew.                                                                                                      | ✅        | ✅         | ✅     | ✅     | ✅   |
+| Billing Issue         | Customer `<user_id>` got a billing issue on `<product_id>` | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR. | ✅        | ✅         | ✅     | ✅     | ❌   |
+| Product Change        | Customer `<user_id>` got a product change from `<old_product_id>` to `<new_product_id>` | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](doc:managing-subscriptions) for more details on updates, downgrades, and crossgrades. | ✅        | ✅         | ❌     | ✅     | ❌   |
+
+## Configure Slack Workspace
+
+Before RevenueCat can post to your Slack channel, you need to authorize a webhook to post to your workspace. Slack has a more [detailed article](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack) on their website explaining how to set this up if you have trouble.
+
+### 1. Create a **Slack app**
+
+- Navigate to [https://api.slack.com/apps](https://api.slack.com/apps?new_app=1) and create a new app. Give it a name like "RevenueCat" and select your workspace.
+
+![](https://files.readme.io/a85a3f1-Screen_Shot_2018-12-13_at_4.15.50_PM.png "Screen Shot 2018-12-13 at 4.15.50 PM.png")
+
+- Click **Create App**
+
+### 2. Enable **Incoming Webhooks** from the settings page
+
+![](https://files.readme.io/58be14f-Screen_Shot_2018-12-13_at_4.17.51_PM.png "Screen Shot 2018-12-13 at 4.17.51 PM.png")
+
+- Select **Incoming Webhooks** under _Add features and functionality_
+
+![](https://files.readme.io/14fd367-Screen_Shot_2018-12-13_at_4.21.05_PM.png "Screen Shot 2018-12-13 at 4.21.05 PM.png")
+
+- Enable the Incoming Webhooks toggle
+- After the settings page refreshes, click **Add New Webhook to Workspace**
+
+### 3. Pick a channel that the app will post to, then click **Authorize**
+
+![](https://files.readme.io/f5c317c-Screen_Shot_2018-12-13_at_4.23.27_PM.png "Screen Shot 2018-12-13 at 4.23.27 PM.png")
+
+## Configure RevenueCat Integration
+
+Once you've set up a webhook in your Slack workspace. Enter the details into the Slack Integration section of your [dashboard](https://app.revenuecat.com).
+
+![](https://files.readme.io/b1cf4cb-app.revenuecat.com_projects_85ff18c7_integrations_intercom_3.png)
+
+:::success
+You're all set! RevenueCat will start sending events into Slack!
+:::
+
+![](https://files.readme.io/f1167d6-unnamed.png "unnamed.png")
+
+## Sample Events
+
+Below are sample JSONs that are delivered to Slack for each event type.
+
+import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/slack_1.json";
+import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/slack_2.json";
+import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/slack_3.json";
+import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/slack_4.json";
+import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/slack_5.json";
+import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/slack_6.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: initialPurchaseContent, name: "Initial Purchase" },
+    { type: 'json', content: trialStartedContent, name: "Trial Started" },
+    { type: 'json', content: trialConvertedContent, name: "Trial Converted" },
+    { type: 'json', content: trialCancelledContent, name: "Trial Cancelled" },
+    { type: 'json', content: renewalContent, name: "Renewal" },
+    { type: 'json', content: cancellationContent, name: "Cancellation" }
+]} />
+
+import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/slack_7.json";
+import billingIssueContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/slack_8.json";
+import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/slack_9.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: nonSubscriptionPurchaseContent, name: "Non-subscription Purchase" },
+    { type: 'json', content: billingIssueContent, name: "Billing Issue" },
+    { type: 'json', content: productChangeContent, name: "Product Change" }
+]} />

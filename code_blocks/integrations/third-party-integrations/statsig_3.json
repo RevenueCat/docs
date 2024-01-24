@@ -1,0 +1,35 @@
+{
+    "event": {
+        "event_timestamp_ms": 1636393200702,
+        "product_id": "1_month_trial",
+        "period_type": "NORMAL",
+        "purchased_at_ms": 1636392545000,
+        "expiration_at_ms": 1636392845000,
+        "environment": "SANDBOX",
+        "entitlement_ids": [
+            "pro"
+        ],
+        "presented_offering_id": "default",
+        "transaction_id": "123456789012345",
+        "original_transaction_id": "123456789012345",
+        "is_family_share": false,
+        "country_code": "US",
+        "app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "aliases": [
+            "12abc345d67e890fgh12j3lm456n7890"
+        ],
+        "original_app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "cancel_reason": "UNSUBSCRIBE",
+        "currency": "USD",
+        "price": 0.0,
+        "price_in_purchased_currency": 0.0,
+        "subscriber_attributes": {},
+        "store": "APP_STORE",
+        "takehome_percentage": 0.7,
+        "offer_code": null,
+        "type": "rc_cancellation_event",
+        "id": "12345678-1234-1234-1234-123456789012",
+        "app_id": "1234567890",
+    },
+    "api_version": "1.0"
+}

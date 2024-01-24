@@ -1,0 +1,14 @@
+{
+  "d": [
+    {
+      "type": "event",
+      "evtName": "rc_product_change_event",
+      "evtData": {
+        "amount": 0.0,
+        "currency": "USD"
+      },
+      "ts": 1626283709,
+      "identity": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+    }
+  ]
+}
