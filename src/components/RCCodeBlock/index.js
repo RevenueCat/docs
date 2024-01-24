@@ -1,8 +1,9 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
+import PropTypes from "prop-types";
 
-export default function RCCodeBlock(props) {
+const RCCodeBlock = (props) => {
   return (
     <Tabs
       groupId="language"
@@ -16,13 +17,43 @@ export default function RCCodeBlock(props) {
         var content = tab.content;
         return (
           <TabItem value={tab.title || tab.name || tab.type}>
-            <CodeBlock language={tab.type} children={content} />
+            <CodeBlock
+              showLineNumbers={true}
+              language={getLanguageType(tab.type)}
+              children={content}
+            />
           </TabItem>
         );
       })}
     </Tabs>
   );
-}
+};
+
+const Languages = {
+  swift: "swift",
+  objectiveC: "objc",
+  java: "java",
+  kotlin: "kotlin",
+  javascript: "js",
+  reactNative: "rn",
+  flutter: "flutter",
+  unity: "unity",
+  cordova: "cordova",
+  capacitor: "capacitor",
+};
+
+RCCodeBlock.languages = Languages;
+
+RCCodeBlock.propTypes = {
+  tabs: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.oneOf(Object.values(Languages)).isRequired,
+      content: PropTypes.string.isRequired,
+      title: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ).isRequired,
+};
 
 function getTabTitle(type) {
   switch (type) {
@@ -42,10 +73,6 @@ function getTabTitle(type) {
       return "Flutter";
     case "unity":
       return "Unity";
-    case "dart":
-      return "Flutter";
-    case "csharp":
-      return "Unity";
     case "cordova":
       return "Cordova";
     case "capacitor":
@@ -54,3 +81,34 @@ function getTabTitle(type) {
       return "Code";
   }
 }
+
+function getLanguageType(type) {
+  switch (type) {
+    case "swift":
+      return "swift";
+    case "objc":
+      return "objectivec";
+    case "java":
+      return "java";
+    case "kotlin":
+      return "kotlin";
+    case "js":
+      return "jsx";
+    case "rn":
+      return "jsx";
+    case "flutter":
+      return "dart";
+    case "unity":
+      return "cpp";
+    case "cordova":
+      return "jsx";
+    case "capacitor":
+      return "jsx";
+    case "json":
+      return "jsx";
+    default:
+      return "Code";
+  }
+}
+
+export default RCCodeBlock;
