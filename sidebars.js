@@ -25,7 +25,7 @@ const welcomeCategory = new Category(
   false, // Should the category be collapsed by default? (defaults to true)
   [
     // Category pages / items
-    new Page("welcome"), // page file name. relative to parent category path
+    new Page("overview"), // page file name. relative to parent category path
     new Page("building-new"),
     new Page("existing-apps"),
     new Category( // Sub-category
@@ -392,7 +392,5 @@ const sidebars = {
     sdkMigrationCategory.render(),
   ],
 };
-
-console.log(JSON.stringify(sidebars, null, 2));
 
 export default sidebars;

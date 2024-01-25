@@ -16,7 +16,7 @@ const config = {
   url: "https://your-docusaurus-site.example.com",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/docs/",
+  baseUrl: "/",
 
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
@@ -36,6 +36,7 @@ const config = {
       ({
         docs: {
           sidebarPath: "./sidebars.js",
+          routeBasePath: "/docs/",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           // editUrl:
@@ -53,7 +54,7 @@ const config = {
         specs: [
           {
             spec: "openapi-spec/api-v2.yaml",
-            route: "/api/",
+            route: "/docs/api/",
           },
         ],
         // Theme Options for modifying how redoc renders them
@@ -85,7 +86,7 @@ const config = {
           },
           {
             label: "API Reference",
-            to: "/api/",
+            to: "/docs/api/",
           },
         ],
       },
@@ -133,7 +134,7 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
-        additionalLanguages: ["java", "dart"],
+        additionalLanguages: ["java", "dart", "scala"],
       },
       algolia: {
         // The application ID provided by Algolia
