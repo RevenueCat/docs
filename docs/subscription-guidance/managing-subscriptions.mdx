@@ -10,9 +10,9 @@ For information about Stripe, you can read more about working with web payments 
 
 ## Upgrade or Downgrade a Subscription
 
-> 📘 Developers cannot change a customer's subscription directly
-> 
-> The app stores do not allow developers (you) to upgrade or downgrade a subscription on behalf of a customer. Only a customer can change their subscription.
+:::info Developers cannot change a customer's subscription directly
+The app stores do not allow developers (you) to upgrade or downgrade a subscription on behalf of a customer. Only a customer can change their subscription.
+:::
 
 ### App Store
 
@@ -28,9 +28,9 @@ According to [Apple](https://developer.apple.com/app-store/subscriptions#ranking
 
 You can refer to this [blog post](https://www.revenuecat.com/blog/ios-subscription-groups-explained) for more information on how to set up subscription groups in App Store Connect.
 
-> 📘 Upgrades during introductory periods
-> 
-> When a customer upgrades products during an introductory period (including a free trial), Apple does not cancel the introductory offer but instead keeps the introductory offer active in addition to the upgraded product. So in these cases you can expect two products in the same Subscription Group to be active simultaneously.
+:::info Upgrades during introductory periods
+When a customer upgrades products during an introductory period (including a free trial), Apple does not cancel the introductory offer but instead keeps the introductory offer active in addition to the upgraded product. So in these cases you can expect two products in the same Subscription Group to be active simultaneously.
+:::
 
 ### Google Play
 
@@ -99,13 +99,13 @@ Cancelling (or unsubscribing) from subscriptions is handled differently on each 
 
 Google requires developers to allow customers to cancel a subscription within apps. You can do this by displaying a link in your app that takes the user directly to Google Play's subscription management screen where they can immediately cancel their subscription. RevenueCat helps you do this by providing a `managementURL` property on the CustomerInfo object in the SDK and in our [REST API](https://docs.revenuecat.com/reference/subscribers#the-subscriber-object).
 
-> 📘 Include the `managementURL` on iOS
-> 
-> The `managementURL` is a great way to allow customers to check the status of and manage their subscriptions on both iOS and Android. RevenueCat will automatically provide your app with the correct `managementURL` based on the platform of the customer's device and original store they purchased their subscription through.
+:::info Include the `managementURL` on iOS
+The `managementURL` is a great way to allow customers to check the status of and manage their subscriptions on both iOS and Android. RevenueCat will automatically provide your app with the correct `managementURL` based on the platform of the customer's device and original store they purchased their subscription through.
+:::
 
-> ❗️ 
-> 
-> `managementURL` is not supported on Amazon or Stripe.
+:::danger
+`managementURL` is not supported on Amazon or Stripe.
+:::
 
 import swift1 from "!!raw-loader!@site/code_blocks/subscription-guidance/managing-subscriptions_3.swift";
 import kt2 from "!!raw-loader!@site/code_blocks/subscription-guidance/managing-subscriptions_4.kt";
@@ -123,6 +123,6 @@ import kt2 from "!!raw-loader!@site/code_blocks/subscription-guidance/managing-s
     }
 ]}/>
 
-> 🚧 Deleting a User
-> 
-> Deleting a user from RevenueCat **WILL NOT** cancel their subscription. The user can still trigger the [Restore Purchases](doc:making-purchases#restoring-purchases) method to re-sync their transactions with RevenueCat servers.
+:::warning Deleting a User
+Deleting a user from RevenueCat **WILL NOT** cancel their subscription. The user can still trigger the [Restore Purchases](doc:making-purchases#restoring-purchases) method to re-sync their transactions with RevenueCat servers.
+:::

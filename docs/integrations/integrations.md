@@ -23,9 +23,9 @@ Purchase information, along with an App User ID, need to be sent to RevenueCat. 
 2. Running any of the RevenueCat SDKs in [Observer Mode](doc:observer-mode#option-2-client-side) will automatically collect this information.
 3. Create a subscription through the [POST /receipts](https://www.revenuecat.com/reference/receipts) REST API. This is typically done server-side and only if you're **not** using the RevenueCat SDK.
 
-> 📘
->
-> Purchase information only needs to be sent to RevenueCat once to initially create the subscription, and all future events will be automatically detected.
+:::info
+Purchase information only needs to be sent to RevenueCat once to initially create the subscription, and all future events will be automatically detected.
+:::
 
 #### Collect integration specific data
 

@@ -32,9 +32,9 @@ import content1 from "!!raw-loader!@site/code_blocks/tools/color_experiment.kt";
     },
 ]}/>
 
-> 📘 
-> 
-> Always have a default set when utilizing offerings metadata to avoid errors and ensure a good user experience.
+:::info
+Always have a default set when utilizing offerings metadata to avoid errors and ensure a good user experience.
+:::
 
 With this update live and our metadata set in our current offering, our paywall now looks like the below.
 
@@ -51,9 +51,9 @@ In our metadata, we have set up keys and values for the languages and copy we wa
 
 ![Language Metadata](https://github.com/RevenueCat/revenuecat-docs/assets/140117673/6012253b-023d-4702-bc4f-76e1060054b5)
 
-> 📘 
-> 
-> Keep in mind that there is a limit of 500 characters in your metadata block, so for dynamic copy like this, it’s best to keep it to shorter headlines or blurbs of dynamic text, with longer copy hard coded as needed.
+:::info
+Keep in mind that there is a limit of 500 characters in your metadata block, so for dynamic copy like this, it’s best to keep it to shorter headlines or blurbs of dynamic text, with longer copy hard coded as needed.
+:::
 
 Within our app, we handle the logic to check the primary language set on the device, and look to see if we find a matching metadata key. Otherwise, we fall back to our default text.
 

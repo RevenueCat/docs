@@ -4,11 +4,16 @@ slug: google-prepaid-plans
 excerpt: Setting up your prepaid plan in Google Play Console
 hidden: false
 ---
+
 Starting May 11, 2022 Google introduced support for prepaid subscriptions among other [features](https://support.google.com/googleplay/android-developer/answer/12124625). This guide will go over what prepaid plans are and how to set them up and integrate them with RevenueCat.
 
-> 📘 This guide assumes familiarity with the Play Store's concepts of subscriptions and base plans introduced in May 2022. For an overview, check out this [blog](https://www.revenuecat.com/blog/engineering/google-play-billing-library-5-0/)
+:::info
+This guide assumes familiarity with the Play Store's concepts of subscriptions and base plans introduced in May 2022. For an overview, check out this [blog](https://www.revenuecat.com/blog/engineering/google-play-billing-library-5-0/)
+:::
 
-> 🚧 Prepaid plans are only available on our SDKs supporting BillingClient 5 and above
+:::warning
+Prepaid plans are only available on our SDKs supporting BillingClient 5 and above
+:::
 
 ## Introduction
 
@@ -16,13 +21,13 @@ In May 2022, Google changed the way subscription products are defined and manage
 
 This feature may be of most interest for apps serving markets with limitations on auto-renewing subscriptions, like India. In fact, Google has [paused](https://www.xda-developers.com/google-play-suspend-free-trials-auto-renewing-subscriptions/) the ability of new customers in India to subscribe to auto-renewing plans due to regulations introduced by the Reserve Bank of India.
 
-> 📘 
-> 
-> When topping up, customers can purchase any prepaid base plan available from the same subscription to top-up, even for durations different from the original purchase. Additionally, customers can switch back and forth between prepaid and auto-renewing base plans.
+:::info
+When topping up, customers can purchase any prepaid base plan available from the same subscription to top-up, even for durations different from the original purchase. Additionally, customers can switch back and forth between prepaid and auto-renewing base plans.
+:::
 
 ## How to Create a Prepaid Plan
 
-This is very similar to how you would create an auto-renewing subscription base plan. You can follow the steps [here](https://www.revenuecat.com/docs/android-products) on how to create a subscription in Google Play Console. Once you have that, you will need to add a base plan. 
+This is very similar to how you would create an auto-renewing subscription base plan. You can follow the steps [here](https://www.revenuecat.com/docs/android-products) on how to create a subscription in Google Play Console. Once you have that, you will need to add a base plan.
 
 ![](https://files.readme.io/19cad72-image.png)
 
@@ -32,7 +37,9 @@ The plan could be either auto-renewing or prepaid. For the purposes of this guid
 
 Once you set the pricing for your base plan, click save and then activate.
 
-> 📘 Prepaid base plans do not support offers. They also cannot be marked as backwards compatible.
+:::info
+Prepaid base plans do not support offers. They also cannot be marked as backwards compatible.
+:::
 
 ## Purchase Cycle of a Prepaid Plan
 
@@ -45,9 +52,11 @@ The second order must be acknowledged quickly, especially if the duration of the
 
 ### Events
 
-> 📘 RevenueCat now returns a period_type of 'PREPAID' for events generated from prepaid purchases.
+:::info
+RevenueCat now returns a period_type of 'PREPAID' for events generated from prepaid purchases.
+:::
 
-Since a top-up means that the existing order gets canceled, and a new one is issued, this is reflected in the RevenueCat dashboard as two separate events: an initial purchase and an expiration. 
+Since a top-up means that the existing order gets canceled, and a new one is issued, this is reflected in the RevenueCat dashboard as two separate events: an initial purchase and an expiration.
 
 In the example below of a sandbox purchase, a customer bought a prepaid base plan "six-months" under the subscription "josh.prepaid" at 11:27 PM. The original expiration date is 11:42 PM. However, at 11:29, the customer purchased a top-up which resulted in the expiration of the first order, and the creation of a new one with a start time of 11:29 and an expiration time of 11:57 PM (11:42 PM + 15 minutes)
 
