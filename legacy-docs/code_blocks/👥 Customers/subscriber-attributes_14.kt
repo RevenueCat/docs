@@ -1,1 +1,0 @@
-Purchases.sharedInstance.setPushToken(deviceToken)

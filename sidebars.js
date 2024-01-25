@@ -60,6 +60,74 @@ const migratingCategory = new Category(
   ]
 );
 
+const gettingStartedCategory = new Category(
+  "🚀 Getting Started",
+  "getting-started",
+  false,
+  [
+    new Page("quickstart"),
+    new Category(
+      "Configuring Products",
+      "entitlements",
+      true,
+      [
+        new Page("ios-products"),
+        new Page("android-products"),
+        new Page("google-subscriptions-and-backwards-compatibility"),
+        new Page("amazon-product-setup"),
+        new Page("stripe-products"),
+      ],
+      new Page("entitlements")
+    ),
+    new Category(
+      "Installation",
+      "installation",
+      true,
+      [
+        new Page("ios"),
+        new Page("android"),
+        new Page("reactnative"),
+        new Page("flutter"),
+        new Page("ionic"),
+        new Page("cordova"),
+        new Page("unity"),
+        new Page("macos"),
+        new Page("app-builders"),
+      ],
+      new Page("installation")
+    ),
+    new Category(
+      "Configuring the SDK",
+      "configuring-sdk",
+      true,
+      [new Page("ios-app-extensions")],
+      new Page("configuring-sdk")
+    ),
+    new Link("Identifying Users", "/docs/customers/user-ids"),
+    new Page("displaying-products"),
+    new Category(
+      "Making Purchases",
+      "making-purchases",
+      true,
+      [new Page("android-with-jetpack-compose")],
+      new Page("making-purchases")
+    ),
+    new Link("Checking Subscription Status", "/docs/customers/customer-info"),
+    new Page("restoring-purchases"),
+    new Link(
+      "Configuring Server Notifications",
+      "/docs/platform-resources/server-notifications"
+    ),
+    new Category(
+      "Stripe",
+      "stripe",
+      true,
+      [new Page("in-app-purchases-with-stripe-rfa")],
+      new Page("stripe")
+    ),
+  ]
+);
+
 const customersCategory = new Category("👥 Customers", "customers", true, [
   new Page("user-ids"),
   new Page("customer-info"),
@@ -379,6 +447,7 @@ const sdkMigrationCategory = new Category(
 const sidebars = {
   defaultSidebar: [
     welcomeCategory.render(), // call render() to remove unsupported convenience properties and prepare for docusaurus
+    gettingStartedCategory.render(),
     migratingCategory.render(),
     customersCategory.render(),
     testAndLaunchCategory.render(),

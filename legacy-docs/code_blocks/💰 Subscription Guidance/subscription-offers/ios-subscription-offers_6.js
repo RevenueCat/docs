@@ -1,1 +1,0 @@
-const purchaseMade = await Purchases.purchaseDiscountedPackage(package, paymentDiscount);

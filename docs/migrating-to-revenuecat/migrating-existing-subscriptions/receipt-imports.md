@@ -5,7 +5,7 @@ excerpt: Importing existing customers into RevenueCat
 hidden: false
 ---
 
-# Importing Receipts
+## Importing Receipts
 
 If you already have existing purchases or subscriptions and have been saving the complete raw receipt files or tokens, you can import those purchases into RevenueCat. If you don't have the proper data saved on your server, see the client-side migration section of the [Migrating Subscriptions](doc:migrating-existing-subscriptions) doc.
 
@@ -15,9 +15,9 @@ Before kicking off an import, if you do not have the SDK deployed in your app, c
 RevenueCat requires the raw base64 encoded Apple receipt to import the subscription properly. Partial receipts or the receipt information from the Apple server-to-server notifications are insufficient.
 :::
 
-## Importing Existing Data
+### Importing Existing Data
 
-### Using the REST API
+#### Using the REST API
 
 If you have the correct data saved already for your customers, you can import them through the REST API `POST /receipts` endpoint. This will create the customer in RevenueCat and start tracking their subscription status.
 
@@ -25,7 +25,7 @@ More info in the [API Reference here](https://docs.revenuecat.com/reference#rece
 
 This is the quickest way to get your existing subscribers into RevenueCat.
 
-### Bulk imports
+#### Bulk imports
 
 For extraordinarily large imports, we offer batch imports as a service on our plans offered via sales. [Contact sales](https://www.revenuecat.com/demo/) to see how we can help with the process.
 

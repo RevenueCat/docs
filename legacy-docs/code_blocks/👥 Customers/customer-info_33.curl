@@ -1,4 +1,0 @@
-curl --request GET \
-  --url https://api.revenuecat.com/v1/subscribers/app_user_id \
-  --header 'Content-Type: application/json' \
-  --header 'Authorization: Bearer PUBLIC_API_KEY'

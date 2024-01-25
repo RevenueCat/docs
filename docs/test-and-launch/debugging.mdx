@@ -7,10 +7,9 @@ hidden: false
 
 
 :::tip
-👍 
-
 This section assumes you've followed our [Quickstart](doc:getting-started) section of our Getting Started guide to install and configure our SDK.
 :::
+
 RevenueCat's SDK will log important information and errors to help you understand what is going on behind the scenes. You can enable more detailed debug logs with the `logLevel` property. You can set this immediately in your app while testing, **before you configure Purchases**.
 
 import db1 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_1.swift";
@@ -63,18 +62,17 @@ import db9 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_9.js";
 ]}/>
 
 
-:::info
-📘 OS_ACTIVITY_MODE
+:::info OS_ACTIVITY_MODE
 
 On iOS, disabling `OS_ACTIVITY_MODE` in your Xcode scheme will block debug logs from printing in the console. If you have debug logs enabled, but don't see any output, go to `Product -> Scheme -> Edit Scheme...` in Xcode and uncheck the `OS_ACTIVITY_MODE` environment variable.
 :::
 
 
-# Debug UI
+## Debug UI
 
 RevenueCat's iOS 4.22.0+ and Android 6.9.2+ SDKs provide an overlay for your app that displays relevant details of the SDK configuration. The debug overlay includes each of your configured Offerings, with the option to purchase any of the products and validate access to entitlements.
 
-## iOS / macOS / visionOS
+### iOS / macOS / visionOS
 
 ![RevenueCat iOS Debug UI](https://files.readme.io/03f4de1-simulator_screenshot_0e51e44b-dd33-41f6-9c26-ca3bed754b34.png)
 
@@ -97,7 +95,7 @@ You can export your configuration details in JSON format to share with RevenueCa
 
 Note: The debug UI won't compile for release builds, so you'll need to disable the behavior before archiving for release.
 
-## Android
+### Android
 
 ![RevenueCat Android Debug UI](https://github.com/RevenueCat/revenuecat-docs/assets/808417/108f3d64-96d1-4bd7-b926-70c6676931be)
 
@@ -124,7 +122,7 @@ Then, you can use it from your own `@Composable`'s like this:
     },
 ]}/>
 
-## Reference
+### Reference
 
 | Debug Section | Details                                                                                                                                                                                        |
 | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -133,11 +131,11 @@ Then, you can use it from your own `@Composable`'s like this:
 | Customer Info | The configured users’ IDs as well as entitlement details                                                                                                                                       |
 | Offerings     | Each of your configured Offerings, packages, and products. Only includes Offerings with products accessible via StoreKit. See our guide on Empty Offerings if your Offerings aren’t populating |
 
-# Debug Logs
+## Debug Logs
 
 All logs from the SDK are prepended with "`[Purchases]`", you can use this string as a filter in your log output to clearly see the logs that are from _Purchases_.
 
-## Reference
+### Reference
 
 Emojis currently available on the following platforms:
 
@@ -159,7 +157,7 @@ Emojis currently available on the following platforms:
 
 Messages that have the double red exclamation marks prefix (‼️) attached provides important information regarding your implementation and may require your attention. Paying attention to the source of the message will assist you during the development process. Be sure to address these logs before shipping your app. 
 
-## Sample Output
+### Sample Output
 
 Below are sample logs generated when setting `debugLogsEnabled = true`. Keep an eye out for any `ERROR` level logs, status codes other than `200`, or any `Invalid Product Identifiers`.
 
@@ -177,23 +175,23 @@ import db15 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_12.tx
     },
 ]}/>
 
-# Debugging with Hybrids
+## Debugging with Hybrids
 
 Xcode and Android Studio are our recommended IDEs for debugging. If you are a developer who works primarily with one of our hybrid SDKs and have not encountered either before, you can follow these instructions to open your app and find the debug logs to share with RevenueCat Support or your internal team.
 
-## Xcode
+### Xcode
 
 [Install Xcode from the App Store.](https://apps.apple.com/us/app/xcode/id497799835?mt=12). Within the main folder of your app, you should have a folder titled `ios` that contains an Xcode project file, ending in `.xcodeproj`. Open this with Xcode from your file finder or from Xcode itself. You should be able to build and run your app in Xcode without additional editing but if you are getting an error, check that all General and Build Settings are filled out. Your debugger output will open automatically upon building within the Xcode window, and from here you can follow the instructions above.
 
-## Android Studio
+### Android Studio
 
 [Install Android Studio from the Google Developers website.](https://developer.android.com/studio/install) You can open the main folder of your app in Android Studio either from the main menu or from your file finder. There shouldn't be any additional editing needed to build and run your app, although you most likely need to set up a [virtual Android device](https://developer.android.com/studio/run/managing-avds) when running your app for the first time. The debugging output will open automatically upon building within the Android Studio window, and from here you can follow the instructions above. 
 
-## No and Low Code App Builders
+### No and Low Code App Builders
 
 When debugging with No and Low Code App Builders, it's important to remember that you'll still need to utilize the specific IDE associated with the device you're targeting. For instance, if you're trying to access debug logs for an app you created using FlutterFlow and you're running it on an iOS device, you'll need to build and run the app through XCode. If you're trying to run it on an Android device, you would need to run it through Android Studio. The process for retrieving debug logs remains the same as explained above.
 
-## Considerations
+### Considerations
 
 - You can open your Xcode project directly from Google - to do so, right click on the `ios` folder, hover over Flutter, and click "OpenIOS module in Xcode". 
 - You can also run and debug your iOS project inside Android Studio itself by adding an iOS simulator and choosing it as the device before building. To do this however, you will still need Xcode installed. 
@@ -201,7 +199,7 @@ When debugging with No and Low Code App Builders, it's important to remember tha
 - If using Flutterflow or another low to no code app builder, it may not be possible for you to see debug logs. We recommend reaching out to the app builder's support team directly to help troubleshoot. 
 - Expo apps for iOS can use Console.app on Mac to view debug logs, while Android projects are still recommended to use Android Studio. For specific help on debugging your React Native Expo project, feel free to reach out to [RevenueCat support](https://app.revenuecat.com/settings/support).
 
-# Next Steps
+## Next Steps
 
 - If you spotted any errors while debugging, make sure you're [handling errors correctly ](doc:errors)
 - You've verified that _Purchases_ is running correctly, time to start [making purchases in sandbox ](doc:sandbox)

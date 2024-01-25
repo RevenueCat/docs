@@ -11,14 +11,14 @@ If you are looking to _consume_ notifications about subscription purchases on yo
 
 RevenueCat does not require Platform Server Notifications from the App Store or Play Store to be configured, however doing so can speed up webhook and integration delivery times and reduce lag time for [Charts](doc:charts).
 
-# Setup Instructions
+## Setup Instructions
 
 - Apple App Store Server Notification: [Setup :fa-arrow-right:](doc:apple-server-notifications) (Optional)
 - Google Real-Time Developer Notifications: [Setup :fa-arrow-right:](doc:google-server-notifications) (Optional)
 - Stripe Server Notifications: [Setup :fa-arrow-right:](doc:stripe-server-notifications) (Required for Stripe)
 - Amazon Appstore: Not yet supported in RevenueCat.
 
-# Confirming Connection
+## Confirming Connection
 
 You can confirm the Apple, Google, and/or Stripe notifications are being delivered properly to RevenueCat by observing the '_Last received_' timestamp next to the section header.
 
@@ -30,6 +30,6 @@ If a notification is received for a subscription not currently tracked by Revenu
 
 ![](https://files.readme.io/bffdf75-Screen_Shot_2021-12-01_at_11.07.08_AM.png "Screen Shot 2021-12-01 at 11.07.08 AM.png")
 
-# Billing
+## Billing
 
 Setting up and receiving Platform Server Notifications does not affect RevenueCat billing.

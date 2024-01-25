@@ -11,20 +11,20 @@ hidden: false
 > **Success**
 > This section assumes you've followed our [Quickstart](doc:getting-started-1) section of our Getting Started guide to install and configure our SDK.
 
-# Error Handling
+## Error Handling
 
 If the completion callbacks or listeners on asynchronous methods receive an error argument that is not nil, an error has occurred. 
 
 With the exception of `NetworkError`, `PurchaseCancelledError` or `StoreProblemError`, retrying a failed operation with the same arguments won't succeed. For failed purchases, assume the user wasn't charged, unless a `StoreProblemError` occurred - in which case the user may or may not have been charged.
 
-## iOS Errors
+### iOS Errors
 On iOS, when an error has occurred the completion callback will receive a `RevenueCat.ErrorCode` object. 
 
 When investigating or logging errors, review the `errorUserInfo` dictionary, paying attention to the following keys: 
 - `rc_code_name` contains a cross-platform error name string that can be used for identifying the error. 
 - `NSDebugDescriptionErrorKey` contains a description of the error. This description is meant for the developer.
 
-### Examples
+#### Examples
 
 import err1 from "!!raw-loader!@site/code_blocks/test-and-launch/errors_1.swift";
 import err2 from "!!raw-loader!@site/code_blocks/test-and-launch/errors_2.m";
@@ -40,7 +40,7 @@ import err2 from "!!raw-loader!@site/code_blocks/test-and-launch/errors_2.m";
     },
 ]}/>
 
-## Android Errors
+### Android Errors
 On Android, when an error has occurred, the `onError` listener will receive a `PurchasesError` object.
 
 When investigating or logging errors, review the properties of `PurchasesError`:
@@ -48,7 +48,7 @@ When investigating or logging errors, review the properties of `PurchasesError`:
 - `message` contains a description of the error. This description is meant for the developer.
 - `underlyingErrorMessage ` contains a description of the underlying error that caused the error in question, if an underlying error is present.
 
-### Examples
+#### Examples
 
 import err3 from "!!raw-loader!@site/code_blocks/test-and-launch/errors_3.kt";
 
@@ -59,7 +59,7 @@ import err3 from "!!raw-loader!@site/code_blocks/test-and-launch/errors_3.kt";
     },
 ]}/>
 
-# Legend
+## Legend
 When debugging errors, it's important to consider whether the error was thrown by RevenueCat, Apple, or Google. This can help you pinpoint where to look for a resolution. 
 
 | Icon | Description                   |
@@ -69,7 +69,7 @@ When debugging errors, it's important to consider whether the error was thrown b
 | 🤖    | Error generated from Google    |
 | 📦    | Error generated from Amazon    |
 
-# Error codes common to all methods
+## Error codes common to all methods
 
 #### 😿 `INVALID_APP_USER_ID`
 **Problem:**
@@ -178,7 +178,7 @@ Indicates an unknown error occurred. Possible causes:
 Help us [fix it](https://www.revenuecat.com/jobs/).
 _______________________________________________________________________________
 
-# Purchasing Errors
+## Purchasing Errors
 
 #### 😿 `RECEIPT_ALREADY_IN_USE`
 **Problem:**
@@ -310,7 +310,7 @@ Make sure the device and user are allowed to make in-app purchases. Try the foll
 - If you're running on an emulator, make sure it has Google Play installed.
 _______________________________________________________________________________
 
-# Restoring Errors
+## Restoring Errors
 
 #### 🍎 🤖 `INVALID_RECEIPT`
 **Problem:**
@@ -354,6 +354,6 @@ Observer Mode is [not currently supported](doc:observer-mode) for Amazon.
 **Resolution:**
 Disable Observer Mode.
 
-# Next Steps
+## Next Steps
 
 * You're set up to handle errors, time to start [making purchases in sandbox :fa-arrow-right:](doc:sandbox)

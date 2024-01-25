@@ -6,7 +6,7 @@ hidden: false
 ---
 RevenueCat caches data in several places to improve performance. This includes the Dashboard’s Overview, Customer Lists, and the SDK’s CustomerInfo object.
 
-# Dashboard
+## Dashboard
 
 In the Overview, the data is usually not cached and these subscription metrics will be updated in real-time. New Customer and Active Users may be cached for 1-2 hours. For some larger customers, subscription metrics may be cached for 1-2 hours as well.
 
@@ -16,15 +16,15 @@ In each metric, you can hover over the circle icon in the bottom right corner of
 
 In Customer Lists, the data will always cache and refresh every two hours.
 
-# SDK
+## SDK
 
 The SDK will cache in several places.  
 
-## App User Id
+### App User Id
 
 A user’s app user id is cached on the device, so this value will persist between app launches.
 
-## CustomerInfo
+### CustomerInfo
 
 The latest `CustomerInfo` is automatically fetched and cached when the _Purchases SDK_ is configured and throughout the lifecycle of your app, so in most cases the `getCustomerInfo()` method will return synchronously. It is safe to call `getCustomerInfo()`  as often as needed and is a good idea to call it any time a user accesses premium content.
 
@@ -34,19 +34,19 @@ The SDK caches this subscription information to reduce your app's reliance on th
 
 Note that calling `logOut` clears the cache.
 
-## Debug Logs
+### Debug Logs
 
 The RevenueCat SDK’s debug logs will tell you if cached data is being fetched.
 
 > [Purchases] - DEBUG: Vending customerInfo from cache
 
-## Products
+### Products
 
 Products are automatically fetched and cached when the _Purchases SDK_ is configured, so in most cases the `getOfferings()` method will return synchronously. For this reason, it's safe to call `getOfferings()` as often as needed, knowing it will read from the cache without a network call.
 
 These will be cached if nothing has changed in them since the last call to `getOfferings()`, or after 5 minutes. 
 
-# FAQ
+## FAQ
 
 ### Does data cache between app launches?
 

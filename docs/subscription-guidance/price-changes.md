@@ -7,13 +7,13 @@ hidden: false
 
 If subscription prices are changed via App Store Connect or Google Play, any active subscribers may need to opt-in to the new price. If the user does not opt-in, their subscription may be canceled by [Apple](https://help.apple.com/app-store-connect/#/devc9870599e) or [Google](https://support.google.com/googleplay/android-developer/answer/140504?hl=en).
 
-> 🚧
->
-> Price changes can take 24 hours to propagate the App Store and Google Play.
+:::warning
+Price changes can take 24 hours to propagate the App Store and Google Play.
+:::
 
-> 📘 Pro Tip ☝️
->
-> You may want to consider creating a new product instead of changing the price of an existing product for tools like [Experiments](https://www.revenuecat.com/docs/experiments-v1).
+:::info Pro Tip
+You may want to consider creating a new product instead of changing the price of an existing product for tools like [Experiments](https://www.revenuecat.com/docs/experiments-v1).
+:::
 
 ## App Store Price Changes
 

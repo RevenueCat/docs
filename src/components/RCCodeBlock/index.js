@@ -15,6 +15,21 @@ const RCCodeBlock = (props) => {
     >
       {props.tabs.map((tab) => {
         var content = tab.content;
+
+        // extract content from a region in this format:
+        // `// MARK: regionName
+        //  content
+        // `// END
+        // keep in mind, there may be multiple regions in a file, so only consider the end of the current region
+        // exclude the first and last line of the region
+        if (tab.region) {
+          var region = tab.region;
+          var start = content.indexOf(`// MARK: ${region}`);
+          var end = content.indexOf("// END", start);
+          content = content.substring(start, end);
+          content = content.split("\n").slice(1, -1).join("\n");
+        }
+
         return (
           <TabItem value={tab.title || tab.name || tab.type}>
             <CodeBlock
@@ -51,6 +66,7 @@ RCCodeBlock.propTypes = {
       content: PropTypes.string.isRequired,
       title: PropTypes.string,
       name: PropTypes.string,
+      region: PropTypes.string,
     })
   ).isRequired,
 };

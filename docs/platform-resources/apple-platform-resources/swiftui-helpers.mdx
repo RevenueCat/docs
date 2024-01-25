@@ -5,11 +5,11 @@ excerpt: Implementing the Purchases SDK in SwiftUI
 hidden: false
 ---
 
-# Debugging
+## Debugging
 
 The Purchases SDK includes a debug overlay that allows developers to see various configuration details while running an app. You can read more about the debug overlay in our [Debugging](https://www.revenuecat.com/docs/debugging#debug-ui) guide.
 
-# SwiftUI Previews
+## SwiftUI Previews
 
 SwiftUI Previews allow developers to preview their views directly in Xcode without building and running your app. The Purchases SDK includes convenience types for displaying mock products and offerings to avoid having to build and run your app to test your paywall.
 
@@ -23,11 +23,11 @@ import content1 from "!!raw-loader!@site/code_blocks/platform-resources/swiftui-
     }
 ]}/>
 
-# SDK Initialization
+## SDK Initialization
 
 We recommend following our [guide](https://www.revenuecat.com/docs/configuring-sdk) for more information on configuring the Purchases SDK. However, we detail multiple methods for configuring the SDK in SwiftUI below.
 
-## Option 1: App Init
+### Option 1: App Init
 
 For basic initialization without delegate methods, you can implement the App `init` method:
 
@@ -40,11 +40,11 @@ import content2 from "!!raw-loader!@site/code_blocks/platform-resources/swiftui-
     }
 ]}/>
 
-## Option 2: App Delegate
+### Option 2: App Delegate
 
 Another method of initialization is to use the `@UIApplicationDelegateAdaptor` property wrapper to configure the Purchases SDK. The `@UIApplicationDelegateAdaptor` gives the option of using UIApplicationDelegate methods that are traditionally used in UIKit applications.
 
-### Creating a Delegate
+#### Creating a Delegate
 
 Begin by creating a delegate class and initializing the *Purchases* SDK like the following:
 
@@ -57,7 +57,7 @@ import content3 from "!!raw-loader!@site/code_blocks/platform-resources/swiftui-
     }
 ]}/>
 
-### Attaching the Delegate
+#### Attaching the Delegate
 
 As previously mentioned, the new `@UIApplicationDelegateAdaptor` property attaches the delegate to the new SwiftUI App struct. Add the property wrapper like the following:
 

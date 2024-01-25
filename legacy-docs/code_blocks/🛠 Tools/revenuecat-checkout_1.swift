@@ -1,1 +1,0 @@
-Purchases.shared.invalidateCustomerInfoCache()

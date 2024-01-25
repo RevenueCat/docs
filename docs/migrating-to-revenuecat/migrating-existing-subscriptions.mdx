@@ -5,7 +5,7 @@ excerpt: How to migrate subscriptions from your existing setup
 hidden: false
 ---
 
-# Migrating Subscriptions
+## Migrating Subscriptions
 
 :::success Request a migration consultation
 Work with a member of the RevenueCat team to [start building your custom migration plan.](https://www.revenuecat.com/request-a-migration-plan?utm_source=migrationdocs&utm_medium=web&utm_campaign=formfill)
@@ -18,7 +18,7 @@ If you're building in-app purchases into your app for the first time, a migratio
 
 If you have any questions about migrating your app to RevenueCat, or have a high volume of historical receipts in import, feel free to [contact sales](https://www.revenuecat.com/demo/) to see how we can help with the process.
 
-## Determining Your Migration Path
+### Determining Your Migration Path
 
 Migrating existing subscribers to RevenueCat can be done server-side, or client-side. A server side migration is preferable whenever possible because it ensures that all subscriptions will be recorded in RevenueCat regardless of any in-app activity.
 
@@ -30,7 +30,7 @@ Migrating existing subscribers to RevenueCat can be done server-side, or client-
 
 Alternatively, if you're looking to access to charting, webhooks, and integrations in RevenueCat while retaining your existing code for fetching products, making purchases, and checking subscription status, check our guide on [Observer Mode](doc:observer-mode) for details on setting this up.
 
-## Server Side Migration
+### Server Side Migration
 
 A server side migration involves sending all of the Apple receipts and/or purchase tokens to RevenueCat via the `POST /receipts` endpoint. From there, RevenueCat will validate the receipt and keep the subscription up-to-date.
 
@@ -40,7 +40,7 @@ After these two steps, if any of your customers open the version of the app cont
 
 **Check out our guide on [Importing Receipts](doc:receipt-imports) for more details on server-side migrations.**
 
-## Client Side Migration
+### Client Side Migration
 
 A client side migration is a technique to sync existing purchases with RevenueCat when the app is first launched.
 

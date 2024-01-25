@@ -15,7 +15,7 @@ RevenueCat does not require server notifications from Stripe, however doing so c
 
 ![Required and optional notifications from Stripe](https://files.readme.io/98a0f1c-stripe_notifications.png)
 
-# Setup Instructions
+## Setup Instructions
 
 1. Navigate to your **app settings** in the RevenueCat dashboard by selecting your app from **Project Settings > Apps**.
 2. Expand the **Webhook Configuration** section and copy the endpoint provided under **Stripe Webhook Endpoint**.
@@ -47,7 +47,7 @@ It's important to only select these events.
 
 ![](https://files.readme.io/44eb66c-Screen_Shot_2021-12-01_at_5.57.29_PM.png "Screen Shot 2021-12-01 at 5.57.29 PM.png")
 
-# Stripe Webhook 400 Errors
+## Stripe Webhook 400 Errors
 
 Sometimes you may experience 400 errors when connecting to Stripe. Generally these happen when there is something wrong with your configuration or your Stripe account is not properly connected to RevenueCat.
 

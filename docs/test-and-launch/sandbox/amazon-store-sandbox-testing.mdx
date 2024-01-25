@@ -3,8 +3,9 @@ title: Amazon Appstore
 slug: amazon-store-sandbox-testing
 hidden: false
 ---
-> **Success**
-> This section assumes you've followed our [Quickstart](doc:getting-started-1) section of our Getting Started guide to install and configure our SDK.
+:::info 
+This section assumes you've followed our [Quickstart](doc:getting-started-1) section of our Getting Started guide to install and configure our SDK.
+:::
 
 There are two options for sandbox testing: an Android device with the Amazon Appstore installed (which can be downloaded [here](https://www.amazon.com/gp/mas/get/amazonapp)), or on an Amazon device running Fire OS, like a Fire TV.
 
@@ -13,8 +14,9 @@ There are three different testing environments in Amazon ([official docs](https:
 - Live App Testing. This is similar to a beta or TestFlight release. You create an APK, upload it to the Amazon Appstore, add testers and start the test.
 - Production.
 
-> **Warning**
-> While Offerings will load in the App Tester environment, **RevenueCat will only validate purchases in the Live App Testing environment**.
+:::warning
+While Offerings will load in the App Tester environment, **RevenueCat will only validate purchases in the Live App Testing environment**.
+:::
 
 We recommend starting by configuring the App Tester with the same products configured in the RevenueCat dashboard, which will let you get offerings and test how your paywall screen looks. 
 
@@ -31,6 +33,7 @@ Submit your app to the [App Testing Service](https://developer.amazon.com/apps-a
 ![App Testing](https://files.readme.io/7ab44b1-f701287-app_testing.png)
 
 Submit the APK for your app to LAT.
+
 ![Drop APK](https://files.readme.io/b4dbe03-93bdcaa-drop_APK.png)
 
 Have your group of testers test your app via LAT:

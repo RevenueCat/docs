@@ -1,1 +1,0 @@
-Purchases.setLogLevel(LOG_LEVEL.DEBUG);

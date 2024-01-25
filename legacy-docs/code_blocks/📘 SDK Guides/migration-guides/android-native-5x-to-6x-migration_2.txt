@@ -1,1 +1,0 @@
-npm install --save react-native-purchases@6.0.0

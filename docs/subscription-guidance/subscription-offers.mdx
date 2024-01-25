@@ -17,9 +17,9 @@ If the introductory offer isn't applied to the purchase in the system payment sh
 - The purchasing user is eligible, e.g. the underlying store account hasn't already purchased that product
 - You've waited up to 24 hours for product propagation after adding the offer
 
-> 📘 Introductory Offers applied automatically
-> 
-> Apple App Store and Amazon Appstore apply introductory offers to purchases automatically; this is outside of the control of RevenueCat's Purchases SDK.
+:::info Introductory Offers applied automatically
+Apple App Store and Amazon Appstore apply introductory offers to purchases automatically; this is outside of the control of RevenueCat's Purchases SDK.
+:::
 
 For iOS, new subscribers are always eligible. Lapsed subscribers who renew are eligible if they haven't previously used an introductory offer for the given product or any product within the same subscription group. Existing subscribers are not eligible for an introductory offer for any product within the same subscription group. For example, customers are not eligible if they are upgrading, downgrading, or crossgrading their subscription from another product, regardless of whether they consumed an introductory offer in the past.
 
@@ -28,7 +28,6 @@ For iOS, new subscribers are always eligible. Lapsed subscribers who renew are e
 The Purchases SDK allows for easy checking of eligibility for introductory offers on iOS, so that you as the developer can display the proper subscription terms to your customers.
 
 RevenueCat uses a best-effort approach to checking eligibility based on previous purchases by the customer. The native store payment sheet will ultimately display the correct eligibility before the customer subscribes.
-
 
 import swift1 from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers_1.swift";
 
@@ -40,9 +39,9 @@ import swift1 from "!!raw-loader!@site/code_blocks/subscription-guidance/subscri
     }
 ]}/>
 
-> 🚧 Only supported on iOS
-> 
-> Checking introductory eligibility is only supported on iOS. Using the `checkTrialOrIntroductoryEligibility` method on our cross-platform SDKs (for example, React Native or Flutter) will not return a valid eligibility on Android.
+:::info Only supported on iOS
+Checking introductory eligibility is only supported on iOS. Using the `checkTrialOrIntroductoryEligibility` method on our cross-platform SDKs (for example, React Native or Flutter) will not return a valid eligibility on Android.
+:::
 
 ### Google Play
 
@@ -59,17 +58,17 @@ The logic to determine the offer that applies to the purchase is based on the fo
 - If there is none, fall back to the base plan
 - If you have an offer on one of your products that you never want to automatically be selected by this logic (for example, because it is a discount only used for a specific customer group), you can add the tag `rc-ignore-offer` to that offer.
 
-> 🚧 Developer determined offers are considered for automatic offer application
-> 
-> If you rely on the RevenueCat SDK to automatically apply trials and introductory offers, be aware that offers with eligibility criteria of "developer determined" set up in Google Play Console will be considered when deciding which offer to apply. This means that you may inadvertently apply developer determined offers when using the automatic application. To prevent this, either refrain from using developer determined and "new customer acquisition" offers on the same base plan, apply the tag `rc-ignore-offer` to developer determined offers, or use the manual offer selection as described below.
+:::warning Developer determined offers are considered for automatic offer application
+If you rely on the RevenueCat SDK to automatically apply trials and introductory offers, be aware that offers with eligibility criteria of "developer determined" set up in Google Play Console will be considered when deciding which offer to apply. This means that you may inadvertently apply developer determined offers when using the automatic application. To prevent this, either refrain from using developer determined and "new customer acquisition" offers on the same base plan, apply the tag `rc-ignore-offer` to developer determined offers, or use the manual offer selection as described below.
+:::
 
 #### More control over offer selection
 
 If you want to have greater control over which offer gets applied to purchases, you can pass a `SubscriptionOption` to `PurchaseParams.Builder` instead. Each subscription `StoreProduct` has a property `subscriptionOptions` which is a list of eligible options for subscribing to the product, including purchasing the base plan directly or purchasing an offer.
 
-> 🚧 The `subscriptionOptions` contain only offers that the current customer is eligible for.
->
-> For example, if the customer previously had a free trial of this product which is configured as "new customer acquisition" on Google Play Console, the free trial will no longer be contained in the `subscriptionOptions`.
+:::info The `subscriptionOptions` contain only offers that the current customer is eligible for.
+For example, if the customer previously had a free trial of this product which is configured as "new customer acquisition" on Google Play Console, the free trial will no longer be contained in the `subscriptionOptions`.
+:::
 
 The `subscriptionOptions` property also has a number of convenience properties that allow finding the right offer to apply for your customer. The `defaultOption` property finds the offer with the longest free trial period or the cheapest introductory offer. In addition, the following properties are available:
 

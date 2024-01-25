@@ -1,0 +1,198 @@
+---
+title: Displaying Products
+slug: displaying-products
+excerpt: Build dynamic paywalls and control available products remotely
+hidden: false
+---
+If you've [configured Offerings](doc:entitlements) in RevenueCat, you can control which products are shown to users without requiring an app update. Building paywalls that are dynamic and can react to different product configurations gives you maximum flexibility to make remote updates.
+
+![](https://files.readme.io/edbe93c-Screen_Shot_2019-09-20_at_8.42.23_AM.png "Screen Shot 2019-09-20 at 8.42.23 AM.png")
+
+:::info
+Before products and offerings can be fetched from RevenueCat, be sure to initialize the Purchases SDK by following our [Quickstart](doc:getting-started) guide.
+:::
+
+## Fetching Offerings
+
+Offerings are fetched through the SDK based on their [configuration](doc:entitlements) in the RevenueCat dashboard.
+
+The `getOfferings` method will fetch the Offerings from RevenueCat. These are pre-fetched in most cases on app launch, so the completion block to get offerings won't need to make a network request in most cases. 
+
+import docsTesterSwift from "!!raw-loader!@site/code_blocks/_projects/iOS/DocsTester/Sources/DocsTester/DocsTester.swift";
+import objectiveCContent2 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_2.m";
+import kotlinContent3 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_3.kt";
+import javaContent4 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_4.java";
+import flutterContent5 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_5.js";
+import reactNativeContent6 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_6.js";
+import cordovaContent7 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_7.js";
+import capacitorContent8 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_get_offerings_capacitor.ts";
+import unityContent9 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_8.cs";
+
+<RCCodeBlock tabs={[
+    { type: 'swift', content: docsTesterSwift, name: 'Swift', region: 'Displaying products' },
+    { type: 'objc', content: objectiveCContent2, name: 'Objective-C' },
+    { type: 'kotlin', content: kotlinContent3 },
+    { type: 'java', content: javaContent4 },
+    { type: 'flutter', content: flutterContent5, name: 'Flutter' },
+    { type: 'rn', content: reactNativeContent6, name: 'React Native' },
+    { type: 'cordova', content: cordovaContent7, name: 'Cordova' },
+    { type: 'capacitor', content: capacitorContent8, name: 'Capacitor' },
+    { type: 'unity', content: unityContent9, name: 'Unity' },
+]} />
+
+
+:::info Offerings, products or available packages empty
+If your offerings, products, or available packages are empty, it's due to some configuration issue in App Store Connect or the Play Console. 
+
+The most common reasons for this in App Store Connect are an out-of-date 'Paid Applications Agreement' or products not at least in the 'Ready To Submit' state. For Google Play, this usually occurs when the app is not published on a closed track and a valid test user added.
+
+You can find more info about trouble shooting this issue in our [Help Center](https://support.revenuecat.com/hc/en-us/articles/360041793174).
+:::
+
+You must choose one Offering that is the "Default Offering" - which can easily be accessed via the `current` property of the returned offerings for a given customer.
+
+:::info What's the difference between a current Offering and a default Offering?
+The current Offering for a given customer may change based on the experiment they're enrolled in, any targeting rules they match, or the default Offering of your Project. Your Project's default Offering is the Offering that will be served as "current" when no other conditions apply for that customer.
+:::
+
+To change the default Offering of your Project, navigate to the Offerings tab for that Project in the RevenueCat dashboard, and find the Offering you'd like to make default. Then, click on the icon in the Actions column of that Offering to reveal the available options, and click **Make Default** to make the change.
+
+![Screenshot](https://files.readme.io/7508f4b-Screenshot_2023-12-05_at_10.17.25_PM.png)
+
+
+Offerings can be updated at any time, and the changes will go into effect for all users right away.
+
+### Custom Offering identifiers
+
+It's also possible to access other Offerings besides the Default Offering directly by its identifier.
+
+import objectiveCContent11 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_10.m";
+import kotlinContent12 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_11.kt";
+import javaContent13 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_12.java";
+import flutterContent14 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_13.js";
+import reactNativeContent15 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_14.js";
+import cordovaContent16 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_15.js";
+import capacitorContent17 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_get_offerings_custom_id_capacitor.ts";
+import unityContent18 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_16.cs";
+
+<RCCodeBlock tabs={[
+    { type: 'swift', content: docsTesterSwift, name: 'Swift', region: 'Custom Offering identifiers'},
+    { type: 'objc', content: objectiveCContent11, name: 'Objective-C' },
+    { type: 'kotlin', content: kotlinContent12 },
+    { type: 'java', content: javaContent13 },
+    { type: 'flutter', content: flutterContent14, name: 'Flutter' },
+    { type: 'rn', content: reactNativeContent15, name: 'React Native' },
+    { type: 'cordova', content: cordovaContent16, name: 'Cordova' },
+    { type: 'capacitor', content: capacitorContent17, name: 'Capacitor' },
+    { type: 'unity', content: unityContent18, name: 'Unity' },
+]} />
+
+
+## Displaying Packages
+
+Packages help abstract platform-specific products by grouping equivalent products across iOS, Android, and web. A package is made up of three parts: identifier, type, and underlying store product.
+
+| Name       | Description                                                                                          |
+|------------|------------------------------------------------------------------------------------------------------|
+| Identifier | The package identifier (e.g. `com.revenuecat.app.monthly`)                                           |
+| Type       | The type of the package:  \n- `UNKNOWN`  \n- `CUSTOM`  \n- `LIFETIME`  \n- `ANNUAL`  \n- `SIX_MONTH`  \n- `THREE_MONTH`  \n- `TWO_MONTH`  \n- `MONTHLY`  \n- `WEEKLY` |
+| Product    | The underlying product that is mapped to this package which includes details about the price and duration. |
+
+
+Packages can be access in a few different ways:
+
+1. via the `.availablePackages` property on an Offering.
+2. via the duration convenience property on an Offering
+3. via the package identifier directly
+
+import objectiveCContent25 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_18.m";
+import kotlinContent26 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_19.kt";
+import flutterContent27 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_20.js";
+import reactNativeContent28 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_21.js";
+import capacitorCordovaContent29 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_22.js";
+import unityContent30 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_23.cs";
+
+<RCCodeBlock tabs={[
+    { type: 'swift', content: docsTesterSwift, name: 'Swift', region: 'Displaying packages' },
+    { type: 'objc', content: objectiveCContent25 },
+    { type: 'kotlin', content: kotlinContent26 },
+    { type: 'flutter', content: flutterContent27, name: 'Flutter' },
+    { type: 'rn', content: reactNativeContent28, name: 'React Native' },
+    { type: 'cordova', content: capacitorCordovaContent29, name: 'Capacitor/Cordova' },
+    { type: 'unity', content: unityContent30, name: 'Unity' },
+]} />
+
+
+#### Getting the Product from the Package
+
+Each Package includes an underlying product that includes more information about the price, duration, and other metadata. You can access the product via the `storeProduct` property:
+
+import objectiveCContent33 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_25.m";
+import kotlinContent34 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_26.kt";
+import javaContent35 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_27.java";
+import flutterContent36 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_28.js";
+import reactNativeContent37 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_29.js";
+import cordovaContent38 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_30.js";
+import capacitorContent39 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_get_offerings_product_capacitor.ts";
+import unityContent40 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_31.cs";
+
+<RCCodeBlock tabs={[
+    { type: 'swift', content: docsTesterSwift, name: 'Swift', region: "Getting the Product" },
+    { type: 'objc', content: objectiveCContent33, name: 'Objective-C' },
+    { type: 'kotlin', content: kotlinContent34, name: 'Kotlin' },
+    { type: 'java', content: javaContent35, name: 'Java' },
+    { type: 'flutter', content: flutterContent36, name: 'Flutter' },
+    { type: 'rn', content: reactNativeContent37, name: 'React Native' },
+    { type: 'cordova', content: cordovaContent38, name: 'Cordova' },
+    { type: 'capacitor', content: capacitorContent39, name: 'Capacitor' },
+    { type: 'unity', content: unityContent40, name: 'Unity' },
+]} />
+
+
+
+## Choosing which Offering to display
+
+In practice, you may not want to display the default current Offering to every user and instead have a specific cohort that see a different Offering.
+
+For example, displaying a higher priced Offering to users that came from [paid acquisition](doc:attribution) to help recover ad costs, or a specific Offering designed to show [iOS Subscription Offers](doc:ios-subscription-offers) when a user has [cancelled their subscription](doc:purchaserinfo#section-get-entitlement-information). 
+
+This can be accomplished with custom Offering identifiers for each of these "cohorts".
+
+import objectiveCContent42 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_33.m";
+import kotlinContent43 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_34.kt";
+import javaContent44 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_35.java";
+import flutterContent45 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_36.js";
+import reactNativeContent46 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_37.js";
+import cordovaContent47 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_38.js";
+import capacitorContent48 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_38.js";
+import unityContent49 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_39.cs";
+
+<RCCodeBlock tabs={[
+    { type: 'swift', content: docsTesterSwift, name: 'Swift', region: 'Choosing which Offering to display' },
+    { type: 'objc', content: objectiveCContent42, name: 'Objective-C' },
+    { type: 'kotlin', content: kotlinContent43, name: 'Kotlin' },
+    { type: 'java', content: javaContent44, name: 'Java' },
+    { type: 'flutter', content: flutterContent45, name: 'Flutter' },
+    { type: 'rn', content: reactNativeContent46, name: 'React Native' },
+    { type: 'cordova', content: cordovaContent47, name: 'Cordova' },
+    { type: 'capacitor', content: capacitorContent48, name: 'Capacitor' },
+    { type: 'unity', content: unityContent49, name: 'Unity' },
+]} />
+
+:::info
+As of now, cohort logic needs to be managed outside of RevenueCat.
+:::
+
+## Best Practices
+
+| Do                                                                         | Don't                                                         |
+| :------------------------------------------------------------------------- | :------------------------------------------------------------ |
+| ✅ Make paywalls dynamic by minimizing or eliminating any hardcoded strings | ❌ Make static paywalls hardcoded with specific product IDs    |
+| ✅ Use default package types                                                | ❌ Use custom package identifiers in place of a default option |
+| ✅ Allow for any number of product choices                                  | ❌ Support only a fixed number of products                     |
+| ✅ Support for different free trial durations, or no free trial             | ❌ Hardcode free trial text                                    |
+
+## Next Steps
+
+- Now that you've shown the correct products to users, time to [make a purchase ](doc:making-purchases)
+- Check out our [sample apps ](doc:sample-apps) for examples of how to display products.
