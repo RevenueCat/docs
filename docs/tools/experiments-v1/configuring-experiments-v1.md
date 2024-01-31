@@ -74,9 +74,9 @@ Before an experiment has been started, all aspects of enrollment criteria can be
 **Can I restart an experiment after it's been stopped?**
 
 After you choose to stop an experiment, new customers will no longer be enrolled in it, and it cannot be restarted. If you want to continue a test, create a new experiment and choose the same Offerings as the stopped experiment.
-(NOTE: Results for stopped experiments will continue to refresh for 28 days after the experiment has ended)
+(NOTE: Results for stopped experiments will continue to refresh for 400 days after the experiment has ended)
 
 **What happens to customers that were enrolled in an experiment after it's been stopped?**
 
-New customers will no longer be enrolled in an experiment after it's been stopped, and customers who were already enrolled in the experiment will begin receiving the default Offering if they reach a paywall again.
-Since we continually refresh results for 28 days after an experiment has been ended, you may see conversions from these customers in your results, since they were enrolled as part of the test while it was running.
+New customers will no longer be enrolled in an experiment after it's been stopped, and customers who were already enrolled in the experiment will begin receiving the Default Offering if they reach a paywall again.
+Since we continually refresh results for 28 days after an experiment has been ended, you may see renewals from these customers in your results, since they were enrolled as part of the test while it was running; but new subscriptions started by these customers after the experiment ended and one-time purchases made after the experiment ended will not be included in the results.

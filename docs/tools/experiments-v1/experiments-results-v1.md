@@ -31,7 +31,7 @@ If you're not seeing any data or are seeing unexpected results, try:
 - **Ensuring each product that is a part of the experiment has been purchased at least once**
 - **Waiting another 24 hours until the model can process more data**
 
-When you stop an experiment, the results will continue to be updated for a full year to capture any additional subscription events, and allow you to see how your Realized LTV matures for each variant over time.
+When you stop an experiment, the results will continue to be updated for the next 400 days to capture any additional subscription events, and allow you to see how your Realized LTV matures for each variant over time.
 :::
 
 ## Customer journey tables
@@ -143,6 +143,10 @@ There are many potential reasons for this, but the two most common occur when (1
 **When I end an Experiment, what Offering will be served to the customers who were enrolled in that Experiment?**
 
 When an Experiment is ended, all customers previously enrolled in it will be served the Default Offering the next time they reach a paywall in your app.
+
+**How can I review the individual customers who were enrolled in my experiment?**
+
+When using the Get or Create Subscriber endpoint you'll be able to see if an individual subscriber was enrolled in an experiment, and which variant they were assigned to, and can then pass that fact to other destinations like an analytics provider like Amplitude & Mixpanel, or your own internal database.
 
 **How can I review the individual transactions that have occurred in my experiment?**
 

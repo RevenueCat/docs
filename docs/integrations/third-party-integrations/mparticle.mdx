@@ -5,7 +5,7 @@ excerpt: Integrate in-app subscription events from RevenueCat with mParticle
 hidden: false
 ---
 
-:::success
+:::success Pro Integration
 The mParticle integration is available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
 :::
 
@@ -22,7 +22,7 @@ With accurate and up-to-date subscription data in mParticle, you'll be set to tu
 
 | Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Subscriber Attributes | Sends Transfer Events | Optional Event Types |
 | :--------------: | :-----------------------: | :------------------: | :----------------------------: | :-------------------: | :------------------: |
-|        ✅        |            ✅             |          ✅          |               ✅               |          ❌           |          ❌          |
+|        ✅        |            ✅             |          ✅          |               ✅               |          ✅           |          ❌          |
 
 ## Events
 
@@ -43,6 +43,8 @@ The mParticle integration tracks the following events:
 | Billing Issues           | billing_issue               | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR.                                                                                                                                                                                                                      | ✅         | ✅          | ✅      | ✅      | ❌     |
 | Product Change           | product_change              | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](https://www.revenuecat.com/docs/managing-subscriptions) for more details on updates, downgrades, and crossgrades.                                                                                                                                               | ✅         | ✅          | ❌      | ✅      | ❌     |
 | Refund                   | refund                      | When a user canceled their subscription via customer support.                                                                                                                                                                                                                                                                                                                                                           | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Transfer                 | rc_transfer_event           | A transfer of transactions and entitlements was initiated between one App User ID(s) to another. \n \nPlease note: Two events will be sent for each transfer, one for the original user and another for the destination user.                                                                                                                                                                                          | ✅         | ✅          | ✅      | ✅      | ❌     |
+
 
 For events that have revenue, such as trial conversions and renewals, RevenueCat will automatically record this amount along with the event in mParticle.
 

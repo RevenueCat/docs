@@ -8,12 +8,12 @@ RevenueCat's Paywalls allow you to remotely configure your entire paywall view w
 ## Paywalls are supported in the following SDK versions:
 | RevenueCat SDK           | Version required for Paywalls | 
 | :----------------------- | :--------------------------------------------- |
-| purchases-ios            | 4.26.0 and up                                  |
-| purchases-android        | 7.1.0 and up                                   |
-| react-native-purchases   | 7.4.0-beta.3                                   | 
-| purchases-flutter        | 6.3.0-beta.2                                   | 
+| purchases-ios             | 4.26.0 and up                 |
+| purchases-android         | 7.1.0 and up                  |
+| react-native-purchases-ui | 7.15.0 and up                 | 
+| purchases-flutter         | 6.15.0 and up                 |
 
-:::warning
+:::info
 Within the SDKs, Paywalls are available on the following platforms:
 - iOS 15.0+
 - visionOS 1.0+
@@ -88,13 +88,27 @@ It is safe to release app updates with it. We guarantee that paywalls will conti
 They are stable, but migration steps may be required in the future. We'll do our best to minimize any changes you have to make.
 :::
 
-### React Native (Beta) Installation
+### React Native Installation
 
-See `7.4.0-beta.3` [release notes](https://github.com/RevenueCat/react-native-purchases/releases/tag/7.4.0-beta.3)
+- Update your `package.json` to include `react-native-purchases-ui`:
+```json
+{
+  "dependencies": {
+    "react-native-purchases": "7.15.0",
+    "react-native-purchases-ui": "7.15.0"
+  }
+}
+```
 
-### Flutter (Beta) Installation
+### Flutter Installation
 
-See `6.3.0-beta.2` [release notes](https://github.com/RevenueCat/purchases-flutter/releases/tag/6.3.0-beta.2)
+- Add `purchases-ui-flutter` in your `pubspec.yaml`:
+```yaml
+dependencies:
+  purchases_flutter: 6.15.0
+  purchases_ui_flutter: 6.15.0
+```
+- For Android, you need to change your `MainActivity` to subclass `FlutterFragmentActivity` instead of `FlutterActivity`.
 
 ### Overview
 

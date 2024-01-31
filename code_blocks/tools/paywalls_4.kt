@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity(), PaywallResultHandler {
         paywallActivityLauncher = PaywallActivityLauncher(this, this)
     }
 
-    private fun performMagic() {
+    private fun launchPaywallActivity() {
         paywallActivityLauncher.launchIfNeeded(requiredEntitlementIdentifier = Constants.ENTITLEMENT_ID)
     }
 

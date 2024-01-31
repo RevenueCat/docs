@@ -4,7 +4,7 @@ slug: targeting
 hidden: false
 ---
 
-Targeting allows you to create rules for serving distinct audiences their own Offering. Instead of having a single Default Offering that all customers receive, you can instead create a cascading sequence of rules to deliver different Offerings to each audience that you define.
+Targeting allows you to create rules for serving distinct audiences their own Offering. Instead of having a single Default Offering that all customers receive, you can instead create a cascading sequence of rules to deliver different Offerings to each audience that you define, or even to schedule new Offerings to be served in the future.
 
 This allows you to create paywall experiences that are tailored to each of your audiences so you can make an effective pitch for your product and maximize lifetime value.
 
@@ -56,7 +56,7 @@ When determining which (if any) Targeting Rule a customer matches, we'll assess 
 
 First, navigate to "Targeting" in the "Monetization tools" section of your Project Settings. Then click on "Create a New Rule" to begin.
 
-![Create a new rule](https://files.readme.io/8fa325b-Create_a_new_rule_w_highlight.png)
+![Create a new rule](https://files.readme.io/d499c34-Empty_State.png)
 
 Then, create your rule by:
 
@@ -65,18 +65,34 @@ Then, create your rule by:
 3. Selecting an Offering to display when those conditions are met
 4. Selecting your desired State for the rule
 
-![Ready to save](https://files.readme.io/bce5dfd-Ready_to_save_w_highlight.png)
+![Ready to save](https://files.readme.io/5fe8d9a-Create_a_New_Rule.png)
 
 Once you've entered all of the required fields for your rule, click "Save" and it will be added to the list of rules in State you've selected.
 
+## Scheduling Targeting Rules
+
+When creating a new Rule or editing an Inactive Rule, you can choose to schedule a Start Time and End Time for that Rule to become Live in the future. This is especially useful for running promotions, holiday offers, or other sales that have a time-limited component to them.
+
+![Screenshot](https://files.readme.io/4b11583-Screenshot_2023-12-22_at_10.30.34_AM.png)
+
+To Schedule a Rule, just:
+
+1. Select `Scheduled` as the State for the Rule
+2. And enter a `Start time` and `End time` for the Rule to be made Live
+3. Click `Save` to save your changes
+
+:::warning Scheduled times are in UTC
+Double check that you've entered your desired time in UTC to make sure it's scheduled correctly
+:::
+
 ## Ordering Targeting Rules
 
-### How Live rules are added to the list
+### How Live & Scheduled rules are added to the list
 
-When a rule is newly set Live (either when it's created or when an Inactive rule is set Live), it'll be ordered at the bottom of that list so that if its targeted audience has any overlap with other Live rules, the existing Live rules will "outrank" the new rule when determining what a customer receives.
+When a rule is newly set Live (either when it's created or when an Inactive rule is set Live), or newly Scheduled, it'll be ordered at the bottom of that list so that if its targeted audience has any overlap with other Live rules or Scheduled rules, the existing rules will "outrank" the new rule when determining what a customer receives.
 
 :::info
-Live rules can be reordered at any time.
+Live & Scheduled rules can be reordered at any time.
 :::
 
 ### Ordering Live rules
@@ -85,17 +101,19 @@ Live rules can be reordered at any time.
 2. Drag the rules you wish to reorder to their correct location in the list
 3. Click "Save order" when you've set them in the order you'd like them to be evaluated in
 
-![Ordering](https://files.readme.io/f18a508-Ordering.png)
+![Ordering](https://files.readme.io/403f610-Ordering_Rules.png)
 
 :::info
 Ordering only applies to cases where 1 customer may match multiple Live rules. If your Live rules are mutually exclusive, their order will have no impact on how customers are assigned to them.
+
+Scheduled rules have no impact on what Offerings are served until they become Live. Ordering them together with your Live rules ensures that they are in the correct order once they become Live.
 :::
 
 ## Editing, deleting, and more
 
 Rules can also be edited, deleted, or made inactive at any time if you need to modify how Offerings are being served to your customers.
 
-![Rule actions](https://files.readme.io/41120c1-Rule_actions.png)
+![Rule actions](https://files.readme.io/292656b-Editing_Rules.png)
 
 In addition, if you're looking to add a new rule that's similar to an existing one, you can start by duplicating that rule and then making the desired modifications to the rule conditions.
 
@@ -140,3 +158,7 @@ The RC SDK Version of a specified SDK flavor of the App Versions that your custo
 **How can I testing Targeting in my app?**
 
 The easiest way to test Targeting is to create a Targeting Rule for an app version that has not yet been released (e.g. only available in TestFlight), and serve a unique Offering to that Targeting Rule. Then, check to confirm whether your app in production displays a different Offering than your app version in TestFlight does.
+
+**Can I add other custom fields to target my customers by?**
+
+Not yet, but this is something we're exploring. If you have a specific use case in mind that's not yet covered, [let us know about it](https://form.typeform.com/to/s8RrwpFs).
