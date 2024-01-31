@@ -7,8 +7,6 @@ categorySlug: welcome-1
 order: 0
 ---
 
-## Overview
-
 RevenueCat is a powerful and reliable in-app purchase server that makes it easy to build, analyze, and grow your subscriber base whether you're just starting out or already have millions of customers.
 
 :::success
