@@ -1,0 +1,123 @@
+---
+title: CleverTap
+slug: clevertap
+excerpt: Integrate in-app subscription events from RevenueCat with CleverTap
+hidden: false
+---
+
+:::success
+The CleverTap integration is available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
+:::
+
+CleverTap can be a useful integration tool for seeing all events and revenue that occur for your app even if it’s not active for a period of time. You can use CleverTap’s analytics and marketing tools to reach your goal of increasing user engagement and retention.
+
+With our CleverTap integration, you can:
+
+- Create a campaign that triggers when a user completes a certain event; ex. Send a notification with a discount code when they cancel their subscription.
+- Gather metrics on user purchases by tracking events over time.
+
+With accurate and up-to-date subscription data in CleverTap, you'll be set to turbo-charge your user engagement ⚡️
+
+### Integration at a Glance
+
+| Includes Revenue | Supports Negative Revenue |   Sends Sandbox Events   | Includes Subscriber Attributes | Sends Transfer Events |                      Optional Event Types                       |
+| :--------------: | :-----------------------: | :----------------------: | :----------------------------: | :-------------------: | :-------------------------------------------------------------: |
+|        ✅        |            ❌             | Requires ID and Passcode |               ✅               |          ❌           | `expiration_event` `billing_issue_event` `product_change_event` |
+
+## Events
+
+The CleverTap integration tracks the following events:
+
+| Event                    | Default Event Name           | Description                                                                                                                                                                                                                                                                                                                                                                                                    | App Store | Play Store | Amazon | Stripe | Promo |
+|--------------------------|------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|------------|--------|--------|-------|
+| Initial Purchase         | rc_initial_purchase_event    | A new subscription has been purchased.                                                                                                                                                                                                                                                                                                                                                                         | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Trial Started            | rc_trial_started_event       | The start of an auto-renewing subscription product free trial.                                                                                                                                                                                                                                                                                                                                                 | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Trial Converted          | rc_trial_converted_event     | When an auto-renewing subscription product converts from a free trial to normal paid period.                                                                                                                                                                                                                                                                                                                   | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Trial Cancelled          | rc_trial_cancelled_event     | When a user turns off renewals for an auto-renewing subscription product during a free trial period.                                                                                                                                                                                                                                                                                                           | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Renewal                  | rc_renewal_event             | An existing subscription has been renewed or a lapsed user has resubscribed.                                                                                                                                                                                                                                                                                                                                  | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Cancellation             | rc_cancellation_event        | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](https://www.revenuecat.com/docs/event-types-and-fields#cancellation-and-expiration-reasons) for more details.                                                                                                                                                                                                            | ✅         | ✅          | ✅      | ✅      | ✅     |
+| Uncancellation           | rc_uncancellation_event      | A non-expired cancelled subscription has been re-enabled.                                                                                                                                                                                                                                                                                                                                                      | ✅         | ✅          | ✅      | ❌      | ❌     |
+| Non Subscription Purchase| rc_non_subscription_purchase_event | A customer has made a purchase that will not auto-renew.                                                                                                                                                                                                                                                                                                                                                       | ✅         | ✅          | ✅      | ✅      | ✅     |
+| Expiration               | rc_expiration_event          | A subscription has expired and access should be removed. If you have [Platform Server Notifications](https://www.revenuecat.com/docs/server-notifications) configured, this event will occur as soon as we are notified (within seconds to minutes) of the expiration. If you do not have notifications configured, delays may be approximately 1 hour.                                                        | ✅         | ✅          | ✅      | ✅      | ✅     |
+| Billing Issues           | rc_billing_issue_event       | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR.                                                                                                                                                                                                             | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Product Change           | rc_product_change_event      | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](https://www.revenuecat.com/docs/managing-subscriptions) for more details on updates, downgrades, and crossgrades.                                                                                                                                    | ✅         | ✅          | ❌      | ✅      | ❌     |
+
+For events that have revenue, such as trial conversions and renewals, RevenueCat will automatically record this amount along with the event in CleverTap.
+
+## Setup
+
+### 1. Send CleverTap Identity to RevenueCat
+
+The CleverTap integration can send the CleverTap ID to CleverTap as the user identity. To do that, you will need to update the following [Subscriber Attribute](doc:subscriber-attributes) for the user.
+
+| Key            | Description                                                                                                              | Required |
+| :------------- | :----------------------------------------------------------------------------------------------------------------------- | :------- |
+| `$clevertapId` | The [CleverTap ID](https://developer.clevertap.com/docs/concepts-user-profiles#section-identifying-a-user) for the user. | ✅       |
+
+This property can be set manually, like any other [Subscriber Attribute](doc:subscriber-attributes). If you do not set this property, the [App User ID](doc:user-ids) will be sent as the user identity to CleverTap.
+
+import swiftContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_1.swift";
+import objectiveCContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_2.m";
+import kotlinContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_3.kt";
+import javaContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_4.java";
+
+<RCCodeBlock tabs={[
+    { type: 'swift', content: swiftContent },
+    { type: 'objc', content: objectiveCContent, name: 'Objective-C' },
+    { type: 'kotlin', content: kotlinContent },
+    { type: 'java', content: javaContent, name: 'Java' }
+]} />
+
+### 2. Send RevenueCat Events to CleverTap
+
+After you've set up the _Purchases SDK_ and CleverTap SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
+
+1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+
+![](https://files.readme.io/61990eb-app.revenuecat.com_projects_85ff18c7_collaborators_1.png)
+
+2. Choose **CleverTap** from the Integrations menu
+3. Add your [CleverTap Account ID and Passcode](https://developer.clevertap.com/docs/api-quickstart-guide).
+4. If you want to test in sandbox, also add your Sandbox Account ID and Passcode from your testing account.
+5. Enter the event names that RevenueCat will send or choose the default event names
+6. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
+
+![CleverTap configuration page](https://files.readme.io/444dd1c-clevertap_screesnshot.png)
+
+:::info
+By default, RevenueCat sends data through CleverTap's EU data center. For CleverTap customers who have a regional data center configured, you can change your region in the dropdown selector under 'CleverTap Region'.
+:::
+
+## Sample Events
+
+Below are sample JSONs that are delivered to CleverTap for most event types.
+
+import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_5.json";
+import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_6.json";
+import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_7.json";
+import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_8.json";
+import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_9.json";
+import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_10.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: initialPurchaseContent, name: 'Initial Purchase' },
+    { type: 'json', content: trialStartedContent, name: 'Trial Started' },
+    { type: 'json', content: trialConvertedContent, name: 'Trial Converted' },
+    { type: 'json', content: trialCancelledContent, name: 'Trial Cancelled' },
+    { type: 'json', content: renewalContent, name: 'Renewal' },
+    { type: 'json', content: cancellationContent, name: 'Cancellation' }
+]} />
+
+import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_11.json";
+import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_12.json";
+import expirationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_13.json";
+import billingIssueContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_14.json";
+import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_15.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: uncancellationContent, name: 'Uncancellation' },
+    { type: 'json', content: nonSubscriptionPurchaseContent, name: 'Non Subscription Purchase' },
+    { type: 'json', content: expirationContent, name: 'Expiration' },
+    { type: 'json', content: billingIssueContent, name: 'Billing Issue' },
+    { type: 'json', content: productChangeContent, name: 'Product Change' }
+]} />

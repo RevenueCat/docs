@@ -1,0 +1,156 @@
+---
+title: Braze
+slug: braze
+excerpt: Integrate in-app subscription events from RevenueCat with Braze
+hidden: false
+---
+
+:::success
+The Braze integration is available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
+:::
+
+Braze can be a helpful integration tool in understanding what stage a customer is in and reacting accordingly. Using Braze can help you to create content that understands the context of your customers and their actions.
+
+With our Braze integration, you can:
+
+- Send an onboarding campaign to a user towards the end of their free trial.
+- Allow customer support to grant a promotional subscription to a loyal user that experience issues.
+- Send campaigns to users who canceled their subscription or didn’t pursue after their free trial.
+
+With accurate and up-to-date subscription data in Braze, you'll be set to turbocharge your campaigns ⚡️
+
+### Integration at a Glance
+
+| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Subscriber Attributes | Sends Transfer Events |                                  Optional Event Types                                   |
+| :--------------: | :-----------------------: | :------------------: | :----------------------------: | :-------------------: | :-------------------------------------------------------------------------------------: |
+|        ✅        |            ✅             |   Requires API key   |    Reserved Attributes Only    |          ❌           | `uncancellation_event` `expiration_event` `billing_issue_event` `product_change_event` |
+
+## Events
+
+The Braze integration tracks the following events:
+
+| Event                    | Default Event Name               | Description                                                                                                                                                                                                                                                                                                                                                                                             | App Store | Play Store | Amazon | Stripe | Promo |
+|--------------------------|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|------------|--------|--------|-------|
+| Initial Purchase         | rc_initial_purchase_event        | A new subscription has been purchased.                                                                                                                                                                                                                                                                                                                                                                  | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Trial Started            | rc_trial_started_event           | The start of an auto-renewing subscription product free trial.                                                                                                                                                                                                                                                                                                                                          | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Trial Converted          | rc_trial_converted_event         | When an auto-renewing subscription product converts from a free trial to normal paid period.                                                                                                                                                                                                                                                                                                             | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Trial Cancelled          | rc_trial_cancelled_event         | When a user turns off renewals for an auto-renewing subscription product during a free trial period.                                                                                                                                                                                                                                                                                                     | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Renewal                  | rc_renewal_event                 | An existing subscription has been renewed or a lapsed user has resubscribed.                                                                                                                                                                                                                                                                                                                            | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Cancellation             | rc_cancellation_event            | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](https://www.revenuecat.com/docs/event-types-and-fields#cancellation-and-expiration-reasons) for more details.                                                                                                                                                                                                      | ✅         | ✅          | ✅      | ✅      | ✅     |
+| Uncancellation           | rc_uncancellation_event          | A non-expired cancelled subscription has been re-enabled.                                                                                                                                                                                                                                                                                                                                                | ✅         | ✅          | ✅      | ❌      | ❌     |
+| Non Subscription Purchase| rc_non_subscription_purchase_event | A customer has made a purchase that will not auto-renew.                                                                                                                                                                                                                                                                                                                                                 | ✅         | ✅          | ✅      | ✅      | ✅     |
+| Subscription Paused      | rc_subscription_paused_event     | A subscription has been paused.                                                                                                                                                                                                                                                                                                                                                                          | ❌         | ✅          | ❌      | ❌      | ❌     |
+| Expiration               | rc_expiration_event              | A subscription has expired and access should be removed. If you have [Platform Server Notifications](https://www.revenuecat.com/docs/server-notifications) configured, this event will occur as soon as we are notified (within seconds to minutes) of the expiration. If you do not have notifications configured, delays may be approximately 1 hour.                                                     | ✅         | ✅          | ✅      | ✅      | ✅     |
+| Billing Issues           | rc_billing_issue_event           | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR.                                                                                                                                                                                                      | ✅         | ✅          | ✅      | ✅      | ❌     |
+| Product Change           | rc_product_change_event          | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](https://www.revenuecat.com/docs/managing-subscriptions) for more details on updates, downgrades, and crossgrades.                                                                                                                           | ✅         | ✅          | ❌      | ✅      | ❌     |
+
+For events that have revenue, such as trial conversions and renewals, RevenueCat will automatically record this amount along with the event in Braze.
+
+RevenueCat subscriber attributes will be dispatched to Braze with the events detailed above and will populate in Braze's [custom attributes](https://www.braze.com/docs/user_guide/data_and_analytics/custom_data/custom_attributes/) for a customer as `rc_customer_attribute_*` (where `*` is replaced by the attribute name) and the value is set to that key (e.g: `rc_customer_attribute_naps_logged: "123”`). If you are setting the optional Braze User Alias Object fields in RevenueCat, these subscriber attributes will be filtered out from the collection before we dispatch the custom attributes to Braze.
+
+RevenueCat will also send your customer's active entitlement ID(s) as an array of `rc_active_entitlement_ids`.
+
+## Setup
+
+### 1. Set Braze User Identity
+
+If you're using the Braze SDK, you can set the User Id to match the RevenueCat App User Id. This way, events sent from the Braze SDK and events sent from RevenueCat can be synced to the same user.
+
+Configure the Braze SDK with the same App User Id as RevenueCat or use the `.changeUser()` method on the Braze SDK.
+
+import swiftContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_1.swift";
+import objectiveCContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_2.m";
+import javaContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_3.java";
+
+<RCCodeBlock tabs={[
+    { type: 'swift', content: swiftContent },
+    { type: 'objc', content: objectiveCContent },
+    { type: 'java', content: javaContent }
+]} />
+
+### (Optional) Send User Alias Object fields to RevenueCat
+
+If you are looking to send an alternative unique user identifier that is different than your App User ID, update users with the below data as [Subscriber Attributes](doc:subscriber-attributes).
+
+| Key                | Description                                                                                                       |
+| :----------------- | :---------------------------------------------------------------------------------------------------------------- |
+| `$brazeAliasName`  | The Braze 'alias_name' in [User Alias Object](https://www.braze.com/docs/api/objects_filters/user_alias_object/)  |
+| `$brazeAliasLabel` | The Braze 'alias_label' in [User Alias Object](https://www.braze.com/docs/api/objects_filters/user_alias_object/) |
+
+Both attributes are required for the [User Alias Object](https://www.braze.com/docs/api/objects_filters/user_alias_object/) to be sent alongside your event data. These properties can be set and removed manually, like any other [Subscriber Attribute](doc:subscriber-attributes).
+
+RevenueCat will always use the User Alias Object to identify events into Braze, if set, as opposed to the RevenueCat App User ID.
+
+:::danger Remove an client-side purchase tracking
+Make sure to remove all client-side tracking of revenue. Since RevenueCat will be sending events for all revenue actions, tracking purchases with the Braze SDK directly can lead to double counting of revenue in Braze.
+:::
+
+### 2. Send RevenueCat Events to Braze
+
+After you've set up the _Purchases SDK_ and Braze SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
+
+1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+
+![](https://files.readme.io/cf5de31-app.revenuecat.com_projects_85ff18c7_collaborators_1.png)
+
+2. Choose **Braze** from the Integrations menu
+3. Add your Braze instance and API key
+4. Enter the event names that RevenueCat will send or choose the default event names
+5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
+
+![Braze configuration page](https://files.readme.io/b4afeec-app.revenuecat.com_projects_85ff18c7_integrations_branch_8.png)
+
+## Sample events
+
+Below are sample JSONs that are delivered to Braze for most events.
+
+import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_4.json";
+import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_5.json";
+import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_6.json";
+import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_7.json";
+import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_8.json";
+import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_9.json";
+import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_15.json";
+import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_10.json";
+import subscriptionPausedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_14.json";
+import expirationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_11.json";
+import billingIssuesContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_12.json";
+import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_13.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: initialPurchaseContent, name: 'Initial Purchase' },
+    { type: 'json', content: trialStartedContent, name: 'Trial Started' },
+    { type: 'json', content: trialConvertedContent, name: 'Trial Converted' },
+    { type: 'json', content: trialCancelledContent, name: 'Trial Cancelled' },
+    { type: 'json', content: renewalContent, name: 'Renewal' },
+    { type: 'json', content: cancellationContent, name: 'Cancellation' },
+    { type: 'json', content: uncancellationContent, name: 'Uncancellation' },
+    { type: 'json', content: nonSubscriptionPurchaseContent, name: 'Non Subscription Purchase' },
+    { type: 'json', content: subscriptionPausedContent, name: 'Subscription Paused' },
+    { type: 'json', content: expirationContent, name: 'Expiration' },
+    { type: 'json', content: billingIssuesContent, name: 'Billing Issues' },
+    { type: 'json', content: productChangeContent, name: 'Product Change' }
+]} />
+
+
+## Subscription Status Attribute
+
+Whenever RevenueCat sends an event to Braze, we'll update the `rc_subscription_status` user attribute with any applicable changes, using one of the following values:
+
+| Status              | Description                                                                                                                        |
+| :------------------ | :--------------------------------------------------------------------------------------------------------------------------------- |
+| active              | The customer has an active, paid subscription which is set to renew at their next renewal date.                                    |
+| intro               | The customer has an active, paid subscription through a paid introductory offer.                                                   |
+| cancelled           | The customer has a paid subscription which is set to expire at their next renewal date.                                            |
+| grace_period        | The customer has a paid subscription which has entered a grace period after failing to renew successfully.                         |
+| trial               | The customer is in a trial period which is set to convert to paid at the end of their trial period.                                |
+| cancelled_trial     | The customer is in a trial period which is set to expire at the end of their trial period.                                         |
+| grace_period_trial  | The customer was in a trial period and has now entered a grace period after failing to renew successfully.                         |
+| expired             | The customer's subscription has expired.                                                                                           |
+| promotional         | The customer has access to an entitlement through a granted RevenueCat promotional subscription.                                   |
+| expired_promotional | The customer previously had access to an entitlement through a granted RevenueCat promotional subscription that has since expired. |
+| paused              | The customer has a paid subscription which has been paused and is set to resume at some future date.                               |
+
+For customers with multiple active subscriptions, this attribute will represent the status of only the subscription for which the most recent event occurred. Therefore, we recommend using `rc_active_entitlements` to understand whether your customers have multiple active subscriptions to be accounted for.
+
+Please note that since this attribute is set and updated when events are delivered, subscribers with events prior to our release of this attribute (during November 2023) will not have this attribute set until/unless a future event (renewal, cancellation, etc) occurs.

@@ -43,9 +43,9 @@ First, to convert a subscription payment to normalized monthly revenue, we apply
 | 6 Months              | price \* (1/6)             |
 | 1 Year                | price \* (1/12)            |
 
-> 📘
->
-> Weekly subscription durations will underestimate MRR over periods longer than 1 month (e.g. a 1 Week subscription would renew 17 times in a 4 month period, not 16), but given the high number of renewals before that extra revenue would be realized, we instead calculate what would be generated in a 1 month period.
+:::info
+Weekly subscription durations will underestimate MRR over periods longer than 1 month (e.g. a 1 Week subscription would renew 17 times in a 4 month period, not 16), but given the high number of renewals before that extra revenue would be realized, we instead calculate what would be generated in a 1 month period.
+:::
 
 For every [active paid subscription](doc:active-subscriptions-chart) in a given period, we sum their monthly recurring revenue value (e.g. `price * (1/12)` for a yearly subscription) to yield your total MRR for that period.
 
@@ -63,8 +63,8 @@ To understand how that snapshot is generated for each period, check out the [MRR
 | Is MRR calculated before commission and taxes?                                      | Yes, MRR is calculated using the gross price of your active subscriptions. Commission & taxes deducted by the stores would need to be additionally deducted from MRR to understand expected proceeds.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | Why does my monthly revenue not equal my MRR?                                       | MRR may differ from revenue due to renewals of various subscription lengths occurring within a given month. For example, you may have very few annual subscriptions renewing this month vs. last month, resulting in lower revenue captured this month simply due to those subscribers not being due to renew yet. \n \nBecause MRR is calculated in real-time based on currently active subscriptions, the number will fluctuate as new subscriptions are added and active subscribers churn out. If there are fewer new subscribers than churned subscriptions for a given period, MRR will go down and could be another reason actual revenue ends up being lower than recently calculated MRR. |
 
-> 📘
->
-> If a Stripe subscription is canceled with immediate effect, this may cause temporary unusual behavior in your MRR, since RevenueCat will estimate the length of a subscription based on the purchase & expiration dates if the product duration is unknown.
+:::info
+If a Stripe subscription is canceled with immediate effect, this may cause temporary unusual behavior in your MRR, since RevenueCat will estimate the length of a subscription based on the purchase & expiration dates if the product duration is unknown.
+:::
 
 ![](https://files.readme.io/c963014-MRR.png "MRR.png")

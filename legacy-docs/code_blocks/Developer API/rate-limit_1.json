@@ -1,7 +1,0 @@
-{
-  "type": "rate_limit_error",
-  "message": "Rate limit exceeded",
-  "retryable": true,
-  "doc_url": "https://errors.rev.cat/rate-limit-error",
-  "backoff_ms": 1000
-}

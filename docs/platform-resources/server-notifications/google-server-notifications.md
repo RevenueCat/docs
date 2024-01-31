@@ -55,14 +55,14 @@ Once that test notification is sent, you can go back to your app config on the R
 
 ## Considerations
 
-> ❗️ Errors when connecting?
->
-> If you're getting an error when connecting to Google for [Platform Server Notifications](doc:google-server-notifications) from the RevenueCat dashboard, use our [Checklist](https://www.revenuecat.com/docs/google-play-checklists#google-real-time-developer-notifications-checklist) to ensure you've hit every step, or use our [error handling guide](https://www.revenuecat.com/docs/creating-play-service-credentials#error-handling) to troubleshoot.
+:::danger Errors when connecting?
+If you're getting an error when connecting to Google for [Platform Server Notifications](doc:google-server-notifications) from the RevenueCat dashboard, use our [Checklist](https://www.revenuecat.com/docs/google-play-checklists#google-real-time-developer-notifications-checklist) to ensure you've hit every step, or use our [error handling guide](https://www.revenuecat.com/docs/creating-play-service-credentials#error-handling) to troubleshoot.
+:::
 
-> 🚧 Service Credentials take ~36hrs to go into effect
->
-> If you receive a credentials error, make sure you've waited at least 36hrs after creating your [Google Service Credentials](creating-play-service-credentials) before connecting to Google Real-Time Developer Notifications.
+:::warning Service Credentials take ~36hrs to go into effect
+If you receive a credentials error, make sure you've waited at least 36hrs after creating your [Google Service Credentials](creating-play-service-credentials) before connecting to Google Real-Time Developer Notifications.
+:::
 
-> 📘
->
-> If you need to use an existing Pub/Sub topic with RevenueCat, [contact support](https://app.revenuecat.com/settings/support).
+:::info
+If you need to use an existing Pub/Sub topic with RevenueCat, [contact support](https://app.revenuecat.com/settings/support).
+:::

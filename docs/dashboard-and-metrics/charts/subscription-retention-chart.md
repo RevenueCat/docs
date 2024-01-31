@@ -44,11 +44,11 @@ For each period, we measure:
 - Retention: The number of subscriptions in the cohort who made an additional payment in a given period that have had the opportunity to do so.
 - Available period: Use the date range selector to determine the range of subscribers to include in the chart. For each cohort included in that date range, all available retention periods will be provided.
 
-> 📘 Segmenting by other dimensions
->
-> When segmenting by subscription start date, each subscriber in that cohort will have had an equal opportunity to renew within a given period, but when segmenting by other dimensions, each subscriber may have different subscription start dates, and therefore different renewal opportunities.
->
-> As a result, the retention rate within each period cannot be directly compared to the total size of the cohort, because we will only measure the retention rate of the portion of that cohort that had the opportunity to renew in that period (e.g. for Month 3 retention, we will only include subscribers whose subscription start date is at least 3 months ago).
+:::info Segmenting by other dimensions
+When segmenting by subscription start date, each subscriber in that cohort will have had an equal opportunity to renew within a given period, but when segmenting by other dimensions, each subscriber may have different subscription start dates, and therefore different renewal opportunities.
+
+As a result, the retention rate within each period cannot be directly compared to the total size of the cohort, because we will only measure the retention rate of the portion of that cohort that had the opportunity to renew in that period (e.g. for Month 3 retention, we will only include subscribers whose subscription start date is at least 3 months ago).
+:::
 
 ### Formula
 
@@ -58,9 +58,9 @@ For each period, we measure:
 **When segmenting by other dimensions**  
 [Retained Subscriptions at x period] / [Subscriptions that have had the opportunity to renew] = Retention
 
-> 📘
->
-> Retention is always calculated relative to the size of the initial cohort that has had the opportunity to renew. Retention is _not_ calculated relative to the prior period.
+:::info
+Retention is always calculated relative to the size of the initial cohort that has had the opportunity to renew. Retention is _not_ calculated relative to the prior period.
+:::
 
 ## FAQs
 

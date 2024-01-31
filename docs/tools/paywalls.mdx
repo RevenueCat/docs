@@ -28,13 +28,13 @@ import YouTubeEmbed from '@site/src/components/YouTubeEmbed';
 
 <YouTubeEmbed videoId="xSc9ICeyJpk" title="Introducing RevenueCat Paywalls" />
 
-# How Paywalls work
+## How Paywalls work
 
-## iOS Installation
+### iOS Installation
 
-### Using SPM:
+#### Using SPM:
 
-#### If you already have `RevenueCat` in your project:
+##### If you already have `RevenueCat` in your project:
 
 1. Open your project settings and select "Package Dependencies":
 
@@ -52,7 +52,7 @@ import YouTubeEmbed from '@site/src/components/YouTubeEmbed';
 
 ![Add RevenueCatUI dependency](https://github.com/RevenueCat/purchases-ios/assets/685609/c2a3498c-b80d-405c-bdf6-75de927ea58e)
 
-#### First time integrating the RevenueCat SDK:
+##### First time integrating the RevenueCat SDK:
 
 1. Click File -> Add Packages...
 
@@ -64,7 +64,7 @@ import YouTubeEmbed from '@site/src/components/YouTubeEmbed';
 
 ![Add paywall](https://files.readme.io/9140485-Screenshot_2023-08-04_at_12.08.07.png)
 
-### Using CocoaPods:
+#### Using CocoaPods:
 
 Add the following to your `Podfile`:
 ```ruby
@@ -72,7 +72,7 @@ pod 'RevenueCat'
 pod 'RevenueCatUI'
 ```
 
-## Android Installation
+### Android Installation
 
 1. Add `RevenueCatUI`:
 ```groovy build.gradle
@@ -80,21 +80,23 @@ implementation 'com.revenuecat.purchases:purchases:7.1.0'
 implementation 'com.revenuecat.purchases:purchases-ui:7.1.0'
 ```
 
-> ❗️
-> 
-> Android paywalls is currently behind an experimental flag (`ExperimentalPreviewRevenueCatUIPurchasesAPI`).
-> It is safe to release app updates with it. We guarantee that paywalls will continue to work and any changes will always be backwards compatible.
-> They are stable, but migration steps may be required in the future. We'll do our best to minimize any changes you have to make.
+:::danger
+Android paywalls is currently behind an experimental flag (`ExperimentalPreviewRevenueCatUIPurchasesAPI`).
 
-## React Native (Beta) Installation
+It is safe to release app updates with it. We guarantee that paywalls will continue to work and any changes will always be backwards compatible.
+
+They are stable, but migration steps may be required in the future. We'll do our best to minimize any changes you have to make.
+:::
+
+### React Native (Beta) Installation
 
 See `7.4.0-beta.3` [release notes](https://github.com/RevenueCat/react-native-purchases/releases/tag/7.4.0-beta.3)
 
-## Flutter (Beta) Installation
+### Flutter (Beta) Installation
 
 See `6.3.0-beta.2` [release notes](https://github.com/RevenueCat/purchases-flutter/releases/tag/6.3.0-beta.2)
 
-## Overview
+### Overview
 
 Our paywall templates use native code to deliver smooth, intuitive experiences to your customers when you’re ready to deliver them an Offering; and you can use our Dashboard to pick the right template and configuration to meet your needs.
 
@@ -104,15 +106,15 @@ To use RevenueCat Paywalls, simply:
 
 2. See [displaying paywalls](doc:displaying-paywalls) for how to display it into your app.
 
-## Offerings and Paywalls
+### Offerings and Paywalls
 
 You can think of a Paywall as an optional feature of your Offering. An Offering is the collection of Products which are organized into Packages to be displayed to your customers as a single "offer" across platforms. Now, with Paywalls, you can control the actual view that is used to display that "offer" in addition to controlling the products that are offered.
 
 Therefore, you can create a unique Paywall for each of your Offerings, and can create an unlimited number of Offerings & Paywalls for each variation you want to test with Experiments.
 
-# Limitations
+## Limitations
 
-## Platforms (support for more coming)
+### Platforms (support for more coming)
 * ✅  iOS 15.0 and higher
 * ✅  visionOS 1.0 and higher
 * ✅  Mac Catalyst 15.0 and higher
@@ -121,10 +123,10 @@ Therefore, you can create a unique Paywall for each of your Offerings, and can c
 * ❌  macOS
 * ❌  tvOS
 
-## Android's Google Play developer determined offers
+### Android's Google Play developer determined offers
 Paywalls in Android will use the default subscription option which, in case you use [developer determined offers](doc:google-play-offers#eligibility-criteria), will always be available, providing these types of offers always to your users. If you want to avoid this behavior when using paywalls, add the `rc-ignore-offer` tag to the developer determined offer from your product.
 
-# Next Steps
+## Next Steps
 
 * Now that you know how our paywalls work, read about [creating paywalls](doc:creating-paywalls)
 * Once you're ready to see your paywalls in action, you can follow our guides on [displaying paywalls](doc:displaying-paywalls)

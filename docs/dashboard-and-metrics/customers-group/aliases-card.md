@@ -22,9 +22,9 @@ The app_user_id that is sent in events is not necessarily the most recently seen
 
 The aliases listed in this App User Ids card are not necessarily the order that these aliases were last seen.
 
-> 📘
->
-> If you see unexpected aliases, you may be incorrectly identifying users. See our [guide on App User Ids](doc:user-ids) for more information.
+:::info
+If you see unexpected aliases, you may be incorrectly identifying users. See our [guide on App User Ids](doc:user-ids) for more information.
+:::
 
 ## Next Step
 

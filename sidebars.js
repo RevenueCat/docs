@@ -10,374 +10,434 @@
  */
 
 // custom sidebar objects to make it easier to read
-import {
-  SidebarCategory,
-  SidebarLink,
-  SidebarPage,
-} from "./src/sidebars/sidebar-utils";
+import { Category, Link, Page } from "./src/sidebars/sidebar-utils";
 
 // The sidebar is a tree of categories and pages.
 // I've separated this top-level category into its own variable for readability.
 // Each category can have sub-categories and pages.
-// Each page has a title and path. The path is relative to the path of its parent.
+// Each page has a path. The path is relative to the path of its parent.
 // i.e. Category -> Sub-category -> Page
 // "categories/welcome" -> "projects" -> "collaborators"
 // combined path: "categories/welcome/projects/collaborators"
-const welcomeCategory = new SidebarCategory(
+const welcomeCategory = new Category(
   "😺 Welcome to RevenueCat", // Category title
   "welcome", // Category path, i.e. docs/{path}
   false, // Should the category be collapsed by default? (defaults to true)
   [
     // Category pages / items
-    new SidebarPage("Welcome", "welcome"), // page, title and file name. relative to category path
-    new SidebarPage("Adding subscriptions to your app", "building-new"),
-    new SidebarPage("Using RevenueCat in existing apps", "existing-apps"),
-    new SidebarCategory( // Sub-category
+    new Page("overview"), // page file name. relative to parent category path
+    new Page("building-new"),
+    new Page("existing-apps"),
+    new Category( // Sub-category
       "Setting up RevenueCat", // Sub-category title
-      "projects", // Sub-category path
-      false, // Sub-category collapsed
+      "projects", // Sub-category path relative to parent category
+      false, // Sub-category collapsed by default?
       [
-        new SidebarPage("Invite your team", "collaborators"), // Sub-category pages / items
-        new SidebarPage("Account security", "security"),
-        new SidebarPage("Billing and account settings", "account-management"),
+        new Page("collaborators"), // Sub-category pages / items
+        new Page("security"),
+        new Page("account-management"),
       ],
-      new SidebarPage("Setting up RevenueCat", "projects")
+      new Page("projects")
     ),
-    new SidebarPage("API Keys & Authentication", "authentication"),
+    new Page("authentication"),
   ]
 );
 
-const migratingCategory = new SidebarCategory(
+const migratingCategory = new Category(
   "➡️ Migrating to RevenueCat",
   "migrating-to-revenuecat",
   true,
   [
-    new SidebarCategory(
+    new Category(
       "Migrating Subscriptions",
       "migrating-existing-subscriptions",
       true,
-      [new SidebarPage("Receipt Imports", "receipt-imports")],
-      new SidebarPage(
-        "Migrating Subscriptions",
-        "migrating-existing-subscriptions"
-      )
+      [new Page("receipt-imports")],
+      new Page("migrating-existing-subscriptions")
     ),
-    new SidebarPage("Observer Mode", "observer-mode"),
-    new SidebarPage("SwiftyStoreKit", "swiftystorekit"),
+    new Page("observer-mode"),
+    new Page("swiftystorekit"),
   ]
 );
 
-const customersCategory = new SidebarCategory(
-  "👥 Customers",
-  "customers",
-  true,
+const gettingStartedCategory = new Category(
+  "🚀 Getting Started",
+  "getting-started",
+  false,
   [
-    new SidebarPage("Identifying Customers", "user-ids"),
-    new SidebarPage("Checking Subscription Status", "customer-info"),
-    new SidebarPage("Subscriber Attributes", "subscriber-attributes"),
-    new SidebarPage("Trusted Entitlements", "trusted-entitlements"),
+    new Page("quickstart"),
+    new Category(
+      "Configuring Products",
+      "entitlements",
+      true,
+      [
+        new Page("ios-products"),
+        new Page("android-products"),
+        new Page("google-subscriptions-and-backwards-compatibility"),
+        new Page("amazon-product-setup"),
+        new Page("stripe-products"),
+      ],
+      new Page("entitlements")
+    ),
+    new Category(
+      "Installation",
+      "installation",
+      true,
+      [
+        new Page("ios"),
+        new Page("android"),
+        new Page("reactnative"),
+        new Page("flutter"),
+        new Page("ionic"),
+        new Page("cordova"),
+        new Page("unity"),
+        new Page("macos"),
+        new Page("app-builders"),
+      ],
+      new Page("installation")
+    ),
+    new Category(
+      "Configuring the SDK",
+      "configuring-sdk",
+      true,
+      [new Page("ios-app-extensions")],
+      new Page("configuring-sdk")
+    ),
+    new Link("Identifying Users", "/docs/customers/user-ids"),
+    new Page("displaying-products"),
+    new Category(
+      "Making Purchases",
+      "making-purchases",
+      true,
+      [new Page("android-with-jetpack-compose")],
+      new Page("making-purchases")
+    ),
+    new Link("Checking Subscription Status", "/docs/customers/customer-info"),
+    new Page("restoring-purchases"),
+    new Link(
+      "Configuring Server Notifications",
+      "/docs/platform-resources/server-notifications"
+    ),
+    new Category(
+      "Stripe",
+      "stripe",
+      true,
+      [new Page("in-app-purchases-with-stripe-rfa")],
+      new Page("stripe")
+    ),
   ]
 );
 
-const testAndLaunchCategory = new SidebarCategory(
+const customersCategory = new Category("👥 Customers", "customers", true, [
+  new Page("user-ids"),
+  new Page("customer-info"),
+  new Page("subscriber-attributes"),
+  new Page("trusted-entitlements"),
+]);
+
+const testAndLaunchCategory = new Category(
   "🧰 Test & Launch",
   "test-and-launch",
   true,
   [
-    new SidebarCategory(
+    new Category(
       "Debugging",
       "debugging",
       true,
-      [
-        new SidebarPage("Caching", "caching"),
-        new SidebarPage("Troubleshooting the SDKs", "troubleshooting-the-sdks"),
-      ],
-      new SidebarPage("Debugging", "debugging")
+      [new Page("caching"), new Page("troubleshooting-the-sdks")],
+      new Page("debugging")
     ),
-    new SidebarPage("Error Handling", "errors"),
-    new SidebarCategory(
+    new Page("errors"),
+    new Category(
       "Sandbox Testing",
       "sandbox",
       true,
       [
-        new SidebarPage("Apple App Store & TestFlight", "apple-app-store"),
-        new SidebarPage("Google Play Store", "google-play-store"),
-        new SidebarPage("Amazon App Store", "amazon-store-sandbox-testing"),
+        new Page("apple-app-store"),
+        new Page("google-play-store"),
+        new Page("amazon-store-sandbox-testing"),
       ],
-      new SidebarPage("Sandbox Testing", "sandbox")
+      new Page("sandbox")
     ),
-    new SidebarPage("App Subscription Launch Checklist", "launch-checklist"),
-    new SidebarPage("App Store Rejections", "app-store-rejections"),
+    new Page("launch-checklist"),
+    new Page("app-store-rejections"),
   ]
 );
 
-const dashboardCategory = new SidebarCategory(
+const subscriptionGuidanceCategory = new Category(
+  "📝 Subscription Guidance",
+  "subscription-guidance",
+  true,
+  [
+    new Category(
+      "Free Trials & Promo Offers",
+      "subscription-offers",
+      true,
+      [
+        new Page("ios-subscription-offers"),
+        new Page("google-play-offers"),
+        new Page("stripe-free-trials"),
+      ],
+      new Page("subscription-offers")
+    ),
+    new Page("how-grace-periods-work"),
+    new Page("managing-subscriptions"),
+    new Page("price-changes"),
+    new Page("refunds"),
+    new Page("google-prepaid-plans"),
+  ]
+);
+
+const dashboardCategory = new Category(
   "📊 Dashboard & Metrics",
   "dashboard-and-metrics",
   true,
   [
-    new SidebarPage("Overview", "overview"),
-    new SidebarCategory(
+    new Page("overview"),
+    new Category(
       "Charts",
       "charts",
       true,
       [
-        new SidebarPage(
-          "Active Subscriptions Chart",
-          "active-subscriptions-chart"
-        ),
-        new SidebarPage(
-          "Active Subscriptions Movement Chart",
-          "active-subscriptions-movement-chart"
-        ),
-        new SidebarPage("Active Trials Chart", "active-trials-chart"),
-        new SidebarPage(
-          "Active Trials Movement Chart",
-          "active-trials-movement-chart"
-        ),
-        new SidebarPage(
-          "Annual Recurring Revenue ARR Chart",
-          "annual-recurring-revenue-arr-chart"
-        ),
-        new SidebarPage(
-          "Charts Feature: Incomplete Periods",
-          "charts-feature-incomplete-periods"
-        ),
-        new SidebarPage("Churn Chart", "churn-chart"),
-        new SidebarPage(
-          "Conversion to Paying Chart",
-          "conversion-to-paying-chart"
-        ),
-        new SidebarPage("Initial Conversion Chart", "initial-conversion-chart"),
-        new SidebarPage(
-          "Monthly Recurring Revenue Movement Chart",
-          "monthly-recurring-revenue-movement-chart"
-        ),
-        new SidebarPage(
-          "Monthy Recurring Revenue MRR Chart",
-          "monthly-recurring-revenue-mrr-chart"
-        ),
-        new SidebarPage(
-          "Realized LTV per Customer Chart",
-          "realized-ltv-per-customer-chart"
-        ),
-        new SidebarPage(
-          "Realized LTW per Paying Customer Chart",
-          "realized-ltv-per-paying-customer-chart"
-        ),
-        new SidebarPage("Refund Rate Chart", "refund-rate-chart"),
-        new SidebarPage("Revenue Chart", "revenue-chart"),
-        new SidebarPage(
-          "Subscription Retention Chart",
-          "subscription-retention-chart"
-        ),
-        new SidebarPage("Trial Conversion Chart", "trial-conversion-chart"),
+        new Page("active-subscriptions-chart"),
+        new Page("active-subscriptions-movement-chart"),
+        new Page("active-trials-chart"),
+        new Page("active-trials-movement-chart"),
+        new Page("annual-recurring-revenue-arr-chart"),
+        new Page("charts-feature-incomplete-periods"),
+        new Page("churn-chart"),
+        new Page("conversion-to-paying-chart"),
+        new Page("initial-conversion-chart"),
+        new Page("monthly-recurring-revenue-movement-chart"),
+        new Page("monthly-recurring-revenue-mrr-chart"),
+        new Page("realized-ltv-per-customer-chart"),
+        new Page("realized-ltv-per-paying-customer-chart"),
+        new Page("refund-rate-chart"),
+        new Page("revenue-chart"),
+        new Page("subscription-retention-chart"),
+        new Page("trial-conversion-chart"),
       ],
-      new SidebarPage("Charts", "charts")
+      new Page("charts")
     ),
-    new SidebarCategory("Customer History", "customers-group", true, [
-      new SidebarPage("Active Entitlements", "active-entitlements"),
-      new SidebarPage("Aliases", "aliases-card"),
-      new SidebarPage("Subscriber Attributes", "attributes"),
-      new SidebarPage("Attribution", "attribution-card"),
-      new SidebarPage("Customer Details", "basic-information"),
-      new SidebarPage("Customer History", "customer-history"),
-      new SidebarPage("Offering Override", "offering-override"),
-      new SidebarPage("Promotionals", "promotionals"),
-      new SidebarPage("Deleting Users", "manage-users"),
+    new Category("Customer History", "customers-group", true, [
+      new Page("active-entitlements"),
+      new Page("aliases-card"),
+      new Page("attributes"),
+      new Page("attribution-card"),
+      new Page("basic-information"),
+      new Page("customer-history"),
+      new Page("offering-override"),
+      new Page("promotionals"),
+      new Page("manage-users"),
     ]),
-    new SidebarPage("Customer Lists", "customer-lists"),
-    new SidebarPage("Taxes & Commissions", "taxes-and-commissions"),
+    new Page("customer-lists"),
+    new Page("taxes-and-commissions"),
   ]
 );
 
-const toolsCategory = new SidebarCategory("🛠 Tools", "tools", false, [
-  new SidebarCategory(
+const integrationsCategory = new Category(
+  "🔌 Integrations",
+  "integrations",
+  true,
+  [
+    new Page("integrations"),
+    new Category(
+      "Attribution",
+      "attribution",
+      true,
+      [
+        new Page("adjust"),
+        new Page("apple-search-ads"),
+        new Page("appsflyer"),
+        new Page("branch"),
+        new Page("facebook-ads"),
+        new Page("singular"),
+        new Page("splitmetrics-acquire"),
+        new Page("tenjin"),
+      ],
+      new Page("attribution")
+    ),
+    new Category(
+      "Scheduled Data Exports",
+      "scheduled-data-exports",
+      true,
+      [
+        new Page("data-export-version-3"),
+        new Page("data-export-version-4"),
+        new Page("data-export-version-5"),
+        new Page("scheduled-data-exports-gcp"),
+        new Page("scheduled-data-exports-s3"),
+      ],
+      new Page("scheduled-data-exports")
+    ),
+    new Category(
+      "Third-Party Integrations",
+      "third-party-integrations",
+      true,
+      [
+        new Page("airship"),
+        new Page("amplitude"),
+        new Page("braze"),
+        new Page("clevertap"),
+        new Page("discord"),
+        new Page("firebase-integration"),
+        new Page("intercom"),
+        new Page("iterable"),
+        new Page("mixpanel"),
+        new Page("mparticle"),
+        new Page("onesignal"),
+        new Page("segment"),
+        new Page("slack"),
+        new Page("statsig"),
+        new Page("superwall"),
+      ],
+      new Page("third-party-integrations")
+    ),
+    new Category(
+      "Webhooks",
+      "webhooks",
+      true,
+      [
+        new Page("event-flows"),
+        new Page("event-types-and-fields"),
+        new Page("sample-events"),
+      ],
+      new Page("webhooks")
+    ),
+    new Page("partner-built-integrations"),
+    new Page("stripe-app"),
+  ]
+);
+
+const toolsCategory = new Category("🛠 Tools", "tools", false, [
+  new Category(
     "Paywalls",
     "paywalls",
     true,
-    [
-      new SidebarPage("Creating Paywalls", "creating-paywalls"),
-      new SidebarPage("Displaying Paywalls", "displaying-paywalls"),
-    ],
-    new SidebarPage("Paywalls", "paywalls")
+    [new Page("creating-paywalls"), new Page("displaying-paywalls")],
+    new Page("paywalls")
   ),
-  new SidebarCategory(
+  new Category(
     "Offering Metadata",
     "offering-metadata",
     true,
-    [
-      new SidebarPage(
-        "Offering Metadata Examples",
-        "offering-metadata-examples"
-      ),
-    ],
-    new SidebarPage("Offering Metadata", "offering-metadata")
+    [new Page("offering-metadata-examples")],
+    new Page("offering-metadata")
   ),
-  new SidebarCategory(
+  new Category(
     "Experiments",
     "experiments-v1",
     true,
     [
-      new SidebarPage("Experiments Overview", "experiments-overview-v1"),
-      new SidebarPage(
-        "Creating Offerings to Test",
-        "creating-offerings-to-test"
-      ),
-      new SidebarPage("Configuring Experiments", "configuring-experiments-v1"),
-      new SidebarPage("Interpreting Results", "experiments-results-v1"),
+      new Page("experiments-overview-v1"),
+      new Page("creating-offerings-to-test"),
+      new Page("configuring-experiments-v1"),
+      new Page("experiments-results-v1"),
     ],
-    new SidebarPage("Experiments", "experiments-v1")
+    new Page("experiments-v1")
   ),
-  new SidebarPage("Targeting", "targeting"),
+  new Page("targeting"),
 ]);
 
-const platformResourcesCategory = new SidebarCategory(
+const platformResourcesCategory = new Category(
   "📚 Platform Resources",
   "platform-resources",
   true,
   [
-    new SidebarPage(
-      "Implementation Responsibilities",
-      "implementation-responsibilities"
-    ),
-    new SidebarCategory(
+    new Page("implementation-responsibilities"),
+    new Category(
       "Amazon Platform Resources",
       "amazon-platform-resources",
       true,
-      [
-        new SidebarPage(
-          "Amazon Small Business Accelerator",
-          "amazon-small-business-accelerator-program"
-        ),
-      ],
-      new SidebarPage("Amazon Platform Resources", "amazon-platform-resources")
+      [new Page("amazon-small-business-accelerator-program")],
+      new Page("amazon-platform-resources")
     ),
-    new SidebarCategory(
+    new Category(
       "Apple Platform Resources",
       "apple-platform-resources",
       true,
       [
-        new SidebarPage(
-          "App Store SMall Business Program",
-          "app-store-small-business-program"
-        ),
-        new SidebarPage("Apple App Privacy", "apple-app-privacy"),
-        new SidebarPage("Family Sharing", "apple-family-sharing"),
-        new SidebarPage("Legacy Mac Apps", "legacy-mac-apps"),
-        new SidebarPage("SwiftUI Helpers", "swiftui-helpers"),
+        new Page("app-store-small-business-program"),
+        new Page("apple-app-privacy"),
+        new Page("apple-family-sharing"),
+        new Page("legacy-mac-apps"),
+        new Page("swiftui-helpers"),
       ],
-      new SidebarPage("Apple Platform Resources", "apple-platform-resources")
+      new Page("apple-platform-resources")
     ),
-    new SidebarCategory(
+    new Category(
       "Google Platform Resources",
       "google-platform-resources",
       true,
       [
-        new SidebarPage("Google Play Pass", "google-play-pass"),
-        new SidebarPage("Reduced Service Fees", "reduced-service-fee"),
-        new SidebarPage(
-          "Google Play's Data Safety",
-          "google-plays-data-safety"
-        ),
-        new SidebarPage(
-          "Google Play Quota Increase Request",
-          "google-play-quota-increase-request"
-        ),
+        new Page("google-play-pass"),
+        new Page("reduced-service-fee"),
+        new Page("google-plays-data-safety"),
+        new Page("google-play-quota-increase-request"),
       ],
-      new SidebarPage("Google Platform Resources", "google-platform-resources")
+      new Page("google-platform-resources")
     ),
-    new SidebarPage("Non-subscriptions", "non-subscriptions"),
-    new SidebarCategory(
+    new Page("non-subscriptions"),
+    new Category(
       "Platform Server Notifications",
       "server-notifications",
       true,
       [
-        new SidebarPage(
-          "Apple Server Notifications",
-          "apple-server-notifications"
-        ),
-        new SidebarPage(
-          "Google Server Notifications",
-          "google-server-notifications"
-        ),
-        new SidebarPage(
-          "Stripe Server Notifications",
-          "stripe-server-notifications"
-        ),
+        new Page("apple-server-notifications"),
+        new Page("google-server-notifications"),
+        new Page("stripe-server-notifications"),
       ],
-      new SidebarPage("Platform Server Notifications", "server-notifications")
+      new Page("server-notifications")
     ),
-    new SidebarPage("Sample Apps", "sample-apps"),
+    new Page("sample-apps"),
   ]
 );
 
-const serviceCredentialsCategory = new SidebarCategory(
+const serviceCredentialsCategory = new Category(
   "🔑 Service Credentials",
   "service-credentials",
   true,
   [
-    new SidebarCategory(
+    new Category(
       "Apple App Store",
       "itunesconnect-app-specific-shared-secret",
       true,
       [
-        new SidebarPage(
-          "In-App Purchase Key Configuration",
-          "in-app-purchase-key-configuration"
-        ),
-        new SidebarPage(
-          "App Store Connect API Key Configuration",
-          "app-store-connect-api-key-configuration"
-        ),
+        new Page("in-app-purchase-key-configuration"),
+        new Page("app-store-connect-api-key-configuration"),
       ],
-      new SidebarPage(
-        "Apple App Store",
-        "itunesconnect-app-specific-shared-secret"
-      )
+      new Page("itunesconnect-app-specific-shared-secret")
     ),
-    new SidebarCategory(
+    new Category(
       "Google Play Store",
       "creating-play-service-credentials",
       true,
-      [new SidebarPage("Google Play Checklists", "google-play-checklists")],
-      new SidebarPage("Google Play Store", "creating-play-service-credentials")
+      [new Page("google-play-checklists")],
+      new Page("creating-play-service-credentials")
     ),
-    new SidebarPage("Amazon Appstore", "amazon-appstore-credentials"),
+    new Page("amazon-appstore-credentials"),
   ]
 );
 
-const supportCategory = new SidebarCategory(
+const supportCategory = new Category(
   "🛟 RevenueCat Support",
   "revenuecat-support",
   true,
-  [new SidebarPage("Support First Steps", "support-first-steps")]
+  [new Page("support-first-steps")]
 );
 
-const sdkMigrationCategory = new SidebarCategory(
+const sdkMigrationCategory = new Category(
   "📘 SDK Migration Guides",
   "sdk-guides",
   true,
   [
-    new SidebarPage(
-      "Android Native 4x to 5x Migration",
-      "android-native-4x-to-5x-migration"
-    ),
-    new SidebarPage(
-      "Android Native 5x to 6x Migration",
-      "android-native-5x-to-6x-migration"
-    ),
-    new SidebarPage(
-      "Android Native 6x to 7x Migration",
-      "android-native-6x-to-7x-migration"
-    ),
-    new SidebarPage(
-      "iOS Native 3x to 4x Migration",
-      "ios-native-3x-to-4x-migration"
-    ),
-    new SidebarLink(
+    new Page("android-native-4x-to-5x-migration"),
+    new Page("android-native-5x-to-6x-migration"),
+    new Page("android-native-6x-to-7x-migration"),
+    new Page("ios-native-3x-to-4x-migration"),
+    new Link(
       "Capacitor - 5.x to 6.x Migration",
-      "https://github.com/RevenueCat/purchases-capacitor/blob/main/migrations/v6-MIGRATION.md"
+      "https://github.com/RevenueCat/purchases-capacitor/blob/main/migrations/v6-MIGRATION"
     ),
   ]
 );
@@ -387,18 +447,19 @@ const sdkMigrationCategory = new SidebarCategory(
 const sidebars = {
   defaultSidebar: [
     welcomeCategory.render(), // call render() to remove unsupported convenience properties and prepare for docusaurus
+    gettingStartedCategory.render(),
     migratingCategory.render(),
     customersCategory.render(),
     testAndLaunchCategory.render(),
+    subscriptionGuidanceCategory.render(),
     dashboardCategory.render(),
     toolsCategory.render(),
+    integrationsCategory.render(),
     platformResourcesCategory.render(),
     serviceCredentialsCategory.render(),
     supportCategory.render(),
     sdkMigrationCategory.render(),
   ],
 };
-
-console.log(JSON.stringify(sidebars, null, 2));
 
 export default sidebars;

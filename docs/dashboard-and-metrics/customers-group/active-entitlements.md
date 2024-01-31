@@ -10,9 +10,9 @@ Like the 'Customer History' view, this card is generated from current purchase r
 
 ![2023-02-28 20.40.48 app.revenuecat.com 1030bde9f564.png](https://files.readme.io/765a617-2023-02-28_20.40.48_app.revenuecat.com_1030bde9f564.png)
 
-> 📘 Grace periods will extend expiration dates
->
-> If the expiration date seems further out then you expect, e.g. 16 days past when your monthly subscription should renew, that indicates the user is in a grace period due to a failed payment. The store will attempt to re-charge the user there's no action to take on your part.
+:::info Grace periods will extend expiration dates
+If the expiration date seems further out then you expect, e.g. 16 days past when your monthly subscription should renew, that indicates the user is in a grace period due to a failed payment. The store will attempt to re-charge the user there's no action to take on your part.
+:::
 
 ## Transferring entitlements
 
@@ -40,14 +40,17 @@ You can manually [transfer entitlements](doc:restoring-purchases#transfer-purcha
 
 6. If the transfer is successful, you will be redirected to the destination customer's profile.
 
-> 📘
->
-> Transferring an entitlement will:
->
-> 1. Generate a transfer event in both customer profiles.
-> 2. Send a transfer event to any integrations and webhooks you have configured.
+:::info
+Transferring an entitlement will:
 
-> 👍 Transferring entitlements works with the block-restore behavior
+1. Generate a transfer event in both customer profiles.
+2. Send a transfer event to any integrations and webhooks you have configured.
+
+:::
+
+:::info
+Transferring entitlements works with the block-restore behavior
+:::
 
 ## Next Steps
 

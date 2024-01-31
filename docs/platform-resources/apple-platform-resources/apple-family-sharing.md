@@ -23,17 +23,17 @@ While family sharing will work on all versions of the SDK, some patches were rel
 
 By default, family sharing is disabled for all new and existing in-app purchases. Therefore, you need to enable family sharing for each individual in-app purchase.
 
-> 👍 Pro tip: Not all in-app purchases need to be family shareable
->
-> Since you enable family sharing per product, you can choose some products to be family shareable. This opens the door to providing family plans that cost more than an individual subscription, but are more cost-effective than purchasing multiple subscriptions for a family.
+:::success Pro tip: Not all in-app purchases need to be family shareable
+Since you enable family sharing per product, you can choose some products to be family shareable. This opens the door to providing family plans that cost more than an individual subscription, but are more cost-effective than purchasing multiple subscriptions for a family.
+:::
 
 If you don't have any in-app purchases in App Store Connect, go ahead and create one by following our guide on [iOS Product Setup](doc:ios-products). Next, navigate to your in-app purchase and click **Turn On** under Family Sharing.
 
 ![Click **Turn On** to enable Family Sharing.](https://files.readme.io/908bb53-2021-02-09_14.54.25_appstoreconnect.apple.com_ab0d5a03d489.png)
 
-> 🚧 Family Sharing cannot be disabled once turned on
->
-> Double check that you're turning on family sharing for the correct in-app purchase!
+:::warning Family Sharing cannot be disabled once turned on
+Double check that you're turning on family sharing for the correct in-app purchase!
+:::
 
 Click **Confirm**, and you're done! The Family Sharing section should now display "This subscription can be shared by everyone in a family group."
 
@@ -50,9 +50,10 @@ RevenueCat also makes it easy for developers to tell if their customer is subscr
 ![Image](https://files.readme.io/b2c687a-253415365-d3811735-59e8-4ddf-9b05-b074382fe5b0.png)
 The `is_family_share` key is included in webhook events. In the REST API, the `ownership_type` is included.
 
-> 📘 The user must manually share a subscription with their family
->
-> Even after setting up your in-app purchase to be shareable, the user must choose to share the subscription with their family in settings.
+:::info The user must manually share a subscription with their family
+Even after setting up your in-app purchase to be shareable, the user must choose to share the subscription with their family in settings.
+
+:::
 
 ## FAQ
 

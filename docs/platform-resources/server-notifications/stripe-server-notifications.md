@@ -7,15 +7,15 @@ hidden: false
 
 RevenueCat does not require server notifications from Stripe, however doing so can speed up webhook and integration delivery times and reduce lag time for [Charts](doc:charts).
 
-> 🚧 Send Stripe token to RevenueCat
->
-> Stripe Server Notifications only work if the receipt exists in RevenueCat when the event is dispatched from Stripe. If the receipt doesn't exist, the event will fail. This includes test events from Stripe.
->
-> You'll need to follow our [Stripe Web Payments](doc:stripe) guide and send your purchase tokens to RevenueCat before proceeding with this guide.
+:::warning Send Stripe token to RevenueCat
+Stripe Server Notifications only work if the receipt exists in RevenueCat when the event is dispatched from Stripe. If the receipt doesn't exist, the event will fail. This includes test events from Stripe.
+
+You'll need to follow our [Stripe Web Payments](doc:stripe) guide and send your purchase tokens to RevenueCat before proceeding with this guide.
+:::
 
 ![Required and optional notifications from Stripe](https://files.readme.io/98a0f1c-stripe_notifications.png)
 
-# Setup Instructions
+## Setup Instructions
 
 1. Navigate to your **app settings** in the RevenueCat dashboard by selecting your app from **Project Settings > Apps**.
 2. Expand the **Webhook Configuration** section and copy the endpoint provided under **Stripe Webhook Endpoint**.
@@ -34,9 +34,9 @@ It's important to only select these events.
 
 ![Screen Shot 2022-08-08 at 2.24.58 PM.png](https://files.readme.io/c1f3542-Screen_Shot_2022-08-08_at_2.24.58_PM.png)
 
-> 🚧
->
-> If you choose other events besides what's listed above, our API will respond with an error, and Stripe will eventually disable the webhook.
+:::warning
+If you choose other events besides what's listed above, our API will respond with an error, and Stripe will eventually disable the webhook.
+:::
 
 5. Click **Add endpoint**. You might be asked to enter your password.
 6. Copy the **Signing Secret** value and go back to your app settings in the **RevenueCat Dashboard** (select your app under **Project Settings > Apps**).
@@ -47,7 +47,7 @@ It's important to only select these events.
 
 ![](https://files.readme.io/44eb66c-Screen_Shot_2021-12-01_at_5.57.29_PM.png "Screen Shot 2021-12-01 at 5.57.29 PM.png")
 
-# Stripe Webhook 400 Errors
+## Stripe Webhook 400 Errors
 
 Sometimes you may experience 400 errors when connecting to Stripe. Generally these happen when there is something wrong with your configuration or your Stripe account is not properly connected to RevenueCat.
 
@@ -67,6 +67,6 @@ When debugging connection issues with Stripe, it may be necessary to reconnect S
 5. Ensure the 'test mode' switch is off in Stripe
 6. Click 'Sign in with RevenueCat' in Stripe in the RevenueCat app's settings
 
-> 🚧
->
-> When reconnecting to Stripe, the webhook secret can change so make sure it is the same in both Stripe and RevenueCat.
+:::warning
+When reconnecting to Stripe, the webhook secret can change so make sure it is the same in both Stripe and RevenueCat.
+:::

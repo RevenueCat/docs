@@ -1,1 +1,0 @@
-flutter pub add purchases_flutter:5.0.0

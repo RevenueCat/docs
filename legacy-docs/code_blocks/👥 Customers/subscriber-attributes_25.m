@@ -1,1 +1,0 @@
-[RCPurchases.sharedPurchases.attribution setAttributes:@{@"age": @""}];

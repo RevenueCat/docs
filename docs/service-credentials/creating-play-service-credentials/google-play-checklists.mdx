@@ -10,16 +10,16 @@ Note that while our [credentials guide](doc:creating-play-service-credentials) a
 
 ***
 
-# Google Play Service Credentials Checklist
+## Google Play Service Credentials Checklist
 
-## In Google Cloud:
+### In Google Cloud:
 
 - [ ] I have created, either during this process or previously, a Google Cloud project dedicated to this app
 - [ ] I have created a service account under the above Cloud project
 - [ ] I have given the service account the roles of **Pub/Sub Admin** and **Monitoring Viewer**
 - [ ] I have created and downloaded a JSON public key under the service account I created
 
-## In Google Play:
+### In Google Play:
 
 - [ ] I have linked the previously created Google Cloud project to my app under API Access
 - [ ] I clicked **'Manage Play Console Permissions'** under the service account and added these permissions:
@@ -29,28 +29,28 @@ Note that while our [credentials guide](doc:creating-play-service-credentials) a
 - [ ] I invited the user and the service account is showing as active in **'Users and Permissions'**
 - [ ] After confirming permissions, I selected **'Apply'**, then **'Save Changes'**
 
-## In RevenueCat:
+### In RevenueCat:
 
 - [ ] I added the previously downloaded JSON key file to the RevenueCat dashboard and clicked **'Save Changes'**
 - [ ] I've waited at least 36 hours
 
 ***
 
-# Google Real-Time Developer Notifications Checklist
+## Google Real-Time Developer Notifications Checklist
 
 - [ ] I have waited to ensure that my service credentials are set up correctly and working as expected
 
-## In Google Cloud:
+### In Google Cloud:
 
 - [ ] I have enabled the Pub/Sub API for the same project I created service credentials with
 
-## In RevenueCat:
+### In RevenueCat:
 
 - [ ] I have chosen either an existing Pub/Sub Topic ID or created a new one
 - [ ] I have clicked **'Connect to Google'**
 - [ ] I have copied the topic ID that generated after connecting
 
-## In Google Play:
+### In Google Play:
 
 - [ ] Under **'Monetize'**, in **'Monetization Setup'**, I pasted the topic ID
 - [ ] I have saved changes and did not see any errors

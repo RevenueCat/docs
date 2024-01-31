@@ -1,0 +1,51 @@
+---
+title: Sample Events
+slug: sample-events
+excerpt: Example webhooks sent from RevenueCat
+hidden: false
+---
+These are some representative samples of webhooks you might receive from RevenueCat. Keep in mind that webhooks can include additional fields to what's shown here.
+
+import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_1.json";
+import renewalContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_2.json";
+import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_3.json";
+import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_4.json";
+import nonRenewingPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_5.json";
+import subscriptionPausedContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_6.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: initialPurchaseContent, name: 'Initial Purchase' },
+    { type: 'json', content: renewalContent, name: 'Renewal' },
+    { type: 'json', content: cancellationContent, name: 'Cancellation' },
+    { type: 'json', content: uncancellationContent, name: 'Uncancellation' },
+    { type: 'json', content: nonRenewingPurchaseContent, name: 'Non Renewing Purchase' },
+    { type: 'json', content: subscriptionPausedContent, name: 'Subscription Paused' }
+]} />
+
+
+import billingIssueContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_7.json";
+import expirationContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_13.json";
+import transferContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_8.json";
+import refundContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_9.json";
+import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_10.json";
+import subscriptionExtendedContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_14.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: billingIssueContent, name: 'Billing Issue' },
+    { type: 'json', content: expirationContent, name: 'Expiration' },
+    { type: 'json', content: transferContent, name: 'Transfer' },
+    { type: 'json', content: refundContent, name: 'Refund' },
+    { type: 'json', content: productChangeContent, name: 'Product Change' },
+    { type: 'json', content: subscriptionExtendedContent, name: 'Subscription Extended' }
+]} />
+
+
+Here are some events you will see regarding trials:
+
+import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_11.json";
+import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_12.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: trialStartedContent, name: 'Trial Started' },
+    { type: 'json', content: trialCancelledContent, name: 'Trial Cancelled' }
+]} />

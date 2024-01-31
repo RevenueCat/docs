@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>Filename:MainApplicationObserverMode.kt$com.revenuecat.docstester.MainApplicationObserverMode.kt</ID>
+    <ID>MatchingDeclarationName:MainApplicationObserverMode.kt$MainApplication : Application</ID>
+  </CurrentIssues>
+</SmellBaseline>

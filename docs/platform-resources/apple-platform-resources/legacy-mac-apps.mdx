@@ -20,23 +20,23 @@ If you have an existing Mac app that you want to migrate to universal purchases,
 
 Since most Mac apps released today on RevenueCat's platform use universal purchases, by default the Mac configuration options on the dashboard are hidden. If you want to set up a Mac app in RevenueCat, follow the following steps:
 
-# 1. Contact RevenueCat support
+## 1. Contact RevenueCat support
 
 Contact RevenueCat support to enable legacy Mac app configuration for your app. Provide the name of your RevenueCat app. After RevenueCat support enables Mac app configuration options, your dashboard will show the new options, like this:
 
 ![After contacting support, the macOS Configuration section appears in the dashboard.](https://files.readme.io/b55a6c3-2021-04-21_22.19.23_app.revenuecat.com_ddcdba140b92.png)
 
-# 2. Enter your Mac App Store shared secret
+## 2. Enter your Mac App Store shared secret
 
 If you are going to add an iOS app, enter the iOS/universal Mac app's bundle ID and shared secret.
 
 ![In this example we added the Mac app store shared secret and updated the App Store configuration with the details for our universal app.](https://files.readme.io/b15da06-2021-04-21_22.04.33_app.revenuecat.com_85bb0ec5fd5c.png)
 
-# 3. Update your universal app code
+## 3. Update your universal app code
 
 This step is only required if you have both a legacy Mac app and an iOS/universal Mac app. In the **universal Mac app**, add this line of code right before `Purchases.configure`:
 
-import RCCodeBlock from '@site/src/components/RCCodeBlock';
+
 import content1 from "!!raw-loader!@site/code_blocks/platform-resources/legacy-mac-apps_1.swift";
 
 <RCCodeBlock tabs={[

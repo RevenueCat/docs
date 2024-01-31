@@ -1,6 +1,0 @@
-curl --request POST \
-     --url https://api.revenuecat.com/v1/subscribers/{APP_USER_ID}/restore_behavior \
-     --header 'accept: application/json' \
-     --header 'content-type: application/json' \
-     --header 'authorization: Bearer {SECRET_KEY}'\
-     --data '{"restore_behavior": "error"}'

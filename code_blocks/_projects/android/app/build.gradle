@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'io.gitlab.arturbosch.detekt' version '1.23.1'
+}
+
+android {
+    namespace 'com.revenuecat.docstester'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.revenuecat.docstester"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+
+    flavorDimensions "store"
+    productFlavors {
+        amazon {
+            buildConfigField "String", "STORE", "\"amazon\""
+        }
+
+        google {
+            buildConfigField "String", "STORE", "\"google\""
+        }
+    }
+}
+
+dependencies {
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.23.1"
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'com.revenuecat.purchases:purchases:+'
+    implementation 'com.revenuecat.purchases:purchases-store-amazon:+'
+}
+
+detekt {
+    buildUponDefaultConfig = true
+    autoCorrect = true
+    parallel = true
+    config.setFrom(files("$rootDir/config/detekt/detekt.yml"))
+    baseline = file("$rootDir/config/detekt/detekt-baseline.xml")
+}

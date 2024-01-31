@@ -1,1 +1,0 @@
-Purchases.configure(PurchasesConfiguration.Builder(this, <public_google_sdk_key>).observerMode(true).build())
