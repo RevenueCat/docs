@@ -60,7 +60,7 @@ If you're getting an error when connecting to Google for [Platform Server Notifi
 :::
 
 :::warning Service Credentials take ~36hrs to go into effect
-If you receive a credentials error, make sure you've waited at least 36hrs after creating your [Google Service Credentials](creating-play-service-credentials) before connecting to Google Real-Time Developer Notifications.
+If you receive a credentials error, make sure you've waited at least 36hrs after creating your [Google Service Credentials](/service-credentials/creating-play-service-credentials) before connecting to Google Real-Time Developer Notifications.
 :::
 
 :::info

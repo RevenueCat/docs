@@ -122,18 +122,19 @@ import capacitorContent from "!!raw-loader!@site/code_blocks/getting-started/get
 import cordovaContent from "!!raw-loader!@site/code_blocks/getting-started/getting-started_7.js";
 import unityContent from "!!raw-loader!@site/code_blocks/getting-started/getting-started_8.txt";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent },
-    { type: 'objectivec', content: objectiveCContent },
-    { type: 'kotlin', content: kotlinContent },
-    { type: 'java', content: javaContent },
-    { type: 'flutter', content: flutterContent},
-    { type: 'rn', content: reactNativeContent},
-    { type: 'capacitor', content: capacitorContent},
-    { type: 'cordova', content: cordovaContent,},
-    { type: 'unity', content: unityContent}
-]} />
-
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent },
+    { type: "objectivec", content: objectiveCContent },
+    { type: "kotlin", content: kotlinContent },
+    { type: "java", content: javaContent },
+    { type: "flutter", content: flutterContent },
+    { type: "rn", content: reactNativeContent },
+    { type: "capacitor", content: capacitorContent },
+    { type: "cordova", content: cordovaContent },
+    { type: "unity", content: unityContent },
+  ]}
+/>
 
 The `app_user_id` field in `.configure` is how RevenueCat identifies users of your app. You can provide a custom value here or omit it for us to generate an anonymous id. For more information, see our [Identifying Users](/docs/customers/user-ids) guide.
 
@@ -142,7 +143,7 @@ When in development, we recommend enabling more verbose debug logs. For more inf
 If you're planning to use RevenueCat alongside your existing purchase code, check out our guide on [Observer Mode](/docs/migrating-to-revenuecat/observer-mode).
 
 :::info Configuring Purchases with User IDs
-If you have a user authentication system in your app, you can provide a user identifier at the time of configuration or at a later date with a call to `.logIn()`. To learn more, check out our guide on [Identifying Users](user-ids).
+If you have a user authentication system in your app, you can provide a user identifier at the time of configuration or at a later date with a call to `.logIn()`. To learn more, check out our guide on [Identifying Users](/customers/user-ids).
 :::
 
 ### ▶️ Fetch and Display Available Products
@@ -162,26 +163,52 @@ import cordovaContent2 from "!!raw-loader!@site/code_blocks/getting-started/gett
 import unityContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_16.cs";
 import webContent from "!!raw-loader!@site/code_blocks/getting-started/getting-started_17.curl";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent2 },
-    { type: 'objc', content: objectiveCContent2 },
-    { type: 'kotlin', content: kotlinContent2 },
-    { type: 'java', content: javaContent2 },
-    { type: 'flutter', content: flutterContent2},
-    { type: 'rn', content: reactNativeContent2},
-    { type: 'capacitor', content: capacitorContent2},
-    { type: 'cordova', content: cordovaContent2 },
-    { type: 'unity', content: unityContent2},
-    { type: 'curl', content: webContent, name: 'Web' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent2 },
+    { type: "objc", content: objectiveCContent2 },
+    { type: "kotlin", content: kotlinContent2 },
+    { type: "java", content: javaContent2 },
+    { type: "flutter", content: flutterContent2 },
+    { type: "rn", content: reactNativeContent2 },
+    { type: "capacitor", content: capacitorContent2 },
+    { type: "cordova", content: cordovaContent2 },
+    { type: "unity", content: unityContent2 },
+    { type: "curl", content: webContent, name: "Web" },
+  ]}
+/>
 
 #### See it in action
 
 <body>
- <a href="https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/PaywallViewController.swift#L24-L35" target="_blank" class="button-text">Swift</a>
- <a href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/ui/paywall/PaywallFragment.kt#L48-L53" target="_blank" class="button-text">Kotlin</a>
- <a href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/weather.dart#L41-L79" target="_blank" class="button-text">Flutter</a>
- <a href="https://github.com/RevenueCat/react-native-purchases/blob/main/examples/MagicWeather/src/screens/PaywallScreen/index.js#L24-L33" target="_blank" class="button-text">React Native</a>
+  <a
+    href="https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/PaywallViewController.swift#L24-L35"
+    target="_blank"
+    class="button-text"
+  >
+    Swift
+  </a>
+  <a
+    href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/ui/paywall/PaywallFragment.kt#L48-L53"
+    target="_blank"
+    class="button-text"
+  >
+    Kotlin
+  </a>
+  <a
+    href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/weather.dart#L41-L79"
+    target="_blank"
+    class="button-text"
+  >
+    Flutter
+  </a>
+  <a
+    href="https://github.com/RevenueCat/react-native-purchases/blob/main/examples/MagicWeather/src/screens/PaywallScreen/index.js#L24-L33"
+    target="_blank"
+    class="button-text"
+  >
+    React Native
+  </a>
 </body>
 
 If fetching your [Offerings](/docs/getting-started/entitlements#offerings), [products](/docs/getting-started/entitlements#products), or available [packages](/docs/getting-started/entitlements#adding-packages) are empty, it's due to some configuration issue in the respective store.
@@ -207,26 +234,52 @@ import cordovaContent3 from "!!raw-loader!@site/code_blocks/getting-started/gett
 import unityContent3 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_16.cs";
 import webContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_17.curl";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent3 },
-    { type: 'objc', content: objectiveCContent3 },
-    { type: 'kotlin', content: kotlinContent3 },
-    { type: 'java', content: javaContent3 },
-    { type: 'flutter', content: flutterContent3 },
-    { type: 'rn', content: reactNativeContent3 },
-    { type: 'capacitor', content: capacitorContent3 },
-    { type: 'cordova', content: cordovaContent3 },
-    { type: 'unity', content: unityContent3},
-    { type: 'curl', content: webContent2, name: 'Web' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent3 },
+    { type: "objc", content: objectiveCContent3 },
+    { type: "kotlin", content: kotlinContent3 },
+    { type: "java", content: javaContent3 },
+    { type: "flutter", content: flutterContent3 },
+    { type: "rn", content: reactNativeContent3 },
+    { type: "capacitor", content: capacitorContent3 },
+    { type: "cordova", content: cordovaContent3 },
+    { type: "unity", content: unityContent3 },
+    { type: "curl", content: webContent2, name: "Web" },
+  ]}
+/>
 
 #### See it in action
 
 <body>
- <a href="https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/PaywallViewController.swift#L78-L95" target="_blank" class="button-text">Swift</a>
- <a href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/ui/paywall/PaywallFragment.kt#L55-L66" target="_blank" class="button-text">Kotlin</a>
- <a href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/paywall.dart#L53-L61" target="_blank" class="button-text">Flutter</a>
- <a href="https://github.com/RevenueCat/react-native-purchases/blob/main/examples/MagicWeather/src/components/PackageItem/index.js#L15-L31" target="_blank" class="button-text">React Native</a>
+  <a
+    href="https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/PaywallViewController.swift#L78-L95"
+    target="_blank"
+    class="button-text"
+  >
+    Swift
+  </a>
+  <a
+    href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/ui/paywall/PaywallFragment.kt#L55-L66"
+    target="_blank"
+    class="button-text"
+  >
+    Kotlin
+  </a>
+  <a
+    href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/paywall.dart#L53-L61"
+    target="_blank"
+    class="button-text"
+  >
+    Flutter
+  </a>
+  <a
+    href="https://github.com/RevenueCat/react-native-purchases/blob/main/examples/MagicWeather/src/components/PackageItem/index.js#L15-L31"
+    target="_blank"
+    class="button-text"
+  >
+    React Native
+  </a>
 </body>
 
 :::info Here's a tip!
@@ -250,26 +303,52 @@ import cordovaContent34 from "!!raw-loader!@site/code_blocks/getting-started/get
 import unityContent35 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_34.cs";
 import webContent36 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_35.curl";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent27 },
-    { type: 'objc', content: objectiveCContent28 },
-    { type: 'kotlin', content: kotlinContent29 },
-    { type: 'java', content: javaContent30 },
-    { type: 'flutter', content: flutterContent31 },
-    { type: 'rn', content: reactNativeContent32 },
-    { type: 'capacitor', content: capacitorContent33 },
-    { type: 'cordova', content: cordovaContent34 },
-    { type: 'unity', content: unityContent35 },
-    { type: 'curl', content: webContent36, name: "Web" }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent27 },
+    { type: "objc", content: objectiveCContent28 },
+    { type: "kotlin", content: kotlinContent29 },
+    { type: "java", content: javaContent30 },
+    { type: "flutter", content: flutterContent31 },
+    { type: "rn", content: reactNativeContent32 },
+    { type: "capacitor", content: capacitorContent33 },
+    { type: "cordova", content: cordovaContent34 },
+    { type: "unity", content: unityContent35 },
+    { type: "curl", content: webContent36, name: "Web" },
+  ]}
+/>
 
 #### See it in action
 
 <body>
- <a href="https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/UserViewController.swift#L37-L45" target="_blank" class="button-text">Swift</a>
- <a href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/ui/weather/WeatherFragment.kt#L69-L84" target="_blank" class="button-text">Kotlin</a>
- <a href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/weather.dart#L31-L39" target="_blank" class="button-text">Flutter</a>
- <a href="https://github.com/RevenueCat/react-native-purchases/blob/main/examples/MagicWeather/src/screens/WeatherScreen/index.js#L29-L46" target="_blank" class="button-text">React Native</a>
+  <a
+    href="https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/UserViewController.swift#L37-L45"
+    target="_blank"
+    class="button-text"
+  >
+    Swift
+  </a>
+  <a
+    href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/ui/weather/WeatherFragment.kt#L69-L84"
+    target="_blank"
+    class="button-text"
+  >
+    Kotlin
+  </a>
+  <a
+    href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/weather.dart#L31-L39"
+    target="_blank"
+    class="button-text"
+  >
+    Flutter
+  </a>
+  <a
+    href="https://github.com/RevenueCat/react-native-purchases/blob/main/examples/MagicWeather/src/screens/WeatherScreen/index.js#L29-L46"
+    target="_blank"
+    class="button-text"
+  >
+    React Native
+  </a>
 </body>
 
 You can use this method whenever you need to get the latest status, and it's safe to call this repeatedly throughout the lifecycle of your app. _Purchases_ automatically caches the latest CustomerInfo whenever it updates — so in most cases, this method pulls from the cache and runs very fast.
@@ -294,25 +373,51 @@ import capacitorContent42 from "!!raw-loader!@site/code_blocks/getting-started/g
 import cordovaContent43 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_42.js";
 import unityContent44 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_43.cs";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent36 },
-    { type: 'objc', content: objectiveCContent37 },
-    { type: 'kotlin', content: kotlinContent38 },
-    { type: 'java', content: javaContent39 },
-    { type: 'flutter', content: flutterContent40 },
-    { type: 'rn', content: reactNativeContent41 },
-    { type: 'capacitor', content: capacitorContent42 },
-    { type: 'cordova', content: cordovaContent43 },
-    { type: 'unity', content: unityContent44 },
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent36 },
+    { type: "objc", content: objectiveCContent37 },
+    { type: "kotlin", content: kotlinContent38 },
+    { type: "java", content: javaContent39 },
+    { type: "flutter", content: flutterContent40 },
+    { type: "rn", content: reactNativeContent41 },
+    { type: "capacitor", content: capacitorContent42 },
+    { type: "cordova", content: cordovaContent43 },
+    { type: "unity", content: unityContent44 },
+  ]}
+/>
 
 #### See it in action
 
 <body>
- <a href="https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/UserViewController.swift#L107-L123" target="_blank" class="button-text">Swift</a>
- <a href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/ui/user/UserFragment.kt#L78-L85" target="_blank" class="button-text">Kotlin</a>
- <a href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/user.dart#L29-L55" target="_blank" class="button-text">Flutter</a>
- <a href="https://github.com/RevenueCat/react-native-purchases/blob/main/examples/MagicWeather/src/components/RestorePurchasesButton/index.js#L11-L18" target="_blank" class="button-text">React Native</a>
+  <a
+    href="https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/UserViewController.swift#L107-L123"
+    target="_blank"
+    class="button-text"
+  >
+    Swift
+  </a>
+  <a
+    href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/ui/user/UserFragment.kt#L78-L85"
+    target="_blank"
+    class="button-text"
+  >
+    Kotlin
+  </a>
+  <a
+    href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/user.dart#L29-L55"
+    target="_blank"
+    class="button-text"
+  >
+    Flutter
+  </a>
+  <a
+    href="https://github.com/RevenueCat/react-native-purchases/blob/main/examples/MagicWeather/src/components/RestorePurchasesButton/index.js#L11-L18"
+    target="_blank"
+    class="button-text"
+  >
+    React Native
+  </a>
 </body>
 
 If two different [App User IDs](/docs/customers/user-ids) restore transactions from the same underlying store account (Apple, Google, or Amazon account) RevenueCat may attempt to create an alias between the two App User IDs and count them as the same user going forward. See our guide on [Restoring Purchases](/docs/getting-started/restoring-purchases) for more information on the different configurable restore behaviors.
@@ -337,25 +442,51 @@ import capacitorContent50 from "!!raw-loader!@site/code_blocks/getting-started/g
 import cordovaContent51 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_50.js";
 import unityContent52 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_51.cs";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent44 },
-    { type: 'objc', content: objectiveCContent45 },
-    { type: 'kotlin', content: kotlinContent46 },
-    { type: 'java', content: javaContent47 },
-    { type: 'flutter', content: flutterContent48 },
-    { type: 'rn', content: reactNativeContent49 },
-    { type: 'capacitor', content: capacitorContent50 },
-    { type: 'cordova', content: cordovaContent51 },
-    { type: 'unity', content: unityContent52 },
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent44 },
+    { type: "objc", content: objectiveCContent45 },
+    { type: "kotlin", content: kotlinContent46 },
+    { type: "java", content: javaContent47 },
+    { type: "flutter", content: flutterContent48 },
+    { type: "rn", content: reactNativeContent49 },
+    { type: "capacitor", content: capacitorContent50 },
+    { type: "cordova", content: cordovaContent51 },
+    { type: "unity", content: unityContent52 },
+  ]}
+/>
 
 #### See it in action
 
 <body>
- <a href="https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Lifecycle/AppDelegate.swift#L49-L59" target="_blank" class="button-text">Swift</a>
- <a href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/MainApplication.kt#L26-L51" target="_blank" class="button-text">Kotlin</a>
- <a href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/home.dart#L40-L50" target="_blank" class="button-text">Flutter</a>
- <a href="https://github.com/RevenueCat/react-native-purchases/blob/main/examples/MagicWeather/src/screens/UserScreen/index.js#L35-L41" target="_blank" class="button-text">React Native</a>
+  <a
+    href="https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Lifecycle/AppDelegate.swift#L49-L59"
+    target="_blank"
+    class="button-text"
+  >
+    Swift
+  </a>
+  <a
+    href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/MainApplication.kt#L26-L51"
+    target="_blank"
+    class="button-text"
+  >
+    Kotlin
+  </a>
+  <a
+    href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/home.dart#L40-L50"
+    target="_blank"
+    class="button-text"
+  >
+    Flutter
+  </a>
+  <a
+    href="https://github.com/RevenueCat/react-native-purchases/blob/main/examples/MagicWeather/src/screens/UserScreen/index.js#L35-L41"
+    target="_blank"
+    class="button-text"
+  >
+    React Native
+  </a>
 </body>
 
 :::success You did it!
