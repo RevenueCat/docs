@@ -41,7 +41,7 @@ import reactNativeContent from "!!raw-loader!@site/code_blocks/integrations/attr
 
 ## 2. Send device data to RevenueCat
 
-The Branch integration accepts some device-specific data that can be sent to RevenueCat through reserved [Subscriber Attributes](/docs/subscriber-attributes) keys.
+The Branch integration accepts some device-specific data that can be sent to RevenueCat through reserved [Subscriber Attributes](/docs/customers/subscriber-attributes) keys.
 
 | Key          | Description                                                                                                                                     | Required                        |
 | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------ |
@@ -51,7 +51,7 @@ The Branch integration accepts some device-specific data that can be sent to Rev
 | `$androidId` | Android [device identifier](https://developer.android.com/reference/android/provider/Settings.Secure#ANDROID_ID)                                | ✅ (required) if no `$gpsAdId`   |
 | `$ip`        | The IP address of the device                                                                                                                    | ✅ (required)                    |
 
-These properties can be set manually, like any other [Subscriber Attributes](/docs/subscriber-attributes), or through the helper method `collectDeviceIdentifiers()`. 
+These properties can be set manually, like any other [Subscriber Attributes](/docs/customers/subscriber-attributes), or through the helper method `collectDeviceIdentifiers()`. 
 
 import swiftContent2 from "!!raw-loader!@site/code_blocks/integrations/attribution/branch_5.swift";
 import objectiveCContent2 from "!!raw-loader!@site/code_blocks/integrations/attribution/branch_6.m";
@@ -89,7 +89,7 @@ Make sure to remove all client-side tracking of revenue. Since RevenueCat will b
 
 ### (Optional) Send campaign data to RevenueCat
 
-RevenueCat itself is not an attribution network, and can't determine which specific ad drove an install/conversion. However, if you're able to collect this information from another source, such as Branch, it's possible to attach it to a user in RevenueCat using [Subscriber Attributes](/docs/subscriber-attributes)  as well.  
+RevenueCat itself is not an attribution network, and can't determine which specific ad drove an install/conversion. However, if you're able to collect this information from another source, such as Branch, it's possible to attach it to a user in RevenueCat using [Subscriber Attributes](/docs/customers/subscriber-attributes)  as well.  
 The below reserved key names can be used to optionally attach campaign data to a user. This data will then be sent through to other downstream analytics integrations and accessible via APIs and webhooks.
 
 | Key            |
@@ -144,7 +144,7 @@ Navigate the the [Customer View](/docs/customers) for the test user that just ma
 
 ### Check that the Branch event delivered successfully
 
-While still on the Customer View, click into the test purchase event in the [Customer History](/docs/customer-history) and make sure that the Branch integration event exists and was delivered successfully. 
+While still on the Customer View, click into the test purchase event in the [Customer History](/docs/dashboard-and-metrics/customers-group/customer-history) and make sure that the Branch integration event exists and was delivered successfully. 
 
 ![](https://files.readme.io/95d0682-app.revenuecat.com_activity_40779aaf_event_92499ad6-350b-455a-a2ec-4c28c4ca0b28.png)
 

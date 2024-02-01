@@ -33,6 +33,6 @@ Use the links below to find the set up guide on each of our partner's sites.
 
 ## How Do I Get Started As A Partner?
 
-To build an integration with us, we recommend using our [webhooks](/docs/webhooks) to send RevenueCat events directly to your servers. You should take a look at our [Security and Best Practices](/docs/webhooks#security-and-best-practices) and [Sample Webhook Events](/docs/webhooks#sample-webhook-events) sections to understand how to handle duplicate events, what webhook events you should be expecting, and the fields RevenueCat will dispatch.
+To build an integration with us, we recommend using our [webhooks](/docs/integrations/webhooks) to send RevenueCat events directly to your servers. You should take a look at our [Security and Best Practices](/docs/integrations/webhooks#security-and-best-practices) and [Sample Webhook Events](/docs/integrations/webhooks#sample-webhook-events) sections to understand how to handle duplicate events, what webhook events you should be expecting, and the fields RevenueCat will dispatch.
 
-If you are interested in setting up a sample app to test the entire flow, you can check out our [Sample Apps](/docs/sample-apps) documentation for further instructions.
+If you are interested in setting up a sample app to test the entire flow, you can check out our [Sample Apps](/docs/platform-resources/sample-apps) documentation for further instructions.

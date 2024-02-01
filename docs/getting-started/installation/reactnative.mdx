@@ -64,7 +64,7 @@ You will get this error when trying to run the app with Expo Go. Due to technica
 
 If you've installed the library using Auto-linking, then all you need to do is to run `pod install` from your iOS folder. 
 
-That's it! [You can skip ahead to importing the framework](/docs/reactnative#import-purchases)
+That's it! [You can skip ahead to importing the framework](/docs/getting-started/installation/reactnative#import-purchases)
 
 ### Option 2. Installing with Cocoapods / ExpoKit (Manual linking only)
 
@@ -78,14 +78,14 @@ import reactNativePodfileContent from "!!raw-loader!@site/code_blocks/getting-st
 
 In your iOS folder, run `pod install`. If you've just upgraded ExpoKit, you might need to upgrade cocoapods to the newest version: `sudo gem install cocoapods`.
 
-That's it! [You can skip ahead to importing the framework](/docs/reactnative#import-purchases)
+That's it! [You can skip ahead to importing the framework](/docs/getting-started/installation/reactnative#import-purchases)
 
 ### Option 3. Manually adding the framework (if you're not using Cocoapods)
 
 If you are not using Cocoapods to manage dependencies, Purchases.framework also needs to be added to your iOS project. The `npm install` will download the correct framework version and the link command will add `libRNPurchases.a` to the _Linked Frameworks and Libraries_ of your app target in the iOS project.
 
 :::info
-If you choose to install the framework via [CocoaPods](ios#section-install-via-cocoapods), you can skip ahead to [importing the framework](/docs/reactnative#import-purchases)
+If you choose to install the framework via [CocoaPods](ios#section-install-via-cocoapods), you can skip ahead to [importing the framework](/docs/getting-started/installation/reactnative#import-purchases)
 :::
 
 #### Create a Framework Reference in your project
@@ -175,4 +175,4 @@ ExpoKit has been deprecated but ExpoKit projects of version 33 to 38 can success
 
 ## Next Steps
 
-* Now that you've installed the Purchases SDK in your React Native app, get started by [initializing an instance of Purchases :fa-arrow-right:](/docs/getting-started#4-using-revenuecats-purchases-sdk)
+* Now that you've installed the Purchases SDK in your React Native app, get started by [initializing an instance of Purchases :fa-arrow-right:](/docs/getting-started/getting-started#4-using-revenuecats-purchases-sdk)

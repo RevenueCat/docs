@@ -39,14 +39,14 @@ If you are trying to restore a purchase programmatically, use `syncPurchases` in
 
 ## Transferring purchases seen on multiple App User IDs
 
-If an [App User ID](/docs/user-ids) tries to restore transactions that are already associated with a different identified App User ID in RevenueCat, you can configure how RevenueCat should respond by changing the dropdown in **Project Settings > General** in the dashboard:
+If an [App User ID](/docs/customers/user-ids) tries to restore transactions that are already associated with a different identified App User ID in RevenueCat, you can configure how RevenueCat should respond by changing the dropdown in **Project Settings > General** in the dashboard:
 
 ![](https://files.readme.io/0fd6ec3-image.png)
 
 Note that the behavior set here will affect all apps under the project. Also note that **Share between App User IDs (legacy)** will only be available for legacy projects with this behavior already enabled, not new projects.
 
 :::info Transfer behavior also applies to making purchases
-The configured behavior will also apply if an identified App User ID [makes a new purchase](/docs/making-purchases) and the device receipt is already associated with a different identified App User ID in RevenueCat.
+The configured behavior will also apply if an identified App User ID [makes a new purchase](/docs/getting-started/making-purchases) and the device receipt is already associated with a different identified App User ID in RevenueCat.
 :::
 
 :::info Transfer behavior only applies to purchases associated with an identified App User ID
@@ -77,7 +77,7 @@ Note that the presence of one-time (non-subscription) purchases does not prevent
 
 **Use with caution 🚧**
 
-Returns an [error](/docs/errors#-receipt_already_in_use) if the App User ID attempting to restore purchase or make a new purchase is different from the original App User ID that made the purchase. This requires customers to sign in with their original App User ID, and is only allowed for apps that require every customer to create an account before purchasing.
+Returns an [error](/docs/test-and-launch/errors#-receipt_already_in_use) if the App User ID attempting to restore purchase or make a new purchase is different from the original App User ID that made the purchase. This requires customers to sign in with their original App User ID, and is only allowed for apps that require every customer to create an account before purchasing.
 
 ### Share between App User IDs (legacy)
 
@@ -100,16 +100,16 @@ The legacy behavior is to merge (alias) any App User IDs that restore the same u
 
 ### Considerations
 
-- `syncPurchases` is typically used for [migrating subscriptions](/docs/migrating-existing-subscriptions)
+- `syncPurchases` is typically used for [migrating subscriptions](/docs/migrating-to-revenuecat/migrating-existing-subscriptions)
 - Since this method simulates restoring a purchase, there is a risk of transferring or aliasing an anonymous user
 
 ## Restoring Purchases for Consumables and Non-renewing Subscriptions
 
-Consumables and non-renewing subscriptions can only be restored by using an acount system with custom [App User IDs](/docs/user-ids). This is due to these types of in-app purchases not showing up on the underlying store receipt after the transaction is finished.
+Consumables and non-renewing subscriptions can only be restored by using an acount system with custom [App User IDs](/docs/customers/user-ids). This is due to these types of in-app purchases not showing up on the underlying store receipt after the transaction is finished.
 
-By logging in your users with a custom App User ID, RevenueCat can continue to provide transaction details in a user's [CustomerInfo](/docs/customer-info) for their previous consumable and non-renewing subscription purchases.
+By logging in your users with a custom App User ID, RevenueCat can continue to provide transaction details in a user's [CustomerInfo](/docs/customers/customer-info) for their previous consumable and non-renewing subscription purchases.
 
 ## Next Steps
 
-- Make sure all purchases are being [linked to the correct user Id ](/docs/user-ids)
-- If you're ready to test, start with our guides on [sandbox testing ](/docs/debugging)
+- Make sure all purchases are being [linked to the correct user Id ](/docs/customers/user-ids)
+- If you're ready to test, start with our guides on [sandbox testing ](/docs/test-and-launch/debugging)

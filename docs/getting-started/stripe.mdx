@@ -9,7 +9,7 @@ RevenueCat currently supports web payments through Stripe. This allows you to le
 
 Remember that it is against Apple's App Store terms to provide a different system than in-app purchases for digital goods. Make sure you don't promote your web subscriptions from inside your app. Your app may get rejected, or banned.
 
-Before launching your Stripe integration, be sure to read the limitations that apply to [working with web payments](/docs/stripe#section-working-with-web-payments).
+Before launching your Stripe integration, be sure to read the limitations that apply to [working with web payments](/docs/getting-started/stripe#section-working-with-web-payments).
 
 ## 1. Connect with Stripe
 
@@ -22,7 +22,7 @@ Log into [RevenueCat](https://app.revenuecat.com/settings/account) and click the
 ![](https://files.readme.io/fac6fcb-Screen_Shot_2022-07-07_at_2.17.30_PM.png "Screen Shot 2022-07-07 at 2.17.30 PM.png")
 
 :::info Project owner must connect with Stripe
-Only the owner of the RevenueCat project can connect a Stripe account for their apps - no [collaborators](/docs/collaborators) will be able to add or remove a Stripe connection.
+Only the owner of the RevenueCat project can connect a Stripe account for their apps - no [collaborators](/docs/welcome/projects/collaborators) will be able to add or remove a Stripe connection.
 :::
 
 ## 2. Create products and plans on Stripe
@@ -51,12 +51,12 @@ Alternatively, you can also use the Stripe dashboard for manually creating the s
 
 ## 4. Add your Stripe products to your project's entitlements
 
-Add your Stripe products to your project's [entitlements](/docs/entitlements) to easily group the products for your app. RevenueCat will send Stripe subscriptions to your app the same way we do for the other app stores.
+Add your Stripe products to your project's [entitlements](/docs/getting-started/entitlements) to easily group the products for your app. RevenueCat will send Stripe subscriptions to your app the same way we do for the other app stores.
 
 ![](https://files.readme.io/fd4e1ab-Screen_Shot_2021-12-01_at_11.23.21_AM.png "Screen Shot 2021-12-01 at 11.23.21 AM.png")
 
 :::info
-In order for Stripe subscriptions to unlock [entitlements](/docs/entitlements), you must set a Product Identifier in the desired Offering to match a Stripe **product ID** exactly.
+In order for Stripe subscriptions to unlock [entitlements](/docs/getting-started/entitlements), you must set a Product Identifier in the desired Offering to match a Stripe **product ID** exactly.
 :::
 
 ## 5. Send Stripe tokens to RevenueCat
@@ -108,7 +108,7 @@ Stripe allows using [test clocks](https://stripe.com/docs/billing/testing/test-c
 Subscription payments through the web are processed with the same logic as subscriptions through the app stores. This means there are currently some limitations that must be considered for web payments to work properly.
 
 :::success Coupons are supported
-Pricing in RevenueCat [Charts](/docs/charts) and [customer events](/docs/customer-history) will reflect any coupons applied to a Stripe purchase.
+Pricing in RevenueCat [Charts](/docs/dashboard-and-metrics/charts) and [customer events](/docs/dashboard-and-metrics/customers-group/customer-history) will reflect any coupons applied to a Stripe purchase.
 :::
 
 ### Supported subscription plans
@@ -132,7 +132,7 @@ Cancellations in Stripe are automatically detected by RevenueCat the same way as
 
 ### Billing Issues
 
-When a customer encounters an issue with their payment, RevenueCat will generate a billing issue event in the RevenueCat [Customer History](/docs/customer-history). If all retries for a payment fails, you have three options:
+When a customer encounters an issue with their payment, RevenueCat will generate a billing issue event in the RevenueCat [Customer History](/docs/dashboard-and-metrics/customers-group/customer-history). If all retries for a payment fails, you have three options:
 
 1. cancel the subscription: RevenueCat will **revoke access**.
 2. mark the subscription as unpaid: RevenueCat will **revoke access**.

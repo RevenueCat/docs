@@ -71,4 +71,4 @@ Apple doesn’t allow developers to grant refunds themselves, only through Apple
 
 ## Next Steps
 
-- [Active Subscriptions ](/docs/active-subscriptions)
+- [Active Subscriptions Chart](/docs/dashboard-and-metrics/charts/active-subscriptions-chart)

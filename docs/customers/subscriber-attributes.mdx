@@ -57,7 +57,7 @@ import content7 from "!!raw-loader!@site/code_blocks/customers/subscriber-attrib
 
 
 :::warning
-Since subscriber attributes are writable using a [public key](/docs/authentication) they should not be used for managing secure or sensitive information such as subscription status, coins, etc.
+Since subscriber attributes are writable using a [public key](/docs/welcome/authentication) they should not be used for managing secure or sensitive information such as subscription status, coins, etc.
 :::
 
 ### Restrictions
@@ -149,7 +149,7 @@ Once a device identifier is set for a subscriber, it can't be changed in order t
 | `$amplitudeUserId`       | [Amplitude](https://amplitude.com/) user identifier                                           |
 | `$appsflyerId`           | [Appsflyer](https://www.appsflyer.com/) user identifier                                       |
 | `$fbAnonId`              | [Facebook SDK](https://developers.facebook.com/docs/apis-and-sdks/) anonymous user identifier |
-| `$firebaseAppInstanceId` | [Firebase](/docs/firebase-integration) instance identifier                                      |
+| `$firebaseAppInstanceId` | [Firebase](/docs/integrations/third-party-integrations/firebase-integration) instance identifier                                      |
 | `$iterableUserId`        | [Iterable](https://iterable.com/) user identifier                                             |
 | `$mixpanelDistinctId`    | [Mixpanel](https://mixpanel.com) user identifier                                              |
 | `$mparticleId`           | [mParticle](https://www.mparticle.com/) user identifier                                       |
@@ -306,16 +306,16 @@ import content22 from "!!raw-loader!@site/code_blocks/customers/subscriber-attri
 
 ## Reading Attributes
 
-You can access subscriber attributes through the [REST API](https://docs.revenuecat.com/reference) using a secret key, in [webhooks](/docs/webhooks), and through analytics integrations ([Amplitude](/docs/amplitude), [Mixpanel](/docs/mixpanel), [Segment](/docs/segment)). The [customer view dashboard](/docs/customers) will also show a list of attributes for the individual user that you can edit.
+You can access subscriber attributes through the [REST API](https://docs.revenuecat.com/reference) using a secret key, in [webhooks](/docs/integrations/webhooks), and through analytics integrations ([Amplitude](/docs/integrations/third-party-integrations/amplitude), [Mixpanel](/docs/integrations/third-party-integrations/mixpanel), [Segment](/docs/integrations/third-party-integrations/segment)). The [customer view dashboard](/docs/customers) will also show a list of attributes for the individual user that you can edit.
 
 ![](https://files.readme.io/2413523-app.revenuecat.com_customers_aec1bada_15343510_3.png)
 
 :::info
 Subscriber attributes are write-only from the SDK. Reading attributes should only be done server-side through the webhooks or REST API.
 
-Subscriber attributes are also included with transaction data for [Scheduled Data Exports](/docs/scheduled-data-exports).
+Subscriber attributes are also included with transaction data for [Scheduled Data Exports](/docs/integrations/scheduled-data-exports).
 :::
 
 ## Next Steps
 
-- Enrich your app by [reacting to the user's current subscription status ](/docs/purchaserinfo)
+- Enrich your app by [reacting to the user's current subscription status ](/docs/customers/customer-info)

@@ -6,9 +6,9 @@ hidden: false
 
 ## Definition
 
-The Active Trials chart measures the number of unexpired free trials at the end of a given period. Similar to [Active Subscriptions](/docs/active-subscriptions-chart), a trial is considered active until it expires, regardless of its auto-renew status.
+The Active Trials chart measures the number of unexpired free trials at the end of a given period. Similar to [Active Subscriptions](/docs/dashboard-and-metrics/charts/active-subscriptions-chart), a trial is considered active until it expires, regardless of its auto-renew status.
 
-The volume of Active Trials is an important leading indicator to growth of Active Subscriptions, and ultimately of your MRR. If the volume of active trials is increasing or decreasing it indicates that your business may be accelerating or decelerating respectively. The [Active Trials Movement](/docs/active-trials-movement-chart) chart and [Initial Conversion](/docs/initial-conversion-chart) chart can help you understand the nature of these movements.
+The volume of Active Trials is an important leading indicator to growth of Active Subscriptions, and ultimately of your MRR. If the volume of active trials is increasing or decreasing it indicates that your business may be accelerating or decelerating respectively. The [Active Trials Movement](/docs/dashboard-and-metrics/charts/active-trials-movement-chart) chart and [Initial Conversion](/docs/dashboard-and-metrics/charts/initial-conversion-chart) chart can help you understand the nature of these movements.
 
 ### Available settings
 
@@ -23,7 +23,7 @@ Active Trials act as a single measure of the size of your acquisition funnel. Yo
 
 For each period, the count of Active Trials represents the number of unexpired free trials at the end of the period. Therefore, at a daily resolution, the count represents the number of Active Trials at the end of that day; whereas at a monthly resolution it represents the number of Active Trials at the end of that month.
 
-To understand how that snapshot is generated for each period, check out the [Active Trials Movement](/docs/active-trials-movement-chart) chart.
+To understand how that snapshot is generated for each period, check out the [Active Trials Movement](/docs/dashboard-and-metrics/charts/active-trials-movement-chart) chart.
 
 ## FAQs
 

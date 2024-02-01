@@ -21,7 +21,7 @@ Select 'Yes'. RevenueCat encrypts data in transit.
 
 ### Do you provide a way for users to request that their data is deleted?
 
-If selecting 'Yes', ensure your customers have a way to contact your support team to request a data deletion. You will be able to [delete the customer](/docs/manage-users) directly from the RevenueCat dashboard or via [REST API](ref:subscribersapp_user_id).
+If selecting 'Yes', ensure your customers have a way to contact your support team to request a data deletion. You will be able to [delete the customer](/docs/dashboard-and-metrics/customers-group/manage-users) directly from the RevenueCat dashboard or via [REST API](ref:subscribersapp_user_id).
 
 ## Data Types
 
@@ -75,4 +75,4 @@ Select the 'App functionality' and 'Analytics' checkboxes.
 
 After making your data safety selections, Google will show a preview of your app's privacy section. If you have chosen Financial Info as described above, your privacy details should look something like this:
 ![](https://files.readme.io/46848c5-Screen_Shot_2021-11-30_at_2.11.47_PM.png "Screen Shot 2021-11-30 at 2.11.47 PM.png")
-If you're ready to submit your app to App Review, head over to our [Launch Checklist](/docs/launch-checklist) doc for more information about preparing your app for submission.
+If you're ready to submit your app to App Review, head over to our [Launch Checklist](/docs/test-and-launch/launch-checklist) doc for more information about preparing your app for submission.

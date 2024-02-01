@@ -17,7 +17,7 @@ With our Tenjin integration you can:
 
 ## 1. Send device data to RevenueCat
 
-The Tenjin integration requires some device-specific data. RevenueCat will only send events into Tenjin if the below [Subscriber Attributes](/docs/subscriber-attributes) keys have been set for the device.
+The Tenjin integration requires some device-specific data. RevenueCat will only send events into Tenjin if the below [Subscriber Attributes](/docs/customers/subscriber-attributes) keys have been set for the device.
 
 | Key          | Description                                                                                                                                     | Required         |
 | :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :--------------- |
@@ -27,7 +27,7 @@ The Tenjin integration requires some device-specific data. RevenueCat will only 
 | `$androidId` | Android [device identifier](https://developer.android.com/reference/android/provider/Settings.Secure#ANDROID_ID)                                | ❌ (optional)     |
 | `$ip`        | The IP address of the device                                                                                                                    | ❌ (optional)     |
 
-These properties can be set manually, like any other [Subscriber Attributes](/docs/subscriber-attributes), or through the helper method `collectDeviceIdentifiers()`. 
+These properties can be set manually, like any other [Subscriber Attributes](/docs/customers/subscriber-attributes), or through the helper method `collectDeviceIdentifiers()`. 
 
 import swiftContent from "!!raw-loader!@site/code_blocks/integrations/attribution/tenjin_1.swift";
 import kotlinContent from "!!raw-loader!@site/code_blocks/integrations/attribution/tenjin_2.kt";
@@ -51,7 +51,7 @@ The AdSupport framework is required to access the IDFA parameter on iOS. Don't f
 
 ### (Optional) Send campaign data to RevenueCat
 
-RevenueCat itself is not an attribution network, and can't determine which specific ad drove an install/conversion. However, if you're able to collect this information from another source, such as Tenjin, it's possible to attach it to a user in RevenueCat using [Subscriber Attributes](/docs/subscriber-attributes)  as well.  
+RevenueCat itself is not an attribution network, and can't determine which specific ad drove an install/conversion. However, if you're able to collect this information from another source, such as Tenjin, it's possible to attach it to a user in RevenueCat using [Subscriber Attributes](/docs/customers/subscriber-attributes)  as well.  
 The below reserved key names can be used to optionally attach campaign data to a user. This data will then be sent through to other downstream analytics integrations and accessible via APIs and webhooks.
 
 | Key            |

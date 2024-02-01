@@ -6,7 +6,7 @@ hidden: false
 ---
 Some parts of a customer's subscription can be managed directly through RevenueCat, other parts can only be managed by the customer directly in the respective stores (Apple, Google, Stripe, and Amazon). Learn how to upgrade/downgrade, cancel, and refund subscriptions here! 
 
-For information about Stripe, you can read more about working with web payments [here](/docs/stripe#working-with-web-payments).
+For information about Stripe, you can read more about working with web payments [here](/docs/getting-started/stripe#working-with-web-payments).
 
 ## Upgrade or Downgrade a Subscription
 
@@ -61,7 +61,7 @@ Google documentation provides [examples of each proration mode](https://develope
 | **IMMEDIATE_WITH_TIME_PRORATION**     | Old subscription is cancelled, and new subscription takes effect immediately. Any time remaining on the old subscription is used to push out the first payment date for the new subscription. User is charged the full price of new subscription once that prorated time has passed. The purchase will fail if this mode is used when switching between `SubscriptionOption`s of the same `StoreProduct`. |
 | **IMMEDIATE_AND_CHARGE_FULL_PRICE**   | Replacement takes effect immediately, and the user is charged full price of new plan and is given a full billing cycle of subscription, plus remaining prorated time from the old plan.                                                                                                                                                                                     |
 | **IMMEDIATE_AND_CHARGE_PRORATED_PRICE** | Replacement takes effect immediately, and the billing cycle remains the same. The price difference for the remaining period is then charged to the user. Note: This option is available only for a subscription upgrade, where the price per unit of time increases. Google recommends this mode for upgrading to a more expensive tier, and for upgrading while in a free trial which will end access to the free trial. |
-| **DEFERRED**                        | Replacement takes effect when the old plan expires, and the new price will be charged at the same time. Google recommends this mode for downgrading to a less expensive tier, and for changing recurring period on the same tier (from monthly to annual). **Important**: [Google Server Notifications](/docs/google-server-notifications) are required to be configured for `DEFERRED` mode to work properly. |
+| **DEFERRED**                        | Replacement takes effect when the old plan expires, and the new price will be charged at the same time. Google recommends this mode for downgrading to a less expensive tier, and for changing recurring period on the same tier (from monthly to annual). **Important**: [Google Server Notifications](/docs/platform-resources/server-notifications/google-server-notifications) are required to be configured for `DEFERRED` mode to work properly. |
 
 ### Amazon Appstore
 
@@ -69,7 +69,7 @@ Amazon does not support changing products. Customers will need to cancel their e
 
 ### Considerations
 
-#### [PRODUCT_CHANGE](/docs/customer-history#event-types) events and webhooks
+#### [PRODUCT_CHANGE](/docs/dashboard-and-metrics/customers-group/customer-history#event-types) events and webhooks
 
 - The `expiration_at_ms` will always be for the product the customer is changing from (old product). 
 - The `PRODUCT_CHANGE` webhook should be considered informative, and does not mean that the product change has gone into effect. When the product change goes into effect you will receive a `RENEWAL` event on Apple and Stripe or a `INITIAL_PURCHASE` event on Google Play. 
@@ -78,20 +78,20 @@ Amazon does not support changing products. Customers will need to cancel their e
 
 ### App Store
 
-For Apple transactions,  prorated revenue **will not** be shown in the [Customer History](/docs/customer-history) page. However, prorated revenue **will** be calculated for your chart and overview data.
+For Apple transactions,  prorated revenue **will not** be shown in the [Customer History](/docs/dashboard-and-metrics/customers-group/customer-history) page. However, prorated revenue **will** be calculated for your chart and overview data.
 
 ### Google Play
 
-For Google transactions, prorated revenue will be shown in the [Customer History](/docs/customer-history) page and will be calculated for your chart and overview data.
+For Google transactions, prorated revenue will be shown in the [Customer History](/docs/dashboard-and-metrics/customers-group/customer-history) page and will be calculated for your chart and overview data.
 
 ## Cancelling Subscriptions
 
-Cancelling (or unsubscribing) from subscriptions is handled differently on each platform. Cancellations are automatically detected by RevenueCat within a few hours of occurring. This detection time can be increased to near real-time by enabling [Platform Server Notifications](/docs/server-notifications).
+Cancelling (or unsubscribing) from subscriptions is handled differently on each platform. Cancellations are automatically detected by RevenueCat within a few hours of occurring. This detection time can be increased to near real-time by enabling [Platform Server Notifications](/docs/platform-resources/server-notifications).
 
 | Store       | Behavior                                                                                                                                                                                                                                                                                                                                                      |
 |-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Apple       | Apple does not allow developers to manage subscriptions on behalf of users. Your customers have to manually opt-out of renewal. The [Apple subscription terms](https://support.apple.com/en-us/HT202039) require users to cancel subscriptions at least 24 hours before the next renewal.                                                                 |
-| Google Play | Google allows developers to cancel auto-renewing subscriptions on behalf of customers via Google Play Console or Google's API. For prepaid subscriptions, neither the customer nor the developer can cancel the subscription as it already has an expiration date. If you're looking to refund and revoke a subscription via RevenueCat's dashboard, see [Refunds](/docs/refunds). |
+| Google Play | Google allows developers to cancel auto-renewing subscriptions on behalf of customers via Google Play Console or Google's API. For prepaid subscriptions, neither the customer nor the developer can cancel the subscription as it already has an expiration date. If you're looking to refund and revoke a subscription via RevenueCat's dashboard, see [Refunds](/docs/subscription-guidance/refunds). |
 | Stripe      | Subscriptions can be cancelled on behalf of customers via the Stripe dashboard or REST API. Refer to Stripe documentation for more info.                                                                                                                                                                                                                      |
 | Amazon      | Amazon does not allow developers to cancel subscriptions on behalf of users. Once a subscription is purchased for a period, it is valid through that period and cannot be cancelled.                                                                                                                                                                         |
 
@@ -124,5 +124,5 @@ import kt2 from "!!raw-loader!@site/code_blocks/subscription-guidance/managing-s
 ]}/>
 
 :::warning Deleting a User
-Deleting a user from RevenueCat **WILL NOT** cancel their subscription. The user can still trigger the [Restore Purchases](/docs/making-purchases#restoring-purchases) method to re-sync their transactions with RevenueCat servers.
+Deleting a user from RevenueCat **WILL NOT** cancel their subscription. The user can still trigger the [Restore Purchases](/docs/getting-started/making-purchases#restoring-purchases) method to re-sync their transactions with RevenueCat servers.
 :::

@@ -9,7 +9,7 @@ hidden: false
 
 
 > **Success**
-> This section assumes you've followed our [Quickstart](/docs/getting-started-1) section of our Getting Started guide to install and configure our SDK.
+> This section assumes you've followed our [Quickstart](/docs/getting-started) section of our Getting Started guide to install and configure our SDK.
 
 ## Error Handling
 
@@ -73,25 +73,25 @@ When debugging errors, it's important to consider whether the error was thrown b
 
 #### 😿 `INVALID_APP_USER_ID`
 **Problem:**
-Indicates the [App User Id](/docs/user-ids) is set to an invalid value.
+Indicates the [App User Id](/docs/customers/user-ids) is set to an invalid value.
 
 **Resolution:**
-Make sure you're not sending a string over 100 characters or a [blocked app user Id](/docs/user-ids#blocked-app-user-ids).
+Make sure you're not sending a string over 100 characters or a [blocked app user Id](/docs/customers/user-ids#blocked-app-user-ids).
 _______________________________________________________________________________
 #### 😿 🍎 🤖 📦 `INVALID_CREDENTIALS`
 **Problem:** 
 Indicates the application has been configured with an invalid credentials.
 
 **Resolution:** 
-If this error occurs before a purchase, ensure you're using the [correct API Key](/docs/authentication) from the RevenueCat dashboard.
-If this error happens during the purchase flow, make sure your [Play Store Credentials](/docs/creating-play-service-credentials) and/or [App Store Shared Secret](/docs/itunesconnect-app-specific-shared-secret) and/or [Amazon Appstore Credentials](/docs/amazon-appstore-credentials) are configured correctly in the RevenueCat dashboard.
+If this error occurs before a purchase, ensure you're using the [correct API Key](/docs/welcome/authentication) from the RevenueCat dashboard.
+If this error happens during the purchase flow, make sure your [Play Store Credentials](/docs/service-credentials/creating-play-service-credentials) and/or [App Store Shared Secret](/docs/service-credentials/itunesconnect-app-specific-shared-secret) and/or [Amazon Appstore Credentials](/docs/service-credentials/amazon-appstore-credentials) are configured correctly in the RevenueCat dashboard.
 _______________________________________________________________________________
 #### 😿 `INVALID_SUBSCRIBER_ATTRIBUTES`
 **Problem:**
 Indicates subscriber attributes were unable to be saved.
 
 **Resolution:**
-Make sure that there are no formatting issues when [setting subscriber attributes](/docs/subscriber-attributes#restrictions).
+Make sure that there are no formatting issues when [setting subscriber attributes](/docs/customers/subscriber-attributes#restrictions).
 _______________________________________________________________________________
 #### 😿 `NETWORK_ERROR`
 **Problem:** 
@@ -144,7 +144,7 @@ Indicates that the SDK detected a request was tampered.
 
 **Resolution:**
 - Ensure that a proxy is not modifying responses from our API.
-- See [the docs](/docs/trusted-entitlements) for more information.
+- See [the docs](/docs/customers/trusted-entitlements) for more information.
 _______________________________________________________________________________
 #### 😿 `UNEXPECTED_BACKEND_RESPONSE_ERROR` 
 **Problem:** 
@@ -172,7 +172,7 @@ _______________________________________________________________________________
 #### 🤷 `UNKNOWN`
 **Problem:**
 Indicates an unknown error occurred. Possible causes:
-- The subscriber has reached the maximum number of Apple receipts allowed. This can be an indication of an implementation error regarding identifying users. Take a look at our [best practices for identifying users](/docs/user-ids#aliasing) for common implementation mistakes. 
+- The subscriber has reached the maximum number of Apple receipts allowed. This can be an indication of an implementation error regarding identifying users. Take a look at our [best practices for identifying users](/docs/customers/user-ids#aliasing) for common implementation mistakes. 
 
 **Resolution:**
 Help us [fix it](https://www.revenuecat.com/jobs/).
@@ -185,7 +185,7 @@ _______________________________________________________________________________
 Indicates there is an identical receipt already in use by another subscriber. 
 
 **Resolution:**
-The user will either need to log in as the App User Id that already owns the receipt or [restore purchases](/docs/restoring-purchases) to re-sync the receipt with their current account. We recommend checking out the ['Transfer purchases'](/docs/restoring-purchases#transfer-purchases) restore behavior. 
+The user will either need to log in as the App User Id that already owns the receipt or [restore purchases](/docs/getting-started/restoring-purchases) to re-sync the receipt with their current account. We recommend checking out the ['Transfer purchases'](/docs/getting-started/restoring-purchases#transfer-purchases) restore behavior. 
 _______________________________________________________________________________
 #### 🍎 🤖 📦 `INVALID_RECEIPT`
 **Problem:**
@@ -195,19 +195,19 @@ Indicates the receipt is malformed or invalid.
 This error indicates an error with configuration and usually occurs in the sandbox environment.
 
 If testing with StoreKit Configuration Files:
-- Follow [StoreKit test guide](/docs/apple-app-store#ios-14-only-testing-on-the-simulator) 
+- Follow [StoreKit test guide](/docs/test-and-launch/sandbox/apple-app-store#ios-14-only-testing-on-the-simulator) 
 - Re-upload the StoreKit certificate after making any changes to products or code-signing
-- All products in StoreKit file are listed in the [RevenueCat dashboard](/docs/entitlements#revenuecat-configuration)
+- All products in StoreKit file are listed in the [RevenueCat dashboard](/docs/getting-started/entitlements#revenuecat-configuration)
 
 Some other places to check:
-- Bundle ID and [shared secret](/docs/itunesconnect-app-specific-shared-secret) are set correctly for your app
+- Bundle ID and [shared secret](/docs/service-credentials/itunesconnect-app-specific-shared-secret) are set correctly for your app
 _______________________________________________________________________________
 #### 🍎 `INVALID_APPLE_SUBSCRIPTION_KEY`
 **Problem:**
 Indicates that the Apple Subscription Key is invalid or not present.
 
 **Resolution:**
-In order to provide Subscription Offers you must first generate a [subscription key](/docs/ios-subscription-offers#subscription-keys).
+In order to provide Subscription Offers you must first generate a [subscription key](/docs/subscription-guidance/subscription-offers/ios-subscription-offers#subscription-keys).
 _______________________________________________________________________________
 #### 🍎 `MISSING_RECEIPT_FILE`
 **Problem:**
@@ -226,7 +226,7 @@ Some possible causes:
 - User has no current or previous subscription
 
 **Resolution:**
-If a user is not eligible for a Subscription Offer, be sure to update your UI to reflect normal pricing or terms. [`.paymentDiscount(...)`](/docs/ios-subscription-offers#fetch-payment-discount) is the best way to check for Subscription Offer eligibility. If you are testing in sandbox and already tested a purchase with that offer, you may want to [create a new sandbox user](/docs/apple-app-store#create-a-sandbox-test-account) to try again.
+If a user is not eligible for a Subscription Offer, be sure to update your UI to reflect normal pricing or terms. [`.paymentDiscount(...)`](/docs/subscription-guidance/subscription-offers/ios-subscription-offers#fetch-payment-discount) is the best way to check for Subscription Offer eligibility. If you are testing in sandbox and already tested a purchase with that offer, you may want to [create a new sandbox user](/docs/test-and-launch/sandbox/apple-app-store#create-a-sandbox-test-account) to try again.
 _______________________________________________________________________________
 #### 🍎 🤖 `INSUFFICIENT_PERMISSIONS_ERROR`
 **Problem:**
@@ -252,7 +252,7 @@ If testing in sandbox:
 - Subscription IAP: Wait for the subscription to automatically cancel and try again.
 - Non-subscription IAP: Create a new sandbox user.
 
-If this occurs in production, make sure the user [restores purchases](/docs/restoring-purchases) to re-sync any transactions with their current App User Id.
+If this occurs in production, make sure the user [restores purchases](/docs/getting-started/restoring-purchases) to re-sync any transactions with their current App User Id.
 _______________________________________________________________________________
 #### 🍎 `PRODUCT_NOT_AVAILABLE_FOR_PURCHASE`
 #### 🤖 `ITEM_UNAVAILABLE`
@@ -266,7 +266,7 @@ _______________________________________________________________________________
 **Problem:**
 Indicates the user cancelled their purchase and was not charged. 
 
-On iOS, this can also mean the Apple account already owns the product. The user can [restore purchases](/docs/restoring-purchases) to re-sync any transactions with their current App User Id.
+On iOS, this can also mean the Apple account already owns the product. The user can [restore purchases](/docs/getting-started/restoring-purchases) to re-sync any transactions with their current App User Id.
 
 **Resolution:**
 No action required. The user decided not to proceed with their in-app purchase.
@@ -349,11 +349,11 @@ _______________________________________________________________________________
 
 #### 📦 `ERROR_OBSERVER_MODE_NOT_SUPPORTED`
 **Problem:**
-Observer Mode is [not currently supported](/docs/observer-mode) for Amazon.
+Observer Mode is [not currently supported](/docs/migrating-to-revenuecat/observer-mode) for Amazon.
 
 **Resolution:**
 Disable Observer Mode.
 
 ## Next Steps
 
-* You're set up to handle errors, time to start [making purchases in sandbox :fa-arrow-right:](/docs/sandbox)
+* You're set up to handle errors, time to start [making purchases in sandbox :fa-arrow-right:](/docs/test-and-launch/sandbox)

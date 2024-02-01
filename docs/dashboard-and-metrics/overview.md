@@ -25,7 +25,7 @@ The 'Active Subscriptions' card displays the number of active paid subscriptions
 
 ![](https://files.readme.io/6fef8bd-Screen_Shot_2022-09-02_at_11.27.00_AM.png "Screen Shot 2022-09-02 at 11.27.00 AM.png")
 
-The 'MRR' card displays the current monthly recurring revenue tracked in RevenueCat. You can read more about how MRR is calculated in our [charts guide here](/docs/monthly-recurring-revenue-mrr-chart).
+The 'MRR' card displays the current monthly recurring revenue tracked in RevenueCat. You can read more about how MRR is calculated in our [charts guide here](/docs/dashboard-and-metrics/charts/monthly-recurring-revenue-mrr-chart).
 
 ### Revenue
 
@@ -40,7 +40,7 @@ The 'Revenue' card displays the gross revenue tracked in RevenueCat within the l
 The 'New Customers' card displays the number of App User IDs created in the past 28 days. Multiple App User IDs aliased together will be counted as 1 New Customer.
 
 :::info
-You should expect the New Customer count in RevenueCat to be different than the download numbers provided by the respective store. However, if things seem drastically off, make sure you're [identifying users](/docs/user-ids) correctly in RevenueCat.
+You should expect the New Customer count in RevenueCat to be different than the download numbers provided by the respective store. However, if things seem drastically off, make sure you're [identifying users](/docs/customers/user-ids) correctly in RevenueCat.
 :::
 
 ### Active Users
@@ -70,7 +70,7 @@ The sandbox data toggle will change the Overview metrics to report from sandbox 
 
 ## Recent Transactions
 
-Below the metrics cards is a table of the most recent transactions shown in real-time. Transactions include trial starts, trial conversions, purchases, and renewals. The details of this table are covered in our guide on the [Activity Table](/docs/activity).
+Below the metrics cards is a table of the most recent transactions shown in real-time. Transactions include trial starts, trial conversions, purchases, and renewals.
 
 ## Dates and times representation
 
@@ -78,4 +78,4 @@ All dates and times in the dashboard are represented in UTC, unless explicitly s
 
 ## Next Steps
 
-- Dig into the details of your subscriber base by [looking at the charts :fa-arrow-right:](/docs/charts)
+- Dig into the details of your subscriber base by [looking at the charts :fa-arrow-right:](/docs/dashboard-and-metrics/charts)

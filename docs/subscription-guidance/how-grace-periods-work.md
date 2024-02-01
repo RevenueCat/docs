@@ -38,7 +38,7 @@ When a subscription enters a grace period, RevenueCat detects the change automat
 
 ### API, Events, and Webhooks
 
-To detect grace periods in [webhook](/docs/webhooks) events, watch for the value of `grace_period_expiration_at_ms`. This property is only valid for `BILLING_ISSUE` events.
+To detect grace periods in [webhook](/docs/integrations/webhooks) events, watch for the value of `grace_period_expiration_at_ms`. This property is only valid for `BILLING_ISSUE` events.
 
 To detect grace periods in the `GET /subscriber` [endpoint](https://www.revenuecat.com/reference/subscribers), watch for the value of `grace_period_expires_date` on a subscription object and compare it to the current date. This property will be `null` if the subscription is not in a grace period.
 

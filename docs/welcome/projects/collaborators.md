@@ -30,7 +30,7 @@ If you have multiple projects that you wish to share, you will need to repeat th
 When inviting a collaborators there are three permission levels that grant them different levels of access:
 
 - **Admin** - Can view and edit all project information, including inviting other collaborators. This is usually app owners or engineers that are integrating RevenueCat.
-- **Customer Support** - Can see [Customer Timelines](/docs/customers), [grant Promotional Entitlements](/docs/promotionals), [issue refunds](/docs/customer-history#section-refunding-subscriptions), and [delete customers](/docs/manage-users). Cannot see any charts, metrics, aggregate customer lists, or most project settings (other than **Entitlements**, **Offerings**, and **Products**).
+- **Customer Support** - Can see [Customer Timelines](/docs/customers), [grant Promotional Entitlements](/docs/dashboard-and-metrics/customers-group/promotionals), [issue refunds](/docs/dashboard-and-metrics/customers-group/customer-history#section-refunding-subscriptions), and [delete customers](/docs/dashboard-and-metrics/customers-group/manage-users). Cannot see any charts, metrics, aggregate customer lists, or most project settings (other than **Entitlements**, **Offerings**, and **Products**).
 - **Read Only** - Can view but not change project settings. Perfect for people that need access to revenue metrics, customer transactions, etc. but don't need access to things like API keys.
 
 :::info Collaborators cannot delete projects or apps within projects, or manage billing

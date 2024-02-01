@@ -16,7 +16,7 @@ Google allows adding multiple offers to each base plan. Each offer can have up t
 To create an offer, navigate to the subscription product in Google Play, click "Add offer", and then select the base plan that the offer should apply for.
 
 ![](https://files.readme.io/f614dc5-Screenshot_2023-03-21_at_12.51.41.png "Screenshot 2023-03-21 at 12.51.41.png")
-On the following page, you can set up a unique offer ID, eligibility criteria, tags, and pricing phases. Tags can be used to [identify offers in the RevenueCat SDK](/docs/subscription-offers#more-control-over-offer-selection).
+On the following page, you can set up a unique offer ID, eligibility criteria, tags, and pricing phases. Tags can be used to [identify offers in the RevenueCat SDK](/docs/subscription-guidance/subscription-offers#more-control-over-offer-selection).
 
 ### Eligibility criteria
 
@@ -149,4 +149,4 @@ If you want to save your users the hassle of manually entering their one-time co
 
 ## Next Steps
 
-With Promo Codes created make sure you're setup for [making purchases :fa-arrow-right: ](/docs/making-purchases)
+With Promo Codes created make sure you're setup for [making purchases :fa-arrow-right: ](/docs/getting-started/making-purchases)
