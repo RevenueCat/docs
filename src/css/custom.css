@@ -97,7 +97,6 @@ h3 {
   color: var(--ifm-menu-color);
 }
 
-
 .menu__caret::before {
   background-size: 1.25rem;
 }
