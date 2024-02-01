@@ -17,5 +17,5 @@ steps:
 
 - script: |
     yarn
-    yarn bulid
+    yarn build
   displayName: 'yarn install and build'
