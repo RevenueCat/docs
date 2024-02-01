@@ -6,6 +6,8 @@
 
 import { themes as prismThemes } from "prism-react-renderer";
 
+const DOC_BASE_URL = process.env.DOC_BASE_URL || '/docs/';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "RevenueCat",
@@ -13,13 +15,15 @@ const config = {
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
+  url: "https://revenuecat.com/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/",
+  baseUrl: DOC_BASE_URL,
 
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
+
+  trailingSlash: false,
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -36,7 +40,7 @@ const config = {
       ({
         docs: {
           sidebarPath: "./sidebars.js",
-          routeBasePath: "/docs/",
+          routeBasePath: "/",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           // editUrl:
@@ -54,7 +58,7 @@ const config = {
         specs: [
           {
             spec: "openapi-spec/api-v2.yaml",
-            route: "/docs/api/",
+            route: "/api/",
           },
         ],
         // Theme Options for modifying how redoc renders them
@@ -86,7 +90,7 @@ const config = {
           },
           {
             label: "API Reference",
-            to: "/docs/api/",
+            to: "/api/",
           },
         ],
       },
@@ -98,7 +102,7 @@ const config = {
             items: [
               {
                 label: "Docs",
-                to: "/docs/welcome/overview",
+                to: "/welcome/overview",
               },
             ],
           },
