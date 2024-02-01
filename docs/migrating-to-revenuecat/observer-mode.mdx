@@ -170,7 +170,7 @@ import om6 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer
 ![](https://files.readme.io/3e32059-Screen_Shot_2022-08-03_at_3.51.12_PM.png "Screen Shot 2022-08-03 at 3.51.12 PM.png")
 
 :::warning Important note regarding InAppBillingService (Android Unity only)
-If using RevenueCat alongside Unity IAP or other plugin that includes the Android InAppBillingService class, follow [these instructions ](/docs/getting-started/installation/unity#installation-with-unity-iap-side-by-side)
+If using RevenueCat alongside Unity IAP or other plugin that includes the Android InAppBillingService class, follow [these instructions ](/getting-started/installation/unity#installation-with-unity-iap-side-by-side)
 :::
 
 :::danger Important (Android only)
@@ -199,10 +199,10 @@ import om8 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer
 
 ## Configuring Integrations
 
-Certain integrations, such as most of the [Attribution Integrations](/docs/integrations/attribution), require some device data to work properly. **Observer Mode does not automatically collect any device data**.
+Certain integrations, such as most of the [Attribution Integrations](/integrations/attribution), require some device data to work properly. **Observer Mode does not automatically collect any device data**.
 
 If you plan on using an integration that requires device data with Observer Mode, you'll need to integrate the RevenueCat SDK to collect the data or set the appropriate attributes via the [REST API](https://docs.revenuecat.com/reference/update-subscriber-attributes). Note that attributes can be passed as an object in the [POST /receipts endpoint](https://docs.revenuecat.com/reference/receipts) as well if you're doing a server-side Observer Mode implementation.
 
 ## Next Steps
 
-- With Observer Mode up-and-running capturing new purchases, you may want to [migrate existing purchases to RevenueCat as well ](/docs/migrating-to-revenuecat/migrating-existing-subscriptions)
+- With Observer Mode up-and-running capturing new purchases, you may want to [migrate existing purchases to RevenueCat as well ](/migrating-to-revenuecat/migrating-existing-subscriptions)

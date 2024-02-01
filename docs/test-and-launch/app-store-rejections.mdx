@@ -9,7 +9,7 @@ hidden: false
 RevenueCat Support can explain error messages, or help you troubleshoot reproducible issues, but don't have other ways of expediting the review process.
 :::
 
-Your app is finally complete! 🎉 You're tracking subscriptions in Sandbox, your Testflight users love it, you've followed our [Launch Checklist](/docs/test-and-launch/launch-checklist), and you're finally ready to launch your app to the world.
+Your app is finally complete! 🎉 You're tracking subscriptions in Sandbox, your Testflight users love it, you've followed our [Launch Checklist](/test-and-launch/launch-checklist), and you're finally ready to launch your app to the world.
 
 After a few days in review, you get the dreaded 'Rejected' message. Now what? Let's work through some common rejection reasons and the best way to get your app back on track.
 
@@ -44,13 +44,13 @@ If you're having trouble fetching products in Testflight or a local build, see o
 
 ## Error during purchase
 
-If an error occurs during the purchase process, it will be one of the errors outlined in our [Error Handling guide here](/docs/test-and-launch/errors). Understanding what error triggered the rejection is the only way to make sure the issue gets resolved. 
+If an error occurs during the purchase process, it will be one of the errors outlined in our [Error Handling guide here](/test-and-launch/errors). Understanding what error triggered the rejection is the only way to make sure the issue gets resolved. 
 
 If the reviewer provides a screenshot of an error popup - use that to help track down the issue. RevenueCat itself will never display a user-facing popup or error message, so look through your app to find the code that triggered the alert and work backwards to determine the error message.
 
 ### "Cannot connect to iTunes Store"
 
-This is actually the generic error message Apple uses for all [SKErrors](https://developer.apple.com/documentation/storekit/skerror) and not an error message from RevenueCat. See our [guide on Error Handling](/docs/test-and-launch/errors) for more info.
+This is actually the generic error message Apple uses for all [SKErrors](https://developer.apple.com/documentation/storekit/skerror) and not an error message from RevenueCat. See our [guide on Error Handling](/test-and-launch/errors) for more info.
 
 ### STORE_PROBLEM - "There was a problem with the App Store"
 
@@ -62,7 +62,7 @@ There are momentary outages in sandbox from time-to-time, but occasionally outag
 
 Your app could also get rejected even if there are no issues during the purchase process, but the content does not get unlocked after purchasing. You should be able to reproduce this issue in a test environment.
 
-Double check that you're [checking the subscription status correctly](/docs/customers/customer-info) and all of the [products are added to Entitlements](/docs/getting-started/entitlements) as needed.
+Double check that you're [checking the subscription status correctly](/customers/customer-info) and all of the [products are added to Entitlements](/getting-started/entitlements) as needed.
 
 ## Other Tips
 

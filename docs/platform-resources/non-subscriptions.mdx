@@ -21,7 +21,7 @@ Although RevenueCat is primarily used to handle subscription purchases, our SDK 
 | :------: | :-------------------------------------------------------------------: |
 |   iOS    |       Consumables, non-consumables, non-renewing subscriptions        |
 | Android  |                Consumables, non-renewing subscriptions                |
-|  Stripe  | One-time purchases supported when using [Stripe Checkout](/docs/getting-started/stripe) |
+|  Stripe  | One-time purchases supported when using [Stripe Checkout](/getting-started/stripe) |
 
 :::warning Google Play Store IAPs
 
@@ -39,7 +39,7 @@ It's important to note that even if consumables aren't attached to an entitlemen
 
 If you wanted to add a **Lifetime Unlock** purchase option to your app, it is recommended to create a new **non-consumable** IAP (iOS), add the product to your offering, and add the product to your entitlement. This works well in many contexts, such as alongside other subscription packages, or just as a standalone package in your offering. (See the above section to replicate a non-consumable IAP for Android users.)
 
-For more information, read our guide on [Entitlements](/docs/getting-started/entitlements).
+For more information, read our guide on [Entitlements](/getting-started/entitlements).
 
 ## Offerings
 
@@ -58,7 +58,7 @@ Each package should contain a different quantity of coins. For our example, let'
 ![](https://files.readme.io/0f1a9b6-app.revenuecat.com_projects_85ff18c7_apps_app71b4cc0fea_2.png)
 
 :::info
-If you haven't already, you'll need to set up products in the respective app stores on which you intend to ship your app. For more information on setting up products and adding them to RevenueCat, check out the [Configuring Products](/docs/getting-started/entitlements#configuration) guide.
+If you haven't already, you'll need to set up products in the respective app stores on which you intend to ship your app. For more information on setting up products and adding them to RevenueCat, check out the [Configuring Products](/getting-started/entitlements#configuration) guide.
 :::
 
 Attach your products to each package, and you're ready to use to Purchases SDK to display your offering. On iOS, you could fetch the offering like this:
@@ -73,7 +73,7 @@ import content1 from "!!raw-loader!@site/code_blocks/platform-resources/non-subs
     }
 ]}/>
 
-For more information displaying products, check out the [Displaying Products](/docs/getting-started/displaying-products) guide.
+For more information displaying products, check out the [Displaying Products](/getting-started/displaying-products) guide.
 
 When you're ready to purchase one of the coin packages, pass the package object to the Purchases SDK, like the following:
 
@@ -87,12 +87,12 @@ import content2 from "!!raw-loader!@site/code_blocks/platform-resources/non-subs
 ]}/>
 
 :::warning
-It's important to note that at the moment, logic for keeping track of consumable redemptions must be handled outside of RevenueCat. We recommend your server is set up to receive [Webhook](/docs/integrations/webhooks) events for `NON_RENEWING_PURCHASE` to appropriately provide consumable content for your users.
+It's important to note that at the moment, logic for keeping track of consumable redemptions must be handled outside of RevenueCat. We recommend your server is set up to receive [Webhook](/integrations/webhooks) events for `NON_RENEWING_PURCHASE` to appropriately provide consumable content for your users.
 
 For example: RevenueCat can track a consumable coin purchase and include it in the `CustomerInfo`, but cannot track if you've granted a user the appropriate number of coins for that purchase.
 :::
 
-For more information on making purchases, check out the [Making Purchases](/docs/getting-started/making-purchases) guide.
+For more information on making purchases, check out the [Making Purchases](/getting-started/making-purchases) guide.
 
 #### Sales, alternative packages, and more
 

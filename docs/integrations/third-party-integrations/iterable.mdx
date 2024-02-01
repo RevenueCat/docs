@@ -35,13 +35,13 @@ The Iterable integration tracks the following events:
 | Trial Converted             | Purchase            | rc_trial_converted_event       | When an auto-renewing subscription product converts from a free trial to normal paid period.                                                                                                                                                                               | ✅         | ✅          | ✅      | ✅      | ❌     |
 | Trial Cancelled             | Custom              | rc_trial_cancelled_event       | When a user turns off renewals for an auto-renewing subscription product during a free trial period.                                                                                                                                                                       | ✅         | ✅          | ✅      | ✅      | ❌     |
 | Renewal                     | Purchase            | rc_renewal_event               | An existing subscription has been renewed or a lapsed user has resubscribed.                                                                                                                                                                                              | ✅         | ✅          | ✅      | ✅      | ❌     |
-| Cancellation                | Custom              | rc_cancellation_event          | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](/docs/integrations/webhooks/event-types-and-fields#cancellation-and-expiration-reasons) for more details.                                                                       | ✅         | ✅          | ✅      | ✅      | ✅     |
+| Cancellation                | Custom              | rc_cancellation_event          | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](/integrations/webhooks/event-types-and-fields#cancellation-and-expiration-reasons) for more details.                                                                       | ✅         | ✅          | ✅      | ✅      | ✅     |
 | Uncancellation              | Custom              | rc_uncancellation_event        | A non-expired cancelled subscription has been re-enabled.                                                                                                                                                                                                                 | ✅         | ✅          | ✅      | ❌      | ❌     |
 | Non Subscription Purchase   | Purchase            | rc_non_subscription_purchase_event | A customer has made a purchase that will not auto-renew.                                                                                                                                                                                                                   | ✅         | ✅          | ✅      | ✅      | ✅     |
 | Subscription Paused         | Custom              | rc_subscription_paused_event   | A subscription has been paused.                                                                                                                                                                                                                                           | ❌         | ✅          | ❌      | ❌      | ❌     |
-| Expiration                  | Custom              | rc_expiration_event            | A subscription has expired and access should be removed. If you have [Platform Server Notifications](/docs/platform-resources/server-notifications) configured, this event will occur as soon as we are notified (within seconds to minutes) of the expiration.    | ✅         | ✅          | ✅      | ✅      | ✅     |
+| Expiration                  | Custom              | rc_expiration_event            | A subscription has expired and access should be removed. If you have [Platform Server Notifications](/platform-resources/server-notifications) configured, this event will occur as soon as we are notified (within seconds to minutes) of the expiration.    | ✅         | ✅          | ✅      | ✅      | ✅     |
 | Billing Issue               | Custom              | rc_billing_issue_event         | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR.                                                                      | ✅         | ✅          | ✅      | ✅      | ❌     |
-| Product Change              | Custom              | rc_product_change_event        | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](/docs/subscription-guidance/managing-subscriptions) for more details on updates, downgrades, and crossgrades. | ✅         | ✅          | ❌      | ✅      | ❌     |
+| Product Change              | Custom              | rc_product_change_event        | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](/subscription-guidance/managing-subscriptions) for more details on updates, downgrades, and crossgrades. | ✅         | ✅          | ❌      | ✅      | ❌     |
 
 For events that have revenue, such as trial conversions and renewals, RevenueCat will automatically record this amount along with the event in Iterable.
 
@@ -49,7 +49,7 @@ For events that have revenue, such as trial conversions and renewals, RevenueCat
 
 ### 1. Set Iterable User Identity
 
-In order to associate RevenueCat data with the Iterable User Profile, either the RevenueCat `$email` or `$iterableUserId` [Subscriber Attributes](/docs/customers/subscriber-attributes) should be set in RevenueCat. The preferred method is to send the `$email` attribute. If neither of these fields exist, RevenueCat will fallback to the RevenueCat app user ID. You can read more about Iterable user profiles in Iterable's [Identifying the User](https://support.iterable.com/hc/en-us/articles/360035402531-Identifying-the-User-) documentation.
+In order to associate RevenueCat data with the Iterable User Profile, either the RevenueCat `$email` or `$iterableUserId` [Subscriber Attributes](/customers/subscriber-attributes) should be set in RevenueCat. The preferred method is to send the `$email` attribute. If neither of these fields exist, RevenueCat will fallback to the RevenueCat app user ID. You can read more about Iterable user profiles in Iterable's [Identifying the User](https://support.iterable.com/hc/en-us/articles/360035402531-Identifying-the-User-) documentation.
 
 :::info `$iterableUserId` character limit
 The `$iterableUserId` can be up to 52 characters long.
@@ -96,11 +96,11 @@ Iterable recommends having a production and sandbox project to separate live and
 
 ### Make a sandbox purchase with a new user
 
-Simulate a new user installing your app, and go through your app flow to complete the [sandbox purchase](/docs/test-and-launch/sandbox).
+Simulate a new user installing your app, and go through your app flow to complete the [sandbox purchase](/test-and-launch/sandbox).
 
 ### Check that the Iterable event delivered successfully
 
-While still on the Customer View, select the purchase event in the [Customer History](/docs/dashboard-and-metrics/customers-group/customer-history) page and make sure that the Iterable integration event exists and was delivered successfully.
+While still on the Customer View, select the purchase event in the [Customer History](/dashboard-and-metrics/customers-group/customer-history) page and make sure that the Iterable integration event exists and was delivered successfully.
 
 ![](https://files.readme.io/470e07f-Screen_Shot_2022-02-11_at_4.36.22_PM.png "Screen Shot 2022-02-11 at 4.36.22 PM.png")
 

@@ -12,7 +12,7 @@ This guide assumes basic knowledge of Google Play Console, as well as having an 
 ## Create an In-App Product or Subscription
 
 :::info
-You'll need to have an APK uploaded before you can create in-app products. Check out our guide on [sandbox testing on Android](/docs/test-and-launch/sandbox/google-play-store) for details on how to upload an APK and roll out a release on a closed test track.
+You'll need to have an APK uploaded before you can create in-app products. Check out our guide on [sandbox testing on Android](/test-and-launch/sandbox/google-play-store) for details on how to upload an APK and roll out a release on a closed test track.
 :::
 
 To create an in-app product or subscription, go to Google Play Console's 'All Applications' page and select your app from the list.
@@ -61,7 +61,7 @@ RevenueCat Products map to Base Plans for Google Play subscriptions, since those
 :::
 
 :::danger Support for non backwards-compatible base plans
-Old versions of RevenueCat SDKs do not support Google's new subscription features such as multiple base plans per subscription product. Only base plans marked as \"[backwards compatible](https://support.google.com/googleplay/android-developer/answer/12124625?hl=en#backwards_compatible)\" in Google Play Console are available in these SDK versions. [Learn more](/docs/getting-started/entitlements/google-subscriptions-and-backwards-compatibility). Only one base plan per subscription can be marked as backwards compatible.
+Old versions of RevenueCat SDKs do not support Google's new subscription features such as multiple base plans per subscription product. Only base plans marked as \"[backwards compatible](https://support.google.com/googleplay/android-developer/answer/12124625?hl=en#backwards_compatible)\" in Google Play Console are available in these SDK versions. [Learn more](/getting-started/entitlements/google-subscriptions-and-backwards-compatibility). Only one base plan per subscription can be marked as backwards compatible.
 :::
 
 To mark a base plan as backwards compatible, click the overflow menu on the base plan and select "Use for deprecated billing methods".
@@ -77,7 +77,7 @@ If you wish to create an offer for your base plan, you can do so from the subscr
 You can then select a product ID, eligibility, and offer phases.
 
 :::danger Support for non-backwards-compatible offers
-Old versions of RevenueCat SDKs do not support Google's new subscription features such as multiple offers per base plan. Only offers marked as \"[backwards compatible](https://support.google.com/googleplay/android-developer/answer/12124625?hl=en#backwards_compatible)\" in Google Play Console are available in these SDK versions. [Learn more](/docs/getting-started/entitlements/google-subscriptions-and-backwards-compatibility). Only one offer per base plan can be marked as backwards compatible.
+Old versions of RevenueCat SDKs do not support Google's new subscription features such as multiple offers per base plan. Only offers marked as \"[backwards compatible](https://support.google.com/googleplay/android-developer/answer/12124625?hl=en#backwards_compatible)\" in Google Play Console are available in these SDK versions. [Learn more](/getting-started/entitlements/google-subscriptions-and-backwards-compatibility). Only one offer per base plan can be marked as backwards compatible.
 :::
 
 To mark an offer as backwards compatible, click the overflow menu and select "Use for deprecated billing methods".
@@ -98,4 +98,4 @@ If you are relying solely on RevenueCat for your subscriptions, you can safely s
 
 ## Integrate with RevenueCat
 
-If you're ready to integrate your new Google Play in-app product with RevenueCat, continue our [product setup guide ](/docs/getting-started/entitlements).
+If you're ready to integrate your new Google Play in-app product with RevenueCat, continue our [product setup guide ](/getting-started/entitlements).

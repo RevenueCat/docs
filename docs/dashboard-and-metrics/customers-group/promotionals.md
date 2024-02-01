@@ -20,11 +20,11 @@ Promotional subscriptions allow you to give a user access to premium content for
 Grant and revoke promotional entitlements via our REST API as described [here](https://docs.revenuecat.com/reference/grant-a-promotional-entitlement).
 :::
 
-To give a user promotional access to an entitlement choose the [entitlement name](/docs/getting-started/entitlements) and duration and click 'Grant'. You can grant multiple entitlements if you have different levels of access. You must be using RevenueCat [Entitlements](/docs/getting-started/entitlements) to grant promotionals.
+To give a user promotional access to an entitlement choose the [entitlement name](/getting-started/entitlements) and duration and click 'Grant'. You can grant multiple entitlements if you have different levels of access. You must be using RevenueCat [Entitlements](/getting-started/entitlements) to grant promotionals.
 
 ![](https://files.readme.io/5014886-Screenshot_2023-03-27_at_2.05.51_PM.png "Screenshot 2023-03-27 at 2.05.51 PM.png")
 
-Granting an entitlement from the customer page will go into effect immediately, but you may need to [refresh CustomerInfo](/docs/getting-started#section-get-subscription-status) on the client to get the latest active entitlements. The promotional access will automatically be revoked after the selected duration. Note that promotional entitlements in the customer timeline will not show as "sandbox" transactions.
+Granting an entitlement from the customer page will go into effect immediately, but you may need to [refresh CustomerInfo](/getting-started#section-get-subscription-status) on the client to get the latest active entitlements. The promotional access will automatically be revoked after the selected duration. Note that promotional entitlements in the customer timeline will not show as "sandbox" transactions.
 
 :::info
 Promotional entitlements will be prefixed with "rc_promo" in the customer dashboard and in SDKs.
@@ -36,4 +36,4 @@ Granted entitlements will automatically be removed after expiration. To remove a
 
 ## Next Steps
 
-- [Attributes :fa-arrow-right:](/docs/dashboard-and-metrics/customers-group/attributes)
+- [Attributes ➡️](/dashboard-and-metrics/customers-group/attributes)

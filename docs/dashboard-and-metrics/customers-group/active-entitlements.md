@@ -4,7 +4,7 @@ slug: active-entitlements
 hidden: false
 ---
 
-The 'Entitlements' card gives you a quick glance at the current entitlement status for a user. You can see which product(s) or [Entitlement(s)](/docs/getting-started/entitlements) have been purchased, and when they'll renew or cancel.
+The 'Entitlements' card gives you a quick glance at the current entitlement status for a user. You can see which product(s) or [Entitlement(s)](/getting-started/entitlements) have been purchased, and when they'll renew or cancel.
 
 Like the 'Customer History' view, this card is generated from current purchase receipt saved for the user.
 
@@ -16,7 +16,7 @@ If the expiration date seems further out then you expect, e.g. 16 days past when
 
 ## Transferring entitlements
 
-You can manually [transfer entitlements](/docs/getting-started/restoring-purchases#transfer-purchases) from one customer to another via the dashboard.
+You can manually [transfer entitlements](/getting-started/restoring-purchases#transfer-purchases) from one customer to another via the dashboard.
 
 1. In the Entitlements section of the customer profile, click **Transfer**.
 
@@ -54,4 +54,4 @@ Transferring entitlements works with the block-restore behavior
 
 ## Next Steps
 
-- [Promotionals ](/docs/dashboard-and-metrics/customers-group/promotionals)
+- [Promotionals ](/dashboard-and-metrics/customers-group/promotionals)

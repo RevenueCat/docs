@@ -14,7 +14,7 @@ OneSignal can be a useful integration tool for understanding what stage a custom
 With our OneSignal integration, you can:
 
 - Send an onboarding campaign to a user in a free trial
-- Send a push notification to churned users and [offer them a discount](/docs/subscription-guidance/subscription-offers/ios-subscription-offers)
+- Send a push notification to churned users and [offer them a discount](/subscription-guidance/subscription-offers/ios-subscription-offers)
 
 With accurate and up-to-date subscription data in OneSignal, you'll be set to turbocharge your campaigns ⚡️
 
@@ -56,13 +56,13 @@ The OneSignal integration tracks the following events:
 | Trial Converted           | trial_converted           | When an auto-renewing subscription product converts from a free trial to normal paid period.                                                                                                                                                                                                                                                            | ✅        | ✅         | ✅     | ✅     | ❌    |
 | Trial Cancelled           | trial_cancelled           | When a user turns off renewals for an auto-renewing subscription product during a free trial period.                                                                                                                                                                                                                                                    | ✅        | ✅         | ✅     | ✅     | ❌    |
 | Renewal                   | renewal                   | An existing subscription has been renewed or a lapsed user has resubscribed.                                                                                                                                                                                                                                                                            | ✅        | ✅         | ✅     | ✅     | ❌    |
-| Cancellation              | cancellation              | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](/docs/integrations/webhooks/event-types-and-fields#cancellation-and-expiration-reasons) for more details.                                                                                                                                                    | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Cancellation              | cancellation              | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](/integrations/webhooks/event-types-and-fields#cancellation-and-expiration-reasons) for more details.                                                                                                                                                    | ✅        | ✅         | ✅     | ✅     | ✅    |
 | Uncancellation            | uncancellation            | A non-expired cancelled subscription has been re-enabled.                                                                                                                                                                                                                                                                                               | ✅        | ✅         | ✅     | ❌     | ❌    |
 | Non Subscription Purchase | non_subscription_purchase | A customer has made a purchase that will not auto-renew.                                                                                                                                                                                                                                                                                                | ✅        | ✅         | ✅     | ✅     | ✅    |
 | Subscription paused       | subscription_paused       | A subscription has been paused.                                                                                                                                                                                                                                                                                                                         | ❌        | ✅         | ❌     | ❌     | ❌    |
-| Expiration                | expiration                | A subscription has expired and access should be removed. If you have [Platform Server Notifications](/docs/platform-resources/server-notifications) configured, this event will occur as soon as we are notified (within seconds to minutes) of the expiration. If you do not have notifications configured, delays may be approximately 1 hour. | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Expiration                | expiration                | A subscription has expired and access should be removed. If you have [Platform Server Notifications](/platform-resources/server-notifications) configured, this event will occur as soon as we are notified (within seconds to minutes) of the expiration. If you do not have notifications configured, delays may be approximately 1 hour. | ✅        | ✅         | ✅     | ✅     | ✅    |
 | Billing Issue             | billing_issue             | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR.                                                                                                                                                      | ✅        | ✅         | ✅     | ✅     | ❌    |
-| Product Change            | product_change            | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](/docs/subscription-guidance/managing-subscriptions) for more details on updates, downgrades, and crossgrades.                                                                            | ✅        | ✅         | ❌     | ✅     | ❌    |
+| Product Change            | product_change            | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](/subscription-guidance/managing-subscriptions) for more details on updates, downgrades, and crossgrades.                                                                            | ✅        | ✅         | ❌     | ✅     | ❌    |
 
 ## 1. Send device data to RevenueCat
 
@@ -70,13 +70,13 @@ The OneSignal integration tracks the following events:
 Support for user-centric API versions of OneSignal (11.0 and above) coming soon.
 :::
 
-The OneSignal integration requires some device-specific data. RevenueCat will only update users in OneSignal if the below data has been added as [Subscriber Attributes](/docs/customers/subscriber-attributes) for the user.
+The OneSignal integration requires some device-specific data. RevenueCat will only update users in OneSignal if the below data has been added as [Subscriber Attributes](/customers/subscriber-attributes) for the user.
 
 | Key            | Description                                                                                       | Required |
 | :------------- | :------------------------------------------------------------------------------------------------ | :------- |
 | `$onesignalId` | The [OneSignal Player Id](https://documentation.onesignal.com/docs/users#player-id) for the user. | ✅       |
 
-This property can be set manually, like any other [Subscriber Attributes](/docs/customers/subscriber-attributes), or through the helper method `setOnesignalID()`.
+This property can be set manually, like any other [Subscriber Attributes](/customers/subscriber-attributes), or through the helper method `setOnesignalID()`.
 
 You can listen for changes to the OneSignal Id through their SDK, and send the value to RevenueCat. If you already have OneSignal set up, you should make sure that you're also sending the OneSignal Id for users that are updating to the latest version of your app.
 
@@ -108,11 +108,11 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 ### Check that the required device data is collected
 
-Navigate the the [Customer View](/docs/dashboard-and-metrics/customers-group/basic-information) for the test user that just made a purchase. Make sure that all of the required data from step 1 above is listed as attributes for the user.
+Navigate the the [Customer View](/dashboard-and-metrics/customers-group/basic-information) for the test user that just made a purchase. Make sure that all of the required data from step 1 above is listed as attributes for the user.
 
 ### Check that the OneSignal event delivered successfully
 
-While still on the Customer View, click into the test purchase event in the [Customer History](/docs/dashboard-and-metrics/customers-group/customer-history) and make sure that the OneSignal integration event exists and was delivered successfully.
+While still on the Customer View, click into the test purchase event in the [Customer History](/dashboard-and-metrics/customers-group/customer-history) and make sure that the OneSignal integration event exists and was delivered successfully.
 
 ![](https://files.readme.io/f052d26-app.revenuecat.com_activity_40779aaf_event_92499ad6-350b-455a-a2ec-4c28c4ca0b28_5.png)
 

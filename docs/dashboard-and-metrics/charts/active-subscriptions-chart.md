@@ -15,13 +15,13 @@ The Active Subscriptions chart measures the number of unique paid subscriptions 
 
 ## How to use Active Subscriptions in your business
 
-Active Subscriptions are useful for understanding the number of individual, recurring paid relationships you are currently serving and is a proxy for the size of the business and is powerful when combined with [filters and segments](/docs/dashboard-and-metrics/charts#section-filters-and-segments) to understand the composition of your paid subscriber base.
+Active Subscriptions are useful for understanding the number of individual, recurring paid relationships you are currently serving and is a proxy for the size of the business and is powerful when combined with [filters and segments](/dashboard-and-metrics/charts#section-filters-and-segments) to understand the composition of your paid subscriber base.
 
 ## Calculation
 
 For each period, the count of Active Subscriptions represents the number of paid, unexpired subscriptions at the end of the period. Therefore, at a daily resolution, the count represents the number of Active Subscriptions at the end of that day; whereas at a monthly resolution it represents the number of Active Subscriptions at the end of that month.
 
-To understand how that snapshot is generated for each period, check out the [Active Subscriptions Movement](/docs/dashboard-and-metrics/charts/active-subscriptions-movement-chart) chart.
+To understand how that snapshot is generated for each period, check out the [Active Subscriptions Movement](/dashboard-and-metrics/charts/active-subscriptions-movement-chart) chart.
 
 ## FAQs
 

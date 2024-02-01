@@ -3335,7 +3335,7 @@ components:
           type:
             description: 'The platform of the app.
 
-              Mac App Store is disabled by default. See [Legacy Mac Apps](/docs/legacy-mac-apps)
+              Mac App Store is disabled by default. See [Legacy Mac Apps](/legacy-mac-apps)
               for more details.
 
               '

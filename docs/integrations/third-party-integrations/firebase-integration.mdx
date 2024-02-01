@@ -109,13 +109,13 @@ The Google Analytics portion of the Firebase integration tracks the following ev
 | Initial Purchase                 | purchase            | A new subscription has been purchased.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | ✅         | ✅          | ✅      | ✅      | ❌     |
 | Trial Started                    | rc_trial_start      | The start of an auto-renewing subscription product free trial.                                                                                                                                                                                                                                                                                                                                                                                                                                               | ✅         | ✅          | ✅      | ✅      | ❌     |
 | Renewal (incl. trial conversion) | purchase            | An existing subscription has been renewed or a lapsed user has resubscribed.                                                                                                                                                                                                                                                                                                                                                                                                                                  | ✅         | ✅          | ✅      | ✅      | ❌     |
-| Cancellation (incl. during trial)| rc_cancellation     | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](/docs/integrations/webhooks/event-types-and-fields#cancellation-and-expiration-reasons) for more details.                                                                                                                                                                                                                                                                                                          | ✅         | ✅          | ✅      | ✅      | ✅     |
+| Cancellation (incl. during trial)| rc_cancellation     | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](/integrations/webhooks/event-types-and-fields#cancellation-and-expiration-reasons) for more details.                                                                                                                                                                                                                                                                                                          | ✅         | ✅          | ✅      | ✅      | ✅     |
 | Uncancellation                   | rc_uncancellation   | A non-expired cancelled subscription has been re-enabled.                                                                                                                                                                                                                                                                                                                                                                                                                                                    | ✅         | ✅          | ✅      | ❌      | ❌     |
 | Non Subscription Purchase        | purchase            | A customer has made a purchase that will not auto-renew.                                                                                                                                                                                                                                                                                                                                                                                                                                                     | ✅         | ✅          | ✅      | ✅      | ✅     |
 | Subscription Paused              | rc_subscription_paused | A subscription has been paused.                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | ❌         | ✅          | ❌      | ❌      | ❌     |
-| Expiration                       | rc_expiration       | A subscription has expired and access should be removed. If you have [Platform Server Notifications](/docs/platform-resources/server-notifications) configured, this event will occur as soon as we are notified (within seconds to minutes) of the expiration. If you do not have notifications configured, delays may be approximately 1 hour.                                                                                                                           | ✅         | ✅          | ✅      | ✅      | ✅     |
+| Expiration                       | rc_expiration       | A subscription has expired and access should be removed. If you have [Platform Server Notifications](/platform-resources/server-notifications) configured, this event will occur as soon as we are notified (within seconds to minutes) of the expiration. If you do not have notifications configured, delays may be approximately 1 hour.                                                                                                                           | ✅         | ✅          | ✅      | ✅      | ✅     |
 | Billing Issue                    | rc_billing_issue    | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR.                                                                                                                                                                                                                                                                                                          | ✅         | ✅          | ✅      | ✅      | ❌     |
-| Product Change                   | rc_product_change   | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](/docs/subscription-guidance/managing-subscriptions) for more details on updates, downgrades, and crossgrades.                                                                                                                                                                                                                                 | ✅         | ✅          | ❌      | ✅      | ❌     |
+| Product Change                   | rc_product_change   | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](/subscription-guidance/managing-subscriptions) for more details on updates, downgrades, and crossgrades.                                                                                                                                                                                                                                 | ✅         | ✅          | ❌      | ✅      | ❌     |
 | Transfer                         | rc_transfer_event   | A transfer of transactions and entitlements was initiated between one App User ID(s) to another. Please note: Two events will be sent for each transfer, one for the original user and another for the destination user.                                                                                                                                                                                                                                                                                                                                                                                                              | ✅         | ✅          | ✅      | ✅      | ❌     |
 
 
@@ -123,7 +123,7 @@ The Google Analytics portion of the Firebase integration tracks the following ev
 
 #### Make a sandbox purchase with a new user
 
-Simulate a new user installing your app, and go through your app flow to complete the [sandbox purchase](/docs/test-and-launch/sandbox).
+Simulate a new user installing your app, and go through your app flow to complete the [sandbox purchase](/test-and-launch/sandbox).
 
 #### Check Google Analytics Dashboard
 
@@ -166,7 +166,7 @@ import textContent from "!!raw-loader!@site/code_blocks/integrations/third-party
 
 ### Enable Firebase Extension
 
-You can install this extension either through the [Firebase Console](/docs/integrations/third-party-integrations/firebase-integration#install-firebase-extension-through-firebase-console) or [CLI](/docs/integrations/third-party-integrations/firebase-integration#install-firebase-extension-through-cli) on your OS.
+You can install this extension either through the [Firebase Console](/integrations/third-party-integrations/firebase-integration#install-firebase-extension-through-firebase-console) or [CLI](/integrations/third-party-integrations/firebase-integration#install-firebase-extension-through-cli) on your OS.
 
 #### Install Firebase Extension through Firebase Console
 
@@ -232,12 +232,12 @@ Follow [this installation link](https://console.firebase.google.com/project/_/ex
 Remember to select 'Save'
 
 :::success
-You have successfully installed your instance of Enable In-App Purchases with RevenueCat! Skip to [Testing Firebase Extension](/docs/integrations/third-party-integrations/firebase-integration#testing-firebase-extension) section of the docs.
+You have successfully installed your instance of Enable In-App Purchases with RevenueCat! Skip to [Testing Firebase Extension](/integrations/third-party-integrations/firebase-integration#testing-firebase-extension) section of the docs.
 :::
 
 #### Install Firebase Extension through CLI
 
-If you installed the Firebase Extension through the Firebase Console, skip to [Testing Firebase Extension](/docs/integrations/third-party-integrations/firebase-integration#testing-firebase-extension) of the docs.
+If you installed the Firebase Extension through the Firebase Console, skip to [Testing Firebase Extension](/integrations/third-party-integrations/firebase-integration#testing-firebase-extension) of the docs.
 
 This portion of the installation is done through the command-line interface (CLI). Clone this [Github repo](https://github.com/RevenueCat/firestore-revenuecat-purchases) and open the CLI for your respective operating system.
 
@@ -290,7 +290,7 @@ This portion of the installation is done through the command-line interface (CLI
 
 ##### Note about the App User ID's in the Customers collection
 
-The document ID's in the Customers collection will always be an App User ID. Specifically, it will be the customer's most recently active alias. This means that the document ID for each customer may switch between [anonymous ID's](/docs/customers/user-ids#anonymous-app-user-ids) and [custom ID's](/docs/customers/user-ids#logging-in-with-a-custom-app-user-id), if they are both used in your app. If you would like to only use custom ID's, you can [learn more about that here](/docs/customers/user-ids#how-to-never-see-anonymous-app-user-ids).
+The document ID's in the Customers collection will always be an App User ID. Specifically, it will be the customer's most recently active alias. This means that the document ID for each customer may switch between [anonymous ID's](/customers/user-ids#anonymous-app-user-ids) and [custom ID's](/customers/user-ids#logging-in-with-a-custom-app-user-id), if they are both used in your app. If you would like to only use custom ID's, you can [learn more about that here](/customers/user-ids#how-to-never-see-anonymous-app-user-ids).
 
 ![](https://files.readme.io/a8c5e19-Screen_Shot_2022-04-15_at_2.08.18_PM.png "Screen Shot 2022-04-15 at 2.08.18 PM.png")
 
@@ -304,11 +304,11 @@ You have successfully installed your instance of Enable In-App Purchases with Re
 
 #### Make a sandbox purchase with a new user
 
-Simulate a new user installing your app, and go through your app flow to complete the [sandbox purchase](/docs/test-and-launch/sandbox).
+Simulate a new user installing your app, and go through your app flow to complete the [sandbox purchase](/test-and-launch/sandbox).
 
 #### Check that the Firebase event delivered successfully
 
-While still on the Customer View, select the purchase event in the [Customer History](/docs/dashboard-and-metrics/customers-group/customer-history) page and make sure that the Firebase (Firebase function) integration event exists and was delivered successfully.
+While still on the Customer View, select the purchase event in the [Customer History](/dashboard-and-metrics/customers-group/customer-history) page and make sure that the Firebase (Firebase function) integration event exists and was delivered successfully.
 
 ![](https://files.readme.io/02ff787-Screen_Shot_2022-05-09_at_7.09.39_PM.png "Screen Shot 2022-05-09 at 7.09.39 PM.png")
 
@@ -362,7 +362,7 @@ import transferContent from "!!raw-loader!@site/code_blocks/integrations/third-p
 
 #### Checking Entitlement access
 
-To check access to entitlements, you can either [use the RevenueCat SDK](/docs/getting-started/getting-started#10-get-subscription-status) or use Firebase Authentication custom claims. For example, to check whether the current user has access to an entitlement called `premium`, you could use the following Firebase code:
+To check access to entitlements, you can either [use the RevenueCat SDK](/getting-started/getting-started#10-get-subscription-status) or use Firebase Authentication custom claims. For example, to check whether the current user has access to an entitlement called `premium`, you could use the following Firebase code:
 
 import jsContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_17.js";
 

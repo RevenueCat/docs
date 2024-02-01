@@ -5,7 +5,7 @@ excerpt: Handling and reacting to refunded purchases
 hidden: false
 ---
 
-Refunds are handled differently on each platform. It's recommended to set up [Platform Server Notifications](/docs/platform-resources/server-notifications) for the best performance.
+Refunds are handled differently on each platform. It's recommended to set up [Platform Server Notifications](/platform-resources/server-notifications) for the best performance.
 
 ## Platforms
 
@@ -17,13 +17,13 @@ Refunds are handled differently on each platform. It's recommended to set up [Pl
 
 **Non-subscriptions**
 
-🚧 RevenueCat requires [Platform Server Notifications](/docs/platform-resources/server-notifications) to be enabled in order to detect when a non-subscription refund has been issued by Apple. Apple does not allow developers to issue refunds on behalf of customers.\n\nIf a customer requests a refund, you can direct them to the Apple support page: https://support.apple.com/en-us/HT204084\n\nConsumable refunds are not currently detected in RevenueCat.
+🚧 RevenueCat requires [Platform Server Notifications](/platform-resources/server-notifications) to be enabled in order to detect when a non-subscription refund has been issued by Apple. Apple does not allow developers to issue refunds on behalf of customers.\n\nIf a customer requests a refund, you can direct them to the Apple support page: https://support.apple.com/en-us/HT204084\n\nConsumable refunds are not currently detected in RevenueCat.
 
 ### Google Play
 
 **Subscriptions**
 
-✅ Active Google Play subscriptions may be refunded directly through the RevenueCat dashboard. Click on the respective transaction event on the customer page and hit \"Refund\" in the upper right. [Documentation](/docs/dashboard-and-metrics/customers-group/customer-history#refunding-purchases) for reference.\n\nRefunds can also be granted programmatically through the RevenueCat [REST API](https://docs.revenuecat.com/reference#revoke-a-google-subscription). This will immediately revoke access to the Google subscription and issue a refund for the last purchase.\n\nIf a refund is granted by Google or initiated through the Google Play console, it **may take up to 24 hours** to be detected by RevenueCat.
+✅ Active Google Play subscriptions may be refunded directly through the RevenueCat dashboard. Click on the respective transaction event on the customer page and hit \"Refund\" in the upper right. [Documentation](/dashboard-and-metrics/customers-group/customer-history#refunding-purchases) for reference.\n\nRefunds can also be granted programmatically through the RevenueCat [REST API](https://docs.revenuecat.com/reference#revoke-a-google-subscription). This will immediately revoke access to the Google subscription and issue a refund for the last purchase.\n\nIf a refund is granted by Google or initiated through the Google Play console, it **may take up to 24 hours** to be detected by RevenueCat.
 
 **Non-subscriptions**
 

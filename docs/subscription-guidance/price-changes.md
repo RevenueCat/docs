@@ -12,7 +12,7 @@ Price changes can take 24 hours to propagate the App Store and Google Play.
 :::
 
 :::info Pro Tip
-You may want to consider creating a new product instead of changing the price of an existing product for tools like [Experiments](/docs/tools/experiments-v1).
+You may want to consider creating a new product instead of changing the price of an existing product for tools like [Experiments](/tools/experiments-v1).
 :::
 
 ## App Store Price Changes
@@ -33,8 +33,8 @@ RevenueCat uses a best-effort approach for tracking App Store transaction prices
 
 Of course, this may not be ideal if you regularly make price changes or you don't want to grandfather your existing users. To enable automatic price detection for App Store price changes to keep your transaction price data accurate, you'll need to:
 
-- Enable [platform server notifications](/docs/platform-resources/server-notifications/apple-server-notifications) using `V2` App Store Server Notifications
-- Upload your App Store Connect API Key as detailed [here](/docs/service-credentials/itunesconnect-app-specific-shared-secret/app-store-connect-api-key-configuration)
+- Enable [platform server notifications](/platform-resources/server-notifications/apple-server-notifications) using `V2` App Store Server Notifications
+- Upload your App Store Connect API Key as detailed [here](/service-credentials/itunesconnect-app-specific-shared-secret/app-store-connect-api-key-configuration)
 
 From this point, RevenueCat will listen to price change events from Apple's App Store Server Notifications and automatically adjust prices of transactions for subsequent renewals according to your price change schedule.
 
@@ -58,4 +58,4 @@ For more information about Stripe price changes, see [Stripe Support](https://st
 
 ## Transaction Prices in RevenueCat
 
-Prices detected for transactions are used to calculate metrics throughout the RevenueCat dashboard, including in Charts. For more information about Charts and Overview data, see [Charts](/docs/dashboard-and-metrics/charts) and [Overview](/docs/dashboard-and-metrics/overview) documentation.
+Prices detected for transactions are used to calculate metrics throughout the RevenueCat dashboard, including in Charts. For more information about Charts and Overview data, see [Charts](/dashboard-and-metrics/charts) and [Overview](/dashboard-and-metrics/overview) documentation.

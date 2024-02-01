@@ -7,7 +7,7 @@ hidden: false
 
 ## Account Security & 2FA
 
-Read more about account security and two-factor authentication in our [Account Security](/docs/welcome/projects/security) guide.
+Read more about account security and two-factor authentication in our [Account Security](/welcome/projects/security) guide.
 
 ### Update your email or name
 
@@ -38,7 +38,7 @@ If needed, you can add additional address information to your invoices by clicki
 ### Delete your account
 
 :::danger
-To delete your RevenueCat account, you'll first need to delete **all of your [Projects](/docs/welcome/projects)**. Note that deleting any active Projects will prevent users from accessing their purchases via the RevenueCat SDK but **will not** cancel any of your customer's active subscriptions.
+To delete your RevenueCat account, you'll first need to delete **all of your [Projects](/welcome/projects)**. Note that deleting any active Projects will prevent users from accessing their purchases via the RevenueCat SDK but **will not** cancel any of your customer's active subscriptions.
 
 Once your projects have been deleted, reach out to RevenueCat Support via the dashboard [Contact Us](https://app.revenuecat.com/settings/support) form in your account settings and request your account to be deleted.
 :::

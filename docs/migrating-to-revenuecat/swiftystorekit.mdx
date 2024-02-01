@@ -9,9 +9,9 @@ hidden: false
 
 If you use SwiftyStoreKit in your iOS app and are looking for an alternative that includes receipt validation, server-side status tracking, cross-platform support and more - RevenueCat is the ideal choice for your app!
 
-This guide describes how to integrate specific features from SwiftyStoreKit into your app. For basic RevenueCat setup instructions, see the [Quickstart guide](/docs/getting-started).
+This guide describes how to integrate specific features from SwiftyStoreKit into your app. For basic RevenueCat setup instructions, see the [Quickstart guide](/getting-started).
 
-If you're app is already live with SwiftyStoreKit, be sure to read the last section on [Migrating active subscriptions](/docs/migrating-to-revenuecat/swiftystorekit#section-migrating-active-subscriptions).
+If you're app is already live with SwiftyStoreKit, be sure to read the last section on [Migrating active subscriptions](/migrating-to-revenuecat/swiftystorekit#section-migrating-active-subscriptions).
 
 ---
 
@@ -74,7 +74,7 @@ import ssk_4 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/swifty
 ]}/>
 
 **Migration Steps:**
-In RevenueCat, Offerings are [configured in the dashboard](/docs/getting-started/entitlements), and mapped to `SKProduct`s. Once you setup your products in RevenueCat, replace `retrieveProductsInfo()` in SwiftyStoreKit with `offerings()` in _Purchases SDK_.
+In RevenueCat, Offerings are [configured in the dashboard](/getting-started/entitlements), and mapped to `SKProduct`s. Once you setup your products in RevenueCat, replace `retrieveProductsInfo()` in SwiftyStoreKit with `offerings()` in _Purchases SDK_.
 
 Products are automatically fetched and cached when the _Purchases SDK_ is configured, so in most cases the `offerings()` method will return synchronously. For this reason, it's safe to call `offerings()` as often as needed, knowing it will read from the cache without a network call.
 
@@ -105,7 +105,7 @@ import ssk_6 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/swifty
 **Migration Steps:**
 In SwiftyStoreKit, purchases can be initiated from a product Id or an `SKProduct`. In _Purchases SDK_ the preferred method is to provide a package to purchase. Replace the `purchaseProduct()` method in SwiftyStoreKit with `purchase(package:)`, and pass the package that was included with the RevenueCat Offering.
 
-A convenience property, `userCancelled`, is provided in the callback. This allows you to check if the user cancelled the payment without parsing through the `SKError`. If you would like to handle errors for specific cases, see all of the errors available to you in our [error handling guide](/docs/test-and-launch/errors).
+A convenience property, `userCancelled`, is provided in the callback. This allows you to check if the user cancelled the payment without parsing through the `SKError`. If you would like to handle errors for specific cases, see all of the errors available to you in our [error handling guide](/test-and-launch/errors).
 
 To check if the subscription has been successfully activated, check if the `customerInfo` object contains an active entitlement for the "pro" content you configured in the RevenueCat dashboard.
 
@@ -206,10 +206,10 @@ The latest customer info is automatically fetched and cached when the _Purchases
 
 If you've already shipped your app with active subscribers using SwiftyStoreKit, those active subscribers need to be migrated to RevenueCat. There are a few options available to make sure these users can still access their subscription on RevenueCat.
 
-Check out our guide on Migrating Subscriptions to learn more about getting existing subscribers into RevenueCat: [Migrating Subscriptions](/docs/migrating-to-revenuecat/migrating-existing-subscriptions)
+Check out our guide on Migrating Subscriptions to learn more about getting existing subscribers into RevenueCat: [Migrating Subscriptions](/migrating-to-revenuecat/migrating-existing-subscriptions)
 
 ## Next Steps
 
-- If you haven't already, make sure your products are configured correctly by checking out our [guide on entitlements :fa-arrow-right:](/docs/getting-started/entitlements)
-- If you want to use your own user identifiers, read about [setting app user ids :fa-arrow-right:](/docs/customers/user-ids)
-- Once you're ready to test your integration, you can follow our guides on [testing and debugging :fa-arrow-right:](/docs/test-and-launch/debugging)
+- If you haven't already, make sure your products are configured correctly by checking out our [guide on entitlements ➡️](/getting-started/entitlements)
+- If you want to use your own user identifiers, read about [setting app user ids ➡️](/customers/user-ids)
+- Once you're ready to test your integration, you can follow our guides on [testing and debugging ➡️](/test-and-launch/debugging)

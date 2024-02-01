@@ -28,20 +28,20 @@ import unityContent9 from "!!raw-loader!@site/code_blocks/getting-started/making
     { type: 'unity', content: unityContent9 },
 ]} />
 
-The `purchase(package:)` completion block will contain an updated [CustomerInfo](/docs/customers/customer-info) object if successful, along with some details about the transaction.
+The `purchase(package:)` completion block will contain an updated [CustomerInfo](/customers/customer-info) object if successful, along with some details about the transaction.
 
-If the `error` object is present, then the purchase failed. See our guide on [Error Handling](/docs/test-and-launch/errors) for the specific error types.
+If the `error` object is present, then the purchase failed. See our guide on [Error Handling](/test-and-launch/errors) for the specific error types.
 
 The `userCancelled` boolean is a helper for handling user cancellation errors. There will still be an error object if the user cancels, but you can optionally check the boolean instead of unwrapping the error completely. 
 
 :::warning Warning: Automatic Transaction Finishing/Acknowledgement/Consumption
 Transactions (new and previous transactions that are synced) will be automatically finished (acknowledged and consumed in Android), and will be made available through the RevenueCat SDK / Dashboard / ETL Exports. 
 
-You can use [observer mode](/docs/migrating-to-revenuecat/observer-mode) if you don't wish to have transactions finished (or consumed, in Android) automatically, but you will have to make sure that you finish/consume them yourself.
+You can use [observer mode](/migrating-to-revenuecat/observer-mode) if you don't wish to have transactions finished (or consumed, in Android) automatically, but you will have to make sure that you finish/consume them yourself.
 :::
 
 ## Next Steps
 
-* Don't forget to provide some way for customers to [restore their purchases](/docs/getting-started/restoring-purchases)
-* With purchases coming through, make sure they're [linked to the correct app user ID](/docs/customers/user-ids)
-* If you're ready to test, start with our guides on [sandbox testing](/docs/test-and-launch/sandbox)
+* Don't forget to provide some way for customers to [restore their purchases](/getting-started/restoring-purchases)
+* With purchases coming through, make sure they're [linked to the correct app user ID](/customers/user-ids)
+* If you're ready to test, start with our guides on [sandbox testing](/test-and-launch/sandbox)
