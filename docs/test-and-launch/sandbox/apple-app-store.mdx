@@ -59,7 +59,7 @@ If you do not see the option to add a sandbox account under iOS settings, make a
 
 ## iOS 14+ Only: Testing on the Simulator
 
-Starting from iOS 14, you can test sandbox purchases in the simulator. If you're using a physical device, you can skip this section.
+Starting from iOS 14, you can [test sandbox purchases in the simulator](https://developer.apple.com/documentation/xcode/setting-up-storekit-testing-in-xcode/). If you're using a physical device, you can skip this section.
 
 Testing on the simulator requires one of these SDK versions:
 
@@ -92,7 +92,11 @@ However, the RevenueCat SDK is still able to detect there are no active subscrip
 
 ### Step 1: Add a StoreKit Configuration File
 
-Go to **File > New > File...** in the menu bar and select **StoreKit Configuration File**. Save the file in the top-level folder of your project and add it to your targets.
+Go to **File > New > File...** in the menu bar and select **StoreKit Configuration File**.
+
+You can enable the "Sync this file with an app in App Store Connect" checkbox to have the file automatically configured with the in-app purchases or subscriptions already set up in App Store Connect.
+
+Save the file in the top-level folder of your project and add it to your targets.
 
 ![Search for "storekit" to find the configuration file template quicker.](https://files.readme.io/37ff24b-Screen_Shot_2020-12-01_at_11.56.19_AM.png)
 
@@ -142,6 +146,36 @@ Go to your app's configuration page in your RevenueCat project settings (**Proje
 
 :::success You did it!
 You're ready to make purchases locally in the simulator!
+:::
+
+## Testing Subscription Offers on the Simulator 
+For sandbox and production [subscription offers](doc:ios-subscription-offers), they are signed using the [In-App Key](doc:in-app-purchase-key-configuration). However, when using a StoreKit Configuration file, the key used to sign offers must be exported from Xcode directly.
+
+### Step 1: Finding your Subscription Offers Key
+Open the  `.storekit` file where the subscriptions offers are configured, and go to Editor → Subscription Offers Key.
+
+![Find Subscription Offers Key](https://github.com/RevenueCat/revenuecat-docs/assets/36222014/57cf8008-7c6e-4103-b8ad-6e4e2b9bb0a0)
+
+After selecting 'Subscription Offers Key', you will see your key ID and private key. 
+
+![Key ID and private key](https://github.com/RevenueCat/revenuecat-docs/assets/36222014/e83f6f2e-e4dc-4354-874f-27281f7e1acf)
+
+Note that the private key stored in the “.storekit” file is unique per file and Xcode allows you to re-generate the key for a given file. If you re-generate your key, be sure to follow these steps again to upload your new key to RevenueCat.
+
+### Step 2: Save your private key as a .p8 file
+Manually save the text of the private key in a file called `SubscriptionKey_XXXXXX.p8` where `XXXXXX` is the key ID. Following this example, the file would be named `SubscriptionKey_BD3A7A04.p8`.
+
+We only accept files smaller than 512B. We recommend utilizing an editor such as Visual Studio Code when creating your .p8 file. 
+
+### Step 3: Upload your file to RevenueCat
+This file can now be uploaded to the RevenueCat dashboard under your iOS app settings page → Storekit Subscription Offer Key. Be sure to copy and paste over your key ID from Xcode to the `Key ID` box.
+
+![Add key ID](https://github.com/RevenueCat/revenuecat-docs/assets/36222014/44dfcdcb-ccc0-46a3-80e6-68b887f68f38)
+
+Don't forget to click 'Save Changes' in the upper right.
+
+:::success You did it!
+You're ready to make Subscription Offer purchases locally in the simulator!
 :::
 
 ## Make a Purchase

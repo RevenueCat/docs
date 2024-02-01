@@ -28,7 +28,14 @@ A user’s app user id is cached on the device, so this value will persist betwe
 
 The latest `CustomerInfo` is automatically fetched and cached when the _Purchases SDK_ is configured and throughout the lifecycle of your app, so in most cases the `getCustomerInfo()` method will return synchronously. It is safe to call `getCustomerInfo()`  as often as needed and is a good idea to call it any time a user accesses premium content.
 
-The SDK will update the cache if it's older than 5 minutes, but only if you call `getCustomerInfo()`, make a purchase, or restore purchases. The cache will also be updated in the background when the app restarts even if the cache is not older than 5 minutes, as well as on the app foreground after 5 minutes has passed. These background updates can be listened to with the `CustomerInfo` listener. See here for information on the [CustomerInfo's fetchPolicy](https://revenuecat.github.io/purchases-ios-docs/4.19.0/documentation/revenuecat/purchases/customerinfo(fetchpolicy:)/).
+The SDK will update the cache after:
+- 5 minutes with the app in the foreground
+- 25 hours with the app in the background
+- a purchase is made or restored
+
+For faster `CustomerInfo` updates, we recommend enabling [Platform Server Notifications](https://www.revenuecat.com/docs/server-notifications) and the `CustomerInfo` [listener](https://www.revenuecat.com/docs/configuring-sdk#advanced-configuration). 
+
+See here for information on the [CustomerInfo's fetchPolicy](https://revenuecat.github.io/purchases-ios-docs/4.31.5/documentation/revenuecat/purchases/customerinfo(fetchpolicy:)/).
 
 The SDK caches this subscription information to reduce your app's reliance on the network, and as such users who unlock entitlements will be able to access them even without an internet connection.  The cache's default behavior is `cachedOrFetched`, which is that the SDK returns the cached data if available (even if stale), or fetches up-to-date data. See here for information on the [SDK's fetchPolicy](https://revenuecat.github.io/purchases-ios-docs/4.19.0/documentation/revenuecat/cachefetchpolicy/).
 

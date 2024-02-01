@@ -232,6 +232,7 @@ const dashboardCategory = new Category(
     ]),
     new Page("customer-lists"),
     new Page("taxes-and-commissions"),
+    new Page("performance-summaries"),
   ]
 );
 
@@ -337,6 +338,7 @@ const toolsCategory = new Category("🛠 Tools", "tools", false, [
     new Page("experiments-v1")
   ),
   new Page("targeting"),
+  new Page("paywall-orchestration-with-offerings"),
 ]);
 
 const platformResourcesCategory = new Category(

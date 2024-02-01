@@ -38,6 +38,12 @@ For more details, see [Google's documentation](https://support.google.com/google
 
 ## Promo codes
 
+:::warning Google Promo Codes will be treated as regular purchases
+Due to limitations in Google's Play Billing Library 5, we are currently unable to detect when promo codes are redeemed to purchase a subscription.
+
+All purchases will be reflected in RevenueCat at full-price.
+:::
+
 Google Promotions or _Promo Codes_ to give app developers the ability to create codes that are redeemable for one-time products or trials to subscriptions.
 
 ### Types of Promo Codes

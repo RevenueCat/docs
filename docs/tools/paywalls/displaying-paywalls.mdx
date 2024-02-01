@@ -4,8 +4,6 @@ slug: displaying-paywalls
 hidden: false
 ---
 
-# Displaying Paywalls
-
 ## iOS
 
 ### How to display a fullscreen Paywall in your app
@@ -52,6 +50,8 @@ Paywalls displayed with `presentPaywallIfNeeded` will have a close button on the
 However, a `PaywallView` will not have a close button by default. This gives you full control on how to to navigate to and from your `PaywallView`. You can push it onto an existing navigation stack or show it in a sheet with a custom dismiss button using SwiftUI toolbar.
 
 If desired, you can pass `displayCloseButton: true` when creating `PaywallView` to display a close button automatically.
+
+This close button will automatically take the color of your app's tint color. You can also override it by using [`View.tintColor`](https://developer.apple.com/documentation/swiftui/view/tint(_:)-23xyq): `PaywallView(...).tintColor(Color.red)`.
 
 ### How to display a footer Paywall on your custom paywall
 
@@ -120,6 +120,7 @@ import kotlin1 from "!!raw-loader!@site/code_blocks/tools/paywalls_1.kt";
 import kotlin2 from "!!raw-loader!@site/code_blocks/tools/paywalls_2.kt";
 import kotlin3 from "!!raw-loader!@site/code_blocks/tools/paywalls_3.kt";
 import kotlin4 from "!!raw-loader!@site/code_blocks/tools/paywalls_4.kt";
+import paywallsActivityJava from "!!raw-loader!@site/code_blocks/tools/paywalls_activity_java.java";
 
 <RCCodeBlock tabs={[
     {
@@ -142,8 +143,21 @@ import kotlin4 from "!!raw-loader!@site/code_blocks/tools/paywalls_4.kt";
         title: "Manually (Activity)",
         content: kotlin4,
     },
+    {
+        type: 'java',
+        title: "Manually (Activity) - Java",
+        content: paywallsActivityJava,
+    }
     
 ]}/>
+
+### Close Button
+
+Paywalls displayed with `PaywallDialog` will have a close button on the presented sheet.
+However, a `Paywall` will not have a close button by default. This gives you full control over how to navigate to and from your `Paywall` composable. You can push this to the existing navigation stack or display it in a sheet with a custom dismiss button using Android's navigation components and fragments.
+When presenting the paywall using the `PaywallActivityLauncher`, the close button will be shown by default since the paywall will be displayed as a new activity on top of the current stack.
+
+If desired, you can use `PaywallOptions.Builder`'s `setShouldDisplayDismissButton(true)` method when creating a `Paywall` to display a close button automatically.
 
 ### How to display a footer Paywall on your custom paywall
 
@@ -211,6 +225,82 @@ import kotlin10 from "!!raw-loader!@site/code_blocks/tools/paywalls_activity_sin
     },
 ]}/>
 
+
+## React Native
+
+### How to display a fullscreen Paywall in your app
+
+There are several ways to present paywalls:
+
+- Using `RevenueCatUI.presentPaywall`: this will display a paywall when invoked.
+- Using `RevenueCatUI.presentPaywallIfNeeded`: this will present a paywall only if the customer does not have an unlocked entitlement.
+- Manually presenting `<RevenueCatUI.Paywall>`: this gives you more flexibility on how the paywall is presented.
+
+
+import rn1 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_1.ts";
+import rn2 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_2.ts";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'rn',
+        title: "RevenueCatUI.presentPaywall",
+        content: rn1,
+    },
+    {
+        type: 'rn',
+        title: "RevenueCatUI.Paywall",
+        content: rn2,
+    }
+]}/>
+
+
+### How to display a footer Paywall on your custom paywall
+
+RevenueCatUI also has a paywall variation that can be displayed as a footer below your custom paywall.
+This allows you to design your paywall exactly as you want with native components while still using RevenueCat UI to handle it.
+This is done by using `<RevenueCatUI.PaywallFooterContainerView>`.
+
+The footer paywall mainly consists of the following:
+- Purchase button
+- Package details text
+- Package selection (if there are any multiple packages configured)
+
+This is all remotely configured and RevenueCatUI handles all the intro offer eligibility and purchase logic.
+
+import rn3 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_1.ts";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'rn',
+        title: "RevenueCatUI.PaywallFooterContainerView",
+        content: rn3,
+    }
+]}/>
+
+:::warning
+`PaywallFooterContainerView` only works correctly when phone is in portrait mode.
+Landscape mode support for `PaywallFooterContainerView` is coming soon.
+:::
+
+
+## Flutter
+
+### How to display a fullscreen Paywall in your app
+
+There are two ways to present paywalls:
+
+- Using `RevenueCatUI.presentPaywall`: this will display a paywall when invoked.
+- Using `RevenueCatUI.presentPaywallIfNeeded`: this will present a paywall only if the customer does not have an unlocked entitlement.
+
+import flutter1 from "!!raw-loader!@site/code_blocks/tools/paywalls_flutter_1.dart";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'flutter',
+        title: "RevenueCatUI.presentPaywall",
+        content: flutter1,
+    }
+]}/>
 
 ## Default Paywall
 
