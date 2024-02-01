@@ -6,6 +6,6 @@ if [[ $STRINGS == *'PR available for testing'* ]]; then
     echo "Comment already exists"
 else
     curl -s -H "Authorization: token $2" \
-    -X POST -d '{"body": "PR available for testing on https://app-development.revenuecat.com/?switchToPr='"$1"'"}' \
+    -X POST -d '{"body": "PR available for testing on https://d3gpjnl12vfvzm.cloudfront.net/pr-'"$1"'"}' \
     "https://api.github.com/repos/RevenueCat/docusaurus/issues/$PRNUMBER/comments"
 fi
