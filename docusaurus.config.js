@@ -13,10 +13,10 @@ const config = {
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
+  url: "https://revenuecat.com/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/",
+  baseUrl: "/docs/",
 
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
@@ -36,7 +36,7 @@ const config = {
       ({
         docs: {
           sidebarPath: "./sidebars.js",
-          routeBasePath: "/docs/",
+          routeBasePath: "/",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           // editUrl:
@@ -54,7 +54,7 @@ const config = {
         specs: [
           {
             spec: "openapi-spec/api-v2.yaml",
-            route: "/docs/api/",
+            route: "/api/",
           },
         ],
         // Theme Options for modifying how redoc renders them
@@ -98,7 +98,7 @@ const config = {
             items: [
               {
                 label: "Docs",
-                to: "/docs/welcome/overview",
+                to: "/welcome/overview",
               },
             ],
           },
