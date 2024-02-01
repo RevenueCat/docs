@@ -9,17 +9,6 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '20.x'
-  displayName: 'Install Node.js'
-
-- script: |
-    yarn
-    yarn build
-  displayName: 'yarn install and build'
-
 variables:
   - name: yarnCache
     value: $(System.DefaultWorkingDirectory)/.yarn
