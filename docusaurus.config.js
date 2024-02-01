@@ -6,6 +6,8 @@
 
 import { themes as prismThemes } from "prism-react-renderer";
 
+const DOC_BASE_URL = process.env.DOC_BASE_URL || '/docs/';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "RevenueCat",
@@ -16,10 +18,12 @@ const config = {
   url: "https://revenuecat.com/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/docs/",
+  baseUrl: DOC_BASE_URL,
 
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
+
+  trailingSlash: false,
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -86,7 +90,7 @@ const config = {
           },
           {
             label: "API Reference",
-            to: "/docs/api/",
+            to: "/api/",
           },
         ],
       },
