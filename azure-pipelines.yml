@@ -18,9 +18,9 @@ variables:
 stages:
   - template: .azure/templates/deploy_stages.yml
     parameters:
-      s3_staging_bucket_url: s3://revenuecat-docs-production.revenuecat.com
-      s3_production_bucket_url: s3://revenuecat-docs-staging.revenuecat.com
-      s3_development_bucket_url: s3://revenuecat-docs-development.revenuecat.com
+      s3_staging_bucket_url: s3://revenuecat-docs-production
+      s3_production_bucket_url: s3://revenuecat-docs-staging
+      s3_development_bucket_url: s3://revenuecat-docs-development
       cloudfront_staging_distribution: TBD
       cloudfront_production_distribution: TBD
       cloudfront_development_distribution: E3H8J4FFZ74FTY
