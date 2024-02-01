@@ -1,10 +1,10 @@
 class Category {
-  constructor(label, path, collapsed = true, items, defaultPage = null) {
+  constructor(label, path, collapsible = true, items, defaultPage = null) {
     this.type = "category";
     this.label = label;
     this.path = path;
     this.items = items;
-    this.collapsed = collapsed;
+    this.collapsible = collapsible;
     this.link = defaultPage || null;
   }
 
@@ -14,6 +14,8 @@ class Category {
       type: this.type,
       label: this.label,
       link: this.link,
+      collapsed: this.collapsible,
+      collapsible: this.collapsible,
       items: this.items.map((item) => {
         if (item instanceof Page) {
           return (

@@ -20,6 +20,10 @@
 
     --ifm-code-font-size: 0.75rem;
     --ifm-code-border-radius: 0;
+
+    --ifm-menu-color-background-hover: rgb(248, 248, 248);
+    --ifm-menu-color-background-active: rgb(68, 73, 195);
+    --ifm-menu-color-active: rgb(255, 255, 255);
   }
 
   /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -59,12 +63,45 @@ h3 {
 }
 
 .theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-1 {
-  padding-top: 10px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #9c9c9c29;
+  padding: 8px 0;
   font-weight: 400;
+  font-size: 13px;
 }
 
-.menu__list-item-collapsible {
+/* Top-level category */
+.menu__list-item-collapsible:has(.menu__link:not([href]):hover) {
+  background-color: white;
+}
+
+.menu__list-item-collapsible:has(.menu__link:not([href])) {
   font-weight: 600;
+  font-size: 14px;
+}
+
+.menu__list-item-collapsible .menu__link--active:not([href]) {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ifm-menu-color);
+}
+
+/* Top-level page */
+.menu__list-item-collapsible--active, .menu__list-item-collapsible--active:hover {
+  background-color: var(--ifm-menu-color-background-active);
+}
+
+.menu__list-item-collapsible--active .menu__link--active {
+  color: var(--ifm-menu-color-active) !important;
+}
+
+.menu__list-item-collapsible .menu__link--sublist.menu__link--active {
+  color: var(--ifm-menu-color);
+}
+
+
+.menu__caret::before {
+  background-size: 1.25rem;
+}
+
+.menu__list-item-collapsible--active .menu__caret::before {
+  filter:invert(1);
 }
