@@ -15,7 +15,7 @@ Churn measures the percentage of active subscriptions that were lost during a gi
 
 ### Cohorting
 
-Since churn rate is measured as a portion of all active subscriptions, it specifically does not measure the churn/retention rates of specific customer cohorts. To answer those questions, check out our [Subscription Retention](doc:subscription-retention-chart) chart.
+Since churn rate is measured as a portion of all active subscriptions, it specifically does not measure the churn/retention rates of specific customer cohorts. To answer those questions, check out our [Subscription Retention](/docs/subscription-retention-chart) chart.
 
 ## How to use Churn in your business
 

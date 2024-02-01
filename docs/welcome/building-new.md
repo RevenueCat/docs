@@ -23,9 +23,9 @@ If you're launching a new app or adding subscriptions to your app for the first 
 
 Making purchases is just the beginning. Explore the docs to learn about how you can:
 
-- Gate features in your app and design more complex access models. [Learn about Entitlements →](doc:entitlements)
-- Dynamically change out the products on your paywall and run price experiments. [Set up your paywall Offerings →](doc:displaying-products)
-- Set up winback campaigns to reduce churn. [See the free trial and discount options →](doc:subscription-offers)
-- Integrate subscription data from RevenueCat into all your other tools. [Check out integrations →](doc:integrations)
+- Gate features in your app and design more complex access models. [Learn about Entitlements →](/docs/entitlements)
+- Dynamically change out the products on your paywall and run price experiments. [Set up your paywall Offerings →](/docs/displaying-products)
+- Set up winback campaigns to reduce churn. [See the free trial and discount options →](/docs/subscription-offers)
+- Integrate subscription data from RevenueCat into all your other tools. [Check out integrations →](/docs/integrations)
 
 Have fun, and happy building! We're always here to help.

@@ -47,7 +47,7 @@ Since we are lacking required data to purchase this product in the RevenueCat An
 To fix this problem, you can try one of the following:
 
 - Delete the product in RevenueCat side and re-create or import it.
-- Update your [Play Store service credentials](https://www.revenuecat.com/docs/creating-play-service-credentials) in the app's settings in RevenueCat. This will re-trigger the migration. Please allow a few minutes for the migration to complete, and then check the product status again.
+- Update your [Play Store service credentials](/docs/creating-play-service-credentials) in the app's settings in RevenueCat. This will re-trigger the migration. Please allow a few minutes for the migration to complete, and then check the product status again.
 - Create a new product with a new identifier.
 
 If neither of these helps, please contact our [support team](https://www.revenuecat.com/support).

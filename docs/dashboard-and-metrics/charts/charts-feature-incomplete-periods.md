@@ -52,4 +52,4 @@ However, they can also be used as an important signal to understand when a cohor
 
 ### Next Steps
 
-To learn more about our Charts, check out our overview of the experience **[here](https://www.revenuecat.com/docs/charts)**.
+To learn more about our Charts, check out our overview of the experience **[here](/docs/charts)**.

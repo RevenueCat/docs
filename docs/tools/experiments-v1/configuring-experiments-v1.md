@@ -58,7 +58,7 @@ When viewing a new experiment, you can start, edit, or delete the experiment.
 
 Test users will be placed into the experiment Offering variants, but sandbox purchases won't be applied to your experiment.
 
-If you want to test your paywall to make sure it can handle displaying the Offerings in your experiment, you can use the [Offering Override](doc:offering-override) feature to choose a specific Offering to display to a user.
+If you want to test your paywall to make sure it can handle displaying the Offerings in your experiment, you can use the [Offering Override](/docs/offering-override) feature to choose a specific Offering to display to a user.
 :::
 
 ## FAQs

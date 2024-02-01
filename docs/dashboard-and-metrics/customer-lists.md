@@ -23,7 +23,7 @@ To view customers who have made sandbox transactions you can use the default San
 
 ## Find an Individual Customer
 
-You can look up an individual customer by an exact match of their App User ID, Transaction ID, Email Attribute, or Order ID (iOS only). To find a customer via Order ID, you can follow our guide on setting up [In-App Purchase Keys](https://docs.revenuecat.com/docs/in-app-purchase-key-configuration) to unlock this feature. The transaction must show as completed in the [Apple Purchase History](https://support.apple.com/en-gb/HT204088) to be considered a valid Order ID. Note that Transaction ID refers to the identifier in Google Play console and order emails of GPA.1234.1223–, and for Stripe si_abcefg, whereas Order ID refers to the identifier from Apple's order emails.
+You can look up an individual customer by an exact match of their App User ID, Transaction ID, Email Attribute, or Order ID (iOS only). To find a customer via Order ID, you can follow our guide on setting up [In-App Purchase Keys](/docs/in-app-purchase-key-configuration) to unlock this feature. The transaction must show as completed in the [Apple Purchase History](https://support.apple.com/en-gb/HT204088) to be considered a valid Order ID. Note that Transaction ID refers to the identifier in Google Play console and order emails of GPA.1234.1223–, and for Stripe si_abcefg, whereas Order ID refers to the identifier from Apple's order emails.
 
 Looking up customers in RevenueCat is real-time, as soon as a customer exists in RevenueCat they will be searchable here.
 ![](https://files.readme.io/b9c0217-app.revenuecat.com_projects_85ff18c7_api-keys_9.png "app.revenuecat.com_projects_85ff18c7_api-keys (9).png")
@@ -50,7 +50,7 @@ RevenueCat creates some default lists for every project. Default lists should gi
 
 :::info Promotionals are not considered 'Active'
 
-If a customer has a [Promotional](doc:promotionals) transaction, they are not considered as 'Active'. Note that if a customer has an active subscription + Promotional, they will not be counted in the Active Customer List.
+If a customer has a [Promotional](/docs/promotionals) transaction, they are not considered as 'Active'. Note that if a customer has an active subscription + Promotional, they will not be counted in the Active Customer List.
 
 :::
 
@@ -87,7 +87,7 @@ For each list, RevenueCat displays the 100 most recently seen customers in the d
 The dashboard shows the App User ID, purchase status, total spent (USD) and the latest product identifier purchased. Additional columns are available when exporting data.
 
 :::info Customer lists are refreshed every 2 hours
-For lists with the filter **Only Customers with Purchases** enabled (see our [Filters](doc:customer-lists#filters) section below), deleted users will be removed in a matter of seconds. For lists without this filter, it will take up to 30 minutes for a deleted user to be removed.
+For lists with the filter **Only Customers with Purchases** enabled (see our [Filters](/docs/customer-lists#filters) section below), deleted users will be removed in a matter of seconds. For lists without this filter, it will take up to 30 minutes for a deleted user to be removed.
 :::
 
 ## Filters
@@ -104,36 +104,36 @@ See the table below for additional filters you can apply to your lists.
 
 | Filter                         | Type         | Description                                                                                                                |
 | ------------------------------ | ------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| Ad                             | String       | The `$ad` [Subscriber Attribute](doc:subscriber-attributes#attribution-data) for the customer.                             |
-| Ad Group                       | String       | The `$adGroup` [Subscriber Attribute](doc:subscriber-attributes#attribution-data) for the customer.                        |
+| Ad                             | String       | The `$ad` [Subscriber Attribute](/docs/subscriber-attributes#attribution-data) for the customer.                           |
+| Ad Group                       | String       | The `$adGroup` [Subscriber Attribute](/docs/subscriber-attributes#attribution-data) for the customer.                      |
 | Auto Renew Intent              | Bool         | Whether the customer has opted out of auto-renew or not.                                                                   |
-| Campaign                       | String       | The `$campaign` [Subscriber Attribute](doc:subscriber-attributes#attribution-data) for the customer.                       |
+| Campaign                       | String       | The `$campaign` [Subscriber Attribute](/docs/subscriber-attributes#attribution-data) for the customer.                     |
 | Cancellation Date              | Date         | The date the customer unsubscribed from their subscription. Will be set back to `null` if the customer later resubscribes. |
-| Creative                       | String       | The `$creative` [Subscriber Attribute](doc:subscriber-attributes#attribution-data) for the customer.                       |
-| Email                          | String       | The `$email` [Subscriber Attribute](doc:subscriber-attributes) for the customer.                                           |
+| Creative                       | String       | The `$creative` [Subscriber Attribute](/docs/subscriber-attributes#attribution-data) for the customer.                     |
+| Email                          | String       | The `$email` [Subscriber Attribute](/docs/subscriber-attributes) for the customer.                                         |
 | First Purchase Date            | Date         | The date of the customer's first transaction.                                                                              |
 | First Seen Date                | Date         | The date the customer was first seen by RevenueCat.                                                                        |
-| GPS Ad Id                      | String       | The `$gpsAdId` [Subscriber Attribute](doc:subscriber-attributes#device-identifiers) for the customer.                      |
-| Granted RC Promotional         | Bool         | Whether the customer has been granted a [Promotional Subscription](doc:promotionals) or not.                               |
-| IDFA                           | String       | The `$idfa` [Subscriber Attribute](doc:subscriber-attributes#device-identifiers) for the customer.                         |
-| IDFV                           | String       | The `$idfv` [Subscriber Attribute](doc:subscriber-attributes#device-identifiers) for the customer.                         |
-| Keyword                        | String       | The `$keyword` [Subscriber Attribute](doc:subscriber-attributes#attribution-data) for the customer.                        |
+| GPS Ad Id                      | String       | The `$gpsAdId` [Subscriber Attribute](/docs/subscriber-attributes#device-identifiers) for the customer.                    |
+| Granted RC Promotional         | Bool         | Whether the customer has been granted a [Promotional Subscription](/docs/promotionals) or not.                             |
+| IDFA                           | String       | The `$idfa` [Subscriber Attribute](/docs/subscriber-attributes#device-identifiers) for the customer.                       |
+| IDFV                           | String       | The `$idfv` [Subscriber Attribute](/docs/subscriber-attributes#device-identifiers) for the customer.                       |
+| Keyword                        | String       | The `$keyword` [Subscriber Attribute](/docs/subscriber-attributes#attribution-data) for the customer.                      |
 | Last Seen Country              | String       | The two-letter ISO 3166-1 alpha-2 code of the country where the user was last seen, determined by IP address.              |
 | Last Seen Date                 | Date         | The date the customer was last seen by RevenueCat.                                                                         |
-| Latest Entitlement             | String       | The latest [Entitlement](doc:entitlements) unlocked by the customer.                                                       |
-| Latest Expiration Date         | Date         | The latest expiration date of the customer's [Entitlement](doc:entitlements).                                              |
+| Latest Entitlement             | String       | The latest [Entitlement](/docs/entitlements) unlocked by the customer.                                                     |
+| Latest Expiration Date         | Date         | The latest expiration date of the customer's [Entitlement](/docs/entitlements).                                            |
 | Latest Product                 | String       | The customer's latest purchased product identifier.                                                                        |
 | Latest Purchase Date           | Date         | The customer's latest transaction date.                                                                                    |
 | Latest Renewal Date            | Date         | The customer's latest renewal date. This could be the same as the Latest Purchase Date.                                    |
 | Latest Store                   | Multi Select | The latest store the customer purchased from.                                                                              |
-| Media Source                   | String       | The `$mediaSource` [Subscriber Attribute](doc:subscriber-attributes#attribution-data) for the customer.                    |
+| Media Source                   | String       | The `$mediaSource` [Subscriber Attribute](/docs/subscriber-attributes#attribution-data) for the customer.                  |
 | Number of Renewals             | Integer      | The total number of renewals the customer has had. A trial conversion is considered a renewal.                             |
-| Phone Number                   | String       | The `$phoneNumber` [Subscriber Attribute](doc:subscriber-attributes) for the customer.                                     |
+| Phone Number                   | String       | The `$phoneNumber` [Subscriber Attribute](/docs/subscriber-attributes) for the customer.                                   |
 | Total Spent                    | Integer      | The total revenue (in USD) spent by the customer.                                                                          |
 | Trial Cancellation Date        | Date         | The date the customer unsubscribed from their free trial. Will be set back to `null` if the customer later resubscribes.   |
 | Trial End Date                 | Date         | The date the customer's free trial expires.                                                                                |
 | Trial Start Date               | Date         | The date the customer started their free trial.                                                                            |
-| Made Non-subscription Purchase | Bool         | Whether the customer has made any [non-subscription](doc:non-subscriptions) purchases or not.                              |
+| Made Non-subscription Purchase | Bool         | Whether the customer has made any [non-subscription](/docs/non-subscriptions) purchases or not.                            |
 | Made Sandbox Purchase          | Bool         | Whether the customer has made any sandbox purchases or not.                                                                |
 | Status                         | Multi Select | The latest status of the customer.                                                                                         |
 
@@ -172,18 +172,18 @@ Below is a description of the .csv format for the exported data.
 | latest_auto_renew_intent | Boolean indicating whether the customer has chosen to have their subscription or trial auto-renew. |
 | all_purchased_product_ids | A comma separated list of all the product identifiers purchased by the customer. |
 | most_recent_billing_issues_at| Epoch timestamp in milliseconds when a subscription billing issue was detected by RevenueCat. |
-| email | The `$email` [Subscriber Attribute](doc:subscriber-attributes) for the customer, if set. |
-| phone_number | The `$phoneNumber` [Subscriber Attribute](doc:subscriber-attributes) for the customer, if set. |
-| media_source | The `$mediaSource` [Subscriber Attribute](doc:subscriber-attributes#attribution-data) for the customer, if set. |
-| campaign | The `$campaign` [Subscriber Attribute](doc:subscriber-attributes#attribution-data) for the customer, if set. |
-| ad_group | The`$adGroup` [Subscriber Attribute](doc:subscriber-attributes#attribution-data) for the customer, if set. |
-| ad | The `$ad` [Subscriber Attribute](doc:subscriber-attributes#attribution-data) for the customer, if set. |
-| keyword | The `$keyword` [Subscriber Attribute](doc:subscriber-attributes#attribution-data) for the customer, if set. |
-| creative | The `$creative` [Subscriber Attribute](doc:subscriber-attributes#attribution-data) for the customer, if set. |
-| idfa | The `$idfa` [Subscriber Attribute](doc:subscriber-attributes#device-identifiers) for the customer, if set. |
-| idfv | The `$idfv` [Subscriber Attribute](doc:subscriber-attributes#device-identifiers) for the customer, if set. |
-| gps_ad_id | The $gpsAdId [Subscriber Attribute](doc:subscriber-attributes#device-identifiers) for the customer, if set. |
-| custom_attributes | JSON representation of any custom [Subscriber Attributes](doc:subscriber-attributes) set for the customer. |
+| email | The `$email` [Subscriber Attribute](/docs/subscriber-attributes) for the customer, if set. |
+| phone_number | The `$phoneNumber` [Subscriber Attribute](/docs/subscriber-attributes) for the customer, if set. |
+| media_source | The `$mediaSource` [Subscriber Attribute](/docs/subscriber-attributes#attribution-data) for the customer, if set. |
+| campaign | The `$campaign` [Subscriber Attribute](/docs/subscriber-attributes#attribution-data) for the customer, if set. |
+| ad_group | The`$adGroup` [Subscriber Attribute](/docs/subscriber-attributes#attribution-data) for the customer, if set. |
+| ad | The `$ad` [Subscriber Attribute](/docs/subscriber-attributes#attribution-data) for the customer, if set. |
+| keyword | The `$keyword` [Subscriber Attribute](/docs/subscriber-attributes#attribution-data) for the customer, if set. |
+| creative | The `$creative` [Subscriber Attribute](/docs/subscriber-attributes#attribution-data) for the customer, if set. |
+| idfa | The `$idfa` [Subscriber Attribute](/docs/subscriber-attributes#device-identifiers) for the customer, if set. |
+| idfv | The `$idfv` [Subscriber Attribute](/docs/subscriber-attributes#device-identifiers) for the customer, if set. |
+| gps_ad_id | The $gpsAdId [Subscriber Attribute](/docs/subscriber-attributes#device-identifiers) for the customer, if set. |
+| custom_attributes | JSON representation of any custom [Subscriber Attributes](/docs/subscriber-attributes) set for the customer. |
 
 :::info "The last successful export finished recently. Please, wait some minutes before submitting another export."
 Note that there is a wait time of 30 minutes between each export.
@@ -207,4 +207,4 @@ If you're having trouble opening the exported/uncompressed file, you may need to
 
 ## Next Steps
 
-- Learn how to view the purchase history of a specific user and grant them promotional access via the [Customer View :fa-arrow-right:](doc:customers)
+- Learn how to view the purchase history of a specific user and grant them promotional access via the [Customer View :fa-arrow-right:](/docs/customers)

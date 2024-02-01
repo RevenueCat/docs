@@ -18,8 +18,8 @@ Below are the possible attribution fields that can be displayed. Keep in mind th
 | Keywords | The keyword(s) from the network.                        |
 | Creative | The individual ad/creative name or id from the network. |
 
-See our [attribution integrations](doc:attribution) to start sending this information.
+See our [attribution integrations](/docs/attribution) to start sending this information.
 
 ## Next Steps
 
-- [Aliases ](doc:aliases-card)
+- [Aliases ](/docs/aliases-card)

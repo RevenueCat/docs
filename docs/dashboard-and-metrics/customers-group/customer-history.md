@@ -71,4 +71,4 @@ Apple doesn’t allow developers to grant refunds themselves, only through Apple
 
 ## Next Steps
 
-- [Active Subscriptions ](doc:active-subscriptions)
+- [Active Subscriptions ](/docs/active-subscriptions)

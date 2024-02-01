@@ -22,7 +22,7 @@ Before RevenueCat can integrate with Facebook, your app must be running the Face
 
 ## 2. Send device data to RevenueCat
 
-The Facebook integration requires some device-specific data. RevenueCat will only send events into Facebook Ads Manager if the below [Subscriber Attributes](doc:subscriber-attributes) keys have been set for the device.
+The Facebook integration requires some device-specific data. RevenueCat will only send events into Facebook Ads Manager if the below [Subscriber Attributes](/docs/subscriber-attributes) keys have been set for the device.
 
 | Key            | Description                                                                                                                                     | Required          |
 | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :---------------- |
@@ -35,7 +35,7 @@ The Facebook integration requires some device-specific data. RevenueCat will onl
 | `$email`       | The email address of the user                                                                                                                   | ❌ (optional)     |
 | `$phoneNumber` | The phone number of the user                                                                                                                    | ❌ (optional)     |
 
-These properties can be set manually, like any other [Subscriber Attributes](doc:subscriber-attributes), or through the helper methods to `collectDeviceIdentifiers()` and `setFbAnonymousId()`.
+These properties can be set manually, like any other [Subscriber Attributes](/docs/subscriber-attributes), or through the helper methods to `collectDeviceIdentifiers()` and `setFbAnonymousId()`.
 
 :::danger Device identifiers with iOS App Tracking Transparency (iOS 14.5+)
 If you are requesting the App Tracking permission through ATT to access the IDFA, you can call `.collectDeviceIdentifiers()` _again_ if the customer accepts the permission to update the `$idfa` attribute in RevenueCat.
@@ -124,13 +124,13 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 ### Check that the required device data is collected
 
-Navigate the the [Customer View](doc:customers) for the test user that just made a purchase. Make sure that all of the required data from step 1 above is listed as attributes for the user.
+Navigate the the [Customer View](/docs/customers) for the test user that just made a purchase. Make sure that all of the required data from step 1 above is listed as attributes for the user.
 
 ![](https://files.readme.io/4a0a252-Screenshot_at_Sep_17_12-07-34.png "Screenshot at Sep 17 12-07-34.png")
 
 ### Check that the Facebook event delivered successfully
 
-While still on the Customer View, click into the test purchase event in the [Customer History](doc:customer-history) and make sure that the Facebook integration event exists and was delivered successfully.
+While still on the Customer View, click into the test purchase event in the [Customer History](/docs/customer-history) and make sure that the Facebook integration event exists and was delivered successfully.
 
 ![](https://files.readme.io/c58423d-app.revenuecat.com_activity_40779aaf_event_92499ad6-350b-455a-a2ec-4c28c4ca0b28_1.png)
 

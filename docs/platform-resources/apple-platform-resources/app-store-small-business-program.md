@@ -9,7 +9,7 @@ Apple recently announced the new App Store Small Business Program, aiming to red
 
 While there are specific terms that Apple requires to be eligible for the program, generally most developers who earn under $1 million in App Store revenue per year can apply. You can read more about the App Store Small Business Program [here](https://developer.apple.com/app-store/small-business-program/).
 
-As the reduced rate will affect the data sent for integrations as well as the data displayed in RevenueCat's [charts](doc:charts), it's important to acknowledge membership in the Small Business Program in your app settings.
+As the reduced rate will affect the data sent for integrations as well as the data displayed in RevenueCat's [charts](/docs/charts), it's important to acknowledge membership in the Small Business Program in your app settings.
 
 ## How to Apply
 
@@ -45,7 +45,7 @@ If you leave or have been removed from the program, enter the effective exit dat
 
 #### Backdating Entry into Small Business Program
 
-You can set your entry date at any time, but please note: if you set it to a date in the past, we won't re-send [webhooks](doc:webhooks) and integration events with correct pricing data for transactions that have already occurred. To ensure accurate pricing data is sent to your integrations, set your effective entry date as soon as possible.
+You can set your entry date at any time, but please note: if you set it to a date in the past, we won't re-send [webhooks](/docs/webhooks) and integration events with correct pricing data for transactions that have already occurred. To ensure accurate pricing data is sent to your integrations, set your effective entry date as soon as possible.
 
 #### Charts
 

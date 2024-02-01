@@ -5,7 +5,7 @@ excerpt: Sending App Store server notifications to RevenueCat
 hidden: false
 ---
 
-RevenueCat does not require server notifications from the App Store, however doing so can speed up webhook and integration delivery times and reduce lag time for [Charts](doc:charts).
+RevenueCat does not require server notifications from the App Store, however doing so can speed up webhook and integration delivery times and reduce lag time for [Charts](/docs/charts).
 
 ## Setup Instructions
 
@@ -15,7 +15,7 @@ RevenueCat does not require server notifications from the App Store, however doi
 2. Scroll to the **Apple Server to Server notification settings** section, and copy the entire URL provided under **Apple Server Notification URL**.
    ![Screen Shot 2021-12-01 at 11.34.04 AM](https://files.readme.io/61b718f-Screen_Shot_2021-12-01_at_11.34.04_AM.png)
 3. Log in to **[App Store Connect](https://appstoreconnect.apple.com/)** and select your app.
-4. Under the **App Information > App Store Server Notifications** section, paste the entire URL from RevenueCat in both the **Production Server URL** field and the **Sandbox Server URL** field. You can use either _Version 1_ or _Version 2_ notifications, but _Version 2_ notifications are recommended to use features such as [auto-detecting price changes](https://www.revenuecat.com/docs/price-changes).
+4. Under the **App Information > App Store Server Notifications** section, paste the entire URL from RevenueCat in both the **Production Server URL** field and the **Sandbox Server URL** field. You can use either _Version 1_ or _Version 2_ notifications, but _Version 2_ notifications are recommended to use features such as [auto-detecting price changes](/docs/price-changes).
    ![Screen Shot 2021-11-03 at 10.03.27 AM](https://files.readme.io/f870a23-Screen_Shot_2021-11-03_at_10.03.27_AM.png)
 
 ## Considerations
@@ -24,7 +24,7 @@ RevenueCat does not require server notifications from the App Store, however doi
 
 Apple supports separate URLs for production as well as sandbox purchases, but only allows one of each. You should enter the RevenueCat URL for both of these fields if you don't want to receive these notifications on your own server.
 
-If you want to also receive these notifications on your own server for one or both environments, see our guide on [setting up RevenueCat to forward the notifications to your server](doc:apple-server-notifications#setting-up-revenuecat-to-forward-apple-notifications-to-your-server) below.
+If you want to also receive these notifications on your own server for one or both environments, see our guide on [setting up RevenueCat to forward the notifications to your server](/docs/apple-server-notifications#setting-up-revenuecat-to-forward-apple-notifications-to-your-server) below.
 :::
 
 :::tip Apple S2S notifications update subscriptions for existing users
@@ -51,7 +51,7 @@ If your server needs to have specific hostnames or IP addresses on its allowlist
 
 While you can forward Apple S2S notifications to RevenueCat, we strongly recommend setting RevenueCat as the S2S notification URL in App Store Connect and letting RevenueCat forward the events to your server to ensure that the events are sent correctly.
 :::
-Apple only supports a single server notification URL. If you're already using the notifications on your server and are unable to [set up RevenueCat's forwarding URL](doc:apple-server-notifications#setting-up-revenuecat-to-forward-apple-notifications-to-your-server), you can still forward the payload to the **Apple Server Notification URL** provided in the app settings of your RevenueCat project.
+Apple only supports a single server notification URL. If you're already using the notifications on your server and are unable to [set up RevenueCat's forwarding URL](/docs/apple-server-notifications#setting-up-revenuecat-to-forward-apple-notifications-to-your-server), you can still forward the payload to the **Apple Server Notification URL** provided in the app settings of your RevenueCat project.
 
 Here's how we recommend doing this:
 
@@ -59,7 +59,7 @@ Here's how we recommend doing this:
 
 First, make sure your server meets the criteria outlined in Apple's [Enabling App Store Notifications](https://developer.apple.com/documentation/storekit/in-app_purchase/subscriptions_and_offers/enabling_app_store_server_notifications) page or you won't receive notifications.
 
-Then, in your app settings on App Store Connect, enter a subscription status URL that links to your server (see step 4 of the [Setup Instructions](doc:apple-server-notifications#setup-instructions) above).
+Then, in your app settings on App Store Connect, enter a subscription status URL that links to your server (see step 4 of the [Setup Instructions](/docs/apple-server-notifications#setup-instructions) above).
 
 ### 2. Receive Apple notifications on your server
 

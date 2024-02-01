@@ -15,7 +15,7 @@ The default quota for each Google Play Developer API is 200k queries per day.
 
 ## Prerequisites
 
-Before requesting an increase, ensure you have Real-Time Developer Notifications (RTDN) configured as described in our guide [here](doc:google-server-notifications). RTDN reduces RevenueCat's usage of the Google Play Developer API, and is recommended to have configured.
+Before requesting an increase, ensure you have Real-Time Developer Notifications (RTDN) configured as described in our guide [here](/docs/google-server-notifications). RTDN reduces RevenueCat's usage of the Google Play Developer API, and is recommended to have configured.
 
 ## Requesting an increase
 

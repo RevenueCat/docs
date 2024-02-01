@@ -21,7 +21,7 @@ You can set a Default Offering on the RevenueCat Dashboard to be served to all c
 
 # How should I use Offerings on my paywall?
 
-We recommend displaying the **Current Offering** for a given customer on your paywall to ensure you can take advantage of all the remote flexibility of Offerings, which you can learn how to do [here](https://www.revenuecat.com/docs/displaying-products#fetching-offerings).
+We recommend displaying the **Current Offering** for a given customer on your paywall to ensure you can take advantage of all the remote flexibility of Offerings, which you can learn how to do [here](/docs/displaying-products#fetching-offerings).
 
 :::info Current Offering vs. Default Offering
 Customer's have a Current Offering that represents what Offering they should be served right now based on the Experiments, Targeting Rules, and other conditions you may have set for displaying Offerings. When no other conditions apply, your Project's Default Offering will be set as a customer's Current Offering.
@@ -43,14 +43,14 @@ There are three main ways that you can use Offerings to remotely control the nat
 
 Each method has unique benefits and things to consider with it.
 
-| Method                                                                 | Benefits                                                                                                                                                                                                                                                                                                                                                          | Considerations                                                                                                                                                                                                                                                                                                                                                                |
-| ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Offering Metadata](https://www.revenuecat.com/docs/offering-metadata) | Maximum flexibility to program any variable of your paywall (including the entire design) into a key/value pair to be modified remotely at any time.                                                                                                                                                                                                              | Even though this approach is the most flexible, it still requires code changes for each new configuration you need to support. For example, once your app is set up to set the string of your paywall call to action (CTA) based on a "cta" key, you can remotely change that string to any other value, but an initial update is needed to create that relationship in code. |
-| [Footer Paywall](https://www.revenuecat.com/docs/paywalls)             | Get out-of-the-box control of the most complex paywall elements (displaying packages on various screen sizes, describing them correctly, supporting intro offers, etc.) with instant support for A/B testing any element of your packages & CTA, while retaining full flexibility for the marketing content of your paywall to be designed exactly as you'd like. | This best-of-both-worlds approach gives you tons of flexibility to experiment with your packages & CTA at zero cost, but like with Metadata, you'll still need to ship app updates to modify other hardcoded elements of the paywall.                                                                                                                                         |
-| [Full Screen Paywall](https://www.revenuecat.com/docs/paywalls)        | Full remote control of your paywall with templates designed to be performant and intuitive so you can launch a new concept painlessly, experiment with tons of variables, and much more.                                                                                                                                                                          | Our list of templates and their configurable elements are growing all the time, but you'll need to work within those available configurations in this approach, which may not give you the same pixel-by-pixel control you'd have from your own custom paywall.                                                                                                               |
+| Method                                       | Benefits                                                                                                                                                                                                                                                                                                                                                          | Considerations                                                                                                                                                                                                                                                                                                                                                                |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Offering Metadata](/docs/offering-metadata) | Maximum flexibility to program any variable of your paywall (including the entire design) into a key/value pair to be modified remotely at any time.                                                                                                                                                                                                              | Even though this approach is the most flexible, it still requires code changes for each new configuration you need to support. For example, once your app is set up to set the string of your paywall call to action (CTA) based on a "cta" key, you can remotely change that string to any other value, but an initial update is needed to create that relationship in code. |
+| [Footer Paywall](/docs/paywalls)             | Get out-of-the-box control of the most complex paywall elements (displaying packages on various screen sizes, describing them correctly, supporting intro offers, etc.) with instant support for A/B testing any element of your packages & CTA, while retaining full flexibility for the marketing content of your paywall to be designed exactly as you'd like. | This best-of-both-worlds approach gives you tons of flexibility to experiment with your packages & CTA at zero cost, but like with Metadata, you'll still need to ship app updates to modify other hardcoded elements of the paywall.                                                                                                                                         |
+| [Full Screen Paywall](/docs/paywalls)        | Full remote control of your paywall with templates designed to be performant and intuitive so you can launch a new concept painlessly, experiment with tons of variables, and much more.                                                                                                                                                                          | Our list of templates and their configurable elements are growing all the time, but you'll need to work within those available configurations in this approach, which may not give you the same pixel-by-pixel control you'd have from your own custom paywall.                                                                                                               |
 
 :::info
-If you're looking to retain as much control of your custom paywall as possible, while still unlocking effortless experimentation, consider coupling a [Footer Paywall](https://www.revenuecat.com/docs/displaying-paywalls#how-to-display-a-footer-paywall-on-your-custom-paywall) with hardcoded elements controlled through Offering Metadata.
+If you're looking to retain as much control of your custom paywall as possible, while still unlocking effortless experimentation, consider coupling a [Footer Paywall](/docs/displaying-paywalls#how-to-display-a-footer-paywall-on-your-custom-paywall) with hardcoded elements controlled through Offering Metadata.
 :::
 
 ### Change the default paywall being served to your customers at any time
@@ -80,7 +80,7 @@ Developers use RevenueCat to grow their customer lifetime value by experimenting
 
 ...and much more.
 
-:::info [Learn more about Experiments](https://www.revenuecat.com/docs/experiments-v1)
+:::info [Learn more about Experiments](/docs/experiments-v1)
 :::
 
 ### Assign specific audiences their own unique paywall
@@ -93,14 +93,14 @@ Audiences can be defined through dimensions like Country, App, and App Version -
 2. Only display your new paywall design on app versions that support it
 3. Modify the copy or layout of your paywall to highlight the most important benefits in each market
 
-:::info [Learn more about Targeting](https://www.revenuecat.com/docs/targeting)
+:::info [Learn more about Targeting](/docs/targeting)
 :::
 
 Or, to unlock additional flexibility, you can use Offering Metadata with your own custom app logic to decide which Offering should get shown to a customer based on some other arbitrary dimension.
 
 For example, you might add a property like `"source":"black-friday-campaign"`, and choose to serve the Offering with that property when you detect that user came from your Black Friday campaign.
 
-:::info [Learn more about Offering Metadata](https://www.revenuecat.com/docs/offering-metadata)
+:::info [Learn more about Offering Metadata](/docs/offering-metadata)
 :::
 
 ### Measure performance by paywall

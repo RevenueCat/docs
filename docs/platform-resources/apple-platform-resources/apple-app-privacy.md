@@ -13,20 +13,20 @@ Starting December 8, 2020, Apple requires a privacy disclosure for all new apps 
 💡 = May be required when using RevenueCat
 ❌ = Not required when using RevenueCat
 
-| Data Type                                                                          | Required?                                                                                                                                                                                                               |
-| ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Contact Info, including name or email address                                      | 💡 If you use subscriber attributes to collect identifiable contact information including name, email address, or phone number                                                                                          |
-| Health & Fitness                                                                   | ❌ RevenueCat does not collect health or fitness data from users                                                                                                                                                        |
-| Financial Info                                                                     | ❌ RevenueCat does not collect payment information from users                                                                                                                                                           |
-| Location                                                                           | ❌ RevenueCat does not collect precise or coarse location data, only locale and currency code                                                                                                                           |
-| Sensitive Info                                                                     | ❌ RevenueCat does not collect sensitive information including racial or ethnic data, political opinions, or biometric data from users                                                                                  |
-| Contacts                                                                           | ❌ RevenueCat does not collect address books or contact lists from users                                                                                                                                                |
-| Browsing History                                                                   | ❌ RevenueCat does not collect browsing history from users                                                                                                                                                              |
-| Search History                                                                     | ❌ RevenueCat does not collect search history from users                                                                                                                                                                |
-| [Identifiers](https://docs.revenuecat.com/docs/apple-app-privacy#type-identifiers) | 💡 If you are identifying users with a custom app user ID, you will need to select 'User ID'\n\n💡 If you are using integrations that utilize an advertising identifier, like IDFA, you will need to select 'Device ID' |
-| [Purchases](https://docs.revenuecat.com/docs/apple-app-privacy#type-purchases)     | ✅ RevenueCat collects purchase history from users                                                                                                                                                                      |
-| Usage Data                                                                         | 💡 If you are using analytics SDK's such as Mixpanel, Firebase, or Amplitude, this may be required                                                                                                                      |
-| Diagnostics                                                                        | ❌ RevenueCat does not collect device diagnostic information                                                                                                                                                            |
+| Data Type                                               | Required?                                                                                                                                                                                                               |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Contact Info, including name or email address           | 💡 If you use subscriber attributes to collect identifiable contact information including name, email address, or phone number                                                                                          |
+| Health & Fitness                                        | ❌ RevenueCat does not collect health or fitness data from users                                                                                                                                                        |
+| Financial Info                                          | ❌ RevenueCat does not collect payment information from users                                                                                                                                                           |
+| Location                                                | ❌ RevenueCat does not collect precise or coarse location data, only locale and currency code                                                                                                                           |
+| Sensitive Info                                          | ❌ RevenueCat does not collect sensitive information including racial or ethnic data, political opinions, or biometric data from users                                                                                  |
+| Contacts                                                | ❌ RevenueCat does not collect address books or contact lists from users                                                                                                                                                |
+| Browsing History                                        | ❌ RevenueCat does not collect browsing history from users                                                                                                                                                              |
+| Search History                                          | ❌ RevenueCat does not collect search history from users                                                                                                                                                                |
+| [Identifiers](/docs/apple-app-privacy#type-identifiers) | 💡 If you are identifying users with a custom app user ID, you will need to select 'User ID'\n\n💡 If you are using integrations that utilize an advertising identifier, like IDFA, you will need to select 'Device ID' |
+| [Purchases](/docs/apple-app-privacy#type-purchases)     | ✅ RevenueCat collects purchase history from users                                                                                                                                                                      |
+| Usage Data                                              | 💡 If you are using analytics SDK's such as Mixpanel, Firebase, or Amplitude, this may be required                                                                                                                      |
+| Diagnostics                                             | ❌ RevenueCat does not collect device diagnostic information                                                                                                                                                            |
 
 ## Required Data Types
 
@@ -75,7 +75,7 @@ If you selected 'Yes' to linking purchase history to a user's identity, you will
 
 ![Screen Shot 2020-11-10 at 2.01.59 PM.png](https://files.readme.io/191ea58-Screen_Shot_2020-11-10_at_2.01.59_PM.png)
 
-If you are [identifying users](https://docs.revenuecat.com/docs/user-ids) with a custom app user ID, you will need to select 'User ID'.
+If you are [identifying users](/docs/user-ids) with a custom app user ID, you will need to select 'User ID'.
 
 If you are using integrations that utilize an advertising identifier, like IDFA, you will need to select 'Device ID'.
 
@@ -87,4 +87,4 @@ After making your privacy selections, Apple will show a preview of your app's pr
 
 ![Screen Shot 2020-11-11 at 11.30.35 AM.png](https://files.readme.io/8906e83-Screen_Shot_2020-11-11_at_11.30.35_AM.png)
 
-If you're ready to submit your app to App Review, head over to our [Launch Checklist](https://docs.revenuecat.com/docs/launch-checklist) doc for more information about preparing your app for submission.
+If you're ready to submit your app to App Review, head over to our [Launch Checklist](/docs/launch-checklist) doc for more information about preparing your app for submission.

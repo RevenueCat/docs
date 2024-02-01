@@ -166,4 +166,4 @@ Don't forget to click **Save** before exiting.
 
 ## Integrate with RevenueCat
 
-If you're ready to integrate your new App Store Connect in-app product with RevenueCat, continue our [product setup guide :fa-arrow-right:](doc:entitlements).
+If you're ready to integrate your new App Store Connect in-app product with RevenueCat, continue our [product setup guide :fa-arrow-right:](/docs/entitlements).

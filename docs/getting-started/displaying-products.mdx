@@ -4,17 +4,17 @@ slug: displaying-products
 excerpt: Build dynamic paywalls and control available products remotely
 hidden: false
 ---
-If you've [configured Offerings](doc:entitlements) in RevenueCat, you can control which products are shown to users without requiring an app update. Building paywalls that are dynamic and can react to different product configurations gives you maximum flexibility to make remote updates.
+If you've [configured Offerings](/docs/entitlements) in RevenueCat, you can control which products are shown to users without requiring an app update. Building paywalls that are dynamic and can react to different product configurations gives you maximum flexibility to make remote updates.
 
 ![](https://files.readme.io/edbe93c-Screen_Shot_2019-09-20_at_8.42.23_AM.png "Screen Shot 2019-09-20 at 8.42.23 AM.png")
 
 :::info
-Before products and offerings can be fetched from RevenueCat, be sure to initialize the Purchases SDK by following our [Quickstart](doc:getting-started) guide.
+Before products and offerings can be fetched from RevenueCat, be sure to initialize the Purchases SDK by following our [Quickstart](/docs/getting-started) guide.
 :::
 
 ## Fetching Offerings
 
-Offerings are fetched through the SDK based on their [configuration](doc:entitlements) in the RevenueCat dashboard.
+Offerings are fetched through the SDK based on their [configuration](/docs/entitlements) in the RevenueCat dashboard.
 
 The `getOfferings` method will fetch the Offerings from RevenueCat. These are pre-fetched in most cases on app launch, so the completion block to get offerings won't need to make a network request in most cases. 
 
@@ -154,7 +154,7 @@ import unityContent40 from "!!raw-loader!@site/code_blocks/getting-started/displ
 
 In practice, you may not want to display the default current Offering to every user and instead have a specific cohort that see a different Offering.
 
-For example, displaying a higher priced Offering to users that came from [paid acquisition](doc:attribution) to help recover ad costs, or a specific Offering designed to show [iOS Subscription Offers](doc:ios-subscription-offers) when a user has [cancelled their subscription](doc:purchaserinfo#section-get-entitlement-information). 
+For example, displaying a higher priced Offering to users that came from [paid acquisition](/docs/attribution) to help recover ad costs, or a specific Offering designed to show [iOS Subscription Offers](/docs/ios-subscription-offers) when a user has [cancelled their subscription](/docs/purchaserinfo#section-get-entitlement-information). 
 
 This can be accomplished with custom Offering identifiers for each of these "cohorts".
 
@@ -194,5 +194,5 @@ As of now, cohort logic needs to be managed outside of RevenueCat.
 
 ## Next Steps
 
-- Now that you've shown the correct products to users, time to [make a purchase ](doc:making-purchases)
-- Check out our [sample apps ](doc:sample-apps) for examples of how to display products.
+- Now that you've shown the correct products to users, time to [make a purchase ](/docs/making-purchases)
+- Check out our [sample apps ](/docs/sample-apps) for examples of how to display products.

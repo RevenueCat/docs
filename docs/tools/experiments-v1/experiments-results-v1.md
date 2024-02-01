@@ -117,7 +117,7 @@ Compare this with "Conversion to paying" to understand if your differences in Re
 
 **Total MRR**
 The total monthly recurring revenue your current active subscriptions in each variant would generate on a normalized monthly basis.
-[Learn more about MRR here.](https://www.revenuecat.com/docs/charts#monthly-recurring-revenue-mrr)
+[Learn more about MRR here.](/docs/charts#monthly-recurring-revenue-mrr)
 
 **MRR per customer**
 The total monthly recurring revenue your current active subscriptions in each variant would generate on a normalized monthly basis, divided by the number of customers in each variant.
@@ -150,4 +150,4 @@ When using the Get or Create Subscriber endpoint you'll be able to see if an ind
 
 **How can I review the individual transactions that have occurred in my experiment?**
 
-Our [Scheduled Data Exports](https://www.revenuecat.com/docs/scheduled-data-exports) include the experiment enrollment of each subscriber in the reported transactions, and by subscribing to them you can receive daily exports of all of your transactions to analyze the experiment results further.
+Our [Scheduled Data Exports](/docs/scheduled-data-exports) include the experiment enrollment of each subscriber in the reported transactions, and by subscribing to them you can receive daily exports of all of your transactions to analyze the experiment results further.

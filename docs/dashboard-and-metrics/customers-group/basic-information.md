@@ -14,4 +14,4 @@ Basic customer information, including their total amount spent in your app, is p
 
 ## Next Steps
 
-- [Customer History :fa-arrow-right:](doc:customer-history)
+- [Customer History :fa-arrow-right:](/docs/customer-history)

@@ -17,17 +17,17 @@ Subscription Offers are supported in the _Purchases SDK_, but require some addit
 
 | Offer Type             | Applies To                | Subscription Key Required | Notes                                                                                                                                                                                                                                                                                                                                                                           | Auto-Renewal |
 | ---------------------- | ------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| Introductory Offers    | New Users                 | Not required              | Applied to eligible purchases automatically. [How to check eligibility](https://www.revenuecat.com/docs/subscription-offers#checking-eligibility).                                                                                                                                                                                                                              | ✅           |
+| Introductory Offers    | New Users                 | Not required              | Applied to eligible purchases automatically. [How to check eligibility](/docs/subscription-offers#checking-eligibility).                                                                                                                                                                                                                              | ✅           |
 | Promotional Offers     | Existing and Lapsed Users | 🔑 Required               | Not applied automatically, see implementation guide below                                                                                                                                                                                                                                                                                                                       | ✅           |
 | Offer Codes            | New and Existing Users    | 🔑 Required               | Requires iOS SDK 3.8.0+, see implementation guide below                                                                                                                                                                                                                                                                                                                         | ✅           |
-| ⚠️ **Not recommended** | New and Existing Users    | Not Required              | Treated as a regular purchase, revenue will not be accurate in [Charts](doc:charts) and [Integrations](doc:webhooks) due to Apple/StoreKit limitations. Codes don't auto-renew, aren't compatible with `presentCodeRedemptionSheet`, restricted to non-commercial use, and restricted to [1,000 codes every 6 months](https://help.apple.com/app-store-connect/#/dev50869de4a). | ❌           |
+| ⚠️ **Not recommended** | New and Existing Users    | Not Required              | Treated as a regular purchase, revenue will not be accurate in [Charts](/docs/charts) and [Integrations](/docs/webhooks) due to Apple/StoreKit limitations. Codes don't auto-renew, aren't compatible with `presentCodeRedemptionSheet`, restricted to non-commercial use, and restricted to [1,000 codes every 6 months](https://help.apple.com/app-store-connect/#/dev50869de4a). | ❌           |
 
 ## In-App Purchase Keys
 
-For RevenueCat to securely authenticate and validate a Subscription Offer request with Apple, you'll need to upload an In-App Purchase Key following our [guide](https://docs.revenuecat.com/docs/in-app-purchase-key-configuration).
+For RevenueCat to securely authenticate and validate a Subscription Offer request with Apple, you'll need to upload an In-App Purchase Key following our [guide](/docs/in-app-purchase-key-configuration).
 
 :::tip Introductory Offers
-An In-App Purchase Key is not required for Introductory Offers, only for Promotional Offers and Offer Codes. The Purchases SDK will automatically apply an introductory offer to a purchase. [Documentation](https://docs.revenuecat.com/docs/ios-products#adding-introductory-offers-and-free-trials) for reference.
+An In-App Purchase Key is not required for Introductory Offers, only for Promotional Offers and Offer Codes. The Purchases SDK will automatically apply an introductory offer to a purchase. [Documentation](/docs/ios-products#adding-introductory-offers-and-free-trials) for reference.
 :::
 
 ## Promotional Offers
@@ -140,7 +140,7 @@ import swift3 from "!!raw-loader!@site/code_blocks/subscription-guidance/subscri
     }
 ]}/>
 
-Apple does not provide a callback to determine if the code redemption was successful. Since the Purchases SDK will automatically pick up on new transactions that enter the underlying transaction queue, you should implement the `receivedUpdated` [delegate or listener](doc:configuring-sdk) to respond to changes in `CustomerInfo`. Once we sync the Offer Code transaction, we'll automatically refresh CustomerInfo.
+Apple does not provide a callback to determine if the code redemption was successful. Since the Purchases SDK will automatically pick up on new transactions that enter the underlying transaction queue, you should implement the `receivedUpdated` [delegate or listener](/docs/configuring-sdk) to respond to changes in `CustomerInfo`. Once we sync the Offer Code transaction, we'll automatically refresh CustomerInfo.
 
 :::warning
 The Offer Code redemption sheet may not display on a device if you haven't yet launched the App Store app and accepted the terms agreement.
@@ -153,11 +153,11 @@ You can link to the App Store with a prefilled code for redemption with the foll
 
 You can find your Apple App ID in your app settings in App Store Connect (General -> App Information).
 
-When users click your link within your app to redeem the offer code, it will take them outside of the app to complete the purchase. It is important to call [syncPurchases](https://www.revenuecat.com/docs/restoring-purchases#syncpurchases) when the user returns back to your app to retrieve their purchase. This may be done by recording when the user leaves the app due to the link, and calling `syncPurchases` when the user returns to the app. If not, the user may need to [trigger a restore](https://www.revenuecat.com/docs/restoring-purchases) within your app when they come back.
+When users click your link within your app to redeem the offer code, it will take them outside of the app to complete the purchase. It is important to call [syncPurchases](/docs/restoring-purchases#syncpurchases) when the user returns back to your app to retrieve their purchase. This may be done by recording when the user leaves the app due to the link, and calling `syncPurchases` when the user returns to the app. If not, the user may need to [trigger a restore](/docs/restoring-purchases) within your app when they come back.
 
 ### Considerations
 
-- In order for RevenueCat to accurately track revenue for offer codes, you will need to upload an in-app purchase key. See our guide on [In-App Purchase Key Configuration](doc:in-app-purchase-key-configuration) for step-by-step instructions.
+- In order for RevenueCat to accurately track revenue for offer codes, you will need to upload an in-app purchase key. See our guide on [In-App Purchase Key Configuration](/docs/in-app-purchase-key-configuration) for step-by-step instructions.
 
 ## Next Steps
 

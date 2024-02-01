@@ -6,7 +6,7 @@ hidden: false
 ---
 
 :::info
-This section assumes you've followed our [Quickstart](doc:getting-started-1) section of our Getting Started guide to install and configure our SDK.
+This section assumes you've followed our [Quickstart](/docs/getting-started-1) section of our Getting Started guide to install and configure our SDK.
 :::
 
 ## Sandbox Considerations
@@ -37,7 +37,7 @@ To test purchases in different regions, you should set your sandbox user's **App
 
 ## Testing on Device
 
-This section is for testing on a physical device. If you want to test on the simulator, skip to the next section for instructions on how to get started with [StoreKit testing](doc:apple-app-store#ios-14-only-testing-on-the-simulator).
+This section is for testing on a physical device. If you want to test on the simulator, skip to the next section for instructions on how to get started with [StoreKit testing](/docs/apple-app-store#ios-14-only-testing-on-the-simulator).
 
 ### Add the Sandbox Test Account to Your Device
 
@@ -112,7 +112,7 @@ Select your current scheme and click **Duplicate**.
 
 ![](https://files.readme.io/2adb3ea-Screen_Shot_2020-12-01_at_12.00.27_PM.png "Screen Shot 2020-12-01 at 12.00.27 PM.png")
 
-In the scheme editor, add the StoreKit Configuration file you created in [Step 1](doc:apple-app-store#step-1-add-a-storekit-configuration-file) and click **Close**.
+In the scheme editor, add the StoreKit Configuration file you created in [Step 1](/docs/apple-app-store#step-1-add-a-storekit-configuration-file) and click **Close**.
 
 ![](https://files.readme.io/f4582cb-Screen_Shot_2020-12-01_at_7.46.50_PM.png "Screen Shot 2020-12-01 at 7.46.50 PM.png")
 
@@ -125,7 +125,7 @@ Enter a name for a new subscription group and click **Done**. The subscription g
 ![](https://files.readme.io/a04c726-Screen_Shot_2020-12-01_at_7.54.48_PM.png "Screen Shot 2020-12-01 at 7.54.48 PM.png")
 
 :::info Products in the configuration file must be set up in RevenueCat
-Even though products don't have to be set up in App Store Connect, they have to be set up in RevenueCat so that RevenueCat can validate the sandbox receipt. Refer to the [Configuring Products](doc:entitlements) guide for more information.
+Even though products don't have to be set up in App Store Connect, they have to be set up in RevenueCat so that RevenueCat can validate the sandbox receipt. Refer to the [Configuring Products](/docs/entitlements) guide for more information.
 :::
 
 Configure the subscription as needed by filling in the **Reference Name**, **Product ID**, **Price**, **Subscription Duration**, and optionally an **Introductory Offer**. Again, this product doesn't have to exist in App Store Connect for you to test purchasing in the simulator. Here is a sample configuration: 
@@ -149,7 +149,7 @@ You're ready to make purchases locally in the simulator!
 :::
 
 ## Testing Subscription Offers on the Simulator 
-For sandbox and production [subscription offers](doc:ios-subscription-offers), they are signed using the [In-App Key](doc:in-app-purchase-key-configuration). However, when using a StoreKit Configuration file, the key used to sign offers must be exported from Xcode directly.
+For sandbox and production [subscription offers](/docs/ios-subscription-offers), they are signed using the [In-App Key](/docs/in-app-purchase-key-configuration). However, when using a StoreKit Configuration file, the key used to sign offers must be exported from Xcode directly.
 
 ### Step 1: Finding your Subscription Offers Key
 Open the  `.storekit` file where the subscriptions offers are configured, and go to Editor → Subscription Offers Key.
@@ -208,7 +208,7 @@ Because of the accelerated expiration and renewal rates, sometimes not all renew
 
 ## Deleting Test Users
 
-When testing, it may be helpful to delete a customer and all their receipts from RevenueCat to simulate a new installation. You can delete a specific user from the customer dashboard in RevenueCat. See our [docs on deleting users](https://www.revenuecat.com/docs/manage-users) for more information.
+When testing, it may be helpful to delete a customer and all their receipts from RevenueCat to simulate a new installation. You can delete a specific user from the customer dashboard in RevenueCat. See our [docs on deleting users](/docs/manage-users) for more information.
 
 
 :::danger Maximum number of App Store subscription receipts
@@ -230,7 +230,7 @@ If you're getting the error "Account Not In This Store" when attempting to make 
 - Attempt to make the purchase again, and sign in when prompted
 
 :::info Make sure to log out of the sandbox user on your testing device
-Deleting the user from RevenueCat doesn't delete the user's purchase history with Apple. It only deletes the user's receipt and metadata from our servers. That means making or restoring purchases will restore those purchases with RevenueCat. To simulate purchasing as a completely new user, make sure to log out of the sandbox account on your device and [create a new one](https://docs.revenuecat.com/docs/apple-app-store#create-a-sandbox-test-account).
+Deleting the user from RevenueCat doesn't delete the user's purchase history with Apple. It only deletes the user's receipt and metadata from our servers. That means making or restoring purchases will restore those purchases with RevenueCat. To simulate purchasing as a completely new user, make sure to log out of the sandbox account on your device and [create a new one](/docs/apple-app-store#create-a-sandbox-test-account).
 :::
 
 ## Next Steps

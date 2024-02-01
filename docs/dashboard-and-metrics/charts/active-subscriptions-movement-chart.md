@@ -6,7 +6,7 @@ hidden: false
 
 ## Definition
 
-The Active Subscriptions Movement chart measures the change in unique paid subscriptions over a period. Active Subscriptions Movement can be thought of as a breakdown of what caused the change in the [Active Subscriptions](doc:active-subscriptions-chart) count between two periods.
+The Active Subscriptions Movement chart measures the change in unique paid subscriptions over a period. Active Subscriptions Movement can be thought of as a breakdown of what caused the change in the [Active Subscriptions](/docs/active-subscriptions-chart) count between two periods.
 
 ### Available settings
 
@@ -43,5 +43,5 @@ For a given period, the difference of these counts is the Movement measured in t
 | At what point is a paid subscription considered expired?                | A paid subscription without a grace period is considered expired once its next renewal date has passed without a successful renewal. If a grace period is offered, the end of that grace period is considered the paid subscription's expiration date.                                           |
 | What is considered a resubscription?                                    | A resubscription is a subsequent purchase on an existing subscription that was not active in the last period. The most common case for a resubscription is a renewal occurring during a billing retry period after their subscription has already expired, but may occur in other cases as well. |
 
-For more information on what’s considered an active paid subscription, [click here](doc:active-subscriptions-chart).
+For more information on what’s considered an active paid subscription, [click here](/docs/active-subscriptions-chart).
 ![](https://files.readme.io/2f1fec5-ActiveSubsriptionsMvmt.png "ActiveSubsriptionsMvmt.png")

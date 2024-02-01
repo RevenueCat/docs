@@ -15,7 +15,7 @@ Experiments is available to Pro & Enterprise customers. [Learn more about pricin
 
 ## Next Steps
 
-- If you're just getting started, make sure your app is ready to use [experiments ](doc:experiments-overview-v1)
-- If you've not yet created an Offering for your test hypothesis, [check out our guide to get started ](doc:creating-offerings-to-test)
-- For instructions on how to set up an experiment in your project, read our [guide on configuring experiments ](doc:configuring-experiments-v1)
-- Once the data from your experiment starts trickling in, learn how to [interpret the results ](doc:experiments-results-v1)
+- If you're just getting started, make sure your app is ready to use [experiments ](/docs/experiments-overview-v1)
+- If you've not yet created an Offering for your test hypothesis, [check out our guide to get started ](/docs/creating-offerings-to-test)
+- For instructions on how to set up an experiment in your project, read our [guide on configuring experiments ](/docs/configuring-experiments-v1)
+- Once the data from your experiment starts trickling in, learn how to [interpret the results ](/docs/experiments-results-v1)

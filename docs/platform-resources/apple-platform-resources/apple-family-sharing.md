@@ -27,7 +27,7 @@ By default, family sharing is disabled for all new and existing in-app purchases
 Since you enable family sharing per product, you can choose some products to be family shareable. This opens the door to providing family plans that cost more than an individual subscription, but are more cost-effective than purchasing multiple subscriptions for a family.
 :::
 
-If you don't have any in-app purchases in App Store Connect, go ahead and create one by following our guide on [iOS Product Setup](doc:ios-products). Next, navigate to your in-app purchase and click **Turn On** under Family Sharing.
+If you don't have any in-app purchases in App Store Connect, go ahead and create one by following our guide on [iOS Product Setup](/docs/ios-products). Next, navigate to your in-app purchase and click **Turn On** under Family Sharing.
 
 ![Click **Turn On** to enable Family Sharing.](https://files.readme.io/908bb53-2021-02-09_14.54.25_appstoreconnect.apple.com_ab0d5a03d489.png)
 
@@ -71,4 +71,4 @@ It takes up to 1 hour after a user purchases a subscription and shares it for it
 
 ### 4. Are family-shared purchases counted in RevenueCat metrics?
 
-Family-shared transactions are **not included** in charts data. Transactions are ignored in some [overview metrics](doc:overview#metrics) (all except 'Installs' and 'Active Users').
+Family-shared transactions are **not included** in charts data. Transactions are ignored in some [overview metrics](/docs/overview#metrics) (all except 'Installs' and 'Active Users').
