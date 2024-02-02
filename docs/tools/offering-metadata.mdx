@@ -21,8 +21,8 @@ Metadata allows you to attach a custom JSON object to your Offering that can be 
 Using Offering metadata has several advantages: 
 
 - You can remotely configure aspects of your paywall and upsell messaging and make changes without deploying any code, creating a new app build, or going through app review.
-- You can use offering metadata together with [Offering Override](doc:offering-override) to display messaging for special offers and discounts. For example, you could create a key `discount_message` that, if present, shows a special message about the applied discount on the paywall, and set that on a discounted Offering that you apply as an override to customers who are eligible for the specific discount.
-- You can use [Experiments](doc:experiments-v1) in conjunction with Offering metadata to not only A/B test different products and prices, but also to test changes to the paywall. To do that, you would create a second Offering with the same products as your default offering, but have different values for the metadata keys in the second Offering.
+- You can use offering metadata together with [Offering Override](/dashboard-and-metrics/customers-group/offering-override) to display messaging for special offers and discounts. For example, you could create a key `discount_message` that, if present, shows a special message about the applied discount on the paywall, and set that on a discounted Offering that you apply as an override to customers who are eligible for the specific discount.
+- You can use [Experiments](/tools/experiments-v1) in conjunction with Offering metadata to not only A/B test different products and prices, but also to test changes to the paywall. To do that, you would create a second Offering with the same products as your default offering, but have different values for the metadata keys in the second Offering.
 
 ![Example response where metadata is used to control additional paywall variables](https://files.readme.io/febdc0b-Screen_Shot_2023-05-19_at_4.35.53_PM.png)
 
@@ -78,4 +78,4 @@ import content2 from "!!raw-loader!@site/code_blocks/tools/offering-metadata_2.k
 
 ## Offering metadata use case examples
 
-You can find some example use cases in action in our [Offering Metadata example use cases](doc:offering-metadata-examples) doc.
+You can find some example use cases in action in our [Offering Metadata example use cases](/tools/offering-metadata/offering-metadata-examples) doc.

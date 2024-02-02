@@ -15,18 +15,33 @@ We host live office hours every other Friday, where we demo the platform and ans
 
 ### Adding in-app purchases to your app
 
-<section class="get-started landing"> <div class="get-started-description"> <p>Start selling subscriptions and in-app purchases in your iOS, Android, and Amazon apps. </p> <a class="cta" href="/docs/building-new" target="_self">Get Started →</a> </div> <div class="get-started-image resources"> <img src="https://revenuecat.dreamhosters.com/wp-content/uploads/2023/11/Powering-existing-subscriptions-with-RevenueCat-1.png" alt="RevenueCat flow diagram" /> </div></section>
+Start selling subscriptions and in-app purchases in your iOS, Android, and Amazon apps.
+
+[Get Started →](/welcome/building-new)
+
+![RevenueCat Flow Diagram](https://revenuecat.dreamhosters.com/wp-content/uploads/2023/11/Powering-existing-subscriptions-with-RevenueCat-1.png)
 
 ### Migrate existing subscriptions to RevenueCat
 
-<section class="get-started landing"> <div class="get-started-description"> <p>If you already have 1 or 1 millions subscribers, easily replace your existing setup with RevenueCat to supercharge your business. </p> <a class="cta" href="/docs/existing-apps" target="_self">Learn More →</a> </div> <div class="get-started-image resources"> <img src="https://revenuecat.dreamhosters.com/wp-content/uploads/2023/11/Powering-existing-subscriptions-with-RevenueCat.png" alt="RevenueCat supported stores" /> </div></section>
+If you already have 1 or 1 millions subscribers, easily replace your existing setup with RevenueCat to supercharge your business.
 
-#### Browse features
+[Learn more →](/welcome/existing-apps)
 
-<section class="get-started landing three-column"> <ul class="ctas"> <li> <a href="/docs/entitlements" target="_self"> <div class="name">🔑 Entitlements & Subscription Status</div> <div class="description">Ensure customers have correct access even if your entitlement structure is complex. </div> </a> </li> <li> <a href="/docs/integrations" target="_self"> <div class="name">📈 Data, Analytics, & Integrations</div> <div class="description">Clean, normalized subscription data at your fingertips and in every system. </div> </a> </li> <li> <a href="/docs/experiments-v1" target="_self"> <div class="name">💰 Paywalls & Experiments</div> <div class="description">Change your product configurations remotely and run price tests.</div> </a> </li> </ul></section>
+![RevenueCat supported stores](https://revenuecat.dreamhosters.com/wp-content/uploads/2023/11/Powering-existing-subscriptions-with-RevenueCat.png)
+
+### Browse features
+
+- [🔑 Entitlements & Subscription Status](/getting-started/entitlements)<br />
+  Ensure customers have correct access even if your entitlement structure is complex.
+
+- [📈 Data, Analytics, & Integrations](/integrations/third-party-integrations)<br />
+  Clean, normalized subscription data at your fingertips and in every system
+
+- [💰 Paywalls & Experiments](/tools/experiments-v1)<br />
+  Change your product configurations remotely and run price tests.
 
 #### Not sure where to start
 
 Talk to an expert to learn how RevenueCat can help grow your business.
 
-<a class="cta" href="https://www.revenuecat.com/talk-to-sales/" target="_blank">Talk to Sales →</a>
+[Talk to Sales →](https://www.revenuecat.com/talk-to-sales/)

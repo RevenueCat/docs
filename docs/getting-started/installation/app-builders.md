@@ -21,12 +21,12 @@ If your questions are in regards to configuring products, entitlements, or offer
 
 Use the links below to find the set up guide on each of our partner's sites.
 
-### [Bravo Studios :fa-arrow-right:](https://docs.bravostudio.app/integrations/in-app-purchases-and-subscriptions-revenuecat)
+### [Bravo Studios ➡️](https://docs.bravostudio.app/integrations/in-app-purchases-and-subscriptions-revenuecat)
 
-### [Flutterflow :fa-arrow-right:](https://docs.flutterflow.io/settings-and-integrations/in-app-purchases-and-subscriptions/revenuecat)
+### [Flutterflow ➡️](https://docs.flutterflow.io/settings-and-integrations/in-app-purchases-and-subscriptions/revenuecat)
 
-### [Natively :fa-arrow-right:](https://docs.buildnatively.com/guides/setup-revenuecat-app)
+### [Natively ➡️](https://docs.buildnatively.com/guides/setup-revenuecat-app)
 
-### [Purchasely :fa-arrow-right:](https://docs.purchasely.com/quick-start-1/purchasely-with-revenuecat)
+### [Purchasely ➡️](https://docs.purchasely.com/quick-start-1/purchasely-with-revenuecat)
 
-### [Teta :fa-arrow-right:](https://docs.teta.so/teta-docs/teta-introduction/dashboard/settings/integrations/revenuecat)
+### [Teta ➡️](https://docs.teta.so/teta-docs/teta-introduction/dashboard/settings/integrations/revenuecat)

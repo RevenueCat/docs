@@ -45,4 +45,4 @@ To disable two-factor authentication vavigate to your [**Account > Security**](h
 
 ### Audit Two-Factor Setup
 
-If you have invited collaborators to your app, you can check if they've enabled two-factor authentication for their account under the [Collaborators view](doc:collaborators) .
+If you have invited collaborators to your app, you can check if they've enabled two-factor authentication for their account under the [Collaborators view](/welcome/projects/collaborators) .

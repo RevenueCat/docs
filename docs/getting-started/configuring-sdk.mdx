@@ -3,21 +3,21 @@ title: Configuring the SDK
 slug: configuring-sdk
 hidden: false
 ---
-If this is your first time integrating RevenueCat into your app, we recommend following our [Quickstart](https://docs.revenuecat.com/docs/getting-started) guide.
+If this is your first time integrating RevenueCat into your app, we recommend following our [Quickstart](/getting-started/getting-started) guide.
 
 ::info Using an older SDK (v3.x)
-View our migration guide to v4.x [here](doc:ios-native-3x-to-4x-migration).
+View our migration guide to v4.x [here](/sdk-guides/ios-native-3x-to-4x-migration).
 :::
 
 ## Basic Configuration
 
 ### Initialization
 
-Once you've [installed](https://docs.revenuecat.com/docs/installation) the SDK for your app, it's time to initialize and configure it.
+Once you've [installed](/getting-started/installation) the SDK for your app, it's time to initialize and configure it.
 
 You should only configure _Purchases_ once, usually early in your application lifecycle. After configuration, the same instance is shared throughout your app by accessing the `.shared` instance in the SDK.
 
-Make sure you configure _Purchases_ with your public SDK key only. You can read more about the different API keys available in our [Authentication guide](https://docs.revenuecat.com/docs/authentication).
+Make sure you configure _Purchases_ with your public SDK key only. You can read more about the different API keys available in our [Authentication guide](/welcome/authentication).
 
 import swiftContent50 from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_1.swift";
 import swiftUIContent51 from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_2.swift";
@@ -44,11 +44,11 @@ import unityContent59 from "!!raw-loader!@site/code_blocks/getting-started/confi
 ]} />
 
 :::danger iOS 15+ Prewarming
-In certain cases, calling `configure` in `application:didFinishLaunchingWithOptions:` should be avoided. See [Identifying Users](https://docs.revenuecat.com/docs/user-ids#provide-app-user-id-on-configuration) for more information.
+In certain cases, calling `configure` in `application:didFinishLaunchingWithOptions:` should be avoided. See [Identifying Users](/customers/user-ids#provide-app-user-id-on-configuration) for more information.
 :::
 
 ::: SwiftUI App Protocol
-Using SwiftUI's App protocol? Check out our [resource](https://www.revenuecat.com/docs/swiftui-helpers) on setting up the _Purchases_ SDK with SwiftUI.
+Using SwiftUI's App protocol? Check out our [resource](/platform-resources/apple-platform-resources/swiftui-helpers) on setting up the _Purchases_ SDK with SwiftUI.
 :::
 
 ### Enabling Debug Logs
@@ -64,11 +64,11 @@ Debug logs will provide detailed log output in Xcode or LogCat for what is going
 The SDK allows additional configuration on first setup:
 
 - **API Key (required)**: The public API key that corresponds to your app, found via **Project Settings > API keys > App specific keys** in the RevenueCat dashboard.
-- **App User ID (optional)**: An identifier for the current user. Pass `null` if you don't have a user identifier at the time of configuration and RevenueCat will generate an anonymous Id for you. See our [guide on identifying users](https://docs.revenuecat.com/docs/user-ids) for more information.
-- **Observer Mode (optional)**: A boolean value to set _Purchases_ in [Observer Mode](https://docs.revenuecat.com/docs/observer-mode). Only pass true if you're using RevenueCat for analytics purposes, and you're handling making purchases and checking subscription status yourself.
+- **App User ID (optional)**: An identifier for the current user. Pass `null` if you don't have a user identifier at the time of configuration and RevenueCat will generate an anonymous Id for you. See our [guide on identifying users](/customers/user-ids) for more information.
+- **Observer Mode (optional)**: A boolean value to set _Purchases_ in [Observer Mode](/migrating-to-revenuecat/observer-mode). Only pass true if you're using RevenueCat for analytics purposes, and you're handling making purchases and checking subscription status yourself.
 - **User Defaults (optional, iOS only)**: A key to override the standard user defaults used to cache `CustomerInfo`. This is required if you need to access `CustomerInfo` in an [iOS App Extension](https://developer.apple.com/app-extensions/).
 
-If you're planning to use RevenueCat alongside your existing purchase code, check out our guide on [Observer Mode](https://docs.revenuecat.com/docs/observer-mode).
+If you're planning to use RevenueCat alongside your existing purchase code, check out our guide on [Observer Mode](/migrating-to-revenuecat/observer-mode).
 
 ## Advanced Configuration
 

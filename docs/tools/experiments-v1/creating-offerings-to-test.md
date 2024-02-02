@@ -15,17 +15,17 @@ A successful experiment starts with a clear hypothesis that states what variable
 
 Through Experiments, you can test any variable related to the products you're serving your customers. You may want to test higher or lower prices, the presence or absence of a trial offer, the length of a trial offer, the number of duration options to offer, the relative price of one duration vs. another, etc. [Check out these 10 price test ideas](https://www.revenuecat.com/blog/growth/10-price-test-ideas-for-your-mobile-app/) if you're looking for inspiration on where to start.
 
-In addition, by programming your app to be responsive to Offering Metadata, you can test any other paywall variable outside of your product selection as well. [Learn more here](https://www.revenuecat.com/docs/offering-metadata).
+In addition, by programming your app to be responsive to Offering Metadata, you can test any other paywall variable outside of your product selection as well. [Learn more here](/tools/offering-metadata).
 
 ## Setting up a new offering to test your hypothesis
 
-Experiments uses [Offerings](https://www.revenuecat.com/docs/entitlements#offerings) to represent the hypothesis that's being tested (aka: the group of products that will be offered to your customers). An Offering is a collection of Packages that contain Products from each store you're looking to serve that Offering on.
+Experiments uses [Offerings](/getting-started/entitlements#offerings) to represent the hypothesis that's being tested (aka: the group of products that will be offered to your customers). An Offering is a collection of Packages that contain Products from each store you're looking to serve that Offering on.
 
 So to run an experiment with RevenueCat, you'll need to create a new Offering that contains the Products you want to test, and uses the correct set of metadata key/values if they are applicable to your experiment.
 
 ### Creating new Products in each store
 
-The Products themselves must first be created in each store in order to be served through RevenueCat. [You can refresh yourself on how to create Products in each store here](https://www.revenuecat.com/docs/entitlements#store-configuration).
+The Products themselves must first be created in each store in order to be served through RevenueCat. [You can refresh yourself on how to create Products in each store here](/getting-started/entitlements#store-configuration).
 
 When creating new Products to experiment with, here are a few things to keep in mind:
 

@@ -5,7 +5,7 @@ excerpt: How webhooks are sent from RevenueCat
 hidden: false
 ---
 
-You’ll receive many [Webhooks](doc:webhooks) throughout a customer’s journey in your app. We’ve compiled a list of several common event flows to illustrate the events you might receive in some common scenarios.
+You’ll receive many [Webhooks](/integrations/webhooks) throughout a customer’s journey in your app. We’ve compiled a list of several common event flows to illustrate the events you might receive in some common scenarios.
 
 ## Subscription Lifecycle
 

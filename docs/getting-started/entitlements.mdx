@@ -27,10 +27,10 @@ Products are the individual SKUs that users actually purchase. The stores (Apple
 
 No matter how you choose to use RevenueCat, you'll need to first have products set up in the stores. This is done outside of RevenueCat, and where you set things like price, duration, and free trials. If you've never set up products before or need a refresher (or tips and tricks) check out these guides:
 
-- **[iOS / App Store Connect ](doc:ios-products)**
-- **[Android / Google Play Console ](doc:android-products)**
-- **[Android / Amazon Appstore ](doc:amazon-product-setup)**
-- **[Stripe ](doc:stripe-products)**
+- **[iOS / App Store Connect ](/getting-started/entitlements/ios-products)**
+- **[Android / Google Play Console ](/getting-started/entitlements/android-products)**
+- **[Android / Amazon Appstore ](/getting-started/entitlements/amazon-product-setup)**
+- **[Stripe ](/getting-started/entitlements/stripe-products)**
 
 ### RevenueCat Configuration
 
@@ -128,7 +128,7 @@ You'll be prompted to enter an **Identifier** and **Description** for your offer
 **Current Offering**  
 The RevenueCat dashboard allows you to choose which Offering should be `current`. The `current` Offering is a convenience method for the Purchases SDK to reference a primary Offering.
 
-If you build your paywall to reference the `current` Offering, instead of hardcoding an identifier value, you can change this Offering from the dashboard to dynamically display different Offerings at any time. We strongly recommend utilizing the `current` Offering feature. See [Displaying Products](doc:displaying-products) for more info.
+If you build your paywall to reference the `current` Offering, instead of hardcoding an identifier value, you can change this Offering from the dashboard to dynamically display different Offerings at any time. We strongly recommend utilizing the `current` Offering feature. See [Displaying Products](/getting-started/displaying-products) for more info.
 
 ### Adding Packages
 
@@ -146,7 +146,7 @@ On the next screen, you'll see dropdowns to select the appropriate product for e
 
 ![](https://files.readme.io/9bad7ea-Screenshot_2023-03-21_at_10.54.31.png "Screenshot 2023-03-21 at 10.54.31.png")
 
-For Google Play store products, if you select a non backwards-compatible product and the [app compatibility setting](doc:google-subscriptions-and-backwards-compatibility) is set to "SDK v6+ and backwards compatible", you will have the ability to configure a backwards compatible fallback product. This product will be available for purchase in previous versions of the SDK which don't yet support non backwards compatible products.
+For Google Play store products, if you select a non backwards-compatible product and the [app compatibility setting](/getting-started/entitlements/google-subscriptions-and-backwards-compatibility) is set to "SDK v6+ and backwards compatible", you will have the ability to configure a backwards compatible fallback product. This product will be available for purchase in previous versions of the SDK which don't yet support non backwards compatible products.
 
 ![](https://files.readme.io/fba3a35-Screenshot_2023-03-21_at_10.54.52.png "Screenshot 2023-03-21 at 10.54.52.png")
 
@@ -172,4 +172,4 @@ Removing a package from an Offering **does not** remove the products from Revenu
 
 You've successfully created Entitlements, Offerings, and Packages, and have attached products to be used in your app.
 
-Continue on to [Displaying Products](doc:displaying-products) to start showing your new Offering in your app.
+Continue on to [Displaying Products](/getting-started/displaying-products) to start showing your new Offering in your app.
