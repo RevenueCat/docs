@@ -265,10 +265,6 @@ const redirects = {
       from: "/facebook-ads",
     },
     {
-      to: "/integrations/attribution/searchadshq-1",
-      from: "/searchadshq-1",
-    },
-    {
       to: "/integrations/attribution/singular",
       from: "/singular",
     },
