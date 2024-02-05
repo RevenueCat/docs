@@ -26,12 +26,12 @@ function HomepageHeader() {
         </p>
         <p>
           {" "}
-          Welcome to the RevenueCat Developer Hub. You'll find comprehensive
-          guides and documentation to help you start working with RevenueCat as
-          quickly as possible, as well as support if you get stuck. Let's jump
-          right in!
+          Welcome to the RevenueCat Developer Hub. You'll find detailed guides
+          and documentation to help you start working with RevenueCat as quickly
+          as possible, as well as support if you get stuck. Let's jump right in!
           <br />
           <br />
+          <small>Bug Bash #1</small>
         </p>
 
         <div className={styles.buttons}>
