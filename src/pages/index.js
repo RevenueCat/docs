@@ -28,7 +28,8 @@ function HomepageHeader() {
           {" "}
           Welcome to the RevenueCat Developer Hub. You'll find comprehensive
           guides and documentation to help you start working with RevenueCat as
-          quickly as possible.
+          quickly as possible, as well as support if you get stuck. Let's jump
+          right in!
           <br />
           <br />
         </p>
@@ -38,7 +39,7 @@ function HomepageHeader() {
             className="button button--primary button--lg"
             to="/welcome/overview"
           >
-            Getting Started with RevenueCat
+            Get Started with RevenueCat
           </Link>
           <Link
             className="button button--secondary button--lg"
