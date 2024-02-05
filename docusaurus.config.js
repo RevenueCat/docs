@@ -64,11 +64,15 @@ const config = {
             spec: "openapi-spec/api-v2.yaml",
             route: "/api/",
           },
+          {
+            spec: "openapi-spec/api-v1.json",
+            route: "/api-v1/",
+          },
         ],
         // Theme Options for modifying how redoc renders them
         theme: {
           // Change with your site colors
-          primaryColor: "#1890ff",
+          primaryColor: "#f25a5a",
         },
       },
     ],
@@ -93,8 +97,12 @@ const config = {
             label: "Documentation",
           },
           {
-            label: "REST API Reference",
+            label: "API v2",
             to: "/api/",
+          },
+          {
+            label: "API v1",
+            to: "/api-v1/",
           },
         ],
       },

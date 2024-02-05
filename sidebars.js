@@ -103,7 +103,7 @@ const gettingStartedCategory = new Category(
       [new Page("ios-app-extensions")],
       new Page("configuring-sdk")
     ),
-    new Link("Identifying Users", "/docs/customers/user-ids"),
+    new Link("Identifying Users", "/customers/user-ids"),
     new Page("displaying-products"),
     new Category(
       "Making Purchases",
@@ -112,11 +112,11 @@ const gettingStartedCategory = new Category(
       [new Page("android-with-jetpack-compose")],
       new Page("making-purchases")
     ),
-    new Link("Checking Subscription Status", "/docs/customers/customer-info"),
+    new Link("Checking Subscription Status", "/customers/customer-info"),
     new Page("restoring-purchases"),
     new Link(
       "Configuring Server Notifications",
-      "/docs/platform-resources/server-notifications"
+      "/platform-resources/server-notifications"
     ),
     new Category(
       "Stripe",
