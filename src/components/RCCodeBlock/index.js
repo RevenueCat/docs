@@ -31,7 +31,7 @@ const RCCodeBlock = (props) => {
         }
 
         return (
-          <TabItem value={tab.title || tab.name || tab.type}>
+          <TabItem value={tab.title || tab.name || tab.type} >
             <CodeBlock
               showLineNumbers={true}
               language={getLanguageType(tab.type)}
