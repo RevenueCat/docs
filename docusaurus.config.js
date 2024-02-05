@@ -8,6 +8,8 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 const DOC_BASE_URL = process.env.DOC_BASE_URL || "/docs/";
 
+import redirects from "./src/redirects/redirects";
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "In-App Subscriptions Made Easy – RevenueCat",
@@ -70,6 +72,7 @@ const config = {
       },
     ],
   ],
+  plugins: [["@docusaurus/plugin-client-redirects", redirects]],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
