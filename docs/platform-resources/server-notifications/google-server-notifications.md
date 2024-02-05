@@ -5,7 +5,7 @@ excerpt: Sending Google Play server notifications to RevenueCat
 hidden: false
 ---
 
-RevenueCat does not require anything further than service credentials to communicate with Google, but setting up [real-time server notifications](https://developer.android.com/google/play/billing/realtime_developer_notifications) is a recommended process that can speed up webhook and integration delivery times and reduce lag time for [Charts](https://www.revenuecat.com/docs/charts).
+RevenueCat does not require anything further than service credentials to communicate with Google, but setting up [real-time server notifications](https://developer.android.com/google/play/billing/realtime_developer_notifications) is a recommended process that can speed up webhook and integration delivery times and reduce lag time for [Charts](/dashboard-and-metrics/charts).
 
 ## Setup Instructions
 
@@ -13,14 +13,14 @@ RevenueCat does not require anything further than service credentials to communi
 
 - Where: Google Cloud Console
 
-You can enable it [here](https://console.cloud.google.com/flows/enableapi?apiid=pubsub). Make sure that you're in the correct project, the same one that you set up your [service account and credentials](https://www.revenuecat.com/docs/creating-play-service-credentials) in.
+You can enable it [here](https://console.cloud.google.com/flows/enableapi?apiid=pubsub). Make sure that you're in the correct project, the same one that you set up your [service account and credentials](/service-credentials/creating-play-service-credentials) in.
 
 ![Google Cloud Console](https://files.readme.io/b4cf119-Dev_Step1.gif)
 
 ### 2. Choose a Pub/Sub Topic ID
 
 - Where: RevenueCat Dashboard
-- Project Page :fa-arrow-right: Google Play App Settings
+- Project Page ➡️ Google Play App Settings
 
 Directly beneath where the Service Credentials JSON object is added, a list of possible Pub/Sub topics to use will be visible. You can either choose an existing one, or let RevenueCat create a new one.
 
@@ -31,7 +31,7 @@ Click '**Connect to Google**'. You should see a generated Google Cloud Pub/Sub T
 ### 3. Add Topic ID to Google Play
 
 - Where: Google Play Console
-- Google Play Homepage :fa-arrow-right: App Dashboard :fa-arrow-right: 'Monetize' section of sidebar :fa-arrow-right: Monetization Setup
+- Google Play Homepage ➡️ App Dashboard ➡️ 'Monetize' section of sidebar ➡️ Monetization Setup
 
 In Google Play console, head to the dashboard for your app and find the '**Monetize**' section of the sidebar. Choose '**Monetization Setup**'. In the Real-time developer notifications section, paste your copied topic ID next to '**Topic name**'. Be sure to Save Changes at the very bottom right.
 
@@ -42,8 +42,8 @@ If you don't see any errors, your real-time developer notifications should be re
 ### Send Test Notification
 
 - Where: Google Play Console & RevenueCat Dashboard
-- Google Play Homepage :fa-arrow-right: App Dashboard :fa-arrow-right: 'Monetize' section of sidebar :fa-arrow-right: Monetization Setup
-- RevenueCat Project Page :fa-arrow-right: Google Play App Settings
+- Google Play Homepage ➡️ App Dashboard ➡️ 'Monetize' section of sidebar ➡️ Monetization Setup
+- RevenueCat Project Page ➡️ Google Play App Settings
 
 There is an option in Google Play to send a test notification. This is a great way to verify that Google Pub/Sub is correctly connected to your RevenueCat account.
 
@@ -56,11 +56,11 @@ Once that test notification is sent, you can go back to your app config on the R
 ## Considerations
 
 :::danger Errors when connecting?
-If you're getting an error when connecting to Google for [Platform Server Notifications](doc:google-server-notifications) from the RevenueCat dashboard, use our [Checklist](https://www.revenuecat.com/docs/google-play-checklists#google-real-time-developer-notifications-checklist) to ensure you've hit every step, or use our [error handling guide](https://www.revenuecat.com/docs/creating-play-service-credentials#error-handling) to troubleshoot.
+If you're getting an error when connecting to Google for [Platform Server Notifications](/platform-resources/server-notifications/google-server-notifications) from the RevenueCat dashboard, use our [Checklist](/service-credentials/creating-play-service-credentials/google-play-checklists#google-real-time-developer-notifications-checklist) to ensure you've hit every step, or use our [error handling guide](/service-credentials/creating-play-service-credentials#error-handling) to troubleshoot.
 :::
 
 :::warning Service Credentials take ~36hrs to go into effect
-If you receive a credentials error, make sure you've waited at least 36hrs after creating your [Google Service Credentials](creating-play-service-credentials) before connecting to Google Real-Time Developer Notifications.
+If you receive a credentials error, make sure you've waited at least 36hrs after creating your [Google Service Credentials](/service-credentials/creating-play-service-credentials) before connecting to Google Real-Time Developer Notifications.
 :::
 
 :::info

@@ -25,13 +25,13 @@ RevenueCat itself is not an attribution network, and by itself cannot inform you
 
 RevenueCat can send revenue events into the following attribution networks:
 
-- [Adjust :fa-arrow-right:](doc:adjust)
-- [Apple Search Ads :fa-arrow-right:](doc:apple-search-ads)
-- [AppsFlyer :fa-arrow-right:](doc:appsflyer)
-- [Branch :fa-arrow-right:](doc:branch)
-- [Facebook Ads :fa-arrow-right:](doc:facebook-ads)
-- [SplitMetrics Acquire | Formerly SearchAdsHQ](doc:splitmetrics-acquire)
-- [Tenjin :fa-arrow-right:](doc:tenjin)
-- [Singular :fa-arrow-right:](doc:singular)
+- [Adjust ➡️](/integrations/attribution/adjust)
+- [Apple Search Ads ➡️](/integrations/attribution/apple-search-ads)
+- [AppsFlyer ➡️](/integrations/attribution/appsflyer)
+- [Branch ➡️](/integrations/attribution/branch)
+- [Facebook Ads ➡️](/integrations/attribution/facebook-ads)
+- [SplitMetrics Acquire | Formerly SearchAdsHQ](/integrations/attribution/splitmetrics-acquire)
+- [Tenjin ➡️](/integrations/attribution/tenjin)
+- [Singular ➡️](/integrations/attribution/singular)
 
 If you use an attribution provider not listed here, [contact us](https://www.revenuecat.com/contact).

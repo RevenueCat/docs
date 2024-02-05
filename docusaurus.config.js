@@ -6,20 +6,27 @@
 
 import { themes as prismThemes } from "prism-react-renderer";
 
+const DOC_BASE_URL = process.env.DOC_BASE_URL || "/docs/";
+
+import redirects from "./src/redirects/redirects";
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "RevenueCat",
-  tagline: "Helping developers make more money",
-  favicon: "img/favicon.ico",
+  title: "In-App Subscriptions Made Easy – RevenueCat",
+  tagline:
+    "RevenueCat makes it easy to build, analyze, and grow in-app purchases and subscriptions on iOS, Android, and the web – no server code required. Get started for free.",
+  favicon: "img/favicon-32x32.png",
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
+  url: "https://revenuecat.com/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/",
+  baseUrl: DOC_BASE_URL,
 
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
+
+  trailingSlash: false,
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -36,7 +43,7 @@ const config = {
       ({
         docs: {
           sidebarPath: "./sidebars.js",
-          routeBasePath: "/docs/",
+          routeBasePath: "/",
           breadcrumbs: false,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -55,7 +62,7 @@ const config = {
         specs: [
           {
             spec: "openapi-spec/api-v2.yaml",
-            route: "/docs/api/",
+            route: "/api/",
           },
         ],
         // Theme Options for modifying how redoc renders them
@@ -66,7 +73,7 @@ const config = {
       },
     ],
   ],
-
+  plugins: [["@docusaurus/plugin-client-redirects", redirects]],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -86,8 +93,8 @@ const config = {
             label: "Documentation",
           },
           {
-            label: "API Reference",
-            to: "/docs/api/",
+            label: "REST API Reference",
+            to: "/api/",
           },
         ],
       },
@@ -99,7 +106,7 @@ const config = {
             items: [
               {
                 label: "Docs",
-                to: "/docs/welcome/overview",
+                to: "/welcome/overview",
               },
             ],
           },

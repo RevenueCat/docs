@@ -11,7 +11,7 @@ Charts are available to all users signed up after September '23, the legacy Star
 
 RevenueCat charts allow you to understand your user base with key subscription specific metrics, filters, and segments. All charts are generated from the current snapshot of purchase receipts saved in RevenueCat and work independently from any in-app usage.
 
-This means that your charts are always up-to-date, without having to rely on any client-side event logging. However, since receipt files are dynamic, this means even historical data may change from day-to-day if for example a user was refunded. This also means that data in RevenueCat may be different than other systems tracking similar metrics - see the section on [Differences In Data](doc:charts#differences-in-data) for more information.
+This means that your charts are always up-to-date, without having to rely on any client-side event logging. However, since receipt files are dynamic, this means even historical data may change from day-to-day if for example a user was refunded. This also means that data in RevenueCat may be different than other systems tracking similar metrics - see the section on [Differences In Data](/dashboard-and-metrics/charts#differences-in-data) for more information.
 
 :::info Charts show production data only
 Due to the limitations of the sandbox environments, charts are only displayed for production transaction data.
@@ -19,7 +19,7 @@ Due to the limitations of the sandbox environments, charts are only displayed fo
 
 ## Data Discrepancies
 
-Reconciling data between multiple sources is a fundamental challenge for all analytics systems. As a consequence, in-app purchase data from Apple, Google, or Stripe may not match what RevenueCat reports in Charts or in [Overview](doc:overview). Common reasons for these discrepancies are:
+Reconciling data between multiple sources is a fundamental challenge for all analytics systems. As a consequence, in-app purchase data from Apple, Google, or Stripe may not match what RevenueCat reports in Charts or in [Overview](/dashboard-and-metrics/overview). Common reasons for these discrepancies are:
 
 - You migrated your app to RevenueCat (receipts must be sent through our SDK or API to be counted in Charts)
 - There is a disagreement between the store and RevenueCat over a definition (e.g., Apple uses fiscal months, whereas RevenueCat uses calendar months; Google considers trials to be active subscriptions, whereas RevenueCat does not)
@@ -39,22 +39,22 @@ We strive to provide clear and accurate insights into your data, but we cannot g
 
 For detailed information on a particular Chart, refer to the following guides:
 
-- [Active Subscriptions ](doc:active-subscriptions-chart)
-- [Active Subscriptions Movement ](doc:active-subscriptions-movement-chart)
-- [Churn ](doc:churn-chart)
-- [Refund Rate ](doc:refund-rate-chart)
-- [Annual Recurring Revenue (ARR) ](doc:annual-recurring-revenue-arr-chart)
-- [Realized LTV per Customer ](doc:realized-ltv-per-customer-chart)
-- [Realized LTV per Paying Customer ](doc:realized-ltv-per-paying-customer-chart)
-- [Monthly Recurring Revenue (MRR) ](doc:monthly-recurring-revenue-mrr-chart)
-- [Monthly Recurring Revenue Movement ](doc:monthly-recurring-revenue-movement-chart)
-- [Revenue ](doc:revenue-chart)
-- [Conversion to Paying ](doc:conversion-to-paying-chart)
-- [Initial Conversion ](doc:initial-conversion-chart)
-- [Trial Conversion ](doc:trial-conversion-chart)
-- [Subscription Retention ](doc:subscription-retention-chart)
-- [Active Trials ](doc:active-trials-chart)
-- [Active Trials Movement ](doc:active-trials-movement-chart)
+- [Active Subscriptions ](/dashboard-and-metrics/charts/active-subscriptions-chart)
+- [Active Subscriptions Movement ](/dashboard-and-metrics/charts/active-subscriptions-movement-chart)
+- [Churn ](/dashboard-and-metrics/charts/churn-chart)
+- [Refund Rate ](/dashboard-and-metrics/charts/refund-rate-chart)
+- [Annual Recurring Revenue (ARR) ](/dashboard-and-metrics/charts/annual-recurring-revenue-arr-chart)
+- [Realized LTV per Customer ](/dashboard-and-metrics/charts/realized-ltv-per-customer-chart)
+- [Realized LTV per Paying Customer ](/dashboard-and-metrics/charts/realized-ltv-per-paying-customer-chart)
+- [Monthly Recurring Revenue (MRR) ](/dashboard-and-metrics/charts/monthly-recurring-revenue-mrr-chart)
+- [Monthly Recurring Revenue Movement ](/dashboard-and-metrics/charts/monthly-recurring-revenue-movement-chart)
+- [Revenue ](/dashboard-and-metrics/charts/revenue-chart)
+- [Conversion to Paying ](/dashboard-and-metrics/charts/conversion-to-paying-chart)
+- [Initial Conversion ](/dashboard-and-metrics/charts/initial-conversion-chart)
+- [Trial Conversion ](/dashboard-and-metrics/charts/trial-conversion-chart)
+- [Subscription Retention ](/dashboard-and-metrics/charts/subscription-retention-chart)
+- [Active Trials ](/dashboard-and-metrics/charts/active-trials-chart)
+- [Active Trials Movement ](/dashboard-and-metrics/charts/active-trials-movement-chart)
 
 ## Filters and Segments
 
@@ -64,20 +64,20 @@ Filters allow you to limit the charts to only include data that matches one or m
 
 Segments allow you to break down the chart totals into underlying data segments. This is useful for comparing the performance of specific properties, such as monthly vs. annual subscriptions.
 
-| Attribute                 | Description                                                                                                                         |
-| :------------------------ | :---------------------------------------------------------------------------------------------------------------------------------- |
-| Project                   | The different projects you have access to in RevenueCat. These projects contain your apps across various platforms.                 |
-| Apple Search Ads Ad Group | If you're collecting [Apple Search Ads Attribution](doc:apple-search-ads), the specific ad group that drove the install (iOS only). |
-| Apple Search Ads Campaign | If you're collecting [Apple Search Ads Attribution](doc:apple-search-ads), the specific campaign that drove the install (iOS only). |
-| Country                   | The device locale that was recorded with the purchase or the last known locale of the customer. May be unknown.                     |
-| First Purchase Month      | The month that the first purchase (incl. free trials) was recorded for the user (segment option only).                              |
-| Install Month             | The month that the user was first seen by RevenueCat (segment option only).                                                         |
-| Offer                     | The offer that was used for a transaction (if applicable).                                                                          |
-| Offer type                | They type of offer that was used for a transaction (if applicable).                                                                 |
-| Offering                  | The offering identifier set in RevenueCat.                                                                                          |
-| Product Duration          | The duration of the normal subscription period (not trial or intro period).                                                         |
-| Product                   | The product identifier set in the store.                                                                                            |
-| Store                     | The store that processed the purchase. Either App Store, Play Store, Amazon Appstore, or Stripe.                                    |
+| Attribute                 | Description                                                                                                                                               |
+| :------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Project                   | The different projects you have access to in RevenueCat. These projects contain your apps across various platforms.                                       |
+| Apple Search Ads Ad Group | If you're collecting [Apple Search Ads Attribution](/integrations/attribution/apple-search-ads), the specific ad group that drove the install (iOS only). |
+| Apple Search Ads Campaign | If you're collecting [Apple Search Ads Attribution](/integrations/attribution/apple-search-ads), the specific campaign that drove the install (iOS only). |
+| Country                   | The device locale that was recorded with the purchase or the last known locale of the customer. May be unknown.                                           |
+| First Purchase Month      | The month that the first purchase (incl. free trials) was recorded for the user (segment option only).                                                    |
+| Install Month             | The month that the user was first seen by RevenueCat (segment option only).                                                                               |
+| Offer                     | The offer that was used for a transaction (if applicable).                                                                                                |
+| Offer type                | They type of offer that was used for a transaction (if applicable).                                                                                       |
+| Offering                  | The offering identifier set in RevenueCat.                                                                                                                |
+| Product Duration          | The duration of the normal subscription period (not trial or intro period).                                                                               |
+| Product                   | The product identifier set in the store.                                                                                                                  |
+| Store                     | The store that processed the purchase. Either App Store, Play Store, Amazon Appstore, or Stripe.                                                          |
 
 :::info Filters do not affect 'New Customers' number
 Filters and segments do not apply to the 'New Customers' number. It is possible for customers to jump between web, iOS, and Android devices, so these filters only apply to transactions, which always happen through a particular Store.
@@ -114,7 +114,7 @@ And of course, you can mix and match filters as needed to create your ideal view
 2. [Revenue filtered to the Offer Code Offer Type segmented by Offer](https://app.revenuecat.com/charts/revenue?chart_type=Stacked%20area&conversion_timeframe=7%20days&customer_lifetime=30%20days&filter=offer_type%3A%3D%3Aoffer_code&range=Last%2012%20months%3A2022-11-29%3A2023-11-29&segment=offer)
 
 :::info
-In order for RevenueCat to accurately track revenue for offer codes, you will need to upload an in-app purchase key. See our guide on [In-App Purchase Key Configuration](https://www.revenuecat.com/docs/in-app-purchase-key-configuration) for step-by-step instructions.
+In order for RevenueCat to accurately track revenue for offer codes, you will need to upload an in-app purchase key. See our guide on [In-App Purchase Key Configuration](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration) for step-by-step instructions.
 :::
 
 ## Conversion Charts
@@ -167,7 +167,7 @@ Here's a specific example using a 7 day Conversion Timeframe:
 Select the "Unbounded" conversion timeframe to see all the conversions for a given cohort, regardless of when they occurred.
 :::
 
-Additionally, cohorts that have not yet had the time fully mature (as defined by the Conversion Timeframe selected) will be marked as incomplete periods and styled accordingly. This ensures that you can interpret their performance accurately against other periods. Learn more about incomplete periods [here](doc:charts-feature-incomplete-periods).
+Additionally, cohorts that have not yet had the time fully mature (as defined by the Conversion Timeframe selected) will be marked as incomplete periods and styled accordingly. This ensures that you can interpret their performance accurately against other periods. Learn more about incomplete periods [here](/dashboard-and-metrics/charts/charts-feature-incomplete-periods).
 
 :::warning
 Conversion Timeframes are not yet supported on the Trial Conversion chart, but will be coming soon.
@@ -216,4 +216,4 @@ Whenever a subscription is refunded, that subscription is counted as active betw
 
 ## Next Steps
 
-- Learn how to view the purchase history of a specific user and grant them promotional access via the [Customer View ](doc:customers)
+- Learn how to view the purchase history of a specific user and grant them promotional access via the [Customer View ](/dashboard-and-metrics/customers-group/basic-information)

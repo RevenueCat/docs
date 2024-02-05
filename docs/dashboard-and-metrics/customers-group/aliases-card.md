@@ -6,7 +6,7 @@ hidden: false
 
 The App User IDs will hold both the Original App User ID and the list of Aliases a particular customer has.
 
-If this customer has any [aliases](doc:user-ids#aliasing), they will appear in the 'Aliases' sub-section.
+If this customer has any [aliases](/customers/user-ids#aliasing), they will appear in the 'Aliases' sub-section.
 
 Aliasing is when two App User IDs are merged together and treated as the same user in RevenueCat - effectively connecting two sets of user data as one. The user can then be referenced by any of their aliases and the same result will be returned.
 
@@ -23,9 +23,9 @@ The app_user_id that is sent in events is not necessarily the most recently seen
 The aliases listed in this App User Ids card are not necessarily the order that these aliases were last seen.
 
 :::info
-If you see unexpected aliases, you may be incorrectly identifying users. See our [guide on App User Ids](doc:user-ids) for more information.
+If you see unexpected aliases, you may be incorrectly identifying users. See our [guide on App User Ids](/customers/user-ids) for more information.
 :::
 
 ## Next Step
 
-- [Manage Users ](doc:manage-users)
+- [Manage Users ](/dashboard-and-metrics/customers-group/manage-users)

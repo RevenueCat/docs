@@ -8,7 +8,7 @@ Experiments allow you to answer questions about your users' behaviors and app's 
 
 While price testing is one of the most common forms of A/B testing in mobile apps, Experiments are based on RevenueCat Offerings, allowing you A/B test more than just prices, including: trial length, subscription length, different groupings of products, etc.
 
-Plus, by attaching metadata to your Offerings and programming your paywall to be responsive to it, you can remotely test any aspect of your paywall. [Learn more here](https://www.revenuecat.com/docs/offering-metadata).
+Plus, by attaching metadata to your Offerings and programming your paywall to be responsive to it, you can remotely test any aspect of your paywall. [Learn more here](/tools/offering-metadata).
 
 :::tip
 Experiments is available to Pro & Enterprise customers. [Learn more about pricing here](https://www.revenuecat.com/pricing/).
@@ -22,15 +22,15 @@ After configuring the two Offerings you want and adding them to an Experiment, R
 Programmatically displaying the `current` Offering in your app when you fetch Offerings is **required** to ensure customers are evenly split between variants.
 :::
 
-If you need help making your paywall more dynamic, see [Displaying Products](doc:displaying-products). The [Swift sample app](https://github.com/RevenueCat/purchases-ios/tree/main/Examples) has an example of a [dynamic paywall](https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/PaywallViewController.swift) that is Experiments-ready. Dynamic paywall examples in other languages can be found within our other [sample apps](https://www.revenuecat.com/docs/sample-apps) as well.
+If you need help making your paywall more dynamic, see [Displaying Products](/getting-started/displaying-products). The [Swift sample app](https://github.com/RevenueCat/purchases-ios/tree/main/Examples) has an example of a [dynamic paywall](https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/PaywallViewController.swift) that is Experiments-ready. Dynamic paywall examples in other languages can be found within our other [sample apps](/platform-resources/sample-apps) as well.
 
 :::info
-To learn more about creating a new Offering to test, and some tips to keep in mind when creating new Products on the stores, [check out our guide here](doc:creating-Offerings-to-test).
+To learn more about creating a new Offering to test, and some tips to keep in mind when creating new Products on the stores, [check out our guide here](/tools/experiments-v1/creating-offerings-to-test).
 :::
 
 ![](https://files.readme.io/34bba5f-ab-test.png "ab-test.png")
 
-As soon as a customer is enrolled in an experiment, they'll be included in the "Customers" count on the Experiment Results page, and you'll see any trial starts, paid conversions, status changes, etc. represented in the corresponding metrics. (Learn more [here](doc:experiments-results-v1))
+As soon as a customer is enrolled in an experiment, they'll be included in the "Customers" count on the Experiment Results page, and you'll see any trial starts, paid conversions, status changes, etc. represented in the corresponding metrics. (Learn more [here](/tools/experiments-v1/experiments-results-v1))
 
 :::info
 We recommend identifying customers _before_ they reach your paywall to ensure that one unique person accessing your app from two different devices is not treated as two unique anonymous customers.
@@ -49,13 +49,13 @@ We recommend identifying customers _before_ they reach your paywall to ensure th
 | Cordova      | 1.2.0+  |
 | Unity        | 2.0.0+  |
 
-If you meet these requirements, you can start using Experiments without any app changes! If not, take a look at [Displaying Products](doc:displaying-products). The [Swift sample app](https://github.com/RevenueCat/purchases-ios/tree/master/Examples/SwiftExample) has an example of a dynamic paywall that is Experiments-ready.
+If you meet these requirements, you can start using Experiments without any app changes! If not, take a look at [Displaying Products](/getting-started/displaying-products). The [Swift sample app](https://github.com/RevenueCat/purchases-ios/tree/master/Examples/SwiftExample) has an example of a dynamic paywall that is Experiments-ready.
 
 **Implementation Overview**
 
 1. Create two Offerings that you want to test (make sure your app displays the `current` Offering.) You can skip this step if you already have the Offerings you want to test.
 2. Create an Experiment and choose the two Offerings to test.
-3. Run your experiment and monitor the results. There is no time limit on experiments, so stop it when you feel confident choosing an outcome. (Learn more about interpreting your results [here](doc:experiments-results-v1))
+3. Run your experiment and monitor the results. There is no time limit on experiments, so stop it when you feel confident choosing an outcome. (Learn more about interpreting your results [here](/tools/experiments-v1/experiments-results-v1))
 4. Once you’re satisfied with the results you can set the winning Offering, if any, as default manually.
 5. Then, you're ready to run a new experiment.
 

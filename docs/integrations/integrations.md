@@ -5,7 +5,7 @@ excerpt: Learn about events and integrations from RevenueCat
 hidden: false
 ---
 
-Events notify you in near real-time to any changes that occur to a customer's subscription and can automatically be sent into a variety of [third-party tools](doc:third-party-integrations) and [attribution networks](doc:attribution) to get clean, consistent, and trustworthy data in all of your systems.
+Events notify you in near real-time to any changes that occur to a customer's subscription and can automatically be sent into a variety of [third-party tools](/integrations/third-party-integrations) and [attribution networks](/integrations/attribution) to get clean, consistent, and trustworthy data in all of your systems.
 
 RevenueCat events work by connecting directly to the app stores to detect changes to the customer's subscription. This means events are not dependent on any in-app usage or activity and are always sent from RevenueCat's servers. Server-side event detection is crucial for subscription apps since most interesting events occur when your app is inactive (e.g. trial conversions, renewals, cancellations, etc.).
 
@@ -20,7 +20,7 @@ In order for events to properly work, information about the purchase along with 
 Purchase information, along with an App User ID, need to be sent to RevenueCat. This can be done 1 of 3 ways:
 
 1. Making purchases through any of the RevenueCat SDKs will automatically collect this information.
-2. Running any of the RevenueCat SDKs in [Observer Mode](doc:observer-mode#option-2-client-side) will automatically collect this information.
+2. Running any of the RevenueCat SDKs in [Observer Mode](/migrating-to-revenuecat/observer-mode#option-2-client-side) will automatically collect this information.
 3. Create a subscription through the [POST /receipts](https://www.revenuecat.com/reference/receipts) REST API. This is typically done server-side and only if you're **not** using the RevenueCat SDK.
 
 :::info
@@ -29,7 +29,7 @@ Purchase information only needs to be sent to RevenueCat once to initially creat
 
 #### Collect integration specific data
 
-Some integrations require certain device specific data to properly function. Be sure to review each integration specific guide here to ensure all required data is captured. Any device specific data is sent to RevenueCat as a [Subscriber Attribute](subscriber-attributes), which can be set via the RevenueCat SDK or REST API.
+Some integrations require certain device specific data to properly function. Be sure to review each integration specific guide here to ensure all required data is captured. Any device specific data is sent to RevenueCat as a [Subscriber Attribute](/customers/subscriber-attributes), which can be set via the RevenueCat SDK or REST API.
 
 ### 2. Configure integration in the RevenueCat dashboard
 

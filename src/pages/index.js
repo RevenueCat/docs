@@ -9,19 +9,43 @@ import styles from "./index.module.css";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
+
+  const Svg = require("@site/static/img/logo-rc.svg").default;
   return (
-    <header className={clsx("hero hero--primary", styles.heroBanner)}>
+    <header className={clsx("hero hero--secondary", styles.heroBanner)}>
       <div className="container">
+        <Svg className={styles.featureSvg} role="img" />
+
         <Heading as="h1" className="hero__title">
-          {siteConfig.title}
+          Developer Hub
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className="hero__subtitle">
+          {" "}
+          Everything you need to implement and manage in-app purchases and
+          subscriptions
+        </p>
+        <p>
+          {" "}
+          Welcome to the RevenueCat Developer Hub. You'll find comprehensive
+          guides and documentation to help you start working with RevenueCat as
+          quickly as possible, as well as support if you get stuck. Let's jump
+          right in!
+          <br />
+          <br />
+        </p>
+
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro"
+            className="button button--primary button--lg"
+            to="/welcome/overview"
           >
-            Docusaurus Tutorial - 5min ⏱️
+            Get Started with RevenueCat
+          </Link>
+          <Link
+            className="button button--secondary button--lg"
+            to="/getting-started/quickstart"
+          >
+            Install the SDK
           </Link>
         </div>
       </div>
@@ -33,13 +57,11 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
+      title={`Documentation | RevenueCat`}
+      description="Build a customized mobile subscription business with RevenueCat. We do the heavy lifting of normalizing subscribers from any source and maintain a single source of truth for subscription status, so you can get back to building your app."
     >
       <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
+      <main>{/* <HomepageFeatures /> */}</main>
     </Layout>
   );
 }
