@@ -31,7 +31,7 @@ const welcomeCategory = new Category(
     new Category( // Sub-category
       "Setting up RevenueCat", // Sub-category title
       "projects", // Sub-category path relative to parent category
-      false, // Sub-category collapsed by default?
+      true, // Sub-category collapsed by default?
       [
         new Page("collaborators"), // Sub-category pages / items
         new Page("security"),
@@ -46,7 +46,7 @@ const welcomeCategory = new Category(
 const migratingCategory = new Category(
   "➡️ Migrating to RevenueCat",
   "migrating-to-revenuecat",
-  true,
+  false,
   [
     new Category(
       "Migrating Subscriptions",
@@ -128,7 +128,7 @@ const gettingStartedCategory = new Category(
   ]
 );
 
-const customersCategory = new Category("👥 Customers", "customers", true, [
+const customersCategory = new Category("👥 Customers", "customers", false, [
   new Page("user-ids"),
   new Page("customer-info"),
   new Page("subscriber-attributes"),
@@ -138,7 +138,7 @@ const customersCategory = new Category("👥 Customers", "customers", true, [
 const testAndLaunchCategory = new Category(
   "🧰 Test & Launch",
   "test-and-launch",
-  true,
+  false,
   [
     new Category(
       "Debugging",
@@ -167,7 +167,7 @@ const testAndLaunchCategory = new Category(
 const subscriptionGuidanceCategory = new Category(
   "📝 Subscription Guidance",
   "subscription-guidance",
-  true,
+  false,
   [
     new Category(
       "Free Trials & Promo Offers",
@@ -191,7 +191,7 @@ const subscriptionGuidanceCategory = new Category(
 const dashboardCategory = new Category(
   "📊 Dashboard & Metrics",
   "dashboard-and-metrics",
-  true,
+  false,
   [
     new Page("overview"),
     new Category(
@@ -239,7 +239,7 @@ const dashboardCategory = new Category(
 const integrationsCategory = new Category(
   "🔌 Integrations",
   "integrations",
-  true,
+  false,
   [
     new Page("integrations"),
     new Category(
@@ -344,7 +344,7 @@ const toolsCategory = new Category("🛠 Tools", "tools", false, [
 const platformResourcesCategory = new Category(
   "📚 Platform Resources",
   "platform-resources",
-  true,
+  false,
   [
     new Page("implementation-responsibilities"),
     new Category(
@@ -398,7 +398,7 @@ const platformResourcesCategory = new Category(
 const serviceCredentialsCategory = new Category(
   "🔑 Service Credentials",
   "service-credentials",
-  true,
+  false,
   [
     new Category(
       "Apple App Store",
@@ -424,14 +424,14 @@ const serviceCredentialsCategory = new Category(
 const supportCategory = new Category(
   "🛟 RevenueCat Support",
   "revenuecat-support",
-  true,
+  false,
   [new Page("support-first-steps")]
 );
 
 const sdkMigrationCategory = new Category(
   "📘 SDK Migration Guides",
   "sdk-guides",
-  true,
+  false,
   [
     new Page("android-native-4x-to-5x-migration"),
     new Page("android-native-5x-to-6x-migration"),
