@@ -131,3 +131,12 @@ html[data-theme='dark'] .theme-doc-sidebar-item-category.theme-doc-sidebar-item-
 .menu__list-item-collapsible--active .menu__caret::before {
   filter:invert(1);
 }
+
+.breadcrumbs__item, .breadcrumbs__link {
+  color: black !important;
+}
+
+.table-of-contents__link--active {
+  color: black;
+  font-weight: 500;
+}
