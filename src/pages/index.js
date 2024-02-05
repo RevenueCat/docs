@@ -57,7 +57,7 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Documentation and Developer Hub – RevenueCat`}
+      title={`Documentation | RevenueCat`}
       description="Build a customized mobile subscription business with RevenueCat. We do the heavy lifting of normalizing subscribers from any source and maintain a single source of truth for subscription status, so you can get back to building your app."
     >
       <HomepageHeader />
