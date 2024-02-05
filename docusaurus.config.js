@@ -6,13 +6,14 @@
 
 import { themes as prismThemes } from "prism-react-renderer";
 
-const DOC_BASE_URL = process.env.DOC_BASE_URL || '/docs/';
+const DOC_BASE_URL = process.env.DOC_BASE_URL || "/docs/";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "RevenueCat",
-  tagline: "Helping developers make more money",
-  favicon: "img/favicon.ico",
+  title: "In-App Subscriptions Made Easy – RevenueCat",
+  tagline:
+    "RevenueCat makes it easy to build, analyze, and grow in-app purchases and subscriptions on iOS, Android, and the web – no server code required. Get started for free.",
+  favicon: "img/favicon-32x32.png",
 
   // Set the production url of your site here
   url: "https://revenuecat.com/",
@@ -69,7 +70,6 @@ const config = {
       },
     ],
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -89,7 +89,7 @@ const config = {
             label: "Documentation",
           },
           {
-            label: "API Reference",
+            label: "REST API Reference",
             to: "/api/",
           },
         ],
