@@ -67,7 +67,15 @@ h3 {
 
 .markdown img {
   border: 1px solid #ddd;
+  border-radius: 16px;
   max-width: 75%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+html[data-theme='dark'].markdown img {
+  border: 1px solid #4e4e4e;
 }
 
 .theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-1 {
