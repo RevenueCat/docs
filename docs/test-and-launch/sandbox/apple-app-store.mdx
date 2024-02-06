@@ -23,7 +23,7 @@ In order to test your purchases, you'll need a sandbox test account. You can cre
 
 If you need help, you can refer to Apple's guide on creating sandbox testers [here](https://help.apple.com/app-store-connect/#/dev8b997bee1).
 
-![sandbox tester account](https://files.readme.io/bcc016b-download.png)
+![sandbox tester account](/images/bcc016b-download_2858c6d31596219cdd164fd663cd5204.png)
 
 :::info Valid email required for sandbox accounts
 Keep in mind you'll need to create sandbox accounts with valid emails that you can verify you own.
@@ -33,7 +33,7 @@ Keep in mind you'll need to create sandbox accounts with valid emails that you c
 
 To test purchases in different regions, you should set your sandbox user's **App Store Country or Region** property to the territory you'd like to test. 
 
-![Image](https://files.readme.io/7a32b3e-984a1f91-3d0c-4f36-b020-b48275dfbcf4.png)
+![Image](/images/7a32b3e-984a1f91-3d0c-4f36-b020-b48275dfbcf4_dc4d4396175671d3152f5f49aeb82cb0.png)
 
 ## Testing on Device
 
@@ -51,7 +51,7 @@ On macOS 11.5.2 or greater, navigate to `App Store > Preferences > Sandbox Accou
 
 Add the sandbox account credentials that you previously created. (The sandbox account credentials won't appear until you've made a purchase using a sandbox account in a development build.)
 
-![Add your sandbox account under iOS settings to streamline testing](https://files.readme.io/527a407-IMG_3EC533BFA443-1.jpeg)
+![Add your sandbox account under iOS settings to streamline testing](/images/527a407-IMG_3EC533BFA443-1_5d338789a513d4207dd5fc8ef2683d5f.jpeg)
 
 :::info
 If you do not see the option to add a sandbox account under iOS settings, make a sandbox purchase in your app. Apple will show a popup to enter login details, then you will see your account in iOS settings.
@@ -98,23 +98,23 @@ You can enable the "Sync this file with an app in App Store Connect" checkbox to
 
 Save the file in the top-level folder of your project and add it to your targets.
 
-![Search for "storekit" to find the configuration file template quicker.](https://files.readme.io/37ff24b-Screen_Shot_2020-12-01_at_11.56.19_AM.png)
+![Search for "storekit" to find the configuration file template quicker.](/images/37ff24b-Screen_Shot_2020-12-01_at_11.56.19_AM_f5e2ace7aeb154ca3ce0b147c36d45c1.png)
 
-![Add the configuration file to your targets and save.](https://files.readme.io/abdf69a-Screen_Shot_2020-12-01_at_11.58.59_AM.png)
+![Add the configuration file to your targets and save.](/images/abdf69a-Screen_Shot_2020-12-01_at_11.58.59_AM_3afa4bc9c47bab90219891c9ab5dc05d.png)
 
 ### Step 2: Create a New Scheme for StoreKit Testing
 
 Click the scheme in the scheme menu and click **Manage Schemes...**
 
-![](https://files.readme.io/f984dad-Screen_Shot_2020-12-01_at_12.00.09_PM.png "Screen Shot 2020-12-01 at 12.00.09 PM.png")
+![](/images/f984dad-Screen_Shot_2020-12-01_at_12.00.09_PM_78e0b6a49039b8a856dd4f5325666dd0.png "Screen Shot 2020-12-01 at 12.00.09 PM.png")
 
 Select your current scheme and click **Duplicate**.
 
-![](https://files.readme.io/2adb3ea-Screen_Shot_2020-12-01_at_12.00.27_PM.png "Screen Shot 2020-12-01 at 12.00.27 PM.png")
+![](/images/2adb3ea-Screen_Shot_2020-12-01_at_12.00.27_PM_f5369253e4c0c96ab53277e4f70d87ac.png "Screen Shot 2020-12-01 at 12.00.27 PM.png")
 
 In the scheme editor, add the StoreKit Configuration file you created in [Step 1](/test-and-launch/sandbox/apple-app-store#step-1-add-a-storekit-configuration-file) and click **Close**.
 
-![](https://files.readme.io/f4582cb-Screen_Shot_2020-12-01_at_7.46.50_PM.png "Screen Shot 2020-12-01 at 7.46.50 PM.png")
+![](/images/f4582cb-Screen_Shot_2020-12-01_at_7.46.50_PM_d3320dd430f4aeefa0850ef1f219ce3b.png "Screen Shot 2020-12-01 at 7.46.50 PM.png")
 
 ### Step 3: Setting up the StoreKit Configuration File
 
@@ -122,7 +122,7 @@ In the editor, click the "+" button at the bottom and create a new product. In t
 
 Enter a name for a new subscription group and click **Done**. The subscription group name should match one that is set up for your app in App Store Connect, but it's not a requirement. That means you can test your subscription groups and products in the simulator and then create the products in App Store Connect later.
 
-![](https://files.readme.io/a04c726-Screen_Shot_2020-12-01_at_7.54.48_PM.png "Screen Shot 2020-12-01 at 7.54.48 PM.png")
+![](/images/a04c726-Screen_Shot_2020-12-01_at_7.54.48_PM_2f86efb47d9af33df8abe78f49239e86.png "Screen Shot 2020-12-01 at 7.54.48 PM.png")
 
 :::info Products in the configuration file must be set up in RevenueCat
 Even though products don't have to be set up in App Store Connect, they have to be set up in RevenueCat so that RevenueCat can validate the sandbox receipt. Refer to the [Configuring Products](/getting-started/entitlements) guide for more information.
@@ -130,7 +130,7 @@ Even though products don't have to be set up in App Store Connect, they have to 
 
 Configure the subscription as needed by filling in the **Reference Name**, **Product ID**, **Price**, **Subscription Duration**, and optionally an **Introductory Offer**. Again, this product doesn't have to exist in App Store Connect for you to test purchasing in the simulator. Here is a sample configuration: 
 
-![](https://files.readme.io/a00f530-Screen_Shot_2020-12-01_at_7.56.32_PM.png "Screen Shot 2020-12-01 at 7.56.32 PM.png")
+![](/images/a00f530-Screen_Shot_2020-12-01_at_7.56.32_PM_dc8883cd503486a24e0f2174d18087c8.png "Screen Shot 2020-12-01 at 7.56.32 PM.png")
 
 Repeat this for as many products as you want.
 
@@ -138,11 +138,11 @@ Repeat this for as many products as you want.
 
 Go to **Editor** > **Save Public Certificate** and save the public certificate to your project.
 
-![](https://files.readme.io/b36d09c-Screen_Shot_2020-12-01_at_8.01.01_PM.png "Screen Shot 2020-12-01 at 8.01.01 PM.png")
+![](/images/b36d09c-Screen_Shot_2020-12-01_at_8.01.01_PM_6ac68cb0965354f5d6add8d6a245f7f6.png "Screen Shot 2020-12-01 at 8.01.01 PM.png")
 
 Go to your app's configuration page in your RevenueCat project settings (**Project Settings > Apps > [Your App]**). Expand the dropdown **StoreKit testing framework** and upload the certificate to your app. If successful, you should see **Certificate added**.
 
-![](https://files.readme.io/eccabe0-app.revenuecat.com_projects_572548b2_apps_app75924793e7.png)
+![](/images/eccabe0-app.revenuecat.com_projects_572548b2_apps_app75924793e7_0cb2e152f890b97ddd38b015bbed3721.png)
 
 :::success You did it!
 You're ready to make purchases locally in the simulator!
@@ -154,11 +154,11 @@ For sandbox and production [subscription offers](/subscription-guidance/subscrip
 ### Step 1: Finding your Subscription Offers Key
 Open the  `.storekit` file where the subscriptions offers are configured, and go to Editor → Subscription Offers Key.
 
-![Find Subscription Offers Key](https://github.com/RevenueCat/revenuecat-docs/assets/36222014/57cf8008-7c6e-4103-b8ad-6e4e2b9bb0a0)
+![Find Subscription Offers Key](/images/57cf8008-7c6e-4103-b8ad-6e4e2b9bb0a0_25d73853bc69d7b5edcddd0242528aa9.57cf8008-7c6e-4103-b8ad-6e4e2b9bb0a0)
 
 After selecting 'Subscription Offers Key', you will see your key ID and private key. 
 
-![Key ID and private key](https://github.com/RevenueCat/revenuecat-docs/assets/36222014/e83f6f2e-e4dc-4354-874f-27281f7e1acf)
+![Key ID and private key](/images/e83f6f2e-e4dc-4354-874f-27281f7e1acf_6ce7ac7cdd9ee6655ec973493fba9133.e83f6f2e-e4dc-4354-874f-27281f7e1acf)
 
 Note that the private key stored in the “.storekit” file is unique per file and Xcode allows you to re-generate the key for a given file. If you re-generate your key, be sure to follow these steps again to upload your new key to RevenueCat.
 
@@ -170,7 +170,7 @@ We only accept files smaller than 512B. We recommend utilizing an editor such as
 ### Step 3: Upload your file to RevenueCat
 This file can now be uploaded to the RevenueCat dashboard under your iOS app settings page → Storekit Subscription Offer Key. Be sure to copy and paste over your key ID from Xcode to the `Key ID` box.
 
-![Add key ID](https://github.com/RevenueCat/revenuecat-docs/assets/36222014/44dfcdcb-ccc0-46a3-80e6-68b887f68f38)
+![Add key ID](/images/44dfcdcb-ccc0-46a3-80e6-68b887f68f38_e7d6bc1b3bb2bf93a5edb23ccd6bd14a.44dfcdcb-ccc0-46a3-80e6-68b887f68f38)
 
 Don't forget to click 'Save Changes' in the upper right.
 
@@ -194,7 +194,7 @@ Apple's App Store Sandbox is notoriously unperformant. A sandbox purchase experi
 
 After a purchase is successful, you should be able to view the transaction immediately in the RevenueCat dashboard. If the purchase does not appear in the dashboard, it's **not** being tracked by RevenueCat.
 
-![](https://files.readme.io/9f944ee-Screen_Shot_2021-12-05_at_7.41.15_PM.png "Screen Shot 2021-12-05 at 7.41.15 PM.png")
+![](/images/9f944ee-Screen_Shot_2021-12-05_at_7.41.15_PM_9e31430be217653943ee990d446fe287.png "Screen Shot 2021-12-05 at 7.41.15 PM.png")
 
 :::info Make sure Sandbox Data is enabled
 Make sure the the _View Sandbox Data_ toggle is enabled in the navigation bar.

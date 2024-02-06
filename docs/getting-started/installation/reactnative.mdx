@@ -91,7 +91,7 @@ If you choose to install the framework via [CocoaPods](ios#section-install-via-c
 #### Create a Framework Reference in your project
 1. Drag `Purchases.framework` and `PurchasesHybridCommon.framework` from the `RNPurchases`sub-project under the libraries section to the outer project and create a reference. 
 
-![](https://media.giphy.com/media/W6LvZkQnvc3QnnPza7/giphy.gif)
+![](/images/giphy_0179515c509b9877036de55de496f5aa.gif)
 
 #### Add iOS Framework to Embedded Binaries
 
@@ -99,11 +99,11 @@ If you choose to install the framework via [CocoaPods](ios#section-install-via-c
 1. Select the general tab
 1. Drag `Purchases.framework` and `PurchasesHybridCommon.framework` from your project to the Embedded Binaries section
 
-![](https://media.giphy.com/media/iIdIuEkAzlntxANSiV/giphy.gif)
+![](/images/giphy_6216c5d66745a7061acd337e94988ef5.gif)
 
 Add `$(PROJECT_DIR)/../node_modules/react-native-purchases/ios` to Framework Search paths in build settings
 
-![](https://media.giphy.com/media/1pAbuARm4TLfZKdfx3/giphy.gif)
+![](/images/giphy_d376b7e7ee0d34bd76772b40d7ea6528.gif)
 
 #### Add Strip Frameworks Phase
 The App Store, in its infinite wisdom, still rejects fat frameworks, so we need to strip our framework before it is deployed. To do this, add the following script phase to your build.
@@ -113,13 +113,13 @@ The App Store, in its infinite wisdom, still rejects fat frameworks, so we need 
 3. Add a new `Run Script`, name it `Strip Frameworks`
 4. Add the following command `"${PROJECT_DIR}/../node_modules/react-native-purchases/ios/strip-frameworks.sh"` (quotes included)
 
-![](https://media.giphy.com/media/39zTmnsW1CIrJNk5AM/giphy.gif)
+![](/images/giphy_f322310d93a3cb823a6244ab241dd40b.gif)
 
 #### Link static library
 
 The `react-native link` command should have added the `libRNPurchases.a` library to the Linked Frameworks and Libraries section of your app target. If it hasn't add it like this:
 
-![](https://media.giphy.com/media/U2MMgrdYlkRhEcy80J/giphy.gif)
+![](/images/giphy_3821cc63561fdb8de9c25b8592167535.gif)
 
 
 ## Import Purchases
@@ -146,7 +146,7 @@ import reactNativeXmlContent from "!!raw-loader!@site/code_blocks/getting-starte
 Don't forget to enable the In-App Purchase capability for your project under `Project Target -> Capabilities -> In-App Purchase`
 :::
 
-![](https://files.readme.io/91edf94-65db383-Screen_Shot_2018-12-18_at_9.15.09_AM.png "65db383-Screen_Shot_2018-12-18_at_9.15.09_AM.png")
+![](/images/91edf94-65db383-Screen_Shot_2018-12-18_at_9.15.09_AM_1a93ba93eced214cccdd641501b0272d.png "65db383-Screen_Shot_2018-12-18_at_9.15.09_AM.png")
 ## Expo special instructions
 
 `react-native-purchases` works with all of the approaches that Expo offers. These approaches are managed workflow, bare workflow, and ExpoKit.
