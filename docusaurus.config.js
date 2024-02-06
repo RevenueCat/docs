@@ -104,17 +104,31 @@ const config = {
             label: "API v1",
             to: "/api-v1/",
           },
+          {
+            label: "Status Page",
+            to: "https://status.revenuecat.com/",
+            position: "right",
+          },
+          {
+            label: "Get Help",
+            to: "/revenuecat-support/support-first-steps",
+            position: "right",
+          },
         ],
       },
       footer: {
         style: "dark",
         links: [
           {
-            title: "Docs",
+            title: "RevenueCat",
             items: [
               {
                 label: "Docs",
                 to: "/welcome/overview",
+              },
+              {
+                label: "Status and Incidents",
+                to: "https://status.revenuecat.com/",
               },
             ],
           },
@@ -145,7 +159,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} RevenueCat. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} RevenueCat`,
       },
       prism: {
         theme: prismThemes.github,
@@ -184,8 +198,8 @@ const config = {
       docs: {
         sidebar: {
           autoCollapseCategories: true,
-        }
-      }
+        },
+      },
     }),
 };
 
