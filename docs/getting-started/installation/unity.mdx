@@ -20,11 +20,11 @@ We provide 2 ways to install our SDK: via Unity Package Manager (UPM) in the Ope
 
 2. Then, you can add the OpenUPM scoped registry. To do this, go to your project's settings -> Package Manager, and add a new scoped registry with URL `https://package.openupm.com` and scopes: `com.openupm` and `com.revenuecat.purchases-unity`. It should look like this:
 
-![](https://files.readme.io/2284314-project-settings-openupm.jpg "project-settings-openupm.jpg")
+![](/images/2284314-project-settings-openupm_3e7febefa4a1dc191bb58d0bd76ba668.jpg "project-settings-openupm.jpg")
 
 3. Then, go to the Package Manager and from "My Registries", select the RevenueCat package and click on Install.
 
-![](https://files.readme.io/368ba43-package-manager-revenuecat.jpg "package-manager-revenuecat.jpg")
+![](/images/368ba43-package-manager-revenuecat_050e56efc60114a2fb6162ae9ce336ac.jpg "package-manager-revenuecat.jpg")
 
 :::info Using OpenUPM-CLI
 If you prefer, you can also use OpenUPM-CLI to add the scoped registry and the package through the command line. To do that, install the [OpenUPM-CLI](https://openupm.com/docs/getting-started/getting-started.html) if you haven't already, then run `openupm add com.revenuecat.purchases-unity`. That should be it!
@@ -42,7 +42,7 @@ Now, import the downloaded unitypackage to your Unity project. Make sure the `Pl
 
 If you're running `purchases-unity` v3.5.1 or later, also make sure that the `RevenueCatPostInstall` script is added, since it will set up `StoreKit` for iOS and prevent issues when uploading builds to App Store Connect in Unity 2020.
 
-![](https://files.readme.io/db7fc97-Screen_Shot_2020-08-06_at_9.58.34_AM.png "Screen Shot 2020-08-06 at 9.58.34 AM.png")
+![](/images/db7fc97-Screen_Shot_2020-08-06_at_9.58.34_AM_86d31ff2ff543fa890765e154cdad21d.png "Screen Shot 2020-08-06 at 9.58.34 AM.png")
 
 :::warning ExternalDependencyManager plugin
 Make sure the ExternalDependencyManager is properly installed. Otherwise our plugin will not be able to compile. If you don't see the option under the Assets menu after restarting the editor, try reinstalling the RevenueCat plugin or manually importing the [EDM4U](https://github.com/googlesamples/unity-jar-resolver) plugin.
@@ -52,7 +52,7 @@ Make sure the ExternalDependencyManager is properly installed. Otherwise our plu
 
 The Purchases package will include a MonoBehavior called Purchases. This will be your access point to RevenueCat from inside Unity. It should be instantiated once and kept as a singleton. You can use properties to configure your API Key, app user ID (if you have one), and product identifiers you want to fetch.
 
-![](https://files.readme.io/a20fb79-Screen_Shot_2022-08-03_at_3.04.56_PM.png "Screen Shot 2022-08-03 at 3.04.56 PM.png")
+![](/images/a20fb79-Screen_Shot_2022-08-03_at_3.04.56_PM_e34d35273b899f08b43e1b5e664389d9.png "Screen Shot 2022-08-03 at 3.04.56 PM.png")
 
 ### Link StoreKit (iOS only)
 
@@ -102,7 +102,7 @@ The easiest way to remove the error would be to tell Gradle to not include the b
 
 In order to do that, make sure you have `Custom Main Gradle Template` selected in the Android Player Settings... That should create a `mainTemplate.gradle` inside the `Assets/Plugins/Android`.
 
-![](https://files.readme.io/711eca6-8925eda-Screen_Shot_2020-05-05_at_1.49.57_PM.png "8925eda-Screen_Shot_2020-05-05_at_1.49.57_PM.png")
+![](/images/711eca6-8925eda-Screen_Shot_2020-05-05_at_1.49.57_PM_1e07cb462e65e5afab4e761f256018f8.png "8925eda-Screen_Shot_2020-05-05_at_1.49.57_PM.png")
 
 Modify the `mainTemplate.gradle` to include the following at the end of the dependencies block:
 
@@ -124,7 +124,7 @@ The above instructions will also apply if using other plugin that includes the A
 
 When exporting your project to Android, in the Build Settings window, make sure you uncheck the `Symlink Sources` checkbox. That will make it so Unity actually uses the correct source files for our SDK.
 
-![](https://files.readme.io/98a2d95-unity-symlink-sources-unchecked.jpg "unity-symlink-sources-unchecked.jpg")
+![](/images/98a2d95-unity-symlink-sources-unchecked_b96dc0ddae9ed2409ebcd131a99f839a.jpg "unity-symlink-sources-unchecked.jpg")
 
 ### Installing old versions of the plugin
 

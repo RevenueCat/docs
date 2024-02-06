@@ -13,11 +13,11 @@ One basic use case for this metadata is to change copy or graphic features on yo
 
 Our control for our paywall is shown below.
 
-![Our control paywall using default values](https://files.readme.io/05b8dd7-Color_Control.png)
+![Our control paywall using default values](/images/05b8dd7-Color_Control_9081e32a3321d0889b279003dbfa723c.png)
 
 In our current offerings, we add the metadata for the new button color and our description.
 
-![Color Experiment Metadata](https://github.com/RevenueCat/revenuecat-docs/assets/140117673/33a060e5-9668-4329-839c-ffa43eec645c)
+![Color Experiment Metadata](/images/33a060e5-9668-4329-839c-ffa43eec645c_680659930d585e695dd94b076b823b94.33a060e5-9668-4329-839c-ffa43eec645c)
 
 In our app, we set up our code to modify the appearance of our paywall if these keys are present, or fall back to our defaults if an active offering doesn’t contain these values.
 
@@ -36,7 +36,7 @@ Always have a default set when utilizing offerings metadata to avoid errors and 
 
 With this update live and our metadata set in our current offering, our paywall now looks like the below.
 
-![Updated paywall using the new description and colors fed in via offering metadata](https://files.readme.io/86b4c8c-Color_Experiment.png)
+![Updated paywall using the new description and colors fed in via offering metadata](/images/86b4c8c-Color_Experiment_54d5d76f4a82592908cb35c19a9a4ab5.png)
 
 While this is a fairly simple and straightforward change, this methodology can be used to change copy or visuals on the fly, or set up visual differences that can be used in conjunction with [Experiments](/tools/experiments-v1) to see which versions are more effective! Similarly, values passed in this fashion can be used to swap otherwise hard-coded experiences within the app; if you have multiple paywalls coded into your app, you could include a value with the offering to indicate which should be used, like `paywall: 1` for one setup and `paywall: 2` for another to ensure that the experience a user is getting in-app most appropriately fits the offering they will be shown.
 
@@ -48,7 +48,7 @@ Using the same base paywall as above, we’ll add some dynamic details for users
 
 In our metadata, we have set up keys and values for the languages and copy we want to use.
 
-![Language Metadata](https://github.com/RevenueCat/revenuecat-docs/assets/140117673/6012253b-023d-4702-bc4f-76e1060054b5)
+![Language Metadata](/images/6012253b-023d-4702-bc4f-76e1060054b5_3a60eea78923494aca5771f951262a08.6012253b-023d-4702-bc4f-76e1060054b5)
 
 :::info
 Keep in mind that there is a limit of 500 characters in your metadata block, so for dynamic copy like this, it’s best to keep it to shorter headlines or blurbs of dynamic text, with longer copy hard coded as needed.
@@ -67,11 +67,11 @@ import content2 from "!!raw-loader!@site/code_blocks/tools/language_switch.kt";
 
 With this in place, a user whose device is set to English will see the below.
 
-![Paywall with an overridden English description](https://files.readme.io/2ae2213-Language_English.png)
+![Paywall with an overridden English description](/images/2ae2213-Language_English_35deb308eca0ae3efabc40f5a7619621.png)
 
 Meanwhile, a user whose device is set to Spanish will see this variation.
 
-![Paywall with an overridden Spanish description](https://files.readme.io/2f92b3f-Language_Spanish.png)
+![Paywall with an overridden Spanish description](/images/2f92b3f-Language_Spanish_4ab00bc86bfe2e20b19c52915217d0b2.png)
 
 This used in tandem with onboard localization options can ensure that your experiments or variations on offerings can be used in different regions or localizations based on user settings.
 
@@ -81,7 +81,7 @@ There may be cases where you want to offer a specific set of products to a user 
 
 In this example case, we’re using a coupon code that was present on a deeplink that the user used to access the app, as you might use in a promotional email to a user who had signed up for an account but not subscribed yet. For this particular sale, we set our metadata to use the corresponding coupon code that would be passed into our app via this deeplink, along with corresponding copy.
 
-![Coupon Deeplink Metadata](https://github.com/RevenueCat/revenuecat-docs/assets/140117673/33f6d6b1-9813-4819-9a34-df284a88eb9d)
+![Coupon Deeplink Metadata](/images/33f6d6b1-9813-4819-9a34-df284a88eb9d_50c15b8565c410e946f46522dac7cf98.33f6d6b1-9813-4819-9a34-df284a88eb9d)
 
 In the app, we set up the logic to look for any offerings that have a matching coupon code.
 
@@ -96,6 +96,6 @@ import content3 from "!!raw-loader!@site/code_blocks/tools/coupon_case.kt";
 
 When we run the app and open it with a deeplink that contains the coupon code Summer2023, instead of our current offering that contains standard priced subscriptions, they’ll see the below paywall that includes our discounted ones.
 
-![Paywall with a discounted offering set and altered description for the promotional offerings](https://files.readme.io/007f9fe-With_Coupon.png)
+![Paywall with a discounted offering set and altered description for the promotional offerings](/images/007f9fe-With_Coupon_dc7af476bb9db9fcb84757235b47563b.png)
 
 This sort of logic can be used to target users in a particular geo or audience for special offers, or could be used with any other qualifiers to ensure eligible users see the right offering set!

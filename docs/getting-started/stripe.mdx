@@ -15,11 +15,11 @@ Before launching your Stripe integration, be sure to read the limitations that a
 
 Log into [RevenueCat](https://app.revenuecat.com/settings/account) and click the _Connect with Stripe_ button in your account settings. Install the RevenueCat Stripe App either by creating a new account with Stripe or sign in with your existing one. Finalize setting up the connection between Stripe and RevenueCat in the RevenueCat Stripe App. RevenueCat only requests the permissions from Stripe found [here](https://marketplace.stripe.com/apps/revenuecat). We will not be able to issue charges on your behalf. You will still maintain full control through the Stripe dashboard.
 
-![](https://files.readme.io/9decad9-Screen_Shot_2021-12-01_at_11.25.42_AM.png "Screen Shot 2021-12-01 at 11.25.42 AM.png")
+![](/images/9decad9-Screen_Shot_2021-12-01_at_11.25.42_AM_8ef87adc3be9481928fc48d0056b5d4c.png "Screen Shot 2021-12-01 at 11.25.42 AM.png")
 
-![](https://files.readme.io/f439ec3-Screen_Shot_2022-07-07_at_9.25.36_AM.png "Screen Shot 2022-07-07 at 9.25.36 AM.png")
+![](/images/f439ec3-Screen_Shot_2022-07-07_at_9.25.36_AM_9bff213fd6a598d2d1893bca2daa8568.png "Screen Shot 2022-07-07 at 9.25.36 AM.png")
 
-![](https://files.readme.io/fac6fcb-Screen_Shot_2022-07-07_at_2.17.30_PM.png "Screen Shot 2022-07-07 at 2.17.30 PM.png")
+![](/images/fac6fcb-Screen_Shot_2022-07-07_at_2.17.30_PM_fa3c3dd0da5bfde1e4a20df8fed7873a.png "Screen Shot 2022-07-07 at 2.17.30 PM.png")
 
 :::info Project owner must connect with Stripe
 Only the owner of the RevenueCat project can connect a Stripe account for their apps - no [collaborators](/welcome/projects/collaborators) will be able to add or remove a Stripe connection.
@@ -29,7 +29,7 @@ Only the owner of the RevenueCat project can connect a Stripe account for their 
 
 Create your Stripe product(s) using [their billing dashboard](https://dashboard.stripe.com/subscriptions/products). In Stripe, a _product_ can have multiple _pricing plans_. These are useful if you want to offer different price points for the same product and work similar to _offerings_ and _products_ in RevenueCat.
 
-![](https://files.readme.io/8154aeb-Screen_Shot_2018-12-06_at_14.26.56.png "Screen Shot 2018-12-06 at 14.26.56.png")
+![](/images/8154aeb-Screen_Shot_2018-12-06_at_14.26.56_38ccc6af46e3d44f82ade1c883522a12.png "Screen Shot 2018-12-06 at 14.26.56.png")
 
 You can read more about **products and plans** in [their official documentation](https://stripe.com/docs/billing/quickstart).
 
@@ -53,7 +53,7 @@ Alternatively, you can also use the Stripe dashboard for manually creating the s
 
 Add your Stripe products to your project's [entitlements](/getting-started/entitlements) to easily group the products for your app. RevenueCat will send Stripe subscriptions to your app the same way we do for the other app stores.
 
-![](https://files.readme.io/fd4e1ab-Screen_Shot_2021-12-01_at_11.23.21_AM.png "Screen Shot 2021-12-01 at 11.23.21 AM.png")
+![](/images/fd4e1ab-Screen_Shot_2021-12-01_at_11.23.21_AM_e62a0d7e6800a0a6bdf2b8e18a00d9ab.png "Screen Shot 2021-12-01 at 11.23.21 AM.png")
 
 :::info
 In order for Stripe subscriptions to unlock [entitlements](/getting-started/entitlements), you must set a Product Identifier in the desired Offering to match a Stripe **product ID** exactly.
@@ -97,7 +97,7 @@ You can test your implementation for Stripe and RevenueCat by using [Stripe's te
 
 The subscriptions you create using this environment will be considered _sandbox transactions_ in RevenueCat.
 
-![](https://files.readme.io/bd33089-Screen_Shot_2018-12-06_at_15.43.52.png "Screen Shot 2018-12-06 at 15.43.52.png")
+![](/images/bd33089-Screen_Shot_2018-12-06_at_15.43.52_6ee9aa6171a8c51c7f6a3f728e8fd434.png "Screen Shot 2018-12-06 at 15.43.52.png")
 
 :::danger Stripe Test Clocks not fully supported
 Stripe allows using [test clocks](https://stripe.com/docs/billing/testing/test-clocks) to manipulate how subscriptions move through time. Since using test clocks lead to time divergences between Stripe and RevenueCat, data may not be accurately reflected in RevenueCat when using Stripe test clocks.

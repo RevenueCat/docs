@@ -79,21 +79,21 @@ You can "turn on" the integration from the RevenueCat dashboard.
 
 1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
 
-![](https://files.readme.io/2e171f1-app.revenuecat.com_projects_85ff18c7_collaborators_1.png)
+![](/images/2e171f1-app.revenuecat.com_projects_85ff18c7_collaborators_1_0de54352ac248f736f890b4377994a78.png)
 
 2. Choose **Firebase** from the integrations menu
 
-![Firebase Google Analytics configuration screen](https://files.readme.io/44d871d-app.revenuecat.com_projects_85ff18c7_integrations_branch_11.png)
+![Firebase Google Analytics configuration screen](/images/44d871d-app.revenuecat.com_projects_85ff18c7_integrations_branch_11_875236ae360f769f5e875e0409ca81c3.png)
 
 3. Add your Firebase App ID and API secret for your iOS app and/or Android app
 
 To set up your Firebase App ID, navigate to Google Analytics > Admin > Data Streams > iOS/Android > Add Stream. Open the App Stream to find your Firebase App ID. Copy and paste into the RevenueCat settings page.
 
-![Data stream details page](https://files.readme.io/a4ad055-Screen_Shot_2022-04-05_at_11.03.48.png)
+![Data stream details page](/images/a4ad055-Screen_Shot_2022-04-05_at_11.03.48_33e283c7cc08eec929b4acea4f84fccc.png)
 
 To find your API secret, in the same _App stream details_ page select "Measure Protocol API secrets". Create an API secret. Copy and paste into the RevenueCat settings page.
 
-![Measurement Protocol API secrets page](https://files.readme.io/1f83e41-app.revenuecat.com_projects_85ff18c7_integrations_branch_11.png)
+![Measurement Protocol API secrets page](/images/1f83e41-app.revenuecat.com_projects_85ff18c7_integrations_branch_11_a45c894afae02364212a054e6778b527.png)
 
 4. Select whether you want RevenueCat to report sales in purchased currency (original currency or in US dollar)
 5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
@@ -129,7 +129,7 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 Navigate to Google Analytics > Reports > Realtime. Here you will be able to confirm events have been successfully dispatched to Google Analytics. It can take up to a few seconds or minutes for your events to appear.
 
-![Google Analytics dashboard](https://files.readme.io/7940d21-Screen_Shot_2022-07-25_at_1.50.22_PM.png)
+![Google Analytics dashboard](/images/7940d21-Screen_Shot_2022-07-25_at_1.50.22_PM_c755b71caa2948ec963a29a4e587c7e0.png)
 
 ### Firebase A/B Testing
 
@@ -174,23 +174,23 @@ Follow [this installation link](https://console.firebase.google.com/project/_/ex
 
 1. Select 'I acknowledge'
 
-![](https://files.readme.io/0480fb7-1.png "1.png")
+![](/images/0480fb7-1_45394b0e896bb56bd1e9f052f5997cb1.png "1.png")
 
 2. If your account is not set up for billing yet, select 'Upgrade project to continue'
 
-![](https://files.readme.io/a11cefc-2.png "2.png")
+![](/images/a11cefc-2_517be863b03c025709a6a4eba9c96ea5.png "2.png")
 
 3. Enable Authentication and Secret Manager by selecting 'Enable', then select 'Next'
 
-![](https://files.readme.io/f0a1273-3.png "3.png")
+![](/images/f0a1273-3_392debc6fc67da81cc5b05890a3acbf7.png "3.png")
 
 4. Select 'Next'
 
-![](https://files.readme.io/f1021a5-4.png "4.png")
+![](/images/f1021a5-4_cd19bfe292fd0c1eb10393c3c18a4e3b.png "4.png")
 
 5. Configure the extension
 
-![](https://files.readme.io/99fe4d8-5.png "5.png")
+![](/images/99fe4d8-5_88e39c8de533f1b89585b431b0ee4ca1.png "5.png")
 
 - Select a Cloud Functions location
 - (optional) Give a name to the Firestore collection where "events" will be stored
@@ -198,11 +198,11 @@ Follow [this installation link](https://console.firebase.google.com/project/_/ex
 - Enable or disable custom claims set in Firebase Auth with user's active entitlements. If set to “ENABLED”, the extension will consider the `app_user_id` of the user to match the user’s Firebase Authentication UID and set a “Custom Claim” with their current active entitlements
 - Enter your RevenueCat Firebase Integration Shared Secret. This can be found in the RevenueCat Firebase Extension settings page. Select 'Generate shared secret' and copy it. Paste the generated shared secret in the installation prompt.
 
-![](https://files.readme.io/41e22f5-Screenshot_2023-03-28_at_3.05.07_PM.png)
+![](/images/41e22f5-Screenshot_2023-03-28_at_3.05.07_PM_485b7c7c4024b6dcd1785fcad49eb12b.png)
 
 - (optional) Enable events to write custom event handlers via [Eventarc](https://firebase.google.com/docs/extensions/install-extensions?authuser=0&hl=en&platform=console#eventarc)
 
-![](https://files.readme.io/2265dfc-enable_events.png "enable_events.png")
+![](/images/2265dfc-enable_events_11bfd8ecb376ad69af803a653c8d5070.png "enable_events.png")
 
 ##### Available Events:
 
@@ -225,9 +225,9 @@ Follow [this installation link](https://console.firebase.google.com/project/_/ex
 
 6. Once the extension is installed, navigate to Firebase > Functions in the sidebar. Copy the 'Trigger URL' and paste this into the RevenueCat Firebase Extension settings page.
 
-![](https://files.readme.io/4416a89-Screen_Shot_2022-04-14_at_11.18.59.png "Screen Shot 2022-04-14 at 11.18.59.png")
+![](/images/4416a89-Screen_Shot_2022-04-14_at_11.18.59_5355014091f6b4f845181de8a51a3157.png "Screen Shot 2022-04-14 at 11.18.59.png")
 
-![](https://files.readme.io/a8c5e19-Screen_Shot_2022-04-15_at_2.08.18_PM.png "Screen Shot 2022-04-15 at 2.08.18 PM.png")
+![](/images/a8c5e19-Screen_Shot_2022-04-15_at_2.08.18_PM_619e3596f4922cb3f94a3b66553145a6.png "Screen Shot 2022-04-15 at 2.08.18 PM.png")
 
 Remember to select 'Save'
 
@@ -244,55 +244,55 @@ This portion of the installation is done through the command-line interface (CLI
 1. Run `firebase ext:install . --project [project-id]`  
    To find your `project-id`, go to your [Firebase console](https://console.firebase.google.com/u/0/). Select your project and navigate to Project settings to copy the ID and replace `[project-id]` in the command.
 
-![](https://files.readme.io/5a32c66-Screen_Shot_2022-04-14_at_11.30.52.png "Screen Shot 2022-04-14 at 11.30.52.png")
+![](/images/5a32c66-Screen_Shot_2022-04-14_at_11.30.52_c10aa54a363b7984b0eaff7f61e1fde7.png "Screen Shot 2022-04-14 at 11.30.52.png")
 
-![](https://files.readme.io/9ab4401-Screen_Shot_2022-04-14_at_11.31.32.png "Screen Shot 2022-04-14 at 11.31.32.png")
+![](/images/9ab4401-Screen_Shot_2022-04-14_at_11.31.32_38636489c46aa265c8f473f1d4b90827.png "Screen Shot 2022-04-14 at 11.31.32.png")
 
-![](https://files.readme.io/3f08828-unnamed.png "unnamed.png")
+![](/images/3f08828-unnamed_e9a9aeb7dc2cb42c5399dd091e8d804b.png "unnamed.png")
 
 2. For the next 2 `Do you wish to continue?` prompts, press `y`
 
-![](https://files.readme.io/6dc5e66-2.png "2.png")
+![](/images/6dc5e66-2_14d0e62169168ef55c683500db2e6053.png "2.png")
 
 3. `Please enter a new name for this instance:` Give the extension a name of your choice
 
-![](https://files.readme.io/e107a6d-3.png "3.png")
+![](/images/e107a6d-3_052eae56d88e8aa33610a5515543b8ee.png "3.png")
 
 4. `Which option do you want enabled for this parameter (Cloud Functions location)?` Select your desired location
 
-![](https://files.readme.io/01786f5-4.png "4.png")
+![](/images/01786f5-4_865e0867949458a3157080786ac9236e.png "4.png")
 
 5. `Enter a value for RevenueCat Webhook Events Firestore collection:` Give a name to the Firestore collection where "events" will be stored. If left blank, RevenueCat will not save events.
 
-![](https://files.readme.io/b9cfb9a-5.png "5.png")
+![](/images/b9cfb9a-5_58eb9b79dba12524d6759027c5e2a182.png "5.png")
 
 6. `Enter a value for location of the customers collection:` Give a name to the Firestore collection where the customer information will be stored. If left blank, RevenueCat will not save customer information.
 
-![](https://files.readme.io/5260f64-6.png "6.png")
+![](/images/5260f64-6_935819b60c397b33c74f2f25720ce9fd.png "6.png")
 
 7. `Which option do you want enabled for this parameter (custom claims set in Firebase Auth with the user's active entitlements):` If you want to use the custom claims feature, which allows for automatic checking for Entitlements, select `ENABLED`.
 
-![](https://files.readme.io/42cb394-7.png "7.png")
+![](/images/42cb394-7_33bf00bd22ae0f056bd66adc781445cd.png "7.png")
 
 8. `Enter a value for RevenueCat Firebase Integration Shared Secret:` This can be found in the RevenueCat Firebase Extension settings page. Select 'Generate shared secret' and copy it. Paste the generated shared secret in the installation prompt.
 
-![RevenueCat Firebase Extension page](https://files.readme.io/21aa4cf-Screenshot_2023-03-28_at_3.05.07_PM.png "RevenueCat Firebase Extension page")
+![RevenueCat Firebase Extension page](/images/21aa4cf-Screenshot_2023-03-28_at_3.05.07_PM_91e1372800a05f872f0765e8228729ae.png "RevenueCat Firebase Extension page")
 
-![](https://files.readme.io/32e8934-8.png "8.png")
+![](/images/32e8934-8_ba72f3b666265def2ac1c1f9d63e747b.png "8.png")
 
 9. Wait about 3 to 5 minutes for the installation
 
-![](https://files.readme.io/2caa47a-9.png "9.png")
+![](/images/2caa47a-9_3705dcdd0ea176944f6ccdb0a3cd5bfb.png "9.png")
 
 10. Once the extension is installed, navigate to Firebase > Functions in the sidebar. Copy the 'Trigger URL' and paste this into the RevenueCat Firebase Extension settings page.
 
-![](https://files.readme.io/4416a89-Screen_Shot_2022-04-14_at_11.18.59.png "Screen Shot 2022-04-14 at 11.18.59.png")
+![](/images/4416a89-Screen_Shot_2022-04-14_at_11.18.59_5355014091f6b4f845181de8a51a3157.png "Screen Shot 2022-04-14 at 11.18.59.png")
 
 ##### Note about the App User ID's in the Customers collection
 
 The document ID's in the Customers collection will always be an App User ID. Specifically, it will be the customer's most recently active alias. This means that the document ID for each customer may switch between [anonymous ID's](/customers/user-ids#anonymous-app-user-ids) and [custom ID's](/customers/user-ids#logging-in-with-a-custom-app-user-id), if they are both used in your app. If you would like to only use custom ID's, you can [learn more about that here](/customers/user-ids#how-to-never-see-anonymous-app-user-ids).
 
-![](https://files.readme.io/a8c5e19-Screen_Shot_2022-04-15_at_2.08.18_PM.png "Screen Shot 2022-04-15 at 2.08.18 PM.png")
+![](/images/a8c5e19-Screen_Shot_2022-04-15_at_2.08.18_PM_619e3596f4922cb3f94a3b66553145a6.png "Screen Shot 2022-04-15 at 2.08.18 PM.png")
 
 Remember to select 'Save'.
 
@@ -310,15 +310,15 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 While still on the Customer View, select the purchase event in the [Customer History](/dashboard-and-metrics/customers-group/customer-history) page and make sure that the Firebase (Firebase function) integration event exists and was delivered successfully.
 
-![](https://files.readme.io/02ff787-Screen_Shot_2022-05-09_at_7.09.39_PM.png "Screen Shot 2022-05-09 at 7.09.39 PM.png")
+![](/images/02ff787-Screen_Shot_2022-05-09_at_7.09.39_PM_06eb1d4e603c44b7ebcdf717b95bfbe0.png "Screen Shot 2022-05-09 at 7.09.39 PM.png")
 
 #### Check Firestore Database Collections
 
 Navigate to your Firebase dashboard > Firestore Database to find events sent for your collections.
 
-![Customers collection](https://files.readme.io/6e4ad8e-Screen_Shot_2022-04-25_at_13.19.54.png "Screen Shot 2022-04-25 at 13.19.54.png")
+![Customers collection](/images/6e4ad8e-Screen_Shot_2022-04-25_at_13.19.54_7fa618d818ff07466a87db2428fbca92.png "Screen Shot 2022-04-25 at 13.19.54.png")
 
-![Events collection](https://files.readme.io/8d67ecd-Screen_Shot_2022-04-25_at_13.20.16.png "Screen Shot 2022-04-25 at 13.20.16.png")
+![Events collection](/images/8d67ecd-Screen_Shot_2022-04-25_at_13.20.16_f9a631e80a90fd063a816a3535f8d1ad.png "Screen Shot 2022-04-25 at 13.20.16.png")
 
 ### Sample Events
 
@@ -403,7 +403,7 @@ If you get a 403 error in DeploymentManager when trying to install or uninstall 
 
 Now try uninstalling and/or reinstalling the extension.
 
-![](https://files.readme.io/d93b3ea-2023-04-18_21.56.29_console.cloud.google.com_c3436c460f71.png)
+![](/images/d93b3ea-2023-04-18_21.56.29_console.cloud.google.com_c3436c460f71_c4c062996771e0d9de57ee53f3a52cd0.png)
 
 ### InvalidApiVersionError: The version of this extension is not the same.
 

@@ -59,7 +59,7 @@ You should make sure to set attributes after the _Purchases SDK_ is configured, 
 The AdSupport framework is required to access the IDFA parameter on iOS. Don't forget to import this into your project.
 :::
 
-![](https://files.readme.io/caf9cda-Screen_Shot_2020-09-14_at_7.09.36_PM.png "Screen Shot 2020-09-14 at 7.09.36 PM.png")
+![](/images/caf9cda-Screen_Shot_2020-09-14_at_7.09.36_PM_739bc6ccef43416570bf51e527f4e0fc.png "Screen Shot 2020-09-14 at 7.09.36 PM.png")
 
 :::danger Remove Facebook SDK Purchase Tracking
 Make sure to remove all client side tracking of revenue. Since RevenueCat will be sending events for all revenue actions, tracking purchases with the Facebook SDK directly can lead to double counting of revenue in Facebook Ads Manager.
@@ -88,7 +88,7 @@ After you've set up the _Purchases SDK_ to send attribution data to RevenueCat, 
 
 1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
 
-![](https://files.readme.io/814313f-app.revenuecat.com_projects_85ff18c7_collaborators_1.png)
+![](/images/814313f-app.revenuecat.com_projects_85ff18c7_collaborators_1_8f59efa6a22dfccb9079d21a042756d8.png)
 
 2. Choose **Facebook** from the Integrations menu.
 3. Add your Facebook App ID for production events (and optionally an App ID for sandbox events).
@@ -96,7 +96,7 @@ After you've set up the _Purchases SDK_ to send attribution data to RevenueCat, 
 5. (Optional) You can toggle between different names for Facebook events.
 6. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
-![Facebook Ads configuration screen](https://files.readme.io/67c785e-app.revenuecat.com_projects_85ff18c7_integrations_branch_2.png)
+![Facebook Ads configuration screen](/images/67c785e-app.revenuecat.com_projects_85ff18c7_integrations_branch_2_e86db9a213fbd0654ee5d2168209329a.png)
 
 ### Event Names
 
@@ -126,13 +126,13 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 Navigate the the [Customer View](/dashboard-and-metrics/customers-group/basic-information) for the test user that just made a purchase. Make sure that all of the required data from step 1 above is listed as attributes for the user.
 
-![](https://files.readme.io/4a0a252-Screenshot_at_Sep_17_12-07-34.png "Screenshot at Sep 17 12-07-34.png")
+![](/images/4a0a252-Screenshot_at_Sep_17_12-07-34_613f8c38fa156795ddb43c6705037be9.png "Screenshot at Sep 17 12-07-34.png")
 
 ### Check that the Facebook event delivered successfully
 
 While still on the Customer View, click into the test purchase event in the [Customer History](/dashboard-and-metrics/customers-group/customer-history) and make sure that the Facebook integration event exists and was delivered successfully.
 
-![](https://files.readme.io/c58423d-app.revenuecat.com_activity_40779aaf_event_92499ad6-350b-455a-a2ec-4c28c4ca0b28_1.png)
+![](/images/c58423d-app.revenuecat.com_activity_40779aaf_event_92499ad6-350b-455a-a2ec-4c28c4ca0b28_1_ad81f725eb9fb452af9c769a65dd5f34.png)
 
 ## 5. View Events in Facebook
 
@@ -146,21 +146,21 @@ Note that there could be up to a 24 hour delay from when events are sent to when
 
 The events sent from RevenueCat will appear throughout Facebook Events Manager as 'Standard' event types. Any events sent with revenue attached will be counted toward the 'Revenue' number in Facebook. This includes trial conversions and renewals that occur when the app isn't active.
 
-![Revenue is sent directly into Facebook Events Manager](https://files.readme.io/554d883-Screen_Shot_2021-11-09_at_5.39.40_PM.png)
+![Revenue is sent directly into Facebook Events Manager](/images/554d883-Screen_Shot_2021-11-09_at_5.39.40_PM_7cc524fab6775b961be4dce8d6265ed3.png)
 
 ### Advanced Matching
 
 RevenueCat will send customer information that you specify as subscriber attributes to Facebook. This information includes email, name, phone number, etc. Make sure the Automatic Advanced Matching toggle is turned on under your app settings.
 
-![](https://files.readme.io/86548c3-Screen_Shot_2021-11-09_at_5.43.13_PM.png "Screen Shot 2021-11-09 at 5.43.13 PM.png")
+![](/images/86548c3-Screen_Shot_2021-11-09_at_5.43.13_PM_53a6a688ca88596c6dabfbe48ce4b266.png "Screen Shot 2021-11-09 at 5.43.13 PM.png")
 
 ### Ads Manager
 
 Within Facebook Ads Manager, you can customize the display columns to include subscription specific metrics. The 'Subscriptions' and 'Trials Started' values will be updated by the 'Subscribe' and 'StartTrial' events sent by RevenueCat, respectively.
 
-![](https://files.readme.io/c056928-Screen_Shot_2019-07-09_at_10.22.48_PM.png "Screen Shot 2019-07-09 at 10.22.48 PM.png")
+![](/images/c056928-Screen_Shot_2019-07-09_at_10.22.48_PM_a64522c01586a14d204e5c5ab9405c6a.png "Screen Shot 2019-07-09 at 10.22.48 PM.png")
 
-![](https://files.readme.io/618d096-Screen_Shot_2019-07-09_at_10.25.19_PM.png "Screen Shot 2019-07-09 at 10.25.19 PM.png")
+![](/images/618d096-Screen_Shot_2019-07-09_at_10.25.19_PM_3ec0efea004b2835a18d33b73525159e.png "Screen Shot 2019-07-09 at 10.25.19 PM.png")
 
 By tracking the subscription revenue attributed to your Facebook campaigns you can quickly spot your most effective campaigns.
 
@@ -172,11 +172,11 @@ To create a custom audience off of subscribers:
 
 1. Create a Custom Audience and select 'App activity' as the source.
 
-![](https://files.readme.io/3db1fcb-Screen_Shot_2019-07-09_at_10.30.09_PM.png "Screen Shot 2019-07-09 at 10.30.09 PM.png")
+![](/images/3db1fcb-Screen_Shot_2019-07-09_at_10.30.09_PM_697aeb55dd4ac5ad38d6141b897a1f5f.png "Screen Shot 2019-07-09 at 10.30.09 PM.png")
 
 2. Choose an event, such as 'Subscribe' to create your audience off of.
 
-![](https://files.readme.io/c756726-Screen_Shot_2019-07-09_at_10.32.24_PM.png "Screen Shot 2019-07-09 at 10.32.24 PM.png")
+![](/images/c756726-Screen_Shot_2019-07-09_at_10.32.24_PM_0a7f2e15d599b4d1b74b3f83e943ac85.png "Screen Shot 2019-07-09 at 10.32.24 PM.png")
 
 :::success You've done it!
 You should start seeing events from RevenueCat appear in Facebook Ads Manager.

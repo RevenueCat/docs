@@ -57,9 +57,9 @@ import content2 from "!!raw-loader!@site/code_blocks/getting-started/installatio
 Don't forget to enable the In-App Purchase capability for your iOS project under `Project Target -> Capabilities -> In-App Purchase`
 :::
 
-![](https://files.readme.io/08d0721-Screen_Shot_2021-05-28_at_12.32.08_PM.png "Screen Shot 2021-05-28 at 12.32.08 PM.png")
+![](/images/08d0721-Screen_Shot_2021-05-28_at_12.32.08_PM_097ad33b9e3dfce316b36d8c95b633dd.png "Screen Shot 2021-05-28 at 12.32.08 PM.png")
 
-![](https://files.readme.io/66c301a-65db383-Screen_Shot_2018-12-18_at_9.15.09_AM.png "65db383-Screen_Shot_2018-12-18_at_9.15.09_AM.png")
+![](/images/66c301a-65db383-Screen_Shot_2018-12-18_at_9.15.09_AM_51ae7051850be013d83c1e9a8f107b61.png "65db383-Screen_Shot_2018-12-18_at_9.15.09_AM.png")
 
 :::warning 
 If you're using other plugins like [mobx](https://pub.dev/packages/flutter_mobx), you may run into conflicts with types from other plugins having the same name as those defined in `purchases_flutter`. \nIf this happens, you can resolve the ambiguity in the types by adding an import alias, for example: \n```dart\nimport 'package:purchases_flutter/purchases_flutter.dart' as purchases;\n```\nAfter that, you can reference the types from `purchases_flutter` as `purchases.Foo`, like `purchases.PurchaserInfo`.

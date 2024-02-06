@@ -7,6 +7,9 @@
 import { themes as prismThemes } from "prism-react-renderer";
 
 const DOC_BASE_URL = process.env.DOC_BASE_URL || "/docs/";
+const ALGOLIA_APP_ID = process.env.ALGOLIA_APP_ID || "SET_BY_CI";
+const ALGOLIA_API_KEY = process.env.ALGOLIA_API_KEY || "SET_BY_CI";
+const ALGOLIA_INDEX_NAME = process.env.ALGOLIA_INDEX_NAME || "SET_BY_CI";
 
 import redirects from "./src/redirects/redirects";
 
@@ -168,12 +171,12 @@ const config = {
       },
       algolia: {
         // The application ID provided by Algolia
-        appId: "<GET_FROM_ALGOLIA>",
+        appId: ALGOLIA_APP_ID,
 
         // Public API key: it is safe to commit it
-        apiKey: "GET_FROM_ALGOLIA",
+        apiKey: ALGOLIA_API_KEY,
 
-        indexName: "GET_FROM_ALGOLIA",
+        indexName: ALGOLIA_INDEX_NAME,
 
         // Optional: see doc section below
         contextualSearch: true,
