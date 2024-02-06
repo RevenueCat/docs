@@ -5,7 +5,7 @@ excerpt: Setting up your offers in Google Play Console
 hidden: false
 ---
 
-:::success
+:::info
 This guide assumes you have already configured your products in Google Play Console.
 :::
 

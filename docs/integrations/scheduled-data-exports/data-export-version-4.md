@@ -5,7 +5,7 @@ excerpt: Available since June 2023
 hidden: false
 ---
 
-:::success
+:::success Pro Integration
 Scheduled data exports are available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
 :::
 
@@ -62,7 +62,7 @@ By sourcing your analysis' with these fields, you'll be able to measure gross re
 
 `experiment_variant` represents the variant of the experiment that the associated App User ID was assigned to.
 
-:::success
+:::success Pro Integration
 Experiments is available on the [Pro](https://www.revenuecat.com/pricing) plan. Get started with Experiments [here](/tools/experiments-v1).
 :::
 
