@@ -17,7 +17,7 @@ When using RevenueCat as a subscription status source-of-truth you typically wan
 
 If a customer migration sounds like a scary process, we're here to help. We've helped hundreds of large apps make the switch to RevenueCat seamlessly.
 
-<a class="cta" href="/docs/migrating-to-revenuecat/migrating-existing-subscriptions" target="_self">Start Your Migration Plan →</a>
+<a class="cta" href="/migrating-to-revenuecat/migrating-existing-subscriptions" target="_self">Start Your Migration Plan →</a>
 
 <hr class="landing-divider-small"/>
 
@@ -29,7 +29,7 @@ Level up your data, marketing, and product teams be sending actionable events in
 
 Getting started is as simple as a few lines of code.
 
-<a class="cta" href="/docs/integrations/integrations" target="_self">Set up Events →</a>
+<a class="cta" href="/integrations/integrations" target="_self">Set up Events →</a>
 
 <hr class="landing-divider-small"/>
 
