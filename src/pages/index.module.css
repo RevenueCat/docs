@@ -13,6 +13,7 @@
 .buttons {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
   gap: 1rem;
   align-items: center;
   justify-content: center;
@@ -29,13 +30,14 @@
   max-width: 200px;
 }
 
-.imageContainer {
+.bottomContainer {
   display: flex;
-  width: 100%;
-  align-items: center;
+  flex-direction: column;
+  width: fit-content;
   justify-content: center;
 }
 
 .image {
   margin-bottom: 2rem;
+  width: 100%;
 }
