@@ -54,7 +54,7 @@ If you are requesting the App Tracking permission through ATT to access the IDFA
 The AdSupport framework is required to access the IDFA parameter on iOS. Don't forget to import this into your project.
 :::
 
-![](https://files.readme.io/caf9cda-Screen_Shot_2020-09-14_at_7.09.36_PM.png "Screen Shot 2020-09-14 at 7.09.36 PM.png")
+![](/images/caf9cda-Screen_Shot_2020-09-14_at_7.09.36_PM_739bc6ccef43416570bf51e527f4e0fc.png "Screen Shot 2020-09-14 at 7.09.36 PM.png")
 
 :::danger Remove any client-side purchase tracking
 Make sure to remove all client-side tracking of revenue. Since RevenueCat will be sending events for all revenue actions, tracking purchases with the Appsflyer SDK directly can lead to double counting of revenue in Appsflyer.
@@ -97,7 +97,7 @@ After you've set up the _Purchases SDK_ to send attribution data from AppsFlyer 
 
 1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
 
-![](https://files.readme.io/f43c7d1-app.revenuecat.com_projects_85ff18c7_collaborators_1.png "app.revenuecat.com_projects_85ff18c7_collaborators (1).png")
+![](/images/f43c7d1-app.revenuecat.com_projects_85ff18c7_collaborators_1_102e08e408ab8c9a966834182c81cbbc.png "app.revenuecat.com_projects_85ff18c7_collaborators (1).png")
 
 2. Choose **AppsFlyer** from the Integrations menu
 3. Add your generic developer key if you use one AppsFlyer project for both iOS and android in the Developer Key field **OR** If you have specific developer keys for iOS and/or Android, add those in the associated UI fields
@@ -105,7 +105,7 @@ After you've set up the _Purchases SDK_ to send attribution data from AppsFlyer 
 5. Enter the event names that RevenueCat will send or choose the default event names
 6. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
-![AppsFlyer Integration](https://files.readme.io/974687c-AppsFlyer_Integration.png)
+![AppsFlyer Integration](/images/974687c-AppsFlyer_Integration_d261e99446139d6cc9540f25f6d5ff30.png)
 
 ## 4. Testing the Appsflyer integration
 
@@ -123,13 +123,13 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 Navigate the the [Customer View](/dashboard-and-metrics/customers-group/basic-information) for the test user that just made a purchase. Make sure that all of the required data from step 1 above is listed as attributes for the user.
 
-![](https://files.readme.io/1480c34-app.revenuecat.com_activity_777004e5_event_1b2e7407-a1bc-416a-84cf-b65688412bbe_2.png)
+![](/images/1480c34-app.revenuecat.com_activity_777004e5_event_1b2e7407-a1bc-416a-84cf-b65688412bbe_2_3d37500fb07191a42435c1f3b14d182c.png)
 
 ### Check that the Appsflyer event delivered successfully
 
 While still on the Customer View, click into the test purchase event in the [Customer History](/dashboard-and-metrics/customers-group/customer-history) and make sure that the AppsFlyer integration event exists and was delivered successfully.
 
-![](https://files.readme.io/00ff393-app.revenuecat.com_activity_777004e5_event_1b2e7407-a1bc-416a-84cf-b65688412bbe.png)
+![](/images/00ff393-app.revenuecat.com_activity_777004e5_event_1b2e7407-a1bc-416a-84cf-b65688412bbe_c67df01a34580a8984500325f5294b0b.png)
 
 :::info AppsFlyer reports events by install date
 Under the Events view, AppsFlyer displays in-app events according to the install date of the user. This means if you select Jan 1 through Jan 8, you'll see the events that were performed by users who _installed_ within the selected date range.

@@ -12,7 +12,7 @@ Google introduced a lot of new concepts in their new subscription model. Here ar
 - **Base plan**: represents an auto-renewing or prepaid period subscription. You can have multiple base plans in a single subscription to support different subscription periods.
 - **Offer**: represents an offer on a base plan. Google’s billing client returns the offers that a user is eligible for. There are 3 eligibility criteria: 
 
-![Screen Shot 2023-01-12 at 11.44.20 AM.png](https://files.readme.io/3aede2a-Screen_Shot_2023-01-12_at_11.44.20_AM.png)
+![Screen Shot 2023-01-12 at 11.44.20 AM.png](/images/3aede2a-Screen_Shot_2023-01-12_at_11.44.20_AM_c3b0011010a68f46e17301664e3f8fec.png)
 
 - **Phase**: Allows to specify the pricing of the offer. You can add up to 2 “phases” to an offer. There are 3 types of offer:
   - Free trial: It provides access for free for a specific period of time
@@ -22,7 +22,7 @@ Google introduced a lot of new concepts in their new subscription model. Here ar
 
 This is a more visual representation of the relationship between these concepts:
 
-![](https://files.readme.io/8fa740d-Screen_Shot_2023-01-12_at_5.06.28_PM.png "Screen Shot 2023-01-12 at 5.06.28 PM.png")
+![](/images/8fa740d-Screen_Shot_2023-01-12_at_5.06.28_PM_743f6cff865ce69d877747bc57933311.png "Screen Shot 2023-01-12 at 5.06.28 PM.png")
 
 Our recommendation is to:
 
@@ -46,21 +46,21 @@ There are two ways to add products via the RevenueCat dashboard.
 
 Currently, this functionality is limited to importing subscriptions, but one-time purchases are in the works. 
 
-![Screen Shot 2023-01-12 at 5.06.34 PM.png](https://files.readme.io/fe78bbb-Screen_Shot_2023-01-12_at_5.06.34_PM.png)
+![Screen Shot 2023-01-12 at 5.06.34 PM.png](/images/fe78bbb-Screen_Shot_2023-01-12_at_5.06.34_PM_046f3fc460ae78f5d3229a68c4a36bfa.png)
 
 ### 2. Manual Import
 
 For manual import, you need to add both your subscription ID and your base plan ID when adding a new product. 
 
-![Screen Shot 2023-01-12 at 5.10.18 PM.png](https://files.readme.io/c8b5476-Screen_Shot_2023-01-12_at_5.10.18_PM.png)
+![Screen Shot 2023-01-12 at 5.10.18 PM.png](/images/c8b5476-Screen_Shot_2023-01-12_at_5.10.18_PM_c7be2f058954e8d6b7c8ffb08c06e3a2.png)
 
 You can find this information in Google Play Console here:
 
-![Screen Shot 2023-01-12 at 5.07.03 PM.png](https://files.readme.io/9d0e770-Screen_Shot_2023-01-12_at_5.07.03_PM.png)
+![Screen Shot 2023-01-12 at 5.07.03 PM.png](/images/9d0e770-Screen_Shot_2023-01-12_at_5.07.03_PM_d52cbbd9d3b76889518cd37ed04a21f4.png)
 
 After you’ve added your products, you can assign them to packages the same as before. You can follow the documentation [here](/getting-started/entitlements).  If you select a non backwards-compatible product and the [app compatibility setting](/getting-started/entitlements/google-subscriptions-and-backwards-compatibility) is set to "SDK v6+ and backwards compatible", you will have the ability to configure a backwards compatible fallback product. This product will be available for purchase in previous versions of the SDK which don't yet support non backwards compatible products.
 
-![](https://files.readme.io/a37b7a9-Screenshot_2023-03-21_at_10.54.52.png "Screenshot 2023-03-21 at 10.54.52.png")
+![](/images/a37b7a9-Screenshot_2023-03-21_at_10.54.52_9c15e2dd6eef6f1aa0a349f95e75c4ed.png "Screenshot 2023-03-21 at 10.54.52.png")
 
 ## Default Offer Selection
 
@@ -72,7 +72,7 @@ The full SDK migration reference can be found [here](https://github.com/RevenueC
 
 These are the abstraction models we use to support Google’s new features:
 
-![](https://files.readme.io/ede6b16-Screen_Shot_2023-01-18_at_9.11.44_AM.png "Screen Shot 2023-01-18 at 9.11.44 AM.png")
+![](/images/ede6b16-Screen_Shot_2023-01-18_at_9.11.44_AM_fe3957ca78143f78c6a7ed0a1f9fcee1.png "Screen Shot 2023-01-18 at 9.11.44 AM.png")
 
 With v6.x, you can choose to pass in a `StoreProduct`, a `Package`, or a `SubscriptionOption` into the `PurchaseParams.Builder`. 
 
