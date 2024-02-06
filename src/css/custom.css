@@ -24,6 +24,9 @@
     --ifm-menu-color-background-hover: rgb(248, 248, 248);
     --ifm-menu-color-background-active: rgb(68, 73, 195);
     --ifm-menu-color-active: rgb(255, 255, 255);
+
+    --ifm-tabs-padding-vertical: 4px;
+    --ifm-tabs-padding-horizontal: 12px;
   }
 
   /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -89,6 +92,11 @@ h3 {
 
 html[data-theme='dark'] .theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-1::after {
   background-color: #ffffff20;
+}
+
+.tabs__item {
+  font-size: 14px;
+  font-weight: 600;
 }
 
 /* Top-level category */
