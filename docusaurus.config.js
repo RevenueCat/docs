@@ -6,7 +6,7 @@
 
 import { themes as prismThemes } from "prism-react-renderer";
 
-const DOC_BASE_URL = process.env.DOC_BASE_URL || "/docs/";
+const DOC_BASE_URL = process.env.DOC_BASE_URL || "/";
 
 import redirects from "./src/redirects/redirects";
 
