@@ -1,6 +1,4 @@
 const redirects = {
-  fromExtensions: ['html'],
-  toExtensions: ['html'],
   redirects: [
     /*
      * Duplicate any new enteries in HTML section below
