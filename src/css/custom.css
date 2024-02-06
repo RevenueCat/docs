@@ -24,6 +24,10 @@
     --ifm-menu-color-background-hover: rgb(248, 248, 248);
     --ifm-menu-color-background-active: rgb(68, 73, 195);
     --ifm-menu-color-active: rgb(255, 255, 255);
+    --ifm-menu-breadcrumb-link: rgb(0, 0, 0);
+
+    --ifm-menu-toc-link: rgb(0, 0, 0);
+    --ifm-mobile-toc-background: rgb(255, 255, 255);
   }
 
   /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -37,6 +41,9 @@
     --ifm-color-primary-lightest: rgb(255, 159, 159);
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
     --ifm-menu-color-background-hover: rgb(50, 50, 50);
+    --ifm-menu-breadcrumb-link: rgb(248, 248, 248);
+    --ifm-menu-toc-link: rgb(255, 255, 255);
+    --ifm-mobile-toc-background: rgb(16, 16, 16);
 }
 
 .navbar__title {
@@ -80,7 +87,7 @@ h3 {
   position: absolute;
   width: 80%;
   height: 1px;
-  background-color: #00000020;
+  background-color: #00000015;
   bottom: -2px;
   left: 0;
   right: 0;
@@ -109,7 +116,7 @@ html[data-theme='dark'] .theme-doc-sidebar-item-category.theme-doc-sidebar-item-
 
 /* Top-level page */
 .menu__list-item-collapsible {
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .menu__list-item-collapsible--active, .menu__list-item-collapsible--active:hover {
@@ -128,8 +135,12 @@ html[data-theme='dark'] .theme-doc-sidebar-item-category.theme-doc-sidebar-item-
   background-color: transparent;
 }
 
-.menu__caret::before {
+.menu__caret::before, .menu__link--sublist-caret::after {
   background-size: 1.25rem;
+}
+
+.menu__list-item-collapsible {
+  position: relative;
 }
 
 .menu__list-item-collapsible--active .menu__caret::before {
@@ -137,10 +148,18 @@ html[data-theme='dark'] .theme-doc-sidebar-item-category.theme-doc-sidebar-item-
 }
 
 .breadcrumbs__item, .breadcrumbs__link {
-  color: black !important;
+  color: var(--ifm-menu-breadcrumb-link) !important;
 }
 
 .table-of-contents__link--active {
-  color: black;
-  font-weight: 500;
+  color: var(--ifm-menu-toc-link);
+  font-weight: 600;
+}
+
+/* Mobile TOC */
+@media only screen and (max-width: 996px) {
+  .table-of-contents, [class*="tocCollapsibleButton"] {
+    background-color: var(--ifm-mobile-toc-background);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
 }
