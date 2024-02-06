@@ -5,7 +5,7 @@ excerpt: Integrate and collect attribution data with Purchases SDK
 hidden: false
 ---
 
-:::success
+:::success Pro Integration
 Attribution collection is only available to all users signed up after September '23, the legacy Starter and Pro plans, and Enterprise plans. If you're on a legacy Free plan and want to access attribution, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
 :::
 

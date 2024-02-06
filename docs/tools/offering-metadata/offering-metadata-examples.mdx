@@ -21,8 +21,6 @@ In our current offerings, we add the metadata for the new button color and our d
 
 In our app, we set up our code to modify the appearance of our paywall if these keys are present, or fall back to our defaults if an active offering doesn’t contain these values.
 
-
-
 import content1 from "!!raw-loader!@site/code_blocks/tools/color_experiment.kt";
 
 <RCCodeBlock tabs={[
@@ -39,6 +37,7 @@ Always have a default set when utilizing offerings metadata to avoid errors and 
 With this update live and our metadata set in our current offering, our paywall now looks like the below.
 
 ![Updated paywall using the new description and colors fed in via offering metadata](/images/86b4c8c-Color_Experiment_54d5d76f4a82592908cb35c19a9a4ab5.png)
+
 While this is a fairly simple and straightforward change, this methodology can be used to change copy or visuals on the fly, or set up visual differences that can be used in conjunction with [Experiments](/tools/experiments-v1) to see which versions are more effective! Similarly, values passed in this fashion can be used to swap otherwise hard-coded experiences within the app; if you have multiple paywalls coded into your app, you could include a value with the offering to indicate which should be used, like `paywall: 1` for one setup and `paywall: 2` for another to ensure that the experience a user is getting in-app most appropriately fits the offering they will be shown.
 
 ## Localization
@@ -73,6 +72,7 @@ With this in place, a user whose device is set to English will see the below.
 Meanwhile, a user whose device is set to Spanish will see this variation.
 
 ![Paywall with an overridden Spanish description](/images/2f92b3f-Language_Spanish_4ab00bc86bfe2e20b19c52915217d0b2.png)
+
 This used in tandem with onboard localization options can ensure that your experiments or variations on offerings can be used in different regions or localizations based on user settings.
 
 ## Dynamic offering selection

@@ -5,8 +5,8 @@ excerpt: Enhanced server-to-server notifications from webhooks
 hidden: false
 ---
 
-:::success
-Webhooks are available on the all current plans. If you are on one of our legacy plans without access to webhooks, migrate to our new [Pro plan](https://www.revenuecat.com/pricing/) to get access.
+:::success Pro Integration
+Webhooks are available on our Pro plan. If you are on one of our legacy plans without access to webhooks, migrate to our new [Pro plan](https://www.revenuecat.com/pricing/) to get access.
 :::
 
 RevenueCat can send you notifications any time an event happens in your app. This is useful for subscription and purchase events, which will allow you to monitor state changes for your subscribers and react accordingly.

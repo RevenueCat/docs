@@ -5,7 +5,7 @@ excerpt: Available from January 2023 to June 2023.
 hidden: false
 ---
 
-:::success
+:::success Pro Integration
 Scheduled data exports are available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
 :::
 

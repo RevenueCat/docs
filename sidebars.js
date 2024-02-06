@@ -437,10 +437,6 @@ const sdkMigrationCategory = new Category(
     new Page("android-native-5x-to-6x-migration"),
     new Page("android-native-6x-to-7x-migration"),
     new Page("ios-native-3x-to-4x-migration"),
-    new Link(
-      "Capacitor - 5.x to 6.x Migration",
-      "https://github.com/RevenueCat/purchases-capacitor/blob/main/migrations/v6-MIGRATION"
-    ),
   ]
 );
 

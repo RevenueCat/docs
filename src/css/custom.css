@@ -24,6 +24,9 @@
     --ifm-menu-color-background-hover: rgb(248, 248, 248);
     --ifm-menu-color-background-active: rgb(68, 73, 195);
     --ifm-menu-color-active: rgb(255, 255, 255);
+
+    --ifm-tabs-padding-vertical: 4px;
+    --ifm-tabs-padding-horizontal: 12px;
     --ifm-menu-breadcrumb-link: rgb(0, 0, 0);
 
     --ifm-menu-toc-link: rgb(0, 0, 0);
@@ -71,7 +74,15 @@ h3 {
 
 .markdown img {
   border: 1px solid #ddd;
+  border-radius: 16px;
   max-width: 75%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+html[data-theme='dark'].markdown img {
+  border: 1px solid #4e4e4e;
 }
 
 .theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-1 {
@@ -96,6 +107,11 @@ h3 {
 
 html[data-theme='dark'] .theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-1::after {
   background-color: #ffffff20;
+}
+
+.tabs__item {
+  font-size: 14px;
+  font-weight: 600;
 }
 
 /* Top-level category */
