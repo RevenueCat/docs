@@ -34,12 +34,16 @@ function HomepageHeader() {
           <br />
         </p>
 
+        <div className={styles.imageContainer}>
+          <img src="https://revenuecat.dreamhosters.com/wp-content/uploads/2023/11/Powering-existing-subscriptions-with-RevenueCat.png" alt="RevenueCat supported stores" className={styles.image} />
+        </div>
+
         <div className={styles.buttons}>
           <Link
             className="button button--primary button--lg"
             to="/welcome/overview"
           >
-            Get Started with RevenueCat
+            Get Started
           </Link>
           <Link
             className="button button--secondary button--lg"
