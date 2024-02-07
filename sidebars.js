@@ -440,7 +440,7 @@ const sdkMigrationCategory = new Category(
   ]
 );
 
-const apiV2Category = new Category("📡 Developer API v2", "api-v2", false, [
+const apiV2Category = new Category("Developer API v2", "api-v2", false, [
   new Page("overview"),
   new Page("pagination"),
   new Page("expandables"),
@@ -456,7 +456,7 @@ const apiV2Category = new Category("📡 Developer API v2", "api-v2", false, [
 ]);
 
 const apiV1Category = new Category(
-  "📡 Developer API v1 (Legacy)",
+  "Developer API v1 (Legacy)",
   "api-v1",
   false,
   [new Page("overview"), new Link("Endpoint Reference", "/api-v1-spec/")]
