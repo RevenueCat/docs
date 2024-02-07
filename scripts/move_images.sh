@@ -11,9 +11,14 @@ mkdir -p "$static_dir"
 process_files() {
     local file="$1"
     echo "📄 Processing $file"
-    while IFS= read -r line; do
-        # Extract URL, ignoring alt text if present
-        url=$(echo "$line" | sed -E 's/.*\((https?:\/\/[^ ]+).*\)/\1/')
+
+    # Use grep to find image URLs within the markdown content
+    grep -Eo "https?://[^][ ]+\.(jpg|png|gif|jpeg|svg)" "$file" | while IFS= read -r url; do
+        # Skip already processed images
+        if [[ "$url" =~ ^/images ]]; then
+            echo "⏭ Skipping already processed image $url"
+            continue
+        fi
 
         # Skip images from https://img.shields.io/
         if echo "$url" | grep -q "https://img.shields.io/"; then
@@ -22,22 +27,25 @@ process_files() {
         fi
 
         filename=$(basename "$url")
-        # Create a unique filename by appending a hash of the URL to the original filename
-        # This prevents different images with the same name (like giphy.gif images) from being overwritten
+        # Generate a unique suffix to prevent overwriting files with common names
         unique_suffix=$(echo "$url" | md5sum | cut -d' ' -f1)
         unique_filename="${filename%.*}_$unique_suffix.${filename##*.}"
 
-        # Download the image if it does not exist
-        if [ ! -f "$static_dir/$unique_filename" ]; then # Fixed typo in variable name here
+        # Check and download the image if it does not already exist
+        if [ ! -f "$static_dir/$unique_filename" ]; then
             echo "📥 Downloading $url to $static_dir/$unique_filename"
             wget -q "$url" -O "$static_dir/$unique_filename"
         fi
 
-        # Update the file to reference the local copy of the image
+        # Prepare the replacement text for the markdown file
         replacement="/$images_dir/$unique_filename"
         echo "🔄 Replacing $url with $replacement in $file"
-        sed -i.bak "s|$(echo "$url" | sed 's|[\&/]|\\&|g')|$replacement|g" "$file" && rm "${file}.bak"
-    done < <(grep -oE '!\[.*?\]\((https?:\/\/[^ ]+).*\)' "$file")
+
+        # Use sed to replace the URL in the file; ensure correct handling of special characters
+        escaped_url=$(printf '%s\n' "$url" | sed -e 's/[\/&]/\\&/g')
+        escaped_replacement=$(printf '%s\n' "$replacement" | sed -e 's/[\/&]/\\&/g')
+        sed -i '' -E "s|$escaped_url|$escaped_replacement|g" "$file"
+    done
 }
 
 export -f process_files
