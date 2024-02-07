@@ -8,7 +8,7 @@ export default function AdmonitionWrapper(props) {
   if (props.type == "danger") {
     icon = "❗️";
   } else if (props.type == "info") {
-    icon = "ℹ️";
+    icon = "📘";
   } else if (props.type == "warning") {
     icon = "⚠️";
   } else if (props.type == "success") {
