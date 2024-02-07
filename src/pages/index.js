@@ -31,27 +31,21 @@ function HomepageHeader() {
           as possible, as well as support if you get stuck. Let's jump right in!
           <br />
           <br />
-          <small>Bug Bash #1</small>
         </p>
 
-        <div className={styles.bottomContainer}>
-          <img src="https://revenuecat.dreamhosters.com/wp-content/uploads/2023/11/Powering-existing-subscriptions-with-RevenueCat.png" alt="RevenueCat supported stores" className={styles.image} />
-
-
-          <div className={styles.buttons}>
-            <Link
-              className="button button--primary button--lg"
-              to="/welcome/overview"
-            >
-              Get Started
-            </Link>
-            <Link
-              className="button button--secondary button--lg"
-              to="/getting-started/quickstart"
-            >
-              Install the SDK
-            </Link>
-          </div>
+        <div className={styles.buttons}>
+          <Link
+            className="button button--primary button--lg"
+            to="/welcome/overview"
+          >
+            Get Started
+          </Link>
+          <Link
+            className="button button--secondary button--lg"
+            to="/getting-started/quickstart"
+          >
+            Install the SDK
+          </Link>
         </div>
       </div>
     </header>
