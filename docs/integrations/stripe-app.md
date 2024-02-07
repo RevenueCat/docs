@@ -14,7 +14,7 @@ You will be able to do the following:
 - View transaction events for Stripe, as well as cross-platform purchases across Apple App Store, Google Play Store, and Amazon Appstore
 
 :::info
-RevenueCat data visivle within Stripe is read-only and does not allow for additional filtering in Stripe based on RevenueCat data.
+RevenueCat data visible within Stripe is read-only and does not allow for additional filtering in Stripe based on RevenueCat data.
 :::
 
 ## Setup
