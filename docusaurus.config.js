@@ -66,11 +66,11 @@ const config = {
         specs: [
           {
             spec: "openapi-spec/api-v2.yaml",
-            route: "/api/",
+            route: "/api-v2-spec/",
           },
           {
             spec: "openapi-spec/api-v1.json",
-            route: "/api-v1/",
+            route: "/api-v1-spec/",
           },
         ],
         // Theme Options for modifying how redoc renders them
@@ -104,12 +104,10 @@ const config = {
             label: "Documentation",
           },
           {
-            label: "API v2",
-            to: "/api/",
-          },
-          {
-            label: "API v1",
-            to: "/api-v1/",
+            type: "docSidebar",
+            sidebarId: "apiSidebar",
+            position: "left",
+            label: "REST API Reference",
           },
           {
             label: "Status Page",
@@ -132,6 +130,10 @@ const config = {
               {
                 label: "Docs",
                 to: "/welcome/overview",
+              },
+              {
+                label: "REST API Reference",
+                to: "/api-v2/overview",
               },
               {
                 label: "Status and Incidents",
