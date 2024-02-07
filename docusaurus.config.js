@@ -10,6 +10,7 @@ const DOC_BASE_URL = process.env.DOC_BASE_URL || "/docs/";
 const ALGOLIA_APP_ID = process.env.ALGOLIA_APP_ID || "SET_BY_CI";
 const ALGOLIA_API_KEY = process.env.ALGOLIA_API_KEY || "SET_BY_CI";
 const ALGOLIA_INDEX_NAME = process.env.ALGOLIA_INDEX_NAME || "SET_BY_CI";
+const SEGMENT_WRITE_KEY = process.env.SEGMENT_WRITE_KEY || "SET_BY_CI";
 
 import redirects from "./src/redirects/redirects";
 
@@ -80,7 +81,10 @@ const config = {
       },
     ],
   ],
-  plugins: [["@docusaurus/plugin-client-redirects", redirects]],
+  plugins: [
+    ["@docusaurus/plugin-client-redirects", redirects],
+    ["./src/plugins/segment/segment-plugin", { writeKey: SEGMENT_WRITE_KEY }],
+  ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
