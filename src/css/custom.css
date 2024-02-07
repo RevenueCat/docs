@@ -179,3 +179,7 @@ html[data-theme='dark'] .theme-doc-sidebar-item-category.theme-doc-sidebar-item-
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   }
 }
+
+.clean-btn.navbar-sidebar__back {
+  background-color: transparent;
+}
