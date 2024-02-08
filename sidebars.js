@@ -347,6 +347,7 @@ const platformResourcesCategory = new Category(
   false,
   [
     new Page("implementation-responsibilities"),
+    new Page("sdk-reference"),
     new Category(
       "Amazon Platform Resources",
       "amazon-platform-resources",
