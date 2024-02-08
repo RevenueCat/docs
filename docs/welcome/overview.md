@@ -17,7 +17,7 @@ We host live office hours every other Friday, where we demo the platform and ans
 
 Start selling subscriptions and in-app purchases in your iOS, Android, and Amazon apps.
 
-[Get Started →](/welcome/building-new)
+[Get Started →](/building-new)
 
 ![RevenueCat Flow Diagram](https://revenuecat.dreamhosters.com/wp-content/uploads/2023/11/Powering-existing-subscriptions-with-RevenueCat-1.png)
 
@@ -25,19 +25,19 @@ Start selling subscriptions and in-app purchases in your iOS, Android, and Amazo
 
 If you already have 1 or 1 millions subscribers, easily replace your existing setup with RevenueCat to supercharge your business.
 
-[Learn more →](/welcome/existing-apps)
+[Learn more →](/existing-apps)
 
 ![RevenueCat supported stores](https://revenuecat.dreamhosters.com/wp-content/uploads/2023/11/Powering-existing-subscriptions-with-RevenueCat.png)
 
 ### Browse features
 
-- [🔑 Entitlements & Subscription Status](/getting-started/entitlements)<br />
+- [🔑 Entitlements & Subscription Status](/entitlements)<br />
   Ensure customers have correct access even if your entitlement structure is complex.
 
-- [📈 Data, Analytics, & Integrations](/integrations/third-party-integrations)<br />
+- [📈 Data, Analytics, & Integrations](/third-party-integrations)<br />
   Clean, normalized subscription data at your fingertips and in every system
 
-- [💰 Paywalls & Experiments](/tools/experiments-v1)<br />
+- [💰 Paywalls & Experiments](/experiments-v1)<br />
   Change your product configurations remotely and run price tests.
 
 #### Not sure where to start

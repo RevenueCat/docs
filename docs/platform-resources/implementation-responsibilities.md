@@ -20,31 +20,31 @@ RevenueCat's backend will appropriately verify, parse, and validate receipts ass
 
 The SDK will fetch product information from stores, manage purchase logic (including purchase environments), sync receipts, fetch customer subscription status from the backend, and sync attribution data for customers.
 
-For more information about the SDK and how to install it for your platform, check out our [Installation](/getting-started/installation) docs.
+For more information about the SDK and how to install it for your platform, check out our [Installation](/installation) docs.
 
 ### Dashboard / Charts
 
 The RevenueCat Dashboard and Charts will display revenue information based on the production receipts synced with the SDK and processed by the backend.
 
-For more information about the Dashboard and Charts, check out our docs [here](/dashboard-and-metrics/overview).
+For more information about the Dashboard and Charts, check out our docs [here](/overview).
 
 ## General Responsibilities
 
-| Responsibility                                                                       | Developer | RevenueCat | App Store | Google Play |
-| ------------------------------------------------------------------------------------ | --------- | ---------- | --------- | ----------- |
-| Fetching product information from store                                              |           | ✅         | ✅        | ✅          |
-| [Presenting products to users for purchase](/getting-started/displaying-products)    | ✅        |            |           |             |
-| Managing purchase logic                                                              |           | ✅         |           |             |
-| Processing payments                                                                  |           |            | ✅        | ✅          |
-| Managing billing/issuing refunds for subscriptions                                   |           |            | ✅        | ✅          |
-| Unlocking gated content and features                                                 | ✅        |            |           |             |
-| Unlocking purchases initiated from the App Store / Google Play / Stripe              | ✅        |            |           |             |
-| Syncing, parsing and verifying receipts                                              |           | ✅         |           |             |
-| [Tracking entitlement status](/customers/customer-info)                              |           | ✅         |           |             |
-| [Tracking purchase history](/dashboard-and-metrics/customers-group/customer-history) |           | ✅         |           |             |
-| Downloading purchased content                                                        | ✅        |            |           |             |
-| [Identifying users](/customers/user-ids)                                             | ✅        |            |           |             |
-| [Getting attribution data for attribution providers](/integrations/attribution)      | ✅        |            |           |             |
-| [Sending attribution data to attribution providers](/integrations/attribution)       |           | ✅         |           |             |
-| [Notifying your servers of purchase events](/integrations/webhooks)                  |           | ✅         |           |             |
-| [Reporting revenue](/dashboard-and-metrics/charts)                                   |           | ✅         | ✅        | ✅          |
+| Responsibility                                                          | Developer | RevenueCat | App Store | Google Play |
+| ----------------------------------------------------------------------- | --------- | ---------- | --------- | ----------- |
+| Fetching product information from store                                 |           | ✅         | ✅        | ✅          |
+| [Presenting products to users for purchase](/displaying-products)       | ✅        |            |           |             |
+| Managing purchase logic                                                 |           | ✅         |           |             |
+| Processing payments                                                     |           |            | ✅        | ✅          |
+| Managing billing/issuing refunds for subscriptions                      |           |            | ✅        | ✅          |
+| Unlocking gated content and features                                    | ✅        |            |           |             |
+| Unlocking purchases initiated from the App Store / Google Play / Stripe | ✅        |            |           |             |
+| Syncing, parsing and verifying receipts                                 |           | ✅         |           |             |
+| [Tracking entitlement status](/customer-info)                           |           | ✅         |           |             |
+| [Tracking purchase history](/customer-history)                          |           | ✅         |           |             |
+| Downloading purchased content                                           | ✅        |            |           |             |
+| [Identifying users](/user-ids)                                          | ✅        |            |           |             |
+| [Getting attribution data for attribution providers](/attribution)      | ✅        |            |           |             |
+| [Sending attribution data to attribution providers](/attribution)       |           | ✅         |           |             |
+| [Notifying your servers of purchase events](/webhooks)                  |           | ✅         |           |             |
+| [Reporting revenue](/charts)                                            |           | ✅         | ✅        | ✅          |

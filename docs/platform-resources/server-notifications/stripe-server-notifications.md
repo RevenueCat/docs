@@ -5,12 +5,12 @@ excerpt: Sending Stripe server notifications to RevenueCat
 hidden: false
 ---
 
-RevenueCat does not require server notifications from Stripe, however doing so can speed up webhook and integration delivery times and reduce lag time for [Charts](/dashboard-and-metrics/charts).
+RevenueCat does not require server notifications from Stripe, however doing so can speed up webhook and integration delivery times and reduce lag time for [Charts](/charts).
 
 :::warning Send Stripe token to RevenueCat
 Stripe Server Notifications only work if the receipt exists in RevenueCat when the event is dispatched from Stripe. If the receipt doesn't exist, the event will fail. This includes test events from Stripe.
 
-You'll need to follow our [Stripe Web Payments](/getting-started/stripe) guide and send your purchase tokens to RevenueCat before proceeding with this guide.
+You'll need to follow our [Stripe Web Payments](/stripe) guide and send your purchase tokens to RevenueCat before proceeding with this guide.
 :::
 
 ![Required and optional notifications from Stripe](https://files.readme.io/98a0f1c-stripe_notifications.png)

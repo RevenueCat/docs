@@ -7,11 +7,11 @@ hidden: false
 
 _Purchases_ is our SDK that correctly implements purchases and subscriptions across platforms while syncing tokens with the RevenueCat server. Check out the install guides below integrate the SDK into all of your apps.
 
-- [iOS Installation ➡️](/getting-started/installation/ios)
-- [Android Installation ➡️](/getting-started/installation/android)
-- [React Native Installation ➡️](/getting-started/installation/reactnative)
-- [Flutter Installation ➡️](/getting-started/installation/flutter)
-- [Cordova Installation ➡️](/getting-started/installation/cordova)
-- [Ionic Installation ➡️](/getting-started/installation/ionic)
-- [Unity Installation ➡️](/getting-started/installation/unity)
-- [macOS / Catalyst Installation ➡️](/getting-started/installation/macos)
+- [iOS Installation ➡️](/installation/ios)
+- [Android Installation ➡️](/installation/android)
+- [React Native Installation ➡️](/installation/reactnative)
+- [Flutter Installation ➡️](/installation/flutter)
+- [Cordova Installation ➡️](/installation/cordova)
+- [Ionic Installation ➡️](/installation/ionic)
+- [Unity Installation ➡️](/installation/unity)
+- [macOS / Catalyst Installation ➡️](/installation/macos)

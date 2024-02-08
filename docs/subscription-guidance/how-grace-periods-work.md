@@ -38,7 +38,7 @@ When a subscription enters a grace period, RevenueCat detects the change automat
 
 ### API, Events, and Webhooks
 
-To detect grace periods in [webhook](/integrations/webhooks) events, watch for the value of `grace_period_expiration_at_ms`. This property is only valid for `BILLING_ISSUE` events.
+To detect grace periods in [webhook](/webhooks) events, watch for the value of `grace_period_expiration_at_ms`. This property is only valid for `BILLING_ISSUE` events.
 
 To detect grace periods in the `GET /subscriber` [endpoint](https://www.revenuecat.com/reference/subscribers), watch for the value of `grace_period_expires_date` on a subscription object and compare it to the current date. This property will be `null` if the subscription is not in a grace period.
 
@@ -46,7 +46,7 @@ Once a user corrects their payment method, RevenueCat will send a renewal event.
 
 ### Dashboard
 
-Customers who enter into a grace period will have events added to their [Customer History](/dashboard-and-metrics/customers-group/basic-information).
+Customers who enter into a grace period will have events added to their [Customer History](/basic-information).
 
 ![Screen Shot 2022-09-15 at 2.46.12 PM.png](https://files.readme.io/4265860-Screen_Shot_2022-09-15_at_2.46.12_PM.png)
 

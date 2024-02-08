@@ -27,7 +27,7 @@ Customer Service admins can perform subscription updates, cancellations, discoun
 
 #### Data Warehouse
 
-In order to have a unified view for business analytics for both web and IAP customers we recommend to use [Stripe Data Pipeline](https://stripe.com/data-pipeline) and [RevenueCat data export](/integrations/scheduled-data-exports) functionality to consolidate data in a data warehouse.
+In order to have a unified view for business analytics for both web and IAP customers we recommend to use [Stripe Data Pipeline](https://stripe.com/data-pipeline) and [RevenueCat data export](/scheduled-data-exports) functionality to consolidate data in a data warehouse.
 
 #### 3rd Party Analytics
 
@@ -35,7 +35,7 @@ There are also several third-party analytics solutions that can consolidate data
 
 #### RevenueCat Analytics
 
-RevenueCat has the ability to provide consolidated [charts](/dashboard-and-metrics/charts) for revenue processed across app stores and on Stripe.
+RevenueCat has the ability to provide consolidated [charts](/charts) for revenue processed across app stores and on Stripe.
 
 ### Financial Reporting
 
@@ -67,11 +67,11 @@ Customer service can perform subscription updates, discount, and debug entitleme
 
 #### Data Warehouse
 
-In order to have a unified view for business analytics for both web and IAP customers we recommend to use [Stripe Data Pipeline](https://stripe.com/data-pipeline) and [RevenueCat data export](/integrations/scheduled-data-exports) functionality to consolidate data in a data warehouse.
+In order to have a unified view for business analytics for both web and IAP customers we recommend to use [Stripe Data Pipeline](https://stripe.com/data-pipeline) and [RevenueCat data export](/scheduled-data-exports) functionality to consolidate data in a data warehouse.
 
 #### RevenueCat Analytics
 
-RevenueCat has the ability to provide consolidated [charts](/dashboard-and-metrics/charts) for revenue processed across app stores and on Stripe.
+RevenueCat has the ability to provide consolidated [charts](/charts) for revenue processed across app stores and on Stripe.
 
 ### Financial Reporting
 

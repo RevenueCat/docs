@@ -8,7 +8,7 @@ Amazon supports a [Small Business Accelerator Program](https://developer.amazon.
 
 Developers who earn under $1 million in revenue per year are eligible for the program. You can read more about the Small Business Accelerator Program [here](https://developer.amazon.com/apps-and-games/blogs/2021/06/small-business-accelerator-program).
 
-As the reduced rate will affect the data sent for integrations as well as the data displayed in RevenueCat's [charts](/dashboard-and-metrics/charts), it's important to acknowledge membership in the Small Business Accelerator Program in your app settings.
+As the reduced rate will affect the data sent for integrations as well as the data displayed in RevenueCat's [charts](/charts), it's important to acknowledge membership in the Small Business Accelerator Program in your app settings.
 
 ## Informing RevenueCat
 
@@ -32,7 +32,7 @@ If you leave or have been removed from the program, enter the effective exit dat
 
 #### Backdating Entry into Amazon Small Business Accelerator Program
 
-You can set your entry date at any time, but please note: if you set it to a date in the past, we won't re-send [webhooks](/integrations/webhooks) and integration events with correct pricing data for transactions that have already occurred. To ensure accurate pricing data is sent to your integrations, set your effective entry date as soon as possible.
+You can set your entry date at any time, but please note: if you set it to a date in the past, we won't re-send [webhooks](/webhooks) and integration events with correct pricing data for transactions that have already occurred. To ensure accurate pricing data is sent to your integrations, set your effective entry date as soon as possible.
 
 #### Charts
 

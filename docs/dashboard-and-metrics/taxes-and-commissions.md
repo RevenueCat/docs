@@ -15,13 +15,13 @@ The factors we take into account to accurately estimate commissions vary by stor
 
 To determine the commission of a given transaction, we look at both the original purchase date of the transaction and your presence in the App Store Small Business Program to determine whether a 15% or 30% commission will be charged.
 
-For more information on the App Store Small Business Program, [click here](/platform-resources/apple-platform-resources/app-store-small-business-program).
+For more information on the App Store Small Business Program, [click here](/app-store-small-business-program).
 
 **Google Play Store**
 
 To determine the commission of a given transaction, we look at both the original purchase date of the transaction and the year-to-date sales for your application to determine the commission rate to apply, due to Google’s reduced service fee of 15% on the first $1M in sales for a given app in a calendar year.
 
-For more information on Google’s reduced service fee for the first $1M in sales, [click here](/platform-resources/google-platform-resources/15-reduced-service-fee).
+For more information on Google’s reduced service fee for the first $1M in sales, [click here](/15-reduced-service-fee).
 
 **Amazon Appstore**
 
@@ -83,16 +83,16 @@ For integrations which report revenue you’ll see the option to select a **Sale
 
 ![](https://files.readme.io/f2cba58-Screen_Shot_2022-07-28_at_11.00.05_AM.png "Screen Shot 2022-07-28 at 11.00.05 AM.png")
 
-To learn more about using integrations through RevenueCat, [click here](/integrations/integrations).
+To learn more about using integrations through RevenueCat, [click here](/integrations).
 
 ### Webhooks
 
 In our webhooks you will find a <code>tax_percentage<strong> </strong></code>and <code>commission_percentage</code> field, which specify what percentage of your gross revenue (<code>price</code> and <code>price_in_purchased_currency</code> fields) we estimate to be deducted from your proceeds as taxes and commission. For example, you could calculate your proceeds in USD from the webhook payload as <code>price \* (1 - tax_percentage - commission_percentage)</code>.
 
-To learn more about using our webhooks, [click here](/integrations/webhooks).
+To learn more about using our webhooks, [click here](/webhooks).
 
 ### Scheduled Data Exports
 
 Our Scheduled Data Exports offer the same two fields, <code>tax_percentage<strong> </strong></code>and <code>commission_percentage</code>, which can be use for estimating proceeds in the same manner through these exports.
 
-To learn more about using our Scheduled Data Exports, [click here](/integrations/scheduled-data-exports).
+To learn more about using our Scheduled Data Exports, [click here](/scheduled-data-exports).

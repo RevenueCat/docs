@@ -27,7 +27,7 @@ When topping up, customers can purchase any prepaid base plan available from the
 
 ## How to Create a Prepaid Plan
 
-This is very similar to how you would create an auto-renewing subscription base plan. You can follow the steps [here](/getting-started/entitlements/android-products) on how to create a subscription in Google Play Console. Once you have that, you will need to add a base plan.
+This is very similar to how you would create an auto-renewing subscription base plan. You can follow the steps [here](/android-products) on how to create a subscription in Google Play Console. Once you have that, you will need to add a base plan.
 
 ![](https://files.readme.io/19cad72-image.png)
 

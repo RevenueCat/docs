@@ -102,4 +102,4 @@ Once you are ready, click on **'Submit IAP'** at the top of the page. If this bu
 
 ## Integrate with RevenueCat
 
-If you're ready to integrate your new Amazon in-app product with RevenueCat, continue our [product setup guide ➡️](/getting-started/entitlements).
+If you're ready to integrate your new Amazon in-app product with RevenueCat, continue our [product setup guide ➡️](/entitlements).

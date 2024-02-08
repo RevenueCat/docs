@@ -47,11 +47,11 @@ You can set up multiple webhook integrations per project – for example, if you
 
 ## Webhook Events
 
-For webhook event types and fields, see [here](/integrations/webhooks/event-types-and-fields).
+For webhook event types and fields, see [here](/event-types-and-fields).
 
 ## Testing
 
-You can test your server side implementation by purchasing [sandbox subscriptions](/test-and-launch/sandbox) or by issuing test webhook events through [RevenueCat's dashboard](http://app.revenuecat.com).
+You can test your server side implementation by purchasing [sandbox subscriptions](/sandbox) or by issuing test webhook events through [RevenueCat's dashboard](http://app.revenuecat.com).
 
 ![](https://github.com/RevenueCat/revenuecat-docs/assets/14286938/ad2c8e64-12ba-4ee1-9bf0-c841349f3b7e)
 
@@ -85,4 +85,4 @@ RevenueCat makes our best effort for “at least one delivery” of webhooks. In
 
 ## Sample Webhook Events
 
-For sample webhook events, see [here](/integrations/webhooks/sample-events).
+For sample webhook events, see [here](/sample-events).

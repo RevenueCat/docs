@@ -21,7 +21,7 @@ RevenueCat data visible within Stripe is read-only and does not allow for additi
 
 ### Prerequisites
 
-The customer's Stripe fetch token must exist in RevenueCat in order for RevenueCat to find the Stripe customer. To read more about this, visit the [Send Stripe tokens to RevenueCat](/getting-started/stripe#5-send-stripe-tokens-to-revenuecat) section of our Stripe documentation!
+The customer's Stripe fetch token must exist in RevenueCat in order for RevenueCat to find the Stripe customer. To read more about this, visit the [Send Stripe tokens to RevenueCat](/stripe#5-send-stripe-tokens-to-revenuecat) section of our Stripe documentation!
 
 ### Installing the app
 
@@ -39,7 +39,7 @@ Select 'Sign in with RevenueCat' and log in with your RevenueCat account credent
 The RevenueCat App is now installed to your Stripe account!
 
 :::info Project owner must connect with Stripe
-Only the owner of the RevenueCat project can connect a Stripe account for their apps - no [collaborators](/welcome/projects/collaborators) will be able to add or remove a Stripe connection.
+Only the owner of the RevenueCat project can connect a Stripe account for their apps - no [collaborators](/collaborators) will be able to add or remove a Stripe connection.
 :::
 
 ## Using the RevenueCat App
@@ -65,13 +65,13 @@ The Customer details section displays metadata about your customer such as:
 
 These fields will not populate in the app if they are null in the RevenueCat Customer Page.
 
-An external link is provided in this section to bring you to the RevenueCat [Customer History](/dashboard-and-metrics/customers-group/customer-history) page.
+An external link is provided in this section to bring you to the RevenueCat [Customer History](/customer-history) page.
 
 ### Attributes
 
 ![Attributes](https://files.readme.io/7456cc9-0.1.5.png "Attributes")
 
-The Attributes section allows you to view [subscriber attributes](/customers/subscriber-attributes) you have assigned to this customer.
+The Attributes section allows you to view [subscriber attributes](/subscriber-attributes) you have assigned to this customer.
 
 ### Entitlements
 
@@ -79,7 +79,7 @@ The Attributes section allows you to view [subscriber attributes](/customers/sub
 
 The Entitlements section gives you a quick glance at the current Entitlement status for the customer. You can see which Entitlement has been unlocked along when they'll renew or cancel.
 
-An external link is provided in this section to bring you to the RevenueCat [Entitlement](/getting-started/entitlements#entitlements) settings page.
+An external link is provided in this section to bring you to the RevenueCat [Entitlement](/entitlements#entitlements) settings page.
 
 ### Current Offering
 
@@ -87,7 +87,7 @@ An external link is provided in this section to bring you to the RevenueCat [Ent
 
 The Current offering section shows the current offering for the customer. This allows you to see what products are displayed in their paywall.
 
-An external link is provided in this section to bring you to the RevenueCat [Offerings](/getting-started/entitlements#offerings) settings page.
+An external link is provided in this section to bring you to the RevenueCat [Offerings](/entitlements#offerings) settings page.
 
 ### Customer History
 

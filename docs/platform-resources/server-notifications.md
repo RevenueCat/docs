@@ -7,15 +7,15 @@ hidden: false
 
 Platform Server Notifications are notifications sent from **supported stores _to_ RevenueCat**, and are configured in the dashboards of each store. These notifications are intended to inform RevenueCat of updates to purchases, so we can ensure we send events in a timely manner.
 
-If you are looking to _consume_ notifications about subscription purchases on your own server, see [Webhooks](/integrations/webhooks).
+If you are looking to _consume_ notifications about subscription purchases on your own server, see [Webhooks](/webhooks).
 
-RevenueCat does not require Platform Server Notifications from the App Store or Play Store to be configured, however doing so can speed up webhook and integration delivery times and reduce lag time for [Charts](/dashboard-and-metrics/charts).
+RevenueCat does not require Platform Server Notifications from the App Store or Play Store to be configured, however doing so can speed up webhook and integration delivery times and reduce lag time for [Charts](/charts).
 
 ## Setup Instructions
 
-- Apple App Store Server Notification: [Setup ➡️](/platform-resources/server-notifications/apple-server-notifications) (Optional)
-- Google Real-Time Developer Notifications: [Setup ➡️](/platform-resources/server-notifications/google-server-notifications) (Optional)
-- Stripe Server Notifications: [Setup ➡️](/platform-resources/server-notifications/stripe-server-notifications) (Required for Stripe)
+- Apple App Store Server Notification: [Setup ➡️](/apple-server-notifications) (Optional)
+- Google Real-Time Developer Notifications: [Setup ➡️](/google-server-notifications) (Optional)
+- Stripe Server Notifications: [Setup ➡️](/stripe-server-notifications) (Required for Stripe)
 - Amazon Appstore: Not yet supported in RevenueCat.
 
 ## Confirming Connection

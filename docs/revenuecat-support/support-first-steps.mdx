@@ -16,8 +16,8 @@ Our documentation (you're already here!) answers a lot of questions about Charts
 
 When contacting support, it's extremely important that you provide enough information for the team to help out. This includes:
 
-1. **App User IDs.** If you don't provide example [user IDs](/getting-started/identifying-users), but you're asking about a specific user, we aren't going to be able to be of much help. Please provide this to reduce the need for us to ask (and we _will_ ask! 😄)
-2. **Debug logs.** If you have an SDK-related issue, it's critical we have the [logs](/test-and-launch/debugging) that our SDK prints **from the start of your app, through the end of the issue you're experiencing**.
+1. **App User IDs.** If you don't provide example [user IDs](/identifying-users), but you're asking about a specific user, we aren't going to be able to be of much help. Please provide this to reduce the need for us to ask (and we _will_ ask! 😄)
+2. **Debug logs.** If you have an SDK-related issue, it's critical we have the [logs](/debugging) that our SDK prints **from the start of your app, through the end of the issue you're experiencing**.
 3. **Be descriptive.** We need you to be as descriptive as possible about the issue you're facing. We receive a lot of questions, and if we don't have enough information we're going to be requesting more. This causes unnecessary back and forth, and delays the answer you're looking for.
 
 Finally, be sure to check the [status page](https://status.revenuecat.com) before creating a ticket if you're concerned about potential downtime.
@@ -28,7 +28,7 @@ Finally, be sure to check the [status page](https://status.revenuecat.com) befor
 
 ### ➡️ Products or Offerings can't be fetched, or Offerings are empty
 
-If you can't fetch products, or your offerings are empty, this is nearly always a configuration issue. We have a guide detailing next steps [in our community here](https://community.revenuecat.com/sdks-51/why-are-offerings-or-products-empty-124). For Google Play Store issues, please refer to our [Google Play Checklists](/service-credentials/creating-play-service-credentials/google-play-checklists).
+If you can't fetch products, or your offerings are empty, this is nearly always a configuration issue. We have a guide detailing next steps [in our community here](https://community.revenuecat.com/sdks-51/why-are-offerings-or-products-empty-124). For Google Play Store issues, please refer to our [Google Play Checklists](/google-play-checklists).
 
 Here's how it works under the hood:
 
@@ -44,11 +44,11 @@ If the stores are unable to return valid products, it means that somewhere in th
 
 If a user lost access to their purchases, then it is likely that:
 
-1. The user's identifier changed (via re-installation, created a new account, etc.). This is very common, and should be an expected part of your app's flow. This can happen automatically at times, like after a re-install of your app. (See [Identifying Users](/getting-started/identifying-users).)
+1. The user's identifier changed (via re-installation, created a new account, etc.). This is very common, and should be an expected part of your app's flow. This can happen automatically at times, like after a re-install of your app. (See [Identifying Users](/identifying-users).)
 2. Another user with the same underlying store account claimed the purchases (see question below).
 3. The user's subscription purchases expired (in this case, they should re-purchase).
 
-If a user has active purchases that are no longer synced to their user ID or they have lost access, they need to **[restore purchases](/getting-started/restoring-purchases)**. **You should always have a restore purchases button in your app** - typically located in your paywall or in-app settings page to make it easy for your users to find the option.
+If a user has active purchases that are no longer synced to their user ID or they have lost access, they need to **[restore purchases](/restoring-purchases)**. **You should always have a restore purchases button in your app** - typically located in your paywall or in-app settings page to make it easy for your users to find the option.
 
 Restoring purchases will re-sync the user's purchase with the currently identified user ID and re-unlock any entitlements that have been lost due to a changed user ID.
 
@@ -61,13 +61,13 @@ While this may seem unexpected at times, this is **extremely common**, and is a 
 1. The user is logged into the underlying store account, indicating ownership of those purchases.
 2. The user is attempting to restore those purchases from a different app user ID than the one that already owns the purchases.
 
-For more information on transfers, and how to prevent it from occurring in certain cases, see: [Restoring Purchases](/getting-started/restoring-purchases).
+For more information on transfers, and how to prevent it from occurring in certain cases, see: [Restoring Purchases](/restoring-purchases).
 
 ### ➡️ Revenue data in RevenueCat doesn't match the real revenue data for individual transactions
 
 Revenue and pricing data in RevenueCat uses a **best-effort** approach. Some stores don't allow developers to see individual prices for transactions, so RevenueCat infers transaction prices based on the price of the product when it was originally purchased.
 
-If you **change prices** of your products in App Store Connect or Google Play, revenue data in RevenueCat will be off by a larger margin. For this reason, we almost always recommend [creating a new product instead](/subscription-guidance/price-changes).
+If you **change prices** of your products in App Store Connect or Google Play, revenue data in RevenueCat will be off by a larger margin. For this reason, we almost always recommend [creating a new product instead](/price-changes).
 
 In truth, the only **real** metric of earnings is the actual payout amounts that each payment processor (the stores) deposits into your account. You should use revenue metrics in RevenueCat's dashboard to track trends, but for accounting purposes we recommend using the actual store payout reports.
 
@@ -85,7 +85,7 @@ You can read more about data discrepancies in our article [here](https://communi
 
 Missing events are often a configuration issue. Most third-party integrations that we support require additional configuration before events will be sent; if that configuration hasn't been completed, events won't be dispatched to the third-party provider.
 
-For example, many integrations require a [Subscriber Attribute](/customers/subscriber-attributes) to be set on each user before events can be dispatched. Ensure that this value (typically from the third-party SDK) is set on a user before contacting support.
+For example, many integrations require a [Subscriber Attribute](/subscriber-attributes) to be set on each user before events can be dispatched. Ensure that this value (typically from the third-party SDK) is set on a user before contacting support.
 
 ### ➡️ My app was rejected because of RevenueCat!
 
@@ -106,4 +106,4 @@ Sometimes, the reviewer will provide you with "Next Steps" to resolve the reject
 
 If you're using RevenueCat, sandbox and production purchases are automatically handled so even if the reviewer provides you with this reason, **it's simply incorrect.** You'll need to likely resubmit your app for review (some developers have had to do this up to a dozen times before being approved).
 
-For more information, see [App Store Rejections](/test-and-launch/app-store-rejections).
+For more information, see [App Store Rejections](/app-store-rejections).

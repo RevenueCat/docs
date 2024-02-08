@@ -27,7 +27,7 @@ import swiftContent from "!!raw-loader!@site/code_blocks/integrations/attributio
     { type: 'swift', content: swiftContent }
 ]} />
 
-Our guide on [Apple Search Ads attribution](/integrations/attribution/apple-search-ads) outlines this step in more detail.
+Our guide on [Apple Search Ads attribution](/apple-search-ads) outlines this step in more detail.
 
 The integration also accepts some optional device-specific data below:
 
@@ -35,7 +35,7 @@ The integration also accepts some optional device-specific data below:
 | :------ | :--------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
 | `$idfa` | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID | ❌ (optional) |
 
-This data should be sent to RevenueCat through reserved [Subscriber Attributes](/customers/subscriber-attributes) keys. 
+This data should be sent to RevenueCat through reserved [Subscriber Attributes](/subscriber-attributes) keys. 
 
 import swiftContent2 from "!!raw-loader!@site/code_blocks/integrations/attribution/splitmetrics-acquire_2.swift";
 
@@ -78,11 +78,11 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 ### Check that the required device data is collected
 
-Navigate the the [Customer View](/dashboard-and-metrics/customers-group/basic-information) for the test user that just made a purchase. If you chose to send the additional data from step 1 above, check it is listed as an attribute for the user.
+Navigate the the [Customer View](/basic-information) for the test user that just made a purchase. If you chose to send the additional data from step 1 above, check it is listed as an attribute for the user.
 
 ### Check that the SplitMetrics Acquire event delivered successfully
 
-While still on the Customer View, click into the test purchase event in the [Customer History](/dashboard-and-metrics/customers-group/customer-history) and make sure that the SplitMetrics Acquire integration event exists and was delivered successfully. 
+While still on the Customer View, click into the test purchase event in the [Customer History](/customer-history) and make sure that the SplitMetrics Acquire integration event exists and was delivered successfully. 
 
 ![](/images/5469d6b-app.revenuecat.com_activity_40779aaf_event_92499ad6-350b-455a-a2ec-4c28c4ca0b28_2_1e172ac101b3733cf5ddc736ad88c777.png)
 
