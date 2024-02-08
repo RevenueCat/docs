@@ -7,7 +7,7 @@ hidden: false
 :::info New to RevenueCat?
 Welcome! If you're adding subscriptions or other in-app purchases to your app, the RevenueCat SDK will handle most of the heavy-lifting without the need to interact with this API directly.
 
-See our [Quickstart](doc:getting-started) for more information on getting started with RevenueCat.
+See our [Quickstart](/docs/getting-started/quickstart/) for more information on getting started with RevenueCat.
 :::
 
 :::info API v2 under development
@@ -22,7 +22,7 @@ Most of this API is geared toward client usage via RevenueCat’s SDK, but there
 
 ## Should I use this REST API or the RevenueCat SDK?
 
-If you’re adding subscriptions or other in-app purchases to your app for the first time or if you don’t have a backend that stores your user’s receipts, you’re probably looking to implement the [RevenueCat SDK](doc:installation).
+If you’re adding subscriptions or other in-app purchases to your app for the first time or if you don’t have a backend that stores your user’s receipts, you’re probably looking to implement the [RevenueCat SDK](/docs/getting-started/installation/).
 
 If you want to start migrating your existing users to RevenueCat and you have your user’s receipts stored on your own server, or you want to check subscription status of your users from your own server, the REST API is a great solution.
 
@@ -30,7 +30,7 @@ If you want to start migrating your existing users to RevenueCat and you have yo
 
 Authentication for the RevenueCat REST API is achieved by setting the `Authorization` header with a valid API key. You'll find two types of API keys in your RevenueCat dashboard: _public_ and _secret_.
 
-Certain endpoints require secret keys, which should be kept out of any publicly accessible areas such as GitHub, client-side code, and so forth. See our [Authentication guide](doc:authentication) for more information.
+Certain endpoints require secret keys, which should be kept out of any publicly accessible areas such as GitHub, client-side code, and so forth. See our [Authentication guide](/docs/welcome/authentication/) for more information.
 
 ```text title="Authorization Header"
 Authorization: Bearer YOUR_REVENUECAT_API_KEY
