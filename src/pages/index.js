@@ -19,7 +19,7 @@ function HomepageHeader() {
   const RCAsset = require("@site/static/img/landing-image.png").default;
 
   return (
-    <header className={clsx("hero hero--secondary", styles.heroBanner)}>
+    <section className={clsx("hero hero--secondary", styles.heroSection)}>
       <div className={clsx("container", styles.container)}>
 
         <div className={styles.containerLeft}>
@@ -82,7 +82,7 @@ function HomepageHeader() {
           <img src={RCAsset} />
         </div>
       </div>
-    </header>
+    </section>
   );
 }
 
