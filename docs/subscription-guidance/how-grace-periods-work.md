@@ -1,6 +1,6 @@
 ---
 title: Billing Issues & Grace Periods
-slug: how-grace-periods-work
+slug: /how-grace-periods-work
 excerpt: What happens when a user encounters a billing issue
 hidden: false
 ---

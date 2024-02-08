@@ -1,6 +1,6 @@
 ---
 title: Stripe Dashboard App
-slug: stripe-app
+slug: /stripe-app
 excerpt: Install and use the RevenueCat App in Stripe App Marketplace
 hidden: false
 ---

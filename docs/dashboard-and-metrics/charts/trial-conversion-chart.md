@@ -1,6 +1,6 @@
 ---
 title: Trial Conversion Chart
-slug: trial-conversion-chart
+slug: /trial-conversion-chart
 hidden: false
 ---
 

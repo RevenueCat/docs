@@ -1,6 +1,6 @@
 ---
 title: Realized LTV per Customer Chart
-slug: realized-ltv-per-customer-chart
+slug: /realized-ltv-per-customer-chart
 hidden: false
 ---
 

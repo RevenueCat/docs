@@ -1,6 +1,6 @@
 ---
 title: Google Play's Data Safety
-slug: google-plays-data-safety
+slug: /google-plays-data-safety
 excerpt: How to fill out the questionnaire
 hidden: false
 ---

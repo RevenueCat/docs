@@ -1,6 +1,6 @@
 ---
 title: Initial Conversion Chart
-slug: initial-conversion-chart
+slug: /initial-conversion-chart
 hidden: false
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Refund Rate Chart
-slug: refund-rate-chart
+slug: /refund-rate-chart
 hidden: false
 ---
 

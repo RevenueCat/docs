@@ -1,6 +1,6 @@
 ---
 title: App Builders
-slug: app-builders
+slug: /app-builders
 excerpt: No and Low Code Development Tools, RevenueCat, and You
 hidden: false
 ---

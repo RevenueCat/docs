@@ -1,6 +1,6 @@
 ---
 title: Google Play Pass
-slug: google-play-pass
+slug: /google-play-pass
 hidden: false
 ---
 

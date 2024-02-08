@@ -1,6 +1,6 @@
 ---
 title: Google Play Quota Increase Request
-slug: google-play-quota-increase-request
+slug: /google-play-quota-increase-request
 excerpt: What to do when you hit the Google Play Developer API limit
 hidden: false
 ---

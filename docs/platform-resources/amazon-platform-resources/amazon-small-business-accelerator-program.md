@@ -1,6 +1,6 @@
 ---
 title: Amazon Small Business Accelerator Program
-slug: amazon-small-business-accelerator-program
+slug: /amazon-small-business-accelerator-program
 hidden: false
 ---
 

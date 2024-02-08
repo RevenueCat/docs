@@ -1,6 +1,6 @@
 ---
 title: Annual Recurring Revenue (ARR) Chart
-slug: annual-recurring-revenue-arr-chart
+slug: /annual-recurring-revenue-arr-chart
 hidden: false
 ---
 

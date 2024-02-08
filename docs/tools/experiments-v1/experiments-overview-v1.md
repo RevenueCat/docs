@@ -1,6 +1,6 @@
 ---
 title: Experiments Overview
-slug: experiments-overview-v1
+slug: /experiments-overview-v1
 hidden: false
 ---
 

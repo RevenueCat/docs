@@ -1,6 +1,6 @@
 ---
 title: Active Trials Chart
-slug: active-trials-chart
+slug: /active-trials-chart
 hidden: false
 ---
 

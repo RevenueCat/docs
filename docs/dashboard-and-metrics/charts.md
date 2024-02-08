@@ -1,6 +1,6 @@
 ---
 title: Charts
-slug: charts
+slug: /charts
 excerpt: Analyzing your subscription business with visualizations
 hidden: false
 ---

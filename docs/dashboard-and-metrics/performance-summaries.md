@@ -1,6 +1,6 @@
 ---
 title: Performance Summaries
-slug: performance-summaries
+slug: /performance-summaries
 excerpt: Get a weekly recap of key subscription metrics in your inbox
 hidden: false
 ---

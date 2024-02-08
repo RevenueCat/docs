@@ -1,6 +1,6 @@
 ---
 title: Platform Server Notifications
-slug: server-notifications
+slug: /server-notifications
 excerpt: Informing RevenueCat of updates to user purchases
 hidden: false
 ---

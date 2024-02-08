@@ -1,6 +1,6 @@
 ---
 title: Active Subscriptions Chart
-slug: active-subscriptions-chart
+slug: /active-subscriptions-chart
 hidden: false
 ---
 

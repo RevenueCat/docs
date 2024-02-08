@@ -1,6 +1,6 @@
 ---
 title: Monthly Recurring Revenue (MRR) Chart
-slug: monthly-recurring-revenue-mrr-chart
+slug: /monthly-recurring-revenue-mrr-chart
 hidden: false
 ---
 

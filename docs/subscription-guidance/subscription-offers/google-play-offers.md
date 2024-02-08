@@ -1,6 +1,6 @@
 ---
 title: Google Play Offers
-slug: google-play-offers
+slug: /google-play-offers
 excerpt: Setting up your offers in Google Play Console
 hidden: false
 ---

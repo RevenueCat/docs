@@ -1,6 +1,6 @@
 ---
 title: Google Cloud Storage
-slug: scheduled-data-exports-gcp
+slug: /scheduled-data-exports-gcp
 excerpt: Setting up Google Cloud Storage access keys for data transfer
 hidden: false
 ---

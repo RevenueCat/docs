@@ -1,6 +1,6 @@
 ---
 title: Apple Platform Resources
-slug: apple-platform-resources
+slug: /apple-platform-resources
 excerpt: Additional resources for easy RevenueCat & Apple Platform development
 hidden: false
 ---

@@ -1,6 +1,6 @@
 ---
 title: Stripe Free Trials
-slug: stripe-free-trials
+slug: /stripe-free-trials
 excerpt: Setting up free trials in Stripe or Stripe Checkout
 hidden: false
 ---

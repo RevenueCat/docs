@@ -1,6 +1,6 @@
 ---
 title: Using RevenueCat in existing apps
-slug: existing-apps
+slug: /existing-apps
 excerpt: Supercharging your existing app business with RevenueCat
 hidden: false
 ---

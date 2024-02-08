@@ -1,6 +1,6 @@
 ---
 title: Customer Lists
-slug: customer-lists
+slug: /customer-lists
 excerpt: Cohort and export your customers
 hidden: false
 ---

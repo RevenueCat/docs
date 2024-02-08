@@ -1,6 +1,6 @@
 ---
 title: Amazon Platform Resources
-slug: amazon-platform-resources
+slug: /amazon-platform-resources
 hidden: false
 ---
 

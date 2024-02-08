@@ -1,6 +1,6 @@
 ---
 title: Experiments Results
-slug: experiments-results-v1
+slug: /experiments-results-v1
 hidden: false
 ---
 

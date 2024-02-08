@@ -1,6 +1,6 @@
 ---
 title: Configuring Experiments
-slug: configuring-experiments-v1
+slug: /configuring-experiments-v1
 hidden: false
 ---
 

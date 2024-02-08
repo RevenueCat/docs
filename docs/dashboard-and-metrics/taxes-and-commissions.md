@@ -1,6 +1,6 @@
 ---
 title: Taxes and Commissions
-slug: taxes-and-commissions
+slug: /taxes-and-commissions
 excerpt: How RevenueCat estimates taxes and commissions for transactions
 hidden: false
 ---

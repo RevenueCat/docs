@@ -1,6 +1,6 @@
 ---
 title: Google Subscriptions and Backwards Compatibility
-slug: google-subscriptions-and-backwards-compatibility
+slug: /google-subscriptions-and-backwards-compatibility
 hidden: false
 ---
 

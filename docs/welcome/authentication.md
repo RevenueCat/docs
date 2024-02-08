@@ -1,6 +1,6 @@
 ---
 title: API Keys & Authentication
-slug: authentication
+slug: /authentication
 excerpt: Manage your API keys to authenticate with RevenueCat
 hidden: false
 ---

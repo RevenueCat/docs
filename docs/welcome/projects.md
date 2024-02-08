@@ -1,6 +1,6 @@
 ---
 title: Setting up RevenueCat
-slug: projects
+slug: /projects
 excerpt: Create a free account, add a Project, and invite your team
 hidden: false
 ---

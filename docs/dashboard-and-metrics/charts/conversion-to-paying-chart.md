@@ -1,6 +1,6 @@
 ---
 title: Conversion to Paying Chart
-slug: conversion-to-paying-chart
+slug: /conversion-to-paying-chart
 hidden: false
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Google Platform Resources
-slug: google-platform-resources
+slug: /google-platform-resources
 hidden: false
 ---
 

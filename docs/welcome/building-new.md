@@ -1,6 +1,6 @@
 ---
 title: Adding subscriptions to your app
-slug: building-new
+slug: /building-new
 excerpt: Adding purchases and subscriptions to an app for the first time
 hidden: false
 ---

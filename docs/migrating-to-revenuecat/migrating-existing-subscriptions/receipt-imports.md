@@ -1,6 +1,6 @@
 ---
 title: Importing Receipts
-slug: receipt-imports
+slug: /receipt-imports
 excerpt: Importing existing customers into RevenueCat
 hidden: false
 ---

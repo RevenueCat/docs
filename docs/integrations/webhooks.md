@@ -1,6 +1,6 @@
 ---
 title: Webhooks
-slug: webhooks
+slug: /webhooks
 excerpt: Enhanced server-to-server notifications from webhooks
 hidden: false
 ---

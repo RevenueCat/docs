@@ -1,6 +1,6 @@
 ---
 title: Google Real-Time Developer Notifications
-slug: google-server-notifications
+slug: /google-server-notifications
 excerpt: Sending Google Play server notifications to RevenueCat
 hidden: false
 ---

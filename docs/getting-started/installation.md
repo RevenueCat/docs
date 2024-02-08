@@ -1,6 +1,6 @@
 ---
 title: Installing the SDK
-slug: installation
+slug: /installation
 excerpt: Add the Purchases SDK to your mobile app
 hidden: false
 ---

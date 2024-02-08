@@ -1,6 +1,6 @@
 ---
 title: Apple App Privacy
-slug: apple-app-privacy
+slug: /apple-app-privacy
 excerpt: How to fill out the questionnaire
 hidden: false
 ---

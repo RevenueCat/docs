@@ -1,6 +1,6 @@
 ---
 title: Offering Override
-slug: offering-override
+slug: /offering-override
 excerpt: Override the default offering that displays in your app for a given customer
 hidden: false
 ---

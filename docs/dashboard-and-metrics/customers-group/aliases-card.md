@@ -1,6 +1,6 @@
 ---
 title: App User IDs
-slug: aliases-card
+slug: /aliases-card
 hidden: false
 ---
 

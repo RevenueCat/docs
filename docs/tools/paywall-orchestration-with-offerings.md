@@ -1,6 +1,6 @@
 ---
 title: Paywall orchestration with Offerings
-slug: offerings-guide
+slug: /offerings-guide
 excerpt: How to use Offerings for remote paywall orchestration
 hidden: false
 ---

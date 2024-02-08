@@ -1,6 +1,6 @@
 ---
 title: Monthly Recurring Revenue Movement Chart
-slug: monthly-recurring-revenue-movement-chart
+slug: /monthly-recurring-revenue-movement-chart
 hidden: false
 ---
 

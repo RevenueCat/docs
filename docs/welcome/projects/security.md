@@ -1,6 +1,6 @@
 ---
 title: Account security
-slug: security
+slug: /security
 excerpt: Enabling two-factor authentication for your RevenueCat account
 hidden: false
 ---

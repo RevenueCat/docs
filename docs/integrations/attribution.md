@@ -1,6 +1,6 @@
 ---
 title: Attribution Providers
-slug: attribution
+slug: /attribution
 excerpt: Integrate and collect attribution data with Purchases SDK
 hidden: false
 ---

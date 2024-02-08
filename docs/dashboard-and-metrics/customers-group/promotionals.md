@@ -1,6 +1,6 @@
 ---
 title: Promotionals
-slug: promotionals
+slug: /promotionals
 hidden: false
 ---
 

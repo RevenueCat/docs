@@ -1,6 +1,6 @@
 ---
 title: Invite your team
-slug: collaborators
+slug: /collaborators
 excerpt: Invite others to collaborate on your project
 hidden: false
 ---

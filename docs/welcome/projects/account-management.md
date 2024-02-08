@@ -1,6 +1,6 @@
 ---
 title: Billing and account settings
-slug: account-management
+slug: /account-management
 excerpt: Managing your account and changing plans
 hidden: false
 ---

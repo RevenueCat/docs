@@ -1,6 +1,6 @@
 ---
 title: Active Subscriptions Movement Chart
-slug: active-subscriptions-movement-chart
+slug: /active-subscriptions-movement-chart
 hidden: false
 ---
 

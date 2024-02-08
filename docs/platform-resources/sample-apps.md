@@ -1,6 +1,6 @@
 ---
 title: Sample Apps
-slug: sample-apps
+slug: /sample-apps
 excerpt: Example usage of RevenueCat's SDK
 hidden: false
 ---

@@ -1,9 +1,9 @@
 ---
 title: Overview
-slug: overview
+slug: /overview
 excerpt: Everything you need to implement and manage in-app purchases and subscriptions
 hidden: false
-categorySlug: welcome-1
+categoryslug: /welcome-1
 order: 0
 ---
 

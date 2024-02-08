@@ -1,6 +1,6 @@
 ---
 title: Apple Family Sharing
-slug: apple-family-sharing
+slug: /apple-family-sharing
 excerpt: Let users share their subscriptions with Family Sharing
 hidden: false
 ---

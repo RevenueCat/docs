@@ -1,6 +1,6 @@
 ---
 title: 15% Reduced Service Fee
-slug: 15-reduced-service-fee
+slug: /15-reduced-service-fee
 excerpt: How to have the reduced commission rate reflected in RevenueCat
 hidden: false
 ---

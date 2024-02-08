@@ -1,6 +1,6 @@
 ---
 title: Stripe Server Notifications
-slug: stripe-server-notifications
+slug: /stripe-server-notifications
 excerpt: Sending Stripe server notifications to RevenueCat
 hidden: false
 ---

@@ -1,6 +1,6 @@
 ---
 title: Active Entitlements
-slug: active-entitlements
+slug: /active-entitlements
 hidden: false
 ---
 

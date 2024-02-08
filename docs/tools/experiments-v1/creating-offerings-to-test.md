@@ -1,6 +1,6 @@
 ---
 title: Creating Offerings to Test
-slug: creating-offerings-to-test
+slug: /creating-offerings-to-test
 hidden: false
 ---
 

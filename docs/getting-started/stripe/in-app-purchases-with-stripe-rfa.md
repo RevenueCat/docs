@@ -1,6 +1,6 @@
 ---
 title: In-app purchases with Stripe RFA
-slug: in-app-purchases-with-stripe-rfa
+slug: /in-app-purchases-with-stripe-rfa
 excerpt:
   This document provides a standard recommendation for RFA users looking to
   incorporate an IAP channel.

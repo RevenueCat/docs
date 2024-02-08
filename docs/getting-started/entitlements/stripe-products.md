@@ -1,6 +1,6 @@
 ---
 title: Stripe Product Setup
-slug: stripe-products
+slug: /stripe-products
 excerpt: Setting up products in the Stripe Dashboard
 hidden: false
 ---

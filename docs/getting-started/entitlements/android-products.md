@@ -1,6 +1,6 @@
 ---
 title: Google Play Product Setup
-slug: android-products
+slug: /android-products
 excerpt: Setting up your in-app purchases in Google Play Billing
 hidden: false
 ---

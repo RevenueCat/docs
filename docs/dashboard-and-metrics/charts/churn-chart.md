@@ -1,6 +1,6 @@
 ---
 title: Churn Chart
-slug: churn-chart
+slug: /churn-chart
 hidden: false
 ---
 

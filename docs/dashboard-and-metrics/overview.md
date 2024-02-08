@@ -1,6 +1,6 @@
 ---
 title: Overview
-slug: overview
+slug: /overview
 excerpt: In-app purchase dashboard
 hidden: false
 ---

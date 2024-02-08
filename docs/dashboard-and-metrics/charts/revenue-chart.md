@@ -1,6 +1,6 @@
 ---
 title: Revenue Chart
-slug: revenue-chart
+slug: /revenue-chart
 hidden: false
 ---
 

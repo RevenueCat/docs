@@ -1,6 +1,6 @@
 ---
 title: Subscription Retention Chart
-slug: subscription-retention-chart
+slug: /subscription-retention-chart
 hidden: false
 ---
 

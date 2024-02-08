@@ -1,6 +1,6 @@
 ---
 title: Attributes
-slug: attributes
+slug: /attributes
 excerpt: Add new user attributes or edit existing ones
 hidden: false
 ---

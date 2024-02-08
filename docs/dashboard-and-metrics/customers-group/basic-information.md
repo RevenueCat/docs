@@ -1,6 +1,6 @@
 ---
 title: Customer Details
-slug: basic-information
+slug: /basic-information
 hidden: false
 ---
 

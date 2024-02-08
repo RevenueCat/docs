@@ -1,6 +1,6 @@
 ---
 title: Attribution
-slug: attribution-card
+slug: /attribution-card
 hidden: false
 ---
 

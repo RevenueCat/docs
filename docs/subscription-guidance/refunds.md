@@ -1,6 +1,6 @@
 ---
 title: Handling Refunds
-slug: refunds
+slug: /refunds
 excerpt: Handling and reacting to refunded purchases
 hidden: false
 ---

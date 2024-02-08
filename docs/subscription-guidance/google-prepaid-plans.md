@@ -1,6 +1,6 @@
 ---
 title: Google Prepaid Plans
-slug: google-prepaid-plans
+slug: /google-prepaid-plans
 excerpt: Setting up your prepaid plan in Google Play Console
 hidden: false
 ---

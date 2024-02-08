@@ -1,6 +1,6 @@
 ---
 title: Implementation Responsibilities
-slug: implementation-responsibilities
+slug: /implementation-responsibilities
 hidden: false
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: App Store Small Business Program
-slug: app-store-small-business-program
+slug: /app-store-small-business-program
 excerpt: How to have the reduced commission rate reflected in RevenueCat
 hidden: false
 ---

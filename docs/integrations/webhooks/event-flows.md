@@ -1,6 +1,6 @@
 ---
 title: Common Webhook Flows
-slug: event-flows
+slug: /event-flows
 excerpt: How webhooks are sent from RevenueCat
 hidden: false
 ---

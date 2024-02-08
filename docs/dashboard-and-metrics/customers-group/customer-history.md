@@ -1,6 +1,6 @@
 ---
 title: Customer History
-slug: customer-history
+slug: /customer-history
 hidden: false
 ---
 

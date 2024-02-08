@@ -1,6 +1,6 @@
 ---
 title: Changing Prices
-slug: price-changes
+slug: /price-changes
 excerpt: Adjusting your pricing model
 hidden: false
 ---

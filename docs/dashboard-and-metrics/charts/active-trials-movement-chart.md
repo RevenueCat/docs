@@ -1,6 +1,6 @@
 ---
 title: Active Trials Movement Chart
-slug: active-trials-movement-chart
+slug: /active-trials-movement-chart
 hidden: false
 ---
 

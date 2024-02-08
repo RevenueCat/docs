@@ -1,6 +1,6 @@
 ---
 title: iOS Product Setup
-slug: ios-products
+slug: /ios-products
 excerpt: Setting up your in-app purchases in App Store Connect
 hidden: false
 ---

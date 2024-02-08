@@ -1,6 +1,6 @@
 ---
 title: Experiments
-slug: experiments-v1
+slug: /experiments-v1
 excerpt: A/B testing two offerings in your app
 hidden: false
 ---

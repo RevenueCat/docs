@@ -1,6 +1,6 @@
 ---
 title: Deleting Users
-slug: manage-users
+slug: /manage-users
 hidden: false
 ---
 

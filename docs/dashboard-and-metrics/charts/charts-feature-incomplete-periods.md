@@ -1,6 +1,6 @@
 ---
 title: "Charts Feature: Incomplete Periods"
-slug: charts-feature-incomplete-periods
+slug: /charts-feature-incomplete-periods
 hidden: false
 ---
 

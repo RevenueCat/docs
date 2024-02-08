@@ -1,6 +1,6 @@
 ---
 title: Partner-Built Integrations
-slug: partner-built-integrations
+slug: /partner-built-integrations
 excerpt: Connecting RevenueCat to Alternative Platforms
 hidden: false
 ---

@@ -1,6 +1,6 @@
 ---
 title: Amazon Product Setup
-slug: amazon-product-setup
+slug: /amazon-product-setup
 excerpt: Setting up your in-app purchases in the Amazon Appstore
 hidden: false
 ---
