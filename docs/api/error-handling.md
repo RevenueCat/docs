@@ -1,6 +1,6 @@
 ---
 title: Error Handling
-slug: error-handling
+slug: /api-v2-error-handling
 hidden: false
 ---
 

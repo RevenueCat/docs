@@ -1,6 +1,6 @@
 ---
 title: Rate Limit
-slug: rate-limit
+slug: /api-v2-rate-limit
 hidden: false
 ---
 

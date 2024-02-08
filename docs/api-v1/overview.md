@@ -1,6 +1,6 @@
 ---
 title: Overview (v1)
-slug: overview
+slug: /api-v1-overview
 hidden: false
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Pagination
-slug: pagination
+slug: /api-v2-pagination
 hidden: false
 ---
 

@@ -103,7 +103,7 @@ const gettingStartedCategory = new Category(
       [new Page("ios-app-extensions")],
       new Page("configuring-sdk")
     ),
-    new Link("Identifying Users", "/customers/user-ids"),
+    new Link("Identifying Users", "/user-ids"),
     new Page("displaying-products"),
     new Category(
       "Making Purchases",
@@ -112,12 +112,9 @@ const gettingStartedCategory = new Category(
       [new Page("android-with-jetpack-compose")],
       new Page("making-purchases")
     ),
-    new Link("Checking Subscription Status", "/customers/customer-info"),
+    new Link("Checking Subscription Status", "/customer-info"),
     new Page("restoring-purchases"),
-    new Link(
-      "Configuring Server Notifications",
-      "/platform-resources/server-notifications"
-    ),
+    new Link("Configuring Server Notifications", "/server-notifications"),
     new Category(
       "Stripe",
       "stripe",
@@ -441,7 +438,7 @@ const sdkMigrationCategory = new Category(
   ]
 );
 
-const apiV2Category = new Category("Developer API v2", "api-v2", false, [
+const apiV2Category = new Category("Developer API v2", "api", false, [
   new Page("overview"),
   new Page("pagination"),
   new Page("expandables"),

@@ -1,6 +1,6 @@
 ---
 title: Expandables
-slug: expandables
+slug: /api-v2-expandables
 hidden: false
 ---
 

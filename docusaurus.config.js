@@ -12,8 +12,6 @@ const ALGOLIA_API_KEY = process.env.ALGOLIA_API_KEY || "SET_BY_CI";
 const ALGOLIA_INDEX_NAME = process.env.ALGOLIA_INDEX_NAME || "SET_BY_CI";
 const SEGMENT_WRITE_KEY = process.env.SEGMENT_WRITE_KEY || "SET_BY_CI";
 
-import redirects from "./src/redirects/redirects";
-
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "In-App Subscriptions Made Easy – RevenueCat",
@@ -82,7 +80,6 @@ const config = {
     ],
   ],
   plugins: [
-    ["@docusaurus/plugin-client-redirects", redirects],
     ["./src/plugins/segment/segment-plugin", { writeKey: SEGMENT_WRITE_KEY }],
   ],
   themeConfig:
@@ -95,7 +92,7 @@ const config = {
         logo: {
           alt: "RevenueCat Logo",
           src: "img/logo-rc.svg",
-          href: "https://www.revenuecat.com/"
+          href: "https://www.revenuecat.com/",
         },
         items: [
           {
@@ -112,7 +109,7 @@ const config = {
           },
           {
             label: "SDK Reference",
-            to: "/platform-resources/sdk-reference",
+            to: "/sdk-reference",
             position: "left",
           },
           {
@@ -122,7 +119,7 @@ const config = {
           },
           {
             label: "Get Help",
-            to: "/revenuecat-support/support-first-steps",
+            to: "/support-first-steps",
             position: "left",
           },
           {
@@ -145,11 +142,11 @@ const config = {
             items: [
               {
                 label: "Docs",
-                to: "/welcome/overview",
+                to: "/overview",
               },
               {
                 label: "REST API Reference",
-                to: "/api-v2/overview",
+                to: "/api-v2-overview",
               },
               {
                 label: "Status and Incidents",

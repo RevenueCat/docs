@@ -1,6 +1,6 @@
 ---
 title: Error Types
-slug: error-types
+slug: /api-v2-error-types
 hidden: false
 ---
 

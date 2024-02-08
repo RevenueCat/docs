@@ -1,6 +1,6 @@
 ---
 title: Error Codes
-slug: error-codes
+slug: /api-v2-error-codes
 hidden: false
 ---
 
