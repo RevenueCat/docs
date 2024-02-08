@@ -9,43 +9,77 @@ import styles from "./index.module.css";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
+  const Logo = require("@site/static/img/logo-rc.svg").default;
+  const CodeIcon = require("@site/static/img/code.svg").default;
+  const TruckIcon = require("@site/static/img/truck.svg").default;
+  const HandshakeIcon = require("@site/static/img/handshake.svg").default;
+  const ChartIcon = require("@site/static/img/chart.svg").default;
+  const TooolboxIcon = require("@site/static/img/toolbox.svg").default;
+  const CircuitIcon = require("@site/static/img/circuit.svg").default;
+  const RCAsset = require("@site/static/img/landing-image.png").default;
 
-  const Svg = require("@site/static/img/logo-rc.svg").default;
   return (
     <header className={clsx("hero hero--secondary", styles.heroBanner)}>
-      <div className="container">
-        <Svg className={styles.featureSvg} role="img" />
+      <div className={clsx("container", styles.container)}>
 
-        <Heading as="h1" className="hero__title">
-          Developer Hub
-        </Heading>
-        <p className="hero__subtitle">
-          {" "}
-          Everything you need to implement and manage in-app purchases and
-          subscriptions
-        </p>
-        <p>
-          {" "}
-          Welcome to the RevenueCat Developer Hub. You'll find detailed guides
-          and documentation to help you start working with RevenueCat as quickly
-          as possible, as well as support if you get stuck. Let's jump right in!
-          <br />
-          <br />
-        </p>
+        <div className={styles.containerLeft}>
+          <Logo className={styles.logo} role="img" />
 
-        <div className={styles.buttons}>
+          <p className={styles.smallTitle}>
+            Developer Hub
+          </p>
+          <Heading as="h1" className={styles.title}>
+            {" "}
+            Everything you need to manage in-app purchases and
+            subscriptions
+          </Heading>
+          <p className={styles.mainText}>
+            {" "}
+            Welcome to the RevenueCat Developer Hub. You'll find detailed guides
+            and documentation to help you start working with RevenueCat as quickly
+            as possible, as well as support if you get stuck. Let's jump right in!
+          </p>
+
           <Link
-            className="button button--primary button--lg"
-            to="/welcome/overview"
+            className={clsx("button button--primary button--lg", styles.button)}
+            to="/welcome/overview/"
           >
             Get Started
           </Link>
-          <Link
-            className="button button--secondary button--lg"
-            to="/getting-started/quickstart"
-          >
-            Install the SDK
-          </Link>
+
+          <div className={styles.containerQuickLinks}>
+            <p className={styles.quickLinksTitle}>Quick Links</p>
+            <div className={styles.quickLinks}>
+              <div className={styles.quickLink}>
+                <CodeIcon className={styles.quickLinkIcon} role="img" />
+                <a href="/docs/getting-started/quickstart" className={styles.quickLinkText}>SDK Quickstart</a>
+              </div>
+              <div className={styles.quickLink}>
+                <TruckIcon className={styles.quickLinkIcon} role="img" />
+                <a href="/docs/migrating-to-revenuecat/migrating-existing-subscriptions" className={styles.quickLinkText}>Migrating to RevenueCat</a>
+              </div>
+              <div className={styles.quickLink}>
+                <HandshakeIcon className={styles.quickLinkIcon} role="img" />
+                <a href="/docs/revenuecat-support/support-first-steps" className={styles.quickLinkText}>RevenueCat Support</a>
+              </div>
+              <div className={styles.quickLink}>
+                <ChartIcon className={styles.quickLinkIcon} role="img" />
+                <a href="/docs/dashboard-and-metrics/overview" className={styles.quickLinkText}>Dashboard & Metrics</a>
+              </div>
+              <div className={styles.quickLink}>
+                <TooolboxIcon className={styles.quickLinkIcon} role="img" />
+                <a href="https://www.revenuecat.com/docs/tools/paywalls" className={styles.quickLinkText}>Tools</a>
+              </div>
+              <div className={styles.quickLink}>
+                <CircuitIcon className={styles.quickLinkIcon} role="img" />
+                <a href="/docs/integrations/integrations" className={styles.quickLinkText}>Integrations</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.containerRight}>
+          <img src={RCAsset} />
         </div>
       </div>
     </header>
