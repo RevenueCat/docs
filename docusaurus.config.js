@@ -95,6 +95,7 @@ const config = {
         logo: {
           alt: "RevenueCat Logo",
           src: "img/logo-rc.svg",
+          href: "https://www.revenuecat.com/"
         },
         items: [
           {
@@ -107,16 +108,31 @@ const config = {
             type: "docSidebar",
             sidebarId: "apiSidebar",
             position: "left",
-            label: "REST API Reference",
+            label: "REST API",
           },
           {
-            label: "Status Page",
-            to: "https://status.revenuecat.com/",
-            position: "right",
+            label: "SDK Reference",
+            to: "/platform-resources/sdk-reference",
+            position: "left",
+          },
+          {
+            label: "Blog",
+            to: "https://www.revenuecat.com/blog/",
+            position: "left",
           },
           {
             label: "Get Help",
             to: "/revenuecat-support/support-first-steps",
+            position: "left",
+          },
+          {
+            label: "Sign Up",
+            to: "https://app.revenuecat.com/signup",
+            position: "right",
+          },
+          {
+            label: "Sign In",
+            to: "https://app.revenuecat.com/login",
             position: "right",
           },
         ],

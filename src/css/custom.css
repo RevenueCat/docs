@@ -21,6 +21,8 @@
     --ifm-code-font-size: 0.75rem;
     --ifm-code-border-radius: 0;
 
+    --ifm-navbar-color-active: rgb(0, 0, 0);
+
     --ifm-menu-color-background-hover: rgb(248, 248, 248);
     --ifm-menu-color-background-active: rgb(68, 73, 195);
     --ifm-menu-color-active: rgb(255, 255, 255);
@@ -49,6 +51,7 @@
     --ifm-menu-breadcrumb-link: rgb(248, 248, 248);
     --ifm-menu-toc-link: rgb(255, 255, 255);
     --ifm-mobile-toc-background: rgb(16, 16, 16);
+    --ifm-navbar-color-active: rgb(255, 255, 255);
 }
 
 .navbar__title {
@@ -56,6 +59,7 @@
 }
 
 .navbar__logo {
+  margin-top: 0.5rem;
   height: 1.5rem;
 }
 
@@ -182,6 +186,19 @@ html[data-theme='dark'] .theme-doc-sidebar-item-category.theme-doc-sidebar-item-
   }
 }
 
+/* Navbar */
 .clean-btn.navbar-sidebar__back {
   background-color: transparent;
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.navbar__link {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ifm-menu-color);
 }
