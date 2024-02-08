@@ -120,6 +120,10 @@ html[data-theme='dark'] .theme-doc-sidebar-item-category.theme-doc-sidebar-item-
   font-weight: 600;
 }
 
+.breadcrumbs .breadcrumbs__item:nth-of-type(2) {
+  display: none;
+}
+
 /* Top-level category */
 .menu__list-item-collapsible:has(.menu__link:not([href]):hover) {
   background-color: transparent;
