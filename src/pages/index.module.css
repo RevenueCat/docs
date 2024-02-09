@@ -3,41 +3,128 @@
  * and scoped locally.
  */
 
-.heroBanner {
+.heroSection {
   padding: 6rem 0;
-  /* text-align: center; */
   position: relative;
   overflow: hidden;
+  background-color: transparent;
+  height: 100%;
+  margin: auto;
 }
 
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
-}
-
-.buttons > * {
-  width: 100%;
-  max-width: 360px;
-  text-wrap: wrap;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-}
-
-.featureSvg {
-  max-width: 200px;
-}
-
-.bottomContainer {
+.containerLeft {
   display: flex;
   flex-direction: column;
-  width: fit-content;
-  justify-content: center;
+  max-width: 800px;
+  margin: auto;
 }
 
-.image {
-  margin-bottom: 2rem;
-  width: 100%;
+.logo {
+  max-width: 236px;
+  padding-bottom: 2rem;
+}
+
+.smallTitle {
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #F2545B;
+  letter-spacing: 0.15rem;
+  margin-bottom: 0;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.mainText {
+  margin-bottom: 0;
+}
+
+.button {
+  margin: clamp(3rem, 2.55rem + 2.27vi, 4rem) auto;
+  padding: 0.75rem 4rem;
+  background-color: #576CDB;
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.button:hover {
+  background-color: #495cb9;
+}
+
+html[data-theme='dark'] .button:hover {
+  color: #fff;
+}
+
+.containerQuickLinks {}
+
+.quickLinksTitle {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 0.5rem;
+}
+
+.quickLinks {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  /* grid-template-columns: repeat(2, minmax(0, 1fr)); */
+  row-gap: 1rem;
+  column-gap: 2rem;
+  padding-left: 1rem;
+}
+
+.quickLink {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 18px;
+}
+
+.quickLinkText {
+  color: #000;
+  white-space: nowrap;
+}
+
+html[data-theme='dark'] .quickLinkText {
+  color: #fff;
+}
+
+.quickLinkIcon {
+  min-width: 16px;
+}
+
+html[data-theme='dark'] .quickLinkIcon {
+  filter: invert(1)
+}
+
+.containerRight {
+  display: none;
+}
+
+@media only screen and (min-width: 640px) {
+  .quickLinks {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 96px;
+  }
+
+  .containerLeft {
+    width: 100%;
+    max-width: 556px;
+  }
+
+  .containerRight {
+      display: block;
+      width: 100%;
+  }
 }
