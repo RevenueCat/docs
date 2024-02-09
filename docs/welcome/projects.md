@@ -33,9 +33,12 @@ Once you create a project you'll be prompted to add an App. Select the platform 
 
 :::info Projects can include many apps on the same platform
 It's okay to add many Apps on the same platform under one Project. For example, if you have a suite of productivity apps on iOS that share a common subscription you can add them under the same Project in RevenueCat. However, if you have multiple iOS apps that all function independently and don't plan to have a shared subscription you should add them each under different Projects.
-
 :::
 
 ### Shared App User ID Namespace
 
 Apps within the same Project share the same App User ID namespace, meaning all the apps can "share" purchases and subscription status. In other words, the subscription status is tied to the same App User ID regardless of which app it's set in.
+
+### Transferring a Project to Another RevenueCat Account
+
+To transfer specific projects from one account to another, [contact RevenueCat support](https://app.revenuecat.com/settings/support) for assistance.
