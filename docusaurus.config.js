@@ -27,8 +27,8 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: DOC_BASE_URL,
 
-  onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "throw",
 
   trailingSlash: false,
 
@@ -95,7 +95,7 @@ const config = {
         logo: {
           alt: "RevenueCat Logo",
           src: "img/logo-rc.svg",
-          href: "https://www.revenuecat.com/"
+          href: "https://www.revenuecat.com/",
         },
         items: [
           {
