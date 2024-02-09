@@ -68,7 +68,9 @@ You can find a reference Google Play import csv file [here](https://github.com/R
 
 **Important:** We need to know your [API quota](https://developers.google.com/android-publisher/quotas) with Google and approximately how many remaining requests per day you have so we don't exceed your quota.
 
-\*Note that Google Play receipts that have been expired for more than 60 days ago can't be imported, and only the current status can be retrieved from each receipt. This means that historical data won't be presented accurately in charts.
+:::warning
+Google Play receipts that have been expired for more than 60 days ago can't be imported, and only the current status can be retrieved from each receipt. This means that historical data won't be presented accurately in Charts.
+:::
 
 **Stripe:**
 
@@ -77,4 +79,6 @@ You can find a reference Google Play import csv file [here](https://github.com/R
 
 You can find a reference Stripe import csv file [here](https://github.com/RevenueCat-Samples/import-csv-samples/blob/main/Stripe/stripe_receipt_import_sample.csv).
 
-\*Note that Stripe subscription tokens contain only the current status can be retrieved from each Stripe subscription token. This means that Stripe charts for historical data won't be accurate.
+:::warning
+Stripe subscription tokens contain only the current status can be retrieved from each Stripe subscription token. This means that Charts will not accurately reflect the historical data from migrated Stripe tokens.
+:::
