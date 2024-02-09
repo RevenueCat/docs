@@ -84,6 +84,7 @@ const config = {
   plugins: [
     ["@docusaurus/plugin-client-redirects", redirects],
     ["./src/plugins/segment/segment-plugin", { writeKey: SEGMENT_WRITE_KEY }],
+    "./src/plugins/lightbox/lightbox-plugin",
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -95,7 +96,7 @@ const config = {
         logo: {
           alt: "RevenueCat Logo",
           src: "img/logo-rc.svg",
-          href: "https://www.revenuecat.com/"
+          href: "https://www.revenuecat.com/",
         },
         items: [
           {

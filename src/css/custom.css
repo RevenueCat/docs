@@ -206,3 +206,7 @@ html[data-theme='dark'] .theme-doc-sidebar-item-category.theme-doc-sidebar-item-
   font-weight: 400;
   color: var(--ifm-menu-color);
 }
+
+html[data-theme='dark'] .medium-zoom-overlay {
+  background-color: rgba(0, 0, 0, 0.9)!important;
+}
