@@ -13,14 +13,14 @@ Stripe Server Notifications only work if the receipt exists in RevenueCat when t
 You'll need to follow our [Stripe Web Payments](/getting-started/stripe) guide and send your purchase tokens to RevenueCat before proceeding with this guide.
 :::
 
-![Required and optional notifications from Stripe](https://files.readme.io/98a0f1c-stripe_notifications.png)
+![Required and optional notifications from Stripe](/images/98a0f1c-stripe_notifications_aec74502997f2c0b977a7e6477cb5adf.png)
 
 ## Setup Instructions
 
 1. Navigate to your **app settings** in the RevenueCat dashboard by selecting your app from **Project Settings > Apps**.
 2. Expand the **Webhook Configuration** section and copy the endpoint provided under **Stripe Webhook Endpoint**.
 
-![Screen Shot 2021-12-01 at 6.01.02 PM.png](https://files.readme.io/85899d3-Screen_Shot_2021-12-01_at_6.01.02_PM.png)
+![Screen Shot 2021-12-01 at 6.01.02 PM.png](/images/85899d3-Screen_Shot_2021-12-01_at_6.01.02_PM_9ba4504cff9f16070175a69d10392592.png)
 
 3. Log in to Stripe and go to the [Webhooks dashboard](https://dashboard.stripe.com/webhooks).
 4. Click **Add endpoint**, paste the URL in the **Endpoint URL** field and select the following events:
@@ -32,7 +32,7 @@ You'll need to follow our [Stripe Web Payments](/getting-started/stripe) guide a
 
 It's important to only select these events.
 
-![Screen Shot 2022-08-08 at 2.24.58 PM.png](https://files.readme.io/c1f3542-Screen_Shot_2022-08-08_at_2.24.58_PM.png)
+![Screen Shot 2022-08-08 at 2.24.58 PM.png](/images/c1f3542-Screen_Shot_2022-08-08_at_2.24.58_PM_4d2f0f228412b78eeb63c6255d15d5cf.png)
 
 :::warning
 If you choose other events besides what's listed above, our API will respond with an error, and Stripe will eventually disable the webhook.
@@ -41,11 +41,11 @@ If you choose other events besides what's listed above, our API will respond wit
 5. Click **Add endpoint**. You might be asked to enter your password.
 6. Copy the **Signing Secret** value and go back to your app settings in the **RevenueCat Dashboard** (select your app under **Project Settings > Apps**).
 
-![Screen Shot 2020-09-23 at 17.44.04.png](https://files.readme.io/3a87ff5-8db7d64-Screen_Shot_2020-09-23_at_17.44.04.png)
+![Screen Shot 2020-09-23 at 17.44.04.png](/images/3a87ff5-8db7d64-Screen_Shot_2020-09-23_at_17.44.04_fdf72a0e6e4db1ed5f06048c64fb5e55.png)
 
 7. Paste it in the **Stripe Webhook Secret** input field and save. The input field should now look like this:
 
-![](https://files.readme.io/44eb66c-Screen_Shot_2021-12-01_at_5.57.29_PM.png "Screen Shot 2021-12-01 at 5.57.29 PM.png")
+![](/images/44eb66c-Screen_Shot_2021-12-01_at_5.57.29_PM_47e00510cc368278d0798009e6685cd8.png "Screen Shot 2021-12-01 at 5.57.29 PM.png")
 
 ## Stripe Webhook 400 Errors
 

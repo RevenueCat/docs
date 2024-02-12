@@ -21,7 +21,7 @@ With webhooks integrated, you can:
 
 1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
 
-![](https://files.readme.io/6b982d2-app.revenuecat.com_projects_85ff18c7_collaborators_1.png)
+![](/images/6b982d2-app.revenuecat.com_projects_85ff18c7_collaborators_1_cc8d6f58c19d73f2024156cbed4bbf95.png)
 
 2. Choose 'Webhooks' from the Integrations menu
 3. Name the new Webhook integration. You can set up multiple webhook URLs, the name helps differentiate them.

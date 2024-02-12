@@ -16,7 +16,7 @@ The Small Business Accelerator Program is configured on a per-app basis.
 
 Visit your Amazon app settings in the RevenueCat dashboard **(Project Settings > Apps)** and expand the **Amazon Small Business Accelerator Program** dropdown.
 
-![Image](https://files.readme.io/a98c6b9-184212955-3e1a76a5-18fd-448f-9d01-d46f995fe989.png)
+![Image](/images/a98c6b9-184212955-3e1a76a5-18fd-448f-9d01-d46f995fe989_5f1191432f5e075d3ee73c30d65b398b.png)
 
 #### Entry Date
 

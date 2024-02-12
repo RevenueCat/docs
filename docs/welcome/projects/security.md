@@ -15,7 +15,7 @@ Once you do, you'll need a code generated on your mobile device any time you log
 
 Navigate to your [**Account > Security**](https://app.revenuecat.com/settings/security) settings in the RevenueCat dashboard and click **Set up** under Two-factor Authentication to begin the setup process.
 
-![](https://files.readme.io/0d617f4-app.revenuecat.com_projects_85ff18c7_integrations_intercom_10.png)
+![](/images/0d617f4-app.revenuecat.com_projects_85ff18c7_integrations_intercom_10_34fd8bf3ca2a5b55e3cd7a077bd50a18.png)
 
 #### 2. Scan barcode
 
@@ -25,7 +25,7 @@ You'll be prompted to re-enter your password. Once re-authenticated, you'll be p
 
 Enter the two-factor code from the authenticator app then click **Enable**.
 
-![](https://files.readme.io/0d2579e-small-2d04a42-app.revenuecat.com_overview_1.png)
+![](/images/0d2579e-small-2d04a42-app.revenuecat.com_overview_1_d839a99b7a445f45e13f1666ffda4c75.png)
 
 #### 4. Save recovery codes
 
@@ -41,7 +41,7 @@ For security reasons, RevenueCat Support may not be able to restore access to ac
 
 To disable two-factor authentication vavigate to your [**Account > Security**](https://app.revenuecat.com/settings/security) settings in the RevenueCat dashboard and click **Disable** under Two-factor Authentication.
 
-![](https://files.readme.io/bd6c526-app.revenuecat.com_projects_85ff18c7_integrations_intercom_10_copy.png)
+![](/images/bd6c526-app.revenuecat.com_projects_85ff18c7_integrations_intercom_10_copy_ffd239c8d178e0af12e52a8af2c0a5d6.png)
 
 ### Audit Two-Factor Setup
 

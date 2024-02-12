@@ -15,7 +15,7 @@ RevenueCat does not require anything further than service credentials to communi
 
 You can enable it [here](https://console.cloud.google.com/flows/enableapi?apiid=pubsub). Make sure that you're in the correct project, the same one that you set up your [service account and credentials](/service-credentials/creating-play-service-credentials) in.
 
-![Google Cloud Console](https://files.readme.io/b4cf119-Dev_Step1.gif)
+![Google Cloud Console](/images/b4cf119-Dev_Step1_b3da8ed237d19e23f6fe1af40fdedd6a.gif)
 
 ### 2. Choose a Pub/Sub Topic ID
 
@@ -26,7 +26,7 @@ Directly beneath where the Service Credentials JSON object is added, a list of p
 
 Click '**Connect to Google**'. You should see a generated Google Cloud Pub/Sub Topic ID, as in the image below. If you don’t, try refreshing the page to get it to populate. Copy this topic ID to your clipboard.
 
-![RevenueCat Dashboard](https://files.readme.io/8d0e5d0-Dev_Step2.gif)
+![RevenueCat Dashboard](/images/8d0e5d0-Dev_Step2_fc39cfd1d9ab37940d3a02cc8054aa4d.gif)
 
 ### 3. Add Topic ID to Google Play
 
@@ -37,7 +37,7 @@ In Google Play console, head to the dashboard for your app and find the '**Monet
 
 If you don't see any errors, your real-time developer notifications should be ready to go!
 
-![Google Play Console](https://files.readme.io/f875306-Dev_Step3.gif)
+![Google Play Console](/images/f875306-Dev_Step3_f9c1d3bc6e48e001f4b1d7b6d5a92b6e.gif)
 
 ### Send Test Notification
 
@@ -51,7 +51,7 @@ Click the '**Send test notification**' button under the topic name in the '**Mon
 
 Once that test notification is sent, you can go back to your app config on the RevenueCat dashboard where you connected to Google to enable real-time notifications. If the configuration was successful, you should see a "Last received" label with a recent timestamp.
 
-![Google Play Console / RevenueCat Dashboard](https://files.readme.io/f97e8f5-TestNotif.gif)
+![Google Play Console / RevenueCat Dashboard](/images/f97e8f5-TestNotif_0bce9b9a2dfb308f559aca6b662b3f63.gif)
 
 ## Considerations
 

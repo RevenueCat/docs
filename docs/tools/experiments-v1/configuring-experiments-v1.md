@@ -15,11 +15,11 @@ You should also [test the Offerings you've chosen](https://www.revenuecat.com/do
 
 First, navigate to your Project. Then, click on **Experiments** in the **Monetization tools** section.
 
-![Navigate](https://files.readme.io/c7867f1-Screenshot_2024-01-29_at_10.45.53_AM.png "Navigate")
+![Navigate](/images/c7867f1-Screenshot_2024-01-29_at_10.45.53_AM_17e0a4c0a6bcff7244ee397897c06ca4.png "Navigate")
 
 Select **+ New** to create a new experiment.
 
-![Creating a new experiment](https://files.readme.io/62d3199-Screenshot_2024-01-29_at_10.46.43_AM.png "Creating a new experiment")
+![Creating a new experiment](/images/62d3199-Screenshot_2024-01-29_at_10.46.43_AM_dadef546e52d2bb05ef71fccb8cea79c.png "Creating a new experiment")
 
 :::info Setting up an Offering for your treatment
 
@@ -65,7 +65,7 @@ Once done, select **CREATE EXPERIMENT** to complete the process.
 
 When viewing a new experiment, you can start, edit, or delete the experiment.
 
-![](https://files.readme.io/3e6f895-Screen_Shot_2022-10-20_at_10.30.15_AM.png "Screen Shot 2022-10-20 at 10.30.15 AM.png")
+![](/images/3e6f895-Screen_Shot_2022-10-20_at_10.30.15_AM_5e45668dae6b1feb452b9cbc844b8c00.png "Screen Shot 2022-10-20 at 10.30.15 AM.png")
 
 - **Start**: Starts the experiment. Customer enrollment and data collection begins immediately, but results will take up to 24 hours to begin populating.
 - **Edit**: Change the name, enrollment criteria, or Offerings in an experiment before it's been started. After it's been started, only the percent of new customers to enroll can be edited.
@@ -87,7 +87,7 @@ You can use Experiments to run multiple test simultaneously as long as:
 
 If a test that you've created does not meet the above criteria, we'll alert you to that in the Dashboard and you'll be prevented from starting the test, as seen below.
 
-![](https://files.readme.io/6e94d93-Screenshot_2024-01-29_at_11.22.45_AM.png "Screen Shot 2022-10-20 at 10.30.15 AM.png")
+![](/images/6e94d93-Screenshot_2024-01-29_at_11.22.45_AM_ad9a92d744ff985c3e425fa0ab1c46a6.png "Screen Shot 2022-10-20 at 10.30.15 AM.png")
 
 ### Examples of valid tests to run simultaneously
 

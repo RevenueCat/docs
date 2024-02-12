@@ -13,7 +13,7 @@ Lists are a segment of your customers inside RevenueCat, this can include both p
 If you're on a legacy Free plan and want to access custom lists or export lists, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
 :::
 
-![](https://files.readme.io/b7ceead-app.revenuecat.com_projects_85ff18c7_api-keys_8.png "app.revenuecat.com_projects_85ff18c7_api-keys (8).png")
+![](/images/b7ceead-app.revenuecat.com_projects_85ff18c7_api-keys_8_442a6580f487e317c456268abf080199.png "app.revenuecat.com_projects_85ff18c7_api-keys (8).png")
 
 :::info Sandbox Customers
 The Customers dashboard tab doesn't support toggling the 'View sandbox data' switch as there is no concept of a sandbox customer in RevenueCat, only sandbox transactions.
@@ -26,18 +26,18 @@ To view customers who have made sandbox transactions you can use the default San
 You can look up an individual customer by an exact match of their App User ID, Transaction ID, Email Attribute, or Order ID (iOS only). To find a customer via Order ID, you can follow our guide on setting up [In-App Purchase Keys](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration) to unlock this feature. The transaction must show as completed in the [Apple Purchase History](https://support.apple.com/en-gb/HT204088) to be considered a valid Order ID. Note that Transaction ID refers to the identifier in Google Play console and order emails of GPA.1234.1223–, and for Stripe si_abcefg, whereas Order ID refers to the identifier from Apple's order emails.
 
 Looking up customers in RevenueCat is real-time, as soon as a customer exists in RevenueCat they will be searchable here.
-![](https://files.readme.io/b9c0217-app.revenuecat.com_projects_85ff18c7_api-keys_9.png "app.revenuecat.com_projects_85ff18c7_api-keys (9).png")
+![](/images/b9c0217-app.revenuecat.com_projects_85ff18c7_api-keys_9_38e1e4c9e5cabd690deaebb722d3f58e.png "app.revenuecat.com_projects_85ff18c7_api-keys (9).png")
 
 ## Viewing a List
 
 ### Choose a project
 
 Customer lists are created on a per-project basis, you must select a project before viewing a list. Lists cannot be combined across projects inside of RevenueCat.
-![Screenshot 2023-03-27 at 1.00.35 PM.png](https://files.readme.io/d0db86e-Screenshot_2023-03-27_at_1.00.35_PM.png)
+![Screenshot 2023-03-27 at 1.00.35 PM.png](/images/d0db86e-Screenshot_2023-03-27_at_1.00.35_PM_1fcb9c6e24fe6a9a6841a6611b26e875.png)
 
 ### Default lists
 
-![app.revenuecat.com_overview.png](https://files.readme.io/81b30f7-app.revenuecat.com_overview.png)
+![app.revenuecat.com_overview.png](/images/81b30f7-app.revenuecat.com_overview_39740967190ab04326c335f8aa308e87.png)
 
 RevenueCat creates some default lists for every project. Default lists should give you insight into every customer that has ever made any purchase.
 
@@ -58,7 +58,7 @@ If a customer has a [Promotional](/dashboard-and-metrics/customers-group/promoti
 
 In addition to Default Lists, you can create new Custom Lists with any combination of `AND` filters. See the section below on 'Filters' for a full description of available filters.
 
-![app.revenuecat.com_lists_list0332b22d97 (1).png](https://files.readme.io/94bb634-app.revenuecat.com_lists_list0332b22d97_1.png)
+![app.revenuecat.com_lists_list0332b22d97 (1).png](/images/94bb634-app.revenuecat.com_lists_list0332b22d97_1_358c4b9df7bdf4dfe92ff11fef6b0c37.png)
 
 :::info Custom lists are shared across collaborators
 Any custom lists you create will also be visible to any project collaborators with Read or Admin privileges.
@@ -67,7 +67,7 @@ Any custom lists you create will also be visible to any project collaborators wi
 ## Overview Metrics
 
 For each list, RevenueCat computes overview metrics for the cohort of customers.
-![](https://files.readme.io/8070e60-app.revenuecat.com_lists_list0332b22d97_2.png "app.revenuecat.com_lists_list0332b22d97 (2).png")
+![](/images/8070e60-app.revenuecat.com_lists_list0332b22d97_2_205e85c31975ad3a86dd1b2b4dce75a5.png "app.revenuecat.com_lists_list0332b22d97 (2).png")
 
 | Metric               | Description                                                                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -83,7 +83,7 @@ Active "subscribers" may be lower than your count of all active "subscriptions" 
 ## List Data
 
 For each list, RevenueCat displays the 100 most recently seen customers in the dashboard.
-![](https://files.readme.io/f030395-app.revenuecat.com_projects_85ff18c7_api-keys_8_copy.png "app.revenuecat.com_projects_85ff18c7_api-keys (8) copy.png")
+![](/images/f030395-app.revenuecat.com_projects_85ff18c7_api-keys_8_copy_abbeade267bb429bc8888ba6c2441fcb.png "app.revenuecat.com_projects_85ff18c7_api-keys (8) copy.png")
 The dashboard shows the App User ID, purchase status, total spent (USD) and the latest product identifier purchased. Additional columns are available when exporting data.
 
 :::info Customer lists are refreshed every 2 hours
@@ -93,7 +93,7 @@ For lists with the filter **Only Customers with Purchases** enabled (see our [Fi
 ## Filters
 
 Filters allow you to choose which customers appear in your list. You can create custom lists with any combination of filters. **All filters are applied as AND filters**.
-![](https://files.readme.io/20c0838-Screenshot_2023-03-27_at_1.20.54_PM.png "Screenshot 2023-03-27 at 1.20.54 PM.png")
+![](/images/20c0838-Screenshot_2023-03-27_at_1.20.54_PM_3fa920b6810cad3e7a2e48f7ebbc605d.png "Screenshot 2023-03-27 at 1.20.54 PM.png")
 The first filter is a default filter applied to every customer list. You can choose whether the list should be limited to only those customers that have purchases (e.g., started a trial, started a subscription, or made a non-subscription purchase) or not. Lists that are limited to only customers with purchases typically load much faster, because there are many more customers without transactions than those with transactions.
 
 :::info

@@ -10,7 +10,7 @@ Within 24 hours of your experiment's launch you'll start seeing data on the Resu
 
 The Results chart should be your primary source for understanding how a specific metric has performed for each variant over the lifetime of your experiment.
 
-![](https://files.readme.io/12ac18a-Screen_Shot_2022-10-13_at_2.47.13_PM.png "Screen Shot 2022-10-13 at 2.47.13 PM.png")
+![](/images/12ac18a-Screen_Shot_2022-10-13_at_2.47.13_PM_1efde91830213baea395aeb7c6bf9be0.png "Screen Shot 2022-10-13 at 2.47.13 PM.png")
 
 By default you'll see your \*_Realized LTV per customer_ for all platforms plotted daily for the lifetime of your experiment, but you can select any other experiment metric to visualize, or narrow down to a specific platform.
 
@@ -45,11 +45,11 @@ To help parse your results, we've broken up experiment results into three tables
 1. **Initial conversion:** For understanding how these key early conversion rates have been influenced by your test. These metrics are frequently the strongest predictors of LTV changes in an experiment.
 2. **Paid customers:** For understanding how your initial conversion trends are translating into new paying customers.
 3. **Revenue:** For understanding how those two sets of changes interact with each other to yield overall impact to your business.
-   ![](https://files.readme.io/24e17e5-Screen_Shot_2022-10-18_at_1.20.47_PM.png "Screen Shot 2022-10-18 at 1.20.47 PM.png")
+   ![](/images/24e17e5-Screen_Shot_2022-10-18_at_1.20.47_PM_36f27467c3b3e0e2db3667405e13ac2a.png "Screen Shot 2022-10-18 at 1.20.47 PM.png")
 
 In addition to the results per variant that are illustrated above, you can also analyze most metrics by product as well. Click on the caret next to "All" within metrics that offer it to see the metric broken down by the individual products in your experiment. This is especially helpful when trying to understand what's driving changes in performance, and how it might impact LTV. (A more prominent yearly subscription, for example, may decrease initial conversion rate relative to a more prominent monthly option; but those fewer conversions may produce more Realized LTV per paying customer)
 
-![Untitled (1).png](https://files.readme.io/2326dd9-Untitled_1.png)
+![Untitled (1).png](/images/2326dd9-Untitled_1_59b7cf292335cfa89f66d35a91de9af5.png)
 
 The results from your experiment can also be exported in this table format using the **Export data CSV** button. This will included aggregate results per variant, and per product results, for flexible analysis.
 

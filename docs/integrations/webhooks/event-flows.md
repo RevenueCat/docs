@@ -13,31 +13,31 @@ You’ll receive many [Webhooks](/integrations/webhooks) throughout a customer�
 
 This flow occurs each time a customer purchases a product for the first time. A single customer may go through this flow multiple times if they purchase multiple products.
 
-![initial purchase flow](https://files.readme.io/df3afa4-initial-purchase.png)
+![initial purchase flow](/images/df3afa4-initial-purchase_c67ae9a7b3b60315c362a264a5b526e3.png)
 
 ### Cancellation Flow
 
 When a customer cancels their subscription, a `CANCELLATION` webhook is sent. At the end of the billing cycle, an `EXPIRATION` webhook is sent and entitlements are revoked.
 
-![cancellation flow](https://files.readme.io/610bed1-cancellation.png)
+![cancellation flow](/images/610bed1-cancellation_af2f860738f1905efd0fcaf4ee5d13d8.png)
 
 ### Uncancellation Flow
 
 Uncancellations occur when a customer cancels their subscription and then resubscribes before the subscription’s expiration occurs. In this scenario, the customer never loses entitlements.
 
-![uncancellation flow](https://files.readme.io/867ad7f-uncancellation.png)
+![uncancellation flow](/images/867ad7f-uncancellation_073cedd3b44e8ec63e4ad3dd3086a9d8.png)
 
 ### Resubscribe Flow
 
 A customer can resubscribe to a subscription if they resume a subscription after it has expired. The webhook event that is triggered depends on the subscription’s platform and subscription group.
 
-![resubscribe flow](https://files.readme.io/fd75ee9-resubscribe.png)
+![resubscribe flow](/images/fd75ee9-resubscribe_6dcaac933ad21c0905514cd8fbc3d047.png)
 
 ### Subscription Paused Flow (Android Only)
 
 Android customers can pause their subscription, allowing them to halt subscription billing. Their entitlement is revoked at the end of the subscription term. If the customer unpauses their subscription, they regain entitlements and the subscription’s billing cycle resumes. If you’d like to disable pausing for your subscriptions, you can do so through the [Google Play Store Console.](https://developer.android.com/google/play/billing/subscriptions#pause)
 
-![subscription paused flow](https://files.readme.io/0900f59-pause.png)
+![subscription paused flow](/images/0900f59-pause_6cc43e23e96b8ccfa78c2e7a5f99dd75.png)
 
 ### Billing Issue Flow
 
@@ -49,7 +49,7 @@ If you do have grace periods enabled, the customer will retain entitlements as t
 
 It’s important to note that the `BILLING_ISSUE`, `CANCELLATION`, and `EXPIRATION` (if no grace period is involved) webhooks are dispatched in order at the same time, so it is unlikely but possible to receive these events in a different order than described here due to network irregularities.
 
-![billing issue flow](https://files.readme.io/5838053-billing-issue.png)
+![billing issue flow](/images/5838053-billing-issue_f3e15ec821e423321c389308261b17c6.png)
 
 ### Subscription Extended Flow
 
@@ -57,7 +57,7 @@ If a subscription gets extended, when its expiration changes from a future date 
 
 This event is fired when a Apple App Store or Google Play Store subscription is extended through the store's API. On the Google Play Store, this event can also sometimes fire when Google defers charging for a renewal by less than 24 hours (for unknown reasons). In this case, you will receive a `SUBSCRIPTION_EXTENDED` webhook, followed by either a `RENEWAL` or `BILLING_ISSUE` webhook within the next 24 hours.
 
-![subscription extended flow](https://user-images.githubusercontent.com/2571283/275552420-88fa2dfa-3dd5-49e7-a6e0-9391e25453a2.png)
+![subscription extended flow](/images/275552420-88fa2dfa-3dd5-49e7-a6e0-9391e25453a2_bf76417ce031f5858fbc775ff519fbe0.png)
 
 ## Trial Flows
 
@@ -65,7 +65,7 @@ This event is fired when a Apple App Store or Google Play Store subscription is 
 
 When a user initially signs up for a subscription with a trial, an `INITIAL_PURCHASE` webhook is sent with a `period_type` of `TRIAL`. If the trial period for a subscription lapses without the customer canceling the subscription, the trial converts into an active subscription. At this point, a `RENEWAL` event is dispatched and the user is billed for the subscription for the first time.
 
-![successful conversion flow](https://files.readme.io/6a5edb1-successful-conversion.png)
+![successful conversion flow](/images/6a5edb1-successful-conversion_1f8aaade8e16466ad8ee1ea4e668da58.png)
 
 ### Trial Flow (Unsuccessful Conversion)
 
@@ -73,7 +73,7 @@ When a user initially signs up for a subscription with a trial, an `INITIAL_PURC
 
 Note: Apple requires customers to cancel within 24 hours of the trial’s expiration. If a user cancels less than 24 hours before the trial expires, you may unexpectedly receive a `CANCELLATION` event followed by a `RENEWAL` event.
 
-![unsuccessful conversion flow](https://files.readme.io/3458b49-unsuccessful-conversion.png)
+![unsuccessful conversion flow](/images/3458b49-unsuccessful-conversion_037fe711960c23c4284610978c5ed951.png)
 
 ## Product Changes
 
@@ -109,4 +109,4 @@ Changes at period end occur:
 
 If user 1 logs in to your app, makes a purchase and logs out, and then user 2 logs in on the same device with the same underlying App/Play Store account and restores their purchases, you’ll receive a `TRANSFER `event and the entitlements will be removed from user 1 and added to user 2. This behavior only occurs if your project’s restore behavior is set to transfer.
 
-![transfer flow](https://files.readme.io/2482a1a-transfer.png)
+![transfer flow](/images/2482a1a-transfer_81197f7eda571270b9bcc8d24242c9d8.png)

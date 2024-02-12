@@ -9,7 +9,7 @@ Events notify you in near real-time to any changes that occur to a customer's su
 
 RevenueCat events work by connecting directly to the app stores to detect changes to the customer's subscription. This means events are not dependent on any in-app usage or activity and are always sent from RevenueCat's servers. Server-side event detection is crucial for subscription apps since most interesting events occur when your app is inactive (e.g. trial conversions, renewals, cancellations, etc.).
 
-![](https://files.readme.io/647d2a5-Screenshot_2023-04-12_at_10.45.13_AM.png)
+![](/images/647d2a5-Screenshot_2023-04-12_at_10.45.13_AM_190b5cacd3cda0ae8ca2e5a7172941c6.png)
 
 ## Setting up Events and Integrations
 
@@ -35,7 +35,7 @@ Some integrations require certain device specific data to properly function. Be 
 
 Integrations are configured from the RevenueCat dashboard by navigating to your project, and tapping '**+ New**' under the Integrations menu in the side bar. Be sure to read each integration specific guide for complete setup details.
 
-![](https://files.readme.io/4c8b15e-Screenshot_2023-04-12_at_2.01.00_PM.png)
+![](/images/4c8b15e-Screenshot_2023-04-12_at_2.01.00_PM_1e8f23f23ea00367c241e381c09478d4.png)
 
 ## Historical Events
 

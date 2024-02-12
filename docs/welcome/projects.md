@@ -15,17 +15,17 @@ RevenueCat accounts are free to set up, all you need is an email address.
 
 A Project is a set of Apps, and Apps are paired with a single platform. For example, a typical Project might contain one iOS App and one Google Play Store App. All Apps within one Project share the same basic setup, including subscription status, integrations, and webhooks.
 
-![Projects](https://files.readme.io/215395e-Screenshot_2023-04-07_at_2.30.53_PM.png)
+![Projects](/images/215395e-Screenshot_2023-04-07_at_2.30.53_PM_4d5fdac193f3764e28c217a12a0ac9e5.png)
 
 ## Creating a Project
 
 To create a Project, click the '+ Create new project' button in the Projects dropdown panel at the top of the RevenueCat dashboard:
 
-![Screenshot](https://files.readme.io/e8b40b7-Screenshot_2023-03-27_at_9.36.54_AM.png)
+![Screenshot](/images/e8b40b7-Screenshot_2023-03-27_at_9.36.54_AM_8f73d87a407787e30c8f3cbf62da9f59.png)
 
 You can customize your project by setting a name as well as your global [restore behavior](/getting-started/restoring-purchases) for the apps in your Project.
 
-![Screenshot](https://files.readme.io/0556eed-app.revenuecat.com_projects_85ff18c7_api-keys_4.png)
+![Screenshot](/images/0556eed-app.revenuecat.com_projects_85ff18c7_api-keys_4_6fcbbe437a19a892d823893c748925ec.png)
 
 ## Adding an App to a Project
 

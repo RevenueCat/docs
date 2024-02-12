@@ -32,4 +32,4 @@ To understand how that snapshot is generated for each period, check out the [Act
 | Can a single customer have multiple paid subscriptions?                                                 | Yes. This may occur if a customer begins a monthly paid subscription and switches to annual within a single period, or if they subscribed to two distinct products simultaneously. If multiple paid subscriptions are active at the same time for one customer, each unique subscription would be counted in this measurement. |
 | If a customer has access to my product through Family Sharing, are they counted as a paid subscription? | No, since that customer's access is not the result of a payment they've made, we do not consider it a paid subscription.                                                                                                                                                                                                       |
 
-![](https://files.readme.io/dcd9e6a-ActiveSubscriptions.png "ActiveSubscriptions.png")
+![](/images/dcd9e6a-ActiveSubscriptions_813b59205812f8fe5605f662c2f18abc.png "ActiveSubscriptions.png")

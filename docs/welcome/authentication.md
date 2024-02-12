@@ -14,7 +14,7 @@ RevenueCat authenticates requests from the [REST API](https://docs.revenuecat.co
 
 You can find the API keys for your app under the **API Keys** section of your Project Settings in the dashboard.
 
-![API Keys](https://files.readme.io/4bd2a9d-app.revenuecat.com_projects_85ff18c7_api-keys.png)
+![API Keys](/images/4bd2a9d-app.revenuecat.com_projects_85ff18c7_api-keys_3d87623aacc4187dc0f71130302c338a.png)
 
 Public app-specific API keys are automatically created when adding an App to your Project and cannot be changed. Secret API keys can be created by selecting the **+ New** button in the top right, and will be listed under the section **Private API keys**.
 
