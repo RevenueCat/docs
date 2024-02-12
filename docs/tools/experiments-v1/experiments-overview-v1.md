@@ -6,9 +6,9 @@ hidden: false
 
 Experiments allow you to answer questions about your users' behaviors and app's business by A/B testing two Offerings in your app and analyzing the full subscription lifecycle to understand which variant is producing more value for your business.
 
-While price testing is one of the most common forms of A/B testing in mobile apps, Experiments are based on RevenueCat Offerings, allowing you A/B test more than just prices, including: trial length, subscription length, different groupings of products, etc.
+While price testing is one of the most common forms of A/B testing in mobile apps, Experiments are based on RevenueCat Offerings, which means you can A/B test more than just prices, including: trial length, subscription length, different groupings of products, etc.
 
-Plus, by attaching metadata to your Offerings and programming your paywall to be responsive to it, you can remotely test any aspect of your paywall. [Learn more here](/tools/offering-metadata).
+You can even use our Paywalls or Offering Metadata to remotely control and A/B test any aspect of your paywall. [Learn more](https://www.revenuecat.com/docs/offerings-guide#remotely-control-all-aspects-of-your-paywall).
 
 :::tip
 Experiments is available to Pro & Enterprise customers. [Learn more about pricing here](https://www.revenuecat.com/pricing/).
@@ -18,17 +18,13 @@ Experiments is available to Pro & Enterprise customers. [Learn more about pricin
 
 After configuring the two Offerings you want and adding them to an Experiment, RevenueCat will randomly assign users to a cohort where they will only see one of the two Offerings. Everything is done server-side, so no changes to your app are required if you're already displaying the `current` Offering for a given customer in your app!
 
-:::warning
-Programmatically displaying the `current` Offering in your app when you fetch Offerings is **required** to ensure customers are evenly split between variants.
-:::
-
-If you need help making your paywall more dynamic, see [Displaying Products](/getting-started/displaying-products). The [Swift sample app](https://github.com/RevenueCat/purchases-ios/tree/main/Examples) has an example of a [dynamic paywall](https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/PaywallViewController.swift) that is Experiments-ready. Dynamic paywall examples in other languages can be found within our other [sample apps](/platform-resources/sample-apps) as well.
+If you need help making your paywall more dynamic, see [Displaying Products](doc:displaying-products). The [Swift sample app](https://github.com/RevenueCat/purchases-ios/tree/main/Examples) has an example of a [dynamic paywall](https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/PaywallViewController.swift) that is Experiments-ready. Dynamic paywall examples in other languages can be found within our other [sample apps](https://www.revenuecat.com/docs/sample-apps) as well.
 
 :::info
 To learn more about creating a new Offering to test, and some tips to keep in mind when creating new Products on the stores, [check out our guide here](/tools/experiments-v1/creating-offerings-to-test).
 :::
 
-![](https://files.readme.io/34bba5f-ab-test.png "ab-test.png")
+![](https://files.readme.io/229d551-experiments-learn.webp "ab-test.png")
 
 As soon as a customer is enrolled in an experiment, they'll be included in the "Customers" count on the Experiment Results page, and you'll see any trial starts, paid conversions, status changes, etc. represented in the corresponding metrics. (Learn more [here](/tools/experiments-v1/experiments-results-v1))
 
@@ -36,7 +32,7 @@ As soon as a customer is enrolled in an experiment, they'll be included in the "
 We recommend identifying customers _before_ they reach your paywall to ensure that one unique person accessing your app from two different devices is not treated as two unique anonymous customers.
 :::
 
-## Implementation steps
+## Implementation requirements
 
 **Experiments requires you to use Offerings and have a dynamic paywall in your app that displays the current Offering for a given customer.** While Experiments will work with iOS and Android SDKs 3.0.0+, it is recommended to use these versions:
 
@@ -53,11 +49,17 @@ If you meet these requirements, you can start using Experiments without any app 
 
 **Implementation Overview**
 
+:::warning
+Programmatically displaying the `current` Offering in your app when you fetch Offerings is **required** to ensure customers are evenly split between variants.
+:::
+
 1. Create two Offerings that you want to test (make sure your app displays the `current` Offering.) You can skip this step if you already have the Offerings you want to test.
 2. Create an Experiment and choose the two Offerings to test.
 3. Run your experiment and monitor the results. There is no time limit on experiments, so stop it when you feel confident choosing an outcome. (Learn more about interpreting your results [here](/tools/experiments-v1/experiments-results-v1))
 4. Once you’re satisfied with the results you can set the winning Offering, if any, as default manually.
 5. Then, you're ready to run a new experiment.
+
+Visit [Configuring Experiments](https://www.revenuecat.com/docs/configuring-experiments-v1) to learn how to setup your first test.
 
 ## Tips for Using Experiments
 
@@ -75,13 +77,15 @@ You can't restart a test once it's been stopped.
 
 It's tempting to try to test multiple variables at once, such as free trial length and price; resist that temptation! The results are often clearer when only one variable is tested. You can run more tests for other variables as you further optimize your LTV.
 
+**Run multiple tests simultaneously to isolate variables & audiences**
+
+If you're looking to test the price of a product and it's optimal trial length, you can run 2 tests simultaneously that each target a subset of your total audience. For example, Test #1 can test price with 20% of your audience; and Test #2 can test trial length with a different 20% of your audience.
+
+You can also test different variables with different audiences this way to optimize your Offering by country, app, and more.
+
 **Bigger changes will validate faster**
 
 Small differences ($3 monthly vs $2 monthly) will often show ambiguous results and may take a long time to show clear results. Try bolder changes like $3 monthly vs $10 monthly to start to triangulate your optimal price.
-
-**You can run only one test at a time**
-
-If you want to run another test, you must stop the one currently running. You can, however, create as many tests as you need.
 
 **Running a test with a control**
 

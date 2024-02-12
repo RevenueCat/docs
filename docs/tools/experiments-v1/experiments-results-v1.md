@@ -151,3 +151,7 @@ When using the Get or Create Subscriber endpoint you'll be able to see if an ind
 **How can I review the individual transactions that have occurred in my experiment?**
 
 Our [Scheduled Data Exports](/integrations/scheduled-data-exports) include the experiment enrollment of each subscriber in the reported transactions, and by subscribing to them you can receive daily exports of all of your transactions to analyze the experiment results further.
+
+**How can I filter my results by other dimensions like Country in the Dashboard?**
+
+Our Dashboard only supports filtering by Platform today, but if there are specific countries you're looking to distinctly measure results for you can instead run simultaneous tests targeting each set of countries. Then, each tests results will tell you how the experiment performed in that country set so you can determine where the change was and was not successful
