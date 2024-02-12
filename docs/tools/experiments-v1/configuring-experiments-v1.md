@@ -126,16 +126,26 @@ When an experiment is running, only the percent of new customers to enroll can b
 
 Editing an Offering for an active experiment would make the results unusable. Be sure to check before starting your experiment that your chosen Offerings render correctly in your app(s). If you need to make a change to your Offerings, stop the experiment and create a new one with the updated Offerings.
 
+**Can I run multiple experiments simultaneously?**
+
+Yes, as long as they meet the criteria described above.
+
+**Can I add multiple Treatment groups to a single test?**
+
+No, you cannot add multiple Treatment groups to a single test. However, by running multiple tests on the same audience to capture each desired variant you can achieve the same result.
+
 **Can I edit the enrollment criteria of a started experiment?**
 
-Before an experiment has been started, all aspects of enrollment criteria can be edited. However, once an experiment has been started, only new customers to enroll can be edited; since editing the apps or countries that an experiment is exposed to would alter the nature of the test.
+Before an experiment has been started, all aspects of enrollment criteria can be edited. However, once an experiment has been started, only new customers to enroll can be edited; since editing the audience that an experiment is exposed to would alter the nature of the test.
 
 **Can I restart an experiment after it's been stopped?**
 
 After you choose to stop an experiment, new customers will no longer be enrolled in it, and it cannot be restarted. If you want to continue a test, create a new experiment and choose the same Offerings as the stopped experiment.
-(NOTE: Results for stopped experiments will continue to refresh for 400 days after the experiment has ended)
+
+_(NOTE: Results for stopped experiments will continue to refresh for 400 days after the experiment has ended)_
 
 **What happens to customers that were enrolled in an experiment after it's been stopped?**
 
 New customers will no longer be enrolled in an experiment after it's been stopped, and customers who were already enrolled in the experiment will begin receiving the Default Offering if they reach a paywall again.
-Since we continually refresh results for 28 days after an experiment has been ended, you may see renewals from these customers in your results, since they were enrolled as part of the test while it was running; but new subscriptions started by these customers after the experiment ended and one-time purchases made after the experiment ended will not be included in the results.
+
+Since we continually refresh results for 400 days after an experiment has been ended, you may see renewals from these customers in your results, since they were enrolled as part of the test while it was running; but new subscriptions started by these customers after the experiment ended and one-time purchases made after the experiment ended will not be included in the results.
