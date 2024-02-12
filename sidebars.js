@@ -80,6 +80,7 @@ const gettingStartedCategory = new Category(
         new Page("google-subscriptions-and-backwards-compatibility"),
         new Page("amazon-product-setup"),
         new Page("stripe-products"),
+        new Page("rc-billing-products"),
       ],
       new Page("entitlements")
     ),
