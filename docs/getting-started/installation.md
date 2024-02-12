@@ -14,4 +14,5 @@ _Purchases_ is our SDK that correctly implements purchases and subscriptions acr
 - [Cordova Installation ➡️](/getting-started/installation/cordova)
 - [Ionic Installation ➡️](/getting-started/installation/ionic)
 - [Unity Installation ➡️](/getting-started/installation/unity)
+- [Web Installation ➡️](/getting-started/installation/web-sdk)
 - [macOS / Catalyst Installation ➡️](/getting-started/installation/macos)

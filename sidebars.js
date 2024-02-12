@@ -96,6 +96,7 @@ const gettingStartedCategory = new Category(
         new Page("ionic"),
         new Page("cordova"),
         new Page("unity"),
+        new Page("web-sdk"),
         new Page("macos"),
         new Page("app-builders"),
       ],
@@ -105,7 +106,7 @@ const gettingStartedCategory = new Category(
       "Configuring the SDK",
       "configuring-sdk",
       true,
-      [new Page("ios-app-extensions")],
+      [new Page("ios-app-extensions"), new Page("web-sdk")],
       new Page("configuring-sdk")
     ),
     new Link("Identifying Users", "/customers/user-ids"),
