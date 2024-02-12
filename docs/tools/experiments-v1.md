@@ -12,20 +12,7 @@ RevenueCat Experiments allow you to optimize your subscription pricing and paywa
 Experiments is available to Pro & Enterprise customers. [Learn more about pricing here](https://www.revenuecat.com/pricing/).
 :::
 
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/93dfcae-cross-platform-data.webp",
-        "",
-        ""
-      ],
-      "align": "center"
-    }
-  ]
-}
-[/block]
+![Experiments](https://files.readme.io/93dfcae-cross-platform-data.webp "Experiments")
 
 With Experiments, you can remotely A/B test:
 
