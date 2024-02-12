@@ -123,10 +123,16 @@ You can use the following sample queries (written in Postgresql) as starting poi
 import activeTrialsContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_1.pgsql";
 import activeSubscriptionsContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_2.pgsql";
 import revenueContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_3.pgsql";
+import mrrContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_12.pgsql";
+import mrrMovementContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_11.pgsql";
+import activeSubscriptionsMovementContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_10.pgsql";
 
 <RCCodeBlock tabs={[
-    { type: 'pgsql', content: activeTrialsContent, name: 'Active Trials' },
     { type: 'pgsql', content: activeSubscriptionsContent, name: 'Active Subscriptions' },
+    { type: 'pgsql', content: activeSubscriptionsMovementContent, name: 'Active Subscriptions Movement' },
+    { type: 'pgsql', content: mrrContent, name: 'MRR' },
+    { type: 'pgsql', content: mrrMovementContent, name: 'MRR Movement' },
+    { type: 'pgsql', content: activeTrialsContent, name: 'Active Trials' },
     { type: 'pgsql', content: revenueContent, name: 'Revenue' }
 ]} />
 
