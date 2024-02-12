@@ -131,6 +131,13 @@ const gettingStartedCategory = new Category(
       [new Page("in-app-purchases-with-stripe-rfa")],
       new Page("stripe")
     ),
+    new Category(
+      "RevenueCat Billing and Web SDK",
+      "revenuecat-billing",
+      true,
+      [],
+      new Page("revenuecat-billing")
+    ),
   ],
   null,
   { emoji: "🚀" }

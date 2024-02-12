@@ -1,0 +1,74 @@
+---
+title: RevenueCat Billing and Web SDK
+slug: revenuecat-billing
+excerpt: Offer web subscriptions with RevenueCat Billing
+hidden: false
+---
+:::warning Beta Feature
+RevenueCat Billing and the RevenueCat Web SDK are currently in beta.
+:::
+## Introduction
+RevenueCat Billing and the Web SDK allow you to easily offer web subscriptions. The feature is currently in beta and has a number of known limitations. Most notably:
+
+* Only USD is currently supported (multi-currency support will follow later)
+* Only subscriptions are currently supported, no one-time purchases
+* There is no support for sales tax or VAT calculation
+* There is no support for trials, discounts, or other offers
+* There is no support for our Paywall templates yet
+
+Currently, RevenueCat Billing supports using Stripe as the payment gateway. This differs from our [Stripe Billing / Stripe Checkout](/getting-started/stripe) integration in that RevenueCat Billing takes care of the purchase UI, the subscription management portal, and the recurring billing logic. Stripe will still charge a [payment processing fee](https://stripe.com/pricing) if you use RevenueCat Billing, but you will not have to pay [Stripe Billing / Checkout fees](https://stripe.com/billing/pricing). 
+
+## Installation
+
+Start by installing the `@revenuecat/purchases-js` package using the package manager of your choice:
+
+import npmContent from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/installation-npm.shell";
+import yarnContent from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/installation-yarn.shell";
+
+<RCCodeBlock tabs={[
+    { type: 'shell', content: npmContent, name: 'npm' },
+    { type: 'shell', content: yarnContent, name: 'yarn' }
+]} />
+
+## General setup
+
+To get started with the Web SDK, you should follow the regular setup of [entitlements, products, and offerings](/getting-started/entitlements). In contrast to eg. Apple App Store, Google Play Store, or Stripe Billing products, you don't need to go somewhere else to configure your product and its duration and pricing, you can do that right in the RevenueCat dashboard:
+
+![New product configuration page](/images/rc-billing/new-product-configuration.png)
+
+## SDK configuration
+
+You configure the RevenueCat Web SDK by creating a new instance of the `Purchases` class:
+
+import tsContent from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/configuring-sdk.ts";
+
+<RCCodeBlock tabs={[
+    { type: 'ts', content: tsContent, name: "JS / TS" },
+]} />
+
+Ideally, you should configure the SDK only once in your code, and then reuse the object across your code. This will avoid making extraneous API calls to the RevenueCat SDK.
+
+## Identifying customers
+
+In contrast to our mobile SDKs, the Web SDK currently supports only [identified (non-anonymous) customers](/customers/user-ids). There are two reasons for this limitation:
+1. In contrast to mobile app stores, there is no "restore purchase" functionality linked to a store account of the customer. Therefore, an anonymous purchase might get lost if the customer reloads their browser or clears their cache/cookies. 
+2. It is not possible to write a secure web application completely without a backend, since it is easily possible for a malicious actor to manipulate the state of the application through the browser's developer tools. Therefore, any web app using RevenueCat Billing to manage subscriptions also needs a backend component to check for access, which requires a shared customer ID. 
+
+In practice, this means setting up an authentication / login mechanism, for example, using a third party authentication provider like [Firebase](https://firebase.google.com/docs/auth) / [Supabase](https://supabase.com/docs/guides/auth) or a library like [auth.js](https://authjs.dev/). The added benefit of this is that using a shared authentication mechanism between web app and mobile apps allows customers to access their subscriptions they made on the web in the mobile app as well, without any additional configuration (other than adding the products to the correct entitlements).
+
+## Making a purchase
+
+### Presenting the packages of the current offerings
+
+We recommend using [Offerings](/getting-started/entitlements#offerings) to configure which products get presented to the customer. You can iterate over and show the packages of the current offering like this:
+
+import tsDisplayingProducts from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/displaying-products.ts";
+
+<RCCodeBlock tabs={[
+    { type: 'ts', content: tsDisplayingProducts, name: "TypeScript" },
+]} />
+
+### Purchasing a package
+
+
+## Testing
