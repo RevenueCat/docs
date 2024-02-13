@@ -4,15 +4,17 @@ async function showOffering(
   appUserId: string
 ) {
   const offerings = await purchases.getOfferings(appUserId);
-  offerings.current?.packages?.forEach((pkg) => {
+  Object.entries(offerings.current?.packages ?? {}).forEach((value) => {
+    const [key, pkg] = value;
     const pkgEl = document.createElement("button");
     const product = pkg.rcBillingProduct;
     pkgEl.innerHTML =
+      `${key}: ` +
       `${(product.currentPrice?.amount ?? 0) / 100} ` +
-      `${product.currentPrice?.curency} / ` +
+      `${product.currentPrice?.currency} / ` +
       `${product.normalPeriodDuration}`;
     pkgEl.onclick = () => {
-      purchases.purchasePackage(pkg);
+      purchases.purchasePackage(appUserId, pkg);
     };
     targetElement.appendChild(pkgEl);
   });

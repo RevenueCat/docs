@@ -56,16 +56,27 @@ In contrast to our mobile SDKs, the Web SDK currently supports only [identified 
 
 In practice, this means setting up an authentication / login mechanism, for example, using a third party authentication provider like [Firebase](https://firebase.google.com/docs/auth) / [Supabase](https://supabase.com/docs/guides/auth) or a library like [auth.js](https://authjs.dev/). The added benefit of this is that using a shared authentication mechanism between web app and mobile apps allows customers to access their subscriptions they made on the web in the mobile app as well, without any additional configuration (other than adding the products to the correct entitlements).
 
-## Making a purchase
+## Making purchases
 
-### Presenting the packages of the current offerings
+We recommend using [Offerings](/getting-started/entitlements#offerings) to configure which products get presented to the customer. You can access the offerings for a given app user ID with the (asynchronous) method `purchases.getOfferings()`. The current offering for the customer is contained in the `current` property of the return value. Each Offering is a dictionary of the Offering's Packages, keyed by the Package identifier.
 
-We recommend using [Offerings](/getting-started/entitlements#offerings) to configure which products get presented to the customer. You can iterate over and show the packages of the current offering like this:
+import tsCurrentOffering from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/current-offering.ts";
+
+<RCCodeBlock tabs={[
+    { type: 'ts', content: tsCurrentOffering, name: "TypeScript" },
+]} />
+
+
+
 
 import tsDisplayingProducts from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/displaying-products.ts";
+import reactDisplayingProducts from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/displaying-products.tsx";
+import svelteDisplayingProducts from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/displaying-products.svelte";
 
 <RCCodeBlock tabs={[
     { type: 'ts', content: tsDisplayingProducts, name: "TypeScript" },
+    { type: 'ts', content: reactDisplayingProducts, name: "React" },
+    { type: 'ts', content: svelteDisplayingProducts, name: "Svelte" },
 ]} />
 
 ### Purchasing a package

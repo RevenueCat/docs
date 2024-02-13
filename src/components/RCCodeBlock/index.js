@@ -56,6 +56,7 @@ const Languages = {
   cordova: "cordova",
   capacitor: "capacitor",
   typescript: "ts",
+  svelte: "svelte",
 };
 
 RCCodeBlock.languages = Languages;
@@ -129,6 +130,8 @@ function getLanguageType(type) {
       return "tsx";
     case "tsx":
       return "tsx";
+    case "svelte":
+      return "html";
     default:
       return "Code";
   }
