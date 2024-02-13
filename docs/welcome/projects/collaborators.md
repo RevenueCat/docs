@@ -13,11 +13,11 @@ To invite a collaborator, send them an invite from the **Collaborators page unde
 
 All collaborators can view customers and analytics. Only admins are able to make changes to your project's configuration.
 
-![Collaborators](https://files.readme.io/07e6112-app.revenuecat.com_projects_85ff18c7_collaborators.png)
+![Collaborators](/images/07e6112-app.revenuecat.com_projects_85ff18c7_collaborators_6d41a8417fd79d295d718be373402887.png)
 
 Add the collaborator's email, select their permission level, and send the invite.
 
-![Screenshot](https://files.readme.io/1b67b03-Screenshot_2023-03-27_at_4.26.50_PM.png)
+![Screenshot](/images/1b67b03-Screenshot_2023-03-27_at_4.26.50_PM_47e03e3b3555ef01f329f51e3fb1a7f7.png)
 
 Invited collaborators will receive an email where they can accept your invitation and optionally create a RevenueCat account if needed.
 

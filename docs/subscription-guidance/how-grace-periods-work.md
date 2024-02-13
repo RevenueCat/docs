@@ -48,6 +48,6 @@ Once a user corrects their payment method, RevenueCat will send a renewal event.
 
 Customers who enter into a grace period will have events added to their [Customer History](/dashboard-and-metrics/customers-group/basic-information).
 
-![Screen Shot 2022-09-15 at 2.46.12 PM.png](https://files.readme.io/4265860-Screen_Shot_2022-09-15_at_2.46.12_PM.png)
+![Screen Shot 2022-09-15 at 2.46.12 PM.png](/images/4265860-Screen_Shot_2022-09-15_at_2.46.12_PM_217f2fce51cb21a5d7e6a308da39c425.png)
 
 Additionally, subscriptions that are currently in a grace period will still be considered "active," since the customer retains access to their entitlement throughout their grace period. Distinct customers who are currently in a grace period can be counted through Customer Lists using the "Billing Issue Trial" and "Billing Issue" statuses.

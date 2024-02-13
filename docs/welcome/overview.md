@@ -19,7 +19,7 @@ Start selling subscriptions and in-app purchases in your iOS, Android, and Amazo
 
 [Get Started →](/welcome/building-new)
 
-![RevenueCat Flow Diagram](https://revenuecat.dreamhosters.com/wp-content/uploads/2023/11/Powering-existing-subscriptions-with-RevenueCat-1.png)
+![RevenueCat Flow Diagram](/images/Powering-existing-subscriptions-with-RevenueCat-1_194c1e8056740df4787c4593253f8dc8.png)
 
 ### Migrate existing subscriptions to RevenueCat
 
@@ -27,7 +27,7 @@ If you already have 1 or 1 millions subscribers, easily replace your existing se
 
 [Learn more →](/welcome/existing-apps)
 
-![RevenueCat supported stores](https://revenuecat.dreamhosters.com/wp-content/uploads/2023/11/Powering-existing-subscriptions-with-RevenueCat.png)
+![RevenueCat supported stores](/images/Powering-existing-subscriptions-with-RevenueCat_c8255486885823df96391210b781734b.png)
 
 ### Browse features
 

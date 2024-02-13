@@ -51,3 +51,4 @@ process_files() {
 export -f process_files
 
 find "$docs_dir" -type f -name "*.mdx" -exec bash -c 'process_files "$0"' {} \;
+find "$docs_dir" -type f -name "*.md" -exec bash -c 'process_files "$0"' {} \;

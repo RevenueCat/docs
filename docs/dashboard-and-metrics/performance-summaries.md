@@ -7,7 +7,7 @@ hidden: false
 
 With Performance Summaries, you can subscribe to a weekly recap of your key subscriptions metrics (including how they changed vs. the prior week) delivered right to your inbox every Monday morning.
 
-![Screenshot](https://files.readme.io/2fc49ac-Screenshot_2023-12-14_at_4.02.35_PM.png)
+![Screenshot](/images/2fc49ac-Screenshot_2023-12-14_at_4.02.35_PM_b91239309d0ae78797b7f5977b536a21.png)
 
 ## How can I subscribe to a weekly Performance Summary?
 
@@ -19,7 +19,7 @@ With Performance Summaries, you can subscribe to a weekly recap of your key subs
 You must first verify your email address with us in order to receive Performance Summaries.
 :::
 
-![Screenshot](https://files.readme.io/6dbeb98-Screenshot_2023-12-15_at_12.08.29_PM.png)
+![Screenshot](/images/6dbeb98-Screenshot_2023-12-15_at_12.08.29_PM_c1fb4e4608b84a1a0354f4045d05d3fa.png)
 
 ## What will be included in my Performance Summary?
 

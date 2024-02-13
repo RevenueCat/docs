@@ -12,7 +12,7 @@ Aliasing is when two App User IDs are merged together and treated as the same us
 
 The most common reasons for aliases are when a RevenueCat anonymous user is identified with a provided App User Id in your system, and when users restore purchases usually after uninstalling/reinstalling your app.
 
-![](https://files.readme.io/c1b5927-app.revenuecat.com_customers_a4b20cba_ThlFQJQgLAbQHt1rYiJPnAqMafB3.png "app.revenuecat.com_customers_a4b20cba_ThlFQJQgLAbQHt1rYiJPnAqMafB3.png")
+![](/images/c1b5927-app.revenuecat.com_customers_a4b20cba_ThlFQJQgLAbQHt1rYiJPnAqMafB3_ecadaec2e32db621abca8c11a2a88250.png "app.revenuecat.com_customers_a4b20cba_ThlFQJQgLAbQHt1rYiJPnAqMafB3.png")
 
 The app_user_id that is sent in events is not necessarily the most recently seen alias, It is whatever is found first according to the following ordering:
 

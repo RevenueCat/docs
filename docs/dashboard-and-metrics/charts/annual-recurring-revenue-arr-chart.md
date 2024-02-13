@@ -30,4 +30,4 @@ For each period, we multiply its MRR by 12 to yield the ARR for that period. Lea
 | Are non-recurring subscriptions, consumable, or one-time purchases included in ARR? | No, since these purchases do not represent recurring revenue, they are not included in the ARR calculation.                                                                                                                                                                                        |
 | Is ARR calculated before commission and taxes?                                      | Yes, ARR is calculated using the gross price of your active subscriptions. Commission & taxes deducted by the stores would need to be additionally deducted from ARR to understand expected proceeds.                                                                                              |
 
-![](https://files.readme.io/0686a83-ARR.png "ARR.png")
+![](/images/0686a83-ARR_499dacd93bfef185c9396bae03321d1b.png "ARR.png")

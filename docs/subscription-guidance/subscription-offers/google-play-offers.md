@@ -15,7 +15,7 @@ Google allows adding multiple offers to each base plan. Each offer can have up t
 
 To create an offer, navigate to the subscription product in Google Play, click "Add offer", and then select the base plan that the offer should apply for.
 
-![](https://files.readme.io/f614dc5-Screenshot_2023-03-21_at_12.51.41.png "Screenshot 2023-03-21 at 12.51.41.png")
+![](/images/f614dc5-Screenshot_2023-03-21_at_12.51.41_e11f87aa11b3e832d56be052ab94f0dd.png "Screenshot 2023-03-21 at 12.51.41.png")
 On the following page, you can set up a unique offer ID, eligibility criteria, tags, and pricing phases. Tags can be used to [identify offers in the RevenueCat SDK](/subscription-guidance/subscription-offers#more-control-over-offer-selection).
 
 ### Eligibility criteria
@@ -28,7 +28,7 @@ Google Play has three eligibility criteria:
 
 **Developer determined**: Offers with this eligibility criterion will always show up in the `subscriptionOptions` of the `StoreProduct` in the SDK and you are responsible for determining whether or not to apply the offer to a customer or not. If you are relying on the RevenueCat SDK automatically applying free trials and introductory periods and you do not want a developer determined offer to be automatically selected, apply the tag `rc-ignore-offer` to the offer.
 
-![](https://files.readme.io/a1c62ce-Screenshot_2023-03-27_at_21.30.06.png "Screenshot 2023-03-27 at 21.30.06.png")
+![](/images/a1c62ce-Screenshot_2023-03-27_at_21.30.06_f38d59e96cea1d042f2aca394c6c4fd5.png "Screenshot 2023-03-27 at 21.30.06.png")
 
 ### Pricing phases
 
@@ -77,11 +77,11 @@ To create promo codes for your app, go to Google Play’s Console ‘All applica
 
 In the sidebar select** Promo Codes**.
 
-![](https://files.readme.io/6ff2522-Screen_Shot_2021-04-22_at_11.55.16_AM.jpeg "Screen Shot 2021-04-22 at 11.55.16 AM.jpeg")
+![](/images/6ff2522-Screen_Shot_2021-04-22_at_11.55.16_AM_aee7de5f90502d1109fc59ca399277aa.jpeg "Screen Shot 2021-04-22 at 11.55.16 AM.jpeg")
 
 #### Creating a Promotion
 
-![](https://files.readme.io/8cd8703-Screen_Shot_2021-04-25_at_3.04.07_PM.jpeg "Screen Shot 2021-04-25 at 3.04.07 PM.jpeg")
+![](/images/8cd8703-Screen_Shot_2021-04-25_at_3.04.07_PM_c0e8f7517b19748569b3a52478b50634.jpeg "Screen Shot 2021-04-25 at 3.04.07 PM.jpeg")
 After selecting **Create promo code**, you will provide several pieces of metadata to provide to create your promotion:
 
 | Configuration Key ( See figure below) | Metadata        | Description                                                                                                                                                                                               |
@@ -93,20 +93,20 @@ After selecting **Create promo code**, you will provide several pieces of metada
 | 5                                     | Code type       | Select One-time or Custom code. **Custom codes are not available if selecting a Paid or an In-app product.**                                                                                              |
 | 6                                     | Number of Codes | The number of codes available on the promotion.** This can not be updated once saved.**                                                                                                                   |
 
-![Sample configuration of a 10-day free trial for a current Annual membership.](https://files.readme.io/cd0f6c0-Screen_Shot_2021-04-22_at_11.31.32_AM.jpeg "Screen Shot 2021-04-22 at 11.31.32 AM.jpeg")
+![Sample configuration of a 10-day free trial for a current Annual membership.](/images/cd0f6c0-Screen_Shot_2021-04-22_at_11.31.32_AM_46f5f4a3d190bf1c119eae5b6606d7b1.jpeg "Screen Shot 2021-04-22 at 11.31.32 AM.jpeg")
 After selecting **Save** your promotion will be created! 🎉
 
 #### Accessing One-time Codes
 
 Google automatically generates one-time codes. A link titled, "Download codes" provides access to the automatically generated codes.
 
-![](https://files.readme.io/9fce84d-Screen_Shot_2021-04-22_at_11.41.34_AM.jpeg "Screen Shot 2021-04-22 at 11.41.34 AM.jpeg")
+![](/images/9fce84d-Screen_Shot_2021-04-22_at_11.41.34_AM_e183fe393b8f434c2305d937ab70015a.jpeg "Screen Shot 2021-04-22 at 11.41.34 AM.jpeg")
 
 #### Live Promotions
 
 Promo codes become active once the status reads Live.
 
-![](https://files.readme.io/50ca0f3-Screen_Shot_2021-04-22_at_12.01.49_PM.jpeg "Screen Shot 2021-04-22 at 12.01.49 PM.jpeg")
+![](/images/50ca0f3-Screen_Shot_2021-04-22_at_12.01.49_PM_6612316cc58523541fadc44a44db750d.jpeg "Screen Shot 2021-04-22 at 12.01.49 PM.jpeg")
 
 :::info Promo Code Limits and Availability
 Promo codes are limited by Google, on a per quarter basis. The amount of promo codes that Google limits varies by promo code type (one-time versus custom promo codes). Any unused codes will expire at the end of the quarter. Any codes that have been redeemed in the Google Play Store, but not redeemed in the app will stay active until the promotion ends.

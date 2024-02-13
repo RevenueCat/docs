@@ -12,7 +12,7 @@ The timeline events are generated from changes to the user's purchase receipt. T
 If the Customer History is empty, it means we haven't received a purchase receipt for the user. If you think this may be a mistake, check out our [community article](https://community.revenuecat.com/dashboard-tools-52/when-a-purchase-isn-t-showing-up-in-revenuecat-105) on re-syncing a user's purchases.
 :::
 
-![](https://files.readme.io/30a3f7f-Screen_Shot_2020-06-01_at_7.32.36_AM.png "Screen Shot 2020-06-01 at 7.32.36 AM.png")
+![](/images/30a3f7f-Screen_Shot_2020-06-01_at_7.32.36_AM_c58611562abe588d7510c22e716fce52.png "Screen Shot 2020-06-01 at 7.32.36 AM.png")
 
 ## Event Types
 
@@ -43,7 +43,7 @@ It is possible for prices to be missing or incorrect, especially for apps that h
 
 You can click into events in the Customer History to view additional details about the event, including any integrations that may have been triggered as a result of the event.
 
-![](https://files.readme.io/703caac-Screen_Shot_2020-06-01_at_7.46.05_AM.png "Screen Shot 2020-06-01 at 7.46.05 AM.png")
+![](/images/703caac-Screen_Shot_2020-06-01_at_7.46.05_AM_9cceb290cf0bb6b81a2df7c8ea9dbb29.png "Screen Shot 2020-06-01 at 7.46.05 AM.png")
 
 ### Event Timestamps and Ordering
 
@@ -61,11 +61,11 @@ Ex: Checking the event_timestamp_ms will show that the renewal occurs after the 
 
 Android purchases can be refunded directly through the RevenueCat dashboard. Granting a refund will immediately expire the subscription and remove any entitlement access. By refunding directly through RevenueCat you can ensure that refunds are accounted for immediately in all charts and integrations.
 
-![](https://files.readme.io/e2cb2fe-Screenshot_2023-06-12_at_15.01.32.png)
+![](/images/e2cb2fe-Screenshot_2023-06-12_at_15.01.32_979f71f45243d4c79cbd6f4a03bbc515.png)
 
 In case of subscriptions in trial period, you have the option to cancel the subscription and prevent the user from converting to a paid subscription.
 
-![](https://files.readme.io/07fe246-Screenshot_2023-06-12_at_14.58.30.png)
+![](/images/07fe246-Screenshot_2023-06-12_at_14.58.30_84a9a7b9baecaa47f5725700fe68a753.png)
 
 Apple doesn’t allow developers to grant refunds themselves, only through Apple customer support. However, Apple refunds are tracked with RevenueCat and accounted for in all charts and integrations.
 

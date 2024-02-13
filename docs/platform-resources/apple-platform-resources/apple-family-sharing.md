@@ -29,7 +29,7 @@ Since you enable family sharing per product, you can choose some products to be 
 
 If you don't have any in-app purchases in App Store Connect, go ahead and create one by following our guide on [iOS Product Setup](/getting-started/entitlements/ios-products). Next, navigate to your in-app purchase and click **Turn On** under Family Sharing.
 
-![Click **Turn On** to enable Family Sharing.](https://files.readme.io/908bb53-2021-02-09_14.54.25_appstoreconnect.apple.com_ab0d5a03d489.png)
+![Click **Turn On** to enable Family Sharing.](/images/908bb53-2021-02-09_14.54.25_appstoreconnect.apple.com_ab0d5a03d489_fd779f1c1a67a64ddda94940e3be987d.png)
 
 :::warning Family Sharing cannot be disabled once turned on
 Double check that you're turning on family sharing for the correct in-app purchase!
@@ -37,17 +37,17 @@ Double check that you're turning on family sharing for the correct in-app purcha
 
 Click **Confirm**, and you're done! The Family Sharing section should now display "This subscription can be shared by everyone in a family group."
 
-![This in-app purchase has family sharing enabled.](https://files.readme.io/58339d7-2021-02-09_14.59.04_appstoreconnect.apple.com_d5fd0205d87d.png)
+![This in-app purchase has family sharing enabled.](/images/58339d7-2021-02-09_14.59.04_appstoreconnect.apple.com_d5fd0205d87d_966946de1b5c83ff657516ecbe039944.png)
 
 ## RevenueCat and Family Sharing
 
 RevenueCat seamlessly tracks family shared purchases, so there's no additional setup needed in RevenueCat. In the customer history, you can find out if a purchase was made by the user by checking the `is_family_share` key. True means the user's family made the purchase and this user has access via their family; false means the user made the purchase themselves.
 
-![`is_family_share` is true, so this user has access to Pro via their family.](https://files.readme.io/bd05f51-app.revenuecat.com_activity_16e7167a_event_c2f2ca41-28f9-457d-b5a0-b55e61a52b9f.png)
+![`is_family_share` is true, so this user has access to Pro via their family.](/images/bd05f51-app.revenuecat.com_activity_16e7167a_event_c2f2ca41-28f9-457d-b5a0-b55e61a52b9f_6ae296ced5db8d92d57c5bfe673ad67d.png)
 
 RevenueCat also makes it easy for developers to tell if their customer is subscribed from a family member sharing their account via the total spent metric on the dashboard.
 
-![Image](https://files.readme.io/b2c687a-253415365-d3811735-59e8-4ddf-9b05-b074382fe5b0.png)
+![Image](/images/b2c687a-253415365-d3811735-59e8-4ddf-9b05-b074382fe5b0_e2fcfd817ebdcbcd702b4686e8bee441.png)
 The `is_family_share` key is included in webhook events. In the REST API, the `ownership_type` is included.
 
 :::info The user must manually share a subscription with their family

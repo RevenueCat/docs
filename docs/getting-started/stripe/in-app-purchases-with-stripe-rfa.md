@@ -43,7 +43,7 @@ Stripe Revenue Recognition has the ability to do accrual accounting for all Stri
 
 Stripe Revenue Recognition has the ability to import data from external sources. [Data imports](https://stripe.com/docs/revenue-recognition/data-import) allows users to import a CSV from an external source. The data will then be available in Revenue Recognition Reports.
 
-![Image](https://files.readme.io/7fd1cb2-stripe_rfa_1.png)
+![Image](/images/7fd1cb2-stripe_rfa_1_a13a4a428ca2c75d694a1e0f37ba6f68.png)
 
 ## Mobile First Users
 
@@ -79,4 +79,4 @@ Stripe Revenue Recognition has the ability to do accrual accounting for all Stri
 
 Stripe Revenue Recognition has the ability to import data from external sources. [Data imports](https://stripe.com/docs/revenue-recognition/data-import) allows users to import a CSV from an external source. The data will then be available in Revenue Recognition Reports.
 
-![Image](https://files.readme.io/c6fb4f4-stripe_rfa_2.png)
+![Image](/images/c6fb4f4-stripe_rfa_2_93482459f3408f6e1ee1543b5c1c2af5.png)
