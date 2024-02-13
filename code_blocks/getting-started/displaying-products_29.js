@@ -3,9 +3,7 @@
 try {
   const offerings = await Purchases.getOfferings();
   if (offerings.current && offerings.current.monthly) {
-    const product = offerings.current.monthly;
+    const product = offerings.current.monthly.product;
     // Get the price and introductory period from the PurchasesProduct
   }
-} catch (e) {
- 
-}
+} catch (e) {}
