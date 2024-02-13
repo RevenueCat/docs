@@ -3,6 +3,7 @@
     Purchases,
     CustomerInfo,
     Offerings,
+    PurchasesError,
   } from "@revenuecat/purchases-js";
   import { onMount } from "svelte";
 
@@ -37,8 +38,16 @@
             / {pkg.rcBillingProduct.normalPeriodDuration}
             <button
               on:click={async () => {
-                customerInfo = (await purchases.purchasePackage(userId, pkg))
-                  .customerInfo;
+                try {
+                  customerInfo = (await purchases.purchasePackage(userId, pkg))
+                    .customerInfo;
+                } catch (e) {
+                  if (e instanceof PurchasesError) {
+                    window.alert(`Error performing purchase: ${e}`);
+                  } else {
+                    window.alert(`Unknown error: ${e}`);
+                  }
+                }
               }}
             >
               Buy!

@@ -27,6 +27,8 @@ import reactNativeContent6 from "!!raw-loader!@site/code_blocks/getting-started/
 import cordovaContent7 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_7.js";
 import capacitorContent8 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_get_offerings_capacitor.ts";
 import unityContent9 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_8.cs";
+import rcBillingDisplayingProducts from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/current-offering.ts";
+
 
 <RCCodeBlock tabs={[
     { type: 'swift', content: docsTesterSwift, name: 'Swift', region: 'Displaying products' },
@@ -38,6 +40,7 @@ import unityContent9 from "!!raw-loader!@site/code_blocks/getting-started/displa
     { type: 'cordova', content: cordovaContent7, name: 'Cordova' },
     { type: 'capacitor', content: capacitorContent8, name: 'Capacitor' },
     { type: 'unity', content: unityContent9, name: 'Unity' },
+    { type: 'ts', content: rcBillingDisplayingProducts, name: 'Web (JS/TS)' },
 ]} />
 
 
@@ -64,7 +67,7 @@ Offerings can be updated at any time, and the changes will go into effect for al
 
 ### Custom Offering identifiers
 
-It's also possible to access other Offerings besides the Default Offering directly by its identifier.
+It's also possible to access other Offerings besides the Current Offering directly by its identifier.
 
 import objectiveCContent11 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_10.m";
 import kotlinContent12 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_11.kt";
@@ -74,6 +77,7 @@ import reactNativeContent15 from "!!raw-loader!@site/code_blocks/getting-started
 import cordovaContent16 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_15.js";
 import capacitorContent17 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_get_offerings_custom_id_capacitor.ts";
 import unityContent18 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_16.cs";
+import rcBillingCustomOffering from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/custom-offering.ts";
 
 <RCCodeBlock tabs={[
     { type: 'swift', content: docsTesterSwift, name: 'Swift', region: 'Custom Offering identifiers'},
@@ -85,6 +89,7 @@ import unityContent18 from "!!raw-loader!@site/code_blocks/getting-started/displ
     { type: 'cordova', content: cordovaContent16, name: 'Cordova' },
     { type: 'capacitor', content: capacitorContent17, name: 'Capacitor' },
     { type: 'unity', content: unityContent18, name: 'Unity' },
+    { type: 'ts', content: rcBillingCustomOffering, name: 'Web (JS/TS)' },
 ]} />
 
 
@@ -111,6 +116,7 @@ import flutterContent27 from "!!raw-loader!@site/code_blocks/getting-started/dis
 import reactNativeContent28 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_21.js";
 import capacitorCordovaContent29 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_22.js";
 import unityContent30 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_23.cs";
+import tsDisplayingPackages from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/displaying-packages.ts";
 
 <RCCodeBlock tabs={[
     { type: 'swift', content: docsTesterSwift, name: 'Swift', region: 'Displaying packages' },
@@ -120,12 +126,13 @@ import unityContent30 from "!!raw-loader!@site/code_blocks/getting-started/displ
     { type: 'rn', content: reactNativeContent28, name: 'React Native' },
     { type: 'cordova', content: capacitorCordovaContent29, name: 'Capacitor/Cordova' },
     { type: 'unity', content: unityContent30, name: 'Unity' },
+    { type: 'ts', content: tsDisplayingPackages, name: 'Web (JS/TS)' },
 ]} />
 
 
 #### Getting the Product from the Package
 
-Each Package includes an underlying product that includes more information about the price, duration, and other metadata. You can access the product via the `storeProduct` property:
+Each Package includes an underlying product that includes more information about the price, duration, and other metadata. You can access the product via the `storeProduct` property (or `rcBillingProduct` property for [RevenueCat Billing](/getting-started/revenuecat-billing)):
 
 import objectiveCContent33 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_25.m";
 import kotlinContent34 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_26.kt";
@@ -135,6 +142,8 @@ import reactNativeContent37 from "!!raw-loader!@site/code_blocks/getting-started
 import cordovaContent38 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_30.js";
 import capacitorContent39 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_get_offerings_product_capacitor.ts";
 import unityContent40 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_31.cs";
+import tsGettingProduct from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/getting-product.ts";
+
 
 <RCCodeBlock tabs={[
     { type: 'swift', content: docsTesterSwift, name: 'Swift', region: "Getting the Product" },
@@ -146,6 +155,7 @@ import unityContent40 from "!!raw-loader!@site/code_blocks/getting-started/displ
     { type: 'cordova', content: cordovaContent38, name: 'Cordova' },
     { type: 'capacitor', content: capacitorContent39, name: 'Capacitor' },
     { type: 'unity', content: unityContent40, name: 'Unity' },
+    { type: 'ts', content: tsGettingProduct, name: 'Web (JS/TS)' },
 ]} />
 
 

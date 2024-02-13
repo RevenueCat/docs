@@ -15,6 +15,8 @@ import reactNativeContent6 from "!!raw-loader!@site/code_blocks/getting-started/
 import cordovaContent7 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_7.js";
 import capacitorContent8 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_capacitor.ts";
 import unityContent9 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_8.cs";
+import tsPurchasingPackage from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/purchasing-package.ts";
+
 
 <RCCodeBlock tabs={[
     { type: 'swift', content: swiftContent1 },
@@ -26,6 +28,7 @@ import unityContent9 from "!!raw-loader!@site/code_blocks/getting-started/making
     { type: 'cordova', content: cordovaContent7 },
     { type: 'capacitor', content: capacitorContent8 },
     { type: 'unity', content: unityContent9 },
+    { type: 'ts', content: tsPurchasingPackage, name: 'Web (JS/TS)' },
 ]} />
 
 The `purchase(package:)` completion block will contain an updated [CustomerInfo](/customers/customer-info) object if successful, along with some details about the transaction.

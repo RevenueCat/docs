@@ -56,30 +56,70 @@ In contrast to our mobile SDKs, the Web SDK currently supports only [identified 
 
 In practice, this means setting up an authentication / login mechanism, for example, using a third party authentication provider like [Firebase](https://firebase.google.com/docs/auth) / [Supabase](https://supabase.com/docs/guides/auth) or a library like [auth.js](https://authjs.dev/). The added benefit of this is that using a shared authentication mechanism between web app and mobile apps allows customers to access their subscriptions they made on the web in the mobile app as well, without any additional configuration (other than adding the products to the correct entitlements).
 
-## Making purchases
+## Building your paywall
 
-We recommend using [Offerings](/getting-started/entitlements#offerings) to configure which products get presented to the customer. You can access the offerings for a given app user ID with the (asynchronous) method `purchases.getOfferings()`. The current offering for the customer is contained in the `current` property of the return value. Each Offering is a dictionary of the Offering's Packages, keyed by the Package identifier.
+### Getting and displaying products
+
+We recommend using [Offerings](/getting-started/entitlements#offerings) to configure which products get presented to the customer. You can access the offerings for a given app user ID with the (asynchronous) method `purchases.getOfferings()`. The current offering for the customer is contained in the `current` property of the return value. 
 
 import tsCurrentOffering from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/current-offering.ts";
 
 <RCCodeBlock tabs={[
-    { type: 'ts', content: tsCurrentOffering, name: "TypeScript" },
+    { type: 'ts', content: tsCurrentOffering, name: "Web (JS/TS)" },
+]} />
+
+It's also possible to access other Offerings besides the Current Offering directly by its identifier.
+
+import rcBillingCustomOffering from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/custom-offering.ts";
+
+<RCCodeBlock tabs={[
+    { type: 'ts', content: rcBillingCustomOffering, name: 'Web (TS/JS)' },
+]} />
+
+Each Offering contains a list of Packages. Packages can be access in a few different ways:
+
+1. via the `.availablePackages` property on an Offering.
+2. via the duration convenience property on an Offering
+3. via the `.packagesById` property of an Offering, keyed by the package identifier
+
+import tsDisplayingPackages from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/displaying-packages.ts";
+
+<RCCodeBlock tabs={[
+    { type: 'ts', content: tsDisplayingPackages, name: 'Web (JS/TS)' },
+]} />
+
+Each Package contains information about the product in the `rcBillingProduct` property:
+
+import tsGettingProduct from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/getting-product.ts";
+
+<RCCodeBlock tabs={[
+    { type: 'ts', content: tsGettingProduct, name: 'Web (JS/TS)' },
+]} />
+
+### Purchasing a package
+
+To purchase a package, use the `purchasePackage()` method of the `Purchases` object. It returns a `Promise<{customerInfo: CustomerInfo}>` object. To handle errors, you should catch any exceptions that occur.
+
+import tsPurchasingPackage from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/purchasing-package.ts";
+
+<RCCodeBlock tabs={[
+    { type: 'ts', content: tsPurchasingPackage, name: 'Web (JS/TS)' },
 ]} />
 
 
+### An example end-to-end implementation
 
+Here are some end-to-end examples for how a full skeleton paywall might look like:
 
 import tsDisplayingProducts from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/displaying-products.ts";
 import reactDisplayingProducts from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/displaying-products.tsx";
 import svelteDisplayingProducts from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/displaying-products.svelte";
 
 <RCCodeBlock tabs={[
-    { type: 'ts', content: tsDisplayingProducts, name: "TypeScript" },
-    { type: 'ts', content: reactDisplayingProducts, name: "React" },
-    { type: 'ts', content: svelteDisplayingProducts, name: "Svelte" },
+    { type: 'ts', content: tsDisplayingProducts, name: "Web (JS/TS)" },
+    { type: 'tsx', content: reactDisplayingProducts, name: "React" },
+    { type: 'svelte', content: svelteDisplayingProducts, name: "Svelte" },
 ]} />
-
-### Purchasing a package
 
 
 ## Testing
