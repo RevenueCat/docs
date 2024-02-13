@@ -32,6 +32,30 @@ import yarnContent from "!!raw-loader!@site/code_blocks/getting-started/rc-billi
 
 ## General setup
 
+### App configuration
+
+To start using RevenueCat Billing, you will need to add a RevenueCat Billing App to your project. To do that, go the project settings, and in the "Apps" section, click "New", then "RevenueCat Billing":
+
+![New RevenueCat Billing App](/images/rc-billing/new-rc-billing-app.png)
+
+In the following step, you can set up the most important information for the new App:
+* **App Name**: The name of the app. This will also be shown in the purchase flow, in emails, and on invoices.
+* **Seller Company Name**: The name of your company. This will also be shown in the purchase flow, in emails, and on invoices.
+* **Support Email**: An email address that customers can send support requests to. This will also be shown in the purchase flow, in emails, and on invoices.
+
+![New RevenueCat Billing App](/images/rc-billing/new-rc-billing-app-form.png)
+
+After creating the app, some additional fields get shown:
+
+* **Webhook configuration**:
+  * **RC Billing Webhook Endpoint**: You will need to set up a [webhook in Stripe](https://stripe.com/docs/webhooks) to notify RevenueCat of important events. The webhook needs to include at least the following event types: `setup_intent.succeeded`, `payment_intent.succeeded`, and `payment_intent.payment_failed`. You should set up the webhook for both Live mode and Test mode so that you can [test your integration](#Testing).
+  * **Webhook Secret**: Copy the webhook secret from Stripe into this field. (You will receive this after you set up the webhook.)
+* **App icon**: You can upload an app icon here that will be shown in the purchase flow, in emails, and on invoices.
+* **Public API Key**: The API key to be used in your web application when initializing the SDK. This key is safe to be included in production code.
+* **Sandbox API Key**: The API key to be used for [testing](#Testing) purposes. Do not share this API key or include it in your production web app, since it allows to make purchases and unlocking entitlements using test cards.
+
+### Product configuration
+
 To get started with the Web SDK, you should follow the regular setup of [entitlements, products, and offerings](/getting-started/entitlements). In contrast to eg. Apple App Store, Google Play Store, or Stripe Billing products, you don't need to go somewhere else to configure your product and its duration and pricing, you can do that [right in the RevenueCat dashboard](/getting-started/entitlements/rc-billing-products):
 
 ![New product configuration page](/images/rc-billing/new-product-configuration.png)
@@ -40,10 +64,10 @@ To get started with the Web SDK, you should follow the regular setup of [entitle
 
 You configure the RevenueCat Web SDK by creating a new instance of the `Purchases` class:
 
-import tsContent from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/configuring-sdk.ts";
+import rcBillingContent from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/rc-billing-doc-snippets.ts";
 
 <RCCodeBlock tabs={[
-    { type: 'ts', content: tsContent, name: "JS / TS" },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Configuring SDK"},
 ]} />
 
 Ideally, you should configure the SDK only once in your code, and then reuse the object across your code. This will avoid making extraneous API calls to the RevenueCat SDK.
@@ -60,26 +84,20 @@ In practice, this means setting up an authentication / login mechanism, for exam
 
 You can access the customer information using the `getCustomerInfo()` method of the `Purchases` object:
 
-import tsGettingCustomerInformation from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/getting-customer-information.ts";
-
 <RCCodeBlock tabs={[
-    { type: 'ts', content: tsGettingCustomerInformation, name: "Web (JS/TS)" },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)", region: "Getting customer information" },
 ]} />
 
 You can then use the `entitlements` property of the `CustomerInfo` object to check whether the customer has access to a specific entitlement:
 
-import tsCheckForSpecificEntitlement from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/check-for-specific-entitlement.ts";
-
 <RCCodeBlock tabs={[
-    { type: 'ts', content: tsCheckForSpecificEntitlement, name: "Web (JS/TS)" },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)", region: "Check for specific entitlement" },
 ]} />
 
 If your app has multiple entitlements, you might also want to check if the customer has any active entitlements:
 
-import tsCheckForAnyEntitlement from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/check-for-any-entitlement.ts";
-
 <RCCodeBlock tabs={[
-    { type: 'ts', content: tsCheckForAnyEntitlement, name: "Web (JS/TS)" },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)", region: "Check for any entitlement" },
 ]} />
 
 ## Building your paywall
@@ -88,18 +106,14 @@ import tsCheckForAnyEntitlement from "!!raw-loader!@site/code_blocks/getting-sta
 
 We recommend using [Offerings](/getting-started/entitlements#offerings) to configure which products get presented to the customer. You can access the offerings for a given app user ID with the (asynchronous) method `purchases.getOfferings()`. The current offering for the customer is contained in the `current` property of the return value. 
 
-import tsCurrentOffering from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/current-offering.ts";
-
 <RCCodeBlock tabs={[
-    { type: 'ts', content: tsCurrentOffering, name: "Web (JS/TS)" },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Get current offerings"},
 ]} />
 
 It's also possible to access other Offerings besides the Current Offering directly by its identifier.
 
-import rcBillingCustomOffering from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/custom-offering.ts";
-
 <RCCodeBlock tabs={[
-    { type: 'ts', content: rcBillingCustomOffering, name: 'Web (TS/JS)' },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Get custom offering"},
 ]} />
 
 Each Offering contains a list of Packages. Packages can be access in a few different ways:
@@ -108,44 +122,24 @@ Each Offering contains a list of Packages. Packages can be access in a few diffe
 2. via the duration convenience property on an Offering
 3. via the `.packagesById` property of an Offering, keyed by the package identifier
 
-import tsDisplayingPackages from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/displaying-packages.ts";
-
 <RCCodeBlock tabs={[
-    { type: 'ts', content: tsDisplayingPackages, name: 'Web (JS/TS)' },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Displaying packages"},
 ]} />
 
 Each Package contains information about the product in the `rcBillingProduct` property:
 
-import tsGettingProduct from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/getting-product.ts";
-
 <RCCodeBlock tabs={[
-    { type: 'ts', content: tsGettingProduct, name: 'Web (JS/TS)' },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Getting product"},
 ]} />
 
 ### Purchasing a package
 
 To purchase a package, use the `purchasePackage()` method of the `Purchases` object. It returns a `Promise<{customerInfo: CustomerInfo}>`. To handle errors, you should catch any exceptions that occur.
 
-import tsPurchasingPackage from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/purchasing-package.ts";
-
 <RCCodeBlock tabs={[
-    { type: 'ts', content: tsPurchasingPackage, name: 'Web (JS/TS)' },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Purchasing package"},
 ]} />
-
-
-### An example end-to-end implementation
-
-Here are some end-to-end examples for how a full skeleton paywall might look like:
-
-import tsDisplayingProducts from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/displaying-products.ts";
-import reactDisplayingProducts from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/displaying-products.tsx";
-import svelteDisplayingProducts from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/displaying-products.svelte";
-
-<RCCodeBlock tabs={[
-    { type: 'ts', content: tsDisplayingProducts, name: "Web (JS/TS)" },
-    { type: 'tsx', content: reactDisplayingProducts, name: "React" },
-    { type: 'svelte', content: svelteDisplayingProducts, name: "Svelte" },
-]} />
-
 
 ## Testing
+
+You can use Stripe's [Test Mode](https://stripe.com/docs/test-mode) to test your RevenueCat Billing integration. You will need to set up the webhook

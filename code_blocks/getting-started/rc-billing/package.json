@@ -1,0 +1,13 @@
+{
+  "name": "rc-billing-code-snippets",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "RevenueCat",
+  "dependencies": {
+    "@revenuecat/purchases-js": "^0.0.12"
+  }
+}

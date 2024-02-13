@@ -22,7 +22,8 @@ import content6 from "!!raw-loader!@site/code_blocks/customers/customer-info_6.j
 import content7 from "!!raw-loader!@site/code_blocks/customers/customer-info_7.js";
 import contentCapacitor from "!!raw-loader!@site/code_blocks/customers/customer-info_add_listener_capacitor.ts";
 import content8 from "!!raw-loader!@site/code_blocks/customers/customer-info_8.cs";
-import tsGettingCustomerInformation from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/getting-customer-information.ts";
+import rcBillingContent from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/rc-billing-doc-snippets.ts";
+
 
 
 <RCCodeBlock tabs={[
@@ -62,7 +63,8 @@ import tsGettingCustomerInformation from "!!raw-loader!@site/code_blocks/getting
         type: 'unity',
         content: content8,
     },
-    { type: 'ts', content: tsGettingCustomerInformation, name: "Web (JS/TS)" },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)", region: "Getting customer information" },
+
 ]}/>
 
 
@@ -121,8 +123,6 @@ import content13 from "!!raw-loader!@site/code_blocks/customers/customer-info_13
 import content14 from "!!raw-loader!@site/code_blocks/customers/customer-info_14.js";
 import content15 from "!!raw-loader!@site/code_blocks/customers/customer-info_15.js";
 import content16 from "!!raw-loader!@site/code_blocks/customers/customer-info_16.cs";
-import tsCheckForSpecificEntitlement from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/check-for-specific-entitlement.ts";
-
 
 <RCCodeBlock tabs={[
     {
@@ -157,7 +157,7 @@ import tsCheckForSpecificEntitlement from "!!raw-loader!@site/code_blocks/gettin
         type: 'unity',
         content: content16,
     },
-    { type: 'ts', content: tsCheckForSpecificEntitlement, name: "Web (JS/TS)" },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)", region: "Check for specific entitlement" },
 ]}/>
 
 If your app has multiple entitlements, you might also want to check if the customer has any active entitlements:
@@ -170,8 +170,6 @@ import content21 from "!!raw-loader!@site/code_blocks/customers/customer-info_21
 import content22 from "!!raw-loader!@site/code_blocks/customers/customer-info_22.js";
 import content23 from "!!raw-loader!@site/code_blocks/customers/customer-info_23.js";
 import content24 from "!!raw-loader!@site/code_blocks/customers/customer-info_24.cs";
-import tsCheckForAnyEntitlement from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/check-for-any-entitlement.ts";
-
 
 <RCCodeBlock tabs={[
     {
@@ -206,7 +204,7 @@ import tsCheckForAnyEntitlement from "!!raw-loader!@site/code_blocks/getting-sta
         type: 'unity',
         content: content24,
     },
-    { type: 'ts', content: tsCheckForAnyEntitlement, name: "Web (JS/TS)" },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)", region: "Check for any entitlement" },
 ]}/>
 
 
