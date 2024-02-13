@@ -17,7 +17,7 @@ To create a new RevenueCat Billing product, open the RevenueCat dashboard, go to
 
 In the "new product" screen, you can set up the following properties of the product:
 
-- Identifier: A unique ID for the Product, accessible from the SDK, events, etc.
+- Identifier: A unique ID for the Product, accessible from the SDK, events, etc. Can contain up to 100 alphanumeric characters, dots, or underlines.
 - Display name: An optional human readable name for the Product, will be shown on the dashboard instead of the identifier.
 - Duration: The billing cycle (period length) of the subscription.
 - Price: The price that will be charged for every period of the subscription. Currently, only USD is supported.

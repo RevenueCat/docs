@@ -1,5 +1,5 @@
 try {
-  const offerings = await purchases.getOfferings();
+  const offerings = await purchases.getOfferings(appUserId);
   if (
     offerings.current !== null &&
     offerings.current.availablePackages.length !== 0

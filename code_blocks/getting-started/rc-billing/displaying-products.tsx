@@ -31,20 +31,25 @@ const PaywallPage: React.FC<{
     <>
       <h2>Available packages</h2>
       <ul>
-        {Object.entries(offerings.current.packages).map(
-          ([key, pkg]) =>
+        {offerings.current.availablePackages.map(
+          (pkg) =>
             pkg.rcBillingProduct !== null && (
-              <li key={key}>
-                {key}: {(pkg.rcBillingProduct.currentPrice?.amount ?? 0) / 100}
+              <li key={pkg.identifier}>
+                {pkg.identifier}:{" "}
+                {(pkg.rcBillingProduct.currentPrice?.amount ?? 0) / 100}
                 {pkg.rcBillingProduct.currentPrice?.currency} /{" "}
                 {pkg.rcBillingProduct.normalPeriodDuration}
                 <button
                   onClick={() => {
-                    purchases
-                      .purchasePackage(appUserId, pkg)
-                      .then(({ customerInfo }) =>
-                        setCustomerInfo(customerInfo)
-                      );
+                    try {
+                      purchases
+                        .purchasePackage(appUserId, pkg)
+                        .then(({ customerInfo }) =>
+                          setCustomerInfo(customerInfo)
+                        );
+                    } catch (e) {
+                      window.alert(e);
+                    }
                   }}
                 >
                   Buy

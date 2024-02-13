@@ -30,9 +30,9 @@
     {:else}
       <p>You are not subscribed!</p>
       <ul>
-        {#each Object.entries(offerings.current?.packages ?? {}) as [key, pkg]}
+        {#each offerings.current?.availablePackages ?? [] as pkg}
           <li>
-            {key}:
+            {pkg.identifier}:
             {(pkg.rcBillingProduct.currentPrice?.amount ?? 0) / 100}
             {pkg.rcBillingProduct.currentPrice?.currency}
             / {pkg.rcBillingProduct.normalPeriodDuration}

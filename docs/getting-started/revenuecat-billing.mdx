@@ -32,7 +32,7 @@ import yarnContent from "!!raw-loader!@site/code_blocks/getting-started/rc-billi
 
 ## General setup
 
-To get started with the Web SDK, you should follow the regular setup of [entitlements, products, and offerings](/getting-started/entitlements). In contrast to eg. Apple App Store, Google Play Store, or Stripe Billing products, you don't need to go somewhere else to configure your product and its duration and pricing, you can do that right in the RevenueCat dashboard:
+To get started with the Web SDK, you should follow the regular setup of [entitlements, products, and offerings](/getting-started/entitlements). In contrast to eg. Apple App Store, Google Play Store, or Stripe Billing products, you don't need to go somewhere else to configure your product and its duration and pricing, you can do that [right in the RevenueCat dashboard](/getting-started/entitlements/rc-billing-products):
 
 ![New product configuration page](/images/rc-billing/new-product-configuration.png)
 
@@ -55,6 +55,32 @@ In contrast to our mobile SDKs, the Web SDK currently supports only [identified 
 2. It is not possible to write a secure web application completely without a backend, since it is easily possible for a malicious actor to manipulate the state of the application through the browser's developer tools. Therefore, any web app using RevenueCat Billing to manage subscriptions also needs a backend component to check for access, which requires a shared customer ID. 
 
 In practice, this means setting up an authentication / login mechanism, for example, using a third party authentication provider like [Firebase](https://firebase.google.com/docs/auth) / [Supabase](https://supabase.com/docs/guides/auth) or a library like [auth.js](https://authjs.dev/). The added benefit of this is that using a shared authentication mechanism between web app and mobile apps allows customers to access their subscriptions they made on the web in the mobile app as well, without any additional configuration (other than adding the products to the correct entitlements).
+
+## Getting customer information
+
+You can access the customer information using the `getCustomerInfo()` method of the `Purchases` object:
+
+import tsGettingCustomerInformation from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/getting-customer-information.ts";
+
+<RCCodeBlock tabs={[
+    { type: 'ts', content: tsGettingCustomerInformation, name: "Web (JS/TS)" },
+]} />
+
+You can then use the `entitlements` property of the `CustomerInfo` object to check whether the customer has access to a specific entitlement:
+
+import tsCheckForSpecificEntitlement from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/check-for-specific-entitlement.ts";
+
+<RCCodeBlock tabs={[
+    { type: 'ts', content: tsCheckForSpecificEntitlement, name: "Web (JS/TS)" },
+]} />
+
+If your app has multiple entitlements, you might also want to check if the customer has any active entitlements:
+
+import tsCheckForAnyEntitlement from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/check-for-any-entitlement.ts";
+
+<RCCodeBlock tabs={[
+    { type: 'ts', content: tsCheckForAnyEntitlement, name: "Web (JS/TS)" },
+]} />
 
 ## Building your paywall
 
@@ -98,7 +124,7 @@ import tsGettingProduct from "!!raw-loader!@site/code_blocks/getting-started/rc-
 
 ### Purchasing a package
 
-To purchase a package, use the `purchasePackage()` method of the `Purchases` object. It returns a `Promise<{customerInfo: CustomerInfo}>` object. To handle errors, you should catch any exceptions that occur.
+To purchase a package, use the `purchasePackage()` method of the `Purchases` object. It returns a `Promise<{customerInfo: CustomerInfo}>`. To handle errors, you should catch any exceptions that occur.
 
 import tsPurchasingPackage from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/purchasing-package.ts";
 

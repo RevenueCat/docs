@@ -1,20 +1,19 @@
-async function showOffering(
-  targetElement: HTMLElement,
-  purchases: Purchases,
-  appUserId: string
-) {
+async function showOffering(targetElement, purchases, appUserId) {
   const offerings = await purchases.getOfferings(appUserId);
-  Object.entries(offerings.current?.packages ?? {}).forEach((value) => {
-    const [key, pkg] = value;
+  (offerings.current?.availablePackages ?? []).forEach((pkg) => {
     const pkgEl = document.createElement("button");
     const product = pkg.rcBillingProduct;
     pkgEl.innerHTML =
-      `${key}: ` +
+      `${pkg.identifier}: ` +
       `${(product.currentPrice?.amount ?? 0) / 100} ` +
       `${product.currentPrice?.currency} / ` +
       `${product.normalPeriodDuration}`;
     pkgEl.onclick = () => {
-      purchases.purchasePackage(appUserId, pkg);
+      try {
+        purchases.purchasePackage(appUserId, pkg);
+      } catch (e) {
+        window.alert(e);
+      }
     };
     targetElement.appendChild(pkgEl);
   });
