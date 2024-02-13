@@ -8,6 +8,6 @@
   },
   "author": "RevenueCat",
   "dependencies": {
-    "@revenuecat/purchases-js": "^0.0.12"
+    "@revenuecat/purchases-js": "^0.0.13"
   }
 }
