@@ -22,7 +22,7 @@ const config = {
   favicon: "img/favicon-32x32.png",
 
   // Set the production url of your site here
-  url: "https://revenuecat.com/",
+  url: "https://www.revenuecat.com/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: DOC_BASE_URL,
