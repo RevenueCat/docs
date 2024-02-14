@@ -40,6 +40,13 @@ test('Snippet "Check for any entitlement" works for both customers with entitlem
   expect(callback).toHaveBeenCalledTimes(2);
 });
 
+test('Snippet "Check for any entitlement" works for customer without any entitlement', async () => {
+  const callback = vi.fn();
+  await checkForAnyEntitlement(purchases, "customer_without_entitlement", callback);
+  expect(callback).not.toHaveBeenCalled();
+});
+
+
 test('Snippet "Get current offering" works', async () => {
   let pkgs : Package[]|null = null;
   const callback = vi.fn().mockImplementation((availablePackages : Package[]) => {
