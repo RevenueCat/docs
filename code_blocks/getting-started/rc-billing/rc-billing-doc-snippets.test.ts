@@ -1,5 +1,5 @@
 import { expect, test, vi } from 'vitest';
-import { getCustomerInfo, checkForSpecificEntitlement, checkForAnyEntitlement, getCurrentOffering, getCustomOffering, displayingPackages, gettingProduct, purchasingPackage} from './rc-billing-doc-snippets';
+import { getCustomerInfo, checkForSpecificEntitlement, checkForAnyEntitlement, getCurrentOffering, getCustomOffering, displayingPackages, gettingProduct, purchasingPackage, configuringSDK} from './rc-billing-doc-snippets';
 import type { Package, Product } from "@revenuecat/purchases-js";
 import { Purchases } from "@revenuecat/purchases-js";
 
@@ -7,8 +7,11 @@ import { Purchases } from "@revenuecat/purchases-js";
 const REVENUECAT_BILLING_PUBLIC_API_KEY = 'rcb_sb_NLgftxAMfaRjBxlpJjSfQnGAQ';
 const purchases = new Purchases(REVENUECAT_BILLING_PUBLIC_API_KEY);
  
+test('Snippet "Configuring SDK" works', () => {
+  expect(configuringSDK()).toBeDefined();
+})
 
-test('Snippet "Get customer info" works correctly', async () => {
+test('Snippet "Get customer info" works', async () => {
   expect(await getCustomerInfo(purchases, "customer_with_gold_entitlement")).toBeDefined();
 });
 

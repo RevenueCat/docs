@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "vitest"
+    "test": "eslint && vitest run"
   },
   "type": "module",
   "author": "RevenueCat",
