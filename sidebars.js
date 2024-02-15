@@ -106,7 +106,7 @@ const gettingStartedCategory = new Category(
       "Configuring the SDK",
       "configuring-sdk",
       true,
-      [new Page("ios-app-extensions"), new Page("web-sdk")],
+      [new Page("ios-app-extensions")],
       new Page("configuring-sdk")
     ),
     new Link("Identifying Users", "/customers/user-ids"),
