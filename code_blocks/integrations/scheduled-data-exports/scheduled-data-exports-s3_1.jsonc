@@ -1,0 +1,34 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ListObjectsInBucket",
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<YOUR_S3_BUCKET_NAME>"
+            ]
+        },
+        {
+            "Sid": "AllObjectActions",
+            "Effect": "Allow",
+            "Action": "s3:*Object",
+            "Resource": [
+                "arn:aws:s3:::<YOUR_S3_BUCKET_NAME>/*"
+            ]
+        },
+        // If SSE-KMS encryption is enabled on your S3 bucket, you will also need to add the following policy statement
+        {
+            "Sid": "KMSDataKeyGeneration",
+            "Effect": "Allow",
+            "Action": [
+                "kms:GenerateDataKey"
+            ],
+            "Resource": [
+                "arn:aws:kms:region:account-id:key/key-id" // <-- Replace with your KMS key ARN
+            ]
+        }
+    ]
+}
