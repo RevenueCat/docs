@@ -1,6 +1,6 @@
 ---
-title: RevenueCat Billing Product Setup
-slug: rc-billing-products
+title: Product Setup
+slug: product-setup
 excerpt: Setting up your web purchases using RevenueCat Billing
 hidden: false
 ---

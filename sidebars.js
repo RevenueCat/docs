@@ -80,7 +80,7 @@ const gettingStartedCategory = new Category(
         new Page("google-subscriptions-and-backwards-compatibility"),
         new Page("amazon-product-setup"),
         new Page("stripe-products"),
-        new Page("rc-billing-products"),
+        new Link("RevenueCat Billing Product Setup", "/getting-started/revenuecat-billing/product-setup"),
       ],
       new Page("entitlements")
     ),
@@ -136,6 +136,7 @@ const gettingStartedCategory = new Category(
       "revenuecat-billing",
       true,
       [
+        new Page("product-setup"),
         new Page("subscription-lifecycle"),
         new Page("managing-customer-subscriptions"),
         new Page("customer-portal"),
