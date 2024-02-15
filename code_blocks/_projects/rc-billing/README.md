@@ -2,7 +2,7 @@
 This folder contains the RC Billing code snippets for the docs in the file `rc-billing-doc-snippets.ts`. Each snippet is contained in a region that starts with `// MARK {identifier}` and ends with `// END`. Snippets are then extracted by passing a `region` parameter to the tab of the `RCCodeBlock` in the documentation, like this:
 
 ```
-import rcBillingContent from "!!raw-loader!@site/code_blocks/getting-started/rc-billing/rc-billing-doc-snippets.ts";
+import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
 
 <RCCodeBlock tabs={[
     { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Configuring SDK"},
