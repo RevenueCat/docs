@@ -132,10 +132,14 @@ const gettingStartedCategory = new Category(
       new Page("stripe")
     ),
     new Category(
-      "RevenueCat Billing and Web SDK",
+      "RevenueCat Billing & Web SDK",
       "revenuecat-billing",
       true,
-      [],
+      [
+        new Page("subscription-lifecycle"),
+        new Page("managing-customer-subscriptions"),
+        new Page("customer-portal"),
+      ],
       new Page("revenuecat-billing")
     ),
   ],

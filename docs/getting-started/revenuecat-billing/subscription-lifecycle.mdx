@@ -1,0 +1,65 @@
+---
+title: Subscription Lifecycle
+slug: subscription-lifecycle
+excerpt: RevenueCat Billing subscription lifecycle
+hidden: false
+---
+:::warning Beta Feature
+RevenueCat Billing and the RevenueCat Web SDK are currently in beta.
+:::
+## Starting a subscription
+The process to start a subscription is initiated by calling the [purchase method in the SDK](/getting-started/revenuecat-billing#purchasing-a-package). The subscription starts only if and when the initial payment is confirmed – if the customer cancels the checkout form, or if the initial payment for the subscription fails, no subscription is generated, and no events get generated. 
+
+When the subscription is successfully started, RevenueCat generates an `INITIAL_PURCHASE` [event](/integrations/webhooks/event-types-and-fields). An invoice is then generated and sent to the customer via email, along with a link to the [customer portal](./customer-portal).
+
+## Offers
+RevenueCat Billing does not yet support any offers, discounts, or free trials.
+
+## Renewal
+RevenueCat will attempt to charge the payment method of a customer not more than 24 hours before the end of the current billing period, if the customer has not canceled their subscription. An invoice is generated for the renewal attempt. 
+
+### Succesful renewal
+
+If the renewal payment is successfully processed, RevenueCat will:
+* Generate a `RENEWAL` event.
+* Send a renewal confirmation email to the customer, including their invoice and a link to the customer portal.
+
+### Unsuccessful renewal
+
+If the renewal payment couldn't be charged successfully, RevenueCat will:
+* Generate a `CANCELLATION` and `BILLING_ISSUE` event.
+* Generate an `EXPIRATION` event, unless a grace period has been configured.
+* Send a notice of the billing issue to the customer via email, including their invoice and a link to the customer portal to fix their payment method.
+
+The subscription then enters the billing retry period.
+
+#### Billing retry
+After a renewal payment has failed, RevenueCat will retry charging the customer's payment method on file for up to 30 days.
+
+#### Grace period
+RevenueCat Billing does not yet support setting up a grace period.
+
+#### Billing recovery
+If one of the retry attempts is successful, RevenueCat will renew the subscription and generate a `RENEWAL` event. Unless the subscription was still in a grace period, the new billing cycle will start on the date that the payment was succesfully recovered. As an example, consider a monthly subscription started on 1 January, for which the first renewal on 1 February failed, and no grace period was set up. If the payment gets recovered on 10 February, the next billing cycle will run from 10 February to 10 March.
+
+
+#### Overview of billing retry and recovery
+The following image illustrates the timelines and events sent for a successful billing recovery under different circumstances. If the billing retry period ends without being able to recover the payment, no further events get sent, and the subscription remains expired.
+
+![](/images/rc-billing/billing-retry-and-grace-period.png)
+
+## Cancelation
+The subscription can be canceled by the customer (via the [customer portal](./customer-portal)) or by the developer (via the [dashboard or API](./managing-customer-subscriptions)). If the subscription is cancelled, RevenueCat will generate a `CANCELLATION` event. The subscription will continue to be active until the end of the current period. At the end of the period, the subscription will expire.
+
+## Refunds
+It is currently not possible to refund RevenueCat Billing subscriptions.
+
+## Expiration
+A subscription can expire for one of several reasons:
+* The subscription has been cancelled and the billing period ended.
+* A renewal payment failed and no grace period was set up. Please note that in this case, if payment gets recovered at a later point, the subscription may become active again (and a `RENEWAL` event will be generated).
+* A grace period has ended. Please note that in this case, if payment gets recovered at a later point, the subscription may become active again (and a `RENEWAL` event will be generated).
+* The subscription was refunded.
+
+In all of these cases, an `EXPIRATION` event is generated.
+
