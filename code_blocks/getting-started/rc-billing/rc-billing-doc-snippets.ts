@@ -85,7 +85,7 @@ const offerings = await purchases.getOfferings(appUserId);
 // MARK: Displaying packages
 const allPackages = offerings.all["experiment_group"].availablePackages;
 // --
-const monthlyPackage = offerings.all["experiment_group"].monthlyPackage;
+const monthlyPackage = offerings.all["experiment_group"].monthly;
 // --
 const customPackage = offerings.all["experiment_group"].packagesById["<package_id>"];
 // END
@@ -97,8 +97,8 @@ async function gettingProduct(purchases : Purchases, appUserId : string, display
 // Accessing / displaying the monthly product
 try {
   const offerings = await purchases.getOfferings(appUserId);
-  if (offerings.current && offerings.current.monthlyPackage) {
-    const product = offerings.current.monthlyPackage.rcBillingProduct;
+  if (offerings.current && offerings.current.monthly) {
+    const product = offerings.current.monthly.rcBillingProduct;
     // Display the price and currency of the RC Billing Product
     displayProduct(product);
   }

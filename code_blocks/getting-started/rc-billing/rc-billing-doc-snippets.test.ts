@@ -48,15 +48,15 @@ test('Snippet "Check for any entitlement" works for customer without any entitle
 
 
 test('Snippet "Get current offering" works', async () => {
-  let pkgs : Package[]|null = null;
+  let pkgs : Package[]|undefined;
   const callback = vi.fn().mockImplementation((availablePackages : Package[]) => {
     pkgs = availablePackages;
   });
   await getCurrentOffering(purchases, "customer_without_entitlement", callback);
   expect(callback).toHaveBeenCalled();
-  expect(pkgs).toBeTruthy();
+  expect(pkgs).toBeDefined();
   expect((pkgs ?? []).length).toBe(1);
-  expect(pkgs !== null && (pkgs as Package[])[0].identifier).toBe("$rc_monthly");
+  expect(pkgs !== undefined && pkgs[0]?.identifier).toBe("$rc_monthly");
 });
 
 test('Snippet "Get custom offering" works', async () => {
@@ -73,20 +73,35 @@ test('Snippet "Get custom offering" works', async () => {
 
 
 test('Snippet "Displaying packages" works', async () => {
-  let allPackages : Package[] = [], monthlyPackage : Package|null = null, customPackage : Package|null = null;
+  let allPackages : Package[] = [];
+  let monthlyPackage : Package|undefined;
+  let customPackage : Package|undefined;
   const callback = vi.fn().mockImplementation((props : {allPackages : Package[], monthlyPackage : Package|null, customPackage : Package|null}) => {
     allPackages = props.allPackages;
-    monthlyPackage = props.monthlyPackage;
-    customPackage = props.customPackage;
+    monthlyPackage = props.monthlyPackage ?? undefined;
+    customPackage = props.customPackage ?? undefined;
   });
   await displayingPackages(purchases, "customer_without_entitlement", callback);
   expect(callback).toHaveBeenCalled();
   expect(allPackages).toBeTruthy();
   expect((allPackages ?? []).length).toBe(3);
   expect(monthlyPackage).not.toBe(null);
-  expect((monthlyPackage as Package|null)?.identifier).toBe("$rc_monthly");
+  monthlyPackage
+  expect(monthlyPackage?.identifier).toBe("$rc_monthly");
   expect(customPackage).not.toBe(null);
-  expect((customPackage as Package|null)?.identifier).toBe("<package_id>");
+  expect(customPackage?.identifier).toBe("<package_id>");
+});
+
+test('Snippet "Getting product" works', async () => {
+  let product : Product|undefined;
+  const callback = vi.fn().mockImplementation((theProduct : Product) => {
+    product = theProduct;
+  });
+  await gettingProduct(purchases, "customer_without_entitlement", callback);
+  expect(callback).toHaveBeenCalled();
+  expect(product).toBeDefined()
+  expect(product?.currentPrice.amount).toBe(1000);
+  expect(product?.currentPrice.currency).toBe("USD");
 });
 
 test('Snippet "Purchasing package" works', async () => {

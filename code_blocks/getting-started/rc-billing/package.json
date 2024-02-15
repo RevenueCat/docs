@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "eslint && vitest run"
+    "test": "tsc --noEmit && eslint . && vitest run"
   },
   "type": "module",
   "author": "RevenueCat",
   "dependencies": {
-    "@revenuecat/purchases-js": "^0.0.13"
+    "@revenuecat/purchases-js": "^0.0.14"
   },
   "devDependencies": {
     "eslint": "^8.56.0",
