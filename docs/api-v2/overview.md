@@ -90,4 +90,4 @@ We are looking for interested developers who want to take part in the beta progr
 - Being the first to gain access to our new APIs
 - Being able to give feedback before launch
 
-If you’re interested, please fill out this [Typeform](https://form.typeform.com/to/VltVNhW8) to join our waitlist and to share your use cases!
+If you’re interested, please fill out this [form](https://docs.google.com/forms/d/e/1FAIpQLSelVUeqp_MHRB-cM4C1-95T1Xq0Xi9rZ540IUnLBm5XpS2ZrQ/viewform?usp=sf_link) to join our waitlist and to share your use cases!
