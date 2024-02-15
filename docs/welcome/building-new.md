@@ -11,13 +11,13 @@ RevenueCat provides a powerful (and open source) SDK that acts as a wrapper arou
 
 Before you can start building, sign up for a free account and set up your project in the RevenueCat dashboard. From there you'll get an API Key that you can use to start building.
 
-<a class="cta" href="/welcome/overview/projects" target="_self">Create a Project →</a>
+[Create a Project →](/welcome/projects)
 
 ## 2. Installing and set up the SDK
 
 If you're launching a new app or adding subscriptions to your app for the first time you should install the appropriate SDK and follow the Mobile SDK guides to get set up and make your first purchase.
 
-<a class="cta" href="/getting-started/installation" target="_self">Install SDK →</a>
+[Install SDK →](/getting-started/installation)
 
 ## 3. Explore the docs to learn what's possible
 
