@@ -19,7 +19,7 @@
                 "arn:aws:s3:::<YOUR_S3_BUCKET_NAME>/*"
             ]
         },
-        // If encryption is enabled on your S3 bucket, you will also need to add the following policy statement
+        // If SSE-KMS encryption is enabled on your S3 bucket, you will also need to add the following policy statement
         {
             "Sid": "KMSDataKeyGeneration",
             "Effect": "Allow",
