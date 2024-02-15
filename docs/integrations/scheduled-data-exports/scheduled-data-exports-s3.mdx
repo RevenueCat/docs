@@ -23,6 +23,28 @@ Once you've configured the S3 integration in RevenueCat, allow up to 24 hours be
 
 When configuring the deliveries, you have the option to receive a full export daily or only new and updated transactions from the last export. The first delivery will _always_ be a full export even if this option is selected.
 
+## Creating S3 bucket
+
+If you don't already have an S3 bucket, you can create one in the AWS console.
+
+Navigate to the S3 dashboard in your AWS console and click **Create bucket**: https://s3.console.aws.amazon.com/s3/home
+
+![](/images/aws_create_bucket.png "aws_create_bucket.png")
+
+Enter a name for your bucket.
+
+```plaintext title="Bucket Name"
+revenuecat-s3-bucket-appname
+```
+
+![](/images/aws_bucket_name.png "aws_bucket_name.png")
+
+Scroll down to choose the encryption options for your bucket. The default option is fine for most use cases.
+
+If you choose SSE-KMS, you'll need to add the `kms:GenerateDataKey` permission to the IAM policy you create in the next step.
+
+![](/images/aws_bucket_encryption.png "aws_bucket_encryption.png")
+
 ## Creating Amazon S3 Credentials
 
 The below steps outline how to create an Access Key in your AWS console that RevenueCat will need to complete data deliveries.
@@ -33,11 +55,11 @@ You should only give RevenueCat access to the minimum resources necessary. To do
 
 Navigate to the IAM Policy dashboard in your AWS console and click **‘Create policy’**: https://console.aws.amazon.com/iam/home#/policies
 
-![](/images/e098c42-e14f603-Screen_Shot_2019-07-10_at_7.08.18_AM_c9300a6c4d5d6eb5907e74aa110a1908.png "e14f603-Screen_Shot_2019-07-10_at_7.08.18_AM.png")
+![](/images/aws_create_policy.png "aws_create_policy.png")
 
 In the policy editor, switch to the JSON view and paste in the following code. Be sure to replace `revenuecat-deliveries` with the name of your bucket.
 
-import jsonContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports/scheduled-data-exports-s3_1.json";
+import jsonContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports/scheduled-data-exports-s3_1.jsonc";
 
 <RCCodeBlock tabs={[
     { type: 'json', content: jsonContent, name: 'Access Policy' }
@@ -45,9 +67,17 @@ import jsonContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-d
 
 This policy will allow RevenueCat to list the contents of your bucket, as well as read, write, delete files to it. When you've pasted in the code, click **Review policy\***.
 
-![](/images/c0e73e9-e107a25-Screen_Shot_2019-07-17_at_2.19.37_PM_28d83b82dfc675812b51438723f2577e.png "e107a25-Screen_Shot_2019-07-17_at_2.19.37_PM.png")
+![](/images/aws_specify_permissions.png "e107a25-Screen_Shot_2019-07-17_at_2.19.37_PM.png")
 
-Finally, give the policy a name and description.
+Finally, give the policy a name and description. Example:
+
+```plaintext title="IAM Policy Name"
+RevenueCatS3Policy_<AppName>
+```
+
+```plaintext title="IAM Policy Description"
+Policy for RevenueCat to deliver Scheduled Data Export data to S3
+```
 
 ### 2. Create IAM User
 
@@ -55,28 +85,53 @@ You'll next need to create an individual user that only has access to the policy
 
 Navigate to the IAM User dashboard in your AWS console and click **Add user**: https://console.aws.amazon.com/iam/home#/users
 
-![](/images/5cb11f9-f88e5d7-Screen_Shot_2019-07-10_at_6.52.59_AM_31a5c48857ffbce6b4b9ff8c6c7de654.png "f88e5d7-Screen_Shot_2019-07-10_at_6.52.59_AM.png")
+![](/images/aws_create_user.png "aws_create_user.png")
 
-Enter a **User name** and choose **Programmatic access**.
+Enter a **User name** and click Next.
 
-![](/images/267658d-4dca1f9-Screen_Shot_2019-07-10_at_6.53.47_AM_f32d74ec5d2470704d57d8b25b3c32a9.png "4dca1f9-Screen_Shot_2019-07-10_at_6.53.47_AM.png")
+```plaintext title="IAM User Name"
+RevenueCatS3User_<AppName>
+```
+
+![](/images/aws_create_user_username.png "aws_create_user_username.png")
 
 Choose the option to **Add user to a group**, and click **Create group**.
 
-![](/images/a6f1984-b0cbff9-Screen_Shot_2019-07-10_at_6.54.48_AM_3f4cf70356a4b72aed7d9ca4420639b5.png "b0cbff9-Screen_Shot_2019-07-10_at_6.54.48_AM.png")
+![](/images/aws_add_user_to_group.png "aws_add_user_to_group.png")
 
-**Select the Policy name you created from Step 1**, then click **Create group**.
+**Select the Policy name you created from Step 1**, and enter a name for the group, then click **Create group**.
 
-![](/images/128afb2-b6f169d-Screen_Shot_2019-07-10_at_7.06.58_AM_5864844dd5361ea904fa69547b8b0cf3.png "b6f169d-Screen_Shot_2019-07-10_at_7.06.58_AM.png")
+```plaintext title="IAM User Group Name"
+RevenueCatS3UserGroup_<AppName>
+```
+
+![](/images/aws_create_user_group_name.png "aws_create_user_group_name.png")
 
 Once the group is created, select it and click **Next**, optionally add any tags to the group.
 
-![](/images/fdd4b15-da89475-Screen_Shot_2019-07-10_at_7.10.38_AM_e506c3bc250bd3cf3758bed034d46848.png "da89475-Screen_Shot_2019-07-10_at_7.10.38_AM.png")
+![](/images/aws_select_group.png "aws_select_group.png")
 
 Review and click **Create user**.
 
-![](/images/123edce-9a74401-Screen_Shot_2019-07-10_at_7.11.15_AM_c42b1622fc1b554a31dc7cb6d62f0472.png "9a74401-Screen_Shot_2019-07-10_at_7.11.15_AM.png")
+![](/images/aws_review_create_user.png "aws_review_create_user.png")
 
-Finally, you can download the secure access credentials or copy them from the dashboard.
+### 3. Download Access Credentials
 
-![](/images/c861408-a46bfd2-Screen_Shot_2019-07-10_at_7.11.48_AM_4d1ea024b1c8426c54f5a03a3842cde9.png "a46bfd2-Screen_Shot_2019-07-10_at_7.11.48_AM.png")
+After creating the user, select it from the list of users in the IAM dashboard and click 'Create access key'.
+
+![](/images/aws_view_user.png "aws_view_user.png")
+
+Select 'Other' and click Next.
+
+![](/images/aws_credentials_select_other.png "aws_credentials_select_other.png")
+
+Download the CSV or enter your access key and secret access key into RevenueCat.
+
+![](/images/aws_download_keys.png "aws_download_keys.png")
+
+## Debugging
+
+**Error: `The provided ETL credentials or bucket name are incorrect.`**
+
+Please ensure your IAM policy reflects the correct bucket name. If you've changed the bucket name, you'll need to update the policy to reflect the new name.
+
