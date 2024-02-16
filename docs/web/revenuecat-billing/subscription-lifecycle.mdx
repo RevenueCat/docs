@@ -8,7 +8,7 @@ hidden: false
 RevenueCat Billing and the RevenueCat Web SDK are currently in beta.
 :::
 ## Starting a subscription
-The process to start a subscription is initiated by calling the [purchase method in the SDK](/getting-started/revenuecat-billing#purchasing-a-package). The subscription starts only if and when the initial payment is confirmed – if the customer cancels the checkout form, or if the initial payment for the subscription fails, no subscription is generated, and no events get generated. 
+The process to start a subscription is initiated by calling the [purchase method in the SDK](/web/revenuecat-billing#purchasing-a-package). The subscription starts only if and when the initial payment is confirmed – if the customer cancels the checkout form, or if the initial payment for the subscription fails, no subscription is generated, and no events get generated. 
 
 When the subscription is successfully started, RevenueCat generates an `INITIAL_PURCHASE` [event](/integrations/webhooks/event-types-and-fields). An invoice is then generated and sent to the customer via email, along with a link to the [customer portal](./customer-portal).
 
