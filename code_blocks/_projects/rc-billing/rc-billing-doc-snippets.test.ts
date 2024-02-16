@@ -3,76 +3,94 @@ import { getCustomerInfo, checkForSpecificEntitlement, checkForAnyEntitlement, g
 import type { Package, Product } from "@revenuecat/purchases-js";
 import { Purchases } from "@revenuecat/purchases-js";
 
-
 const REVENUECAT_BILLING_PUBLIC_API_KEY = 'rcb_sb_NLgftxAMfaRjBxlpJjSfQnGAQ';
-const purchases = new Purchases(REVENUECAT_BILLING_PUBLIC_API_KEY);
  
 test('Snippet "Configuring SDK" works', () => {
-  expect(configuringSDK()).toBeDefined();
+  const purchases = configuringSDK();
+  expect(purchases).toBeDefined();
+  purchases.close();
 })
 
 test('Snippet "Get customer info" works', async () => {
-  expect(await getCustomerInfo(purchases, "customer_with_gold_entitlement")).toBeDefined();
+  Purchases.initializePurchases(REVENUECAT_BILLING_PUBLIC_API_KEY, "customer_with_gold_entitlement");
+  expect(await getCustomerInfo()).toBeDefined();
+  Purchases.getInstance().close();
 });
 
 test('Snippet "Check for specific entitlement" works for customer with entitlement', async () => {
+  Purchases.initializePurchases(REVENUECAT_BILLING_PUBLIC_API_KEY, "customer_with_gold_entitlement");
   const callback = vi.fn();
-  await checkForSpecificEntitlement(purchases, "customer_with_gold_entitlement", callback);
+  await checkForSpecificEntitlement(callback);
   expect(callback).toHaveBeenCalled();
+  Purchases.getInstance().close();
 });
 
 test('Snippet "Check for specific entitlement" works for customer without any entitlement', async () => {
+  Purchases.initializePurchases(REVENUECAT_BILLING_PUBLIC_API_KEY, "customer_without_entitlement");
   const callback = vi.fn();
-  await checkForSpecificEntitlement(purchases, "customer_without_entitlement", callback);
+  await checkForSpecificEntitlement(callback);
   expect(callback).not.toHaveBeenCalled();
+  Purchases.getInstance().close();
 });
 
 test('Snippet "Check for specific entitlement" works for customer with different entitlement', async () => {
+  Purchases.initializePurchases(REVENUECAT_BILLING_PUBLIC_API_KEY, "customer_with_silver_entitlement");
   const callback = vi.fn();
-  await checkForSpecificEntitlement(purchases, "customer_with_silver_entitlement", callback);
+  await checkForSpecificEntitlement(callback);
   expect(callback).not.toHaveBeenCalled();
+  Purchases.getInstance().close();
 });
 
 test('Snippet "Check for any entitlement" works for both customers with entitlement', async () => {
   const callback = vi.fn();
-  await checkForAnyEntitlement(purchases, "customer_with_gold_entitlement", callback);
-  await checkForAnyEntitlement(purchases, "customer_with_silver_entitlement", callback);
+  Purchases.initializePurchases(REVENUECAT_BILLING_PUBLIC_API_KEY, "customer_with_gold_entitlement");
+  await checkForAnyEntitlement(callback);
+  Purchases.getInstance().close();
+  Purchases.initializePurchases(REVENUECAT_BILLING_PUBLIC_API_KEY, "customer_with_silver_entitlement");
+  await checkForAnyEntitlement(callback);
+  Purchases.getInstance().close();
   expect(callback).toHaveBeenCalledTimes(2);
 });
 
 test('Snippet "Check for any entitlement" works for customer without any entitlement', async () => {
+  Purchases.initializePurchases(REVENUECAT_BILLING_PUBLIC_API_KEY, "customer_without_entitlement");
   const callback = vi.fn();
-  await checkForAnyEntitlement(purchases, "customer_without_entitlement", callback);
+  await checkForAnyEntitlement(callback);
   expect(callback).not.toHaveBeenCalled();
+  Purchases.getInstance().close();
 });
 
-
 test('Snippet "Get current offering" works', async () => {
+  Purchases.initializePurchases(REVENUECAT_BILLING_PUBLIC_API_KEY, "customer_without_entitlement");
   let pkgs : Package[]|undefined;
   const callback = vi.fn().mockImplementation((availablePackages : Package[]) => {
     pkgs = availablePackages;
   });
-  await getCurrentOffering(purchases, "customer_without_entitlement", callback);
+  await getCurrentOffering(callback);
   expect(callback).toHaveBeenCalled();
   expect(pkgs).toBeDefined();
   expect((pkgs ?? []).length).toBe(1);
   expect(pkgs !== undefined && pkgs[0]?.identifier).toBe("$rc_monthly");
+  Purchases.getInstance().close();
 });
 
 test('Snippet "Get custom offering" works', async () => {
+  Purchases.initializePurchases(REVENUECAT_BILLING_PUBLIC_API_KEY, "customer_without_entitlement");
   let pkgs : Package[]|null = null;
   const callback = vi.fn().mockImplementation((availablePackages : Package[]) => {
     pkgs = availablePackages;
   });
-  await getCustomOffering(purchases, "customer_without_entitlement", callback);
+  await getCustomOffering(callback);
   expect(callback).toHaveBeenCalled();
   expect(pkgs).toBeTruthy();
   expect((pkgs ?? []).length).toBe(3);
   expect((pkgs ?? [] as Package[]).find(pkg => pkg.identifier == "experiment_group_package")).toBeDefined();
+  Purchases.getInstance().close();
 });
 
 
 test('Snippet "Displaying packages" works', async () => {
+  Purchases.initializePurchases(REVENUECAT_BILLING_PUBLIC_API_KEY, "customer_without_entitlement");
   let allPackages : Package[] = [];
   let monthlyPackage : Package|undefined;
   let customPackage : Package|undefined;
@@ -81,7 +99,7 @@ test('Snippet "Displaying packages" works', async () => {
     monthlyPackage = props.monthlyPackage ?? undefined;
     customPackage = props.customPackage ?? undefined;
   });
-  await displayingPackages(purchases, "customer_without_entitlement", callback);
+  await displayingPackages(callback);
   expect(callback).toHaveBeenCalled();
   expect(allPackages).toBeTruthy();
   expect((allPackages ?? []).length).toBe(3);
@@ -90,24 +108,29 @@ test('Snippet "Displaying packages" works', async () => {
   expect(monthlyPackage?.identifier).toBe("$rc_monthly");
   expect(customPackage).not.toBe(null);
   expect(customPackage?.identifier).toBe("<package_id>");
+  Purchases.getInstance().close();
 });
 
 test('Snippet "Getting product" works', async () => {
+  Purchases.initializePurchases(REVENUECAT_BILLING_PUBLIC_API_KEY, "customer_without_entitlement");
   let product : Product|undefined;
   const callback = vi.fn().mockImplementation((theProduct : Product) => {
     product = theProduct;
   });
-  await gettingProduct(purchases, "customer_without_entitlement", callback);
+  await gettingProduct(callback);
   expect(callback).toHaveBeenCalled();
   expect(product).toBeDefined()
   expect(product?.currentPrice.amount).toBe(1000);
   expect(product?.currentPrice.currency).toBe("USD");
+  Purchases.getInstance().close();
 });
 
 test('Snippet "Purchasing package" works', async () => {
+  const purchases = Purchases.initializePurchases(REVENUECAT_BILLING_PUBLIC_API_KEY, "customer_without_entitlement");
   const purchasePackage = vi.spyOn(purchases, 'purchasePackage');
   
-  await purchasingPackage(purchases, "customer_without_entitlement");
+  await purchasingPackage();
   expect(purchasePackage).toHaveBeenCalled();
+  Purchases.getInstance().close();
 });
 

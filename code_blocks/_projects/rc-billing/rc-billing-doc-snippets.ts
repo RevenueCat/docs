@@ -1,20 +1,23 @@
-const REVENUECAT_BILLING_PUBLIC_API_KEY = '';
+
 import type {CustomerInfo, Package, Product } from "@revenuecat/purchases-js";
 
+const REVENUECAT_BILLING_PUBLIC_API_KEY = '';
+const authentication = { getAppUserId : () => '' };
 // MARK: Configuring SDK
 import { Purchases } from "@revenuecat/purchases-js";
 
-const purchases = new Purchases(REVENUECAT_BILLING_PUBLIC_API_KEY);
+const appUserId = authentication.getAppUserId(); // Replace with your own authentication system
+const purchases = Purchases.initializePurchases(REVENUECAT_BILLING_PUBLIC_API_KEY, appUserId);
 // END
 function configuringSDK() {
   return purchases;
 }
 
-async function getCustomerInfo(purchases : Purchases, appUserId : string) : Promise<CustomerInfo | null> {
+async function getCustomerInfo() : Promise<CustomerInfo | null> {
 let customerInfo : CustomerInfo|null = null;
 // MARK: Getting customer information
 try {
-  customerInfo = await purchases.getCustomerInfo(appUserId);
+  customerInfo = await Purchases.getInstance().getCustomerInfo();
   // access latest customerInfo
 } catch (e) {
   // Handle errors fetching customer info
@@ -23,8 +26,8 @@ try {
 return customerInfo; 
 }
 
-async function checkForSpecificEntitlement(purchases : Purchases, appUserId : string, grantEntitlementAccess : () => void) {
-const customerInfo = await purchases.getCustomerInfo(appUserId);
+async function checkForSpecificEntitlement(grantEntitlementAccess : () => void) {
+const customerInfo = await Purchases.getInstance().getCustomerInfo();
 if(!customerInfo) return;
 // MARK: Check for specific entitlement
 if ("gold_entitlement" in customerInfo.entitlements.active) {
@@ -34,8 +37,8 @@ if ("gold_entitlement" in customerInfo.entitlements.active) {
 // END
 }
 
-async function checkForAnyEntitlement(purchases : Purchases, appUserId : string, grantEntitlementAccess : () => void) {
-const customerInfo = await purchases.getCustomerInfo(appUserId);
+async function checkForAnyEntitlement(grantEntitlementAccess : () => void) {
+const customerInfo = await Purchases.getInstance().getCustomerInfo();
 if(!customerInfo) return;
 // MARK: Check for any entitlement
 if (Object.keys(customerInfo.entitlements.active).length > 0) {
@@ -45,10 +48,10 @@ if (Object.keys(customerInfo.entitlements.active).length > 0) {
 // END
 }
 
-async function getCurrentOffering(purchases : Purchases, appUserId: string, displayPackages :(pkg: Package[]) => void) {
+async function getCurrentOffering(displayPackages :(pkg: Package[]) => void) {
 // MARK: Get current offerings
 try {
-  const offerings = await purchases.getOfferings(appUserId);
+  const offerings = await Purchases.getInstance().getOfferings();
   if (
     offerings.current !== null &&
     offerings.current.availablePackages.length !== 0
@@ -62,10 +65,10 @@ try {
 // END
 }
 
-async function getCustomOffering(purchases : Purchases, appUserId: string, displayPackages :(pkg: Package[]) => void) {
+async function getCustomOffering(displayPackages :(pkg: Package[]) => void) {
 // MARK: Get custom offering
 try {
-  const offerings = await purchases.getOfferings(appUserId);
+  const offerings = await Purchases.getInstance().getOfferings();
   if (offerings.all["experiment_group"].availablePackages.length !== 0) {
     // Display packages for sale
     displayPackages(offerings.all["experiment_group"].availablePackages);
@@ -77,11 +80,9 @@ try {
 }
 
 async function displayingPackages(
-  purchases : Purchases, 
-  appUserId : string, 
   callback : (props: {allPackages : Package[], monthlyPackage : Package|null, customPackage : Package|null}) => void
 ) {
-const offerings = await purchases.getOfferings(appUserId);
+const offerings = await Purchases.getInstance().getOfferings();
 // MARK: Displaying packages
 const allPackages = offerings.all["experiment_group"].availablePackages;
 // --
@@ -92,11 +93,11 @@ const customPackage = offerings.all["experiment_group"].packagesById["<package_i
 callback({allPackages, monthlyPackage, customPackage});
 }
 
-async function gettingProduct(purchases : Purchases, appUserId : string, displayProduct : (product : Product) => void) {
+async function gettingProduct(displayProduct : (product : Product) => void) {
 // MARK: Getting product
 // Accessing / displaying the monthly product
 try {
-  const offerings = await purchases.getOfferings(appUserId);
+  const offerings = await Purchases.getInstance().getOfferings();
   if (offerings.current && offerings.current.monthly) {
     const product = offerings.current.monthly.rcBillingProduct;
     // Display the price and currency of the RC Billing Product
@@ -108,14 +109,14 @@ try {
 // END
 }
 
-async function purchasingPackage(purchases : Purchases, appUserId : string) {
+async function purchasingPackage() {
 // This can't really be tested currently
-const pkg = (await purchases.getOfferings(appUserId)).current?.availablePackages[0];
+const pkg = (await Purchases.getInstance().getOfferings()).current?.availablePackages[0];
 if (!pkg) return;
 
 // MARK: Purchasing package
 try {
-  const { customerInfo } = await purchases.purchasePackage(appUserId, pkg);
+  const { customerInfo } = await Purchases.getInstance().purchasePackage(pkg);
   if (Object.keys(customerInfo.entitlements.active).includes("pro")) {
     // Unlock that great "pro" content
   }
