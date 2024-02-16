@@ -4,7 +4,7 @@ import type {CustomerInfo, Package, Product } from "@revenuecat/purchases-js";
 const REVENUECAT_BILLING_PUBLIC_API_KEY = '';
 const authentication = { getAppUserId : () => '' };
 // MARK: Configuring SDK
-import { Purchases } from "@revenuecat/purchases-js";
+import { ErrorCode, Purchases, PurchasesError } from "@revenuecat/purchases-js";
 
 const appUserId = authentication.getAppUserId(); // Replace with your own authentication system
 const purchases = Purchases.initializePurchases(REVENUECAT_BILLING_PUBLIC_API_KEY, appUserId);
@@ -31,7 +31,7 @@ const customerInfo = await Purchases.getInstance().getCustomerInfo();
 if(!customerInfo) return;
 // MARK: Check for specific entitlement
 if ("gold_entitlement" in customerInfo.entitlements.active) {
-  // Grant user access to the entitlement "entitlement_identifier"
+  // Grant user access to the entitlement "gold_entitlement"
   grantEntitlementAccess();
 }
 // END
@@ -42,7 +42,7 @@ const customerInfo = await Purchases.getInstance().getCustomerInfo();
 if(!customerInfo) return;
 // MARK: Check for any entitlement
 if (Object.keys(customerInfo.entitlements.active).length > 0) {
-  // User has access to some entitlement
+  // User has access to some entitlement, grant entitlement access
   grantEntitlementAccess();
 }
 // END
@@ -121,7 +121,11 @@ try {
     // Unlock that great "pro" content
   }
 } catch (e) {
-  // Handle errors
+  if (e instanceof PurchasesError && e.errorCode == ErrorCode.UserCancelledError) {
+    // User cancelled the purchase process, don't do anything
+  } else {
+    // Handle errors
+  }
 }
 // END
 }

@@ -76,7 +76,7 @@ To get started with the Web SDK, you should follow the regular setup of [entitle
 
 ## SDK configuration
 
-You configure the RevenueCat Web SDK by creating a new instance of the `Purchases` class:
+You configure the RevenueCat Web SDK by calling the static `initializePurchases()` method of the `Purchases` class:
 
 import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
 
@@ -84,7 +84,7 @@ import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billin
     { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Configuring SDK"},
 ]} />
 
-Ideally, you should configure the SDK only once in your code, and then reuse the object across your code. This will avoid making extraneous API calls to the RevenueCat SDK.
+You should configure the SDK only once in your code, attempting to call `initializePurchases()` twice will throw an exception. You can use the object returned from the `initializePurchases()` method to call any of the SDK methods, or use the static method `getInstance()` of the `Purchases` class to returned the initialized `Purchases` object. The method will throw an exception if the SDK has not yet been configured.
 
 ## Identifying customers
 
