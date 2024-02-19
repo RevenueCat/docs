@@ -16,9 +16,9 @@ info:
 
     ## Should I use this REST API or the RevenueCat SDK?
 
-    If you’re adding subscriptions or other in-app purchases to your app for the first time or if you don’t have a backend that stores your user’s receipts, you’re probably looking to implement the [RevenueCat SDK](/docs/getting-started/installation/).
+    If you’re adding subscriptions or other in-app purchases to your app for the first time or if you don’t have a backend that stores your Customers' receipts, you’re probably looking to implement the [RevenueCat SDK](/docs/getting-started/installation/).
 
-    If you want to start migrating your existing users to RevenueCat and you have your user’s receipts stored on your own server, or you want to check subscription status of your users from your own server, the REST API is a great solution.
+    If you want to start migrating your existing users to RevenueCat and you have your Customers' receipts stored on your own server, or you want to check subscription status of your users from your own server, the REST API is a great solution.
 
     # Authentication
 
@@ -96,7 +96,7 @@ paths:
       parameters:
       - name: app_user_id
         in: path
-        description: The app user ID used with the mobile SDK.
+        description: The App User ID used with the mobile SDK.
         schema:
           type: string
         required: true
@@ -222,7 +222,7 @@ paths:
       parameters:
       - name: app_user_id
         in: path
-        description: The App User ID of the customer to be deleted (might be an aliased app user ID).
+        description: The App User ID of the customer to be deleted (might be an aliased App User ID).
         schema:
           type: string
         required: true
@@ -251,8 +251,8 @@ paths:
       summary: Create a Purchase
       tags:
       - transactions
-      description: Records a purchase for a user from iOS, Android, or Stripe and
-        will create a user if they don't already exist.
+      description: Records a purchase for a Customer from iOS, Android, or Stripe and
+        will create a Customer if they don't already exist.
       operationId: receipts
       parameters:
       - name: X-Platform
@@ -274,7 +274,7 @@ paths:
               properties:
                 app_user_id:
                   type: string
-                  description: App User ID of the user the receipt is associated with.
+                  description: App User ID of the Customer the receipt is associated with.
                 fetch_token:
                   type: string
                   description: For iOS, the base64 encoded receipt file, for Android
@@ -317,7 +317,7 @@ paths:
                   deprecated: true
                 presented_offering_identifier:
                   type: string
-                  description: Optional. The offering that was presented to the user
+                  description: Optional. The offering that was presented to the Customer
                     at the time of purchase.  This will be attached to any new transactions
                     in this fetch token and will be available in ETL exports and webhooks.
                     This is mostly useful if you're sending fetch tokens from your
@@ -419,22 +419,22 @@ paths:
       deprecated: false
   "/subscribers/{app_user_id}/entitlements/{entitlement_identifier}/promotional":
     post:
-      summary: Grant a Promotional Entitlement
+      summary: Grant an Entitlement
       tags:
       - entitlements
-      description: Grants a user a promotional entitlement. Does not override or defer
+      description: Grants a Customer an entitlement. Does not override or defer
         a store transaction, applied simultaneously.
       operationId: grant-a-promotional-entitlement
       parameters:
       - name: app_user_id
         in: path
-        description: The app user ID, or alias, of the subscriber.
+        description: The App User ID of the Customer.
         schema:
           type: string
         required: true
       - name: entitlement_identifier
         in: path
-        description: The identifier for the entitlement you want to grant to the user.
+        description: The identifier for the entitlement you want to grant to the Customer.
         schema:
           type: string
         required: true
@@ -471,23 +471,23 @@ paths:
       deprecated: false
   "/subscribers/{app_user_id}/entitlements/{entitlement_identifier}/revoke_promotionals":
     post:
-      summary: Revoke Promotional Entitlements
+      summary: Revoke Granted Entitlements
       tags:
       - entitlements
-      description: Revokes all promotional entitlements for a given entitlement identifier
-        and app user ID.
+      description: Revokes all granted entitlements for a given entitlement identifier
+        and App User ID.
       operationId: revoke-promotional-entitlements
       parameters:
       - name: app_user_id
         in: path
-        description: The app user id, or alias, of the subscriber.
+        description: The App User ID of the Customer.
         schema:
           type: string
         required: true
       - name: entitlement_identifier
         in: path
         description: The identifier for the entitlement you want to revoke from the
-          user.
+          Customer.
         schema:
           type: string
         required: true
@@ -514,7 +514,7 @@ paths:
       parameters:
       - name: app_user_id
         in: path
-        description: The app user ID, or alias, of the subscriber.
+        description: The App User ID of the Customer.
         schema:
           type: string
         required: true
@@ -546,7 +546,7 @@ paths:
       parameters:
       - name: app_user_id
         in: path
-        description: The app user id used with the mobile SDK.
+        description: The App User ID used with the mobile SDK.
         schema:
           type: string
         required: true
@@ -635,7 +635,7 @@ paths:
       parameters:
       - name: app_user_id
         in: path
-        description: The app user ID, or alias, of the subscriber.
+        description: The App User ID of the Customer.
         schema:
           type: string
         required: true
@@ -675,19 +675,19 @@ paths:
       summary: Override a Customer's Current Offering
       tags:
       - offerings
-      description: Overrides the current Offering for a specific user
+      description: Overrides the current Offering for a specific Customer
       operationId: override-offering
       parameters:
       - name: app_user_id
         in: path
-        description: The app user ID, or alias, of the subscriber.
+        description: The App User ID of the Customer.
         schema:
           type: string
         required: true
       - name: offering_uuid
         in: path
         description: The UUID for the offering you want to set as the override for
-          the user. The UUID can be found in the URL of the offering. For example,
+          the Customer. The UUID can be found in the URL of the offering. For example,
           the offering UUID in https://app.revenuecat.com/apps/abcd1234/offerings/ofrng1234567abc
           is `ofrng1234567abc`.
         schema:
@@ -710,12 +710,12 @@ paths:
       tags:
       - offerings
       description: Reset the offering overrides back to the current offering for a
-        specific user
+        specific Customer
       operationId: delete-offering-override
       parameters:
       - name: app_user_id
         in: path
-        description: The app user ID, or alias, of the subscriber.
+        description: The App User ID of the Customer.
         schema:
           type: string
         required: true
@@ -740,11 +740,11 @@ paths:
       parameters:
       - name: app_user_id
         in: path
-        description: The app user ID used with the mobile SDK. The app user ID doesn't
+        description: The App User ID used with the mobile SDK. The App User ID doesn't
           have to exist for the endpoint to work but it can affect the current offering
           depending on whether you have any [Experiments](doc:experiments) running
           or have [overridden the current offering](ref:override-offering) for this
-          specific app user ID.
+          specific App User ID.
         schema:
           type: string
         required: true
@@ -805,7 +805,7 @@ paths:
       parameters:
       - name: app_user_id
         in: path
-        description: The app user ID, or alias, of the subscriber.
+        description: The App User ID of the Customer.
         schema:
           type: string
         required: true
@@ -836,7 +836,7 @@ paths:
       parameters:
       - name: app_user_id
         in: path
-        description: The app user ID, or alias, of the subscriber.
+        description: The App User ID of the Customer.
         schema:
           type: string
         required: true
@@ -1082,8 +1082,8 @@ components:
                     enum: [PURCHASED, FAMILY_SHARED]
                     description: |
                       How the Customer received access to this subscription:
-                      - `PURCHASED`: The user purchased the product.  
-                      - `FAMILY_SHARED`: The user has access to the product via their family.
+                      - `PURCHASED`: The Customer purchased the product.  
+                      - `FAMILY_SHARED`: The Customer has access to the product via their family.
                   period_type:
                     type: string
                     enum: [normal, trial, intro]
