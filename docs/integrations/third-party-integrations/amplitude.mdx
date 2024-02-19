@@ -20,7 +20,7 @@ With accurate and up-to-date subscription data in Amplitude, you'll be set to tu
 
 ### Integration at a Glance
 
-| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Subscriber Attributes | Sends Transfer Events |                                                                      Optional Event Types                                                                       |
+| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Customer Attributes | Sends Transfer Events |                                                                      Optional Event Types                                                                       |
 | :--------------: | :-----------------------: | :------------------: | :----------------------------: | :-------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 |        ✅        |            ✅             |   Requires API key   |               ✅               |          ❌           | `non_subscription_purchase_event` `uncancellation_event` `subscription_paused_event` `expiration_event` `billing_issue_event` `product_change_event` |
 
@@ -66,14 +66,14 @@ import javaContent from "!!raw-loader!@site/code_blocks/integrations/third-party
 
 ### Send Amplitude User Identifiers to RevenueCat (Optional)
 
-If your App User ID in RevenueCat is different than the User ID in Amplitude, you can use the Amplitude User ID and/or Amplitude Device ID to identify events by adding a key in [Subscriber Attributes](/customers/subscriber-attributes).
+If your App User ID in RevenueCat is different than the User ID in Amplitude, you can use the Amplitude User ID and/or Amplitude Device ID to identify events by adding a key as an [Attributes](/customers/customer-attributes).
 
 | Key                  | Description                                                                                                      |
 | :------------------- | :--------------------------------------------------------------------------------------------------------------- |
 | `$amplitudeDeviceId` | The Amplitude [Device ID](https://developers.amplitude.com/docs/http-api-deprecated#keys-for-the-event-argument) |
 | `$amplitudeUserId`   | The Amplitude [User ID](https://developers.amplitude.com/docs/http-api-deprecated#keys-for-the-event-argument)   |
 
-If both keys are present, RevenueCat will send both the User ID and Device ID to identify events into Amplitude. If only one of the keys are present, RevenueCat will only send the available key. If no keys are present, RevenueCat will send the current RevenueCat App User ID. This property can be set and removed manually, like any other [Subscriber Attribute](/customers/subscriber-attributes). For more information how Amplitude tracks unique users, view their docs [here](https://help.amplitude.com/hc/en-us/articles/115003135607-Tracking-unique-users).
+If both keys are present, RevenueCat will send both the User ID and Device ID to identify events into Amplitude. If only one of the keys are present, RevenueCat will only send the available key. If no keys are present, RevenueCat will send the current RevenueCat App User ID. This property can be set and removed manually, like any other [Attribute](/customers/customer-attributes). For more information how Amplitude tracks unique users, view their docs [here](https://help.amplitude.com/hc/en-us/articles/115003135607-Tracking-unique-users).
 
 ### 2. Send RevenueCat Events to Amplitude
 

@@ -29,7 +29,7 @@ Purchase information only needs to be sent to RevenueCat once to initially creat
 
 #### Collect integration specific data
 
-Some integrations require certain device specific data to properly function. Be sure to review each integration specific guide here to ensure all required data is captured. Any device specific data is sent to RevenueCat as a [Subscriber Attribute](/customers/subscriber-attributes), which can be set via the RevenueCat SDK or REST API.
+Some integrations require certain device specific data to properly function. Be sure to review each integration specific guide here to ensure all required data is captured. Any device specific data is sent to RevenueCat as an [Attribute](/customers/customer-attributes) of the Customer, which can be set via the RevenueCat SDK or REST API.
 
 ### 2. Configure integration in the RevenueCat dashboard
 

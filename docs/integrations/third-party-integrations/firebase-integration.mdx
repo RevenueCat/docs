@@ -21,12 +21,12 @@ Each part of the integration requires additional setup, which you can see outlin
 
 | Integration        | What's required                                                                                                         |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| Google Analytics   | ✅ `$firebaseAppInstanceId` subscriber attribute \n❌ (optional, but highly recommended) Setting Firebase user identity |
+| Google Analytics   | ✅ `$firebaseAppInstanceId` customer attribute \n❌ (optional, but highly recommended) Setting Firebase user identity |
 | Firebase Extension | ✅ Setting Firebase user identity                                                                                       |
 
 ### Integration at a Glance
 
-| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Subscriber Attributes | Sends Transfer Events | Optional Event Types |
+| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Customer Attributes | Sends Transfer Events | Optional Event Types |
 | :--------------: | :-----------------------: | :------------------: | :----------------------------: | :-------------------: | :------------------: |
 |        ✅        |            ❌             |          ✅          |               ❌               |          ✅           |          ❌          |
 
@@ -57,9 +57,9 @@ import swiftContent from "!!raw-loader!@site/code_blocks/integrations/third-part
 
 ## 3. Send analytics events to Google Analytics
 
-In order to send subscriber lifecycle events to Google Analytics, you must set the `$firebaseAppInstanceId` as a subscriber attribute for your users and enable the integration from the RevenueCat integration settings page.
+In order to send subscriber lifecycle events to Google Analytics, you must set the `$firebaseAppInstanceId` as an Attribute for your Customers and enable the integration from the RevenueCat integration settings page.
 
-### Set `$firebaseAppInstanceId` as a subscriber attribute
+### Set `$firebaseAppInstanceId` as a customer attribute
 
 Please ensure you're getting the app instance ID from the [Firebase Analytics](https://firebase.google.com/docs/analytics/get-started) package.
 

@@ -71,7 +71,7 @@ An external link is provided in this section to bring you to the RevenueCat [Cus
 
 ![Attributes](/images/7456cc9-0.1.5_0b72dd0786b62bfaa77f43e09c99dd3f.png "Attributes")
 
-The Attributes section allows you to view [subscriber attributes](/customers/subscriber-attributes) you have assigned to this customer.
+The Attributes section allows you to view [attributes](/customers/customer-attributes) you have assigned to this customer.
 
 ### Entitlements
 

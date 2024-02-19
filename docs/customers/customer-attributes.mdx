@@ -1,18 +1,18 @@
 ---
-title: Subscriber Attributes
-slug: subscriber-attributes
+title: Customer Attributes
+slug: customer-attributes
 excerpt: Adding custom properties to users in RevenueCat
 hidden: false
 ---
-Subscriber attributes are useful for storing additional, structured information on a user. For example, you could store your user's email address and additional system identifiers directly in RevenueCat. Attributes will not be seen by your users unless you choose to explicitly show them yourself.
+Attributes are useful for storing additional, structured information on a customer. For example, you could store your user's email address and additional system identifiers directly in RevenueCat. Attributes will not be seen by your users unless you choose to explicitly show them yourself.
 
-:::info 
-Subscriber attributes are only synced with RevenueCat servers when Purchases.configure() is called, app backgrounded, and when purchases are made or restored.
+:::info Attribute synchronization
+Attributes are only synced with RevenueCat servers when Purchases.configure() is called, app backgrounded, and when purchases are made or restored.
 :::
 
 ## Setting Attributes
 
-Subscriber attributes can be set through the SDK by passing a dictionary of strings to the `setAttributes()` method on the shared Purchases instance. 
+Attributes for a Customer can be set through the SDK by passing a dictionary of strings to the `setAttributes()` method on the shared Purchases instance. 
 
 
 
@@ -56,8 +56,8 @@ import content7 from "!!raw-loader!@site/code_blocks/customers/subscriber-attrib
 ]}/>
 
 
-:::warning
-Since subscriber attributes are writable using a [public key](/welcome/authentication) they should not be used for managing secure or sensitive information such as subscription status, coins, etc.
+:::warning Attributes are not secure storage
+Since attributes are writable using a [public key](/welcome/authentication) they should not be used for managing secure or sensitive information such as subscription status, coins, etc.
 :::
 
 ### Restrictions
@@ -114,7 +114,7 @@ Attribute keys beginning with `$` are reserved for RevenueCat. The current list 
 
 :::warning attConsentStatus is populated regardless of requesting any permission
 
-The RevenueCat SDK sends the current ATT status for the `$attConsentStatus` subscriber attribute regardless of if you are or aren't requesting any ATT permission. So just as a heads-up, you can expect to see this attribute filled.
+The RevenueCat SDK sends the current ATT status for the `$attConsentStatus` attribute regardless of if you are or aren't requesting any ATT permission. So just as a heads-up, you can expect to see this attribute filled.
 
 Note: The RevenueCat SDK reads the current App Tracking Transparency Consent Status for the user, but will not modify it or request for further permission.
 
@@ -306,14 +306,14 @@ import content22 from "!!raw-loader!@site/code_blocks/customers/subscriber-attri
 
 ## Reading Attributes
 
-You can access subscriber attributes through the [REST API](https://docs.revenuecat.com/reference) using a secret key, in [webhooks](/integrations/webhooks), and through analytics integrations ([Amplitude](/integrations/third-party-integrations/amplitude), [Mixpanel](/integrations/third-party-integrations/mixpanel), [Segment](/integrations/third-party-integrations/segment)). The [customer view dashboard](/dashboard-and-metrics/customers-group/basic-information) will also show a list of attributes for the individual user that you can edit.
+You can access attributes through the [REST API](https://docs.revenuecat.com/reference) using a secret key, in [webhooks](/integrations/webhooks), and through analytics integrations ([Amplitude](/integrations/third-party-integrations/amplitude), [Mixpanel](/integrations/third-party-integrations/mixpanel), [Segment](/integrations/third-party-integrations/segment)). The [customer view dashboard](/dashboard-and-metrics/customers-group/basic-information) will also show a list of attributes for the individual user that you can edit.
 
 ![](/images/2413523-app.revenuecat.com_customers_aec1bada_15343510_3_5d23a7614423a429f264c31844888063.png)
 
-:::info
-Subscriber attributes are write-only from the SDK. Reading attributes should only be done server-side through the webhooks or REST API.
+:::info Accessing attributes
+Attributes are write-only from the SDK. Reading attributes should only be done server-side through the webhooks or REST API.
 
-Subscriber attributes are also included with transaction data for [Scheduled Data Exports](/integrations/scheduled-data-exports).
+Attributes are also included with transaction data for [Scheduled Data Exports](/integrations/scheduled-data-exports).
 :::
 
 ## Next Steps

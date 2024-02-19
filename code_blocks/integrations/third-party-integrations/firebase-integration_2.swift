@@ -8,7 +8,7 @@ func application(_ application: UIApplication,
     Purchases.configure(withAPIKey: "public_sdk_key")
     Purchases.shared.delegate = self
 
-    // Set the reserved $firebaseAppInstanceId subscriber attribute from Firebase Analytics
+    // Set the reserved $firebaseAppInstanceId attribute from Firebase Analytics
     let instanceID = Analytics.appInstanceID()
     if let unwrapped = instanceID {
         print("Instance ID -> " + unwrapped)

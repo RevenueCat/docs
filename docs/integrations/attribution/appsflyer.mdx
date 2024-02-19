@@ -12,7 +12,7 @@ With our AppsFlyer integration you can:
 
 ### Integration at a Glance
 
-| Includes Revenue | Supports Negative Revenue |   Sends Sandbox Events   | Includes Subscriber Attributes | Sends Transfer Events |                                        Optional Event Types                                        |
+| Includes Revenue | Supports Negative Revenue |   Sends Sandbox Events   | Includes Customer Attributes | Sends Transfer Events |                                        Optional Event Types                                        |
 | :--------------: | :-----------------------: | :----------------------: | :----------------------------: | :-------------------: | :------------------------------------------------------------------------------------------------: |
 |        ✅        |            ✅             | Requires Sandbox API key |               ❌               |          ❌           | `non_subscription_purchase_event` `expiration_event` `billing_issue_event` `product_change_event` |
 
@@ -22,7 +22,7 @@ Before RevenueCat can integrate with Appsflyer, your app should be running the l
 
 ## 2. Send device data to RevenueCat
 
-The Appsflyer integration requires some device-specific data. RevenueCat will only send events into Appsflyer if the below [Subscriber Attributes](/customers/subscriber-attributes) keys have been set for the device.
+The Appsflyer integration requires some device-specific data. RevenueCat will only send events into Appsflyer if the below [Customer Attributes](/customers/customer-attributes) keys have been set for the device.
 
 | Key            | Description                                                                                                                                     | Required         |
 | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :--------------- |
@@ -33,7 +33,7 @@ The Appsflyer integration requires some device-specific data. RevenueCat will on
 | `$idfv`        | iOS [vender identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ✅ (recommended) |
 | `$ip`          | The IP address of the device                                                                                                                    | ❌ (optional)    |
 
-These properties can be set manually, like any other [Subscriber Attributes](/customers/subscriber-attributes), or through the helper methods to `collectDeviceIdentifiers()` and `setAppsflyerId()`.
+These properties can be set manually, like any other [Attributes](/customers/customer-attributes), or through the helper methods to `collectDeviceIdentifiers()` and `setAppsflyerId()`.
 
 import swiftContent from "!!raw-loader!@site/code_blocks/integrations/attribution/appsflyer_1.swift";
 import kotlinContent from "!!raw-loader!@site/code_blocks/integrations/attribution/appsflyer_2.kt";
@@ -62,7 +62,7 @@ Make sure to remove all client-side tracking of revenue. Since RevenueCat will b
 
 ### (Optional) Send campaign data to RevenueCat
 
-RevenueCat itself is not an attribution network, and can't determine which specific ad drove an install/conversion. However, if you're able to collect this information from another source, such as Appsflyer, it's possible to attach it to a user in RevenueCat using [Subscriber Attributes](/customers/subscriber-attributes) as well.  
+RevenueCat itself is not an attribution network, and can't determine which specific ad drove an install/conversion. However, if you're able to collect this information from another source, such as Appsflyer, it's possible to attach it to a Customer in RevenueCat using [Attributes](/customers/customer-attributes) as well.  
 The below reserved key names can be used to optionally attach campaign data to a user. This data will then be sent through to other downstream analytics integrations and accessible via APIs and webhooks.
 
 | Key            |
@@ -76,14 +76,14 @@ The below reserved key names can be used to optionally attach campaign data to a
 
 ### (Optional) Block sharing of events
 
-To fulfill regulatory requirements like GDPR and CCPA, comply with user opt-out mechanisms, and other business reasons, you can limit sharing events with AppsFlyer's integrated partners and other third-party integrations. This is accomplished by setting the `$appsflyerSharingFilter` [Subscriber Attribute](/customers/subscriber-attributes), which will block the sharing of S2S events via postbacks/API with the specified partners.
+To fulfill regulatory requirements like GDPR and CCPA, comply with user opt-out mechanisms, and other business reasons, you can limit sharing events with AppsFlyer's integrated partners and other third-party integrations. This is accomplished by setting the `$appsflyerSharingFilter` [Attribute](/customers/customer-attributes), which will block the sharing of S2S events via postbacks/API with the specified partners.
 
-This Subscriber Attribute accepts the following formats:
+This Attribute accepts the following formats:
 
 - String with the word `all`
 - Array in the format `["partner_1", "partner_2"]`; stringify’ed as `"[\"partner_1\", \"partner_2\"]"`
 
-If you are setting or editing the list of partner IDs through the [dashboard](/customers/subscriber-attributes#reading-attributes), use the format `partner_1,partner_2`
+If you are setting or editing the list of partner IDs through the [dashboard](/customers/customer-attributes#reading-attributes), use the format `partner_1,partner_2`
 
 For a list of partner IDs, please contact your AppsFlyer CSM or AppsFlyer support.
 

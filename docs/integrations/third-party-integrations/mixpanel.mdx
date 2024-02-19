@@ -19,7 +19,7 @@ With our Mixpanel integration, you can:
 With accurate and up-to-date subscription data in Mixpanel, you'll be set to turbocharge your product analytics ⚡️
 
 ### Integration at a Glance
-| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Subscriber Attributes | Sends Transfer Events |                                                                   Optional Event Types                                                                   |
+| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Customer Attributes | Sends Transfer Events |                                                                   Optional Event Types                                                                   |
 |:----------------:|:-------------------------:|:--------------------:|:------------------------------:|:---------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------:|
 |         ✅        |             ✅             |  Requires Token |    ✅    |           ❌           | `non_subscription_purchase_event` `uncancellation_event` `subscription_paused_event` `expiration_event` `billing_issue_event` `product_change_event` |
 
@@ -53,11 +53,11 @@ If you're using the Mixpanel SDK, you can set the Distinct Id to match the Reven
 
 Use the `.identify()` method on the Mixpanel SDK to set the same App User ID that is set in RevenueCat. 
 
-##### Custom Mixpanel Subscriber Attribute
+##### Reserved Mixpanel Customer Attribute
 
-We recommend keeping the Mixpanel SDK identifier the same as RevenueCat's App User ID as described above. Alternatively, if you want Mixpanel events tied to a different identifier, you can set a subscriber attribute for `$mixpanelDistinctId` that is sent with events instead of RevenueCat's App User ID.
+We recommend keeping the Mixpanel SDK identifier the same as RevenueCat's App User ID as described above. Alternatively, if you want Mixpanel events tied to a different identifier, you can set a attribute for `$mixpanelDistinctId` that is sent with events instead of RevenueCat's App User ID.
 
-If a user has that subscriber attribute set it will be used instead of the RevenueCat App User ID in the Mixpanel events.
+If a user has that attribute set it will be used instead of the RevenueCat App User ID in the Mixpanel events.
 
 import swiftContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mixpanel_1.swift";
 import objectiveCContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mixpanel_2.m";

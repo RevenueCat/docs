@@ -104,20 +104,20 @@ See the table below for additional filters you can apply to your lists.
 
 | Filter                         | Type         | Description                                                                                                                     |
 | ------------------------------ | ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
-| Ad                             | String       | The `$ad` [Subscriber Attribute](/customers/subscriber-attributes#attribution-data) for the customer.                           |
-| Ad Group                       | String       | The `$adGroup` [Subscriber Attribute](/customers/subscriber-attributes#attribution-data) for the customer.                      |
+| Ad                             | String       | The `$ad` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                           |
+| Ad Group                       | String       | The `$adGroup` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                      |
 | Auto Renew Intent              | Bool         | Whether the customer has opted out of auto-renew or not.                                                                        |
-| Campaign                       | String       | The `$campaign` [Subscriber Attribute](/customers/subscriber-attributes#attribution-data) for the customer.                     |
+| Campaign                       | String       | The `$campaign` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                     |
 | Cancellation Date              | Date         | The date the customer unsubscribed from their subscription. Will be set back to `null` if the customer later resubscribes.      |
-| Creative                       | String       | The `$creative` [Subscriber Attribute](/customers/subscriber-attributes#attribution-data) for the customer.                     |
-| Email                          | String       | The `$email` [Subscriber Attribute](/customers/subscriber-attributes) for the customer.                                         |
+| Creative                       | String       | The `$creative` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                     |
+| Email                          | String       | The `$email` [Attribute](/customers/customer-attributes) for the customer.                                         |
 | First Purchase Date            | Date         | The date of the customer's first transaction.                                                                                   |
 | First Seen Date                | Date         | The date the customer was first seen by RevenueCat.                                                                             |
-| GPS Ad Id                      | String       | The `$gpsAdId` [Subscriber Attribute](/customers/subscriber-attributes#device-identifiers) for the customer.                    |
+| GPS Ad Id                      | String       | The `$gpsAdId` [](/customers/customer-attributes#device-identifiers) for the customer.                    |
 | Granted RC Promotional         | Bool         | Whether the customer has been granted a [Promotional Subscription](/dashboard-and-metrics/customers-group/promotionals) or not. |
-| IDFA                           | String       | The `$idfa` [Subscriber Attribute](/customers/subscriber-attributes#device-identifiers) for the customer.                       |
-| IDFV                           | String       | The `$idfv` [Subscriber Attribute](/customers/subscriber-attributes#device-identifiers) for the customer.                       |
-| Keyword                        | String       | The `$keyword` [Subscriber Attribute](/customers/subscriber-attributes#attribution-data) for the customer.                      |
+| IDFA                           | String       | The `$idfa` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                       |
+| IDFV                           | String       | The `$idfv` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                       |
+| Keyword                        | String       | The `$keyword` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                      |
 | Last Seen Country              | String       | The two-letter ISO 3166-1 alpha-2 code of the country where the user was last seen, determined by IP address.                   |
 | Last Seen Date                 | Date         | The date the customer was last seen by RevenueCat.                                                                              |
 | Latest Entitlement             | String       | The latest [Entitlement](/getting-started/entitlements) unlocked by the customer.                                               |
@@ -126,9 +126,9 @@ See the table below for additional filters you can apply to your lists.
 | Latest Purchase Date           | Date         | The customer's latest transaction date.                                                                                         |
 | Latest Renewal Date            | Date         | The customer's latest renewal date. This could be the same as the Latest Purchase Date.                                         |
 | Latest Store                   | Multi Select | The latest store the customer purchased from.                                                                                   |
-| Media Source                   | String       | The `$mediaSource` [Subscriber Attribute](/customers/subscriber-attributes#attribution-data) for the customer.                  |
+| Media Source                   | String       | The `$mediaSource` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                  |
 | Number of Renewals             | Integer      | The total number of renewals the customer has had. A trial conversion is considered a renewal.                                  |
-| Phone Number                   | String       | The `$phoneNumber` [Subscriber Attribute](/customers/subscriber-attributes) for the customer.                                   |
+| Phone Number                   | String       | The `$phoneNumber` [Attribute](/customers/customer-attributes) for the customer.                                   |
 | Total Spent                    | Integer      | The total revenue (in USD) spent by the customer.                                                                               |
 | Trial Cancellation Date        | Date         | The date the customer unsubscribed from their free trial. Will be set back to `null` if the customer later resubscribes.        |
 | Trial End Date                 | Date         | The date the customer's free trial expires.                                                                                     |
@@ -172,18 +172,18 @@ Below is a description of the .csv format for the exported data.
 | latest_auto_renew_intent | Boolean indicating whether the customer has chosen to have their subscription or trial auto-renew. |
 | all_purchased_product_ids | A comma separated list of all the product identifiers purchased by the customer. |
 | most_recent_billing_issues_at| Epoch timestamp in milliseconds when a subscription billing issue was detected by RevenueCat. |
-| email | The `$email` [Subscriber Attribute](/customers/subscriber-attributes) for the customer, if set. |
-| phone_number | The `$phoneNumber` [Subscriber Attribute](/customers/subscriber-attributes) for the customer, if set. |
-| media_source | The `$mediaSource` [Subscriber Attribute](/customers/subscriber-attributes#attribution-data) for the customer, if set. |
-| campaign | The `$campaign` [Subscriber Attribute](/customers/subscriber-attributes#attribution-data) for the customer, if set. |
-| ad_group | The`$adGroup` [Subscriber Attribute](/customers/subscriber-attributes#attribution-data) for the customer, if set. |
-| ad | The `$ad` [Subscriber Attribute](/customers/subscriber-attributes#attribution-data) for the customer, if set. |
-| keyword | The `$keyword` [Subscriber Attribute](/customers/subscriber-attributes#attribution-data) for the customer, if set. |
-| creative | The `$creative` [Subscriber Attribute](/customers/subscriber-attributes#attribution-data) for the customer, if set. |
-| idfa | The `$idfa` [Subscriber Attribute](/customers/subscriber-attributes#device-identifiers) for the customer, if set. |
-| idfv | The `$idfv` [Subscriber Attribute](/customers/subscriber-attributes#device-identifiers) for the customer, if set. |
-| gps_ad_id | The $gpsAdId [Subscriber Attribute](/customers/subscriber-attributes#device-identifiers) for the customer, if set. |
-| custom_attributes | JSON representation of any custom [Subscriber Attributes](/customers/subscriber-attributes) set for the customer. |
+| email | The `$email` [Attribute](/customers/customer-attributes) for the customer, if set. |
+| phone_number | The `$phoneNumber` [Attribute](/customers/customer-attributes) for the customer, if set. |
+| media_source | The `$mediaSource` [Attribute](/customers/customer-attributes#attribution-data) for the customer, if set. |
+| campaign | The `$campaign` [Attribute](/customers/customer-attributes#attribution-data) for the customer, if set. |
+| ad_group | The`$adGroup` [Attribute](/customers/customer-attributes#attribution-data) for the customer, if set. |
+| ad | The `$ad` [Attribute](/customers/customer-attributes#attribution-data) for the customer, if set. |
+| keyword | The `$keyword` [Attribute](/customers/customer-attributes#attribution-data) for the customer, if set. |
+| creative | The `$creative` [Attribute](/customers/customer-attributes#attribution-data) for the customer, if set. |
+| idfa | The `$idfa` [Attribute](/customers/customer-attributes#device-identifiers) for the customer, if set. |
+| idfv | The `$idfv` [Attribute](/customers/customer-attributes#device-identifiers) for the customer, if set. |
+| gps_ad_id | The $gpsAdId [Attribute](/customers/customer-attributes#device-identifiers) for the customer, if set. |
+| custom_attributes | JSON representation of any custom [Attributes](/customers/customer-attributes) set for the customer. |
 
 :::info "The last successful export finished recently. Please, wait some minutes before submitting another export."
 Note that there is a wait time of 30 minutes between each export.

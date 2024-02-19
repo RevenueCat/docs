@@ -131,7 +131,7 @@ const gettingStartedCategory = new Category(
 const customersCategory = new Category("👥 Customers", "customers", false, [
   new Page("user-ids"),
   new Page("customer-info"),
-  new Page("subscriber-attributes"),
+  new Page("customer-attributes"),
   new Page("trusted-entitlements"),
 ]);
 

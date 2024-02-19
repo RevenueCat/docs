@@ -41,7 +41,7 @@ RevenueCat only updates data tags in OneSignal in response to auto-renewing subs
 
 ### Integration at a Glance
 
-| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Subscriber Attributes | Sends Transfer Events | Optional Event Types |
+| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Customer Attributes | Sends Transfer Events | Optional Event Types |
 | :--------------: | :-----------------------: | :------------------: | :----------------------------: | :-------------------: | :------------------: |
 |        ❌        |            ❌             |          ✅          |               ❌               |          ❌           |          ❌          |
 
@@ -70,13 +70,13 @@ The OneSignal integration tracks the following events:
 Support for user-centric API versions of OneSignal (11.0 and above) coming soon.
 :::
 
-The OneSignal integration requires some device-specific data. RevenueCat will only update users in OneSignal if the below data has been added as [Subscriber Attributes](/customers/subscriber-attributes) for the user.
+The OneSignal integration requires some device-specific data. RevenueCat will only update users in OneSignal if the below data has been added as [Attributes](/customers/customer-attributes) for the Customer.
 
 | Key            | Description                                                                                       | Required |
 | :------------- | :------------------------------------------------------------------------------------------------ | :------- |
 | `$onesignalId` | The [OneSignal Player Id](https://documentation.onesignal.com/docs/users#player-id) for the user. | ✅       |
 
-This property can be set manually, like any other [Subscriber Attributes](/customers/subscriber-attributes), or through the helper method `setOnesignalID()`.
+This property can be set manually, like any other [Attribute](/customers/customer-attributes), or through the helper method `setOnesignalID()`.
 
 You can listen for changes to the OneSignal Id through their SDK, and send the value to RevenueCat. If you already have OneSignal set up, you should make sure that you're also sending the OneSignal Id for users that are updating to the latest version of your app.
 
