@@ -69,7 +69,7 @@ const config = {
             route: "/api-v2-spec/",
           },
           {
-            spec: "openapi-spec/api-v1.json",
+            spec: "openapi-spec/api-v1.yaml",
             route: "/api-v1-spec/",
           },
         ],
@@ -78,6 +78,7 @@ const config = {
           // Change with your site colors
           primaryColor: "#f25a5a",
         },
+        config: 'redocly.yaml',
       },
     ],
   ],

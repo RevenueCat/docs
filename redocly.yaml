@@ -1,0 +1,7 @@
+extends:
+  - recommended
+
+theme:
+  openapi:
+    schemaExpansionLevel: 1
+    pathInMiddlePanel: true
