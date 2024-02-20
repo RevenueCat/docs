@@ -2,6 +2,188 @@
 info:
   title: Developer API
   version: 2.0.0
+  description: |
+    # Overview (v2)
+    <div class="theme-admonition theme-admonition-info alert alert--info">
+      <div class="heading">New to RevenueCat?</div>
+      <div>Welcome! If you're adding subscriptions or other in-app purchases to your app, the RevenueCat SDK will handle most of the heavy-lifting without the need to interact with this API directly. See our <a href="/docs/getting-started/quickstart/">Quickstart</a> for more information on getting started with RevenueCat.</div>
+    </div>
+
+    <div class="theme-admonition theme-admonition-info alert alert--info">
+      <div class="heading">API v2 under development</div>
+      <div>
+        REST API v2 is currently under development and does not yet cover all use cases from API v1. For those missing use cases, please use v1 in the meantime.
+      </div>
+    </div>
+
+    ## About RevenueCat’s REST API
+
+    RevenueCat provides a REST API for developers to perform customer and transaction related actions from their own server.
+
+    Most of this API is geared toward client usage via RevenueCat’s SDK, but there are various endpoints that can be used for refunding purchases, granting promotional entitlements, and other sensitive actions that can only be done via a Secret API key from your server.
+
+    ## Should I use this REST API or the RevenueCat SDK?
+
+    If you’re adding subscriptions or other in-app purchases to your app for the first time or if you don’t have a backend that stores your user’s receipts, you’re probably looking to implement the [RevenueCat SDK](/docs/getting-started/installation/).
+
+    If you want to start migrating your existing users to RevenueCat and you have your user’s receipts stored on your own server, or you want to check subscription status of your users from your own server, the REST API is a great solution.
+
+    ## Authentication
+
+    Authentication for the RevenueCat REST API is achieved by setting the `Authorization` header with a valid API key. You'll find two types of API keys in your RevenueCat dashboard: _public_ and _secret_.
+
+    Certain endpoints require secret keys, which should be kept out of any publicly accessible areas such as GitHub, client-side code, and so forth. See our [Authentication guide](/docs/welcome/authentication/) for more information.
+
+    ```text title="Authorization Header"
+    Authorization: Bearer YOUR_REVENUECAT_API_KEY
+    ```
+
+    :::warning Authorization type `Bearer` required in header
+    The RevenueCat REST API v2 requires stating the authorization type `Bearer` in the `Authorization` header before the API key in accordance with [RFC 7235](https://datatracker.ietf.org/doc/html/rfc7235). This is different to the v1 API which allowed passing just the API key as the `Authorization` header.
+    :::
+
+    :::warning API v1 keys will not work with REST API v2
+    In order to utilize the RevenueCat API v2, please create new v2 secret keys and define your permissions.
+    :::
+
+    ## API v2 Permissions
+
+    You can create a new secret API key in your project settings page > API keys. Select _+ New_.
+
+    ![](/images/c640edd-image.png)
+
+    Give it a name, select `V2` as the version, and set your permissions. Be sure to select _Generate_ at the top right corner.
+
+    ![](/images/842f5ae-image.png)
+
+    Each endpoint in this documentation will contain a description informing you which permissions are required.
+
+    ## Request Payload
+
+    The body of the `POST` requests should be encoded in JSON and have the 'Content-Type' header set to 'application/json'.
+
+    ```text title="Content-Type Header"
+    Content-Type: application/json
+    ```
+
+    ```json title="Sample Body"
+    {
+      "app_user_id": "user-1456",
+      "fetch_token": "MQABC...EFH1234="
+    }
+    ```
+
+    ## Params
+
+    :::warning Encode your URL params
+    For URL params, such as the `app_user_id`, make sure you URL encode them before using them.
+    :::
+
+    ## Beta Interest
+
+    Our work on the APIs is not over yet. We are working on supporting a new and more consistent data model that will abstract away differences between the app stores.
+
+    We’re also working on a more RESTful API that will allow GET operations without side effects. For example, being able to read customer information without unintentionally manipulating it.
+
+    This will allow you to use customer endpoints without side effects of creating a new app user ID and provide you the necessary information about a customer’s subscription and purchase lifecycle.
+
+    We are looking for interested developers who want to take part in the beta program for our new REST APIs. Some key benefits of participating include:
+
+    - Being the first to gain access to our new APIs
+    - Being able to give feedback before launch
+
+    If you’re interested, please fill out this [form](https://docs.google.com/forms/d/e/1FAIpQLSelVUeqp_MHRB-cM4C1-95T1Xq0Xi9rZ540IUnLBm5XpS2ZrQ/viewform?usp=sf_link) to join our waitlist and to share your use cases!
+
+    # Pagination
+
+    Top-level API resources have support for bulk fetches via "list" API methods. For instance, you can list products, list entitlements, and list offerings. These list API methods share a common structure, taking at least these two parameters: `limit` and `starting_after`.
+
+    When a response or a field contains multiple entities of the same type, it returns a `list` object of the following structure:
+
+    ```json title="JSON"
+    {
+      "object": "list",
+      "items": [{}],
+      "next_page": "LIST_BASE_URL?starting_after=LAST_ID",
+      "url": "LIST_BASE_URL"
+    }
+    ```
+
+    Where…
+
+    - `url` is the full path base URL of the list endpoint (i.e., if you make a request to this endpoint, you will get the first page), e.g. `/v2/projects/{project_id}/products`
+    - `next_page` is the URL for the next page, if there is one. If there is no next page, the `next_page` field will not be present. Example: `/v2/projects/{project_id}/products?starting_after={last_id}`
+    - `items` is an array of the entries of the list.
+
+    The `starting_after` query parameter of list endpoints accepts the ID of the first list item that will not be part of the list (in other words, the ID of the last item of the previous page).
+
+    At the moment we only support forward pagination.
+
+    ## Parameters
+
+    `limit` _optional, default is 20_
+
+    A limit on the number of objects to be returned.
+
+    `starting_after` _optional_
+
+    A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 20 objects, ending with foo, your subsequent call can include `starting_after=foo` in order to fetch the next page of the list.
+
+    # Expandables
+
+    Expandables allow you to retrieve related data along with the request without making additional requests. Fields in the REST API will allow you to request additional information as an expanded response by using the `expand` query parameter.
+
+    For example, a `product` object will have an associated `app_id` field. This `app_id` field can be expanded in the same request with the `expand` query parameter and will include an `app` object in the response.
+
+    ### Without `expand` query param
+
+    ```json title="GET /products/prod1a2b3c4d5"
+    {
+      "object": "product",
+      "id": "prod1a2b3c4d5e",
+      "store_identifier": "rc_1w_199",
+      "type": "subscription",
+      "subscription": {
+        "duration": "P1M",
+        "grace_period_duration": "P3D",
+        "trial_duration": "P1W"
+      },
+      "created_at": 1658399423658,
+      "app_id": "app1a2b3c4"
+    }
+    ```
+
+    ### With `expand` query param:
+
+    ```json title="GET /products/prod1a2b3c4d5?expand=app"
+    {
+      "object": "product",
+      "id": "prod1a2b3c4d5e",
+      "store_identifier": "rc_1w_199",
+      "type": "subscription",
+      "subscription": {
+        "duration": "P1M",
+        "grace_period_duration": "P3D",
+        "trial_duration": "P1W"
+      },
+      "created_at": 1658399423658,
+      "app_id": "app1a2b3c4",
+      "app": {
+        "id": "app1a2b3c4",
+        "name": "string",
+        "created_at": 1658399423658,
+        "type": "amazon",
+        "project_id": "proj1a2b3c4"
+      }
+    }
+    ```
+
+    As you can see from above, the `app_id` field remains the same, but the response contains an additional `app` object.
+
+    Fields that can be expanded into objects are indicated in the endpoint documentation under **Query Params** and will list accepted values.
+
+    
+
 tags:
 - name: App
   description: Operations about apps.
@@ -17,6 +199,113 @@ tags:
   description: Operations about products.
 - name: Project
   description: Operations about projects.
+- name: Error Handling
+  x-traitTag: true
+  description: |
+    RevenueCat uses [standard HTTP status codes](https://rcv2.readme.io/reference/error-codes) to indicate the success or failure of an API request. Codes in the `2XX` range indicate the request was successful. `4XX` codes indicate an error caused by the client. `5XX` codes indicate an error in RevenueCat servers.
+
+    Successful modifications return the modified entity. Errors return the following fields:
+
+    ```json title="Sample Error Response"
+    {
+      "type": "parameter_error",
+      "param": "customer_id",
+      "message": "id is too long",
+      "retryable": false,
+      "doc_url": "https://errors.rev.cat/parameter-error"
+    }
+    ```
+
+    For more information on the `type` field and how to resolve these errors, please visit our [Error Types](ref:error-types) documentation.
+
+    ## Error Codes
+
+    | Code | Name                  | Description                                                                                                                                                                                          |
+    | :--- | :-------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | 200  | OK                    | Processed as expected                                                                                                                                                                                |
+    | 201  | Created               | Entity was created                                                                                                                                                                                   |
+    | 202  | Accepted              | Request acknowledged, but cannot be processed in real time (for instance, async job)                                                                                                                 |
+    | 204  | No content            | The request was successful and there was no content that could be returned                                                                                                                           |
+    | 400  | Bad Request           | Client error                                                                                                                                                                                         |
+    | 401  | Unauthorized          | Not authenticated                                                                                                                                                                                    |
+    | 403  | Forbidden             | Authorization failed                                                                                                                                                                                 |
+    | 404  | Not Found             | No resource was found                                                                                                                                                                                |
+    | 409  | Conflict              | Uniqueness constraint violation                                                                                                                                                                      |
+    | 418  | I'm a teapot          | RevenueCat refuses to brew coffee                                                                                                                                                                    |
+    | 422  | Unprocessable entity  | The request was valid and the syntax correct, but we were unable to process the contained instructions.                                                                                              |
+    | 423  | Locked                | The request conflicted with another ongoing request                                                                                                                                                  |
+    | 429  | Too Many Requests     | Being [rate limited](ref:rate-limit)                                                                                                                                                                 |
+    | 500  | Internal Server Error | The RevenueCat server ran into an unexpected problem – please check the [RevenueCat status page](https://status.revenuecat.com/) for any known outages and/or report the issue to RevenueCat support |
+    | 502  | Bad Gateway           | Invalid response from an upstream server                                                                                                                                                             |
+    | 503  | Service Unavailable   | There wasn’t a server to handle the request                                                                                                                                                          |
+    | 504  | Gateway Timeout       | We could not get the response in time from the upstream server                                                                                                                                       |
+
+    ## Error Types
+    ### `authentication_error`
+
+    Authentication is not valid for the given API key. Double check your API key.
+
+    ### `authorization_error`
+
+    The API key does not belong the project you specified. Double check that your API key is associated with the IDs you are passing.
+
+    ### `invalid_request`
+
+    This error can be due to several reasons:
+
+    - `Content-Type: application/json` is missing in the request header for `POST`/`PUT`/`PATCH` requests
+    - Using the incorrect HTTP method on a path (i.e: `GET …/entitlements/<entitlements_id>/actions/attach_products`)
+
+    ### `parameter_error`
+
+    The parameter provided is invalid. Please refer to the `message` field for more information.
+
+    - IDs (e.g: `entitlement_id`, `project_id`, etc): 1 to 255 characters
+    - `display_name`(applies to Entitlements): 1 to 1000 characters
+    - `lookup_key`(applies to Entitlements): 1 to 200 characters
+
+    ### `rate_limit_error`
+
+    The request has hit the [rate limit](ref:rate-limit) for this endpoint. Refer to the `backoff_ms` field to determine how many milliseconds to wait before making another request to the same endpoint.
+
+    ### `resource_missing`
+
+    The resource with the specific ID does not exist. Double check the IDs (e.g: product ID, entitlement ID, etc) you are passing into the endpoints.
+
+    ### `resource_already_exists`
+
+    The resource with the specific ID already exists. Use a different, unique value for ID and try again.
+
+    ### `resource_locked_error`
+
+    The resource is currently being modified by a concurrent request. Refer to the `backoff_ms` field to determine when to try again.
+
+    ### `server_error`
+
+    Request is not able to be processed due to an internal server error. Refer to the `backoff_ms` field to determine when to try again. Please report this to the RevenueCat team if you are encountering this issue.
+
+    ### `store_error`
+
+    There was a problem with the stores (e.g: Apple App Store, Google Play Store, etc). This typically occurs when the stores are unable to process the request. Refer to the `backoff_ms` field to determine when to try again.
+
+    ### `unprocessable_entity_error`
+
+    Request is not able to be processed. Please refer to the `message` field for more information.
+
+x-tagGroups:
+  - name: General Information
+    tags:
+      - Error Handling
+  - name: Endpoint Reference
+    tags:
+      - App
+      - Charts & Metrics
+      - Entitlement
+      - Offering
+      - Package
+      - Product
+      - Project
+
 servers:
 - url: https://api.revenuecat.com/v2
 x-proxy-enabled: false
