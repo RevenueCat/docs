@@ -4,9 +4,10 @@ info:
   title: RevenueCat API v1
   version: '1.0'
   description: |
-    | ℹ️ New to RevenueCat? |
-    |---|
-    | Welcome! If you're adding subscriptions or other in-app purchases to your app, the RevenueCat SDK will handle most of the heavy-lifting without the need to interact with this API directly. See our [Quickstart](/docs/getting-started/quickstart/) for more information on getting started with RevenueCat. |
+    <div class="theme-admonition theme-admonition-info alert alert--info">
+        <div class="heading">📘 New to RevenueCat?</div>
+        <div>Welcome! If you're adding subscriptions or other in-app purchases to your app, the RevenueCat SDK will handle most of the heavy-lifting without the need to interact with this API directly. See our <a href="/docs/getting-started/quickstart/">Quickstart</a> for more information on getting started with RevenueCat.</div>
+    </div>
 
     # About RevenueCat’s REST API
 
@@ -323,7 +324,7 @@ paths:
                     This is mostly useful if you're sending fetch tokens from your
                     backend.
                 attributes:
-                  description: Any [Attributes](/docs/customers/customer-attributes) to set on the Customer.
+                  description: Any [Attributes](/docs/customers/customer-attributes) to set on the Customer as a dictionary keyed by the Attribute name.
                   additionalProperties:
                     description: A single Attribute to be set.
                     type: object
@@ -659,7 +660,7 @@ paths:
                   description: The desired next expiry time to assign to the subscription,
                     in milliseconds since the Epoch. The given time must be later/greater
                     than the current expiry time for the subscription.
-                  format: int32
+                  example: 1708417962662
       responses:
         '200':
           description: |

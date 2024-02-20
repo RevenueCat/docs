@@ -35,6 +35,9 @@
     --ifm-mobile-toc-background: rgb(255, 255, 255);
 
     --ifm-heading-font-weight: 600;
+
+    --ifm-color-info-contrast-background: #F7F8FD;
+    --ifm-color-info-dark: #576CDB;
   }
 
   /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -213,4 +216,10 @@ html[data-theme='dark'] .medium-zoom-overlay {
 
 a[href="https://redocly.com/redoc/"] {
   display: none !important;
+}
+
+.theme-admonition .heading {
+  font: var(--ifm-heading-font-weight) var(--ifm-h5-font-size) / var(--ifm-heading-line-height) var(--ifm-heading-font-family);
+  text-transform: uppercase;
+  margin-bottom:0.3rem;
 }
