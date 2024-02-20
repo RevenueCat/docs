@@ -441,28 +441,6 @@ const sdkMigrationCategory = new Category(
   ]
 );
 
-const apiV2Category = new Category("Developer API v2", "api-v2", false, [
-  new Page("overview"),
-  new Page("pagination"),
-  new Page("expandables"),
-  new Page("rate-limit"),
-  new Category(
-    "Error Handling",
-    "error-handling",
-    false,
-    [new Page("error-codes"), new Page("error-types")],
-    new Page("error-handling")
-  ),
-  new Link("Endpoint Reference", "/api-v2-spec/"),
-]);
-
-const apiV1Category = new Category(
-  "Developer API v1 (Legacy)",
-  "api-v1",
-  false,
-  [new Page("overview"), new Link("Endpoint Reference", "/api-v1-spec/")]
-);
-
 // Add the top level categories to the defaultSidebar object
 // The defaultSidebar is referenced in docusaurus.config.js
 const sidebars = {
@@ -480,8 +458,7 @@ const sidebars = {
     serviceCredentialsCategory.render(),
     supportCategory.render(),
     sdkMigrationCategory.render(),
-  ],
-  apiSidebar: [apiV2Category.render(), apiV1Category.render()],
+  ]
 };
 
 export default sidebars;
