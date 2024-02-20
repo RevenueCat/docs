@@ -210,3 +210,7 @@ html[data-theme='dark'] .theme-doc-sidebar-item-category.theme-doc-sidebar-item-
 html[data-theme='dark'] .medium-zoom-overlay {
   background-color: rgba(0, 0, 0, 0.9)!important;
 }
+
+a[href="https://redocly.com/redoc/"] {
+  display: none !important;
+}
