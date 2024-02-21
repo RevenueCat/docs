@@ -31,7 +31,7 @@ If selecting 'Yes', ensure your customers have a way to contact your support tea
 | Data Type | Required? |
 | ---------------------------------------------- | -------------------------------------------------------- |
 | Location | ❌ RevenueCat does not collect approximate or precise location data, only locale and currency code |
-| Personal info, including name or email address | 💡 If you use subscriber attributes to collect identifiable contact information including name, email address, phone number, etc. |
+| Personal info, including name or email address | 💡 If you use customer attributes to collect identifiable contact information including name, email address, phone number, etc. |
 | Financial Info | ✅ RevenueCat collects purchase history from users. |
 | Health and fitness | ❌ RevenueCat does not collect health or fitness data from users |
 | Messages | ❌ RevenueCat does not collect information about emails, SMS/MMS messages, or other in-app messages from users |

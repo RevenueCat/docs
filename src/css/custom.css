@@ -35,10 +35,27 @@
     --ifm-mobile-toc-background: rgb(255, 255, 255);
 
     --ifm-heading-font-weight: 600;
+
+    --ifm-color-info-contrast-background: #F7F8FD;
+    --ifm-color-info-contrast-foreground: rgb(0, 0, 0);
+    --ifm-color-info-dark: #576CDB;
+
+    --ifm-color-danger-contrast-background: #FEF6F6;
+    --ifm-color-danger-contrast-foreground: rgb(0, 0, 0);
+    --ifm-color-danger-dark: var(--ifm-color-primary);
+
+    --ifm-color-warning-dark: #F3E972;
+    --ifm-color-warning-contrast-background: #FEFEF6;
+    --ifm-color-warning-contrast-foreground: #000000;
+
+    --ifm-color-success-dark: #11D483;
+    --ifm-color-success-contrast-background: #F6FEFB;
+    --ifm-color-success-contrast-foreground: #000000;
+
   }
 
   /* For readability concerns, you should choose a lighter palette in dark mode. */
-  [data-theme='dark'] {
+  :root[data-theme='dark'] {
     --ifm-color-primary: rgb(242, 90, 90);
     --ifm-color-primary-dark: rgb(227, 67, 67);
     --ifm-color-primary-darker: rgb(212, 44, 44);
@@ -52,6 +69,16 @@
     --ifm-menu-toc-link: rgb(255, 255, 255);
     --ifm-mobile-toc-background: rgb(16, 16, 16);
     --ifm-navbar-color-active: rgb(255, 255, 255);
+
+    --ifm-color-info-contrast-background: #121C54;
+    --ifm-color-info-contrast-foreground: #ffffff;
+    --ifm-color-danger-contrast-background: #5F070B;
+    --ifm-color-danger-contrast-foreground: #ffffff;
+    --ifm-color-warning-contrast-background: #5E5708;
+    --ifm-color-warning-contrast-foreground: #ffffff;
+    --ifm-color-success-contrast-background: #085E3A;
+    --ifm-color-success-contrast-foreground: #ffffff;
+
 }
 
 .navbar__title {
@@ -209,4 +236,22 @@ html[data-theme='dark'] .theme-doc-sidebar-item-category.theme-doc-sidebar-item-
 
 html[data-theme='dark'] .medium-zoom-overlay {
   background-color: rgba(0, 0, 0, 0.9)!important;
+}
+
+a[href="https://redocly.com/redoc/"] {
+  display: none !important;
+}
+
+.api-content .theme-admonition {
+  margin-bottom: 1rem;
+}
+
+.api-content .theme-admonition .heading {
+  font: var(--ifm-heading-font-weight) var(--ifm-h5-font-size) / var(--ifm-heading-line-height) var(--ifm-heading-font-family);
+  text-transform: uppercase;
+  margin-bottom:0.3rem;
+}
+
+.api-content .theme-admonition .heading::before {
+  content:'📘 ';
 }

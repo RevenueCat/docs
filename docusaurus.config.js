@@ -66,11 +66,11 @@ const config = {
         specs: [
           {
             spec: "openapi-spec/api-v2.yaml",
-            route: "/api-v2-spec/",
+            route: "/api-v2/",
           },
           {
-            spec: "openapi-spec/api-v1.json",
-            route: "/api-v1-spec/",
+            spec: "openapi-spec/api-v1.yaml",
+            route: "/api-v1/",
           },
         ],
         // Theme Options for modifying how redoc renders them
@@ -78,6 +78,7 @@ const config = {
           // Change with your site colors
           primaryColor: "#f25a5a",
         },
+        config: 'redocly.yaml',
       },
     ],
   ],
@@ -106,15 +107,49 @@ const config = {
             label: "Documentation",
           },
           {
-            type: "docSidebar",
-            sidebarId: "apiSidebar",
-            position: "left",
             label: "REST API",
+            to: "/api-v1/",
+            items: [
+              {
+                label: "API v1",
+                to: "/api-v1/",
+              },
+              {
+                label: "API v2",
+                to: "/api-v2/",
+              }
+            ]
           },
           {
             label: "SDK Reference",
             to: "/platform-resources/sdk-reference",
             position: "left",
+            items: [
+              {
+                label: "iOS SDK",
+                to: "https://revenuecat.github.io/purchases-ios-docs/",
+              },
+              {
+                label: "Android SDK",
+                to: "https://sdk.revenuecat.com/android/index.html",
+              },
+              {
+                label: "Flutter SDK",
+                to: "https://pub.dev/documentation/purchases_flutter/6.5.0/",
+              },
+              {
+                label: "React Native SDK",
+                to: "https://revenuecat.github.io/react-native-purchases-docs",
+              },
+              {
+                label: "Capacitor SDK",
+                to: "https://www.npmjs.com/package/@revenuecat/purchases-capacitor",
+              },
+              {
+                label: "Cordova SDK",
+                to: "https://revenuecat.github.io/cordova-plugin-purchases-docs/",
+              },
+            ]
           },
           {
             label: "Blog",
@@ -150,7 +185,7 @@ const config = {
               },
               {
                 label: "REST API Reference",
-                to: "/api-v2/overview",
+                to: "/api-v1",
               },
               {
                 label: "Status and Incidents",

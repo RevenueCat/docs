@@ -8,8 +8,12 @@ const redirects = {
       from: "/customer-info",
     },
     {
-      to: "/customers/subscriber-attributes",
+      to: "/customers/customer-attributes",
       from: "/subscriber-attributes",
+    },
+    {
+      to: "/customers/customer-attributes",
+      from: "/customers/subscriber-attributes",
     },
     {
       to: "/customers/trusted-entitlements",

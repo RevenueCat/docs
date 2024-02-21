@@ -20,7 +20,7 @@ With accurate and up-to date subscription data in Iterable, you’ll be set to t
 
 ### Integration at a Glance
 
-| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Subscriber Attributes | Sends Transfer Events |                                                                        Optional Event Types                                                                         |
+| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Customer Attributes | Sends Transfer Events |                                                                        Optional Event Types                                                                         |
 | :--------------: | :-----------------------: | :------------------: | :----------------------------: | :-------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 |        ✅        |            ✅             |   Requires API Key   |               ✅               |          ❌           | `non_subscription_purchase_event` `uncancellation_event` `subscription_paused_event` `expiration_event` `billing_issue_event` `product_change_event` |
 
@@ -49,7 +49,7 @@ For events that have revenue, such as trial conversions and renewals, RevenueCat
 
 ### 1. Set Iterable User Identity
 
-In order to associate RevenueCat data with the Iterable User Profile, either the RevenueCat `$email` or `$iterableUserId` [Subscriber Attributes](/customers/subscriber-attributes) should be set in RevenueCat. The preferred method is to send the `$email` attribute. If neither of these fields exist, RevenueCat will fallback to the RevenueCat app user ID. You can read more about Iterable user profiles in Iterable's [Identifying the User](https://support.iterable.com/hc/en-us/articles/360035402531-Identifying-the-User-) documentation.
+In order to associate RevenueCat data with the Iterable User Profile, either the RevenueCat `$email` or `$iterableUserId` [Attribute](/customers/customer-attributes) should be set in RevenueCat. The preferred method is to send the `$email` attribute. If neither of these fields exist, RevenueCat will fallback to the RevenueCat app user ID. You can read more about Iterable user profiles in Iterable's [Identifying the User](https://support.iterable.com/hc/en-us/articles/360035402531-Identifying-the-User-) documentation.
 
 :::info `$iterableUserId` character limit
 The `$iterableUserId` can be up to 52 characters long.
@@ -57,7 +57,7 @@ The `$iterableUserId` can be up to 52 characters long.
 
 ### (optional) Set Iterable Campaign ID and/or Template ID
 
-To attribute an event to an Iterable Campaign ID and/or Template ID, set the `$iterableCampaignId` and/or `$iterableTemplateId` subscriber attributes through the RevenueCat SDK or [REST API](https://docs.revenuecat.com/reference/update-subscriber-attributes).
+To attribute an event to an Iterable Campaign ID and/or Template ID, set the `$iterableCampaignId` and/or `$iterableTemplateId` attributes through the RevenueCat SDK or [REST API](https://docs.revenuecat.com/reference/update-subscriber-attributes).
 
 import swiftContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/iterable_1.swift";
 import objectiveCContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/iterable_2.m";

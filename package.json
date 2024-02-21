@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
+    "start": "docusaurus start --port 3030",
     "build": "docusaurus build",
     "clean-redirect-double-extensions": "scripts/remove_duplicate_html_extension.sh",
     "swizzle": "docusaurus swizzle",

@@ -34,7 +34,7 @@ The abilities that would be restricted are as follows:
 - Export Customer Lists
 - View Customer History (Viewing the Customer Details will remain)
 - View individual events
-- Add Subscriber Attributes
+- Add Customer Attributes
 - Create new Experiments
 - Edit running Experiments (Viewing Results and stopping will remain)
 - Create new Paywalls

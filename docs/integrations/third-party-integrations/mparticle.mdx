@@ -20,7 +20,7 @@ With accurate and up-to-date subscription data in mParticle, you'll be set to tu
 
 ### Integration at a Glance
 
-| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Subscriber Attributes | Sends Transfer Events | Optional Event Types |
+| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Customer Attributes | Sends Transfer Events | Optional Event Types |
 | :--------------: | :-----------------------: | :------------------: | :----------------------------: | :-------------------: | :------------------: |
 |        ✅        |            ✅             |          ✅          |               ✅               |          ✅           |          ❌          |
 
@@ -54,7 +54,7 @@ For events that have revenue, such as trial conversions and renewals, RevenueCat
 
 If you're using the mParticle SDK, you can set the User ID to match the RevenueCat App User Id. This way, events sent from the mParticle SDK and events sent from RevenueCat can be synced to the same user.
 
-The mParticle integration also requires some device-specific data. RevenueCat will only send events into mParticle if the below [Subscriber Attributes](/customers/subscriber-attributes) keys have been set for the device.
+The mParticle integration also requires some device-specific data. RevenueCat will only send events into mParticle if the below [Attribute](/customers/customer-attributes) keys have been set for the device.
 
 | Key            | Description                                                                                                                                     | Required         |
 | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :--------------- |
@@ -65,7 +65,7 @@ The mParticle integration also requires some device-specific data. RevenueCat wi
 | `$androidId`   | Android [device identifier](https://developer.android.com/reference/android/provider/Settings.Secure#ANDROID_ID)                                | ❌ (optional)    |
 | `$ip`          | The IP address of the device                                                                                                                    | ❌ (optional)    |
 
-These properties can be set manually, like any other [Subscriber Attributes](/customers/subscriber-attributes), or through the helper methods `collectDeviceIdentifiers()` and `setMparticleId()`.
+These properties can be set manually, like any other [Attribute](/customers/customer-attributes), or through the helper methods `collectDeviceIdentifiers()` and `setMparticleId()`.
 
 Create an `identityRequest` and add it to the `MParticleOptions` that you pass to the `start()` method on the mParticle SDK to set the same App User Id that is set in RevenueCat.
 
