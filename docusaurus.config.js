@@ -124,6 +124,32 @@ const config = {
             label: "SDK Reference",
             to: "/platform-resources/sdk-reference",
             position: "left",
+            items: [
+              {
+                label: "iOS SDK",
+                to: "https://revenuecat.github.io/purchases-ios-docs/",
+              },
+              {
+                label: "Android SDK",
+                to: "https://sdk.revenuecat.com/android/index.html",
+              },
+              {
+                label: "Flutter SDK",
+                to: "https://pub.dev/documentation/purchases_flutter/6.5.0/",
+              },
+              {
+                label: "React Native SDK",
+                to: "https://revenuecat.github.io/react-native-purchases-docs",
+              },
+              {
+                label: "Capacitor SDK",
+                to: "https://www.npmjs.com/package/@revenuecat/purchases-capacitor",
+              },
+              {
+                label: "Cordova SDK",
+                to: "https://revenuecat.github.io/cordova-plugin-purchases-docs/",
+              },
+            ]
           },
           {
             label: "Blog",
