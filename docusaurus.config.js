@@ -159,7 +159,7 @@ const config = {
               },
               {
                 label: "REST API Reference",
-                to: "/api-v2/overview",
+                to: "/api-v1",
               },
               {
                 label: "Status and Incidents",
