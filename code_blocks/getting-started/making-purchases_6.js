@@ -22,7 +22,7 @@ try {
   const { customerInfo, productIdentifier } =
     await Purchases.purchaseStoreProduct(productToBuy);
   if (
-    typeof purchaseResult.customerInfo.entitlements.active[
+    typeof customerInfo.entitlements.active[
       "my_entitlement_identifier"
     ] !== "undefined"
   ) {
