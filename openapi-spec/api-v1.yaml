@@ -417,7 +417,7 @@ paths:
               schema:
                 type: object
                 properties: {}
-      deprecated: false
+      deprecated: true
   "/subscribers/{app_user_id}/entitlements/{entitlement_identifier}/promotional":
     post:
       summary: Grant an Entitlement
