@@ -72,6 +72,9 @@ Due to the permission levels of [secret keys](/welcome/authentication) they curr
 
 ❌ This role cannot access any financial data through Charts, Overview, Experiments, or Customer Lists. They also cannot view most app configuration settings.
 
+_* The Support role is available on Pro plan accounts established before Feb 23, 2024._
+
+---
 
 ### SSO Configuration
 
