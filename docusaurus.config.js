@@ -11,6 +11,8 @@ const ALGOLIA_APP_ID = process.env.ALGOLIA_APP_ID || "SET_BY_CI";
 const ALGOLIA_API_KEY = process.env.ALGOLIA_API_KEY || "SET_BY_CI";
 const ALGOLIA_INDEX_NAME = process.env.ALGOLIA_INDEX_NAME || "SET_BY_CI";
 const SEGMENT_WRITE_KEY = process.env.SEGMENT_WRITE_KEY || "SET_BY_CI";
+const GA_TRACKING_ID = process.env.GA_TRACKING_ID || "SET_BY_CI";
+const SIXSENSE_TOKEN = process.env.SIXSENSE_TOKEN || "SET_BY_CI";
 
 import redirects from "./src/redirects/redirects";
 
@@ -78,7 +80,7 @@ const config = {
           // Change with your site colors
           primaryColor: "#f25a5a",
         },
-        config: 'redocly.yaml',
+        config: "redocly.yaml",
       },
     ],
   ],
@@ -86,6 +88,14 @@ const config = {
     ["@docusaurus/plugin-client-redirects", redirects],
     ["./src/plugins/segment/segment-plugin", { writeKey: SEGMENT_WRITE_KEY }],
     "./src/plugins/lightbox/lightbox-plugin",
+    ["./src/plugins/6sense/6sense-plugin", { writeKey: SIXSENSE_TOKEN }],
+    [
+      "@docusaurus/plugin-google-gtag",
+      {
+        trackingID: GA_TRACKING_ID,
+        anonymizeIP: true,
+      },
+    ],
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -117,8 +127,8 @@ const config = {
               {
                 label: "API v2",
                 to: "/api-v2/",
-              }
-            ]
+              },
+            ],
           },
           {
             label: "SDK Reference",
@@ -149,7 +159,7 @@ const config = {
                 label: "Cordova SDK",
                 to: "https://revenuecat.github.io/cordova-plugin-purchases-docs/",
               },
-            ]
+            ],
           },
           {
             label: "Blog",
