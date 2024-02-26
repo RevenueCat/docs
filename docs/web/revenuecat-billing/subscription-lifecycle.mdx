@@ -33,7 +33,7 @@ If the renewal payment is successfully processed, RevenueCat will:
 
 If the renewal payment couldn't be charged successfully, RevenueCat will:
 * Generate a `CANCELLATION` and `BILLING_ISSUE` event.
-* Generate an `EXPIRATION` event, unless a grace period has been configured.
+* Generate an `EXPIRATION` event, unless a grace period has been configured (not yet supported).
 * Send a notice of the billing issue to the customer via email, including their invoice and a link to the customer portal to fix their payment method.
 
 The subscription then enters the billing retry period.
@@ -42,13 +42,13 @@ The subscription then enters the billing retry period.
 After a renewal payment has failed, RevenueCat will retry charging the customer's payment method on file for up to 30 days.
 
 #### Grace period
-RevenueCat Billing does not yet support setting up a grace period.
+RevenueCat Billing does not yet support setting up a grace period. Support for grace periods will be added soon.
 
 #### Billing recovery
 If one of the retry attempts is successful, RevenueCat will renew the subscription and generate a `RENEWAL` event. Unless the subscription was still in a grace period, the new billing cycle will start on the date that the payment was succesfully recovered. As an example, consider a monthly subscription started on 1 January, for which the first renewal on 1 February failed, and no grace period was set up. If the payment gets recovered on 10 February, the next billing cycle will run from 10 February to 10 March.
 
 
-#### Overview of billing retry and recovery
+{/* #### Overview of billing retry and recovery
 The following image illustrates the timelines and events sent for a successful billing recovery under different circumstances. If the billing retry period ends without being able to recover the payment, no further events get sent, and the subscription remains expired.
 
 ![](/images/rc-billing/billing-retry-and-grace-period.png)
@@ -56,13 +56,13 @@ The following image illustrates the timelines and events sent for a successful b
 In all three cases, a monthly subscription is shown that started on January 1st. The first renewal payment on February 1st failed.
 * **Case 1**: If a 14 day grace period was set up, the failed renewal payment on February 1st leads to `BILLING_ISSUE`, and `CANCELLATION` events. If the billing is later recovered within the grace period (eg. on February 10th), a `RENEWAL` event is sent. The subscription remains on its original billing cycle, ie. the next renewal will occur on March 1st.
 * **Case 2**: Like in case 1, the failed renewal with a 14 day grace period leads to  `BILLING_ISSUE`, and `CANCELLATION` events. If the payment couldn't be recovered by the end of the grace period, an `EXPIRATION` event is sent because the customer should now lose access to their entitlement. If the payment is later recovered (eg. on February 20th), a `RENEWAL` event is sent. The next subscription cycle restarts from the time that the billing was recovered (eg. the next monthly billing period will run from February 20th to March 20th).
-* **Case 3**: If no grace period was set up, the failed payment leads to `BILLING_ISSUE`, `CANCELLATION`, and `EXPIRATION` events, since the customer in this case immediately loses access to their entitlements. If the billing is later recovered (eg. on February 20th), a `RENEWAL` event is sent. The next subscription cycle restarts from the time that the billing was recovered (eg. the next monthly billing period will run from February 20th to March 20th).
+* **Case 3**: If no grace period was set up, the failed payment leads to `BILLING_ISSUE`, `CANCELLATION`, and `EXPIRATION` events, since the customer in this case immediately loses access to their entitlements. If the billing is later recovered (eg. on February 20th), a `RENEWAL` event is sent. The next subscription cycle restarts from the time that the billing was recovered (eg. the next monthly billing period will run from February 20th to March 20th). */}
 
 ## Cancelation
 The subscription can be canceled by the customer (via the [customer portal](./customer-portal)) or by the developer (via the [dashboard or API](./managing-customer-subscriptions)). If the subscription is cancelled, RevenueCat will generate a `CANCELLATION` event. The subscription will continue to be active until the end of the current period. At the end of the period, the subscription will expire.
 
 ## Refunds
-It is currently not possible to refund RevenueCat Billing subscriptions.
+You can refund the most recent subscription period of a subscription [from the RevenueCat Dashboard](./managing-customer-subscriptions). Refunds will result in a `CANCELLATION` event with a `cancellation_reason` of `CUSTOMER_SUPPORT`. If a subscription is refunded, the customer immediately loses access to any associated entitlements.
 
 ## Expiration
 A subscription can expire for one of several reasons:
