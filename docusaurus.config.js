@@ -13,6 +13,8 @@ const ALGOLIA_INDEX_NAME = process.env.ALGOLIA_INDEX_NAME || "SET_BY_CI";
 const SEGMENT_WRITE_KEY = process.env.SEGMENT_WRITE_KEY || "SET_BY_CI";
 const GA_TRACKING_ID = process.env.GA_TRACKING_ID || "SET_BY_CI";
 const SIXSENSE_TOKEN = process.env.SIXSENSE_TOKEN || "SET_BY_CI";
+const GOOGLE_SITE_VERIFICATION =
+  process.env.GOOGLE_SITE_VERIFICATION || "SET_BY_CI";
 
 import redirects from "./src/redirects/redirects";
 
@@ -271,6 +273,9 @@ const config = {
           autoCollapseCategories: true,
         },
       },
+      metadata: [
+        { name: "google-site-verification", content: GOOGLE_SITE_VERIFICATION },
+      ],
     }),
 };
 
