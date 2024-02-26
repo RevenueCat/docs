@@ -12,6 +12,8 @@ Targeting by Placement is available on [this list of SDK versions].
 
 ![Targeting by Placement Illustration](/images/targeting-by-placement-illustration.png)
 
+## Defining Placements
+
 To start, you'll need to define a few Placements in your app. To do that, consider the different contexts in your app where you may want to display a paywall, such as:
 
 - At the end of onboarding (e.g. `onboarding_end`)
@@ -24,11 +26,28 @@ When deciding which Placements to create, consider how your paywall(s) will comp
 You can always create additional Placements in future releases of your app.
 :::
 
-When your app uses the getOfferingsbyPlacement method, we'll return the Offering to be displayed for that customer at that Placement, letting you display unqiue paywalls based on the customer journey. [Learn more about defining Placements in your app.](/tools/targeting/targeting-by-placement)
+When your app uses the getOfferingsbyPlacement method, we'll return the Offering to be displayed for that customer at that Placement, letting you display unqiue paywalls based on the customer journey.
+
+## Fetching Offerings by Placement
+
+[to be added]
+
+Points to cover
+
+1. Method to call, w/ sample code for doing so
+2. What happens when there is no specified Offering for that Placement for the requesting customer
+3. Expecting and handling a null value (When using No Offering)
+4. Reaffirming that strings must be identical between the app and the Dashboard
+
+## Creating Targeting Rules for Placements
 
 To define which Offerings should be served for an audience at each Placement, click **+Add Placement** when creating a new rule or editing an existing one.
 
 ![Add Placement](/images/add-placement.png)
+
+:::tip Targeting "Any audience"
+If you want to use Placements to serve unique Offerings at differnet paywall locations for all customers, you can do so by creating a Targeting Rule that targets "Any audience" as its condition. Then, order that rule at the bottom of your list of Live rules if you want other audience-specific Targeting Rules to supercede it.
+:::
 
 Then, select the Offering you want to display, and enter the identifier of the Placement you want to serve that Offering on. If this is your first time using that Placement, you'll need to click _Add_ to add its identifer to your list. Once you've saved this rule, that Placement will be available to select in other Targeting Rules.
 
@@ -57,3 +76,17 @@ Be sure that your app is setup to expect and handle a null value being returned 
 :::
 
 If you've chosen to serve **No Offering** "for all other cases" in a Targeting Rule, then you'll also need to specify an Offering to serve "when not using Placements", so that any calls to getOfferings in your current app or prior app versions still have some Offering identifer returned in case they're not designed to handle a null value.
+
+## FAQs
+
+**Can I run an Experiment to test different Offerings to serve at a given Placement?**
+
+Not yet, but support for Placements in Experiments will be coming soon.
+
+**Can I still use the existing method to fetch Offerings in some places in my app?**
+
+Absolutely. The existing method will continue to work as it does today, and will return the Offering "for all other cases" if you're using Placements in a Targeting Rule.
+
+**Can I delete a Placement identifier once I've created it?**
+
+The list of available Placement identifiers to select from is sourced from your existing Targeting Rules, so if you delete all Targeting Rules referencing that Placement, it will no longer be listed in the Dashboard. However, keep in mind that any prior app versions fetching Offerings for that Placement will continue to do so, and the Offering set "for all other cases" will be served in its place.
