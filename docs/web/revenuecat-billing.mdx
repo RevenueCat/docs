@@ -155,4 +155,10 @@ To purchase a package, use the `purchasePackage()` method of the `Purchases` obj
 ]} />
 
 ## Testing
-You can use Stripe's [Test Mode](https://stripe.com/docs/test-mode) to test your RevenueCat Billing integration. You will need to set up the webhook for Stripe's test mode as well to do so. If you use the RevenueCat Billing sandbox API key, Stripe's test mode will be used automatically, and you can use one of Stripe's [test cards](https://docs.stripe.com/testing) to make purchases.
+You can use Stripe's [Test Mode](https://stripe.com/docs/test-mode) to test your RevenueCat Billing integration. To do so, you will need to set up the webhook in Stripe's test mode, and use the webhook secret from the Test Mode webhook to set up your RevenueCat Billing App in the RevenueCat dashboard. 
+
+:::warning Only one webhook secret configurable per App
+Currently, there is no way to use the same RevenueCat Billing App for both Live (production) mode and Test (sandbox) mode, because only one webhook secret can be configured at a time. We are working on a way to make this possible.
+:::
+
+If you use the RevenueCat Billing sandbox API key, Stripe's test mode will be used automatically, and you can use one of Stripe's [test cards](https://docs.stripe.com/testing) to make purchases.
