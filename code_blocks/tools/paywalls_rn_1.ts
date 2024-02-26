@@ -1,7 +1,7 @@
 import RevenueCatUI, { PAYWALL_RESULT } from "react-native-purchases-ui";
 
 async function presentPaywall(): Promise<boolean> {
-    // You can simply do this:
+    // Present paywall for current offering:
     const paywallResult: PAYWALL_RESULT = await RevenueCatUI.presentPaywall();
     // or if you need to present a specific offering:
     const paywallResult: PAYWALL_RESULT = await RevenueCatUI.presentPaywall({
@@ -22,7 +22,7 @@ async function presentPaywall(): Promise<boolean> {
 }
 
 async function presentPaywallIfNeeded() {
-    // Simple version:
+    // Present paywall for current offering:
     const paywallResult: PAYWALL_RESULT = await RevenueCatUI.presentPaywallIfNeeded({
         requiredEntitlementIdentifier: "pro"
     });

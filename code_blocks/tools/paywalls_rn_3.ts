@@ -3,7 +3,7 @@ import { Text } from 'react-native';
 
 import RevenueCatUI from 'react-native-purchases-ui';
 
-// Simple version
+// Display current offering
 return (
     <RevenueCatUI.PaywallFooterContainerView>
         <Text>
