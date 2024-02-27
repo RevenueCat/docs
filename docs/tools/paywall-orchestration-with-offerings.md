@@ -80,8 +80,7 @@ Developers use RevenueCat to grow their customer lifetime value by experimenting
 
 ...and much more.
 
-:::info [Learn more about Experiments](/tools/experiments-v1)
-:::
+[Learn more about Experiments](/tools/experiments-v1)
 
 ### Assign specific audiences their own unique paywall
 
@@ -93,15 +92,13 @@ Audiences can be defined through dimensions like Country, App, and App Version -
 2. Only display your new paywall design on app versions that support it
 3. Modify the copy or layout of your paywall to highlight the most important benefits in each market
 
-:::info [Learn more about Targeting](/tools/targeting)
-:::
+[Learn more about Targeting](/tools/targeting)
 
 Or, to unlock additional flexibility, you can use Offering Metadata with your own custom app logic to decide which Offering should get shown to a customer based on some other arbitrary dimension.
 
 For example, you might add a property like `"source":"black-friday-campaign"`, and choose to serve the Offering with that property when you detect that user came from your Black Friday campaign.
 
-:::info [Learn more about Offering Metadata](/tools/offering-metadata)
-:::
+[Learn more about Offering Metadata](/tools/offering-metadata)
 
 ### Measure performance by paywall
 
