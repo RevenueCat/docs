@@ -5,7 +5,7 @@ excerpt: How to use Offerings for remote paywall orchestration
 hidden: false
 ---
 
-# What are Offerings?
+## What are Offerings?
 
 An Offering is the object that contains all the information you need to remotely control your paywall through RevenueCat. Think of each Offering like its own "paywall" that can be uniquely defined, and may even (optionally) include the UI itself.
 
@@ -19,7 +19,7 @@ An Offering may include:
 
 You can set a Default Offering on the RevenueCat Dashboard to be served to all customers by default, but you can also create additional Offerings for a variety of other powerful use cases to optimize your paywall and grow your customer lifetime value.
 
-# How should I use Offerings on my paywall?
+## How should I use Offerings on my paywall?
 
 We recommend displaying the **Current Offering** for a given customer on your paywall to ensure you can take advantage of all the remote flexibility of Offerings, which you can learn how to do [here](/getting-started/displaying-products#fetching-offerings).
 
@@ -27,7 +27,7 @@ We recommend displaying the **Current Offering** for a given customer on your pa
 Customer's have a Current Offering that represents what Offering they should be served right now based on the Experiments, Targeting Rules, and other conditions you may have set for displaying Offerings. When no other conditions apply, your Project's Default Offering will be set as a customer's Current Offering.
 :::
 
-# What can I do with Offerings in RevenueCat?
+## What can I do with Offerings in RevenueCat?
 
 :::info Paywall orchestration without code changes & app updates
 Because Offerings can be created & modified entirely through our Dashboard, they give you the flexibility to remotely orchestrate your paywall without making any code changes or app updates.
