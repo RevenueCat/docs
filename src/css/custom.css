@@ -57,6 +57,13 @@
     --ifm-color-success-contrast-background: #F6FEFB;
     --ifm-color-success-contrast-foreground: #000000;
 
+    --ifm-heading-font-family: "Object Sans", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", "sans-serif", "BlinkMacSystemFont",
+    "'Segoe UI'", "Helvetica", "Arial", "sans-serif", "'Apple Color Emoji'",
+    "'Segoe UI Emoji'", "'Segoe UI Symbol'";
+
+    --ifm-font-family-base: "Helvetica Neue", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", "sans-serif", "BlinkMacSystemFont",
+    "'Segoe UI'", "Helvetica", "Arial", "sans-serif", "'Apple Color Emoji'",
+    "'Segoe UI Emoji'", "'Segoe UI Symbol'";
   }
 
   /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -84,6 +91,51 @@
     --ifm-color-success-contrast-background: #085E3A;
     --ifm-color-success-contrast-foreground: #ffffff;
 
+}
+
+/* Fonts */
+/* Object Sans Regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Object Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/PPObjectSans-Regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* Object Sans Bold - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Object Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/PPObjectSans-Bold.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* Helvetica Neue - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Helvetica Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/helvetica-neue-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* Helvetica Neue Bold - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Helvetica Neue';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/helvetica-neue-bold.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+p, a, li {
+  font-weight: 400;
 }
 
 .navbar__title {
