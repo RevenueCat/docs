@@ -3,6 +3,8 @@ import Layout from "@theme/Layout";
 import Button from "../components/Button/Button.tsx";
 import heroImage from "@site/static/images/fb71f38d-hero.png";
 import heroImageDark from "@site/static/images/ed3a1112-hero-dark.png";
+import videoPlaceholder from "@site/static/images/b52b1205-video-placeholder.png";
+import videoPlaceholderDark from "@site/static/images/9efe4fb4-video-placeholder-dark.png";
 import ChartIcon from "@site/static/img/charts.svg";
 import CustomerIcon from "@site/static/img/customer.svg";
 import ExportsIcon from "@site/static/img/time.svg";
@@ -121,14 +123,14 @@ function LandingPage() {
         <div className="tw-container max-w-7xl w-full flex flex-col gap-16 lg:flex-row-reverse lg:justify-between items-center">
           <div>
             <img
-              src={heroImage}
+              src={videoPlaceholder}
               alt="revenuecat welcome"
               class="size-full max-w-[600px] mx-auto dark:hidden"
             />
             <img
-              src={heroImageDark}
+              src={videoPlaceholderDark}
               alt="revenuecat welcome"
-              class="size-full max-w-[600px] mx-auto hidden dark:flex"
+              class="size-full max-w-[600px] mx-auto hidden dark:block"
             />
           </div>
 
