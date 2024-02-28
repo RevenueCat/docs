@@ -17,6 +17,7 @@ const GOOGLE_SITE_VERIFICATION =
   process.env.GOOGLE_SITE_VERIFICATION || "SET_BY_CI";
 
 import redirects from "./src/redirects/redirects";
+import tailwindPlugin from "./src/plugins/tailwind/tailwind-config.cjs";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -98,6 +99,7 @@ const config = {
         anonymizeIP: true,
       },
     ],
+    "./src/plugins/tailwind/tailwind-config.cjs"
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */

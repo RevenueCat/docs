@@ -28,7 +28,7 @@ function HomepageHeader() {
           <p className={styles.smallTitle}>
             Developer Hub
           </p>
-          <Heading as="h1" className={styles.title}>
+          <Heading as="h1" className="text-red-700">
             {" "}
             Everything you need to manage in-app purchases and
             subscriptions
