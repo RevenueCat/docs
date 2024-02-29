@@ -19,7 +19,7 @@ const Link = ({ href, children, ...rest }) => (
   <a
     href={href}
     {...rest}
-    className="font-semibold !text-grayLight dark:!text-grayDark"
+    className="font-semibold !text-grayLight dark:!text-grayDark hover:no-underline hover:text-black dark:hover:text-white"
   >
     {children}
   </a>
