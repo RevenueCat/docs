@@ -309,6 +309,12 @@ main .row {
   padding: 0;
 }
 
+.pagination-nav,
+.theme-doc-breadcrumbs {
+  max-width: 800px;
+  margin: auto;
+}
+
 @layer components {
   .tw-container {
     @apply mx-auto max-w-7xl px-[clamp(1rem,0.0909rem+4.5455vi,3rem)];
