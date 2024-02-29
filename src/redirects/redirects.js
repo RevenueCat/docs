@@ -740,6 +740,6 @@ const redirects = {
 };
 
 // Add redirects with a .html appended to the "from" path for redirecting in S3/Cloudfront
-redirects.redirects.push(redirects.redirects.map(({from, to}) => ({from: `${from}.html`, to})));
+redirects.redirects.push(...redirects.redirects.map(({from, to}) => ({from: `${from}.html`, to})));
 
 export default redirects;
