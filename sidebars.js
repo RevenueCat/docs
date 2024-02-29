@@ -20,7 +20,7 @@ import { Category, Link, Page } from "./src/sidebars/sidebar-utils";
 // "categories/welcome" -> "projects" -> "collaborators"
 // combined path: "categories/welcome/projects/collaborators"
 const welcomeCategory = new Category(
-  "😺 Welcome to RevenueCat", // Category title
+  "Welcome to RevenueCat", // Category title
   "welcome", // Category path, i.e. docs/{path}
   false, // Should the category be collapsed by default? (defaults to true)
   [
@@ -40,11 +40,13 @@ const welcomeCategory = new Category(
       new Page("projects")
     ),
     new Page("authentication"),
-  ]
+  ],
+  null,
+  { emoji: "😺" }
 );
 
 const migratingCategory = new Category(
-  "➡️ Migrating to RevenueCat",
+  "Migrating to RevenueCat",
   "migrating-to-revenuecat",
   false,
   [
@@ -57,11 +59,13 @@ const migratingCategory = new Category(
     ),
     new Page("observer-mode"),
     new Page("swiftystorekit"),
-  ]
+  ],
+  null,
+  { emoji: "➡️" }
 );
 
 const gettingStartedCategory = new Category(
-  "🚀 Getting Started",
+  "Getting Started",
   "getting-started",
   false,
   [
@@ -125,18 +129,27 @@ const gettingStartedCategory = new Category(
       [new Page("in-app-purchases-with-stripe-rfa")],
       new Page("stripe")
     ),
-  ]
+  ],
+  null,
+  { emoji: "🚀" }
 );
 
-const customersCategory = new Category("👥 Customers", "customers", false, [
-  new Page("user-ids"),
-  new Page("customer-info"),
-  new Page("customer-attributes"),
-  new Page("trusted-entitlements"),
-]);
+const customersCategory = new Category(
+  "Customers",
+  "customers",
+  false,
+  [
+    new Page("user-ids"),
+    new Page("customer-info"),
+    new Page("customer-attributes"),
+    new Page("trusted-entitlements"),
+  ],
+  null,
+  { emoji: "👥" }
+);
 
 const testAndLaunchCategory = new Category(
-  "🧰 Test & Launch",
+  "Test & Launch",
   "test-and-launch",
   false,
   [
@@ -161,11 +174,13 @@ const testAndLaunchCategory = new Category(
     ),
     new Page("launch-checklist"),
     new Page("app-store-rejections"),
-  ]
+  ],
+  null,
+  { emoji: "🧰" }
 );
 
 const subscriptionGuidanceCategory = new Category(
-  "📝 Subscription Guidance",
+  "Subscription Guidance",
   "subscription-guidance",
   false,
   [
@@ -185,11 +200,13 @@ const subscriptionGuidanceCategory = new Category(
     new Page("price-changes"),
     new Page("refunds"),
     new Page("google-prepaid-plans"),
-  ]
+  ],
+  null,
+  { emoji: "📝" }
 );
 
 const dashboardCategory = new Category(
-  "📊 Dashboard & Metrics",
+  "Dashboard & Metrics",
   "dashboard-and-metrics",
   false,
   [
@@ -233,11 +250,13 @@ const dashboardCategory = new Category(
     new Page("customer-lists"),
     new Page("taxes-and-commissions"),
     new Page("performance-summaries"),
-  ]
+  ],
+  null,
+  { emoji: "📊" }
 );
 
 const integrationsCategory = new Category(
-  "🔌 Integrations",
+  "Integrations",
   "integrations",
   false,
   [
@@ -307,42 +326,51 @@ const integrationsCategory = new Category(
     ),
     new Page("partner-built-integrations"),
     new Page("stripe-app"),
-  ]
+  ],
+  null,
+  { emoji: "🔌" }
 );
 
-const toolsCategory = new Category("🛠 Tools", "tools", false, [
-  new Category(
-    "Paywalls",
-    "paywalls",
-    true,
-    [new Page("creating-paywalls"), new Page("displaying-paywalls")],
-    new Page("paywalls")
-  ),
-  new Category(
-    "Offering Metadata",
-    "offering-metadata",
-    true,
-    [new Page("offering-metadata-examples")],
-    new Page("offering-metadata")
-  ),
-  new Category(
-    "Experiments",
-    "experiments-v1",
-    true,
-    [
-      new Page("experiments-overview-v1"),
-      new Page("creating-offerings-to-test"),
-      new Page("configuring-experiments-v1"),
-      new Page("experiments-results-v1"),
-    ],
-    new Page("experiments-v1")
-  ),
-  new Page("targeting"),
-  new Page("paywall-orchestration-with-offerings"),
-]);
+const toolsCategory = new Category(
+  "Tools",
+  "tools",
+  false,
+  [
+    new Category(
+      "Paywalls",
+      "paywalls",
+      true,
+      [new Page("creating-paywalls"), new Page("displaying-paywalls")],
+      new Page("paywalls")
+    ),
+    new Category(
+      "Offering Metadata",
+      "offering-metadata",
+      true,
+      [new Page("offering-metadata-examples")],
+      new Page("offering-metadata")
+    ),
+    new Category(
+      "Experiments",
+      "experiments-v1",
+      true,
+      [
+        new Page("experiments-overview-v1"),
+        new Page("creating-offerings-to-test"),
+        new Page("configuring-experiments-v1"),
+        new Page("experiments-results-v1"),
+      ],
+      new Page("experiments-v1")
+    ),
+    new Page("targeting"),
+    new Page("paywall-orchestration-with-offerings"),
+  ],
+  null,
+  { emoji: "🛠" }
+);
 
 const platformResourcesCategory = new Category(
-  "📚 Platform Resources",
+  "Platform Resources",
   "platform-resources",
   false,
   [
@@ -393,11 +421,13 @@ const platformResourcesCategory = new Category(
       new Page("server-notifications")
     ),
     new Page("sample-apps"),
-  ]
+  ],
+  null,
+  { emoji: "📚" }
 );
 
 const serviceCredentialsCategory = new Category(
-  "🔑 Service Credentials",
+  "Service Credentials",
   "service-credentials",
   false,
   [
@@ -419,18 +449,22 @@ const serviceCredentialsCategory = new Category(
       new Page("creating-play-service-credentials")
     ),
     new Page("amazon-appstore-credentials"),
-  ]
+  ],
+  null,
+  { emoji: "🔑" }
 );
 
 const supportCategory = new Category(
-  "🛟 RevenueCat Support",
+  "RevenueCat Support",
   "revenuecat-support",
   false,
-  [new Page("support-first-steps")]
+  [new Page("support-first-steps")],
+  null,
+  { emoji: "🛟" }
 );
 
 const sdkMigrationCategory = new Category(
-  "📘 SDK Migration Guides",
+  "SDK Migration Guides",
   "sdk-guides",
   false,
   [
@@ -438,7 +472,9 @@ const sdkMigrationCategory = new Category(
     new Page("android-native-5x-to-6x-migration"),
     new Page("android-native-6x-to-7x-migration"),
     new Page("ios-native-3x-to-4x-migration"),
-  ]
+  ],
+  null,
+  { emoji: "📘" }
 );
 
 // Add the top level categories to the defaultSidebar object
@@ -458,7 +494,7 @@ const sidebars = {
     serviceCredentialsCategory.render(),
     supportCategory.render(),
     sdkMigrationCategory.render(),
-  ]
+  ],
 };
 
 export default sidebars;

@@ -29,7 +29,7 @@
   --ifm-navbar-color-active: rgb(0, 0, 0);
 
   --ifm-menu-color-background-hover: rgb(248, 248, 248);
-  --ifm-menu-color-background-active: rgb(68, 73, 195);
+  /* --ifm-menu-color-background-active: rgb(68, 73, 195); */
   --ifm-menu-color-active: rgb(255, 255, 255);
 
   --ifm-tabs-padding-vertical: 4px;
@@ -203,26 +203,6 @@ html[data-theme="dark"].markdown img {
   border: 1px solid #4e4e4e;
 }
 
-.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-1 {
-  padding: 8px 0;
-  font-weight: 400;
-  font-size: 15px;
-  position: relative;
-}
-
-.theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-1::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 80%;
-  height: 1px;
-  background-color: #00000015;
-  bottom: -2px;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
 html[data-theme="dark"]
   .theme-doc-sidebar-item-category.theme-doc-sidebar-item-category-level-1::after {
   background-color: #ffffff20;
@@ -235,57 +215,6 @@ html[data-theme="dark"]
 
 .breadcrumbs .breadcrumbs__item:nth-of-type(2) {
   display: none;
-}
-
-/* Top-level category */
-.menu__list-item-collapsible:has(.menu__link:not([href]):hover) {
-  background-color: transparent;
-}
-
-.menu__list-item-collapsible:has(.menu__link:not([href])) {
-  font-weight: 600;
-  font-size: 16px;
-}
-
-.menu__list-item-collapsible .menu__link--active:not([href]) {
-  font-weight: 600;
-  font-size: 16px;
-  color: var(--ifm-menu-color);
-}
-
-/* Top-level page */
-.menu__list-item-collapsible {
-  font-weight: 400;
-}
-
-.menu__list-item-collapsible--active,
-.menu__list-item-collapsible--active:hover {
-  background-color: var(--ifm-menu-color-background-active);
-}
-
-.menu__list-item-collapsible--active .menu__link--active {
-  color: var(--ifm-menu-color-active) !important;
-}
-
-.menu__list-item-collapsible .menu__link--sublist.menu__link--active {
-  color: var(--ifm-menu-color);
-}
-
-.menu__caret:hover {
-  background-color: transparent;
-}
-
-.menu__caret::before,
-.menu__link--sublist-caret::after {
-  background-size: 1.25rem;
-}
-
-.menu__list-item-collapsible {
-  position: relative;
-}
-
-.menu__list-item-collapsible--active .menu__caret::before {
-  filter: invert(1);
 }
 
 .breadcrumbs__item,
