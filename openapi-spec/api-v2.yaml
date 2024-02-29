@@ -164,7 +164,7 @@ tags:
     ,\n  \"param\": \"customer_id\",\n  \"message\": \"id is too long\",\n  \"retryable\"\
     : false,\n  \"doc_url\": \"https://errors.rev.cat/parameter-error\"\n}\n```\n\n\
     For more information on the `type` field and how to resolve these errors, please\
-    \ visit our [Error Types](ref:error-types) documentation.\n\n## Error Codes\n\n\
+    \ visit our [Error Types](#tag/Error-Handling/Error-Types) documentation.\n\n## Error Codes\n\n\
     | Code | Name                  | Description                                 \
     \                                                                            \
     \                                                                            \
@@ -206,7 +206,7 @@ tags:
     \ conflicted with another ongoing request                                    \
     \                                                                            \
     \                                  |\n| 429  | Too Many Requests     | Being [rate\
-    \ limited](ref:rate-limit)                                                   \
+    \ limited](#tag/Rate-Limit)                                                   \
     \                                                                            \
     \                                  |\n| 500  | Internal Server Error | The RevenueCat\
     \ server ran into an unexpected problem \u2013 please check the [RevenueCat status\
@@ -231,7 +231,7 @@ tags:
     \ the `message` field for more information.\n\n- IDs (e.g: `entitlement_id`, `project_id`,\
     \ etc): 1 to 255 characters\n- `display_name`(applies to Entitlements): 1 to 1000\
     \ characters\n- `lookup_key`(applies to Entitlements): 1 to 200 characters\n\n\
-    ### `rate_limit_error`\n\nThe request has hit the [rate limit](ref:rate-limit)\
+    ### `rate_limit_error`\n\nThe request has hit the [rate limit](#tag/Rate-Limit)\
     \ for this endpoint. Refer to the `backoff_ms` field to determine how many milliseconds\
     \ to wait before making another request to the same endpoint.\n\n### `resource_missing`\n\
     \nThe resource with the specific ID does not exist. Double check the IDs (e.g:\
