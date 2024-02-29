@@ -2628,7 +2628,7 @@ paths:
       description: 'This endpoint requires the following permission(s): `project_configuration:packages:read_write`.'
   /projects/{project_id}/subscriptions/{subscription_id}/actions/cancel:
     post:
-      summary: Cancels an active RCBilling subscription
+      summary: Cancels an active RevenueCat Billing subscription
       operationId: cancel-subscription
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
