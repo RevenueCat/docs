@@ -180,7 +180,7 @@ const webCategory = new Category("Web Purchases", 'web', false, [
     "Stripe Billing / Stripe Checkout",
     "stripe",
     true,
-    [new Page("in-app-purchases-with-stripe-rfa")],
+    [],
     new Page("stripe")
   ),
 ], null, {emoji: "🌎"});
