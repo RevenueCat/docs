@@ -71,8 +71,6 @@ More granular permissions are available for businesses on [Scale](https://www.re
 
 ❌ This role cannot access any financial data through Charts, Overview, Experiments, or Customer Lists. They also cannot view most app configuration settings.
 
-_* The Support role is available on Pro plan accounts established before Feb 23, 2024._
-
 ---
 
 ### SSO Configuration
