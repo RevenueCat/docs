@@ -22,6 +22,9 @@ export default function Heading({ as: As, id, ...props }) {
       heading: typeof props.children === "string" ? props.children : id,
     }
   );
+
+  const urlTarget = `${window.location.href.split("#")[0]}#${id}`;
+
   return (
     <As
       {...props}
@@ -40,6 +43,9 @@ export default function Heading({ as: As, id, ...props }) {
         to={`#${id}`}
         aria-label={anchorTitle}
         title={anchorTitle}
+        onClick={function () {
+          navigator.clipboard.writeText(urlTarget);
+        }}
       >
         &#8203;
       </Link>
