@@ -170,21 +170,25 @@ export default function DocSidebarItemCategory({
               updateCollapsed();
             }}
             className={clsx(
-              "w-fit p-0 bg-transparent border-none text-base-700 pt-1 transition-transform duration-300 absolute left-0 group-hover/category:text-base-400",
+              "w-fit p-0 bg-transparent border-none pt-1 transition-transform duration-300 absolute left-0",
               { "rotate-90": !collapsed },
-              {
-                "text-primary group-hover/category:text-primary": isCurrentPage,
-              }
+              isCurrentPage
+                ? "text-primary"
+                : "text-base-700 group-hover/category:text-base-400 dark:text-base-300 dark:group-hover/category:text-base-600"
             )}
           />
         )}
         <Link
           className={clsx(
-            "text-base-700 text-[13px] hover:no-underline relative w-full pl-2 group-hover/category:text-base-400",
+            "text-[13px] hover:no-underline relative w-full pl-2",
             {
-              "text-primary group-hover/category:text-primary": isCurrentPage,
+              "font-semibold text-[15px] pl-4 text-base-700 dark:text-base-300":
+                isTopLevelCategory,
             },
-            { "font-semibold px-3 text-[15px] pl-4": isTopLevelCategory }
+            isCurrentPage
+              ? "text-primary"
+              : !isTopLevelCategory &&
+                  "text-base-700 hover:text-base-400 dark:text-base-300 dark:group-hover/category:text-base-600"
           )}
           onClick={
             collapsible

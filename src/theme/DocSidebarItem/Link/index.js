@@ -18,13 +18,13 @@ export default function DocSidebarItemLink({
   const isActive = isActiveSidebarItem(item, activePath);
   const isInternalLink = isInternalUrl(href);
   return (
-    <li className={clsx("w-full", { "": isActive }, className)} key={label}>
+    <li className={clsx("w-full", className)} key={label}>
       <Link
         className={clsx(
-          "text-[13px] text-base-700 rounded-md py-1 px-5 w-[90%] hover:no-underline block hover:text-base-400",
-          {
-            "!text-primary hover:text-primary bg-primary/15": isActive,
-          }
+          "text-[13px] rounded-md py-1 px-5 w-[90%] hover:no-underline block",
+          isActive
+            ? "text-primary bg-primary/15"
+            : "text-base-700 hover:text-base-400 dark:text-base-300 dark:hover:text-base-600"
         )}
         autoAddBaseUrl={autoAddBaseUrl}
         aria-current={isActive ? "page" : undefined}
