@@ -1,18 +1,19 @@
 ---
-title: Android Historical Import
-slug: android-historical-import
-excerpt: Importing historical Android transactions into RevenueCat
+title: Google Historical Import
+slug: google-historical-import
+excerpt: Importing historical Google Play transactions into RevenueCat
 hidden: false
 ---
 
-When migrating to RevenueCat, whether by [forwarding your receipt](doc:observer-mode#option-1-server-side) or enabling [Observer Mode on the SDK](doc:observer-mode#option-2-client-side), your Android subscription history may be incomplete. Due to a Google limitation, RevenueCat is not able to ingest Android receipts that have expired more than 90 days ago. For receipts that RevenueCat is able to process, Android receipts only return the current snapshot for your subscription. When combining your migration with Android Historical Imports, RevenueCat will be able to fill in the gaps of your subscription history. **Currently RevenueCat is able to import your Android transactions from July 2023 and onwards.**
+When migrating to RevenueCat, whether by [forwarding your receipt](doc:observer-mode#option-1-server-side) or enabling [Observer Mode on the SDK](doc:observer-mode#option-2-client-side), your Google Play subscription history may be incomplete. Due to a Google limitation, RevenueCat is not able to ingest Google receipts that have expired more than 90 days ago. For receipts that RevenueCat is able to process, Google receipts only return the current snapshot for your subscription. When combining your migration with Google Historical Imports, RevenueCat will be able to fill in the gaps of your subscription history. **Currently RevenueCat is able to import your Google Play transactions from July 2023 and onwards.**
 
 # Setup
 ## 0. Prerequisites 
 You should make sure you have the following before proceeding with the setup:
-- Have an existing Play Store app with Android purchases
+- Have an existing Play Store app with Google Play purchases
 - Created at least [1 project](doc:projects#configure-a-new-project) with [1 Play Store app](doc:projects#adding-an-app-to-a-project) in RevenueCat
-- Created and uploaded your [Google Service Credentials](doc:creating-play-service-credentials) to a Play Store app in RevenueCat. It is imperative you grant Financial Access to RevenueCat. Failure to do so may result in delays importing your historical Android data.
+- Created and uploaded your [Google Service Credentials](doc:creating-play-service-credentials) to a Play Store app in RevenueCat. It is imperative you grant Financial Access to RevenueCat. Failure to do so may result in delays importing your Google Play data.
+- Enabled [Google Real-Time Developer Notifications](doc:google-server-notifications)
 - Uploaded your Google Play package in your RevenueCat Play Store app settings
 
 ## 1. Retrieve your bucket ID
@@ -35,10 +36,10 @@ Remember to select 'Save Changes'.
 
 ## 3. Contact us
 - New customers: If you have any questions about migrating to RevenueCat, feel free to [contact sales](https://www.revenuecat.com/book-a-demo/) to see how we can help with the process.
-- Existing customers: If you are interested in a one-time import of your historical Android data, reach out to RevenueCat Support via the dashboard [Contact Us](https://app.revenuecat.com/settings/support) form in your account settings.
+- Existing customers: If you are interested in a one-time import of your historical Google Play data, reach out to RevenueCat Support via the dashboard [Contact Us](https://app.revenuecat.com/settings/support) form in your account settings.
 
 # Limitations
-Android Historial Imports pulls information directly from Google Play's Sales report. Sales report may be missing information that we are unable to retrieve. 
+Google Historial Imports pulls information directly from Google Play's Sales report. Sales report may be missing information that we are unable to retrieve. 
 
 ## App User IDs
 For Google Play purchases that RevenueCat **does not** have a fetch token for, we will generate transactions with a RC anonymous ID.
@@ -46,7 +47,7 @@ For Google Play purchases that RevenueCat **does not** have a fetch token for, w
 ## Event Data
 RevenueCat **will not** dispatch any third-party integration events for historical transactions generated from this import. 
 
-Android Historical Imports will not detect the following:
+Google Historical Imports will not detect the following:
 - Billing issues
 - Partial refunds
 - Cancelled subscriptions
