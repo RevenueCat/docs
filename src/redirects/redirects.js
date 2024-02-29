@@ -4,6 +4,46 @@ const redirects = {
      * Duplicate any new enteries in HTML section below
      */
     {
+      from: "/api-v1-spec",
+      to: "/api-v1",
+    },
+    {
+      from: "/api-v1/overview",
+      to: "/api-v1",
+    },
+    {
+      from: "/api-v2-spec",
+      to: "/api-v2",
+    },
+    {
+      from: "/api-v2/overview",
+      to: "/api-v2",
+    },
+    {
+      from: "/api-v2/pagination",
+      to: "/api-v2#tag/Pagination",
+    },
+    {
+      from: "/api-v2/rate-limit",
+      to: "/api-v2#tag/Rate-Limit",
+    },
+    {
+      from: "/api-v2/expandables",
+      to: "/api-v2#tag/Expandables",
+    },
+    {
+      from: "/api-v2/error-handling",
+      to: "/api-v2#tag/Error-Handling",
+    },
+    {
+      from: "/api-v2/error-handling/error-codes",
+      to: "/api-v2#tag/Error-Handling/Error-Codes",
+    },
+    {
+      from: "/api-v2/error-handling/error-types",
+      to: "/api-v2#tag/Error-Handling/Error-Types",
+    },
+    {
       to: "/customers/customer-info",
       from: "/customer-info",
     },
