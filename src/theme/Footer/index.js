@@ -21,12 +21,6 @@ function Footer() {
   }
   const { copyright, links, logo, style } = footer;
   return (
-    // <FooterLayout
-    //   style={style}
-    //   links={links && links.length > 0 && <FooterLinks links={links} />}
-    //   logo={logo && <FooterLogo logo={logo} />}
-    //   copyright={copyright && <FooterCopyright copyright={copyright} />}
-    // />
     <footer class="bg-slate-900 pt-20 pb-4 px-4 doc-lg:px-16">
       <div className="flex flex-col items-center gap-16 max-w-xl mx-auto doc-lg:flex-row doc-lg:justify-between w-full doc-lg:max-w-7xl">
         <div className="w-fit mx-auto doc-lg:w-full">

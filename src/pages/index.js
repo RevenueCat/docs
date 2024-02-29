@@ -69,7 +69,7 @@ function LandingPage() {
 
       {/* Links */}
       <section class="py-20 max-w-none bg-gray size-full dark:bg-base-900">
-        <div className="tw-container max-w-7xl flex flex-col mx-auto gap-y-12 lg:flex-row w-fit lg:w-full lg:justify-between gap-x-12">
+        <div className="tw-container max-w-7xl flex flex-col mx-auto gap-y-12 lg:flex-row w-fit lg:w-full md:justify-between gap-x-12">
           {/* Quick Links */}
           <div className="flex flex-col gap-4 w-fit">
             <h2 class="font-normal mb-0 lg:mb-8 text-2xl lg:text-3xl">
@@ -124,12 +124,12 @@ function LandingPage() {
             <img
               src={videoPlaceholder}
               alt="revenuecat welcome"
-              class="size-full mx-auto"
+              class="size-full mx-auto max-w-[600px] lg:max-w-none"
             />
           </div>
 
           <div class="size-full text-center lg:text-left flex flex-col">
-            <h2 className="text-3xl lg:text-4xl lg:mb-6 max-w-[420px]">
+            <h2 className="text-3xl lg:text-4xl lg:mb-6 max-w-[420px] mx-auto">
               Enable Subscriptions In Your App Today
             </h2>
             <p className="max-w-[520px] mx-auto lg:mx-0 text-grayLight dark:text-[#e3e3e3] font-body">

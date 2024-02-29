@@ -62,9 +62,9 @@ module.exports = {
           "'Segoe UI Symbol'",
         ],
       },
-    },
-    screens: {
-      "doc-lg": "997px",
+      screens: {
+        "doc-lg": "997px",
+      },
     },
   },
   plugins: [],
