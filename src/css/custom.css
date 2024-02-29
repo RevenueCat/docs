@@ -167,6 +167,17 @@ li {
   color: "#3D3D5C";
 }
 
+article p {
+  font-size: 16px;
+  line-height: 175%;
+}
+
+@media only screen and (min-width: 997px) {
+  article p {
+    font-size: 18px;
+  }
+}
+
 .navbar__title {
   display: none;
 }
@@ -281,6 +292,21 @@ a[href="https://redocly.com/redoc/"]
 .theme-doc-markdown {
   max-width: 800px;
   margin: auto;
+}
+
+main .container {
+  margin: 0;
+  width: 100%;
+  max-width: none;
+}
+
+main .row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.col--3 {
+  padding: 0;
 }
 
 @layer components {
