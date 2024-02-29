@@ -92,7 +92,9 @@ In contrast to our mobile SDKs, the Web SDK currently supports only [identified 
 1. In contrast to mobile app stores, there is no "restore purchase" functionality linked to a store account of the customer. Therefore, an anonymous purchase might get lost if the customer reloads their browser or clears their cache/cookies. 
 2. It is not possible to write a secure web application completely without a backend, since it is easily possible for a malicious actor to manipulate the state of the application through the browser's developer tools. Therefore, any web app using RevenueCat Billing to manage subscriptions also needs a backend component to check for access, which requires a shared customer ID. 
 
-In practice, this means setting up an authentication / login mechanism, for example, using a third party authentication provider like [Firebase](https://firebase.google.com/docs/auth) / [Supabase](https://supabase.com/docs/guides/auth) or a library like [auth.js](https://authjs.dev/). The added benefit of this is that using a shared authentication mechanism between web app and mobile apps allows customers to access their subscriptions they made on the web in the mobile app as well, without any additional configuration (other than adding the products to the correct entitlements).
+One way of achieving this is by setting up an authentication / login mechanism, for example, using a third party authentication provider like [Firebase](https://firebase.google.com/docs/auth) / [Supabase](https://supabase.com/docs/guides/auth) or a library like [auth.js](https://authjs.dev/). The added benefit of this is that using a shared authentication mechanism between web app and mobile apps allows customers to access their subscriptions they made on the web in the mobile app as well, without any additional configuration (other than adding the products to the correct entitlements).
+
+Alternatively, you could also provide the App User ID to your web application through a URL parameter, eg. via emails sent to customers you have acquired in your mobile app.
 
 ## Getting customer information
 
