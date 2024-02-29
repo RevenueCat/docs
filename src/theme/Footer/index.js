@@ -9,19 +9,18 @@ const date = new Date();
 const year = date.getFullYear();
 
 const Link = ({ href, children, ...rest }) => (
-  <a href={href} {...rest} className="text-base-300 hover:text-white text-sm">
+  <a
+    href={href}
+    {...rest}
+    className="text-base-300 hover:text-white text-sm no-underline"
+  >
     {children}
   </a>
 );
 
 function Footer() {
-  const { footer } = useThemeConfig();
-  if (!footer) {
-    return null;
-  }
-  const { copyright, links, logo, style } = footer;
   return (
-    <footer class="bg-slate-900 pt-20 pb-4 px-4 doc-lg:px-16">
+    <footer class="bg-base-900 pt-20 pb-4 px-4 doc-lg:px-16">
       <div className="flex flex-col items-center gap-16 max-w-xl mx-auto doc-lg:flex-row doc-lg:justify-between w-full doc-lg:max-w-7xl">
         <div className="w-fit mx-auto doc-lg:w-full">
           <a
@@ -86,7 +85,7 @@ function Footer() {
         </div>
       </div>
 
-      <div class="flex flex-col-reverse items-center gap-4 mt-12 before:content-[''] before:absolute relative before:left-0 before:right-0 before:mx-auto before:-top-4 before:w-full before:h-px before:bg-slate-600 max-w-xl mx-auto doc-lg:flex-row doc-lg:justify-between doc-lg:max-w-7xl">
+      <div class="flex flex-col-reverse items-center gap-4 mt-12 before:content-[''] before:absolute relative before:left-0 before:right-0 before:mx-auto before:-top-4 before:w-full before:h-px before:bg-base-600 max-w-xl mx-auto doc-lg:flex-row doc-lg:justify-between doc-lg:max-w-7xl">
         <p class="text-base-300 text-xs mb-0">&copy; {year} RevenueCat</p>
         <div className="flex gap-4">
           <a
