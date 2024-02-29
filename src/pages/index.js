@@ -129,7 +129,7 @@ function LandingPage() {
           </div>
 
           <div class="size-full text-center lg:text-left flex flex-col">
-            <h2 className="text-3xl lg:text-4xl lg:mb-6 max-w-[420px] mx-auto">
+            <h2 className="text-3xl lg:text-4xl lg:mb-6 max-w-[420px] mx-auto lg:ml-0">
               Enable Subscriptions In Your App Today
             </h2>
             <p className="max-w-[520px] mx-auto lg:mx-0 text-grayLight dark:text-[#e3e3e3] font-body">
