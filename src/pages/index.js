@@ -18,7 +18,7 @@ const Link = ({ href, children, ...rest }) => (
   <a
     href={href}
     {...rest}
-    className="font-semibold !text-grayLight dark:!text-grayDark hover:no-underline hover:text-black dark:hover:text-white"
+    className="font-semibold !text-grayLight dark:!text-grayDark hover:no-underline hover:text-black dark:hover:text-white font-body"
   >
     {children}
   </a>
@@ -47,7 +47,7 @@ function LandingPage() {
 
           <div class="size-full text-center lg:text-left flex flex-col">
             <h1 className="text-3xl lg:text-4xl">RevenueCat Developer Hub</h1>
-            <p className="text-lg md:text-xl max-w-[520px] mx-auto lg:mx-0">
+            <p className="text-lg md:text-xl max-w-[520px] mx-auto lg:mx-0 font-body">
               Everything you need to implement and manage in-app purchases and
               subscriptions.
             </p>
@@ -124,7 +124,7 @@ function LandingPage() {
             <img
               src={videoPlaceholder}
               alt="revenuecat welcome"
-              class="size-full max-w-[700px] mx-auto"
+              class="size-full mx-auto"
             />
           </div>
 
@@ -132,7 +132,7 @@ function LandingPage() {
             <h2 className="text-3xl lg:text-4xl lg:mb-6 max-w-[420px]">
               Enable Subscriptions In Your App Today
             </h2>
-            <p className="max-w-[520px] mx-auto lg:mx-0 text-grayLight dark:text-[#e3e3e3]">
+            <p className="max-w-[520px] mx-auto lg:mx-0 text-grayLight dark:text-[#e3e3e3] font-body">
               Here, you'll find detailed guides and documentation to help you
               start working with RevenueCat as quickly as possibly, as well as
               support if you get stuck. Let's jump right in!
