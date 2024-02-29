@@ -63,6 +63,9 @@ module.exports = {
         ],
       },
     },
+    screens: {
+      "doc-lg": "997px",
+    },
   },
   plugins: [],
 };
