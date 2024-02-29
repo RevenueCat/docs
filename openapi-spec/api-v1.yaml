@@ -452,13 +452,13 @@ paths:
                   description: How long of a duration to grant the promotional entitlement
                     for. See below for possible values.
                 start_time_ms:
-                  type: string
+                  type: integer
                   description: A Unix epoch in milliseconds for when the promotional
                     entitlement should have been considered as started. If not provided,
                     the entitlement will be granted immediately. Future dates will
                     also be granted immediately and will be active until the expiration
                     date lapses.
-                  format: date-time
+                  example: 1709195668093
       responses:
         '201':
           description: |
