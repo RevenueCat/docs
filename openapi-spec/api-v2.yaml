@@ -106,6 +106,29 @@ tags:
     \ if you make a list request and receive 20 objects, ending with foo, your subsequent\
     \ call can include `starting_after=foo` in order to fetch the next page of the\
     \ list."
+- name: Rate Limit
+  x-traitTag: true
+  description: |
+    We will return the following headers on all successful requests:
+
+    * `RevenueCat-Rate-Limit-Current-Usage`: the number of executed requests for the current rate limiting period, including the current request. The rate limiting period is one minute.
+    * `RevenueCat-Rate-Limit-Current-Limit`: the limit in requests per minute for this endpoint
+    
+    If you reach the rate limit, as indicated by a 429 error code, we will also include the following header:
+
+    * `Retry-After`: the number of milliseconds to wait until you can retry this request.
+
+    Below is an example of the response body that will be sent when the rate limit is reached. The content of the field backoff_ms is equal to the Retry-After header.
+
+    ```
+    {
+      "type": "rate_limit_error",
+      "message": "Rate limit exceeded",
+      "retryable": true,
+      "doc_url": "https://errors.rev.cat/rate-limit-error",
+      "backoff_ms": 1000
+    }
+    ```
 - name: Expandables
   x-traitTag: true
   description: "Expandables allow you to retrieve related data along with the request\
@@ -4004,6 +4027,7 @@ x-tagGroups:
   tags:
   - Overview (v2)
   - Pagination
+  - Rate Limit
   - Expandables
   - Error Handling
 - name: Endpoint Reference
