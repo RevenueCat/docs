@@ -14,7 +14,7 @@ Targeting by Placement is available on [this list of SDK versions].
 
 ## Defining Placements
 
-To start, you'll need to define a few Placements in your app. To do that, consider the different contexts in your app where you may want to display a paywall, such as:
+To start, you'll need to define a few Placements for your app. To do that, consider the different contexts in your app where you may want to display a paywall, such as:
 
 - At the end of onboarding (e.g. `onboarding_end`)
 - When a customer attempts to use a paywalled feature (e.g. `feature_gate`)
@@ -26,18 +26,7 @@ When deciding which Placements to create, consider how your paywall(s) will comp
 You can always create additional Placements in future releases of your app.
 :::
 
-When your app uses the getOfferingsbyPlacement method, we'll return the Offering to be displayed for that customer at that Placement, letting you display unqiue paywalls based on the customer journey.
-
-## Fetching Offerings by Placement
-
-[to be added]
-
-Points to cover
-
-1. Method to call, w/ sample code for doing so
-2. What happens when there is no specified Offering for that Placement for the requesting customer
-3. Expecting and handling a null value (When using No Offering)
-4. Reaffirming that strings must be identical between the app and the Dashboard
+When your app fetches Offerings by Placement, we'll return the Offering to be displayed for that customer at that Placement, letting you display unqiue paywalls based on the customer journey.
 
 ## Creating Targeting Rules for Placements
 
@@ -71,11 +60,55 @@ You can also choose to serve No Offering at a given Placement, such as when the 
 
 Simply select **No Offering** for a given Placement in order to have a null value returned when your app requests Offerings for that Placement for customers matching that Targeting Rule
 
-:::warning Handling a null Offering identifier
-Be sure that your app is setup to expect and handle a null value being returned when using the getOfferingsForPlacement method if you expect to use Targeting in this way.
+:::warning Handling a nil Offering identifier
+Be sure that your app is setup to expect and handle a nil value being returned when using the getOfferingsForPlacement method if you expect to use Targeting in this way.
 :::
 
 If you've chosen to serve **No Offering** "for all other cases" in a Targeting Rule, then you'll also need to specify an Offering to serve "when not using Placements", so that any calls to getOfferings in your current app or prior app versions still have some Offering identifer returned in case they're not designed to handle a null value.
+
+## Fetching Offerings by Placement
+
+To use Placements in your app, after you have defined them in the Dashboard, you can use the `getCurrentOffering(forPlacement placementIdentifier: String)` method to fetch the Offering for a given Placement, where `placementIdentifier` must exactly match the value set in the Dashboard.
+
+The method will return the Offering for that customer at that Placement.
+
+```
+let placementOffering = offerings.getCurrentOffering(forPlacement: "onboarding_end")
+```
+
+![onboarding_end Placement](/images/create-a-placement-highlighted.png)
+
+The Offering returned will correspond to one of these three cases:
+
+**The Offering identifier (or nil value) specified for that customer at that Placement**
+This will occur if the customer matches a Targeting Rule, and the Placement is specified in that Targeting Rule.
+
+**The Offering identifier (or nil value) specified for that customer "in all other cases"**
+This will occur if the customer matches a Targeting Rule, and the Placement is not specified in that Targeting Rule.
+
+**The Offering identifier specified as the Default Offering for your Project when no Targeting Rules apply**
+This will occur if the customer does not match a Targeting Rule.
+
+```
+// First, we call the method with a Placement value:
+let placementOffering = offerings.getCurrentOffering(forPlacement: "onboarding")
+
+// If the Placement is defined in the dashboard
+// placementOffering = Onboarding offering
+
+// If the Placement is defined as `No Offering`
+// placementOffering = nil
+
+// If the Placement is not found and a fallback Offering is configured
+// placementOffering = fallback Offering
+
+// If the Placement is defined as `No Offering` and a fallback Offering is provided
+// placementOffering = nil
+```
+
+:::tip Migrating Offerings calls to the new method
+`getCurrentOffering(forPlacement: "string")` should replace any `getOfferings` calls in your app that you want to control independently through Placements.
+:::
 
 ## FAQs
 
