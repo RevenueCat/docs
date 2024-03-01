@@ -172,7 +172,7 @@ article p {
   line-height: 175%;
 }
 
-@media only screen and (min-width: 997px) {
+@media only screen and (min-width: 2000px) {
   article p {
     font-size: 18px;
   }

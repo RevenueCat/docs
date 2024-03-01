@@ -178,9 +178,9 @@ export default function DocSidebarItemCategory({
         )}
         <Link
           className={clsx(
-            "text-[13px] hover:no-underline relative w-full pl-2",
+            "text-[14px] hover:no-underline relative w-full pl-2",
             {
-              "font-semibold text-[15px] pl-4 text-base-700 dark:text-base-300":
+              "font-semibold text-[16px] pl-4 text-base-700 dark:text-base-300":
                 isTopLevelCategory,
             },
             isCurrentPage

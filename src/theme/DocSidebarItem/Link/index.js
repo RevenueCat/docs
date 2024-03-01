@@ -21,7 +21,7 @@ export default function DocSidebarItemLink({
     <li className={clsx("w-full", className)} key={label}>
       <Link
         className={clsx(
-          "text-[13px] rounded-md py-1 px-5 w-[90%] hover:no-underline block",
+          "text-[14px] rounded-md py-1 px-5 w-[90%] hover:no-underline block",
           isActive
             ? "text-primary bg-primary/15"
             : "text-base-700 hover:text-base-400 dark:text-base-300 dark:hover:text-base-600"
