@@ -7,8 +7,8 @@ const Category = ({ label, slug, items }) => ({
       return {
         ...item,
         link: {
-          type: "generated-index",
-          slug: `${slug}/${item.link.id}`,
+          type: "doc",
+          id: `${slug}/${item.link.id}`,
         },
         items: item.items.map((subItem) => ({
           ...subItem,
