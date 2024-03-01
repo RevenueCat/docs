@@ -54,7 +54,7 @@ const migratingCategory = new Category(
       true,
       [
         new Page("receipt-imports"),
-        new Page("google-historical-import")
+        new Page("google-historical-import"),
       ],
       new Page("migrating-existing-subscriptions")
     ),
