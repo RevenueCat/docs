@@ -41,6 +41,14 @@ const redirects = {
       to: "/api-v2#tag/Error-Handling/Error-Types",
     },
     {
+      to: "/web/stripe",
+      from: "/getting-started/stripe/in-app-purchases-with-stripe-rfa",
+    },
+    {
+      to: "/web/stripe",
+      from: "/getting-started/stripe",
+    },
+    {
       to: "/customers/customer-info",
       from: "/customer-info",
     },
