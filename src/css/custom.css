@@ -289,6 +289,10 @@ a[href="https://redocly.com/redoc/"]
   content: "📘 ";
 }
 
+.api-content .theme-admonition.alert--warning .heading::before {
+  content:'⚠️ ';
+}
+
 .theme-doc-markdown {
   max-width: 800px;
   margin: auto;
