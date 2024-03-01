@@ -1,10 +1,6 @@
 export default async function sixSensePlugin(context, opts) {
   return {
     name: "revenuecat-6sense-plugin",
-    getClientModules() {
-      const modules = ["./client-module"];
-      return modules;
-    },
     injectHtmlTags({ content }) {
       return {
         headTags: [
