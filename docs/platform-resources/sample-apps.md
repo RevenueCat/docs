@@ -5,36 +5,13 @@ excerpt: Example usage of RevenueCat's SDK
 hidden: false
 ---
 
-import SwiftLogo from "@site/static/images/sample-apps/swift.png";
-import InstallIcon from "@site/static/images/sample-apps/install.svg";
-
 Sample apps are currently included in each SDK repository and demonstrate how to integrate the SDK in your own apps.
 
 ## Platforms
 
-<div class="flex items-center justify-start">
-  <div>
-    <img src={SwiftLogo} width="80px" />
-  </div>
-  <h3 class="mb-0">Swift</h3>
-</div>
-_Native Swift example. Hosted in our iOS SDK GitHub repository_
-
-<span class="flex items-center gap-2">
-  <InstallIcon class="w-4" />
-  <a
-    href="/getting-started/installation/ios"
-    class="text-base-700 no-underline hover:black mb-0"
-  >
-    Installation
-  </a>
-</span>
-
 ### Swift
 
-_Native Swift example. Hosted in our iOS SDK GitHub repository_
-
-[Installation ➡️](/getting-started/installation/ios) | [Sample App ➡️](https://github.com/RevenueCat/purchases-ios/tree/main/Examples/MagicWeather) | [App Extensions (e.g. widgets) ➡️](/getting-started/configuring-sdk/ios-app-extensions)
+[Installation ➡️](/getting-started/installation/ios) | [Sample App ➡️](https://github.com/RevenueCat/purchases-ios/tree/main/Examples/MagicWeather) | [App Extensions (e.g. widgets) ➡️](/getting-started/configuring-sdk/ios-app-extensions) _Native Swift example. Hosted in our iOS SDK GitHub repository_
 
 ### SwiftUI
 
