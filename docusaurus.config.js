@@ -299,6 +299,7 @@ const config = {
       docs: {
         sidebar: {
           autoCollapseCategories: true,
+          hideable: false,
         },
       },
       metadata: [

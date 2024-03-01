@@ -100,7 +100,7 @@ export default function DocSidebarItemCategory({
   ...props
 }) {
   const { items, label, collapsible, className, href, customProps } = item;
-  const isTopLevelCategory = "emoji" in customProps;
+  const isTopLevelCategory = customProps && "emoji" in customProps; //TODO remove
   const {
     docs: {
       sidebar: { autoCollapseCategories },
@@ -208,7 +208,7 @@ export default function DocSidebarItemCategory({
           href={collapsible ? hrefWithSSRFallback ?? "#" : hrefWithSSRFallback}
           {...props}
         >
-          <span class="absolute -left-2">{customProps?.emoji}</span>
+          <span className="absolute -left-2">{customProps?.emoji}</span>
           {label}
         </Link>
       </div>

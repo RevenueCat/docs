@@ -1,72 +1,58 @@
-class Category {
-  constructor(
-    label,
-    path,
-    collapsible = true,
-    items,
-    defaultPage = null,
-    customProps = {}
-  ) {
-    this.type = "category";
-    this.label = label;
-    this.path = path;
-    this.items = items;
-    this.collapsible = collapsible;
-    this.link = defaultPage || null;
-    this.customProps = customProps;
-  }
+const Category = ({ label, slug, items }) => ({
+  type: "category",
+  label,
+  collapsible: false,
+  items: items.map((item) => {
+    if ("link" in item) {
+      return {
+        ...item,
+        link: {
+          type: "generated-index",
+          slug: `${slug}/${item.link.id}`,
+        },
+        items: item.items.map((subItem) => ({
+          ...subItem,
+          id: `${slug}/${subItem.id}`,
+        })),
+      };
+    } else if ("href" in item) {
+      return item;
+    }
 
-  render(pathPrefix = "") {
-    // removes the `path` object property
-    return {
-      type: this.type,
-      label: this.label,
-      link: this.link,
-      collapsed: this.collapsible,
-      collapsible: this.collapsible,
-      customProps: this.customProps,
-      items: this.items.map((item) => {
-        if (item instanceof Page) {
-          return (
-            (pathPrefix ? pathPrefix + "/" : "") + this.path + "/" + item.id
-          );
-        } else if (item instanceof Category) {
-          let renderedCategory = item;
-          if (renderedCategory.link) {
-            // labels aren't allowed for top-level category pages (uses category name instead)
-            delete renderedCategory.link.label;
-            // prepend the path to the link
-            renderedCategory.link.id =
-              this.path + "/" + renderedCategory.link.id;
-          }
-          return renderedCategory.render(this.path);
-        } else if (typeof item === "string") {
-          return item;
-        } else if (item instanceof Link) {
-          return item;
-        }
-      }),
-    };
-  }
-}
+    return { ...item, id: `${slug}/${item.id}` };
+  }),
+});
 
-class Page {
-  constructor(file) {
-    this.type = "doc";
-    this.id = file;
-  }
-}
+const SubCategory = ({ label, slug, items }) => ({
+  type: "category",
+  label,
+  link: {
+    type: "doc",
+    id: slug,
+  },
+  items: items.map((item) => {
+    if ("href" in item) {
+      return item;
+    }
 
-class Link {
-  constructor(label, url) {
-    this.type = "link";
-    this.label = label;
-    this.href = url;
-  }
-}
+    return { ...item, id: `${slug}/${item.id}` };
+  }),
+});
+
+const Page = ({ slug }) => ({
+  type: "doc",
+  id: slug,
+});
+
+const Link = ({ label, slug }) => ({
+  type: "link",
+  label,
+  href: slug,
+});
 
 module.exports = {
   Category,
+  SubCategory,
   Page,
   Link,
 };
