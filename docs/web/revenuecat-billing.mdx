@@ -4,19 +4,22 @@ slug: revenuecat-billing
 excerpt: Offer web subscriptions with RevenueCat Billing
 hidden: false
 ---
+
 :::warning Beta Feature
 RevenueCat Billing and the RevenueCat Web SDK are currently in beta.
 :::
+
 ## Introduction
+
 RevenueCat Billing and the Web SDK allow you to easily offer web subscriptions. The feature is currently in beta and has a number of known limitations. Most notably:
 
-* Only USD is currently supported (multi-currency support will follow later)
-* Only subscriptions are currently supported, no one-time purchases
-* There is no support for sales tax or VAT calculation
-* There is no support for trials, discounts, or other offers
-* There is no support for our Paywall templates yet
+- Only USD is currently supported (multi-currency support will follow later)
+- Only subscriptions are currently supported, no one-time purchases
+- There is no support for sales tax or VAT calculation
+- There is no support for trials, discounts, or other offers
+- There is no support for our Paywall templates yet
 
-Currently, RevenueCat Billing supports using Stripe as the payment gateway. This differs from our [Stripe Billing / Stripe Checkout](/getting-started/stripe) integration in that RevenueCat Billing takes care of the purchase UI, the subscription management portal, and the recurring billing logic. Stripe will still charge a [payment processing fee](https://stripe.com/pricing) if you use RevenueCat Billing, but you will not have to pay [Stripe Billing / Checkout fees](https://stripe.com/billing/pricing). 
+Currently, RevenueCat Billing supports using Stripe as the payment gateway. This differs from our [Stripe Billing / Stripe Checkout](/getting-started/stripe) integration in that RevenueCat Billing takes care of the purchase UI, the subscription management portal, and the recurring billing logic. Stripe will still charge a [payment processing fee](https://stripe.com/pricing) if you use RevenueCat Billing, but you will not have to pay [Stripe Billing / Checkout fees](https://stripe.com/billing/pricing).
 
 ## Installation
 
@@ -25,18 +28,22 @@ Start by installing the `@revenuecat/purchases-js` package using the package man
 import npmContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/installation-npm.shell";
 import yarnContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/installation-yarn.shell";
 
-<RCCodeBlock tabs={[
-    { type: 'shell', content: npmContent, name: 'npm' },
-    { type: 'shell', content: yarnContent, name: 'yarn' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "shell", content: npmContent, name: "npm" },
+    { type: "shell", content: yarnContent, name: "yarn" },
+  ]}
+/>
 
 ## General setup
 
 ### Connect with Stripe
 
-To get started, you first need to connect your Stripe account with RevenueCat, if you haven't already done so. Log into [RevenueCat](https://app.revenuecat.com/settings/account) and click the _Connect with Stripe_ button in your account settings. Install the RevenueCat Stripe App either by creating a new account with Stripe or sign in with your existing one. Finalize setting up the connection between Stripe and RevenueCat in the RevenueCat Stripe App. RevenueCat only requests the permissions from Stripe found [here](https://marketplace.stripe.com/apps/revenuecat).
+To get started, you first need to connect your Stripe account with RevenueCat, if you haven't already done so. Log into [RevenueCat](https://app.revenuecat.com/settings/account) and click the _Connect with Stripe_ button in your account settings. Install the RevenueCat Stripe App either by creating a new account with Stripe or sign in with your existing one.
 
-![](/images/connect-with-stripe.png)
+![](/images/rc-billing/connect-with-stripe.png)
+
+Finalize setting up the connection between Stripe and RevenueCat in the RevenueCat Stripe App. RevenueCat only requests the permissions from Stripe found [here](https://marketplace.stripe.com/apps/revenuecat).
 
 ![](/images/f439ec3-Screen_Shot_2022-07-07_at_9.25.36_AM_9bff213fd6a598d2d1893bca2daa8568.png "Screen Shot 2022-07-07 at 9.25.36 AM.png")
 
@@ -53,44 +60,72 @@ To start using RevenueCat Billing, you will need to add a RevenueCat Billing App
 ![New RevenueCat Billing App](/images/rc-billing/new-rc-billing-app.png)
 
 In the following step, you can set up the most important information for the new App:
-* **App Name**: The name of the app. This will also be shown in the purchase flow, in emails, and on invoices.
-* **Seller Company Name**: The name of your company. This will also be shown in the purchase flow, in emails, and on invoices.
-* **Support Email**: An email address that customers can send support requests to. This will also be shown in the purchase flow, in emails, and on invoices.
+
+- **App Name**: The name of the app. This will also be shown in the purchase flow, in emails, and on invoices.
+- **Seller Company Name**: The name of your company. This will also be shown in the purchase flow, in emails, and on invoices.
+- **Support Email**: An email address that customers can send support requests to. This will also be shown in the purchase flow, in emails, and on invoices.
 
 ![New RevenueCat Billing App](/images/rc-billing/new-rc-billing-app-form.png)
 
-After creating the app, some additional fields get shown:
+After creating the app, some additional fields will be shown:
 
-* **Webhook configuration**:
-  * **RC Billing Webhook Endpoint**: You will need to set up a [webhook in Stripe](https://stripe.com/docs/webhooks) to notify RevenueCat of important events. The webhook needs to include at least the following event types: `setup_intent.succeeded`, `payment_intent.succeeded`, and `payment_intent.payment_failed`. You should set up the webhook for both Live mode and Test mode so that you can [test your integration](#Testing).
-  * **Webhook Secret**: Copy the webhook secret from Stripe into this field. (You will receive this after you set up the webhook.)
-* **App icon**: You can upload an app icon here that will be shown in the purchase flow, in emails, and on invoices.
-* **Public API Key**: The API key to be used in your web application when initializing the SDK. This key is safe to be included in production code.
-* **Sandbox API Key**: The API key to be used for [testing](#Testing) purposes. Do not share this API key or include it in your production web app, since it allows to make purchases and unlocking entitlements using test cards.
+- **Webhook configuration**:
+
+  - **RC Billing Webhook Endpoint**: You will need to set up a [webhook in
+    Stripe](https://stripe.com/docs/webhooks) to notify RevenueCat of important
+    events. The webhook needs to include at least the following event types:
+    `setup_intent.succeeded`, `payment_intent.succeeded`, and
+    `payment_intent.payment_failed`. You should set up the webhook for both Live
+    mode and Test mode so that you can [test your integration](#Testing).
+
+    ![](/images/rc-billing/stripe-webhooks.png)
+
+  - **Webhook Secret**: Copy the webhook secret from Stripe into this field. (You will receive this after you set up the webhook.)
+
+  - **App icon**: You can upload an app icon here that will be shown in the purchase flow, in emails, and on invoices.
+
+  - **Public API Key**: The API key to be used in your web application when initializing the SDK. This key is safe to be included in production code.
+  - **Sandbox API Key**: The API key to be used for [testing](#Testing) purposes. Do not share this API key or include it in your production web app, as it allows to make purchases and unlocking entitlements using test cards.
 
 ### Product configuration
 
-To get started with the Web SDK, you should follow the regular setup of [entitlements, products, and offerings](/getting-started/entitlements). In contrast to eg. Apple App Store, Google Play Store, or Stripe Billing products, you don't need to go somewhere else to configure your product and its duration and pricing, you can do that [right in the RevenueCat dashboard](/web/revenuecat-billing/product-setup):
+To get started with the Web SDK, you should follow the regular setup of [entitlements, products, and offerings](/getting-started/entitlements).
+
+In contrast to Apple App Store, Google Play Store, and Stripe Billing products, you can configure your product and its duration [directly in the RevenueCat dashboard](/web/revenuecat-billing/product-setup):
 
 ![New product configuration page](/images/rc-billing/new-product-configuration.png)
 
 ## SDK configuration
 
-You configure the RevenueCat Web SDK by calling the static `initializePurchases()` method of the `Purchases` class:
+Configure the RevenueCat Web SDK by calling the static `initializePurchases()` method of the `Purchases` class:
 
 import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
 
-<RCCodeBlock tabs={[
-    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Configuring SDK"},
-]} />
+<RCCodeBlock
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Configuring SDK",
+    },
+  ]}
+/>
 
-You should configure the SDK only once in your code, attempting to call `initializePurchases()` twice will throw an exception. You can use the object returned from the `initializePurchases()` method to call any of the SDK methods, or use the static method `getInstance()` of the `Purchases` class to returned the initialized `Purchases` object. The method will throw an exception if the SDK has not yet been configured.
+:::warning Only configure once
+You should configure the SDK only once in your code, attempting to call `initializePurchases()` twice will throw an exception.
+:::
+
+You can use the object returned from the `initializePurchases()` method to call any of the SDK methods, or use the static method `getInstance()` of the `Purchases` class to returned the initialized `Purchases` object.
+
+The method will throw an exception if the SDK has not yet been configured.
 
 ## Identifying customers
 
 In contrast to our mobile SDKs, the Web SDK currently supports only [identified (non-anonymous) customers](/customers/user-ids). There are two reasons for this limitation:
-1. In contrast to mobile app stores, there is no "restore purchase" functionality linked to a store account of the customer. Therefore, an anonymous purchase might get lost if the customer reloads their browser or clears their cache/cookies. 
-2. It is not possible to write a secure web application completely without a backend, since it is easily possible for a malicious actor to manipulate the state of the application through the browser's developer tools. Therefore, any web app using RevenueCat Billing to manage subscriptions also needs a backend component to check for access, which requires a shared customer ID. 
+
+1. In contrast to mobile app stores, there is no "restore purchase" functionality linked to a store account of the customer. Therefore, an anonymous purchase might get lost if the customer reloads their browser or clears their cache/cookies.
+2. It is not possible to write a secure web application completely without a backend, since it is easily possible for a malicious actor to manipulate the state of the application through the browser's developer tools. Therefore, any web app using RevenueCat Billing to manage subscriptions also needs a backend component to check for access, which requires a shared customer ID.
 
 One way of achieving this is by setting up an authentication / login mechanism, for example, using a third party authentication provider like [Firebase](https://firebase.google.com/docs/auth) / [Supabase](https://supabase.com/docs/guides/auth) or a library like [auth.js](https://authjs.dev/). The added benefit of this is that using a shared authentication mechanism between web app and mobile apps allows customers to access their subscriptions they made on the web in the mobile app as well, without any additional configuration (other than adding the products to the correct entitlements).
 
@@ -100,64 +135,121 @@ Alternatively, you could also provide the App User ID to your web application th
 
 You can access the customer information using the `getCustomerInfo()` method of the `Purchases` object:
 
-<RCCodeBlock tabs={[
-    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)", region: "Getting customer information" },
-]} />
+<RCCodeBlock
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Getting customer information",
+    },
+  ]}
+/>
 
 You can then use the `entitlements` property of the `CustomerInfo` object to check whether the customer has access to a specific entitlement:
 
-<RCCodeBlock tabs={[
-    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)", region: "Check for specific entitlement" },
-]} />
+<RCCodeBlock
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Check for specific entitlement",
+    },
+  ]}
+/>
 
 If your app has multiple entitlements, you might also want to check if the customer has any active entitlements:
 
-<RCCodeBlock tabs={[
-    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)", region: "Check for any entitlement" },
-]} />
+<RCCodeBlock
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Check for any entitlement",
+    },
+  ]}
+/>
 
 ## Building your paywall
 
 ### Getting and displaying products
 
-We recommend using [Offerings](/getting-started/entitlements#offerings) to configure which products get presented to the customer. You can access the offerings for a given app user ID with the (asynchronous) method `purchases.getOfferings()`. The current offering for the customer is contained in the `current` property of the return value. 
+We recommend using [Offerings](/getting-started/entitlements#offerings) to configure which products get presented to the customer. You can access the offerings for a given app user ID with the (asynchronous) method `purchases.getOfferings()`. The current offering for the customer is contained in the `current` property of the return value.
 
-<RCCodeBlock tabs={[
-    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Get current offerings"},
-]} />
+<RCCodeBlock
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Get current offerings",
+    },
+  ]}
+/>
 
 It's also possible to access other Offerings besides the Current Offering directly by its identifier.
 
-<RCCodeBlock tabs={[
-    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Get custom offering"},
-]} />
+<RCCodeBlock
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Get custom offering",
+    },
+  ]}
+/>
 
-Each Offering contains a list of Packages. Packages can be access in a few different ways:
+Each Offering contains a list of Packages. Packages can be accessed in a few different ways:
 
 1. via the `.availablePackages` property on an Offering.
 2. via the duration convenience property on an Offering
 3. via the `.packagesById` property of an Offering, keyed by the package identifier
 
-<RCCodeBlock tabs={[
-    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Displaying packages"},
-]} />
+<RCCodeBlock
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Displaying packages",
+    },
+  ]}
+/>
 
 Each Package contains information about the product in the `rcBillingProduct` property:
 
-<RCCodeBlock tabs={[
-    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Getting product"},
-]} />
+<RCCodeBlock
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Getting product",
+    },
+  ]}
+/>
 
 ### Purchasing a package
 
 To purchase a package, use the `purchasePackage()` method of the `Purchases` object. It returns a `Promise<{customerInfo: CustomerInfo}>`. To handle errors, you should catch any exceptions that occur.
 
-<RCCodeBlock tabs={[
-    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Purchasing package"},
-]} />
+<RCCodeBlock
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Purchasing package",
+    },
+  ]}
+/>
 
 ## Testing
-You can use Stripe's [Test Mode](https://stripe.com/docs/test-mode) to test your RevenueCat Billing integration. To do so, you will need to set up the webhook in Stripe's test mode, and use the webhook secret from the Test Mode webhook to set up your RevenueCat Billing App in the RevenueCat dashboard. 
+
+You can use Stripe's [Test Mode](https://stripe.com/docs/test-mode) to test your RevenueCat Billing integration. To do so, you will need to set up the webhook in Stripe's test mode, and use the webhook secret from the Test Mode webhook to set up your RevenueCat Billing App in the RevenueCat dashboard.
 
 :::warning Ensure proper sandbox testing
 In contrast to mobile app stores, there is no intermediary between you and the customer, and no App Review before you start charging customers money. Therefore, you should make sure that you have properly tested your implementation in sandbox mode before shipping your web subscriptions.

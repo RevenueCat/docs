@@ -15,6 +15,8 @@ To create a new RevenueCat Billing product, open the RevenueCat dashboard, go to
 
 ![New product button in the products screen](/images/rc-billing/new-product.png)
 
+![New RevenueCat Billing App](/images/rc-billing/new-rc-billing-app.png)
+
 In the "new product" screen, you can set up the following properties of the product:
 
 - **Identifier**: A unique ID for the Product, accessible from the SDK, events, etc. Can contain up to 100 alphanumeric characters, dots, or underlines.
