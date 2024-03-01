@@ -124,26 +124,6 @@ const gettingStartedCategory = new Category(
       "Configuring Server Notifications",
       "/platform-resources/server-notifications"
     ),
-<<<<<<< HEAD
-    new Category(
-      "Stripe",
-      "stripe",
-      true,
-      [new Page("in-app-purchases-with-stripe-rfa")],
-      new Page("stripe")
-    ),
-    new Category(
-      "RevenueCat Billing & Web SDK",
-      "revenuecat-billing",
-      true,
-      [
-        new Page("product-setup"),
-        new Page("subscription-lifecycle"),
-        new Page("managing-customer-subscriptions"),
-        new Page("customer-portal"),
-      ],
-      new Page("revenuecat-billing")
-    ),
   ],
   null,
   { emoji: "🚀" }

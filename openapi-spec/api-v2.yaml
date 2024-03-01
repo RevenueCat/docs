@@ -116,29 +116,6 @@ tags:
     \ list."
 - name: Rate Limit
   x-traitTag: true
-<<<<<<< HEAD
-  description: |
-    We will return the following headers on all successful requests:
-
-    * `RevenueCat-Rate-Limit-Current-Usage`: the number of executed requests for the current rate limiting period, including the current request. The rate limiting period is one minute.
-    * `RevenueCat-Rate-Limit-Current-Limit`: the limit in requests per minute for this endpoint
-    
-    If you reach the rate limit, as indicated by a 429 error code, we will also include the following header:
-
-    * `Retry-After`: the number of milliseconds to wait until you can retry this request.
-
-    Below is an example of the response body that will be sent when the rate limit is reached. The content of the field backoff_ms is equal to the Retry-After header.
-
-    ```
-    {
-      "type": "rate_limit_error",
-      "message": "Rate limit exceeded",
-      "retryable": true,
-      "doc_url": "https://errors.rev.cat/rate-limit-error",
-      "backoff_ms": 1000
-    }
-    ```
-=======
   description: "We will return the following headers on all successful requests:\n\
     \n* `RevenueCat-Rate-Limit-Current-Usage`: the number of executed requests for\
     \ the current rate limiting period, including the current request. The rate limiting\
@@ -151,7 +128,6 @@ tags:
     \n```\n{\n  \"type\": \"rate_limit_error\",\n  \"message\": \"Rate limit exceeded\"\
     ,\n  \"retryable\": true,\n  \"doc_url\": \"https://errors.rev.cat/rate-limit-error\"\
     ,\n  \"backoff_ms\": 1000\n}\n```"
->>>>>>> 7374ff3 (RCBilling -> RevenueCat Billing)
 - name: Expandables
   x-traitTag: true
   description: "Expandables allow you to retrieve related data along with the request\
@@ -187,13 +163,9 @@ tags:
     ,\n  \"param\": \"customer_id\",\n  \"message\": \"id is too long\",\n  \"retryable\"\
     : false,\n  \"doc_url\": \"https://errors.rev.cat/parameter-error\"\n}\n```\n\n\
     For more information on the `type` field and how to resolve these errors, please\
-<<<<<<< HEAD
-    \ visit our [Error Types](#tag/Error-Handling/Error-Types) documentation.\n\n## Error Codes\n\n\
-    | Code | Name                  | Description                                 \
-=======
+
     \ visit our [Error Types](#tag/Error-Handling/Error-Types) documentation.\n\n\
     ## Error Codes\n\n| Code | Name                  | Description               \
->>>>>>> 7374ff3 (RCBilling -> RevenueCat Billing)
     \                                                                            \
     \                                                                            \
     \                   |\n| :--- | :-------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\
