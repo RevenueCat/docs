@@ -10,11 +10,11 @@ When migrating to RevenueCat, whether by [forwarding your receipt](doc:observer-
 # Setup
 ## 0. Prerequisites 
 You should make sure you have the following before proceeding with the setup:
-- Have an existing Play Store app with Google Play purchases
+- An existing Play Store app with Google Play purchases
 - Created at least [1 project](doc:projects#configure-a-new-project) with [1 Play Store app](doc:projects#adding-an-app-to-a-project) in RevenueCat
+- Uploaded your Google Play package in your RevenueCat Play Store app settings
 - Created and uploaded your [Google Service Credentials](doc:creating-play-service-credentials) to a Play Store app in RevenueCat. It is imperative you grant Financial Access to RevenueCat. Failure to do so may result in delays importing your Google Play data.
 - Enabled [Google Real-Time Developer Notifications](doc:google-server-notifications)
-- Uploaded your Google Play package in your RevenueCat Play Store app settings
 
 ## 1. Retrieve your bucket ID
 Open Google Play Console and navigate to ‘Download reports’ > ‘Financial’ 
@@ -39,10 +39,10 @@ Remember to select 'Save Changes'.
 - Existing customers: If you are interested in a one-time import of your historical Google Play data, reach out to RevenueCat Support via the dashboard [Contact Us](https://app.revenuecat.com/settings/support) form in your account settings.
 
 # Limitations
-Google Historial Imports pulls information directly from Google Play's Sales report. Sales report may be missing information that we are unable to retrieve. 
+Google Historical Imports pulls information directly from Google Play's sales reports. Though unlikely, these sales reports may contain incomplete information, leading to an incomplete data import.
 
 ## App User IDs
-For Google Play purchases that RevenueCat **does not** have a fetch token for, we will generate transactions with a RC anonymous ID.
+For Google Play purchases that RevenueCat **is not** already tracking, we will generate transactions with a RC anonymous ID.
 
 ## Event Data
 RevenueCat **will not** dispatch any third-party integration events for historical transactions generated from this import. 
@@ -50,9 +50,9 @@ RevenueCat **will not** dispatch any third-party integration events for historic
 Google Historical Imports will not detect the following:
 - Billing issues
 - Partial refunds
-- Cancelled subscriptions
-- Expiration reasons will be `UNKNOWN_DUE_TO_IMPORT`
+- Auto renewal status
+- Expiration reason will be `UNKNOWN_DUE_TO_IMPORT`
 
 ## Charts
-- Active Subscriptions Movement: This chart will not be accurate because our count of 'Churned Actives' may be incomplete.
-- Initial Conversion, Conversion to Paying, Trial Conversion, and Realized LTV per customer: These charts will be incomplete because our count of "New Customers" may be inaccurate, therefore conversion rate may also be inaccurate. However, conversion facts are still correct.
+- Active Subscriptions Movement: This chart may not be accurate because our count of 'Churned Actives' may be incomplete.
+- Initial Conversion, Conversion to Paying, Trial Conversion, and Realized LTV per customer: These charts may not be accurate because our count of "New Customers" may be incomplete, leading to conversion rates being incomplete.
