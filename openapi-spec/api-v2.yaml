@@ -65,28 +65,30 @@ tags:
     \ work with REST API v2\n  </div>\n  <div>\n    In order to utilize the RevenueCat\
     \ API v2, please create new v2 secret keys and define your permissions.\n  </div>\n\
     </div>\n\n## API v2 Permissions\n\nYou can create a new secret API key in your\
-    \ project settings page > API keys. Select _+ New_.\n\n![](/images/c640edd-image.png)\n\
+    \ project settings page > API keys. Select _+ New_.\n\n![](https://www.revenuecat.com/docs/images/c640edd-image.png)\n\
     \nGive it a name, select `V2` as the version, and set your permissions. Be sure\
-    \ to select _Generate_ at the top right corner.\n\n![](/images/842f5ae-image.png)\n\
+    \ to select _Generate_ at the top right corner.\n\n![](https://www.revenuecat.com/docs/images/842f5ae-image.png)\n\
     \nEach endpoint in this documentation will contain a description informing you\
     \ which permissions are required.\n\n## Request Payload\n\nThe body of the `POST`\
     \ requests should be encoded in JSON and have the 'Content-Type' header set to\
     \ 'application/json'.\n\n```text title=\"Content-Type Header\"\nContent-Type:\
     \ application/json\n```\n\n```json title=\"Sample Body\"\n{\n  \"app_user_id\"\
     : \"user-1456\",\n  \"fetch_token\": \"MQABC...EFH1234=\"\n}\n```\n\n## Params\n\
-    \n:::warning Encode your URL params\nFor URL params, such as the `app_user_id`,\
-    \ make sure you URL encode them before using them.\n:::\n\n## Beta Interest\n\n\
-    Our work on the APIs is not over yet. We are working on supporting a new and more\
-    \ consistent data model that will abstract away differences between the app stores.\n\
-    \nWe\u2019re also working on a more RESTful API that will allow GET operations\
-    \ without side effects. For example, being able to read customer information without\
-    \ unintentionally manipulating it.\n\nThis will allow you to use customer endpoints\
-    \ without side effects of creating a new app user ID and provide you the necessary\
-    \ information about a customer\u2019s subscription and purchase lifecycle.\n\n\
-    We are looking for interested developers who want to take part in the beta program\
-    \ for our new REST APIs. Some key benefits of participating include:\n\n- Being\
-    \ the first to gain access to our new APIs\n- Being able to give feedback before\
-    \ launch\n\nIf you\u2019re interested, please fill out this [form](https://docs.google.com/forms/d/e/1FAIpQLSelVUeqp_MHRB-cM4C1-95T1Xq0Xi9rZ540IUnLBm5XpS2ZrQ/viewform?usp=sf_link)\
+    \n<div class=\"theme-admonition theme-admonition-info alert alert--warning\">\n\
+    \  <div class=\"heading\">Encode your URL params</div>\n  <div>For URL params,\
+    \ such as the `app_user_id`, make sure you URL encode them before using them.</div>\n\
+    </div>\n\n## Beta Interest\n\nOur work on the APIs is not over yet. We are working\
+    \ on supporting a new and more consistent data model that will abstract away differences\
+    \ between the app stores.\n\nWe\u2019re also working on a more RESTful API that\
+    \ will allow GET operations without side effects. For example, being able to read\
+    \ customer information without unintentionally manipulating it.\n\nThis will allow\
+    \ you to use customer endpoints without side effects of creating a new app user\
+    \ ID and provide you the necessary information about a customer\u2019s subscription\
+    \ and purchase lifecycle.\n\nWe are looking for interested developers who want\
+    \ to take part in the beta program for our new REST APIs. Some key benefits of\
+    \ participating include:\n\n- Being the first to gain access to our new APIs\n\
+    - Being able to give feedback before launch\n\nIf you\u2019re interested, please\
+    \ fill out this [form](https://docs.google.com/forms/d/e/1FAIpQLSelVUeqp_MHRB-cM4C1-95T1Xq0Xi9rZ540IUnLBm5XpS2ZrQ/viewform?usp=sf_link)\
     \ to join our waitlist and to share your use cases!\n"
 - name: Pagination
   x-traitTag: true
