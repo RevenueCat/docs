@@ -11,8 +11,7 @@ Sample apps are currently included in each SDK repository and demonstrate how to
 
 ### Swift
 
-[Installation ➡️](/getting-started/installation/ios) | [Sample App ➡️](https://github.com/RevenueCat/purchases-ios/tree/main/Examples/MagicWeather) | [App Extensions (e.g. widgets) ➡️](/getting-started/configuring-sdk/ios-app-extensions)
-_Native Swift example. Hosted in our iOS SDK GitHub repository_
+[Installation ➡️](/getting-started/installation/ios) | [Sample App ➡️](https://github.com/RevenueCat/purchases-ios/tree/main/Examples/MagicWeather) | [App Extensions (e.g. widgets) ➡️](/getting-started/configuring-sdk/ios-app-extensions) _Native Swift example. Hosted in our iOS SDK GitHub repository_
 
 ### SwiftUI
 
