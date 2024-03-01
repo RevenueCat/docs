@@ -52,7 +52,10 @@ const migratingCategory = new Category(
       "Migrating Subscriptions",
       "migrating-existing-subscriptions",
       true,
-      [new Page("receipt-imports")],
+      [
+        new Page("receipt-imports"),
+        new Page("google-historical-import")
+      ],
       new Page("migrating-existing-subscriptions")
     ),
     new Page("observer-mode"),
