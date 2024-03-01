@@ -60,7 +60,7 @@ If one of the retry attempts is successful, RevenueCat will renew the subscripti
 
 As an example, consider a monthly subscription started on 1 January, for which the first renewal on 1 February failed, and no grace period was set up. If the payment gets recovered on 10 February, the next billing cycle will run from 10 February to 10 March.
 
-{/\* #### Overview of billing retry and recovery
+{/* #### Overview of billing retry and recovery
 
 The following image illustrates the timelines and events sent for a successful billing recovery under different circumstances. If the billing retry period ends without being able to recover the payment, no further events get sent, and the subscription remains expired.
 
@@ -70,7 +70,7 @@ In all three cases, a monthly subscription is shown that started on January 1st.
 
 - **Case 1**: If a 14 day grace period was set up, the failed renewal payment on February 1st leads to `BILLING_ISSUE`, and `CANCELLATION` events. If the billing is later recovered within the grace period (eg. on February 10th), a `RENEWAL` event is sent. The subscription remains on its original billing cycle, ie. the next renewal will occur on March 1st.
 - **Case 2**: Like in case 1, the failed renewal with a 14 day grace period leads to `BILLING_ISSUE`, and `CANCELLATION` events. If the payment couldn't be recovered by the end of the grace period, an `EXPIRATION` event is sent because the customer should now lose access to their entitlement. If the payment is later recovered (eg. on February 20th), a `RENEWAL` event is sent. The next subscription cycle restarts from the time that the billing was recovered (eg. the next monthly billing period will run from February 20th to March 20th).
-- **Case 3**: If no grace period was set up, the failed payment leads to `BILLING_ISSUE`, `CANCELLATION`, and `EXPIRATION` events, since the customer in this case immediately loses access to their entitlements. If the billing is later recovered (eg. on February 20th), a `RENEWAL` event is sent. The next subscription cycle restarts from the time that the billing was recovered (eg. the next monthly billing period will run from February 20th to March 20th). \*/}
+- **Case 3**: If no grace period was set up, the failed payment leads to `BILLING_ISSUE`, `CANCELLATION`, and `EXPIRATION` events, since the customer in this case immediately loses access to their entitlements. If the billing is later recovered (eg. on February 20th), a `RENEWAL` event is sent. The next subscription cycle restarts from the time that the billing was recovered (eg. the next monthly billing period will run from February 20th to March 20th). */}
 
 ## Cancelation
 
