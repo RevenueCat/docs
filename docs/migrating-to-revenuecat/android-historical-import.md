@@ -54,5 +54,5 @@ Google Historical Imports will not detect the following:
 - Expiration reasons will be `UNKNOWN_DUE_TO_IMPORT`
 
 ## Charts
-- Active Subscriptions Movement: This chart will not be accurate because our count of 'Churned Actives' may be imcomplete.
+- Active Subscriptions Movement: This chart will not be accurate because our count of 'Churned Actives' may be incomplete.
 - Initial Conversion, Conversion to Paying, Trial Conversion, and Realized LTV per customer: These charts will be incomplete because our count of "New Customers" may be inaccurate, therefore conversion rate may also be inaccurate. However, conversion facts are still correct.
