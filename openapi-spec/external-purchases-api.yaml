@@ -26,6 +26,7 @@ tags:
       <div>This is a documentation of the External Purchases API, which is currently in private beta.</div>
     </div>
     What is the External Purchases API? When to use it?
+    
     ## Context
 
     The External Purchases API enables developers to track subscription status and revenue data from Payment Service Providers that RevenueCat doesn't support natively. Such examples of Payment Service Providers, referenced as _**External Sources**_ are Paddle, PayPal, Braintree, Adyen, Recurly, etc. 
@@ -35,8 +36,6 @@ tags:
     The API expects data to be posted in a format defined in the API reference, meaning that developers need to implement a translation layer to transform data from the **_External Source_**, before that is posted to the External Purchases API end-point. RevenueCat accepts data posted to this end-point as is, and relies on timely requests to provide entitlement access.
 
     If you have a mobile first business with web presence that follows a similar monetisation model and subscription lifecycle implementation typical to the app stores, then this API is the right choice for you to consolidate your stack. 
-
-    [insert diagramm, RC <-> Customer backend <-> External Source]
 
     ## Adding an External Source
 
