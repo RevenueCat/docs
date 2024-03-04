@@ -79,6 +79,10 @@ const config = {
             route: "/api-v2-beta/",
           },
           {
+            spec: "openapi-spec/external-purchases-api.yaml",
+            route: "/external-purchases-api-beta/",
+          },
+          {
             spec: "openapi-spec/api-v1.yaml",
             route: "/api-v1/",
           },
