@@ -62,6 +62,7 @@ const config = {
         theme: {
           customCss: "./src/css/custom.css",
         },
+        blog: false,
       }),
     ],
     [
@@ -99,7 +100,7 @@ const config = {
         anonymizeIP: true,
       },
     ],
-    "./src/plugins/tailwind/tailwind-config.cjs"
+    "./src/plugins/tailwind/tailwind-config.cjs",
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
