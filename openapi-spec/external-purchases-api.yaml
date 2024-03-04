@@ -39,7 +39,7 @@ tags:
 
     ## Adding an External Source
 
-    You can add an External Source under Project > Apps > +New. All what you need to provide is the App name. The External API Key and ReveneuCat App ID required to call the API are automatically generated after hitting Save Changes.
+    You can add an External Source under Project > Apps > +New. All what you need to provide is the App name. The External API Key and RevenueCat App ID required to call the API are automatically generated after hitting Save Changes.
 
     ![](/docs/images/external-purchases-api/2b6a93a-Capture-2023-08-02-104905.png)
 
