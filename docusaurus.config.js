@@ -74,6 +74,10 @@ const config = {
             route: "/api-v2/",
           },
           {
+            spec: "openapi-spec/api-v2-beta.yaml",
+            route: "/api-v2-beta/",
+          },
+          {
             spec: "openapi-spec/api-v1.yaml",
             route: "/api-v1/",
           },
