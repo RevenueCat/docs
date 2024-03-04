@@ -50,6 +50,7 @@ const config = {
       "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
+        blog: false,
         docs: {
           sidebarPath: "./sidebars.js",
           routeBasePath: "/",
