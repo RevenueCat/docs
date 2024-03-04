@@ -97,9 +97,9 @@ Cancelling (or unsubscribing) from subscriptions is handled differently on each 
 
 ### Using the `managementURL` to Help Customers Cancel a Subscription
 
-Google requires developers to allow customers to cancel a subscription within apps. You can do this by displaying a link in your app that takes the user directly to Google Play's subscription management screen where they can immediately cancel their subscription. RevenueCat helps you do this by providing a `managementURL` property on the CustomerInfo object in the SDK and in our [REST API](https://docs.revenuecat.com/reference/subscribers#the-subscriber-object).
+Google requires developers to allow customers to cancel a subscription within apps. You can do this by displaying a link in your app that takes the user directly to the Google Play or App Store subscription management screen where they can immediately cancel their subscription. RevenueCat helps you do this by providing a `managementURL` property on the CustomerInfo object in the SDK and in our [REST API](https://docs.revenuecat.com/reference/subscribers#the-subscriber-object).
 
-:::info Include the `managementURL` on iOS
+:::info
 The `managementURL` is a great way to allow customers to check the status of and manage their subscriptions on both iOS and Android. RevenueCat will automatically provide your app with the correct `managementURL` based on the platform of the customer's device and original store they purchased their subscription through.
 :::
 

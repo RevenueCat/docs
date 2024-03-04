@@ -23,7 +23,7 @@ export default function Heading({ as: As, id, ...props }) {
     }
   );
 
-  const urlTarget = `${window.location.href.split("#")[0]}#${id}`;
+  // const urlTarget = `${window.location.href.split("#")[0]}#${id}`;
 
   return (
     <As
@@ -43,9 +43,9 @@ export default function Heading({ as: As, id, ...props }) {
         to={`#${id}`}
         aria-label={anchorTitle}
         title={anchorTitle}
-        onClick={function () {
-          navigator.clipboard.writeText(urlTarget);
-        }}
+        // onClick={function () {
+        //   navigator.clipboard.writeText(urlTarget);
+        // }}
       >
         &#8203;
       </Link>

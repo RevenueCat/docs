@@ -282,6 +282,37 @@ import rn3 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_3.ts";
 Landscape mode support for `PaywallFooterContainerView` is coming soon.
 :::
 
+### How to use custom fonts
+
+Paywalls can be configured to use the same font as your app passing the font family name in the `FullScreenPaywallViewOptions` or `FooterPaywallViewOptions`.
+
+By default, a paywall will use the the system default font which supports dynamic type.
+
+In order to add a font family, add it in your react native app and make sure to run `npx react-native-asset` so it's added to the native components. Supported font types are `.ttf` and `.otf`.
+Make sure the file names follow the convention:
+- Regular: MyFont.ttf/MyFont.otf
+- Bold: MyFont_bold.ttf/MyFont_bold.otf
+- Italic: MyFont_italic.ttf/MyFont_italic.otf
+- Bold and Italic: MyFont_bold_italic.ttf/MyFont_bold_italic.otf
+
+See the following examples for some common use cases:
+
+import rn4 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_4.ts";
+import rn5 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_5.ts";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'rn',
+        title: "Full Screen",
+        content: rn4,
+    },
+    {
+        type: 'rn',
+        title: "Footer",
+        content: rn5,
+    },
+]}/>
+
 
 ## Flutter
 
