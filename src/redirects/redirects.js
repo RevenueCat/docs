@@ -445,6 +445,10 @@ const redirects = {
       from: "/receipt-imports",
     },
     {
+      to: "/migrating-to-revenuecat/migrating-existing-subscriptions/google-historical-import",
+      from: "/google-historical-import",
+    },
+    {
       to: "/migrating-to-revenuecat/migrating-existing-subscriptions",
       from: "/migrating-existing-subscriptions",
     },
@@ -1138,6 +1142,10 @@ const redirects = {
     {
       to: "/migrating-to-revenuecat/migrating-existing-subscriptions/receipt-imports",
       from: "/receipt-imports.html",
+    },
+    {
+      to: "/migrating-to-revenuecat/migrating-existing-subscriptions/google-historical-import",
+      from: "/google-historical-import.html",
     },
     {
       to: "/migrating-to-revenuecat/migrating-existing-subscriptions",
