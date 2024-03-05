@@ -2,7 +2,7 @@
 openapi: 3.0.0
 info:
   title: RevenueCat API v1
-  version: '1.0'
+  version: "1.0"
   description: |
     <div class="theme-admonition theme-admonition-info alert alert--info">
         <div class="heading">New to RevenueCat?</div>
@@ -51,28 +51,28 @@ info:
 
     For URL params, such as the `app_user_id`, make sure you URL encode them before using them.
 servers:
-- url: https://api.revenuecat.com/v1
+  - url: https://api.revenuecat.com/v1
 tags:
-- name: transactions
-  description: Operations about transactions.
-  x-displayName: Transactions
-- name: customers
-  description: Operations about customers.
-  x-displayName: Customers
-- name: offerings
-  description: Operations about offerings.
-  x-displayName: Offerings
-- name: entitlements
-  description: Operations about entitlements.
-  x-displayName: Entitlements
-- name: customer_info_model
-  x-displayName: Customer Info
-  description: |
-    <SchemaDefinition schemaRef="#/components/schemas/Subscriber" exampleRef="#/components/examples/Subscriber" showReadOnly={true} showWriteOnly={true} />
-- name: offerings_model
-  x-displayName: Offerings
-  description: |
-    <SchemaDefinition schemaRef="#/components/schemas/Offerings" exampleRef="#/components/examples/Offerings" showReadOnly={true} showWriteOnly={true} />
+  - name: transactions
+    description: Operations about transactions.
+    x-displayName: Transactions
+  - name: customers
+    description: Operations about customers.
+    x-displayName: Customers
+  - name: offerings
+    description: Operations about offerings.
+    x-displayName: Offerings
+  - name: entitlements
+    description: Operations about entitlements.
+    x-displayName: Entitlements
+  - name: customer_info_model
+    x-displayName: Customer Info
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/Subscriber" exampleRef="#/components/examples/Subscriber" showReadOnly={true} showWriteOnly={true} />
+  - name: offerings_model
+    x-displayName: Offerings
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/Offerings" exampleRef="#/components/examples/Offerings" showReadOnly={true} showWriteOnly={true} />
 
 x-tagGroups:
   - name: Endpoint Reference
@@ -91,35 +91,37 @@ paths:
     get:
       summary: Get or Create Customer
       tags:
-      - customers
+        - customers
       description: Gets the latest [Customer Info](#tag/customer_info_model) for the customer with the given App User ID, or creates a new customer if it doesn't exist.
       operationId: subscribers
       parameters:
-      - name: app_user_id
-        in: path
-        description: The App User ID used with the mobile SDK.
-        schema:
-          type: string
-        required: true
-      - name: X-Platform
-        in: header
-        description: Optionally set the X-Platform header to update the Customer's 
-          `last_seen` field. Set to either `ios`, `android`, `amazon`, `macos`,
-          `uikitformac`. Don't set this if you are calling the getter for informational purposes or using a secret API key to fetch the customer's attributes.
-        schema:
-          type: string
-          example: ios
-      - name: X-Is-Sandbox
-        in: header
-        description: Optionally set the X-Platform header to get the sandbox transactions
-          of this Customer. Set to `true` to get sandbox purchases. Don't set this
-          in production. The SDK will automatically set this for your based on the
-          environment of the app.
-        schema:
-          type: boolean
-          default: false
+        - name: app_user_id
+          in: path
+          description: The App User ID used with the mobile SDK.
+          schema:
+            type: string
+          required: true
+        - name: X-Platform
+          in: header
+          description:
+            Optionally set the X-Platform header to update the Customer's
+            `last_seen` field. Set to either `ios`, `android`, `amazon`, `macos`,
+            `uikitformac`. Don't set this if you are calling the getter for informational purposes or using a secret API key to fetch the customer's attributes.
+          schema:
+            type: string
+            example: ios
+        - name: X-Is-Sandbox
+          in: header
+          description:
+            Optionally set the X-Platform header to get the sandbox transactions
+            of this Customer. Set to `true` to get sandbox purchases. Don't set this
+            in production. The SDK will automatically set this for your based on the
+            environment of the app.
+          schema:
+            type: boolean
+            default: false
       responses:
-        '200':
+        "200":
           description: |
             Success (customer found or created). 
 
@@ -128,88 +130,88 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: 
-                    request_date: '2019-07-26T17:40:10Z'
+                  value:
+                    request_date: "2019-07-26T17:40:10Z"
                     request_date_ms: 1564162810884
                     subscriber:
                       entitlements:
                         pro_cat:
-                          expires_date: 
-                          grace_period_expires_date: 
+                          expires_date:
+                          grace_period_expires_date:
                           product_identifier: onetime
-                          purchase_date: '2019-04-05T21:52:45Z'
-                      first_seen: '2019-02-21T00:08:41Z'
+                          purchase_date: "2019-04-05T21:52:45Z"
+                      first_seen: "2019-02-21T00:08:41Z"
                       management_url: https://apps.apple.com/account/subscriptions
                       non_subscriptions:
                         onetime:
-                        - id: cadba0c81b
-                          is_sandbox: true
-                          purchase_date: '2019-04-05T21:52:45Z'
-                          store: app_store
+                          - id: cadba0c81b
+                            is_sandbox: true
+                            purchase_date: "2019-04-05T21:52:45Z"
+                            store: app_store
                       original_app_user_id: XXX-XXXXX-XXXXX-XX
-                      original_application_version: '1.0'
-                      original_purchase_date: '2019-01-30T23:54:10Z'
+                      original_application_version: "1.0"
+                      original_purchase_date: "2019-01-30T23:54:10Z"
                       other_purchases: {}
                       subscriptions:
                         annual:
-                          auto_resume_date: 
-                          billing_issues_detected_at: 
-                          expires_date: '2019-08-14T21:07:40Z'
-                          grace_period_expires_date: 
+                          auto_resume_date:
+                          billing_issues_detected_at:
+                          expires_date: "2019-08-14T21:07:40Z"
+                          grace_period_expires_date:
                           is_sandbox: true
-                          original_purchase_date: '2019-02-21T00:42:05Z'
+                          original_purchase_date: "2019-02-21T00:42:05Z"
                           ownership_type: PURCHASED
                           period_type: normal
-                          purchase_date: '2019-07-14T20:07:40Z'
-                          refunded_at: 
+                          purchase_date: "2019-07-14T20:07:40Z"
+                          refunded_at:
                           store: app_store
-                          unsubscribe_detected_at: '2019-07-17T22:48:38Z'
+                          unsubscribe_detected_at: "2019-07-17T22:48:38Z"
                         onemonth:
-                          auto_resume_date: 
-                          billing_issues_detected_at: 
-                          expires_date: '2019-06-17T22:47:55Z'
-                          grace_period_expires_date: 
+                          auto_resume_date:
+                          billing_issues_detected_at:
+                          expires_date: "2019-06-17T22:47:55Z"
+                          grace_period_expires_date:
                           is_sandbox: true
-                          original_purchase_date: '2019-02-21T00:42:05Z'
+                          original_purchase_date: "2019-02-21T00:42:05Z"
                           ownership_type: PURCHASED
                           period_type: normal
-                          purchase_date: '2019-06-17T22:42:55Z'
-                          refunded_at: 
+                          purchase_date: "2019-06-17T22:42:55Z"
+                          refunded_at:
                           store: app_store
-                          unsubscribe_detected_at: '2019-06-17T22:48:38Z'
+                          unsubscribe_detected_at: "2019-06-17T22:48:38Z"
                         rc_promo_pro_cat_monthly:
-                          auto_resume_date: 
-                          billing_issues_detected_at: 
-                          expires_date: '2019-08-26T01:02:16Z'
-                          grace_period_expires_date: 
+                          auto_resume_date:
+                          billing_issues_detected_at:
+                          expires_date: "2019-08-26T01:02:16Z"
+                          grace_period_expires_date:
                           is_sandbox: false
-                          original_purchase_date: '2019-07-26T01:02:16Z'
+                          original_purchase_date: "2019-07-26T01:02:16Z"
                           ownership_type: FAMILY_SHARED
                           period_type: normal
-                          purchase_date: '2019-07-26T01:02:16Z'
-                          refunded_at: 
+                          purchase_date: "2019-07-26T01:02:16Z"
+                          refunded_at:
                           store: promotional
-                          unsubscribe_detected_at: 
+                          unsubscribe_detected_at:
 
               schema:
                 "$ref": "#/components/schemas/Subscriber"
-        '400':
-          description: '400'
+        "400":
+          description: "400"
           content:
             application/json:
               examples:
                 Result:
-                  value: 
+                  value:
                     message: Bad parameters x
               schema:
                 "$ref": "#/components/schemas/Error"
-        '401':
-          description: '401'
+        "401":
+          description: "401"
           content:
             application/json:
               examples:
                 Result:
-                  value: 
+                  value:
                     message: Invalid API key
               schema:
                 "$ref": "#/components/schemas/Error"
@@ -217,18 +219,18 @@ paths:
     delete:
       summary: Delete Customer
       tags:
-      - customers
+        - customers
       description: Permanently deletes a customer.
       operationId: delete-subscriber
       parameters:
-      - name: app_user_id
-        in: path
-        description: The App User ID of the customer to be deleted (might be an aliased App User ID).
-        schema:
-          type: string
-        required: true
+        - name: app_user_id
+          in: path
+          description: The App User ID of the customer to be deleted (might be an aliased App User ID).
+          schema:
+            type: string
+          required: true
       responses:
-        '200':
+        "200":
           description: Customer succesfully deleted.
           content:
             application/json:
@@ -238,7 +240,7 @@ paths:
                   - app_user_id
                   - deleted
                 properties:
-                  app_user_id: 
+                  app_user_id:
                     type: string
                     description: The App User ID of the customer that was requested to be deleted
                     example: XXX-XXXXX-XXXXX-XX
@@ -251,57 +253,64 @@ paths:
     post:
       summary: Create a Purchase
       tags:
-      - transactions
-      description: Records a purchase for a Customer from iOS, Android, or Stripe and
+        - transactions
+      description:
+        Records a purchase for a Customer from iOS, Android, or Stripe and
         will create a Customer if they don't already exist.
       operationId: receipts
       parameters:
-      - name: X-Platform
-        in: header
-        description: The platform this purchase is for. Either `ios`, `android`, `amazon`,
-          `macos`, `uikitformac`, or `stripe`
-        required: true
-        schema:
-          type: string
-          example: ios
+        - name: X-Platform
+          in: header
+          description:
+            The platform this purchase is for. Either `ios`, `android`, `amazon`,
+            `macos`, `uikitformac`, or `stripe`
+          required: true
+          schema:
+            type: string
+            example: ios
       requestBody:
         content:
           application/json:
             schema:
               type: object
               required:
-              - app_user_id
-              - fetch_token
+                - app_user_id
+                - fetch_token
               properties:
                 app_user_id:
                   type: string
                   description: App User ID of the Customer the receipt is associated with.
                 fetch_token:
                   type: string
-                  description: For iOS, the base64 encoded receipt file, for Android
+                  description:
+                    For iOS, the base64 encoded receipt file, for Android
                     the receipt token, for Amazon the receipt, and for Stripe the
                     subscription ID or the Stripe Checkout Session ID.
                 product_id:
                   type: string
-                  description: The Apple, Google, or Amazon product identifier or
+                  description:
+                    The Apple, Google, or Amazon product identifier or
                     SKU. Required for Google.
                   example: com.my.product.iap
                 price:
                   type: number
-                  description: The price of the product. **Required if you provide
+                  description:
+                    The price of the product. **Required if you provide
                     a currency.**
                   example: 1.99
                   format: float
                 currency:
                   type: string
-                  description: The currency of the product. The currency must be in
+                  description:
+                    The currency of the product. The currency must be in
                     [ISO 4217 format](https://en.wikipedia.org/wiki/ISO_4217). **Required
                     if you provide a price.**
                   example: USD
                   default: USD
                 payment_mode:
                   type: string
-                  description: Optionally used by the iOS SDK to communicate intro
+                  description:
+                    Optionally used by the iOS SDK to communicate intro
                     pricing periods. Either `pay_as_you_go = 0`, `pay_up_front = 1`,
                     or `free_trial = 2`. Defaults to `2` (free trial) if an introductory
                     period is detected in the receipt but this value is not provided.
@@ -311,14 +320,16 @@ paths:
                   format: float
                 is_restore:
                   type: boolean
-                  description: If true, the fetch token will trigger your configured
+                  description:
+                    If true, the fetch token will trigger your configured
                     [restore behavior](https://www.revenuecat.com/docs/restoring-purchases#restore-behavior)
                     for any other users sharing the same fetch token.
                   default: false
                   deprecated: true
                 presented_offering_identifier:
                   type: string
-                  description: Optional. The offering that was presented to the Customer
+                  description:
+                    Optional. The offering that was presented to the Customer
                     at the time of purchase.  This will be attached to any new transactions
                     in this fetch token and will be available in ETL exports and webhooks.
                     This is mostly useful if you're sending fetch tokens from your
@@ -329,7 +340,7 @@ paths:
                     description: A single Attribute to be set.
                     type: object
                     required:
-                    - value
+                      - value
                     properties:
                       value:
                         type: string
@@ -337,14 +348,15 @@ paths:
                           `null` or an empty string, the attribute will be deleted.
                       updated_at_ms:
                         type: integer
-                        description: UNIX epoch in milliseconds of when the attribute
+                        description:
+                          UNIX epoch in milliseconds of when the attribute
                           was updated. This value is used to resolve conflicts,
                           an attribute will only be updated if the new `updated_at_ms`
                           value is newer than the value for the stored attribute.
                         example: 1709195668093
                   type: object
       responses:
-        '200':
+        "200":
           description: |
             Purchase was successfully posted.
 
@@ -359,25 +371,26 @@ paths:
     post:
       summary: Add Customer Attribution Data
       tags:
-      - customers
-      description: Attaches attribution data to a subscriber from specific supported
+        - customers
+      description:
+        Attaches attribution data to a subscriber from specific supported
         networks.
       operationId: subscribersattribution
       parameters:
-      - name: app_user_id
-        in: path
-        description: The App User ID of the Customer.
-        schema:
-          type: string
-        required: true
+        - name: app_user_id
+          in: path
+          description: The App User ID of the Customer.
+          schema:
+            type: string
+          required: true
       requestBody:
         content:
           application/json:
             schema:
               type: object
               required:
-              - data
-              - network
+                - data
+                - network
               properties:
                 data:
                   type: object
@@ -388,7 +401,8 @@ paths:
                       description: The idfa from AdSupport on iOS. (iOS Only)
                     rc_gps_adid:
                       type: string
-                      description: The Google Play Services Advertising identifier.
+                      description:
+                        The Google Play Services Advertising identifier.
                         (Android Only)
                 network:
                   type: string
@@ -401,14 +415,14 @@ paths:
                     - 4: Tenjin
                     - 5: Facebook
                   enum:
-                  - '0'
-                  - '1'
-                  - '2'
-                  - '3'
-                  - '4'
-                  - '5'
+                    - "0"
+                    - "1"
+                    - "2"
+                    - "3"
+                    - "4"
+                    - "5"
       responses:
-        '200':
+        "200":
           description: Attribution data was successfully posted.
           content:
             application/json:
@@ -423,48 +437,50 @@ paths:
     post:
       summary: Grant an Entitlement
       tags:
-      - entitlements
+        - entitlements
       description: Grants a Customer an entitlement. Does not override or defer
         a store transaction, applied simultaneously.
       operationId: grant-a-promotional-entitlement
       parameters:
-      - name: app_user_id
-        in: path
-        description: The App User ID of the Customer.
-        schema:
-          type: string
-        required: true
-      - name: entitlement_identifier
-        in: path
-        description: The identifier for the entitlement you want to grant to the Customer.
-        schema:
-          type: string
-        required: true
+        - name: app_user_id
+          in: path
+          description: The App User ID of the Customer.
+          schema:
+            type: string
+          required: true
+        - name: entitlement_identifier
+          in: path
+          description: The identifier for the entitlement you want to grant to the Customer.
+          schema:
+            type: string
+          required: true
       requestBody:
         content:
           application/json:
             schema:
               type: object
               required:
-              - duration
+                - duration
               properties:
                 duration:
                   type: string
-                  description: How long of a duration to grant the promotional entitlement
+                  description:
+                    How long of a duration to grant the promotional entitlement
                     for. See below for possible values.
                 start_time_ms:
                   type: integer
-                  description: A Unix epoch in milliseconds for when the promotional
+                  description:
+                    A Unix epoch in milliseconds for when the promotional
                     entitlement should have been considered as started. If not provided,
                     the entitlement will be granted immediately. Future dates will
                     also be granted immediately and will be active until the expiration
                     date lapses.
                   example: 1709195668093
       responses:
-        '201':
+        "201":
           description: |
             Entitlement was successfully granted. 
-            
+
             Returns the updated [Customer Info](#tag/customer_info_model) for the Customer.
           content:
             application/json:
@@ -475,26 +491,28 @@ paths:
     post:
       summary: Revoke Granted Entitlements
       tags:
-      - entitlements
-      description: Revokes all granted entitlements for a given entitlement identifier
+        - entitlements
+      description:
+        Revokes all granted entitlements for a given entitlement identifier
         and App User ID.
       operationId: revoke-promotional-entitlements
       parameters:
-      - name: app_user_id
-        in: path
-        description: The App User ID of the Customer.
-        schema:
-          type: string
-        required: true
-      - name: entitlement_identifier
-        in: path
-        description: The identifier for the entitlement you want to revoke from the
-          Customer.
-        schema:
-          type: string
-        required: true
+        - name: app_user_id
+          in: path
+          description: The App User ID of the Customer.
+          schema:
+            type: string
+          required: true
+        - name: entitlement_identifier
+          in: path
+          description:
+            The identifier for the entitlement you want to revoke from the
+            Customer.
+          schema:
+            type: string
+          required: true
       responses:
-        '200':
+        "200":
           description: |
             Entitlement was succesfully revoked.
                         
@@ -506,29 +524,31 @@ paths:
       deprecated: false
   "/subscribers/{app_user_id}/subscriptions/{product_identifier}/revoke":
     post:
-      summary: 'Google Play: Refund and Revoke Subscription'
+      summary: "Google Play: Refund and Revoke Subscription"
       tags:
-      - transactions
-      description: Immediately revokes access to a Google Subscription and issues
+        - transactions
+      description:
+        Immediately revokes access to a Google Subscription and issues
         a refund for the last purchase. If you want to refund a one-time Google purchase,
         see [refund a Google purchase](ref:refund-a-google-subscription).
       operationId: revoke-a-google-subscription
       parameters:
-      - name: app_user_id
-        in: path
-        description: The App User ID of the Customer.
-        schema:
-          type: string
-        required: true
-      - name: product_identifier
-        in: path
-        description: The identifier of the product belonging to the subscription that
-          is being revoked.
-        schema:
-          type: string
-        required: true
+        - name: app_user_id
+          in: path
+          description: The App User ID of the Customer.
+          schema:
+            type: string
+          required: true
+        - name: product_identifier
+          in: path
+          description:
+            The identifier of the product belonging to the subscription that
+            is being revoked.
+          schema:
+            type: string
+          required: true
       responses:
-        '200':
+        "200":
           description: |
             Subscription was successfully refunded and revoked.
                         
@@ -542,16 +562,16 @@ paths:
     post:
       summary: Update Customer Attributes
       tags:
-      - customers
+        - customers
       description: Updates attributes for a customer.
       operationId: update-subscriber-attributes
       parameters:
-      - name: app_user_id
-        in: path
-        description: The App User ID used with the mobile SDK.
-        schema:
-          type: string
-        required: true
+        - name: app_user_id
+          in: path
+          description: The App User ID used with the mobile SDK.
+          schema:
+            type: string
+          required: true
       requestBody:
         content:
           application/json:
@@ -564,24 +584,26 @@ paths:
                       type: object
                       description: Mapping of keys to attribute values.
                       required:
-                      - value
+                        - value
                       properties:
                         value:
                           type: string
-                          description: The value of the attribute. If the value is
+                          description:
+                            The value of the attribute. If the value is
                             `null` or an empty string, the attribute will be deleted.
                         updated_at_ms:
                           type: integer
-                          description: UNIX epoch in milliseconds of when the attribute
+                          description:
+                            UNIX epoch in milliseconds of when the attribute
                             was updated. This value is used to resolve conflicts,
                             an attribute will only be updated if the new `updated_at_ms`
                             value is newer than the value for the stored attribute.
                           example: 1709195668093
                   required:
-                  - key_name
+                    - key_name
                   type: object
       responses:
-        '200':
+        "200":
           description: |
             Attributes were successfully updated.
                
@@ -590,8 +612,8 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/Subscriber"
-        '400':
-          description: '400'
+        "400":
+          description: "400"
           content:
             application/json:
               examples:
@@ -600,12 +622,12 @@ paths:
                     code: 7263
                     message: Some customer attribute keys were unable to be saved.
                     attribute_errors:
-                    - key_name: "$email"
-                      message: Value is not a valid email address.
-                    - key_name: invalid key name with spaces
-                      message: Key name format is not valid.
-                    - key_name: too_much_data
-                      message: Value is too long.
+                      - key_name: "$email"
+                        message: Value is not a valid email address.
+                      - key_name: invalid key name with spaces
+                        message: Key name format is not valid.
+                      - key_name: too_much_data
+                        message: Value is too long.
               schema:
                 type: object
                 properties:
@@ -629,41 +651,43 @@ paths:
       deprecated: false
   "/subscribers/{app_user_id}/subscriptions/{product_identifier}/defer":
     post:
-      summary: 'Google Play: Defer a Subscription'
+      summary: "Google Play: Defer a Subscription"
       tags:
-      - transactions
+        - transactions
       description: Defers the purchase of a Google Subscription to a later date.
       operationId: defer-a-google-subscription
       parameters:
-      - name: app_user_id
-        in: path
-        description: The App User ID of the Customer.
-        schema:
-          type: string
-        required: true
-      - name: product_identifier
-        in: path
-        description: The identifier of the product belonging to the subscription that
-          is being deferred.
-        schema:
-          type: string
-        required: true
+        - name: app_user_id
+          in: path
+          description: The App User ID of the Customer.
+          schema:
+            type: string
+          required: true
+        - name: product_identifier
+          in: path
+          description:
+            The identifier of the product belonging to the subscription that
+            is being deferred.
+          schema:
+            type: string
+          required: true
       requestBody:
         content:
           application/json:
             schema:
               type: object
               required:
-              - expiry_time_ms
+                - expiry_time_ms
               properties:
                 expiry_time_ms:
                   type: integer
-                  description: The desired next expiry time to assign to the subscription,
+                  description:
+                    The desired next expiry time to assign to the subscription,
                     in milliseconds since the Epoch. The given time must be later/greater
                     than the current expiry time for the subscription.
                   example: 1708417962662
       responses:
-        '200':
+        "200":
           description: |
             Subscription was successfully deferred.
                       
@@ -676,27 +700,28 @@ paths:
     post:
       summary: Override a Customer's Current Offering
       tags:
-      - offerings
+        - offerings
       description: Overrides the current Offering for a specific Customer
       operationId: override-offering
       parameters:
-      - name: app_user_id
-        in: path
-        description: The App User ID of the Customer.
-        schema:
-          type: string
-        required: true
-      - name: offering_uuid
-        in: path
-        description: The UUID for the offering you want to set as the override for
-          the Customer. The UUID can be found in the URL of the offering. For example,
-          the offering UUID in https://app.revenuecat.com/apps/abcd1234/offerings/ofrng1234567abc
-          is `ofrng1234567abc`.
-        schema:
-          type: string
-        required: true
+        - name: app_user_id
+          in: path
+          description: The App User ID of the Customer.
+          schema:
+            type: string
+          required: true
+        - name: offering_uuid
+          in: path
+          description:
+            The UUID for the offering you want to set as the override for
+            the Customer. The UUID can be found in the URL of the offering. For example,
+            the offering UUID in https://app.revenuecat.com/apps/abcd1234/offerings/ofrng1234567abc
+            is `ofrng1234567abc`.
+          schema:
+            type: string
+          required: true
       responses:
-        '201':
+        "201":
           description: |
             Offering was succesfully overridden.
 
@@ -710,19 +735,20 @@ paths:
     delete:
       summary: Remove a Customer's Current Offering Override
       tags:
-      - offerings
-      description: Reset the offering overrides back to the current offering for a
+        - offerings
+      description:
+        Reset the offering overrides back to the current offering for a
         specific Customer
       operationId: delete-offering-override
       parameters:
-      - name: app_user_id
-        in: path
-        description: The App User ID of the Customer.
-        schema:
-          type: string
-        required: true
+        - name: app_user_id
+          in: path
+          description: The App User ID of the Customer.
+          schema:
+            type: string
+          required: true
       responses:
-        '201':
+        "201":
           description: |
             Offering override was succesfully removed.
 
@@ -736,54 +762,57 @@ paths:
     get:
       summary: Get Offerings
       tags:
-      - offerings
+        - offerings
       description: Gets the offerings for your app.
       operationId: get-offerings
       parameters:
-      - name: app_user_id
-        in: path
-        description: The App User ID used with the mobile SDK. The App User ID doesn't
-          have to exist for the endpoint to work but it can affect the current offering
-          depending on whether you have any [Experiments](doc:experiments) running
-          or have [overridden the current offering](ref:override-offering) for this
-          specific App User ID.
-        schema:
-          type: string
-        required: true
-      - name: X-Platform
-        in: header
-        description: Set the X-Platform header to fetch that platform's packages.
-          Can be `ios`, `android`, `amazon`, or `stripe`.
+        - name: app_user_id
+          in: path
+          description:
+            The App User ID used with the mobile SDK. The App User ID doesn't
+            have to exist for the endpoint to work but it can affect the current offering
+            depending on whether you have any [Experiments](https://www.revenuecat.com/docs/tools/experiments-v1) running
+            or have [overridden the current offering](ref:override-offering) for this
+            specific App User ID.
+          schema:
+            type: string
+          required: true
+        - name: X-Platform
+          in: header
+          description:
+            Set the X-Platform header to fetch that platform's packages.
+            Can be `ios`, `android`, `amazon`, or `stripe`.
 
-          This header is required if you use a legacy public API key to determine which store the products should be returned for. It is not required if you use a new, app-specific API key, in which case the products for the app associated with the API key will be returned.
-        schema:
-          type: string
-          example: ios
+            This header is required if you use a legacy public API key to determine which store the products should be returned for. It is not required if you use a new, app-specific API key, in which case the products for the app associated with the API key will be returned.
+          schema:
+            type: string
+            example: ios
       responses:
-        '200':
-          description: '[Offerings](#tag:offerings_model) for the Customer.'
+        "200":
+          description: "[Offerings](#tag:offerings_model) for the Customer."
           content:
             application/json:
               schema:
                 "$ref": "#/components/schemas/Offerings"
-        '400':
-          description: '400'
+        "400":
+          description: "400"
           content:
             application/json:
               examples:
                 Invalid Platform:
-                  value: 
+                  value:
                     code: 7000
                     message: Invalid Platform
               schema:
                 "$ref": "#/components/schemas/Error"
-        '403':
-          description: '403'
+        "403":
+          description: "403"
           content:
             application/json:
               examples:
                 Secret API Key Used:
-                  value: '{"code": 7243, "message": "Secret API keys should not be
+                  value:
+                    '{"code": 7243, "message": "Secret API keys should not be
                     used in your app."}'
               schema:
                 type: object
@@ -797,28 +826,29 @@ paths:
       deprecated: false
   "/subscribers/{app_user_id}/transactions/{store_transaction_identifier}/refund":
     post:
-      summary: 'Google Play: Refund and Revoke Purchase'
+      summary: "Google Play: Refund and Revoke Purchase"
       tags:
-      - transactions
-      description: Issues a refund for the most recent purchase of a Google product
+        - transactions
+      description:
+        Issues a refund for the most recent purchase of a Google product
         and revokes access. Works for subscription and non-subscription purchases
         that occurred in the last 365 days.
       operationId: refund-a-google-subscription
       parameters:
-      - name: app_user_id
-        in: path
-        description: The App User ID of the Customer.
-        schema:
-          type: string
-        required: true
-      - name: store_transaction_identifier
-        in: path
-        description: 'The identifier of the transaction to refund. Example: GPA.3309-9122-6177-45730'
-        schema:
-          type: string
-        required: true
+        - name: app_user_id
+          in: path
+          description: The App User ID of the Customer.
+          schema:
+            type: string
+          required: true
+        - name: store_transaction_identifier
+          in: path
+          description: "The identifier of the transaction to refund. Example: GPA.3309-9122-6177-45730"
+          schema:
+            type: string
+          required: true
       responses:
-        '200':
+        "200":
           description: |
             Purchase was succesfully refunded and revoked.
 
@@ -830,26 +860,26 @@ paths:
       deprecated: false
   "/subscribers/{app_user_id}/subscriptions/{store_transaction_identifier}/cancel":
     post:
-      summary: 'Google Play: Cancel a Subscription'
+      summary: "Google Play: Cancel a Subscription"
       tags:
-      - transactions
+        - transactions
       description: Cancels a Google subscription.
       operationId: cancel-a-google-subscription
       parameters:
-      - name: app_user_id
-        in: path
-        description: The App User ID of the Customer.
-        schema:
-          type: string
-        required: true
-      - name: store_transaction_identifier
-        in: path
-        description: 'The identifier of the transaction to cancel. Example: GPA.3309-9122-6177-45730'
-        schema:
-          type: string
-        required: true
+        - name: app_user_id
+          in: path
+          description: The App User ID of the Customer.
+          schema:
+            type: string
+          required: true
+        - name: store_transaction_identifier
+          in: path
+          description: "The identifier of the transaction to cancel. Example: GPA.3309-9122-6177-45730"
+          schema:
+            type: string
+          required: true
       responses:
-        '200':
+        "200":
           description: |
             Subscription was succesfully canceled.
 
@@ -860,13 +890,14 @@ paths:
                 "$ref": "#/components/schemas/Subscriber"
       deprecated: false
 security:
-- BearerAuth: []
+  - BearerAuth: []
 components:
   securitySchemes:
     BearerAuth:
       bearerFormat: auth-scheme
-      description: 'Bearer HTTP authentication. Allowed headers -- Authorization:
-        Bearer <api_key>'
+      description:
+        "Bearer HTTP authentication. Allowed headers -- Authorization:
+        Bearer <api_key>"
       scheme: bearer
       type: http
   schemas:
@@ -874,7 +905,7 @@ components:
       type: object
       description: Identifies an error that occurred while processing an API request.
       properties:
-        message: 
+        message:
           type: string
           description: The error message.
           example: Invalid API key
@@ -929,7 +960,7 @@ components:
         request_date:
           type: string
           description: Date of the request in ISO 8601 format.
-          example: '2019-07-26T17:40:10Z'
+          example: "2019-07-26T17:40:10Z"
         request_date_ms:
           type: integer
           description: Date of the request in milliseconds since Epoch.
@@ -943,10 +974,11 @@ components:
               description: Dictionary of the entitlements of this Customer (including any expired entitlements).
               additionalProperties:
                 type: object
-                description: One entitlement granted to this Customer. If the customer was granted this entitlement through multiple purchases, then the information 
+                description:
+                  One entitlement granted to this Customer. If the customer was granted this entitlement through multiple purchases, then the information
                   about the purchase with the furthest-out expiration date is included.
                 properties:
-                  expires_date: 
+                  expires_date:
                     type: string
                     description: Date when the entitlement expires / expired (in ISO 8601 format, may be in the past).
                     example: "2024-12-12T14:04:03Z"
@@ -962,20 +994,20 @@ components:
                   purchase_date:
                     type: string
                     description: Time of the last purchase or renewal of the product that grants this entitlement (in ISO 8601 format).
-                    example: '2019-04-05T21:52:45Z'
+                    example: "2019-04-05T21:52:45Z"
             first_seen:
               type: string
               description: The ISO 8601 datetime string corresponding to when the Customer was first seen by RevenueCat.
-              example: '2019-02-21T00:08:41Z'
+              example: "2019-02-21T00:08:41Z"
             last_seen:
               type: string
               description: The ISO 8601 datetime string corresponding to when the Customer was last seen by RevenueCat.
-              example: '2019-02-21T00:08:41Z'
+              example: "2019-02-21T00:08:41Z"
             management_url:
               type: string
               description: |
                 URL to manage the active subscription of the Customer. If the Customer has an active iOS subscription, this will point to the App Store, if the Customer has an active Play Store subscription it will point there.  
-  
+
                 If there are no active subscriptions it will be null.  
                   
                 If the Customer has multiple active subscriptions for different platforms, this will take the value of the OS in the `X-Platform` header into consideration:  
@@ -1001,7 +1033,7 @@ components:
                       example: false
                     purchase_date:
                       type: string
-                      example: '2019-04-05T21:52:45Z'
+                      example: "2019-04-05T21:52:45Z"
                       description: Date of the purchase (in ISO 8601 format).
                     store:
                       type: string
@@ -1019,12 +1051,12 @@ components:
               description: The App User ID under which this Customer was first known to RevenueCat.
             original_application_version:
               type: string
-              example: '1.0'
-              description: '*Only available on iOS*. This will be `null` until an iOS receipt is sent for the Customer. After a receipt has been sent, it will indicate the first App Store version of your app that the Customer installed.'
+              example: "1.0"
+              description: "*Only available on iOS*. This will be `null` until an iOS receipt is sent for the Customer. After a receipt has been sent, it will indicate the first App Store version of your app that the Customer installed."
             original_purchase_date:
               type: string
-              example: '2019-01-30T23:54:10Z'
-              description: '**Only available on iOS**. The date that the app was first purchased/downloaded by the Customer. Will be `null` if no receipt is recorded for the Customer. Useful for [Migrating Subscriptions](/docs/migrating-to-revenuecat/migrating-existing-subscriptions).'
+              example: "2019-01-30T23:54:10Z"
+              description: "**Only available on iOS**. The date that the app was first purchased/downloaded by the Customer. Will be `null` if no receipt is recorded for the Customer. Useful for [Migrating Subscriptions](/docs/migrating-to-revenuecat/migrating-existing-subscriptions)."
             other_purchases:
               type: object
               properties: {}
@@ -1032,10 +1064,10 @@ components:
             subscriber_attributes:
               description: A dictionary of any Attributes set on this Customer. **Only included in responses to requests made with a secret API key**.
               type: object
-              additionalProperties: 
+              additionalProperties:
                 type: object
                 description: An Attribute set on the Customer object.
-                example: 
+                example:
                   favorite_color:
                     value: red
                     updated_at_ms: 1564162810884
@@ -1055,21 +1087,21 @@ components:
                 type: object
                 description: One subscription product purchased by the Customer.
                 properties:
-                  auto_resume_date: 
+                  auto_resume_date:
                     type: string
                     description: Date when the subscription will automatically resume after being paused (in ISO 8601 format). Google Play only.
                     example: null
-                  billing_issues_detected_at: 
+                  billing_issues_detected_at:
                     type: string
                     example: null
                     description: Date when RevenueCat detected any billing issues with this subscription (in ISO 8601 format). If and when the billing issue gets resolved, this field is set to `null`. Note the subscription may still be active, check the `expires_date` attribute.
                   expires_date:
                     type: string
-                    example: '2019-08-14T21:07:40Z'
+                    example: "2019-08-14T21:07:40Z"
                     description: Date when the subscription expires/expired (in ISO 8601 format).
                   grace_period_expires_date:
                     type: string
-                    example: '2019-08-14T21:07:40Z'
+                    example: "2019-08-14T21:07:40Z"
                     description: Date when any grace period for this subscription expires/expired (in ISO 8601 format). `null` if the Customer has never been in a grace period.
                   is_sandbox:
                     type: boolean
@@ -1077,7 +1109,7 @@ components:
                     example: false
                   original_purchase_date:
                     type: string
-                    example: '2019-02-21T00:42:05Z'
+                    example: "2019-02-21T00:42:05Z"
                     description: Date when this subscription first started (in ISO 8601 format). This property does not update with renewals. On iOS, this property also does not update for product changes within a subscription group or resubscriptions by lapsed subscribers.
                   ownership_type:
                     type: string
@@ -1098,8 +1130,8 @@ components:
                   purchase_date:
                     type: string
                     description: Date when the last subscription period started (in ISO 8601 format).
-                    example: '2019-07-14T20:07:40Z'
-                  refunded_at: 
+                    example: "2019-07-14T20:07:40Z"
+                  refunded_at:
                     type: string
                     description: Date when RevenueCat detected a refund of this subscription.
                     example: null
@@ -1117,113 +1149,116 @@ components:
                   unsubscribe_detected_at:
                     type: string
                     description: Date when RevenueCat detected that auto-renewal was turned off for this subsription (in ISO 8601 format). Note the subscription may still be active, check the `expires_date` attribute.
-                    example: '2019-07-17T22:48:38Z'
+                    example: "2019-07-17T22:48:38Z"
       example:
         "$ref": "#/components/examples/Subscriber"
   examples:
     Subscriber:
       value:
-        request_date: '2019-07-26T17:40:10Z'
+        request_date: "2019-07-26T17:40:10Z"
         request_date_ms: 1564162810884
         subscriber:
           entitlements:
             pro_cat:
-              expires_date: 
-              grace_period_expires_date: 
+              expires_date:
+              grace_period_expires_date:
               product_identifier: onetime
-              purchase_date: '2019-04-05T21:52:45Z'
-          first_seen: '2019-02-21T00:08:41Z'
+              purchase_date: "2019-04-05T21:52:45Z"
+          first_seen: "2019-02-21T00:08:41Z"
           management_url: https://apps.apple.com/account/subscriptions
           non_subscriptions:
             onetime:
-            - id: cadba0c81b
-              is_sandbox: true
-              purchase_date: '2019-04-05T21:52:45Z'
-              store: app_store
+              - id: cadba0c81b
+                is_sandbox: true
+                purchase_date: "2019-04-05T21:52:45Z"
+                store: app_store
           original_app_user_id: XXX-XXXXX-XXXXX-XX
-          original_application_version: '1.0'
-          original_purchase_date: '2019-01-30T23:54:10Z'
+          original_application_version: "1.0"
+          original_purchase_date: "2019-01-30T23:54:10Z"
           other_purchases: {}
           subscriptions:
             annual:
-              auto_resume_date: 
-              billing_issues_detected_at: 
-              expires_date: '2019-08-14T21:07:40Z'
-              grace_period_expires_date: 
+              auto_resume_date:
+              billing_issues_detected_at:
+              expires_date: "2019-08-14T21:07:40Z"
+              grace_period_expires_date:
               is_sandbox: true
-              original_purchase_date: '2019-02-21T00:42:05Z'
+              original_purchase_date: "2019-02-21T00:42:05Z"
               ownership_type: PURCHASED
               period_type: normal
-              purchase_date: '2019-07-14T20:07:40Z'
-              refunded_at: 
+              purchase_date: "2019-07-14T20:07:40Z"
+              refunded_at:
               store: app_store
-              unsubscribe_detected_at: '2019-07-17T22:48:38Z'
+              unsubscribe_detected_at: "2019-07-17T22:48:38Z"
             onemonth:
-              auto_resume_date: 
-              billing_issues_detected_at: 
-              expires_date: '2019-06-17T22:47:55Z'
-              grace_period_expires_date: 
+              auto_resume_date:
+              billing_issues_detected_at:
+              expires_date: "2019-06-17T22:47:55Z"
+              grace_period_expires_date:
               is_sandbox: true
-              original_purchase_date: '2019-02-21T00:42:05Z'
+              original_purchase_date: "2019-02-21T00:42:05Z"
               ownership_type: PURCHASED
               period_type: normal
-              purchase_date: '2019-06-17T22:42:55Z'
-              refunded_at: 
+              purchase_date: "2019-06-17T22:42:55Z"
+              refunded_at:
               store: app_store
-              unsubscribe_detected_at: '2019-06-17T22:48:38Z'
+              unsubscribe_detected_at: "2019-06-17T22:48:38Z"
             rc_promo_pro_cat_monthly:
-              auto_resume_date: 
-              billing_issues_detected_at: 
-              expires_date: '2019-08-26T01:02:16Z'
-              grace_period_expires_date: 
+              auto_resume_date:
+              billing_issues_detected_at:
+              expires_date: "2019-08-26T01:02:16Z"
+              grace_period_expires_date:
               is_sandbox: false
-              original_purchase_date: '2019-07-26T01:02:16Z'
+              original_purchase_date: "2019-07-26T01:02:16Z"
               ownership_type: FAMILY_SHARED
               period_type: normal
-              purchase_date: '2019-07-26T01:02:16Z'
-              refunded_at: 
+              purchase_date: "2019-07-26T01:02:16Z"
+              refunded_at:
               store: promotional
               unsubscribe_detected_at: null
     Offerings:
-      value: {
-            "current_offering_id": "default",
-            "offerings": [
-                {
-                    "description": "The default offering",
-                    "identifier": "default",
-                    "packages": [
-                        {
-                            "identifier": "$rc_monthly",
-                            "platform_product_identifier": "monthly_free_trial"
-                        },
-                        {
-                            "identifier": "consumable",
-                            "platform_product_identifier": "consumable1"
-                        },
-                        {
-                            "identifier": "$rc_annual",
-                            "platform_product_identifier": "yearly_free_trial"
-                        }
-                    ]
-                },
-                {
-                    "description": "The sale offeringg",
-                    "identifier": "sale_offering",
-                    "packages": [
-                        {
-                            "identifier": "$rc_monthly",
-                            "platform_product_identifier": "monthly_free_trial_sale"
-                        },
-                        {
-                            "identifier": "consumable",
-                            "platform_product_identifier": "consumable1_sale"
-                        },
-                        {
-                            "identifier": "$rc_annual",
-                            "platform_product_identifier": "yearly_free_trial_sale"
-                        }
-                    ]
-                }
-            ]
+      value:
+        {
+          "current_offering_id": "default",
+          "offerings":
+            [
+              {
+                "description": "The default offering",
+                "identifier": "default",
+                "packages":
+                  [
+                    {
+                      "identifier": "$rc_monthly",
+                      "platform_product_identifier": "monthly_free_trial",
+                    },
+                    {
+                      "identifier": "consumable",
+                      "platform_product_identifier": "consumable1",
+                    },
+                    {
+                      "identifier": "$rc_annual",
+                      "platform_product_identifier": "yearly_free_trial",
+                    },
+                  ],
+              },
+              {
+                "description": "The sale offeringg",
+                "identifier": "sale_offering",
+                "packages":
+                  [
+                    {
+                      "identifier": "$rc_monthly",
+                      "platform_product_identifier": "monthly_free_trial_sale",
+                    },
+                    {
+                      "identifier": "consumable",
+                      "platform_product_identifier": "consumable1_sale",
+                    },
+                    {
+                      "identifier": "$rc_annual",
+                      "platform_product_identifier": "yearly_free_trial_sale",
+                    },
+                  ],
+              },
+            ],
         }
-
