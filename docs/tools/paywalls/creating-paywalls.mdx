@@ -4,7 +4,7 @@ slug: creating-paywalls
 hidden: false
 ---
 
-import YouTubeEmbed from '@site/src/components/YouTubeEmbed';
+import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 
 <YouTubeEmbed videoId="PNiVCdExtkw" title="How to use RevenueCat Paywalls" />
 
@@ -31,6 +31,7 @@ The first thing to do when creating a new Paywall is to select the template you�
 For example, if you’re trying to draw contrast between a few different packages you’re offering, try the **#2 - Sphynx** template. Or, if you want to try your own version of the [Blinkist Free Trial Paywall](https://uxplanet.org/how-solving-our-biggest-customer-complaint-at-blinkist-led-to-a-23-increase-in-conversion-b60ad514134b) start with the **#3 - Leopard** template.
 
 If you need to showcase multiple packages, consider using the following templates:
+
 - Template 2 - Sphynx Content
 - Template 4 - Persian Content
 - Template 5 - Bengal Content
@@ -67,29 +68,30 @@ For example, to show a CTA like “Try 7 Days Free & Subscribe”, you should in
 
 We support the following variables:
 
-| Variable                  | Description                                                                                             | Example Value     | iOS SDK | Android SDK |
-| :------------------------ | :------------------------------------------------------------------------------------------------------ | :---------------- | :-------| :---------- |
-| product_name              | The name of the product from the store (e.g. product localized title from StoreKit) for a given package | CatGPT            |     *   |      *      |
-| price                     | The localized price of a given package                                                                  | $39.99            |     *   |      *      |
-| price_per_period          | The localized price of a given package with its period length if applicable                             | $39.99/yr         |     *   |      *      |
-| price_per_period_full     | The localized price of a given package with its period length unabbreviated if applicable               | $39.99/year       | 4.35.0  | 7.5.0       |
-| total_price_and_per_month | The localized price of a given package with its monthly equivalent price if it has one                  | $39.99/yr ($3.33/mo) |     *   |      *   |
-| total_price_and_per_month_full | The localized price of a given package with its monthly equivalent price if it has one             | $39.99/year ($3.33/month) | 4.35.0  | 7.5.0 |
-| sub_price_per_month       | The localized price of a given package converted to a monthly equivalent price                          | $3.33             |     *   |      *      |
-| sub_duration              | The duration of the subscription; '1 month', '3 months', '1 year', etc.                                 | 1 year            |     *   |      *      |
-| sub_duration_in_months    | The duration of the subscription in months; '3 months', '12 months', etc.                               | 12 months         |     *   |      *      |
-| sub_period                | The length of each period of the standard offer on a given package                                      | Monthly           |     *   |      *      |
-| sub_period_length         | The unabbreviated length of each period of the standard offer on a given package                        | month             | 4.35.0  | 7.5.0       |
-| sub_period_abbreviated    | The abbreviated length of each period of the standard offer on a given package                          | mo                | 4.35.0  | 7.5.0       |
-| sub_offer_duration        | The period of the introductory offer on a given package                                                 | 7 days               |     *   |      *   |
-| sub_offer_duration_2      | The period of the second introductory offer on a given package (Google Play only)                       | 7 days               |     *   |      *   |
-| sub_offer_price           | The localized price of the introductory offer of a given package                                        | $4.99                |     *   |      *   |
-| sub_offer_price_2         | The localized price of the second introductory offer of a given package (Google Play only)              | $4.99                |     *   |      *   |
+| Variable                       | Description                                                                                             | Example Value             | iOS SDK | Android SDK |
+| :----------------------------- | :------------------------------------------------------------------------------------------------------ | :------------------------ | :------ | :---------- |
+| product_name                   | The name of the product from the store (e.g. product localized title from StoreKit) for a given package | CatGPT                    | \*      | \*          |
+| price                          | The localized price of a given package                                                                  | $39.99                    | \*      | \*          |
+| price_per_period               | The localized price of a given package with its period length if applicable                             | $39.99/yr                 | \*      | \*          |
+| price_per_period_full          | The localized price of a given package with its period length unabbreviated if applicable               | $39.99/year               | 4.35.0  | 7.5.0       |
+| total_price_and_per_month      | The localized price of a given package with its monthly equivalent price if it has one                  | $39.99/yr ($3.33/mo)      | \*      | \*          |
+| total_price_and_per_month_full | The localized price of a given package with its monthly equivalent price if it has one                  | $39.99/year ($3.33/month) | 4.35.0  | 7.5.0       |
+| sub_price_per_month            | The localized price of a given package converted to a monthly equivalent price                          | $3.33                     | \*      | \*          |
+| sub_duration                   | The duration of the subscription; '1 month', '3 months', '1 year', etc.                                 | 1 year                    | \*      | \*          |
+| sub_duration_in_months         | The duration of the subscription in months; '3 months', '12 months', etc.                               | 12 months                 | \*      | \*          |
+| sub_period                     | The length of each period of the standard offer on a given package                                      | Monthly                   | \*      | \*          |
+| sub_period_length              | The unabbreviated length of each period of the standard offer on a given package                        | month                     | 4.35.0  | 7.5.0       |
+| sub_period_abbreviated         | The abbreviated length of each period of the standard offer on a given package                          | mo                        | 4.35.0  | 7.5.0       |
+| sub_offer_duration             | The period of the introductory offer on a given package                                                 | 7 days                    | \*      | \*          |
+| sub_offer_duration_2           | The period of the second introductory offer on a given package (Google Play only)                       | 7 days                    | \*      | \*          |
+| sub_offer_price                | The localized price of the introductory offer of a given package                                        | $4.99                     | \*      | \*          |
+| sub_offer_price_2              | The localized price of the second introductory offer of a given package (Google Play only)              | $4.99                     | \*      | \*          |
 
-Some variables are not available on all version of the SDK. If an unavailable variable is found on an older version of the SDK, RevenueCatUI will automatically display a [default paywall](doc:displaying-paywalls#default-paywall) to avoid showing a broken paywall.
-To prevent this, you may use [Targetting](doc:targeting) to control who can see a paywall with a newer variable.
+Some variables are not available on all version of the SDK. If an unavailable variable is found on an older version of the SDK, RevenueCatUI will automatically display a [default paywall](/docs/tools/paywalls/displaying-paywalls#default-paywall) to avoid showing a broken paywall.
+To prevent this, you may use [Targetting](/docs/tools/targeting) to control who can see a paywall with a newer variable.
 
 ### Previewing Paywalls
+
 Click the **Show preview values** checkbox to see your Paywall with example preview values instead of the raw variables.
 
 The paywall preview is generated using our example data. Please note that you may observe placeholder values from the example values in the table above, such as product names or prices in the preview of your newly created paywall. To obtain a more accurate preview, we recommend running your application on your physical device or in the simulator, as this will present details more closely aligned with your actual product information.
@@ -106,7 +108,7 @@ Use the **Select a file** button for the applicable image to upload your own to 
 
 Use your own hex codes, select a custom color, or use our color picker to select background and text colors for each element that reflect your app’s branding.
 
-:::info 
+:::info
 The color picker can be used outside of your browser window as well if you need to grab colors from assets in other applications.
 :::
 
@@ -119,6 +121,7 @@ Locales can be added to your paywall through the 'Localization' dropdown.
 ![Screenshot](/images/c53fb56-Screenshot_2023-08-31_at_3.51.13_PM_5bb628d03b7df77126dd5ba3e881339b.png)
 
 Each paywall template may differ in the localized values that you will need to provide. The options that most templates have are:
+
 - Title
 - Subtitle
 - Package details

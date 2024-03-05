@@ -7,22 +7,23 @@ hidden: false
 
 ## Google Historical Import
 
-When migrating to RevenueCat, whether by [forwarding your receipt](doc:observer-mode#option-1-server-side) or enabling [Observer Mode on the SDK](doc:observer-mode#option-2-client-side), your Google Play subscription history may be incomplete. Due to a Google limitation, RevenueCat is not able to ingest Google receipts that have expired more than 90 days ago. For receipts that RevenueCat is able to process, Google receipts only return the current snapshot for your subscription. When combining your migration with Google Historical Imports, RevenueCat will be able to fill in the gaps of your subscription history. **Currently RevenueCat is able to import your Google Play transactions from July 2023 and onwards.**
+When migrating to RevenueCat, whether by [forwarding your receipt](/docs/migrating-to-revenuecat/observer-mode#option-1-server-side) or enabling [Observer Mode on the SDK](/docs/migrating-to-revenuecat/observer-mode#option-2-client-side), your Google Play subscription history may be incomplete. Due to a Google limitation, RevenueCat is not able to ingest Google receipts that have expired more than 90 days ago. For receipts that RevenueCat is able to process, Google receipts only return the current snapshot for your subscription. When combining your migration with Google Historical Imports, RevenueCat will be able to fill in the gaps of your subscription history. **Currently RevenueCat is able to import your Google Play transactions from July 2023 and onwards.**
 
 ## Setup
 
-### 0. Prerequisites 
+### 0. Prerequisites
 
 You should make sure you have the following before proceeding with the setup:
+
 - An existing Play Store app with Google Play purchases
-- Created at least [1 project](doc:projects#configure-a-new-project) with [1 Play Store app](doc:projects#adding-an-app-to-a-project) in RevenueCat
+- Created at least [1 project](/docs/welcome/projects#configure-a-new-project) with [1 Play Store app](/docs/welcome/projects#adding-an-app-to-a-project) in RevenueCat
 - Uploaded your Google Play package in your RevenueCat Play Store app settings
-- Created and uploaded your [Google Service Credentials](doc:creating-play-service-credentials) to a Play Store app in RevenueCat. It is imperative you grant Financial Access to RevenueCat. Failure to do so may result in delays importing your Google Play data.
-- Enabled [Google Real-Time Developer Notifications](doc:google-server-notifications)
+- Created and uploaded your [Google Service Credentials](/docs/service-credentials/creating-play-service-credentials) to a Play Store app in RevenueCat. It is imperative you grant Financial Access to RevenueCat. Failure to do so may result in delays importing your Google Play data.
+- Enabled [Google Real-Time Developer Notifications](/docs/platform-resources/server-notifications/google-server-notifications)
 
 ### 1. Retrieve your bucket ID
 
-Open Google Play Console and navigate to ‘Download reports’ > ‘Financial’ 
+Open Google Play Console and navigate to ‘Download reports’ > ‘Financial’
 
 ![Navigate to Financial tab](/images/bucket-id-1.png)
 
@@ -30,7 +31,7 @@ Select ‘Copy Cloud Storage URI’ next to the ‘Estimated sales reports’ he
 
 ![Navigate to Estimated sales report](/images/bucket-id-2.png)
 
-This will copy the entire URI string. For example: `gs://{bucket_id}/sales`. We will just need the `{bucket_id}`  portion, which will look something like: `pubsite_prod_rev_01234567890987654321`.
+This will copy the entire URI string. For example: `gs://{bucket_id}/sales`. We will just need the `{bucket_id}` portion, which will look something like: `pubsite_prod_rev_01234567890987654321`.
 
 ### 2. Upload your bucket ID to RevenueCat
 
@@ -55,9 +56,10 @@ For Google Play purchases that RevenueCat **is not** already tracking, we will g
 
 ### Event Data
 
-RevenueCat **will not** dispatch any third-party integration events for historical transactions generated from this import. 
+RevenueCat **will not** dispatch any third-party integration events for historical transactions generated from this import.
 
 Google Historical Imports will not detect the following:
+
 - Billing issues
 - Partial refunds
 - Auto renewal status
