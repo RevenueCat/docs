@@ -1,8 +1,10 @@
 ---
-title: Targeting by Placement
-slug: targeting-by-placement
-hidden: true
+title: By Placement
+slug: placement
+hidden: false
 ---
+
+# Targeting By Placement
 
 Use Targeting by Placement to define paywall locations in your app so that you can serve unique Offerings at each paywall location to a given customer.
 
@@ -89,22 +91,19 @@ This will occur if the customer matches a Targeting Rule, and the Placement is n
 **The Offering identifier specified as the Default Offering for your Project when no Targeting Rules apply**
 This will occur if the customer does not match a Targeting Rule.
 
-```
-// First, we call the method with a Placement value:
-let placementOffering = offerings.getCurrentOffering(forPlacement: "onboarding")
+import swiftContent1 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_1.swift";
+import kotlinContent2 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_2.kt";
+import javaContent3 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_3.java";
+import reactNativeContent4 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_4.js";
 
-// If the Placement is defined in the dashboard
-// placementOffering = Onboarding offering
-
-// If the Placement is defined as `No Offering`
-// placementOffering = nil
-
-// If the Placement is not found and a fallback Offering is configured
-// placementOffering = fallback Offering
-
-// If the Placement is defined as `No Offering` and a fallback Offering is provided
-// placementOffering = nil
-```
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent1 },
+    { type: 'kotlin', content: kotlinContent2, name: 'Kotlin' },
+    { type: 'java', content: javaContent3, name: 'Java' },
+    { type: 'rn', content: reactNativeContent4, name: 'React Native' },
+  ]}
+/>
 
 :::tip Migrating Offerings calls to the new method
 `getCurrentOffering(forPlacement: "string")` should replace any `getOfferings` calls in your app that you want to control independently through Placements.

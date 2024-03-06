@@ -65,7 +65,7 @@ Then, create your rule by:
 3. Selecting an Offering to display when those conditions are met
 4. Selecting your desired State for the rule
 
-![Ready to save](/images/static/images/create-a-new-rule.png)
+![Ready to save](/images/create-a-new-rule.png)
 
 Once you've entered all of the required fields for your rule, click "Save" and it will be added to the list of rules in the State you've selected.
 
