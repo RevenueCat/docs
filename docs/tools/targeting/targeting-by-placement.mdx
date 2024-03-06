@@ -23,7 +23,7 @@ To start, you'll need to define a few Placements for your app. To do that, consi
 - When a sale is running (e.g. `sale_offer`)
 
 :::tip Do I need a placement for \_\_\_?
-When deciding which Placements to create, consider how your paywall(s) will compliment your ideal customer journey. For example, when you run a sale, do you want to show a different pitch & offer to onboarded customers vs. those using your app for the first time? If so, define a `Sale Offer` Placement. If not, then skip it.
+When deciding which Placements to create, consider how your paywall(s) will compliment your ideal customer journey. For example, when you run a sale, do you want to show a different pitch & offer to onboarded customers vs. those using your app for the first time? If so, define a `sale_offer` Placement. If not, then skip it.
 
 You can always create additional Placements in future releases of your app.
 :::
@@ -83,12 +83,15 @@ let placementOffering = offerings.getCurrentOffering(forPlacement: "onboarding_e
 The Offering returned will correspond to one of these three cases:
 
 **The Offering identifier (or nil value) specified for that customer at that Placement**
+
 This will occur if the customer matches a Targeting Rule, and the Placement is specified in that Targeting Rule.
 
 **The Offering identifier (or nil value) specified for that customer "in all other cases"**
+
 This will occur if the customer matches a Targeting Rule, and the Placement is not specified in that Targeting Rule.
 
 **The Offering identifier specified as the Default Offering for your Project when no Targeting Rules apply**
+
 This will occur if the customer does not match a Targeting Rule.
 
 import swiftContent1 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_1.swift";
