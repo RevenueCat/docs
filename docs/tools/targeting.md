@@ -72,7 +72,7 @@ Once you've entered all of the required fields for your rule, click "Save" and i
 ## Targeting by Placement
 
 :::tip SDK Compatibility
-Targeting by Placement is available on [this list of SDK versions].
+Targeting by Placement is available on iOS 4.38.0 and up, and Android 7.7.0 and up, with support for additional SDKs coming very soon.
 :::
 
 You may also choose to setup unique Placements in your app for each paywall location so that a given customer can be served distinct Offerings at each Placement using Targeting.
@@ -172,6 +172,9 @@ When any Experiment is running, customer enrollment will occur before Offerings 
 **How can I testing Targeting in my app?**
 
 The easiest way to test Targeting is to create a Targeting Rule for an app version that has not yet been released (e.g. only available in TestFlight), and serve a unique Offering to that Targeting Rule. Then, check to confirm whether your app in production displays a different Offering than your app version in TestFlight does.
+
+**Why are Placements not a condition of the Targeting Rule?**
+The Targeting Rule's conditions are what determine whether a given customer matches that audience or not. Placements are the various Offerings they may get based on how that customer navigates through your app. So conditions are for defining who the customer is, and Placements are for determining what the customer gets.
 
 **Can I add other custom fields to target my customers by?**
 

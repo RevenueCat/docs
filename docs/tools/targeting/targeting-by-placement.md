@@ -7,7 +7,7 @@ hidden: true
 Use Targeting by Placement to define paywall locations in your app so that you can serve unique Offerings at each paywall location to a given customer.
 
 :::tip SDK Compatibility
-Targeting by Placement is available on [this list of SDK versions].
+Targeting by Placement is available on iOS 4.38.0 and up, and Android 7.7.0 and up, with support for additional SDKs coming very soon.
 :::
 
 ![Targeting by Placement Illustration](/images/targeting-by-placement-illustration.png)
