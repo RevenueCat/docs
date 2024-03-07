@@ -96,6 +96,11 @@ The percent of customers who made at least 1 payment.
 **Active subscribers**
 The number of customers with an active subscription as of the latest results update.
 
+**Active subscribers (set to renew)**
+The number of customers with an active subscription who are set to renew their subscription (e.g. they have not cancelled) as of the latest results update.
+
+_NOTE: This measure is only available in the Customer Journey data table, not the Result chart._
+
 **Churned subscribers**
 The number of customers with a previously active subscription that has since churned as of the latest results update. A subscriber is considered churned once their subscription has expired (which may be at the end of their grace period if one was offered).
 
@@ -118,6 +123,11 @@ Compare this with "Conversion to paying" to understand if your differences in Re
 **Total MRR**
 The total monthly recurring revenue your current active subscriptions in each variant would generate on a normalized monthly basis.
 [Learn more about MRR here.](/dashboard-and-metrics/charts#monthly-recurring-revenue-mrr)
+
+**Total MRR (set to renew)**
+The total monthly recurring revenue your current active subscriptions who are currently set to renew (e.g. they have not cancelled) in each variant would generate on a normalized monthly basis.
+
+_NOTE: This measure is only available in the Customer Journey data table, not the Result chart._
 
 **MRR per customer**
 The total monthly recurring revenue your current active subscriptions in each variant would generate on a normalized monthly basis, divided by the number of customers in each variant.

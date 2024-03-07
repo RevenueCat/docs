@@ -28,11 +28,11 @@ Use the Active Subscriptions Movement chart to monitor if new paying subscribers
 For each period we measure:
 
 1. Actives: The count of paid, active (unexpired) subscriptions at the beginning of the period.
-2. Actives Lost: The count of paid subscriptions that have expired within the period, minus those that have resubscribed.
+2. Churned Actives: The count of paid subscriptions that have expired within the period, minus those that have resubscribed.
 
 ### Formula
 
-([Actives Lost] / [Actives]) \* 100 = Churn Rate
+([Churned Actives] / [Actives]) \* 100 = Churn Rate
 
 ## FAQs
 
