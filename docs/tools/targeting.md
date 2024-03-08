@@ -79,7 +79,7 @@ You may also choose to setup unique Placements in your app for each paywall loca
 
 ![Targeting by Placement Illustration](/images/targeting-by-placement-illustration.png)
 
-[Get started with Placements.](/tools/targeting/targeting-by-placement)
+[Get started with Placements.](/tools/targeting/placements)
 
 ## Scheduling Targeting Rules
 
