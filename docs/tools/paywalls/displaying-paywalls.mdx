@@ -318,18 +318,48 @@ import rn5 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_5.ts";
 
 ### How to display a fullscreen Paywall in your app
 
-There are two ways to present paywalls:
+There are several ways to present paywalls:
 
 - Using `RevenueCatUI.presentPaywall`: this will display a paywall when invoked.
 - Using `RevenueCatUI.presentPaywallIfNeeded`: this will present a paywall only if the customer does not have an unlocked entitlement.
+- Manually presenting `PaywallView`: this gives you more flexibility on how the paywall is presented.
 
 import flutter1 from "!!raw-loader!@site/code_blocks/tools/paywalls_flutter_1.dart";
+import flutter2 from "!!raw-loader!@site/code_blocks/tools/paywalls_flutter_2.dart";
 
 <RCCodeBlock tabs={[
     {
         type: 'flutter',
         title: "RevenueCatUI.presentPaywall",
         content: flutter1,
+    },
+    {
+        type: 'flutter',
+        title: "PaywallView",
+        content: flutter2,
+    }
+]}/>
+
+### How to display a footer Paywall on your custom paywall
+
+purchases_ui_flutter also has a paywall variation that can be displayed as a footer below your custom paywall.
+This allows you to design your paywall exactly as you want with native components while still using RevenueCat UI to handle it.
+This is done by using `PaywallFooterView`.
+
+The footer paywall mainly consists of the following:
+- Purchase button
+- Package details text
+- Package selection (if there are any multiple packages configured)
+
+This is all remotely configured and RevenueCatUI handles all the intro offer eligibility and purchase logic.
+
+import flutter3 from "!!raw-loader!@site/code_blocks/tools/paywalls_flutter_3.dart";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'flutter',
+        title: "PaywallFooterView",
+        content: flutter3,
     }
 ]}/>
 
