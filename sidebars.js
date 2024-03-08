@@ -365,7 +365,13 @@ const toolsCategory = new Category(
       ],
       new Page("experiments-v1")
     ),
-    new Page("targeting"),
+    new Category(
+      "Targeting",
+      "targeting",
+      true,
+      [new Page("targeting-by-placement")],
+      new Page("targeting")
+    ),
     new Page("paywall-orchestration-with-offerings"),
   ],
   null,
