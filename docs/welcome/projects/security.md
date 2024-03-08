@@ -43,7 +43,8 @@ If you have invited collaborators to your app, you can check see if they've enab
 
 Project Owners and Administrators also have the ability to enforce two-factor authentication for any new collaborators. With this setting enabled, invited collaborators will not be able to join your project until they've set up two-factor authentication for their account.
 
-TODO: - SCREENSHOT HERE
+![](/images/Screenshot_2024-03-08_at_3.27.18_PM.png)
+
 
 :::warning Everyone must already have two-factor before enforcing
 Before you can enforce two-factor authentication for your project, all existing collaborators must already have two-factor authentication enabled. You can remove current collaborators and re-invite them if you need to enforce two-factor immediately.
