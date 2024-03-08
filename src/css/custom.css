@@ -319,8 +319,41 @@ main .row {
   margin: auto;
 }
 
+.pagination-nav__link {
+  background-color: #fffffff2;
+}
+
 @layer components {
   .tw-container {
     @apply mx-auto max-w-7xl px-[clamp(1rem,0.0909rem+4.5455vi,3rem)];
   }
+
+  article {
+    @apply px-24 bg-white/95 py-12 dark:bg-neutral-900;
+  }
+}
+
+.main-wrapper {
+  width: 100%;
+  max-width: 1800px !important;
+  margin: auto;
+  background: #f6f6f6bd;
+  border-left: 1px solid #cdd2da;
+  border-right: 1px solid #cdd2da;
+}
+
+body {
+  background-color: #00000012;
+  background-blend-mode: darken;
+  background-image: url("/static/img/gradient-background-2.jpg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+html[data-theme="dark"] .main-wrapper {
+  background: #1e1e1ef2;
+  border-left: 1px solid #3d3f43;
+  border-right: 1px solid #3d3f43;
 }
