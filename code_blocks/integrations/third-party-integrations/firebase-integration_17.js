@@ -1,7 +1,7 @@
 getAuth().currentUser.getIdTokenResult()
   .then((idTokenResult) => {
      // Confirm the user has a premium entitlement.
-     if (!!idTokenResult.claims.activeEntitlements.includes("premium")) {
+     if (!!idTokenResult.claims.revenueCatEntitlements.includes("premium")) {
        // Show premium UI.
        showPremiumUI();
      } else {
