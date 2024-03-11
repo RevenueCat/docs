@@ -6,7 +6,7 @@ hidden: false
 
 # Targeting By Placement
 
-Use Targeting by Placement to define paywall locations in your app so that you can serve unique Offerings at each paywall location to a given customer.
+Use Targeting by Placement to define paywall locations in your app so that you can serve unique Offerings at each paywall location to each customer.
 
 :::tip SDK Compatibility
 Targeting by Placement is available on iOS 4.38.0 and up, and Android 7.7.0 and up, with support for additional SDKs coming very soon.
@@ -28,19 +28,19 @@ When deciding which Placements to create, consider how your paywall(s) will comp
 You can always create additional Placements in future releases of your app.
 :::
 
-When your app fetches Offerings by Placement, we'll return the Offering to be displayed for that customer at that Placement, letting you display unqiue paywalls based on the customer journey.
+When your app fetches Offerings by Placement, we'll return the Offering to be displayed for that customer at that Placement, letting you display unique paywalls based on the customer journey.
 
 ## Creating Targeting Rules for Placements
 
-To define which Offerings should be served for an audience at each Placement, click **+Add Placement** when creating a new rule or editing an existing one.
+To define which Offerings should be served for an audience at each Placement, click **+ Add Placement** when creating a new rule or editing an existing one.
 
 ![Add Placement](/images/add-placement.png)
 
 :::tip Targeting "Any audience"
-If you want to use Placements to serve unique Offerings at differnet paywall locations for all customers, you can do so by creating a Targeting Rule that targets "Any audience" as its condition. Then, order that rule at the bottom of your list of Live rules if you want other audience-specific Targeting Rules to supercede it.
+If you want to use Placements to serve unique Offerings at different paywall locations for all customers, you can do so by creating a Targeting Rule that targets "Any audience" as its condition. Then, order that rule at the bottom of your list of Live rules if you want other audience-specific Targeting Rules to supercede it.
 :::
 
-Then, select the Offering you want to display, and enter the identifier of the Placement you want to serve that Offering on. If this is your first time using that Placement, you'll need to click _Add_ to add its identifer to your list. Once you've saved this rule, that Placement will be available to select in other Targeting Rules.
+Then, select the Offering you want to display, and enter the identifier of the Placement you want to serve that Offering on. If this is your first time using that Placement, you'll need to click **Add** to add its identifer to your list. Once you've saved this rule, that Placement will be available to select in other Targeting Rules.
 
 ![Create a Placement](/images/create-a-placement.png)
 
@@ -52,7 +52,7 @@ When using Placements, you'll always need to select an Offering to serve "for al
 
 - For any Placements other than the one(s) specified in this rule
 - For any new Placements added in the future
-- Or when getting the 'current' offering in any SDK version (such as in older versions of your app, or areas of your app that are not fetching Offerings by Placement)
+- Or when getting the 'current' offering in any SDK version (e.g. the `getOfferings()` method), such as in older versions of your app, or areas of your app that are not fetching Offerings by Placement
 
 ![Set a Placement for all other cases](/images/for-all-other-cases.png)
 
@@ -60,17 +60,17 @@ When using Placements, you'll always need to select an Offering to serve "for al
 
 You can also choose to serve No Offering at a given Placement, such as when the paywalled feature is not yet available in some region, or when the targeted audience is not eligible to receive a given offer.
 
-Simply select **No Offering** for a given Placement in order to have a null value returned when your app requests Offerings for that Placement for customers matching that Targeting Rule
+Simply select **No Offering** for a given Placement in order to have a null value returned when your app requests Offerings for that Placement for customers matching that Targeting Rule.
 
 :::warning Handling a nil Offering identifier
-Be sure that your app is setup to expect and handle a nil value being returned when using the getOfferingsForPlacement method if you expect to use Targeting in this way.
+Be sure that your app is setup to expect and handle a nil value being returned when using the `getCurrentOffering(forPlacement: "string")` method if you expect to use Targeting in this way.
 :::
 
 If you've chosen to serve **No Offering** "for all other cases" in a Targeting Rule, then you'll also need to specify an Offering to serve "when not using Placements", so that any calls to getOfferings in your current app or prior app versions still have some Offering identifer returned in case they're not designed to handle a null value.
 
 ## Fetching Offerings by Placement
 
-To use Placements in your app, after you have defined them in the Dashboard, you can use the `getCurrentOffering(forPlacement placementIdentifier: String)` method to fetch the Offering for a given Placement, where `placementIdentifier` must exactly match the value set in the Dashboard.
+To use Placements in your app, after you have defined them in the Dashboard, you can use the `getCurrentOffering(forPlacement: "placementIdentifier")` method to fetch the Offering for a given Placement, where `placementIdentifier` must exactly match the value set in the Dashboard.
 
 The method will return the Offering for that customer at that Placement.
 
@@ -107,7 +107,7 @@ import javaContent3 from "!!raw-loader!@site/code_blocks/tools/targeting_by_plac
 />
 
 :::tip Migrating Offerings calls to the new method
-`getCurrentOffering(forPlacement: "string")` should replace any `getOfferings` calls in your app that you want to control independently through Placements.
+`getCurrentOffering(forPlacement: "string")` should replace any `getOfferings()` calls in your app that you want to control independently through Placements.
 :::
 
 ## FAQs
