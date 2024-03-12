@@ -72,7 +72,7 @@ Once you've entered all of the required fields for your rule, click "Save" and i
 ## Targeting by Placement
 
 :::tip SDK Compatibility
-Targeting by Placement is available on iOS 4.38.0 and up, and Android 7.7.0 and up, with support for additional SDKs coming very soon.
+Targeting by Placement is available on iOS 4.38.1 and up, and Android 7.7.0 and up, with support for additional SDKs coming very soon.
 :::
 
 You may also choose to setup unique Placements in your app for each paywall location so that a given customer can be served distinct Offerings at each Placement using Targeting.
