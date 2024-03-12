@@ -8,7 +8,9 @@ hidden: true
 
 With custom attributes, you can create audiences to target with unique Offerings based on any dimension that's relevant to your business.
 
-<-- header image -->
+import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
+
+<YouTubeEmbed videoId="sFv5YtWhVas" title="Targeting by Custom Attributes" />
 
 Continue reading to learn:
 
