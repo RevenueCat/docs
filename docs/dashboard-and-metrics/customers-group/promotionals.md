@@ -24,7 +24,7 @@ To give a user promotional access to an entitlement choose the [entitlement name
 
 ![](/images/5014886-Screenshot_2023-03-27_at_2.05.51_PM_8b5058a6c31dbdc51f0552225a5fd7d8.png "Screenshot 2023-03-27 at 2.05.51 PM.png")
 
-Granting an entitlement from the customer page will go into effect immediately, but you may need to [refresh CustomerInfo](/getting-started#section-get-subscription-status) on the client to get the latest active entitlements. The promotional access will automatically be revoked after the selected duration. Note that promotional entitlements in the customer timeline will not show as "sandbox" transactions.
+Granting an entitlement from the customer page will go into effect immediately, but you may need to [refresh CustomerInfo](/getting-started#section-get-subscription-status) on the client to get the latest active entitlements. The promotional access will automatically be revoked after the selected duration. Note that promotional entitlements in the customer timeline will not show as "sandbox" transactions and [Webhooks](https://www.revenuecat.com/docs/integrations/webhooks) will send their related events as "production" events.
 
 :::info
 Promotional entitlements will be prefixed with "rc_promo" in the customer dashboard and in SDKs.
