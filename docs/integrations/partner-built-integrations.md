@@ -30,6 +30,7 @@ Use the links below to find the set up guide on each of our partner's sites.
 ### Partner-Built Attribution Providers
 
 [Airbridge ](https://help.airbridge.io/hc/en-us/articles/12964722155929-RevenueCat?utm_source=Browsing)
+[Search Ads Optimization ](https://searchadsoptimization.com/resources/attribution/revenuecat)
 
 ## How Do I Get Started As A Partner?
 
