@@ -477,10 +477,24 @@ paths:
                   example: 1709196532093
                 duration:
                   type: string
+                  enum:
+                    - daily
+                    - three_day
+                    - weekly
+                    - two_week
+                    - monthly
+                    - two_month
+                    - three_month
+                    - six_month
+                    - yearly
+                    - lifetime
                   description:
                     How long of a duration to grant the promotional entitlement
-                    for. See below for possible values. If not provided then `end_time_ms` must be provided.
+                    for.  If not provided then `end_time_ms` must be provided.
                   deprecated: true
+            example:
+              start_time_ms: 1709195668093
+              end_time_ms: 1709196532093
 
       responses:
         "201":
