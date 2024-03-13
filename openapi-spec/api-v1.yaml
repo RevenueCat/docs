@@ -459,14 +459,7 @@ paths:
           application/json:
             schema:
               type: object
-              required:
-                - duration
               properties:
-                duration:
-                  type: string
-                  description:
-                    How long of a duration to grant the promotional entitlement
-                    for. See below for possible values.
                 start_time_ms:
                   type: integer
                   description:
@@ -476,6 +469,19 @@ paths:
                     also be granted immediately and will be active until the expiration
                     date lapses.
                   example: 1709195668093
+                end_time_ms:
+                  type: integer
+                  description:
+                    A Unix epoch in milliseconds for when the promotional
+                    entitlement should expire. If not provided then `duration` must be provided.
+                  example: 1709196532093
+                duration:
+                  type: string
+                  description:
+                    How long of a duration to grant the promotional entitlement
+                    for. See below for possible values. If not provided then `end_time_ms` must be provided.
+                  deprecated: true
+
       responses:
         "201":
           description: |
