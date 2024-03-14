@@ -1009,7 +1009,8 @@ components:
                     nullable: true
                   product_identifier:
                     type: string
-                    description: The identifier of the product that is responsible for this entitlement being granted.
+                    description: |
+                      The identifier of the product that is responsible for this entitlement being granted.<br><br>Please note: in some cases, if there are problems with validating the purchase with the store, the correct product identifier might temporarily be unavailable. 
                     example: onetime
                   purchase_date:
                     type: string
