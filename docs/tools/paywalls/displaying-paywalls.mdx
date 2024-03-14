@@ -282,23 +282,84 @@ import rn3 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_3.ts";
 Landscape mode support for `PaywallFooterContainerView` is coming soon.
 :::
 
+### How to use custom fonts
+
+Paywalls can be configured to use the same font as your app passing the font family name in the `FullScreenPaywallViewOptions` or `FooterPaywallViewOptions`.
+
+By default, a paywall will use the the system default font which supports dynamic type.
+
+In order to add a font family, add it in your react native app and make sure to run `npx react-native-asset` so it's added to the native components. Supported font types are `.ttf` and `.otf`.
+Make sure the file names follow the convention:
+- Regular: MyFont.ttf/MyFont.otf
+- Bold: MyFont_bold.ttf/MyFont_bold.otf
+- Italic: MyFont_italic.ttf/MyFont_italic.otf
+- Bold and Italic: MyFont_bold_italic.ttf/MyFont_bold_italic.otf
+
+See the following examples for some common use cases:
+
+import rn4 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_4.ts";
+import rn5 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_5.ts";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'rn',
+        title: "Full Screen",
+        content: rn4,
+    },
+    {
+        type: 'rn',
+        title: "Footer",
+        content: rn5,
+    },
+]}/>
+
 
 ## Flutter
 
 ### How to display a fullscreen Paywall in your app
 
-There are two ways to present paywalls:
+There are several ways to present paywalls:
 
 - Using `RevenueCatUI.presentPaywall`: this will display a paywall when invoked.
 - Using `RevenueCatUI.presentPaywallIfNeeded`: this will present a paywall only if the customer does not have an unlocked entitlement.
+- Manually presenting `PaywallView`: this gives you more flexibility on how the paywall is presented.
 
 import flutter1 from "!!raw-loader!@site/code_blocks/tools/paywalls_flutter_1.dart";
+import flutter2 from "!!raw-loader!@site/code_blocks/tools/paywalls_flutter_2.dart";
 
 <RCCodeBlock tabs={[
     {
         type: 'flutter',
         title: "RevenueCatUI.presentPaywall",
         content: flutter1,
+    },
+    {
+        type: 'flutter',
+        title: "PaywallView",
+        content: flutter2,
+    }
+]}/>
+
+### How to display a footer Paywall on your custom paywall
+
+purchases_ui_flutter also has a paywall variation that can be displayed as a footer below your custom paywall.
+This allows you to design your paywall exactly as you want with native components while still using RevenueCat UI to handle it.
+This is done by using `PaywallFooterView`.
+
+The footer paywall mainly consists of the following:
+- Purchase button
+- Package details text
+- Package selection (if there are any multiple packages configured)
+
+This is all remotely configured and RevenueCatUI handles all the intro offer eligibility and purchase logic.
+
+import flutter3 from "!!raw-loader!@site/code_blocks/tools/paywalls_flutter_3.dart";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'flutter',
+        title: "PaywallFooterView",
+        content: flutter3,
     }
 ]}/>
 

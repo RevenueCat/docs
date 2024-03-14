@@ -4,15 +4,13 @@ slug: targeting
 hidden: false
 ---
 
-Targeting allows you to create rules for serving distinct audiences their own Offering. Instead of having a single Default Offering that all customers receive, you can instead create a cascading sequence of rules to deliver different Offerings to each audience that you define, or even to schedule new Offerings to be served in the future.
+Targeting allows you to maximize customer lifetime value & paywall effectiveness by creating rules to serve distinct audiences their own Offerings. Instead of having a single Default Offering that all customers receive, you can instead create rules to define an audience and serve them distinct Offerings for each Placement in your app. Plus, you can even schedule new rules to start and end at future dates.
 
-This allows you to create paywall experiences that are tailored to each of your audiences so you can make an effective pitch for your product and maximize lifetime value.
-
-:::tip 
+:::tip
 Targeting is available on Pro, Scale, and Enterprise plans. [Click here](https://app.revenuecat.com/settings/billing) to review your plan and consider upgrading.
 :::
 
-import YouTubeEmbed from '@site/src/components/YouTubeEmbed';
+import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 
 <YouTubeEmbed videoId="NLNp_q7_RAQ" title="Targeting" />
 
@@ -22,11 +20,13 @@ import YouTubeEmbed from '@site/src/components/YouTubeEmbed';
 | :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Offering         | The set of Packages, metadata, and an optional paywall UI you can create to remotely control your paywall experience.                                                                                                                                           |
 | Default Offering | The Offering that is set as "Default" in the RevenueCat Dashboard for your Project. We recommend designing your app so that the paywall always shows a customer's Current Offering, which will be your Project's Default Offering if no other conditions apply. |
-| Targeting        | The ability to assign a distinct Offering to a distinct audience of customers based on Targeting Rules you create.                                                                                                                                              |
-| Targeting Rule   | A collection of conditions that, when they are true for a given customer, will result in that customer matching the rule and being served the corresponding Offering.                                                                                           |
+| Placement        | A custom paywall location you can define in your app to serve an Offering in. (e.g. an `onboarding_end` Placement and a `feature_gate` Placement)                                                                                                               |
+| Targeting        | The ability to assign distinct Offerings to a distinct audience of customers based on Targeting Rules you create.                                                                                                                                               |
+| Targeting Rule   | A collection of conditions that, when they are true for a given customer, will result in that customer matching the rule and being served the corresponding Offerings.                                                                                          |
 | Conditions       | The filters such as App, Country, and App Version that can be used to construct a Targeting Rule.                                                                                                                                                               |
 | Audience         | The customers who would be included in a Targeting Rule due to matching its conditions.                                                                                                                                                                         |
 | Live             | The Targeting Rules that are actively being used to determine which customers which receive Offerings, as determined by their conditions, assessed in order from top to bottom.                                                                                 |
+| Scheduled        | The Targeting Rules that are scheduled to be automatically made Live at their scheduled Start Date.                                                                                                                                                             |
 | Inactive         | The Targeting Rules that are not actively being used. These may be drafts, rules you previously used, rules you intend to set live in the future, etc.                                                                                                          |
 
 ## How Targeting works
@@ -65,9 +65,21 @@ Then, create your rule by:
 3. Selecting an Offering to display when those conditions are met
 4. Selecting your desired State for the rule
 
-![Ready to save](/images/5fe8d9a-Create_a_New_Rule_cf16432e3072b0d8c4a799eaef270c86.png)
+![Ready to save](/images/create-a-new-rule.png)
 
-Once you've entered all of the required fields for your rule, click "Save" and it will be added to the list of rules in State you've selected.
+Once you've entered all of the required fields for your rule, click "Save" and it will be added to the list of rules in the State you've selected.
+
+## Targeting by Placement
+
+:::tip SDK Compatibility
+Targeting by Placement is available on iOS 4.38.1 and up, and Android 7.7.0 and up, with support for additional SDKs coming very soon.
+:::
+
+You may also choose to setup unique Placements in your app for each paywall location so that a given customer can be served distinct Offerings at each Placement using Targeting.
+
+![Targeting by Placement Illustration](/images/targeting-by-placement-illustration.png)
+
+[Get started with Placements.](/tools/targeting/placements)
 
 ## Scheduling Targeting Rules
 
@@ -95,7 +107,7 @@ When a rule is newly set Live (either when it's created or when an Inactive rule
 Live & Scheduled rules can be reordered at any time.
 :::
 
-### Ordering Live rules
+### Ordering Live & Scheduled rules
 
 1. Click "Order rules" to enter the ordering mode
 2. Drag the rules you wish to reorder to their correct location in the list
@@ -153,11 +165,16 @@ The RC SDK Version of a specified SDK flavor of the App Versions that your custo
 
 **How do Targeting and Experiments interact?**
 
-**TL;DR** Experiment enrollment is checked before Targeting Rules are assessed \n \nWhen any Experiment is running, customer enrollment will occur before Offerings are fetched. When Offerings are fetched, we'll first check to see if a customer is enrolled in a running Experiment. If they are, their variant's Offering will be returned. If they are not, then any existing Targeting Rules will be assessed.
+**TL;DR** Experiment enrollment is checked before Targeting Rules are assessed
+
+When any Experiment is running, customer enrollment will occur before Offerings are fetched. When Offerings are fetched, we'll first check to see if a customer is enrolled in a running Experiment. If they are, their variant's Offering will be returned. If they are not, then any existing Targeting Rules will be assessed.
 
 **How can I testing Targeting in my app?**
 
 The easiest way to test Targeting is to create a Targeting Rule for an app version that has not yet been released (e.g. only available in TestFlight), and serve a unique Offering to that Targeting Rule. Then, check to confirm whether your app in production displays a different Offering than your app version in TestFlight does.
+
+**Why are Placements not a condition of the Targeting Rule?**
+The Targeting Rule's conditions are what determine whether a given customer matches that audience or not. Placements are the various Offerings they may get based on how that customer navigates through your app. So conditions are for defining who the customer is, and Placements are for determining what the customer gets.
 
 **Can I add other custom fields to target my customers by?**
 

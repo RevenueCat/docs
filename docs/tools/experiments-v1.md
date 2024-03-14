@@ -4,6 +4,7 @@ slug: experiments-v1
 excerpt: A/B testing two offerings in your app
 hidden: false
 ---
+
 # Take the guesswork out of pricing & paywalls
 
 RevenueCat Experiments allow you to optimize your subscription pricing and paywall design with easy-to-deploy A/B tests backed by comprehensive cross-platform results. With Experiments, you can A/B test two different Offerings in your app and analyzing the full subscription lifecycle to understand which variant is producing more value for your business.
@@ -25,7 +26,7 @@ Plus, you can run multiple tests simultaneously on distinct audience or subsets 
 
 ## Get started with Experiments
 
-- If you're just getting started, make sure your app is ready to use [experiments ](doc:experiments-overview-v1)
-- If you've not yet created an Offering for your test hypothesis, [check out our guide to get started ](doc:creating-offerings-to-test)
-- For instructions on how to set up an Experiment in your Project, read our [guide on configuring experiments ](doc:configuring-experiments-v1)
-- Once the data from your Experiment starts coming in, learn how to [interpret the results ](doc:experiments-results-v1)
+- If you're just getting started, make sure your app is ready to use [experiments ](/docs/tools/experiments-v1/experiments-overview-v1)
+- If you've not yet created an Offering for your test hypothesis, [check out our guide to get started ](/docs/tools/experiments-v1/creating-offerings-to-test)
+- For instructions on how to set up an Experiment in your Project, read our [guide on configuring experiments ](/docs/tools/experiments-v1/configuring-experiments-v1)
+- Once the data from your Experiment starts coming in, learn how to [interpret the results ](/docs/tools/experiments-v1/experiments-results-v1)

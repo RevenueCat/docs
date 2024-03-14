@@ -4,6 +4,7 @@ import Button from "../components/Button/Button.tsx";
 import heroImage from "@site/static/images/fb71f38d-hero.png";
 import heroImageDark from "@site/static/images/ed3a1112-hero-dark.png";
 import videoPlaceholder from "@site/static/images/b52b1205-video-placeholder.png";
+import videoPlaceholderDark from "@site/static/images/a9eeda94-video-placeholder-dark.png";
 import ChartIcon from "@site/static/img/charts.svg";
 import CustomerIcon from "@site/static/img/customer.svg";
 import ExportsIcon from "@site/static/img/time.svg";
@@ -124,7 +125,12 @@ function LandingPage() {
             <img
               src={videoPlaceholder}
               alt="revenuecat welcome"
-              class="size-full mx-auto max-w-[600px] lg:max-w-none"
+              class="size-full mx-auto max-w-[600px] lg:max-w-none dark:hidden"
+            />
+            <img
+              src={videoPlaceholderDark}
+              alt="revenuecat welcome"
+              class="size-full mx-auto max-w-[600px] lg:max-w-none hidden dark:block"
             />
           </div>
 

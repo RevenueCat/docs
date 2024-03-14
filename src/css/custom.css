@@ -265,6 +265,10 @@ html[data-theme="dark"]
   color: var(--ifm-menu-color);
 }
 
+.navbar__link::after {
+  top: 1px !important;
+}
+
 html[data-theme="dark"] .medium-zoom-overlay {
   background-color: rgba(0, 0, 0, 0.9) !important;
 }

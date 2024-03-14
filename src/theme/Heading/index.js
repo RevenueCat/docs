@@ -23,8 +23,6 @@ export default function Heading({ as: As, id, ...props }) {
     }
   );
 
-  const urlTarget = `${window.location.href.split("#")[0]}#${id}`;
-
   return (
     <As
       {...props}
@@ -33,7 +31,9 @@ export default function Heading({ as: As, id, ...props }) {
         hideOnScroll
           ? styles.anchorWithHideOnScrollNavbar
           : styles.anchorWithStickyNavbar,
-        props.className
+        props.className,
+        As === "h2" && "mt-16",
+        As === "h3" && "mt-12"
       )}
       id={id}
     >
@@ -43,9 +43,6 @@ export default function Heading({ as: As, id, ...props }) {
         to={`#${id}`}
         aria-label={anchorTitle}
         title={anchorTitle}
-        onClick={function () {
-          navigator.clipboard.writeText(urlTarget);
-        }}
       >
         &#8203;
       </Link>
