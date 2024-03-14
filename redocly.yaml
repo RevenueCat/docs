@@ -5,3 +5,4 @@ theme:
   openapi:
     schemaExpansionLevel: 1
     pathInMiddlePanel: true
+    maxDisplayedEnumValues: 10

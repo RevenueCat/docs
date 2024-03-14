@@ -24,6 +24,12 @@ tags:
   description: Operations about invoices.
 - name: Project
   description: Operations about projects.
+- name: Subscription Data Model
+  x-modelReference: true
+  description: '<SchemaDefinition schemaRef="#/components/schemas/Subscription" showReadOnly={true}
+    showWriteOnly={true} />
+
+    '
 - name: Overview (v2)
   x-traitTag: true
   description: "<div class=\"theme-admonition theme-admonition-info alert alert--info\"\
@@ -248,6 +254,60 @@ tags:
     \ Refer to the `backoff_ms` field to determine when to try again.\n\n### `unprocessable_entity_error`\n\
     \nRequest is not able to be processed. Please refer to the `message` field for\
     \ more information."
+- name: Representation of Subscriptions
+  x-traitTag: true
+  description: "In comparison to our [v1 REST API](https://www.revenuecat.com/reference/subscribers#the-subscription-object),\
+    \ we have made changes to improve the organization and accessibility of your customers\u2019\
+    \ subscriptions. The data model used in the RevenueCat REST API v2 has several\
+    \ advantages. Firstly, it better abstracts differences between different app stores,\
+    \ making it easier for you to access your data without needing to understand the\
+    \ specificities and idiosyncrasies of each individual store. \n\nAdditionally,\
+    \ the REST API v2 subscription data model provides richer information regarding\
+    \ your subscription data and includes new fields such as:\n\n- `gives_access`:\
+    \ Rather than having to create your own logic to determine if a customer should\
+    \ have access, we will provide you with that information directly.\n- `auto_renewal_status`:\
+    \ Previously you would have to use `unsubscribe_detected_at`, `billing_issues_detected_at`,\
+    \ and other fields to determine the auto renewal status of the customer, now we\
+    \ include this information to take away the estimation work.\n- `status`: Gives\
+    \ you a quick and easy way to gather the status of the customer\u2019s subscription\
+    \ to determine what state they are currently in.\n- `store_subscription_identifier`:\
+    \ Whereas the old data model was missing the store\u2019s subscription identifier\
+    \ (aka the transaction ID directly from the stores), we have included this new\
+    \ field to help identify your customer\u2019s subscription.\n- `total_reveneue_in_usd`:\
+    \ You can easily determine how much a customer has spent for this subscription\
+    \ in USD and utilize it for your own bookkeeping purposes. This object also contains\
+    \ information such as gross, commission, tax, and proceeds to help you break down\
+    \ the customer\u2019s revenue. \n\nTo view more details of fields we have included\
+    \ for the subscription object, check out the [model reference](#tag/Subscription-Data-Model).\
+    \ \n\nEventually we will also expose this sort of information in webhooks and\
+    \ customer event details to incorporate the new data model throughout RevenueCat.\n\
+    \n## What constitutes a new subscription\n\nDifferent stores supported by RevenueCat\
+    \ have different logic to define what is a new subscription vs. a change to an\
+    \ existing subscription. To make it easier to handle subscriptions across different\
+    \ stores, the data model for the RevenueCat REST API v2 is now following a consistent\
+    \ definition of what continues the same subscription vs. a new one:\n\n- After\
+    \ a subscription has lapsed (e.g: after a billing retry or letting subscription\
+    \ expire after an unsubscribe), if a customer subscribes to the same product it\
+    \ will be considered a new subscription (this was previously treated differently\
+    \ on Apple App Store vs. Google Play Store)\n- If the product of a paid subscription\
+    \ is changed, the subscription to the new product will be considered a new subscription.\
+    \ An exception is product changes during a trial period, the post-trial subscription\
+    \ period to a different product will not be considered a new subscription, but\
+    \ a regular trial conversion\n- For family shared subscriptions:\n  - Family shared\
+    \ subscriptions will be considered as a new subscription (albeit with no revenue)\n\
+    \  - If family sharing access is revoked and later re-enabled, this will be considered\
+    \ as a new subscription\n\n### Diagrams for different cases\n\n#### Billing issue:\
+    \ unrecovered\n\n![](/docs/images/api-v2/b39dda4-Billing_issue__unrecovered.png)\n\
+    \n\n#### Billing issue: recovered\n\n![](/docs/images/api-v2/312e3fd-Billing_issue__recovered.png)\n\
+    \n\n#### Lapsed subscription\n\n![](/docs/images/api-v2/dca8cda-Lapsed_subscription.png)\n\
+    \n\n#### Product changes: upgrade (no trial)\n\n![](/docs/images/api-v2/1a8e689-Product_changes__upgrade_no_trial.png)\n\
+    \n\n#### Product changes: downgrade (no trial)\n\n![](/docs/images/api-v2/ae7edfc-Product_changes__downgrade_no_trial.png)\n\
+    \n\n#### Product changes (with trial)\n\n![](/docs/images/api-v2/a4e8115-Product_changes_with_trial.png)\n\
+    \n\n#### Subscription paused: Recovery\n\n![](/docs/images/api-v2/4fa17e9-Subscription_paused__Recovery.png)\n\
+    \n\n#### Subscription paused: Billing issue, recovered\n\n![](/docs/images/api-v2/a10133d-Subscription_paused__Billing_issue_recoverd.png)\n\
+    \n\n#### Subscription paused: Billing issue, unrecovered\n\n![](/docs/images/api-v2/6fa24fb-Subscription_paused__Billing_issue_unrecovered.png)\n\
+    \n\n#### Family shared subscriptions\n\n![](/docs/images/api-v2/1511106-Family_shared_subscriptions.png)\n\
+    \n\n#### Family shared subscriptions: regranted\n\n![](/docs/images/api-v2/b3134c1-Family_shared_subscriptions__regranted.png)"
 servers:
 - url: https://api.revenuecat.com/v2
 x-proxy-enabled: false
@@ -274,6 +334,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
@@ -332,6 +394,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
@@ -748,6 +812,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
@@ -1149,6 +1215,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       - name: expand
         in: query
@@ -1562,6 +1630,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       - name: expand
         in: query
@@ -1716,6 +1786,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
@@ -2149,6 +2221,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       - name: expand
         in: query
@@ -2310,6 +2384,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       - name: expand
         in: query
@@ -2685,6 +2761,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
@@ -2976,6 +3054,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
@@ -3111,6 +3191,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
@@ -3232,6 +3314,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
@@ -3307,6 +3391,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
@@ -3374,6 +3460,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
@@ -3441,6 +3529,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
@@ -3508,6 +3598,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
@@ -3839,6 +3931,8 @@ components:
       type: string
       nullable: true
       example: US
+      description: The country that the object is associated with, in ISO alpha 2
+        code
       enum:
       - null
       - AF
@@ -5843,28 +5937,30 @@ components:
           - subscription
           type: string
         id:
-          description: The id of the subscription
+          description: The ID of the subscription (generated by RevenueCat)
           nullable: false
           type: string
           minLength: 1
           maxLength: 255
           example: sub1ab2c3d4e5
         customer_id:
-          description: The id of the customer
+          description: The ID of the customer
           nullable: false
           type: string
           minLength: 1
           maxLength: 1500
           example: 19b8de26-77c1-49f1-aa18-019a391603e2
         original_customer_id:
-          description: The id of the original customer
+          description: The ID of the original customer. Relevant for subscriptions
+            that were transferred from one customer to another
           nullable: false
           type: string
           minLength: 1
           maxLength: 1500
           example: 19b8de26-77c1-49f1-aa18-019a391603e2
         product_id:
-          description: The ID of the product that the customer is subscribed to
+          description: The RevenueCat ID of the product that the customer is subscribed
+            to
           nullable: false
           minLength: 1
           maxLength: 255
@@ -5883,8 +5979,9 @@ components:
           type: integer
           example: 1658399423658
         current_period_ends_at:
-          description: The date when the subscription billing period ends in ms since
-            epoch. Can be null if the subscription is paused until an indefinite date.
+          description: The date when the subscription billing period is expected to
+            end in ms since epoch. Can be null if the subscription is paused until
+            an indefinite date.
           nullable: true
           type: integer
           example: 1658399423658
@@ -5901,7 +5998,19 @@ components:
           type: boolean
           example: true
         auto_renewal_status:
-          description: The auto renewal status of a subscription
+          description: "The auto renewal status of a subscription.<br><br>Possible\
+            \ values:<br>\u2022 `will_renew`: the subscription is currently set to\
+            \ automatically renew<br>\u2022 `will_not_renew`: the subscription is\
+            \ currently set to expire at the end of the period<br>\u2022 `will_change_product`:\
+            \ the subscription is currently set to change product at the end of the\
+            \ period (which might start a new subscription)<br>\u2022 `will_pause`:\
+            \ the subscription is currently set to pause at the end of the current\
+            \ period<br>\u2022 `requires_price_increase_consent`: the subscription\
+            \ will expire at the end of the current period unless the customer consents\
+            \ to the price increase<br>\u2022 `has_already_renewed`: the customer\
+            \ has already been charged for the upcoming renewal (so the renewal will\
+            \ take place even if the customer opts out of auto-renewal before the\
+            \ end of the period) \n"
           nullable: false
           type: string
           enum:
@@ -5913,7 +6022,20 @@ components:
           - has_already_renewed
           example: will_renew
         status:
-          description: The status of a subscription
+          description: "The status of a subscription. Please note that additional\
+            \ states might be added in the future. To determine whether or not a subscription\
+            \ currently provides access to any associated entitlements, use the\_\
+            gives_access\_field.<br><br>Possible values:<br>\u2022 `trialing`: the\
+            \ subscription is in a free trial period<br>\u2022 `active`: the subscription\
+            \ is active, in a paid period<br>\u2022 `expired`: the subscription is\
+            \ expired and no longer active<br>\u2022 `in_grace_period`: the subscription\
+            \ is past its regular expiry date and experienced a billing issue, but\
+            \ is currently still in an access-granting grace period<br>\u2022 `in_billing_retry`:\
+            \ the subscription has experienced a billing issue. Billing is being retried,\
+            \ access is suspended.-paused: the subscription is currently paused and\
+            \ should not provide access.<br>\u2022 `unknown`: the subscription is\
+            \ in an unknown state. Refer to the gives_access field to determine whether\
+            \ or not to grant access.\n"
           nullable: false
           type: string
           enum:
@@ -5988,7 +6110,9 @@ components:
           - rc_billing
           example: amazon
         store_subscription_identifier:
-          description: The store subscription identifier
+          description: The subscription identifier as per the store (e.g, for Apple
+            App Store, the `transaction_id`` of the latest transaction of the subscription,
+            or for Google Play Store, the Order ID of the last renewal of the subscription)
           nullable: false
           type: string
           minLength: 1
@@ -6000,7 +6124,8 @@ components:
           oneOf:
           - $ref: '#/components/schemas/Ownership'
         pending_changes:
-          description: Details about the pending object
+          description: Indicates pending product changes. Present if the `auto_renewal_status`
+            is `will_change_product`.
           nullable: true
           type: object
           properties:
@@ -6009,9 +6134,9 @@ components:
               nullable: false
               $ref: '#/components/schemas/Product'
         country:
+          $ref: '#/components/schemas/Country'
           description: Billing country in ISO alpha 2 code
           nullable: true
-          $ref: '#/components/schemas/Country'
     SubscriptionProduct:
       type: object
       required:
@@ -6294,6 +6419,10 @@ x-tagGroups:
   - Rate Limit
   - Expandables
   - Error Handling
+  - Representation of Subscriptions
+- name: Model Reference
+  tags:
+  - Subscription Data Model
 - name: Endpoint Reference
   tags:
   - App
@@ -6306,4 +6435,10 @@ x-tagGroups:
   - Subscription
   - Invoice
   - Project
+  - Overview (v2)
+  - Pagination
+  - Rate Limit
+  - Expandables
+  - Error Handling
+  - Representation of Subscriptions
 openapi: 3.0.0
