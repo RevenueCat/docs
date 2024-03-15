@@ -41,7 +41,7 @@ import swift4 from "!!raw-loader!@site/code_blocks/tools/paywalls_4.swift";
         title: "Manually (UIKit)",
         content: swift4,
     },
-    
+
 ]}/>
 
 ### Close Button
@@ -52,6 +52,8 @@ However, a `PaywallView` will not have a close button by default. This gives you
 If desired, you can pass `displayCloseButton: true` when creating `PaywallView` to display a close button automatically.
 
 This close button will automatically take the color of your app's tint color. You can also override it by using [`View.tintColor`](https://developer.apple.com/documentation/swiftui/view/tint(_:)-23xyq): `PaywallView(...).tintColor(Color.red)`.
+
+You can also set `.onRequestedDismissal()` PaywallView's modifier to modify the dismissal behavior of the PaywallView. By default, the paywall will close automatically when completing a purchase, or when pressing the close button. You can use this modifier to customize the behavior of the close button. If you're using UIKit there's also a `dismissRequestedHandler` parameter in the `PaywallViewController` initializer that you can use to handle the dismissal of the paywall.
 
 ### How to display a footer Paywall on your custom paywall
 
@@ -148,7 +150,7 @@ import paywallsActivityJava from "!!raw-loader!@site/code_blocks/tools/paywalls_
         title: "Manually (Activity) - Java",
         content: paywallsActivityJava,
     }
-    
+
 ]}/>
 
 ### Close Button
