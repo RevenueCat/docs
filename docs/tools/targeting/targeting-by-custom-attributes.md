@@ -44,10 +44,7 @@ For keys which have more than 50 unique values that have been set for them, we'l
 
 By default, we'll sync any attributes that you set during an app session when the app is backgrounded. This works great if you're using the attribute for some future need, but if you're looking to use it to serve a unique paywall via Targeting in that same session this is not sufficient.
 
-Therefore, we offer two options to make attribute sycing nearly immediate when they're being used in Targeting:
-
-1. The syncAttributesAndOfferingsIfNeeded() method
-2. Triggered syncing (on supported SDK versions)
+Therefore, we recommend using the `syncAttributesAndOfferingsIfNeeded()` method to ensure set attributes can be used for Targeting in the same session.
 
 ### The syncAttributesAndOfferingsIfNeeded() method
 
@@ -62,13 +59,3 @@ Calls to this method have a rate limit of 5 per minute to prevent abuse.
 :::
 
 <-- code snippets -->
-
-### Triggered syncing
-
-On supported SDK versions, when you set a custom attribute that is being used in a Live Targeting Rule, we’ll immediately sync it and update the cached Offering if needed. However, if you attempt to get the Offering to serve immediately after setting that custom attribute, there’s a chance that the cached Offering will be stale, since this refresh process cannot be instantaneous.
-
-To protect against this, we **strongly** recommend explicitly calling the `syncAttributesAndOfferingsIfNeeded()` method and waiting for it to complete before getting Offerings to serve, as described above.
-
-:::Supported SDK versions
-Triggered syncing is supported on [the SDK versions]
-:::
