@@ -253,7 +253,7 @@ import rn2 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_2.ts";
     }
 ]}/>
 
-If desired, you can pass `displayCloseButton: true` inside the `options` method when creating a `PaywallView` to display a close button in the paywall.
+If desired, you can pass `displayCloseButton: true` inside the `options` method when creating a `PaywallView` to display a close button in the paywall. You will need to react by using the `onDismiss` listener.
 
 There are also several listeners that can be used to handle the paywall lifecycle, such as `onPurchaseStarted`, `onPurchaseCompleted`, and `onRestoreStarted`.
 
@@ -280,12 +280,23 @@ import rn3 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_3.ts";
     }
 ]}/>
 
-There are also several listeners that can be used to handle the paywall lifecycle, such as `onPurchaseStarted`, `onPurchaseCompleted`, and `onRestoreStarted`.
-
 :::warning
 `PaywallFooterContainerView` only works correctly when phone is in portrait mode.
 Landscape mode support for `PaywallFooterContainerView` is coming soon.
 :::
+
+### Listeners
+
+When using `RevenueCatUI.Paywall` or `RevenueCatUI.PaywallFooterContainerView`, you may use one of the provided listeners to react to user actions.
+Available listeners at this time are:
+- onPurchaseStarted
+- onPurchaseCompleted
+- onPurchaseError
+- onPurchaseCancelled
+- onRestoreStarted
+- onRestoreCompleted
+- onRestoreError
+- onDismiss
 
 ### How to use custom fonts
 
