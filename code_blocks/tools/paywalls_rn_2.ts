@@ -13,8 +13,13 @@ return (
 // If you need to display a specific offering:
 return (
     <View style={{ flex: 1 }}>
-        <RevenueCatUI.Paywall options={{
+        <RevenueCatUI.Paywall
+          options={{
             offering: offering // Optional Offering object obtained through getOfferings
-        }} />
+          }}
+          onDismiss={() => {
+            // Dismiss the paywall, i.e. remove the view, navigate to another screen, etc.
+          }}
+        />
     </View>
 );

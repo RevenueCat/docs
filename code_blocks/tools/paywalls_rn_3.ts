@@ -14,13 +14,15 @@ return (
 
 // If you need to display a specific offering:
 return (
-    <RevenueCatUI.PaywallFooterContainerView
-        options={{
-            offering: offering // Optional Offering object obtained through getOfferings
-        }}
-    >
-        <Text>
-            Your Custom Paywall Design
-        </Text>
-    </RevenueCatUI.PaywallFooterContainerView>
+  <RevenueCatUI.PaywallFooterContainerView
+    options={{
+      offering: offering // Optional Offering object obtained through getOfferings
+    }}
+    onDismiss={() => {
+      // Dismiss the paywall, i.e. remove the view, navigate to another screen, etc.
+    }}>
+      <Text>
+        Your Custom Paywall Design
+      </Text>
+  </RevenueCatUI.PaywallFooterContainerView>
 );

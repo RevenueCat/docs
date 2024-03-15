@@ -41,7 +41,7 @@ import swift4 from "!!raw-loader!@site/code_blocks/tools/paywalls_4.swift";
         title: "Manually (UIKit)",
         content: swift4,
     },
-    
+
 ]}/>
 
 ### Close Button
@@ -148,7 +148,7 @@ import paywallsActivityJava from "!!raw-loader!@site/code_blocks/tools/paywalls_
         title: "Manually (Activity) - Java",
         content: paywallsActivityJava,
     }
-    
+
 ]}/>
 
 ### Close Button
@@ -253,6 +253,9 @@ import rn2 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_2.ts";
     }
 ]}/>
 
+If desired, you can pass `displayCloseButton: true` inside the `options` method when creating a `PaywallView` to display a close button in the paywall.
+
+There are also several listeners that can be used to handle the paywall lifecycle, such as `onPurchaseStarted`, `onPurchaseCompleted`, and `onRestoreStarted`.
 
 ### How to display a footer Paywall on your custom paywall
 
@@ -276,6 +279,8 @@ import rn3 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_3.ts";
         content: rn3,
     }
 ]}/>
+
+There are also several listeners that can be used to handle the paywall lifecycle, such as `onPurchaseStarted`, `onPurchaseCompleted`, and `onRestoreStarted`.
 
 :::warning
 `PaywallFooterContainerView` only works correctly when phone is in portrait mode.
