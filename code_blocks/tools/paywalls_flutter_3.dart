@@ -7,8 +7,11 @@ Widget build(BuildContext context) {
     body: SafeArea(
       child: Center(
         child: PaywallFooterView(
-          offering:
-              offering, // Optional Offering object obtained through getOfferings
+          offering: offering, // Optional Offering object obtained through getOfferings
+          onDismiss: () {
+            // Dismiss the paywall, i.e. remove the view, navigate to another screen, etc.
+            // Will be called when a purchase succeeds.
+          },
           contentCreator: (bottomPadding) => YourPaywall(bottomPadding),
         ),
       ),
