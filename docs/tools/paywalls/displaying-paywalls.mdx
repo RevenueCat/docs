@@ -358,6 +358,9 @@ import flutter2 from "!!raw-loader!@site/code_blocks/tools/paywalls_flutter_2.da
     }
 ]}/>
 
+If desired, you can pass `displayCloseButton: true` when creating a `PaywallView` to display a close button in the paywall. 
+You will need to react by using the `onDismiss` listener.
+
 ### How to display a footer Paywall on your custom paywall
 
 purchases_ui_flutter also has a paywall variation that can be displayed as a footer below your custom paywall.
@@ -380,6 +383,17 @@ import flutter3 from "!!raw-loader!@site/code_blocks/tools/paywalls_flutter_3.da
         content: flutter3,
     }
 ]}/>
+
+### Listeners
+
+When using `PaywallView` or `PaywallFlutterView`, you may use one of the provided listeners to react to user actions. 
+Available listeners at this time are:
+- onPurchaseStarted
+- onPurchaseCompleted
+- onPurchaseError
+- onRestoreCompleted
+- onRestoreError
+- onDismiss
 
 ## Default Paywall
 
