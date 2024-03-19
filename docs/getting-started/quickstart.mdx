@@ -223,16 +223,15 @@ The SDK includes a simple method for facilitating purchases. The `purchase:packa
 
 The code sample below shows the process of purchasing a package and confirming it unlocks the "your_entitlement_id" content. More detail about the `purchase:package` method can be found in our guide on [Making Purchases](/getting-started/making-purchases).
 
-import swiftContent3 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_9.swift";
-import objectiveCContent3 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_10.m";
-import kotlinContent3 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_11.kt";
-import javaContent3 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_12.java";
-import flutterContent3 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_13.js";
-import reactNativeContent3 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_14.js";
-import capacitorContent3 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_capacitor-get-offerings.ts";
-import cordovaContent3 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_15.js";
-import unityContent3 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_16.cs";
-import webContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_17.curl";
+import swiftContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_1.swift";
+import objectiveCContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_2.m";
+import kotlinContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_3.kt";
+import javaContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_4.java";
+import flutterContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_5.js";
+import reactNativeContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_6.js";
+import cordovaContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_7.js";
+import capacitorContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_capacitor.ts";
+import unityContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_8.cs";
 
 <RCCodeBlock
   tabs={[
@@ -244,8 +243,7 @@ import webContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-
     { type: "rn", content: reactNativeContent3 },
     { type: "capacitor", content: capacitorContent3 },
     { type: "cordova", content: cordovaContent3 },
-    { type: "unity", content: unityContent3 },
-    { type: "curl", content: webContent2, name: "Web" },
+    { type: "unity", content: unityContent3 }
   ]}
 />
 
@@ -260,7 +258,7 @@ import webContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-
     Swift
   </a>
   <a
-    href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/ui/paywall/PaywallFragment.kt#L55-L66"
+    href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/ui/paywall/PaywallFragment.kt#L67-L79"
     target="_blank"
     class="button-text"
   >
@@ -363,15 +361,15 @@ You can access a lot more information about a subscription than simply whether i
 
 RevenueCat enables your users to restore their in-app purchases, reactivating any content that they previously purchased from the **same store account** (Apple, Google, or Amazon account). We recommend that all apps have some way for users to trigger the restore method. Note that Apple does require a restore mechanism in the event a user loses access to their purchases (e.g: uninstalling/reinstalling the app, losing their account information, etc).
 
-import swiftContent36 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_36.swift";
-import objectiveCContent37 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_37.m";
-import kotlinContent38 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_38.kt";
-import javaContent39 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_39.java";
-import flutterContent40 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_40.js";
-import reactNativeContent41 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_41.js";
-import capacitorContent42 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_capacitor-restore-purchases.ts";
-import cordovaContent43 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_42.js";
-import unityContent44 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_43.cs";
+import swiftContent36 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_1.swift";
+import objectiveCContent37 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_2.m";
+import kotlinContent38 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_3.kt";
+import javaContent39 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_4.java";
+import flutterContent40 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_5.js";
+import reactNativeContent41 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_6.js";
+import cordovaContent43 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_7.js";
+import capacitorContent42 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_capacitor.ts";
+import unityContent44 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_8.cs";
 
 <RCCodeBlock
   tabs={[
@@ -398,14 +396,14 @@ import unityContent44 from "!!raw-loader!@site/code_blocks/getting-started/getti
     Swift
   </a>
   <a
-    href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/ui/user/UserFragment.kt#L78-L85"
+    href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/ui/user/UserFragment.kt#L81-L88"
     target="_blank"
     class="button-text"
   >
     Kotlin
   </a>
   <a
-    href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/user.dart#L29-L55"
+    href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/user.dart#L93-L108"
     target="_blank"
     class="button-text"
   >
@@ -460,7 +458,7 @@ import unityContent52 from "!!raw-loader!@site/code_blocks/getting-started/getti
 
 <body>
   <a
-    href="https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Lifecycle/AppDelegate.swift#L49-L59"
+    href="https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Lifecycle/AppDelegate.swift#L53-L59"
     target="_blank"
     class="button-text"
   >
@@ -474,7 +472,7 @@ import unityContent52 from "!!raw-loader!@site/code_blocks/getting-started/getti
     Kotlin
   </a>
   <a
-    href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/home.dart#L40-L50"
+    href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/home.dart#L29-L42"
     target="_blank"
     class="button-text"
   >
