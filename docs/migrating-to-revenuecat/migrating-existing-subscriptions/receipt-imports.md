@@ -21,7 +21,7 @@ RevenueCat requires the raw base64 encoded Apple receipt to import the subscript
 
 If you have the correct data saved already for your customers, you can import them through the REST API `POST /receipts` endpoint. This will create the customer in RevenueCat and start tracking their subscription status.
 
-More info in the [API Reference here](https://docs.revenuecat.com/reference#receipts).
+More info in the [API Reference here](https://www.revenuecat.com/docs/api-v1#tag/transactions/operation/receipts).
 
 This is the quickest way to get your existing subscribers into RevenueCat.
 
