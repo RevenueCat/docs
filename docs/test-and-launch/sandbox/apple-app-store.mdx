@@ -215,6 +215,10 @@ When testing, it may be helpful to delete a customer and all their receipts from
 For performance reasons, RevenueCat limits the number of App Store subscription receipts per customer to 100. Having more than 100 subscription receipts on a single customer is not going to happen in production, but can easily happen during sandbox testing. Simply deleting the customer will solve this problem.
 :::
 
+## Deleting local data
+
+To clean up locally cached data, you can uninstall the app and reinstall. 
+On macOS, you need to manually delete data in UserDefaults, which can be done by going into `~/Library/Group\ Containers/`, finding the app, and deleting the data. 
 
 ## TestFlight
 
