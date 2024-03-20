@@ -79,8 +79,9 @@ This property can be set manually, like any other [Subscriber Attributes](doc:su
 You can listen for changes to the OneSignal Id through their SDK, and send the value to RevenueCat. If you already have OneSignal set up, you should make sure that you're also sending the OneSignal Id for users that are updating to the latest version of your app.
 
 import onesignalV11Content from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_14.swift";
+import onesignalV11ContentSwiftUi from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_15.swift";
 
-<RCCodeBlock tabs={[{ type: 'swift', content: onesignalV11Content }]} />
+<RCCodeBlock tabs={[{ type: 'swift', content: onesignalV11Content, name: 'UIKit' }], [type: 'swift', content: onesignalV11ContentSwiftUi, name: 'SwiftUI']} />
 
 ### 1.2 Device-centric API versions of OneSignal (9.0 and below)
 

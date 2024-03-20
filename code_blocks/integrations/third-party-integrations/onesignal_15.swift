@@ -1,6 +1,6 @@
-class AppDelegate: UIResponder, UIApplicationDelegate, OSUserStateObserver {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
+@main
+struct MyApp: App {
+    init() {
         Purchases.configure(withAPIKey: "<revenuecat_api_key>")
 
         OneSignal.initialize("<onesignal_app_id>", withLaunchOptions: launchOptions)
@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSUserStateObserver {
     }
 }
 
-public extension AppDelegate: OSUserStateObserver {
+public extension MyApp: OSUserStateObserver {
     // Add this method to update the $onesignalUserId in RevenueCat whenever it changes
     // This code should be sufficient to capture all new users if you're setting
     // up OneSignal for the first time.
