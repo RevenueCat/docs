@@ -11,7 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSUserStateObserver {
         if let onesignalId = OneSignal.User.onesignalId {
             // It is recommended to confirm the associated `externalId` to ensure
             // you are capturing the correct data for the user you expect
-            if (OneSignal.User.externalId == "<expected_user_external_id>") {
+            if OneSignal.User.externalId == "<expected_user_external_id>" {
                 Purchases.shared.attribution.setOnesignalUserID(onesignalId)
             } else {
                 // handle unexpected externalId
@@ -34,6 +34,6 @@ public extension AppDelegate: OSUserStateObserver {
         // For example, if the device is offline, there may be cached user-related requests
         if let onesignalId,
            externalId == "<expected_user_external_id>"
-        {Purchases.shared.attribution.setOnesignalUserID(onesignalId)}
+        { Purchases.shared.attribution.setOnesignalUserID(onesignalId) }
     }
 }
