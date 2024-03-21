@@ -32,7 +32,8 @@ public extension AppDelegate: OSUserStateObserver {
         // Confirm the `onesignalId` is for the expected user by also checking the associated `externalId`
         // For example, if the device is offline, there may be cached user-related requests
         if let onesignalId,
-           externalId == "<expected_user_external_id>"
-        { Purchases.shared.attribution.setOnesignalUserID(onesignalId) }
+           externalId == "<expected_user_external_id>" { 
+        Purchases.shared.attribution.setOnesignalUserID(onesignalId)
+    }
     }
 }
