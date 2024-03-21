@@ -31,7 +31,7 @@ const RCCodeBlock = (props) => {
         }
 
         return (
-          <TabItem value={tab.title || tab.name || tab.type} >
+          <TabItem value={tab.title || tab.name || tab.type}>
             <CodeBlock
               showLineNumbers={true}
               language={getLanguageType(tab.type)}
@@ -55,6 +55,8 @@ const Languages = {
   unity: "unity",
   cordova: "cordova",
   capacitor: "capacitor",
+  typescript: "ts",
+  svelte: "svelte",
 };
 
 RCCodeBlock.languages = Languages;
@@ -93,6 +95,8 @@ function getTabTitle(type) {
       return "Cordova";
     case "capacitor":
       return "Capacitor";
+    case "typescript":
+      return "TypeScript";
     default:
       return "Code";
   }
@@ -122,6 +126,12 @@ function getLanguageType(type) {
       return "jsx";
     case "json":
       return "jsx";
+    case "ts":
+      return "tsx";
+    case "tsx":
+      return "tsx";
+    case "svelte":
+      return "html";
     default:
       return "Code";
   }

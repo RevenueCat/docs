@@ -28,25 +28,22 @@ import reactNativeContent6 from "!!raw-loader!@site/code_blocks/getting-started/
 import cordovaContent7 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_7.js";
 import capacitorContent8 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_get_offerings_capacitor.ts";
 import unityContent9 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_8.cs";
+import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
 
-<RCCodeBlock
-  tabs={[
-    {
-      type: "swift",
-      content: docsTesterSwift,
-      name: "Swift",
-      region: "Displaying products",
-    },
-    { type: "objc", content: objectiveCContent2, name: "Objective-C" },
-    { type: "kotlin", content: kotlinContent3 },
-    { type: "java", content: javaContent4 },
-    { type: "flutter", content: flutterContent5, name: "Flutter" },
-    { type: "rn", content: reactNativeContent6, name: "React Native" },
-    { type: "cordova", content: cordovaContent7, name: "Cordova" },
-    { type: "capacitor", content: capacitorContent8, name: "Capacitor" },
-    { type: "unity", content: unityContent9, name: "Unity" },
-  ]}
-/>
+
+<RCCodeBlock tabs={[
+    { type: 'swift', content: docsTesterSwift, name: 'Swift', region: 'Displaying products' },
+    { type: 'objc', content: objectiveCContent2, name: 'Objective-C' },
+    { type: 'kotlin', content: kotlinContent3 },
+    { type: 'java', content: javaContent4 },
+    { type: 'flutter', content: flutterContent5, name: 'Flutter' },
+    { type: 'rn', content: reactNativeContent6, name: 'React Native' },
+    { type: 'cordova', content: cordovaContent7, name: 'Cordova' },
+    { type: 'capacitor', content: capacitorContent8, name: 'Capacitor' },
+    { type: 'unity', content: unityContent9, name: 'Unity' },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Get current offerings"},
+]} />
+
 
 :::info Offerings, products or available packages empty
 If your offerings, products, or available packages are empty, it's due to some configuration issue in App Store Connect or the Play Console.
@@ -90,7 +87,7 @@ To learn more about creating Placements and serving unique Offerings through the
 
 ### Custom Offering identifiers
 
-It's also possible to access other Offerings besides the Default Offering directly by its identifier.
+It's also possible to access other Offerings besides the Current Offering directly by its identifier.
 
 import objectiveCContent11 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_10.m";
 import kotlinContent12 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_11.kt";
@@ -101,24 +98,19 @@ import cordovaContent16 from "!!raw-loader!@site/code_blocks/getting-started/dis
 import capacitorContent17 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_get_offerings_custom_id_capacitor.ts";
 import unityContent18 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_16.cs";
 
-<RCCodeBlock
-  tabs={[
-    {
-      type: "swift",
-      content: docsTesterSwift,
-      name: "Swift",
-      region: "Custom Offering identifiers",
-    },
-    { type: "objc", content: objectiveCContent11, name: "Objective-C" },
-    { type: "kotlin", content: kotlinContent12 },
-    { type: "java", content: javaContent13 },
-    { type: "flutter", content: flutterContent14, name: "Flutter" },
-    { type: "rn", content: reactNativeContent15, name: "React Native" },
-    { type: "cordova", content: cordovaContent16, name: "Cordova" },
-    { type: "capacitor", content: capacitorContent17, name: "Capacitor" },
-    { type: "unity", content: unityContent18, name: "Unity" },
-  ]}
-/>
+<RCCodeBlock tabs={[
+    { type: 'swift', content: docsTesterSwift, name: 'Swift', region: 'Custom Offering identifiers'},
+    { type: 'objc', content: objectiveCContent11, name: 'Objective-C' },
+    { type: 'kotlin', content: kotlinContent12 },
+    { type: 'java', content: javaContent13 },
+    { type: 'flutter', content: flutterContent14, name: 'Flutter' },
+    { type: 'rn', content: reactNativeContent15, name: 'React Native' },
+    { type: 'cordova', content: cordovaContent16, name: 'Cordova' },
+    { type: 'capacitor', content: capacitorContent17, name: 'Capacitor' },
+    { type: 'unity', content: unityContent18, name: 'Unity' },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Get custom offering"},
+]} />
+
 
 ## Displaying Packages
 
@@ -143,30 +135,21 @@ import reactNativeContent28 from "!!raw-loader!@site/code_blocks/getting-started
 import capacitorCordovaContent29 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_22.js";
 import unityContent30 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_23.cs";
 
-<RCCodeBlock
-  tabs={[
-    {
-      type: "swift",
-      content: docsTesterSwift,
-      name: "Swift",
-      region: "Displaying packages",
-    },
-    { type: "objc", content: objectiveCContent25 },
-    { type: "kotlin", content: kotlinContent26 },
-    { type: "flutter", content: flutterContent27, name: "Flutter" },
-    { type: "rn", content: reactNativeContent28, name: "React Native" },
-    {
-      type: "cordova",
-      content: capacitorCordovaContent29,
-      name: "Capacitor/Cordova",
-    },
-    { type: "unity", content: unityContent30, name: "Unity" },
-  ]}
-/>
+<RCCodeBlock tabs={[
+    { type: 'swift', content: docsTesterSwift, name: 'Swift', region: 'Displaying packages' },
+    { type: 'objc', content: objectiveCContent25 },
+    { type: 'kotlin', content: kotlinContent26 },
+    { type: 'flutter', content: flutterContent27, name: 'Flutter' },
+    { type: 'rn', content: reactNativeContent28, name: 'React Native' },
+    { type: 'cordova', content: capacitorCordovaContent29, name: 'Capacitor/Cordova' },
+    { type: 'unity', content: unityContent30, name: 'Unity' },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Displaying packages"},
+]} />
+
 
 #### Getting the Product from the Package
 
-Each Package includes an underlying product that includes more information about the price, duration, and other metadata. You can access the product via the `storeProduct` property:
+Each Package includes an underlying product that includes more information about the price, duration, and other metadata. You can access the product via the `storeProduct` property (or `rcBillingProduct` property for [RevenueCat Billing](/web/revenuecat-billing)):
 
 import objectiveCContent33 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_25.m";
 import kotlinContent34 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_26.kt";
@@ -177,24 +160,20 @@ import cordovaContent38 from "!!raw-loader!@site/code_blocks/getting-started/dis
 import capacitorContent39 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_get_offerings_product_capacitor.ts";
 import unityContent40 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_31.cs";
 
-<RCCodeBlock
-  tabs={[
-    {
-      type: "swift",
-      content: docsTesterSwift,
-      name: "Swift",
-      region: "Getting the Product",
-    },
-    { type: "objc", content: objectiveCContent33, name: "Objective-C" },
-    { type: "kotlin", content: kotlinContent34, name: "Kotlin" },
-    { type: "java", content: javaContent35, name: "Java" },
-    { type: "flutter", content: flutterContent36, name: "Flutter" },
-    { type: "rn", content: reactNativeContent37, name: "React Native" },
-    { type: "cordova", content: cordovaContent38, name: "Cordova" },
-    { type: "capacitor", content: capacitorContent39, name: "Capacitor" },
-    { type: "unity", content: unityContent40, name: "Unity" },
-  ]}
-/>
+<RCCodeBlock tabs={[
+    { type: 'swift', content: docsTesterSwift, name: 'Swift', region: "Getting the Product" },
+    { type: 'objc', content: objectiveCContent33, name: 'Objective-C' },
+    { type: 'kotlin', content: kotlinContent34, name: 'Kotlin' },
+    { type: 'java', content: javaContent35, name: 'Java' },
+    { type: 'flutter', content: flutterContent36, name: 'Flutter' },
+    { type: 'rn', content: reactNativeContent37, name: 'React Native' },
+    { type: 'cordova', content: cordovaContent38, name: 'Cordova' },
+    { type: 'capacitor', content: capacitorContent39, name: 'Capacitor' },
+    { type: 'unity', content: unityContent40, name: 'Unity' },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Getting product"},
+]} />
+
+
 
 ## Choosing which Offering to display
 

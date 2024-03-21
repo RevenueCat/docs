@@ -1,0 +1,55 @@
+---
+title: Managing Customer Subscriptions
+slug: managing-customer-subscriptions
+excerpt: How to manage RevenueCat Billing customer subscriptions in the dashboard
+hidden: false
+---
+:::warning Beta Feature
+RevenueCat Billing and the RevenueCat Web SDK are currently in beta.
+:::
+
+## Managing customer subscriptions through the RevenueCat dashboard
+You can manage RevenueCat Billing subscriptions of your customers via the RevenueCat dashboard. To get started, go to a the profile of a customer who has a RevenueCat Billing subscription.
+
+### Accessing invoices
+To access invoices of a RevenueCat Billing customer, in the Customer History, find the relevant invoice event, and click to view the details:
+
+![](/images/rc-billing/customer-history-invoice.png)
+
+In the event details, you will find the payment status of the invoice, as well as a link to download the invoice:
+
+![](/images/rc-billing/invoice-details.png)
+
+### Canceling subscriptions
+You can cancel a customer's subscription. This means that the subscription will expire at the end of the current billing period. The customer will retain access to their entitlements until the subscription expires.
+
+To cancel a subscription, click into an initial purchase or renewal event of the subscription in the Customer History:
+
+![](/images/rc-billing/customer-history-initial-purchase.png)
+
+In the event detail view, you will find the action to cancel the subscription in the top right corner:
+
+![](/images/rc-billing/dashboard-cancel-subscription.png)
+
+### Refunding subscriptions
+You can refund the most recent payment of a customer's subscription. Refunding returns the funds to the customer's payment method (it can take a few days for the payment to be returned, depending on the payment method and the customer's bank). When a refund is made, the customer immediately loses access to any entitlements associated with their subscription.
+
+:::info No refund for subscriptions with billing issues
+If the most recent invoice failed to be collected, you can't refund the payment (since no payment was made). You can still cancel the subscription.
+:::
+
+To cancel a subscription, click into an initial purchase or renewal event of the subscription in the Customer History:
+
+![](/images/rc-billing/customer-history-initial-purchase.png)
+
+In the event detail view, you will find the action to refund the subscription in the top right corner:
+
+![](/images/rc-billing/dashboard-refund-subscription.png)
+
+## Managing customer subscriptions through the REST API
+You can manage RevenueCat Billing subscriptions through the REST API with the following endpoints:
+
+* [List subscriptions](/api-v2#tag/Customer/operation/list-subscriptions)
+* [Cancel RevenueCat Billing subscription](/api-v2#tag/Subscription/operation/cancel-subscription)
+* [List a customer's invoices](/api-v2#tag/Invoice/operation/list-customer-invoices)
+* [Download a PDF invoice](/api-v2#tag/Invoice/operation/get-invoice)

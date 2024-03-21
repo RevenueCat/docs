@@ -1,0 +1,20 @@
+{
+  "name": "rc-billing-code-snippets",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc --noEmit && eslint . && vitest run"
+  },
+  "type": "module",
+  "author": "RevenueCat",
+  "dependencies": {
+    "@revenuecat/purchases-js": "^0.0.18"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "typescript-eslint": "^7.0.1",
+    "vitest": "^1.2.2"
+  }
+}

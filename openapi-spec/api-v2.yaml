@@ -7,6 +7,8 @@ tags:
   description: Operations about apps.
 - name: Charts & Metrics
   description: Operations about chart metrics.
+- name: Customer
+  description: Operations about customers.
 - name: Entitlement
   description: Operations about entitlements.
 - name: Offering
@@ -15,6 +17,10 @@ tags:
   description: Operations about packages.
 - name: Product
   description: Operations about products.
+- name: Subscription
+  description: Operations about subscriptions.
+- name: Invoice
+  description: Operations about invoices.
 - name: Project
   description: Operations about projects.
 - name: Overview (v2)
@@ -59,28 +65,30 @@ tags:
     \ work with REST API v2\n  </div>\n  <div>\n    In order to utilize the RevenueCat\
     \ API v2, please create new v2 secret keys and define your permissions.\n  </div>\n\
     </div>\n\n## API v2 Permissions\n\nYou can create a new secret API key in your\
-    \ project settings page > API keys. Select _+ New_.\n\n![](/images/c640edd-image.png)\n\
+    \ project settings page > API keys. Select _+ New_.\n\n![](https://www.revenuecat.com/docs/images/c640edd-image.png)\n\
     \nGive it a name, select `V2` as the version, and set your permissions. Be sure\
-    \ to select _Generate_ at the top right corner.\n\n![](/images/842f5ae-image.png)\n\
+    \ to select _Generate_ at the top right corner.\n\n![](https://www.revenuecat.com/docs/images/842f5ae-image.png)\n\
     \nEach endpoint in this documentation will contain a description informing you\
     \ which permissions are required.\n\n## Request Payload\n\nThe body of the `POST`\
     \ requests should be encoded in JSON and have the 'Content-Type' header set to\
     \ 'application/json'.\n\n```text title=\"Content-Type Header\"\nContent-Type:\
     \ application/json\n```\n\n```json title=\"Sample Body\"\n{\n  \"app_user_id\"\
     : \"user-1456\",\n  \"fetch_token\": \"MQABC...EFH1234=\"\n}\n```\n\n## Params\n\
-    \n:::warning Encode your URL params\nFor URL params, such as the `app_user_id`,\
-    \ make sure you URL encode them before using them.\n:::\n\n## Beta Interest\n\n\
-    Our work on the APIs is not over yet. We are working on supporting a new and more\
-    \ consistent data model that will abstract away differences between the app stores.\n\
-    \nWe\u2019re also working on a more RESTful API that will allow GET operations\
-    \ without side effects. For example, being able to read customer information without\
-    \ unintentionally manipulating it.\n\nThis will allow you to use customer endpoints\
-    \ without side effects of creating a new app user ID and provide you the necessary\
-    \ information about a customer\u2019s subscription and purchase lifecycle.\n\n\
-    We are looking for interested developers who want to take part in the beta program\
-    \ for our new REST APIs. Some key benefits of participating include:\n\n- Being\
-    \ the first to gain access to our new APIs\n- Being able to give feedback before\
-    \ launch\n\nIf you\u2019re interested, please fill out this [form](https://docs.google.com/forms/d/e/1FAIpQLSelVUeqp_MHRB-cM4C1-95T1Xq0Xi9rZ540IUnLBm5XpS2ZrQ/viewform?usp=sf_link)\
+    \n<div class=\"theme-admonition theme-admonition-info alert alert--warning\">\n\
+    \  <div class=\"heading\">Encode your URL params</div>\n  <div>For URL params,\
+    \ such as the `app_user_id`, make sure you URL encode them before using them.</div>\n\
+    </div>\n\n## Beta Interest\n\nOur work on the APIs is not over yet. We are working\
+    \ on supporting a new and more consistent data model that will abstract away differences\
+    \ between the app stores.\n\nWe\u2019re also working on a more RESTful API that\
+    \ will allow GET operations without side effects. For example, being able to read\
+    \ customer information without unintentionally manipulating it.\n\nThis will allow\
+    \ you to use customer endpoints without side effects of creating a new app user\
+    \ ID and provide you the necessary information about a customer\u2019s subscription\
+    \ and purchase lifecycle.\n\nWe are looking for interested developers who want\
+    \ to take part in the beta program for our new REST APIs. Some key benefits of\
+    \ participating include:\n\n- Being the first to gain access to our new APIs\n\
+    - Being able to give feedback before launch\n\nIf you\u2019re interested, please\
+    \ fill out this [form](https://docs.google.com/forms/d/e/1FAIpQLSelVUeqp_MHRB-cM4C1-95T1Xq0Xi9rZ540IUnLBm5XpS2ZrQ/viewform?usp=sf_link)\
     \ to join our waitlist and to share your use cases!\n"
 - name: Pagination
   x-traitTag: true
@@ -108,27 +116,18 @@ tags:
     \ list."
 - name: Rate Limit
   x-traitTag: true
-  description: |
-    We will return the following headers on all successful requests:
-
-    * `RevenueCat-Rate-Limit-Current-Usage`: the number of executed requests for the current rate limiting period, including the current request. The rate limiting period is one minute.
-    * `RevenueCat-Rate-Limit-Current-Limit`: the limit in requests per minute for this endpoint
-    
-    If you reach the rate limit, as indicated by a 429 error code, we will also include the following header:
-
-    * `Retry-After`: the number of milliseconds to wait until you can retry this request.
-
-    Below is an example of the response body that will be sent when the rate limit is reached. The content of the field backoff_ms is equal to the Retry-After header.
-
-    ```
-    {
-      "type": "rate_limit_error",
-      "message": "Rate limit exceeded",
-      "retryable": true,
-      "doc_url": "https://errors.rev.cat/rate-limit-error",
-      "backoff_ms": 1000
-    }
-    ```
+  description: "We will return the following headers on all successful requests:\n\
+    \n* `RevenueCat-Rate-Limit-Current-Usage`: the number of executed requests for\
+    \ the current rate limiting period, including the current request. The rate limiting\
+    \ period is one minute.\n* `RevenueCat-Rate-Limit-Current-Limit`: the limit in\
+    \ requests per minute for this endpoint\n\nIf you reach the rate limit, as indicated\
+    \ by a 429 error code, we will also include the following header:\n\n* `Retry-After`:\
+    \ the number of milliseconds to wait until you can retry this request.\n\nBelow\
+    \ is an example of the response body that will be sent when the rate limit is\
+    \ reached. The content of the field backoff_ms is equal to the Retry-After header.\n\
+    \n```\n{\n  \"type\": \"rate_limit_error\",\n  \"message\": \"Rate limit exceeded\"\
+    ,\n  \"retryable\": true,\n  \"doc_url\": \"https://errors.rev.cat/rate-limit-error\"\
+    ,\n  \"backoff_ms\": 1000\n}\n```"
 - name: Expandables
   x-traitTag: true
   description: "Expandables allow you to retrieve related data along with the request\
@@ -164,11 +163,12 @@ tags:
     ,\n  \"param\": \"customer_id\",\n  \"message\": \"id is too long\",\n  \"retryable\"\
     : false,\n  \"doc_url\": \"https://errors.rev.cat/parameter-error\"\n}\n```\n\n\
     For more information on the `type` field and how to resolve these errors, please\
-    \ visit our [Error Types](#tag/Error-Handling/Error-Types) documentation.\n\n## Error Codes\n\n\
-    | Code | Name                  | Description                                 \
+
+    \ visit our [Error Types](#tag/Error-Handling/Error-Types) documentation.\n\n\
+    ## Error Codes\n\n| Code | Name                  | Description               \
     \                                                                            \
     \                                                                            \
-    \ |\n| :--- | :-------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\
+    \                   |\n| :--- | :-------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\
     \ |\n| 200  | OK                    | Processed as expected                  \
     \                                                                            \
     \                                                                            \
@@ -206,9 +206,9 @@ tags:
     \ conflicted with another ongoing request                                    \
     \                                                                            \
     \                                  |\n| 429  | Too Many Requests     | Being [rate\
-    \ limited](#tag/Rate-Limit)                                                   \
+    \ limited](#tag/Rate-Limit)                                                  \
     \                                                                            \
-    \                                  |\n| 500  | Internal Server Error | The RevenueCat\
+    \                                   |\n| 500  | Internal Server Error | The RevenueCat\
     \ server ran into an unexpected problem \u2013 please check the [RevenueCat status\
     \ page](https://status.revenuecat.com/) for any known outages and/or report the\
     \ issue to RevenueCat support |\n| 502  | Bad Gateway           | Invalid response\
@@ -2620,6 +2620,271 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): `project_configuration:packages:read_write`.'
+  /projects/{project_id}/subscriptions/{subscription_id}/actions/cancel:
+    post:
+      summary: Cancels an active RevenueCat Billing subscription
+      operationId: cancel-subscription
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:subscriptions:read_write
+      tags:
+      - Subscription
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: subscription_id
+        description: ID of the subscription
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: sub1a2b3c4d5e
+      responses:
+        '200':
+          description: Success. The subscription has been successfully canceled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): `customer_information:subscriptions:read_write`.'
+  /projects/{project_id}/customers/{customer_id}/subscriptions:
+    get:
+      summary: Get a list of subscriptions associated with a customer
+      operationId: list-subscriptions
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:subscriptions:read
+      tags:
+      - Customer
+      description: "Lists all Subscriptions associated with the Customer. This currently\
+        \ includes only RevenueCat Billing subscriptions. We are planning to add information\
+        \ about subscriptions on other supported stores soon.\n This endpoint requires\
+        \ the following permission(s): `customer_information:subscriptions:read`."
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: customer_id
+        in: path
+        description: ID of the customer
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: 19b8de26-77c1-49f1-aa18-019a391603e2
+      - name: environment
+        in: query
+        schema:
+          type: string
+          enum:
+          - sandbox
+          - production
+        example: production
+      - name: starting_after
+        in: query
+        required: false
+        schema:
+          type: string
+          example: ent12354
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          example: 10
+          default: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSubscriptions'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+  /projects/{project_id}/customers/{customer_id}/invoices:
+    get:
+      summary: Get a list of the customer's invoices
+      operationId: list-customer-invoices
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:invoices:read
+      tags:
+      - Invoice
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: customer_id
+        in: path
+        description: ID of the customer
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: 19b8de26-77c1-49f1-aa18-019a391603e2
+      - name: starting_after
+        in: query
+        required: false
+        schema:
+          type: string
+          example: ent12354
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          example: 10
+          default: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomerInvoices'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): `customer_information:invoices:read`.'
+  /projects/{project_id}/customers/{customer_id}/invoices/{invoice_id}/file:
+    get:
+      summary: Get an invoice
+      operationId: get-invoice
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:invoices:read
+      tags:
+      - Invoice
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: customer_id
+        in: path
+        description: ID of the customer
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: 19b8de26-77c1-49f1-aa18-019a391603e2
+      - name: invoice_id
+        in: path
+        description: ID of the invoice
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: rcbin1a2b3c4d5e
+      responses:
+        '302':
+          description: File found. Needs to be downloaded from the location header
+          headers:
+            location:
+              description: The URL to download the invoice pdf
+              schema:
+                type: string
+                format: uri
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): `customer_information:invoices:read`.'
   /projects/{project_id}/metrics/overview:
     get:
       summary: Get overview metrics for a project
@@ -2866,6 +3131,437 @@ components:
               minLength: 1
               maxLength: 36
               nullable: false
+    Country:
+      type: string
+      nullable: true
+      example: US
+      enum:
+      - null
+      - AF
+      - AL
+      - DZ
+      - AS
+      - AD
+      - AO
+      - AI
+      - AQ
+      - AG
+      - AR
+      - AM
+      - AW
+      - AU
+      - AT
+      - AZ
+      - BS
+      - BH
+      - BD
+      - BB
+      - BY
+      - BE
+      - BZ
+      - BJ
+      - BM
+      - BT
+      - BO
+      - BQ
+      - BA
+      - BW
+      - BV
+      - BR
+      - IO
+      - BN
+      - BG
+      - BF
+      - BI
+      - CV
+      - KH
+      - CM
+      - CA
+      - KY
+      - CF
+      - TD
+      - CL
+      - CN
+      - CX
+      - CC
+      - CO
+      - KM
+      - CD
+      - CG
+      - CK
+      - CR
+      - HR
+      - CU
+      - CW
+      - CY
+      - CZ
+      - CI
+      - DK
+      - DJ
+      - DM
+      - DO
+      - EC
+      - EG
+      - SV
+      - GQ
+      - ER
+      - EE
+      - SZ
+      - ET
+      - FK
+      - FO
+      - FJ
+      - FI
+      - FR
+      - GF
+      - PF
+      - TF
+      - GA
+      - GM
+      - GE
+      - DE
+      - GH
+      - GI
+      - GR
+      - GL
+      - GD
+      - GP
+      - GU
+      - GT
+      - GG
+      - GN
+      - GW
+      - GY
+      - HT
+      - HM
+      - VA
+      - HN
+      - HK
+      - HU
+      - IS
+      - IN
+      - ID
+      - IR
+      - IQ
+      - IE
+      - IM
+      - IL
+      - IT
+      - JM
+      - JP
+      - JE
+      - JO
+      - KZ
+      - KE
+      - KI
+      - KP
+      - KR
+      - KW
+      - KG
+      - LA
+      - LV
+      - LB
+      - LS
+      - LR
+      - LY
+      - LI
+      - LT
+      - LU
+      - MO
+      - MG
+      - MW
+      - MY
+      - MV
+      - ML
+      - MT
+      - MH
+      - MQ
+      - MR
+      - MU
+      - YT
+      - MX
+      - FM
+      - MD
+      - MC
+      - MN
+      - ME
+      - MS
+      - MA
+      - MZ
+      - MM
+      - NA
+      - NR
+      - NP
+      - NL
+      - NC
+      - NZ
+      - NI
+      - NE
+      - NG
+      - NU
+      - NF
+      - MP
+      - 'NO'
+      - OM
+      - PK
+      - PW
+      - PS
+      - PA
+      - PG
+      - PY
+      - PE
+      - PH
+      - PN
+      - PL
+      - PT
+      - PR
+      - QA
+      - MK
+      - RO
+      - RU
+      - RW
+      - RE
+      - BL
+      - SH
+      - KN
+      - LC
+      - MF
+      - PM
+      - VC
+      - WS
+      - SM
+      - ST
+      - SA
+      - SN
+      - RS
+      - SC
+      - SL
+      - SG
+      - SX
+      - SK
+      - SI
+      - SB
+      - SO
+      - ZA
+      - GS
+      - SS
+      - ES
+      - LK
+      - SD
+      - SR
+      - SJ
+      - SE
+      - CH
+      - SY
+      - TW
+      - TJ
+      - TZ
+      - TH
+      - TL
+      - TG
+      - TK
+      - TO
+      - TT
+      - TN
+      - TR
+      - TM
+      - TC
+      - TV
+      - UG
+      - UA
+      - AE
+      - GB
+      - UM
+      - US
+      - UY
+      - UZ
+      - VU
+      - VE
+      - VN
+      - VG
+      - VI
+      - WF
+      - EH
+      - YE
+      - ZM
+      - ZW
+      - AX
+    Currency:
+      type: string
+      description: ISO 4217 currency code
+      nullable: false
+      example: USD
+      enum:
+      - AED
+      - AFN
+      - ALL
+      - AMD
+      - ANG
+      - AOA
+      - ARS
+      - AUD
+      - AWG
+      - AZN
+      - BAM
+      - BBD
+      - BDT
+      - BGN
+      - BHD
+      - BIF
+      - BMD
+      - BND
+      - BOB
+      - BRL
+      - BSD
+      - BTC
+      - BTN
+      - BWP
+      - BYN
+      - BZD
+      - CAD
+      - CDF
+      - CHF
+      - CLF
+      - CLP
+      - CNH
+      - CNY
+      - COP
+      - CRC
+      - CUC
+      - CUP
+      - CVE
+      - CZK
+      - DJF
+      - DKK
+      - DOP
+      - DZD
+      - EGP
+      - ERN
+      - ETB
+      - EUR
+      - FJD
+      - FKP
+      - GBP
+      - GEL
+      - GGP
+      - GHS
+      - GIP
+      - GMD
+      - GNF
+      - GTQ
+      - GYD
+      - HKD
+      - HNL
+      - HRK
+      - HTG
+      - HUF
+      - IDR
+      - ILS
+      - IMP
+      - INR
+      - IQD
+      - IRR
+      - ISK
+      - JEP
+      - JMD
+      - JOD
+      - JPY
+      - KES
+      - KGS
+      - KHR
+      - KMF
+      - KPW
+      - KRW
+      - KWD
+      - KYD
+      - KZT
+      - LAK
+      - LBP
+      - LKR
+      - LRD
+      - LSL
+      - LYD
+      - MAD
+      - MDL
+      - MGA
+      - MKD
+      - MMK
+      - MNT
+      - MOP
+      - MRU
+      - MUR
+      - MVR
+      - MWK
+      - MXN
+      - MYR
+      - MZN
+      - NAD
+      - NGN
+      - NIO
+      - NOK
+      - NPR
+      - NZD
+      - OMR
+      - PAB
+      - PEN
+      - PGK
+      - PHP
+      - PKR
+      - PLN
+      - PYG
+      - QAR
+      - RON
+      - RSD
+      - RUB
+      - RWF
+      - SAR
+      - SBD
+      - SCR
+      - SDG
+      - SEK
+      - SGD
+      - SHP
+      - SLL
+      - SOS
+      - SRD
+      - SSP
+      - STD
+      - STN
+      - SVC
+      - SYP
+      - SZL
+      - THB
+      - TJS
+      - TMT
+      - TND
+      - TOP
+      - TRY
+      - TTD
+      - TWD
+      - TZS
+      - UAH
+      - UGX
+      - USD
+      - UYU
+      - UZS
+      - VEF
+      - VES
+      - VND
+      - VUV
+      - WST
+      - XAF
+      - XAG
+      - XAU
+      - XCD
+      - XDR
+      - XOF
+      - XPD
+      - XPF
+      - XPT
+      - YER
+      - ZAR
+      - ZMW
+      - ZWL
     DeletedObject:
       type: object
       required:
@@ -2981,6 +3677,14 @@ components:
               maxLength: 5000
               type: string
               example: /v2/projects/proj1ab2c3d4/entitlements/entle1a2b3c4d5/products
+    Environment:
+      type: string
+      description: The store environment
+      example: production
+      nullable: false
+      enum:
+      - production
+      - sandbox
     Error:
       type: object
       required:
@@ -3041,6 +3745,98 @@ components:
           type: integer
           nullable: true
           example: null
+    Invoice:
+      type: object
+      required:
+      - id
+      - total_amount
+      - line_items
+      - issued_at
+      - paid_at
+      - invoice_url
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - invoice
+          type: string
+        id:
+          description: The id of the invoice
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: rcbin1a2b3c4d5e
+        total_amount:
+          $ref: '#/components/schemas/MonetaryAmount'
+        line_items:
+          description: List of line items that are part of the invoice. Each line
+            item represents a product that was purchased.
+          title: InvoiceLiteItemList
+          nullable: false
+          items:
+            $ref: '#/components/schemas/InvoiceLineItem'
+          type: array
+        issued_at:
+          description: The date when the invoiced was issued in ms since epoch
+          nullable: false
+          type: integer
+          example: 1658399423658
+        paid_at:
+          description: The date when the invoiced was paid in ms since epoch
+          nullable: true
+          type: integer
+          example: 1658399423658
+        invoice_url:
+          description: URL to download the invoice pdf
+          nullable: true
+          type: string
+          example: https://api.revenuecat.com/v2/projects/proj1ab2c3d4/customers/cust1ab2c3d4/invoices/inv1ab2c3d4/file
+    InvoiceLineItem:
+      type: object
+      required:
+      - product_identifier
+      - product_display_name
+      - product_duration
+      - quantity
+      - unit_amount
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - invoice.line_item
+          type: string
+        product_identifier:
+          description: The product identifier
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: rc_1w_199
+        product_display_name:
+          description: The display name of the product
+          nullable: true
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: Premium Monthly 2023
+        product_duration:
+          type: string
+          pattern: ^(-?)P(?=\d|T\d)(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)([DW]))?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?$
+          nullable: true
+          description: The duration of the subscription in ISO-8601 standard
+          example: P1M
+        quantity:
+          description: Total purchased items
+          nullable: false
+          type: integer
+          example: 1
+        unit_amount:
+          $ref: '#/components/schemas/MonetaryAmount'
     ListApps:
       type: object
       required:
@@ -3072,6 +3868,37 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/projec1a2b3c4d/apps
+    ListCustomerInvoices:
+      type: object
+      required:
+      - items
+      - next_page
+      - object
+      - url
+      title: CustomerInvoicesList
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value. Always has the value `list`.
+          enum:
+          - list
+          type: string
+        items:
+          description: Details about each object.
+          items:
+            $ref: '#/components/schemas/Invoice'
+          type: array
+        next_page:
+          description: URL to access the next page of the customer's invoice. If not
+            present / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/invoices?starting_after=rcbin1a2b3c4d5e
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/invoices
     ListEntitlements:
       type: object
       required:
@@ -3227,6 +4054,37 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects
+    ListSubscriptions:
+      type: object
+      required:
+      - items
+      - next_page
+      - object
+      - url
+      title: SubscriptionList
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value. Always has the value `list`.
+          enum:
+          - list
+          type: string
+        items:
+          description: Details about each object.
+          items:
+            $ref: '#/components/schemas/Subscription'
+          type: array
+        next_page:
+          description: URL to access the next page of the customer's subscriptions.
+            If not present / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/subscriptions?starting_after=sub1a2b3c4d
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/subscriptions
     MacAppStoreApp:
       type: object
       properties:
@@ -3266,6 +4124,37 @@ components:
               minLength: 32
               maxLength: 32
               nullable: false
+    MonetaryAmount:
+      type: object
+      required:
+      - currency
+      - gross
+      - tax
+      - proceeds
+      properties:
+        currency:
+          $ref: '#/components/schemas/Currency'
+        gross:
+          description: Total revenue generated (excluding taxes and commission)
+          nullable: false
+          type: number
+          example: 9.99
+        commission:
+          description: Store commission or payment processor fees deducted from gross
+            revenue (if any)
+          nullable: false
+          type: number
+          example: 2.99
+        tax:
+          description: Estimated taxes deducted from gross revenue
+          nullable: false
+          type: number
+          example: 0.75
+        proceeds:
+          description: Net revenue after store commission / fees and taxes
+          nullable: false
+          type: number
+          example: 6.25
     Offering:
       type: object
       required:
@@ -3449,6 +4338,12 @@ components:
           items:
             $ref: '#/components/schemas/OverviewMetric'
           type: array
+    Ownership:
+      type: string
+      example: purchased
+      enum:
+      - purchased
+      - family_shared
     Package:
       type: object
       required:
@@ -3748,6 +4643,205 @@ components:
           nullable: false
           type: integer
           example: 1658399423658
+    Subscription:
+      type: object
+      required:
+      - id
+      - customer_id
+      - original_customer_id
+      - product_id
+      - starts_at
+      - current_period_starts_at
+      - current_period_ends_at
+      - gives_access
+      - pending_payment
+      - auto_renewal_status
+      - status
+      - total_revenue_in_usd
+      - presented_offering_id
+      - entitlements
+      - environment
+      - store
+      - store_subscription_identifier
+      - ownership
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - subscription
+          type: string
+        id:
+          description: The id of the subscription
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: sub1ab2c3d4e5
+        customer_id:
+          description: The id of the customer
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: 19b8de26-77c1-49f1-aa18-019a391603e2
+        original_customer_id:
+          description: The id of the original customer
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: 19b8de26-77c1-49f1-aa18-019a391603e2
+        product_id:
+          description: The ID of the product that the customer is subscribed to
+          nullable: false
+          minLength: 1
+          maxLength: 255
+          type: string
+          example: prod1a2b3c4d5e
+        starts_at:
+          description: The date when the subscription originally started in ms since
+            epoch
+          nullable: false
+          type: integer
+          example: 1658399423658
+        current_period_starts_at:
+          description: The date when the subscription billing period started in ms
+            since epoch
+          nullable: false
+          type: integer
+          example: 1658399423658
+        current_period_ends_at:
+          description: The date when the subscription billing period ends in ms since
+            epoch. Can be null if the subscription is paused until an indefinite date.
+          nullable: true
+          type: integer
+          example: 1658399423658
+        gives_access:
+          description: Determines whether the customer should currently be provided
+            access to the entitlements associated with the subscription
+          nullable: false
+          type: boolean
+          example: true
+        pending_payment:
+          description: Determines whether there is a pending payment associated with
+            the subscription
+          nullable: false
+          type: boolean
+          example: true
+        auto_renewal_status:
+          description: The auto renewal status of a subscription
+          nullable: false
+          type: string
+          enum:
+          - will_renew
+          - will_not_renew
+          - will_change_product
+          - will_pause
+          - requires_price_increase_consent
+          - has_already_renewed
+          example: will_renew
+        status:
+          description: The status of a subscription
+          nullable: false
+          type: string
+          enum:
+          - trialing
+          - active
+          - expired
+          - in_grace_period
+          - in_billing_retry
+          - paused
+          - unknown
+          example: trialing
+        total_revenue_in_usd:
+          description: Total revenue generated by a subscription in USD
+          nullable: false
+          oneOf:
+          - $ref: '#/components/schemas/MonetaryAmount'
+        presented_offering_id:
+          description: The ID of the offering the customer saw when purchasing the
+            subscription
+          nullable: true
+          type: string
+          minLength: 1
+          maxLength: 200
+          example: ofrnge1a2b3c4d5
+        entitlements:
+          required:
+          - items
+          - next_page
+          - object
+          - url
+          title: EntitlementList
+          type: object
+          properties:
+            object:
+              description: String representing the object's type. Objects of the same
+                type share the same value. Always has the value `list`.
+              enum:
+              - list
+              type: string
+            items:
+              description: Details about each object.
+              items:
+                $ref: '#/components/schemas/Entitlement'
+              type: array
+            next_page:
+              description: URL to access the next page of the customer's entitlements.
+                If not present / null, there is no next page
+              type: string
+              nullable: true
+              example: /v2/projects/proj1ab2c3d4/subscriptions/sub1a2b3c4d5e/entitlements?status=active&starting_after=entlab21dac
+            url:
+              description: The URL where this list can be accessed.
+              maxLength: 5000
+              type: string
+              example: /v2/projects/proj1ab2c3d4/subscriptions/sub1a2b3c4d5e/entitlements
+        environment:
+          description: The store environment
+          nullable: false
+          oneOf:
+          - $ref: '#/components/schemas/Environment'
+        store:
+          description: Store the subscription belongs to
+          nullable: false
+          type: string
+          enum:
+          - amazon
+          - app_store
+          - mac_app_store
+          - play_store
+          - promotional
+          - stripe
+          - rc_billing
+          example: amazon
+        store_subscription_identifier:
+          description: The store subscription identifier
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 12345678
+        ownership:
+          description: Ownership of the subscription
+          nullable: false
+          oneOf:
+          - $ref: '#/components/schemas/Ownership'
+        pending_changes:
+          description: Details about the pending object
+          nullable: true
+          type: object
+          properties:
+            product:
+              description: The product that will be active as of the next renewal
+              nullable: false
+              $ref: '#/components/schemas/Product'
+        country:
+          description: Billing country in ISO alpha 2 code
+          nullable: true
+          $ref: '#/components/schemas/Country'
     SubscriptionProduct:
       type: object
       required:
@@ -4034,9 +5128,12 @@ x-tagGroups:
   tags:
   - App
   - Charts & Metrics
+  - Customer
   - Entitlement
   - Offering
   - Package
   - Product
+  - Subscription
+  - Invoice
   - Project
 openapi: 3.0.0

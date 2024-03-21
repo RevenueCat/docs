@@ -184,7 +184,12 @@ const config = {
                 label: "Cordova SDK",
                 to: "https://revenuecat.github.io/cordova-plugin-purchases-docs/",
               },
-            ],
+
+              {
+                label: "Web SDK",
+                to: "https://revenuecat.github.io/purchases-js-docs",
+              },
+            ]
           },
           {
             label: "Blog",

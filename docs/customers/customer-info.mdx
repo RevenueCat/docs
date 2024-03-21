@@ -22,6 +22,9 @@ import content6 from "!!raw-loader!@site/code_blocks/customers/customer-info_6.j
 import content7 from "!!raw-loader!@site/code_blocks/customers/customer-info_7.js";
 import contentCapacitor from "!!raw-loader!@site/code_blocks/customers/customer-info_add_listener_capacitor.ts";
 import content8 from "!!raw-loader!@site/code_blocks/customers/customer-info_8.cs";
+import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
+
+
 
 <RCCodeBlock tabs={[
     {
@@ -60,6 +63,8 @@ import content8 from "!!raw-loader!@site/code_blocks/customers/customer-info_8.c
         type: 'unity',
         content: content8,
     },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)", region: "Getting customer information" },
+
 ]}/>
 
 
@@ -152,9 +157,10 @@ import content16 from "!!raw-loader!@site/code_blocks/customers/customer-info_16
         type: 'unity',
         content: content16,
     },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)", region: "Check for specific entitlement" },
 ]}/>
 
-If your app has multiple entitlements and you need to check if a user is subscribed to at least one you can also check for the entitlement Id in the `active` dictionary of `EntitlementInfo` objects.
+If your app has multiple entitlements, you might also want to check if the customer has any active entitlements:
 
 import content17 from "!!raw-loader!@site/code_blocks/customers/customer-info_17.swift";
 import content18 from "!!raw-loader!@site/code_blocks/customers/customer-info_18.m";
@@ -198,6 +204,7 @@ import content24 from "!!raw-loader!@site/code_blocks/customers/customer-info_24
         type: 'unity',
         content: content24,
     },
+    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)", region: "Check for any entitlement" },
 ]}/>
 
 
@@ -260,9 +267,9 @@ import content32 from "!!raw-loader!@site/code_blocks/customers/customer-info_32
     },
 ]}/>
 
-## Web Apps
+## Getting subscription status via the REST API
 
-If you also have a web app, or need to get a user's subscription status from outside of the _Purchases SDK_, you should use the REST API. You can read the full API reference [here](https://docs.revenuecat.com/reference).
+If you  need to get a user's subscription status from outside of the _Purchases SDK_, for example, from your own backend, you should use the REST API. You can read the full API reference [here](https://docs.revenuecat.com/reference).
 
 import content33 from "!!raw-loader!@site/code_blocks/customers/customer-info_33.curl";
 

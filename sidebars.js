@@ -83,6 +83,7 @@ const gettingStartedCategory = new Category(
         new Page("google-subscriptions-and-backwards-compatibility"),
         new Page("amazon-product-setup"),
         new Page("stripe-products"),
+        new Link("RevenueCat Billing Product Setup", "/web/revenuecat-billing/product-setup"),
       ],
       new Page("entitlements")
     ),
@@ -98,6 +99,7 @@ const gettingStartedCategory = new Category(
         new Page("ionic"),
         new Page("cordova"),
         new Page("unity"),
+        new Page("web-sdk"),
         new Page("macos"),
         new Page("app-builders"),
       ],
@@ -125,13 +127,6 @@ const gettingStartedCategory = new Category(
       "Configuring Server Notifications",
       "/platform-resources/server-notifications"
     ),
-    new Category(
-      "Stripe",
-      "stripe",
-      true,
-      [new Page("in-app-purchases-with-stripe-rfa")],
-      new Page("stripe")
-    ),
   ],
   null,
   { emoji: "🚀" }
@@ -150,6 +145,28 @@ const customersCategory = new Category(
   null,
   { emoji: "👥" }
 );
+
+const webCategory = new Category("Web Purchases", 'web', false, [
+  new Category(
+    "RevenueCat Billing & Web SDK",
+    "revenuecat-billing",
+    true,
+    [
+      new Page("product-setup"),
+      new Page("subscription-lifecycle"),
+      new Page("managing-customer-subscriptions"),
+      new Page("customer-portal"),
+    ],
+    new Page("revenuecat-billing")
+  ),
+  new Category(
+    "Stripe Billing / Stripe Checkout",
+    "stripe",
+    true,
+    [],
+    new Page("stripe")
+  ),
+], null, {emoji: "🌎"});
 
 const testAndLaunchCategory = new Category(
   "Test & Launch",
@@ -493,6 +510,7 @@ const sidebars = {
     welcomeCategory.render(), // call render() to remove unsupported convenience properties and prepare for docusaurus
     gettingStartedCategory.render(),
     migratingCategory.render(),
+    webCategory.render(),
     customersCategory.render(),
     testAndLaunchCategory.render(),
     subscriptionGuidanceCategory.render(),
