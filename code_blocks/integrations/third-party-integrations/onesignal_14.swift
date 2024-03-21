@@ -4,7 +4,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, OSUserStateObserver {
         Purchases.configure(withAPIKey: "<revenuecat_api_key>")
 
         OneSignal.initialize("<onesignal_app_id>", withLaunchOptions: launchOptions)
-        OneSignal.User.addObserver(self as OSUserStateObserver)
 
         // If you've already set up OneSignal, then users should already have
         // a OneSignal Id. We can check if it's available and send it to RevenueCat
