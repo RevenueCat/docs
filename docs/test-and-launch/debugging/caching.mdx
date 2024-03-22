@@ -53,6 +53,10 @@ Products are automatically fetched and cached when the _Purchases SDK_ is conf
 
 These will be cached if nothing has changed in them since the last call to `getOfferings()`, or after 5 minutes. 
 
+### Paywalls
+
+Once the RevenueCat SDK is configured, we initiate a prewarming process to ensure seamless accessibility to your Paywalls once we have the information needed. This involves caching all relevant paywall information including the offerings, images, and introductory eligibility data. However, it's important to note that all cached data (except for images) is session-based, meaning it's not persisted to the disk, therefore if the application is started quickly enough there may still be a slight loading time as the data is fetched.
+
 ## FAQ
 
 ### Does data cache between app launches?
