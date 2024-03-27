@@ -35,7 +35,7 @@ tags:
 
     The API expects data to be posted in a format defined in the [API reference](#tag/External-Purchases), meaning that you would need to convert or transform data from the _External Source_ before posting it to the External Purchases API endpoint. RevenueCat accepts data posted to this endpoint as is, and relies on your timely requests to provide entitlement access.
 
-    If you have a mobile-first business with a web presence that follows a similar monetization model and subscription lifecycle implementation typical to the app stores, then this API is the right choice for you to consolidate your stack.
+    If you have a mobile first business with a web presence that follows a similar monetization model and subscription lifecycle implementation typical to the app stores, then this API is the right choice for you to consolidate your stack.
 
     ## Adding an External Source
 
