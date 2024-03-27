@@ -5,27 +5,24 @@ excerpt: Guide on how to set up iOS in-app purchase keys.
 hidden: false
 parentDoc: 649983b4c31b2e000a3c1859
 ---
+
 For RevenueCat to securely validate purchases through Apple StoreKit 2, authenticate and validate [Subscription Offers](/subscription-guidance/subscription-offers/ios-subscription-offers) request with Apple and enable [customer lookup](/dashboard-and-metrics/customer-lists#find-an-individual-customer) via Order ID for iOS apps, you need to upload an in-app purchase key, and you'll also need to provide an Issuer ID.
 
-In-app purchase keys will also be used to take full advantage of StoreKit 2, which includes more accurate price, country, and purchased currency detection. Read more in our community post [here](https://community.revenuecat.com/revenuecat-announcements-2/prepare-for-storekit-2-updates-to-historical-data-3786?fid=2&tid=3786). 
+In-app purchase keys will also be used to take full advantage of StoreKit 2, which includes more accurate price, country, and purchased currency detection. Read more in our community post [here](https://community.revenuecat.com/revenuecat-announcements-2/prepare-for-storekit-2-updates-to-historical-data-3786?fid=2&tid=3786).
 
 ## 1. Generating an In-App Purchase Key
 
-In-app purchase keys are generated in the _Users and Access_ section of App Store Connect. You can use the same in-app purchase key for all of your offers.
+In-app purchase keys are generated App Store Connect under _Users and Access → Integrations → In-App Purchase_. You can use the same in-app purchase key for all of your offers.
 
-![](/images/3b3a6dc-Screenshot_at_Feb_01_11-37-28_020b72b4b224c5f8e9b41ce0bf3e48f0.png "Screenshot at Feb 01 11-37-28.png")
+![](/images/SCR-20240327-jvrs.png)
 
+Select _Generate In-App Purchase Key_, or—if you've generated an In-App Purchase Key in the past—click on the "+" symbol next to the _Active_ header. You'll be prompted to enter a name for the key.
 
-
-Select _Generate In-App Purchase Key_, or – if you've generated an In-App Purchase Key in the past – click on the "+" symbol behind the _Active_ header. You'll be prompted to enter a name for the key. 
-
-Once your key is generated, it will appear in _Active Keys_ and you get one shot to download it. 
+Once your key is generated, it will appear in _Active Keys_ and you get one shot to download it.
 
 Select _Download API Key_ and store the file in a safe place, you'll need to upload this to RevenueCat in the next step.
 
 ![](/images/55a58f1-Screenshot_at_Feb_01_11-51-45_84b8441cc70b005e4d68ade246fcc386.png "Screenshot at Feb 01 11-51-45.png")
-
-
 
 ## 2. Uploading the In-App Purchase Key to RevenueCat
 
@@ -35,26 +32,20 @@ In the RevenueCat dashboard, select your iOS app from the **Apps** tab in your p
 
 Within your app settings, under the tab **In-app purchase key configuration**, you'll see an area to upload your In-App Purchase Key .p8 file that you downloaded from App Store Connect.
 
-
 ![](https://github.com/RevenueCat/revenuecat-docs/assets/5860245/ae091b84-891d-4132-842c-3d35d9c66d4a)
-
-
 
 ## 3. Providing the Issuer ID to RevenueCat
 
 Once you uploaded the in-app purchase .p8 file, you'll see an area to input 'Issuer ID'.
 
-You can find this Issuer ID in App Store Connect, under Keys > App Store Connect API.
+You can find this Issuer ID in App Store Connect, under _Users and Access → Integrations → In-App Purchase_.
 
 If you haven't done so yet, you'll need to request access to the App Store Connect API. In that case, you will also need to generate a random App Store Connect API key. Access level or name of the key here doesn't matter, but the Issuer ID will not show unless a key has been generated.
 
-Copy the Issuer ID, which is now shown at the top of the page, and paste into the RevenueCat 'Issuer ID' field. 
+Copy the Issuer ID, which is now shown at the top of the page, and paste into the RevenueCat 'Issuer ID' field.
 
-![](/images/ab962c9-Screenshot_at_Feb_01_12-02-57_f254810215a3fe821a745190fa6a3228.png "Screenshot at Feb 01 12-02-57.png")
-
+![](/images/SCR-20240327-jygo.png)
 
 ![](https://github.com/RevenueCat/revenuecat-docs/assets/5860245/fdd4e307-8eaa-4bfe-a3e4-56f590106991)
-
-
 
 Remember to select 'Save changes'.
