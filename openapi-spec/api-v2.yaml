@@ -163,7 +163,6 @@ tags:
     ,\n  \"param\": \"customer_id\",\n  \"message\": \"id is too long\",\n  \"retryable\"\
     : false,\n  \"doc_url\": \"https://errors.rev.cat/parameter-error\"\n}\n```\n\n\
     For more information on the `type` field and how to resolve these errors, please\
-
     \ visit our [Error Types](#tag/Error-Handling/Error-Types) documentation.\n\n\
     ## Error Codes\n\n| Code | Name                  | Description               \
     \                                                                            \
@@ -274,6 +273,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
@@ -332,6 +333,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
@@ -886,6 +889,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       - name: expand
         in: query
@@ -1299,6 +1304,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       - name: expand
         in: query
@@ -1453,6 +1460,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
@@ -1886,6 +1895,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       - name: expand
         in: query
@@ -2047,6 +2058,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       - name: expand
         in: query
@@ -2422,6 +2435,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
@@ -2680,6 +2695,67 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): `customer_information:subscriptions:read_write`.'
+  /projects/{project_id}/subscriptions/{subscription_id}/actions/refund:
+    post:
+      summary: Refunds the last payment of an active RevenueCat Billing subscription
+        and revokes access to associated granted entitlements.
+      operationId: refund-subscription
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:subscriptions:read_write
+      tags:
+      - Subscription
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: subscription_id
+        description: ID of the subscription
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: sub1a2b3c4d5e
+      responses:
+        '200':
+          description: Success. The subscription has been successfully refunded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): `customer_information:subscriptions:read_write`.'
   /projects/{project_id}/customers/{customer_id}/subscriptions:
     get:
       summary: Get a list of subscriptions associated with a customer
@@ -2731,6 +2807,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
@@ -2797,6 +2875,8 @@ paths:
         schema:
           type: integer
           example: 10
+          minimum: 1
+          maximum: 100
           default: 20
       responses:
         '200':
