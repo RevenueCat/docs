@@ -29,47 +29,50 @@ tags:
 
     ## Context
 
-    The External Purchases API enables developers to track subscription status and revenue data from Payment Service Providers that RevenueCat doesn't support natively. Such examples of Payment Service Providers, referenced as _**External Sources**_ are Paddle, PayPal, Braintree, Adyen, Recurly, etc. 
+    The External Purchases API enables you to track subscription status and revenue data from Payment Service Providers that RevenueCat doesn't support natively. Such examples of Payment Service Providers, referenced as _External Sources_, are Paddle, PayPal, Braintree, Adyen, Recurly, etc.
 
-    Developers can post subscription status and payment events to the External Purchases API to use RevenueCat as a single source of truth for providing access to their application across mobile and web and to consolidate revenue data and key subscription metrics. Customer history, Webhooks and Integration events are supported as well, but they have limitations during the Beta period.
+    You can post subscription status and payment events to the External Purchases API to use RevenueCat as a single source of truth for providing access to your application across mobile and web and to consolidate revenue data and key subscription metrics. Customer history, Webhooks and Integration events are supported as well, but they have [limitations](#tag/Beta-Limitations) during the Beta period.
 
-    The API expects data to be posted in a format defined in the API reference, meaning that developers need to implement a translation layer to transform data from the **_External Source_**, before that is posted to the External Purchases API end-point. RevenueCat accepts data posted to this end-point as is, and relies on timely requests to provide entitlement access.
+    The API expects data to be posted in a format defined in the [API reference](#tag/External-Purchases), meaning that you would need to convert or transform data from the _External Source_ before posting it to the External Purchases API endpoint. RevenueCat accepts data posted to this endpoint as is, and relies on your timely requests to provide entitlement access.
 
-    If you have a mobile first business with web presence that follows a similar monetisation model and subscription lifecycle implementation typical to the app stores, then this API is the right choice for you to consolidate your stack. 
+    If you have a mobile first business with a web presence that follows a similar monetization model and subscription lifecycle implementation typical to the app stores, then this API is the right choice for you to consolidate your stack.
 
     ## Adding an External Source
 
-    You can add an External Source under Project > Apps > +New. All what you need to provide is the App name. The External API Key and RevenueCat App ID required to call the API are automatically generated after hitting Save Changes.
+    You can add an External Source under _Project > Apps > +New_. All you need to provide is the App name. The External API Keys and RevenueCat App ID required to call the API are automatically generated after hitting _Save Changes_.
 
-    ![](/docs/images/external-purchases-api/2b6a93a-Capture-2023-08-02-104905.png)
+    ![](/docs/images/external-purchases-api/adding-external-app.png)
 
-    ![](/docs/images/external-purchases-api/52a6940-Capture-2023-08-02-103254.png)
+    ![](/docs/images/external-purchases-api/external-app-settings.png)
+
 
     ## Authentication
 
-    Authentication for the External Purchases API is achieved by setting the `Authorization` header with a valid API external key. You'll find three types of API keys in your RevenueCat dashboard: _public_ ,  _secret_ and  _external_ 
+    Authentication for the External Purchases API is achieved by setting the `Authorization` header with a valid API secret external key. You'll find two main types of API keys in your RevenueCat dashboard: _public app-specific_ , _secret_ and _secret app-specific_.
 
     ```Text Authorization Header
-    Authorization: Bearer YOUR_REVENUECAT_EXTERNAL_API_KEY
+    Authorization: Bearer YOUR_REVENUECAT_APP_SPECIFIC_SECRET_API_KEY
     ```
 
-    The External API key is automatically generated for each External Source whenever you add a new External Source on the Add New App screen in the Dashboard. 
+    The API keys are automatically generated for each External Source whenever you add a new _External Source_ on the _Add New App_ screen in the Dashboard.
 
-    You can retrieve the External API key both on the Apps settings page and Project settings > API Keys page.
+    You can retrieve these API keys both on the _Apps settings_ page and _Project settings > API Keys_ page.
 
-    ![](/docs/images/external-purchases-api/37d3b93-_.png)
+    ![](/docs/images/external-purchases-api/external-secret-api-keys.png)
 
     ## Permissions
 
-    You can call the External Purchases API only with the External API key, and the External API key is accepted only by the External Purchases API. The External API Key should be kept out of any publicly accessible areas such as GitHub. The only accepted API operation is POST.
+    You can call the External Purchases API only with the corresponding _app-specific Secret API key_.
+    The _app-specific Secret API Key_ should be kept out of any publicly accessible areas such as GitHub or client side code.
+    Additionally, an _app-specific Public API Key_ is generated so public endpoints like [Offerings](/docs/api-v1#tag/offerings/operation/get-offerings) can be accessed.
 
     # Endpoints
 
     The API has two endpoints, `POST/receipts/external` and `POST/receipts/external/bulk`.
 
-    `POST/receipts/external` is used for requests with a single element, providing synchronous response. You can call `/subscribers/<app_user_id>` right after.
+    `POST/receipts/external` is used for requests with a single purchase and/or payment, and processes them right away. Calling [Get Customer](/docs/api-v1#tag/customers/operation/subscribers) right after will return the updated entitlements.
 
-    `POST/receipts/external/bulk` is used only for bulk updates, and does not guarantee immediate entitlement access, the response is not synchronous.
+    `POST/receipts/external/bulk` is used only for bulk updates/imports. These updates will happen in the background and could take some time to process.
 
     For more details check the [API reference](#operation/track-external-purchases).
 
@@ -287,7 +290,7 @@ tags:
   description: |
     ## Backfill new transaction in the subscription
 
-    If subscription statuses arrive out of order (eg. RevenueCat receives a previous subscription period before a subsequent subscription period), RevenueCat needs to make a decision about how the history of the susbcription looked like. This section describes various scenarios that can occur. 
+    If subscription statuses arrive out of order (eg. RevenueCat receives a previous subscription period before a subsequent subscription period), RevenueCat needs to make a decision about how the history of the susbcription looked like. This section describes various scenarios that can occur.
 
     ### Context
 
@@ -369,26 +372,26 @@ tags:
 
     1. For `purchase` JSON with `external_subscription` object:
         1. Currently you cannot change the `customer_id` field, meaning that we don't support [Transferring purchases seen on multiple App User IDs](/docs/getting-started/restoring-purchases#transferring-purchases-seen-on-multiple-app-user-ids)
-        2. We don't generate a new event in a scenario, when `current_period_ends_at` was in the future, and it's changed to a different future date. 
+        2. We don't generate a new event in a scenario, when `current_period_ends_at` was in the future, and it's changed to a different future date.
         3. We support the following options for the `auto_renew_status` field:  `will_renew`, `will_not_renew`, `unknown` value. We omit the `will_change_product` for now, meaning that we don't support Upgrades, Downgrade, Crossgrades and resulting event (`PRODUCT_CHANGE` event).
         4. Family shared subscriptions are not supported (but you can still create shared subscriptions as regular subscriptions).
     2. In a scenario when payments are posted after a subscription or purchase was created we don't generate Events (since the revenue information was already sent with the `INITIAL_PURCHASE` / `RENEWAL` event)
-    3. Receipt validation: 
-        1. Currently, we do not validate receipts or data posted to RevenueCat via the External purchases API. Customers must ensure that data posted to the end-point is already validated, and they need to ensure that the External API Key is not getting exposed to the public.
-    4. Refunds: 
+    3. Receipt validation:
+        1. Currently, we do not validate receipts or data posted to RevenueCat via the External purchases API. Customers must ensure that data posted to the endpoint is already validated, and they need to ensure that the External API Key is not getting exposed to the public.
+    4. Refunds:
         1. In the scenario when the third party payment service provider retains commissions in case of a refund, Revenuecat does not track negative revenues. Meaning, that in such cases, you will see data discrepancies with the equivalent of the commission retained by the payment service provider.
     5. Entitlement identifier:
         1. We support only new entitlement identifiers ([not the legacy version](/docs/integrations/webhooks/event-types-and-fields#subscription-lifecycle-events-fields)).
-    6. [Backfill logic](#tag/Backfill-Logic), on import transactions (using the /bulk end-point) are not supported.
-    7. [Backfills](#tag/Backfill-Logic) that modify `current_period_ends_at` date, do not alter existing Events, which means that the Customer history won't reflect accurately the most up to date `expiration_at_ms`. 
+    6. [Backfill logic](#tag/Backfill-Logic), on import transactions (using the /bulk endpoint) are not supported.
+    7. [Backfills](#tag/Backfill-Logic) that modify `current_period_ends_at` date, do not alter existing Events, which means that the Customer history won't reflect accurately the most up to date `expiration_at_ms`.
     8. If a different `source_subscription_identifier` gets provided, doesn’t matter if it’s the same product, we can end up with concurrent transactions
-    9. `EXPIRATION` Events are not fired automatically. The developer needs to explicitly send a request to the External Purchases API end-point when `status` changed to `expired`.
+    9. `EXPIRATION` Events are not fired automatically. The developer needs to explicitly send a request to the External Purchases API endpoint when `status` changed to `expired`.
 - name: External Purchases
   description: Operations to track external subscriptions and purchases.
 paths:
   "/v1/receipts/external":
     post:
-      tags: 
+      tags:
       - External Purchases
       summary: Tracks the status of external purchases
       operationId: track-external-purchases
@@ -428,7 +431,7 @@ paths:
   "/v1/receipts/external/bulk":
     tag: External Purchases
     post:
-      tags: 
+      tags:
       - External Purchases
       summary: Tracks the status of multiple external purchases
       operationId: track-external-purchases-bulk
