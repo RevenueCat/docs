@@ -33,13 +33,13 @@ Consumable refunds are not currently detected in RevenueCat.
 
 Refunds can also be granted programmatically through the RevenueCat [REST API](https://docs.revenuecat.com/reference#revoke-a-google-subscription). This will immediately revoke access to the Google subscription and issue a refund for the last purchase.  
 
-If a refund is granted by Google or initiated through the Google Play console, it **may take up to 24 hours** to be detected by RevenueCat. Refunds due to no acknowledgement of the purchase are not detected automatically.
+If a refund is granted by Google or initiated through the Google Play console, it **may take up to 24 hours** to be detected by RevenueCat. Refunds due to no acknowledgement of purchases are not detected automatically.
 
 **Non-subscriptions**
 
 ✅ Google Play non-subscriptions can be refunded directly through the RevenueCat dashboard or REST API (see refunding Google Play Subscriptions for more info on how to do this).  
 
-If a non-subscription refund is granted by Google or initiated through the Google Play console, it **may take up to 24 hours** to be detected by RevenueCat. Refunds due to no acknowledgement of the purchase are not detected automatically. 
+If a non-subscription refund is granted by Google or initiated through the Google Play console, it **may take up to 24 hours** to be detected by RevenueCat. Refunds due to no acknowledgement of purchases are not detected automatically. 
 
 ### Stripe
 
