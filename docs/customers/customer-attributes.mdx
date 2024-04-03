@@ -16,8 +16,8 @@ By default, attributes are only synced with RevenueCat servers when Purchases.co
 ## How Attributes can be used
 
 1. Attributes can be fetched via the REST API for individual customers, or reviewed in their Customer Profile in the Dashboard.
-2. Custom attributes can be used via Targeting to define business-specific audiences and deliver them unique Offerings. [Learn more.](tools/targeting/custom-attributes)
-3. Attributes are provided in Scheduled Data Exports for use in custom analyses (e.g. to measure [Active Subscriptions by Custom Attribute](integrations/scheduled-data-exports#sample-queries-for-customized-measures))
+2. Custom attributes can be used via Targeting to define business-specific audiences and deliver them unique Offerings. [Learn more.](https://www.revenuecat.com/docs/tools/targeting/custom-attributes)
+3. Attributes are provided in Scheduled Data Exports for use in custom analyses (e.g. to measure [Active Subscriptions by Custom Attribute](https://www.revenuecat.com/docs/integrations/scheduled-data-exports#sample-queries-for-customized-measures))
 
 :::warning Attributes cannot be fetched from the SDK
 For security reasons, attributes cannot be fetched from the SDK. To read attributes, use the REST API with a private API key.
@@ -77,7 +77,7 @@ Since attributes are writable using a [public key](/welcome/authentication) they
 Custom attributes can be set to track any app-specific fact you want to capture about your customers; like their response to an onboarding survey, whether they've engaged with a certain feature, or the deep link they installed your app from.
 
 :::info Targeting by Custom Attribute
-You can display unique paywalls to different customer segments based on custom attributes. [Learn more here.](tools/targeting/custom-attributes)
+You can display unique paywalls to different customer segments based on custom attributes. [Learn more here.](https://www.revenuecat.com/docs/tools/targeting/custom-attributes)
 :::
 
 You can specify up to 50 unique custom attributes per subscriber, with key names up to 40 characters long and values up to 500 characters long. Keys cannot start with `$`, since that prefix is withheld for reserved attributes (see below).
