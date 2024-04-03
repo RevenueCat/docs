@@ -16,18 +16,19 @@ import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 
 ## Terminology
 
-| Term             | Definition                                                                                                                                                                                                                                                      |
-| :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Offering         | The set of Packages, metadata, and an optional paywall UI you can create to remotely control your paywall experience.                                                                                                                                           |
-| Default Offering | The Offering that is set as "Default" in the RevenueCat Dashboard for your Project. We recommend designing your app so that the paywall always shows a customer's Current Offering, which will be your Project's Default Offering if no other conditions apply. |
-| Placement        | A custom paywall location you can define in your app to serve an Offering in. (e.g. an `onboarding_end` Placement and a `feature_gate` Placement)                                                                                                               |
-| Targeting        | The ability to assign distinct Offerings to a distinct audience of customers based on Targeting Rules you create.                                                                                                                                               |
-| Targeting Rule   | A collection of conditions that, when they are true for a given customer, will result in that customer matching the rule and being served the corresponding Offerings.                                                                                          |
-| Conditions       | The filters such as App, Country, and App Version that can be used to construct a Targeting Rule.                                                                                                                                                               |
-| Audience         | The customers who would be included in a Targeting Rule due to matching its conditions.                                                                                                                                                                         |
-| Live             | The Targeting Rules that are actively being used to determine which customers which receive Offerings, as determined by their conditions, assessed in order from top to bottom.                                                                                 |
-| Scheduled        | The Targeting Rules that are scheduled to be automatically made Live at their scheduled Start Date.                                                                                                                                                             |
-| Inactive         | The Targeting Rules that are not actively being used. These may be drafts, rules you previously used, rules you intend to set live in the future, etc.                                                                                                          |
+| Term              | Definition                                                                                                                                                                                                                                                      |
+| :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Offering          | The set of Packages, metadata, and an optional paywall UI you can create to remotely control your paywall experience.                                                                                                                                           |
+| Default Offering  | The Offering that is set as "Default" in the RevenueCat Dashboard for your Project. We recommend designing your app so that the paywall always shows a customer's Current Offering, which will be your Project's Default Offering if no other conditions apply. |
+| Placement         | A custom paywall location you can define in your app to serve an Offering in. (e.g. an `onboarding_end` Placement and a `feature_gate` Placement)                                                                                                               |
+| Targeting         | The ability to assign distinct Offerings to a distinct audience of customers based on Targeting Rules you create.                                                                                                                                               |
+| Targeting Rule    | A collection of conditions that, when they are true for a given customer, will result in that customer matching the rule and being served the corresponding Offerings.                                                                                          |
+| Conditions        | The filters such as app version, country, and custom attributes that can be used to construct a Targeting Rule.                                                                                                                                                 |
+| Custom attributes | Arbitrary attributes (key/value pairs) that you can set for your customers and reuse to define business-specific audiences.                                                                                                                                     |
+| Audience          | The customers who would be included in a Targeting Rule due to matching its conditions.                                                                                                                                                                         |
+| Live              | The Targeting Rules that are actively being used to determine which customers which receive Offerings, as determined by their conditions, assessed in order from top to bottom.                                                                                 |
+| Scheduled         | The Targeting Rules that are scheduled to be automatically made Live at their scheduled Start Date.                                                                                                                                                             |
+| Inactive          | The Targeting Rules that are not actively being used. These may be drafts, rules you previously used, rules you intend to set live in the future, etc.                                                                                                          |
 
 ## How Targeting works
 
@@ -132,6 +133,10 @@ In addition, if you're looking to add a new rule that's similar to an existing o
 ## Learn more about conditions
 
 ### Definitions
+
+**Custom attributes**:
+
+Arbitrary key/value pairs that you can define and set for individual customers. In the Dashboard, we'll display a selectable list of any custom attribute keys you've already defined for customers. [Learn more about Targeting by custom attributes](/tools/targeting/custom-attributes).
 
 **Country**:
 

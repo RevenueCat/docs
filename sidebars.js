@@ -386,7 +386,10 @@ const toolsCategory = new Category(
       "Targeting",
       "targeting",
       true,
-      [new Page("targeting-by-placement")],
+      [
+       new Page("targeting-by-placement"),
+       new Page("targeting-by-custom-attributes"),
+      ],
       new Page("targeting")
     ),
     new Page("paywall-orchestration-with-offerings"),

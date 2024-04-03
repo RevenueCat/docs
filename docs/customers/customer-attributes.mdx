@@ -4,17 +4,28 @@ slug: customer-attributes
 excerpt: Adding custom properties to users in RevenueCat
 hidden: false
 ---
-Attributes are useful for storing additional, structured information on a customer. For example, you could store your user's email address and additional system identifiers directly in RevenueCat. Attributes will not be seen by your users unless you choose to explicitly show them yourself.
+
+Attributes are useful for storing additional, structured information on a customer that can be used elsewhere in the system.
+
+For example, you could store your customer's email address or additional system identifiers through the applicable reserved attributes, or store arbitrary facts like onboarding survey responses, feature usage, or other dimensions as custom attributes -- all directly in RevenueCat. Attributes will not be seen by your users unless you choose to explicitly show them yourself.
 
 :::info Attribute synchronization
-Attributes are only synced with RevenueCat servers when Purchases.configure() is called, app backgrounded, and when purchases are made or restored.
+By default, attributes are only synced with RevenueCat servers when Purchases.configure() is called, app backgrounded, and when purchases are made or restored. The `syncPurchasesAndOfferingsIfNeeded()` method should be used if custom attributes are being used for Targeting to ensure immediate syncing. [Learn more here.](/tools/targeting/custom-attributes)
+:::
+
+## How Attributes can be used
+
+1. Attributes can be fetched via the REST API for individual customers, or reviewed in their Customer Profile in the Dashboard.
+2. Custom attributes can be used via Targeting to define business-specific audiences and deliver them unique Offerings. [Learn more.](tools/targeting/custom-attributes)
+3. Attributes are provided in Scheduled Data Exports for use in custom analyses (e.g. to measure [Active Subscriptions by Custom Attribute](integrations/scheduled-data-exports#sample-queries-for-customized-measures))
+
+:::warning Attributes cannot be fetched from the SDK
+For security reasons, attributes cannot be fetched from the SDK. To read attributes, use the REST API with a private API key.
 :::
 
 ## Setting Attributes
 
-Attributes for a Customer can be set through the SDK by passing a dictionary of strings to the `setAttributes()` method on the shared Purchases instance. 
-
-
+Attributes for a Customer can be set through the SDK by passing a dictionary of strings to the `setAttributes()` method on the shared Purchases instance.
 
 import content1 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_1.swift";
 import content2 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_2.m";
@@ -24,47 +35,54 @@ import content5 from "!!raw-loader!@site/code_blocks/customers/subscriber-attrib
 import content6 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_6.js";
 import content7 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_7.cs";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: content1,
+      type: "swift",
+      content: content1,
     },
     {
-        type: 'objc',
-        content: content2,
+      type: "objc",
+      content: content2,
     },
     {
-        type: 'kotlin',
-        content: content3,
+      type: "kotlin",
+      content: content3,
     },
     {
-        type: 'java',
-        content: content4,
+      type: "java",
+      content: content4,
     },
     {
-        type: 'flutter',
-        content: content5,
+      type: "flutter",
+      content: content5,
     },
     {
-        type: 'rn',
-        content: content6,
+      type: "rn",
+      content: content6,
     },
     {
-        type: 'unity',
-        content: content7,
+      type: "unity",
+      content: content7,
     },
-]}/>
-
+  ]}
+/>
 
 :::warning Attributes are not secure storage
 Since attributes are writable using a [public key](/welcome/authentication) they should not be used for managing secure or sensitive information such as subscription status, coins, etc.
 :::
 
-### Restrictions
+### Custom attributes
 
-You can specify up to 50 attributes, with key names up to 40 characters long and values up to 500 characters long. Keys cannot start with `$` unless it's for one of the reserved attributes below.
+Custom attributes can be set to track any app-specific fact you want to capture about your customers; like their response to an onboarding survey, whether they've engaged with a certain feature, or the deep link they installed your app from.
 
-**Attribute key checklist:**  
+:::info Targeting by Custom Attribute
+You can display unique paywalls to different customer segments based on custom attributes. [Learn more here.](tools/targeting/custom-attributes)
+:::
+
+You can specify up to 50 unique custom attributes per subscriber, with key names up to 40 characters long and values up to 500 characters long. Keys cannot start with `$`, since that prefix is withheld for reserved attributes (see below).
+
+**Custom attribute key checklist:**  
 ✅ Key does not contain whitespace  
 ✅ Key must start with a letter for non-reserved attributes or "$" for reserved attributes  
 ✅ Key does not include any non-alphanumeric characters except `-` and `_`  
@@ -118,13 +136,14 @@ The RevenueCat SDK sends the current ATT status for the `$attConsentStatus` attr
 
 Note: The RevenueCat SDK reads the current App Tracking Transparency Consent Status for the user, but will not modify it or request for further permission.
 
-You may see the following as a response from this attribute: 
+You may see the following as a response from this attribute:
 
 - `restricted` - Can be returned if the user is using a mobile device management profile that disallows some aspects of tracking regardless of consent. This might be returned even if you never ask for permissions.
 - `denied` - Can be returned if the user’s phone has set “Ask Apps Not To Track” in OS Settings or denied access for the specific app.
-- `accepted` - Returned if you ask for permission and the permission gets accepted by the user. 
+- `accepted` - Returned if you ask for permission and the permission gets accepted by the user.
 - `unknown` - The user hasn’t set “Ask Apps Not to Track” in OS Settings, and you have never asked the user for consent to track activity.
-:::
+  :::
+
 #### Device Identifiers
 
 | Key          | Description                   |
@@ -149,7 +168,7 @@ Once a device identifier is set for a subscriber, it can't be changed in order t
 | `$amplitudeUserId`       | [Amplitude](https://amplitude.com/) user identifier                                           |
 | `$appsflyerId`           | [Appsflyer](https://www.appsflyer.com/) user identifier                                       |
 | `$fbAnonId`              | [Facebook SDK](https://developers.facebook.com/docs/apis-and-sdks/) anonymous user identifier |
-| `$firebaseAppInstanceId` | [Firebase](/integrations/third-party-integrations/firebase-integration) instance identifier                                      |
+| `$firebaseAppInstanceId` | [Firebase](/integrations/third-party-integrations/firebase-integration) instance identifier   |
 | `$iterableUserId`        | [Iterable](https://iterable.com/) user identifier                                             |
 | `$mixpanelDistinctId`    | [Mixpanel](https://mixpanel.com) user identifier                                              |
 | `$mparticleId`           | [mParticle](https://www.mparticle.com/) user identifier                                       |
@@ -197,34 +216,34 @@ import content10 from "!!raw-loader!@site/code_blocks/customers/subscriber-attri
 import content11 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_11.js";
 import content12 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_12.cs";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: content8,
+      type: "swift",
+      content: content8,
     },
     {
-        type: 'objc',
-        content: content23,
+      type: "objc",
+      content: content23,
     },
     {
-        type: 'kotlin',
-        content: content9,
+      type: "kotlin",
+      content: content9,
     },
     {
-        type: 'flutter',
-        content: content10,
+      type: "flutter",
+      content: content10,
     },
     {
-        type: 'rn',
-        content: content11,
+      type: "rn",
+      content: content11,
     },
     {
-        type: 'unity',
-        content: content12,
+      type: "unity",
+      content: content12,
     },
-]}/>
-
-
+  ]}
+/>
 
 ### Setting push tokens
 
@@ -237,33 +256,34 @@ import content15 from "!!raw-loader!@site/code_blocks/customers/subscriber-attri
 import content16 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_16.js";
 import content17 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_17.cs";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: content13,
+      type: "swift",
+      content: content13,
     },
     {
-        type: 'objc',
-        content: content24,
+      type: "objc",
+      content: content24,
     },
     {
-        type: 'kotlin',
-        content: content14,
+      type: "kotlin",
+      content: content14,
     },
     {
-        type: 'flutter',
-        content: content15,
+      type: "flutter",
+      content: content15,
     },
     {
-        type: 'rn',
-        content: content16,
+      type: "rn",
+      content: content16,
     },
     {
-        type: 'unity',
-        content: content17,
+      type: "unity",
+      content: content17,
     },
-]}/>
-
+  ]}
+/>
 
 ## Deleting Attributes
 
@@ -276,33 +296,34 @@ import content20 from "!!raw-loader!@site/code_blocks/customers/subscriber-attri
 import content21 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_21.js";
 import content22 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_22.cs";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: content18,
+      type: "swift",
+      content: content18,
     },
     {
-        type: 'objc',
-        content: content25,
+      type: "objc",
+      content: content25,
     },
     {
-        type: 'kotlin',
-        content: content19,
+      type: "kotlin",
+      content: content19,
     },
     {
-        type: 'flutter',
-        content: content20,
+      type: "flutter",
+      content: content20,
     },
     {
-        type: 'rn',
-        content: content21,
+      type: "rn",
+      content: content21,
     },
     {
-        type: 'unity',
-        content: content22,
+      type: "unity",
+      content: content22,
     },
-]}/>
-
+  ]}
+/>
 
 ## Reading Attributes
 
