@@ -10,7 +10,7 @@ Attributes are useful for storing additional, structured information on a custom
 For example, you could store your customer's email address or additional system identifiers through the applicable reserved attributes, or store arbitrary facts like onboarding survey responses, feature usage, or other dimensions as custom attributes -- all directly in RevenueCat. Attributes will not be seen by your users unless you choose to explicitly show them yourself.
 
 :::info Attribute synchronization
-By default, attributes are only synced with RevenueCat servers when Purchases.configure() is called, app backgrounded, and when purchases are made or restored; though the `SyncPurchasesAndOfferingsIfNeeded()` method can also be used if custom attributes are being used for Targeting. [Learn more here.](/tools/targeting/custom-attributes)
+By default, attributes are only synced with RevenueCat servers when Purchases.configure() is called, app backgrounded, and when purchases are made or restored. The `SyncPurchasesAndOfferingsIfNeeded()` method should be used if custom attributes are being used for Targeting to ensure immediate syncing. [Learn more here.](/tools/targeting/custom-attributes)
 :::
 
 ## How Attributes can be used
