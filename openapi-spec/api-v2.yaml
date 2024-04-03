@@ -273,8 +273,6 @@ paths:
         schema:
           type: integer
           example: 10
-          minimum: 1
-          maximum: 100
           default: 20
       responses:
         '200':
@@ -333,8 +331,6 @@ paths:
         schema:
           type: integer
           example: 10
-          minimum: 1
-          maximum: 100
           default: 20
       responses:
         '200':
@@ -889,8 +885,6 @@ paths:
         schema:
           type: integer
           example: 10
-          minimum: 1
-          maximum: 100
           default: 20
       - name: expand
         in: query
@@ -1304,8 +1298,6 @@ paths:
         schema:
           type: integer
           example: 10
-          minimum: 1
-          maximum: 100
           default: 20
       - name: expand
         in: query
@@ -1460,8 +1452,6 @@ paths:
         schema:
           type: integer
           example: 10
-          minimum: 1
-          maximum: 100
           default: 20
       responses:
         '200':
@@ -1895,8 +1885,6 @@ paths:
         schema:
           type: integer
           example: 10
-          minimum: 1
-          maximum: 100
           default: 20
       - name: expand
         in: query
@@ -2058,8 +2046,6 @@ paths:
         schema:
           type: integer
           example: 10
-          minimum: 1
-          maximum: 100
           default: 20
       - name: expand
         in: query
@@ -2435,8 +2421,6 @@ paths:
         schema:
           type: integer
           example: 10
-          minimum: 1
-          maximum: 100
           default: 20
       responses:
         '200':
@@ -2765,10 +2749,15 @@ paths:
       - customer_information:subscriptions:read
       tags:
       - Customer
-      description: "Lists all Subscriptions associated with the Customer. This currently\
-        \ includes only RevenueCat Billing subscriptions. We are planning to add information\
-        \ about subscriptions on other supported stores soon.\n This endpoint requires\
-        \ the following permission(s): `customer_information:subscriptions:read`."
+      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
+        >\n  <div class=\"heading\">Only for web subscriptions using RevenueCat Billing</div>\n\
+        \  <div>This endpoint currently only returns subscriptions made on the web\
+        \ using the RevenueCat Web SDK and RevenueCat Billing. We are planning to\
+        \ add information for other supported stores soon.</div>\n</div>\nLists all\
+        \ Subscriptions associated with the Customer. This currently includes only\
+        \ RevenueCat Billing subscriptions. We are planning to add information about\
+        \ subscriptions on other supported stores soon.\n This endpoint requires the\
+        \ following permission(s): `customer_information:subscriptions:read`."
       parameters:
       - name: project_id
         description: ID of the project
@@ -2807,8 +2796,6 @@ paths:
         schema:
           type: integer
           example: 10
-          minimum: 1
-          maximum: 100
           default: 20
       responses:
         '200':
@@ -2875,8 +2862,6 @@ paths:
         schema:
           type: integer
           example: 10
-          minimum: 1
-          maximum: 100
           default: 20
       responses:
         '200':
