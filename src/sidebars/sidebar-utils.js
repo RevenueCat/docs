@@ -4,35 +4,43 @@ const checkItemType = (item) => {
   return "page";
 };
 
-const Category = ({ label, emoji, slug, items }) => ({
-  type: "category",
-  label,
-  collapsible: false,
-  customProps: { emoji },
-  items: items.map((item) => {
-    const itemType = checkItemType(item);
+const Category = ({ label, emoji, slug, items }) => {
+  return {
+    type: "category",
+    label,
+    collapsible: false,
+    customProps: { emoji },
+    items: items.map((item) => {
+      const itemType = checkItemType(item);
 
-    if (itemType === "subcategory")
-      ({
-        ...item,
-        link: {
-          type: "doc",
-          id: `${slug}/${item.link.id}`,
-        },
-        items: item.items.map((subItem) => {
-          const subItemType = checkItemType(subItem);
+      if (itemType === "subcategory") {
+        return {
+          ...item,
+          link: {
+            type: "doc",
+            id: `${slug}/${item.link.id}`,
+          },
+          items: item.items.map((subItem) => {
+            const subItemType = checkItemType(subItem);
 
-          if (subItemType === "link") return subItem;
-          if (subItemType === "page")
-            return { ...subItem, id: `${slug}/${subItem.id}` };
-        }),
-      });
+            return subItemType === "page"
+              ? { ...subItem, id: `${slug}/${subItem.id}` }
+              : subItem;
+          }),
+        };
+      }
 
-    if (itemType === "link") return item;
+      if (itemType === "page") {
+        return {
+          ...item,
+          id: `${slug}/${item.id}`,
+        };
+      }
 
-    return { ...item, id: `${slug}/${item.id}` };
-  }),
-});
+      return item;
+    }),
+  };
+};
 
 const SubCategory = ({ label, slug, items }) => ({
   type: "category",
@@ -43,10 +51,7 @@ const SubCategory = ({ label, slug, items }) => ({
   },
   items: items.map((item) => {
     const itemType = checkItemType(item);
-
-    if (itemType === "link") return item;
-
-    return { ...item, id: `${slug}/${item.id}` };
+    return itemType === "page" ? { ...item, id: `${slug}/${item.id}` } : item;
   }),
 });
 
