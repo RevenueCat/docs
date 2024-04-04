@@ -294,6 +294,7 @@ const toolsCategory = Category({
         Page({ slug: "custom-attributes" }),
       ],
     }),
+
     Page({ slug: "paywall-orchestration-with-offerings" }),
   ],
 });
