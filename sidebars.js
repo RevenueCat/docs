@@ -64,6 +64,10 @@ const gettingStartedCategory = Category({
         Page({ slug: "google-subscriptions-and-backwards-compatibility" }),
         Page({ slug: "amazon-product-setup" }),
         Page({ slug: "stripe-products" }),
+        Link({
+          label: "RevenueCat Billing Product Setup",
+          slug: "/web/revenuecat-billing/product-setup",
+        }),
       ],
     }),
     SubCategory({
@@ -77,6 +81,7 @@ const gettingStartedCategory = Category({
         Page({ slug: "ionic" }),
         Page({ slug: "cordova" }),
         Page({ slug: "unity" }),
+        Page({ slug: "web-sdk" }),
         Page({ slug: "macos" }),
         Page({ slug: "app-builders" }),
       ],
@@ -102,11 +107,6 @@ const gettingStartedCategory = Category({
       label: "Configuring Server Notifications",
       slug: "/platform-resources/server-notifications",
     }),
-    SubCategory({
-      label: "Stripe",
-      slug: "stripe",
-      items: [Page({ slug: "in-app-purchases-with-stripe-rfa" })],
-    }),
   ],
 });
 
@@ -118,10 +118,32 @@ const migratingCategory = Category({
     SubCategory({
       label: "Migrating Subscriptions",
       slug: "migrating-existing-subscriptions",
-      items: [Page({ slug: "receipt-imports" })],
+      items: [
+        Page({ slug: "receipt-imports" }),
+        Page({ slug: "google-historical-import" }),
+      ],
     }),
     Page({ slug: "observer-mode" }),
     Page({ slug: "swiftystorekit" }),
+  ],
+});
+
+const webPurchasesCategory = Category({
+  emoji: "🌎",
+  label: "Web Purchases",
+  slug: "web",
+  items: [
+    SubCategory({
+      label: "RevenueCat Billing & Web SDK",
+      slug: "revenuecat-billing",
+      items: [
+        Page({ slug: "product-setup" }),
+        Page({ slug: "subscription-lifecycle" }),
+        Page({ slug: "managing-customer-subscriptions" }),
+        Page({ slug: "customer-portal" }),
+      ],
+    }),
+    Page({ slug: "stripe" }),
   ],
 });
 
@@ -264,7 +286,14 @@ const toolsCategory = Category({
         Page({ slug: "experiments-results-v1" }),
       ],
     }),
-    Page({ slug: "targeting" }),
+    SubCategory({
+      label: "Targeting",
+      slug: "targeting",
+      items: [
+        Page({ slug: "placements" }),
+        Page({ slug: "custom-attributes" }),
+      ],
+    }),
     Page({ slug: "paywall-orchestration-with-offerings" }),
   ],
 });
@@ -430,6 +459,7 @@ const sidebars = {
     welcomeCategory,
     gettingStartedCategory,
     migratingCategory,
+    webPurchasesCategory,
     customersCategory,
     testAndLaunchCategory,
     subscriptionGuidanceCategory,

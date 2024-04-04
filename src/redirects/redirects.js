@@ -1447,6 +1447,42 @@ const redirects = {
       to: "/welcome/overview",
       from: "/welcome.html",
     },
+    {
+      to: "/customer-history",
+      from: "/customers-group/customer-history.html",
+    },
+    {
+      to: "/customer-history/active-entitlements",
+      from: "/customers-group/active-entitlements.html",
+    },
+    {
+      to: "/customer-history/aliases-card",
+      from: "/customers-group/aliases-card.html",
+    },
+    {
+      to: "/customer-history/attributes",
+      from: "/customers-group/attributes.html",
+    },
+    {
+      to: "/customer-history/attribution-card",
+      from: "/customers-group/attribution-card.html",
+    },
+    {
+      to: "/customer-history/basic-information",
+      from: "/customers-group/basic-information.html",
+    },
+    {
+      to: "/customer-history/manage-users",
+      from: "/customers-group/manage-users.html",
+    },
+    {
+      to: "/customer-history/offering-override",
+      from: "/customers-group/offering-override.html",
+    },
+    {
+      to: "/customer-history/promotionals",
+      from: "/customers-group/promotionals.html",
+    },
   ],
 };
 
