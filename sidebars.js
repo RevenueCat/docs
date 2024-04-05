@@ -147,6 +147,7 @@ const customersCategory = new Category(
 );
 
 const webCategory = new Category("Web Purchases", 'web', false, [
+  new Page("connect-stripe-account"),
   new Category(
     "RevenueCat Billing & Web SDK",
     "revenuecat-billing",
