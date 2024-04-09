@@ -133,6 +133,7 @@ const webPurchasesCategory = Category({
   label: "Web Purchases",
   slug: "web",
   items: [
+    Page({ slug: "connect-stripe-account" }),
     SubCategory({
       label: "RevenueCat Billing & Web SDK",
       slug: "revenuecat-billing",
