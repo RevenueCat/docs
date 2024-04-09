@@ -52,31 +52,36 @@ The `YouTubeEmbed` component is imported globally to `.mdx` files.
 
 ## Sidebars
 
-Each grouping of docs is called a 'sidebar' and is defined in `sidebars.js`. A sidebar is a combination of categories and pages in a tree structure, and requires each category and page to be defined manually.
+Each grouping of docs is called a 'sidebar' and is defined in `sidebars.js`. A sidebar is a combination of categories and pages in a tree structure, and requires each category, subcategory, and page to be defined manually.
+
+There are four types of sidebar items:
+
+1. Category (top-level, non-clickable)
+2. Subcategory (document w/ sub-documents; only 1 level of nested supported)
+3. Page (i.e., document)
+4. Link (link to a document in a different Category)
 
 ```js
-new Category(
-  "😺 Welcome to RevenueCat", // category title
-  "welcome", // category path, e.g. docs/{path}/
-  false, // should the category be collapsed by default? (defaults to true)
-  [ // array of pages within the category
-    new Page("overview"), // page file name, e.g. docs/{path}/{file}
-    new Page("building-new"),
-    new Page("existing-apps"),
-    new Category( // sub-category
-      "Setting up RevenueCat", // category title
-      "projects", // category path, e.g. docs/{path}/{subcategory}/
-      true, // collapsed by default?
-      [
-        new Page("collaborators"), // docs/{path}/{subcategory}/{file}
-        new Page("security"),
-        new Page("account-management"),
+const exampleCategory = Category({
+  emoji: "🙈",
+  label: "Example Category",
+  slug: "example",
+  items: [
+    SubCategory({
+      label: "Welcome RevenueCat",
+      slug: "welcome",        // /docs/example/welcome
+      items: [
+        Page({ slug: "first-sub-page" }),    // /docs/example/welcome/first-sub-page
+        Page({ slug: "second-sub-page" }),
       ],
-      new Page("projects")
-    ),
-    new Page("authentication"),
-  ]
-);
+    }),
+    Page({ slug: "stand-alone-page" }),    // /docs/example/stand-alone-page
+    Link({
+      label: "Linked Page",
+      slug: "/path/to/linked-page",
+    }),
+  ],
+});
 ```
 
 The default sidebar is rendered at the bottom of `sidebars.js`.
