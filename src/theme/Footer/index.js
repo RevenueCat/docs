@@ -20,7 +20,7 @@ const Link = ({ href, children, ...rest }) => (
 
 function Footer() {
   return (
-    <footer class="bg-base-900 pt-20 pb-4 px-4 doc-lg:px-16">
+    <footer className="bg-base-900 pt-20 pb-4 px-4 doc-lg:px-16">
       <div className="flex flex-col items-center gap-16 max-w-xl mx-auto doc-lg:flex-row doc-lg:justify-between w-full doc-lg:max-w-7xl">
         <div className="w-fit mx-auto doc-lg:w-full">
           <a
@@ -40,8 +40,8 @@ function Footer() {
 
         <div className="flex flex-wrap gap-24 doc-lg:flex-nowrap">
           {/* Docs */}
-          <div class="flex flex-col gap-2">
-            <p class="text-white font-semibold text-lg mb-0">Docs</p>
+          <div className="flex flex-col gap-2">
+            <p className="text-white font-semibold text-lg mb-0">Docs</p>
             <Link href="/docs/welcome/overview">Documentation</Link>
             <Link href="/docs/api-v1">API Reference</Link>
             <Link href="/docs/platform-resources/sdk-reference">
@@ -51,8 +51,8 @@ function Footer() {
           </div>
 
           {/* Resources */}
-          <div class="flex flex-col gap-2">
-            <p class="text-white font-semibold text-lg mb-0">Resources</p>
+          <div className="flex flex-col gap-2">
+            <p className="text-white font-semibold text-lg mb-0">Resources</p>
             <Link
               href="https://app.revenuecat.com/"
               target="_blank"
@@ -85,8 +85,8 @@ function Footer() {
         </div>
       </div>
 
-      <div class="flex flex-col-reverse items-center gap-4 mt-12 before:content-[''] before:absolute relative before:left-0 before:right-0 before:mx-auto before:-top-4 before:w-full before:h-px before:bg-base-600 max-w-xl mx-auto doc-lg:flex-row doc-lg:justify-between doc-lg:max-w-7xl">
-        <p class="text-base-300 text-xs mb-0">&copy; {year} RevenueCat</p>
+      <div className="flex flex-col-reverse items-center gap-4 mt-12 before:content-[''] before:absolute relative before:left-0 before:right-0 before:mx-auto before:-top-4 before:w-full before:h-px before:bg-base-600 max-w-xl mx-auto doc-lg:flex-row doc-lg:justify-between doc-lg:max-w-7xl">
+        <p className="text-base-300 text-xs mb-0">&copy; {year} RevenueCat</p>
         <div className="flex gap-4">
           <a
             href="https://github.com/RevenueCat"

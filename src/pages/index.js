@@ -31,22 +31,22 @@ function LandingPage() {
   return (
     <>
       {/* Hero */}
-      <section class="py-20 max-w-7xl mx-auto size-full">
+      <section className="py-20 max-w-7xl mx-auto size-full">
         <div className="tw-container w-full flex flex-col gap-16 max-w-none lg:flex-row-reverse lg:justify-between items-center">
           <div>
             <img
               src={heroImage}
               alt="revenuecat welcome"
-              class="size-full max-w-[600px] mx-auto dark:hidden"
+              className="size-full max-w-[600px] mx-auto dark:hidden"
             />
             <img
               src={heroImageDark}
               alt="revenuecat welcome"
-              class="size-full max-w-[600px] mx-auto hidden dark:flex"
+              className="size-full max-w-[600px] mx-auto hidden dark:flex"
             />
           </div>
 
-          <div class="size-full text-center lg:text-left flex flex-col">
+          <div className="size-full text-center lg:text-left flex flex-col">
             <h1 className="text-3xl lg:text-4xl">RevenueCat Developer Hub</h1>
             <p className="text-lg md:text-xl max-w-[520px] mx-auto lg:mx-0 font-body">
               Everything you need to implement and manage in-app purchases and
@@ -69,11 +69,11 @@ function LandingPage() {
       </section>
 
       {/* Links */}
-      <section class="py-20 max-w-none bg-gray size-full dark:bg-base-900">
+      <section className="py-20 max-w-none bg-gray size-full dark:bg-base-900">
         <div className="tw-container max-w-7xl flex flex-col mx-auto gap-y-12 lg:flex-row w-fit lg:w-full md:justify-between gap-x-12">
           {/* Quick Links */}
           <div className="flex flex-col gap-4 w-fit">
-            <h2 class="font-normal mb-0 lg:mb-8 text-2xl lg:text-3xl">
+            <h2 className="font-normal mb-0 lg:mb-8 text-2xl lg:text-3xl">
               Quick Links
             </h2>
             <Link href="/docs/welcome/building-new">
@@ -93,7 +93,7 @@ function LandingPage() {
 
           {/* For Developers */}
           <div className="flex flex-col gap-4 w-fit">
-            <h2 class="font-normal mb-0 lg:mb-8 text-2xl lg:text-3xl">
+            <h2 className="font-normal mb-0 lg:mb-8 text-2xl lg:text-3xl">
               For Developers
             </h2>
             <Link href="/docs/getting-started/quickstart">SDK Quickstart</Link>
@@ -105,7 +105,7 @@ function LandingPage() {
 
           {/* Popular Articles */}
           <div className="flex flex-col gap-4 w-fit">
-            <h2 class="font-normal mb-0 lg:mb-8 text-2xl lg:text-3xl">
+            <h2 className="font-normal mb-0 lg:mb-8 text-2xl lg:text-3xl">
               Popular Articles
             </h2>
             <Link href="/docs/welcome/projects">Setting up RevenueCat</Link>
@@ -119,22 +119,22 @@ function LandingPage() {
         </div>
 
         {/* Video */}
-        <hr class="tw-container w-4/5 max-w-7xl my-20 bg-[#DFDFDF]" />
+        <hr className="tw-container w-4/5 max-w-7xl my-20 bg-[#DFDFDF]" />
         <div className="tw-container max-w-7xl w-full flex flex-col gap-16 lg:flex-row-reverse lg:justify-between items-center">
           <div>
             <img
               src={videoPlaceholder}
               alt="revenuecat welcome"
-              class="size-full mx-auto max-w-[600px] lg:max-w-none dark:hidden"
+              className="size-full mx-auto max-w-[600px] lg:max-w-none dark:hidden"
             />
             <img
               src={videoPlaceholderDark}
               alt="revenuecat welcome"
-              class="size-full mx-auto max-w-[600px] lg:max-w-none hidden dark:block"
+              className="size-full mx-auto max-w-[600px] lg:max-w-none hidden dark:block"
             />
           </div>
 
-          <div class="size-full text-center lg:text-left flex flex-col">
+          <div className="size-full text-center lg:text-left flex flex-col">
             <h2 className="text-3xl lg:text-4xl lg:mb-6 max-w-[420px] mx-auto lg:ml-0">
               Enable Subscriptions In Your App Today
             </h2>
@@ -161,13 +161,13 @@ function LandingPage() {
       </section>
 
       {/* Browse by Feature */}
-      <section class="py-20 max-w-7xl mx-auto size-full tw-container">
+      <section className="py-20 max-w-7xl mx-auto size-full tw-container">
         <h2 className="text-3xl lg:text-4xl mb-8 w-fit mx-auto lg:ml-0 lg:w-full font-normal">
           Browse By Feature
         </h2>
         <div className="max-w-7xl px-4 flex flex-col mx-auto gap-y-12 lg:flex-row w-fit lg:w-full lg:justify-between gap-x-12">
           {/* Column 1 */}
-          <div class="flex flex-col gap-4">
+          <div className="flex flex-col gap-4">
             <Link href="/docs/dashboard-and-metrics/charts">
               <span className="flex items-center gap-3">
                 <ChartIcon width="16" />
@@ -189,7 +189,7 @@ function LandingPage() {
           </div>
 
           {/* Column 2 */}
-          <div class="flex flex-col gap-4">
+          <div className="flex flex-col gap-4">
             <Link href="/docs/tools/experiments-v1">
               <span className="flex items-center gap-3">
                 <ExperimentsIcon width="16" />
@@ -211,7 +211,7 @@ function LandingPage() {
           </div>
 
           {/* Column 3 */}
-          <div class="flex flex-col gap-4">
+          <div className="flex flex-col gap-4">
             <Link href="/docs/tools/targeting">
               <span className="flex items-center gap-3">
                 <TargetingIcon width="16" />
