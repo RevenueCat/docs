@@ -31,7 +31,7 @@ Promotional entitlements will be prefixed with "rc_promo" in the customer dashbo
 Granted entitlements will automatically be removed after expiration. To remove access to an entitlement early, click the :fa-times-circle: icon next to the **Granted Entitlement** name.
 
 ## Promotionals through the REST API
-Looking to programatically grant promotional entitlements? View the REST API documentation [here](https://docs.revenuecat.com/reference/grant-a-promotional-entitlement).
+Looking to programatically grant promotional entitlements? View the REST API documentation [here](https://www.revenuecat.com/docs/api-v1#tag/entitlements).
 
 ## Next Steps
 
