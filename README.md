@@ -54,6 +54,8 @@ The `YouTubeEmbed` component is imported globally to `.mdx` files.
 
 Each grouping of docs is called a 'sidebar' and is defined in `sidebars.js`. A sidebar is a combination of categories and pages in a tree structure, and requires each category, subcategory, and page to be defined manually.
 
+[Video Explanation](https://www.loom.com/share/68d0f56195034c8d9badf454beb7d899?sid=b312b6f7-8f9e-43c5-9f98-6db5f7548944)
+
 There are four types of sidebar items:
 
 1. Category (top-level, non-clickable)
