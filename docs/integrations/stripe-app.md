@@ -21,7 +21,7 @@ RevenueCat data visible within Stripe is read-only and does not allow for additi
 
 ### Prerequisites
 
-The customer's Stripe fetch token must exist in RevenueCat in order for RevenueCat to find the Stripe customer. To read more about this, visit the [Send Stripe tokens to RevenueCat](/getting-started/stripe#5-send-stripe-tokens-to-revenuecat) section of our Stripe documentation!
+The customer's Stripe fetch token must exist in RevenueCat in order for RevenueCat to find the Stripe customer. To read more about this, visit the [Send Stripe tokens to RevenueCat](/web/stripe#5-send-stripe-tokens-to-revenuecat) section of our Stripe documentation!
 
 ### Installing the app
 

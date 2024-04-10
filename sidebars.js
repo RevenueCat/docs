@@ -9,521 +9,469 @@
  Create as many sidebars as you want.
  */
 
-// custom sidebar objects to make it easier to read
-import { Category, Link, Page } from "./src/sidebars/sidebar-utils";
+import {
+  Category,
+  SubCategory,
+  Link,
+  Page,
+} from "./src/sidebars/sidebar-utils";
 
 // The sidebar is a tree of categories and pages.
-// I've separated this top-level category into its own variable for readability.
-// Each category can have sub-categories and pages.
+// Options:
+//    Category - Top level categories with an emoji
+//    Subcategory - Page with a collection of subpages
+//    Page - An individual doc
+//    Link - A link to a different doc
+//
 // Each page has a path. The path is relative to the path of its parent.
 // i.e. Category -> Sub-category -> Page
 // "categories/welcome" -> "projects" -> "collaborators"
-// combined path: "categories/welcome/projects/collaborators"
-const welcomeCategory = new Category(
-  "Welcome to RevenueCat", // Category title
-  "welcome", // Category path, i.e. docs/{path}
-  false, // Should the category be collapsed by default? (defaults to true)
-  [
-    // Category pages / items
-    new Page("overview"), // page file name. relative to parent category path
-    new Page("building-new"),
-    new Page("existing-apps"),
-    new Category( // Sub-category
-      "Setting up RevenueCat", // Sub-category title
-      "projects", // Sub-category path relative to parent category
-      true, // Sub-category collapsed by default?
-      [
-        new Page("collaborators"), // Sub-category pages / items
-        new Page("security"),
-        new Page("account-management"),
+// rendered path: "categories/welcome/projects/collaborators"
+
+const welcomeCategory = Category({
+  emoji: "😺",
+  label: "Welcome to RevenueCat",
+  slug: "welcome",
+  items: [
+    Page({ slug: "overview" }),
+    Page({ slug: "building-new" }),
+    Page({ slug: "existing-apps" }),
+    SubCategory({
+      label: "Setting up RevenueCat",
+      slug: "projects",
+      items: [
+        Page({ slug: "collaborators" }),
+        Page({ slug: "security" }),
+        Page({ slug: "account-management" }),
       ],
-      new Page("projects")
-    ),
-    new Page("authentication"),
+    }),
+    Page({ slug: "authentication" }),
   ],
-  null,
-  { emoji: "😺" }
-);
+});
 
-const migratingCategory = new Category(
-  "Migrating to RevenueCat",
-  "migrating-to-revenuecat",
-  false,
-  [
-    new Category(
-      "Migrating Subscriptions",
-      "migrating-existing-subscriptions",
-      true,
-      [
-        new Page("receipt-imports"),
-        new Page("google-historical-import"),
+const gettingStartedCategory = Category({
+  emoji: "🚀",
+  label: "Getting Started",
+  slug: "getting-started",
+  items: [
+    Page({ slug: "quickstart" }),
+    SubCategory({
+      label: "Configuring Products",
+      slug: "entitlements",
+      items: [
+        Page({ slug: "ios-products" }),
+        Page({ slug: "android-products" }),
+        Page({ slug: "google-subscriptions-and-backwards-compatibility" }),
+        Page({ slug: "amazon-product-setup" }),
+        Page({ slug: "stripe-products" }),
+        Link({
+          label: "RevenueCat Billing Product Setup",
+          slug: "/web/revenuecat-billing/product-setup",
+        }),
       ],
-      new Page("migrating-existing-subscriptions")
-    ),
-    new Page("observer-mode"),
-    new Page("swiftystorekit"),
+    }),
+    SubCategory({
+      label: "Installation",
+      slug: "installation",
+      items: [
+        Page({ slug: "ios" }),
+        Page({ slug: "android" }),
+        Page({ slug: "reactnative" }),
+        Page({ slug: "flutter" }),
+        Page({ slug: "ionic" }),
+        Page({ slug: "cordova" }),
+        Page({ slug: "unity" }),
+        Page({ slug: "web-sdk" }),
+        Page({ slug: "macos" }),
+        Page({ slug: "app-builders" }),
+      ],
+    }),
+    SubCategory({
+      label: "Configuring the SDK",
+      slug: "configuring-sdk",
+      items: [Page({ slug: "ios-app-extensions" })],
+    }),
+    Link({ label: "Identifying Users", slug: "/customers/user-ids" }),
+    Page({ slug: "displaying-products" }),
+    SubCategory({
+      label: "Making Purchases",
+      slug: "making-purchases",
+      items: [Page({ slug: "android-with-jetpack-compose" })],
+    }),
+    Link({
+      label: "Checking Subscription Status",
+      slug: "/customers/customer-info",
+    }),
+    Page({ slug: "restoring-purchases" }),
+    Link({
+      label: "Configuring Server Notifications",
+      slug: "/platform-resources/server-notifications",
+    }),
   ],
-  null,
-  { emoji: "➡️" }
-);
+});
 
-const gettingStartedCategory = new Category(
-  "Getting Started",
-  "getting-started",
-  false,
-  [
-    new Page("quickstart"),
-    new Category(
-      "Configuring Products",
-      "entitlements",
-      true,
-      [
-        new Page("ios-products"),
-        new Page("android-products"),
-        new Page("google-subscriptions-and-backwards-compatibility"),
-        new Page("amazon-product-setup"),
-        new Page("stripe-products"),
-        new Link("RevenueCat Billing Product Setup", "/web/revenuecat-billing/product-setup"),
+const migratingCategory = Category({
+  emoji: "➡️",
+  label: "Migrating to RevenueCat",
+  slug: "migrating-to-revenuecat",
+  items: [
+    SubCategory({
+      label: "Migrating Subscriptions",
+      slug: "migrating-existing-subscriptions",
+      items: [
+        Page({ slug: "receipt-imports" }),
+        Page({ slug: "google-historical-import" }),
       ],
-      new Page("entitlements")
-    ),
-    new Category(
-      "Installation",
-      "installation",
-      true,
-      [
-        new Page("ios"),
-        new Page("android"),
-        new Page("reactnative"),
-        new Page("flutter"),
-        new Page("ionic"),
-        new Page("cordova"),
-        new Page("unity"),
-        new Page("web-sdk"),
-        new Page("macos"),
-        new Page("app-builders"),
-      ],
-      new Page("installation")
-    ),
-    new Category(
-      "Configuring the SDK",
-      "configuring-sdk",
-      true,
-      [new Page("ios-app-extensions")],
-      new Page("configuring-sdk")
-    ),
-    new Link("Identifying Users", "/customers/user-ids"),
-    new Page("displaying-products"),
-    new Category(
-      "Making Purchases",
-      "making-purchases",
-      true,
-      [new Page("android-with-jetpack-compose")],
-      new Page("making-purchases")
-    ),
-    new Link("Checking Subscription Status", "/customers/customer-info"),
-    new Page("restoring-purchases"),
-    new Link(
-      "Configuring Server Notifications",
-      "/platform-resources/server-notifications"
-    ),
+    }),
+    Page({ slug: "observer-mode" }),
+    Page({ slug: "swiftystorekit" }),
   ],
-  null,
-  { emoji: "🚀" }
-);
+});
 
-const customersCategory = new Category(
-  "Customers",
-  "customers",
-  false,
-  [
-    new Page("user-ids"),
-    new Page("customer-info"),
-    new Page("customer-attributes"),
-    new Page("trusted-entitlements"),
+const webPurchasesCategory = Category({
+  emoji: "🌎",
+  label: "Web Purchases",
+  slug: "web",
+  items: [
+    Page({ slug: "connect-stripe-account" }),
+    SubCategory({
+      label: "RevenueCat Billing & Web SDK",
+      slug: "revenuecat-billing",
+      items: [
+        Page({ slug: "product-setup" }),
+        Page({ slug: "subscription-lifecycle" }),
+        Page({ slug: "managing-customer-subscriptions" }),
+        Page({ slug: "customer-portal" }),
+      ],
+    }),
+    Page({ slug: "stripe" }),
   ],
-  null,
-  { emoji: "👥" }
-);
+});
 
-const webCategory = new Category("Web Purchases", 'web', false, [
-  new Category(
-    "RevenueCat Billing & Web SDK",
-    "revenuecat-billing",
-    true,
-    [
-      new Page("product-setup"),
-      new Page("subscription-lifecycle"),
-      new Page("managing-customer-subscriptions"),
-      new Page("customer-portal"),
-    ],
-    new Page("revenuecat-billing")
-  ),
-  new Category(
-    "Stripe Billing / Stripe Checkout",
-    "stripe",
-    true,
-    [],
-    new Page("stripe")
-  ),
-], null, {emoji: "🌎"});
-
-const testAndLaunchCategory = new Category(
-  "Test & Launch",
-  "test-and-launch",
-  false,
-  [
-    new Category(
-      "Debugging",
-      "debugging",
-      true,
-      [new Page("caching"), new Page("troubleshooting-the-sdks")],
-      new Page("debugging")
-    ),
-    new Page("errors"),
-    new Category(
-      "Sandbox Testing",
-      "sandbox",
-      true,
-      [
-        new Page("apple-app-store"),
-        new Page("google-play-store"),
-        new Page("amazon-store-sandbox-testing"),
-      ],
-      new Page("sandbox")
-    ),
-    new Page("launch-checklist"),
-    new Page("app-store-rejections"),
+const customersCategory = Category({
+  emoji: "👥",
+  label: "Customers",
+  slug: "customers",
+  items: [
+    Page({ slug: "user-ids" }),
+    Page({ slug: "customer-info" }),
+    Page({ slug: "customer-attributes" }),
+    Page({ slug: "trusted-entitlements" }),
   ],
-  null,
-  { emoji: "🧰" }
-);
+});
 
-const subscriptionGuidanceCategory = new Category(
-  "Subscription Guidance",
-  "subscription-guidance",
-  false,
-  [
-    new Category(
-      "Free Trials & Promo Offers",
-      "subscription-offers",
-      true,
-      [
-        new Page("ios-subscription-offers"),
-        new Page("google-play-offers"),
-        new Page("stripe-free-trials"),
+const testAndLaunchCategory = Category({
+  emoji: "🧰",
+  label: "Test & Launch",
+  slug: "test-and-launch",
+  items: [
+    SubCategory({
+      label: "Debugging",
+      slug: "debugging",
+      items: [
+        Page({ slug: "caching" }),
+        Page({ slug: "troubleshooting-the-sdks" }),
       ],
-      new Page("subscription-offers")
-    ),
-    new Page("how-grace-periods-work"),
-    new Page("managing-subscriptions"),
-    new Page("price-changes"),
-    new Page("refunds"),
-    new Page("google-prepaid-plans"),
+    }),
+    Page({ slug: "errors" }),
+    SubCategory({
+      label: "Sandbox Testing",
+      slug: "sandbox",
+      items: [
+        Page({ slug: "apple-app-store" }),
+        Page({ slug: "google-play-store" }),
+        Page({ slug: "amazon-store-sandbox-testing" }),
+      ],
+    }),
+    Page({ slug: "launch-checklist" }),
+    Page({ slug: "app-store-rejections" }),
   ],
-  null,
-  { emoji: "📝" }
-);
+});
 
-const dashboardCategory = new Category(
-  "Dashboard & Metrics",
-  "dashboard-and-metrics",
-  false,
-  [
-    new Page("overview"),
-    new Category(
-      "Charts",
-      "charts",
-      true,
-      [
-        new Page("active-subscriptions-chart"),
-        new Page("active-subscriptions-movement-chart"),
-        new Page("active-trials-chart"),
-        new Page("active-trials-movement-chart"),
-        new Page("annual-recurring-revenue-arr-chart"),
-        new Page("charts-feature-incomplete-periods"),
-        new Page("churn-chart"),
-        new Page("conversion-to-paying-chart"),
-        new Page("initial-conversion-chart"),
-        new Page("monthly-recurring-revenue-movement-chart"),
-        new Page("monthly-recurring-revenue-mrr-chart"),
-        new Page("realized-ltv-per-customer-chart"),
-        new Page("realized-ltv-per-paying-customer-chart"),
-        new Page("refund-rate-chart"),
-        new Page("revenue-chart"),
-        new Page("subscription-retention-chart"),
-        new Page("trial-conversion-chart"),
+const subscriptionGuidanceCategory = Category({
+  emoji: "📝",
+  label: "Subscription Guidance",
+  slug: "subscription-guidance",
+  items: [
+    SubCategory({
+      label: "Free Trials & Promo Offers",
+      slug: "subscription-offers",
+      items: [
+        Page({ slug: "ios-subscription-offers" }),
+        Page({ slug: "google-play-offers" }),
+        Page({ slug: "stripe-free-trials" }),
       ],
-      new Page("charts")
-    ),
-    new Category("Customer History", "customers-group", true, [
-      new Page("active-entitlements"),
-      new Page("aliases-card"),
-      new Page("attributes"),
-      new Page("attribution-card"),
-      new Page("basic-information"),
-      new Page("customer-history"),
-      new Page("offering-override"),
-      new Page("promotionals"),
-      new Page("manage-users"),
-    ]),
-    new Page("customer-lists"),
-    new Page("taxes-and-commissions"),
-    new Page("performance-summaries"),
+    }),
+    Page({ slug: "how-grace-periods-work" }),
+    Page({ slug: "managing-subscriptions" }),
+    Page({ slug: "price-changes" }),
+    Page({ slug: "refunds" }),
+    Page({ slug: "google-prepaid-plans" }),
   ],
-  null,
-  { emoji: "📊" }
-);
+});
 
-const integrationsCategory = new Category(
-  "Integrations",
-  "integrations",
-  false,
-  [
-    new Page("integrations"),
-    new Category(
-      "Attribution",
-      "attribution",
-      true,
-      [
-        new Page("adjust"),
-        new Page("apple-search-ads"),
-        new Page("appsflyer"),
-        new Page("branch"),
-        new Page("facebook-ads"),
-        new Page("singular"),
-        new Page("splitmetrics-acquire"),
-        new Page("tenjin"),
+const dashboardCategory = Category({
+  emoji: "📊",
+  label: "Dashboard & Metrics",
+  slug: "dashboard-and-metrics",
+  items: [
+    Page({ slug: "overview" }),
+    SubCategory({
+      label: "Charts",
+      slug: "charts",
+      items: [
+        Page({ slug: "active-subscriptions-chart" }),
+        Page({ slug: "active-subscriptions-movement-chart" }),
+        Page({ slug: "active-trials-chart" }),
+        Page({ slug: "active-trials-movement-chart" }),
+        Page({ slug: "annual-recurring-revenue-arr-chart" }),
+        Page({ slug: "charts-feature-incomplete-periods" }),
+        Page({ slug: "churn-chart" }),
+        Page({ slug: "conversion-to-paying-chart" }),
+        Page({ slug: "initial-conversion-chart" }),
+        Page({ slug: "monthly-recurring-revenue-movement-chart" }),
+        Page({ slug: "monthly-recurring-revenue-mrr-chart" }),
+        Page({ slug: "realized-ltv-per-customer-chart" }),
+        Page({ slug: "realized-ltv-per-paying-customer-chart" }),
+        Page({ slug: "refund-rate-chart" }),
+        Page({ slug: "revenue-chart" }),
+        Page({ slug: "subscription-retention-chart" }),
+        Page({ slug: "trial-conversion-chart" }),
       ],
-      new Page("attribution")
-    ),
-    new Category(
-      "Scheduled Data Exports",
-      "scheduled-data-exports",
-      true,
-      [
-        new Page("data-export-version-3"),
-        new Page("data-export-version-4"),
-        new Page("data-export-version-5"),
-        new Page("scheduled-data-exports-gcp"),
-        new Page("scheduled-data-exports-s3"),
+    }),
+    SubCategory({
+      label: "Customer History",
+      slug: "customer-history",
+      items: [
+        Page({ slug: "active-entitlements" }),
+        Page({ slug: "aliases-card" }),
+        Page({ slug: "attributes" }),
+        Page({ slug: "attribution-card" }),
+        Page({ slug: "basic-information" }),
+        Page({ slug: "offering-override" }),
+        Page({ slug: "promotionals" }),
+        Page({ slug: "manage-users" }),
       ],
-      new Page("scheduled-data-exports")
-    ),
-    new Category(
-      "Third-Party Integrations",
-      "third-party-integrations",
-      true,
-      [
-        new Page("airship"),
-        new Page("amplitude"),
-        new Page("braze"),
-        new Page("clevertap"),
-        new Page("discord"),
-        new Page("firebase-integration"),
-        new Page("intercom"),
-        new Page("iterable"),
-        new Page("mixpanel"),
-        new Page("mparticle"),
-        new Page("onesignal"),
-        new Page("segment"),
-        new Page("slack"),
-        new Page("statsig"),
-        new Page("superwall"),
-      ],
-      new Page("third-party-integrations")
-    ),
-    new Category(
-      "Webhooks",
-      "webhooks",
-      true,
-      [
-        new Page("event-flows"),
-        new Page("event-types-and-fields"),
-        new Page("sample-events"),
-      ],
-      new Page("webhooks")
-    ),
-    new Page("partner-built-integrations"),
-    new Page("stripe-app"),
+    }),
+    Page({ slug: "customer-lists" }),
+    Page({ slug: "taxes-and-commissions" }),
+    Page({ slug: "performance-summaries" }),
   ],
-  null,
-  { emoji: "🔌" }
-);
+});
 
-const toolsCategory = new Category(
-  "Tools",
-  "tools",
-  false,
-  [
-    new Category(
-      "Paywalls",
-      "paywalls",
-      true,
-      [new Page("creating-paywalls"), new Page("displaying-paywalls")],
-      new Page("paywalls")
-    ),
-    new Category(
-      "Offering Metadata",
-      "offering-metadata",
-      true,
-      [new Page("offering-metadata-examples")],
-      new Page("offering-metadata")
-    ),
-    new Category(
-      "Experiments",
-      "experiments-v1",
-      true,
-      [
-        new Page("experiments-overview-v1"),
-        new Page("creating-offerings-to-test"),
-        new Page("configuring-experiments-v1"),
-        new Page("experiments-results-v1"),
+const toolsCategory = Category({
+  emoji: "🛠",
+  label: "Tools",
+  slug: "tools",
+  items: [
+    SubCategory({
+      label: "Paywalls",
+      slug: "paywalls",
+      items: [
+        Page({ slug: "creating-paywalls" }),
+        Page({ slug: "displaying-paywalls" }),
       ],
-      new Page("experiments-v1")
-    ),
-    new Category(
-      "Targeting",
-      "targeting",
-      true,
-      [
-       new Page("targeting-by-placement"),
-       new Page("targeting-by-custom-attributes"),
+    }),
+    SubCategory({
+      label: "Offering Metadata",
+      slug: "offering-metadata",
+      items: [Page({ slug: "offering-metadata-examples" })],
+    }),
+    SubCategory({
+      label: "Experiments",
+      slug: "experiments-v1",
+      items: [
+        Page({ slug: "experiments-overview-v1" }),
+        Page({ slug: "creating-offerings-to-test" }),
+        Page({ slug: "configuring-experiments-v1" }),
+        Page({ slug: "experiments-results-v1" }),
       ],
-      new Page("targeting")
-    ),
-    new Page("paywall-orchestration-with-offerings"),
+    }),
+    SubCategory({
+      label: "Targeting",
+      slug: "targeting",
+      items: [
+        Page({ slug: "placements" }),
+        Page({ slug: "custom-attributes" }),
+      ],
+    }),
+
+    Page({ slug: "paywall-orchestration-with-offerings" }),
   ],
-  null,
-  { emoji: "🛠" }
-);
+});
 
-const platformResourcesCategory = new Category(
-  "Platform Resources",
-  "platform-resources",
-  false,
-  [
-    new Page("implementation-responsibilities"),
-    new Page("sdk-reference"),
-    new Category(
-      "Amazon Platform Resources",
-      "amazon-platform-resources",
-      true,
-      [new Page("amazon-small-business-accelerator-program")],
-      new Page("amazon-platform-resources")
-    ),
-    new Category(
-      "Apple Platform Resources",
-      "apple-platform-resources",
-      true,
-      [
-        new Page("app-store-small-business-program"),
-        new Page("apple-app-privacy"),
-        new Page("apple-family-sharing"),
-        new Page("legacy-mac-apps"),
-        new Page("swiftui-helpers"),
+const integrationsCategory = Category({
+  emoji: "🔌",
+  label: "Integrations",
+  slug: "integrations",
+  items: [
+    Page({ slug: "integrations" }),
+    SubCategory({
+      label: "Attribution",
+      slug: "attribution",
+      items: [
+        Page({ slug: "adjust" }),
+        Page({ slug: "apple-search-ads" }),
+        Page({ slug: "appsflyer" }),
+        Page({ slug: "branch" }),
+        Page({ slug: "facebook-ads" }),
+        Page({ slug: "singular" }),
+        Page({ slug: "splitmetrics-acquire" }),
+        Page({ slug: "tenjin" }),
       ],
-      new Page("apple-platform-resources")
-    ),
-    new Category(
-      "Google Platform Resources",
-      "google-platform-resources",
-      true,
-      [
-        new Page("google-play-pass"),
-        new Page("reduced-service-fee"),
-        new Page("google-plays-data-safety"),
-        new Page("google-play-quota-increase-request"),
+    }),
+    SubCategory({
+      label: "Scheduled Data Exports",
+      slug: "scheduled-data-exports",
+      items: [
+        Page({ slug: "data-export-version-3" }),
+        Page({ slug: "data-export-version-4" }),
+        Page({ slug: "data-export-version-5" }),
+        Page({ slug: "scheduled-data-exports-gcp" }),
+        Page({ slug: "scheduled-data-exports-s3" }),
       ],
-      new Page("google-platform-resources")
-    ),
-    new Page("non-subscriptions"),
-    new Category(
-      "Platform Server Notifications",
-      "server-notifications",
-      true,
-      [
-        new Page("apple-server-notifications"),
-        new Page("google-server-notifications"),
-        new Page("stripe-server-notifications"),
+    }),
+    SubCategory({
+      label: "Third-Party Integrations",
+      slug: "third-party-integrations",
+      items: [
+        Page({ slug: "airship" }),
+        Page({ slug: "amplitude" }),
+        Page({ slug: "braze" }),
+        Page({ slug: "clevertap" }),
+        Page({ slug: "discord" }),
+        Page({ slug: "firebase-integration" }),
+        Page({ slug: "intercom" }),
+        Page({ slug: "iterable" }),
+        Page({ slug: "mixpanel" }),
+        Page({ slug: "mparticle" }),
+        Page({ slug: "onesignal" }),
+        Page({ slug: "segment" }),
+        Page({ slug: "slack" }),
+        Page({ slug: "statsig" }),
+        Page({ slug: "superwall" }),
       ],
-      new Page("server-notifications")
-    ),
-    new Page("sample-apps"),
+    }),
+    SubCategory({
+      label: "Webhooks",
+      slug: "webhooks",
+      items: [
+        Page({ slug: "event-flows" }),
+        Page({ slug: "event-types-and-fields" }),
+        Page({ slug: "sample-events" }),
+      ],
+    }),
+    Page({ slug: "partner-built-integrations" }),
+    Page({ slug: "stripe-app" }),
   ],
-  null,
-  { emoji: "📚" }
-);
+});
 
-const serviceCredentialsCategory = new Category(
-  "Service Credentials",
-  "service-credentials",
-  false,
-  [
-    new Category(
-      "Apple App Store",
-      "itunesconnect-app-specific-shared-secret",
-      true,
-      [
-        new Page("in-app-purchase-key-configuration"),
-        new Page("app-store-connect-api-key-configuration"),
+const platformResourcesCategory = Category({
+  emoji: "📚",
+  label: "Platform Resources",
+  slug: "platform-resources",
+  items: [
+    Page({ slug: "implementation-responsibilities" }),
+    Page({ slug: "sdk-reference" }),
+    SubCategory({
+      label: "Amazon Platform Resources",
+      slug: "amazon-platform-resources",
+      items: [Page({ slug: "amazon-small-business-accelerator-program" })],
+    }),
+    SubCategory({
+      label: "Apple Platform Resources",
+      slug: "apple-platform-resources",
+      items: [
+        Page({ slug: "app-store-small-business-program" }),
+        Page({ slug: "apple-app-privacy" }),
+        Page({ slug: "apple-family-sharing" }),
+        Page({ slug: "legacy-mac-apps" }),
+        Page({ slug: "swiftui-helpers" }),
       ],
-      new Page("itunesconnect-app-specific-shared-secret")
-    ),
-    new Category(
-      "Google Play Store",
-      "creating-play-service-credentials",
-      true,
-      [new Page("google-play-checklists")],
-      new Page("creating-play-service-credentials")
-    ),
-    new Page("amazon-appstore-credentials"),
+    }),
+    SubCategory({
+      label: "Google Platform Resources",
+      slug: "google-platform-resources",
+      items: [
+        Page({ slug: "google-play-pass" }),
+        Page({ slug: "reduced-service-fee" }),
+        Page({ slug: "google-plays-data-safety" }),
+        Page({ slug: "google-play-quota-increase-request" }),
+      ],
+    }),
+    Page({ slug: "non-subscriptions" }),
+    SubCategory({
+      label: "Platform Server Notifications",
+      slug: "server-notifications",
+      items: [
+        Page({ slug: "apple-server-notifications" }),
+        Page({ slug: "google-server-notifications" }),
+        Page({ slug: "stripe-server-notifications" }),
+      ],
+    }),
+    Page({ slug: "sample-apps" }),
   ],
-  null,
-  { emoji: "🔑" }
-);
+});
 
-const supportCategory = new Category(
-  "RevenueCat Support",
-  "revenuecat-support",
-  false,
-  [new Page("support-first-steps")],
-  null,
-  { emoji: "🛟" }
-);
-
-const sdkMigrationCategory = new Category(
-  "SDK Migration Guides",
-  "sdk-guides",
-  false,
-  [
-    new Page("android-native-4x-to-5x-migration"),
-    new Page("android-native-5x-to-6x-migration"),
-    new Page("android-native-6x-to-7x-migration"),
-    new Page("ios-native-3x-to-4x-migration"),
+const serviceCredentialsCategory = Category({
+  emoji: "🔑",
+  label: "Service Credentials",
+  slug: "service-credentials",
+  items: [
+    SubCategory({
+      label: "Apple App Store",
+      slug: "itunesconnect-app-specific-shared-secret",
+      items: [
+        Page({ slug: "in-app-purchase-key-configuration" }),
+        Page({ slug: "app-store-connect-api-key-configuration" }),
+      ],
+    }),
+    SubCategory({
+      label: "Google Play Store",
+      slug: "creating-play-service-credentials",
+      items: [Page({ slug: "google-play-checklists" })],
+    }),
+    Page({ slug: "amazon-appstore-credentials" }),
   ],
-  null,
-  { emoji: "📘" }
-);
+});
+
+const supportCategory = Category({
+  emoji: "🛟",
+  label: "RevenueCat Support",
+  slug: "revenuecat-support",
+  items: [Page({ slug: "support-first-steps" })],
+});
+
+const sdkMigrationCategory = Category({
+  emoji: "📘",
+  label: "SDK Migration Guides",
+  slug: "sdk-guides",
+  items: [
+    Page({ slug: "android-native-4x-to-5x-migration" }),
+    Page({ slug: "android-native-5x-to-6x-migration" }),
+    Page({ slug: "android-native-6x-to-7x-migration" }),
+    Page({ slug: "ios-native-3x-to-4x-migration" }),
+  ],
+});
 
 // Add the top level categories to the defaultSidebar object
 // The defaultSidebar is referenced in docusaurus.config.js
 const sidebars = {
   defaultSidebar: [
-    welcomeCategory.render(), // call render() to remove unsupported convenience properties and prepare for docusaurus
-    gettingStartedCategory.render(),
-    migratingCategory.render(),
-    webCategory.render(),
-    customersCategory.render(),
-    testAndLaunchCategory.render(),
-    subscriptionGuidanceCategory.render(),
-    dashboardCategory.render(),
-    toolsCategory.render(),
-    integrationsCategory.render(),
-    platformResourcesCategory.render(),
-    serviceCredentialsCategory.render(),
-    supportCategory.render(),
-    sdkMigrationCategory.render(),
+    welcomeCategory,
+    gettingStartedCategory,
+    migratingCategory,
+    webPurchasesCategory,
+    customersCategory,
+    testAndLaunchCategory,
+    subscriptionGuidanceCategory,
+    dashboardCategory,
+    toolsCategory,
+    integrationsCategory,
+    platformResourcesCategory,
+    serviceCredentialsCategory,
+    supportCategory,
+    sdkMigrationCategory,
   ],
 };
 

@@ -58,7 +58,6 @@ function CollapseButton({
   collapsed,
   categoryLabel,
   onClick,
-  isCurrentPage,
   className: additionalClasses,
 }) {
   return (
@@ -100,7 +99,8 @@ export default function DocSidebarItemCategory({
   ...props
 }) {
   const { items, label, collapsible, className, href, customProps } = item;
-  const isTopLevelCategory = "emoji" in customProps;
+  const isTopLevelCategory = customProps && "emoji" in customProps;
+
   const {
     docs: {
       sidebar: { autoCollapseCategories },
@@ -208,7 +208,9 @@ export default function DocSidebarItemCategory({
           href={collapsible ? hrefWithSSRFallback ?? "#" : hrefWithSSRFallback}
           {...props}
         >
-          <span class="absolute -left-2">{customProps?.emoji}</span>
+          {isTopLevelCategory && (
+            <span className="absolute -left-2">{customProps.emoji}</span>
+          )}
           {label}
         </Link>
       </div>
