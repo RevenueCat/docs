@@ -10,7 +10,7 @@ RevenueCat does not require server notifications from Stripe, however doing so c
 :::warning Send Stripe token to RevenueCat
 Stripe Server Notifications only work if the receipt exists in RevenueCat when the event is dispatched from Stripe. If the receipt doesn't exist, the event will fail. This includes test events from Stripe.
 
-You'll need to follow our [Stripe Web Payments](/getting-started/stripe) guide and send your purchase tokens to RevenueCat before proceeding with this guide.
+You'll need to follow our [Stripe Web Payments](/web/stripe) guide and send your purchase tokens to RevenueCat before proceeding with this guide.
 :::
 
 ![Required and optional notifications from Stripe](/images/98a0f1c-stripe_notifications_aec74502997f2c0b977a7e6477cb5adf.png)
