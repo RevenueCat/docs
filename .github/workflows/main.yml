@@ -1,0 +1,22 @@
+name: Auto dev-docs Commenter
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add preview URL to PR
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const issue_number = context.issue.number;
+            const message = `Preview this PR here: https://dev-docs.revenuecat.com/pr-${issue_number}/`;
+            github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: issue_number,
+              body: message
+            });
