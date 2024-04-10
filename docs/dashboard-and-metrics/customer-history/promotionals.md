@@ -20,7 +20,7 @@ To give a user promotional access to an entitlement, first choose the [entitleme
 
 ![](/images/Screenshot_2024-03-28_at_10.13.14_AM.png "Screenshot 2023-03-27 at 2.05.51 PM.png")
 
-Granting an entitlement from the customer page will go into effect immediately, but you may need to [refresh CustomerInfo](/getting-started#section-get-subscription-status) on the client to get the latest active entitlements. The promotional access will automatically be revoked after the selected duration. Note that promotional entitlements will work in sandbox and production apps, but the transactions they generate are always considered "production".
+Granting an entitlement from the customer page will go into effect immediately, but you may need to [refresh CustomerInfo](/customers/customer-info) on the client to get the latest active entitlements. The promotional access will automatically be revoked after the selected duration. Note that promotional entitlements will work in sandbox and production apps, but the transactions they generate are always considered "production".
 
 :::info
 Promotional entitlements will be prefixed with "rc_promo" in the customer dashboard and in SDKs.
