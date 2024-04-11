@@ -231,6 +231,7 @@ const dashboardCategory = Category({
         Page({ slug: "initial-conversion-chart" }),
         Page({ slug: "monthly-recurring-revenue-movement-chart" }),
         Page({ slug: "monthly-recurring-revenue-mrr-chart" }),
+        Page({ slug: "new-trials-chart" }),
         Page({ slug: "realized-ltv-per-customer-chart" }),
         Page({ slug: "realized-ltv-per-paying-customer-chart" }),
         Page({ slug: "refund-rate-chart" }),
