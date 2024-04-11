@@ -41,7 +41,7 @@ If the renewal payment is successfully processed, RevenueCat will:
 If the renewal payment couldn't be charged successfully, RevenueCat will:
 
 - Generate a `CANCELLATION` and `BILLING_ISSUE` event.
-- Generate an `EXPIRATION` event, unless a grace period has been configured (not yet supported).
+- Generate an `EXPIRATION` event, unless a grace period has been configured.
 - Send a notice of the billing issue to the customer via email, including their invoice and a link to the customer portal to fix their payment method.
 
 The subscription then enters the billing retry period.
