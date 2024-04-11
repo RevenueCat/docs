@@ -22,6 +22,7 @@ In the "new product" screen, you can set up the following properties of the prod
 - **Identifier**: A unique ID for the Product, accessible from the SDK, events, etc. Can contain up to 100 alphanumeric characters, dots, or underlines.
 - **Display name**: An optional human readable name for the Product, will be shown on the dashboard instead of the identifier.
 - **Duration**: The billing cycle (period length) of the subscription.
+- **Grace period**: Length of the subscription access retention after a billing issue.
 - **Price**: The price that will be charged for every period of the subscription. Currently, only USD is supported.
 
 ![New product configuration page](/images/rc-billing/new-product-configuration.png)
