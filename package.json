@@ -16,10 +16,10 @@
     "process-images": "scripts/move_images.sh"
   },
   "dependencies": {
-    "@docusaurus/core": "3.0.1",
-    "@docusaurus/plugin-client-redirects": "3.0.1",
-    "@docusaurus/plugin-google-gtag": "3.0.1",
-    "@docusaurus/preset-classic": "3.0.1",
+    "@docusaurus/core": "3.2.1",
+    "@docusaurus/plugin-client-redirects": "3.2.1",
+    "@docusaurus/plugin-google-gtag": "3.2.1",
+    "@docusaurus/preset-classic": "3.2.1",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "medium-zoom": "1.1.0",
@@ -29,9 +29,9 @@
     "redocusaurus": "^2.0.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.1.1",
-    "@docusaurus/tsconfig": "^3.1.1",
-    "@docusaurus/types": "^3.1.1",
+    "@docusaurus/module-type-aliases": "^3.2.1",
+    "@docusaurus/tsconfig": "^3.2.1",
+    "@docusaurus/types": "^3.2.1",
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.35",
     "raw-loader": "^4.0.2",

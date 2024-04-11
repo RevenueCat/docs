@@ -35,6 +35,7 @@ const config = {
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
+  onBrokenAnchors: "throw",
 
   trailingSlash: false,
 
@@ -189,7 +190,7 @@ const config = {
                 label: "Web SDK",
                 to: "https://revenuecat.github.io/purchases-js-docs",
               },
-            ]
+            ],
           },
           {
             label: "Blog",
