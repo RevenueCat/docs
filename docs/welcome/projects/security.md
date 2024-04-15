@@ -37,12 +37,25 @@ If you ever lose access to your two-factor code from your authenticator app (e.g
 For security reasons, RevenueCat Support may not be able to restore access to accounts with two-factor authentication enabled if you lose your two-factor authentication credentials or lose access to your account recovery codes.
 :::
 
+### Enforcing Two-Factor For Your Project
+
+If you have invited collaborators to your app, you can check see if they've enabled two-factor authentication for their account on the [**Project > Collaborators**](/welcome/projects/collaborators) page.
+
+Project Owners and Administrators also have the ability to enforce two-factor authentication for any new collaborators. With this setting enabled, invited collaborators will not be able to join your project until they've set up two-factor authentication for their account.
+
+![](/images/Screenshot_2024-03-08_at_3.27.18_PM.png)
+
+
+:::warning Everyone must already have two-factor before enforcing
+Before you can enforce two-factor authentication for your project, all existing collaborators must already have two-factor authentication enabled. You can remove current collaborators and re-invite them if you need to enforce two-factor immediately.
+:::
+
 ### Disabling Two-Factor Authentication
 
 To disable two-factor authentication vavigate to your [**Account > Security**](https://app.revenuecat.com/settings/security) settings in the RevenueCat dashboard and click **Disable** under Two-factor Authentication.
 
 ![](/images/bd6c526-app.revenuecat.com_projects_85ff18c7_integrations_intercom_10_copy_ffd239c8d178e0af12e52a8af2c0a5d6.png)
 
-### Audit Two-Factor Setup
-
-If you have invited collaborators to your app, you can check if they've enabled two-factor authentication for their account under the [Collaborators view](/welcome/projects/collaborators) .
+:::warning Leave projects that require two-factor before disabling
+If you are a collaborator on a Project that requires two-factor authentication, you must leave that project before disabling.
+:::
