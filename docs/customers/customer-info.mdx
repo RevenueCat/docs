@@ -292,7 +292,7 @@ Offline Entitlements is automatically enabled when our SDK attempts to reach our
 
 In order to do this, the SDK caches the relationships between products and entitlements you have setup in your RevenueCat dashboard. Then, when it tries to post a purchase to RevenueCat's servers, and these respond with an error, we will use the purchases from the stores and these relationships to grant entitlements. 
 
-Some things to note:
+### Some things to note:
 - No information is lost when Offline Entitlements are active. All purchases are recorded and will be processed by our servers automatically once they are back online, with no action needed from you or your users.
 - The data for these purchases won't appear in our RevenueCat graphs and webhooks until it's successfully pushed.
 - Offline Entitlements don't currently work for one-time purchases (consumables and non-consumables). If our SDK detects that the user has made one of these purchases, Offline Entitlements will not be enabled and an error will be returned instead.
