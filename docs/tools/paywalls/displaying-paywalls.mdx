@@ -317,6 +317,7 @@ See the following examples for some common use cases:
 
 import rn4 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_4.ts";
 import rn5 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_5.ts";
+import rn6 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_6.ts";
 
 <RCCodeBlock tabs={[
     {
@@ -328,6 +329,11 @@ import rn5 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_5.ts";
         type: 'rn',
         title: "Footer",
         content: rn5,
+    },
+    {
+        type: 'rn',
+        title: "presentPaywall",
+        content: rn6,
     },
 ]}/>
 
@@ -358,7 +364,7 @@ import flutter2 from "!!raw-loader!@site/code_blocks/tools/paywalls_flutter_2.da
     }
 ]}/>
 
-If desired, you can pass `displayCloseButton: true` when creating a `PaywallView` to display a close button in the paywall. 
+If desired, you can pass `displayCloseButton: true` when creating a `PaywallView` to display a close button in the paywall.
 You will need to react by using the `onDismiss` listener.
 
 ### How to display a footer Paywall on your custom paywall
@@ -386,7 +392,7 @@ import flutter3 from "!!raw-loader!@site/code_blocks/tools/paywalls_flutter_3.da
 
 ### Listeners
 
-When using `PaywallView` or `PaywallFlutterView`, you may use one of the provided listeners to react to user actions. 
+When using `PaywallView` or `PaywallFlutterView`, you may use one of the provided listeners to react to user actions.
 Available listeners at this time are:
 - onPurchaseStarted
 - onPurchaseCompleted
