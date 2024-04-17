@@ -11,7 +11,8 @@
         "amount": 0,
         "app_id": "1234567890",
         "currency": "INR",
-        "expiration_reason": "UNSUBSCRIBE"
+        "expiration_reason": "UNSUBSCRIBE",
+        "product_id": "monthly.sub.1"
       },
       "evtName": "rc_expiration_event",
       "identity": "$RCAnonymousID:87c6049c58069238dce29853916d624c",

@@ -10,7 +10,8 @@
          "$ip": "123.45.67.89",
         "age": "24",
         "amount": 0,
-        "currency": "USD"
+        "currency": "USD",
+        "product_id": "monthly.sub.1"
       },
       "evtName": "rc_non_subscription_purchase_event",
       "identity": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
