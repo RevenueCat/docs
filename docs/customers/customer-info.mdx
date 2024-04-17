@@ -284,6 +284,22 @@ import content33 from "!!raw-loader!@site/code_blocks/customers/customer-info_33
 
 RevenueCat can handle refunds across all platforms for both subscription and non-subscription products. As soon as RevenueCat detects a refund, the CustomerInfo will be updated to reflect the correct entitlement status - no action required on your part! If you have questions about refunds, take a look at our [community article](https://community.revenuecat.com/general-questions-7/how-do-i-issue-a-refund-115) covering the topic.
 
+## Offline entitlements
+
+In the very uncommon case that RevenueCat servers don't respond as expected, the SDK is prepared to verify Apple/Google/Amazon's purchases on the device itself and grant entitlements temporarily. This allows your customers to have an almost seamless experience in this unlikely scenario, improving even more on our reliability. This happens automatically, so you don't need to do anything, the entitlements will appear in the `CustomerInfo`.
+
+Our SDK will calculate entitlements offline in one of these scenarios:
+- We try to get the customer info for a user from our servers when there is no previously cached version and our servers returns a 5xx error code.
+- We try to post a purchase to our servers, and they return a 5xx error code.
+
+In order to do this, the SDK caches the relationships between products and entitlements you have setup in your RC dashboard. Then, when it tries to post a purchase to RC servers, and these respond with an error, we will use the purchases from the stores and these relationships to grant entitlements. Some things to note:
+- These entitlements are cached in memory, so an app restart will remove them. In that case, our SDK will retry to post any unsynced purchases to our servers and if it still fails, it will calculate entitlements offline once again.
+- The data for these purchases won't appear in our RC graphs and webhooks until it's successfully pushed.
+- Offline entitlements don't currently work for one-time purchases (consumables and non-consumables). If we detect that there is one of these purchases, we will not calculate entitlements offline at all and just return an error.
+- Offline entitlements are disabled when using observer mode.
+
+You can check more of this feature in our blogpost: https://www.revenuecat.com/blog/engineering/introducing-offline-entitlements/
+
 ## Next Steps
 
 - Once you're ready to test your integration, you can follow our guides on [testing and debugging ](/test-and-launch/debugging)
