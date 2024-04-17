@@ -293,7 +293,7 @@ Offline Entitlements is automatically enabled when our SDK attempts to reach our
 In order to do this, the SDK caches the relationships between products and entitlements you have setup in your RC dashboard. Then, when it tries to post a purchase to RC servers, and these respond with an error, we will use the purchases from the stores and these relationships to grant entitlements. Some things to note:
 - These entitlements are cached in memory, so an app restart will remove them. In that case, our SDK will retry to post any unsynced purchases to our servers and if it still fails, it will calculate entitlements offline once again.
 - The data for these purchases won't appear in our RC graphs and webhooks until it's successfully pushed.
-- Offline entitlements don't currently work for one-time purchases (consumables and non-consumables). If we detect that there is one of these purchases, we will not calculate entitlements offline at all and just return an error.
+- Offline Entitlements don't currently work for one-time purchases (consumables and non-consumables). If our SDK detects that the user has made one of these purchases, Offline Entitlements will not be enabled and an error will be returned instead.
 - Offline entitlements are disabled when using observer mode.
 
 You can check more of this feature in our blogpost: https://www.revenuecat.com/blog/engineering/introducing-offline-entitlements/
