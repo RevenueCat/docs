@@ -29,10 +29,10 @@ Alternatively run this command:
  $ flutter pub add purchases_flutter
 ```
 
-### Amazon Appstore 
+### Amazon Appstore
 The latest stable version of the Flutter SDK doesn't have support for the Amazon Appstore. If you would like to use our SDK with the Amazon Appstore, use the version tagged [amazon-latest](https://github.com/RevenueCat/purchases-flutter/releases/tag/amazon-latest) and follow the [AMAZON_INSTRUCTIONS.md](https://rev.cat/amazon-flutter-instructions) docs to get set up.
 
-### iOS Deployment Target 
+### iOS Deployment Target
 RevenueCat is compatible with iOS 11.0 or higher. Flutter does not automatically set the iOS deployment target for your project. You need to make sure that the deployment target is set to 11.0 or higher. To do that, simply edit `ios/Podfile` and add the following line if it's not already there:
 
 ```
@@ -41,7 +41,7 @@ platform :ios, '11.0'
 Set it to 11.0 or a higher version for RevenueCat to work.
 
 ### iOS Swift Version
-RevenueCat requires Swift >= 5.0 to work. If the `Podfile` in your project's `ios` folder specifies a Swift version, make sure that it's at least 5.0, otherwise you may run into build issues.  
+RevenueCat requires Swift >= 5.0 to work. If the `Podfile` in your project's `ios` folder specifies a Swift version, make sure that it's at least 5.0, otherwise you may run into build issues.
 
 ## Import Purchases
 
@@ -50,7 +50,7 @@ You should now be able to import `purchases_flutter`.
 import content2 from "!!raw-loader!@site/code_blocks/getting-started/installation/flutter_2.kt";
 
 <RCCodeBlock tabs={[
-    { type: 'kotlin', content: content2, name: 'Kotlin' }
+    { type: 'flutter', content: content2, name: 'Dart' }
 ]} />
 
 :::info Enable In-App Purchase capability for iOS projects in Xcode
@@ -61,7 +61,7 @@ Don't forget to enable the In-App Purchase capability for your iOS project under
 
 ![](/images/66c301a-65db383-Screen_Shot_2018-12-18_at_9.15.09_AM_51ae7051850be013d83c1e9a8f107b61.png "65db383-Screen_Shot_2018-12-18_at_9.15.09_AM.png")
 
-:::warning 
+:::warning
 If you're using other plugins like [mobx](https://pub.dev/packages/flutter_mobx), you may run into conflicts with types from other plugins having the same name as those defined in `purchases_flutter`. \nIf this happens, you can resolve the ambiguity in the types by adding an import alias, for example: \n```dart\nimport 'package:purchases_flutter/purchases_flutter.dart' as purchases;\n```\nAfter that, you can reference the types from `purchases_flutter` as `purchases.Foo`, like `purchases.PurchaserInfo`.
 :::
 

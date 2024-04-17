@@ -1,0 +1,2 @@
+npm install @revenuecat/purchases-capacitor
+npx cap sync

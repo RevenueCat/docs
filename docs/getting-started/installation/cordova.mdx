@@ -13,7 +13,7 @@ RevenueCat provides a backend and a wrapper around StoreKit and Google Play Bill
 import content from "!!raw-loader!@site/code_blocks/getting-started/installation/cordova_1.shell";
 
 <RCCodeBlock tabs={[
-    { type: 'shell', content: content, name: 'Shell' }
+    { type: 'shell', content: content, name: 'Installation' }
 ]} />
 
 ## Additional iOS Setup
@@ -35,18 +35,48 @@ The App Store, in its infinite wisdom, still rejects fat frameworks, so we need 
 
 ![](/images/giphy_f322310d93a3cb823a6244ab241dd40b.gif)
 
-
 ### Set `SWIFT_LANGUAGE_VERSION`
 
-You have to make sure that the `SWIFT_LANGUAGE_VERSION` is set if it's not already. `cordova-plugin-purchases` needs Swift >= 5.0. 
+You have to make sure that the `SWIFT_LANGUAGE_VERSION` is set if it's not already. `cordova-plugin-purchases` needs Swift >= 5.0.
 
-You can either set it in the project yourself, or use an external plugin like https://www.npmjs.com/package/cordova-plugin-add-swift-support. 
+You can either set it in the project yourself, or use an external plugin like https://www.npmjs.com/package/cordova-plugin-add-swift-support.
 In order to set it yourself:
 1. In Xcode, in project manager, select your app target.
 2. Open the `Build Settings` tab
-3. Look for the `Swift Language Version` setting. 
+3. Look for the `Swift Language Version` setting.
 4. Set it to 5.0.
 
+## Import Purchases
+
+## TypeScript
+
+The types are shipped inside the npm package. You can import them like this:
+
+import cordovaTypesContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ionic_typescript_cordova.ts";
+
+<RCCodeBlock tabs={[
+    { type: 'cordova', content: cordovaTypesContent, name: 'Cordova Typescript types' }
+]} />
+
+## Angular
+
+Wait for the Platform to be ready, then configure the plugin in your `src/app/app.component.ts`:
+
+import cordovaAngularContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ionic_angular_cordova.ts";
+
+<RCCodeBlock tabs={[
+    { type: 'cordova', content: cordovaAngularContent, name: 'Cordova' }
+]} />
+
+## React
+
+Import the plugin object then use its static methods:
+
+import cordovaReactContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ionic_react_cordova.ts";
+
+<RCCodeBlock tabs={[
+    { type: 'cordova', content: cordovaReactContent, name: 'Cordova' }
+]} />
 
 ## Next Steps
 
