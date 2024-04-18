@@ -3,6 +3,8 @@ struct MyApp: App {
     init() {
         Purchases.configure(withAPIKey: "<revenuecat_api_key>")
 
+        // Add your AppDelegate as an observer
+        OneSignal.User.addObserver(self)
         OneSignal.initialize("<onesignal_app_id>", withLaunchOptions: launchOptions)
 
         // If you've already set up OneSignal, then users should already have
