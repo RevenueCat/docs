@@ -3,10 +3,8 @@ info:
   title: Developer API
   version: 2.0.0
 tags:
-- name: App
-  description: Operations about apps.
 - name: Charts & Metrics
-  description: Operations about chart metrics.
+  description: Operations about chart metrics. 111
 - name: Customer
   description: Operations about customers.
 - name: Entitlement
@@ -17,6 +15,8 @@ tags:
   description: Operations about packages.
 - name: Product
   description: Operations about products.
+- name: Purchase
+  description: Operations about purchases.
 - name: Subscription
   description: Operations about subscriptions.
 - name: Invoice
@@ -249,7 +249,10 @@ tags:
     \ more information."
 servers:
 - url: https://api.revenuecat.com/v2
-x-proxy-enabled: false
+- url: https://api-staging.revenuecat.com/v2
+- url: https://api-test.revenuecat.com/v2
+- url: http://localhost:8000/v2
+- url: http://localhost/v2
 paths:
   /projects:
     get:
@@ -258,6 +261,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:projects:read
+      x-release-status: public
       tags:
       - Project
       parameters:
@@ -308,6 +312,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:apps:read
+      x-release-status: public
       tags:
       - App
       parameters:
@@ -365,6 +370,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:apps:read_write
+      x-release-status: public
       tags:
       - App
       parameters:
@@ -412,6 +418,8 @@ paths:
                 value:
                   name: My Stripe App
                   type: stripe
+                  stripe:
+                    stripe_account_id: acct_adcdef123456
               Amazon:
                 value:
                   name: My Amazon App
@@ -459,6 +467,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:apps:read
+      x-release-status: public
       tags:
       - App
       parameters:
@@ -511,6 +520,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:apps:read_write
+      x-release-status: public
       tags:
       - App
       parameters:
@@ -610,6 +620,20 @@ paths:
                       minLength: 1
                       maxLength: 256
                       nullable: false
+                stripe:
+                  description: Stripe type details. Should only be used when type
+                    is stripe.
+                  type: object
+                  nullable: false
+                  properties:
+                    stripe_account_id:
+                      description: It needs to be connected to your RevenueCat account.
+                        It can be omitted if you only have a single Stripe account
+                        connected to your RevenueCat account.
+                      type: string
+                      minLength: 1
+                      maxLength: 256
+                      nullable: false
               additionalProperties: false
             examples:
               Update App Store App properties:
@@ -665,6 +689,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:apps:read_write
+      x-release-status: public
       tags:
       - App
       parameters:
@@ -726,6 +751,7 @@ paths:
       - project_configuration:products:read
       x-expandable-fields:
       - app
+      x-release-status: public
       tags:
       - Product
       parameters:
@@ -793,6 +819,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:products:read_write
+      x-release-status: public
       tags:
       - Product
       parameters:
@@ -855,6 +882,7 @@ paths:
       - project_configuration:products:read
       x-expandable-fields:
       - items.app
+      x-release-status: public
       tags:
       - Product
       parameters:
@@ -933,6 +961,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:products:read_write
+      x-release-status: public
       tags:
       - Product
       parameters:
@@ -1069,6 +1098,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:entitlements:read
+      x-release-status: public
       x-expandable-fields:
       - product
       tags:
@@ -1138,6 +1168,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:entitlements:read_write
+      x-release-status: public
       tags:
       - Entitlement
       parameters:
@@ -1213,6 +1244,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:entitlements:read_write
+      x-release-status: public
       tags:
       - Entitlement
       parameters:
@@ -1273,6 +1305,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:entitlements:read
+      x-release-status: public
       x-expandable-fields:
       - items.product
       tags:
@@ -1346,6 +1379,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:entitlements:read_write
+      x-release-status: public
       tags:
       - Entitlement
       parameters:
@@ -1420,6 +1454,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:entitlements:read
+      x-release-status: public
       tags:
       - Entitlement
       parameters:
@@ -1487,6 +1522,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:entitlements:read_write
+      x-release-status: public
       tags:
       - Entitlement
       parameters:
@@ -1567,6 +1603,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:entitlements:read_write
+      x-release-status: public
       tags:
       - Entitlement
       parameters:
@@ -1647,6 +1684,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:offerings:read
+      x-release-status: public
       x-expandable-fields:
       - package
       - package.product
@@ -1718,6 +1756,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:offerings:read_write
+      x-release-status: public
       tags:
       - Offering
       parameters:
@@ -1799,6 +1838,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:offerings:read_write
+      x-release-status: public
       tags:
       - Offering
       parameters:
@@ -1859,6 +1899,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:offerings:read
+      x-release-status: public
       x-expandable-fields:
       - items.package
       - items.package.product
@@ -1934,6 +1975,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:offerings:read_write
+      x-release-status: public
       tags:
       - Offering
       parameters:
@@ -2005,6 +2047,216 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): `project_configuration:offerings:read_write`.'
+  /projects/{project_id}/packages/{package_id}:
+    get:
+      summary: Get a package
+      operationId: get-package
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:packages:read
+      x-expandable-fields:
+      - product
+      x-release-status: public
+      tags:
+      - Package
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: package_id
+        description: ID of the package
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: pkge1a2b3c4d5
+      - name: expand
+        in: query
+        description: 'Specifies which fields in the response should be expanded. Accepted
+          values are: `product`.'
+        required: false
+        schema:
+          type: array
+          items:
+            maxLength: 5000
+            minLength: 1
+            type: string
+            enum:
+            - product
+            example: product
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Package'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): `project_configuration:packages:read`.'
+    post:
+      summary: Update a package
+      operationId: update-package
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:packages:read_write
+      x-release-status: public
+      tags:
+      - Package
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: package_id
+        description: ID of the package
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: pkge1a2b3c4d5
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                display_name:
+                  description: The display name of the package
+                  type: string
+                  minLength: 1
+                  maxLength: 1500
+                  example: monthly with one-week trial
+                position:
+                  description: The position of the package within the offering
+                  type: integer
+                  minimum: 1
+                  example: 2
+              additionalProperties: false
+      responses:
+        '200':
+          description: Success. The package was updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Package'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): `project_configuration:packages:read_write`.'
+    delete:
+      summary: Delete a package
+      operationId: delete-package-from-offering
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:packages:read_write
+      x-release-status: public
+      tags:
+      - Package
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: package_id
+        description: ID of the package
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: pkge1a2b3c4d5
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedObject'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): `project_configuration:packages:read_write`.'
   /projects/{project_id}/offerings/{offering_id}/packages:
     get:
       summary: Get a list of packages in an offering
@@ -2014,6 +2266,7 @@ paths:
       - project_configuration:packages:read
       x-expandable-fields:
       - items.product
+      x-release-status: public
       tags:
       - Package
       parameters:
@@ -2094,6 +2347,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:packages:read_write
+      x-release-status: public
       tags:
       - Package
       parameters:
@@ -2175,213 +2429,6 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): `project_configuration:packages:read_write`.'
-  /projects/{project_id}/packages/{package_id}:
-    get:
-      summary: Get a package
-      operationId: get-package
-      x-revenuecat-rate-limiting-domain: project_configuration
-      x-scopes:
-      - project_configuration:packages:read
-      x-expandable-fields:
-      - product
-      tags:
-      - Package
-      parameters:
-      - name: project_id
-        description: ID of the project
-        required: true
-        in: path
-        schema:
-          type: string
-          maxLength: 255
-          example: proj1ab2c3d4
-      - name: package_id
-        description: ID of the package
-        required: true
-        in: path
-        schema:
-          type: string
-          minLength: 1
-          maxLength: 255
-          example: pkge1a2b3c4d5
-      - name: expand
-        in: query
-        description: 'Specifies which fields in the response should be expanded. Accepted
-          values are: `product`.'
-        required: false
-        schema:
-          type: array
-          items:
-            maxLength: 5000
-            minLength: 1
-            type: string
-            enum:
-            - product
-            example: product
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Package'
-          headers:
-            RevenueCat-Rate-Limit-Current-Usage:
-              $ref: '#/components/headers/RateLimitCurrentUsage'
-            RevenueCat-Rate-Limit-Current-Limit:
-              $ref: '#/components/headers/RateLimitCurrentLimit'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/RateLimited'
-        '500':
-          $ref: '#/components/responses/InternalError'
-        '503':
-          $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:packages:read`.'
-    post:
-      summary: Update a package
-      operationId: update-package
-      x-revenuecat-rate-limiting-domain: project_configuration
-      x-scopes:
-      - project_configuration:packages:read_write
-      tags:
-      - Package
-      parameters:
-      - name: project_id
-        description: ID of the project
-        required: true
-        in: path
-        schema:
-          type: string
-          maxLength: 255
-          example: proj1ab2c3d4
-      - name: package_id
-        description: ID of the package
-        required: true
-        in: path
-        schema:
-          type: string
-          minLength: 1
-          maxLength: 255
-          example: pkge1a2b3c4d5
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                display_name:
-                  description: The display name of the package
-                  type: string
-                  minLength: 1
-                  maxLength: 1500
-                  example: monthly with one-week trial
-                position:
-                  description: The position of the package within the offering
-                  type: integer
-                  minimum: 1
-                  example: 2
-              additionalProperties: false
-      responses:
-        '200':
-          description: Success. The package was updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Package'
-          headers:
-            RevenueCat-Rate-Limit-Current-Usage:
-              $ref: '#/components/headers/RateLimitCurrentUsage'
-            RevenueCat-Rate-Limit-Current-Limit:
-              $ref: '#/components/headers/RateLimitCurrentLimit'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '409':
-          $ref: '#/components/responses/Conflict'
-        '422':
-          $ref: '#/components/responses/UnprocessableEntity'
-        '423':
-          $ref: '#/components/responses/Locked'
-        '429':
-          $ref: '#/components/responses/RateLimited'
-        '500':
-          $ref: '#/components/responses/InternalError'
-        '503':
-          $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:packages:read_write`.'
-    delete:
-      summary: Delete a package
-      operationId: delete-package-from-offering
-      x-revenuecat-rate-limiting-domain: project_configuration
-      x-scopes:
-      - project_configuration:packages:read_write
-      tags:
-      - Package
-      parameters:
-      - name: project_id
-        description: ID of the project
-        required: true
-        in: path
-        schema:
-          type: string
-          maxLength: 255
-          example: proj1ab2c3d4
-      - name: package_id
-        description: ID of the package
-        required: true
-        in: path
-        schema:
-          type: string
-          minLength: 1
-          maxLength: 255
-          example: pkge1a2b3c4d5
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DeletedObject'
-          headers:
-            RevenueCat-Rate-Limit-Current-Usage:
-              $ref: '#/components/headers/RateLimitCurrentUsage'
-            RevenueCat-Rate-Limit-Current-Limit:
-              $ref: '#/components/headers/RateLimitCurrentLimit'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '409':
-          $ref: '#/components/responses/Conflict'
-        '422':
-          $ref: '#/components/responses/UnprocessableEntity'
-        '423':
-          $ref: '#/components/responses/Locked'
-        '429':
-          $ref: '#/components/responses/RateLimited'
-        '500':
-          $ref: '#/components/responses/InternalError'
-        '503':
-          $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:packages:read_write`.'
   /projects/{project_id}/packages/{package_id}/products:
     get:
       summary: Get a list of products attached to a given package of an offering
@@ -2389,6 +2436,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:packages:read
+      x-release-status: public
       tags:
       - Package
       parameters:
@@ -2456,6 +2504,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:packages:read_write
+      x-release-status: public
       tags:
       - Package
       parameters:
@@ -2546,6 +2595,7 @@ paths:
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
       - project_configuration:packages:read_write
+      x-release-status: public
       tags:
       - Package
       parameters:
@@ -2626,6 +2676,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:subscriptions:read_write
+      x-release-status: public
       tags:
       - Subscription
       parameters:
@@ -2687,6 +2738,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:subscriptions:read_write
+      x-release-status: public
       tags:
       - Subscription
       parameters:
@@ -2747,17 +2799,9 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:subscriptions:read
+      x-release-status: public
       tags:
       - Customer
-      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
-        >\n  <div class=\"heading\">Only for web subscriptions using RevenueCat Billing</div>\n\
-        \  <div>This endpoint currently only returns subscriptions made on the web\
-        \ using the RevenueCat Web SDK and RevenueCat Billing. We are planning to\
-        \ add information for other supported stores soon.</div>\n</div>\nLists all\
-        \ Subscriptions associated with the Customer. This currently includes only\
-        \ RevenueCat Billing subscriptions. We are planning to add information about\
-        \ subscriptions on other supported stores soon.\n This endpoint requires the\
-        \ following permission(s): `customer_information:subscriptions:read`."
       parameters:
       - name: project_id
         description: ID of the project
@@ -2823,6 +2867,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): `customer_information:subscriptions:read`.'
   /projects/{project_id}/customers/{customer_id}/invoices:
     get:
       summary: Get a list of the customer's invoices
@@ -2830,6 +2875,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:invoices:read
+      x-release-status: public
       tags:
       - Invoice
       parameters:
@@ -2897,6 +2943,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:invoices:read
+      x-release-status: public
       tags:
       - Invoice
       parameters:
@@ -2957,6 +3004,7 @@ paths:
       x-revenuecat-rate-limiting-domain: charts_metrics
       x-scopes:
       - charts_metrics:overview:read
+      x-release-status: public
       tags:
       - Charts & Metrics
       parameters:
@@ -3097,6 +3145,7 @@ components:
       - $ref: '#/components/schemas/AppStoreApp'
       - $ref: '#/components/schemas/MacAppStoreApp'
       - $ref: '#/components/schemas/PlayStoreApp'
+      - $ref: '#/components/schemas/StripeApp'
     AppCreate:
       allOf:
       - type: object
@@ -3129,6 +3178,7 @@ components:
       - $ref: '#/components/schemas/AppStoreAppCreate'
       - $ref: '#/components/schemas/MacAppStoreAppCreate'
       - $ref: '#/components/schemas/PlayStoreAppCreate'
+      - $ref: '#/components/schemas/StripeAppCreate'
     AppStoreApp:
       type: object
       properties:
@@ -3171,27 +3221,20 @@ components:
               maxLength: 32
               nullable: false
             subscription_private_key:
-              description: "PKCS /#8 In App Key downloaded from App Store Connect\
-                \ in PEM format. Copy the contents\nof the file in this field. See\
-                \ instructions on how to get it in: \nhttps://www.revenuecat.com/docs/in-app-purchase-key-configuration\n"
+              description: PKCS /#8 In App Key downloaded from App Store Connect in
+                PEM format
               type: string
               minLength: 1
               maxLength: 4500
               nullable: false
             subscription_key_id:
-              description: In App Key id. The ID of the downloaded in app key. You
-                can get it from App Store Connect
+              description: In App Key id
               type: string
               minLength: 1
               maxLength: 32
               nullable: false
             subscription_key_issuer:
-              description: 'The key Issuer id. See instructions on how to obtain this
-                in:
-
-                https://www.revenuecat.com/docs/in-app-purchase-key-configuration#3-providing-the-issuer-id-to-revenuecat
-
-                '
+              description: The key Issuer id
               type: string
               minLength: 1
               maxLength: 36
@@ -3627,6 +3670,182 @@ components:
       - ZAR
       - ZMW
       - ZWL
+    Customer:
+      type: object
+      required:
+      - id
+      - project_id
+      - first_seen_at
+      - last_seen_at
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - customer
+          type: string
+        id:
+          type: string
+          maxLength: 1500
+          example: 19b8de26-77c1-49f1-aa18-019a391603e2
+        project_id:
+          nullable: false
+          description: ID of the project to which the customer belongs
+          minLength: 1
+          maxLength: 20
+          type: string
+          example: proj1ab2c3d4
+        first_seen_at:
+          nullable: false
+          description: The first time the customer was seen
+          type: integer
+          example: 1658399423658
+        last_seen_at:
+          nullable: true
+          description: The last time the customer was seen
+          type: integer
+          example: 1658399423658
+        active_entitlements:
+          $ref: '#/components/schemas/ListCustomerActiveEntitlements'
+        experiment:
+          description: The experiment enrollment object
+          nullable: true
+          $ref: '#/components/schemas/ExperimentEnrollment'
+    CustomerAlias:
+      type: object
+      required:
+      - id
+      - created_at
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - customer.alias
+          type: string
+        id:
+          type: string
+          maxLength: 1500
+          example: 19b8de26-77c1-49f1-aa18-019a391603e2
+        created_at:
+          nullable: false
+          description: The time when the alias was created
+          type: integer
+          example: 1658399423658
+    CustomerAttribute:
+      type: object
+      required:
+      - id
+      - name
+      - value
+      - updated_at
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - customer_attribute
+          type: string
+        id:
+          type: string
+          nullable: false
+          maxLength: 255
+          minLength: 1
+          example: subattr19b8de26_$email
+        name:
+          nullable: false
+          description: The name of the attribute. If starting by `$`, it means it's
+            a reserved attribute.
+          oneOf:
+          - $ref: '#/components/schemas/CustomerAttributeReservedName'
+          - $ref: '#/components/schemas/CustomerAttributeCustomName'
+        value:
+          nullable: false
+          type: string
+          maxLength: 500
+          example: cat@revenuecat.com
+          description: The value of the attribute
+        updated_at:
+          nullable: false
+          type: integer
+          example: 1658399423658
+          description: The time when the attribute was last set in ms since epoch
+    CustomerAttributeCustomName:
+      type: string
+      maxLength: 40
+      pattern: ^[a-zA-Z][a-zA-Z0-9_-]*$
+      example: opt_into_marketing
+    CustomerAttributeReservedName:
+      type: string
+      enum:
+      - $ad
+      - $adGroup
+      - $adjustId
+      - $airshipChannelId
+      - $amazonAdId
+      - $amplitudeDeviceId
+      - $amplitudeUserId
+      - $androidId
+      - $apnsTokens
+      - $appsflyerId
+      - $appsflyerSharingFilter
+      - $attConsentStatus
+      - $branchId
+      - $brazeAliasLabel
+      - $brazeAliasName
+      - $campaign
+      - $clevertapId
+      - $creative
+      - $displayName
+      - $email
+      - $fbAnonId
+      - $fcmTokens
+      - $firebaseAppInstanceId
+      - $gpsAdId
+      - $idfa
+      - $idfv
+      - $ip
+      - $iterableCampaignId
+      - $iterableTemplateId
+      - $iterableUserId
+      - $keyword
+      - $mediaSource
+      - $mixpanelDistinctId
+      - $mparticleId
+      - $onesignalId
+      - $onesignalUserId
+      - $phoneNumber
+      - $segmentId
+      example: $email
+    CustomerEntitlement:
+      type: object
+      required:
+      - entitlement_id
+      - expires_at
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - customer.active_entitlement
+          type: string
+        entitlement_id:
+          nullable: false
+          description: ID of the entitlement granted to the customer
+          minLength: 1
+          maxLength: 255
+          type: string
+          example: entla1b2c3d4e5
+        expires_at:
+          nullable: true
+          description: The date after which the access to the entitlement expires
+            in ms since epoch
+          type: integer
+          example: 1658399423658
     DeletedObject:
       type: object
       required:
@@ -3810,6 +4029,31 @@ components:
           type: integer
           nullable: true
           example: null
+    ExperimentEnrollment:
+      type: object
+      required:
+      - id
+      - variant
+      - object
+      nullable: true
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - experiment_enrollment
+          type: string
+        id:
+          type: string
+          maxLength: 1500
+        variant:
+          nullable: false
+          description: The variant of the Experiment that the Customer was or is assigned
+            to, where 'a' represents the Control, and 'b' represents the Treatment.
+          minLength: 1
+          maxLength: 1
+          type: string
+          example: a
     Invoice:
       type: object
       required:
@@ -3902,6 +4146,8 @@ components:
           example: 1
         unit_amount:
           $ref: '#/components/schemas/MonetaryAmount'
+    LegacyMacApp:
+      type: object
     ListApps:
       type: object
       required:
@@ -3933,6 +4179,68 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/projec1a2b3c4d/apps
+    ListCustomerActiveEntitlements:
+      type: object
+      required:
+      - items
+      - next_page
+      - object
+      - url
+      title: CustomerActiveEntitlementList
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value. Always has the value `list`.
+          enum:
+          - list
+          type: string
+        items:
+          description: Details about each object.
+          items:
+            $ref: '#/components/schemas/CustomerEntitlement'
+          type: array
+        next_page:
+          description: URL to access the next page of the customer's active entitlements.
+            If not present / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/active_entitlements?starting_after=entlab21dac
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/active_entitlements
+    ListCustomerAliases:
+      type: object
+      required:
+      - items
+      - next_page
+      - object
+      - url
+      title: CustomerAliasList
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value. Always has the value `list`.
+          enum:
+          - list
+          type: string
+        items:
+          description: Details about each object.
+          items:
+            $ref: '#/components/schemas/CustomerAlias'
+          type: array
+        next_page:
+          description: URL to access the next page of the customer's aliases. If not
+            present / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/aliases?starting_after=9fjeja8fjed
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/aliases
     ListCustomerInvoices:
       type: object
       required:
@@ -3964,6 +4272,37 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/invoices
+    ListCustomers:
+      type: object
+      required:
+      - items
+      - next_page
+      - object
+      - url
+      title: CustomerList
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value. Always has the value `list`.
+          enum:
+          - list
+          type: string
+        items:
+          description: Details about each object.
+          items:
+            $ref: '#/components/schemas/Customer'
+          type: array
+        next_page:
+          description: URL to access the next page of the project's customers. If
+            not present / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/projec1a2b3c4d/customers?starting_after=223xx1100
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/projec1a2b3c4d/customers
     ListEntitlements:
       type: object
       required:
@@ -4119,6 +4458,37 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects
+    ListPurchases:
+      type: object
+      required:
+      - items
+      - next_page
+      - object
+      - url
+      title: PurchaseList
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value. Always has the value `list`.
+          enum:
+          - list
+          type: string
+        items:
+          description: Details about each object.
+          items:
+            $ref: '#/components/schemas/Purchase'
+          type: array
+        next_page:
+          description: URL to access the next page of the customer's purchases. If
+            not present / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/purchases?starting_after=purc1a2b3c4d5e
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/purchases
     ListSubscriptions:
       type: object
       required:
@@ -4315,8 +4685,7 @@ components:
       description: Custom metadata of the offering
       type: object
       nullable: true
-      additionalProperties:
-        type: string
+      additionalProperties: true
       example:
         color: blue
         call_to_action: Subscribe Now!
@@ -4660,7 +5029,7 @@ components:
           - list
           type: string
         items:
-          description: Details about each object
+          description: Details about each object.
           items:
             $ref: '#/components/schemas/PackageProductAssociation'
           type: array
@@ -4708,6 +5077,181 @@ components:
           nullable: false
           type: integer
           example: 1658399423658
+    Purchase:
+      type: object
+      required:
+      - id
+      - customer_id
+      - original_customer_id
+      - product_id
+      - purchased_at
+      - revenue_in_usd
+      - quantity
+      - status
+      - presented_offering_id
+      - entitlements
+      - environment
+      - store
+      - store_purchase_identifier
+      - ownership
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - purchase
+          type: string
+        id:
+          description: The id of the purchase
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: purch1a2b3c4d5e
+        customer_id:
+          description: The id of the customer
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: 19b8de26-77c1-49f1-aa18-019a391603e2
+        original_customer_id:
+          description: The ID of the original customer
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: 19b8de26-77c1-49f1-aa18-019a391603e2
+        product_id:
+          description: The ID of the product that was purchased
+          nullable: false
+          minLength: 1
+          maxLength: 255
+          type: string
+          example: prod1a2b3c4d5e
+        purchased_at:
+          description: The date when the purchase was made in ms since epoch
+          nullable: false
+          type: integer
+          example: 1658399423658
+        revenue_in_usd:
+          description: The revenue generated by the purchase in USD
+          nullable: false
+          oneOf:
+          - $ref: '#/components/schemas/MonetaryAmount'
+        quantity:
+          description: The quantity of the product purchased in one transaction
+          type: integer
+          example: 1
+        status:
+          description: The status of a purchase
+          nullable: false
+          type: string
+          enum:
+          - owned
+          - refunded
+          example: owned
+        presented_offering_id:
+          description: The ID of the offering the customer saw when they did the purchase
+          nullable: true
+          type: string
+          minLength: 1
+          maxLength: 200
+          example: ofrnge1a2b3c4d5
+        entitlements:
+          required:
+          - items
+          - next_page
+          - object
+          - url
+          title: EntitlementList
+          type: object
+          properties:
+            object:
+              description: String representing the object's type. Objects of the same
+                type share the same value. Always has the value `list`.
+              enum:
+              - list
+              type: string
+            items:
+              description: Details about each object.
+              items:
+                $ref: '#/components/schemas/Entitlement'
+              type: array
+            next_page:
+              description: URL to access the next page of the customer's entitlements.
+                If not present / null, there is no next page
+              type: string
+              nullable: true
+              example: /v2/projects/proj1ab2c3d4/purchases/sub1a2b3c4d5e/entitlements?status=active&starting_after=entlab21dac
+            url:
+              description: The URL where this list can be accessed.
+              maxLength: 5000
+              type: string
+              example: /v2/projects/proj1ab2c3d4/purchases/sub1a2b3c4d5e/entitlements
+        environment:
+          $ref: '#/components/schemas/Environment'
+        store:
+          description: Store the subscription belongs to
+          nullable: false
+          type: string
+          enum:
+          - amazon
+          - app_store
+          - mac_app_store
+          - play_store
+          - promotional
+          - stripe
+          example: amazon
+        store_purchase_identifier:
+          description: The store subscription identifier
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 12345678
+        ownership:
+          description: Ownership of the subscription
+          nullable: false
+          oneOf:
+          - $ref: '#/components/schemas/Ownership'
+        country:
+          description: Billing country in ISO alpha 2 code
+          nullable: true
+          $ref: '#/components/schemas/Country'
+    StripeApp:
+      type: object
+      properties:
+        stripe:
+          description: Stripe type details
+          type: object
+          nullable: false
+          properties:
+            stripe_account_id:
+              description: It needs to be connected to your RevenueCat account. It
+                can be omitted if you only have a single Stripe account connected
+                to your RevenueCat account.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 256
+    StripeAppCreate:
+      type: object
+      properties:
+        stripe:
+          description: Stripe type details. Should only be used when type is stripe.
+          type: object
+          nullable: false
+          properties:
+            stripe_account_id:
+              description: It needs to be connected to your RevenueCat account. It
+                can be omitted if you only have a single Stripe account connected
+                to your RevenueCat account.
+              type: string
+              minLength: 1
+              maxLength: 256
+              nullable: false
     Subscription:
       type: object
       required:
@@ -5191,14 +5735,14 @@ x-tagGroups:
   - Error Handling
 - name: Endpoint Reference
   tags:
-  - App
   - Charts & Metrics
   - Customer
   - Entitlement
   - Offering
   - Package
   - Product
+  - Purchase
   - Subscription
   - Invoice
   - Project
-openapi: 3.0.0
+openapi: 3.0.3
