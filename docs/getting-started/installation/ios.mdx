@@ -37,6 +37,9 @@ Already have 3.x installed? View our [migration guide to 4.x ➡️](/sdk-guides
 You can use Swift Package Manager to add RevenueCat to your Xcode project. Select `File » Add Packages Dependencies... ` and enter the repository URL `https://github.com/RevenueCat/purchases-ios-spm.git` into the search bar (top right). (Note that this is a mirror of our main repository, and it will integrate far more quickly than using the main repository directly.) Set the Dependency Rule to `Up to next major`, and the version number to `4.0.0 < 5.0.0`. When "Choose Package Products for purchases-ios" appears, Xcode adds all libraries to your target by default. Select "None" for `RevenueCat_CustomEntitlementComputation` and `ReceiptParser`.
 
 ![](/images/spm-integration.png "Xcode SPM integration screenshot")
+
+Click "Add Package". The library should have been added to the Package Dependencies section and you should now be able to `import RevenueCat` into your source files.
+
 ### Install via CocoaPods
 
 To always use the latest release, add the following to your Podfile:
