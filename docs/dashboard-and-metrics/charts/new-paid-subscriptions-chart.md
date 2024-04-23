@@ -27,9 +27,9 @@ In addition, you can also use this chart along with the [Install month](https://
 
 For each period we count:
 
-1. New Subs from Trials: New paid subscriptions that started from trials.
-2. New Subs with Intro Offers: New paid subscriptions that started with paid introductory offers.
-3. New Direct Paid Subs: New paid subscriptions that were directly started.
+1. Trial Conversions: New paid subscriptions that started from trials.
+2. Intro Offers: New paid subscriptions that started with paid introductory offers.
+3. Direct Paid Subs: New paid subscriptions that were directly started without a trial or introductory offer.
 
 :::info
 Subscriptions that are started with paid introductory offers are immediately considered paid, active subscriptions. This is different than how trials are handled, since trials do not represent the first payment that a customer makes on their subscription.
@@ -37,7 +37,7 @@ Subscriptions that are started with paid introductory offers are immediately con
 
 ### Formula
 
-[New Subs from Trials] + [New Subs with Intro Offers] + [New Direct Paid Subs] = Total New Paid Subs
+[Trial Conversions] + [Intro Offers] + [Direct Paid Subs] = Total New Paid Subs
 
 ## FAQs
 
@@ -46,6 +46,6 @@ Subscriptions that are started with paid introductory offers are immediately con
 | Why might Total New Paid Subs in a given period differ from New Paying Customers in the same period from the Conversion to Paying chart? | These two charts are used to measure two different things: New Paid Subscriptions measures the count of new paid subscriptions that transitioned to paid in a period, and Conversion to Paying measures the conversion rate of customers first seen in a given period who eventually converted to paying. Since the Conversion to Paying chart is cohorted by a customer's first seen date, each period will count the conversions to paying of customer's who were first seen in that period. That means it will exclude conversions to paying that occurred in that period from customer's who were first seen outside of that period, and will include conversions to paying created outside of that period by customer's who were first seen in that period. |
 
 You can reconcile the difference between these two charts by comparing the Unbounded count of Paying Customers from a given month in the Conversion to Paying chart with the total number of New Paid Subscriptions from a given install month when segmenting the New Paid Subscriptions chart by install month. |
-| Why might Total New Paid Subs in a given period differ from Converted trials in the same period from the Trial Conversion chart? | Like the Conversion to Paying chart, the Trial Conversion chart is cohorted by a customer's first seen date, and therefore will differ from the New Paid Subscriptions chart for the same reasons.
+| Why might Trial Conversions in a given period differ from Converted trials in the same period from the Trial Conversion chart? | Like the Conversion to Paying chart, the Trial Conversion chart is cohorted by a customer's first seen date, and therefore will differ from the New Paid Subscriptions chart for the same reasons.
 
-You can reconcile the differences between these two charts by comparing the Converted trials from a given month in the Trial Conversion chart with the total number of New Subs from Trial from a given install month when segmenting the New Paid Subscriptions chart by install month.|
+You can reconcile the differences between these two charts by comparing the Converted trials from a given month in the Trial Conversion chart with the total number of Trial Conversions from a given install month when segmenting the New Paid Subscriptions chart by install month.|
