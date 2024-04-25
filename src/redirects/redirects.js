@@ -1461,39 +1461,39 @@ const redirects = {
     },
     {
       to: "/customer-history",
-      from: "/customer-history/customer-history.html",
+      from: "/customers-group/customer-history.html",
     },
     {
       to: "/customer-history/active-entitlements",
-      from: "/customer-history/active-entitlements.html",
+      from: "/customers-group/active-entitlements.html",
     },
     {
       to: "/customer-history/aliases-card",
-      from: "/customer-history/aliases-card.html",
+      from: "/customers-group/aliases-card.html",
     },
     {
       to: "/customer-history/attributes",
-      from: "/customer-history/attributes.html",
+      from: "/customers-group/attributes.html",
     },
     {
       to: "/customer-history/attribution-card",
-      from: "/customer-history/attribution-card.html",
+      from: "/customers-group/attribution-card.html",
     },
     {
       to: "/customer-history/basic-information",
-      from: "/customer-history/basic-information.html",
+      from: "/customers-group/basic-information.html",
     },
     {
       to: "/customer-history/manage-users",
-      from: "/customer-history/manage-users.html",
+      from: "/customers-group/manage-users.html",
     },
     {
       to: "/customer-history/offering-override",
-      from: "/customer-history/offering-override.html",
+      from: "/customers-group/offering-override.html",
     },
     {
       to: "/customer-history/promotionals",
-      from: "/customer-history/promotionals.html",
+      from: "/customers-group/promotionals.html",
     },
   ],
 };
