@@ -1461,39 +1461,39 @@ const redirects = {
     },
     {
       to: "/dashboard-and-metrics/customer-history",
-      from: "/dashboard-and-metrics/customers-group/customer-history.html",
+      from: "/dashboard-and-metrics/customer-history.html",
     },
     {
       to: "/dashboard-and-metrics/customer-history/active-entitlements",
-      from: "/dashboard-and-metrics/customers-group/active-entitlements.html",
+      from: "/dashboard-and-metrics/customer-history/active-entitlements.html",
     },
     {
       to: "/dashboard-and-metrics/customer-history/aliases-card",
-      from: "/dashboard-and-metrics/customers-group/aliases-card.html",
+      from: "/dashboard-and-metrics/customer-history/aliases-card.html",
     },
     {
       to: "/dashboard-and-metrics/customer-history/attributes",
-      from: "/dashboard-and-metrics/customers-group/attributes.html",
+      from: "/dashboard-and-metrics/customer-history/attributes.html",
     },
     {
       to: "/dashboard-and-metrics/customer-history/attribution-card",
-      from: "/dashboard-and-metrics/customers-group/attribution-card.html",
+      from: "/dashboard-and-metrics/customer-history/attribution-card.html",
     },
     {
       to: "/dashboard-and-metrics/customer-history/basic-information",
-      from: "/dashboard-and-metrics/customers-group/basic-information.html",
+      from: "/dashboard-and-metrics/customer-history/basic-information.html",
     },
     {
       to: "/dashboard-and-metrics/customer-history/manage-users",
-      from: "/dashboard-and-metrics/customers-group/manage-users.html",
+      from: "/dashboard-and-metrics/customer-history/manage-users.html",
     },
     {
       to: "/dashboard-and-metrics/customer-history/offering-override",
-      from: "/dashboard-and-metrics/customers-group/offering-override.html",
+      from: "/dashboard-and-metrics/customer-history/offering-override.html",
     },
     {
       to: "/dashboard-and-metrics/customer-history/promotionals",
-      from: "/dashboard-and-metrics/customers-group/promotionals.html",
+      from: "/dashboard-and-metrics/customer-history/promotionals.html",
     },
   ],
 };

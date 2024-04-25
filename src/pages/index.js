@@ -58,7 +58,7 @@ function LandingPage() {
             >
               <Button href="/docs/welcome/overview">Get Started</Button>
               <Button
-                href="/docs/getting-started/quickstart"
+                href="/getting-started/quickstart/quickstart"
                 variant="secondary"
               >
                 Install the SDK
@@ -96,9 +96,11 @@ function LandingPage() {
             <h2 className="font-normal mb-0 lg:mb-8 text-2xl lg:text-3xl">
               For Developers
             </h2>
-            <Link href="/docs/getting-started/quickstart">SDK Quickstart</Link>
+            <Link href="/getting-started/quickstart/quickstart">
+              SDK Quickstart
+            </Link>
             <Link href="/docs/api-v1">REST API</Link>
-            <Link href="/docs/getting-started/installation">
+            <Link href="/getting-started/quickstart/installation">
               Installing the SDK
             </Link>
           </div>
@@ -109,10 +111,10 @@ function LandingPage() {
               Popular Articles
             </h2>
             <Link href="/docs/welcome/projects">Setting up RevenueCat</Link>
-            <Link href="/docs/getting-started/entitlements">
+            <Link href="/getting-started/quickstart/entitlements">
               Configuring Products
             </Link>
-            <Link href="/docs/getting-started/configuring-sdk">
+            <Link href="/getting-started/quickstart/configuring-sdk">
               Configuring the SDK
             </Link>
           </div>
@@ -149,7 +151,7 @@ function LandingPage() {
             >
               <Button href="/docs/welcome/overview">Get Started</Button>
               <Button
-                href="/docs/getting-started/quickstart"
+                href="/getting-started/quickstart/quickstart"
                 variant="secondary"
                 className="hover:!bg-white"
               >
