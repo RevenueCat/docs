@@ -46,7 +46,7 @@ Once a user corrects their payment method, RevenueCat will send a renewal event.
 
 ### Dashboard
 
-Customers who enter into a grace period will have events added to their [Customer History](/dashboard-and-metrics/customers-group/basic-information).
+Customers who enter into a grace period will have events added to their [Customer History](/dashboard-and-metrics/customer-history/basic-information).
 
 ![Screen Shot 2022-09-15 at 2.46.12 PM.png](/images/4265860-Screen_Shot_2022-09-15_at_2.46.12_PM_217f2fce51cb21a5d7e6a308da39c425.png)
 
