@@ -47,7 +47,7 @@ More granular permissions are available for businesses on [Scale](https://www.re
 
 #### **Growth**
 
-✅ This role is for anyone who needs control over your project but is not a developer. They can view nearly everything, and edit things like Paywalls, Offerings, Entitlements, and Products. 
+✅ This role is for anyone who needs control over your project but is not a developer. They can view nearly everything, and edit things like Paywalls, Offerings, Entitlements, and Products.
 
 ❌ This role cannot edit any app settings (bundle id, package name, etc.) or integration configuration details.
 
@@ -55,7 +55,7 @@ More granular permissions are available for businesses on [Scale](https://www.re
 
 #### **Developer**
 
-✅ This role is for anyone who needs control over your app configuration and integrations, but not view any financial data. They _can_ view and manage customer data available on [Customer Timelines](/dashboard-and-metrics/customers-group/basic-information).
+✅ This role is for anyone who needs control over your app configuration and integrations, but not view any financial data. They _can_ view and manage customer data available on [Customer Timelines](/dashboard-and-metrics/customer-history/basic-information).
 
 ❌ This role cannot access any financial data through Charts, Overview, Experiments, or Customer Lists - but can view individual customer transactions.
 
@@ -67,7 +67,7 @@ Due to the permission levels of [secret keys](/welcome/authentication) they curr
 
 #### **Support**
 
-✅ This role is for anyone who needs to manage individual customers, but not view any financial or most app settings. They can see [Customer Timelines](/dashboard-and-metrics/customers-group/basic-information), [grant Promotional Entitlements](/dashboard-and-metrics/customers-group/promotionals), [issue refunds](/dashboard-and-metrics/customers-group/customer-history#section-refunding-subscriptions), and [delete customers](/dashboard-and-metrics/customers-group/manage-users).
+✅ This role is for anyone who needs to manage individual customers, but not view any financial or most app settings. They can see [Customer Timelines](/dashboard-and-metrics/customer-history/basic-information), [grant Promotional Entitlements](/dashboard-and-metrics/customer-history/promotionals), [issue refunds](/dashboard-and-metrics/customer-history#section-refunding-subscriptions), and [delete customers](/dashboard-and-metrics/customer-history/manage-users).
 
 ❌ This role cannot access any financial data through Charts, Overview, Experiments, or Customer Lists - but can view individual customer transactions. They also cannot view most app configuration settings.
 

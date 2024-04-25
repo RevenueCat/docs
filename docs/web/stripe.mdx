@@ -98,7 +98,7 @@ Stripe allows using [test clocks](https://stripe.com/docs/billing/testing/test-c
 Subscription payments through the web are processed with the same logic as subscriptions through the app stores. This means there are currently some limitations that must be considered for web payments to work properly.
 
 :::success Coupons are supported
-Pricing in RevenueCat [Charts](/dashboard-and-metrics/charts) and [customer events](/dashboard-and-metrics/customers-group/customer-history) will reflect any coupons applied to a Stripe purchase.
+Pricing in RevenueCat [Charts](/dashboard-and-metrics/charts) and [customer events](/dashboard-and-metrics/customer-history) will reflect any coupons applied to a Stripe purchase.
 :::
 
 ### Supported subscription plans
@@ -122,7 +122,7 @@ Cancellations in Stripe are automatically detected by RevenueCat the same way as
 
 ### Billing Issues
 
-When a customer encounters an issue with their payment, RevenueCat will generate a billing issue event in the RevenueCat [Customer History](/dashboard-and-metrics/customers-group/customer-history). If all retries for a payment fails, you have three options:
+When a customer encounters an issue with their payment, RevenueCat will generate a billing issue event in the RevenueCat [Customer History](/dashboard-and-metrics/customer-history). If all retries for a payment fails, you have three options:
 
 1. cancel the subscription: RevenueCat will **revoke access**.
 2. mark the subscription as unpaid: RevenueCat will **revoke access**.

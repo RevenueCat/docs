@@ -36,7 +36,7 @@ tags:
     >\n  <div class=\"heading\">New to RevenueCat?</div>\n  <div>Welcome! If you're\
     \ adding subscriptions or other in-app purchases to your app, the RevenueCat SDK\
     \ will handle most of the heavy-lifting without the need to interact with this\
-    \ API directly. See our <a href=\"/docs/getting-started/quickstart/\">Quickstart</a>\
+    \ API directly. See our <a href=\"/getting-started/quickstart\">Quickstart</a>\
     \ for more information on getting started with RevenueCat.</div>\n</div>\n\n<div\
     \ class=\"theme-admonition theme-admonition-info alert alert--info\">\n  <div\
     \ class=\"heading\">API v2 under development</div>\n  <div>\n    REST API v2 is\
@@ -51,7 +51,7 @@ tags:
     \ RevenueCat SDK?\n\nIf you\u2019re adding subscriptions or other in-app purchases\
     \ to your app for the first time or if you don\u2019t have a backend that stores\
     \ your user\u2019s receipts, you\u2019re probably looking to implement the [RevenueCat\
-    \ SDK](/docs/getting-started/installation/).\n\nIf you want to start migrating\
+    \ SDK](/getting-started/installation/).\n\nIf you want to start migrating\
     \ your existing users to RevenueCat and you have your user\u2019s receipts stored\
     \ on your own server, or you want to check subscription status of your users from\
     \ your own server, the REST API is a great solution.\n\n## Authentication\n\n\
