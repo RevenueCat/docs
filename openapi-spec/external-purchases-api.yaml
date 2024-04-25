@@ -371,7 +371,7 @@ tags:
     The following limitations apply during Beta period:
 
     1. For `purchase` JSON with `external_subscription` object:
-        1. Currently you cannot change the `customer_id` field, meaning that we don't support [Transferring purchases seen on multiple App User IDs](/getting-started/quickstart/restoring-purchases#transferring-purchases-seen-on-multiple-app-user-ids)
+        1. Currently you cannot change the `customer_id` field, meaning that we don't support [Transferring purchases seen on multiple App User IDs](/getting-started/restoring-purchases#transferring-purchases-seen-on-multiple-app-user-ids)
         2. We don't generate a new event in a scenario, when `current_period_ends_at` was in the future, and it's changed to a different future date.
         3. We support the following options for the `auto_renew_status` field:  `will_renew`, `will_not_renew`, `unknown` value. We omit the `will_change_product` for now, meaning that we don't support Upgrades, Downgrade, Crossgrades and resulting event (`PRODUCT_CHANGE` event).
         4. Family shared subscriptions are not supported (but you can still create shared subscriptions as regular subscriptions).
