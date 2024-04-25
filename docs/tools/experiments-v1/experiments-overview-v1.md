@@ -63,6 +63,10 @@ Visit [Configuring Experiments](https://www.revenuecat.com/docs/configuring-expe
 
 ## Tips for Using Experiments
 
+**Pair our paywalls feature with your experiments**
+
+To optimize your Experiments, we recommend using our [Paywalls](/docs/tools/paywalls) feature in conjunction with Experiments. Combining these will help ensure the delivery of a dynamic paywall based on the offering generated from the experiment. By integrating these tools, you guarantee that the right paywall is presented to the right audience, which will help you get a better understanding of your experiment along with seeing which paywalls help improve your conversion rates.
+
 **Decide how long you want to run your experiments**
 
 There’s no time limit on tests. Consider the timescales that matter for you. For example, if comparing monthly vs yearly, yearly might outperform in the short term because of the high short term revenue, but monthly might outperform in the long term.
