@@ -13,15 +13,15 @@ Refunds are handled differently on each platform. It's recommended to set up [Pl
 
 **Subscriptions**
 
-✅ RevenueCat will automatically detect when a refund has been issued by Apple, but Apple does not allow developers to issue refunds on behalf of customers  
+✅ RevenueCat will automatically detect when a refund has been issued by Apple, but Apple does not allow developers to issue refunds on behalf of customers
 
 If a customer requests a refund, you can direct them to the Apple support page: https://support.apple.com/en-us/HT204084
 
 **Non-subscriptions**
 
-🚧 RevenueCat requires [Platform Server Notifications](/platform-resources/server-notifications) to be enabled in order to detect when a non-subscription refund has been issued by Apple. Apple does not allow developers to issue refunds on behalf of customers.  
+🚧 RevenueCat requires [Platform Server Notifications](/platform-resources/server-notifications) to be enabled in order to detect when a non-subscription refund has been issued by Apple. Apple does not allow developers to issue refunds on behalf of customers.
 
-If a customer requests a refund, you can direct them to the Apple support page: https://support.apple.com/en-us/HT204084  
+If a customer requests a refund, you can direct them to the Apple support page: https://support.apple.com/en-us/HT204084
 
 Consumable refunds are not currently detected in RevenueCat.
 
@@ -29,17 +29,17 @@ Consumable refunds are not currently detected in RevenueCat.
 
 **Subscriptions**
 
-✅ Active Google Play subscriptions may be refunded directly through the RevenueCat dashboard. Click on the respective transaction event on the customer page and hit \"Refund\" in the upper right. [Documentation](/dashboard-and-metrics/customers-group/customer-history#refunding-purchases) for reference.  
+✅ Active Google Play subscriptions may be refunded directly through the RevenueCat dashboard. Click on the respective transaction event on the customer page and hit \"Refund\" in the upper right. [Documentation](/dashboard-and-metrics/customer-history#refunding-purchases) for reference.
 
-Refunds can also be granted programmatically through the RevenueCat [REST API](https://docs.revenuecat.com/reference#revoke-a-google-subscription). This will immediately revoke access to the Google subscription and issue a refund for the last purchase.  
+Refunds can also be granted programmatically through the RevenueCat [REST API](https://docs.revenuecat.com/reference#revoke-a-google-subscription). This will immediately revoke access to the Google subscription and issue a refund for the last purchase.
 
 If a refund is granted by Google or initiated through the Google Play console, it **may take up to 24 hours** to be detected by RevenueCat. Refunds due to no acknowledgement of purchases are not detected automatically.
 
 **Non-subscriptions**
 
-✅ Google Play non-subscriptions can be refunded directly through the RevenueCat dashboard or REST API (see refunding Google Play Subscriptions for more info on how to do this).  
+✅ Google Play non-subscriptions can be refunded directly through the RevenueCat dashboard or REST API (see refunding Google Play Subscriptions for more info on how to do this).
 
-If a non-subscription refund is granted by Google or initiated through the Google Play console, it **may take up to 24 hours** to be detected by RevenueCat. Refunds due to no acknowledgement of purchases are not detected automatically. 
+If a non-subscription refund is granted by Google or initiated through the Google Play console, it **may take up to 24 hours** to be detected by RevenueCat. Refunds due to no acknowledgement of purchases are not detected automatically.
 
 ### Stripe
 
@@ -47,9 +47,9 @@ If a non-subscription refund is granted by Google or initiated through the Googl
 
 ### Amazon Appstore
 
-❌ Amazon does not allow developers to issue refunds on behalf of users.  
+❌ Amazon does not allow developers to issue refunds on behalf of users.
 
-If a user has a valid reason for a pro-rated refund, they should contact Amazon customer service through the Contact Us link at [amazon.com](https://amazon.com).  
+If a user has a valid reason for a pro-rated refund, they should contact Amazon customer service through the Contact Us link at [amazon.com](https://amazon.com).
 
 Refunds granted through Amazon customer service **will not** be detected as a refund in RevenueCat and the subscription will remain active until the end of the current billing period (or indefinitely, for a non-subscription purchase).
 
