@@ -297,11 +297,11 @@ const redirects = {
       from: "/restoring-purchases",
     },
     {
-      to: "/getting-started/stripe/in-app-purchases-with-stripe-rfa",
+      to: "/web/stripe",
       from: "/in-app-purchases-with-stripe-rfa",
     },
     {
-      to: "/getting-started/stripe",
+      to: "/web/stripe",
       from: "/stripe",
     },
     {
@@ -1000,11 +1000,11 @@ const redirects = {
       from: "/restoring-purchases.html",
     },
     {
-      to: "/getting-started/stripe/in-app-purchases-with-stripe-rfa",
+      to: "/web/stripe",
       from: "/in-app-purchases-with-stripe-rfa.html",
     },
     {
-      to: "/getting-started/stripe",
+      to: "/web/stripe",
       from: "/stripe.html",
     },
     {
@@ -1464,36 +1464,36 @@ const redirects = {
       from: "/customers-group/customer-history.html",
     },
     {
-      to: "/customer-history/active-entitlements",
-      from: "/customers-group/active-entitlements.html",
+      to: "/dashboard-and-metrics/customer-history/active-entitlements",
+      from: "/dashboard-and-metrics/customers-group/active-entitlements.html",
     },
     {
-      to: "/customer-history/aliases-card",
-      from: "/customers-group/aliases-card.html",
+      to: "/dashboard-and-metrics/customer-history/aliases-card",
+      from: "/dashboard-and-metrics/customers-group/aliases-card.html",
     },
     {
-      to: "/customer-history/attributes",
-      from: "/customers-group/attributes.html",
+      to: "/dashboard-and-metrics/customer-history/attributes",
+      from: "/dashboard-and-metrics/customers-group/attributes.html",
     },
     {
-      to: "/customer-history/attribution-card",
-      from: "/customers-group/attribution-card.html",
+      to: "/dashboard-and-metrics/customer-history/attribution-card",
+      from: "/dashboard-and-metrics/customers-group/attribution-card.html",
     },
     {
-      to: "/customer-history/basic-information",
-      from: "/customers-group/basic-information.html",
+      to: "/dashboard-and-metrics/customer-history/basic-information",
+      from: "/dashboard-and-metrics/customers-group/basic-information.html",
     },
     {
-      to: "/customer-history/manage-users",
-      from: "/customers-group/manage-users.html",
+      to: "/dashboard-and-metrics/customer-history/manage-users",
+      from: "/dashboard-and-metrics/customers-group/manage-users.html",
     },
     {
-      to: "/customer-history/offering-override",
-      from: "/customers-group/offering-override.html",
+      to: "/dashboard-and-metrics/customer-history/offering-override",
+      from: "/dashboard-and-metrics/customers-group/offering-override.html",
     },
     {
-      to: "/customer-history/promotionals",
-      from: "/customers-group/promotionals.html",
+      to: "/dashboard-and-metrics/customer-history/promotionals",
+      from: "/dashboard-and-metrics/customers-group/promotionals.html",
     },
   ],
 };
