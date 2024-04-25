@@ -253,8 +253,12 @@ const redirects = {
       from: "/flutter",
     },
     {
-      to: "/getting-started/installation/ionic",
+      to: "/getting-started/installation/capacitor",
       from: "/ionic",
+    },
+    {
+      to: "/getting-started/installation/capacitor",
+      from: "/getting-started/installation/ionic",
     },
     {
       to: "/getting-started/installation/ios",
@@ -952,7 +956,7 @@ const redirects = {
       from: "/flutter.html",
     },
     {
-      to: "/getting-started/installation/ionic",
+      to: "/getting-started/installation/capacitor",
       from: "/ionic.html",
     },
     {

@@ -110,14 +110,14 @@ RevenueCat Paywalls automatically check for Introductory Offer eligibility, and 
 
 Use the **Select a file** button for the applicable image to upload your own to use for your Paywall. We support .jpg, jpeg, and .png files up to 5MB. We’ll center and scale the image to fit regardless of their size, but we recommend using images of the following aspect ratios on each template:
 
-| Template                   | Recommended aspect ratio   |
-| :--------------------------| :--------------------------|
-| Template 1 - Jaguar        | 6:5                        |
-| Template 2 - Sphynx (Icon) | 1:1                        |
-| Template 2 - Sphynx (Bg)   | 19.5:9                     |
-| Template 3 - Leopard       | 1:1                        |
-| Template 4 - Persian       | 19.5:9                     |
-| Template 5 - Bengal        | 2:1                        |
+| Template                   | Recommended aspect ratio |
+| :------------------------- | :----------------------- |
+| Template 1 - Jaguar        | 6:5                      |
+| Template 2 - Sphynx (Icon) | 1:1                      |
+| Template 2 - Sphynx (Bg)   | 19.5:9                   |
+| Template 3 - Leopard       | 1:1                      |
+| Template 4 - Persian       | 19.5:9                   |
+| Template 5 - Bengal        | 2:1                      |
 
 ### Colors
 
@@ -191,3 +191,35 @@ We currently support all 39 locales that are supported on [App Store Connect](ht
 - Turkish - `tr`
 - Ukrainian - `uk`
 - Vietnamese - `vi`
+
+:::info Testing localization in Xcode
+If a particular translation is not applied to your Paywall during testing, you may need to change the default localization in Xcode to that language.
+:::
+
+## Getting your paywall approved by the stores
+
+Paywalls are frequently one of the most scrutinized areas of your app in App Store and Play Store review, since the stores want to ensure apps are setting clear expectations about what’s being offered to customers. Below are some of the most common rejection reasons, and how you can best position yourself to avoid them with RevenueCat Paywalls:
+
+**Full billed amount is not clearly shown**
+Though it can be useful to show the relative value of one option over another by comparing the two with a common duration (e.g. normalizing your $49.99/yr subscription to the equivalent of $4.16/mo), it’s important that the full billed amount ($49.99/yr) is clearly provided on your paywall.
+
+You can provide this using variables like `price_per_period` / `price_per_period_full` depending on your preferred format, or `total_price_and_per_month` / `total_price_and_per_month_full` if you still want to show the monthly equivalent price of your package if applicable.
+
+However, other variables like `sub_price_per_month` or `price` on their own may not satisfy this requirement unless your paywall clearly states the full billed amount in some other way.
+
+**Introductory offer is not clearly shown**
+Similar to the full billed amount, if the nature of the introductory offer is not clear enough on your paywall, your app may also get rejected for that reason, since this is what the customer is about to receive (and potentially pay for) immediately upon converting.
+
+To address this with RevenueCat Paywalls, consider using `sub_offer_price` and `sub_offer_duration` in either your package details or your CTA to ensure that the introductory offer is clearly disclosed.
+
+:::info
+India has particularly strict rules regarding the disclosure of offer terms, and you may find that your paywall is more likely to get rejected for that reason if its offered in India.
+:::
+
+**The opportunity to cancel is not clearly disclosed**
+In addition, in some cases the store will look for explicit language around the fact that customers can cancel their subscription, as well as how they might do that; so considering adding these notes if you want to be sure to avoid a rejection for that reason. (e.g. "Try free for x days, then $y/mo. Cancel anytime.")
+
+**Missing terms & conditions or missing privacy policy**
+Though the App Store in particular no longer requires these policies to be accessible directly from your paywall, they do still require that they are accessible _somewhere_ in your app, and the paywall is a common place for them to be.
+
+If either the terms & conditions or the privacy policy of your app is missing, or just too difficult to find in the reviewer's opinion, your app may be rejected for that. To prevent this, try providing the terms & privacy policy on your paywall through RevenueCat Paywalls so they'll be easy for your customers and for app reviewers to find.
