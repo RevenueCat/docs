@@ -145,39 +145,43 @@ const redirects = {
       from: "/customer-lists",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/active-entitlements",
+      to: "/dashboard-and-metrics/customer-history",
+      from: "/dashboard-and-metrics/customers-group",
+    },
+    {
+      to: "/dashboard-and-metrics/customer-history/active-entitlements",
       from: "/active-entitlements",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/aliases-card",
+      to: "/dashboard-and-metrics/customer-history/aliases-card",
       from: "/aliases-card",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/attributes",
+      to: "/dashboard-and-metrics/customer-history/attributes",
       from: "/attributes",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/attribution-card",
+      to: "/dashboard-and-metrics/customer-history/attribution-card",
       from: "/attribution-card",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/basic-information",
+      to: "/dashboard-and-metrics/customer-history/basic-information",
       from: "/basic-information",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/customer-history",
+      to: "/dashboard-and-metrics/customer-history",
       from: "/customer-history",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/manage-users",
+      to: "/dashboard-and-metrics/customer-history/manage-users",
       from: "/manage-users",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/offering-override",
+      to: "/dashboard-and-metrics/customer-history/offering-override",
       from: "/offering-override",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/promotionals",
+      to: "/dashboard-and-metrics/customer-history/promotionals",
       from: "/promotionals",
     },
     {
@@ -848,39 +852,43 @@ const redirects = {
       from: "/customer-lists.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/active-entitlements",
+      to: "/dashboard-and-metrics/customer-history",
+      from: "/dashboard-and-metrics/customers-group.html",
+    },
+    {
+      to: "/dashboard-and-metrics/customer-history/active-entitlements",
       from: "/active-entitlements.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/aliases-card",
+      to: "/dashboard-and-metrics/customer-history/aliases-card",
       from: "/aliases-card.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/attributes",
+      to: "/dashboard-and-metrics/customer-history/attributes",
       from: "/attributes.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/attribution-card",
+      to: "/dashboard-and-metrics/customer-history/attribution-card",
       from: "/attribution-card.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/basic-information",
+      to: "/dashboard-and-metrics/customer-history/basic-information",
       from: "/basic-information.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/customer-history",
+      to: "/dashboard-and-metrics/customer-history",
       from: "/customer-history.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/manage-users",
+      to: "/dashboard-and-metrics/customer-history/manage-users",
       from: "/manage-users.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/offering-override",
+      to: "/dashboard-and-metrics/customer-history/offering-override",
       from: "/offering-override.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/promotionals",
+      to: "/dashboard-and-metrics/customer-history/promotionals",
       from: "/promotionals.html",
     },
     {
@@ -1453,39 +1461,39 @@ const redirects = {
     },
     {
       to: "/customer-history",
-      from: "/customers-group/customer-history.html",
+      from: "/customer-history/customer-history.html",
     },
     {
       to: "/customer-history/active-entitlements",
-      from: "/customers-group/active-entitlements.html",
+      from: "/customer-history/active-entitlements.html",
     },
     {
       to: "/customer-history/aliases-card",
-      from: "/customers-group/aliases-card.html",
+      from: "/customer-history/aliases-card.html",
     },
     {
       to: "/customer-history/attributes",
-      from: "/customers-group/attributes.html",
+      from: "/customer-history/attributes.html",
     },
     {
       to: "/customer-history/attribution-card",
-      from: "/customers-group/attribution-card.html",
+      from: "/customer-history/attribution-card.html",
     },
     {
       to: "/customer-history/basic-information",
-      from: "/customers-group/basic-information.html",
+      from: "/customer-history/basic-information.html",
     },
     {
       to: "/customer-history/manage-users",
-      from: "/customers-group/manage-users.html",
+      from: "/customer-history/manage-users.html",
     },
     {
       to: "/customer-history/offering-override",
-      from: "/customers-group/offering-override.html",
+      from: "/customer-history/offering-override.html",
     },
     {
       to: "/customer-history/promotionals",
-      from: "/customers-group/promotionals.html",
+      from: "/customer-history/promotionals.html",
     },
   ],
 };
