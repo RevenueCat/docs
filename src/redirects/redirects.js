@@ -1460,8 +1460,8 @@ const redirects = {
       from: "/welcome.html",
     },
     {
-      to: "/customer-history",
-      from: "/customers-group/customer-history.html",
+      to: "/dashboard-and-metrics/customer-history",
+      from: "/dashboard-and-metrics/customers-group/customer-history.html",
     },
     {
       to: "/dashboard-and-metrics/customer-history/active-entitlements",
