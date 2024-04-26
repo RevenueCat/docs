@@ -12,7 +12,7 @@ _Purchases_ is our SDK that correctly implements purchases and subscriptions acr
 - [React Native Installation ➡️](/getting-started/installation/reactnative)
 - [Flutter Installation ➡️](/getting-started/installation/flutter)
 - [Cordova Installation ➡️](/getting-started/installation/cordova)
-- [Ionic Installation ➡️](/getting-started/installation/ionic)
+- [Capacitor Installation ➡️](/getting-started/installation/capacitor)
 - [Unity Installation ➡️](/getting-started/installation/unity)
 - [Web Installation ➡️](/getting-started/installation/web-sdk)
 - [macOS / Catalyst Installation ➡️](/getting-started/installation/macos)

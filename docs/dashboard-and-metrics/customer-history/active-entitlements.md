@@ -54,4 +54,4 @@ Transferring entitlements works with the block-restore behavior
 
 ## Next Steps
 
-- [Promotionals ](/dashboard-and-metrics/customers-group/promotionals)
+- [Promotionals ](/dashboard-and-metrics/customer-history/promotionals)

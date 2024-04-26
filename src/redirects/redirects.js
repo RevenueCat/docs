@@ -145,39 +145,43 @@ const redirects = {
       from: "/customer-lists",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/active-entitlements",
+      to: "/dashboard-and-metrics/customer-history",
+      from: "/dashboard-and-metrics/customers-group",
+    },
+    {
+      to: "/dashboard-and-metrics/customer-history/active-entitlements",
       from: "/active-entitlements",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/aliases-card",
+      to: "/dashboard-and-metrics/customer-history/aliases-card",
       from: "/aliases-card",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/attributes",
+      to: "/dashboard-and-metrics/customer-history/attributes",
       from: "/attributes",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/attribution-card",
+      to: "/dashboard-and-metrics/customer-history/attribution-card",
       from: "/attribution-card",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/basic-information",
+      to: "/dashboard-and-metrics/customer-history/basic-information",
       from: "/basic-information",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/customer-history",
+      to: "/dashboard-and-metrics/customer-history",
       from: "/customer-history",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/manage-users",
+      to: "/dashboard-and-metrics/customer-history/manage-users",
       from: "/manage-users",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/offering-override",
+      to: "/dashboard-and-metrics/customer-history/offering-override",
       from: "/offering-override",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/promotionals",
+      to: "/dashboard-and-metrics/customer-history/promotionals",
       from: "/promotionals",
     },
     {
@@ -253,8 +257,12 @@ const redirects = {
       from: "/flutter",
     },
     {
-      to: "/getting-started/installation/ionic",
+      to: "/getting-started/installation/capacitor",
       from: "/ionic",
+    },
+    {
+      to: "/getting-started/installation/capacitor",
+      from: "/getting-started/installation/ionic",
     },
     {
       to: "/getting-started/installation/ios",
@@ -289,11 +297,11 @@ const redirects = {
       from: "/restoring-purchases",
     },
     {
-      to: "/getting-started/stripe/in-app-purchases-with-stripe-rfa",
+      to: "/web/stripe",
       from: "/in-app-purchases-with-stripe-rfa",
     },
     {
-      to: "/getting-started/stripe",
+      to: "/web/stripe",
       from: "/stripe",
     },
     {
@@ -844,39 +852,43 @@ const redirects = {
       from: "/customer-lists.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/active-entitlements",
+      to: "/dashboard-and-metrics/customer-history",
+      from: "/dashboard-and-metrics/customers-group.html",
+    },
+    {
+      to: "/dashboard-and-metrics/customer-history/active-entitlements",
       from: "/active-entitlements.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/aliases-card",
+      to: "/dashboard-and-metrics/customer-history/aliases-card",
       from: "/aliases-card.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/attributes",
+      to: "/dashboard-and-metrics/customer-history/attributes",
       from: "/attributes.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/attribution-card",
+      to: "/dashboard-and-metrics/customer-history/attribution-card",
       from: "/attribution-card.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/basic-information",
+      to: "/dashboard-and-metrics/customer-history/basic-information",
       from: "/basic-information.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/customer-history",
+      to: "/dashboard-and-metrics/customer-history",
       from: "/customer-history.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/manage-users",
+      to: "/dashboard-and-metrics/customer-history/manage-users",
       from: "/manage-users.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/offering-override",
+      to: "/dashboard-and-metrics/customer-history/offering-override",
       from: "/offering-override.html",
     },
     {
-      to: "/dashboard-and-metrics/customers-group/promotionals",
+      to: "/dashboard-and-metrics/customer-history/promotionals",
       from: "/promotionals.html",
     },
     {
@@ -952,7 +964,7 @@ const redirects = {
       from: "/flutter.html",
     },
     {
-      to: "/getting-started/installation/ionic",
+      to: "/getting-started/installation/capacitor",
       from: "/ionic.html",
     },
     {
@@ -988,11 +1000,11 @@ const redirects = {
       from: "/restoring-purchases.html",
     },
     {
-      to: "/getting-started/stripe/in-app-purchases-with-stripe-rfa",
+      to: "/web/stripe",
       from: "/in-app-purchases-with-stripe-rfa.html",
     },
     {
-      to: "/getting-started/stripe",
+      to: "/web/stripe",
       from: "/stripe.html",
     },
     {
@@ -1448,40 +1460,40 @@ const redirects = {
       from: "/welcome.html",
     },
     {
-      to: "/customer-history",
-      from: "/customers-group/customer-history.html",
+      to: "/dashboard-and-metrics/customer-history",
+      from: "/dashboard-and-metrics/customers-group/customer-history",
     },
     {
-      to: "/customer-history/active-entitlements",
-      from: "/customers-group/active-entitlements.html",
+      to: "/dashboard-and-metrics/customer-history/active-entitlements",
+      from: "/dashboard-and-metrics/customers-group/active-entitlements",
     },
     {
-      to: "/customer-history/aliases-card",
-      from: "/customers-group/aliases-card.html",
+      to: "/dashboard-and-metrics/customer-history/aliases-card",
+      from: "/dashboard-and-metrics/customers-group/aliases-card",
     },
     {
-      to: "/customer-history/attributes",
-      from: "/customers-group/attributes.html",
+      to: "/dashboard-and-metrics/customer-history/attributes",
+      from: "/dashboard-and-metrics/customers-group/attributes",
     },
     {
-      to: "/customer-history/attribution-card",
-      from: "/customers-group/attribution-card.html",
+      to: "/dashboard-and-metrics/customer-history/attribution-card",
+      from: "/dashboard-and-metrics/customers-group/attribution-card",
     },
     {
-      to: "/customer-history/basic-information",
-      from: "/customers-group/basic-information.html",
+      to: "/dashboard-and-metrics/customer-history/basic-information",
+      from: "/dashboard-and-metrics/customers-group/basic-information",
     },
     {
-      to: "/customer-history/manage-users",
-      from: "/customers-group/manage-users.html",
+      to: "/dashboard-and-metrics/customer-history/manage-users",
+      from: "/dashboard-and-metrics/customers-group/manage-users",
     },
     {
-      to: "/customer-history/offering-override",
-      from: "/customers-group/offering-override.html",
+      to: "/dashboard-and-metrics/customer-history/offering-override",
+      from: "/dashboard-and-metrics/customers-group/offering-override",
     },
     {
-      to: "/customer-history/promotionals",
-      from: "/customers-group/promotionals.html",
+      to: "/dashboard-and-metrics/customer-history/promotionals",
+      from: "/dashboard-and-metrics/customers-group/promotionals",
     },
   ],
 };

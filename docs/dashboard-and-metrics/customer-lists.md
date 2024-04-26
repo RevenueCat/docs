@@ -50,7 +50,7 @@ RevenueCat creates some default lists for every project. Default lists should gi
 
 :::info Promotionals are not considered 'Active'
 
-If a customer has a [Promotional](/dashboard-and-metrics/customers-group/promotionals) transaction, they are not considered as 'Active'. Note that if a customer has an active subscription + Promotional, they will not be counted in the Active Customer List.
+If a customer has a [Promotional](/dashboard-and-metrics/customer-history/promotionals) transaction, they are not considered as 'Active'. Note that if a customer has an active subscription + Promotional, they will not be counted in the Active Customer List.
 
 :::
 
@@ -102,40 +102,40 @@ Filtering customers by purchase is being rolled out gradually, so you may not se
 
 See the table below for additional filters you can apply to your lists.
 
-| Filter                         | Type         | Description                                                                                                                     |
-| ------------------------------ | ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
-| Ad                             | String       | The `$ad` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                           |
-| Ad Group                       | String       | The `$adGroup` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                      |
-| Auto Renew Intent              | Bool         | Whether the customer has opted out of auto-renew or not.                                                                        |
-| Campaign                       | String       | The `$campaign` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                     |
-| Cancellation Date              | Date         | The date the customer unsubscribed from their subscription. Will be set back to `null` if the customer later resubscribes.      |
-| Creative                       | String       | The `$creative` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                     |
-| Email                          | String       | The `$email` [Attribute](/customers/customer-attributes) for the customer.                                         |
-| First Purchase Date            | Date         | The date of the customer's first transaction.                                                                                   |
-| First Seen Date                | Date         | The date the customer was first seen by RevenueCat.                                                                             |
-| GPS Ad Id                      | String       | The `$gpsAdId` [](/customers/customer-attributes#device-identifiers) for the customer.                    |
-| Granted RC Promotional         | Bool         | Whether the customer has been granted a [Promotional Subscription](/dashboard-and-metrics/customers-group/promotionals) or not. |
-| IDFA                           | String       | The `$idfa` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                       |
-| IDFV                           | String       | The `$idfv` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                       |
-| Keyword                        | String       | The `$keyword` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                      |
-| Last Seen Country              | String       | The two-letter ISO 3166-1 alpha-2 code of the country where the user was last seen, determined by IP address.                   |
-| Last Seen Date                 | Date         | The date the customer was last seen by RevenueCat.                                                                              |
-| Latest Entitlement             | String       | The latest [Entitlement](/getting-started/entitlements) unlocked by the customer.                                               |
-| Latest Expiration Date         | Date         | The latest expiration date of the customer's [Entitlement](/getting-started/entitlements).                                      |
-| Latest Product                 | String       | The customer's latest purchased product identifier.                                                                             |
-| Latest Purchase Date           | Date         | The customer's latest transaction date.                                                                                         |
-| Latest Renewal Date            | Date         | The customer's latest renewal date. This could be the same as the Latest Purchase Date.                                         |
-| Latest Store                   | Multi Select | The latest store the customer purchased from.                                                                                   |
-| Media Source                   | String       | The `$mediaSource` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                  |
-| Number of Renewals             | Integer      | The total number of renewals the customer has had. A trial conversion is considered a renewal.                                  |
-| Phone Number                   | String       | The `$phoneNumber` [Attribute](/customers/customer-attributes) for the customer.                                   |
-| Total Spent                    | Integer      | The total revenue (in USD) spent by the customer.                                                                               |
-| Trial Cancellation Date        | Date         | The date the customer unsubscribed from their free trial. Will be set back to `null` if the customer later resubscribes.        |
-| Trial End Date                 | Date         | The date the customer's free trial expires.                                                                                     |
-| Trial Start Date               | Date         | The date the customer started their free trial.                                                                                 |
-| Made Non-subscription Purchase | Bool         | Whether the customer has made any [non-subscription](/platform-resources/non-subscriptions) purchases or not.                   |
-| Made Sandbox Purchase          | Bool         | Whether the customer has made any sandbox purchases or not.                                                                     |
-| Status                         | Multi Select | The latest status of the customer.                                                                                              |
+| Filter                         | Type         | Description                                                                                                                      |
+| ------------------------------ | ------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| Ad                             | String       | The `$ad` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                         |
+| Ad Group                       | String       | The `$adGroup` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                    |
+| Auto Renew Intent              | Bool         | Whether the customer has opted out of auto-renew or not.                                                                         |
+| Campaign                       | String       | The `$campaign` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                   |
+| Cancellation Date              | Date         | The date the customer unsubscribed from their subscription. Will be set back to `null` if the customer later resubscribes.       |
+| Creative                       | String       | The `$creative` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                   |
+| Email                          | String       | The `$email` [Attribute](/customers/customer-attributes) for the customer.                                                       |
+| First Purchase Date            | Date         | The date of the customer's first transaction.                                                                                    |
+| First Seen Date                | Date         | The date the customer was first seen by RevenueCat.                                                                              |
+| GPS Ad Id                      | String       | The `$gpsAdId` [](/customers/customer-attributes#device-identifiers) for the customer.                                           |
+| Granted RC Promotional         | Bool         | Whether the customer has been granted a [Promotional Subscription](/dashboard-and-metrics/customer-history/promotionals) or not. |
+| IDFA                           | String       | The `$idfa` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                                     |
+| IDFV                           | String       | The `$idfv` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                                     |
+| Keyword                        | String       | The `$keyword` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                    |
+| Last Seen Country              | String       | The two-letter ISO 3166-1 alpha-2 code of the country where the user was last seen, determined by IP address.                    |
+| Last Seen Date                 | Date         | The date the customer was last seen by RevenueCat.                                                                               |
+| Latest Entitlement             | String       | The latest [Entitlement](/getting-started/entitlements) unlocked by the customer.                                                |
+| Latest Expiration Date         | Date         | The latest expiration date of the customer's [Entitlement](/getting-started/entitlements).                                       |
+| Latest Product                 | String       | The customer's latest purchased product identifier.                                                                              |
+| Latest Purchase Date           | Date         | The customer's latest transaction date.                                                                                          |
+| Latest Renewal Date            | Date         | The customer's latest renewal date. This could be the same as the Latest Purchase Date.                                          |
+| Latest Store                   | Multi Select | The latest store the customer purchased from.                                                                                    |
+| Media Source                   | String       | The `$mediaSource` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                |
+| Number of Renewals             | Integer      | The total number of renewals the customer has had. A trial conversion is considered a renewal.                                   |
+| Phone Number                   | String       | The `$phoneNumber` [Attribute](/customers/customer-attributes) for the customer.                                                 |
+| Total Spent                    | Integer      | The total revenue (in USD) spent by the customer.                                                                                |
+| Trial Cancellation Date        | Date         | The date the customer unsubscribed from their free trial. Will be set back to `null` if the customer later resubscribes.         |
+| Trial End Date                 | Date         | The date the customer's free trial expires.                                                                                      |
+| Trial Start Date               | Date         | The date the customer started their free trial.                                                                                  |
+| Made Non-subscription Purchase | Bool         | Whether the customer has made any [non-subscription](/platform-resources/non-subscriptions) purchases or not.                    |
+| Made Sandbox Purchase          | Bool         | Whether the customer has made any sandbox purchases or not.                                                                      |
+| Status                         | Multi Select | The latest status of the customer.                                                                                               |
 
 :::info Date filters are start of day
 Selecting any date filters will apply to the start of the day. For example, `2021-01-01` will be `2021-01-01T00:00:00` under the hood.
