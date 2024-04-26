@@ -7,7 +7,7 @@ hidden: false
 
 ## Google Historical Import
 
-When migrating to RevenueCat, whether by [forwarding your receipt](/docs/migrating-to-revenuecat/observer-mode#option-1-server-side) or enabling [Observer Mode on the SDK](/docs/migrating-to-revenuecat/observer-mode#option-2-client-side), your Google Play subscription history may be incomplete. Due to a Google limitation, RevenueCat is not able to ingest Google receipts that have expired more than 90 days ago. For receipts that RevenueCat is able to process, Google receipts only return the current snapshot for your subscription. When combining your migration with Google Historical Imports, RevenueCat will be able to fill in the gaps of your subscription history. **Currently RevenueCat is able to import your Google Play transactions from July 2023 and onwards.**
+When migrating to RevenueCat, whether by [forwarding your receipt](/migrating-to-revenuecat/observer-mode#option-1-server-side) or enabling [Observer Mode on the SDK](/migrating-to-revenuecat/observer-mode#option-2-client-side), your Google Play subscription history may be incomplete. Due to a Google limitation, RevenueCat is not able to ingest Google receipts that have expired more than 90 days ago. For receipts that RevenueCat is able to process, Google receipts only return the current snapshot for your subscription. When combining your migration with Google Historical Imports, RevenueCat will be able to fill in the gaps of your subscription history. **Currently RevenueCat is able to import your Google Play transactions from July 2023 and onwards.**
 
 ## Setup
 
@@ -16,10 +16,10 @@ When migrating to RevenueCat, whether by [forwarding your receipt](/docs/migrati
 You should make sure you have the following before proceeding with the setup:
 
 - An existing Play Store app with Google Play purchases
-- Created at least [1 project](/docs/welcome/projects#configure-a-new-project) with [1 Play Store app](/docs/welcome/projects#adding-an-app-to-a-project) in RevenueCat
+- Created at least [1 project](/welcome/projects#configure-a-new-project) with [1 Play Store app](/welcome/projects#adding-an-app-to-a-project) in RevenueCat
 - Uploaded your Google Play package in your RevenueCat Play Store app settings
-- Created and uploaded your [Google Service Credentials](/docs/service-credentials/creating-play-service-credentials) to a Play Store app in RevenueCat. It is imperative you grant Financial Access to RevenueCat. Failure to do so may result in delays importing your Google Play data.
-- Enabled [Google Real-Time Developer Notifications](/docs/platform-resources/server-notifications/google-server-notifications)
+- Created and uploaded your [Google Service Credentials](/service-credentials/creating-play-service-credentials) to a Play Store app in RevenueCat. It is imperative you grant Financial Access to RevenueCat. Failure to do so may result in delays importing your Google Play data.
+- Enabled [Google Real-Time Developer Notifications](/platform-resources/server-notifications/google-server-notifications)
 
 ### 1. Retrieve your bucket ID
 

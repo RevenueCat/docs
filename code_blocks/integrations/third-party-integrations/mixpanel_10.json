@@ -8,7 +8,8 @@
             "$insert_id": "12345678",
             "revenue": 4.99,
             "product_id": "monthly_sub",
-            "store": "APP_STORE"
+            "store": "APP_STORE",
+            "offer_code": null
         }
     },
     "engage_event": {

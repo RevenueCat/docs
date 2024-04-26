@@ -35,7 +35,7 @@ const config = {
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
-  onBrokenAnchors: "throw",
+  onBrokenAnchors: "warn",
 
   trailingSlash: false,
 

@@ -28,4 +28,4 @@ If you see unexpected aliases, you may be incorrectly identifying users. See our
 
 ## Next Step
 
-- [Manage Users ](/dashboard-and-metrics/customers-group/manage-users)
+- [Manage Users ](/dashboard-and-metrics/customer-history/manage-users)

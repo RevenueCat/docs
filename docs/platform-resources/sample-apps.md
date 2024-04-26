@@ -45,7 +45,7 @@ _Hybrid platform example. Hosted in our React Native SDK GitHub repository_
 
 ### Capacitor/Ionic
 
-[Installation ➡️](/getting-started/installation/ionic) | [Sample App ➡️](https://github.com/RevenueCat/purchases-capacitor/tree/main/example/purchase-tester)
+[Installation ➡️](/getting-started/installation/capacitor) | [Sample App ➡️](https://github.com/RevenueCat/purchases-capacitor/tree/main/example/purchase-tester)
 _Hybrid platform example. Hosted in our Capacitor SDK GitHub repository_
 
 ### Cordova

@@ -18,7 +18,7 @@ Experiments is available to Pro & Enterprise customers. [Learn more about pricin
 
 After configuring the two Offerings you want and adding them to an Experiment, RevenueCat will randomly assign users to a cohort where they will only see one of the two Offerings. Everything is done server-side, so no changes to your app are required if you're already displaying the `current` Offering for a given customer in your app!
 
-If you need help making your paywall more dynamic, see [Displaying Products](/docs/getting-started/displaying-products). The [Swift sample app](https://github.com/RevenueCat/purchases-ios/tree/main/Examples) has an example of a [dynamic paywall](https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/PaywallViewController.swift) that is Experiments-ready. Dynamic paywall examples in other languages can be found within our other [sample apps](https://www.revenuecat.com/docs/sample-apps) as well.
+If you need help making your paywall more dynamic, see [Displaying Products](/getting-started/displaying-products). The [Swift sample app](https://github.com/RevenueCat/purchases-ios/tree/main/Examples) has an example of a [dynamic paywall](https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/PaywallViewController.swift) that is Experiments-ready. Dynamic paywall examples in other languages can be found within our other [sample apps](https://www.revenuecat.com/docs/sample-apps) as well.
 
 :::info
 To learn more about creating a new Offering to test, and some tips to keep in mind when creating new Products on the stores, [check out our guide here](/tools/experiments-v1/creating-offerings-to-test).
@@ -62,6 +62,10 @@ Programmatically displaying the `current` Offering in your app when you fetch Of
 Visit [Configuring Experiments](https://www.revenuecat.com/docs/configuring-experiments-v1) to learn how to setup your first test.
 
 ## Tips for Using Experiments
+
+**Pair our paywalls feature with your experiments**
+
+To optimize your Experiments, we recommend using our [Paywalls](https://www.revenuecat.com/docs/tools/paywalls) feature in conjunction with Experiments. Combining these will help ensure the delivery of a dynamic paywall based on the offering generated from the experiment. By integrating these tools, you guarantee that the right paywall is presented to the right audience, which will help you get a better understanding of your experiment along with seeing which paywalls help improve your conversion rates.
 
 **Decide how long you want to run your experiments**
 
