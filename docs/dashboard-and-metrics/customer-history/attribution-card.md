@@ -22,4 +22,4 @@ See our [attribution integrations](/integrations/attribution) to start sending t
 
 ## Next Steps
 
-- [Aliases ](/dashboard-and-metrics/customers-group/aliases-card)
+- [Aliases ](/dashboard-and-metrics/customer-history/aliases-card)

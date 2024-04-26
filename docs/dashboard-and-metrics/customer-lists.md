@@ -50,7 +50,7 @@ RevenueCat creates some default lists for every project. Default lists should gi
 
 :::info Promotionals are not considered 'Active'
 
-If a customer has a [Promotional](/dashboard-and-metrics/customers-group/promotionals) transaction, they are not considered as 'Active'. Note that if a customer has an active subscription + Promotional, they will not be counted in the Active Customer List.
+If a customer has a [Promotional](/dashboard-and-metrics/customer-history/promotionals) transaction, they are not considered as 'Active'. Note that if a customer has an active subscription + Promotional, they will not be counted in the Active Customer List.
 
 :::
 
@@ -136,7 +136,6 @@ See the table below for all filters you can apply to your lists.
 | Latest Store Country       | Multi Select | The latest store country the customer purchased from.                                                                           |
 | Media Source               | String       | The `$mediaSource` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                               |
 | Number of Renewals         | Integer      | The total number of renewals the customer has had. A trial conversion is considered a renewal.                                  |
-
 | Phone Number | String | The `$phoneNumber` [Attribute](/customers/customer-attributes) for the customer. |
 | Total Spent | Integer | The total revenue (in USD) spent by the customer. |
 | Trial Cancellation Date | Date | The date the customer unsubscribed from their free trial. Will be set back to `null` if the customer later resubscribes. |
