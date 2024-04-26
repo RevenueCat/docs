@@ -154,6 +154,10 @@ Selecting any date filters will apply to the start of the day. For example, `202
 
 The complete list of customers in a list can be exported as a .csv file. Exports are processed in the background, and you'll receive an email with a link to download the file. Emails are sent to the logged in account that requested the export. The download links are shareable and available for 30 days.
 
+:::warning Field name changes in April 2023
+We've updated the `app_name` and `app_uuid` fields to `project_name` and `project_id`, since they refer to those values for the Project whose customers are being exported. In addition, new `app_name` and `app_id` fields are available which refer to the App that a customer was last seen using.
+:::
+
 Below is a description of the .csv format for the exported data.
 
 | Column Name                   | Description                                                                                                                                  |
