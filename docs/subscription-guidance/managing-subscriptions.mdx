@@ -69,7 +69,7 @@ Amazon does not support changing products. Customers will need to cancel their e
 
 ### Considerations
 
-#### [PRODUCT_CHANGE](/dashboard-and-metrics/customers-group/customer-history#event-types) events and webhooks
+#### [PRODUCT_CHANGE](/dashboard-and-metrics/customer-history#event-types) events and webhooks
 
 - The `expiration_at_ms` will always be for the product the customer is changing from (old product). 
 - The `PRODUCT_CHANGE` webhook should be considered informative, and does not mean that the product change has gone into effect. When the product change goes into effect you will receive a `RENEWAL` event on Apple and Stripe or a `INITIAL_PURCHASE` event on Google Play. 
@@ -78,11 +78,11 @@ Amazon does not support changing products. Customers will need to cancel their e
 
 ### App Store
 
-For Apple transactions,  prorated revenue **will not** be shown in the [Customer History](/dashboard-and-metrics/customers-group/customer-history) page. However, prorated revenue **will** be calculated for your chart and overview data.
+For Apple transactions,  prorated revenue **will not** be shown in the [Customer History](/dashboard-and-metrics/customer-history) page. However, prorated revenue **will** be calculated for your chart and overview data.
 
 ### Google Play
 
-For Google transactions, prorated revenue will be shown in the [Customer History](/dashboard-and-metrics/customers-group/customer-history) page and will be calculated for your chart and overview data.
+For Google transactions, prorated revenue will be shown in the [Customer History](/dashboard-and-metrics/customer-history) page and will be calculated for your chart and overview data.
 
 ## Cancelling Subscriptions
 

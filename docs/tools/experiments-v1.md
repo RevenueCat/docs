@@ -26,7 +26,7 @@ Plus, you can run multiple tests simultaneously on distinct audience or subsets 
 
 ## Get started with Experiments
 
-- If you're just getting started, make sure your app is ready to use [experiments ](/docs/tools/experiments-v1/experiments-overview-v1)
-- If you've not yet created an Offering for your test hypothesis, [check out our guide to get started ](/docs/tools/experiments-v1/creating-offerings-to-test)
-- For instructions on how to set up an Experiment in your Project, read our [guide on configuring experiments ](/docs/tools/experiments-v1/configuring-experiments-v1)
-- Once the data from your Experiment starts coming in, learn how to [interpret the results ](/docs/tools/experiments-v1/experiments-results-v1)
+- If you're just getting started, make sure your app is ready to use [experiments ](/tools/experiments-v1/experiments-overview-v1)
+- If you've not yet created an Offering for your test hypothesis, [check out our guide to get started ](/tools/experiments-v1/creating-offerings-to-test)
+- For instructions on how to set up an Experiment in your Project, read our [guide on configuring experiments ](/tools/experiments-v1/configuring-experiments-v1)
+- Once the data from your Experiment starts coming in, learn how to [interpret the results ](/tools/experiments-v1/experiments-results-v1)
