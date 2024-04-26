@@ -7,6 +7,7 @@
         "amount": 0,
         "app_id": "1234567890",
         "currency": "EUR",
+        "product_id": "monthly.sub.1",
         "grace_period_expiration_at": 1663146497433
       },
       "evtName": "rc_billing_issue_event",
