@@ -35,7 +35,7 @@ const SampleApp: React.FC<SampleApp> = ({ name, src, links }) => (
             )}
             <a
               href={href}
-              className="text-base-700 no-underline hover:underline leading-tight"
+              className="text-base-700 no-underline hover:underline leading-tight dark:text-base-300"
             >
               {text}
             </a>
