@@ -101,13 +101,14 @@ See the table below for all filters you can apply to your lists.
 | ------------------------------ | ------------ | -------------------------------------------------------------------------------------------------------------------------------- |
 | Ad                             | String       | The `$ad` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                         |
 | Ad Group                       | String       | The `$adGroup` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                    |
-| App Id                         | String       | The ID of the app that the customer was last seen using.                                                                         |
 | App Version                    | String       | The version of the app that the customer was last seen using.                                                                    |
 | Auto Renew Intent              | Bool         | Whether the customer has opted out of auto-renew or not.                                                                         |
 | Campaign                       | String       | The `$campaign` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                   |
 | Cancellation Date              | Date         | The date the customer unsubscribed from their subscription. Will be set back to `null` if the customer later resubscribes.       |
 | Creative                       | String       | The `$creative` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                   |
 | Email                          | String       | The `$email` [Attribute](/customers/customer-attributes) for the customer.                                                       |
+| Experiment Id                  | String       | The unique ID of the experiment that the customer was enrolled in (if applicable).                                               |
+| Experiment Variant             | String       | The variant in the experiment that the customer was enrolled in (if applicable).                                                 |
 | First Purchase Date            | Date         | The date of the customer's first transaction.                                                                                    |
 | First Seen Date                | Date         | The date the customer was first seen by RevenueCat.                                                                              |
 | GPS Ad Id                      | String       | The `$gpsAdId` [](/customers/customer-attributes#device-identifiers) for the customer.                                           |
@@ -115,6 +116,8 @@ See the table below for all filters you can apply to your lists.
 | IDFA                           | String       | The `$idfa` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                                     |
 | IDFV                           | String       | The `$idfv` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                                     |
 | Keyword                        | String       | The `$keyword` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                    |
+| Last Seen App Id               | String       | The ID of the app that the customer was last seen using.                                                                         |
+| Last Seen App Name             | String       | The name of the app that the customer was last seen using.                                                                       |
 | Last Seen Country              | String       | The two-letter ISO 3166-1 alpha-2 code of the country where the user was last seen, determined by IP address.                    |
 | Last Seen Date                 | Date         | The date the customer was last seen by RevenueCat.                                                                               |
 | Last Seen Locale               | String       | The customer's last seen locale.                                                                                                 |
@@ -135,8 +138,6 @@ See the table below for all filters you can apply to your lists.
 | Media Source                   | String       | The `$mediaSource` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                |
 | Number of Renewals             | Integer      | The total number of renewals the customer has had. A trial conversion is considered a renewal.                                   |
 | Phone Number                   | String       | The `$phoneNumber` [Attribute](/customers/customer-attributes) for the customer.                                                 |
-| Price Experiment Id            | String       | The unique ID of the experiment that the customer was enrolled in (if applicable).                                               |
-| Price Experiment Variant       | String       | The variant in the experiment that the customer was enrolled in (if applicable).                                                 |
 | Total Spent                    | Integer      | The total revenue (in USD) spent by the customer.                                                                                |
 | Trial Cancellation Date        | Date         | The date the customer unsubscribed from their free trial. Will be set back to `null` if the customer later resubscribes.         |
 | Trial End Date                 | Date         | The date the customer's free trial expires.                                                                                      |
@@ -151,11 +152,11 @@ Selecting any date filters will apply to the start of the day. For example, `202
 
 ## Exporting Data
 
-The complete list of customers in a list can be exported as a .csv file. Exports are processed in the background, and you'll receive an email with a link to download the file. Emails are sent to the logged in account that requested the export. The download links are shareable and available for 30 days.
-
 :::warning Field name changes in April 2023
-We've updated the `app_name` and `app_uuid` fields to `project_name` and `project_id`, since they refer to those values for the Project whose customers are being exported. In addition, new `app_name` and `app_id` fields are available which refer to the App that a customer was last seen using.
+We've updated the `app_name` and `app_uuid` fields to `project_name` and `project_id`, since they refer to those values for the Project whose customers are being exported. In addition, new `app_name` and `app_id` fields are available which refer to the App that a customer was last seen using; as well as new fields for app version, platform, experiments, offers, and more.
 :::
+
+The complete list of customers in a list can be exported as a .csv file. Exports are processed in the background, and you'll receive an email with a link to download the file. Emails are sent to the logged in account that requested the export. The download links are shareable and available for 30 days.
 
 Below is a description of the .csv format for the exported data.
 
