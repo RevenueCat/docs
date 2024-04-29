@@ -111,7 +111,7 @@ See the table below for all filters you can apply to your lists.
 | First Purchase Date        | Date         | The date of the customer's first transaction.                                                                                   |
 | First Seen Date            | Date         | The date the customer was first seen by RevenueCat.                                                                             |
 | GPS Ad Id                  | String       | The `$gpsAdId` [](/customers/customer-attributes#device-identifiers) for the customer.                                          |
-| Granted RC Promotional     | Bool         | Whether the customer has been granted a [Promotional Subscription](/dashboard-and-metrics/promotionals) or not. |
+| Granted RC Promotional     | Bool         | Whether the customer has been granted a [Promotional Subscription](/dashboard-and-metrics/customer-history/promotionals) or not. |
 | IDFA                       | String       | The `$idfa` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                                    |
 | IDFV                       | String       | The `$idfv` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                                    |
 | Keyword                    | String       | The `$keyword` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                   |
