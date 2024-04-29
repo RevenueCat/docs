@@ -11,7 +11,8 @@
         "$displayName": "first last",
         "$mediaSource": "Organic",
         "amount": 0.0,
-        "currency": "USD"
+        "currency": "USD",
+        "product_id": "monthly.sub.1"
       },
       "ts": 1632188342,
       "objectId": "abCdEFg01HiJklMN2OpQ3RStu4v5"
