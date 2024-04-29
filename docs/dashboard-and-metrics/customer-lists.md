@@ -152,7 +152,7 @@ Selecting any date filters will apply to the start of the day. For example, `202
 
 ## Exporting Data
 
-:::warning Field name changes in April 2023
+:::warning Field name changes in April 2024
 We've updated the `app_name` and `app_uuid` fields to `project_name` and `project_id`, since they refer to those values for the Project whose customers are being exported. In addition, new `app_name` and `app_id` fields are available which refer to the App that a customer was last seen using; as well as new fields for app version, platform, experiments, offers, and more.
 :::
 
