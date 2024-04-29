@@ -294,7 +294,7 @@ a[href="https://redocly.com/redoc/"]
 }
 
 .api-content .theme-admonition.alert--warning .heading::before {
-  content:'⚠️ ';
+  content: "⚠️ ";
 }
 
 .theme-doc-markdown {
@@ -326,5 +326,9 @@ main .row {
 @layer components {
   .tw-container {
     @apply mx-auto max-w-7xl px-[clamp(1rem,0.0909rem+4.5455vi,3rem)];
+  }
+
+  #sample-apps {
+    @apply w-full grid grid-cols-1 gap-6 xl:grid-cols-2;
   }
 }
