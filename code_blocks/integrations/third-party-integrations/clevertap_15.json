@@ -4,11 +4,13 @@
       "type": "event",
       "evtName": "rc_product_change_event",
       "evtData": {
+        "new_product_id": "yearly.sub.2",
         "amount": 0.0,
-        "currency": "USD"
+        "currency": "USD",
+        "product_id": "monthly.sub.1"
       },
       "ts": 1626283709,
-      "identity": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+      "identity": "$RCAnonymousID:87c6049c58069238dce29853916d624c"
     }
   ]
 }

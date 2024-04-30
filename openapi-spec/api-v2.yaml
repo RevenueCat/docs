@@ -4811,6 +4811,7 @@ components:
       - store
       - store_subscription_identifier
       - ownership
+      - management_url
       - object
       properties:
         object:
@@ -5020,6 +5021,11 @@ components:
           $ref: '#/components/schemas/Country'
           description: Billing country in ISO alpha 2 code
           nullable: true
+        management_url:
+          description: The URL to manage the subscription
+          nullable: true
+          type: string
+          example: https://apps.apple.com/account/subscriptions
     SubscriptionProduct:
       type: object
       required:

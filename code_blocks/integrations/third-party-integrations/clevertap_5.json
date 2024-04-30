@@ -4,7 +4,8 @@
       "evtData": {
         "amount": 4.99,
         "app_id": "1234567890",
-        "currency": "USD"
+        "currency": "USD",
+        "product_id": "monthly.sub.1"
       },
       "evtName": "rc_initial_purchase_event",
       "identity": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
