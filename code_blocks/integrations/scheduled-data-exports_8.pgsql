@@ -7,7 +7,7 @@ WITH filtered_transactions AS
     AND ownership_type != 'FAMILY_SHARED'
     AND store != 'promotional'
     AND is_sandbox != 'true'
-    AND was_refunded = 'false'
+    AND refunded_at IS NULL
     AND price > 0),
 
 first_purchase_dates AS
