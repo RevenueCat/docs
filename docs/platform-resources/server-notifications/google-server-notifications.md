@@ -33,7 +33,9 @@ Click '**Connect to Google**'. You should see a generated Google Cloud Pub/Sub T
 - Where: Google Play Console
 - Google Play Homepage ➡️ App Dashboard ➡️ 'Monetize' section of sidebar ➡️ Monetization Setup
 
-In Google Play console, head to the dashboard for your app and find the '**Monetize**' section of the sidebar. Choose '**Monetization Setup**'. In the Real-time developer notifications section, paste your copied topic ID next to '**Topic name**'. Be sure to Save Changes at the very bottom right.
+In Google Play console, head to the dashboard for your app and find the '**Monetize**' section of the sidebar. Choose '**Monetization Setup**'. In the Real-time developer notifications section, paste your copied topic ID next to '**Topic name**' and select 'Subscriptions, voided purchases, and all one-time products' next to **Notification content**. Be sure to Save Changes at the very bottom right.
+
+![Google Play Console Notification Content](/images/google-play-real-time-notifications-type-choice.png)
 
 If you don't see any errors, your real-time developer notifications should be ready to go!
 
