@@ -58,7 +58,7 @@ function LandingPage() {
             >
               <Button href="/docs/welcome/overview">Get Started</Button>
               <Button
-                href="/getting-started/quickstart/quickstart"
+                href="/docs/getting-started/quickstart"
                 variant="secondary"
               >
                 Install the SDK
