@@ -1,6 +1,6 @@
 ## General Issues
 ### Products or Offerings can't be fetched, or Offerings are empty
-If you can't fetch products, or your offerings are empty, this is nearly always a configuration issue. We have a guide detailing next steps [in our community here](https://community.revenuecat.com/sdks-51/why-are-offerings-or-products-empty-124). For Google Play Store issues, please refer to our [Google Play Checklists](/service-credentials/creating-play-service-credentials/google-play-checklists).
+If you can't fetch products, or your offerings are empty, this is nearly always a configuration issue. We have a guide detailing the next steps [in our community here](https://community.revenuecat.com/sdks-51/why-are-offerings-or-products-empty-124). For Google Play Store issues, please refer to our [Google Play Checklists](/service-credentials/creating-play-service-credentials/google-play-checklists).
 
 Here's how it works under the hood:
 
@@ -28,7 +28,7 @@ Restoring purchases will re-sync the user's purchase with the currently identifi
 
 If a user's purchases were transferred, it means that a different user ID _claimed_ the transactions or purchases that another user in RevenueCat already owned. When we detect this, we perform a _transfer_ so that the user can continue accessing purchases on the device they are currently logged into.
 
-While this may seem unexpected at times, this is **extremely common**, and is a valid case for apps with subscriptions. Since the transactions are actually associated to the **underlying store account**, when a user claims a receipt that is already owned by another user ID it means that:
+While this may seem unexpected at times, this is **extremely common**, and is a valid case for apps with subscriptions. Since the transactions are actually associated with the **underlying store account**, when a user claims a receipt that is already owned by another user ID it means that:
 
 1. The user is logged into the underlying store account, indicating ownership of those purchases.
 2. The user is attempting to restore those purchases from a different app user ID than the one that already owns the purchases.
@@ -76,3 +76,6 @@ Furthermore, RevenueCat metrics (active subscriptions, active trials, etc.) are 
 If your app sold in-app purchases before implementing the RevenueCat SDK, it's very likely these metrics won't align until every single one of your previous users updates their app to a version with the RevenueCat SDK, and has their transactions synced.
 
 You can read more about data discrepancies in our article [here](https://community.revenuecat.com/featured-articles-55/about-data-discrepancies-116).
+
+### Store rejections
+If your app is being denied from the respective store it can be for many different reasons. We have a useful document [here](https://www.revenuecat.com/docs/test-and-launch/app-store-rejections) that goes over common reasons for rejection and how to help get your app approved! 
