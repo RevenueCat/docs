@@ -35,6 +35,15 @@ While this may seem unexpected at times, this is **extremely common**, and is a 
 
 We recommend also looking more into your transfer settings as this can chang the behavior in your app when a transfer is made. More information on this can be found [here](https://www.revenuecat.com/docs/getting-started/restoring-purchases#transferring-purchases-seen-on-multiple-app-user-ids). 
 
+### I accidentally logged in all of my app users with the same app user ID.
+A simple way to fix this issue can be found below:
+1. Release an app update that removes the hard-coded app user ID and for users who had that app user ID, either:
+    1. call logOut
+    2. set a different app user ID
+2. Wait until most of your users get the update.
+3. Delete the hard-coded app user ID from the [dashboard](https://www.revenuecat.com/docs/dashboard-and-metrics/customer-history/manage-users) or the [API](https://www.revenuecat.com/docs/api-v1#tag/customers/operation/delete-subscriber).
+4. Users who were reset/reidentified will need to restore purchases in order to re-gain their entitlements and re-link their subscription with their current app user ID.
+
 ### Can I reset customer attributes? 
 While you can't directly reset customer attributes, you can delete your current attribute by passing null or an empty string as the key value. Individual attributes can also be cleared for a specific user in their customer view. Once you do this, you will be able to set these attributes to whatever they need to be set to effectively resetting them. 
 
