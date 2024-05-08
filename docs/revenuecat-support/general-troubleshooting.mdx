@@ -1,0 +1,78 @@
+## General Issues
+### Products or Offerings can't be fetched, or Offerings are empty
+If you can't fetch products, or your offerings are empty, this is nearly always a configuration issue. We have a guide detailing next steps [in our community here](https://community.revenuecat.com/sdks-51/why-are-offerings-or-products-empty-124). For Google Play Store issues, please refer to our [Google Play Checklists](/service-credentials/creating-play-service-credentials/google-play-checklists).
+
+Here's how it works under the hood:
+
+1. Products are configured in each store
+2. Product identifiers are added to your Offering configuration in the RevenueCat dashboard
+3. The RevenueCat SDK fetches the configuration from the RevenueCat API
+4. The SDK requests the products in the configuration from the stores directly
+5. The stores return the valid products from that request
+
+If the stores are unable to return valid products, it means that somewhere in that cycle there is a configuration issue. If there is a typo in your product identifier, the request will fail. If the bundle ID doesn't match the configuration in App Store Connect (or package name for Google Play, etc.), the request will fail. The guide linked above details the potential configuration issues.
+
+### Customer can't access their entitlements?
+This can happen for multiple reasons, but the most common reasons for this are the following: 
+1. The user's identifier changed (via re-installation, created a new account, etc.). This is very common, and should be an expected part of your app's flow. This can happen automatically at times, like after a re-install of your app.
+3. The user's subscription purchases expired (in this case, they should re-purchase).
+
+If a user has active purchases that are no longer synced to their user ID or they have lost access, they need to **[restore purchases](/getting-started/restoring-purchases)**. **You should always have a restore purchases button in your app** - typically located in your paywall or in-app settings page to make it easy for your users to find the option.
+
+Restoring purchases will re-sync the user's purchase with the currently identified user ID and re-unlock any entitlements that have been lost due to a changed user ID. If this does not work, it might have to do with you're identifying users or how you are checking for entitlements. We recommend checking the respective docs linked below.
+- [Restore behavior](https://www.revenuecat.com/docs/getting-started/restoring-purchases).
+- [Identifying users](https://www.revenuecat.com/docs/customers/user-ids).
+- [Checking subscription status](https://www.revenuecat.com/docs/customers/customer-info).
+
+### A user's purchases were mistakenly transferred
+
+If a user's purchases were transferred, it means that a different user ID _claimed_ the transactions or purchases that another user in RevenueCat already owned. When we detect this, we perform a _transfer_ so that the user can continue accessing purchases on the device they are currently logged into.
+
+While this may seem unexpected at times, this is **extremely common**, and is a valid case for apps with subscriptions. Since the transactions are actually associated to the **underlying store account**, when a user claims a receipt that is already owned by another user ID it means that:
+
+1. The user is logged into the underlying store account, indicating ownership of those purchases.
+2. The user is attempting to restore those purchases from a different app user ID than the one that already owns the purchases.
+
+We recommend also looking more into your transfer settings as this can chang the behavior in your app when a transfer is made. More information on this can be found [here](https://www.revenuecat.com/docs/getting-started/restoring-purchases#transferring-purchases-seen-on-multiple-app-user-ids). 
+
+### Can I reset customer attributes? 
+While you can't directly reset customer attributes, you can delete your current attribute by passing null or an empty string as the key value. Individual attributes can also be cleared for a specific user in their customer view. Once you do this, you will be able to set these attributes to whatever they need to be set to effectively resetting them. 
+
+### SDK Issues?
+We have gone ahead and created a document to troubleshoot SDK problems which we recommend checking out [here](https://www.revenuecat.com/docs/test-and-launch/debugging/troubleshooting-the-sdks)! 
+
+## Service credentials issues
+Service credentials issues can be tricky and can occur for multiple reasons but will stop you from making purchases successfully. Below is a list of things to check for your credentials in each store. 
+
+### Google Play Service credentials Troubleshooting
+We have a great document [here](https://www.revenuecat.com/docs/test-and-launch/debugging/troubleshooting-the-sdks) that goes over how to check which part of your credentials is failing and if it is failing how to fix the issue at hand. We recommend checking that out if you are experiencing any issues in relation to this! 
+
+### App Store Connect API Key
+Make sure to verify that your key ID and Issuer ID are set correctly in correlation with the file that you uploaded. 
+
+## Event Issues
+
+### I see an event in RevenueCat, but it wasn't sent to webhooks or my own integration!
+Missing events are often a configuration issue. Most third-party integrations that we support require additional configuration before events will be sent; if that configuration hasn't been completed, events won't be dispatched to the third-party provider.
+
+For example, many integrations require a [Attribute](/customers/customer-attributes) to be set on each Customer before events can be dispatched. Ensure that this value (typically from the third-party SDK) is set on a user before contacting support.
+
+## Metrics and Data troubleshooting
+
+### Revenue data in RevenueCat doesn't match the real revenue data for individual transactions
+
+Revenue and pricing data in RevenueCat uses a **best-effort** approach. Some stores don't allow developers to see individual prices for transactions, so RevenueCat infers transaction prices based on the price of the product when it was originally purchased.
+
+If you **change prices** of your products in App Store Connect or Google Play, revenue data in RevenueCat will be off by a larger margin. For this reason, we almost always recommend [creating a new product instead](/subscription-guidance/price-changes).
+
+In truth, the only **real** metric of earnings is the actual payout amounts that each payment processor (the stores) deposits into your account. You should use revenue metrics in RevenueCat's dashboard to track trends, but for accounting purposes we recommend using the actual store payout reports.
+
+### Metrics that I'm seeing in RevenueCat don't match App Store Connect, Google Play, etc.
+
+RevenueCat doesn't pull data from App Store or Google Play reports directly, so it's very likely the data you see in RevenueCat won't align 1:1 with those stores. This is expected behavior. Additionally, RevenueCat definitions don't always align with store definitions. For example, Google Play considers an 'active subscriber' to include free trials, whereas RevenueCat does not.
+
+Furthermore, RevenueCat metrics (active subscriptions, active trials, etc.) are generated based on _the synced receipts we have for your users_. If those receipts/transactions aren't synced to RevenueCat, they **won't** be included in Charts or other RevenueCat metrics.
+
+If your app sold in-app purchases before implementing the RevenueCat SDK, it's very likely these metrics won't align until every single one of your previous users updates their app to a version with the RevenueCat SDK, and has their transactions synced.
+
+You can read more about data discrepancies in our article [here](https://community.revenuecat.com/featured-articles-55/about-data-discrepancies-116).
