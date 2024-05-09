@@ -62,7 +62,7 @@ First, navigate to "Targeting" in the "Monetization tools" section of your Proje
 Then, create your rule by:
 
 1. Entering a Display name
-2. Selecting your desired conditions (learn more about conditions here)
+2. Selecting your desired conditions (learn more about conditions [here](/tools/targeting#learn-more-about-conditions))
 3. Selecting an Offering to display when those conditions are met
 4. Selecting your desired State for the rule
 
