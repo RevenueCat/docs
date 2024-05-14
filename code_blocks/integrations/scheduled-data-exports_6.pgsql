@@ -15,10 +15,10 @@ WHERE date(start_time) > [targeted_period_start_date]
   GROUP BY original_store_transaction_id) as subscriptions
   
 SELECT
-  to_char(first_start_time, 'YYYY-MM') as subscription_start_month,
+  date_trunc('month', subscription_start_time) as subscription_start_month,
   had_a_trial,
-  COUNT() as subscriptions,
+  COUNT(*) as subscriptions,
   SUM(realized_ltv) as realized_ltv,
-  SUM(realized_ltv) / COUNT() as realized_ltv_per_subscription
+  SUM(realized_ltv) / COUNT(*) as realized_ltv_per_subscription
 FROM
   subscriptions
