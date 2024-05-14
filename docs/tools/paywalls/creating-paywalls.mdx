@@ -83,6 +83,7 @@ We support the following variables:
 | total_price_and_per_month      | The localized price of a given package with its monthly equivalent price if it has one                  | $39.99/yr ($3.33/mo)      | \*      | \*          |
 | total_price_and_per_month_full | The localized price of a given package with its monthly equivalent price if it has one                  | $39.99/year ($3.33/month) | 4.35.0  | 7.5.0       |
 | sub_price_per_month            | The localized price of a given package converted to a monthly equivalent price                          | $3.33                     | \*      | \*          |
+| sub_price_per_week             | The localized price of a given package converted to a weekly equivalent price                           | $3.33                     | 4.30.   | 7.2.0       |
 | sub_duration                   | The duration of the subscription; '1 month', '3 months', '1 year', etc.                                 | 1 year                    | \*      | \*          |
 | sub_duration_in_months         | The duration of the subscription in months; '3 months', '12 months', etc.                               | 12 months                 | \*      | \*          |
 | sub_period                     | The length of each period of the standard offer on a given package                                      | Monthly                   | \*      | \*          |
@@ -92,6 +93,8 @@ We support the following variables:
 | sub_offer_duration_2           | The period of the second introductory offer on a given package (Google Play only)                       | 7 days                    | \*      | \*          |
 | sub_offer_price                | The localized price of the introductory offer of a given package                                        | $4.99                     | \*      | \*          |
 | sub_offer_price_2              | The localized price of the second introductory offer of a given package (Google Play only)              | $4.99                     | \*      | \*          |
+| sub_relative_discount          | The localized discount percentage compared to the most expensive package per period                     | 19% off                   | 4.26.0  | 7.2.0       |
+
 
 Some variables are not available on all version of the SDK. If an unavailable variable is found on an older version of the SDK, RevenueCatUI will automatically display a [default paywall](/tools/paywalls/displaying-paywalls#default-paywall) to avoid showing a broken paywall.
 To prevent this, you may use [Targetting](/tools/targeting) to control who can see a paywall with a newer variable.
