@@ -9,7 +9,7 @@ Promotional subscriptions allow you to give a user access to premium content for
 ![Image](/images/71a69eb-app.revenuecat.com_customers_c41ee56e_RCAnonymousID_d624590ed522430fa1065c498a46c4ea_5a7054e5411bb75a770d1d3c498a5460.png)
 
 :::info Promotional subscriptions won't affect billing
-Promotional subscriptions are a RevenueCat specific feature and work independently of Amazon, App Store, Play Store, and Stripe billing and will never cancel a user's subscription, charge a user, issue a refund, or convert to a paid subscription.
+Promotional subscriptions are a RevenueCat specific feature and work independently of the App Store, Play Store, Amazon, and Stripe billing and will never cancel a user's subscription, charge a user, issue a refund, or convert to a paid subscription.
 
 Promotionals don't stack on top of store subscriptions, and are applied alongside them instead.
 :::
