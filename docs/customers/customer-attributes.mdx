@@ -287,7 +287,7 @@ import content17 from "!!raw-loader!@site/code_blocks/customers/subscriber-attri
 
 ## Deleting Attributes
 
-Any attribute can be cleared by passing `null` or an empty string as the key value. Individual attributes can also be cleared for a specific user in their [customer view](/dashboard-and-metrics/customer-history/basic-information).
+Any attribute can be cleared by passing `null` or an empty string as the key value. If you plan to set this attribute immediately, we recommend you call syncPurchases() or invalidateCustomerInfoCache() to push this change to our backend faster. Individual attributes can also be cleared for a specific user in their [customer view](/dashboard-and-metrics/customer-history/basic-information).
 
 import content18 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_18.swift";
 import content25 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_25.m";
