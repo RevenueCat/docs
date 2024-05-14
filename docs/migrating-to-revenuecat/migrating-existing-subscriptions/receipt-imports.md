@@ -48,11 +48,7 @@ To do a receipt import we'll need 3 csv files for iOS, Android and Stripe with t
 
 You can find a sample iOS reference csv file [here](https://github.com/RevenueCat-Samples/import-csv-samples/blob/main/iOS/ios_receipt_import_sample.csv).
 
-\*If you don't have prices and currency with the transactions we can take a separate file with a mapping of product_id, price, currency as well. If there were any known price changes, those should also be included here. You can find a sample price mapping [here](https://github.com/RevenueCat-Samples/import-csv-samples/blob/main/iOS/ios_product_price_map_sample.csv). Note that the duration and introductory_price_duration fields use the ISO 8601 format for representing durations.
-
-:::info Product prices are required for iOS imports
-Whether you include the products and prices with each receipt in the CSV file or attach a separate file of products and prices, the prices of products is required so that RevenueCat can accurately compute your charts and send events with correct revenue data.
-:::
+In order to accurately detect pricing, upload your App Store Connect API key and configure v2 server notifications, see [here](https://www.revenuecat.com/docs/subscription-guidance/price-changes#price-detection) for more info.
 
 :::warning `latest_receipt_info` not supported for iOS imports
 The entire iOS receipt file must be used for imports. The [`latest_receipt_info`](https://developer.apple.com/documentation/appstorereceipts/responsebody/latest_receipt_info) is not supported as it's only a subset of the entire receipt.
