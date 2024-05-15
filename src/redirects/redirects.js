@@ -233,6 +233,10 @@ const redirects = {
       from: "/entitlements",
     },
     {
+      to: "/getting-started/entitlements",
+      from: "/legacy-entitlements",
+    },
+    {
       to: "/getting-started/quickstart",
       from: "/getting-started",
     },
