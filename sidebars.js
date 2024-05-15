@@ -442,7 +442,10 @@ const supportCategory = Category({
   emoji: "🛟",
   label: "RevenueCat Support",
   slug: "revenuecat-support",
-  items: [Page({ slug: "support-first-steps" })],
+  items: [
+    Page({ slug: "support-first-steps" }), 
+    Page({ slug: "general-troubleshooting" })
+  ],
 });
 
 const sdkMigrationCategory = Category({
