@@ -64,6 +64,7 @@ const gettingStartedCategory = Category({
         Page({ slug: "google-subscriptions-and-backwards-compatibility" }),
         Page({ slug: "amazon-product-setup" }),
         Page({ slug: "stripe-products" }),
+        Page({ slug: "dataonboarding" }]
         Link({
           label: "RevenueCat Billing Product Setup",
           slug: "/web/revenuecat-billing/product-setup",
