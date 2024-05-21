@@ -64,7 +64,6 @@ const gettingStartedCategory = Category({
         Page({ slug: "google-subscriptions-and-backwards-compatibility" }),
         Page({ slug: "amazon-product-setup" }),
         Page({ slug: "stripe-products" }),
-        Page({ slug: "dataonboarding" }]
         Link({
           label: "RevenueCat Billing Product Setup",
           slug: "/web/revenuecat-billing/product-setup",
@@ -108,6 +107,10 @@ const gettingStartedCategory = Category({
       label: "Configuring Server Notifications",
       slug: "/platform-resources/server-notifications",
     }),
+    Page({ slug: "data-onboarding" }),
+    Link({
+      label: "Data Onboarding",
+      slug: "/data-onboarding",
   ],
 });
 
