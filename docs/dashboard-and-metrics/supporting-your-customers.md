@@ -15,7 +15,7 @@ The “Support” role was developed specifically with this use case in mind. Co
 Of course, you can also give your support team one of the other RevenueCat roles if you wish them to have access to more data and functionality. See how to invite a collaborator and learn about other permission options here. 
 
 
-<h2>Looking up customers in RevenueCat</h2>
+## Looking up customers in RevenueCat
 How you look up customers will depend partially on your implementation and what data you’re passing into RevenueCat. 
 
 All customers can be found by searching for an App User ID, Transaction ID, or Order ID (iOS only). In order to find a customer via their email, you must be passing email as a custom attribute to RevenueCat. 
@@ -25,13 +25,13 @@ To find a customer, visit the Customer tab in the RevenueCat dashboard and look 
 To learn more about finding individual customers visit [Find an Individual Customer](https://www.revenuecat.com/docs/dashboard-and-metrics/customer-lists#find-an-individual-customer).
 
 
-<h2>Reviewing a customer’s subscription history</h2>
+## Reviewing a customer’s subscription history
 RevenueCat knows a lot about your customers from when they were first seen using the app, to when they made their first purchase, and even to when their subscription most recently renewed. 
 
 All of these events can be found in the Customer History on the Customer’s profile. Learn more about the specific event types and the additional details they contain from our [Customer History](https://www.revenuecat.com/docs/dashboard-and-metrics/customer-history) documentation. 
 
 
-<h2>Managing customer subscriptions</h2>
+## Managing customer subscriptions
 Not only can you see information about your customer’s subscriptions in the RevenueCat dashboard, but you can also perform certain actions (without ever needing to log into the stores).
 
 Here are some of the ways you can make changes to a customer’s subscription from RevenueCat: 
@@ -42,8 +42,8 @@ Here are some of the ways you can make changes to a customer’s subscription fr
 
 
 ### More Popular Features & FAQs
-1. <a href="https://www.revenuecat.com/docs/dashboard-and-metrics/customer-history">Customer History</a>
-2. <a href="https://www.revenuecat.com/docs/dashboard-and-metrics/customer-history/promotionals">Promotionals</a>
-3. <a href="https://www.revenuecat.com/docs/dashboard-and-metrics/customer-lists">Customer Lists</a>
-4. <a href="https://www.revenuecat.com/docs/dashboard-and-metrics/customer-history/manage-users">Deleting Users</a>
-5. <a href="https://www.revenuecat.com/docs/dashboard-and-metrics/customer-history/active-entitlements">Active Entitlements</a>
+1. [Customer History](https://dev-docs.revenuecat.com/pr-257/dashboard-and-metrics/customer-history)
+2. [Promotionals](https://www.revenuecat.com/docs/dashboard-and-metrics/customer-history/promotionals)
+3. [Customer Lists](https://www.revenuecat.com/docs/dashboard-and-metrics/customer-lists)
+4. [Deleting Users](https://www.revenuecat.com/docs/dashboard-and-metrics/customer-history/manage-users)
+5. [Active Entitlements](https://www.revenuecat.com/docs/dashboard-and-metrics/customer-history/active-entitlements)
