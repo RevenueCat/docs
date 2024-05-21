@@ -110,8 +110,7 @@ const gettingStartedCategory = Category({
     Page({ slug: "data-onboarding" }),
     Link({
       label: "Data Onboarding",
-      slug: "data-onboarding",
-      items: [Page({ slug: "dataonboarding" })],
+      slug: "/getting-started/data-onboarding",
   ],
 });
 
