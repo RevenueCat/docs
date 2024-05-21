@@ -1,6 +1,6 @@
 ---
 title: Data Onboarding & Quickstart Guide
-slug: dataonboarding
+slug: data-onboarding
 excerpt: Get Started with Your Data in RevenueCat
 hidden: false
 ---
