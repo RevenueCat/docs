@@ -7,7 +7,7 @@ hidden: false
 
 As the central location for all your subscription data, RevenueCat is a power tool for supporting your customers with questions about their subscriptions. From looking up a customer’s purchase history to issuing refunds to granting promotional entitlements, your customer support team has lots of tools at their fingertips in the RevenueCat Dashboard.
 
-<h2>Inviting your customer support team to RevenueCat</h2>
+## Inviting your customer support team to RevenueCat
 In order for your customer support team to take advantage of RevenueCat’s features, they first need access to RevenueCat!
 
 The “Support” role was developed specifically with this use case in mind. Collaborators with this permission can manage individual customers, including Customer Timelines, grant Promotional Entitlements, issue refunds, and delete customers. However, they’re not able to view any financial data or access most app settings.
