@@ -3,6 +3,20 @@ title: Data Onboarding & Quickstart Guide
 slug: dataonboarding
 excerpt: Get Started with Your Data in RevenueCat
 hidden: false
+
+const exampleCategory = Category({
+  emoji: “📀”,
+  label: “Data Onboarding”,
+  slug: “dataonboarding",
+  items: [
+    Page({ slug: "dataonboarding" }),    // /docs/getting-started/dataonboarding
+    Link({
+      label: "Data Onboarding",
+      slug: "/docs/getting-started/dataonboarding",
+    }),
+  ],
+});
+
 ---
 
 So, you're a data person, huh? Well you’re in luck, because we have a lot of it. Here, we’ll cover some of the basics to help you get started with RevenueCat. 
@@ -43,17 +57,4 @@ Read more about <a href="https://www.revenuecat.com/docs/integrations/integratio
 4. <a href="https://www.revenuecat.com/docs/integrations/integrations">Events Overview & Getting Data Out of RevenueCat</a>
 5. <a href="https://www.revenuecat.com/docs/integrations/scheduled-data-exports">Scheduled Data Exports</a>
 6. <a href="https://www.revenuecat.com/docs/integrations/third-party-integrations">3rd Party Integrations</a>
-
-const exampleCategory = Category({
-  emoji: “📀”,
-  label: “Data Onboarding”,
-  slug: “dataonboarding",
-  items: [
-    Page({ slug: "dataonboarding" }),    // /docs/getting-started/dataonboarding
-    Link({
-      label: "Data Onboarding",
-      slug: "/docs/getting-started/dataonboarding",
-    }),
-  ],
-});
 
