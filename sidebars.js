@@ -259,6 +259,7 @@ const dashboardCategory = Category({
     Page({ slug: "customer-lists" }),
     Page({ slug: "taxes-and-commissions" }),
     Page({ slug: "performance-summaries" }),
+    Page({ slug: "supporting-your-customers"}),
   ],
 });
 
