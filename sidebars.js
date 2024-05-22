@@ -108,6 +108,10 @@ const gettingStartedCategory = Category({
       slug: "/platform-resources/server-notifications",
     }),
     Page({ slug: "how-grace-periods-work" }),
+    Link({
+      label: "Data Onboarding",
+      slug: "/getting-started/data-onboarding",
+    }),
   ],
 });
 
