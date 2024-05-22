@@ -107,6 +107,7 @@ const gettingStartedCategory = Category({
       label: "Configuring Server Notifications",
       slug: "/platform-resources/server-notifications",
     }),
+    Page({ slug: "data-onboarding" }),
   ],
 });
 
