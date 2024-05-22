@@ -55,7 +55,7 @@ To detect grace periods in the `GET /subscriber` [endpoint](https://www.revenuec
 Once a user corrects their payment method, RevenueCat will send a renewal event. This will reset the `grace_period_expires_date` property to `null` in the `GET /subscriber` endpoint.
 
 :::info Stripe and Grace Periods
-The property `grace_period_expires_date` will always be null for Stripe subscriptions, even those in a billing issue. This is due to how Stripe creates transactions - when a payment fails, the grace period is already included in the expiration date of the new transaction. If all payment retries fail, `expires_date` will be updated.
+The property `grace_period_expires_date` will always be null for Stripe subscriptions, even those in a billing retry period. This is due to how Stripe creates transactions - when a payment fails, the grace period is already included in the expiration date of the new transaction. If all payment retries fail, `expires_date` will be updated.
 :::
 
 ### Dashboard
