@@ -107,11 +107,7 @@ const gettingStartedCategory = Category({
       label: "Configuring Server Notifications",
       slug: "/platform-resources/server-notifications",
     }),
-    Page({ slug: "data-onboarding" }),
-    Link({
-      label: "Data Onboarding",
-      slug: "data-onboarding",
-    }),
+    Page({ slug: "how-grace-periods-work" }),
   ],
 });
 
