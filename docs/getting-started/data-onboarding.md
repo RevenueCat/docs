@@ -32,7 +32,7 @@ This becomes a bit more nuanced when observing all current states of your users,
 
 RevenueCat events work by connecting directly to the app stores, meaning they are not dependent on any in-app usage or activity and are always sent from RevenueCat's servers. Server-side event detection is crucial for subscription apps since most interesting events occur when your app is inactive (e.g. trial conversions, renewals, cancellations, etc.).
 
-Read more about <a href="https://www.revenuecat.com/docs/integrations/integrations">Events</a> and explore <a href="Common Webhook Flows used to notify you throughout a customer’s journey. 
+Read more about <a href="https://www.revenuecat.com/docs/integrations/integrations">Events</a> and explore <a href="https://www.revenuecat.com/docs/integrations/webhooks/event-flows">Common Webhook Flows</a> used to notify you throughout a customer’s journey. 
 
 
 ### More Popular Features & FAQs
