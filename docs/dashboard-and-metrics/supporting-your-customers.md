@@ -7,6 +7,8 @@ hidden: false
 
 As the central location for all your subscription data, RevenueCat is a power tool for supporting your customers with questions about their subscriptions. From looking up a customer’s purchase history to issuing refunds to granting promotional entitlements, your customer support team has lots of tools at their fingertips in the RevenueCat Dashboard.
 
+<YouTubeEmbed videoId="hZUsNSYKde8" title="Customer Support with RevenueCat" />
+
 ## Inviting your customer support team to RevenueCat
 In order for your customer support team to take advantage of RevenueCat’s features, they first need access to RevenueCat!
 
