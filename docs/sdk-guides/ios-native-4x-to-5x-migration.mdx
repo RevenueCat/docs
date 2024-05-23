@@ -57,4 +57,4 @@ import content2 from "!!raw-loader!@site/code_blocks/sdk-guides/ios-native-4x-to
 Due to some limitations with StoreKit 2, the `originalApplicationVersion` and `originalPurchaseDate` properties are not available in the SDK, REST API, and webhooks when using StoreKit 2 in the SDK. If you need to access these properties, continue using StoreKit 1.
 If you have converted a paid app to a subscription app and grandfather users based on these fields, we recommend:
 - If you only support iOS 16+, follow [Apple’s guide](https://developer.apple.com/documentation/storekit/supporting_business_model_changes_by_using_the_app_transaction) to fetch these properties from `AppTransaction`
-- If you need to support iOS versions <16, continue using StoreKit 1
+- If you need to support iOS versions &lt;16, continue using StoreKit 1
