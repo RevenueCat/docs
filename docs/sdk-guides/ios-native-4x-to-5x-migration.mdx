@@ -8,7 +8,7 @@ Read the migration blog post (PLEASE ADD LINK HERE!!!!!!) for more information a
 :::
 
 :::info
-View the iOS SDK Reference documentation here (REMINDER UPDATE THIS!!)
+View the iOS SDK Reference documentation [here](http://revenuecat.github.io/purchases-ios-docs/) (REMINDER UPDATE)
 :::
 
 ## Xcode version requirements and updated deployment targets
@@ -26,10 +26,10 @@ View the iOS SDK Reference documentation here (REMINDER UPDATE THIS!!)
 Most of the changes introduced in the native iOS SDK v5 will happen automatically without any action from you. There is, however, one important thing you need to do to make sure we’re able to migrate your project to using the new StoreKit 2 APIs.
 
 ### In-app purchase key configuration file
-Going forward, all iOS apps in RevenueCat will require you to upload your in-app purchase key configuration file. This should take you less than 5 minutes to complete. You can find instructions for where to find this file in our [documentation](/docs/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration).
+Going forward, all iOS apps in RevenueCat will require you to upload your in-app purchase key configuration file. This should take you less than 5 minutes to complete. You can find instructions for where to find this file in our [documentation](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration).
 
 ### Observer Mode
-If your app is using [observer mode](/docs/migrating-to-revenuecat/observer-mode), there are a few steps you need to take when migrating to the new RevenueCat SDK backed by StoreKit 2.
+If your app is using [observer mode](/migrating-to-revenuecat/observer-mode), there are a few steps you need to take when migrating to the new RevenueCat SDK backed by StoreKit 2.
 
 Version 5.0 of the SDK introduces support for observer mode when making purchases with StoreKit 2. You can enable it when configuring the SDK:
 
