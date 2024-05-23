@@ -84,6 +84,21 @@ Google Play Billing Library: 2.0+ (Android only)
 **iOS**  
 No special requirements
 
+#### 1. Configure the SDK
+For the iOS SDK v5, we explicitly require you to select which StoreKit version your app is running on. The `storeKitVersion` parameter can be the following values:
+- `.default` (this defaults to StoreKit 2)
+- `.storeKit2`
+- `.storeKit1`
+
+import content1 from "!!raw-loader!@site/code_blocks/sdk-guides/ios-native-4x-to-5x-migration_1.swift";
+
+<RCCodeBlock tabs={[
+    {
+        type: RCCodeBlock.languages.swift,
+        content: content1,
+    }
+]}/>
+
 **Amazon**  
 No special requirements
 

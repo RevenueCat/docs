@@ -1,0 +1,60 @@
+---
+title: iOS Native - 4.x to 5.x Migration
+slug: ios-native-4x-to-5x-migration
+hidden: false
+---
+:::info
+Read the [migration blog post](placeholder link) for more information about why we made the switch to supporting StoreKit 2 by default.
+:::
+
+:::info
+View the iOS SDK Reference documentation [here -](https://revenuecat-docs.netlify.app/documentation/Revenuecat)
+:::
+
+## Xcode version requirements and updated deployment targets
+`purchases-ios` v5 requires using a minimum deployment targets for iOS, macOS, and tvOS. 
+
+#### Minimum deployment targets
+|  | v4 | v5 |
+| :-: | :-: | :-: |
+| iOS | 11.0 | **13.0** |
+| tvOS | 11.0 | **13.0** |
+| macOS | 10.13 | **10.15** |
+| watchOS | 6.2 | 6.2 (unchanged) |
+
+## Migration Guide
+Most of the changes introduced in the native iOS SDK v5 will happen automatically without any action from you. There is, however, one important thing you need to do to make sure we’re able to migrate your project to using the new StoreKit 2 APIs.
+
+### In-app purchase key configuration file
+Going forward, all iOS apps in RevenueCat will require you to upload your in-app purchase key configuration file. This should take you less than 5 minutes to complete. You can find instructions for where to find this file in our [documentation](/docs/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration).
+
+### Observer Mode
+If your app is using [observer mode](/docs/migrating-to-revenuecat/observer-mode), there are a few steps you need to take when migrating to the new RevenueCat SDK backed by StoreKit 2.
+
+Version 5.0 of the SDK introduces support for observer mode when making purchases with StoreKit 2. You can enable it when configuring the SDK:
+
+import content1 from "!!raw-loader!@site/code_blocks/sdk-guides/ios-native-4x-to-5x-migration_1.swift";
+
+<RCCodeBlock tabs={[
+    {
+        type: RCCodeBlock.languages.swift,
+        content: content1,
+    }
+]}/>
+
+If you are using Observer Mode with StoreKit 1, you will need to explicitly configure the SDK to use StoreKit 1.
+
+import content2 from "!!raw-loader!@site/code_blocks/sdk-guides/ios-native-4x-to-5x-migration_2.swift";
+
+<RCCodeBlock tabs={[
+    {
+        type: RCCodeBlock.languages.swift,
+        content: content2,
+    }
+]}/>
+
+### OriginalApplicationVersion and OriginalPurchaseDate
+Due to some limitations with StoreKit 2, the `originalApplicationVersion` and `originalPurchaseDate` properties are not available in the SDK, REST API, and webhooks when using StoreKit 2 in the SDK. If you need to access these properties, continue using StoreKit 1.
+If you have converted a paid app to a subscription app and grandfather users based on these fields, we recommend:
+- If you only support iOS 16+, follow [Apple’s guide](https://developer.apple.com/documentation/storekit/supporting_business_model_changes_by_using_the_app_transaction) to fetch these properties from `AppTransaction`
+- If you need to support iOS versions <16, continue using StoreKit 1

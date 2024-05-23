@@ -454,6 +454,7 @@ const sdkMigrationCategory = Category({
     Page({ slug: "android-native-5x-to-6x-migration" }),
     Page({ slug: "android-native-6x-to-7x-migration" }),
     Page({ slug: "ios-native-3x-to-4x-migration" }),
+    Page({ slug: "ios-native-4x-to-5x-migration"}),
   ],
 });
 
