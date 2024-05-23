@@ -58,7 +58,7 @@ SELECT
     ) AS active_mrr
 FROM [revenuecat_data_table] 
 
-/* Filter down to the date range that you want to measure MRR Movement for */
+/* Filter down to the date range that you want to measure MRR for */
 WHERE date(effective_end_time) > '2024-02-06'
   AND date(start_time) <= '2024-02-06'
   /* Exclude trials, which do not contribute to MRR */

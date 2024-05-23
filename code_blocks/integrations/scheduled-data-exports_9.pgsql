@@ -4,7 +4,7 @@ SELECT
   CASE 
     WHEN unsubscribe_detected_at IS NOT NULL THEN 'Set to cancel' 
     ELSE 'Set to renew' 
-    END) as auto_renew_status,
+  END as auto_renew_status,
   COUNT(*) as active_subscriptions
 FROM
   [revenuecat_data_table]
