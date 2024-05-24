@@ -14,3 +14,21 @@ If you're looking for sample apps, head over to our [Sample Apps](/platform-reso
   _Required_
 
 - [Installing the Android SDK ➡️](/getting-started/installation/android)
+
+## Syncing Purchases When Not Finishing Transactions
+
+When the SDK is configured to not finish transactions on an Amazon platform, `syncObserverModeAmazonPurchase` will need to be called to ensure purchases are recorded. **Failure to do so will result in no purchases being recorded**.
+
+import om7 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_7.cs";
+import om8 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_8.kt";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'unity',
+        content: om7,
+    },
+    {
+        type: 'kotlin',
+        content: om8,
+    },
+]}/>
