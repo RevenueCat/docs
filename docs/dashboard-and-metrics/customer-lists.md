@@ -48,9 +48,9 @@ RevenueCat creates some default lists for every project. Default lists should gi
 | Non-subscription | Any customer with a non-subscription purchase associated with their App User ID. |
 | Expired          | Any customer with an expired subscription or trial.                              |
 
-:::info Promotionals are not considered 'Active'
+:::info Granted Entitlements are not considered 'Active'
 
-If a customer has a [Promotional](/dashboard-and-metrics/customer-history/promotionals) transaction, they are not considered as 'Active'. Note that if a customer has an active subscription + Promotional, they will not be counted in the Active Customer List.
+If a customer has a [Granted Entitlement](/dashboard-and-metrics/customer-history/promotionals) transaction, they are not considered as 'Active'. Note that if a customer has an active subscription + Granted Entitlement, they will not be counted in the Active Customer List.
 
 :::
 
@@ -114,7 +114,7 @@ See the table below for additional filters you can apply to your lists.
 | First Purchase Date            | Date         | The date of the customer's first transaction.                                                                                    |
 | First Seen Date                | Date         | The date the customer was first seen by RevenueCat.                                                                              |
 | GPS Ad Id                      | String       | The `$gpsAdId` [](/customers/customer-attributes#device-identifiers) for the customer.                                           |
-| Granted RC Promotional         | Bool         | Whether the customer has been granted a [Promotional Subscription](/dashboard-and-metrics/customer-history/promotionals) or not. |
+| Granted Entitlement via RC     | Bool         | Whether the customer has been [granted an Entitlement](/dashboard-and-metrics/customer-history/promotionals) or not.             |
 | IDFA                           | String       | The `$idfa` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                                     |
 | IDFV                           | String       | The `$idfv` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                                     |
 | Keyword                        | String       | The `$keyword` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                    |
@@ -157,7 +157,7 @@ Below is a description of the .csv format for the exported data.
 | has_made_sandbox_purchase | Boolean indicating whether the customer has made any sandbox purchases. |
 | latest_entitlement | The most recently unlocked RevenueCat Entitlement identifier. |
 | latest_product | The most recently purchased product identifier. |
-| is_rc_promo | Whether the most recent transaction was a RevenueCat Promotional. |
+| is_rc_promo | Whether the most recent transaction was a RevenueCat Granted Entitlement. |
 | first_purchase_at | Epoch timestamp in milliseconds of the customer's first transaction. |
 | most_recent_purchase_at | Epoch timestamp in milliseconds of the customer's most recent transaction. |
 | trial_start_at | Epoch timestamp in milliseconds when the customer started a free trial. |
@@ -207,4 +207,4 @@ If you're having trouble opening the exported/uncompressed file, you may need to
 
 ## Next Steps
 
-- Learn how to view the purchase history of a specific user and grant them promotional access via the [Customer View ➡️](/dashboard-and-metrics/customer-history/basic-information)
+- Learn how to view the purchase history of a specific user and grant them entitlement access via the [Customer View ➡️](/dashboard-and-metrics/customer-history/basic-information)
