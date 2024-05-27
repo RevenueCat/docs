@@ -59,7 +59,7 @@ When testing with sandbox purchases, the `environment` value will be `SANDBOX`. 
 
 ## Syncing Subscription Status
 
-Webhooks are commonly used to sync a customer's subscription status across multiple systems. Because different webhook events contain unique information, we recommend calling the `GET /subscribers` [REST API](https://docs.revenuecat.com/reference#subscribers) endpoint after receiving any webhook. That way, the customer's information is always in the same format and is easily synced to your database. This approach is simpler than writing custom logic to handle each webhook event, and has the added benefit of making your system more robust and scalable.
+Webhooks are commonly used to sync a customer's subscription status across multiple systems. Because different webhook events contain unique information, we recommend calling the `GET /subscribers` [REST API](https://www.revenuecat.com/docs/api-v1#tag/customers) endpoint after receiving any webhook. That way, the customer's information is always in the same format and is easily synced to your database. This approach is simpler than writing custom logic to handle each webhook event, and has the added benefit of making your system more robust and scalable.
 
 ## Security and Best Practices
 

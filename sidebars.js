@@ -107,6 +107,7 @@ const gettingStartedCategory = Category({
       label: "Configuring Server Notifications",
       slug: "/platform-resources/server-notifications",
     }),
+    Page({ slug: "data-onboarding" }),
   ],
 });
 
@@ -259,6 +260,7 @@ const dashboardCategory = Category({
     Page({ slug: "customer-lists" }),
     Page({ slug: "taxes-and-commissions" }),
     Page({ slug: "performance-summaries" }),
+    Page({ slug: "supporting-your-customers"}),
   ],
 });
 
@@ -442,7 +444,10 @@ const supportCategory = Category({
   emoji: "🛟",
   label: "RevenueCat Support",
   slug: "revenuecat-support",
-  items: [Page({ slug: "support-first-steps" })],
+  items: [
+    Page({ slug: "support-first-steps" }), 
+    Page({ slug: "general-troubleshooting" })
+  ],
 });
 
 const sdkMigrationCategory = Category({

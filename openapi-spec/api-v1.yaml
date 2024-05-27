@@ -6,7 +6,7 @@ info:
   description: |
     <div class="theme-admonition theme-admonition-info alert alert--info">
         <div class="heading">New to RevenueCat?</div>
-        <div>Welcome! If you're adding subscriptions or other in-app purchases to your app, the RevenueCat SDK will handle most of the heavy-lifting without the need to interact with this API directly. See our <a href="/getting-started/quickstart">Quickstart</a> for more information on getting started with RevenueCat.</div>
+        <div>Welcome! If you're adding subscriptions or other in-app purchases to your app, the RevenueCat SDK will handle most of the heavy-lifting without the need to interact with this API directly. See our <a href="/docs/getting-started/quickstart">Quickstart</a> for more information on getting started with RevenueCat.</div>
     </div>
 
     # About RevenueCat’s REST API

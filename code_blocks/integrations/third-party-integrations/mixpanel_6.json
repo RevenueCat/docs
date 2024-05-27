@@ -7,7 +7,8 @@
             "time": 1541033435,
             "revenue": 44.99,
             "product_id": "yearly_sub",
-            "store": "APP_STORE"
+            "store": "APP_STORE",
+            "offer_code": null
         }
     },
     "engage_event": {
