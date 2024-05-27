@@ -463,7 +463,7 @@ paths:
                 start_time_ms:
                   type: integer
                   description:
-                    A Unix epoch in milliseconds for when the promotional
+                    A Unix epoch in milliseconds for when the
                     entitlement should have been considered as started. If not provided,
                     the entitlement will be granted immediately. Future dates will
                     also be granted immediately and will be active until the expiration
@@ -472,7 +472,7 @@ paths:
                 end_time_ms:
                   type: integer
                   description:
-                    A Unix epoch in milliseconds for when the promotional
+                    A Unix epoch in milliseconds for when the
                     entitlement should expire. If not provided then `duration` must be provided.
                   example: 1709196532093
                 duration:
@@ -489,7 +489,7 @@ paths:
                     - yearly
                     - lifetime
                   description:
-                    How long of a duration to grant the promotional entitlement
+                    How long of a duration to grant the entitlement
                     for.  If not provided then `end_time_ms` must be provided.
                   deprecated: true
             example:
