@@ -124,7 +124,7 @@ const migratingCategory = Category({
         Page({ slug: "google-historical-import" }),
       ],
     }),
-    Page({ slug: "observer-mode" }),
+    Page({ slug: "finishing-transactions" }),
     Page({ slug: "swiftystorekit" }),
   ],
 });

@@ -1,0 +1,41 @@
+---
+title: Finishing Transactions
+slug: finishing-transactions
+excerpt: Using RevenueCat without changing existing purchase code
+hidden: false
+---
+
+Finishing a transaction tells the device billing library that a purchase has been processed and can be discarded. RevenueCat does this by default, however, this may interfere with pre-existing purchase handling code in your app. By disabling transaction finishing in RevenueCat's SDK, you can still make use of many of RevenueCat's features, without replacing your existing purchase handling code.
+
+#### Feature Limitations
+
+- Experiments does not work if RevenueCat is not finishing transactions
+
+### Implementation
+
+#### 1. Configure the SDK
+
+{/* TODO: Add code blocks */}
+import om2 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_2.m";
+import om4 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_4.java";
+import om5 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_5.dart";
+import om6 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_6.cs";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'objc',
+        content: om2,
+    },
+    {
+        type: 'java',
+        content: om4,
+    },
+    {
+        type: 'flutter',
+        content: om5,
+    },
+    {
+        type: 'unity',
+        content: om6,
+    },
+]}/>

@@ -12,7 +12,7 @@ Work with a member of the RevenueCat team to [start building your custom migrati
 :::
 
 If you already have an existing app that is using subscriptions, it's easy to migrate them over to RevenueCat.
-Whether you're looking to replace all of your in-app-purchase code, or use RevenueCat along side your current setup in [Observer Mode](/migrating-to-revenuecat/observer-mode), this guide will help you get started.
+Whether you're looking to replace all of your in-app-purchase code, or use RevenueCat [along side your current setup](/migrating-to-revenuecat/finishing-transactions), this guide will help you get started.
 
 If you're building in-app purchases into your app for the first time, a migration should not be required and you can start from our [Quickstart](/getting-started/quickstart) guide.
 
@@ -28,13 +28,13 @@ Migrating existing subscribers to RevenueCat can be done server-side, or client-
 
 **No** ➡️ Client-side migration
 
-Alternatively, if you're looking to access to charting, webhooks, and integrations in RevenueCat while retaining your existing code for fetching products, making purchases, and checking subscription status, check our guide on [Observer Mode](/migrating-to-revenuecat/observer-mode) for details on setting this up.
+Alternatively, if you're looking to access to charting, webhooks, and integrations in RevenueCat while retaining your existing code for fetching products, making purchases, and checking subscription status, check our [guide here](/migrating-to-revenuecat/finishing-transactions) for details on setting this up.
 
 ### Server Side Migration
 
 A server side migration involves sending all of the Apple receipts and/or purchase tokens to RevenueCat via the `POST /receipts` endpoint. From there, RevenueCat will validate the receipt and keep the subscription up-to-date.
 
-Before you begin migrating historical receipts, **we recommend first setting up a server-side [Observer Mode](/migrating-to-revenuecat/observer-mode) implementation**. This ensures that new purchases happening during and after the import are still captured in RevenueCat.
+Before 
 
 After these two steps, if any of your customers open the version of the app containing the RevenueCat SDK their subscription status will automatically be synced.
 

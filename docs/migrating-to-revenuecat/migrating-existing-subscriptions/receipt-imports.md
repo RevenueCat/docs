@@ -9,7 +9,7 @@ hidden: false
 
 If you already have existing purchases or subscriptions and have been saving the complete raw receipt files or tokens, you can import those purchases into RevenueCat. If you don't have the proper data saved on your server, see the client-side migration section of the [Migrating Subscriptions](/migrating-to-revenuecat/migrating-existing-subscriptions) doc.
 
-Before kicking off an import, if you do not have the SDK deployed in your app, consider first setting up a server-side [Observer Mode](/migrating-to-revenuecat/observer-mode#option-1-server-side) implementation. This ensures that new purchases happening during and after the import are still captured in RevenueCat.
+Before kicking off an import, it's important that new purchases are being forwarded. This can be achieved a number of ways: the SDK, posting receipts from your backend via our REST api, or simply configuring your Apple and Google API keys with the latest version. 
 
 :::warning Complete Apple base64 receipt file required
 RevenueCat requires the raw base64 encoded Apple receipt to import the subscription properly. Partial receipts or the receipt information from the Apple server-to-server notifications are insufficient.
