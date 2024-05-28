@@ -8,7 +8,7 @@ The 'Entitlements' card gives you a quick glance at the current entitlement stat
 
 Like the 'Customer History' view, this card is generated from current purchase receipt saved for the user.
 
-![2023-02-28 20.40.48 app.revenuecat.com 1030bde9f564.png](/images/765a617-2023-02-28_20.40.48_app.revenuecat.com_1030bde9f564_b4acfdbc383b945377de032579becae2.png)
+![](/images/customer-history-entitlements-card.png)
 
 :::info Grace periods will extend expiration dates
 If the expiration date seems further out then you expect, e.g. 16 days past when your monthly subscription should renew, that indicates the user is in a grace period due to a failed payment. The store will attempt to re-charge the user there's no action to take on your part.
@@ -20,7 +20,7 @@ You can manually [transfer entitlements](/getting-started/restoring-purchases#tr
 
 1. In the Entitlements section of the customer profile, click **Transfer**.
 
-![](/images/6f6e842-2023-02-28_20.48.12_app.revenuecat.com_1a547ce96b7e_21fdf20bd1f4287508c2777d8eebf7b2.png "2023-02-28 20.48.12 app.revenuecat.com 1a547ce96b7e.png")
+![](/images/customer-history-transfer.png)
 
 2. Enter the user to whom you want to transfer the entitlements.
 
@@ -54,4 +54,4 @@ Transferring entitlements works with the block-restore behavior
 
 ## Next Steps
 
-- [Promotionals ](/dashboard-and-metrics/customer-history/promotionals)
+- [Granted entitlements](/dashboard-and-metrics/customer-history/promotionals)

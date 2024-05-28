@@ -67,7 +67,7 @@ Due to the permission levels of [secret keys](/welcome/authentication) they curr
 
 #### **Support**
 
-✅ This role is for anyone who needs to manage individual customers, but not view any financial or most app settings. They can see [Customer Timelines](/dashboard-and-metrics/customer-history/basic-information), [grant Promotional Entitlements](/dashboard-and-metrics/customer-history/promotionals), [issue refunds](/dashboard-and-metrics/customer-history#section-refunding-subscriptions), and [delete customers](/dashboard-and-metrics/customer-history/manage-users).
+✅ This role is for anyone who needs to manage individual customers, but not view any financial or most app settings. They can see [Customer Timelines](/dashboard-and-metrics/customer-history/basic-information), [grant Entitlements](/dashboard-and-metrics/customer-history/promotionals), [issue refunds](/dashboard-and-metrics/customer-history#section-refunding-subscriptions), and [delete customers](/dashboard-and-metrics/customer-history/manage-users).
 
 ❌ This role cannot access any financial data through Charts, Overview, Experiments, or Customer Lists - but can view individual customer transactions. They also cannot view most app configuration settings.
 
