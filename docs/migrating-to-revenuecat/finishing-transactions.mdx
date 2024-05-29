@@ -1,19 +1,17 @@
 ---
-title: Finishing Transactions
+title: Using Your Own IAP Logic
 slug: finishing-transactions
 excerpt: Using RevenueCat without changing existing purchase code
 hidden: false
 ---
 
-Finishing a transaction tells the device billing library that a purchase has been processed and can be discarded. RevenueCat does this by default, however, this may interfere with pre-existing purchase handling code in your app. By disabling transaction finishing in RevenueCat's SDK, you can still make use of many of RevenueCat's features, without replacing your existing purchase handling code.
+If you already have your own in-app purchase handling logic in your app and want to start using RevenueCat alongside it, you might need to tell the SDK to not *finish the transactions*. Finishing a transaction tells the device billing library that a purchase has been processed and can be discarded. RevenueCat does this by default, however, this may interfere with pre-existing purchase handling code in your app. By disabling transaction finishing in RevenueCat's SDK, you can still make use of most of RevenueCat's features, without replacing your existing purchase handling code.
 
-#### Feature Limitations
+:::info Observer mode
+The flag to not finish transactions was previously called "observer mode". Old versions of the SDK still refer to this terminology.
+:::
 
-- Experiments does not work if RevenueCat is not finishing transactions
-
-### Implementation
-
-#### 1. Configure the SDK
+### SDK Configuration
 
 {/* TODO: Add code blocks */}
 import om2 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_2.m";

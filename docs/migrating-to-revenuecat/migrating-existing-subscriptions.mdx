@@ -12,7 +12,7 @@ Work with a member of the RevenueCat team to [start building your custom migrati
 :::
 
 If you already have an existing app that is using subscriptions, it's easy to migrate them over to RevenueCat.
-Whether you're looking to replace all of your in-app-purchase code, or use RevenueCat [along side your current setup](/migrating-to-revenuecat/finishing-transactions), this guide will help you get started.
+Whether you're looking to replace all of your in-app-purchase code, or use RevenueCat [alongside your current setup](/migrating-to-revenuecat/finishing-transactions), this guide will help you get started.
 
 If you're building in-app purchases into your app for the first time, a migration should not be required and you can start from our [Quickstart](/getting-started/quickstart) guide.
 
@@ -32,11 +32,9 @@ Alternatively, if you're looking to access to charting, webhooks, and integratio
 
 ### Server Side Migration
 
-A server side migration involves sending all of the Apple receipts and/or purchase tokens to RevenueCat via the `POST /receipts` endpoint. From there, RevenueCat will validate the receipt and keep the subscription up-to-date.
+A server side migration involves sending all of the Apple receipts and/or purchase tokens to RevenueCat via the `POST /receipts` endpoint. From there, RevenueCat will validate the receipt and keep the subscription up-to-date. Ideally, you set up forwarding of new receipts/tokens first before sending any historic ones. RevenueCat will automatically dedupe them.
 
-Before 
-
-After these two steps, if any of your customers open the version of the app containing the RevenueCat SDK their subscription status will automatically be synced.
+Afterwards, if any of your customers open the version of the app containing the RevenueCat SDK their subscription status will automatically be synced.
 
 **Check out our guide on [Importing Receipts](/migrating-to-revenuecat/migrating-existing-subscriptions/receipt-imports) for more details on server-side migrations.**
 

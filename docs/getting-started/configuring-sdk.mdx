@@ -68,10 +68,8 @@ The SDK allows additional configuration on first setup:
 
 - **API Key (required)**: The public API key that corresponds to your app, found via **Project Settings > API keys > App specific keys** in the RevenueCat dashboard.
 - **App User ID (optional)**: An identifier for the current user. Pass `null` if you don't have a user identifier at the time of configuration and RevenueCat will generate an anonymous Id for you. See our [guide on identifying users](/customers/user-ids) for more information.
-- **Finish Transactions (optional)**: A boolean value to tell _Purchases_ not to finish transactions [finish transactions](/migrating-to-revenuecat/finishing-transactions). Only pass true if you have your own code handling purchases.
+- **Finish Transactions (optional)**: A boolean value to tell RevenueCat not to [finish transactions](/migrating-to-revenuecat/finishing-transactions). Only pass true if you have your own code handling purchases.
 - **User Defaults (optional, iOS only)**: A key to override the standard user defaults used to cache `CustomerInfo`. This is required if you need to access `CustomerInfo` in an [iOS App Extension](https://developer.apple.com/app-extensions/).
-
-If you're planning to use RevenueCat alongside your existing purchase code, make sure to disable [finishing transactions](/migrating-to-revenuecat/finishing-transactions).
 
 ## Advanced Configuration
 
@@ -79,9 +77,7 @@ Additional configuration options on the `.shared` instance of _Purchases_.
 
 ### iOS
 
-***
-
-**Delegates**
+#### Delegates
 
 `DELEGATE` `purchases:receivedUpdated`
 
@@ -99,9 +95,7 @@ Called when a user initiates a promoted in-app purchase from the App Store. If y
 
 ### Android
 
-***
-
-**Listeners**
+#### Listeners
 
 `LISTENER` `UpdatedCustomerInfoListener`
 

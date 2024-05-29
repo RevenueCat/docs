@@ -36,10 +36,10 @@ If the `error` object is present, then the purchase failed. See our guide on [Er
 
 The `userCancelled` boolean is a helper for handling user cancellation errors. There will still be an error object if the user cancels, but you can optionally check the boolean instead of unwrapping the error completely. 
 
-:::warning Warning: Automatic Transaction Finishing/Acknowledgement/Consumption
+:::info RevenueCat automatically finishes/acknowledges/consumes transactions
 Transactions (new and previous transactions that are synced) will be automatically finished (acknowledged and consumed in Android), and will be made available through the RevenueCat SDK / Dashboard / ETL Exports. 
 
-You can disable [finishing transactions](/migrating-to-revenuecat/finishing-transactions) if you don't wish to have transactions finished (or consumed, in Android) automatically, but you will have to make sure that you finish/consume them yourself.
+If you are migrating an existing app to RevenueCat and want to continue using your own in-app purchase logic, you can disable [finishing transactions](/migrating-to-revenuecat/finishing-transactions) if you don't wish to have transactions finished (or consumed, in Android) automatically, but you will have to make sure that you finish/consume them yourself.
 :::
 
 ## Next Steps
