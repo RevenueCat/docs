@@ -14,7 +14,8 @@ Note that while our [credentials guide](/service-credentials/creating-play-servi
 
 ### In Google Cloud:
 
-- [ ] I have created, either during this process or previously, a Google Cloud project dedicated to this app
+<input type="checkbox"/> I have created, either during this process or previously, a Google Cloud project dedicated to this app
+- [ ] I have enabled both the **Google Play Android Developer API** and the **Google Play Developer Reporting API**
 - [ ] I have created a service account under the above Cloud project
 - [ ] I have given the service account the roles of **Pub/Sub Admin** and **Monitoring Viewer**
 - [ ] I have created and downloaded a JSON public key under the service account I created
@@ -22,7 +23,8 @@ Note that while our [credentials guide](/service-credentials/creating-play-servi
 ### In Google Play:
 
 - [ ] I have linked the previously created Google Cloud project to my app under API Access
-- [ ] I clicked **'Manage Play Console Permissions'** under the service account and added these permissions:
+- [ ] I have invited my newly created service account in the **Users and Permissions** section
+- [ ] I clicked **'Account Permissions'** under the service account and added these permissions:
   - [ ] View app information and download bulk reports (read-only)
   - [ ] View financial data, orders, and cancellation survey response
   - [ ] Manage orders and subscriptions
@@ -62,3 +64,5 @@ Check out these other guides for troubleshooting tips that can help solve issues
 
 - [Why are offerings or products empty?](https://community.revenuecat.com/sdks-51/why-are-offerings-or-products-empty-124)
 - [Error handling](/test-and-launch/errors)
+
+
