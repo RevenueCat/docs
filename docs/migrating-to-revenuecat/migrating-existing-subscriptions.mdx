@@ -32,11 +32,11 @@ Alternatively, if you're looking to access to charting, webhooks, and integratio
 
 ### Server Side Migration
 
-A server side migration involves sending all of the Apple receipts and/or purchase tokens to RevenueCat via the `POST /receipts` endpoint. From there, RevenueCat will validate the receipt and keep the subscription up-to-date. Ideally, you set up forwarding of new receipts/tokens first before sending any historic ones. RevenueCat will automatically dedupe them.
+A server side migration involves sending all of the Apple receipts and/or purchase tokens to RevenueCat via the `POST /receipts` endpoint. This will create the customer in RevenueCat, RevenueCat will validate the receipt and keep the subscription up-to-date. Ideally, you set up forwarding of new receipts/tokens first before sending any historic ones. RevenueCat will automatically dedupe them.
+
+This is the quickest way to get your existing subscribers into RevenueCat. See the [API reference](https://www.revenuecat.com/docs/api-v1#tag/transactions/operation/receipts) for more details.
 
 Afterwards, if any of your customers open the version of the app containing the RevenueCat SDK their subscription status will automatically be synced.
-
-**Check out our guide on [Importing Receipts](/migrating-to-revenuecat/migrating-existing-subscriptions/receipt-imports) for more details on server-side migrations.**
 
 ### Client Side Migration
 
