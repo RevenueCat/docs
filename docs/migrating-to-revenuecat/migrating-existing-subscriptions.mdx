@@ -5,8 +5,6 @@ excerpt: How to migrate subscriptions from your existing setup
 hidden: false
 ---
 
-## Migrating Subscriptions
-
 :::success Request a migration consultation
 Work with a member of the RevenueCat team to [start building your custom migration plan.](https://www.revenuecat.com/request-a-migration-plan?utm_source=migrationdocs&utm_medium=web&utm_campaign=formfill)
 :::
@@ -18,15 +16,15 @@ If you're building in-app purchases into your app for the first time, a migratio
 
 If you have any questions about migrating your app to RevenueCat, or have a high volume of historical receipts in import, feel free to [contact sales](https://www.revenuecat.com/demo/) to see how we can help with the process.
 
-### Determining Your Migration Path
+## Determining Your Migration Path
 
 Migrating existing subscribers to RevenueCat can be done server-side, or client-side. A server side migration is preferable whenever possible because it ensures that all subscriptions will be recorded in RevenueCat regardless of any in-app activity.
 
 **Do you have all of the raw base64 Apple receipts and/or purchase tokens saved in your database?**
 
-**Yes** ➡️ Server-side migration
+**Yes** ➡️ [Server-side migration](#server-side-migration)
 
-**No** ➡️ Client-side migration
+**No** ➡️ [Client-side migration](#client-side-migration)
 
 Alternatively, if you're looking to access to charting, webhooks, and integrations in RevenueCat while retaining your existing code for fetching products, making purchases, and checking subscription status, check our [guide here](/migrating-to-revenuecat/finishing-transactions) for details on setting this up.
 
