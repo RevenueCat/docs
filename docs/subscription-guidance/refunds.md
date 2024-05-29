@@ -23,7 +23,7 @@ If a customer requests a refund, you can direct them to the Apple support page: 
 
 If a customer requests a refund, you can direct them to the Apple support page: https://support.apple.com/en-us/HT204084
 
-If you configure an [In-App Purchase Key](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration) for your app in RevenueCat, Consumable refunds will be detected. These refunds and corresponding events will not appear immediately for all users once you add the In-App Purchase Key and may take a few days to be detected by RevenueCat.
+If you configure an [In-App Purchase Key](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration) for your app in RevenueCat, Consumable refunds will be detected. These refunds and corresponding events will not be detected immediately and may take several days to appear in the dashboard.
 
 ### Google Play
 
