@@ -116,15 +116,23 @@ const migratingCategory = Category({
   label: "Migrating to RevenueCat",
   slug: "migrating-to-revenuecat",
   items: [
+    Page({ slug: "migration-paths" }),
     SubCategory({
-      label: "Migrating Subscriptions",
+      label: "Determine your Integration Path",
+      slug: "sdk-or-not",
+      items: [
+        Page({ slug: "sdk-less-integration" }),
+        Page({ slug: "finishing-transactions" }),
+      ],
+    }),
+    SubCategory({
+      label: "Importing Historical Purchases",
       slug: "migrating-existing-subscriptions",
       items: [
         Page({ slug: "receipt-imports" }),
         Page({ slug: "google-historical-import" }),
       ],
     }),
-    Page({ slug: "finishing-transactions" }),
     Page({ slug: "swiftystorekit" }),
   ],
 });

@@ -17,7 +17,7 @@ When using RevenueCat as a subscription status source-of-truth you typically wan
 
 If a customer migration sounds like a scary process, we're here to help. We've helped hundreds of large apps make the switch to RevenueCat seamlessly.
 
-[Start your Migration Plan →](/migrating-to-revenuecat/migrating-existing-subscriptions)
+[Start your Migration Plan →](/migrating-to-revenuecat/migration-paths)
 
 <hr class="landing-divider-small"/>
 

@@ -325,6 +325,9 @@ import content22 from "!!raw-loader!@site/code_blocks/customers/subscriber-attri
   ]}
 />
 
+## Setting Attributes via the REST API
+If you want to set, update, or delete attributes through the REST API from your own backend, for example, because you haven't implemented the RevenueCat SDK, you can use the `POST /subscribers/{app_user_id}/attributes` [API endpoint](/api-v1#tag/customers/operation/update-subscriber-attributes). 
+
 ## Reading Attributes
 
 You can access attributes through the [REST API](https://docs.revenuecat.com/reference) using a secret key, in [webhooks](/integrations/webhooks), and through analytics integrations ([Amplitude](/integrations/third-party-integrations/amplitude), [Mixpanel](/integrations/third-party-integrations/mixpanel), [Segment](/integrations/third-party-integrations/segment)). The [customer view dashboard](/dashboard-and-metrics/customer-history/basic-information) will also show a list of attributes for the individual user that you can edit.

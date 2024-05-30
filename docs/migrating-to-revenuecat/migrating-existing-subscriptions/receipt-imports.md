@@ -1,5 +1,5 @@
 ---
-title: Bulk Receipt Imports
+title: Bulk Imports
 slug: receipt-imports
 excerpt: Importing existing customers into RevenueCat
 hidden: false
@@ -45,7 +45,7 @@ You can find a reference Google Play import csv file [here](https://github.com/R
 **Important:** We need to know your [API quota](https://developers.google.com/android-publisher/quotas) with Google and approximately how many remaining requests per day you have so we don't exceed your quota.
 
 :::warning Limited historical data for Google Play purchases
-Google Play receipts that have been expired for more than 90 days ago can't be imported, and only the current status can be retrieved from each receipt. This means that historical data won't be presented accurately in Charts. To fill the gaps in historical data, you can use [Gogole Historical Imports](/migrating-to-revenuecat/migrating-existing-subscriptions/google-historical-import).
+Google Play receipts that have been expired for more than 90 days ago can't be imported, and only the current status can be retrieved from each receipt. This means that historical data won't be presented accurately in Charts. To fill the gaps in historical data, you can use [Google Historical Imports](/migrating-to-revenuecat/migrating-existing-subscriptions/google-historical-import).
 :::
 
 #### Stripe
