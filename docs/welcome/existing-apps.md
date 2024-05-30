@@ -7,7 +7,7 @@ hidden: false
 
 RevenueCat enables existing subscription businesses to offload and replace their entire subscription infrastructure, or use any number of RevenueCat features alongside their existing code. RevenueCat provides a powerful backend for validating purchases from the app stores and maintains a rich purchase history and subscriptions state for the customer. Use that power to increase engineering productivity and unlock new growth opportunities.
 
-## Subscription status
+## Subscription and purchase status
 
 Subscriptions status tracking has been at the core of RevenueCat from the early beginning - keeping a single source-of-truth across iOS, Android, Amazon, and web subscriptions - and today powers some of the worlds top grossing apps. Billions of API calls every day check RevenueCat servers to reliably grant the correct level of access to customers across the globe.
 
@@ -21,7 +21,7 @@ If a customer migration sounds like a scary process, we're here to help. We've h
 
 <hr class="landing-divider-small"/>
 
-## Subscription events, data, and analytics
+## Subscription and purchase events, data, and analytics
 
 Because RevenueCat knows the rich subscription status of all customers, it can send that information into other systems along with notifications of any changes. If you're not ready or unable to migrate your entire subscription infrastructure to RevenueCat you can still take advantage of these features to unlock growth for your business.
 
