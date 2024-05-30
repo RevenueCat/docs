@@ -11,9 +11,9 @@ Importing existing purchase data to RevenueCat can be done server-side, or clien
 
 **Do you have all of the raw base64 Apple receipts, StoreKit 2 signed transactions and/or Google / Amazon purchase tokens saved in your database?**
 
-**Yes** [Server-side migration →](#server-side-migration)
+**Yes** [Server-side data import →](#server-side-data-import)
 
-**No** [Client-side migration →](#client-side-migration)
+**No** [Client-side data import →](#client-side-sdk-data-import)
 
 ### Server Side Data Import
 
@@ -31,7 +31,7 @@ If you are aiming to import very large volumes of historical data, please contac
 Google Play receipts that have been expired for more than 90 days ago can't be imported, and only the current status can be retrieved from each receipt. This means that historical data won't be presented accurately in Charts. To fill the gaps in historical data, you can use [Google Historical Imports](/migrating-to-revenuecat/migrating-existing-subscriptions/google-historical-import).
 :::
 
-### Client-side (SDK) Data Migration
+### Client-side (SDK) Data Import
 
 A client-side data migration is a technique to sync existing purchases with RevenueCat when the app is first launched. It requires integrating the RevenueCat SDK in your app.
 
