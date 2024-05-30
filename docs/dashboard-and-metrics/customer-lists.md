@@ -235,4 +235,4 @@ If you're having trouble opening the exported/uncompressed file, you may need to
 
 ## Next Steps
 
-- Learn how to view the purchase history of a specific user and grant them promotional access via the [Customer View ➡️](/dashboard-and-metrics/customer-history/basic-information)
+- Learn how to view the purchase history of a specific user and grant them promotional access via the [Customer View →](/dashboard-and-metrics/customer-history/basic-information)

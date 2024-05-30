@@ -10,10 +10,10 @@ If you're looking for sample apps, head over to our [Sample Apps](/platform-reso
 
 ## Configuration
 
-- [Setting up Amazon Appstore Credentials ➡️](/service-credentials/amazon-appstore-credentials)
+- [Setting up Amazon Appstore Credentials →](/service-credentials/amazon-appstore-credentials)
   _Required_
 
-- [Installing the Android SDK ➡️](/getting-started/installation/android)
+- [Installing the Android SDK →](/getting-started/installation/android)
 
 ## Syncing Purchases When Not Finishing Transactions
 

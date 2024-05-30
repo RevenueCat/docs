@@ -29,7 +29,7 @@ Level up your data, marketing, and product teams be sending actionable events in
 
 Getting started is as simple as a few lines of code.
 
-[Set up Events →](/integrations/integrations)
+[Start your Migration Plan →](/migrating-to-revenuecat/migration-paths)
 
 <hr class="landing-divider-small"/>
 

@@ -36,4 +36,4 @@ Looking to programatically grant promotional entitlements? View the REST API doc
 
 ## Next Steps
 
-- [Attributes ➡️](/dashboard-and-metrics/customer-history/attributes)
+- [Attributes →](/dashboard-and-metrics/customer-history/attributes)
