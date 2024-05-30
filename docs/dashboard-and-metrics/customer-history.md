@@ -34,6 +34,8 @@ Below is a table with all the event types you can expect in the customer history
 | Cancelled due to a billing error                  | Apple / Google was not able to charge the user's credit card and their subscription failed to renew.        | `CANCELLATION`                  |
 | Cancelled due to unknown reasons                  | Apple cancelled the user's subscription and did not provide a cancellation reason.                          | `CANCELLATION`                  |
 | Created a new alias                               | Was aliased with another App User Id.                                                                       | `SUBSCRIBER_ALIAS` (deprecated) |
+| Was granted the ... Entitlement                   | Was granted an entitlement directly from the RevenueCat dashboard or API                                    | `NON_RENEWING_PURCHASE`         |
+| Had their granted Entitlement removed             | A previously granted entitlement was removed from the RevenueCat dashboard or API                           | `CANCELLATION`                  |
 
 :::info Missing or incorrect prices
 It is possible for prices to be missing or incorrect, especially for apps that have migrated from a different system to RevenueCat. The stores provide very minimal pricing information for developers, so RevenueCat estimates the transaction price based off the data that is available - if you have old products that are no longer available for sale or changed the price of your products before using RevenueCat, you can expect some prices to be missing or incorrect. We do our best to backfill prices over time if more up-to-date information becomes available.
