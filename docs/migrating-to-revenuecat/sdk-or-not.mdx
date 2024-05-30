@@ -1,5 +1,5 @@
 ---
-title: SDK or Server-Side Integration
+title: Choosing your Integration Path
 slug: sdk-or-not
 excerpt: Determining whether or not you need to integrate the RevenueCat SDK 
 hidden: false
@@ -8,24 +8,9 @@ If you have an existing app with in-app purchases and you want to use RevenueCat
 
 To start with RevenueCat with an app that already supports in-app purchases, you can use the following information to determine whether you should implement the SDK:
 
-## SDK-less integration
+## Integrating with our Mobile / Web SDK
 
-If you are planning on using RevenueCat mostly to collect and analyze accurate and actionable purchase data, you may choose a **server-side integration** without an SDK integration. The following RevenueCat features work *without implementing the SDK*:
-* [Charts](/dashboard-and-metrics/charts)
-* [Customer history](/dashboard-and-metrics/customer-history)
-* [Customer lists](/dashboard-and-metrics/customer-lists)
-* [Purchase lifecycle events](/integrations/integrations), [webhooks](/docs/integrations/webhooks), and [integrations with third party tools](/docs/integrations/third-party-integrations)
-* [Scheduled data exports](/integrations/scheduled-data-exports) to your data warehouse
-* [Checking customer entitlements via the REST API](/customers/customer-info#getting-subscription-status-via-the-rest-api)
-
-You can always start with a server-side integration without the SDK, and add the SDK later. In the case where purchases are made through the SDK and also sent on the server side, RevenueCat will automatically dedupe them, so there is no risk in this approach.
-
-[Read more about setting up an SDK-less integration →](/migrating-to-revenuecat/sdk-or-not/sdk-less-integration)
-
-
-## SDK integration
-
-If you want to make use of RevenueCat to streamline your purchasing logic, remotely control and test paywalls, pricing and packaging, or deliver targeted offers to customers, you will need to **integrate the SDK**. The following RevenueCat features *require the SDK to be integrated*:
+If you want to make use of RevenueCat to streamline your purchasing logic, remotely control and test paywalls, pricing and packaging, or deliver targeted offers to customers, you will need to **integrate one of our SDKs**. The following RevenueCat features *require an SDK to be integrated*:
 * [Remotely configuring your product catalog](/getting-started/entitlements)
 * Remotely configuring [paywall templates](/tools/paywalls) and [other aspects of your app](/tools/offering-metadata)
 * [Experiments](/tools/experiments-v1) to A/B test pricing, packaging, and other monetization related aspects of your app
@@ -38,4 +23,21 @@ If you have existing code to handle in-app purchases and you want to start using
 :::
 
 [Follow our quickstart guide to learn how to integrate the SDK →](/getting-started/quickstart)
+
+
+## Integrating without using the Mobile / Web SDK
+
+If you are planning on using RevenueCat mostly to collect and analyze accurate and actionable purchase data, you may choose a **server-side integration**. The following RevenueCat features work *without implementing the SDK*:
+* [Charts](/dashboard-and-metrics/charts)
+* [Customer history](/dashboard-and-metrics/customer-history)
+* [Customer lists](/dashboard-and-metrics/customer-lists)
+* [Purchase lifecycle events](/integrations/integrations), [webhooks](/docs/integrations/webhooks), and [integrations with third party tools](/docs/integrations/third-party-integrations)
+* [Scheduled data exports](/integrations/scheduled-data-exports) to your data warehouse
+* [Checking customer entitlements via the REST API](/customers/customer-info#getting-subscription-status-via-the-rest-api)
+
+You can always start with a server-side integration without the SDK, and add the SDK later. In the case where purchases are made through the SDK and also sent on the server side, RevenueCat will automatically dedupe them, so there is no risk in this approach.
+
+[Read more about using RevenueCat without the SDK →](/migrating-to-revenuecat/sdk-or-not/sdk-less-integration)
+
+
 

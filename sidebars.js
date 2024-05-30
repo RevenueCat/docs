@@ -118,7 +118,7 @@ const migratingCategory = Category({
   items: [
     Page({ slug: "migration-paths" }),
     SubCategory({
-      label: "Determine your Integration Path",
+      label: "Choosing your Integration Path",
       slug: "sdk-or-not",
       items: [
         Page({ slug: "sdk-less-integration" }),
