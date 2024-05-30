@@ -473,7 +473,7 @@ const redirects = {
       from: "/migrating-existing-subscriptions",
     },
     {
-      to: "/migrating-to-revenuecat/finishing-transactions",
+      to: "/migrating-to-revenuecat/sdk-or-not/finishing-transactions",
       from: "/observer-mode",
     },
     {
@@ -1176,7 +1176,7 @@ const redirects = {
       from: "/migrating-existing-subscriptions.html",
     },
     {
-      to: "/migrating-to-revenuecat/finishing-transactions",
+      to: "/migrating-to-revenuecat/sdk-or-not/finishing-transactions",
       from: "/observer-mode.html",
     },
     {
