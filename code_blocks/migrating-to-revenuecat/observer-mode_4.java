@@ -4,7 +4,11 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Purchases.setLogLevel(LogLevel.DEBUG);
-        Purchases.configure(new PurchasesConfiguration.Builder(this, <public_google_sdk_key>).observerMode(true).build());
+        Purchases.configure(
+            new PurchasesConfiguration.Builder(this, <public_google_sdk_key>)
+                .purchasesAreCompletedBy(PurchasesAreCompletedBy.REVENUECAT)
+                .build()
+        );
     }
 }
 
