@@ -5,12 +5,12 @@ excerpt: Using RevenueCat without changing existing purchase code
 hidden: false
 ---
 
-If you already have your own in-app purchase handling logic in your app and want to start using RevenueCat alongside it, you might need to tell the SDK that your app will **complete the transactions itself**. Completing a transaction tells the device billing library that a purchase has been processed and can be discarded. RevenueCat does this by default, however, this may interfere with pre-existing purchase handling code in your app. 
+If you already have your own in-app purchase handling logic in your app and want to start using RevenueCat alongside it, you might need to tell the SDK that your app will **complete the purchases itself**. Completing a purchase tells the device billing library that a purchase has been processed and can be discarded. RevenueCat does this by default, however, this may interfere with pre-existing purchase handling code in your app. 
 
-By telling the RevenueCat SDK that your app's code will complete transactions itself, you can still make use of most of RevenueCat's features, without replacing your existing purchase handling code.
+By telling the RevenueCat SDK that your app's code will complete purchases itself, you can still make use of most of RevenueCat's features, without replacing your existing purchase handling code.
 
 :::info Observer mode
-The setting that your app will complete transactions was previously called "observer mode". Old versions of the SDK still refer to this terminology.
+The setting that your app will complete purchases was previously called "observer mode". Old versions of the SDK still refer to this terminology.
 :::
 
 ### SDK Configuration
