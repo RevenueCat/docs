@@ -90,7 +90,7 @@ If you want your users to be able to purchase a certain In-App product only once
 
 ![](/images/non-consumable-android-support.png "non-consumable-android-support.png")
 
-If you don't do this step, we will automatically `consume` the purchase and Google will allow the customer to purchase it again. The purchase will still be registered in that user's `CustomerInfo`.
+If you don't configure it as a non-consumable, we will automatically `consume` the purchase and Google will allow the customer to purchase it again. The purchase will still be registered in that user's `CustomerInfo`.
 
 You can also edit existing or imported consumable products to make them non-consumable.
 
