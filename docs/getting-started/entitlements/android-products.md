@@ -86,7 +86,7 @@ To mark an offer as backwards compatible, click the overflow menu and select "Us
 
 ### Add non-consumable products 
 
-If you want your users to be able to purchase a certain In-App product at most once (for example, for a lifetime purchase), you need to let us know when adding the product in the RC dashboard. 
+If you want your users to be able to purchase a certain In-App product only once (for example, a lifetime purchase), you need to configure the product as a non-consumable when creating it in the RC dashboard. 
 
 ![](/images/non-consumable-android-support.png "non-consumable-android-support.png")
 
