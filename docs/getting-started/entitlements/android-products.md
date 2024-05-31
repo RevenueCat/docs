@@ -95,7 +95,7 @@ If you don't configure it as a non-consumable, we will automatically `consume` t
 You can also edit existing or imported consumable products to make them non-consumable.
 
 :::info
-Non-consumable support is supported in Android SDK version 7.11.0 and up. In previous versions, the SDK will still consume the purchase.
+Non-consumable support is supported in Android SDK version 7.11.0 and up. In previous versions, the SDK will always consume the purchase.
 :::
 
 ### Making Subscriptions Editable, InAppProduct API
