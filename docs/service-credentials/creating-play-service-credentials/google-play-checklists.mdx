@@ -14,85 +14,57 @@ Note that while our [credentials guide](/service-credentials/creating-play-servi
 
 ### In Google Cloud:
 
-<div>
-  <input type="checkbox" /> I have created, either during this process or previously, a Google Cloud project dedicated to this app
-</div>
-<div>
+<div><input type="checkbox" /> I have created, either during this process or previously, a Google Cloud project dedicated to this app
+</div><div>
   <input type="checkbox" /> I have enabled both the **Google Play Android Developer API** and the **Google Play Developer Reporting API**
-</div>
-<div>
+</div><div>
   <input type="checkbox" /> I have created a service account under the above Cloud project
-</div>
-<div>
+</div><div>
   <input type="checkbox" /> I have given the service account the roles of **Pub/Sub Admin** and **Monitoring Viewer**
-</div>
-<div>
-  <input type="checkbox" /> I have created and downloaded a JSON public key under the service account I created
-</div>
+</div><div>
+  <input type="checkbox" /> I have created and downloaded a JSON public key under the service account I created</div>
 
 ### In Google Play:
 
-<div>
-  <input type="checkbox" />I invited the created service account as a user in **'Users and Permissions'** and the status is "Active"
-</div>
-<div>
+<div><input type="checkbox" />I invited the created service account as a user in **'Users and Permissions'** and the status is "Active"
+</div><div>
   <input type="checkbox" />Under the service account user's **'Account Permissions'** I have added these permissions:
-</div>
-  <ul>
-    <li> View app information and download bulk reports (read-only)</li>
+</div><ul><li> View app information and download bulk reports (read-only)</li>
     <li> View financial data, orders, and cancellation survey response</li>
-    <li> Manage orders and subscriptions</li>
-  </ul>
-<div>
-  <input type="checkbox" />After confirming permissions, I selected **'Save Changes'**
-</div>
+    <li> Manage orders and subscriptions</li>/ul>
+<div><input type="checkbox" />After confirming permissions, I selected **'Save Changes'**</div>
 
 ### In RevenueCat:
 
-<div>
-  <input type="checkbox" />I added the previously downloaded JSON key file to the RevenueCat dashboard and clicked **'Save Changes'**
-</div>
-<div>
-  <input type="checkbox" />I've waited at least 36 hours
-</div>
+<div><input type="checkbox" />I added the previously downloaded JSON key file to the RevenueCat dashboard and clicked **'Save Changes'**
+</div><div>
+  <input type="checkbox" />I've waited at least 36 hours</div>
 
 ***
 
 ## Google Real-Time Developer Notifications Checklist
 
-<div>
-  <input type="checkbox" />I have waited to ensure that my service credentials are set up correctly and working as expected
-</div>
+<div><input type="checkbox" />I have waited to ensure that my service credentials are set up correctly and working as expected</div>
 
 ### In Google Cloud:
 
-<div>
-  <input type="checkbox" />I have enabled the Pub/Sub API for the same project in which I previously created service credentials
-</div>
+<div><input type="checkbox" />I have enabled the Pub/Sub API for the same project in which I previously created service credentials</div>
 
 ### In RevenueCat:
 
-<div>
-  <input type="checkbox" />I have chosen either an existing Pub/Sub Topic ID or created a new one
-</div>
-<div>
+<div><input type="checkbox" />I have chosen either an existing Pub/Sub Topic ID or created a new one
+</div><div>
   <input type="checkbox" />I have clicked **'Connect to Google'**
-</div>
-<div>
-  <input type="checkbox" />I have copied the topic ID that generated after connecting
-</div>
+</div><div>
+  <input type="checkbox" />I have copied the topic ID that generated after connecting</div>
 
 ### In Google Play:
 
-<div>
-  <input type="checkbox" />Under **'Monetize'**, in **'Monetization Setup'**, I pasted the topic ID
-</div>
-<div>
+<div><input type="checkbox" />Under **'Monetize'**, in **'Monetization Setup'**, I pasted the topic ID
+</div><div>
   <input type="checkbox" />I have saved changes and did not see any errors
-</div>
-<div>
-  <input type="checkbox" />I clicked **'Send Test Notification'** and confirmed it was received in the RevenueCat dashboard
-</div>
+</div><div>
+  <input type="checkbox" />I clicked **'Send Test Notification'** and confirmed it was received in the RevenueCat dashboard</div>
 
 ## Still having issues?
 
