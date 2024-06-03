@@ -33,31 +33,33 @@ Stripe’s API provides the necessary details to calculate the various fees whic
 
 ## How we estimate taxes
 
-### Transaction country estimation
+### Transaction country identification
 
 In order to calculate an accurate tax rate for each store, we need to know the country that the transaction occurs in and the applicable taxes for the store in that country.
 
-For some stores, like the App Store, in most cases we can detect the store that country that a transaction was created in.
-
-In some cases (for example, USD or EUR transactions on the Google Play Store), we have to estimate the country based on the customer's IP address. This means that we can't guarantee perfect accuracy (for example, if a customer is currently traveling from one Eurozone country to another, or using a VPN), but we have found the estimation to be 95% accurate in most circumstances.
-
-### Store-specific logic
-
-Once we know the country we will base our tax estimation off of, then we apply the store-specific logic to estimate taxes.
+In some cases (for example, USD or EUR transactions on the Google Play Store), we may have to estimate the country based on the customer's IP address, but in the vast majority of the cases the store country of a transaction is deterministic and known by RevenueCat, especially for transactions occurring in 2024 or later.
 
 :::info
 We do not take your location as a developer into account when estimating taxes to be withheld, though some stores & countries may withhold differently on transactions in the country you're operating in.
 :::
 
-**App Store**
+### Calulcating taxes for the mobile stores
 
-Apple charges both [Value-Added Tax](<https://taxfoundation.org/tax-basics/value-added-tax-vat/#:~:text=A%20Value%2DAdded%20Tax%20(VAT)%20is%20a%20consumption%20tax,a%20tax%20on%20final%20consumption.>) (VAT) and the [digital services taxes](https://taxfoundation.org/digital-tax-europe-2020/) (DST) that have been put in place by several countries. We use the provided pricing tables from Apple to estimate these tax rates in each country, and calculate them against either the gross or post-commission revenue as applicable.
+The App Store, Google Play Store, and Amazon Appstore stores appear to charge both [Value-Added Tax](<https://taxfoundation.org/tax-basics/value-added-tax-vat/#:~:text=A%20Value%2DAdded%20Tax%20(VAT)%20is%20a%20consumption%20tax,a%20tax%20on%20final%20consumption.>) (VAT) and the [digital services taxes](https://taxfoundation.org/digital-tax-europe-2020/) (DST) that have been put in place by several countries. However, they do not apply identical tax rates for each country, so we:
+1. Find the proceeds quoted by the store for a given price in a given country
+2. Use that to determine the tax rate being charged to yield proceeds
 
-**Google Play Store & Amazon Appstore**
+Since these stores each deduct taxes from revenue first before commissions are deducted, to then calculate the portion of a given transaction that was deducted for taxes, we:
+1. Use the found tax rate to determine what was deducted from the customer price due to taxes: `price / (1 + [tax rate]) = [amount deducted for taxes]`
+2. Divide the amount deducted due to taxes from the customer price to get the `tax_percentage` that's provided in events, used to calculate Charts, etc: `[amount deducted for taxes] / price = tax_percentage`
 
-Both Google Play and Amazon only charge VAT on their transactions, so we lookup VAT per country and calculate it after the commission has been deducted from a transaction.
+:::Info June 2024 App Store Updates
+Previously, we calculated taxes deducted App Store transactions after commission had been deducted. In June 2024 we updated this behavior to deduct taxes first to better match Apple's behavior. Though the yielded Proceeds are not affected by this ordering, the portion deducted for taxes and commission respectively are changed by this. 
 
-**Stripe**
+The Revenue chart and Scheduled Data Exports have been updated to reflect this improved definition, but please keep in mind that prior events dispatched by RevenueCat will still contain the old values.
+:::
+
+### Calculating taxes for Stripe
 
 If you have enabled Stripe Tax in your Stripe developer account, we will retrieve the precise tax amounts directly from your Stripe invoices, making estimation unnecessary.
 
@@ -73,9 +75,8 @@ Keep in mind that not all stores handle VAT the same way. Apple applies VAT to t
 
 Our Revenue chart offers the following measures to understand your net revenue:
 
-- **Store commission / fee**: The store commission or payment processor fees that are deducted from your gross revenue.
-- **Estimated taxes**: Estimated taxes deducted from gross revenue.
-- **Proceeds**: Net revenue after commission, fees, and taxes have been deducted.
+- **Revenue (net of taxes)**: Revenue generated in a given period (as defined above), minus our estimate of revenue deducted from the stores for taxes (e.g. VAT, DST, etc).
+- **Proceeds**: Revenue generated in a given period (as defined above), minus our estimate of revenue deducted from the stores for taxes and commission.
 
 ### Integrations
 
