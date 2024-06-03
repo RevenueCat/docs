@@ -86,11 +86,11 @@ To mark an offer as backwards compatible, click the overflow menu and select "Us
 
 ### Add non-consumable products 
 
-If you want your users to be able to purchase a certain In-App product only once (for example, a lifetime purchase), you need to configure the product as a non-consumable when creating it in the RC dashboard. 
+If you want your customers to be able to purchase a certain In-App product only once (for example, a lifetime purchase), you need to configure the product as a non-consumable when creating it in the RC dashboard. 
 
 ![](/images/non-consumable-android-support.png "non-consumable-android-support.png")
 
-If you don't configure it as a non-consumable, we will automatically `consume` the purchase and Google will allow the customer to purchase it again. The purchase will still be registered in that user's `CustomerInfo`.
+If you don't configure it as a non-consumable, we will automatically `consume` the purchase and Google will allow the customer to purchase it again. The purchase will still be registered in that customer's `CustomerInfo`.
 
 You can also edit existing or imported consumable products to make them non-consumable.
 
