@@ -29,11 +29,16 @@ The Facebook integration requires some device-specific data. RevenueCat will onl
 | `$idfa`        | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ✅ (iOS only)     |
 | `$gpsAdId`     | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ✅ (Android only) |
 | `$fbAnonId`    |                                                                                                                                                 | ✅ (iOS only)     |
-| `$androidId`   | Android [device identifier](https://developer.android.com/reference/android/provider/Settings.Secure#ANDROID_ID)                                | ✅ (Android only) |
 | `$idfv`        | iOS [vender identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ❌ (optional)     |
 | `$ip`          | The IP address of the device                                                                                                                    | ❌ (optional)     |
 | `$email`       | The email address of the user                                                                                                                   | ❌ (optional)     |
 | `$phoneNumber` | The phone number of the user                                                                                                                    | ❌ (optional)     |
+
+:::warning Android ID deprecation
+As of June 2024, Android ID is no longer collected by RevenueCat's Android SDKs due to policy changes from the Play Store. 
+
+Therefore, Google's Advertising ID acts as the primary device identifier for Android devices in RevenueCat and when connecting with third-party integrations.
+:::
 
 These properties can be set manually, like any other [Attribute](/customers/customer-attributes), or through the helper methods to `collectDeviceIdentifiers()` and `setFbAnonymousId()`.
 
