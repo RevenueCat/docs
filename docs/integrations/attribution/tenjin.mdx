@@ -24,8 +24,13 @@ The Tenjin integration requires some device-specific data. RevenueCat will only 
 | `$idfa`      | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ✅ (iOS only)     |
 | `$gpsAdId`   | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ✅ (Android only) |
 | `$idfv`      | iOS [vender identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ❌ (optional)     |
-| `$androidId` | Android [device identifier](https://developer.android.com/reference/android/provider/Settings.Secure#ANDROID_ID)                                | ❌ (optional)     |
 | `$ip`        | The IP address of the device                                                                                                                    | ❌ (optional)     |
+
+:::warning Android ID deprecation
+Due to policy changes from the Play Store, Android ID is no longer collected by RevenueCat's Android SDKs starting on versions 6.9.7+, 7.11.1+, and later major versions.
+
+Therefore, Google's Advertising ID acts as the primary device identifier for Android devices in RevenueCat and when connecting with third-party integrations.
+:::
 
 These properties can be set manually, like any other [Customer Attributes](/customers/customer-attributes), or through the helper method `collectDeviceIdentifiers()`. 
 

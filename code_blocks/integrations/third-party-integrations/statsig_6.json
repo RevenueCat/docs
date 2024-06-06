@@ -35,10 +35,6 @@
             "$fbAnonId": {
                 "value": "1234567890-1234-5678-9012-345678901234",
                 "updated_at_ms": 1647518583693
-            },
-            "$androidId": {
-                "value": "1234567890123456",
-                "updated_at_ms": 1647518583621
             }
         },
         "store": "PLAY_STORE",
