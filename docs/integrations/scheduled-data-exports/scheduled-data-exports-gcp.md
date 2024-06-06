@@ -9,7 +9,7 @@ RevenueCat can automatically send data deliveries of all of your apps' transacti
 
 To start receiving these deliveries, you'll need the following details:
 
-1. A Google Cloud Storage Service Account [HMAC access key and secret](https://cloud.google.com/storage/docs/welcome/authentication/hmackeys)
+1. A Google Cloud Storage Service Account [HMAC access key and secret](https://cloud.google.com/storage/docs/authentication/hmackeys)
 2. Google Cloud Storage bucket name
 
 :::info Make sure the HMAC credentials have the right permissions
