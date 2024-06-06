@@ -43,7 +43,7 @@ more thorough explanation of the new Google subscription model announced with Bi
 
 RevenueCat SDK v8 bumps minimum Android SDK version from Android 4.4 (API level 19) to Android 5.0 (API level 21) since it's required by Google's Billing client.
 
-### Support for Google Play Installment subscriptions
+## Support for Google Play Installment subscriptions
 
 We've added support for [Google Play Installment subscriptions](rev.cat/googleplayinstallmentsubscriptions) which is a type of subscription where customers pay for the subscription in multiple installments over a period of time, rather than paying the entire subscription fee upfront. We've also extended our [product import functionality](/sdk-guides/android-native-5x-to-6x-migration#1-automatic-import) to import installment subscription products from the Google Play Console.
 
@@ -53,9 +53,9 @@ There are two new methods for you to fetch the following installment subscriptio
 
 Installment subscriptions are currently only available in 4 countries: Brazil, Italy, Spain and France. (check Google Play Console for latest availability). As a result, these products will not be loaded in non-supported countries and you will need to provide a fallback to a different RevenueCat package.
 
-[TODO: code snippet for product fallback]
+!!!TODO: code snippet for product fallback!!!
 
-### Support for Google Play pending purchases 
+## Support for Google Play pending purchases 
 BIllingClient 7 now supports pending transactions for prepaid subscriptions. These are transactions that require one or more additional steps between customer initiation and the payment method being processed. For example, a user could start a transaction which involves them paying cash at a physical location.
 
 Pending transactions for a prepaid subscription is disabled by default. If you want to enable this behavior during configuration of the RevenueCat SDK:
@@ -67,10 +67,10 @@ Purchases.configure(
 )
 ```
 
-### Observer Mode
+## Observer Mode
 
 Observer mode is still supported in v8. Other than updating the SDK version, there are no changes required. Just make sure the version of the billing client is also version 7.0.0.
 
-### Reporting undocumented issues:
+## Reporting undocumented issues:
 
 Feel free to file an issue! [New RevenueCat Issue](https://github.com/RevenueCat/purchases-android/issues/new/).
