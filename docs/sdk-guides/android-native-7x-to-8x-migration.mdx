@@ -62,7 +62,7 @@ Pending transactions for a prepaid subscription is disabled by default. If you w
 ```kotlin
 Purchases.configure(
     PurchasesConfiguration.Builder(applicationContext, apiKey)
-        .pendingTransactionsForPrepaidPlansEnabled(false)
+        .pendingTransactionsForPrepaidPlansEnabled(true)
         .build()
 )
 ```
