@@ -1,0 +1,76 @@
+---
+title: Android Native - 7.x to 8.x Migration
+slug: android-native-7x-to-8x-migration
+hidden: false
+---
+
+This latest release updates the SDK to use BillingClient 7. This version of BillingClient brings little change compared
+with BillingClient 5 which brought an entire new subscription model which resulted in large changes across the entire SDK. It did, however, increase the minSdk to 21 (Android 5.0) and removed the `ProrationMode` enum.
+
+Aside from that, we've also updated Kotlin to 1.8.22.
+
+The only modification at the API level involves removing `UpgradeInfo` and `ProrationMode`. Related functions that were deprecated previously in V7 of our SDK have now been removed completely since they depended on classes not available anymore in billing client 7.0.0.
+
+If your app supports upgrading/downgrading, you need to migrate to use the `purchase(PurchaseParams)` method. The `PurchaseParams` parameter has accessors to set the `oldSku` and `replacementMode` which will allow you to handle upgrades and downgrades.
+
+## Updated Code References
+
+This migration guide has detailed class, property, and method changes.
+
+See [Android Native - 5.x to 6.x Migration](https://www.revenuecat.com/docs/android-native-5x-to-6x-migration) for a
+more thorough explanation of the new Google subscription model announced with BillingClient 5 and how to take advantage of it.
+
+### Class/interface changes
+
+| New                                                              |
+|------------------------------------------------------------------|
+| `InstallmentsInfo`                                               |
+| `GoogleInstallmentsInfo`                                         |
+| `PurchaseConfiguration.pendingTransactionsForPrepaidPlansEnabled` |
+| `SubscriptionOption.installmentsInfo`                            |
+
+| Removed                                                               |
+|-----------------------------------------------------------------------|
+| `UpgradeInfo`                                                         |
+| `ProrationMode`                                                       |
+| `GoogleProrationMode`                                                 |
+| `StoreTransaction.prorationMode`                                      |
+| `PurchaseParams.googleProrationMode`                                  |
+| `purchasePackage(activity, packageToPurchase, upgradeInfo, callback)` |
+| `purchaseProduct(activity, productToPurchase, upgradeInfo, callback)` |
+
+### Bumped minimum Android SDK version
+
+RevenueCat SDK v8 bumps minimum Android SDK version from Android 4.4 (API level 19) to Android 5.0 (API level 21) since it's required by Google's Billing client.
+
+### Support for Google Play Installment subscriptions
+
+We've added support for [Google Play Installment subscriptions](rev.cat/googleplayinstallmentsubscriptions) which is a type of subscription where customers pay for the subscription in multiple installments over a period of time, rather than paying the entire subscription fee upfront. We've also extended our [product import functionality](/sdk-guides/android-native-5x-to-6x-migration#1-automatic-import) to import installment subscription products from the Google Play Console.
+
+There are two new methods for you to fetch the following installment subscription details:
+- Commitment payment count: Number of payments the customer commits to in order to purchase the subscription. You can use `subscriptionOption.installmentsInfo?.commitmentPaymentsCount` to retrieve this information.
+- Renewal commitment payment count: After the commitment payments are made, the number of payments the user commits to upon a renewal. This number can either be 1, where the subscription will behave as a monthly subscription, or your commitment payment count number, where the subscription will renew for another commitment. You can use `subscriptionOption.installmentsInfo?.renewalCommitmentPaymentsCount` to retrieve this information.
+
+Installment subscriptions are currently only available in 4 countries: Brazil, Italy, Spain and France. (check Google Play Console for latest availability). As a result, these products will not be loaded in non-supported countries and you will need to provide a fallback to a different RevenueCat package.
+
+[TODO: code snippet for product fallback]
+
+### Support for Google Play pending purchases 
+BIllingClient 7 now supports pending transactions for prepaid subscriptions. These are transactions that require one or more additional steps between customer initiation and the payment method being processed. For example, a user could start a transaction which involves them paying cash at a physical location.
+
+Pending transactions for a prepaid subscription is disabled by default. If you want to enable this behavior during configuration of the RevenueCat SDK:
+```kotlin
+Purchases.configure(
+    PurchasesConfiguration.Builder(applicationContext, apiKey)
+        .pendingTransactionsForPrepaidPlansEnabled(false)
+        .build()
+)
+```
+
+### Observer Mode
+
+Observer mode is still supported in v8. Other than updating the SDK version, there are no changes required. Just make sure the version of the billing client is also version 7.0.0.
+
+### Reporting undocumented issues:
+
+Feel free to file an issue! [New RevenueCat Issue](https://github.com/RevenueCat/purchases-android/issues/new/).
