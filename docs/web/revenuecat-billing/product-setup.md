@@ -15,13 +15,19 @@ To create a new RevenueCat Billing product, open the RevenueCat dashboard, go to
 
 ![New product button in the products screen](/images/rc-billing/new-product.png)
 
-![New RevenueCat Billing App](/images/rc-billing/new-rc-billing-app.png)
-
 In the "new product" screen, you can set up the following properties of the product:
 
 - **Identifier**: A unique ID for the Product, accessible from the SDK, events, etc. Can contain up to 100 alphanumeric characters, dots, or underlines.
+- **Title**: Customer-facing title of the Product. Will be shown in the checkout form and on invoices.
+- **Description**: Customer-facing description of the Product. Available from the Web SDK, eg. to show on your paywall.
 - **Display name**: An optional human readable name for the Product, will be shown on the dashboard instead of the identifier.
 - **Duration**: The billing cycle (period length) of the subscription.
+- **Free trial period**: The duration of a free trial
+- **Trial eligibility**: Which customers have access to the free trial:
+    - *Everyone*: Every customer will start a subscription to this product with a trial, even if they had a trial before.
+    - *Has never made any purchase*: Only customers that have never made any purchase in this Project (including non-subscription purchases and purchases in other Apps of this project) are eligible for a trial.
+    - *Didn't have any subscription yet*: Only customers that have never had any subscription in this Project (including in other Apps of the project) are eligible for a trial.
+    - *Didn't have this subscription yet*: Only customers that have never subscribed to this product are eligible for a trial.
 - **Grace period**: Length of the subscription access retention after a billing issue.
 - **Price**: The price that will be charged for every period of the subscription. Currently, only USD is supported.
 
