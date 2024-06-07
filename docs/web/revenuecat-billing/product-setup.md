@@ -24,7 +24,7 @@ In the "new product" screen, you can set up the following properties of the prod
 - **Duration**: The billing cycle (period length) of the subscription.
 - **Free trial period**: The duration of a free trial
 - **Trial eligibility**: Which customers have access to the free trial:
-    - *Everyone*: Every customer will start a subscription to this product with a trial, even if they had a trial before. *Please note:* If you choose this option, it means that customers couldc continuously cancel their trial and start another trial to keep getting free access.
+    - *Everyone*: Every customer will start a subscription to this product with a trial, even if they had a trial before. *Please note:* If you choose this option, it means that customers could continuously cancel their trial and start another trial to keep getting free access.
     - *Has never made any purchase*: Only customers that have never made any purchase in this Project (including non-subscription purchases and purchases in other Apps of this project) are eligible for a trial.
     - *Didn't have any subscription yet*: Only customers that have never had any subscription in this Project (including in other Apps of the project) are eligible for a trial.
     - *Didn't have this subscription yet*: Only customers that have never subscribed to this product are eligible for a trial.
