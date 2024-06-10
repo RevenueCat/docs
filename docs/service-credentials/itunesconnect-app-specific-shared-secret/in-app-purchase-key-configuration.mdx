@@ -6,15 +6,17 @@ hidden: false
 parentDoc: 649983b4c31b2e000a3c1859
 ---
 
-RevenueCat will be able to give you the most accurate pricing and country-specific data for your Apple transactions. 
+When setting up a new App Store App on RevenueCat, you will need to add an in-app purchase key. Previously, adding an in-app purchase key was not required; the requirement was added because the in-app purchase key allows RevenueCat to provide accurate information about the country, currency, and pricing for purchases, which previously had to be estimated in some cases. In addition, the in-app purchase key is required for features like [Subscription offers](/subscription-guidance/subscription-offers/ios-subscription-offers#in-app-purchase-keys) or looking up customers by [Order ID](/dashboard-and-metrics/customer-lists#find-an-individual-customer).
 
-Please note that once you upload this key, we may update your historical data. As a result, you may see an increased number of updated transactions reported in your [Scheduled Data Exports](/integrations/scheduled-data-exports) and your historical [Charts](/dashboard-and-metrics/charts) data may also gradually update. 
+:::warning Adding an in-app purchase key may change historic data
+Adding an in-app purchase key to an app with existing transactions may change historic data as we update previously estimated data with corrected data from Apple. As a result, you may see an increased number of updated transactions reported in your [Scheduled Data Exports](/integrations/scheduled-data-exports) and your historical [Charts](/dashboard-and-metrics/charts) data may also gradually update. 
+:::
 
 ## Setup
 
 ### 1. Generating an In-App Purchase Key
 
-In-app purchase keys are generated App Store Connect under _Users and Access → Integrations → In-App Purchase_. You can use the same in-app purchase key for all of your App Store apps.
+In-app purchase keys are generated App Store Connect under _Users and Access → Integrations → In-App Purchase_. You can use the same in-app purchase key for all App Store apps belonging to the same App Store Connect account.
 
 ![](/images/SCR-20240327-jvrs.png)
 
@@ -34,7 +36,7 @@ In the RevenueCat dashboard, select your App Store app from the **Apps** tab in 
 
 Within your app settings, under the tab **In-app purchase key configuration**, you'll see an area to upload your In-App Purchase Key .p8 file that you downloaded from App Store Connect.
 
-![](https://github.com/RevenueCat/revenuecat-docs/assets/5860245/ae091b84-891d-4132-842c-3d35d9c66d4a)
+![](/images/inapppurchase-settings.png)
 
 ### 3. Providing the Issuer ID to RevenueCat
 
@@ -76,3 +78,6 @@ Your in-app purchase key should be under 'Active'
 
 If it is not, it's most likely that your in-app purchase key has been revoked and you will need to follow the setup instructions in this documentation.
 ![Revoked in-app purchase key](/images/inapppurchase-revoked.png)
+
+#### Unable to select 'SAVE CHANGES'
+If the 'SAVE CHANGES' button is grayed out when trying to add your in-app purchase key, double check that you've filled out all the required fields in the RevenueCat app settings page. You can check this by expanding each section.
