@@ -49,7 +49,7 @@ The App Store, Google Play Store, and Amazon Appstore stores appear to charge bo
 1. Find the proceeds quoted by the store for a given price in a given country
 2. Use that to determine the tax rate being charged to yield proceeds
 
-Since these stores each deduct taxes from revenue first before commissions are deducted, to then calculate the portion of a given transaction that was deducted for taxes, we:
+To then calculate the portion of a given transaction that was deducted for taxes, we:
 1. Use the found tax rate to determine what was deducted from the customer price due to taxes: `price / (1 + [tax rate]) = [amount deducted for taxes]`
 2. Divide the amount deducted due to taxes from the customer price to get the `tax_percentage` that's provided in events, used to calculate Charts, etc: `[amount deducted for taxes] / price = tax_percentage`
 
