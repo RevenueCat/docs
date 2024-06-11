@@ -18,11 +18,7 @@ The Revenue chart was updated in June 2024 to add transaction counts, support vi
 
 ### Measures
 
-The Revenue chart provides both the revenue that was generated in a given period, as well as the count of revenue-generating transactions in that period, so that you can compare them to understand why your business is trending the way it is.
-
-:::info Handling refunds
-The count of transactions will also include any transactions that have since been refunded, since they were revenue-generating transactions for that period.
-:::
+The Revenue chart provides both the revenue that was generated in a given period, as well as the count of revenue-generating transactions in that period (minus those that have since been refunded), so that you can compare them to understand why your business is trending the way it is.
 
 ### Revenue type
 
@@ -60,7 +56,7 @@ Revenue is best used as a health metric for operating your business.
 
 For each period, we measure:
 
-1. Transactions: The count of revenue generating transactions in a given period, including those that have since been refunded.
+1. Transactions: The count of revenue generating transactions in a given period, minus those that have since been refunded.
 2. Revenue: The total revenue generated in a given period, minus refunds from transactions that occurred in that period.
 3. Taxes: The total amount deducted for taxes from the revenue generated in a given period.
 4. Store Commission / Fees: The total amount deducted for store commissions and fees from the revenue generated in a given period.
