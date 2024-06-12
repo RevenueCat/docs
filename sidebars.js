@@ -14,6 +14,7 @@ import {
   SubCategory,
   Link,
   Page,
+  PageWithCustomLabel,
 } from "./src/sidebars/sidebar-utils";
 
 // The sidebar is a tree of categories and pages.
@@ -122,7 +123,8 @@ const migratingCategory = Category({
       slug: "sdk-or-not",
       items: [
         Page({ slug: "sdk-less-integration" }),
-        Page({ slug: "finishing-transactions" }),
+        // { label: "Using the SDK with your own IAP Code", id: "finishing-transactions", type: "doc" },
+        PageWithCustomLabel({ label: "Using the SDK with your own IAP Code", slug: "finishing-transactions"}),
       ],
     }),
     SubCategory({

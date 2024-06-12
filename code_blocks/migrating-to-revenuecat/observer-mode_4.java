@@ -6,16 +6,13 @@ public class MainApplication extends Application {
         Purchases.setLogLevel(LogLevel.DEBUG);
         Purchases.configure(
             new PurchasesConfiguration.Builder(this, <public_google_sdk_key>)
-                .purchasesAreCompletedBy(PurchasesAreCompletedBy.REVENUECAT)
+                .purchasesAreCompletedBy(PurchasesAreCompletedBy.MY_APP)
                 .build()
         );
     }
 }
 
-// If you're building for the Amazon Appstore, 
-// click the Kotlin tab to see how to set up flavors in your build.gradle:
-///...
-
+// If you're building for the Amazon Appstore 
 public class MainApplication extends Application {
     @Override
     public void onCreate() {
@@ -30,6 +27,10 @@ public class MainApplication extends Application {
             builder = new PurchasesConfiguration.Builder(this, <public_google_sdk_key>);
         }
       
-        Purchases.configure(builder.observerMode(true).build());
+        Purchases.configure(
+            builder
+            .purchasesAreCompletedBy(PurchasesAreCompletedBy.MY_APP)
+            .build()
+        );
     }
 }
