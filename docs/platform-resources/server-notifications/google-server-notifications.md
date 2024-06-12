@@ -29,7 +29,7 @@ Click '**Connect to Google**'. You should see a generated Google Cloud Pub/Sub T
 ![RevenueCat Dashboard](/images/8d0e5d0-Dev_Step2_fc39cfd1d9ab37940d3a02cc8054aa4d.gif)
 
 :::warning Internal Server Error
-If you see a server error when clicking "Connect to Google", or see the error `One or more users named in the policy do not belong to a permitted customer` in the logs in Google Cloud Console, "Domain Restricted Sharing" may be on for your Cloud project. This constraint is on by default for organizations created on or after My 3rd, 2024. You can check on this in Google Cloud Console -> "IAM & Admin" -> "Organization Policies" -> "Domain Restricted Sharing". You can choose to turn off this constraint, or make allowances for certain domains, including the service account created to communicate with RevenueCat.
+If you see a server error when clicking "Connect to Google", or see the error `One or more users named in the policy do not belong to a permitted customer` in the logs in Google Cloud Console, "Domain Restricted Sharing" may be on for your Cloud project. This constraint is on by default for organizations created on or after May 3rd, 2024. You can check on this in Google Cloud Console -> "IAM & Admin" -> "Organization Policies" -> "Domain Restricted Sharing". You can choose to turn off this constraint, or make allowances for certain domains, including the service account created to communicate with RevenueCat.
 :::
 
 ### 3. Add Topic ID to Google Play
