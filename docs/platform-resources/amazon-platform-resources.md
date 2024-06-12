@@ -17,7 +17,7 @@ If you're looking for sample apps, head over to our [Sample Apps](/platform-reso
 
 ## Syncing Purchases When Your App Is Completing Transactions
 
-When the SDK is configured to not complete transactions on an Amazon platform, `syncAmazonPurchase` will need to be called to ensure purchases are recorded. **Failure to do so will result in no purchases being recorded**.
+When the SDK is configured to not complete purchases on the Amazon Appstore, `syncAmazonPurchase` will need to be called to ensure purchases are recorded. **Failure to do so will result in no purchases being recorded**.
 
 import om7 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_7.cs";
 import om8 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_8.kt";
