@@ -96,13 +96,21 @@ After you've set up the _Purchase_ SDK to send attribution data from Adjust to R
 3. Add your app tokens and event tokens for your iOS app and/or Android app
 4. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
-![](/images/24b0991-app.revenuecat.com_projects_85ff18c7_integrations_adjust_b786d725d8f712350e3f4fab92247ce8.png)
+![](/images/adjust-integration.png)
 
 ### (Optional) S2S Adjust Authentication
 
 If you've enabled [S2S authentication on Adjust](https://help.adjust.com/en/article/server-to-server-s2s-security), fill out the OAuth token field in the RevenueCat Adjust settings page.
 
-![](/images/8d7ab80-Screenshot_2023-03-28_at_2.06.43_PM_71ec0208db5794f776e286d0918fcbff.png)
+![](/images/adjust-global-oauth-token.png)
+
+If you have a specific token per platform, you can override it on each platform section.
+
+#### iOS
+![](/images/adjust-ios-oauth-token.png)
+
+#### Android 
+![](/images/adjust-android-oauth-token.png)
 
 :::danger Missing Authentication Token Error (401)
 If you're getting an error that looks like this:
