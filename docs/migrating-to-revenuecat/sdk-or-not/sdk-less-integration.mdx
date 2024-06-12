@@ -7,7 +7,7 @@ hidden: false
 If you want to use RevenueCat without the SDK, you need to send all of the receipts and/or purchase tokens to RevenueCat via the `POST /receipts` [REST API endpoint](/api-v1#tag/transactions/operation/receipts). This will create the customer in RevenueCat, RevenueCat will validate the purchase and keep the purchase status up-to-date.
 
 :::info Adding the SDK at a later stage
-You can always start with a server-side integration without the SDK, and add the SDK later. In the case where purchases are made through the SDK and also sent on the server side, RevenueCat will automatically dedupe them, so there is no risk in this approach.
+You can always start with a server-side integration without the SDK, and add the SDK later. In the case where purchases are made through the SDK and also sent on the server side, RevenueCat will automatically deduplicate them, so there is no risk in this approach.
 :::
 
 ## Using RevenueCat Data and Integration Features

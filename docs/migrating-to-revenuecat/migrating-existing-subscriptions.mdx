@@ -17,7 +17,7 @@ Importing existing purchase data to RevenueCat can be done server-side, or clien
 
 ### Server Side Data Import
 
-A server side import involves sending all of the Apple receipts and/or purchase tokens to RevenueCat via the `POST /receipts` REST API endpoint. This will create the customer in RevenueCat, RevenueCat will validate the receipt and keep the subscription up-to-date. Ideally, you set up forwarding of new receipts/tokens first before sending any historic ones. RevenueCat will automatically dedupe them.
+A server side import involves sending all of the Apple receipts and/or purchase tokens to RevenueCat via the `POST /receipts` REST API endpoint. This will create the customer in RevenueCat, RevenueCat will validate the receipt and keep the subscription up-to-date. Ideally, you set up forwarding of new receipts/tokens first before sending any historic ones. RevenueCat will automatically deduplicate them.
 
 This is the quickest way to get your existing subscribers into RevenueCat. See the [API reference](https://www.revenuecat.com/docs/api-v1#tag/transactions/operation/receipts) for more details.
 
