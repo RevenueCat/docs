@@ -332,6 +332,7 @@ const integrationsCategory = Category({
         Page({ slug: "data-export-version-3" }),
         Page({ slug: "data-export-version-4" }),
         Page({ slug: "data-export-version-5" }),
+        Page({ slug: "scheduled-data-exports-azure" }),
         Page({ slug: "scheduled-data-exports-gcp" }),
         Page({ slug: "scheduled-data-exports-s3" }),
       ],
