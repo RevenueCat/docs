@@ -116,7 +116,9 @@ if (!pkg) return;
 
 // MARK: Purchasing package
 try {
-  const { customerInfo } = await Purchases.getSharedInstance().purchasePackage(pkg);
+  const { customerInfo } = await Purchases.getSharedInstance().purchase({
+    rcPackage: pkg
+  });
   if (Object.keys(customerInfo.entitlements.active).includes("pro")) {
     // Unlock that great "pro" content
   }
