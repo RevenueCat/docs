@@ -144,7 +144,7 @@ Download `Purchases-UnityIAP.unityPackage` and install as normal. Skip the rest 
 
 Download `Purchases-UnityIAP.unityPackage` and install as normal. Skip the rest of the instructions in this page. 
 
-### Disabling Finishing Transactions
+### Completing Transactions with your own IAP Code
 
 #### For Google Play (can also be done programmatically, see Configuration section)
 
@@ -159,7 +159,7 @@ If using RevenueCat alongside Unity IAP or other plugin that includes the Androi
 :::
 
 :::danger Important (Android only)
-On Android, RevenueCat **will not** consume or acknowledge any purchase if [finishing transactions](/migrating-to-revenuecat/sdk-or-not/finishing-transactions) is disabled, so be sure your app is handling that. **Failure to do so will result in your purchases being refunded after 3 days.**
+On Android, RevenueCat **will not** consume or acknowledge any purchase if [you tell the SDK that your app will complete transactions](/migrating-to-revenuecat/sdk-or-not/finishing-transactions), so be sure your app is handling that. **Failure to do so will result in your purchases being refunded after 3 days.**
 :::
 
 ## Next Steps

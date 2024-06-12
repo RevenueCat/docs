@@ -298,7 +298,7 @@ In order to do this, the SDK caches the relationships between products and entit
 - Purchases won't be recognized cross-platform while using Offline Entitlements.
 - Offline Entitlements only gets enabled if the user makes a purchases while RevenueCat's servers are down. Otherwise, it will use any existing cached information, which does consider cross-platform purchases.
 - Offline Entitlements don't currently work for one-time purchases (consumables and non-consumables). If our SDK detects that the user has made one of these purchases, Offline Entitlements will not be enabled and an error will be returned instead.
-- Offline Entitlements are disabled when finishing transactions is disabled.
+- Offline Entitlements are disabled when your app is completing transactions.
 
 You can check more of this feature in our blogpost: https://www.revenuecat.com/blog/engineering/introducing-offline-entitlements/
 

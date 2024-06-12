@@ -13,6 +13,10 @@ By telling the RevenueCat SDK that your app's code will complete purchases itsel
 The setting that your app will complete purchases was formerly called "observer mode". Older versions of the SDK (currently including the iOS and cross-platform SDKs) still refer to this terminology.
 :::
 
+:::warning Purchases need to manually be synced on Amazon Appstore
+For Amazon Appstore apps, you will need to [call the `syncAmazonPurchase()` method](/platform-resources/amazon-platform-resources#syncing-purchases-when-your-app-is-completing-transactions) after making a purchase using your own IAP code.
+:::
+
 ### SDK Configuration
 
 {/* TODO: Add code blocks */}
