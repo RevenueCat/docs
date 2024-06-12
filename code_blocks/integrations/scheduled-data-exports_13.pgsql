@@ -1,4 +1,4 @@
--- How many trials ended and successfully converted each day
+-- What was the conversion-to-paid of all trials that ended each day?
 
 WITH trials AS
 (SELECT
