@@ -150,7 +150,7 @@ import weeklyRevenueContent from "!!raw-loader!@site/code_blocks/integrations/sc
 import realizedLTVSegmentsContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_6.pgsql";
 import activeTrialsByGracePeriodStatusContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_7.pgsql";
 import realizedLTVPerPayingCustomerByFirstPurchaseDateContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_8.pgsql";
-import conversionRateByDate from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_13.pgsql";
+import trialConversionRatebyTrialEndDate from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_13.pgsql";
 
 <RCCodeBlock tabs={[
 { type: 'pgsql', content: activeSubsByCustomAttributeContent, name: 'Active Subs by Custom Attribute' },
@@ -159,5 +159,5 @@ import conversionRateByDate from "!!raw-loader!@site/code_blocks/integrations/sc
 { type: 'pgsql', content: realizedLTVSegmentsContent, name: 'Realized LTV Segments' },
 { type: 'pgsql', content: activeTrialsByGracePeriodStatusContent, name: 'Active Trials by Grace Period Status' },
 { type: 'pgsql', content: realizedLTVPerPayingCustomerByFirstPurchaseDateContent, name: 'Realized LTV Per Paying Customer by First Purchase Date' },
-{ type: 'pgsql', content: conversionRateByDate, name: 'Conversion Rate By Date' }
+{ type: 'pgsql', content: trialConversionRatebyTrialEndDate, name: 'Trial Conversion Rate by Trial End Date' }
 ]} />
