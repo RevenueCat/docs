@@ -42,4 +42,4 @@ Looking to programatically grant entitlements? View the REST API documentation [
 
 ## Next Steps
 
-- [Attributes ➡️](/dashboard-and-metrics/customer-history/attributes)
+- [Attributes →](/dashboard-and-metrics/customer-history/attributes)
