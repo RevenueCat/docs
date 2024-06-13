@@ -7,7 +7,7 @@ hidden: false
 
 ## Google Historical Import
 
-When migrating to RevenueCat, whether by [forwarding your receipt](/migrating-to-revenuecat/observer-mode#option-1-server-side) or enabling [Observer Mode on the SDK](/migrating-to-revenuecat/observer-mode#option-2-client-side), your Google Play subscription history may be incomplete. Due to a Google limitation, RevenueCat is not able to ingest Google receipts that have expired more than 90 days ago. For receipts that RevenueCat is able to process, Google receipts only return the current snapshot for your subscription. When combining your migration with Google Historical Imports, RevenueCat will be able to fill in the gaps of your subscription history. **Currently RevenueCat is able to import your Google Play transactions from July 2023 and onwards.**
+Doing a Google historical import overcomes some limitations of the Play Store receipts and allows RevenueCat to ingest subscription history dating back to July 2023. When migrating to RevenueCat, whether by [forwarding your receipt](/migrating-to-revenuecat/sdk-or-not/sdk-less-integration) or installing the SDK, your Google Play subscription history may be incomplete, because Google does nto provide status information for purchase tokens that have expired more than 90 days ago, and for newer tokens, Google only provides the current state, not the history. By combining your migration with Google Historical Imports, RevenueCat will be able to fill in the gaps in your subscription history.
 
 ## Setup
 
