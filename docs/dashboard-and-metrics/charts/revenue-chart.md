@@ -65,6 +65,10 @@ For each period, we measure:
 [Revenue] - [Taxes] = Revenue (net of taxes)
 [Revenue] - ([Store Commission / Fees] + [Taxes]) = Proceeds
 
+Or, to instead get the amounts deducted for each purpose:
+[Revenue] - [Revenue (net of taxes)] = Amount deducted for taxes
+[Revenue (net of taxes)] - [Proceeds] = Amount deducted for store commission & fees
+
 ## FAQs
 
 | Question                                                      | Answer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
