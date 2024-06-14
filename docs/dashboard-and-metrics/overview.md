@@ -78,4 +78,4 @@ All dates and times in the dashboard are represented in UTC, unless explicitly s
 
 ## Next Steps
 
-- Dig into the details of your subscriber base by [looking at the charts ➡️](/dashboard-and-metrics/charts)
+- Dig into the details of your subscriber base by [looking at the charts →](/dashboard-and-metrics/charts)

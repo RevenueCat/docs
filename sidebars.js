@@ -14,6 +14,7 @@ import {
   SubCategory,
   Link,
   Page,
+  PageWithCustomLabel,
 } from "./src/sidebars/sidebar-utils";
 
 // The sidebar is a tree of categories and pages.
@@ -116,15 +117,24 @@ const migratingCategory = Category({
   label: "Migrating to RevenueCat",
   slug: "migrating-to-revenuecat",
   items: [
+    Page({ slug: "migration-paths" }),
     SubCategory({
-      label: "Migrating Subscriptions",
+      label: "Choosing your Integration Path",
+      slug: "sdk-or-not",
+      items: [
+        Page({ slug: "sdk-less-integration" }),
+        // { label: "Using the SDK with your own IAP Code", id: "finishing-transactions", type: "doc" },
+        PageWithCustomLabel({ label: "Using the SDK with your own IAP Code", slug: "finishing-transactions"}),
+      ],
+    }),
+    SubCategory({
+      label: "Importing Historical Purchases",
       slug: "migrating-existing-subscriptions",
       items: [
         Page({ slug: "receipt-imports" }),
         Page({ slug: "google-historical-import" }),
       ],
     }),
-    Page({ slug: "observer-mode" }),
     Page({ slug: "swiftystorekit" }),
   ],
 });
