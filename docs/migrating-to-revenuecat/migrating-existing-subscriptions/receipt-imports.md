@@ -25,10 +25,13 @@ Bulk imports done by RevenueCat will not trigger any webhook or integration even
 
 To do a receipt import we'll need a CSV file for each of the stores you want to import data from (Apple App Store, Google Play Store, Stripe). The CSV needs to contain the columns outlined below.
 
+=======
 #### Apple App Store
 
 - app_user_id
 - receipt (the raw StoreKit 1 receipt file) OR StoreKit 2 [signed transaction](https://developer.apple.com/documentation/appstoreserverapi/jwstransaction)
+
+In order to accurately detect pricing, upload your App Store Connect API key and configure v2 server notifications, see [here](https://www.revenuecat.com/docs/subscription-guidance/price-changes#price-detection) for more info.
 
 :::warning StoreKit 1: Complete base64 encoded receipt file required
 RevenueCat requires the raw base64 encoded Apple receipt to import the subscription properly. Partial receipts, the receipt information from the Apple server-to-server notifications, or the [`latest_receipt_info`](https://developer.apple.com/documentation/appstorereceipts/responsebody/latest_receipt_info) are insufficient as they contain only a subset of the receipt information.
