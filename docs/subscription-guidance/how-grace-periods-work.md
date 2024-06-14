@@ -32,6 +32,16 @@ Starting in iOS 16.4+, a system-sheet will automatically be displayed if a user 
 4. Wait a few minutes ([depending on the product duration](https://www.revenuecat.com/blog/engineering/the-ultimate-guide-to-subscription-testing-on-ios/#h-subscription-renewal-rates-in-the-developer-sandbox)) and allow the subscription to attempt renewal. Renewal will fail.
 5. Relaunch or reopen your app, and see the billing issue prompt
 
+### Stripe
+
+Stripe provides some additional options for how to handle what occurs after a customer encounters an issue with their payment. You can find these options in your Stripe dashboard under **Settings > Billing > Subscriptions and email > Manage failed payments**. In each case, we will only generate one billing issue event.
+
+1. cancel the subscription: RevenueCat will **revoke access** and generate a `CANCELLATION` event with the reason set to `BILLING_ERROR`.
+2. mark the subscription as unpaid: RevenueCat will **revoke access** but continues generating `RENEWAL` events with a zero price while the invoice remains open.
+3. leave the subscription past-due: RevenueCat **will not revoke access** and will continue generating `RENEWAL` events with a zero price. The subscription remains in place but no further payments are attempted.
+
+If you have not made an update to this setting, the default behavior is to cancel the subscription after all retries fail.
+
 ## Entering a Grace Period
 
 When a subscription enters a grace period, RevenueCat detects the change automatically. Users will retain access to their subscriptions, but we'll immediately send events indicating the subscription has been **cancelled**. These subscriptions are considered cancelled because they are now past due, but will not be considered expired until the end of their grace period. During this time, a subscription may convert to paid through additional billing attempts from the store or by the customer updating their billing information.
@@ -43,6 +53,10 @@ To detect grace periods in [webhook](/integrations/webhooks) events, watch for t
 To detect grace periods in the `GET /subscriber` [endpoint](https://www.revenuecat.com/reference/subscribers), watch for the value of `grace_period_expires_date` on a subscription object and compare it to the current date. This property will be `null` if the subscription is not in a grace period.
 
 Once a user corrects their payment method, RevenueCat will send a renewal event. This will reset the `grace_period_expires_date` property to `null` in the `GET /subscriber` endpoint.
+
+:::info Stripe and Grace Periods
+The property `grace_period_expires_date` will always be null for Stripe subscriptions, even those in a billing retry period. This is due to how Stripe creates transactions - when a payment fails, the grace period is already included in the expiration date of the new transaction. If all payment retries fail, `expires_date` will be updated.
+:::
 
 ### Dashboard
 

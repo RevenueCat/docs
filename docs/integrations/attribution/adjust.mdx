@@ -29,9 +29,14 @@ The Adjust integration requires some device-specific data. RevenueCat will only 
 | `$adjustId`  | Adjust Id. The unique Adjust identifier for the user                                                                                            | ✅ (required)    |
 | `$idfa`      | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ✅ (recommended) |
 | `$gpsAdId`   | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ✅ (recommended) |
-| `$androidId` | Android [device identifier](https://developer.android.com/reference/android/provider/Settings.Secure#ANDROID_ID)                                | ✅ (recommended) |
 | `$idfv`      | iOS [vender identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ✅ (recommended) |
 | `$ip`        | The IP address of the device                                                                                                                    | ✅ (recommended) |
+
+:::warning Android ID deprecation
+Due to policy changes from the Play Store, Android ID is no longer collected by RevenueCat's Android SDKs starting on versions 6.9.8+, 7.11.1+, and later major versions.
+
+Therefore, Google's Advertising ID acts as the primary device identifier for Android devices in RevenueCat and when connecting with third-party integrations.
+:::
 
 These properties can be set manually, like any other [Customer Attributes](/customers/customer-attributes), or through the helper methods to `collectDeviceIdentifiers()` and `setAdjustId()`.
 
@@ -91,13 +96,21 @@ After you've set up the _Purchase_ SDK to send attribution data from Adjust to R
 3. Add your app tokens and event tokens for your iOS app and/or Android app
 4. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
-![](/images/24b0991-app.revenuecat.com_projects_85ff18c7_integrations_adjust_b786d725d8f712350e3f4fab92247ce8.png)
+![](/images/adjust-integration.png)
 
 ### (Optional) S2S Adjust Authentication
 
 If you've enabled [S2S authentication on Adjust](https://help.adjust.com/en/article/server-to-server-s2s-security), fill out the OAuth token field in the RevenueCat Adjust settings page.
 
-![](/images/8d7ab80-Screenshot_2023-03-28_at_2.06.43_PM_71ec0208db5794f776e286d0918fcbff.png)
+![](/images/adjust-global-oauth-token.png)
+
+If you have a specific token per platform, you can override it on each platform section.
+
+#### iOS
+![](/images/adjust-ios-oauth-token.png)
+
+#### Android 
+![](/images/adjust-android-oauth-token.png)
 
 :::danger Missing Authentication Token Error (401)
 If you're getting an error that looks like this:

@@ -27,4 +27,4 @@ Only **Package Pricing** and **Standard Pricing** subscription plans with **per 
 
 ## Integrate with RevenueCat
 
-If you're ready to integrate your new Stripe product with RevenueCat, continue our [product setup guide ➡️](/getting-started/entitlements).
+If you're ready to integrate your new Stripe product with RevenueCat, continue our [product setup guide →](/getting-started/entitlements).

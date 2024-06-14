@@ -14,6 +14,7 @@ import {
   SubCategory,
   Link,
   Page,
+  PageWithCustomLabel,
 } from "./src/sidebars/sidebar-utils";
 
 // The sidebar is a tree of categories and pages.
@@ -107,6 +108,7 @@ const gettingStartedCategory = Category({
       label: "Configuring Server Notifications",
       slug: "/platform-resources/server-notifications",
     }),
+    Page({ slug: "data-onboarding" }),
   ],
 });
 
@@ -115,15 +117,24 @@ const migratingCategory = Category({
   label: "Migrating to RevenueCat",
   slug: "migrating-to-revenuecat",
   items: [
+    Page({ slug: "migration-paths" }),
     SubCategory({
-      label: "Migrating Subscriptions",
+      label: "Choosing your Integration Path",
+      slug: "sdk-or-not",
+      items: [
+        Page({ slug: "sdk-less-integration" }),
+        // { label: "Using the SDK with your own IAP Code", id: "finishing-transactions", type: "doc" },
+        PageWithCustomLabel({ label: "Using the SDK with your own IAP Code", slug: "finishing-transactions"}),
+      ],
+    }),
+    SubCategory({
+      label: "Importing Historical Purchases",
       slug: "migrating-existing-subscriptions",
       items: [
         Page({ slug: "receipt-imports" }),
         Page({ slug: "google-historical-import" }),
       ],
     }),
-    Page({ slug: "observer-mode" }),
     Page({ slug: "swiftystorekit" }),
   ],
 });
@@ -259,6 +270,7 @@ const dashboardCategory = Category({
     Page({ slug: "customer-lists" }),
     Page({ slug: "taxes-and-commissions" }),
     Page({ slug: "performance-summaries" }),
+    Page({ slug: "supporting-your-customers"}),
   ],
 });
 
@@ -442,7 +454,10 @@ const supportCategory = Category({
   emoji: "🛟",
   label: "RevenueCat Support",
   slug: "revenuecat-support",
-  items: [Page({ slug: "support-first-steps" })],
+  items: [
+    Page({ slug: "support-first-steps" }), 
+    Page({ slug: "general-troubleshooting" })
+  ],
 });
 
 const sdkMigrationCategory = Category({
@@ -453,6 +468,7 @@ const sdkMigrationCategory = Category({
     Page({ slug: "android-native-4x-to-5x-migration" }),
     Page({ slug: "android-native-5x-to-6x-migration" }),
     Page({ slug: "android-native-6x-to-7x-migration" }),
+    Page({ slug: "android-native-7x-to-8x-migration"}),
     Page({ slug: "ios-native-3x-to-4x-migration" }),
   ],
 });

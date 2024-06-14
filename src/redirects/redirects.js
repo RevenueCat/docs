@@ -233,6 +233,10 @@ const redirects = {
       from: "/entitlements",
     },
     {
+      to: "/getting-started/entitlements",
+      from: "/legacy-entitlements",
+    },
+    {
       to: "/getting-started/quickstart",
       from: "/getting-started",
     },
@@ -469,7 +473,7 @@ const redirects = {
       from: "/migrating-existing-subscriptions",
     },
     {
-      to: "/migrating-to-revenuecat/observer-mode",
+      to: "/migrating-to-revenuecat/sdk-or-not/finishing-transactions",
       from: "/observer-mode",
     },
     {
@@ -1172,7 +1176,7 @@ const redirects = {
       from: "/migrating-existing-subscriptions.html",
     },
     {
-      to: "/migrating-to-revenuecat/observer-mode",
+      to: "/migrating-to-revenuecat/sdk-or-not/finishing-transactions",
       from: "/observer-mode.html",
     },
     {

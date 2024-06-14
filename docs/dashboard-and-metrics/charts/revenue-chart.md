@@ -12,23 +12,37 @@ All revenue from a new paid subscription or renewal is credited to the period th
 
 In addition, the revenue chart includes revenue from other sources like non-consumable and consumable purchases, as well as non-renewing subscriptions.
 
-The default stacked area visualization allows you to measure New Revenue and Renewal Revenue distinctly, with the complete stack representing your Total Revenue.
+:::info Revenue Chart Updates June 2024
+The Revenue chart was updated in June 2024 to add transaction counts, support visualizing Revenue (net of taxes) and Proceeds, improve the estimation of taxes deducted from App Store transactions, and to make the split of New/Renewal revenue optional. [Learn more here.](https://revenuecat.releasenotes.io/release/jKJpf-revenue-chart-updates-chart-proceeds-count-transactions-and-more)
+:::
 
-### New, renewal, and total revenue
+### Measures
 
-The Revenue chart measures new and renewal revenue distinctly by default.
+The Revenue chart provides both the revenue that was generated in a given period, as well as the count of revenue-generating transactions in that period (minus those that have since been refunded), so that you can compare them to understand why your business is trending the way it is.
+
+### Revenue type
+
+The Revenue chart allows you to select and visualize three different revenue definitions:
+1. Revenue: The total revenue generated in a given period, minus refunds from transactions that occurred in that period.
+2. Revenue (net of taxes): Revenue generated in a given period (as defined above), minus our estimate of revenue deducted from the stores for taxes (e.g. VAT, DST, etc).
+3. Proceeds: Revenue generated in a given period (as defined above), minus our estimate of revenue deducted from the stores for taxes and commission.
+
+Proceeds reflect RevenueCat's estimate of what you will earn from the stores for the revenue you generated, but keep in mind that the App Store's payment schedule is based on Apple's Fiscal Calendar, which does not align with calendar months. [Learn more here.](https://www.revenuecat.com/blog/growth/apple-fiscal-calendar-year-payment-dates/)
+
+In addition, to learn more about how RevenueCat estimates taxes and commissions deducted from the stores, [click here](/dashboard-and-metrics/taxes-and-commissions).
+
+### Transaction type
+
+The Revenue chart can be filtered or segmented by transaction type to measure the count of transactions and volume of revenue coming from either "new" transactions or "renewal" transactions.
 
 - Revenue is considered “new” when it represents the first paid transaction for a given customer, such as: new paid subscriptions, trial to paid conversions, and initial non-subscription purchases.
 - All other revenue is considered “renewal” revenue, which in addition to paid subscription renewals may include accepted promotional offers, additional non-renewing subscription purchases, etc.
-
-### Commissions, taxes, and proceeds
-
-The Revenue chart also estimates the amount deducted for commissions, fees, and taxes from each store to yield an expected Proceeds amount. To learn more about how RevenueCat estimates commissions & taxes, [click here](/dashboard-and-metrics/taxes-and-commissions).
 
 ### Available settings
 
 - Filters: Yes
 - Segments: Yes
+- Revenue Type: Yes
 
 ## How to use Revenue in your business
 
@@ -36,28 +50,24 @@ Revenue is best used as a health metric for operating your business.
 
 - To get a higher-level view of how your business is trending, try switching to a monthly resolution and looking at the last 12 months to see your growth trajectory. ([Explore here](https://app.revenuecat.com/charts/revenue?chart_type=Stacked%20area&conversion_timeframe=7%20days&customer_lifetime=30%20days&range=Last%2012%20months&resolution=2))
 - Focus on the mix of new & renewal revenue to understand where your growth is coming from, or segment by dimensions like Project how different products within your business are growing over time.
+- Switch to Proceeds to better estimate how your bottom line performance is trending for a given calendar month.
 
 ## Calculation
 
-### Revenue
-
 For each period, we measure:
 
-1. New Revenue: Revenue deriving from the first paid transaction of a given customer, such as: new paid subscriptions, trial to paid conversions, and initial non-consumable purchases.
-2. Renewal Revenue: Revenue deriving from subsequent paid transactions of a given customer, such as: paid subscription renewals, accepted promotional offers of existing subscribers, additional non-renewing subscription purchases, etc.
+1. Transactions: The count of revenue generating transactions in a given period, minus those that have since been refunded.
+2. Revenue: The total revenue generated in a given period, minus refunds from transactions that occurred in that period.
+3. Taxes: The total amount deducted for taxes from the revenue generated in a given period.
+4. Store Commission / Fees: The total amount deducted for store commissions and fees from the revenue generated in a given period.
 
-**Formula**  
-[New Revenue] + [Renewal Revenue] = Total Revenue
+**Formulas**  
+[Revenue] - [Taxes] = Revenue (net of taxes)
+[Revenue] - ([Store Commission / Fees] + [Taxes]) = Proceeds
 
-### Proceeds
-
-For each period, we measure:
-
-1. Store Commission / Fee: The estimated revenue from a given period that will be deducted by the stores due to their commissions or fees.
-2. Taxes: The estimated revenue from a given period that will be deducted by the stores due to VAT or DST.
-
-**Formula**  
-[Total Revenue] - ([Store Commission / Fee] + [Taxes]) = Proceeds
+Or, to instead get the amounts deducted for each purpose:
+[Revenue] - [Revenue (net of taxes)] = Amount deducted for taxes
+[Revenue (net of taxes)] - [Proceeds] = Amount deducted for store commission & fees
 
 ## FAQs
 

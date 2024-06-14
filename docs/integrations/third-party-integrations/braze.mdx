@@ -148,19 +148,19 @@ import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/th
 
 Whenever RevenueCat sends an event to Braze, we'll update the `rc_subscription_status` user attribute with any applicable changes, using one of the following values:
 
-| Status              | Description                                                                                                                        |
-| :------------------ | :--------------------------------------------------------------------------------------------------------------------------------- |
-| active              | The customer has an active, paid subscription which is set to renew at their next renewal date.                                    |
-| intro               | The customer has an active, paid subscription through a paid introductory offer.                                                   |
-| cancelled           | The customer has a paid subscription which is set to expire at their next renewal date.                                            |
-| grace_period        | The customer has a paid subscription which has entered a grace period after failing to renew successfully.                         |
-| trial               | The customer is in a trial period which is set to convert to paid at the end of their trial period.                                |
-| cancelled_trial     | The customer is in a trial period which is set to expire at the end of their trial period.                                         |
-| grace_period_trial  | The customer was in a trial period and has now entered a grace period after failing to renew successfully.                         |
-| expired             | The customer's subscription has expired.                                                                                           |
-| promotional         | The customer has access to an entitlement through a granted RevenueCat promotional subscription.                                   |
-| expired_promotional | The customer previously had access to an entitlement through a granted RevenueCat promotional subscription that has since expired. |
-| paused              | The customer has a paid subscription which has been paused and is set to resume at some future date.                               |
+| Status              | Description                                                                                                                                  |
+| :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| active              | The customer has an active, paid subscription which is set to renew at their next renewal date.                                              |
+| intro               | The customer has an active, paid subscription through a paid introductory offer.                                                             |
+| cancelled           | The customer has a paid subscription which is set to expire at their next renewal date.                                                      |
+| grace_period        | The customer has a paid subscription which has entered a grace period after failing to renew successfully.                                   |
+| trial               | The customer is in a trial period which is set to convert to paid at the end of their trial period.                                          |
+| cancelled_trial     | The customer is in a trial period which is set to expire at the end of their trial period.                                                   |
+| grace_period_trial  | The customer was in a trial period and has now entered a grace period after failing to renew successfully.                                   |
+| expired             | The customer's subscription has expired.                                                                                                     |
+| promotional         | The customer has access to an entitlement through a RevenueCat [Granted Entitlement](/dashboard-and-metrics/customer-history/promotionals)   |
+| expired_promotional | The customer previously had access to an entitlement through a RevenueCat Granted Entitlement that has since expired.                        |
+| paused              | The customer has a paid subscription which has been paused and is set to resume at some future date.                                         |
 
 For customers with multiple active subscriptions, this attribute will represent the status of only the subscription for which the most recent event occurred. Therefore, we recommend using `rc_active_entitlements` to understand whether your customers have multiple active subscriptions to be accounted for.
 

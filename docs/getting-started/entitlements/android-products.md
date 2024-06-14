@@ -84,6 +84,20 @@ To mark an offer as backwards compatible, click the overflow menu and select "Us
 
 ![](/images/f309ab8-Screen_Shot_2022-07-07_at_2.12.18_PM_4979d641e4ad1bd1a1f4ca3fe8dc9224.png "Screen Shot 2022-07-07 at 2.12.18 PM.png")
 
+### Add non-consumable products 
+
+If you want your customers to be able to purchase a certain In-App product only once (for example, a lifetime purchase), you need to configure the product as a non-consumable when creating it in the RC dashboard. 
+
+![](/images/non-consumable-android-support.png "non-consumable-android-support.png")
+
+If you don't configure it as a non-consumable, we will automatically `consume` the purchase and Google will allow the customer to purchase it again. The purchase will still be registered in that customer's `CustomerInfo`.
+
+You can also edit existing or imported consumable products to make them non-consumable.
+
+:::info
+Non-consumable support is supported in Android SDK version 7.11.0 and up. In previous versions, the SDK will always consume the purchase.
+:::
+
 ### Making Subscriptions Editable, InAppProduct API
 
 **RevenueCat does not use the InAppProduct API for subscriptions.** You are safe to make subscriptions editable, **unless** you are manually using this API outside of RevenueCat.

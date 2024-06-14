@@ -17,11 +17,10 @@ In order for events to properly work, information about the purchase along with 
 
 ### 1. Send purchase information into RevenueCat
 
-Purchase information, along with an App User ID, need to be sent to RevenueCat. This can be done 1 of 3 ways:
+Purchase information, along with an App User ID, need to be sent to RevenueCat. This can be done 1 of 2 ways:
 
-1. Making purchases through any of the RevenueCat SDKs will automatically collect this information.
-2. Running any of the RevenueCat SDKs in [Observer Mode](/migrating-to-revenuecat/observer-mode#option-2-client-side) will automatically collect this information.
-3. Create a subscription through the [POST /receipts](https://www.revenuecat.com/reference/receipts) REST API. This is typically done server-side and only if you're **not** using the RevenueCat SDK.
+1. Using any of the RevenueCat SDKs will automatically collect this information.
+2. Create a subscription through the [POST /receipts](https://www.revenuecat.com/reference/receipts) REST API. This is typically done server-side and only if you're **not** using the RevenueCat SDK.
 
 :::info
 Purchase information only needs to be sent to RevenueCat once to initially create the subscription, and all future events will be automatically detected.

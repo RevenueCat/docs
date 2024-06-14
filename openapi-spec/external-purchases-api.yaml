@@ -280,6 +280,8 @@ tags:
     }
     ```
 
+    > Note: Make sure to include the `current_period_starts_at` for the transaction you are trying to expire. Otherwise your target transaction might not be found by the system.
+
     ## Webhook events flow
 
     ![](/docs/images/external-purchases-api/b310775-Screenshot_2023-08-03_at_16.36.49.png)

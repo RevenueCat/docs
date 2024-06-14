@@ -62,9 +62,14 @@ Don't forget to enable the In-App Purchase capability for your iOS project under
 ![](/images/66c301a-65db383-Screen_Shot_2018-12-18_at_9.15.09_AM_51ae7051850be013d83c1e9a8f107b61.png "65db383-Screen_Shot_2018-12-18_at_9.15.09_AM.png")
 
 :::warning
-If you're using other plugins like [mobx](https://pub.dev/packages/flutter_mobx), you may run into conflicts with types from other plugins having the same name as those defined in `purchases_flutter`. \nIf this happens, you can resolve the ambiguity in the types by adding an import alias, for example: \n```dart\nimport 'package:purchases_flutter/purchases_flutter.dart' as purchases;\n```\nAfter that, you can reference the types from `purchases_flutter` as `purchases.Foo`, like `purchases.PurchaserInfo`.
+If you're using other plugins like [mobx](https://pub.dev/packages/flutter_mobx), you may run into conflicts with types from other plugins having the same name as those defined in `purchases_flutter`.<br/>
+If this happens, you can resolve the ambiguity in the types by adding an import alias, for example:
+```dart
+import 'package:purchases_flutter/purchases_flutter.dart' as purchases;
+```
+After that, you can reference the types from `purchases_flutter` as `purchases.Foo`, like `purchases.PurchaserInfo`.
 :::
 
 ## Next Steps
 
-* Now that you've installed the Purchases SDK in Flutter, get started by [configuring an instance of Purchases ➡️](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)
+* Now that you've installed the Purchases SDK in Flutter, get started by [configuring an instance of Purchases →](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)
