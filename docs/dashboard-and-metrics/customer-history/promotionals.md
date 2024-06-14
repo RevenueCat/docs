@@ -11,7 +11,7 @@ Promotional subscriptions allow you to give a user access to premium content for
 :::info Promotional subscriptions won't affect billing
 Granted entitlements are a RevenueCat specific feature and work independently of the App Store, Play Store, Amazon, and Stripe billing and will never cancel a user's subscription, charge a user, issue a refund, or convert to a paid subscription.
 
-Promotionals don't stack on top of store subscriptions, and are applied alongside them instead.
+Granted entitlements don't stack on top of store subscriptions, and are applied alongside them instead.
 :::
 
 ## Granting Promotionals
