@@ -62,12 +62,12 @@ For each period, we measure:
 4. Store Commission / Fees: The total amount deducted for store commissions and fees from the revenue generated in a given period.
 
 **Formulas**  
-[Revenue] - [Taxes] = Revenue (net of taxes)
-[Revenue] - ([Store Commission / Fees] + [Taxes]) = Proceeds
+- [Revenue] - [Taxes] = Revenue (net of taxes)
+- [Revenue] - ([Store Commission / Fees] + [Taxes]) = Proceeds
 
 Or, to instead get the amounts deducted for each purpose:
-[Revenue] - [Revenue (net of taxes)] = Amount deducted for taxes
-[Revenue (net of taxes)] - [Proceeds] = Amount deducted for store commission & fees
+- [Revenue] - [Revenue (net of taxes)] = Amount deducted for taxes
+- [Revenue (net of taxes)] - [Proceeds] = Amount deducted for store commission & fees
 
 ## FAQs
 
