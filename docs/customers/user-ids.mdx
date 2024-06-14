@@ -71,9 +71,12 @@ import content8 from "!!raw-loader!@site/code_blocks/customers/user-ids_unity.cs
     
 ]}/>
 
+For SDK versions 3+, anonymous App User IDs are always prefixed with `$RCAnonymousID:`, which may be useful for identifying anonymous users on your server.
 
-:::info
-Anonymous App User IDs are always prefixed with `$RCAnonymousID:` for SDK versions 3+. This can be useful for working with anonymous users on your server.
+:::info Capture Anonymous IDs for Debugging
+If your app does not enforce the use of custom App User IDs, you should consider revealing the user's App User ID in your app's support page. This will help expedite support requests, including those with RevenueCat Support.
+
+You can find the App User ID on the `CustomerInfo` [object](/customers/customer-info#get-user-information).
 :::
 
 ## Logging In with a Custom App User ID
