@@ -460,20 +460,12 @@ paths:
             schema:
               type: object
               properties:
-                start_time_ms:
-                  type: integer
-                  description:
-                    A Unix epoch in milliseconds for when the
-                    entitlement should have been considered as started. If not provided,
-                    the entitlement will be granted immediately. Future dates will
-                    also be granted immediately and will be active until the expiration
-                    date lapses.
-                  example: 1709195668093
                 end_time_ms:
                   type: integer
                   description:
                     A Unix epoch in milliseconds for when the
-                    entitlement should expire. If not provided then `duration` must be provided.
+                    entitlement should expire. The entitlement will always be granted immediately.
+                    If not provided then `duration` must be provided.
                   example: 1709196532093
                 duration:
                   type: string
@@ -491,6 +483,16 @@ paths:
                   description:
                     How long of a duration to grant the entitlement
                     for.  If not provided then `end_time_ms` must be provided.
+                  deprecated: true
+                start_time_ms:
+                  type: integer
+                  description:
+                    A Unix epoch in milliseconds used to determine the expiration date, 
+                    by adding `duration` to `start_time_ms`. Regardless of what `start_time_ms` is set to,
+                    the entitlement will always be granted immediately. If `start_time_ms`
+                    is not provided, the `duration` will be added to the current time to
+                    determine the expiration date.
+                  example: 1709195668093
                   deprecated: true
             example:
               start_time_ms: 1709195668093
