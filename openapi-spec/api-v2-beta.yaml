@@ -6050,8 +6050,8 @@ components:
           example: 19b8de26-77c1-49f1-aa18-019a391603e2
         product_id:
           description: The RevenueCat ID of the product that the customer is subscribed
-            to
-          nullable: false
+            to. Exists for all store types except for promotional.
+          nullable: true
           minLength: 1
           maxLength: 255
           type: string
