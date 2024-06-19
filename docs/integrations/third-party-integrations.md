@@ -44,6 +44,5 @@ RevenueCat can integrate data with the following platforms:
 - [Slack →](/integrations/third-party-integrations/slack)
 - [Statsig →](/integrations/third-party-integrations/statsig)
 - [Superwall →](/integrations/third-party-integrations/superwall)
-- [Webhooks →](/integrations/webhooks)
 
 If you use an integration platform not listed here, [contact us](https://www.revenuecat.com/contact).
