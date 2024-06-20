@@ -124,7 +124,7 @@ const migratingCategory = Category({
       items: [
         Page({ slug: "sdk-less-integration" }),
         // { label: "Using the SDK with your own IAP Code", id: "finishing-transactions", type: "doc" },
-        PageWithCustomLabel({ label: "Using the SDK with your own IAP Code", slug: "finishing-transactions"}),
+        PageWithCustomLabel({ label: "Using the SDK with your own IAP Code", slug: "finishing-transactions" }),
       ],
     }),
     SubCategory({
@@ -238,6 +238,7 @@ const dashboardCategory = Category({
         Page({ slug: "annual-recurring-revenue-arr-chart" }),
         Page({ slug: "charts-feature-incomplete-periods" }),
         Page({ slug: "churn-chart" }),
+        Page({ slug: "cohort-explorer" }),
         Page({ slug: "conversion-to-paying-chart" }),
         Page({ slug: "initial-conversion-chart" }),
         Page({ slug: "monthly-recurring-revenue-movement-chart" }),
@@ -270,7 +271,7 @@ const dashboardCategory = Category({
     Page({ slug: "customer-lists" }),
     Page({ slug: "taxes-and-commissions" }),
     Page({ slug: "performance-summaries" }),
-    Page({ slug: "supporting-your-customers"}),
+    Page({ slug: "supporting-your-customers" }),
   ],
 });
 
@@ -455,7 +456,7 @@ const supportCategory = Category({
   label: "RevenueCat Support",
   slug: "revenuecat-support",
   items: [
-    Page({ slug: "support-first-steps" }), 
+    Page({ slug: "support-first-steps" }),
     Page({ slug: "general-troubleshooting" })
   ],
 });
@@ -468,7 +469,7 @@ const sdkMigrationCategory = Category({
     Page({ slug: "android-native-4x-to-5x-migration" }),
     Page({ slug: "android-native-5x-to-6x-migration" }),
     Page({ slug: "android-native-6x-to-7x-migration" }),
-    Page({ slug: "android-native-7x-to-8x-migration"}),
+    Page({ slug: "android-native-7x-to-8x-migration" }),
     Page({ slug: "ios-native-3x-to-4x-migration" }),
   ],
 });
