@@ -54,19 +54,12 @@ Version 5.0 of the SDK also introduces support for recording purchases made dire
 
 You can enable it when configuring the SDK:
 
-| Version 4 | Version 5 |
-|------------|------------|
-| <pre lang="swift">Purchases.configure(with: .builder(withAPIKey: apiKey)<br/><br/>  .with(observerMode: true)<br/><br/>  .build()</pre> | <pre lang="swift">Purchases.configure(with: .builder(withAPIKey: apiKey)<br/><br/>  .with(purchasesAreCompletedBy: .myApp, storeKitVersion: .storeKit2)<br/><br/>  .build()</pre> |
-
-
 import content2 from "!!raw-loader!@site/code_blocks/sdk-guides/ios-native-4x-to-5x-migration_2.swift";
 import content3 from "!!raw-loader!@site/code_blocks/sdk-guides/ios-native-4x-to-5x-migration_3.swift";
 
 | Version 4 | Version 5 |
 |------------|------------|
 | <RCCodeBlock tabs={[{type: 'swift', content: content2,}]}/> | <RCCodeBlock tabs={[{type: 'swift', content: content3,}]}/> |
-
-^ REMINDER TO PICK ONE STYLE ABOVE ^^^^
 
 #### ⚠️ Observing Purchases Completed by Your App on macOS
 
