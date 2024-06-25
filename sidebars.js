@@ -44,6 +44,7 @@ const welcomeCategory = Category({
         Page({ slug: "collaborators" }),
         Page({ slug: "security" }),
         Page({ slug: "account-management" }),
+        Page({ slug: "developer-store-payments"})
       ],
     }),
     Page({ slug: "authentication" }),
