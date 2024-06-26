@@ -770,7 +770,8 @@ paths:
       - name: expand
         in: query
         description: "Specifies which fields in the response should be expanded.\n\
-          \ Accepted values (and required permissions) are: `app` (`project_configuration:apps:read`)."
+          \ Accepted values are: `app` (requires `project_configuration:apps:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -912,7 +913,8 @@ paths:
       - name: expand
         in: query
         description: "Specifies which fields in the response should be expanded.\n\
-          \ Accepted values (and required permissions) are: `items.app` (`project_configuration:apps:read`)."
+          \ Accepted values are: `items.app` (requires `project_configuration:apps:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -1119,7 +1121,8 @@ paths:
       - name: expand
         in: query
         description: "Specifies which fields in the response should be expanded.\n\
-          \ Accepted values (and required permissions) are: `product` (`project_configuration:products:read`)."
+          \ Accepted values are: `product` (requires `project_configuration:products:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -1330,7 +1333,8 @@ paths:
       - name: expand
         in: query
         description: "Specifies which fields in the response should be expanded.\n\
-          \ Accepted values (and required permissions) are: `items.product` (`project_configuration:products:read`)."
+          \ Accepted values are: `items.product` (requires `project_configuration:products:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -1706,8 +1710,9 @@ paths:
       - name: expand
         in: query
         description: "Specifies which fields in the response should be expanded.\n\
-          \ Accepted values (and required permissions) are: `package` (`project_configuration:packages:read`),\
-          \ `package.product` (`project_configuration:products:read`)."
+          \ Accepted values are: `package` (requires `project_configuration:packages:read`\
+          \ permissions), `package.product` (requires `project_configuration:products:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -1926,8 +1931,9 @@ paths:
       - name: expand
         in: query
         description: "Specifies which fields in the response should be expanded.\n\
-          \ Accepted values (and required permissions) are: `items.package` (`project_configuration:packages:read`),\
-          \ `items.package.product` (`project_configuration:products:read`)."
+          \ Accepted values are: `items.package` (requires `project_configuration:packages:read`\
+          \ permissions), `items.package.product` (requires `project_configuration:products:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -2077,7 +2083,8 @@ paths:
       - name: expand
         in: query
         description: "Specifies which fields in the response should be expanded.\n\
-          \ Accepted values (and required permissions) are: `product` (`project_configuration:products:read`)."
+          \ Accepted values are: `product` (requires `project_configuration:products:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -2300,7 +2307,8 @@ paths:
       - name: expand
         in: query
         description: "Specifies which fields in the response should be expanded.\n\
-          \ Accepted values (and required permissions) are: `items.product` (`project_configuration:products:read`)."
+          \ Accepted values are: `items.product` (requires `project_configuration:products:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
