@@ -68,7 +68,7 @@ import cocoapodsGradle from "!!raw-loader!@site/code_blocks/getting-started/inst
     { type: 'kotlin', content: cocoapodsGradle, name: 'build.gradle.kts' }
 ]} />
 
-#### 1. As an iOS framework
+#### 2. As an iOS framework
 Follow these instructions if your Kotlin Multiplatform module is integrated with your iOS project as a plain iOS framework. That is, Xcode is calling the `embedAndSignAppleFrameworkForXcode` Gradle task (or the old `packForXcode` task) as part of the build. At the time of writing, if you generated your Kotlin Multiplatform project using the [online wizard](https://kmp.jetbrains.com/), this is how it's set up. 
 
 In this scenario, you need to manually link the transitive dependency on `PurchasesHybridCommon`. One way to do so is using CocoaPods. This is useful if you're already using CocoaPods in your iOS app for dependencies other than your own Kotlin Multipatform module. 
