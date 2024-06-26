@@ -26,7 +26,7 @@ Add the following coordinates to your `libs.versions.toml`.
 import versionsContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_1.toml";
 
 <RCCodeBlock tabs={[
-    { type: 'kotlin', content: versionsContent, name: 'libs.versions.toml' }
+    { content: versionsContent, name: 'libs.versions.toml' }
 ]} />
 
 You can now add the dependency to your `commonMain` source set in your module's `build.gradle.kts`. 
@@ -57,7 +57,7 @@ In this scenario, we can specify the transitive dependency on `PurchasesHybridCo
 import commonVersion from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_4.toml";
 
 <RCCodeBlock tabs={[
-    { type: 'groovy', content: commonVersion, name: 'libs.versions.toml' }
+    { content: commonVersion, name: 'libs.versions.toml' }
 ]} />
 
 Now you can add the following to your module's `build.gradle.kts`:
