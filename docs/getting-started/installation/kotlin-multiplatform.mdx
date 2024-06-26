@@ -45,7 +45,6 @@ import efaContent from "!!raw-loader!@site/code_blocks/getting-started/installat
 <RCCodeBlock tabs={[
     { type: 'kotlin', content: efaContent, name: 'build.gradle.kts' }
 ]} />
-```
 
 ### Link the native iOS SDK
 Since the SDK depends on a native RevenueCat iOS framework, this will need to be linked to your existing iOS project. The approach depends on how you currently integrate your existing Kotlin Multiplatform code with your iOS project. 
@@ -68,7 +67,6 @@ import cocoapodsGradle from "!!raw-loader!@site/code_blocks/getting-started/inst
 <RCCodeBlock tabs={[
     { type: 'kotlin', content: cocoapodsGradle, name: 'build.gradle.kts' }
 ]} />
-```
 
 #### 1. As an iOS framework
 Follow these instructions if your Kotlin Multiplatform module is integrated with your iOS project as a plain iOS framework. That is, Xcode is calling the `embedAndSignAppleFrameworkForXcode` Gradle task (or the old `packForXcode` task) as part of the build. At the time of writing, if you generated your Kotlin Multiplatform project using the [online wizard](https://kmp.jetbrains.com/), this is how it's set up. 
