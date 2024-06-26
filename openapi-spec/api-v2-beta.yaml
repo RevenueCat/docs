@@ -159,7 +159,8 @@ tags:
     proj1a2b3c4\"\n  }\n}\n```\n\nAs you can see from above, the `app_id` field remains\
     \ the same, but the response contains an additional `app` object.\n\nFields that\
     \ can be expanded into objects are indicated in the endpoint documentation under\
-    \ **Query Params** and will list accepted values."
+    \ **Query Params** and will list accepted values.\nAlso, the required permissions\
+    \ to be defined in the API key are listed there.\n"
 - name: Error Handling
   x-traitTag: true
   description: "RevenueCat uses [standard HTTP status codes](#tag/Error-Handling/Error-Codes)\
@@ -1097,8 +1098,9 @@ paths:
           example: prod1a2b3c4d5
       - name: expand
         in: query
-        description: 'Specifies which fields in the response should be expanded. Accepted
-          values are: `app`.'
+        description: "Specifies which fields in the response should be expanded.\n\
+          \ Accepted values are: `app` (requires `project_configuration:apps:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -1239,8 +1241,9 @@ paths:
           default: 20
       - name: expand
         in: query
-        description: 'Specifies which fields in the response should be expanded. Accepted
-          values are: `items.app`.'
+        description: "Specifies which fields in the response should be expanded.\n\
+          \ Accepted values are: `items.app` (requires `project_configuration:apps:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -1446,8 +1449,9 @@ paths:
           example: entla1b2c3d4e5
       - name: expand
         in: query
-        description: 'Specifies which fields in the response should be expanded. Accepted
-          values are: `product`.'
+        description: "Specifies which fields in the response should be expanded.\n\
+          \ Accepted values are: `product` (requires `project_configuration:products:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -1657,8 +1661,9 @@ paths:
           default: 20
       - name: expand
         in: query
-        description: 'Specifies which fields in the response should be expanded. Accepted
-          values are: `items.product`.'
+        description: "Specifies which fields in the response should be expanded.\n\
+          \ Accepted values are: `items.product` (requires `project_configuration:products:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -2033,8 +2038,10 @@ paths:
           example: ofrnge1a2b3c4d5
       - name: expand
         in: query
-        description: 'Specifies which fields in the response should be expanded. Accepted
-          values are: `package`, `package.product`.'
+        description: "Specifies which fields in the response should be expanded.\n\
+          \ Accepted values are: `package` (requires `project_configuration:packages:read`\
+          \ permissions), `package.product` (requires `project_configuration:products:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -2252,8 +2259,10 @@ paths:
           default: 20
       - name: expand
         in: query
-        description: 'Specifies which fields in the response should be expanded. Accepted
-          values are: `items.package`, `items.package.product`.'
+        description: "Specifies which fields in the response should be expanded.\n\
+          \ Accepted values are: `items.package` (requires `project_configuration:packages:read`\
+          \ permissions), `items.package.product` (requires `project_configuration:products:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -2402,8 +2411,9 @@ paths:
           example: pkge1a2b3c4d5
       - name: expand
         in: query
-        description: 'Specifies which fields in the response should be expanded. Accepted
-          values are: `product`.'
+        description: "Specifies which fields in the response should be expanded.\n\
+          \ Accepted values are: `product` (requires `project_configuration:products:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -2625,8 +2635,9 @@ paths:
           default: 20
       - name: expand
         in: query
-        description: 'Specifies which fields in the response should be expanded. Accepted
-          values are: `items.product`.'
+        description: "Specifies which fields in the response should be expanded.\n\
+          \ Accepted values are: `items.product` (requires `project_configuration:products:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
