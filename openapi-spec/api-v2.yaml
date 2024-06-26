@@ -744,7 +744,7 @@ paths:
       x-scopes:
       - project_configuration:products:read
       x-expandable-fields:
-      - app
+      - app: project_configuration:apps:read
       x-release-status: public
       tags:
       - Product
@@ -875,7 +875,7 @@ paths:
       x-scopes:
       - project_configuration:products:read
       x-expandable-fields:
-      - items.app
+      - items.app: project_configuration:apps:read
       x-release-status: public
       tags:
       - Product
@@ -1094,7 +1094,7 @@ paths:
       - project_configuration:entitlements:read
       x-release-status: public
       x-expandable-fields:
-      - product
+      - product: project_configuration:products:read
       tags:
       - Entitlement
       parameters:
@@ -1301,7 +1301,7 @@ paths:
       - project_configuration:entitlements:read
       x-release-status: public
       x-expandable-fields:
-      - items.product
+      - items.product: project_configuration:products:read
       tags:
       - Entitlement
       parameters:
@@ -1680,8 +1680,8 @@ paths:
       - project_configuration:offerings:read
       x-release-status: public
       x-expandable-fields:
-      - package
-      - package.product
+      - package: project_configuration:packages:read
+      - package.product: project_configuration:products:read
       tags:
       - Offering
       parameters:
@@ -1895,8 +1895,8 @@ paths:
       - project_configuration:offerings:read
       x-release-status: public
       x-expandable-fields:
-      - items.package
-      - items.package.product
+      - items.package: project_configuration:packages:read
+      - items.package.product: project_configuration:products:read
       tags:
       - Offering
       parameters:
@@ -2049,7 +2049,7 @@ paths:
       x-scopes:
       - project_configuration:packages:read
       x-expandable-fields:
-      - product
+      - product: project_configuration:products:read
       x-release-status: public
       tags:
       - Package
@@ -2259,7 +2259,7 @@ paths:
       x-scopes:
       - project_configuration:packages:read
       x-expandable-fields:
-      - items.product
+      - items.product: project_configuration:products:read
       x-release-status: public
       tags:
       - Package
