@@ -79,7 +79,7 @@ const gettingStartedCategory = Category({
         Page({ slug: "android" }),
         Page({ slug: "reactnative" }),
         Page({ slug: "flutter" }),
-		Page({ slug: "kotlin-multiplatform" }),
+        Page({ slug: "kotlin-multiplatform" }),
         Page({ slug: "capacitor" }),
         Page({ slug: "cordova" }),
         Page({ slug: "unity" }),
