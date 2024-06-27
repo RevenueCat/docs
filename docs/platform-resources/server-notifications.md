@@ -13,9 +13,9 @@ RevenueCat does not require Platform Server Notifications from the App Store or 
 
 ## Setup Instructions
 
-- Apple App Store Server Notification: [Setup ➡️](/platform-resources/server-notifications/apple-server-notifications) (Optional)
-- Google Real-Time Developer Notifications: [Setup ➡️](/platform-resources/server-notifications/google-server-notifications) (Optional)
-- Stripe Server Notifications: [Setup ➡️](/platform-resources/server-notifications/stripe-server-notifications) (Required for Stripe)
+- Apple App Store Server Notification: [Setup →](/platform-resources/server-notifications/apple-server-notifications) (Optional)
+- Google Real-Time Developer Notifications: [Setup →](/platform-resources/server-notifications/google-server-notifications) (Optional)
+- Stripe Server Notifications: [Setup →](/platform-resources/server-notifications/stripe-server-notifications) (Required for Stripe)
 - Amazon Appstore: Not yet supported in RevenueCat.
 
 ## Confirming Connection

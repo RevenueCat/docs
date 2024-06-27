@@ -23,77 +23,26 @@ RevenueCat can integrate data with the following platforms:
 
 ### Customer Engagement and Retention
 
-- Airship
-  [➡️ RevenueCat Integration Guide](/integrations/third-party-integrations/airship)
-  [➡️ Airship Docs](https://docs.airship.com/)
-  [➡️ Connect with our Community](https://community.revenuecat.com/search/index?q=airship&search_type=tag)
-
-- Braze
-  [➡️ RevenueCat Integration Guide](/integrations/third-party-integrations/braze)
-  [➡️ Braze Docs](https://www.braze.com/docs)  
-   [➡️ Connect with our Community](https://community.revenuecat.com/search/index?q=braze&search_type=tag)
-- CleverTap
-  [➡️ RevenueCat Integration Guide](/integrations/third-party-integrations/clevertap)
-  [➡️ CleverTap Docs](https://developer.clevertap.com/docs)
-  [➡️ Connect with our Community](https://community.revenuecat.com/search/index?q=clevertap&search_type=tag)
-- Intercom
-  [➡️ RevenueCat Integration Guide](/integrations/third-party-integrations/intercom)
-  [➡️ Intercom Docs](https://developers.intercom.com/building-apps/docs)  
-   [➡️ Connect with our Community](https://community.revenuecat.com/search/index?q=intercom&search_type=tag)
-
-- Iterable
-  [➡️ RevenueCat Integration Guide](/integrations/third-party-integrations/iterable)
-  [➡️ Iterable Docs](https://support.iterable.com/hc/en-us)
-  [➡️ Connect with our Community](https://community.revenuecat.com/search/index?q=iterable&search_type=tag)
-- OneSignal
-  [➡️ RevenueCat Integration Guide](/integrations/third-party-integrations/onesignal)
-  [➡️ OneSignal Docs](https://documentation.onesignal.com/docs)  
-   [➡️ Connect with our Community](https://community.revenuecat.com/search/index?q=onesignal&search_type=tag)
+- [Airship →](/integrations/third-party-integrations/airship)
+- [Braze →](/integrations/third-party-integrations/braze)
+- [CleverTap →](/integrations/third-party-integrations/clevertap)
+- [Intercom →](/integrations/third-party-integrations/intercom)
+- [Iterable →](/integrations/third-party-integrations/iterable)
+- [OneSignal →](/integrations/third-party-integrations/onesignal)
 
 ### Data and Product Analytics
 
-- Amplitude  
-   [➡️ RevenueCat Integration Guide](/integrations/third-party-integrations/amplitude)
-  [➡️ Amplitude Docs](https://help.amplitude.com/hc/en-us)
-  [➡️ Connect with our Community](https://community.revenuecat.com/search/index?q=amplitude&search_type=tag)
-
-- Mixpanel
-  [➡️ RevenueCat Integration Guide](/integrations/third-party-integrations/mixpanel)
-  [➡️ Mixpanel Docs](https://developer.mixpanel.com/docs)
-  [➡️ Connect with our Community](https://community.revenuecat.com/search/index?q=mixpanel&search_type=tag)
-- mParticle  
-   [➡️ RevenueCat Integration Guide](/integrations/third-party-integrations/mparticle)
-  [➡️ mParticle Docs](https://docs.mparticle.com/)
-  [➡️ Connect with our Community](https://community.revenuecat.com/search/index?q=mparticle&search_type=tag)
-- Segment
-  [➡️ RevenueCat Integration Guide](/integrations/third-party-integrations/segment)
-  [➡️ Segment Docs](https://segment.com/docs/?ref=nav)
-  [➡️ Connect with our Community](https://community.revenuecat.com/search/index?q=segment&search_type=tag)
+- [Amplitude →](/integrations/third-party-integrations/amplitude)
+- [Mixpanel →](/integrations/third-party-integrations/mixpanel)
+- [mParticle →](/integrations/third-party-integrations/mparticle)
+- [Segment →](/integrations/third-party-integrations/segment)
 
 ### App Development
 
-- Discord
-  [➡️ RevenueCat Integration Guide](/integrations/third-party-integrations/discord)
-  [➡️ Discord Docs](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks)  
-  [➡️ Connect with our Community](https://community.revenuecat.com/search/index?q=discord&search_type=tag)
-- Firebase
-  [➡️ RevenueCat Integration Guide](/integrations/third-party-integrations/firebase-integration)
-  [➡️ Firebase Docs](https://firebase.google.com/docs/)  
-   [➡️ Connect with our Community](https://community.revenuecat.com/search/index?q=firebase&search_type=tag)
-- Slack
-  [➡️ RevenueCat Integration Guide](/integrations/third-party-integrations/slack)
-  [➡️ Slack Docs](https://slack.com/help/articles/115005265063-Incoming-webhooks-for-Slack)  
-   [➡️ Connect with our Community](https://community.revenuecat.com/search/index?q=slack&search_type=tag)
-- Statsig
-  [➡️ RevenueCat Integration Guide](/integrations/third-party-integrations/statsig)
-  [➡️ Statsig Docs](https://docs.statsig.com/)  
-   [➡️ Connect with our Community](https://community.revenuecat.com/search/index?q=statsig&search_type=tag)
-- Superwall
-  [➡️ RevenueCat Integration Guide](/integrations/third-party-integrations/superwall)
-  [➡️ Superwall Docs](https://docs.superwall.com/docs)  
-   [➡️ Connect with our Community](https://community.revenuecat.com/search/index?q=superwall&search_type=tag)
-- Webhooks  
-   [➡️ RevenueCat Integration Guide](/integrations/webhooks)
-  [➡️ Connect with our Community](https://community.revenuecat.com/search/index?q=webhooks&search_type=tag)
+- [Discord →](/integrations/third-party-integrations/discord)
+- [Firebase →](/integrations/third-party-integrations/firebase-integration)
+- [Slack →](/integrations/third-party-integrations/slack)
+- [Statsig →](/integrations/third-party-integrations/statsig)
+- [Superwall →](/integrations/third-party-integrations/superwall)
 
 If you use an integration platform not listed here, [contact us](https://www.revenuecat.com/contact).

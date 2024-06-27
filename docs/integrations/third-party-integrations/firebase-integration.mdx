@@ -21,7 +21,7 @@ Each part of the integration requires additional setup, which you can see outlin
 
 | Integration        | What's required                                                                                                         |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| Google Analytics   | ✅ `$firebaseAppInstanceId` customer attribute \n❌ (optional, but highly recommended) Setting Firebase user identity |
+| Google Analytics   | ✅ `$firebaseAppInstanceId` customer attribute <br /> ❌ (optional, but highly recommended) Setting Firebase user identity  |
 | Firebase Extension | ✅ Setting Firebase user identity                                                                                       |
 
 ### Integration at a Glance
@@ -158,10 +158,10 @@ You will be charged a small amount (typically around $0.01/month) for the Fireba
 
 Set your security rules so that only authenticated users can access customer information, and that each user can only access their own information.
 
-import textContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_3.txt";
+import firebaseRules from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_3.js";
 
 <RCCodeBlock tabs={[
-    { type: 'text', content: textContent }
+    { type: 'js', content: firebaseRules }
 ]} />
 
 ### Enable Firebase Extension
@@ -367,7 +367,7 @@ To check access to entitlements, you can either [use the RevenueCat SDK](/gettin
 import jsContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_17.js";
 
 <RCCodeBlock tabs={[
-    { type: 'javascript', content: jsContent }
+    { type: 'js', content: jsContent }
 ]} />
 
 #### List a user's active subscriptions
@@ -377,7 +377,7 @@ To list a user's active subscriptions, you could use the following Firebase code
 import jsContent2 from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_18.js";
 
 <RCCodeBlock tabs={[
-    { type: 'javascript', content: jsContent2 }
+    { type: 'js', content: jsContent2 }
 ]} />
 
 #### React to subscription lifecycle events

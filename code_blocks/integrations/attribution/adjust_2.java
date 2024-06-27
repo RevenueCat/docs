@@ -1,7 +1,7 @@
 Purchases.configure(this, "my_api_key");
 
 
-// Automatically collect the $gpsAdId, $androidId, and $ip values
+// Automatically collect the $gpsAdId and $ip values
 Purchases.getSharedInstance().collectDeviceIdentifiers();
 
 // Set the Adjust Id on app launch if it exists

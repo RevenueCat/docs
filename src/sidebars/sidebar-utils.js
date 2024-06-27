@@ -60,6 +60,12 @@ const Page = ({ slug }) => ({
   id: slug,
 });
 
+const PageWithCustomLabel = ({slug, label}) => ({
+  type: "doc",
+  id: slug,
+  label: label,
+});
+
 const Link = ({ label, slug }) => ({
   type: "link",
   label,
@@ -70,5 +76,6 @@ module.exports = {
   Category,
   SubCategory,
   Page,
+  PageWithCustomLabel,
   Link,
 };

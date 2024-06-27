@@ -1,16 +1,15 @@
 
 import type {CustomerInfo, Package, Product } from "@revenuecat/purchases-js";
-
-const REVENUECAT_BILLING_PUBLIC_API_KEY = '';
-const authentication = { getAppUserId : () => '' };
-// MARK: Configuring SDK
 import { ErrorCode, Purchases, PurchasesError } from "@revenuecat/purchases-js";
 
+const authentication = { getAppUserId : () => 'test' };
+
+function configuringSDK(REVENUECAT_BILLING_PUBLIC_API_KEY: string) {
+// MARK: Configuring SDK
 const appUserId = authentication.getAppUserId(); // Replace with your own authentication system
 const purchases = Purchases.configure(REVENUECAT_BILLING_PUBLIC_API_KEY, appUserId);
 // END
-function configuringSDK() {
-  return purchases;
+return purchases;
 }
 
 async function getCustomerInfo() : Promise<CustomerInfo | null> {
@@ -116,7 +115,9 @@ if (!pkg) return;
 
 // MARK: Purchasing package
 try {
-  const { customerInfo } = await Purchases.getSharedInstance().purchasePackage(pkg);
+  const { customerInfo } = await Purchases.getSharedInstance().purchase({
+    rcPackage: pkg
+  });
   if (Object.keys(customerInfo.entitlements.active).includes("pro")) {
     // Unlock that great "pro" content
   }
