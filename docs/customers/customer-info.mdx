@@ -227,6 +227,7 @@ import content30 from "!!raw-loader!@site/code_blocks/customers/customer-info_30
 import content31 from "!!raw-loader!@site/code_blocks/customers/customer-info_31.js";
 import contentCapacitor2 from "!!raw-loader!@site/code_blocks/customers/customer-info_add_listener_capacitor.ts";
 import content32 from "!!raw-loader!@site/code_blocks/customers/customer-info_32.cs";
+import contentKmp from "!!raw-loader!@site/code_blocks/customers/customer-info_kmp_1.kts";
 
 <RCCodeBlock tabs={[
     {
@@ -240,6 +241,11 @@ import content32 from "!!raw-loader!@site/code_blocks/customers/customer-info_32
     {
         type: 'kotlin',
         content: content27,
+    },
+    { 
+        type: 'kotlin', 
+        content: contentKmp, 
+        name: 'Kotlin Multiplatform' 
     },
     {
         type: 'java',
@@ -298,7 +304,7 @@ In order to do this, the SDK caches the relationships between products and entit
 - Purchases won't be recognized cross-platform while using Offline Entitlements.
 - Offline Entitlements only gets enabled if the user makes a purchases while RevenueCat's servers are down. Otherwise, it will use any existing cached information, which does consider cross-platform purchases.
 - Offline Entitlements don't currently work for one-time purchases (consumables and non-consumables). If our SDK detects that the user has made one of these purchases, Offline Entitlements will not be enabled and an error will be returned instead.
-- Offline Entitlements are disabled when using observer mode.
+- Offline Entitlements are disabled when [your app is completing transactions](/migrating-to-revenuecat/sdk-or-not/finishing-transactions).
 
 You can check more of this feature in our blogpost: https://www.revenuecat.com/blog/engineering/introducing-offline-entitlements/
 

@@ -22,4 +22,4 @@ Remember that all attributes are saved as strings, even if you enter a number. R
 
 ## Next Step
 
-- [Attribution ➡️](/dashboard-and-metrics/customer-history/attribution-card)
+- [Attribution →](/dashboard-and-metrics/customer-history/attribution-card)

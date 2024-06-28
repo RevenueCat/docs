@@ -93,6 +93,7 @@ Install the SDK on your preferred platform with our installation guides below.
 - [Android Installation ](/getting-started/installation/android)
 - [React Native Installation ](/getting-started/installation/reactnative)
 - [Flutter Installation ](/getting-started/installation/flutter)
+- [Kotlin Multiplatform installation](/getting-started/installation/kotlin-multiplatform)
 - [Capacitor / Ionic Installation ](/getting-started/installation/capacitor)
 - [Cordova Installation ](/getting-started/installation/cordova)
 - [Unity Installation ](/getting-started/installation/unity)
@@ -121,12 +122,14 @@ import reactNativeContent from "!!raw-loader!@site/code_blocks/getting-started/g
 import capacitorContent from "!!raw-loader!@site/code_blocks/getting-started/getting-started_capacitor-configure-sdk.ts";
 import cordovaContent from "!!raw-loader!@site/code_blocks/getting-started/getting-started_7.js";
 import unityContent from "!!raw-loader!@site/code_blocks/getting-started/getting-started_8.txt";
+import kmpContent1 from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_10_kmp.kts";
 
 <RCCodeBlock
   tabs={[
     { type: "swift", content: swiftContent },
     { type: "objectivec", content: objectiveCContent },
     { type: "kotlin", content: kotlinContent },
+    { type: 'kotlin', content: kmpContent1, name: 'Kotlin Multiplatform' },
     { type: "java", content: javaContent },
     { type: "flutter", content: flutterContent },
     { type: "rn", content: reactNativeContent },
@@ -140,7 +143,7 @@ The `app_user_id` field in `.configure` is how RevenueCat identifies users of yo
 
 When in development, we recommend enabling more verbose debug logs. For more information about these logs, see our [Debugging](/test-and-launch/debugging) guide.
 
-If you're planning to use RevenueCat alongside your existing purchase code, check out our guide on [Observer Mode](/migrating-to-revenuecat/observer-mode).
+If you're planning to use RevenueCat alongside your existing purchase code, be sure to tell the SDK that [your app will complete the purchases](/migrating-to-revenuecat/sdk-or-not/finishing-transactions)
 
 :::info Configuring Purchases with User IDs
 If you have a user authentication system in your app, you can provide a user identifier at the time of configuration or at a later date with a call to `.logIn()`. To learn more, check out our guide on [Identifying Users](/customers/user-ids).
@@ -162,12 +165,14 @@ import capacitorContent2 from "!!raw-loader!@site/code_blocks/getting-started/ge
 import cordovaContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_15.js";
 import unityContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_16.cs";
 import webContent from "!!raw-loader!@site/code_blocks/getting-started/getting-started_17.curl";
+import kmpContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_kmp_2.kts";
 
 <RCCodeBlock
   tabs={[
     { type: "swift", content: swiftContent2 },
     { type: "objc", content: objectiveCContent2 },
     { type: "kotlin", content: kotlinContent2 },
+    { type: 'kotlin', content: kmpContent2, name: 'Kotlin Multiplatform' },
     { type: "java", content: javaContent2 },
     { type: "flutter", content: flutterContent2 },
     { type: "rn", content: reactNativeContent2 },
@@ -232,12 +237,14 @@ import reactNativeContent3 from "!!raw-loader!@site/code_blocks/getting-started/
 import cordovaContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_7.js";
 import capacitorContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_capacitor.ts";
 import unityContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_8.cs";
+import kmpContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_kmp_1.kts";
 
 <RCCodeBlock
   tabs={[
     { type: "swift", content: swiftContent3 },
     { type: "objc", content: objectiveCContent3 },
     { type: "kotlin", content: kotlinContent3 },
+    { type: 'kotlin', content: kmpContent3, name: 'Kotlin Multiplatform' },
     { type: "java", content: javaContent3 },
     { type: "flutter", content: flutterContent3 },
     { type: "rn", content: reactNativeContent3 },
@@ -370,12 +377,14 @@ import reactNativeContent41 from "!!raw-loader!@site/code_blocks/getting-started
 import cordovaContent43 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_7.js";
 import capacitorContent42 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_capacitor.ts";
 import unityContent44 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_8.cs";
+import kmpContent5 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_kmp_1.kts";
 
 <RCCodeBlock
   tabs={[
     { type: "swift", content: swiftContent36 },
     { type: "objc", content: objectiveCContent37 },
     { type: "kotlin", content: kotlinContent38 },
+    { type: 'kotlin', content: kmpContent5, name: 'Kotlin Multiplatform' },
     { type: "java", content: javaContent39 },
     { type: "flutter", content: flutterContent40 },
     { type: "rn", content: reactNativeContent41 },
@@ -439,12 +448,14 @@ import reactNativeContent49 from "!!raw-loader!@site/code_blocks/getting-started
 import capacitorContent50 from "!!raw-loader!@site/code_blocks/getting-started/getting-started-capacitor-react-subcription-changes.ts";
 import cordovaContent51 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_50.js";
 import unityContent52 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_51.cs";
+import kmpContent6 from "!!raw-loader!@site/code_blocks/customers/customer-info_kmp_1.kts";
 
 <RCCodeBlock
   tabs={[
     { type: "swift", content: swiftContent44 },
     { type: "objc", content: objectiveCContent45 },
     { type: "kotlin", content: kotlinContent46 },
+    { type: 'kotlin', content: kmpContent6, name: 'Kotlin Multiplatform' },
     { type: "java", content: javaContent47 },
     { type: "flutter", content: flutterContent48 },
     { type: "rn", content: reactNativeContent49 },

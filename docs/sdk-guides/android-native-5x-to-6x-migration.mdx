@@ -161,7 +161,3 @@ import content6 from "!!raw-loader!@site/code_blocks/sdk-guides/android-native-5
 
 - If you keep using the existing purchase functions, the [default offer logic](#default-offer-selection) will be applied to choose which option to purchase. 
 - If you want more control, you will need to choose the purchase option that includes your offer from your `StoreProduct`. A possible way to identify a free trial is `storeProduct.subscriptionOptions?.freeTrial`. Alternatively, you can add tags to your offer and filter them through the `storeProduct.subscriptionOptions?.withTag("your-tag")`.
-
-### Observer Mode
-
-Observer mode is still supported in v6. Other than updating the SDK version, there are no changes required.
