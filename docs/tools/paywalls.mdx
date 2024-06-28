@@ -12,6 +12,7 @@ RevenueCat's Paywalls allow you to remotely configure your entire paywall view w
 | purchases-android         | 7.1.0 and up                  |
 | react-native-purchases-ui | 7.15.0 and up                 | 
 | purchases-flutter         | 6.15.0 and up                 |
+| purchases-kmp             | 1.0.0 and up                  |
 
 :::info
 Within the SDKs, Paywalls are available on the following platforms:
@@ -109,6 +110,36 @@ dependencies:
   purchases_ui_flutter: 6.15.0
 ```
 - For Android, you need to change your `MainActivity` to subclass `FlutterFragmentActivity` instead of `FlutterActivity`.
+
+### Kotlin Multiplatform Installation
+
+Add the following Maven coordinates to your `libs.versions.toml`:
+```toml libs.versions.toml
+[versions] 
+purchases-kmp = "1.0.0-beta.1"
+
+[libraries]
+purchases-core = { module = "com.revenuecat.purchases:purchases-kmp-core", version.ref = "purchases-kmp" }
+purchases-ui = { module = "com.revenuecat.purchases:purchases-kmp-ui", version.ref = "purchases-kmp" }
+```
+
+Then add the dependencies to the `commonMain` sourceset in your Compose Multiplatform module's `build.gradle.kts`:
+```kotlin build.gradle.kts
+kotlin {
+    // ...
+    sourceSets {
+        // ...
+        commonMain.dependencies {  
+            // Add the purchases-kmp dependencies.
+            implementation(libs.purchases.core)  
+            implementation(libs.purchases.ui)  
+        }
+    }
+}
+```
+
+Lastly, you'll need to change the pod specification from `PurchasesHybridCommon` to `PurchasesHybridCommonUI`. This needs to happen either in your iOS project's `Podfile`, or your Compose Multiplatform module's `build.gradle.kts`, depending on how your Multiplatform module is integrated with your iOS project.
+
 
 ### Overview
 

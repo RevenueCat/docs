@@ -11,6 +11,7 @@ _Purchases_ is our SDK that correctly implements purchases and subscriptions acr
 - [Android Installation →](/getting-started/installation/android)
 - [React Native Installation →](/getting-started/installation/reactnative)
 - [Flutter Installation →](/getting-started/installation/flutter)
+- [Kotlin Multiplatform Installation →](/getting-started/installation/kotlin-multiplatform)
 - [Cordova Installation →](/getting-started/installation/cordova)
 - [Capacitor Installation →](/getting-started/installation/capacitor)
 - [Unity Installation →](/getting-started/installation/unity)
