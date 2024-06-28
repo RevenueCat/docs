@@ -15,6 +15,7 @@ RevenueCat can automatically send data deliveries of all of your apps' transacti
 
 - [Amazon S3 Setup ](/integrations/scheduled-data-exports/scheduled-data-exports-s3)
 - [Google Cloud Storage Setup ](/integrations/scheduled-data-exports/scheduled-data-exports-gcp)
+- [Azure Blob Storage Setup ](/integrations/scheduled-data-exports/scheduled-data-exports-azure)
 
 :::info
 Customers on our Enterprise plan have the option to receive data exports more frequently than once per day when receiving new and updated transactions only. Contact your Customer Success Manager with questions, or visit our [Pricing Page](https://www.revenuecat.com/pricing/) to learn more.
