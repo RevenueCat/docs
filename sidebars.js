@@ -43,8 +43,7 @@ const welcomeCategory = Category({
       items: [
         Page({ slug: "collaborators" }),
         Page({ slug: "security" }),
-        Page({ slug: "account-management" }),
-        Page({ slug: "developer-store-payments"})
+        Page({ slug: "account-management" })
       ],
     }),
     Page({ slug: "authentication" }),
@@ -388,6 +387,7 @@ const platformResourcesCategory = Category({
   slug: "platform-resources",
   items: [
     Page({ slug: "implementation-responsibilities" }),
+    Page({ slug: "developer-store-payments"}),
     Page({ slug: "sdk-reference" }),
     SubCategory({
       label: "Amazon Platform Resources",
