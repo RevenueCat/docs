@@ -44,7 +44,7 @@ Here are some of the ways you can make changes to a customer’s subscription fr
 
 
 ### More Popular Features & FAQs
-1. [Customer History](https://dev-docs.revenuecat.com/pr-257/dashboard-and-metrics/customer-history)
+1. [Customer History](https://www.revenuecat.com/docs/dashboard-and-metrics/customer-history)
 2. [Promotionals](https://www.revenuecat.com/docs/dashboard-and-metrics/customer-history/promotionals)
 3. [Customer Lists](https://www.revenuecat.com/docs/dashboard-and-metrics/customer-lists)
 4. [Deleting Users](https://www.revenuecat.com/docs/dashboard-and-metrics/customer-history/manage-users)

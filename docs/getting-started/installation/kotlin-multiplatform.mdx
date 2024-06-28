@@ -1,0 +1,97 @@
+---
+title: Kotlin Multiplatform
+slug: kotlin-multiplatform
+excerpt: Instructions for installing Purchases SDK for Kotlin Multiplatform
+hidden: false
+---
+## What is RevenueCat?
+
+RevenueCat provides a backend and a wrapper around StoreKit and Google Play Billing to make implementing in-app purchases and subscriptions easy. With our SDK, you can build and manage your app business on any platform without having to maintain IAP infrastructure. You can read more about [how RevenueCat fits into your app](https://www.revenuecat.com/blog/growth/where-does-revenuecat-fit-in-your-app/) or you can [sign up free](https://app.revenuecat.com/signup) to start building.
+
+## Requirements
+
+Android 5.0+ (API 21+)  
+iOS 11.0+
+
+## Installation
+
+### Adding the dependency
+
+Purchases for Kotlin Multiplatform (Google Play and iOS App Store) is available on Maven Central and can be included via Gradle.
+
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-kmp.svg?style=flat)](https://github.com/RevenueCat/purchases-kmp/releases)
+
+Add the following coordinates to your `libs.versions.toml`.
+
+import versionsContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_1.toml";
+
+<RCCodeBlock tabs={[
+    { content: versionsContent, name: 'libs.versions.toml' }
+]} />
+
+You can now add the dependency to your `commonMain` source set in your module's `build.gradle.kts`. 
+
+import buildGradle1 from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_2.kts";
+
+<RCCodeBlock tabs={[
+    { type: 'kotlin', content: buildGradle1, name: 'build.gradle.kts' }
+]} />
+
+### Opt in to ExperimentalForeignApi
+Since the SDK uses generated Kotlin bindings for native code on iOS, you will need to opt in to `ExperimentalForeignApi` in your iOS source sets. To do so, add the following to your module's `build.gradle.kts`. 
+
+import efaContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_3.kts";
+
+<RCCodeBlock tabs={[
+    { type: 'kotlin', content: efaContent, name: 'build.gradle.kts' }
+]} />
+
+### Link the native iOS SDK
+Since the SDK depends on a native RevenueCat iOS framework, this will need to be linked to your existing iOS project. The approach depends on how you currently integrate your existing Kotlin Multiplatform code with your iOS project. 
+
+#### 1. Using Cocoapods
+Follow these instructions if your Kotlin Multiplatform module is integrated with your iOS project using CocoaPods. That is, you've applied the `kotlin("native.cocoapods")` Gradle plugin, and set it up such that the `Podfile` specifies a dependency on your Kotlin Multiplatform module. (See also [the Kotlin docs](https://kotlinlang.org/docs/native-cocoapods-xcode.html).)
+
+In this scenario, you can specify the transitive dependency on `PurchasesHybridCommon` using Gradle. To do so, add the following to your `libs.versions.toml`: 
+
+import commonVersion from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_4.toml";
+
+<RCCodeBlock tabs={[
+    { content: commonVersion, name: 'libs.versions.toml' }
+]} />
+
+Now you can add the following to your module's `build.gradle.kts`:
+
+import cocoapodsGradle from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_5.kts";
+
+<RCCodeBlock tabs={[
+    { type: 'kotlin', content: cocoapodsGradle, name: 'build.gradle.kts' }
+]} />
+
+#### 2. As an iOS framework
+Follow these instructions if your Kotlin Multiplatform module is integrated with your iOS project as a plain iOS framework. That is, Xcode is calling the `embedAndSignAppleFrameworkForXcode` Gradle task (or the old `packForXcode` task) as part of the build. At the time of writing, if you generated your Kotlin Multiplatform project using the [online wizard](https://kmp.jetbrains.com/), this is how it's set up. 
+
+In this scenario, you need to manually link the transitive dependency on `PurchasesHybridCommon`. One way to do so is using CocoaPods. This is useful if you're already using CocoaPods in your iOS app for dependencies other than your own Kotlin Multipatform module. 
+
+Add the following to your `Podfile`:
+
+import podfileContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_6.ruby";
+
+<RCCodeBlock tabs={[
+    { type: 'ruby', content: podfileContent, name: 'Podfile' }
+]} />
+
+
+## Import Purchases
+
+You should now be able to import `Purchases`.
+
+import importContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_7.kts";
+
+<RCCodeBlock tabs={[
+    { type: 'kotlin', content: importContent, name: 'commonMain' }
+]} />
+
+## Next Steps
+
+* Now that you've installed the Purchases SDK in Kotlin Multiplatform, get started by [configuring an instance of Purchases →](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)

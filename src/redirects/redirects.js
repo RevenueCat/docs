@@ -365,6 +365,10 @@ const redirects = {
       from: "/data-export-version-5",
     },
     {
+      to: "/integrations/scheduled-data-exports/scheduled-data-exports-azure",
+      from: "/scheduled-data-exports-azure",
+    },
+    {
       to: "/integrations/scheduled-data-exports/scheduled-data-exports-gcp",
       from: "/scheduled-data-exports-gcp",
     },
@@ -1066,6 +1070,10 @@ const redirects = {
     {
       to: "/integrations/scheduled-data-exports/data-export-version-5",
       from: "/data-export-version-5.html",
+    },
+    {
+      to: "/integrations/scheduled-data-exports/scheduled-data-exports-azure",
+      from: "/scheduled-data-exports-azure.html",
     },
     {
       to: "/integrations/scheduled-data-exports/scheduled-data-exports-gcp",
