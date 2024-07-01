@@ -401,6 +401,58 @@ Available listeners at this time are:
 - onRestoreError
 - onDismiss
 
+## Kotlin Multiplatform
+
+### How to display a fullscreen Paywall in your app
+
+You can present a fullscreen Paywall using the `Paywall` composable. You have the flexibility to decide when to call this. You could, for instance, add it to your navigation graph.
+
+import kmp1 from "!!raw-loader!@site/code_blocks/tools/paywalls_kmp_1.kts";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'kotlin',
+        title: "Paywall",
+        content: kmp1,
+    }
+]}/>
+
+If desired, you can set `shouldDisplayDismissButton` to `true` in your `PaywallOptions` to display a close button in the paywall. You will need to react to it using the `dismissRequest` listener.
+
+### How to display a footer Paywall on your custom paywall
+
+RevenueCatUI also has a paywall variation that can be displayed as a footer below your custom paywall. This allows you to design your paywall exactly as you want with native components while still using RevenueCat UI to handle it.
+This is done by using the `PaywallFooter` composable.
+
+The footer paywall mainly consists of the following:
+- Purchase button
+- Package details text
+- Package selection (if there are any multiple packages configured)
+
+This is all remotely configured and RevenueCatUI handles all the intro offer eligibility and purchase logic.
+
+import kmp2 from "!!raw-loader!@site/code_blocks/tools/paywalls_kmp_2.kts";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'kotlin',
+        title: "PaywallFooter",
+        content: kmp2,
+    }
+]}/>
+
+### Listeners
+
+When using `Paywall` or `PaywallFooter`, you may use one of the provided listeners to react to user actions.
+Available listeners at this time are:
+- onPurchaseStarted
+- onPurchaseCompleted
+- onPurchaseError
+- onPurchaseCancelled
+- onRestoreStarted
+- onRestoreCompleted
+- onRestoreError
+
 ## Default Paywall
 
 If you attempt to display a Paywall for an Offering that doesn't have one configured, the RevenueCatUI SDK will display a default Paywall.

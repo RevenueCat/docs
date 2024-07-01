@@ -1,0 +1,12 @@
+[versions] 
+purchases-kmp = "1.0.0-beta.1"
+
+[libraries]
+# Required
+purchases-core = { module = "com.revenuecat.purchases:purchases-kmp-core", version.ref = "purchases-kmp" }
+# Optional: adds extension properties representing timestamps as kotlinx-datetime Instants.
+purchases-datetime = { module = "com.revenuecat.purchases:purchases-kmp-datetime", version.ref = "purchases-kmp" }
+# Optional: adds suspending functions that return Arrow's Either to indicate success / failure.
+purchases-either = { module = "com.revenuecat.purchases:purchases-kmp-either", version.ref = "purchases-kmp" }
+# Optional: adds suspending functions that return kotlin.Result to indicate success / failure.
+purchases-result = { module = "com.revenuecat.purchases:purchases-kmp-result", version.ref = "purchases-kmp" }
