@@ -275,6 +275,7 @@ const dashboardCategory = Category({
     Page({ slug: "taxes-and-commissions" }),
     Page({ slug: "performance-summaries" }),
     Page({ slug: "supporting-your-customers" }),
+    Page({ slug: "audit-logs" }),
   ],
 });
 
@@ -463,7 +464,6 @@ const supportCategory = Category({
   items: [
     Page({ slug: "support-first-steps" }),
     Page({ slug: "general-troubleshooting" }),
-    Page({ slug: "audit-logs" }),
   ],
 });
 
