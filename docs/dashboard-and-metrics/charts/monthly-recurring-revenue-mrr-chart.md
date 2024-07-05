@@ -56,6 +56,8 @@ To understand how that snapshot is generated for each period, check out the [MRR
 ## Sample query from Scheduled Data Exports
 With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can get daily exports of your transactions from RevenueCat to reproduce and customize measures like this one that are provided by RevenueCat.
 
+import mrrContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_12.pgsql";
+
 <RCCodeBlock tabs={[
 { type: 'pgsql', content: mrrContent, name: 'MRR' }
 ]} />

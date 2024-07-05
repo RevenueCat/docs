@@ -33,6 +33,8 @@ For each period, we measure:
 ## Sample query from Scheduled Data Exports
 With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can get daily exports of your transactions from RevenueCat to reproduce and customize measures like this one that are provided by RevenueCat.
 
+import mrrMovementContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_11.pgsql";
+
 <RCCodeBlock tabs={[
 { type: 'pgsql', content: mrrMovementContent, name: 'MRR Movement' }
 ]} />

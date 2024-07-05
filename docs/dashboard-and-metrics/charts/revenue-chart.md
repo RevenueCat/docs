@@ -72,6 +72,8 @@ Or, to instead get the amounts deducted for each purpose:
 ## Sample query from Scheduled Data Exports
 With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can get daily exports of your transactions from RevenueCat to reproduce and customize measures like this one that are provided by RevenueCat.
 
+import revenueContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_3.pgsql";
+
 <RCCodeBlock tabs={[
 { type: 'pgsql', content: revenueContent, name: 'Revenue' }
 ]} />

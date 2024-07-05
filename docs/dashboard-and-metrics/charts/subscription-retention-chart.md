@@ -67,6 +67,16 @@ As a result, the retention rate within each period cannot be directly compared t
 Retention is always calculated relative to the size of the initial cohort that has had the opportunity to renew. Retention is _not_ calculated relative to the prior period.
 :::
 
+## Sample query from Scheduled Data Exports
+With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can get daily exports of your transactions from RevenueCat to reproduce and customize measures like this one that are provided by RevenueCat.
+
+import subscriptionRetentionContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_14.pgsql";
+
+<RCCodeBlock tabs={[
+{ type: 'pgsql', content: subscriptionRetentionContent, name: 'Subscription Retention' }
+]} />
+
+
 ## FAQs
 
 | Question                                                                                            | Answer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
