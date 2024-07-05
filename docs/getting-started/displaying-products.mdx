@@ -47,7 +47,7 @@ import kmpContent1 from "!!raw-loader!@site/code_blocks/getting-started/displayi
 ]} />
 
 :::warning Avoid pre-warming offerings cache in your Android's Application
-Try to avoid calling `getOfferings` in your Android app's `Application.onCreate`. 
+Don't call `getOfferings` in your Android app's `Application.onCreate`. 
 
 This might trigger additional network requests in some situations (like push notifications) without need, using your customer's data. The offerings cache should be pre-fetched automatically by the SDK.
 :::
