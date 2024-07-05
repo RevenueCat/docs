@@ -61,13 +61,20 @@ For each period, we measure:
 3. Taxes: The total amount deducted for taxes from the revenue generated in a given period.
 4. Store Commission / Fees: The total amount deducted for store commissions and fees from the revenue generated in a given period.
 
-**Formulas**  
+### Formulas  
 - [Revenue] - [Taxes] = Revenue (net of taxes)
 - [Revenue] - ([Store Commission / Fees] + [Taxes]) = Proceeds
 
 Or, to instead get the amounts deducted for each purpose:
 - [Revenue] - [Revenue (net of taxes)] = Amount deducted for taxes
 - [Revenue (net of taxes)] - [Proceeds] = Amount deducted for store commission & fees
+
+## Sample query from Scheduled Data Exports
+With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can get daily exports of your transactions from RevenueCat to reproduce and customize measures like this one that are provided by RevenueCat.
+
+<RCCodeBlock tabs={[
+{ type: 'pgsql', content: revenueContent, name: 'Revenue' }
+]} />
 
 ## FAQs
 

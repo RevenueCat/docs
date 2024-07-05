@@ -2,8 +2,9 @@
 
 SELECT
   SUM(purchase_price_in_usd) as gross_revenue,
-  SUM(price_in_usd) as revenue_net_of_refunds, /* "Total Revenue" in the Revenue Chart */
-  SUM(price_in_usd * (1 - tax_percentage - commission_percentage)) as proceeds
+  SUM(price_in_usd) as revenue_net_of_refunds, /* "Revenue" in the Revenue Chart */
+  SUM(price_in_usd * (1 - tax_percentage)) as revenue_net_of_taxes, /* "Revenue (net of taxes)" in the Revenue Chart */
+  SUM(price_in_usd * (1 - tax_percentage - commission_percentage)) as proceeds /* "Proceeds" in the Revenue Chart */
 FROM
   [revenuecat_data_table]
 WHERE date(start_time) = [targeted_date]

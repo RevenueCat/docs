@@ -23,6 +23,13 @@ For each period, the count of Active Subscriptions represents the number of paid
 
 To understand how that snapshot is generated for each period, check out the [Active Subscriptions Movement](/dashboard-and-metrics/charts/active-subscriptions-movement-chart) chart.
 
+## Sample query from Scheduled Data Exports
+With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can get daily exports of your transactions from RevenueCat to reproduce and customize measures like this one that are provided by RevenueCat.
+
+<RCCodeBlock tabs={[
+{ type: 'pgsql', content: activeSubscriptionsContent, name: 'Active Subscriptions' }
+]} />
+
 ## FAQs
 
 | Question                                                                                                | Answer                                                                                                                                                                                                                                                                                                                         |
