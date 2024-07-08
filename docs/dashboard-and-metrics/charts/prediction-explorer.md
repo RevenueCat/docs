@@ -8,7 +8,7 @@ hidden: false
 
 The Prediction Explorer allows you to measure the predicted lifetime value (LTV) of various cohort definitions over time to estimate the long-term revenue that may be driven by those cohorts.
 
-:::info Prediction Explorer Beta
+:::warning Prediction Explorer Beta
 This chart is currently in beta as we refine our prediction modeling to improve accuracy. If you have feedback or questions on the nature of the chart or the data provided, please don't hesitate to reach out to us.
 :::
 
@@ -16,6 +16,7 @@ This chart is currently in beta as we refine our prediction modeling to improve 
 
 - Filters: Yes
 - Segments: No
+- Cohort selection: Yes
 
 ## Terminology
 
@@ -24,7 +25,6 @@ This chart is currently in beta as we refine our prediction modeling to improve 
 | Lifetime value (LTV)          | The total revenue (value) generated for a cohort within some defined period (lifetime).                                                                                                                                       |
 | Realized LTV  | The lifetime value (LTV) that has already been generated for a cohort within some defined period.  |
 | Predicted LTV         | The lifetime value (LTV) that has already been geneated for a cohort, plus the additional revenue that we estimate will be generated for the subscriptions in that cohort within some defined period. In order for a cohort to have Predicted LTV, it must be younger than the defined lifetime being measured.                                                                                                   |                             
-
 ## Cohorts
 
 The Prediction Explorer supports three different cohort definitions:
@@ -49,7 +49,11 @@ RevenueCat predicts the lifetime value (LTV) of paid subscriptions based on the 
 
 We predict up to 24 month LTV for all paid subscriptions that are not cancelled or expired. That predicted LTV is included in cells marked with [color code] on the right side of the diagonal divider in the table.
 
-[example screenshot]
+[example screenshot of the split between realized cells vs. predicted cells]
+
+You can use the period selector to look at daily, weekly, monthly, or yearly periods and measure the LTV we predict will be added in each one (for up to 24 months after the start of each paid subscription in the cohort being measured)
+
+[example screenshot of the period selector]
 
 #### Other notes
 - "24 month" LTV is defined as 24 months after the first purchase date of the subscription. When cohorting by other customer groups, like New Customers who are cohorted by their first seen date, predictions may be provided for more than 24 months after the cohort's inception since paid subscriptions within the cohort may have been started after the initial period
