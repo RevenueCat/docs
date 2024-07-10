@@ -124,7 +124,7 @@ All future lifetime value predictions contain some degree of risk and uncertaint
 ####  Other limitations
 1. Stripe subscriptions are excluced from the Prediction Explorer Beta, since a single Stripe product can have multiple durations, which must first be known before a reliable survival curve can be built.
 2. Products which had a price change may have less accurate predictions for a period following the price change if the new survival rates are not fully observed through changes in cancellation behavior.
-3. We do not predict conversion _to_ a paid subscription from non-paying customers, which means the total predicted LTV of a cohort only includes those subscriptions that have already converted to paid, and may change over time if additional subscriptions convert to paid.
+3. We do not (yet) predict conversion _to_ a paid subscription from non-paying customers, which means the total predicted LTV of a cohort only includes those subscriptions that have already converted to paid, and may change over time if additional subscriptions convert to paid.
 
 ## How to use the Prediction Explorer in your business
 
