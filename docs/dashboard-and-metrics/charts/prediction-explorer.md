@@ -29,7 +29,7 @@ This chart is currently in beta as we refine our prediction modeling to improve 
 
 The Prediction Explorer supports three different cohort definitions:
 1. **New Customers**: The count of customers cohorted by their first seen date by RevenueCat.
-2. **Initial Conversions**: The count of customers first converting to any product (including paid or unpaid, and subscription or one-time purchase) in a given period, cohorted by their First Conversion Date.
+2. **Initial Conversions**: The count of customers cohorted by their first conversion date. Conversion includes paid or unpaid and subscription or one-time purchase.
 3. **New Paying Customers**: The count of customers making their first payment in a given period, cohorted by their First Purchase Date.
 
 **Comparing cohort definitions**\
