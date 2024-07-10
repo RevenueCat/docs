@@ -30,3 +30,5 @@ Use the links below to find the set up guide on each of our partner's sites.
 ### [Purchasely →](https://docs.purchasely.com/quick-start-1/purchasely-with-revenuecat)
 
 ### [Teta →](https://docs.teta.so/teta-docs/teta-introduction/dashboard/settings/integrations/revenuecat)
+
+### [Thunkable →](https://docs.thunkable.com/blocks/app-features/in-app-purchase-blocks-with-revenuecat)
