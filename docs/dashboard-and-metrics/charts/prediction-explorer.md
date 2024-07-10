@@ -6,7 +6,7 @@ hidden: false
 
 ## Definition
 
-The Prediction Explorer allows you to measure the predicted lifetime value (LTV) of various cohort definitions over time to estimate the long-term revenue that may be driven by those cohorts.
+The Prediction Explorer allows you to measure the predicted lifetime value (LTV) of various customer cohorts over time to estimate the long-term revenue that may be driven by those cohorts.
 
 :::warning Prediction Explorer Beta
 This chart is currently in beta as we refine our prediction modeling to improve accuracy. If you have feedback or questions on the nature of the chart or the data provided, please don't hesitate to reach out to us.
@@ -23,8 +23,8 @@ This chart is currently in beta as we refine our prediction modeling to improve 
 | Term              | Definition                                                                                                                                                                                                                                                      |
 | :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Lifetime value (LTV)          | The total revenue (value) generated for a cohort within some defined period (lifetime).                                                                                                                                       |
-| Realized LTV  | The lifetime value (LTV) that has already been generated for a cohort within some defined period.  |
-| Predicted LTV         | The lifetime value (LTV) that has already been generated for a cohort, plus the additional revenue that we estimate will be generated from the subscriptions in that cohort within some defined period. In order for a cohort to have Predicted LTV, it must be younger than the defined lifetime being measured.                                                                                                   |                             
+| Realized LTV  | The revenue that has already been generated (realized) for a cohort within some defined period.  |
+| Predicted LTV         | The revenue that has already been generated (realized) for a cohort, plus the additional revenue that we predict will be generated from the subscriptions in that cohort within some defined period. In order for a cohort to have predicted revenue, it must be younger than the defined lifetime being measured.                                                                                                   |                             
 ## Cohorts
 
 The Prediction Explorer supports three different cohort definitions:
@@ -43,11 +43,11 @@ Therefore, these different cohort definitions should not be thought of as a conv
 
 ## Lifetime Value (LTV) Prediction 
 
-RevenueCat predicts the lifetime value (LTV) of paid subscriptions based on the prior retention rates of subscriptions on the same product, or of a mix of fallback dimensions when sufficient data for the purchased product is unavailable. Our dataset of ____ apps, _____ subscriptions, and over $4B tracked revenue through our platform allows us to reliably estimate lifetime value outcomes.
+RevenueCat predicts the lifetime value (LTV) of paid subscriptions based on the prior retention rates of subscriptions on the same product, or of a mix of fallback dimensions when sufficient data for the purchased product is unavailable. Our dataset of >50k apps, >450M subscriptions, and over $4B tracked revenue through our platform allows us to reliably estimate lifetime value outcomes.
 
 ### When we predict LTV
 
-We predict up to 24 month LTV for all paid subscriptions that are not cancelled or expired. That predicted LTV is included in cells marked with [color code] on the right side of the diagonal divider in the table.
+We predict up to 24 month LTV for all paid subscriptions that are not cancelled or expired. Whenever a data point contains predicted revenue, it will be marked with [color code] on the right side of the diagonal divider in the table.
 
 [example screenshot of the split between realized cells vs. predicted cells]
 
@@ -56,14 +56,14 @@ You can use the period selector to look at daily, weekly, monthly, or yearly per
 [example screenshot of the period selector]
 
 #### Other notes
-- "24 month" LTV is defined as 24 months after the first purchase date of the subscription. When cohorting by other customer groups, like New Customers who are cohorted by their first seen date, predictions may be provided for more than 24 months after the cohort's inception since paid subscriptions within the cohort may have been started after the initial period
+- We will predict future revenue for up to 24 months from the first purchase date of a subscription, and will always show up to 24 months of performance for a given cohort. In the future, when we extend the time that we're predicting future revenue for, those additional periods will be provided in the chart as well.
 - We include the payment that may be made exactly at month 24 in our predictions (e.g. the 3rd potential payment for a yearly subscription which originated on 2020-01-01, and had renewal opportunities on 2021-01-01 and 2022-01-01)
 - We do _not_ predict increases in LTV from non-subscription revenue (e.g. lifetime purchases, consumables, etc.)
 
 
 ### How we predict LTV
 
-We predict LTV by building a survival curve of sets of subscriptions, translating that survival curve into renewal opportuntiies for each specific subscription, and then modifying the survival curve based on the behavior of the specific subscription we're making a prediction for. 
+We predict LTV by building a survival curve of sets of subscriptions, translating that survival curve into renewal opportunties for each specific subscription, and then modifying the survival curve based on the behavior of the specific subscription we're making a prediction for. 
 
 #### Survival curves
 
@@ -77,9 +77,7 @@ When a product has had enough prior subscriptions created for it to build a reli
 We treat each unique subscription product that a customer purchases as a unique subscription. Therefore, when a product change occurs, such as from a monthly product to a yearly product; the monthly subscription will be treated as churned when it ends, and a new yearly subscription will be created and have it's lifetime value predicted for 24 months following the first purchase date of that yearly subscription.
 :::
 
-If there is not enough data for that product, we'll use fallback survival curves that are built on the dimensions that have the most meaningful impact on LTV, such as:
-1. Store
-2. Product duration
+If there is not enough data for that product, we'll use fallback survival curves that are built on the dimensions that have the most meaningful impact on LTV, such as store & product duration.
 
 #### Auto renew status and its effect on LTV
 
@@ -99,7 +97,7 @@ When using the Prediction Explorer to anticipate future performance, its importa
 In testing our beta prediction model, we've observed that >70% of Products with at least 1,000 paid subscriptions have 12 month LTV predictions that are >90% accurate. Meaning, the Predicted LTV for those subscriptions is within 10% of the true Realized LTV we observed for those subscriptions.
 
 However, there are also some observable patterns in that testing that influence accuracy:
-1. Yearly products are most reliable, followed by Monthly, and then Weekly. Shorter durations produce greater fluctuation in LTV when measuring long lifetimes.
+1. Yearly products are most reliable, followed by monthly, and then weekly. Shorter durations produce greater fluctuation in LTV when measuring long lifetimes. Because of this, we recommend waiting **at least 28 days** before relying on long-term predictions for weekly products.
 2. App Store products are generally more reliable than Play Store products.
 3. Products with a higher volume of historical subscriptions have higher reliability.
 
@@ -125,6 +123,7 @@ All future lifetime value predictions contain some degree of risk and uncertaint
 1. Stripe subscriptions are excluced from the Prediction Explorer Beta, since a single Stripe product can have multiple durations, which must first be known before a reliable survival curve can be built.
 2. Products which had a price change may have less accurate predictions for a period following the price change if the new survival rates are not fully observed through changes in cancellation behavior.
 3. We do not (yet) predict conversion _to_ a paid subscription from non-paying customers, which means the total predicted LTV of a cohort only includes those subscriptions that have already converted to paid, and may change over time if additional subscriptions convert to paid.
+4. For new products, we use survival curves of similar products with enough historical data. This approach, on average, gives reliable results, but your product's retention could turn out to be different than our similar set. Because of that, predictions for products with little historical data should be used with caution.
 
 ## How to use the Prediction Explorer in your business
 
@@ -133,6 +132,7 @@ The Prediction Explorer can be used to answer many different questions, like:
 - How can I expect LTV to grow over time for recent cohorts vs. prior cohorts?
 - Do subscriptions on Yearly Product A have a higher 24 month LTV than those on Monthly Product B?
 - How does the predicted LTV from a given Apple Search Ads campaign compare with the predicted LTV of other subscriptions?
+- Which countries have a high enough predicted LTV to support testing paid marketing campaigns?
 
 ## Calculation
 
