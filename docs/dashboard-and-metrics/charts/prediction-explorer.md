@@ -24,7 +24,7 @@ This chart is currently in beta as we refine our prediction modeling to improve 
 | :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Lifetime value (LTV)          | The total revenue (value) generated for a cohort within some defined period (lifetime).                                                                                                                                       |
 | Realized LTV  | The lifetime value (LTV) that has already been generated for a cohort within some defined period.  |
-| Predicted LTV         | The lifetime value (LTV) that has already been geneated for a cohort, plus the additional revenue that we estimate will be generated for the subscriptions in that cohort within some defined period. In order for a cohort to have Predicted LTV, it must be younger than the defined lifetime being measured.                                                                                                   |                             
+| Predicted LTV         | The lifetime value (LTV) that has already been generated for a cohort, plus the additional revenue that we estimate will be generated from the subscriptions in that cohort within some defined period. In order for a cohort to have Predicted LTV, it must be younger than the defined lifetime being measured.                                                                                                   |                             
 ## Cohorts
 
 The Prediction Explorer supports three different cohort definitions:
