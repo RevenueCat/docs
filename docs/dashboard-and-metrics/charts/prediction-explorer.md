@@ -94,7 +94,7 @@ When using the Prediction Explorer to anticipate future performance, its importa
 - Differences in how early or late in a given renewal period subscriptions typically cancel
 - Changes to the product being used that materially change likelihood to cancel or retain
 
-In testing our beta prediction model, we've observed that >70% of Products with at least 1,000 paid subscriptions have 12 month LTV predictions that are >90% accurate. Meaning, the Predicted LTV for those subscriptions is within 10% of the true Realized LTV we observed for those subscriptions.
+In testing our beta prediction model, we've observed that >75% of Products with at least 2,000 paid subscriptions have 12 month LTV predictions that are >90% accurate. Meaning, the Predicted LTV for those subscriptions is within 10% of the true Realized LTV we observed for those subscriptions.
 
 However, there are also some observable patterns in that testing that influence accuracy:
 1. Yearly products are most reliable, followed by monthly, and then weekly. Shorter durations produce greater fluctuation in LTV when measuring long lifetimes. Because of this, we recommend waiting **at least 28 days** before relying on long-term predictions for weekly products.
