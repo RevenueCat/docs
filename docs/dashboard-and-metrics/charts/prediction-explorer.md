@@ -22,7 +22,7 @@ This chart is currently in beta as we refine our prediction modeling to improve 
 
 | Term              | Definition                                                                                                                                                                                                                                                      |
 | :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Lifetime value (LTV)          | The total revenue (value) generated for a cohort within some defined period (lifetime).                                                                                                                                       |
+| Lifetime value (LTV)          | The total revenue (value) generated for a cohort within some defined period (lifetime). Total revenue refers to the total amount paid by customers through the stores before taxes or commissions are deducted.                                                                                                                                      |
 | Realized LTV  | The revenue that has already been generated (realized) for a cohort within some defined period.  |
 | Predicted LTV         | The revenue that has already been generated (realized) for a cohort, plus the additional revenue that we predict will be generated from the subscriptions in that cohort within some defined period. In order for a cohort to have predicted revenue, it must be younger than the defined lifetime being measured.                                                                                                   |                             
 ## Cohorts
@@ -140,4 +140,6 @@ The Prediction Explorer can be used to answer many different questions, like:
 
 ## FAQs
 
-[to be added]
+| Question              | Answer                                                                                                                                                                                                                                                      |
+| :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Does Predicted LTV measure revenue before or after store commissions, fees, and taxes?        | Predicted LTV is calculated using the total revenue generated or predicted from each cohort, minus refunds, and therefore it does include revenue that the stores may deduct from your Proceeds due to commissions, taxes, or fees.                                                                                                                          |
