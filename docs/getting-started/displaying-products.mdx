@@ -46,6 +46,12 @@ import kmpContent1 from "!!raw-loader!@site/code_blocks/getting-started/displayi
     { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Get current offerings"},
 ]} />
 
+:::warning Avoid pre-warming offerings cache in your Android's Application
+Don't call `getOfferings` in your Android app's `Application.onCreate`. 
+
+This might trigger additional network requests in some situations (like push notifications) without need, using your customer's data. The offerings cache should be pre-fetched automatically by the SDK.
+:::
+
 
 :::info Offerings, products or available packages empty
 If your offerings, products, or available packages are empty, it's due to some configuration issue in App Store Connect or the Play Console.
