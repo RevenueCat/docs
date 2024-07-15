@@ -6,10 +6,8 @@ hidden: false
 
 Granted Entitlements allow you to give a user access to premium content for a specific amount of time without requiring them to make a purchase or redeem a promo code. This can be useful for allowing beta users to preview content for free or resolving customer support issues. You must be using RevenueCat [Entitlements](/getting-started/entitlements) to use this functionality.
 
-
-
 :::info Granted entitlements won't affect billing
-Granted entitlements are a RevenueCat specific feature and work independently of App Store or Play Store billing and will never cancel a user's subscription, charge a user, issue a refund, or convert to a paid subscription.
+Granted entitlements are a RevenueCat specific feature and work independently of the App Store, Play Store, Amazon, and Stripe billing and will never cancel a user's subscription, charge a user, issue a refund, or convert to a paid subscription.
 
 Granted entitlements don't stack on top of store subscriptions, and are applied alongside them instead.
 :::

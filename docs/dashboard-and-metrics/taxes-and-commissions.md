@@ -53,10 +53,8 @@ To then calculate the portion of a given transaction that was deducted for taxes
 1. Use the found tax rate to determine what was deducted from the customer price due to taxes: `price / (1 + [tax rate]) = [amount deducted for taxes]`
 2. Divide the amount deducted due to taxes from the customer price to get the `tax_percentage` that's provided in events, used to calculate Charts, etc: `[amount deducted for taxes] / price = tax_percentage`
 
-:::Info June 2024 App Store Updates
-Previously, we calculated taxes deducted App Store transactions after commission had been deducted. In June 2024 we updated this behavior to deduct taxes first to better match Apple's behavior. Though the yielded Proceeds are not affected by this ordering, the portion deducted for taxes and commission respectively are changed by this. 
-
-The Revenue chart and Scheduled Data Exports have been updated to reflect this improved definition, but please keep in mind that prior events dispatched by RevenueCat will still contain the old values.
+:::info June 2024 App Store Updates
+Previously, we calculated taxes deducted App Store transactions after commission had been deducted. In June 2024 we updated this behavior to deduct taxes first to better match Apple's behavior. Though the yielded Proceeds are not affected by this ordering, the portion deducted for taxes and commission respectively are changed by this. The Revenue chart and Scheduled Data Exports have been updated to reflect this improved definition, but please keep in mind that prior events dispatched by RevenueCat will still contain the old values.
 :::
 
 ### Calculating taxes for Stripe

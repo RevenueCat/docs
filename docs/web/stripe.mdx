@@ -51,10 +51,14 @@ In order for Stripe subscriptions to unlock [entitlements](/getting-started/enti
 
 ## 5. Send Stripe tokens to RevenueCat
 
-You can send your Stripe subscriptions to RevenueCat through the [POST receipt endpoint](/migrating-to-revenuecat/migrating-existing-subscriptions/receipt-imports). When using Stripe Checkout, you should listen to and send subscriptions to RevenueCat after both the customer.subscription.created and checkout.session.completed events.
+You can send your Stripe subscriptions to RevenueCat through the [POST receipt endpoint](/migrating-to-revenuecat/migrating-existing-subscriptions/receipt-imports). When using Stripe Checkout, you should listen to and send subscriptions to RevenueCat only after either of these events have completed:
+- `customer.subscription.created`
+- `checkout.session.completed`
 
-The only required fields are:
-
+:::info
+We recommend that you listen to `customer.subscription.created` for subscriptions and `checkout.session.completed` for one-time purchases for the simplest flow.
+:::
+The only required fields when sending your Stripe purchase to the RevenueCat API are the following:
 - `fetch_token`: Your Stripe subscription ID (`sub_...`) OR your Stripe Checkout Session ID
 - `app_user_id`: The App User ID that the subscription should be applied to
 
