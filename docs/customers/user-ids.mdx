@@ -30,6 +30,7 @@ import content6 from "!!raw-loader!@site/code_blocks/customers/user-ids_6.js";
 import content7 from "!!raw-loader!@site/code_blocks/customers/user-ids_7.js";
 import contentCapacitor1 from "!!raw-loader!@site/code_blocks/customers/user-ids_capacitor.ts";
 import content8 from "!!raw-loader!@site/code_blocks/customers/user-ids_unity.cs";
+import contentKmpAnon from "!!raw-loader!@site/code_blocks/customers/user-ids_kmp_anon.kts";
 
 <RCCodeBlock tabs={[
     {
@@ -43,6 +44,11 @@ import content8 from "!!raw-loader!@site/code_blocks/customers/user-ids_unity.cs
     {
         type: 'kotlin',
         content: content3,
+    },
+    {
+        type: 'kotlin',
+        content: contentKmpAnon,
+        name: 'Kotlin Multiplatform',
     },
     {
         type: 'java',
@@ -71,9 +77,12 @@ import content8 from "!!raw-loader!@site/code_blocks/customers/user-ids_unity.cs
     
 ]}/>
 
+For SDK versions 3+, anonymous App User IDs are always prefixed with `$RCAnonymousID:`, which may be useful for identifying anonymous users on your server.
 
-:::info
-Anonymous App User IDs are always prefixed with `$RCAnonymousID:` for SDK versions 3+. This can be useful for working with anonymous users on your server.
+:::info Capture Anonymous IDs for Debugging
+If your app does not enforce the use of custom App User IDs, you should consider revealing the user's App User ID in your app's support page. This will help expedite support requests, including those with RevenueCat Support.
+
+You can find the App User ID on the `CustomerInfo` [object](/customers/customer-info#get-user-information).
 :::
 
 ## Logging In with a Custom App User ID
@@ -109,6 +118,7 @@ import content14 from "!!raw-loader!@site/code_blocks/customers/user-ids_14.js";
 import content15 from "!!raw-loader!@site/code_blocks/customers/user-ids_15.js";
 import contentCapacitor2 from "!!raw-loader!@site/code_blocks/customers/user-ids_configure_with_user_capacitor.ts";
 import content16 from "!!raw-loader!@site/code_blocks/customers/user-ids_16.cs";
+import contentKmp from "!!raw-loader!@site/code_blocks/customers/user-ids_kmp.kts";
 
 <RCCodeBlock tabs={[
     {
@@ -122,6 +132,11 @@ import content16 from "!!raw-loader!@site/code_blocks/customers/user-ids_16.cs";
     {
         type: 'kotlin',
         content: content11,
+    },
+    {
+        type: 'kotlin',
+        content: contentKmp,
+        name: 'Kotlin Multiplatform',
     },
     {
         type: 'java',
@@ -166,6 +181,7 @@ import content22 from "!!raw-loader!@site/code_blocks/customers/user-ids_22.js";
 import content23 from "!!raw-loader!@site/code_blocks/customers/user-ids_23.js";
 import contentCapacitor3 from "!!raw-loader!@site/code_blocks/customers/user-ids_configure_and_login.ts";
 import content24 from "!!raw-loader!@site/code_blocks/customers/user-ids_24.cs";
+import contentKmpLogin from "!!raw-loader!@site/code_blocks/customers/user-ids_kmp_login.kts";
 
 <RCCodeBlock tabs={[
     {
@@ -179,6 +195,11 @@ import content24 from "!!raw-loader!@site/code_blocks/customers/user-ids_24.cs";
     {
         type: 'kotlin',
         content: content19,
+    },
+    {
+        type: 'kotlin',
+        content: contentKmpLogin,
+        name: 'Kotlin Multiplatform',
     },
     {
         type: 'java',

@@ -291,7 +291,7 @@ import content17 from "!!raw-loader!@site/code_blocks/customers/subscriber-attri
 
 ## Deleting Attributes
 
-Any attribute can be cleared by passing `null` or an empty string as the key value. Individual attributes can also be cleared for a specific user in their [customer view](/dashboard-and-metrics/customer-history/basic-information).
+Any attribute can be cleared by passing `null` or an empty string as the key value. If you plan to set this attribute immediately, we recommend you call syncAttributesAndOfferingsIfNeeded() to push this change to our backend faster. Individual attributes can also be cleared for a specific user in their [customer view](/dashboard-and-metrics/customer-history/basic-information).
 
 import content18 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_18.swift";
 import content25 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_25.m";
@@ -328,6 +328,9 @@ import content22 from "!!raw-loader!@site/code_blocks/customers/subscriber-attri
     },
   ]}
 />
+
+## Setting Attributes via the REST API
+If you want to set, update, or delete attributes through the REST API from your own backend, for example, because you haven't implemented the RevenueCat SDK, you can use the `POST /subscribers/{app_user_id}/attributes` [API endpoint](/api-v1#tag/customers/operation/update-subscriber-attributes). 
 
 ## Reading Attributes
 
