@@ -37,7 +37,7 @@ This can sometimes cause the customer history to appear out of order because we 
 - `RENEWAL`: If the resubscription occurs during the grace period before expiration.
 - `INITIAL_PURCHASE`: If the resubscription occurs after the previous subscription has expired.
 
-![resubscribe flow](/images/fd75ee9-resubscribe_6dcaac933ad21c0905514cd8fbc3d047.png)
+![resubscribe flow](/images/resubscribe-flow-updated.png) 
 
 ### Subscription Paused Flow (Android Only)
 
