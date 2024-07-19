@@ -97,7 +97,8 @@ Customer lists are refreshed every 2 hours automatically
 ## Filters
 
 Filters allow you to choose which customers appear in your list. You can create custom lists with any combination of filters. **All filters are applied as AND filters**.
-![](/images/20c0838-Screenshot_2023-03-27_at_1.20.54_PM_3fa920b6810cad3e7a2e48f7ebbc605d.png "Screenshot 2023-03-27 at 1.20.54 PM.png")
+![](/images/customer_list_filters.png "Customer List Filters")
+
 
 See the table below for all filters you can apply to your lists.
 
