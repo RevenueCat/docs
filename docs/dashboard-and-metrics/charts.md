@@ -75,9 +75,11 @@ Segments allow you to break down the chart totals into underlying data segments.
 | Offer                     | The offer that was used for a transaction (if applicable).                                                                                                |
 | Offer type                | They type of offer that was used for a transaction (if applicable).                                                                                       |
 | Offering                  | The offering identifier set in RevenueCat.                                                                                                                |
+| Placement                 | The custom paywall location that was defined in your app to serve an Offering.                                                                            |
 | Product Duration          | The duration of the normal subscription period (not trial or intro period).                                                                               |
 | Product                   | The product identifier set in the store.                                                                                                                  |
 | Store                     | The store that processed the purchase. Either App Store, Play Store, Amazon Appstore, or Stripe.                                                          |
+| Targeted Offering         | The Offerings shown to specific segments of your users, defined by Targeting Rules.                                                                       |
 
 :::info Filters do not affect 'New Customers' number
 Filters and segments do not apply to the 'New Customers' number. It is possible for customers to jump between web, iOS, and Android devices, so these filters only apply to transactions, which always happen through a particular Store.
@@ -142,11 +144,11 @@ We offer three conversion rate charts to measure different aspects of your conve
 
 It's important to understand the relationships between these three charts, since depending on the nature of your product offerings, you may use these charts for different purposes.
 
-**If all of your products offer a free trial, then Initial Conversion = Trial Start Rate.**  
-![](/images/1386416-image-20230224-130028_3ebe43d2f74d332988fa5cc86056ad41.png "image-20230224-130028.png")  
-**If all of your products begin with a paid subscription, then Initial Conversion = Conversion to Paying, and Trial Conversion is not applicable to your business.**  
-![](/images/611728c-image-20230224-155039_3cd4ae218ce1ee001a43382672e0e89a.png "image-20230224-155039.png")  
-**If your products contain a mix of subscriptions with and without trials, then these charts will measure distinct conversion rates. Initial Conversion will equal ([Trial Starts] + [Paying Customers]) / [New Customers], while Conversion to Paying will equal ([Trial Conversions] + [Paying Customers]) / [New Customers].**  
+**If all of your products offer a free trial, then Initial Conversion = Trial Start Rate.**
+![](/images/1386416-image-20230224-130028_3ebe43d2f74d332988fa5cc86056ad41.png "image-20230224-130028.png")
+**If all of your products begin with a paid subscription, then Initial Conversion = Conversion to Paying, and Trial Conversion is not applicable to your business.**
+![](/images/611728c-image-20230224-155039_3cd4ae218ce1ee001a43382672e0e89a.png "image-20230224-155039.png")
+**If your products contain a mix of subscriptions with and without trials, then these charts will measure distinct conversion rates. Initial Conversion will equal ([Trial Starts] + [Paying Customers]) / [New Customers], while Conversion to Paying will equal ([Trial Conversions] + [Paying Customers]) / [New Customers].**
 ![](/images/179324e-image-20230224-155057_9d198e0f4279cf5ab4d1de8487dbbf23.png "image-20230224-155057.png")
 
 ### Conversion Timeframes
@@ -175,7 +177,7 @@ Conversion Timeframes are not yet supported on the Trial Conversion chart, but w
 
 ## Exporting Data
 
-The underlying chart data can be exported in .csv format by clicking the _Export CSV_ button.  
+The underlying chart data can be exported in .csv format by clicking the _Export CSV_ button.
 ![](/images/90cf474-demo.revenuecat.com__a403889fd60cfe4971459f241850f4e8.png "demo.revenuecat.com_.png")
 
 ## Saving Charts
