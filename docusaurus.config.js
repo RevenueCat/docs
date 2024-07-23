@@ -140,7 +140,19 @@ const config = {
             type: "docSidebar",
             sidebarId: "defaultSidebar",
             position: "left",
-            label: "Documentation",
+            label: "📘 Docs",
+          },
+          {
+            type: "docSidebar",
+            sidebarId: "monetization",
+            position: "left",
+            label: "💰 Monetization",
+          },
+          {
+            type: "docSidebar",
+            sidebarId: "reporting",
+            position: "left",
+            label: "📊 Reporting",
           },
           {
             label: "REST API",

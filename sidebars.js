@@ -50,27 +50,37 @@ const welcomeCategory = Category({
   ],
 });
 
-const gettingStartedCategory = Category({
+const quickstart = Category({
   emoji: "🚀",
-  label: "Getting Started",
+  label: "Start Implementing",
   slug: "getting-started",
   items: [
     Page({ slug: "quickstart" }),
-    SubCategory({
-      label: "Configuring Products",
-      slug: "entitlements",
-      items: [
-        Page({ slug: "ios-products" }),
-        Page({ slug: "android-products" }),
-        Page({ slug: "google-subscriptions-and-backwards-compatibility" }),
-        Page({ slug: "amazon-product-setup" }),
-        Page({ slug: "stripe-products" }),
-        Link({
-          label: "RevenueCat Billing Product Setup",
-          slug: "/web/revenuecat-billing/product-setup",
-        }),
-      ],
+    Link({
+      label: "→ Configure Products",
+      slug: "/getting-started/entitlements",
     }),
+    Link({
+      label: "→ Build a Paywall",
+      slug: "/tools/paywalls/creating-paywalls",
+    }),
+    Link({
+      label: "→ Configure Server Notifications",
+      slug: "/platform-resources/server-notifications",
+    }),
+    Link({
+      label: "→ Charts & Metrics",
+      slug: "/dashboard-and-metrics/charts",
+    }),
+    Page({ slug: "data-onboarding" }),
+  ],
+});
+
+const gettingStartedCategory = Category({
+  emoji: "📲",
+  label: "RevenueCat SDK",
+  slug: "getting-started",
+  items: [
     SubCategory({
       label: "Installation",
       slug: "installation",
@@ -93,23 +103,98 @@ const gettingStartedCategory = Category({
       slug: "configuring-sdk",
       items: [Page({ slug: "ios-app-extensions" })],
     }),
-    Link({ label: "Identifying Users", slug: "/customers/user-ids" }),
+    Link({ label: "→ Identifying Users", slug: "/customers/user-ids" }),
+    Link({
+      label: "→ Checking Subscription Status",
+      slug: "/customers/customer-info",
+    }),
+  ],
+});
+
+const paywalls = Category({
+  emoji: "📦",
+  label: "RevenueCat Paywalls",
+  slug: "tools",
+  items: [
+    Page({ slug: "paywalls" }),
+    Page({ slug: "paywalls/creating-paywalls" }),
+    Page({ slug: "paywalls/displaying-paywalls" }),
+  ],
+});
+
+const customPaywalls = Category({
+  emoji: "🛠️",
+  label: "Building Custom Paywalls",
+  slug: "getting-started",
+  items: [
     Page({ slug: "displaying-products" }),
     SubCategory({
       label: "Making Purchases",
       slug: "making-purchases",
       items: [Page({ slug: "android-with-jetpack-compose" })],
     }),
-    Link({
-      label: "Checking Subscription Status",
-      slug: "/customers/customer-info",
-    }),
     Page({ slug: "restoring-purchases" }),
-    Link({
-      label: "Configuring Server Notifications",
-      slug: "/platform-resources/server-notifications",
+    SubCategory({
+      label: "Offering Metadata",
+      slug: "offering-metadata",
+      items: [Page({ slug: "offering-metadata-examples" })],
     }),
-    Page({ slug: "data-onboarding" }),
+  ],
+});
+
+const experiments = Category({
+  emoji: "🧪",
+  label: "Experiments",
+  slug: "tools/experiments-v1",
+  items: [
+    Page({ slug: "experiments-overview-v1" }),
+    Page({ slug: "creating-offerings-to-test" }),
+    Page({ slug: "configuring-experiments-v1" }),
+    Page({ slug: "experiments-results-v1" }),
+  ],
+});
+
+const productConfig = Category({
+  emoji: "📦",
+  label: "Product Configuration",
+  slug: "getting-started",
+  items: [
+    SubCategory({
+      label: "Configuring Products",
+      slug: "entitlements",
+      items: [
+        Page({ slug: "ios-products" }),
+        Page({ slug: "android-products" }),
+        Page({ slug: "google-subscriptions-and-backwards-compatibility" }),
+        Page({ slug: "amazon-product-setup" }),
+        Page({ slug: "stripe-products" }),
+        Link({
+          label: "→ RevenueCat Billing Product Setup",
+          slug: "/web/revenuecat-billing/product-setup",
+        }),
+      ],
+    }),
+  ],
+});
+
+const offerings = Category({
+  emoji: "🎁",
+  label: "Offerings",
+  slug: "tools",
+  items: [
+    Link({
+      label: "→ Offerings Overview",
+      slug: "/getting-started/entitlements#offerings",
+    }),
+    SubCategory({
+      label: "Targeting",
+      slug: "targeting",
+      items: [
+        Page({ slug: "placements" }),
+        Page({ slug: "custom-attributes" }),
+      ],
+    }),
+    Page({ slug: "paywall-orchestration-with-offerings" }),
   ],
 });
 
@@ -226,8 +311,33 @@ const subscriptionGuidanceCategory = Category({
 });
 
 const dashboardCategory = Category({
+  emoji: "🌐",
+  label: "Dashboard",
+  slug: "dashboard-and-metrics",
+  items: [
+    SubCategory({
+      label: "Customer History",
+      slug: "customer-history",
+      items: [
+        Page({ slug: "active-entitlements" }),
+        Page({ slug: "aliases-card" }),
+        Page({ slug: "attributes" }),
+        Page({ slug: "attribution-card" }),
+        Page({ slug: "basic-information" }),
+        Page({ slug: "offering-override" }),
+        Page({ slug: "promotionals" }),
+        Page({ slug: "manage-users" }),
+      ],
+    }),
+    Page({ slug: "customer-lists" }),
+    Page({ slug: "supporting-your-customers" }),
+    Page({ slug: "audit-logs" }),
+  ],
+});
+
+const charts = Category({
   emoji: "📊",
-  label: "Dashboard & Metrics",
+  label: "Metrics & Charts",
   slug: "dashboard-and-metrics",
   items: [
     Page({ slug: "overview" }),
@@ -257,66 +367,16 @@ const dashboardCategory = Category({
         Page({ slug: "trial-conversion-chart" }),
       ],
     }),
-    SubCategory({
-      label: "Customer History",
-      slug: "customer-history",
-      items: [
-        Page({ slug: "active-entitlements" }),
-        Page({ slug: "aliases-card" }),
-        Page({ slug: "attributes" }),
-        Page({ slug: "attribution-card" }),
-        Page({ slug: "basic-information" }),
-        Page({ slug: "offering-override" }),
-        Page({ slug: "promotionals" }),
-        Page({ slug: "manage-users" }),
-      ],
-    }),
-    Page({ slug: "customer-lists" }),
-    Page({ slug: "taxes-and-commissions" }),
-    Page({ slug: "performance-summaries" }),
-    Page({ slug: "supporting-your-customers" }),
-    Page({ slug: "audit-logs" }),
   ],
 });
 
-const toolsCategory = Category({
-  emoji: "🛠",
-  label: "Tools",
-  slug: "tools",
+const financial = Category({
+  emoji: "💰",
+  label: "Financial Data",
+  slug: "dashboard-and-metrics",
   items: [
-    SubCategory({
-      label: "Paywalls",
-      slug: "paywalls",
-      items: [
-        Page({ slug: "creating-paywalls" }),
-        Page({ slug: "displaying-paywalls" }),
-      ],
-    }),
-    SubCategory({
-      label: "Offering Metadata",
-      slug: "offering-metadata",
-      items: [Page({ slug: "offering-metadata-examples" })],
-    }),
-    SubCategory({
-      label: "Experiments",
-      slug: "experiments-v1",
-      items: [
-        Page({ slug: "experiments-overview-v1" }),
-        Page({ slug: "creating-offerings-to-test" }),
-        Page({ slug: "configuring-experiments-v1" }),
-        Page({ slug: "experiments-results-v1" }),
-      ],
-    }),
-    SubCategory({
-      label: "Targeting",
-      slug: "targeting",
-      items: [
-        Page({ slug: "placements" }),
-        Page({ slug: "custom-attributes" }),
-      ],
-    }),
-
-    Page({ slug: "paywall-orchestration-with-offerings" }),
+    Page({ slug: "performance-summaries" }),
+    Page({ slug: "taxes-and-commissions" }),
   ],
 });
 
@@ -486,20 +546,26 @@ const sdkMigrationCategory = Category({
 const sidebars = {
   defaultSidebar: [
     welcomeCategory,
-    gettingStartedCategory,
+    quickstart,
     migratingCategory,
+    gettingStartedCategory,
     webPurchasesCategory,
     customersCategory,
     testAndLaunchCategory,
-    subscriptionGuidanceCategory,
-    dashboardCategory,
-    toolsCategory,
-    integrationsCategory,
     platformResourcesCategory,
     serviceCredentialsCategory,
     supportCategory,
     sdkMigrationCategory,
   ],
+  monetization: [
+    productConfig,
+    offerings,
+    paywalls,
+    customPaywalls,
+    experiments,
+    subscriptionGuidanceCategory,
+  ],
+  reporting: [charts, dashboardCategory, financial, integrationsCategory],
 };
 
 export default sidebars;

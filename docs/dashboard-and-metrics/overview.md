@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Overview Metrics
 slug: overview
 excerpt: In-app purchase dashboard
 hidden: false
