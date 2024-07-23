@@ -140,7 +140,7 @@ const config = {
             type: "docSidebar",
             sidebarId: "defaultSidebar",
             position: "left",
-            label: "📘 Docs",
+            label: "📘 Get Started",
           },
           {
             type: "docSidebar",
