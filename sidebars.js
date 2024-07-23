@@ -134,11 +134,6 @@ const customPaywalls = Category({
       items: [Page({ slug: "android-with-jetpack-compose" })],
     }),
     Page({ slug: "restoring-purchases" }),
-    SubCategory({
-      label: "Offering Metadata",
-      slug: "offering-metadata",
-      items: [Page({ slug: "offering-metadata-examples" })],
-    }),
   ],
 });
 
@@ -193,6 +188,11 @@ const offerings = Category({
         Page({ slug: "placements" }),
         Page({ slug: "custom-attributes" }),
       ],
+    }),
+    SubCategory({
+      label: "Offering Metadata",
+      slug: "offering-metadata",
+      items: [Page({ slug: "offering-metadata-examples" })],
     }),
     Page({ slug: "paywall-orchestration-with-offerings" }),
   ],
