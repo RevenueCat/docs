@@ -1,0 +1,51 @@
+---
+title: "Using the SDK with your own IAP Code (formerly: Observer Mode)"
+slug: finishing-transactions
+excerpt: Using RevenueCat without changing existing purchase code
+hidden: false
+---
+
+If you already have your own in-app purchase handling logic in your app and want to start using RevenueCat alongside it, you might need to set the SDK configuration option that your app will **complete the purchases itself** (configuration option `purchasesAreCompletedBy`, see code below). Completing a purchase tells the device billing library that a purchase has been processed and can be discarded. RevenueCat does this by default, however, this may interfere with pre-existing purchase handling code in your app.
+
+If you set the SDK option that your app will complete purchases itself, you can still make use of most of RevenueCat's features, without replacing your existing purchase handling code.
+
+:::info Observer mode
+The setting where your app completes purchases was formerly called "observer mode". Older versions of the SDK (currently including the iOS and cross-platform SDKs) still refer to this terminology.
+:::
+
+:::warning Purchases need to manually be synced on Amazon Appstore
+For Amazon Appstore apps, you will need to [call the `syncAmazonPurchase()` method](/platform-resources/amazon-platform-resources#syncing-purchases-when-your-app-is-completing-transactions) after making a purchase using your own IAP code.
+:::
+
+### SDK Configuration
+
+import om1 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_1.swift";
+import om2 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_2.m";
+import om4 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_4.java";
+import om5 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_5.dart";
+import om6 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/observer-mode_6.cs";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "swift",
+      content: om1,
+    },
+    {
+      type: "objc",
+      content: om2,
+    },
+    {
+      type: "java",
+      content: om4,
+    },
+    {
+      type: "flutter",
+      content: om5,
+    },
+    {
+      type: "unity",
+      content: om6,
+    },
+  ]}
+/>

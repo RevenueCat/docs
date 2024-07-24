@@ -14,4 +14,4 @@ Basic customer information, including their total amount spent in your app, is p
 
 ## Next Steps
 
-- [Customer History ➡️](/dashboard-and-metrics/customer-history)
+- [Customer History →](/dashboard-and-metrics/customer-history)

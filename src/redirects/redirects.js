@@ -365,6 +365,10 @@ const redirects = {
       from: "/data-export-version-5",
     },
     {
+      to: "/integrations/scheduled-data-exports/scheduled-data-exports-azure",
+      from: "/scheduled-data-exports-azure",
+    },
+    {
       to: "/integrations/scheduled-data-exports/scheduled-data-exports-gcp",
       from: "/scheduled-data-exports-gcp",
     },
@@ -473,7 +477,7 @@ const redirects = {
       from: "/migrating-existing-subscriptions",
     },
     {
-      to: "/migrating-to-revenuecat/observer-mode",
+      to: "/migrating-to-revenuecat/sdk-or-not/finishing-transactions",
       from: "/observer-mode",
     },
     {
@@ -1068,6 +1072,10 @@ const redirects = {
       from: "/data-export-version-5.html",
     },
     {
+      to: "/integrations/scheduled-data-exports/scheduled-data-exports-azure",
+      from: "/scheduled-data-exports-azure.html",
+    },
+    {
       to: "/integrations/scheduled-data-exports/scheduled-data-exports-gcp",
       from: "/scheduled-data-exports-gcp.html",
     },
@@ -1176,7 +1184,7 @@ const redirects = {
       from: "/migrating-existing-subscriptions.html",
     },
     {
-      to: "/migrating-to-revenuecat/observer-mode",
+      to: "/migrating-to-revenuecat/sdk-or-not/finishing-transactions",
       from: "/observer-mode.html",
     },
     {

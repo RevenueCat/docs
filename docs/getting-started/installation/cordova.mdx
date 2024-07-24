@@ -8,6 +8,12 @@ hidden: false
 
 RevenueCat provides a backend and a wrapper around StoreKit and Google Play Billing to make implementing in-app purchases and subscriptions easy. With our SDK, you can build and manage your app business on any platform without having to maintain IAP infrastructure. You can read more about [how RevenueCat fits into your app](https://www.revenuecat.com/blog/growth/where-does-revenuecat-fit-in-your-app/) or you can [sign up free](https://app.revenuecat.com/signup) to start building.
 
+:::danger The Cordova SDK is deprecated
+The Cordova SDK is now deprecated. We suggest using our [Capacitor SDK](/getting-started/installation/capacitor) instead. 
+
+The Cordova SDK will receive maintainence updates, but new RevenueCat features and new major versions will not be made available. Because this SDK uses Billing Client v6, Google will not allow updates to your app after August 31st, 2025.
+:::
+
 ## Installation
 
 import content from "!!raw-loader!@site/code_blocks/getting-started/installation/cordova_1.shell";
@@ -80,4 +86,4 @@ import cordovaReactContent from "!!raw-loader!@site/code_blocks/getting-started/
 
 ## Next Steps
 
-* Now that you've installed the Purchases SDK in your Cordova app, get started by [initializing an instance of Purchases ➡️](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)
+* Now that you've installed the Purchases SDK in your Cordova app, get started by [initializing an instance of Purchases →](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)

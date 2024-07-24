@@ -10,15 +10,15 @@ If you're looking for sample apps, head over to our [Sample Apps](/platform-reso
 
 ## Configuration
 
-- [Setting up Play Store Service Credentials ➡️](/service-credentials/creating-play-service-credentials)
+- [Setting up Play Store Service Credentials →](/service-credentials/creating-play-service-credentials)
   _Required_
 
-- [Setting up Play Store Server-to-Server Notifications ➡️](/platform-resources/server-notifications/google-server-notifications)
+- [Setting up Play Store Server-to-Server Notifications →](/platform-resources/server-notifications/google-server-notifications)
   _Optional, but recommended to speed up webhooks and integration events_
 
 ## Google Play Pass
 
-- [Google Play Pass ➡️](/platform-resources/google-platform-resources/google-play-pass)
+- [Google Play Pass →](/platform-resources/google-platform-resources/google-play-pass)
 
 ## Data Safety Form
 
@@ -26,8 +26,8 @@ If you're looking for sample apps, head over to our [Sample Apps](/platform-reso
 
 ## Non-Subscription Purchases
 
-- [Using RevenueCat with Non-Subscription Purchases ➡️](/platform-resources/non-subscriptions)
+- [Using RevenueCat with Non-Subscription Purchases →](/platform-resources/non-subscriptions)
 
 ## Migrations
 
-- [Migrating Subscriptions from Existing Setup ➡️](/migrating-to-revenuecat/migrating-existing-subscriptions)
+- [Migrating Subscriptions from Existing Setup →](/migrating-to-revenuecat/migrating-existing-subscriptions)

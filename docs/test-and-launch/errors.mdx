@@ -237,7 +237,7 @@ Make sure you're signed into a physical device with a valid Apple or Google acco
 _______________________________________________________________________________
 #### 🍎 🤖 `PAYMENT_PENDING_ERROR`
 **Problem:**
-Additional action is required by the user before granting entitlement. For example, a user might choose to purchase your in-app product at a physical store using cash, or a parental control on a child's device may require approval before purchasing. 
+Additional action is required by the user before granting entitlement. For example, a user might choose to purchase your in-app product at a physical store using cash, a parental control on a child's device may require approval before purchasing, or the transaction may require [Strong Customer Authentication](https://developer.apple.com/support/sca/) (SCA) to be completed. This error message may include language that the payment is deferred.
 
 **Resolution:**
 Confirm to the user that they've started the pending purchase, and to complete it, they should follow instructions that are given to them from Apple or Google.
@@ -345,15 +345,6 @@ _______________________________________________________________________________
 **Problem:**
 Indicates there was an error fetching information about the receipt.
 
-_______________________________________________________________________________
-
-#### 📦 `ERROR_OBSERVER_MODE_NOT_SUPPORTED`
-**Problem:**
-Observer Mode is [not currently supported](/migrating-to-revenuecat/observer-mode) for Amazon.
-
-**Resolution:**
-Disable Observer Mode.
-
 ## Next Steps
 
-* You're set up to handle errors, time to start [making purchases in sandbox ➡️](/test-and-launch/sandbox)
+* You're set up to handle errors, time to start [making purchases in sandbox →](/test-and-launch/sandbox)

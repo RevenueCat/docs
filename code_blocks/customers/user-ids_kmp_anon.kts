@@ -1,0 +1,1 @@
+Purchases.configure(apiKey = "<api_key>")
