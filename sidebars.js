@@ -79,6 +79,7 @@ const gettingStartedCategory = Category({
         Page({ slug: "android" }),
         Page({ slug: "reactnative" }),
         Page({ slug: "flutter" }),
+        Page({ slug: "kotlin-multiplatform" }),
         Page({ slug: "capacitor" }),
         Page({ slug: "cordova" }),
         Page({ slug: "unity" }),
@@ -124,7 +125,10 @@ const migratingCategory = Category({
       items: [
         Page({ slug: "sdk-less-integration" }),
         // { label: "Using the SDK with your own IAP Code", id: "finishing-transactions", type: "doc" },
-        PageWithCustomLabel({ label: "Using the SDK with your own IAP Code", slug: "finishing-transactions" }),
+        PageWithCustomLabel({
+          label: "Using the SDK with your own IAP Code",
+          slug: "finishing-transactions",
+        }),
       ],
     }),
     SubCategory({
@@ -272,6 +276,7 @@ const dashboardCategory = Category({
     Page({ slug: "taxes-and-commissions" }),
     Page({ slug: "performance-summaries" }),
     Page({ slug: "supporting-your-customers" }),
+    Page({ slug: "audit-logs" }),
   ],
 });
 
@@ -343,6 +348,7 @@ const integrationsCategory = Category({
         Page({ slug: "data-export-version-3" }),
         Page({ slug: "data-export-version-4" }),
         Page({ slug: "data-export-version-5" }),
+        Page({ slug: "scheduled-data-exports-azure" }),
         Page({ slug: "scheduled-data-exports-gcp" }),
         Page({ slug: "scheduled-data-exports-s3" }),
       ],
@@ -388,6 +394,7 @@ const platformResourcesCategory = Category({
   slug: "platform-resources",
   items: [
     Page({ slug: "implementation-responsibilities" }),
+    Page({ slug: "developer-store-payments" }),
     Page({ slug: "sdk-reference" }),
     SubCategory({
       label: "Amazon Platform Resources",
@@ -457,7 +464,7 @@ const supportCategory = Category({
   slug: "revenuecat-support",
   items: [
     Page({ slug: "support-first-steps" }),
-    Page({ slug: "general-troubleshooting" })
+    Page({ slug: "general-troubleshooting" }),
   ],
 });
 
@@ -471,6 +478,7 @@ const sdkMigrationCategory = Category({
     Page({ slug: "android-native-6x-to-7x-migration" }),
     Page({ slug: "android-native-7x-to-8x-migration" }),
     Page({ slug: "ios-native-3x-to-4x-migration" }),
+    Page({ slug: "ios-native-4x-to-5x-migration" }),
   ],
 });
 

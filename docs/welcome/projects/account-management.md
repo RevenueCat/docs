@@ -23,6 +23,10 @@ Read more on our [Pricing](https://www.revenuecat.com/pricing) page.
 
 As your app grows, RevenueCat will remain free until you reach $2.5k in MTR, and beyond that limit for everyone on the Pro Plan, we will bill for 1% of revenue. If you do fall below that amount in subsequent months, RevenueCat will return to being free for you.
 
+An example of how you can expect to be charged for the Pro plan can be found below: 
+- Your MTR Tracked < $2,500 = Free
+- Your MTR Tracked > $2,500 = 1% of your MTR tracked. For instance, if you earned $2,600 in the previous billing cycle, you would incur a charge of $26.
+
 If you join RevenueCat and quickly exceed $2.5k in MTR in your first month, you will receive a grace period of 30 days starting from when you reach the limit in order to add a credit card, fix your billing details, or make your payment through another method. If no payment is completed by the end of this grace period, your access will be restricted until a payment has been made successfully.
 
 If you pass the initial month after you joined and pass the limit later on, your access to those features will be restricted immediately until a payment has been made successfully. For example, this situation would occur if an app exceeded $2.5k in MTR after 2 months of using RevenueCat.

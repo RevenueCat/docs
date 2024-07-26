@@ -1,0 +1,1 @@
+pod 'PurchasesHybridCommon', '10.10.0'

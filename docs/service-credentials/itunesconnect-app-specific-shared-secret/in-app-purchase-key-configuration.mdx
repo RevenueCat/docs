@@ -6,7 +6,7 @@ hidden: false
 parentDoc: 649983b4c31b2e000a3c1859
 ---
 
-When setting up a new App Store App on RevenueCat, you will need to add an in-app purchase key. Previously, adding an in-app purchase key was not required; the requirement was added because the in-app purchase key allows RevenueCat to provide accurate information about the country, currency, and pricing for purchases, which previously had to be estimated in some cases. In addition, the in-app purchase key is required for features like [Subscription offers](/subscription-guidance/subscription-offers/ios-subscription-offers#in-app-purchase-keys) or looking up customers by [Order ID](/dashboard-and-metrics/customer-lists#find-an-individual-customer).
+When setting up a new App Store App on RevenueCat, you will need to add an in-app purchase key. **This is a required configuration step**. Previously, adding an in-app purchase key was not required; the requirement was added because the in-app purchase key allows RevenueCat to provide accurate information about the country, currency, and pricing for purchases, which previously had to be estimated in some cases. In addition, the in-app purchase key is required for features like [Subscription offers](/subscription-guidance/subscription-offers/ios-subscription-offers#in-app-purchase-keys) or looking up customers by [Order ID](/dashboard-and-metrics/customer-lists#find-an-individual-customer).
 
 :::warning Adding an in-app purchase key may change historic data
 Adding an in-app purchase key to an app with existing transactions may change historic data as we update previously estimated data with corrected data from Apple. As a result, you may see an increased number of updated transactions reported in your [Scheduled Data Exports](/integrations/scheduled-data-exports) and your historical [Charts](/dashboard-and-metrics/charts) data may also gradually update. 
@@ -16,7 +16,7 @@ Adding an in-app purchase key to an app with existing transactions may change hi
 
 ### 1. Generating an In-App Purchase Key
 
-In-app purchase keys are generated App Store Connect under _Users and Access → Integrations → In-App Purchase_. You can use the same in-app purchase key for all App Store apps belonging to the same App Store Connect account.
+In-app purchase keys are generated App Store Connect under _Users and Access → Integrations → [In-App Purchase](https://appstoreconnect.apple.com/access/integrations/api/subs)_. You can use the same in-app purchase key for all App Store apps belonging to the same App Store Connect account.
 
 ![](/images/SCR-20240327-jvrs.png)
 

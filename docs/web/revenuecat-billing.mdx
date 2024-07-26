@@ -71,7 +71,7 @@ In contrast to Apple App Store, Google Play Store, and Stripe Billing products, 
 
 ## SDK configuration
 
-Configure the RevenueCat Web SDK by calling the static `initializePurchases()` method of the `Purchases` class:
+Configure the RevenueCat Web SDK by calling the static `configure()` method of the `Purchases` class:
 
 import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
 
@@ -87,10 +87,10 @@ import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billin
 />
 
 :::warning Only configure once
-You should configure the SDK only once in your code, attempting to call `initializePurchases()` twice will throw an exception.
+You should configure the SDK only once in your code.
 :::
 
-You can use the object returned from the `initializePurchases()` method to call any of the SDK methods, or use the static method `getInstance()` of the `Purchases` class to returned the initialized `Purchases` object.
+You can use the object returned from the `configure()` method to call any of the SDK methods, or use the static method `getSharedInstance()` of the `Purchases` class to returned the initialized `Purchases` object.
 
 The method will throw an exception if the SDK has not yet been configured.
 
@@ -208,7 +208,7 @@ Each Package contains information about the product in the `rcBillingProduct` pr
 
 ### Purchasing a package
 
-To purchase a package, use the `purchasePackage()` method of the `Purchases` object. It returns a `Promise<{customerInfo: CustomerInfo}>`. To handle errors, you should catch any exceptions that occur.
+To purchase a package, use the `purchase()` method of the `Purchases` object. It returns a `Promise<{customerInfo: CustomerInfo}>`. To handle errors, you should catch any exceptions that occur.
 
 <RCCodeBlock
   tabs={[
