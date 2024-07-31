@@ -4,8 +4,6 @@ slug: monthly-recurring-revenue-mrr-chart
 hidden: false
 ---
 
-## Definition
-
 The Monthly Recurring Revenue (MRR) chart measures the normalized revenue of your active paid subscriptions down to a monthly value. It’s a way of normalizing the scale of your business to better understand your velocity or size outside of the fluctuations that may arise from varying subscription durations. It doesn't map directly to revenue, but it is a useful standardization.
 
 MRR is computed by "normalizing" subscriptions to a 1-month period. Non-recurring subscriptions, consumable, or one-time purchases are not computed in MRR. For example:
