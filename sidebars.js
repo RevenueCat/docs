@@ -431,6 +431,16 @@ const charts = Category({
         slug: "retention-charts",
       }),
     }),
+    SubCategory({
+      label: "Explorer Charts",
+      slug: "charts",
+      items: [Page({ slug: "cohort-explorer" })],
+      generatedIndex: GeneratedIndex({
+        title: "Explorer Charts",
+        description: "Charts related to exploring data",
+        slug: "explorer-charts",
+      }),
+    }),
     Page({ slug: "charts/charts-feature-incomplete-periods" }),
   ],
 });
