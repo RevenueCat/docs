@@ -84,4 +84,4 @@ All dates and times are provided in UTC.
 
 \*Newly added fields for Version 5
 
-To learn more about how to use our transaction data, or get started with sample queries, [click here](/integrations/scheduled-data-exports).
+To learn more about how to use our transaction data, or get started with sample queries, [click here](/integrations/scheduled-data-exports#a-note-on-transaction).
