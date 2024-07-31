@@ -200,6 +200,7 @@ const testAndLaunchCategory = Category({
     }),
     Page({ slug: "launch-checklist" }),
     Page({ slug: "app-store-rejections" }),
+    Page({ slug: "testing-guide" }),
   ],
 });
 
