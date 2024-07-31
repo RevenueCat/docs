@@ -356,7 +356,11 @@ const charts = Category({
   slug: "dashboard-and-metrics",
   items: [
     Page({ slug: "overview" }),
-    Page({ slug: "charts" }),
+    SubCategory({
+      label: "Charts",
+      slug: "charts",
+      items: [Page({ slug: "charts-feature-incomplete-periods" })],
+    }),
     SubCategory({
       label: "Active Subscriptions & Trials",
       slug: "charts",
@@ -441,7 +445,6 @@ const charts = Category({
         slug: "explorer-charts",
       }),
     }),
-    Page({ slug: "charts/charts-feature-incomplete-periods" }),
   ],
 });
 
