@@ -461,12 +461,17 @@ const dataExportsCategory = Category({
     }),
     SubCategory({
       label: "Versions",
-      slug: "sde-versions",
+      slug: "scheduled-data-exports",
       items: [
         Page({ slug: "data-export-version-5" }),
         Page({ slug: "data-export-version-4" }),
         Page({ slug: "data-export-version-3" }),
       ],
+      generatedIndex: GeneratedIndex({
+        title: "Data Export Versions",
+        description: "Data export versions",
+        slug: "data-export-versions",
+      }),
     }),
   ],
 });
