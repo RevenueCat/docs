@@ -15,6 +15,7 @@ import {
   Link,
   Page,
   PageWithCustomLabel,
+  GeneratedIndex,
 } from "./src/sidebars/sidebar-utils";
 
 // The sidebar is a tree of categories and pages.
@@ -355,31 +356,81 @@ const charts = Category({
   slug: "dashboard-and-metrics",
   items: [
     Page({ slug: "overview" }),
+    Page({ slug: "charts" }),
     SubCategory({
-      label: "Charts",
+      label: "Active Subscriptions & Trials",
       slug: "charts",
       items: [
         Page({ slug: "active-subscriptions-chart" }),
         Page({ slug: "active-subscriptions-movement-chart" }),
+        Page({ slug: "charts-feature-incomplete-periods" }),
+        Page({ slug: "new-paid-subscriptions-chart" }),
+        Page({ slug: "non-subscription-purchases-chart" }),
         Page({ slug: "active-trials-chart" }),
         Page({ slug: "active-trials-movement-chart" }),
+        Page({ slug: "new-trials-chart" }),
+      ],
+      generatedIndex: GeneratedIndex({
+        title: "Active Subscriptions & Trials",
+        description: "Charts related to active subscriptions and trials",
+        slug: "active-subscriptions-and-trials",
+      }),
+    }),
+    SubCategory({
+      label: "Revenue Charts",
+      slug: "charts",
+      items: [
+        Page({ slug: "revenue-chart" }),
         Page({ slug: "annual-recurring-revenue-arr-chart" }),
-        Page({ slug: "charts-feature-incomplete-periods" }),
-        Page({ slug: "churn-chart" }),
-        Page({ slug: "conversion-to-paying-chart" }),
-        Page({ slug: "initial-conversion-chart" }),
         Page({ slug: "monthly-recurring-revenue-movement-chart" }),
         Page({ slug: "monthly-recurring-revenue-mrr-chart" }),
-        Page({ slug: "new-paid-subscriptions-chart" }),
-        Page({ slug: "new-trials-chart" }),
-        Page({ slug: "non-subscription-purchases-chart" }),
+        Page({ slug: "refund-rate-chart" }),
+      ],
+      generatedIndex: GeneratedIndex({
+        title: "Revenue Charts",
+        description: "Charts related to revenue",
+        slug: "revenue-charts",
+      }),
+    }),
+    SubCategory({
+      label: "LTV Charts",
+      slug: "charts",
+      items: [
         Page({ slug: "realized-ltv-per-customer-chart" }),
         Page({ slug: "realized-ltv-per-paying-customer-chart" }),
-        Page({ slug: "refund-rate-chart" }),
-        Page({ slug: "revenue-chart" }),
-        Page({ slug: "subscription-retention-chart" }),
+      ],
+      generatedIndex: GeneratedIndex({
+        title: "LTV Charts",
+        description: "Charts related to lifetime value",
+        slug: "ltv-charts",
+      }),
+    }),
+    SubCategory({
+      label: "Conversion Charts",
+      slug: "charts",
+      items: [
+        Page({ slug: "conversion-to-paying-chart" }),
+        Page({ slug: "initial-conversion-chart" }),
         Page({ slug: "trial-conversion-chart" }),
       ],
+      generatedIndex: GeneratedIndex({
+        title: "Conversion Charts",
+        description: "Charts related to conversion",
+        slug: "conversion-charts",
+      }),
+    }),
+    SubCategory({
+      label: "Retention Charts",
+      slug: "charts",
+      items: [
+        Page({ slug: "subscription-retention-chart" }),
+        Page({ slug: "churn-chart" }),
+      ],
+      generatedIndex: GeneratedIndex({
+        title: "Retention Charts",
+        description: "Charts related to retention",
+        slug: "retention-charts",
+      }),
     }),
   ],
 });
