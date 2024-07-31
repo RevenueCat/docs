@@ -394,6 +394,26 @@ const financial = Category({
   ],
 });
 
+const dataExportsCategory = Category({
+  emoji: "📤",
+  label: "Data Exports",
+  slug: "integrations",
+  items: [
+    SubCategory({
+      label: "Scheduled Data Exports",
+      slug: "scheduled-data-exports",
+      items: [
+        Page({ slug: "scheduled-data-exports-azure" }),
+        Page({ slug: "scheduled-data-exports-gcp" }),
+        Page({ slug: "scheduled-data-exports-s3" }),
+        Page({ slug: "data-export-version-5" }),
+        Page({ slug: "data-export-version-4" }),
+        Page({ slug: "data-export-version-3" }),
+      ],
+    }),
+  ],
+});
+
 const integrationsCategory = Category({
   emoji: "🔌",
   label: "Integrations",
@@ -412,18 +432,6 @@ const integrationsCategory = Category({
         Page({ slug: "singular" }),
         Page({ slug: "splitmetrics-acquire" }),
         Page({ slug: "tenjin" }),
-      ],
-    }),
-    SubCategory({
-      label: "Scheduled Data Exports",
-      slug: "scheduled-data-exports",
-      items: [
-        Page({ slug: "data-export-version-3" }),
-        Page({ slug: "data-export-version-4" }),
-        Page({ slug: "data-export-version-5" }),
-        Page({ slug: "scheduled-data-exports-azure" }),
-        Page({ slug: "scheduled-data-exports-gcp" }),
-        Page({ slug: "scheduled-data-exports-s3" }),
       ],
     }),
     SubCategory({
@@ -455,6 +463,10 @@ const integrationsCategory = Category({
         Page({ slug: "event-types-and-fields" }),
         Page({ slug: "sample-events" }),
       ],
+    }),
+    Link({
+      label: "→ Scheduled Data Exports",
+      slug: "/integrations/scheduled-data-exports",
     }),
     Page({ slug: "partner-built-integrations" }),
     Page({ slug: "stripe-app" }),
@@ -566,6 +578,7 @@ const sidebars = {
     webPurchasesCategory,
     customersCategory,
     testAndLaunchCategory,
+    integrationsCategory,
     platformResourcesCategory,
     serviceCredentialsCategory,
     supportCategory,
@@ -585,7 +598,7 @@ const sidebars = {
     charts,
     dashboardCategory,
     financial,
-    integrationsCategory,
+    dataExportsCategory,
   ],
 };
 
