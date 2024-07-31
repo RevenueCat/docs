@@ -23,9 +23,9 @@ Customers on our Enterprise plan have the option to receive data exports more fr
 
 ## Version Change Log
 
-- [Data Export Version 5](/integrations/sde-versions/data-export-version-5) (Latest)
-- [Data Export Version 4](/integrations/sde-versions/data-export-version-4)
-- [Data Export Version 3](/integrations/sde-versions/data-export-version-3)
+- [Data Export Version 5](/integrations/scheduled-data-exports/data-export-version-5) (Latest)
+- [Data Export Version 4](/integrations/scheduled-data-exports/data-export-version-4)
+- [Data Export Version 3](/integrations/scheduled-data-exports/data-export-version-3)
 
 ## Transaction Format
 
