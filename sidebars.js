@@ -111,6 +111,36 @@ const gettingStartedCategory = Category({
   ],
 });
 
+const monetizationOverview = Category({
+  emoji: "👋",
+  label: "Monetization in RevenueCat",
+  slug: "monetization",
+  items: [Page({ slug: "overview" })],
+});
+
+const productConfig = Category({
+  emoji: "📦",
+  label: "Product Configuration",
+  slug: "getting-started",
+  items: [
+    SubCategory({
+      label: "Configuring Products",
+      slug: "entitlements",
+      items: [
+        Page({ slug: "ios-products" }),
+        Page({ slug: "android-products" }),
+        Page({ slug: "google-subscriptions-and-backwards-compatibility" }),
+        Page({ slug: "amazon-product-setup" }),
+        Page({ slug: "stripe-products" }),
+        Link({
+          label: "→ RevenueCat Billing Product Setup",
+          slug: "/web/revenuecat-billing/product-setup",
+        }),
+      ],
+    }),
+  ],
+});
+
 const paywalls = Category({
   emoji: "📦",
   label: "RevenueCat Paywalls",
@@ -146,29 +176,6 @@ const experiments = Category({
     Page({ slug: "creating-offerings-to-test" }),
     Page({ slug: "configuring-experiments-v1" }),
     Page({ slug: "experiments-results-v1" }),
-  ],
-});
-
-const productConfig = Category({
-  emoji: "📦",
-  label: "Product Configuration",
-  slug: "getting-started",
-  items: [
-    SubCategory({
-      label: "Configuring Products",
-      slug: "entitlements",
-      items: [
-        Page({ slug: "ios-products" }),
-        Page({ slug: "android-products" }),
-        Page({ slug: "google-subscriptions-and-backwards-compatibility" }),
-        Page({ slug: "amazon-product-setup" }),
-        Page({ slug: "stripe-products" }),
-        Link({
-          label: "→ RevenueCat Billing Product Setup",
-          slug: "/web/revenuecat-billing/product-setup",
-        }),
-      ],
-    }),
   ],
 });
 
@@ -308,6 +315,13 @@ const subscriptionGuidanceCategory = Category({
     Page({ slug: "refunds" }),
     Page({ slug: "google-prepaid-plans" }),
   ],
+});
+
+const reportingOverview = Category({
+  emoji: "👋",
+  label: "Reporting in RevenueCat",
+  slug: "reporting",
+  items: [Page({ slug: "overview" })],
 });
 
 const dashboardCategory = Category({
@@ -558,6 +572,7 @@ const sidebars = {
     sdkMigrationCategory,
   ],
   monetization: [
+    monetizationOverview,
     productConfig,
     offerings,
     paywalls,
@@ -565,7 +580,13 @@ const sidebars = {
     experiments,
     subscriptionGuidanceCategory,
   ],
-  reporting: [charts, dashboardCategory, financial, integrationsCategory],
+  reporting: [
+    reportingOverview,
+    charts,
+    dashboardCategory,
+    financial,
+    integrationsCategory,
+  ],
 };
 
 export default sidebars;
