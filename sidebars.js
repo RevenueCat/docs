@@ -363,7 +363,6 @@ const charts = Category({
       items: [
         Page({ slug: "active-subscriptions-chart" }),
         Page({ slug: "active-subscriptions-movement-chart" }),
-        Page({ slug: "charts-feature-incomplete-periods" }),
         Page({ slug: "new-paid-subscriptions-chart" }),
         Page({ slug: "non-subscription-purchases-chart" }),
         Page({ slug: "active-trials-chart" }),
@@ -432,6 +431,7 @@ const charts = Category({
         slug: "retention-charts",
       }),
     }),
+    Page({ slug: "charts/charts-feature-incomplete-periods" }),
   ],
 });
 
