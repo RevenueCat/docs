@@ -406,6 +406,12 @@ const dataExportsCategory = Category({
         Page({ slug: "scheduled-data-exports-azure" }),
         Page({ slug: "scheduled-data-exports-gcp" }),
         Page({ slug: "scheduled-data-exports-s3" }),
+      ],
+    }),
+    SubCategory({
+      label: "Versions",
+      slug: "sde-versions",
+      items: [
         Page({ slug: "data-export-version-5" }),
         Page({ slug: "data-export-version-4" }),
         Page({ slug: "data-export-version-3" }),
