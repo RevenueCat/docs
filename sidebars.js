@@ -242,6 +242,7 @@ const dashboardCategory = Category({
         Page({ slug: "annual-recurring-revenue-arr-chart" }),
         Page({ slug: "charts-feature-incomplete-periods" }),
         Page({ slug: "churn-chart" }),
+        Page({ slug: "cohort-explorer" }),
         Page({ slug: "conversion-to-paying-chart" }),
         Page({ slug: "initial-conversion-chart" }),
         Page({ slug: "monthly-recurring-revenue-movement-chart" }),
