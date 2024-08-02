@@ -67,11 +67,15 @@ We predict LTV by building a survival curve of sets of subscriptions, translatin
 
 #### Survival curves
 
-[How we generate survival curves generally]
+We generate survival curves using historical cancellation data to plot the typical rate of cancellation in some set of subscriptions. Survival curves are generated for:
+1. Each unique product with paid subscriptions
+2. Sets of fallback dimensions like all paid subscriptions for a given [Product Duration & Store]
+
+These survival curves are updated daily to ensure we're always using the latest data to estimate the future survival rates of a given subscription set.
 
 #### Subscription sets
 
-When a product has had enough prior subscriptions created for it to build a reliable survival curve, we'll use that product's survival curve as the base to predict LTV for all future subscriptions on that product.
+When a unique product has had enough prior subscriptions created for it to build a reliable survival curve, we'll use that product's survival curve as the base to predict LTV for all future subscriptions on that product.
 
 :::tip Defining subscriptions
 We treat each unique subscription product that a customer purchases as a unique subscription. Therefore, when a product change occurs, such as from a monthly product to a yearly product; the monthly subscription will be treated as churned when it ends, and a new yearly subscription will be created and have it's lifetime value predicted for 24 months following the first purchase date of that yearly subscription.
@@ -98,7 +102,7 @@ In testing our beta prediction model, we've observed that >75% of Products with 
 
 However, there are also some observable patterns in that testing that influence accuracy:
 1. Yearly products are most reliable, followed by monthly, and then weekly. Shorter durations produce greater fluctuation in LTV when measuring long lifetimes. Because of this, we recommend waiting **at least 28 days** before relying on long-term predictions for weekly products.
-2. App Store products are generally more reliable than Play Store products.
+2. App Store products are generally more reliable than Play Store products, and Stripe products have the least reliable predictions in our beta model.
 3. Products with a higher volume of historical subscriptions have higher reliability.
 
 #### Reliability indicators
@@ -159,3 +163,4 @@ For each period, we:
 | Question              | Answer                                                                                                                                                                                                                                                      |
 | :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Does Predicted LTV measure revenue before or after store commissions, fees, and taxes?        | Predicted LTV is calculated using the total revenue generated or predicted from each cohort, minus refunds, and therefore it does include revenue that the stores may deduct from your Proceeds due to commissions, taxes, or fees.                                                                                                                          |
+| How can I distinguish realized vs. predicted periods in the CSV export?        | Unfortunately, right now there is no indicator in the CSV export to distinguish between realized vs. predicted periods, so for the moment this can only be done manually through a date comparison or by referencing the Charts UI.                                                                                                               |
