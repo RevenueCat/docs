@@ -47,13 +47,13 @@ RevenueCat predicts the lifetime value (LTV) of paid subscriptions based on the 
 
 ### When we predict LTV
 
-We predict up to 24 month LTV for all paid subscriptions that are not cancelled or expired. Whenever a data point contains predicted revenue, it will be marked with [color code] on the right side of the diagonal divider in the table.
+We predict up to 24 month LTV for all paid subscriptions that are not cancelled or expired. Whenever a data point contains predicted revenue, it will be styled with light green or yellow on the right side of the diagonal divider in the table.
 
-[example screenshot of the split between realized cells vs. predicted cells]
+![](/images/prediction_explorer.png)
 
 You can use the period selector to look at daily, weekly, monthly, or yearly periods and measure the LTV we predict will be added in each one (for up to 24 months after the start of each paid subscription in the cohort being measured)
 
-[example screenshot of the period selector]
+![](/images/prediction_explorer_period_selector.png)
 
 #### Other notes
 - We will predict future revenue for up to 24 months from the first purchase date of a subscription, and will always show up to 24 months of performance for a given cohort. In the future, when we extend the time that we're predicting future revenue for, those additional periods will be provided in the chart as well.
@@ -109,11 +109,11 @@ In the Prediction Explorer we'll distinguish between two types of predictions:
 
 When a cohort is too small, and therefore its predictions should be taken with extreme caution, we'll indicate that with a tooltip and yellow cell shading to distinguish these as our lowest confidence predictions:
 
-[screenshot]
+![](/images/prediction_explorer_low_confidence.png)
 
 When a cohort has a sufficient sample size of customers and subscriptions for us to provide a more reliable prediction for it, we'll indicate that with a light green cell shading to distinguish these as predicted values vs. other darker green cells which only contain Realized LTV:
 
-[screenshot]
+![](/images/prediction_explorer_certain_and_standard_confidence.png)
 
 :::warning
 All future lifetime value predictions contain some degree of risk and uncertainty, and should therefore be used with caution in analysis when comparing with certain values like Realized LTV.
