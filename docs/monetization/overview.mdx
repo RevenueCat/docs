@@ -1,15 +1,29 @@
 ---
 title: Overview
-excerpt: An overview of monetization in RevenueCat
-hidden: false
+description: An overview of monetization in RevenueCat
 ---
 
-This is an example doc to provide context for monetization features in RevenueCat.
+RevenueCat enables you to build, test, and optimize your paywalls with ease. Whether you're using RevenueCat Paywalls or building a custom paywall, RevenueCat provides the tools you need to create a seamless and effective monetization strategy.
 
-We might explain that you should:
+## Creating Products and Offerings
 
-- Implement the SDK
-- Create your products
-- Create an Offering
-- Build a paywall
-- Make a purchase
+Get started by creating your [products and offerings](/getting-started/entitlements) in the RevenueCat Dashboard. An Offering is a collection of products that are available to your customers. You can think of an Offering as a single 'paywall' that you may present to your customers.
+
+Offerings contain a collection of products, and each product can be purchased by a customer. To simplify products across platforms, RevenueCat unifies products into 'packages'. A package exists within an Offering, and contains products of the same duration for each platform. For example, a package may contain a 1 month subscription for iOS, and a 1 month subscription for Android.
+
+## Designing Paywalls
+
+Each Offering can be customized with a [paywall](/tools/paywalls). RevenueCat provides a number of pre-determined paywall templates that you can use to get started. RevenueCat Paywalls are powerful and flexible, allowing you to create and modify paywalls dynamically, and are designed to be used alongside RevenueCat Experiments to A/B test different paywalls and offerings.
+
+### Custom Paywalls
+
+You can also build a [custom paywall](/getting-started/displaying-products) by manually presenting products and invoking the purchase flow from the RevenueCat SDK. Combined with Offering Metadata, you can create a unique and flexible paywall experience for your users that is tailored to your app.
+
+## A/B Testing with Experiments
+
+[RevenueCat Experiments](/tools/experiments-v1/experiments-overview-v1) allows you to answer questions about your users' behaviors and app's business by A/B testing two Offerings in your app and analyzing the full subscription lifecycle to understand which variant is producing more value for your business.
+
+While price testing is one of the most common forms of A/B testing in mobile apps, Experiments are based on RevenueCat Offerings, which means you can A/B test more than just prices, including: trial length, subscription length, different groupings of products, etc.
+
+You can even use our Paywalls or Offering Metadata to remotely control and A/B test any aspect of your paywall. [Learn more](/offerings-guide#remotely-control-all-aspects-of-your-paywall).
+
