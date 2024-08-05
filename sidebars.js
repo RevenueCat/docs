@@ -113,8 +113,8 @@ const gettingStartedCategory = Category({
 });
 
 const monetizationOverview = Category({
-  emoji: "👋",
-  label: "Monetization in RevenueCat",
+  emoji: "💰",
+  label: "Monetization",
   slug: "monetization",
   items: [Page({ slug: "overview" })],
 });
@@ -265,6 +265,10 @@ const customersCategory = Category({
     Page({ slug: "customer-info" }),
     Page({ slug: "customer-attributes" }),
     Page({ slug: "trusted-entitlements" }),
+    Link({
+      label: "→ View Customer History",
+      slug: "/dashboard-and-metrics/customer-history",
+    }),
   ],
 });
 
@@ -318,13 +322,6 @@ const subscriptionGuidanceCategory = Category({
   ],
 });
 
-const reportingOverview = Category({
-  emoji: "👋",
-  label: "Reporting in RevenueCat",
-  slug: "reporting",
-  items: [Page({ slug: "overview" })],
-});
-
 const dashboardCategory = Category({
   emoji: "🌐",
   label: "Dashboard",
@@ -352,7 +349,7 @@ const dashboardCategory = Category({
 
 const charts = Category({
   emoji: "📊",
-  label: "Metrics & Charts",
+  label: "Reporting & Charts",
   slug: "dashboard-and-metrics",
   items: [
     Page({ slug: "overview" }),
@@ -668,13 +665,7 @@ const sidebars = {
     experiments,
     subscriptionGuidanceCategory,
   ],
-  reporting: [
-    reportingOverview,
-    charts,
-    dashboardCategory,
-    financial,
-    dataExportsCategory,
-  ],
+  reporting: [charts, dashboardCategory, financial, dataExportsCategory],
 };
 
 export default sidebars;

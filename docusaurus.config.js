@@ -140,19 +140,19 @@ const config = {
             type: "docSidebar",
             sidebarId: "defaultSidebar",
             position: "left",
-            label: "📘 Get Started",
+            label: "Get Started",
           },
           {
             type: "docSidebar",
             sidebarId: "monetization",
             position: "left",
-            label: "💰 Monetization",
+            label: "Monetization",
           },
           {
             type: "docSidebar",
             sidebarId: "reporting",
             position: "left",
-            label: "📊 Reporting",
+            label: "Reporting",
           },
           {
             label: "REST API",
@@ -169,37 +169,40 @@ const config = {
             ],
           },
           {
-            label: "SDK Reference",
-            to: "/platform-resources/sdk-reference",
+            label: "SDK",
+            to: "/getting-started/installation",
             position: "left",
             items: [
               {
-                label: "iOS SDK",
+                label: "Installation",
                 to: "https://revenuecat.github.io/purchases-ios-docs/",
               },
               {
-                label: "Android SDK",
+                label: "iOS SDK Reference",
+                to: "https://revenuecat.github.io/purchases-ios-docs/",
+              },
+              {
+                label: "Android SDK Reference",
                 to: "https://sdk.revenuecat.com/android/index.html",
               },
               {
-                label: "Flutter SDK",
+                label: "Flutter SDK Reference",
                 to: "https://pub.dev/documentation/purchases_flutter/6.5.0/",
               },
               {
-                label: "React Native SDK",
+                label: "React Native SDK Reference",
                 to: "https://revenuecat.github.io/react-native-purchases-docs",
               },
               {
-                label: "Capacitor SDK",
+                label: "Capacitor SDK Reference",
                 to: "https://www.npmjs.com/package/@revenuecat/purchases-capacitor",
               },
               {
-                label: "Cordova SDK",
+                label: "Cordova SDK Reference",
                 to: "https://revenuecat.github.io/cordova-plugin-purchases-docs/",
               },
-
               {
-                label: "Web SDK",
+                label: "Web SDK Reference",
                 to: "https://revenuecat.github.io/purchases-js-docs",
               },
             ],
@@ -210,19 +213,18 @@ const config = {
             position: "left",
           },
           {
-            label: "Get Help",
-            to: "/revenuecat-support/support-first-steps",
-            position: "left",
-          },
-          {
-            label: "Sign Up",
-            to: "https://app.revenuecat.com/signup",
+            label: "Account",
             position: "right",
-          },
-          {
-            label: "Sign In",
-            to: "https://app.revenuecat.com/login",
-            position: "right",
+            items: [
+              {
+                label: "Sign In",
+                to: "https://app.revenuecat.com/login",
+              },
+              {
+                label: "Sign Up",
+                to: "https://app.revenuecat.com/signup",
+              },
+            ],
           },
         ],
       },
