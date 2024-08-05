@@ -51,7 +51,7 @@ We predict up to 24 month LTV for all paid subscriptions that are not cancelled 
 
 ![](/images/prediction_explorer.png)
 
-You can use the period selector to look at daily, weekly, monthly, or yearly periods and measure the LTV we predict will be added in each one (for up to 24 months after the start of each paid subscription in the cohort being measured)
+You can use the period selector to look at daily, weekly, monthly, or yearly periods and the LTV we predict will be added in each one (for up to 24 months after the start of each paid subscription in the cohort being measured)
 
 ![](/images/prediction_explorer_period_selector.png)
 
@@ -63,13 +63,11 @@ You can use the period selector to look at daily, weekly, monthly, or yearly per
 
 ### How we predict LTV
 
-We predict LTV by building a survival curve of sets of subscriptions, translating that survival curve into renewal opportunties for each specific subscription, and then modifying the survival curve based on the behavior of the specific subscription we're making a prediction for. 
+We predict LTV by building a survival curve of sets of subscriptions, translating that survival curve into renewal opportunities for each specific subscription, and then modifying the survival curve based on the behavior of the specific subscription we're making a prediction for. 
 
 #### Survival curves
 
-We generate survival curves using historical cancellation data to plot the typical rate of cancellation in some set of subscriptions. Survival curves are generated for:
-1. Each unique product with paid subscriptions
-2. Sets of fallback dimensions like all paid subscriptions for a given [Product Duration & Store]
+Survival curves illustrate churn probabilities over time, which can be easily converted into renewal probability distributions. To generate these curves, we first analyze subscriptions for each product and fallback dimensions (e.g., store category), determining the duration of active subscriptions, the number of renewals, and the current status. Subsequently, we select an appropriate statistical distribution (e.g., exponential distribution) and fit the subscription data to these distributions to generate the survival curves.
 
 These survival curves are updated daily to ensure we're always using the latest data to estimate the future survival rates of a given subscription set.
 
@@ -85,7 +83,7 @@ If there is not enough data for that product, we'll use fallback survival curves
 
 #### Auto renew status and its effect on LTV
 
-The primary signal we use determine whether a subscription's survival curve needs to be altered from the average for its product is its auto renew status. Or, in other words: a subscription which has disabled auto renewal has a _far_ lower likelihood of surviving until its next renewal, and a subscription which is still set to auto renew has a slightly higher likelihood of survinging until its next renewal at each subsequent day when that remains true.
+The primary signal we use to determine whether a subscription's survival curve needs to be altered from the average for its product is its auto renew status. Or, in other words: a subscription which has disabled auto renewal has a _far_ lower likelihood of surviving until its next renewal compared to a subscription which is still set to auto renew.
 
 That also means that subscriptions with different attributes, such as those from different countries or with different app usage patterns, will still have different LTV predictions generated for them if this underlying attribute difference also causes them to cancel their subscriptions at different rates.
 
