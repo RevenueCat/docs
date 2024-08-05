@@ -435,7 +435,10 @@ const charts = Category({
     SubCategory({
       label: "Explorer Charts",
       slug: "charts",
-      items: [Page({ slug: "cohort-explorer" })],
+      items: [
+        Page({ slug: "cohort-explorer" }),
+        Page({ slug: "prediction-explorer" }),
+      ],
       generatedIndex: GeneratedIndex({
         title: "Explorer Charts",
         description: "Charts related to exploring data",
