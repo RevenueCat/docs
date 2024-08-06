@@ -157,6 +157,7 @@ const webPurchasesCategory = Category({
         Page({ slug: "subscription-lifecycle" }),
         Page({ slug: "managing-customer-subscriptions" }),
         Page({ slug: "customer-portal" }),
+        Page({ slug: "web-paywall-links" }),
       ],
     }),
     Page({ slug: "stripe" }),
