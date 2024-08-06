@@ -124,8 +124,9 @@ const productConfig = Category({
   label: "Product Configuration",
   slug: "getting-started",
   items: [
+    Page({ slug: "entitlements" }),
     SubCategory({
-      label: "Configuring Products",
+      label: "Store Setup",
       slug: "entitlements",
       items: [
         Page({ slug: "ios-products" }),
@@ -138,6 +139,12 @@ const productConfig = Category({
           slug: "/web/revenuecat-billing/product-setup",
         }),
       ],
+      generatedIndex: GeneratedIndex({
+        title: "Store Setup",
+        description:
+          "Configure your products across stores and import them to RevenueCat.",
+        slug: "store-setup",
+      }),
     }),
   ],
 });
