@@ -49,8 +49,8 @@ You can customize the:
 
 
 ### Success page
-After subscribing through the `purchases-js` sdk the Web Paywall Link allows you to congratulate the user in 2 ways:
-* Show a success page hosted by RevenueCat
+After subscribing the Web Paywall Link allows you to congratulate the user in 2 ways:
+* Show a download page hosted by RevenueCat
 * Redirect to any URL you like
 
 #### Show a download page
@@ -98,7 +98,7 @@ of the Stripe testing cards.
 
 :::warning Use one unique App User ID per customer
 RevenueCat Billing works with identified customers. You need to specify a unique app user id for each one of the subscribers you
-want to reach with this link.
+want to reach with this link. You can read more about this requirement [here](/web/revenuecat-billing#identifying-customers).
 
 If you don't add an App User ID to the link it will redirect to https://www.revenuecat.com/.
 :::
