@@ -22,7 +22,7 @@ As mentioned, billing issues occur when a user is unable to complete a subscript
 
 RevenueCat will only send **one** billing issue event -- additional payment failures won't trigger additional billing issue events, unless a renewal is successful between payment failures or the subscription ends and is restarted.
 
-In rare cases, if the billing issue occurs immediately during an inital purchase of a product, it may not be detected by RevenueCat and included in the user's purchase history, even though the store indicates that a billing issue occured on their end. This is because the purchase token was never created, and thus, could not be sent to RevenueCat for us to track.
+In rare cases, if the billing issue occurs immediately during the inital purchase of a product, it may not be detected by RevenueCat and included in the user's purchase history, even though the store indicates that a billing issue occured on their end. This is because the purchase token was never created by the store, and thus, could not be sent to RevenueCat to be tracked.
 
 ### SDK Prompt
 
