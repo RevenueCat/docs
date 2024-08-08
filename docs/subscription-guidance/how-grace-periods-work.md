@@ -22,6 +22,8 @@ As mentioned, billing issues occur when a user is unable to complete a subscript
 
 RevenueCat will only send **one** billing issue event -- additional payment failures won't trigger additional billing issue events, unless a renewal is successful between payment failures or the subscription ends and is restarted.
 
+In rare cases, if the billing issue occurs immediately during an inital purchase of a product, it may not be detected by RevenueCat and included in the user's purchase history, even though the store indicates that a billing issue occured on their end. This is because the purchase token was never created, and thus, could not be sent to RevenueCat for us to track.
+
 ### SDK Prompt
 
 Starting in iOS 16.4+, a system-sheet will automatically be displayed if a user encounters a billing issue, with a prompt for the customer to update their payment method. You can test this behavior by following Apple's [instructions](https://developer.apple.com/documentation/storekit/in-app_purchase/testing_in-app_purchases_with_sandbox/testing_failing_subscription_renewals_and_in-app_purchases#4182397).
