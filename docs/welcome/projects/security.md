@@ -59,3 +59,13 @@ To disable two-factor authentication vavigate to your [**Account > Security**](h
 :::warning Leave projects that require two-factor before disabling
 If you are a collaborator on a Project that requires two-factor authentication, you must leave that project before disabling.
 :::
+
+### Activating Single Sign-On
+
+To enable Single Sign-On for your organization navigate to your [**Account > Security > SSO**](https://app.revenuecat.com/settings/security/sso) and click **Activate SSO**.
+
+![Collaborators](/images/0c8723-revenuecat-sso-activate.png)
+
+:::warning Membes of the domain will only be able to use SSO
+When the SSO of your organizations is active users with the domain of your organization will be required to sign in using SSO.
+:::
