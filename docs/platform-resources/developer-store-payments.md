@@ -1,5 +1,5 @@
 ---
-title: Payments from Stores
+title: Payments from Stores and Country Availability
 slug: developer-store-payments
 excerpt: How and when do developers receive their payouts?
 hidden: false
@@ -26,3 +26,12 @@ Apple, Google, Amazon, and Stripe all distribute payments according to their own
   - Google Play Store: [Monthly Payouts and Reporting](https://support.google.com/googleplay/android-developer/answer/137997)
   - Stripe: [Payout Schedule](https://docs.stripe.com/payouts#payout-schedule)
   - Amazon App Store: [Receiving Payments](https://developer.amazon.com/docs/reports-promo/payments-understand.html#receiving-payments)
+
+## Country Availability
+
+The country availability of RevenueCat is based on the availability of in-app purchases for each of the individual app stores. We support all countries that are supported by the different stores. The availability of in-app purchases by app store are listed below:
+ 
+  - Apple App Store: [Availability of Apple Media Services](https://support.apple.com/en-us/118205)
+  - Google Play Store: [Supported locations for distribution to Google Play users](https://play.google.com/supported-locations/?hl=en&sjid=15964040598086024356-NA)
+  - Amazon App Store: [Countries & Territories Eligible to Shop for Apps](https://www.amazon.com/gp/help/customer/display.html?nodeId=GSXRFWKVKXYMK8GS)
+  - Stripe: [Global availability](https://stripe.com/global)
