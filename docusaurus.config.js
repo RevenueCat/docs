@@ -175,7 +175,7 @@ const config = {
             items: [
               {
                 label: "Installation",
-                to: "https://revenuecat.github.io/purchases-ios-docs/",
+                to: "/getting-started/installation",
               },
               {
                 label: "iOS SDK Reference",
