@@ -279,6 +279,23 @@ const customersCategory = Category({
   ],
 });
 
+const homeMonetizationCategory = Category({
+  emoji: "💰",
+  label: "Monetization",
+  slug: "monetization",
+  items: [
+    Link({ label: "→ Start Monetizing", slug: "/monetization/overview" }),
+    Link({
+      label: "→ Build a Paywall",
+      slug: "/tools/paywalls",
+    }),
+    Link({
+      label: "→ Start an Experiment",
+      slug: "/tools/experiments-v1/experiments-overview-v1",
+    }),
+  ],
+});
+
 const testAndLaunchCategory = Category({
   emoji: "🧰",
   label: "Test & Launch",
@@ -659,6 +676,7 @@ const sidebars = {
     gettingStartedCategory,
     webPurchasesCategory,
     customersCategory,
+    homeMonetizationCategory,
     testAndLaunchCategory,
     integrationsCategory,
     platformResourcesCategory,
