@@ -4,8 +4,6 @@ slug: revenue-chart
 hidden: false
 ---
 
-## Definition
-
 The Revenue chart displays the total revenue generated during a given period minus refunds.
 
 All revenue from a new paid subscription or renewal is credited to the period the transaction occurred in, so unlike normalized views like MRR, revenue may experience more significant period-over-period fluctuations depending on your mix of subscription durations being started or renewed.
@@ -23,6 +21,7 @@ The Revenue chart provides both the revenue that was generated in a given period
 ### Revenue type
 
 The Revenue chart allows you to select and visualize three different revenue definitions:
+
 1. Revenue: The total revenue generated in a given period, minus refunds from transactions that occurred in that period.
 2. Revenue (net of taxes): Revenue generated in a given period (as defined above), minus our estimate of revenue deducted from the stores for taxes (e.g. VAT, DST, etc).
 3. Proceeds: Revenue generated in a given period (as defined above), minus our estimate of revenue deducted from the stores for taxes and commission.
@@ -61,11 +60,13 @@ For each period, we measure:
 3. Taxes: The total amount deducted for taxes from the revenue generated in a given period.
 4. Store Commission / Fees: The total amount deducted for store commissions and fees from the revenue generated in a given period.
 
-**Formulas**  
+**Formulas**
+
 - [Revenue] - [Taxes] = Revenue (net of taxes)
 - [Revenue] - ([Store Commission / Fees] + [Taxes]) = Proceeds
 
 Or, to instead get the amounts deducted for each purpose:
+
 - [Revenue] - [Revenue (net of taxes)] = Amount deducted for taxes
 - [Revenue (net of taxes)] - [Proceeds] = Amount deducted for store commission & fees
 

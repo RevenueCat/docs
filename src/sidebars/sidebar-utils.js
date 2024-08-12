@@ -16,10 +16,12 @@ const Category = ({ label, emoji, slug, items }) => {
       if (itemType === "subcategory") {
         return {
           ...item,
-          link: {
-            type: "doc",
-            id: `${slug}/${item.link.id}`,
-          },
+          link: item.link.id
+            ? {
+                type: "doc",
+                id: `${slug}/${item.link.id}`,
+              }
+            : item.link,
           items: item.items.map((subItem) => {
             const subItemType = checkItemType(subItem);
 
@@ -42,13 +44,15 @@ const Category = ({ label, emoji, slug, items }) => {
   };
 };
 
-const SubCategory = ({ label, slug, items }) => ({
+const SubCategory = ({ label, slug, items, generatedIndex = null }) => ({
   type: "category",
   label,
-  link: {
-    type: "doc",
-    id: slug,
-  },
+  link: generatedIndex
+    ? generatedIndex
+    : {
+        type: "doc",
+        id: slug,
+      },
   items: items.map((item) => {
     const itemType = checkItemType(item);
     return itemType === "page" ? { ...item, id: `${slug}/${item.id}` } : item;
@@ -60,7 +64,7 @@ const Page = ({ slug }) => ({
   id: slug,
 });
 
-const PageWithCustomLabel = ({slug, label}) => ({
+const PageWithCustomLabel = ({ slug, label }) => ({
   type: "doc",
   id: slug,
   label: label,
@@ -72,10 +76,18 @@ const Link = ({ label, slug }) => ({
   href: slug,
 });
 
+const GeneratedIndex = ({ title, description, slug }) => ({
+  type: "generated-index",
+  title,
+  description,
+  slug: slug + "-index",
+});
+
 module.exports = {
   Category,
   SubCategory,
   Page,
   PageWithCustomLabel,
   Link,
+  GeneratedIndex,
 };

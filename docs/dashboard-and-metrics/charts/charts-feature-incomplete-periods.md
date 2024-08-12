@@ -4,8 +4,6 @@ slug: charts-feature-incomplete-periods
 hidden: false
 ---
 
-## Summary
-
 Our Charts render incomplete periods distinctly to ensure that it's easy to quickly and accurately interpret your data. Incomplete periods are important to recognize because they represent cohorts that are not yet fully mature, and that therefore may behave differently when compared to complete periods.
 
 ## What is an incomplete period?

@@ -4,8 +4,6 @@ slug: non-subscription-purchases-chart
 hidden: false
 ---
 
-## Definition
-
 The Non-subscription Purchases chart measures the count of consumable, non-consumable, and lifetime purchases that occurred in a given period.
 
 ### Available settings
