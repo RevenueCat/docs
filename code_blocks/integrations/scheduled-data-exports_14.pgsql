@@ -20,7 +20,7 @@ subs AS (
         product_identifier,
         product_duration,
         DATE(MIN(ft.start_time)) AS first_start_time, /* first start time is used to define each cohort */
-        MAX(DATE_DIFF(day, start_time, end_time)) as max_transaction_duration
+        MAX(DATE_DIFF('day', start_time, end_time)) as max_transaction_duration
     FROM filtered_transactions ft
     GROUP BY 1, 2, 3
 ),
@@ -66,13 +66,13 @@ retention AS (
         cpd.calculated_product_duration,
         /* Each period number represents the number of billing cycles the subscriber was active for */
         CASE
-            WHEN calculated_product_duration = 'P1D' THEN DATE_DIFF(day, subs.first_start_time, start_time)
-            WHEN calculated_product_duration = 'P1W' THEN DATE_DIFF(week, subs.first_start_time, start_time)
-            WHEN calculated_product_duration = 'P1M' THEN CAST(ROUND(DATE_DIFF(day, subs.first_start_time, start_time) / CAST(30 AS NUMERIC)) AS INTEGER)
-            WHEN calculated_product_duration = 'P2M' THEN CAST(ROUND(DATE_DIFF(day, subs.first_start_time, start_time) / CAST(60 AS NUMERIC)) AS INTEGER)
-            WHEN calculated_product_duration = 'P3M' THEN CAST(ROUND(DATE_DIFF(day, subs.first_start_time, start_time) / CAST(90 AS NUMERIC)) AS INTEGER)
-            WHEN calculated_product_duration = 'P6M' THEN CAST(ROUND(DATE_DIFF(day, subs.first_start_time, start_time) / CAST(180 AS NUMERIC)) AS INTEGER)
-            WHEN calculated_product_duration = 'P1Y' THEN CAST(ROUND(DATEDIFF(month, subs.first_start_time, start_time) / CAST(12 AS NUMERIC)) AS INTEGER)
+            WHEN calculated_product_duration = 'P1D' THEN DATE_DIFF('day', subs.first_start_time, start_time)
+            WHEN calculated_product_duration = 'P1W' THEN DATE_DIFF('week', subs.first_start_time, start_time)
+            WHEN calculated_product_duration = 'P1M' THEN CAST(ROUND(DATE_DIFF('day', subs.first_start_time, start_time) / CAST(30 AS NUMERIC)) AS INTEGER)
+            WHEN calculated_product_duration = 'P2M' THEN CAST(ROUND(DATE_DIFF('day', subs.first_start_time, start_time) / CAST(60 AS NUMERIC)) AS INTEGER)
+            WHEN calculated_product_duration = 'P3M' THEN CAST(ROUND(DATE_DIFF('day', subs.first_start_time, start_time) / CAST(90 AS NUMERIC)) AS INTEGER)
+            WHEN calculated_product_duration = 'P6M' THEN CAST(ROUND(DATE_DIFF('day', subs.first_start_time, start_time) / CAST(180 AS NUMERIC)) AS INTEGER)
+            WHEN calculated_product_duration = 'P1Y' THEN CAST(ROUND(DATE_DIFF('month,' subs.first_start_time, start_time) / CAST(12 AS NUMERIC)) AS INTEGER)
         END AS period_number,
         count(1) AS subscriptions
     FROM filtered_transactions ft
@@ -92,13 +92,13 @@ pending_retention AS (
         subs.product_identifier,
         cpd.calculated_product_duration,
         CASE
-            WHEN calculated_product_duration = 'P1D' THEN DATEDIFF(day, subs.first_start_time, start_time) + 1
-            WHEN calculated_product_duration = 'P1W' THEN DATEDIFF(week, subs.first_start_time, start_time) + 1
-            WHEN calculated_product_duration = 'P1M' THEN CAST(ROUND(DATEDIFF(day, subs.first_start_time, start_time) / CAST(30 AS NUMERIC)) AS INTEGER) + 1
-            WHEN calculated_product_duration = 'P2M' THEN CAST(ROUND(DATEDIFF(day, subs.first_start_time, start_time) / CAST(60 AS NUMERIC)) AS INTEGER) + 1
-            WHEN calculated_product_duration = 'P3M' THEN CAST(ROUND(DATEDIFF(day, subs.first_start_time, start_time) / CAST(90 AS NUMERIC)) AS INTEGER) + 1
-            WHEN calculated_product_duration = 'P6M' THEN CAST(ROUND(DATEDIFF(day, subs.first_start_time, start_time) / CAST(180 AS NUMERIC)) AS INTEGER) + 1
-            WHEN calculated_product_duration = 'P1Y' THEN CAST(ROUND(DATEDIFF(month, subs.first_start_time, start_time) / CAST(12 AS NUMERIC)) AS INTEGER) + 1
+            WHEN calculated_product_duration = 'P1D' THEN DATE_DIFF('day', subs.first_start_time, start_time) + 1
+            WHEN calculated_product_duration = 'P1W' THEN DATE_DIFF('week', subs.first_start_time, start_time) + 1
+            WHEN calculated_product_duration = 'P1M' THEN CAST(ROUND(DATE_DIFF('day', subs.first_start_time, start_time) / CAST(30 AS NUMERIC)) AS INTEGER) + 1
+            WHEN calculated_product_duration = 'P2M' THEN CAST(ROUND(DATE_DIFF('day', subs.first_start_time, start_time) / CAST(60 AS NUMERIC)) AS INTEGER) + 1
+            WHEN calculated_product_duration = 'P3M' THEN CAST(ROUND(DATE_DIFF('day', subs.first_start_time, start_time) / CAST(90 AS NUMERIC)) AS INTEGER) + 1
+            WHEN calculated_product_duration = 'P6M' THEN CAST(ROUND(DATE_DIFF('day', subs.first_start_time, start_time) / CAST(180 AS NUMERIC)) AS INTEGER) + 1
+            WHEN calculated_product_duration = 'P1Y' THEN CAST(ROUND(DATE_DIFF('month', subs.first_start_time, start_time) / CAST(12 AS NUMERIC)) AS INTEGER) + 1
         END AS period_number,
         count(1) AS subscriptions
     FROM filtered_transactions ft
@@ -110,13 +110,13 @@ pending_retention AS (
         cpd.product_identifier = ft.product_identifier
     WHERE unsubscribe_detected_at IS NOT NULL /* count only subscriptions that are set to renew */
         AND
-            ((calculated_product_duration = 'P1D' AND DATEADD(day, 1, start_time) > getdate())
-            OR (calculated_product_duration = 'P1W' AND DATEADD(week, 1, start_time) > getdate())
-            OR (calculated_product_duration = 'P1M' AND DATEADD(month, 1, start_time) > getdate())
-            OR (calculated_product_duration = 'P2M' AND DATEADD(month, 2, start_time) > getdate())
-            OR (calculated_product_duration = 'P3M' AND DATEADD(month, 3, start_time) > getdate())
-            OR (calculated_product_duration = 'P6M' AND DATEADD(month, 6, start_time) > getdate())
-            OR (calculated_product_duration = 'P1Y' AND DATEADD(year, 1, start_time) > getdate()))
+            ((calculated_product_duration = 'P1D' AND DATE_ADD(start_time, '1 day') > CURRENT_DATE)
+            OR (calculated_product_duration = 'P1W' AND DATE_ADD(start_time, '1 week') > CURRENT_DATE)
+            OR (calculated_product_duration = 'P1M' AND DATE_ADD(start_time, '1 month') > CURRENT_DATE)
+            OR (calculated_product_duration = 'P2M' AND DATE_ADD(start_time, '2 months') > CURRENT_DATE)
+            OR (calculated_product_duration = 'P3M' AND DATE_ADD(start_time, '3 months') > CURRENT_DATE)
+            OR (calculated_product_duration = 'P6M' AND DATE_ADD(start_time, '6 months') > CURRENT_DATE)
+            OR (calculated_product_duration = 'P1Y' AND DATE_ADD(start_time, '1 year') > CURRENT_DATE))
         AND period_number IS NOT NULL
     GROUP BY 1, 2, 3, 4
 )
