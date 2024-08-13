@@ -1,1 +1,1 @@
-pod 'RevenueCat', '~> 4.15'
+pod 'RevenueCat', '~> 5.2'
