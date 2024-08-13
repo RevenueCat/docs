@@ -1,1 +1,1 @@
-github "revenuecat/purchases-ios" ~> 4.15.0
+github "revenuecat/purchases-ios" ~> 5.2.3
