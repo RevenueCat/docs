@@ -103,7 +103,7 @@ In contrast to our mobile SDKs, the Web SDK currently supports only [identified 
 
 One way of achieving this is by setting up an authentication / login mechanism, for example, using a third party authentication provider like [Firebase](https://firebase.google.com/docs/auth) / [Supabase](https://supabase.com/docs/guides/auth) or a library like [auth.js](https://authjs.dev/). The added benefit of this is that using a shared authentication mechanism between web app and mobile apps allows customers to access their subscriptions they made on the web in the mobile app as well, without any additional configuration (other than adding the products to the correct entitlements).
 
-Alternatively, you could also provide the App User ID to your web application through a URL parameter, eg. via emails sent to customers you have acquired in your mobile app.
+Alternatively, you could also provide the App User ID to your web application through a URL parameter, eg. via emails sent to customers you have acquired in your mobile app or use our [Web Paywall Links functionality](/web/revenuecat-billing/web-paywall-links).
 
 ## Getting customer information
 
@@ -208,7 +208,7 @@ Each Package contains information about the product in the `rcBillingProduct` pr
 
 ### Purchasing a package
 
-To purchase a package, use the `purchasePackage()` method of the `Purchases` object. It returns a `Promise<{customerInfo: CustomerInfo}>`. To handle errors, you should catch any exceptions that occur.
+To purchase a package, use the `purchase()` method of the `Purchases` object. It returns a `Promise<{customerInfo: CustomerInfo}>`. To handle errors, you should catch any exceptions that occur.
 
 <RCCodeBlock
   tabs={[

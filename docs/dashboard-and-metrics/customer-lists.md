@@ -25,6 +25,10 @@ To view customers who have made sandbox transactions you can use the default San
 
 You can look up an individual customer by an exact match of their App User ID, Transaction ID, Email Attribute, or Order ID (iOS only). To find a customer via Order ID, you can follow our guide on setting up [In-App Purchase Keys](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration) to unlock this feature. The transaction must show as completed in the [Apple Purchase History](https://support.apple.com/en-gb/HT204088) to be considered a valid Order ID. Note that Transaction ID refers to the identifier in Google Play console and order emails of GPA.1234.1223–, and for Stripe si_abcefg, whereas Order ID refers to the identifier from Apple's order emails.
 
+:::warning Sandbox transaction search
+Customer lookup by Transaction ID and Order ID works for production purchases only.
+:::
+
 Looking up customers in RevenueCat is real-time, as soon as a customer exists in RevenueCat they will be searchable here.
 ![](/images/b9c0217-app.revenuecat.com_projects_85ff18c7_api-keys_9_38e1e4c9e5cabd690deaebb722d3f58e.png "app.revenuecat.com_projects_85ff18c7_api-keys (9).png")
 
@@ -93,7 +97,8 @@ Customer lists are refreshed every 2 hours automatically
 ## Filters
 
 Filters allow you to choose which customers appear in your list. You can create custom lists with any combination of filters. **All filters are applied as AND filters**.
-![](/images/20c0838-Screenshot_2023-03-27_at_1.20.54_PM_3fa920b6810cad3e7a2e48f7ebbc605d.png "Screenshot 2023-03-27 at 1.20.54 PM.png")
+![](/images/customer_list_filters.png "Customer List Filters")
+
 
 See the table below for all filters you can apply to your lists.
 

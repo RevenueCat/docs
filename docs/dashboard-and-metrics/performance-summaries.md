@@ -12,7 +12,7 @@ With Performance Summaries, you can subscribe to a weekly recap of your key subs
 ## How can I subscribe to a weekly Performance Summary?
 
 1. Click on [**Account**](https://app.revenuecat.com/settings/account) from the RevenueCat Dashboard
-2. Open the **Labs** option and click on **Performance Summaries**
+2. Open the **Notifications** option where you'll see the **Weekly Performance Summaries** section
 3. Select the Project's you want to include in your weekly Performance Summary, and click **Update** to save your changes
 
 :::info

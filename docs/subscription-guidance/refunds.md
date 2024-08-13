@@ -33,7 +33,7 @@ If you configure an [In-App Purchase Key](/service-credentials/itunesconnect-app
 
 Refunds can also be granted programmatically through the RevenueCat [REST API](https://docs.revenuecat.com/reference#revoke-a-google-subscription). This will immediately revoke access to the Google subscription and issue a refund for the last purchase.
 
-If a refund is granted by Google or initiated through the Google Play console, it **may take up to 24 hours** to be detected by RevenueCat. Refunds due to no acknowledgement of purchases are not detected automatically.
+If a refund is granted by Google or initiated through the Google Play console, it **may take up to 24 hours** to be detected by RevenueCat. Refunds due to no acknowledgement of purchases are not detected automatically. You also must refund and revoke in order for RevenueCat to detect this, only refunding will not be detected. See Google's documentation [here](https://support.google.com/googleplay/android-developer/answer/2741495?hl=en#zippy=%2Crefund-subscriptions-including-refund-and-revoke) on this. 
 
 **Non-subscriptions**
 
