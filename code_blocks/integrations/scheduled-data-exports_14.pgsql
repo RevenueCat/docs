@@ -7,7 +7,7 @@ WITH filtered_transactions AS (
     WHERE start_time >= /* desired date range */
         AND end_time IS NOT NULL /* only include subscriptions */
         AND NOT (billing_issues_detected_at IS NOT NULL
-            AND (t.store = 'play_store' OR t.store = 'stripe'))
+            AND (store = 'play_store' OR store = 'stripe'))
         AND is_sandbox <> 'true'
         AND is_trial_period = 'false'
         AND is_in_intro_offer_period = 'false' /* exclude introductory offers */
@@ -25,7 +25,8 @@ subs AS (
     GROUP BY 1, 2, 3
 ),
 
-product_duration AS (
+/* some products don't have a set duration, so this CTE will calculate the duration on a per subscription basis */
+calculated_product_duration AS (
     SELECT
         rc_original_app_user_id,
         product_identifier,
@@ -61,8 +62,8 @@ product_duration AS (
 retention AS (
     SELECT
         subs.first_start_time,
-        calculated_product_duration,
-        product_identifier,
+        subs.product_identifier,
+        cpd.calculated_product_duration,
         /* Each period number represents the number of billing cycles the subscriber was active for */
         CASE
             WHEN calculated_product_duration = 'P1D' THEN DATE_DIFF(day, subs.first_start_time, start_time)
@@ -75,17 +76,21 @@ retention AS (
         END AS period_number,
         count(1) AS subscriptions
     FROM filtered_transactions ft
-    INNER JOIN subs ON subs.rc_original_app_user_id = ft.rc_original_app_user_id
-    WHERE calculated_product_duration IS NOT NULL
-        AND period_number IS NOT NULL
+    INNER JOIN subs ON 
+        subs.rc_original_app_user_id = ft.rc_original_app_user_id AND
+        subs.product_identifier = ft.product_identifier
+    INNER JOIN calculated_product_duration cpd ON 
+        cpd.rc_original_app_user_id = ft.rc_original_app_user_id
+        cpd.product_identifier = ft.product_identifier
+    WHERE period_number IS NOT NULL
     GROUP BY 1, 2, 3, 4
 ),
   
 pending_retention AS (
     SELECT
         subs.first_start_time,
-        calculated_product_duration,
-        product_identifier,
+        subs.product_identifier,
+        cpd.calculated_product_duration,
         CASE
             WHEN calculated_product_duration = 'P1D' THEN DATEDIFF(day, subs.first_start_time, start_time) + 1
             WHEN calculated_product_duration = 'P1W' THEN DATEDIFF(week, subs.first_start_time, start_time) + 1
@@ -100,18 +105,21 @@ pending_retention AS (
     INNER JOIN subs ON 
         subs.rc_original_app_user_id = ft.rc_original_app_user_id AND
         subs.product_identifier = ft.product_identifier
+    INNER JOIN calculated_product_duration cpd ON 
+        cpd.rc_original_app_user_id = ft.rc_original_app_user_id
+        cpd.product_identifier = ft.product_identifier
     WHERE unsubscribe_detected_at IS NOT NULL /* count only subscriptions that are set to renew */
         AND
-            ((calculated_product_duration = 'P1D' AND DATEADD(day, 1, start_time) > {{ GETDATE() }})
-            OR (calculated_product_duration = 'P1W' AND DATEADD(week, 1, start_time) > {{ GETDATE() }})
-            OR (calculated_product_duration = 'P1M' AND DATEADD(month, 1, start_time) > {{ GETDATE() }})
-            OR (calculated_product_duration = 'P2M' AND DATEADD(month, 2, start_time) > {{ GETDATE() }})
-            OR (calculated_product_duration = 'P3M' AND DATEADD(month, 3, start_time) > {{ GETDATE() }})
-            OR (calculated_product_duration = 'P6M' AND DATEADD(month, 6, start_time) > {{ GETDATE() }})
-            OR (calculated_product_duration = 'P1Y' AND DATEADD(year, 1, start_time) > {{ GETDATE() }}))
+            ((calculated_product_duration = 'P1D' AND DATEADD(day, 1, start_time) > getdate())
+            OR (calculated_product_duration = 'P1W' AND DATEADD(week, 1, start_time) > getdate())
+            OR (calculated_product_duration = 'P1M' AND DATEADD(month, 1, start_time) > getdate())
+            OR (calculated_product_duration = 'P2M' AND DATEADD(month, 2, start_time) > getdate())
+            OR (calculated_product_duration = 'P3M' AND DATEADD(month, 3, start_time) > getdate())
+            OR (calculated_product_duration = 'P6M' AND DATEADD(month, 6, start_time) > getdate())
+            OR (calculated_product_duration = 'P1Y' AND DATEADD(year, 1, start_time) > getdate()))
         AND period_number IS NOT NULL
     GROUP BY 1, 2, 3, 4
-),
+)
 
 SELECT
     COALESCE(retention.first_start_time, pending_retention.first_start_time) AS first_start_date,
