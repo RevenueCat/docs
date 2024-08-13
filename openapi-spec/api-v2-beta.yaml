@@ -25,7 +25,7 @@ tags:
   description: Operations about invoices.
 - name: Project
   description: Operations about projects.
-- name: Subscription Data Model
+- name: Subscription Data Model (Beta)
   x-modelReference: true
   description: '<SchemaDefinition schemaRef="#/components/schemas/Subscription" showReadOnly={true}
     showWriteOnly={true} />
@@ -256,7 +256,7 @@ tags:
     \ Refer to the `backoff_ms` field to determine when to try again.\n\n### `unprocessable_entity_error`\n\
     \nRequest is not able to be processed. Please refer to the `message` field for\
     \ more information."
-- name: Representation of Subscriptions
+- name: Representation of Subscriptions (Beta)
   x-traitTag: true
   description: "In comparison to our [v1 REST API](/docs/api-v1#tag/customer_info_model),\
     \ we have made changes to improve the organization and accessibility of your customers\u2019\
@@ -361,7 +361,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:projects:read`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:projects:read</code>.'
   /projects/{project_id}/apps:
     get:
       summary: Get a list of apps
@@ -420,7 +420,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:apps:read`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.'
     post:
       summary: Create an App
       operationId: create-app
@@ -516,7 +516,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:apps:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read_write</code>.'
   /projects/{project_id}/apps/{app_id}:
     get:
       summary: Get an app
@@ -570,7 +570,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:apps:read`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.'
     post:
       summary: Update an app
       operationId: update-app
@@ -739,7 +739,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:apps:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read_write</code>.'
     delete:
       summary: Delete an app
       operationId: delete-app
@@ -798,7 +798,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:apps:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read_write</code>.'
   /projects/{project_id}/customers:
     get:
       summary: Get a list of customers
@@ -857,7 +857,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `customer_information:customers:read`.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.'
     post:
       summary: Create a customer
       operationId: create-customer
@@ -946,7 +946,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `customer_information:customers:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.'
   /projects/{project_id}/customers/{customer_id}:
     get:
       summary: Get a customer
@@ -1001,7 +1001,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `customer_information:customers:read`.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.'
     delete:
       summary: Delete a customer
       operationId: delete-customer
@@ -1065,7 +1065,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `customer_information:customers:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.'
   /projects/{project_id}/products/{product_id}:
     get:
       summary: Get a product
@@ -1137,7 +1137,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:products:read`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:products:read</code>.'
     delete:
       summary: Delete a product
       operationId: delete-product
@@ -1197,7 +1197,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:products:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:products:read_write</code>.'
   /projects/{project_id}/products:
     get:
       summary: Get a list of products
@@ -1280,7 +1280,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:products:read`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:products:read</code>.'
     post:
       summary: Create a product
       operationId: create-product
@@ -1416,7 +1416,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:products:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:products:read_write</code>.'
   /projects/{project_id}/entitlements/{entitlement_id}:
     get:
       summary: Get an entitlement
@@ -1488,7 +1488,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:entitlements:read`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read</code>.'
     post:
       summary: Update an entitlement
       operationId: update-entitlement
@@ -1564,7 +1564,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:entitlements:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read_write</code>.'
     delete:
       summary: Delete an entitlement
       operationId: delete-entitlement
@@ -1624,7 +1624,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:entitlements:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read_write</code>.'
   /projects/{project_id}/entitlements:
     get:
       summary: Get a list of entitlements
@@ -1700,7 +1700,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:entitlements:read`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read</code>.'
     post:
       summary: Create an entitlement
       operationId: create-entitlement
@@ -1774,7 +1774,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:entitlements:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read_write</code>.'
   /projects/{project_id}/entitlements/{entitlement_id}/products:
     get:
       summary: Get a list of products attached to a given entitlement
@@ -1842,7 +1842,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:entitlements:read`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read</code>.'
   /projects/{project_id}/entitlements/{entitlement_id}/actions/attach_products:
     post:
       summary: Attach a set of products to an entitlement
@@ -1923,7 +1923,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:entitlements:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read_write</code>.'
   /projects/{project_id}/entitlements/{entitlement_id}/actions/detach_products:
     post:
       summary: Detach a set of product from an entitlement
@@ -2004,7 +2004,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:entitlements:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read_write</code>.'
   /projects/{project_id}/offerings/{offering_id}:
     get:
       summary: Get an offering
@@ -2079,7 +2079,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:offerings:read`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read</code>.'
     post:
       summary: Update an offering
       operationId: update-offering
@@ -2161,7 +2161,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:offerings:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read_write</code>.'
     delete:
       summary: Delete an offering and its attached packages
       operationId: delete-offering
@@ -2221,7 +2221,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:offerings:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read_write</code>.'
   /projects/{project_id}/offerings:
     get:
       summary: Get a list of offerings
@@ -2300,7 +2300,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:offerings:read`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read</code>.'
     post:
       summary: Create an offering
       operationId: create-offering
@@ -2378,7 +2378,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:offerings:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read_write</code>.'
   /projects/{project_id}/packages/{package_id}:
     get:
       summary: Get a package
@@ -2450,7 +2450,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:packages:read`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read</code>.'
     post:
       summary: Update a package
       operationId: update-package
@@ -2529,7 +2529,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:packages:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read_write</code>.'
     delete:
       summary: Delete a package
       operationId: delete-package-from-offering
@@ -2589,7 +2589,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:packages:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read_write</code>.'
   /projects/{project_id}/offerings/{offering_id}/packages:
     get:
       summary: Get a list of packages in an offering
@@ -2674,7 +2674,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:packages:read`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read</code>.'
     post:
       summary: Create a package
       operationId: create-packages
@@ -2762,7 +2762,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:packages:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read_write</code>.'
   /projects/{project_id}/packages/{package_id}/products:
     get:
       summary: Get a list of products attached to a given package of an offering
@@ -2830,7 +2830,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:packages:read`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read</code>.'
   /projects/{project_id}/packages/{package_id}/actions/attach_products:
     post:
       summary: Attach a set of products to a package
@@ -2921,7 +2921,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:packages:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read_write</code>.'
   /projects/{project_id}/packages/{package_id}/actions/detach_products:
     post:
       summary: Detach a set of products from a package
@@ -3002,7 +3002,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `project_configuration:packages:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read_write</code>.'
   /projects/{project_id}/subscriptions/{subscription_id}:
     get:
       summary: Get a subscription
@@ -3057,7 +3057,10 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `customer_information:subscriptions:read`.'
+      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
+        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
+        \ in Beta.</div>\n</div>\nThis endpoint requires the following permission(s):\
+        \ <code>customer_information:subscriptions:read</code>."
   /projects/{project_id}/subscriptions/{subscription_id}/entitlements:
     get:
       summary: Get a list of entitlements associated with a subscription
@@ -3125,7 +3128,10 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `customer_information:subscriptions:read`.'
+      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
+        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
+        \ in Beta.</div>\n</div>\nLists all Entitlements granted by a Subscription.\n\
+        \ This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>."
   /projects/{project_id}/subscriptions/{subscription_id}/actions/cancel:
     post:
       summary: Cancels an active RevenueCat Billing subscription
@@ -3186,7 +3192,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `customer_information:subscriptions:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>.'
   /projects/{project_id}/subscriptions/{subscription_id}/actions/refund:
     post:
       summary: Refunds the last payment of an active RevenueCat Billing subscription
@@ -3248,7 +3254,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `customer_information:subscriptions:read_write`.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>.'
   /projects/{project_id}/customers/{customer_id}/subscriptions:
     get:
       summary: Get a list of subscriptions associated with a customer
@@ -3324,7 +3330,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `customer_information:subscriptions:read`.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.'
   /projects/{project_id}/purchases/{purchase_id}:
     get:
       summary: Get a purchase
@@ -3379,7 +3385,10 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `customer_information:purchases:read`.'
+      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
+        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
+        \ in Beta.</div>\n</div>\nThis endpoint requires the following permission(s):\
+        \ <code>customer_information:purchases:read</code>."
   /projects/{project_id}/purchases/{purchase_id}/entitlements:
     get:
       summary: Get a list of entitlements associated with a purchase
@@ -3447,7 +3456,10 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `customer_information:purchases:read`.'
+      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
+        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
+        \ in Beta.</div>\n</div>\nLists all Entitlements granted by a Purchase.\n\
+        \ This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>."
   /projects/{project_id}/customers/{customer_id}/purchases:
     get:
       summary: Get a list of purchases associated with a customer
@@ -3523,7 +3535,10 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `customer_information:purchases:read`.'
+      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
+        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
+        \ in Beta.</div>\n</div>\nLists all Purchases associated with the Customer.\n\
+        \ This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>."
   /projects/{project_id}/customers/{customer_id}/active_entitlements:
     get:
       summary: Get a list of customer's active entitlements
@@ -3591,7 +3606,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `customer_information:customers:read`.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.'
   /projects/{project_id}/customers/{customer_id}/aliases:
     get:
       summary: Get a list of the customer's aliases
@@ -3659,7 +3674,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `customer_information:customers:read`.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.'
   /projects/{project_id}/customers/{customer_id}/invoices:
     get:
       summary: Get a list of the customer's invoices
@@ -3727,7 +3742,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `customer_information:invoices:read`.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:invoices:read</code>.'
   /projects/{project_id}/customers/{customer_id}/invoices/{invoice_id}/file:
     get:
       summary: Get an invoice
@@ -3788,7 +3803,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `customer_information:invoices:read`.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:invoices:read</code>.'
   /projects/{project_id}/metrics/overview:
     get:
       summary: Get overview metrics for a project
@@ -3834,7 +3849,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): `charts_metrics:overview:read`.'
+      description: 'This endpoint requires the following permission(s): <code>charts_metrics:overview:read</code>.'
 components:
   securitySchemes:
     BearerAuth:
@@ -6528,10 +6543,10 @@ x-tagGroups:
   - Rate Limit
   - Expandables
   - Error Handling
-  - Representation of Subscriptions
+  - Representation of Subscriptions (Beta)
 - name: Model Reference
   tags:
-  - Subscription Data Model
+  - Subscription Data Model (Beta)
 - name: Endpoint Reference
   tags:
   - App
