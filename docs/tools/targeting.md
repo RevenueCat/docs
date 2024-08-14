@@ -153,7 +153,7 @@ The RC SDK Version of a specified SDK flavor of the App Versions that your custo
 
 **Platform**:
 
-The platform that your customer is currently using (e.g. iOS, watchOS, tvOS).
+The platform that your customer is currently using (e.g. iOS, watchOS, Android).
 
 ### How conditions interact with each other
 
