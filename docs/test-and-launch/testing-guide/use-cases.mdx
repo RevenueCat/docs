@@ -1,0 +1,60 @@
+---
+title: Testing Use Cases
+slug: use-cases
+excerpt: What use cases are covered by RevenueCat and how can I test them? 
+hidden: false
+---
+
+## Use Cases to test
+### Subscription Activation
+**Description:** Verify that a user can successfully activate a monthly subscription.
+
+**Preconditions:** App installed, RevenueCat configured.
+
+**Steps:**
+1. Open the app.
+2. Navigate to the subscription options screen.
+3. Select the monthly subscription plan.
+4. Complete the payment process.
+
+**Expected Results:** Subscription is activated, and the user gains access to premium features.
+
+**Actual Results:** [To be filled by customer]
+
+**Pass/Fail Criteria:** Access to premium features is granted.
+
+### Subscription Flow/Life Cycle
+
+**Description:** Verify that a users subscription flow works correctly including starting a subscripiton, having the subscripiton renewa, and letting the subscripiton expire.
+
+**Preconditions:** App installed, RevenueCat configured, Initial purchases working. 
+
+**Optional** Checking intro eligibility (iOS): If you would like to check intro eligbiltity, ensure that you have a flag in your app to go off when user is elibile for a trial. Id the flag gets set to true or you see the fald that you have set, this verifies that checking trail eligbility is working as intended.
+
+**Steps:**
+1. Start a subscripiton with  a fresh sandbox user. You can follow our sandbox testing guide.
+2. Start a subscription and have it renew a couple of times. 
+3. Ensure that after the subscripiton renews multiple times, the subscripiton expires properly. 
+
+**Expected Results:** Subscription is activated and the user sees multiple renews before an expiration event is evenutally hit.
+
+**Actual Results:** [To be filled by customer]
+
+**Pass/Fail Criteria:** Access to premium features is granted and taken away when subscription ends. 
+
+### Intro offers/promo codes
+
+**Description:** If you are using intro offers, use this testing method to ensure that elgible users are granted their intro offer.
+
+**Preconditions:** App installed, RevenueCat configured, Fresh app user ID, Initial purchases working. 
+
+**Steps:**
+1. Open the app with a fresh sandbox user.
+2. Start a subscripiton purchase and ensure that the free trial is being attached. 
+
+**Expected Results:** Subscription is started for free.
+
+**Actual Results:** [To be filled by customer]
+
+**Pass/Fail Criteria:** Free subscripiton is started and renewal hits for expected amount. 
+

@@ -198,9 +198,17 @@ const testAndLaunchCategory = Category({
         Page({ slug: "amazon-store-sandbox-testing" }),
       ],
     }),
+    SubCategory({
+      label: "Testing Guide",
+      slug: "testing-guide",
+      items: [
+        Page({slug: "use-cases"}),
+        Page({slug: "common-architecture" }),
+        Page({slug: "export-examples"}),
+      ]
+    }),
     Page({ slug: "launch-checklist" }),
     Page({ slug: "app-store-rejections" }),
-    Page({ slug: "testing-guide" }),
   ],
 });
 
