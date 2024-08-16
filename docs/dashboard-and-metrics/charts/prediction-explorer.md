@@ -12,6 +12,10 @@ The Prediction Explorer allows you to measure the predicted lifetime value (LTV)
 This chart is currently in beta as we refine our prediction modeling to improve accuracy. If you have feedback or questions on the nature of the chart or the data provided, please don't hesitate to reach out to us. Read the [Limitations](https://www.revenuecat.com/docs/dashboard-and-metrics/charts/prediction-explorer#limitations) section to understand the current limitations during our beta.
 :::
 
+import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
+
+<YouTubeEmbed videoId="wQMJlWImIX0" title="Prediction Explorer Beta" />
+
 ### Available settings
 
 - Filters: Yes
