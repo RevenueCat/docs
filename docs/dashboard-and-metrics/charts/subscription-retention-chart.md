@@ -68,14 +68,7 @@ Retention is always calculated relative to the size of the initial cohort that h
 :::
 
 ## Sample query from Scheduled Data Exports
-With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can get daily exports of your transactions from RevenueCat to reproduce and customize measures like this one that are provided by RevenueCat.
-
-import subscriptionRetentionContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_14.pgsql";
-
-<RCCodeBlock tabs={[
-{ type: 'pgsql', content: subscriptionRetentionContent, name: 'Subscription Retention' }
-]} />
-
+With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can get daily exports of your transactions from RevenueCat to reproduce and customize measures like this one that are provided by RevenueCat. You can find the full set of available sample queries [here](/integrations/scheduled-data-exports#sample-queries-for-revenuecat-measures).
 
 ## FAQs
 

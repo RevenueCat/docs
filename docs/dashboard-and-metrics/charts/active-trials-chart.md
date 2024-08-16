@@ -26,13 +26,7 @@ For each period, the count of Active Trials represents the number of unexpired f
 To understand how that snapshot is generated for each period, check out the [Active Trials Movement](/dashboard-and-metrics/charts/active-trials-movement-chart) chart.
 
 ## Sample query from Scheduled Data Exports
-With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can get daily exports of your transactions from RevenueCat to reproduce and customize measures like this one that are provided by RevenueCat.
-
-import activeTrialsContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_1.pgsql";
-
-<RCCodeBlock tabs={[
-{ type: 'pgsql', content: activeTrialsContent, name: 'Active Trials' }
-]} />
+With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can get daily exports of your transactions from RevenueCat to reproduce and customize measures like this one that are provided by RevenueCat. You can find the full set of available sample queries [here](/integrations/scheduled-data-exports#sample-queries-for-revenuecat-measures).
 
 ## FAQs
 

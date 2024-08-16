@@ -35,13 +35,7 @@ For a given period, the difference of these counts is the Movement measured in t
 [New Actives] - [Churned Actives] = Active Subscription Movement
 
 ## Sample query from Scheduled Data Exports
-With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can get daily exports of your transactions from RevenueCat to reproduce and customize measures like this one that are provided by RevenueCat.
-
-import activeSubscriptionsMovementContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_10.pgsql";
-
-<RCCodeBlock tabs={[
-{ type: 'pgsql', content: activeSubscriptionsMovementContent, name: 'Active Subscriptions Movement' }
-]} />
+With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can get daily exports of your transactions from RevenueCat to reproduce and customize measures like this one that are provided by RevenueCat. You can find the full set of available sample queries [here](/integrations/scheduled-data-exports#sample-queries-for-revenuecat-measures).
 
 ## FAQs
 
