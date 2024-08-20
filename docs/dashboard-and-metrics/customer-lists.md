@@ -224,7 +224,7 @@ Note that there is a wait time of 30 minutes between each export.
 
 ### Exported files
 
-Customer List exports are CSV files compressed in a GZ file. A GZ file is a compressed file similar to a ZIP file, although it uses a different compression algorithm.
+Customer List exports are CSV files compressed in a GZ file. A GZ file is a compressed file similar to a ZIP file, although it uses a different compression algorithm. The exports use a semicolon delimiter, so if the formatting looks incorrect when viewing the files as spreadsheets, you may need to change your settings for them in the spreadsheet software. 
 
 Note that the timestamps in the exports are measured in milliseconds since Unix epoch. To convert these timestamps into a readable date, the formula is `(A1÷86400000)+(DATE(1970,1,1))` where `A1` is the corresponding cell.
 
