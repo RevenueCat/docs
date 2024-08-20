@@ -9,7 +9,7 @@ hidden: false
 Subscription Retention shows you how paying subscriptions renew and retain over time by cohorts, which are segmented by subscription start date by default, but can be segmented by other fields like Country or Product as well.
 
 :::info Subscription Retention Chart Update July 2024
-The Subscription Retention chart was updated in July 2024 to exclude grace period transactions from the count of retained periods for Play Store and Stripe subscriptions, effectively lowering subscription retention for those subscriptions that expired due to the billing issues not being resolved. Read more about the change here. (add blog url)
+The Subscription Retention chart was updated in July 2024 to exclude grace period transactions from the count of retained periods for Play Store and Stripe subscriptions, effectively lowering subscription retention for those subscriptions that expired due to the billing issues not being resolved. Read more about the change [here](https://www.revenuecat.com/blog/company/subscription-retention-chart-grace-period-update/).
 :::
 
 
