@@ -92,6 +92,16 @@ import importContent from "!!raw-loader!@site/code_blocks/getting-started/instal
     { type: 'kotlin', content: importContent, name: 'commonMain' }
 ]} />
 
+### AndroidX App Startup
+
+Purchases uses AndroidX App Startup under the hood. Make sure you have not removed the `androidx.startup.InitializationProvider` completely in your manifest. If you need to remove specific initializers, such as `androidx.work.WorkManagerInitializer`, set `tools:node="merge"` on the provider, and `tools:node="remove"` on the meta-data of the initializer you want to remove.
+
+import xmlContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_workmanager_manifest.xml";
+
+<RCCodeBlock tabs={[
+    { type: 'xml', content: xmlContent, name: 'AndroidManifest.xml' }
+]} />
+
 ## Next Steps
 
 * Now that you've installed the Purchases SDK in Kotlin Multiplatform, get started by [configuring an instance of Purchases →](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)
