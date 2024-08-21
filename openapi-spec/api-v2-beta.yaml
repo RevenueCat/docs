@@ -806,7 +806,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:customers:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Customer
       parameters:
@@ -864,7 +864,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:customers:read_write
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Customer
       parameters:
@@ -954,7 +954,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:customers:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Customer
       parameters:
@@ -1008,7 +1008,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:customers:read_write
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Customer
       parameters:
@@ -3467,7 +3467,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:purchases:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Customer
       parameters:
@@ -3546,7 +3546,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:customers:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Customer
       parameters:
@@ -3614,7 +3614,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:customers:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Customer
       parameters:
