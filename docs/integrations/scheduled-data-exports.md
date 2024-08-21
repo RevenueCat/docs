@@ -131,6 +131,7 @@ import revenueContent from "!!raw-loader!@site/code_blocks/integrations/schedule
 import mrrContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_12.pgsql";
 import mrrMovementContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_11.pgsql";
 import activeSubscriptionsMovementContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_10.pgsql";
+import subscriptionRetentionContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_14.pgsql";
 
 <RCCodeBlock tabs={[
 { type: 'pgsql', content: activeSubscriptionsContent, name: 'Active Subscriptions' },
@@ -138,7 +139,8 @@ import activeSubscriptionsMovementContent from "!!raw-loader!@site/code_blocks/i
 { type: 'pgsql', content: mrrContent, name: 'MRR' },
 { type: 'pgsql', content: mrrMovementContent, name: 'MRR Movement' },
 { type: 'pgsql', content: activeTrialsContent, name: 'Active Trials' },
-{ type: 'pgsql', content: revenueContent, name: 'Revenue' }
+{ type: 'pgsql', content: revenueContent, name: 'Revenue' },
+{ type: 'pgsql', content: subscriptionRetentionContent, name: 'Subscription Retention' }
 ]} />
 
 ## Sample queries for customized measures
