@@ -8,6 +8,10 @@ hidden: false
 
 The Cohort Explorer allows you to measure the performance of various cohort definitions over time and across multiple performance measurements.
 
+import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
+
+<YouTubeEmbed videoId="wXfWtif_G6A" title="Cohort Explorer" />
+
 ### Cohorts
 
 The Cohort Explorer supports three different cohort definitions:

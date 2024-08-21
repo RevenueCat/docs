@@ -141,7 +141,7 @@ The storefront a customer is currently using on supported SDK versions\*, or the
 
 **App**:
 
-The App that your customer is currently using. Commonly used to target by platform.
+The App that your customer is currently using. Commonly used to target by store (e.g. App Store, Play Store).
 
 **App Version**:
 
@@ -150,6 +150,10 @@ The App Version of a specified App that your customer is currently using. When a
 **RC SDK Version**:
 
 The RC SDK Version of a specified SDK flavor of the App Versions that your customer is currently using. Commonly used to target RevenueCat Paywalls only to RC SDK Versions that explicitly support them.
+
+**Platform**:
+
+The platform that your customer is currently using (e.g. iOS, watchOS, Android).
 
 ### How conditions interact with each other
 
