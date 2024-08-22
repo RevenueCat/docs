@@ -18,7 +18,7 @@ The Subscription Status chart breaks down Active Subscriptions, Active Trials, M
 
 ## How to use Subscription Status in your business
 
-The Subscription Status chart is an important way to monitor the portion of your Active Subscriptions, MRR, etc. that are set to renew at the end of their current period; and to break that status down by key business dimensions. For example, you may want to analyze the portion that are set to cancel on Monthly products vs. Yearly products, or use the new [Expiration month](https://app.revenuecat.com/charts/actives) [UPDATE THIS LINK] segment to estimate your MRR that's currently set to renew in each future monthly period.
+The Subscription Status chart is an important way to monitor the portion of your Active Subscriptions, MRR, etc. that are set to renew at the end of their current period; and to break that status down by key business dimensions. For example, you may want to analyze the portion that are set to cancel on Monthly products vs. Yearly products, or use the new [Expiration month](https://app.revenuecat.com/charts/subscription_status?chart_type=Column&conversion_timeframe=7%20days&customer_lifetime=30%20days&range=Last%2090%20days%3A2024-05-25%3A2024-08-22&segment=expiration_month) segment to estimate your MRR that's currently set to renew in each future monthly period.
 
 ## Calculation
 
@@ -26,13 +26,17 @@ For [Active Subscriptions](/dashboard-and-metrics/charts/active-subscriptions-ch
 
 Then, if that subscription is past its expected expiration date and is in a grace period, we'll categorize it in the **Billing issue** status. Otherwise, we'll categorize the subscription as **Set to renew** or **Set to cancel** based on its current auto renew status.
 
+For Subscription Revenue, we take the revenue from the last transaction and assume the next transaction will have the same revenue, and then assign that revenue to a status using the same criteria described above.
+
+:::warning Subscriptions with atypical prices
+Subscriptions whose last transaction was a Paid Introductory Offer or another type of paid offer may have their Subscription Revenue undercounted until the next standard payment occurs. In addition, keep in mind that any Product Changes that occur on a subscription before its next renewal will effect the Subscription Revenue assumed for that subscription.
+:::
+
 ## FAQs (to be updated)
 
 | Question                                                                                                | Answer                                                                                                                                                                                                                                                                                                                         |
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Is a paid subscription that has been cancelled still considered active?                                 | Yes, as long as the cancelled paid subscription has not yet expired, it is considered active.                                                                                                                                                                                                                                  |
+| Is a paid subscription that has been cancelled still considered active?                                 | Yes, as long as the cancelled paid subscription has not yet expired, it is considered active, and will be marked with the status of **Set to cancel** in this chart.                                                                                                                                                                                                                                  |
 | At what point is a paid subscription considered expired?                                                | A paid subscription without a grace period is considered expired once its next renewal date has passed without a successful renewal. If a grace period is offered, the end of that grace period is considered the paid subscription's expiration date.                                                                         |
-| Can a single customer have multiple paid subscriptions?                                                 | Yes. This may occur if a customer begins a monthly paid subscription and switches to annual within a single period, or if they subscribed to two distinct products simultaneously. If multiple paid subscriptions are active at the same time for one customer, each unique subscription would be counted in this measurement. |
-| If a customer has access to my product through Family Sharing, are they counted as a paid subscription? | No, since that customer's access is not the result of a payment they've made, we do not consider it a paid subscription.                                                                                                                                                                                                       |
-
-![](/images/dcd9e6a-ActiveSubscriptions_813b59205812f8fe5605f662c2f18abc.png "ActiveSubscriptions.png")
+| Why are my Active Subscriptions in the Subscription Status Chart slightly different than the Active Subscriptions Chart?                                            | These two charts may refresh at different times, and therefore have slightly different figures depending on which one has more recently been updated.                              |
+| Can I see the portion of [Active Subscriptions, MRR, etc.] that were set to cancel as of prior periods?                                            | Unfortunately, this is not supported in Charts right now.                           |
