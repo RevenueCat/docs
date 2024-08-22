@@ -5,56 +5,138 @@ excerpt: What use cases are covered by RevenueCat and how can I test them?
 hidden: false
 ---
 
-## Use Cases to test
-### Subscription Activation
-**Description:** Verify that a user can successfully activate a monthly subscription.
+## Use Cases
 
-**Preconditions:** App installed, RevenueCat configured.
+### Subscription Lifecylce
+<details>
+  <summary>Purchase Flow</summary>
 
-**Steps:**
-1. Open the app.
-2. Navigate to the subscription options screen.
-3. Select the monthly subscription plan.
-4. Complete the payment process.
+  **Description:** Verify that a user's subscription/purchase flow works correctly including starting a subscription, having the subscription renew, and letting the subscription expire. If you are using non-subscripiton purchases, this will test if the purchase is able to go throuhg. 
 
-**Expected Results:** Subscription is activated, and the user gains access to premium features.
+  **Preconditions:** App installed, Sandbox environment enabled, and RevenueCat configured.
 
-**Actual Results:** [To be filled by customer]
+  **Steps:**
+  1. Open the App.
+  2. Open your Paywall or purchase modal.
+  3. Select the product that you would like to test.
+  4. Purchase the product. 
+  5. Open up the Revenuecat overview page and check to see if you see a recent purchase for this product with the app user ID of the user that you configured the SDK with. 
 
-**Pass/Fail Criteria:** Access to premium features is granted.
+  **Expected Results:** Purchase goes through succesfully and user is able to see the purchase in the RevenueCat dashboard. 
 
-### Subscription Flow/Life Cycle
+  **Actual Results:** [To be filled by customer]
 
-**Description:** Verify that a users subscription flow works correctly including starting a subscripiton, having the subscripiton renewa, and letting the subscripiton expire.
+  **Pass/Fail Criteria:** Purchase is seen on the RevenueCat dashboard.
 
-**Preconditions:** App installed, RevenueCat configured, Initial purchases working. 
+</details>
+<details>
+  <summary>Refund</summary>
+</details>
+<details>
+  <summary>Expiration</summary>
+</details>
+<details>
+  <summary>Free Trials</summary>
 
-**Optional** Checking intro eligibility (iOS): If you would like to check intro eligbiltity, ensure that you have a flag in your app to go off when user is elibile for a trial. Id the flag gets set to true or you see the fald that you have set, this verifies that checking trail eligbility is working as intended.
+  **Description:** If you are using free trials, use this testing method to ensure that elgible users are granted their free trial.
+  
+  **Preconditions:** App installed, RevenueCat configured, Fresh app user ID, Initial purchases working. 
 
-**Steps:**
-1. Start a subscripiton with  a fresh sandbox user. You can follow our sandbox testing guide.
-2. Start a subscription and have it renew a couple of times. 
-3. Ensure that after the subscripiton renews multiple times, the subscripiton expires properly. 
+  **Steps:**
+  1. Open the app with a fresh sandbox user.
+  2. Start a subscripiton purchase and ensure that the free trial is being attached. 
+  3. Open that app user ID's customer history in RevenueCat.
+  4. Verify that the purchase has a free trial by checking to ensure the `period_type` in their purchase was set to `TRIAL`.
 
-**Expected Results:** Subscription is activated and the user sees multiple renews before an expiration event is evenutally hit.
+  **Expected Results:** Subscription is started for free and the customer history indicates that a trial was started.
 
-**Actual Results:** [To be filled by customer]
+  **Actual Results:** [To be filled by customer]
 
-**Pass/Fail Criteria:** Access to premium features is granted and taken away when subscription ends. 
+  **Pass/Fail Criteria:** Subscription is started for free with the proper values.
 
-### Intro offers/promo codes
+</details>
+<details>
+  <summary>Upgrade/ Downgrade</summary>
+</details>
+<details>
+  <summary>Offer Codes</summary>
+</details>
+<details>
+  <summary>Refund</summary>
+</details>
+<details>
+  <summary>Promotional Offers</summary>
+</details>
+<details>
+  <summary>Cancellation Flow</summary>
+</details>
 
-**Description:** If you are using intro offers, use this testing method to ensure that elgible users are granted their intro offer.
+### Configuration
+<details>
+  <summary>Anonymous Configurtion</summary>
+  - **Item 1:** This is the first item.
+  - **Item 2:** This is the second item with more details.
+  - **Item 3:** This is the third item.
+  - **Item 4:** This is the fourth item.
+</details>
+<details>
+  <summary>Configuring with App User ID</summary>
+</details>
+<details>
+  <summary>Offers (Google)</summary>
+</details>
+<details>
+  <summary>Display Offering Flow</summary>
+</details>
+<details>
+  <summary>Login/Logout Flow</summary>
+</details>
 
-**Preconditions:** App installed, RevenueCat configured, Fresh app user ID, Initial purchases working. 
 
-**Steps:**
-1. Open the app with a fresh sandbox user.
-2. Start a subscripiton purchase and ensure that the free trial is being attached. 
+### Restoring Flow
+<details>
+  <summary>Esyncpurchase() or purchase under different account</summary>
+  - **Item 1:** This is the first item.
+  - **Item 2:** This is the second item with more details.
+  - **Item 3:** This is the third item.
+  - **Item 4:** This is the fourth item.
+</details>
+<details>
+  <summary>One  for each restore behavior Customer intiated</summary>
+</details>
 
-**Expected Results:** Subscription is started for free.
+### Paywalls
+<details>
+  <summary>Display (Footer & Full)</summary>
+  - **Item 1:** This is the first item.
+  - **Item 2:** This is the second item with more details.
+  - **Item 3:** This is the third item.
+  - **Item 4:** This is the fourth item.
+</details>
+<details>
+  <summary>Upgrade in paywalls</summary>
+</details>
+<details>
+  <summary>Localization</summary>
+</details>
+<details>
+  <summary>Test Values coming through properly</summary>
+</details>
 
-**Actual Results:** [To be filled by customer]
-
-**Pass/Fail Criteria:** Free subscripiton is started and renewal hits for expected amount. 
-
+### RC Billing
+<details>
+  <summary>Purchase Flow</summary>
+  - **Item 1:** This is the first item.
+  - **Item 2:** This is the second item with more details.
+  - **Item 3:** This is the third item.
+  - **Item 4:** This is the fourth item.
+</details>
+<details>
+  <summary>Free Trials </summary>
+</details>
+<details>
+  <summary>Refund</summary>
+</details>
+<details>
+  <summary>Expiration</summary>
+</details>
