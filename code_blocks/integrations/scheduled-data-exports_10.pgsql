@@ -2,7 +2,7 @@
 
 WITH
 
-filtered_subscriptipon_transactions AS (
+filtered_subscription_transactions AS (
     SELECT
         *
     FROM [revenuecat_data_table]
@@ -47,10 +47,10 @@ expirations AS (
 
 SELECT
     COALESCE(a.date, e.date) AS date,
-    COALESCE(a.num_new_actives, 0) AS new_actives,
+    COALESCE(a.num_new_actives, 0) AS new_actives, /* "New Actives" in the Active Subscriptions Movement Chart */
     COALESCE(a.num_renewals, 0) AS num_renewals,
     COALESCE(e.num_expirations, 0) AS num_expirations,
-    num_expirations - num_renewals AS churned_actives,
+    num_expirations - num_renewals AS churned_actives, /* "Churned Actives" in the Active Subscriptions Movement Chart */
 FROM actives a
 FULL JOIN expirations e ON a.date = e.date
 WHERE a.date BETWEEN [targeted_start_date] AND [targeted_end_date]
