@@ -31,41 +31,111 @@ hidden: false
 </details>
 <details>
   <summary>Refund</summary>
+
+  **Description:** If you would like to offer refunds for your app, use this test guide to verify that you are able to issue a refund for a user. 
+
+  **Preconditions:** App installed, app user ID already has a subscripton or purchase. 
+
+  **Steps:**
+  
+  Google Play:
+  1. Open the RevenueCat dashboard for the app user ID that you are testing with that has a current subscripiton. 
+  2. Navigate to the users purchase event that you would like to refund. 
+  3. Click the refund button in the top right corner of the event details.
+  4. Verify that the refund has happened by checking the customer history of this user 24 hours later and ensuring that a `CANCELLATION` event has occured with the reason field set to `CUSTOMER_SUPPORT`.
+  
+  iOS: 
+  1. RevenueCat will automatically detect when a refund has been issued by Apple, but Apple does not allow developers to issue refunds on behalf of customers
+  2. When a user try's to issue a refund, verify that you immediately direct them to the Apple support page: https://support.apple.com/en-us/HT204084
+  3. Once a user gets a refund granted through Apple, verify that the refund has been seen by us by checking the customer history of this user 24 hours later and ensuring that a `CANCELLATION` event has occured with the reason field set to `CUSTOMER_SUPPORT`.
+
+  **Expected Results:** User is able to request a refund and either you grant the refund via the Dashboard or API and you are able to succesfully grant them that refund or point them in the correct direction. 
+
+  **Actual Results:** [To be filled by customer]
+
+  **Pass/Fail Criteria:** Verify that the refund is seen in RevenueCat in the `CANCELLATION` event. 
+
 </details>
 <details>
   <summary>Expiration</summary>
+
+  **Description:** To verify that a users subscription has expired, follow this test guide. 
+
+  **Preconditions:** App installed, app user ID has a current subscripiton.  
+
+  **Steps:**
+  1. Open the app. 
+  2. Navigate to your paywall or subscripiton page and cancel the current subscripiton. 
+  3. Wait until you current subscription's expiration time and check to ensure that once this time hits the user no longer has access to their entitlements. 
+  4. To verify, check the RevenueCat dashboard of the user for an `EXPIRATION` event at the time of the expiration. 
+
+  **Expected Results:** User is able to cancel the subscripiton and `EXPIRATION` event follows at the time of expiration. 
+
+  **Actual Results:** [To be filled by customer]
+
+  **Pass/Fail Criteria:** Verify that the user no longer has access to the entitlment after the expiration has triggered. 
+
 </details>
 <details>
-  <summary>Free Trials</summary>
+  <summary>Upgrade's and Downgrade's</summary>
 
-  **Description:** If you are using free trials, use this testing method to ensure that elgible users are granted their free trial.
+  **Description:** If you have multiple subscripitons tiers and want to allow people to upgrade/downgrade between them, follow this testing method to ensure everything is working as intended.
+  
+  **Preconditions:** App installed and current logged in app user ID has a subscription.
+
+  **Steps:**
+  1. Open the app with an app user that already has a subscripiton.
+  2. Open the subscription page or paywall in your app. 
+  3. Start a purchase for a subscripiton that would be an upgrade. 
+  4. Check the RevenueCat dashboard for that app user ID and ensure that you see a `PRODUCT_CHANGE` event. 
+  5. Check the `PRODUCT_CHANGE` event to see that the old product is the correct product and the new product is the correct product that you selected. 
+
+  **Expected Results:** New subscripiton is started and old subscription ends. 
+
+  **Actual Results:** [To be filled by customer]
+
+  **Pass/Fail Criteria:** Subscription is started on time based on `PRORATION` method that you use. 
+
+</details>
+<details>
+  <summary>Free Trials and Introductory offers</summary>
+
+  **Description:** If you are using free trials and/or intro offers, use this testing method to ensure that elgible users are granted them accordingly.
   
   **Preconditions:** App installed, RevenueCat configured, Fresh app user ID, Initial purchases working. 
 
   **Steps:**
   1. Open the app with a fresh sandbox user.
-  2. Start a subscripiton purchase and ensure that the free trial is being attached. 
+  2. Start a subscripiton purchase and ensure that the free trial or intro offer is being attached. 
   3. Open that app user ID's customer history in RevenueCat.
-  4. Verify that the purchase has a free trial by checking to ensure the `period_type` in their purchase was set to `TRIAL`.
+  4. Verify that the purchase has a free trial by checking to ensure the `period_type` in their purchase was set to `TRIAL`. If you are checking for an intro offer, ensure that the `period_type` is `INTRO`.  
 
-  **Expected Results:** Subscription is started for free and the customer history indicates that a trial was started.
+  **Expected Results:** Subscription is started for free and the customer history indicates that a trial was started or an intro offer was appended.
 
   **Actual Results:** [To be filled by customer]
 
-  **Pass/Fail Criteria:** Subscription is started for free with the proper values.
+  **Pass/Fail Criteria:** Subscription is started with the proper deal attached.
 
 </details>
 <details>
-  <summary>Upgrade/ Downgrade</summary>
-</details>
-<details>
-  <summary>Offer Codes</summary>
-</details>
-<details>
-  <summary>Refund</summary>
-</details>
-<details>
   <summary>Promotional Offers</summary>
+
+  **Description:** If you are using promotional offers, use this test guide to ensure they are working properly. 
+  
+  **Preconditions:** App installed, RevenueCat configured and Fresh app user ID.
+
+  **Steps:**
+  1. Open the app with a fresh sandbox user.
+  2. Start a subscripiton purchase and ensure that the free trial or intro offer is being attached. 
+  3. Open that app user ID's customer history in RevenueCat.
+  4. Verify that the purchase has a free trial by checking to ensure the `period_type` in their purchase was set to `TRIAL`. If you are checking for an intro offer, ensure that the `period_type` is `INTRO`.  
+
+  **Expected Results:** Subscription is started for free and the customer history indicates that a trial was started or an intro offer was appended.
+
+  **Actual Results:** [To be filled by customer]
+
+  **Pass/Fail Criteria:** Subscription is started with the proper deal attached.
+
 </details>
 <details>
   <summary>Cancellation Flow</summary>
