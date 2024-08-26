@@ -90,10 +90,10 @@ expirations AS (
 
 SELECT
     COALESCE(a.date, e.date) AS date,
-    COALESCE(a.new_mrr, 0) AS new_mrr,
+    COALESCE(a.new_mrr, 0) AS new_mrr, /* "New MRR" in the MRR Movement Chart */
     COALESCE(a.renewal_mrr, 0) as renewal_mrr,
     COALESCE(e.expired_mrr, 0) as expired_mrr,
-    expired_mrr - renewal_mrr as churned_mrr
+    expired_mrr - renewal_mrr as churned_mrr /* "Churned MRR" in the MRR Movement Chart */
 FROM actives a
 FULL JOIN expirations e ON a.date = e.date
 WHERE a.date BETWEEN [targeted_start_date] AND [targeted_end_date]

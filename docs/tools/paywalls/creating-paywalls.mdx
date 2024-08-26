@@ -214,6 +214,17 @@ We currently support all 39 locales that are supported on [App Store Connect](ht
 If a particular translation is not applied to your Paywall during testing, you may need to change the default localization in Xcode to that language.
 :::
 
+### Default Localization
+
+As of the following SDK versions, we support setting a Default Localization when creating or editing a Paywall. The Default Localization will be served to your customers when their preferred localization is not available.
+
+| RevenueCat SDK           | Version required for Default Localization setting | 
+| :----------------------- | :--------------------------------------------- |
+| purchases-ios             | 5.3.0 and up                 |
+| purchases-android         | 8.6.0 and up                  |
+| react-native-purchases-ui | 8.1.0 and up                 | 
+| purchases-flutter         | 8.1.0 and up                 |
+
 ## Getting your paywall approved by the stores
 
 Paywalls are frequently one of the most scrutinized areas of your app in App Store and Play Store review, since the stores want to ensure apps are setting clear expectations about what’s being offered to customers. Below are some of the most common rejection reasons, and how you can best position yourself to avoid them with RevenueCat Paywalls:

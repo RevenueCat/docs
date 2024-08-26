@@ -53,6 +53,11 @@ For each period, MRR is calculated as a snapshot based on the count of active su
 
 To understand how that snapshot is generated for each period, check out the [MRR Movement](/dashboard-and-metrics/charts/monthly-recurring-revenue-movement-chart) chart.
 
+## Sample query from Scheduled Data Exports
+With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can get daily exports of your transactions from RevenueCat to reproduce and customize measures like this one that are provided by RevenueCat. You can find the full set of available sample queries [here](/integrations/scheduled-data-exports#sample-queries-for-revenuecat-measures).
+]} />
+
+
 ## FAQs
 
 | Question                                                                            | Answer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
