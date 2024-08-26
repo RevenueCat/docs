@@ -106,7 +106,7 @@ If you're planning to use RevenueCat alongside your existing purchase code, be s
 If you have a user authentication system in your app, you can provide a user identifier at the time of configuration or at a later date with a call to `.logIn()`. To learn more, check out our guide on [Identifying Users](/customers/user-ids).
 :::
 
-### Present a Paywall and Make a Purchase
+### Present a Paywall
 
 The SDK will automatically fetch the [configured Offerings](/getting-started/entitlements#offerings) and retrieve the product information from Apple, Google, or Amazon. Thus, available products will already be loaded when customers launch your paywall.
 
@@ -120,6 +120,14 @@ Presenting a paywall varies depending on your platform. See [Displaying Paywalls
 A common issue when displaying your paywall or making a purchase is missing or empty offerings. This is almost always a configuration issue.
 
 If you're running into this error, please see our [community post](https://community.revenuecat.com/sdks-51/why-are-offerings-or-products-empty-124) for troubleshooting steps.
+
+### Make a Purchase
+
+Once your paywall is presented, select one of your products to make a purchase. The SDK will handle the purchase flow automatically and send the purchase information to RevenueCat.
+
+When the purchase is complete, you can find the purchase associated to the customer in the RevenueCat dashboard. You can search for the customer by their App User ID that you configured, or by the automatically assigned `$RCAnonymousID` that you'll find in your logs.
+
+Additionally, the SDK will automatically update the customer's `CustomerInfo` object with the new purchase information. This object contains all the information about the customer's purchases and subscriptions.
 
 ### Check Subscription Status
 
@@ -240,7 +248,7 @@ You have now implemented a fully-featured subscription purchasing system without
 
 To download more complete examples of integrating the SDK, head over to our sample app resources.
 
-**[View Samples ](/platform-resources/sample-apps)**
+<Button href="/docs/platform-resources/sample-apps">View Sample Apps →</Button>
 
 ## Next Steps
 
