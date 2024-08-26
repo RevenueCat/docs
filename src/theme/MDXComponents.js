@@ -4,6 +4,8 @@ import MDXComponents from "@theme-original/MDXComponents";
 import RCCodeBlock from "@site/src/components/RCCodeBlock";
 import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 import SampleApp from "../components/SampleApp/SampleApp";
+import Button from "@site/src/components/Button/Button";
+import FeatureItem from "@site/src/components/FeatureItem/FeatureItem";
 
 export default {
   // Re-use the default mapping
@@ -11,4 +13,6 @@ export default {
   RCCodeBlock,
   YouTubeEmbed,
   SampleApp,
+  Button,
+  FeatureItem,
 };

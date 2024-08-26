@@ -60,7 +60,7 @@ const Page = ({ slug }) => ({
   id: slug,
 });
 
-const PageWithCustomLabel = ({slug, label}) => ({
+const PageWithCustomLabel = ({ slug, label }) => ({
   type: "doc",
   id: slug,
   label: label,
