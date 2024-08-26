@@ -34,6 +34,10 @@ Granted entitlements will automatically be removed after expiration. To remove a
 
 ![](/images/customer-history-remove-granted-entitlement.png)
 
+:::info
+Please note that the "Sandbox data" toggle should be unchecked to remove entitlements for both production and sandbox users.
+:::
+
 ## Granting Entitlements through the REST API
 
 Looking to programatically grant entitlements? View the REST API documentation [here](https://docs.revenuecat.com/reference/grant-a-promotional-entitlement).
