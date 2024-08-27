@@ -124,9 +124,7 @@ const migratingCategory = Category({
       slug: "sdk-or-not",
       items: [
         Page({ slug: "sdk-less-integration" }),
-        // { label: "Using the SDK with your own IAP Code", id: "finishing-transactions", type: "doc" },
-        PageWithCustomLabel({
-          label: "Using the SDK with your own IAP Code",
+        Page({
           slug: "finishing-transactions",
         }),
       ],

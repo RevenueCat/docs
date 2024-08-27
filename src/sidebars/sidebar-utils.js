@@ -1,7 +1,31 @@
 const checkItemType = (item) => {
-  if ("link" in item) return "subcategory";
-  if ("href" in item) return "link";
+  if (item.type == "category") return "category";
+  if (item.type == "link") return "link";
   return "page";
+};
+
+const buildItem = (item, slug) => {
+  const itemType = checkItemType(item);
+
+  if (itemType === "category") {
+    return {
+      ...item,
+      link: {
+        type: "doc",
+        id: `${slug}/${item.link.id}`,
+      },
+      items: item.items.map((subItem) => buildItem(subItem, slug)),
+    };
+  }
+
+  if (itemType === "page") {
+    return {
+      ...item,
+      id: `${slug}/${item.id}`,
+    };
+  }
+
+  return item;
 };
 
 const Category = ({ label, emoji, slug, items }) => {
@@ -10,35 +34,7 @@ const Category = ({ label, emoji, slug, items }) => {
     label,
     collapsible: false,
     customProps: { emoji },
-    items: items.map((item) => {
-      const itemType = checkItemType(item);
-
-      if (itemType === "subcategory") {
-        return {
-          ...item,
-          link: {
-            type: "doc",
-            id: `${slug}/${item.link.id}`,
-          },
-          items: item.items.map((subItem) => {
-            const subItemType = checkItemType(subItem);
-
-            return subItemType === "page"
-              ? { ...subItem, id: `${slug}/${subItem.id}` }
-              : subItem;
-          }),
-        };
-      }
-
-      if (itemType === "page") {
-        return {
-          ...item,
-          id: `${slug}/${item.id}`,
-        };
-      }
-
-      return item;
-    }),
+    items: items.map((item) => buildItem(item, slug)),
   };
 };
 
@@ -49,21 +45,12 @@ const SubCategory = ({ label, slug, items }) => ({
     type: "doc",
     id: slug,
   },
-  items: items.map((item) => {
-    const itemType = checkItemType(item);
-    return itemType === "page" ? { ...item, id: `${slug}/${item.id}` } : item;
-  }),
+  items: items.map((item) => buildItem(item, slug)),
 });
 
 const Page = ({ slug }) => ({
   type: "doc",
   id: slug,
-});
-
-const PageWithCustomLabel = ({ slug, label }) => ({
-  type: "doc",
-  id: slug,
-  label: label,
 });
 
 const Link = ({ label, slug }) => ({
@@ -76,6 +63,5 @@ module.exports = {
   Category,
   SubCategory,
   Page,
-  PageWithCustomLabel,
   Link,
 };
