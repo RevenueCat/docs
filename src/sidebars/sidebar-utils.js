@@ -34,10 +34,18 @@ const Category = ({ label, emoji, items }) => {
   };
 };
 
-const SubCategory = ({ label, slug, items }) => ({
+const SubCategory = ({ label, slug, items, index }) => ({
   type: "category",
   label,
   ...(slug && { link: { type: "doc", id: slug } }),
+  ...(index && {
+    link: {
+      type: "generated-index",
+      title: index.title,
+      slug: index.link + "-index",
+      ...(index.description && { description: index.description }),
+    },
+  }),
   items: items.map((item) => buildItem(item)),
 });
 
@@ -48,8 +56,14 @@ const Page = ({ slug }) => ({
 
 const Link = ({ label, slug }) => ({
   type: "link",
-  label,
+  label: label + " →",
   href: slug,
+});
+
+const GeneratedIndex = ({ title, link, description }) => ({
+  title,
+  link,
+  description,
 });
 
 module.exports = {
@@ -57,4 +71,5 @@ module.exports = {
   SubCategory,
   Page,
   Link,
+  GeneratedIndex,
 };

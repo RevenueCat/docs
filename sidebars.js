@@ -14,7 +14,7 @@ import {
   SubCategory,
   Link,
   Page,
-  PageWithCustomLabel,
+  GeneratedIndex,
 } from "./src/sidebars/sidebar-utils";
 
 // The sidebar is a tree of categories and pages.
