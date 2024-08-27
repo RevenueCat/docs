@@ -4,48 +4,41 @@ const checkItemType = (item) => {
   return "page";
 };
 
-const buildItem = (item, slug) => {
+const buildItem = (item) => {
   const itemType = checkItemType(item);
 
   if (itemType === "category") {
     return {
       ...item,
-      link: {
-        type: "doc",
-        id: `${slug}/${item.link.id}`,
-      },
-      items: item.items.map((subItem) => buildItem(subItem, slug)),
+      items: item.items.map((subItem) => buildItem(subItem)),
     };
   }
 
   if (itemType === "page") {
     return {
       ...item,
-      id: `${slug}/${item.id}`,
+      id: `${item.id}`,
     };
   }
 
   return item;
 };
 
-const Category = ({ label, emoji, slug, items }) => {
+const Category = ({ label, emoji, items }) => {
   return {
     type: "category",
     label,
     collapsible: false,
     customProps: { emoji },
-    items: items.map((item) => buildItem(item, slug)),
+    items: items.map((item) => buildItem(item)),
   };
 };
 
 const SubCategory = ({ label, slug, items }) => ({
   type: "category",
   label,
-  link: {
-    type: "doc",
-    id: slug,
-  },
-  items: items.map((item) => buildItem(item, slug)),
+  ...(slug && { link: { type: "doc", id: slug } }),
+  items: items.map((item) => buildItem(item)),
 });
 
 const Page = ({ slug }) => ({
