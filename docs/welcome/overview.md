@@ -13,34 +13,51 @@ RevenueCat is a powerful and reliable in-app purchase server that makes it easy 
 We host live office hours every other Friday, where we demo the platform and answer your questions live. [Register for the next office hours →](https://app.livestorm.co/revenuecat/live-revenuecat-demo?type=detailed)
 :::
 
-### Adding in-app purchases to your app
+## Choose an Implementation Path
 
-Start selling subscriptions and in-app purchases in your iOS, Android, and Amazon apps.
+### Add in-app purchases to your app
 
-[Get Started →](/welcome/building-new)
+Are you building a new app, or are you adding in-app purchases or subscriptions to your app for the first time? Add the SDK and start monetizing your iOS, Android, and Amazon apps.
 
-![RevenueCat Flow Diagram](/images/Powering-existing-subscriptions-with-RevenueCat-1_194c1e8056740df4787c4593253f8dc8.png)
+<Button href="/docs/welcome/building-new">Add subscriptions to your app →</Button>
 
 ### Migrate existing subscriptions to RevenueCat
 
-If you already have 1 or 1 millions subscribers, easily replace your existing setup with RevenueCat to supercharge your business.
+Whether you have just one or one million subscribers, you can easily replace your existing setup with RevenueCat. Supercharge your business and start taking advantage of powerful features like Experiments, Paywalls, and Targeting.
 
-[Learn more →](/welcome/existing-apps)
+<Button href="/docs/welcome/existing-apps">Migrate to RevenueCat →</Button>
 
-![RevenueCat supported stores](/images/Powering-existing-subscriptions-with-RevenueCat_c8255486885823df96391210b781734b.png)
+## Browse features
 
-### Browse features
+<FeatureItem 
+  title="Entitlements & Subscription Status" 
+  subtitle="Ensure customers have correct access even if your entitlement structure is complex." 
+  link="/docs/getting-started/entitlements" 
+  emoji="🔑"
+/>
 
-- [🔑 Entitlements & Subscription Status](/getting-started/entitlements)<br />
-  Ensure customers have correct access even if your entitlement structure is complex.
+<FeatureItem
+  title="Paywalls"
+  subtitle="Remotely configure your product offering with powerful paywalls."
+  link="/docs/tools/paywalls"
+  emoji="💰"
+/>
 
-- [📈 Data, Analytics, & Integrations](/integrations/third-party-integrations)<br />
-  Clean, normalized subscription data at your fingertips and in every system
+<FeatureItem
+  title="Data, Analytics, & Integrations"
+  subtitle="Clean, normalized subscription data at your fingertips and in every system."
+  link="/docs/integrations/third-party-integrations"
+  emoji="📈"
+/>
 
-- [💰 Paywalls & Experiments](/tools/experiments-v1)<br />
-  Change your product configurations remotely and run price tests.
+<FeatureItem
+  title="Experiments"
+  subtitle="Run A/B tests to find the most effective pricing model."
+  link="/docs/tools/experiments-v1"
+  emoji="🧪"
+/>
 
-#### Not sure where to start
+## Not sure where to start?
 
 Talk to an expert to learn how RevenueCat can help grow your business.
 
