@@ -1,40 +1,44 @@
-const checkItemType = (item) => {
-  if (item.type == "category") return "category";
-  if (item.type == "link") return "link";
-  return "page";
-};
-
-const buildItem = (item) => {
-  const itemType = checkItemType(item);
-
-  if (itemType === "category") {
-    return {
+const buildItem = (item, pagePrefix) => {
+  let prefix = pagePrefix || "";
+  if (item.type === "category") {
+    let object = {
       ...item,
-      items: item.items.map((subItem) => buildItem(subItem)),
+      items: item.items.map((subItem) =>
+        buildItem(subItem, prefix + (subItem.itemsPrefix || ""))
+      ),
     };
+
+    if (item.link.id) {
+      object.link = {
+        type: "doc",
+        id: `${prefix}${item.link.id}`,
+      };
+    }
+
+    return object;
   }
 
-  if (itemType === "page") {
+  if (item.type === "doc") {
     return {
       ...item,
-      id: `${item.id}`,
+      id: `${prefix}${item.id}`,
     };
   }
 
   return item;
 };
 
-const Category = ({ label, emoji, items }) => {
+const Category = ({ label, emoji, itemsPrefix, items }) => {
   return {
     type: "category",
     label,
     collapsible: false,
     customProps: { emoji },
-    items: items.map((item) => buildItem(item)),
+    items: items.map((item) => buildItem(item, itemsPrefix)),
   };
 };
 
-const SubCategory = ({ label, slug, items, index }) => ({
+const SubCategory = ({ label, slug, itemsPrefix, items, index }) => ({
   type: "category",
   label,
   ...(slug && { link: { type: "doc", id: slug } }),
@@ -46,7 +50,7 @@ const SubCategory = ({ label, slug, items, index }) => ({
       ...(index.description && { description: index.description }),
     },
   }),
-  items: items.map((item) => buildItem(item)),
+  items: items.map((item) => buildItem(item, itemsPrefix)),
 });
 
 const Page = ({ slug }) => ({
