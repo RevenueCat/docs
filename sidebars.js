@@ -221,16 +221,11 @@ const subscriptionGuidanceCategory = Category({
     SubCategory({
       label: "Free Trials & Promo Offers",
       slug: "subscription-offers",
+      itemsPrefix: "subscription-offers/",
       items: [
-        Page({
-          slug: "subscription-offers/ios-subscription-offers",
-        }),
-        Page({
-          slug: "subscription-offers/google-play-offers",
-        }),
-        Page({
-          slug: "subscription-offers/stripe-free-trials",
-        }),
+        Page({ slug: "ios-subscription-offers" }),
+        Page({ slug: "google-play-offers" }),
+        Page({ slug: "stripe-free-trials" }),
       ],
     }),
     Page({ slug: "how-grace-periods-work" }),
@@ -303,11 +298,12 @@ const dashboardCategory = Category({
 const toolsCategory = Category({
   emoji: "🛠",
   label: "Tools",
+  itemsPrefix: "tools/",
   items: [
     SubCategory({
       label: "Paywalls",
-      slug: "tools/paywalls",
-      itemsPrefix: "tools/paywalls/",
+      slug: "paywalls",
+      itemsPrefix: "paywalls/",
       items: [
         Page({ slug: "creating-paywalls" }),
         Page({ slug: "displaying-paywalls" }),
@@ -315,14 +311,14 @@ const toolsCategory = Category({
     }),
     SubCategory({
       label: "Offering Metadata",
-      slug: "tools/offering-metadata",
-      itemsPrefix: "tools/offering-metadata/",
+      slug: "offering-metadata",
+      itemsPrefix: "offering-metadata/",
       items: [Page({ slug: "offering-metadata-examples" })],
     }),
     SubCategory({
       label: "Experiments",
-      slug: "tools/experiments-v1",
-      itemsPrefix: "tools/experiments-v1/",
+      slug: "experiments-v1",
+      itemsPrefix: "experiments-v1/",
       items: [
         Page({ slug: "experiments-overview-v1" }),
         Page({ slug: "creating-offerings-to-test" }),
@@ -332,14 +328,14 @@ const toolsCategory = Category({
     }),
     SubCategory({
       label: "Targeting",
-      slug: "tools/targeting",
-      itemsPrefix: "tools/targeting/",
+      slug: "targeting",
+      itemsPrefix: "targeting/",
       items: [
         Page({ slug: "placements" }),
         Page({ slug: "custom-attributes" }),
       ],
     }),
-    Page({ slug: "tools/paywall-orchestration-with-offerings" }),
+    Page({ slug: "paywall-orchestration-with-offerings" }),
   ],
 });
 
@@ -402,10 +398,11 @@ const integrationsCategory = Category({
     SubCategory({
       label: "Webhooks",
       slug: "webhooks",
+      itemsPrefix: "webhooks/",
       items: [
-        Page({ slug: "webhooks/event-flows" }),
-        Page({ slug: "webhooks/event-types-and-fields" }),
-        Page({ slug: "webhooks/sample-events" }),
+        Page({ slug: "event-flows" }),
+        Page({ slug: "event-types-and-fields" }),
+        Page({ slug: "sample-events" }),
       ],
     }),
     Page({ slug: "partner-built-integrations" }),
@@ -424,45 +421,41 @@ const platformResourcesCategory = Category({
     SubCategory({
       label: "Amazon Platform Resources",
       slug: "amazon-platform-resources",
-      items: [
-        Page({
-          slug: "amazon-platform-resources/amazon-small-business-accelerator-program",
-        }),
-      ],
+      itemsPrefix: "amazon-platform-resources/",
+      items: [Page({ slug: "amazon-small-business-accelerator-program" })],
     }),
     SubCategory({
       label: "Apple Platform Resources",
       slug: "apple-platform-resources",
+      itemsPrefix: "apple-platform-resources/",
       items: [
-        Page({
-          slug: "apple-platform-resources/app-store-small-business-program",
-        }),
-        Page({ slug: "apple-platform-resources/apple-app-privacy" }),
-        Page({ slug: "apple-platform-resources/apple-family-sharing" }),
-        Page({ slug: "apple-platform-resources/legacy-mac-apps" }),
-        Page({ slug: "apple-platform-resources/swiftui-helpers" }),
+        Page({ slug: "app-store-small-business-program" }),
+        Page({ slug: "apple-app-privacy" }),
+        Page({ slug: "apple-family-sharing" }),
+        Page({ slug: "legacy-mac-apps" }),
+        Page({ slug: "swiftui-helpers" }),
       ],
     }),
     SubCategory({
       label: "Google Platform Resources",
       slug: "google-platform-resources",
+      itemsPrefix: "google-platform-resources/",
       items: [
-        Page({ slug: "google-platform-resources/google-play-pass" }),
-        Page({ slug: "google-platform-resources/reduced-service-fee" }),
-        Page({ slug: "google-platform-resources/google-plays-data-safety" }),
-        Page({
-          slug: "google-platform-resources/google-play-quota-increase-request",
-        }),
+        Page({ slug: "google-play-pass" }),
+        Page({ slug: "reduced-service-fee" }),
+        Page({ slug: "google-plays-data-safety" }),
+        Page({ slug: "google-play-quota-increase-request" }),
       ],
     }),
     Page({ slug: "non-subscriptions" }),
     SubCategory({
       label: "Platform Server Notifications",
       slug: "server-notifications",
+      itemsPrefix: "server-notifications/",
       items: [
-        Page({ slug: "server-notifications/apple-server-notifications" }),
-        Page({ slug: "server-notifications/google-server-notifications" }),
-        Page({ slug: "server-notifications/stripe-server-notifications" }),
+        Page({ slug: "apple-server-notifications" }),
+        Page({ slug: "google-server-notifications" }),
+        Page({ slug: "stripe-server-notifications" }),
       ],
     }),
     Page({ slug: "sample-apps" }),
@@ -477,23 +470,17 @@ const serviceCredentialsCategory = Category({
     SubCategory({
       label: "Apple App Store",
       slug: "itunesconnect-app-specific-shared-secret",
+      itemsPrefix: "itunesconnect-app-specific-shared-secret/",
       items: [
-        Page({
-          slug: "itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration",
-        }),
-        Page({
-          slug: "itunesconnect-app-specific-shared-secret/app-store-connect-api-key-configuration",
-        }),
+        Page({ slug: "in-app-purchase-key-configuration" }),
+        Page({ slug: "app-store-connect-api-key-configuration" }),
       ],
     }),
     SubCategory({
       label: "Google Play Store",
       slug: "creating-play-service-credentials",
-      items: [
-        Page({
-          slug: "creating-play-service-credentials/google-play-checklists",
-        }),
-      ],
+      itemsPrefix: "creating-play-service-credentials/",
+      items: [Page({ slug: "google-play-checklists" })],
     }),
     Page({ slug: "amazon-appstore-credentials" }),
   ],
