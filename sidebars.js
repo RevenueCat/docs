@@ -98,6 +98,16 @@ const gettingStartedCategory = Category({
       items: [Page({ slug: "configuring-sdk/ios-app-extensions" })],
     }),
     Link({ label: "Identifying Users", slug: "/customers/user-ids" }),
+    Page({ slug: "displaying-products" }),
+    SubCategory({
+      label: "Making Purchases",
+      slug: "making-purchases",
+      items: [
+        Page({
+          slug: "making-purchases/android-with-jetpack-compose",
+        }),
+      ],
+    }),
     Page({ slug: "restoring-purchases" }),
     Link({
       label: "Checking Subscription Status",
@@ -302,27 +312,6 @@ const toolsCategory = Category({
         Page({ slug: "creating-paywalls" }),
         Page({ slug: "displaying-paywalls" }),
       ],
-    }),
-    SubCategory({
-      label: "Custom Paywalls",
-      items: [
-        Page({ slug: "getting-started/displaying-products" }),
-        SubCategory({
-          label: "Making Purchases",
-          slug: "getting-started/making-purchases",
-          items: [
-            Page({
-              slug: "getting-started/making-purchases/android-with-jetpack-compose",
-            }),
-          ],
-        }),
-      ],
-      index: GeneratedIndex({
-        title: "Custom Paywalls",
-        link: "custom-paywalls",
-        description:
-          "Manually building a custom paywall? Here's how to get started fetching and displaying products, and making purchases.",
-      }),
     }),
     SubCategory({
       label: "Offering Metadata",
