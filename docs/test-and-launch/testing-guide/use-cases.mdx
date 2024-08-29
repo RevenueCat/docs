@@ -5,14 +5,36 @@ excerpt: What use cases are covered by RevenueCat and how can I test them?
 hidden: false
 ---
 
-## Use Cases
-This document provides a bunch of key use cases that you can use to verify the successful integration of RevenueCat into your apps. This document outlines essential steps and checks to ensure that in-app purchases, subscriptions, and other revenue-related features are functioning as expected as well as helps you take advantage of the many toold that RevenueCat offers. By following these use cases, you can confidently validate your setup and troubleshoot any issues that may arise prior to launching your app. 
+import content1 from "!!raw-loader!@site/code_blocks/customers/user-ids_1.swift";
+import content2 from "!!raw-loader!@site/code_blocks/customers/user-ids_2.m";
+import content3 from "!!raw-loader!@site/code_blocks/customers/user-ids_3.kt";
+import content4 from "!!raw-loader!@site/code_blocks/customers/user-ids_4.java";
+import content5 from "!!raw-loader!@site/code_blocks/customers/user-ids_5.js";
+import content6 from "!!raw-loader!@site/code_blocks/customers/user-ids_6.js";
+import content7 from "!!raw-loader!@site/code_blocks/customers/user-ids_7.js";
+import contentCapacitor1 from "!!raw-loader!@site/code_blocks/customers/user-ids_capacitor.ts";
+import content8 from "!!raw-loader!@site/code_blocks/customers/user-ids_unity.cs";
+import contentKmpAnon from "!!raw-loader!@site/code_blocks/customers/user-ids_kmp_anon.kts";
 
-### Subscription Lifecylce
+import content9 from "!!raw-loader!@site/code_blocks/customers/user-ids_9.swift";
+import content10 from "!!raw-loader!@site/code_blocks/customers/user-ids_10.m";
+import content11 from "!!raw-loader!@site/code_blocks/customers/user-ids_11.kt";
+import content12 from "!!raw-loader!@site/code_blocks/customers/user-ids_12.java";
+import content13 from "!!raw-loader!@site/code_blocks/customers/user-ids_13.js";
+import content14 from "!!raw-loader!@site/code_blocks/customers/user-ids_14.js";
+import content15 from "!!raw-loader!@site/code_blocks/customers/user-ids_15.js";
+import contentCapacitor2 from "!!raw-loader!@site/code_blocks/customers/user-ids_configure_with_user_capacitor.ts";
+import content16 from "!!raw-loader!@site/code_blocks/customers/user-ids_16.cs";
+import contentKmp from "!!raw-loader!@site/code_blocks/customers/user-ids_kmp.kts";
+
+## Use Cases
+This document provides a bunch of key use cases that you can use to verify the successful integration of RevenueCat into your apps. This document outlines essential steps and checks to ensure that in-app purchases, subscriptions, and other revenue-related features are functioning as expected as well as helps you take advantage of the many tools that RevenueCat offers. By following these use cases, you can confidently validate your setup and troubleshoot any issues that may arise prior to launching your app. 
+
+### Subscription Lifecycle
 <details>
   <summary>Purchase Flow</summary>
 
-  **Description:** Verify that a user's subscription/purchase flow works correctly including starting a subscription, having the subscription renew, and letting the subscription expire. If you are using non-subscripiton purchases, this will test if the purchase is able to go throuhg. 
+  **Description:** Verify that a user's subscription/purchase flow works correctly including starting a subscription, having the subscription renew, and letting the subscription expire. If you are using non-subscription purchases, this will test if the purchase is able to go through. 
 
   **Related docs:** 
   - [Purchase flow](https://www.revenuecat.com/docs/integrations/webhooks/event-flows#subscription-lifecycle)
@@ -26,7 +48,7 @@ This document provides a bunch of key use cases that you can use to verify the s
   4. Purchase the product. 
   5. Open up the Revenuecat overview page and check to see if you see a recent purchase for this product with the app user ID of the user that you configured the SDK with. 
 
-  **Expected Results:** Purchase goes through succesfully and user is able to see the purchase in the RevenueCat dashboard. 
+  **Expected Results:** Purchase goes through successfully and the user is able to see the purchase in the RevenueCat dashboard. 
 
   **Pass/Fail Criteria:** Purchase is seen on the RevenueCat dashboard.
 
@@ -39,22 +61,22 @@ This document provides a bunch of key use cases that you can use to verify the s
   **Related docs:** 
   - [Handling refunds](https://www.revenuecat.com/docs/subscription-guidance/refunds)
 
-  **Preconditions:** App installed, app user ID already has a subscripton or purchase. 
+  **Preconditions:** App installed, app user ID already has a subscription or purchase. 
 
   **Steps:**
   
   Google Play:
-  1. Open the RevenueCat dashboard for the app user ID that you are testing with that has a current subscripiton. 
-  2. Navigate to the users purchase event that you would like to refund. 
+  1. Open the RevenueCat dashboard for the app user ID that you are testing with that has a current subscription. 
+  2. Navigate to the user's purchase event that you would like to refund. 
   3. Click the refund button in the top right corner of the event details.
-  4. Verify that the refund has happened by checking the customer history of this user 24 hours later and ensuring that a `CANCELLATION` event has occured with the reason field set to `CUSTOMER_SUPPORT`.
+  4. Verify that the refund has happened by checking the customer history of this user 24 hours later and ensuring that a `CANCELLATION` event has occurred with the reason field set to `CUSTOMER_SUPPORT`.
   
   iOS: 
   1. RevenueCat will automatically detect when a refund has been issued by Apple, but Apple does not allow developers to issue refunds on behalf of customers
-  2. When a user try's to issue a refund, verify that you immediately direct them to the Apple support page: https://support.apple.com/en-us/HT204084
-  3. Once a user gets a refund granted through Apple, verify that the refund has been seen by us by checking the customer history of this user 24 hours later and ensuring that a `CANCELLATION` event has occured with the reason field set to `CUSTOMER_SUPPORT`.
+  2. When a user tries to issue a refund, verify that you immediately direct them to the Apple support page: https://support.apple.com/en-us/HT204084
+  3. Once a user gets a refund granted through Apple, verify that the refund has been seen by us by checking the customer history of this user 24 hours later and ensuring that a `CANCELLATION` event has occurred with the reason field set to `CUSTOMER_SUPPORT`.
 
-  **Expected Results:** User is able to request a refund and either you grant the refund via the Dashboard or API and you are able to succesfully grant them that refund or point them in the correct direction. 
+  **Expected Results:** Users are able to request a refund and either you grant the refund via the Dashboard or API and you are able to successfully grant them that refund or point them in the correct direction. 
 
   **Pass/Fail Criteria:** Verify that the refund is seen in RevenueCat in the `CANCELLATION` event. 
 
@@ -67,66 +89,66 @@ This document provides a bunch of key use cases that you can use to verify the s
   **Related docs:** 
   - [Handling refunds](https://www.revenuecat.com/docs/subscription-guidance/refunds)
   
-  **Preconditions:** App installed, RevenueCat configured, and current subscripiton on app user ID. 
+  **Preconditions:** App installed, RevenueCat configured, and current subscription on app user ID. 
 
   **Steps:**
-  1. Open the app with an app user ID that already has a subscripiton. 
-  2. Ensure that subscripiton is renewing properly. 
+  1. Open the app with an app user ID that already has a subscription. 
+  2. Ensure that the subscription is renewed properly. 
   3. Cancel the subscription through the settings on your device or through our [API](https://www.revenuecat.com/docs/api-v1#tag/transactions/operation/cancel-a-google-subscription) for purchases made on Google Play. 
   4. Verify that the user has received a `CANCELLATION` event on their RevenueCat customer history. We will send this event as soon as the cancellation has started, the actual expiration event will come as soon as the current subscription period ends. 
 
-  **Expected Results:** Subscription is cancelled succesfully and we trigger the cancellation event on time. 
+  **Expected Results:** Subscription is canceled successfully and we trigger the cancellation event on time. 
 
-  **Pass/Fail Criteria:** Subscription is cancelled and event is sent. 
+  **Pass/Fail Criteria:** Subscription is canceled and the event is sent. 
 
 </details>
 <details>
   <summary>Expiration</summary>
 
-  **Description:** To verify that a users subscription has expired, follow this test guide. 
+  **Description:** To verify that a user's subscription has expired, follow this test guide. 
 
   **Related docs:** 
   - [Event types](https://www.revenuecat.com/docs/integrations/webhooks/event-types-and-fields#event-types)
 
-  **Preconditions:** App installed, app user ID has a current subscripiton.  
+  **Preconditions:** App installed, app user ID has a current subscription.  
 
   **Steps:**
   1. Open the app. 
-  2. Navigate to your paywall or subscripiton page and cancel the current subscripiton. 
-  3. Wait until you current subscription's expiration time and check to ensure that once this time hits the user no longer has access to their entitlements. 
+  2. Navigate to your paywall or subscription page and cancel the current subscription. 
+  3. Wait until your current subscription's expiration time and check to ensure that once this time hits the user no longer has access to their entitlements. 
   4. To verify, check the RevenueCat dashboard of the user for an `EXPIRATION` event at the time of the expiration. 
 
-  **Expected Results:** User is able to cancel the subscripiton and `EXPIRATION` event follows at the time of expiration. 
+  **Expected Results:** The User is able to cancel the subscription and the `EXPIRATION` event follows at the time of expiration. 
 
-  **Pass/Fail Criteria:** Verify that the user no longer has access to the entitlment after the expiration has triggered. 
+  **Pass/Fail Criteria:** Verify that the user no longer has access to the entitlement after the expiration has been triggered. 
 
 </details>
 <details>
-  <summary>Upgrade's and Downgrade's</summary>
+  <summary>Upgrades and Downgrades</summary>
 
-  **Description:** If you have multiple subscripitons tiers and want to allow people to upgrade/downgrade between them, follow this testing method to ensure everything is working as intended.
+  **Description:** If you have multiple subscription tiers and want to allow people to upgrade/downgrade between them, follow this testing method to ensure everything is working as intended.
   
   **Related docs:** 
   - [Upgrades, Downgrades, and Management](https://www.revenuecat.com/docs/subscription-guidance/managing-subscriptions)
 
-  **Preconditions:** App installed and current logged in app user ID has a subscription.
+  **Preconditions:** App installed and the current logged-in app user ID has a subscription.
 
   **Steps:**
-  1. Open the app with an app user that already has a subscripiton.
+  1. Open the app with an app user that already has a subscription.
   2. Open the subscription page or paywall in your app. 
-  3. Start a purchase for a subscripiton that would be an upgrade. 
+  3. Start a purchase for a subscription that would be an upgrade. 
   4. Check the RevenueCat dashboard for that app user ID and ensure that you see a `PRODUCT_CHANGE` event. 
   5. Check the `PRODUCT_CHANGE` event to see that the old product is the correct product and the new product is the correct product that you selected. 
 
-  **Expected Results:** New subscripiton is started and old subscription ends. 
+  **Expected Results:** New subscription starts and old subscription ends. 
 
-  **Pass/Fail Criteria:** Subscription is started on time based on `PRORATION` method that you use. 
+  **Pass/Fail Criteria:** Subscription is started on time based on the `PRORATION` method that you use. 
 
 </details>
 <details>
   <summary>Free Trials and Introductory offers</summary>
 
-  **Description:** If you are using free trials and/or intro offers, use this testing method to ensure that elgible users are granted them accordingly.
+  **Description:** If you are using free trials and/or intro offers, use this testing method to ensure that eligible users are granted them accordingly.
   
   **Related docs:** 
   - [Free Trials and Promo Offers](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers)
@@ -135,7 +157,7 @@ This document provides a bunch of key use cases that you can use to verify the s
 
   **Steps:**
   1. Open the app with a fresh sandbox user.
-  2. Start a subscripiton purchase and ensure that the free trial or intro offer is being attached. 
+  2. Start a subscription purchase and ensure that the free trial or intro offer is being attached. 
   3. Open that app user ID's customer history in RevenueCat.
   4. Verify that the purchase has a free trial by checking to ensure the `period_type` in their purchase was set to `TRIAL`. If you are checking for an intro offer, ensure that the `period_type` is `INTRO`.  
 
@@ -147,24 +169,383 @@ This document provides a bunch of key use cases that you can use to verify the s
 
 ### Configuration
 <details>
-  <summary>Anonymous Configurtion</summary>
-  - **Item 1:** This is the first item.
-  - **Item 2:** This is the second item with more details.
-  - **Item 3:** This is the third item.
-  - **Item 4:** This is the fourth item.
+  <summary>Anonymous App User ID Configuration</summary>
+
+  **Description:** Verify that the user had been successfully configured with the SDK with the Identified App User ID 
+
+  **Preconditions:** App installed, Sandbox environment enabled, RevenueCat debug logs enabled and RevenueCat `configure()` called without App User ID. 
+
+  **Example Code:** 
+
+
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        content: content1,
+    },
+    {
+        type: 'objc',
+        content: content2,
+    },
+    {
+        type: 'kotlin',
+        content: content3,
+    },
+    {
+        type: 'kotlin',
+        content: contentKmpAnon,
+        name: 'Kotlin Multiplatform',
+    },
+    {
+        type: 'java',
+        content: content4,
+    },
+    {
+        type: 'flutter',
+        content: content5,
+    },
+    {
+        type: 'rn',
+        content: content6,
+    },
+    {
+        type: 'cordova',
+        content: content7,
+    },
+    {
+        type: 'capacitor',
+        content: contentCapacitor1,
+    },
+    {
+        type: 'unity',
+        content: content8,
+    },
+    
+]}/>
+
+  **Steps:**
+  1. Open the App.
+  2. Open your RevenueCat debug logs.
+  3. You should see [Purchases] - DEBUG: 👤 Initial App User ID - $RCAnonymousID:9be80d6558664c649fc0be8d00c5113a 
+  4. In the CustomerInfo Object you should see the anonymous ID under Original App User ID
+
+  **Expected Results:** An Anonymous ID is successfully attributed to the customer
+
+  **Pass/Fail Criteria:** Anonymous User is seen on the RevenueCat dashboard, debug logs and CustomerInfo Object.
+
 </details>
 <details>
-  <summary>Configuring with App User ID</summary>
+  <summary> Identified App User ID Configuration</summary>
+
+  **Description:** Verify that the user has been successfully configured with the SDK with an identified ID. 
+  
+  **Related Docs** 
+  Identifying Users
+
+  **Preconditions:** App installed, Sandbox environment enabled, RevenueCat debug logs enabled and RevenueCat configure()called without App User ID. 
+
+  **Example Code:** 
+
+
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        content: content9,
+    },
+    {
+        type: 'objc',
+        content: content10,
+    },
+    {
+        type: 'kotlin',
+        content: content11,
+    },
+    {
+        type: 'kotlin',
+        content: contentKmp,
+        name: 'Kotlin Multiplatform',
+    },
+    {
+        type: 'java',
+        content: content12,
+    },
+    {
+        type: 'flutter',
+        content: content13,
+    },
+    {
+        type: 'rn',
+        content: content14,
+    },
+    {
+        type: 'cordova',
+        content: content15,
+    },
+    {
+        type: 'capacitor',
+        content: contentCapacitor2,
+    },
+    {
+        type: 'unity',
+        content: content16,
+    },
+    
+]}/>
+
+  **Steps:**
+  1. Open the App.
+  2. Open your RevenueCat debug logs.
+  3. You should see [Purchases] - DEBUG: 👤 Initial App User ID - [my_app_user_id]
+  4. In the CustomerInfo Object you should see the Identified ID under Original App User ID
+
+  **Expected Results:** An Identified ID is successfully attributed to the customer
+
+  
+
+  **Pass/Fail Criteria:** Identified User is seen on the RevenueCat dashboard, debug logs and CustomerInfo Object.
+
 </details>
 <details>
-  <summary>Offers (Google)</summary>
+  <summary> Google Offers </summary>
+
+  **Description:** Test Google Play offers using the RevenueCat SDK, including automatic application of trials and introductory offers, and manual offer selection for greater control. This includes verifying the correct application of eligible offers based on pre-defined logic and ensuring that developer-determined offers are handled appropriately.
+
+  **Related Docs** 
+  *  [RevenueCat Documentation - Google Offers](#) *(Replace with the actual link to the relevant doc)
+  
+  **Preconditions:**   
+  * The RevenueCat SDK is integrated into the app.
+  * Google Play base plans and offers are set up, including free trials, introductory offers, and any developer-determined offers.
+  * The app has purchase functionality implemented via the RevenueCat SDK.
+
+
+  **Example Code:** 
+
+  ```kotlin
+  // Example code to select specific offers:
+  val basePlan = storeProduct.subscriptionOptions?.basePlan
+  val freeTrialOffer = storeProduct.subscriptionOptions?.freeTrial
+  val introductoryOffer = storeProduct.subscriptionOptions?.introOffer
+  val offerForLapsedCustomers = storeProduct.subscriptionOptions?.withTag("lapsed-customers").first()
+
+  // To purchase the offer for lapsed customers directly:
+  Purchases.sharedInstance.purchaseWith(
+    PurchaseParams.Builder(requireActivity(), offerForLapsedCustomers).build(), 
+    onError = { error, userCancelled ->
+      // Handle error
+    },
+    onSuccess = { storeTransaction, customerInfo ->
+      // Handle success
+    }
+  )
+```
+
+  **Steps:
+
+1. **Automatic Application of Offers**
+   - Use `PurchaseParams.Builder` with a `StoreProduct` or `Package`.
+   - Verify that the RevenueCat SDK applies the longest eligible free trial or, if not available, the cheapest introductory offer.
+
+2. **Handling Developer-Determined Offers**
+   - Set up a developer-determined offer on the Google Play Console.
+   - Ensure the offer is tagged with `rc-ignore-offer` if it should not be automatically applied.
+   - Test purchasing a product and verify that the tagged offer is not automatically selected.
+
+3. **Manual Offer Selection**
+   - Use the `subscriptionOptions` property of a `StoreProduct` to manually select offers, such as the `basePlan`, `freeTrial`, or offers with specific tags.
+   - Pass the selected `SubscriptionOption` to `PurchaseParams.Builder` and initiate the purchase.
+   - Confirm that the selected offer is correctly applied during the purchase process.
+
+**Expected Results:**
+
+1. **Automatic Application of Offers:**
+   - The longest eligible free trial or the cheapest introductory offer is automatically applied as per the defined logic.
+
+2. **Handling Developer-Determined Offers:**
+   - Offers with the `rc-ignore-offer` tag are not automatically applied, and developer-determined offers are handled according to the setup in the Google Play Console.
+
+3. **Manual Offer Selection:**
+   - The purchase uses the manually selected `SubscriptionOption`, correctly applying the intended offer, such as a specific introductory offer or base plan.
+
+**Pass/Fail Criteria:**
+
+- **Pass:**Offers are applied according to the expected logic, with correct handling of automatic and manual selections, and developer-determined offers are not unintentionally applied.
+
+- **Fail:** If the SDK incorrectly applies offers, fails to respect the `rc-ignore-offer` tag, or does not apply the manually selected offer, the test fails.
+
 </details>
 <details>
   <summary>Display Offering Flow</summary>
+
+  **Description:** Test the functionality of displaying products and offerings using the RevenueCat SDK, including fetching offerings, handling placements, and displaying packages based on various configurations. This ensures that products are dynamically presented to users without requiring app updates and that the SDK's offerings configuration works as expected.
+
+  **Related Docs** 
+  * [RevenueCat Documentation - Displaying Products](#) *(Replace with the actual link to the relevant doc)*
+
+  **Preconditions:** 
+    * The RevenueCat SDK is integrated into the app.
+    * Offerings are configured in the RevenueCat dashboard.
+    * The app's paywalls are set up to display offerings and packages.
+
+
+  **Example Code:** 
+
+  ```swift
+  // Fetching Offerings
+  Purchases.shared.getOfferings { (offerings, error) in
+      if let packages = offerings?.current?.availablePackages {
+          self.display(packages)
+      }
+  }
+
+  // Fetching Offerings by Placement
+  Purchases.shared.getOfferings { offerings, error in
+      if let offering = offerings?.currentOffering(forPlacement: "your-placement-identifier") {
+          // TODO: Show paywall
+      } else {
+          // TODO: Do nothing or continue on to next view
+      }
+  }
+
+  // Fetching Custom Offering by Identifier
+  Purchases.shared.getOfferings { (offerings, error) in
+      if let packages = offerings?.offering(identifier: "experiment_group")?.availablePackages {
+          self.display(packages)
+      }
+  }
+```
+
+
+ **Steps:
+
+1. **Launch the app and configure the SDK**
+   - Start by configuring the SDK without providing an App User ID to generate an anonymous ID.
+
+2. **Fetch Offerings**
+   - Use the `getOfferings()` method to fetch the current offerings configured in the RevenueCat dashboard.
+   - Verify that the default offering and its available packages are displayed correctly.
+
+3. **Fetch Offerings by Placement**
+   - Use `getCurrentOffering(forPlacement: "your-placement-identifier")` to fetch offerings based on a specific placement.
+   - Check that the correct offering is displayed based on the placement identifier if user fulfills your targeting rules.
+
+4. **Fetch Custom Offering by Identifier**
+   - Fetch a specific offering using its identifier (e.g., `"experiment_group"`).
+   - Verify that the correct packages associated with the custom offering are displayed.
+
+5. **Display Packages**
+   - Use the `.availablePackages` property on an offering to display the available packages.
+   - Verify that the packages are grouped correctly according to type (e.g., monthly, annual).
+
+
+**Expected Results:
+
+1. **Fetch Offerings:**
+   - The SDK fetches the current offerings correctly, and the associated packages are displayed to the user.
+
+2. **Fetch Offerings by Placement:**
+   - The correct offering is fetched and displayed based on the specified placement identifier.
+
+3. **Fetch Custom Offering by Identifier:**
+   - The SDK correctly retrieves and displays the custom offering identified by its unique identifier.
+
+4. **Display Packages:**
+   - Packages are displayed accurately, reflecting the appropriate grouping and type (monthly, annual, etc.).
+
+**Pass/Fail Criteria:**
+
+- **Pass:** Each scenario behaves as expected, with correct updates to the SDK and no unintended behavior.
+
+- **Fail:** If any scenario does not behave as expected—such as incorrect fetching, failure to display offerings, or incorrect handling of empty states—the test fails.
+
 </details>
 <details>
   <summary>Login/Logout Flow</summary>
+
+  **Description:** Test the login behavior in the RevenueCat SDK to ensure that custom and anonymous App User IDs are handled correctly. This includes verifying the merging and switching of IDs and ensuring correct behavior when logging out and logging back in.
+
+  **Related Docs** 
+  * [Identifying Customers in RevenueCat](https://www.revenuecat.com/docs/identifying-customers)
+
+
+  **Preconditions:** 
+  - The RevenueCat SDK is integrated into the app.
+  - A unique custom App User ID is available for testing.
+  - The app's authentication system manages App User IDs.
+
+
+  **Example Code:** 
+  ```swift
+  // Log In with Custom App User ID:
+  // Configure Purchases on app launch
+  Purchases.configure(withAPIKey: <my_api_key>)
+
+  // Log in with a custom App User ID
+  Purchases.shared.logIn("<my_app_user_id>") { (customerInfo, created, error) in
+      // customerInfo updated for my_app_user_id
+  }
+
+  // Log Out:
+  // Log out the current user
+  Purchases.shared.logOut()
+
+  // Log In with Another Custom App User ID:
+  // Log in with another custom App User ID
+  Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error) in
+      // customerInfo updated for another_app_user_id
+  }
+```
+
+
+
+**Steps:
+
+1. **Launch the app and configure the SDK**
+   - Start by configuring the SDK without providing an App User ID to generate an anonymous ID.
+
+2. **Log in with a custom App User ID**
+   - Use the `.logIn("<my_app_user_id>")` method to log in with a custom App User ID.
+   - Verify that the `customerInfo` object reflects the custom App User ID.
+
+3. **Log out of the current user**
+   - Call the `.logOut()` method to log out.
+   - Confirm that a new anonymous App User ID is generated.
+
+4. **Log in again with a different custom App User ID**
+   - Use the `.logIn("<another_app_user_id>")` method.
+   - Check that the `customerInfo` updates to the new custom App User ID without merging data from the previous session.
+
+5. **Switch accounts without logging out**
+   - Directly call the `.logIn()` method with another App User ID without first logging out.
+   - Ensure the `customerInfo` correctly switches to the new App User ID without unintended merging.
+
+**Expected Results:
+
+1. **Initial Log In with Custom App User ID:**
+   - The `customerInfo` object should correctly reflect the custom App User ID (`<my_app_user_id>`), showing associated subscription status and purchase history.
+
+2. **Log Out:**
+   - A new anonymous App User ID should be generated, and the `customerInfo` should no longer be associated with the previous custom App User ID.
+
+3. **Log In After Log Out:**
+   - Logging in with a different custom App User ID (`<another_app_user_id>`) should update the `customerInfo` object to reflect this new ID, with no data merged from the previous session unless necessary for a restore or similar operation.
+
+4. **Switching Accounts:**
+   - When switching from one custom App User ID to another, the `customerInfo` should update to reflect the new custom App User ID correctly, without merging unless explicitly required by the app’s merge logic.
+
+5. **Anonymous to Custom App User ID:**
+   - When logging in from an anonymous ID to a custom App User ID, the SDK should merge or transfer `customerInfo` correctly, depending on the presence of existing aliases or prior configurations. If the custom ID already exists, ensure the correct merging logic is applied.
+
+**Pass/Fail Criteria:**
+
+- **Pass:** Each scenario behaves as expected, with correct updates to the `customerInfo` object and no unintended merges or data loss.
+  
+- **Fail:** If any scenario does not behave as expected—such as incorrect merging, failure to update `customerInfo`, or retention of previous IDs—the test fails.
+
+  
 </details>
+
+
 
 
 ### Restoring Flow
@@ -176,13 +557,13 @@ This document provides a bunch of key use cases that you can use to verify the s
   **Related docs:** 
   - [Syncing Purchases](https://www.revenuecat.com/docs/getting-started/restoring-purchases#syncing-purchases-without-user-interaction)
   
-  **Preconditions:** App installed, Two subscriber ID's, first subscriber ID has a current subscription, other subscriber ID has no subscripiton. 
+  **Preconditions:** App installed, Two subscriber IDs, first subscriber ID has a current subscription, another subscriber ID has no subscription. 
 
   **Steps:**
   1. Open the app with the currently subscribed app user ID.
-  2. Close the app, create a new [sandbox user](https://www.revenuecat.com/docs/test-and-launch/sandbox).
-  3. Open the app with the new app user ID that previously didnt have a subscription. 
-  4. If you are calling `syncPurchases()` on app launch, this user should have gotten the subscripiton and entitlements transferred on app launch. 
+  2. Close the app, and create a new [sandbox user](https://www.revenuecat.com/docs/test-and-launch/sandbox).
+  3. Open the app with the new app user ID that previously didn't have a subscription. 
+  4. If you are calling `syncPurchases()` on app launch, this user should have gotten the subscription and entitlements transferred on app launch. 
   5. Test to see if you can access your paid content. 
   6. Verify that the transfer happened by checking the new app user ID's customer history and looking for a `TRANSFER` event.   
 
@@ -199,12 +580,12 @@ This document provides a bunch of key use cases that you can use to verify the s
   **Related docs:** 
   - [Transfer to a new app user ID](https://www.revenuecat.com/docs/getting-started/restoring-purchases#transfer-to-new-app-user-id)
   
-  **Preconditions:** App installed, Two subscriber ID's, first subscriber ID has a current subscription, other subscriber ID has no subscripiton. 
+  **Preconditions:** App installed, Two subscriber IDs, first subscriber ID has a current subscription, other subscriber ID has no subscription. 
 
   **Steps:**
   1. Open the app with the currently subscribed app user ID and verify this user has access to paid content.
   2. Close the app, create a new [sandbox user](https://www.revenuecat.com/docs/test-and-launch/sandbox).
-  3. Open the app with the new app user ID that previously didnt have a subscription. 
+  3. Open the app with the new app user ID that previously did not have a subscription. 
   4. Navigate to your payment screen and hit your "Restore Purchases" button.
   5. If this works, you should now gain access to paid content that was previously attached to the other app user ID. 
   6. Verify that the transfer happened by checking the new app user ID's customer history and looking for a `TRANSFER` event.   
@@ -222,16 +603,16 @@ This document provides a bunch of key use cases that you can use to verify the s
   **Related docs:** 
   - [Transfer if there are no active subscriptions](https://www.revenuecat.com/docs/getting-started/restoring-purchases#transfer-if-there-are-no-active-subscriptions)
   
-  **Preconditions:** App installed, Three app user ID's, first app user ID has a current subscription, second app user ID has no subscripiton, and the third app user ID has a subscripiton to the same product. 
+  **Preconditions:** App installed, Three app user ID's, first app user ID has a current subscription, second app user ID has no subscription, and the third app user ID has a subscription to the same product. 
 
   **Steps:**
   1. Open the app with the currently subscribed app user ID and verify this user has access to paid content.
-  2. Open the app with the second app user ID that previously didnt have a subscription. 
+  2. Open the app with the second app user ID that previously did not have a subscription. 
   3. Navigate to your payment screen and hit your "Restore Purchases" button.
   4. If this works, you should now gain access to paid content that was previously attached to the other app user ID. 
   5. Verify that the transfer happened by checking the new app user ID's customer history and looking for a `TRANSFER` event. 
   6. Open the app again
-  7. Login to your thid app user ID which already has an active subscription. 
+  7. Login to your app user ID which already has an active subscription. 
   8. Navigate to your payment screen and hit your "Restore Purchases" button.
   9. You should now see an error message stating that we cant restore this purchase.
   10. Verify that no `TRANSFER` event happened on the third app user ID's customer history. 
@@ -248,21 +629,21 @@ This document provides a bunch of key use cases that you can use to verify the s
   **Related docs:** 
   - [Keep with original App User ID](https://www.revenuecat.com/docs/getting-started/restoring-purchases#keep-with-original-app-user-id) 
   
-  **Preconditions:** App installed, two app user ID's, the first app user ID has a subscripiton, the second one does not. 
+  **Preconditions:** App installed, two app user ID's, the first app user ID has a subscription, the second one does not. 
 
   **Steps:**
   1. Open the app. login with the first app user ID and verify this user has access to paid content.
   2. Close the app and reopen the app. 
   3. Login with the second app user ID. Make sure you are logged into the same store account.  
   4. Navigate to the purchase page in your app and try to restore purchases. 
-  5. You should now see an error message when restoring becuase this purchase belongs to the other app user ID. 
-  6. Attempt to start a subscripiton on that same app user ID. 
-  7. You should now see an error message when restoring becuase this purchase belongs to the other app user ID. 
+  5. You should now see an error message when restoring because this purchase belongs to the other app user ID. 
+  6. Attempt to start a subscription on that same app user ID. 
+  7. You should now see an error message when restoring because this purchase belongs to the other app user ID. 
   8. Verify that no `TRANSFER` event happened on the second app user ID's customer history. 
 
   **Expected Results:** Subscription and entitlements are not transferred to the second app user ID. this user is also not able to make a purchase while logged in with the same store account. 
 
-  **Pass/Fail Criteria:** User is correclty blocked from making the purchase and causing a transfer. 
+  **Pass/Fail Criteria:** User is correctly blocked from making the purchase and causing a transfer. 
 </details>
 <details>
   <summary>Restoring Purchases (Share between App User IDs (legacy))</summary>
@@ -272,22 +653,22 @@ This document provides a bunch of key use cases that you can use to verify the s
   **Related docs:** 
   - [Share between App User IDs](https://www.revenuecat.com/docs/getting-started/restoring-purchases#share-between-app-user-ids-legacy) 
   
-  **Preconditions:** App installed, two app user ID's, the first app user ID has a subscripiton, the second one does not. 
+  **Preconditions:** App installed, two app user ID's, the first app user ID has a subscription, the second one does not. 
 
   **Steps:**
   1. Open the app with the first app user ID.
   2. Ensure that this user has access to entitlements and paid content. 
   3. Close the app and reopen the app. 
   4. Login with the second app user ID. 
-  5. Verify that you currently dont have any access to paid content oe entitlements. 
+  5. Verify that you currently don't have any access to paid content or entitlements. 
   6. Navigate to the purchase page in your app and try to restore purchases. 
   7. Once the restore happens, verify that you now have access to paid content/entitlements. 
   8. Open the RevenueCat dashboard of the new app user ID. 
-  9. Check the bottom right of the customer history and ensure that you see the first app user ID under the "App User ID's" section. 
+  9. Check the bottom right of the customer history and ensure that you see the first app user ID under the "App User ID" section. 
 
-  **Expected Results:** Subscription and entitlements are transferred to the second app user ID. This app user ID also has a new alias with the origingal app user ID. 
+  **Expected Results:** Subscription and entitlements are transferred to the second app user ID. This app user ID also has a new alias with the original app user ID. 
 
-  **Pass/Fail Criteria:** User is correclty aliased in the customer histroy and new user has the entitlements of the old user. 
+  **Pass/Fail Criteria:** User is correctly aliased in the customer history and the new user has the entitlements of the old user. 
 </details>
 
 ### Paywalls
@@ -306,8 +687,8 @@ This document provides a bunch of key use cases that you can use to verify the s
   2. Navigate to your paywall ensure that the paywall is showing in fullscreen with the proper packages that you have chosen as well as details and any images. 
   3. Select a package from the selection available on your paywall.
   4. Trigger the purchase. 
-  5. Ensure that the purcahse went through by checking your app for paid content/entitlements. 
-  6. Verify that the purchase went through by checking the customer history of the app user ID and verifying that purchase event has been seen. 
+  5. Ensure that the purchase went through by checking your app for paid content/entitlements. 
+  6. Verify that the purchase went through by checking the customer history of the app user ID and verifying that the purchase event has been seen. 
 
   **Expected Results:** User is shown the correct paywall and purchase flow works as intended. 
 
@@ -321,14 +702,14 @@ This document provides a bunch of key use cases that you can use to verify the s
   **Related docs:** 
   - [Paywall localization](https://www.revenuecat.com/docs/tools/paywalls/creating-paywalls#localization)  
   
-  **Preconditions:** App installed, Paywall set up in Revenuecat, fresh app user ID, device and store account is set to the country thats localization is to be tested. 
+  **Preconditions:** App installed, Paywall set up in Revenuecat, fresh app user ID, device and store account is set to the country that's localization is to be tested. 
 
   **Steps:**
   1. Open the app with the app user ID. 
   2. Navigate to your paywall screen.
   3. Ensure that the paywall is being shown in the proper language as well as that the paywall has the correct conversions for values in your packages. 
 
-  **Expected Results:** User is shown the paywall in the correct language based on their localization. 
+  **Expected Results:** Users are shown the paywall in the correct language based on their localization. 
 
   **Pass/Fail Criteria:** Customers paywall changes based on their localization settings. 
 </details>
@@ -349,26 +730,171 @@ This document provides a bunch of key use cases that you can use to verify the s
   4. Purchase a package that has an intro offer attached. 
   5. Check the RevenueCat dashboard customer history for that app user ID and ensure that a `INITAL_PURCHASE` event was made with the Intro offer attached to it. This event should look like the intro offers discussed above in the test guide. 
 
-  **Expected Results:** User is shown the paywall with their intro offer attached and user is able to make the purchase with the intro offer attached. 
+  **Expected Results:** User is shown the paywall with their intro offer attached and the user is able to make the purchase with the intro offer attached. 
 
-  **Pass/Fail Criteria:** Customers is able to start an intro offer directly from purchasing through the RevenueCat created paywall. 
+  **Pass/Fail Criteria:** Customers are able to start an intro offer directly from purchasing through the RevenueCat created paywall. 
 
 </details>
 
 ### RC Billing
 <details>
   <summary>Purchase Flow</summary>
-  - **Item 1:** This is the first item.
-  - **Item 2:** This is the second item with more details.
-  - **Item 3:** This is the third item.
-  - **Item 4:** This is the fourth item.
+
+  **Description:**
+Test the purchase flow using the RevenueCat SDK to ensure that subscriptions are correctly initiated when the purchase process is completed. This includes verifying the handling of purchase initiation, completion, and failure scenarios.
+
+**Related Docs:**
+- RevenueCat Documentation - Subscription Lifecycle *(Replace with the actual link to the relevant doc)*
+
+**Preconditions:**
+- The RevenueCat SDK is integrated and configured correctly in the app.
+- Products are set up in the RevenueCat dashboard.
+
+**Example Code:**
+```javascript
+try {
+    const { customerInfo } = await Purchases.getSharedInstance().purchase({
+        rcPackage: pkg
+    });
+    if (Object.keys(customerInfo.entitlements.active).includes("pro")) {
+        // Unlock "pro" content
+    }
+} catch (e) {
+    if (e instanceof PurchasesError && e.errorCode == ErrorCode.UserCancelledError) {
+        // User canceled the purchase
+    } else {
+        // Handle other errors
+    }
+}
+```
+**Steps:**
+
+1. **Initialize the SDK and ensure it’s correctly configured.**
+2. **Trigger a purchase for a subscription using the SDK.**
+3. **Complete the purchase flow and verify that an `INITIAL_PURCHASE` event is generated.**
+4. **If the purchase is successful, ensure that the customer receives access to the appropriate entitlements.**
+5. **In the case of purchase failure or cancellation, verify that no subscription is created and no events are generated.**
+
+**Expected Results:**
+
+- A subscription is created only when the purchase is successfully completed, generating an `INITIAL_PURCHASE` event.
+- If the purchase is canceled or fails, no subscription is created and no events are generated.
+
+**Pass/Fail Criteria:**
+
+- **Pass:** The purchase flow behaves as expected with correct event generation and entitlement access.
+- **Fail:** If the purchase flow does not correctly handle successful or failed purchases, the test fails.
+
+  
 </details>
 <details>
   <summary>Free Trials </summary>
+
+  **Description:**
+Test the application and eligibility of free trials for subscriptions through RevenueCat Billing, ensuring that the correct trial period is applied based on the customer's eligibility criteria.
+
+**Related Docs:**
+- RevenueCat Documentation - Free Trials *(Replace with the actual link to the relevant doc)*
+
+**Preconditions:**
+- Products with free trials are configured in the RevenueCat dashboard.
+- The RevenueCat SDK is integrated and set up correctly.
+
+**Example Code:**
+```javascript
+// Example: Checking trial eligibility
+const customerInfo = await Purchases.getSharedInstance().getCustomerInfo();
+if ("gold_entitlement" in customerInfo.entitlements.active) {
+    grantEntitlementAccess();
+}
+```
+
+  **Steps:**
+
+1. **Configure a product with a free trial in the RevenueCat dashboard.**
+2. **Set different trial eligibility criteria (e.g., "Everyone", "Has never made any purchase").**
+3. **Attempt to start a subscription for a customer and verify that the correct trial eligibility is applied.**
+4. **Ensure that the trial automatically converts to a paid subscription unless canceled before expiration.**
+
+**Expected Results:**
+
+- The correct free trial is applied based on the configured eligibility criteria.
+- The trial period starts without charging the customer and automatically converts to a paid subscription if not canceled.
+
+**Pass/Fail Criteria:**
+
+- **Pass:** The free trial is correctly applied and transitions to a paid subscription as expected.
+- **Fail:** If the trial eligibility is incorrect or fails to convert properly, the test fails.
+
 </details>
 <details>
   <summary>Refund</summary>
+  
+**Description:**
+Test the refund process to ensure that subscriptions are correctly refunded, and the customer immediately loses access to entitlements associated with the subscription.
+
+**Related Docs:**
+- RevenueCat Documentation - Managing Customer Subscriptions *(Replace with the actual link to the relevant doc)*
+
+**Preconditions:**
+- A subscription is active and has been paid for by the customer.
+- The RevenueCat SDK is integrated and configured.
+
+**Example Code:**
+```javascript
+// Example: Refunding a subscription
+// Use the REST API or dashboard to trigger a refund
+curl -X POST https://api.revenuecat.com/v1/projects/proj1ab2c3d4/subscriptions/sub1a2b3c4d5e/actions/refund \
+-H "Authorization: Bearer YOUR_API_KEY" \
+-H "Content-Type: application/json"
+```
+  **Steps:**
+  1. 
+
+  **Expected Results:**
+
+  **Pass/Fail Criteria:** 
+  
 </details>
 <details>
   <summary>Expiration</summary>
+
+ **Description:**
+Test the expiration of subscriptions to ensure that the subscription ends appropriately when canceled, when the billing period ends, or when a grace period expires.
+
+**Related Docs**
+- RevenueCat Documentation - Subscription Lifecycle *(Replace with the actual link to the relevant doc)*
+
+**Preconditions:**
+- A subscription is active and has been configured with or without a grace period.
+- The RevenueCat SDK is integrated and configured.
+
+**Example Code:**
+```javascript
+// Example: Checking for subscription expiration
+const customerInfo = await Purchases.getSharedInstance().getCustomerInfo();
+if (!("gold_entitlement" in customerInfo.entitlements.active)) {
+    revokeEntitlementAccess();
+}
+```
+
+**Steps:**
+
+1. **Start a subscription and verify that it is active.**
+2. **Cancel the subscription or allow the billing period to end without payment.**
+3. **If applicable, wait for the grace period to expire.**
+4. **Verify that an EXPIRATION event is generated.**
+5. **Ensure that the customer loses access to the entitlements associated with the expired subscription.**
+
+**Expected Results:**
+
+- The subscription expires as expected, generating an EXPIRATION event.
+- The customer loses access to any entitlements associated with the subscription.
+
+- **Pass:** The subscription expires correctly, and access to entitlements is revoked.
+- **Fail:** If the subscription does not expire as expected or entitlements are not revoked, the test fails.
+
+  
 </details>
+
+
