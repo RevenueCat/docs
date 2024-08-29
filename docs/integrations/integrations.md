@@ -48,10 +48,6 @@ If you're receiving errors, inspect the response message to troubleshoot.
 
 If you don't see any events dispatched, ensure that you're capturing any device specific information required by that integration and that you've recorded a recent purchase to RevenueCat.
 
-## Notifications for failing integrations
-
-Every few hours we'll review the event delivery rate for each integration and will send you an email if the failure rate is unusually high so you can review the integration and take action if needed.
-
 ### Integrations FAQs
 
 | Question                                                       | Answer                                                                                                                                                                                                                                       |
