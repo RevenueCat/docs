@@ -127,6 +127,8 @@ Presenting a paywall varies depending on your platform. See [Displaying Paywalls
 <Button href="/docs/tools/paywalls/displaying-paywalls">Present a Paywall →</Button>
 <br /><br />
 
+*Want to display your products manually? See [Displaying Products](/getting-started/displaying-products).*
+
 #### SDK not fetching products or offerings?
 
 A common issue when displaying your paywall or making a purchase is missing or empty offerings. This is almost always a configuration issue.
@@ -135,11 +137,17 @@ If you're running into this error, please see our [community post](https://commu
 
 ### Make a Purchase
 
-Once your paywall is presented, select one of your products to make a purchase. The SDK will handle the purchase flow automatically and send the purchase information to RevenueCat.
+Once your paywall is presented, select one of your products to make a purchase. The SDK will handle the purchase flow automatically and send the purchase information to RevenueCat. The RevenueCat SDK will automatically handle sandbox vs. production environments.
 
-When the purchase is complete, you can find the purchase associated to the customer in the RevenueCat dashboard. You can search for the customer by their App User ID that you configured, or by the automatically assigned `$RCAnonymousID` that you'll find in your logs.
+Each platform requires slightly different configuration steps to test in sandbox. See [Sandbox Testing](/test-and-launch/sandbox) for more information.
+
+When the purchase is complete, you can find the purchase associated to the customer in the [RevenueCat dashboard](/dashboard-and-metrics/customer-history). You can [search for the customer](/dashboard-and-metrics/customer-lists#find-an-individual-customer) by their App User ID that you configured, or by the automatically assigned `$RCAnonymousID` that you'll find in your logs.
+
+**Note:** RevenueCat ***always*** validates transactions with the respective store. The dashboard will only reflect purchases that have been successfully validated by the store.
 
 Additionally, the SDK will automatically update the customer's `CustomerInfo` object with the new purchase information. This object contains all the information about the customer's purchases and subscriptions.
+
+*Want to manually call the `purchase` method? See [Making Purchases](/getting-started/making-purchases).*
 
 ### Check Subscription Status
 
