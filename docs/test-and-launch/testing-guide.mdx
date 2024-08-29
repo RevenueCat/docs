@@ -5,25 +5,27 @@ excerpt: Is my RevenueCat integration working?
 hidden: false
 ---
 
-Want to test you RevenueCat integration? Follow this document to learn how to test specific functions throughout your purchase process as well as help verify that your RevenueCat intrgeration is working properly.
+Want to test you RevenueCat integration? Follow this document to learn how to test specific functions throughout your purchase process as well as help verify that your RevenueCat setup is working properly.
 
 ## Configurations [Jaz]
-
+Wondering if your configuration of the SDK and RevenueCat is working properly? Make sure to check out these key factors in configuration.
 ### New to Subscriptions/IAP
 ### Existing Code Base
 ### Using RevenueCat for Entitlements
 ### Using Own Backend for Entitlements
 
 ## Migration [Jaz]
-
+Performing a migration and want to make sure that everything is working as intended? Make sure to follow this guide to ensure that everyhting is working properly during your migration. 
 ### Client Side Migration
 ### Import Migration
 ### Receipt Forwarding
 
 ## RevenueCat Tools [Mike] 
-
+Looking to ensure that youre making use of our handy tools and that everything is working as intended? Follow this guide to make sure. 
 ### Using RC Paywalls
+To ensure that you are making use out of our Paywalls tool correctly, you will want to make sure that you create a paywall via your RevenueCat dashboard and then display these paywalls via our SDK to your users. More information on how to do this can be found [here](https://www.revenuecat.com/docs/tools/paywalls/displaying-paywalls). We also ahve a test guide which will go over use cases that are good to look out for that can be found [here](testing-guide/use-cases). 
 ### Placements & Targeting 
+To ensure that you are making use out of our Placements and targeting tools, you will want to make sure that you have some defined rules set in your monetization section of your project in RevenueCat. More inforamton on how to set these up can be found [here](https://www.revenuecat.com/docs/tools/targeting#creating-targeting-rules). Once this is set up, to test you will want to creat an app user ID that should fit into a target placement and fetch the offering. This user should be retunred an offering based on the target, you can verify this by creating another app user ID that is not supposed to fit in the offering and comparing this to see if you are shown the correct offering.  
 
 ## Extended Workflows [ Jaz & Mike ]
 
@@ -32,7 +34,10 @@ Want to test you RevenueCat integration? Follow this document to learn how to te
 ### B2B
 
 ## Different Identification Setups [Mike]
-
+To ensure that you're configuring RevenueCat to fit your needs correctly, you will need to ensure that you are following the proper Identification setup needed for your app. We mainly offer three ways of configuring that will help here, follow the outline below to ensure that you are configruing correctly. 
 ### Anonymous 
+To configure RevenueCat to generate anonymous app user ID's, this will be the easiest configuration setup. All you need to do to ensure your user has an anonymous app user ID in RevenueCat and is able to make purchases and be tracked correctly is configure the SDK without identifying an app user ID on configuration. We have a useful guide which goes over this in more detail [here](https://www.revenuecat.com/docs/customers/user-ids#anonymous-app-user-ids). To ensure that you ahve followed that guide correctly, simply make a fresh sandbox account and open your app. Once this is done, you should be able to see your new user on the RevenueCat dashboard with an anonymous app user ID. 
 ### Identified 
+To configure RevenueCat to use Identified app user ID's, this will also be an easy configuration setup. All you will need to do is ensure that when you configure the RevenueCat SDK, you make sure to add the app user ID taht you would like to be this users app user ID into the configure method. We have a useful guide which goes over this in more detail [here](https://www.revenuecat.com/docs/customers/user-ids#provide-app-user-id-on-configuration). 
 ### Mixed
+To configure RevenueCat to use both Anonymous and Identified app user ID's, this setup will be a little different and dependent on your use case. To do this, you can configure the SDK without identifying an app user ID intially, and then call the `login()` method with the identified app user ID that you would like to have the user login to. More information on this can be found [here](https://www.revenuecat.com/docs/customers/user-ids#provide-app-user-id-after-configuration). Going this route will also allow you to use the `logout()` method with less penalty because calling `logout()` will automatically generate an anonymous app user ID for that user that was previously logged in. 
