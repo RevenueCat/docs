@@ -255,6 +255,7 @@ const dashboardCategory = Category({
         Page({ slug: "refund-rate-chart" }),
         Page({ slug: "revenue-chart" }),
         Page({ slug: "subscription-retention-chart" }),
+        Page({ slug: "subscription-status-chart" }),
         Page({ slug: "trial-conversion-chart" }),
       ],
     }),
