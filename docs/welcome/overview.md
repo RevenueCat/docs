@@ -19,13 +19,13 @@ We host live office hours every other Friday, where we demo the platform and ans
 
 Are you building a new app, or are you adding in-app purchases or subscriptions to your app for the first time? Add the SDK and start monetizing your iOS, Android, and Amazon apps.
 
-<Button href="/docs/welcome/building-new">Add subscriptions to your app →</Button>
+<Button href="/docs/getting-started/quickstart">Add subscriptions to your app →</Button>
 
 ### Migrate existing subscriptions to RevenueCat
 
 Whether you have just one or one million subscribers, you can easily replace your existing setup with RevenueCat. Supercharge your business and start taking advantage of powerful features like Experiments, Paywalls, and Targeting.
 
-<Button href="/docs/welcome/existing-apps">Migrate to RevenueCat →</Button>
+<Button href="/docs/migrating-to-revenuecat/migration-paths">Migrate to RevenueCat →</Button>
 
 ## Browse features
 
