@@ -54,127 +54,63 @@ In addition to the results per variant that are illustrated above, you can also 
 The results from your experiment can also be exported in this table format using the **Export data CSV** button. This will included aggregate results per variant, and per product results, for flexible analysis.
 
 :::tip Automatic emails for poor performing tests
-
 If the Realized LTV of your Treatment is performing meaningfully worse than your Control, we'll automatically email you to let you know about it so that you can run your test with confidence.
-
 :::
 
 ## Metric definitions
 
 ### Initial conversion metric definitions
 
-**Customers**
-All new customers who've been included in each variant of your experiment.
-
-**Initial conversions**
-A purchase of any product offered to a customer in your experiment. This includes products with free trials and non-subscription products as well.
-
-**Initial conversion rate**
-The percent of customers who purchased any product.
-
-**Trials started**
-The number of trials started.
-
-**Trials completed**
-The number of trials completed. A trial may be completed due to its expiration or its conversion to paid.
-
-**Trials converted**
-The number of trials that have converted to a paying subscription. Keep in mind that this metric will lag behind your trials started due to the length of your trial. For example, if you're offering a 7-day trial, for the first 6 days of your experiment you will see trials started but none converted yet.
-
-**Trial conversion rate**
-The percent of your completed trials that converted to paying subscriptions.
+- **Customers**: All new customers who've been included in each variant of the experiment.
+- **Initial conversions**: A purchase of any product offered to a customer in the experiment. This includes products with free trials and non-subscription products as well.
+- **Initial conversion rate**: The percent of customers who purchased any product.
+- **Trials started**: The number of trials started.
+- **Trials completed**: The number of trials completed. A trial may be completed due to its expiration or its conversion to paid.
+- **Trials converted**: The number of trials that have converted to a paying subscription. Keep in mind that this metric will lag behind trials started due to the length of the trial offered. For example, if you're offering a 7-day trial, for the first 6 days of your experiment you will see trials started but none converted yet.
+- **Trial conversion rate**: The percent of your completed trials that converted to paying subscriptions.
 
 ### Paid customers metric definitions
 
-**Paid customers**
-The number of customers who made at least 1 payment. This includes payments for non-subscription products, but does NOT include free trials.
-
-Customers who later received a refund will be counted in this metric, but you can use "Refunded customers" to subtract them out.
-
-**Conversion to paying**
-The percent of customers who made at least 1 payment.
-
-**Active subscribers**
-The number of customers with an active subscription as of the latest results update.
-
-**Active subscribers (set to renew)**
-The number of customers with an active subscription who are set to renew their subscription (e.g. they have not cancelled) as of the latest results update.
-
-_NOTE: This measure is only available in the Customer Journey data table, not the Results chart._
-
-**Churned subscribers**
-The number of customers with a previously active subscription that has since churned as of the latest results update. A subscriber is considered churned once their subscription has expired (which may be at the end of their grace period if one was offered).
-
-**Refunded customers**
-The number of customers who've received at least 1 refund.
+- **Paid customers**: The number of customers who made at least 1 payment. This includes payments for non-subscription products, but does NOT include free trials. Customers who later received a refund will be counted in this metric, but you can use "Refunded customers" to subtract them out.
+- **Conversion to paying**: The percent of customers enrolled in the variant who made at least one payment on any product.
+- **Active subscribers**: The number of customers with an active subscription as of the latest results update.
+- **Active subscribers (set to renew)**: The number of customers with an active subscription who are set to renew their subscription (e.g. they have not cancelled) as of the latest results update. (_NOTE: This measure is only available in the Customer Journey data table, not the Results chart._)
+- **Churned subscribers**: The number of customers with a previously active subscription that has since churned as of the latest results update. A subscriber is considered churned once their subscription has expired (which may be at the end of their grace period if one was offered).
+- **Refunded customers**: The number of customers who've received at least 1 refund.
 
 ### Revenue metric definitions
 
-**Realized LTV (revenue)**
-The total revenue you've received (realized) from each experiment variant.
+- **Realized LTV (revenue)**: The total revenue that's been generated so far (realized) from each experiment variant.
 
-**Realized LTV per customer**
-The total revenue you've received (realized) from each experiment variant, divided by the number of customers in each variant.
+- **Realized LTV per customer**: The total revenue that's been generated so far (realized) from each experiment variant, divided by the number of customers in each variant. This should frequently be your primary success metric for determining which variant performed best.
 
-This should frequently be your primary success metric for determining which variant performed best.
+- **Realized LTV per paying customer**: The total revenue that's been generated so far (realized) from each experiment variant, divided by the number of paying customers in each variant. Compare this with "Conversion to paying" to understand if your differences in Realized LTV are coming the payment conversion funnel, or from the revenue generated from paying customers.
 
-**Realized LTV per paying customer**
-The total revenue you've received (realized) from each experiment variant, divided by the number of paying customers in each variant.
+- **Total MRR**: The total monthly recurring revenue your current active subscriptions in each variant would generate on a normalized monthly basis. [Learn more about MRR here.](/dashboard-and-metrics/charts#monthly-recurring-revenue-mrr)
 
-Compare this with "Conversion to paying" to understand if your differences in Realized LTV are coming the payment conversion funnel, or from the revenue generated from paying customers.
+- **Total MRR (set to renew)**: The total monthly recurring revenue your current active subscriptions who are currently set to renew (e.g. they have not cancelled) in each variant would generate on a normalized monthly basis. (_NOTE: This measure is only available in the Customer Journey data table, not the Results chart._)
 
-**Total MRR**
-The total monthly recurring revenue your current active subscriptions in each variant would generate on a normalized monthly basis.
-[Learn more about MRR here.](/dashboard-and-metrics/charts#monthly-recurring-revenue-mrr)
+- **MRR per customer**: The total monthly recurring revenue your current active subscriptions in each variant would generate on a normalized monthly basis, divided by the number of customers in each variant.
 
-**Total MRR (set to renew)**
-The total monthly recurring revenue your current active subscriptions who are currently set to renew (e.g. they have not cancelled) in each variant would generate on a normalized monthly basis.
-
-_NOTE: This measure is only available in the Customer Journey data table, not the Results chart._
-
-**MRR per customer**
-The total monthly recurring revenue your current active subscriptions in each variant would generate on a normalized monthly basis, divided by the number of customers in each variant.
-
-**MRR per paying customer**
-The total monthly recurring revenue your current active subscriptions in each variant would generate on a normalized monthly basis, divided by the number of paying customers in each variant.
+- **MRR per paying customer**: The total monthly recurring revenue your current active subscriptions in each variant would generate on a normalized monthly basis, divided by the number of paying customers in each variant.
 
 :::tip Only new users are included in the results
 
 To keep your A and B cohorts on equal footing, only new users are added to experiments. Here's an example to illustrate what can happen if existing users are added to an experiment: an existing user who is placed in a cohort might make a purchase they wouldn't otherwise make because the variant they were shown had a lower price than the default offering they previously saw. This might mean that the user made a purchase out of fear that they were missing out on a sale and wanted to lock in the price in anticipation of it going back up.
 :::
 
-### FAQs
-
-**What is included in the "Other" category in the product level breakdown of my results?**
-
-If the customers enrolled in your experiment purchased any products that were not included in either the Control or Treatment Offering, then they will be listed in the \"Other\" category when reviewing the product-level breakdown of a metric.
-
-This is to ensure that all conversions and revenue generated by these customers can be included when measuring the total revenue impact of one variant vs. another, even if that revenue was generated from other areas of the product experience (like a special offer triggered in your app).
-
-**Why do the results for one variant contain purchases of products not included in that variant's Offering?**
-
-There are many potential reasons for this, but the two most common occur when (1) there are areas of your app that serve products outside of the Current Offering returned by RevenueCat for a given customer, or (2) the offered Subscription Group on the App Store contains additional products outside of that variant's Offering. 
+| Question                                                                                                  | Answer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| What is included in the "Other" category in the product level breakdown of my results?                    | If the customers enrolled in your experiment purchased any products that were not included in either the Control or Treatment Offering, then they will be listed in the \"Other\" category when reviewing the product-level breakdown of a metric. This is to ensure that all conversions and revenue generated by these customers can be included when measuring the total revenue impact of one variant vs. another, even if that revenue was generated from other areas of the product experience (like a special offer triggered in your app). |
+| Why do the results for one variant contain purchases of products not included in that variant's Offering? | There are many potential reasons for this, but the two most common occur when (1) there are areas of your app that serve products outside of the Current Offering returned by RevenueCat for a given customer, or (2) the offered Subscription Group on the App Store contains additional products outside of that variant's Offering.                                                                                                                                                                                                             |
 
 For the first case, please check and confirm that all places where you serve Products in your app are relying on the Current Offering from RevenueCat to determiner what to display.
 
-For the second case, we recommend creating new Subscription Groups on the App Store for each Offering so that a customer who purchases from that Offering will only have that same set of options to select from one when considering changing or canceling their subscription from Subscription Settings on iOS.
+For the second case, we recommend creating new Subscription Groups on the App Store for each Offering so that a customer who purchases from that Offering will only have that same set of options to select from one when considering changing or canceling their subscription from Subscription Settings on iOS. |
+| What happens to customers that were enrolled in an experiment after it's been stopped? | New customers will no longer be enrolled in an experiment after it's been stopped, and customers who were already enrolled in the experiment will begin receiving the Default Offering if they reach a paywall again.
 
-**What happens to customers that were enrolled in an experiment after it's been stopped?**
-
-New customers will no longer be enrolled in an experiment after it's been stopped, and customers who were already enrolled in the experiment will begin receiving the Default Offering if they reach a paywall again.
-
-Since we continually refresh results for 400 days after an experiment has been ended, you may see renewals from these customers in your results, since they were enrolled as part of the test while it was running; but new subscriptions started by these customers after the experiment ended and one-time purchases made after the experiment ended will not be included in the results.
-
-**How can I review the individual customers who were enrolled in my experiment?**
-
-When using the Get or Create Subscriber endpoint you'll be able to see if an individual subscriber was enrolled in an experiment, and which variant they were assigned to, and can then pass that fact to other destinations like an analytics provider like Amplitude & Mixpanel, or your own internal database.
-
-**How can I review the individual transactions that have occurred in my experiment?**
-
-Our [Scheduled Data Exports](/integrations/scheduled-data-exports) include the experiment enrollment of each subscriber in the reported transactions, and by subscribing to them you can receive daily exports of all of your transactions to analyze the experiment results further.
-
-Please note that, as described above, initial conversions from customers enrolled in an experiment that occur _after_ the experiment has ended will not be included in the experiment results we calculate and provide in the Dashboard.
-
-**How can I filter my results by other dimensions like Country in the Dashboard?**
-
-Our Dashboard only supports filtering by Platform today, but if there are specific countries you're looking to distinctly measure results for you can instead run simultaneous tests targeting each set of countries. Then, each tests results will tell you how the experiment performed in that country set so you can determine where the change was and was not successful.
+Since we continually refresh results for 400 days after an experiment has been ended, you may see renewals from these customers in your results, since they were enrolled as part of the test while it was running; but new subscriptions started by these customers after the experiment ended and one-time purchases made after the experiment ended will not be included in the results. |
+| How can I review the individual customers who were enrolled in my experiment? | When using the Get or Create Subscriber endpoint you'll be able to see if an individual subscriber was enrolled in an experiment, and which variant they were assigned to, and can then pass that fact to other destinations like an analytics provider like Amplitude & Mixpanel, or your own internal database.
+|
+| How can I filter my results by other dimensions like Country in the Dashboard? | Our Dashboard only supports filtering by Platform today, but if there are specific countries you're looking to distinctly measure results for you can instead run simultaneous tests targeting each set of countries. Then, each tests results will tell you how the experiment performed in that country set so you can determine where the change was and was not successful.
+|
