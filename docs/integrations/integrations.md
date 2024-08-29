@@ -50,7 +50,7 @@ If you don't see any events dispatched, ensure that you're capturing any device 
 
 ## Notifications for failing integrations
 
-Every few hours we'll review the event delivery rate for each integration and will send you an email if the failure rate is unusually high so you can review the integration and take action if needed. We'll only ever send a maximum of one email per integration per day, and you can unsubscribe from these emails if you'd like by clicking [here](https://app.revenuecat.com/settings/notifications).
+Every few hours we'll review the event delivery rate for each integration and will send you an email if the failure rate is unusually high so you can review the integration and take action if needed. We'll only ever send a maximum of one email per day, and you can unsubscribe from these emails if you'd like by clicking [here](https://app.revenuecat.com/settings/notifications).
 
 ## Integrations FAQs
 
