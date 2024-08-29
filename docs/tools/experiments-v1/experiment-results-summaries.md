@@ -1,6 +1,6 @@
 ---
 title: Experiments Results Summaries
-slug: experiments-results-v1
+slug: experiments-results-summaries
 hidden: false
 ---
 

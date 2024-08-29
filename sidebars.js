@@ -309,6 +309,7 @@ const toolsCategory = Category({
         Page({ slug: "creating-offerings-to-test" }),
         Page({ slug: "configuring-experiments-v1" }),
         Page({ slug: "experiments-results-v1" }),
+        Page({ slug: "experiments-results-summaries"}),
       ],
     }),
     SubCategory({
