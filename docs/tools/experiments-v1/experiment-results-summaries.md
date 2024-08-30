@@ -19,8 +19,7 @@ _TO BE UPDATED_
 You must first verify your email address with us in order to receive Experiment Results Summaries.
 :::
 
-_TO BE UPDATED_
-![Screenshot](/images/6dbeb98-Screenshot_2023-12-15_at_12.08.29_PM_c1fb4e4608b84a1a0354f4045d05d3fa.png)
+![Screenshot](/images/Experiment-Results-Account-Settings.png)
 
 ## What will be included in my Experiment Results Summaries?
 
