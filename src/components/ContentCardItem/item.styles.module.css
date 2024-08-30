@@ -20,6 +20,10 @@
     text-decoration: none;
 }
 
+.feature-container a {
+    cursor: pointer;
+}
+
 .icon-background {
     width: 30%;
     height: 40%;
