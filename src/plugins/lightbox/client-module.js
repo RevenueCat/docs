@@ -6,7 +6,8 @@ export function onRouteDidUpdate({ location, previousLocation }) {
   if (location.pathname !== previousLocation?.pathname) {
     // Wait for the page to be fully loaded
     setTimeout(() => {
-      mediumZoom(".markdown img", { margin: 20 });
+      // Updated selector to exclude images within feature-container
+      mediumZoom(".markdown img:not(.icon-background img)", { margin: 20 });
     }, 500);
   }
 }
