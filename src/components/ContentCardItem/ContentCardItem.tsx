@@ -6,7 +6,7 @@ interface ContentCardLinkProps {
     link: string;
     title: string;
 }
-interface ContentCardItemProps {
+export interface ContentCardItemProps {
     title: string;
     subtitle: string;
     link: string;
@@ -47,3 +47,16 @@ const ContentCardItem: React.FC<ContentCardItemProps> = ({ title, subtitle, link
 };
 
 export default ContentCardItem;
+
+export const ContentCardItemProvider: React.FC<ContentCardItemProps> = ({ title, subtitle, link, icon, links }) => {
+    return (
+      <ContentCardItem
+        title={title}
+        subtitle={subtitle}
+        link={link}
+        icon={icon}
+        links={links}
+      />
+    );
+  };
+  
