@@ -7,7 +7,7 @@ export function onRouteDidUpdate({ location, previousLocation }) {
     // Wait for the page to be fully loaded
     setTimeout(() => {
       // Updated selector to exclude images within feature-container
-      mediumZoom(".markdown img:not(.icon-background img)", { margin: 20 });
+      mediumZoom(".markdown > p > img", { margin: 20 });
     }, 500);
   }
 }
