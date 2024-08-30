@@ -36,8 +36,6 @@ const welcomeCategory = Category({
   itemsPrefix: "welcome/",
   items: [
     Page({ slug: "overview" }),
-    Page({ slug: "building-new" }),
-    Page({ slug: "existing-apps" }),
     SubCategory({
       label: "Setting up RevenueCat",
       slug: "projects",
