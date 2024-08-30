@@ -28,17 +28,17 @@ const buildItem = (item, pagePrefix) => {
   return item;
 };
 
-const Category = ({ label, emoji, itemsPrefix, items }) => {
+const Category = ({ label, emoji, itemsPathPrefix, items }) => {
   return {
     type: "category",
     label,
     collapsible: false,
     customProps: { emoji },
-    items: items.map((item) => buildItem(item, itemsPrefix)),
+    items: items.map((item) => buildItem(item, itemsPathPrefix)),
   };
 };
 
-const SubCategory = ({ label, slug, itemsPrefix, items, index }) => ({
+const SubCategory = ({ label, slug, itemsPathPrefix, items, index }) => ({
   type: "category",
   label,
   ...(slug && { link: { type: "doc", id: slug } }),
@@ -50,7 +50,7 @@ const SubCategory = ({ label, slug, itemsPrefix, items, index }) => ({
       ...(index.description && { description: index.description }),
     },
   }),
-  items: items.map((item) => buildItem(item, itemsPrefix)),
+  items: items.map((item) => buildItem(item, itemsPathPrefix)),
 });
 
 const Page = ({ slug }) => ({

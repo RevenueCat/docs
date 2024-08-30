@@ -25,7 +25,7 @@ import {
 //    Link - A link to a different doc
 //
 // Each page has an explicit path/slug with /docs as the parent.
-// The path/slug is relative to the path of its parent if `itemsPrefix` is provided.
+// The path/slug is relative to the path of its parent if `itemsPathPrefix` is provided.
 // i.e. Category -> Sub-category -> Page
 // "categories/welcome" -> "projects" -> "collaborators"
 // rendered path: "categories/welcome/projects/collaborators"
@@ -33,13 +33,13 @@ import {
 const welcomeCategory = Category({
   emoji: "😺",
   label: "Welcome to RevenueCat",
-  itemsPrefix: "welcome/",
+  itemsPathPrefix: "welcome/",
   items: [
     Page({ slug: "overview" }),
     SubCategory({
       label: "Setting up RevenueCat",
       slug: "projects",
-      itemsPrefix: "projects/",
+      itemsPathPrefix: "projects/",
       items: [
         Page({ slug: "collaborators" }),
         Page({ slug: "security" }),
@@ -53,13 +53,13 @@ const welcomeCategory = Category({
 const gettingStartedCategory = Category({
   emoji: "🚀",
   label: "Getting Started",
-  itemsPrefix: "getting-started/",
+  itemsPathPrefix: "getting-started/",
   items: [
     Page({ slug: "quickstart" }),
     SubCategory({
       label: "Configuring Products",
       slug: "entitlements",
-      itemsPrefix: "entitlements/",
+      itemsPathPrefix: "entitlements/",
       items: [
         Page({ slug: "ios-products" }),
         Page({ slug: "android-products" }),
@@ -75,7 +75,7 @@ const gettingStartedCategory = Category({
     SubCategory({
       label: "Installing the SDK",
       slug: "installation",
-      itemsPrefix: "installation/",
+      itemsPathPrefix: "installation/",
       items: [
         Page({ slug: "ios" }),
         Page({ slug: "android" }),
@@ -122,13 +122,13 @@ const gettingStartedCategory = Category({
 const migratingCategory = Category({
   emoji: "➡️",
   label: "Migrating to RevenueCat",
-  itemsPrefix: "migrating-to-revenuecat/",
+  itemsPathPrefix: "migrating-to-revenuecat/",
   items: [
     Page({ slug: "migration-paths" }),
     SubCategory({
       label: "Choosing your Integration Path",
       slug: "sdk-or-not",
-      itemsPrefix: "sdk-or-not/",
+      itemsPathPrefix: "sdk-or-not/",
       items: [
         Page({ slug: "sdk-less-integration" }),
         Page({ slug: "finishing-transactions" }),
@@ -137,7 +137,7 @@ const migratingCategory = Category({
     SubCategory({
       label: "Importing Historical Purchases",
       slug: "migrating-existing-subscriptions",
-      itemsPrefix: "migrating-existing-subscriptions/",
+      itemsPathPrefix: "migrating-existing-subscriptions/",
       items: [
         Page({ slug: "receipt-imports" }),
         Page({ slug: "google-historical-import" }),
@@ -150,13 +150,13 @@ const migratingCategory = Category({
 const webPurchasesCategory = Category({
   emoji: "🌎",
   label: "Web Purchases",
-  itemsPrefix: "web/",
+  itemsPathPrefix: "web/",
   items: [
     Page({ slug: "connect-stripe-account" }),
     SubCategory({
       label: "RevenueCat Billing & Web SDK",
       slug: "revenuecat-billing",
-      itemsPrefix: "revenuecat-billing/",
+      itemsPathPrefix: "revenuecat-billing/",
       items: [
         Page({ slug: "product-setup" }),
         Page({ slug: "subscription-lifecycle" }),
@@ -172,7 +172,7 @@ const webPurchasesCategory = Category({
 const customersCategory = Category({
   emoji: "👥",
   label: "Customers",
-  itemsPrefix: "customers/",
+  itemsPathPrefix: "customers/",
   items: [
     Page({ slug: "user-ids" }),
     Page({ slug: "customer-info" }),
@@ -184,12 +184,12 @@ const customersCategory = Category({
 const testAndLaunchCategory = Category({
   emoji: "🧰",
   label: "Test & Launch",
-  itemsPrefix: "test-and-launch/",
+  itemsPathPrefix: "test-and-launch/",
   items: [
     SubCategory({
       label: "Debugging",
       slug: "debugging",
-      itemsPrefix: "debugging/",
+      itemsPathPrefix: "debugging/",
       items: [
         Page({ slug: "caching" }),
         Page({ slug: "troubleshooting-the-sdks" }),
@@ -199,7 +199,7 @@ const testAndLaunchCategory = Category({
     SubCategory({
       label: "Sandbox Testing",
       slug: "sandbox",
-      itemsPrefix: "sandbox/",
+      itemsPathPrefix: "sandbox/",
       items: [
         Page({ slug: "apple-app-store" }),
         Page({ slug: "google-play-store" }),
@@ -214,12 +214,12 @@ const testAndLaunchCategory = Category({
 const subscriptionGuidanceCategory = Category({
   emoji: "📝",
   label: "Subscription Guidance",
-  itemsPrefix: "subscription-guidance/",
+  itemsPathPrefix: "subscription-guidance/",
   items: [
     SubCategory({
       label: "Free Trials & Promo Offers",
       slug: "subscription-offers",
-      itemsPrefix: "subscription-offers/",
+      itemsPathPrefix: "subscription-offers/",
       items: [
         Page({ slug: "ios-subscription-offers" }),
         Page({ slug: "google-play-offers" }),
@@ -237,13 +237,13 @@ const subscriptionGuidanceCategory = Category({
 const dashboardCategory = Category({
   emoji: "📊",
   label: "Dashboard & Metrics",
-  itemsPrefix: "dashboard-and-metrics/",
+  itemsPathPrefix: "dashboard-and-metrics/",
   items: [
     Page({ slug: "overview" }),
     SubCategory({
       label: "Charts",
       slug: "charts",
-      itemsPrefix: "charts/",
+      itemsPathPrefix: "charts/",
       items: [
         Page({ slug: "active-subscriptions-chart" }),
         Page({ slug: "active-subscriptions-movement-chart" }),
@@ -273,7 +273,7 @@ const dashboardCategory = Category({
     SubCategory({
       label: "Customer History",
       slug: "customer-history",
-      itemsPrefix: "customer-history/",
+      itemsPathPrefix: "customer-history/",
       items: [
         Page({ slug: "active-entitlements" }),
         Page({ slug: "aliases-card" }),
@@ -296,12 +296,12 @@ const dashboardCategory = Category({
 const toolsCategory = Category({
   emoji: "🛠",
   label: "Tools",
-  itemsPrefix: "tools/",
+  itemsPathPrefix: "tools/",
   items: [
     SubCategory({
       label: "Paywalls",
       slug: "paywalls",
-      itemsPrefix: "paywalls/",
+      itemsPathPrefix: "paywalls/",
       items: [
         Page({ slug: "creating-paywalls" }),
         Page({ slug: "displaying-paywalls" }),
@@ -310,13 +310,13 @@ const toolsCategory = Category({
     SubCategory({
       label: "Offering Metadata",
       slug: "offering-metadata",
-      itemsPrefix: "offering-metadata/",
+      itemsPathPrefix: "offering-metadata/",
       items: [Page({ slug: "offering-metadata-examples" })],
     }),
     SubCategory({
       label: "Experiments",
       slug: "experiments-v1",
-      itemsPrefix: "experiments-v1/",
+      itemsPathPrefix: "experiments-v1/",
       items: [
         Page({ slug: "experiments-overview-v1" }),
         Page({ slug: "creating-offerings-to-test" }),
@@ -327,7 +327,7 @@ const toolsCategory = Category({
     SubCategory({
       label: "Targeting",
       slug: "targeting",
-      itemsPrefix: "targeting/",
+      itemsPathPrefix: "targeting/",
       items: [
         Page({ slug: "placements" }),
         Page({ slug: "custom-attributes" }),
@@ -340,13 +340,13 @@ const toolsCategory = Category({
 const integrationsCategory = Category({
   emoji: "🔌",
   label: "Integrations",
-  itemsPrefix: "integrations/",
+  itemsPathPrefix: "integrations/",
   items: [
     Page({ slug: "integrations" }),
     SubCategory({
       label: "Attribution",
       slug: "attribution",
-      itemsPrefix: "attribution/",
+      itemsPathPrefix: "attribution/",
       items: [
         Page({ slug: "adjust" }),
         Page({ slug: "apple-search-ads" }),
@@ -361,7 +361,7 @@ const integrationsCategory = Category({
     SubCategory({
       label: "Scheduled Data Exports",
       slug: "scheduled-data-exports",
-      itemsPrefix: "scheduled-data-exports/",
+      itemsPathPrefix: "scheduled-data-exports/",
       items: [
         Page({ slug: "data-export-version-3" }),
         Page({ slug: "data-export-version-4" }),
@@ -374,7 +374,7 @@ const integrationsCategory = Category({
     SubCategory({
       label: "Third-Party Integrations",
       slug: "third-party-integrations",
-      itemsPrefix: "third-party-integrations/",
+      itemsPathPrefix: "third-party-integrations/",
       items: [
         Page({ slug: "airship" }),
         Page({ slug: "amplitude" }),
@@ -396,7 +396,7 @@ const integrationsCategory = Category({
     SubCategory({
       label: "Webhooks",
       slug: "webhooks",
-      itemsPrefix: "webhooks/",
+      itemsPathPrefix: "webhooks/",
       items: [
         Page({ slug: "event-flows" }),
         Page({ slug: "event-types-and-fields" }),
@@ -411,7 +411,7 @@ const integrationsCategory = Category({
 const platformResourcesCategory = Category({
   emoji: "📚",
   label: "Platform Resources",
-  itemsPrefix: "platform-resources/",
+  itemsPathPrefix: "platform-resources/",
   items: [
     Page({ slug: "implementation-responsibilities" }),
     Page({ slug: "developer-store-payments" }),
@@ -419,13 +419,13 @@ const platformResourcesCategory = Category({
     SubCategory({
       label: "Amazon Platform Resources",
       slug: "amazon-platform-resources",
-      itemsPrefix: "amazon-platform-resources/",
+      itemsPathPrefix: "amazon-platform-resources/",
       items: [Page({ slug: "amazon-small-business-accelerator-program" })],
     }),
     SubCategory({
       label: "Apple Platform Resources",
       slug: "apple-platform-resources",
-      itemsPrefix: "apple-platform-resources/",
+      itemsPathPrefix: "apple-platform-resources/",
       items: [
         Page({ slug: "app-store-small-business-program" }),
         Page({ slug: "apple-app-privacy" }),
@@ -437,7 +437,7 @@ const platformResourcesCategory = Category({
     SubCategory({
       label: "Google Platform Resources",
       slug: "google-platform-resources",
-      itemsPrefix: "google-platform-resources/",
+      itemsPathPrefix: "google-platform-resources/",
       items: [
         Page({ slug: "google-play-pass" }),
         Page({ slug: "reduced-service-fee" }),
@@ -449,7 +449,7 @@ const platformResourcesCategory = Category({
     SubCategory({
       label: "Platform Server Notifications",
       slug: "server-notifications",
-      itemsPrefix: "server-notifications/",
+      itemsPathPrefix: "server-notifications/",
       items: [
         Page({ slug: "apple-server-notifications" }),
         Page({ slug: "google-server-notifications" }),
@@ -463,12 +463,12 @@ const platformResourcesCategory = Category({
 const serviceCredentialsCategory = Category({
   emoji: "🔑",
   label: "Service Credentials",
-  itemsPrefix: "service-credentials/",
+  itemsPathPrefix: "service-credentials/",
   items: [
     SubCategory({
       label: "Apple App Store",
       slug: "itunesconnect-app-specific-shared-secret",
-      itemsPrefix: "itunesconnect-app-specific-shared-secret/",
+      itemsPathPrefix: "itunesconnect-app-specific-shared-secret/",
       items: [
         Page({ slug: "in-app-purchase-key-configuration" }),
         Page({ slug: "app-store-connect-api-key-configuration" }),
@@ -477,7 +477,7 @@ const serviceCredentialsCategory = Category({
     SubCategory({
       label: "Google Play Store",
       slug: "creating-play-service-credentials",
-      itemsPrefix: "creating-play-service-credentials/",
+      itemsPathPrefix: "creating-play-service-credentials/",
       items: [Page({ slug: "google-play-checklists" })],
     }),
     Page({ slug: "amazon-appstore-credentials" }),
@@ -487,7 +487,7 @@ const serviceCredentialsCategory = Category({
 const supportCategory = Category({
   emoji: "🛟",
   label: "RevenueCat Support",
-  itemsPrefix: "revenuecat-support/",
+  itemsPathPrefix: "revenuecat-support/",
   items: [
     Page({ slug: "support-first-steps" }),
     Page({ slug: "general-troubleshooting" }),
@@ -497,7 +497,7 @@ const supportCategory = Category({
 const sdkMigrationCategory = Category({
   emoji: "📘",
   label: "SDK Migration Guides",
-  itemsPrefix: "sdk-guides/",
+  itemsPathPrefix: "sdk-guides/",
   items: [
     Page({ slug: "android-native-4x-to-5x-migration" }),
     Page({ slug: "android-native-5x-to-6x-migration" }),
