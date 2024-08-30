@@ -6,8 +6,7 @@ hidden: false
 
 Subscribe to a weekly recap of your key experiment success metrics delivered right to your inbox every Monday for each experiment you've had running in the last week.
 
-_TO BE UPDATED_
-![Screenshot](/images/2fc49ac-Screenshot_2023-12-14_at_4.02.35_PM_b91239309d0ae78797b7f5977b536a21.png)
+![Screenshot](/images/experiment_results_summary_example.png)
 
 ## How can I subscribe to Experiment Results Summaries?
 
