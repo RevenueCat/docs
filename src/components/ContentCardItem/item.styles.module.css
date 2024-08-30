@@ -58,10 +58,9 @@
     font-weight: 500;
 }
 
-.learn-more {
+.links-list {
     margin-top: 10px;
     margin-bottom: 0px;
-    font-weight: 500;
 }
 
 [data-theme='dark'] .feature-container {
