@@ -1,2 +1,3 @@
 [versions] 
-purchases-common = "10.10.0"
+# This version must be equal to everything after the '+' in the purchases-kmp version.
+purchases-common = "13.1.0"
