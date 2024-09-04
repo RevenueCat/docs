@@ -204,7 +204,7 @@ h3 {
   font-weight: 700;
 }
 
-.markdown img {
+.markdown > p > img {
   border: 1px solid #ddd;
   border-radius: 16px;
   max-width: 75%;

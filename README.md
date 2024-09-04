@@ -31,13 +31,15 @@ Pass a set of values for each tab, reading each code file using `raw-loader` rel
 ```jsx
 import content from "!!raw-loader!@site/code_blocks/welcome/getting_started.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: RCCodeBlock.languages.swift,
-        content: content,
-        title: "Getting Started" //optional
-    }
-]}/>
+      type: RCCodeBlock.languages.swift,
+      content: content,
+      title: "Getting Started", //optional
+    },
+  ]}
+/>;
 ```
 
 Supported languages in `RCCodeBlock.languages`.
@@ -68,16 +70,18 @@ const exampleCategory = Category({
   emoji: "🙈",
   label: "Example Category",
   slug: "example",
+  itemsPathPrefix: "example/", // the path prefix to apply to the items in this category
   items: [
     SubCategory({
       label: "Welcome RevenueCat",
-      slug: "welcome",        // /docs/example/welcome
+      slug: "welcome", // refers to the doc at: 'docs/' + 'example/' (parent path prefix) + 'welcome' (page slug)
+      itemsPathPrefix: "welcome/",
       items: [
-        Page({ slug: "first-sub-page" }),    // /docs/example/welcome/first-sub-page
+        Page({ slug: "first-sub-page" }), // /docs/ + example/ + welcome/ + first-sub-page
         Page({ slug: "second-sub-page" }),
       ],
     }),
-    Page({ slug: "stand-alone-page" }),    // /docs/example/stand-alone-page
+    Page({ slug: "stand-alone-page" }), // /docs/ example/ stand-alone-page
     Link({
       label: "Linked Page",
       slug: "/path/to/linked-page",
@@ -111,4 +115,3 @@ $ yarn build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
-

@@ -1507,6 +1507,10 @@ const redirects = {
       to: "/dashboard-and-metrics/customer-history/promotionals",
       from: "/dashboard-and-metrics/customers-group/promotionals",
     },
+    {
+      to: "/web/revenuecat-billing",
+      from: "/web/rc-billing",
+    },
   ],
 };
 
