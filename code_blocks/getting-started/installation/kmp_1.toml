@@ -1,5 +1,5 @@
 [versions] 
-purchases-kmp = "1.0.0+13.1.0"
+purchases-kmp = "1.0.0+13.2.0"
 
 [libraries]
 # Required
