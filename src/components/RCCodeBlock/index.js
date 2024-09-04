@@ -78,7 +78,7 @@ function getTabTitle(type) {
     case "swift":
       return "Swift";
     case "objc":
-      return "Objective-C";
+      return "Obj-C";
     case "java":
       return "Java";
     case "kotlin":

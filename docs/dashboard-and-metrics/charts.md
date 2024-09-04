@@ -43,6 +43,7 @@ For detailed information on a particular Chart, refer to the following guides:
 - [Active Subscriptions Movement ](/dashboard-and-metrics/charts/active-subscriptions-movement-chart)
 - [Churn ](/dashboard-and-metrics/charts/churn-chart)
 - [Refund Rate ](/dashboard-and-metrics/charts/refund-rate-chart)
+- [Subscription Status ](/dashboard-and-metrics/charts/subscription-status-chart)
 - [Annual Recurring Revenue (ARR) ](/dashboard-and-metrics/charts/annual-recurring-revenue-arr-chart)
 - [Realized LTV per Customer ](/dashboard-and-metrics/charts/realized-ltv-per-customer-chart)
 - [Realized LTV per Paying Customer ](/dashboard-and-metrics/charts/realized-ltv-per-paying-customer-chart)

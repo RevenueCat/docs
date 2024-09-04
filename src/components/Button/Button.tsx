@@ -4,6 +4,7 @@ type ButtonType = {
   href: string;
   variant?: "primary" | "secondary";
   className?: string;
+  target?: string;
   children: any;
 };
 
@@ -11,6 +12,7 @@ const Button: React.FC<ButtonType> = ({
   href,
   variant = "primary",
   className: additionalClasses,
+  target = "_self",
   children,
 }) => {
   return (
@@ -23,6 +25,7 @@ const Button: React.FC<ButtonType> = ({
         additionalClasses
       )}
       href={href}
+      target={target}
     >
       {children}
     </a>

@@ -1,58 +1,56 @@
-const checkItemType = (item) => {
-  if ("link" in item) return "subcategory";
-  if ("href" in item) return "link";
-  return "page";
+const buildItem = (item, pagePrefix) => {
+  let prefix = pagePrefix || "";
+  if (item.type === "category") {
+    let object = {
+      ...item,
+      items: item.items.map((subItem) =>
+        buildItem(subItem, prefix + (subItem.itemsPrefix || ""))
+      ),
+    };
+
+    if (item.link.id) {
+      object.link = {
+        type: "doc",
+        id: `${prefix}${item.link.id}`,
+      };
+    }
+
+    return object;
+  }
+
+  if (item.type === "doc") {
+    return {
+      ...item,
+      id: `${prefix}${item.id}`,
+    };
+  }
+
+  return item;
 };
 
-const Category = ({ label, emoji, slug, items }) => {
+const Category = ({ label, emoji, itemsPathPrefix, items }) => {
   return {
     type: "category",
     label,
     collapsible: false,
     customProps: { emoji },
-    items: items.map((item) => {
-      const itemType = checkItemType(item);
-
-      if (itemType === "subcategory") {
-        return {
-          ...item,
-          link: {
-            type: "doc",
-            id: `${slug}/${item.link.id}`,
-          },
-          items: item.items.map((subItem) => {
-            const subItemType = checkItemType(subItem);
-
-            return subItemType === "page"
-              ? { ...subItem, id: `${slug}/${subItem.id}` }
-              : subItem;
-          }),
-        };
-      }
-
-      if (itemType === "page") {
-        return {
-          ...item,
-          id: `${slug}/${item.id}`,
-        };
-      }
-
-      return item;
-    }),
+    items: items.map((item) => buildItem(item, itemsPathPrefix)),
   };
 };
 
-const SubCategory = ({ label, slug, items }) => ({
+const SubCategory = ({ label, slug, itemsPathPrefix, items, index }) => ({
   type: "category",
   label,
-  link: {
-    type: "doc",
-    id: slug,
-  },
-  items: items.map((item) => {
-    const itemType = checkItemType(item);
-    return itemType === "page" ? { ...item, id: `${slug}/${item.id}` } : item;
+  ...(slug && { link: { type: "doc", id: slug } }),
+  ...(index && {
+    link: {
+      type: "generated-index",
+      title: index.title,
+      slug: index.link + "-index",
+      ...(index.description && { description: index.description }),
+    },
   }),
+  items: items.map((item) => buildItem(item, itemsPathPrefix)),
 });
 
 const Page = ({ slug }) => ({
@@ -60,22 +58,22 @@ const Page = ({ slug }) => ({
   id: slug,
 });
 
-const PageWithCustomLabel = ({slug, label}) => ({
-  type: "doc",
-  id: slug,
-  label: label,
-});
-
 const Link = ({ label, slug }) => ({
   type: "link",
-  label,
+  label: `→ ${label}`,
   href: slug,
+});
+
+const GeneratedIndex = ({ title, link, description }) => ({
+  title,
+  link,
+  description,
 });
 
 module.exports = {
   Category,
   SubCategory,
   Page,
-  PageWithCustomLabel,
   Link,
+  GeneratedIndex,
 };
