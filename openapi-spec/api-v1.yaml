@@ -113,8 +113,8 @@ paths:
         - name: X-Is-Sandbox
           in: header
           description:
-            Optionally set the X-Platform header to get the sandbox transactions
-            of this Customer. Set to `true` to get sandbox purchases. Don't set this
+            Optionally set the X-Is-Sandbox header to `true` to include Apple StoreKit test transactions
+            of this Customer. Don't set this
             in production. The SDK will automatically set this for your based on the
             environment of the app.
           schema:
