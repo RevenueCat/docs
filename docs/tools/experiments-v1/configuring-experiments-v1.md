@@ -12,7 +12,7 @@ Before setting up an experiment, make sure you've created the Offerings you want
 
 You should also [test the Offerings you've chosen](https://www.revenuecat.com/docs/offering-override) on any platform your app supports.
 
-# Setting up a new experiment
+## Setting up a new experiment
 
 First, navigate to your Project. Then, click on **Experiments** in the **Monetization tools** section.
 
@@ -20,26 +20,45 @@ First, navigate to your Project. Then, click on **Experiments** in the **Monetiz
 
 Select **+ New** to create a new experiment.
 
-![Creating a new experiment](/images/62d3199-Screenshot_2024-01-29_at_10.46.43_AM_dadef546e52d2bb05ef71fccb8cea79c.png "Creating a new experiment")
+![Creating a new experiment](../../../static/images/create_new_experiment_latest.png "Creating a new experiment")
 
-:::info Setting up an Offering for your treatment
+:::info Setting up Offering(s) for your treatment
 
 If you've not setup multiple Offerings before, you'll be prompted to do so now, since you'll need at least 2 available Offerings to run an experiment.
 
-The treatment Offering represents the hypothesis you're looking to test with your experiment (e.g. higher or lower priced products, products with trials, etc).
+The treatment Offering(s) represents the hypothesis you're looking to test with your experiment (e.g. higher or lower priced products, products with trials, etc).
 
 For App Store apps, we recommend setting up new products to test as a new Subscription Group so that customers who are offered those products through Experiments will see only that same set of products to select from their subscription settings.
 :::
 
-# Required fields
+## Required fields
 
 To create your experiment, you must first enter the following required fields:
 
 - Experiment name
 - Control variant
-  - The Offering that will be used for your Control group
+  - The Offering(s) that will be used for your Control group
 - Treatment variant
-  - The Offering that will be used for your Treatment group (the variant in your experiment)
+  - The Offering(s) that will be used for your Treatment group (the variant in your experiment)
+
+## Using Placements in Experiments
+
+Placements allow you to define a unique Offering to serve at each paywall location in your app, so that you can do things like:
+
+1. Show a unique paywall design at the end of onboarding vs. in settings
+2. Offer unique prices on the paywall triggered when a customer attempts to access a gated feature vs. the paywall that's triggered after a certain number of app opens
+
+If you've not setup Placements yet, [start here](https://www.revenuecat.com/docs/tools/targeting/placements).
+
+With Experiments, you can create A/B tests that serve unique Offerings at each Placement to your Control group and Treatment group.
+
+![Adding Placements to Experiments](../../../static/images/placements.png "Adding Placements to Experiments")
+
+With Placements, your customers will be served an array of Offerings depending on the paywall location they visit, and with Experiments you can A/B test that experience by changing any element of that array.
+
+:::tip Isolating the impact of each paywall change
+If you're looking to isolate the impact of changing just one paywall location, then modify the Offering being served at that Placement in the Treatment group and keep all other Placements the same.
+:::
 
 ## Audience customization
 
@@ -56,13 +75,15 @@ Select from any of the available dimensions to filter which new customers are en
 | App version            | Which app version(s) of the specified apps must a new customer be on to be enrolled in the experiment.                                                                                                                                                                  |
 | RevenueCat SDK version | Which RevenueCat SDK version(s) of the specified SDK flavor must a new customer be on to be enrolled in the experiment. _(NOTE: This is most likely to be used in conjunction with features like RevenueCat Paywalls which are only available in certain SDK versions)_ |
 
+| Platform | Which platform(s) that were first used by the customer are eligible for the experiment (e.g. iOS, watchOS, etc). |
+
 **New customers to enroll**
 
 You can modify the % of new customers to enroll in 10% increments based on how much of your audience you want to expose to the test. Keep in mind that the enrolled new customers will be split between the two variants, so a test that enrolls 10% of new customers would yield 5% in the Control group and 5% in the Treatment group.
 
 Once done, select **CREATE EXPERIMENT** to complete the process.
 
-# Starting an experiment
+## Starting an experiment
 
 When viewing a new experiment, you can start, edit, or delete the experiment.
 
