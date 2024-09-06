@@ -1,0 +1,2 @@
+<!-- Importing the RevenueCat SDK -->
+<script type="text/brightscript" uri="pkg:/source/Purchases.brs" />
