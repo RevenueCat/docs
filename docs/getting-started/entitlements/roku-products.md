@@ -23,6 +23,7 @@ To create a new in-channel product, click on products in the sidebar of the Roku
 
 ### Product basics
 ![](/images/roku/roku-product-basics.png)
+
 - **Channels**: From the channels list, select one or more channels where this product will be available for sale. The channels listed in this selection show the channels belonging to the root account.
 - **Product category**: Select a product category for the product you are creating.
     - _Video_: Primarily video content, includes music videos.
@@ -40,15 +41,17 @@ The product name must clearly identify the service being offered. Product names 
 
 ### Product pricing
 ![](/images/roku/roku-product-pricing.png)
+
 - **Purchase type**: The purchase type list will allow you to select the following types for the product being created:
+    - _Monthly subscription_: A product that will auto-renew monthly.
+    - _Yearly subscription_: A product that will auto-renew annually.
     - _One-time Purchase_: This product type may only be purchased a single time.
     - _One-time Purchase, Consumable - Quantity_ This is a "packet" of identical items (e.g: number of viewings permitted).
 
 :::warning One-time and consumable product limitations
 At the moment, RevenueCat does not support One-time Purchase and One-time Purchase, Consumable - Quantity products
 :::
-    - _Monthly subscription_: A product that will auto-renew monthly.
-    - _Yearly subscription_: A product that will auto-renew annually.
+
 - **Price tier**: Roku's price tiers enforce a 99 cent or 49 cent pricing tier. 
     - One to three-digit tier numbers are used for 99 cent pricing. To calculate, you can subtract 1 cent from the tier to get the corresponding price. For example, Tier 100 is $99.99 (`$100 - $0.01 = $99.99`).
     - Four-digit tier numbers are used for 49 cent pricing. To calculate this, you can add 49 cents to the last two digits in the tier. For example, Tier 1030 is $30.49 (30 is the last 2 digits &#8594; `$30 + $0.49 = $30.49`).
@@ -64,11 +67,13 @@ Roku subscription products support free trials and discounted offers. Note that 
 Under **Base offer**, select one of the following:
 
 ![](/images/roku/roku-discounted-offer.png)
+
 -  **Discounted price**: This will provide new customers a discounted introductory price.
     - _Discounted price range_: This is the discounted price you'd like to offer. The discounted price range must be lower than the base price.
     - _Discount duration_: Enter the number of months the discount will be until the customer renews at full price.
 
 ![](/images/roku/roku-free-trial.png)
+
 - **Free trial**: This will provide new customers with a free trial of your product.
     - _Free trial duration_: Enter the number of days or months for the trial
     - Select the unit of time (**Days** or **Months**)
@@ -85,9 +90,10 @@ Once the product is ready to be made available to customers for purchase, select
 Once your product is cleared for sale, you can schedule limited-time free trials and discount offers on your subscription products.
 
 Within your product details, you can select 'Schedule offer' > 'Create new offer'. 
+
 ![](/images/roku/roku-schedule-offer.png)
 
-Once you are creating your offer, you can refer to the [Trials and offers](/getting-started/entitlements/roku-products#trials-and-offers) section of this documentation. When scheduling an offer, you must input a **Start date** and **End date**.
+Please refer to the [Trials and offers](/getting-started/entitlements/roku-products#trials-and-offers) section of this documentation for additional instructions on scheduling your offer. When scheduling an offer, you must input a **Start date** and **End date**.
 
 Note that a customer can only receive one free trial or discount offer, regardless if it is a scheduled offer or part of your base product. For example, if you have a monthly subscription product with the following offers:
 - Time-limited offer: Two-month free trial
@@ -114,9 +120,11 @@ Note that deleting a product without first changing its **Cleared for Sale** sta
 Product groups are used for upgrade/downgrade functionality and to prevent double billing your customers. For more information regarding upgrades/downgrades, please visit our documentation on [_Upgrades, Downgrades, & Management_](/subscription-guidance/managing-subscriptions#roku).
 
 To set up a product group, nagivate to your _'Manage In-Channel Products' > 'All product groups' > 'Add a new group'_
+
 ![](/images/roku/roku-product-group.png)
 
 ![](/images/roku/roku-create-product-group.png)
+
 - **Group name**: Enter a descriptive name for your group. For example, if you are creating a product group containing monthly and annual plans that will unlock the highest tier subscription, it could be named "High tier subscriptions"
 - **Channel list**: Select the channel that will use this product group
 

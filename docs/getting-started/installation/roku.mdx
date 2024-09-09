@@ -85,7 +85,6 @@ Once you have your developer account created, head to the [dashboard](https://de
 ### Product configuration
 After you have configured the Roku Store app on RevenueCat, you should [create your in-channel products](/getting-started/entitlements/roku-products) and then follow RevenueCat's regular setup of [entitlements, products, and offerings](/getting-started/entitlements).
 
-
 ## Installing the SDK
 1. Clone the repository:
 
@@ -146,7 +145,6 @@ import rokuSubscriberAttributes from "!!raw-loader!@site/code_blocks/getting-sta
     { type: 'brightscript', content: rokuSubscriberAttributes, name: 'Subscriber Attributes' }
 ]} />
 
-
 ### Offerings 
 import rokuGetOfferings from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-get-offerings.brs";
 import rokuOffersObject from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-offerings-object.txt";
@@ -174,7 +172,6 @@ This method will post all purchases associated with the current Roku account to 
 import rokuPurchaseObject from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-purchase-object.txt";
 import rokuMakePurchase from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-make-purchase.brs";
 import rokuSyncPurchases from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-sync-purchases.brs";
-
 
 <RCCodeBlock tabs={[
     { type: 'brightscript', content: rokuPurchaseObject, name: 'Raw transaction' },
@@ -206,7 +203,6 @@ import rokuTyingTogether from "!!raw-loader!@site/code_blocks/getting-started/in
     { type: 'brightscript', content: rokuTyingTogether}
 ]} />
 
-
 ## Testing
 :::warning
 Only the "root account user" can test billing on device. If you get added as a collaborator to someone else's developer account, billing testing will not work. You'll need to create your own developer account.
@@ -228,7 +224,7 @@ After that, the test user will be able to make test purchases on the channel, re
 ### RevenueCat limitations
 Since Roku transactions do not have an associated environment, RevenueCat defines a **"sandbox"** purchase as any purchase made in a **Sideloaded** channel. A **"production"** purchase is defined as any purchase made in either a **beta** or **public** channel, regardless of whether the end customer was actually charged or not for it.
 
-This also means for any events RevenueCat dispatches containing an [`environment` field](/docs/integrations/webhooks/event-types-and-fields#events-format), the Roku channel where the purchase was made will determine whether the value is set to `SANDBOX` or `PRODUCTION`.
+This also means for any events RevenueCat dispatches containing an [`environment` field](/integrations/webhooks/event-types-and-fields#events-format), the Roku channel where the purchase was made will determine whether the value is set to `SANDBOX` or `PRODUCTION`.
 
 To ensure a clear separation between your "testing" and "production" purchases, we recommend creating a **separate channel** specifically for testing purchases and creating a new [RevenueCat Roku Store app](/getting-started/installation/roku#app-configuration) for that channel.
 
