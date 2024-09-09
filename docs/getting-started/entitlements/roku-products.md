@@ -5,7 +5,7 @@ excerpt: Setting up your in-app purchases in Roku
 hidden: false
 ---
 :::warning Beta Feature
-RevenueCat's Roku support is currently in beta. For interest, please fill out our [waitlist form](https://rev.cat/roku-beta-interest).
+RevenueCat's Roku support is currently in beta. For interest, please fill out our **[waitlist form](https://rev.cat/roku-beta-interest)**.
 :::
 
 To set up in-channel products for Roku, start by logging into the [Roku dashboard](https://developer.roku.com/dev/landing). 
@@ -16,6 +16,7 @@ To set up in-channel products for Roku, start by logging into the [Roku dashboar
 This process is going to configure a subscription product, but the steps are similar for creating other products. To configure other types of products, select the appropriate 'Purchase Type'. However, please read our [limitations](/getting-started/installation/roku#introduction) on what we currently support in this beta program. 
 
 To create a new in-channel product, click on products in the sidebar of the Roku Developer Dashboard, then click **Add a new product**.
+
 ![](/images/roku/roku-products.png)
 
 ![](/images/roku/roku-add-product.png)
@@ -41,14 +42,16 @@ The product name must clearly identify the service being offered. Product names 
 ![](/images/roku/roku-product-pricing.png)
 - **Purchase type**: The purchase type list will allow you to select the following types for the product being created:
     - _One-time Purchase_: This product type may only be purchased a single time.
-    - _One-time Purchase, Consumable - Quantity_ This is a "packet" of identifical items (e.g: number of viewings permitted). If your channel is TVOD-exclusive, select this option and select **1** for the **Quantity** field.
+    - _One-time Purchase, Consumable - Quantity_ This is a "packet" of identical items (e.g: number of viewings permitted).
+
+:::warning One-time and consumable product limitations
+At the moment, RevenueCat does not support One-time Purchase and One-time Purchase, Consumable - Quantity products
+:::
     - _Monthly subscription_: A product that will auto-renew monthly.
     - _Yearly subscription_: A product that will auto-renew annually.
-- **Price tier**: Roku tiers are to enforce a 99 cent or 49 cent pricing tier. 
+- **Price tier**: Roku's price tiers enforce a 99 cent or 49 cent pricing tier. 
     - One to three-digit tier numbers are used for 99 cent pricing. To calculate, you can subtract 1 cent from the tier to get the corresponding price. For example, Tier 100 is $99.99 (`$100 - $0.01 = $99.99`).
     - Four-digit tier numbers are used for 49 cent pricing. To calculate this, you can add 49 cents to the last two digits in the tier. For example, Tier 1030 is $30.49 (30 is the last 2 digits &#8594; `$30 + $0.49 = $30.49`).
-
-If you are a TVOD-exclusive channel, please select any pricing tier. 
 
 Once you select a price tier, a chart will appear that displays the purchase price, net price, and proceeeds for each country the product is available for.
 - **Purchase price**: Reflects the amount your customer will pay.

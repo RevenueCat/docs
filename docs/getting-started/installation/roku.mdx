@@ -6,19 +6,19 @@ hidden: false
 ---
 
 :::warning Beta Feature
-RevenueCat's Roku support is currently in beta. For interest, please fill out our [waitlist form](https://rev.cat/roku-beta-interest).
+RevenueCat's Roku support is currently in beta. For interest, please fill out our **[waitlist form](https://rev.cat/roku-beta-interest)**.
 :::
 
 ## Introduction
-RevenueCat's Roku support allows you to easily offer subscriptions on Roku's streaming platform. This feature is currently in beta and has a number of known limitations. The following RevenueCat features and functionalities are not supported yet.
+RevenueCat's Roku support allows you to easily offer subscriptions on Roku's streaming platform. This feature is currently in beta and has a number of known limitations.
 
 RevenueCat features not yet supported:
 - [RevenueCat paywalls](/tools/paywalls)
 - [Trusted entitlements](/customers/trusted-entitlements)
 - [Offline entitlements](/customers/customer-info#offline-entitlements)
-- [Offerings metadata](/tools/offering-metadata)
 - [Targeting](/tools/targeting)
 - [Placements](/tools/targeting/placements)
+- [REST API v2](https://www.revenuecat.com/docs/api-v2)
 
 Functionality not yet supported:
 - OTPs (one-time purchases)
@@ -47,16 +47,19 @@ Once you have your developer account created, head to the [dashboard](https://de
 ### App configuration
 1. Make sure your project has been enabled to create Roku apps. If you're not sure, talk to your RevenueCat contact.
 2. Open the RevenueCat dashboard, select your project, and click on "Add app" > "Roku Store"
+
 ![](/images/roku/add-roku-app.png)
 
 ![](/images/roku/roku-app.png)
 
 3. Enter your app's name. Navigate to the [Roku Pay Web Services page](https://developer.roku.com/rpay-web-service) to copy your the Roku Pay API key and paste this to the RevenueCat dashboard under 'Roku Pay API Key'
+
 ![](/images/roku/roku-api-key.png)
 
 ![](/images/roku/roku-name-key.png)
 
 4. Find your Roku Channel ID in your Roku Developer Dashboard and enter this value in the RevenueCat dashboard under 'Roku Channel ID'
+
 ![](/images/roku/roku-channel-id.png)
 
 ![](/images/roku/roku-multi-channel.png)
@@ -67,6 +70,7 @@ Once you have your developer account created, head to the [dashboard](https://de
 </figure>
 
 5. Once the app is created, click on the "Roku Server to Server notifications settings", copy the "Roku Push Notification URL" which starts with `https://api.revenuecat.com/v1/incoming-webhooks/roku-pay-jwt-notification`. Navigate back to your [Roku Pay Web Services page](https://developer.roku.com/rpay-web-service) (where you found the Roku API key) page and scroll down until you see a section called 'Push Notifications' and paste RevenueCat's Push notifications URL in the text box
+
 ![](/images/roku/roku-notification-url.png)
 
 <figure>
@@ -75,8 +79,8 @@ Once you have your developer account created, head to the [dashboard](https://de
 </figure>
 
 6. Back to the RevenueCat dashboard, click on "Public API Key" and copy over the value which should start with "roku_XXXXXX". You will need it to configure the SDK later.
-![](/images/roku/revenuecat-api-key.png)
 
+![](/images/roku/revenuecat-api-key.png)
 
 ### Product configuration
 After you have configured the Roku Store app on RevenueCat, you should [create your in-channel products](/getting-started/entitlements/roku-products) and then follow RevenueCat's regular setup of [entitlements, products, and offerings](/getting-started/entitlements).
@@ -154,7 +158,7 @@ import rokuOffersObject from "!!raw-loader!@site/code_blocks/getting-started/ins
 
 ### Purchase
 #### Making a purchase
-As a parameter to the `purchase()` method, you can pass an associative array containing one of the following values:
+As a parameter to the `purchase()` method, you can pass an associative array containing one of the following keys:
 
 - `code`: A string containing the product id.
 - `product`: From the `getOfferings` result: e.g. `offerings.current.annual.storeProduct`
@@ -164,7 +168,7 @@ Additionally,you can pass the following optional parameters:
 
 - `action`: To perform a product change. Valid values: `Upgrade` or `Downgrade`
 
-#### Sync purchase
+#### Sync purchases
 This method will post all purchases associated with the current Roku account to RevenueCat and become associated with the current User ID. It should only be used if you're migrating from using your own Roku Pay implementation and want to track previous purchases in RevenueCat.
 
 import rokuPurchaseObject from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-purchase-object.txt";
@@ -175,7 +179,7 @@ import rokuSyncPurchases from "!!raw-loader!@site/code_blocks/getting-started/in
 <RCCodeBlock tabs={[
     { type: 'brightscript', content: rokuPurchaseObject, name: 'Raw transaction' },
     { type: 'brightscript', content: rokuMakePurchase, name: 'Make purchase' },
-    { type: 'brightscript', content: rokuSyncPurchases, name: 'Sync purchase' }
+    { type: 'brightscript', content: rokuSyncPurchases, name: 'Sync purchases' }
 ]} />
 
 ### Error
@@ -208,11 +212,27 @@ import rokuTyingTogether from "!!raw-loader!@site/code_blocks/getting-started/in
 Only the "root account user" can test billing on device. If you get added as a collaborator to someone else's developer account, billing testing will not work. You'll need to create your own developer account.
 :::
 
-Roku allows you to test with either their **Public channels** or **Beta channels**. However, you can only use one public or beta channel at a time for testing. 
+Roku transactions **do not** have an "associated" environment. Both types of transactions arrive via push notifications, however, there are key differences between them.
 
-We recommend that you create a separate channel for testing purposes and creating a new [RevenueCat Roku Store app](/getting-started/installation/roku#app-configuration) for that channel.
+- **Price differentiation**:
+    - _Test purchases_: Always have a price of **0**
+    - _Production purchases_: Will have a non-zero price (unless it's a trial)
+- **Charges**:
+    - _Test purchases_: The end customer will not be charged for a test purchase
+    - _Production purchases_: The end customer will be charged according to the product details (e.g: pricing tier, trials, offers, etc)
 
-### Testing with beta channel
+In order to perform a test purchase, a [test user must be created](https://developer.roku.com/en-gb/docs/developer-program/roku-pay/quickstart/test-users.md) and associated with the channel.
+
+After that, the test user will be able to make test purchases on the channel, regardless of the installation method: Public, Beta or Sideloaded (Billing Testing must be enabled). However, you can only use one Roku channel at a time for testing.
+
+### RevenueCat limitations
+Since Roku transactions do not have an associated environment, RevenueCat defines a **"sandbox"** purchase as any purchase made in a **Sideloaded** channel. A **"production"** purchase is defined as any purchase made in either a **beta** or **public** channel, regardless of whether the end customer was actually charged or not for it.
+
+This also means for any events RevenueCat dispatches containing an [`environment` field](/docs/integrations/webhooks/event-types-and-fields#events-format), the Roku channel where the purchase was made will determine whether the value is set to `SANDBOX` or `PRODUCTION`.
+
+To ensure a clear separation between your "testing" and "production" purchases, we recommend creating a **separate channel** specifically for testing purchases and creating a new [RevenueCat Roku Store app](/getting-started/installation/roku#app-configuration) for that channel.
+
+### Testing with a beta channel
 
 Roku's beta channels are a special channel type to assist with testing your channel in a production-like environment before publishing. 
 
@@ -220,11 +240,3 @@ Roku's beta channels are a special channel type to assist with testing your chan
 - **120 days**: A beta channel can exist for only 120 days after you create it. After 120 days, the channel will be (1) deleted and removed from your Developer Dashboard and (2) disabled for all users who have it installed
 - **10 channels**: There is a maximum of 10 beta channels at a time
 - **20 test users**: There can only be 20 beta test users per beta channel at any given time
-
-#### Create a beta channel
-To create a beta channel, select "Beta channels" in your Roku Developer Dashboard, then refer to the ["Setting up your Roku channel"](/getting-started/installation/roku#setting-up-your-roku-channel) section for additional instructions.
-
-### Testing with public channel
-
-#### Create a public channel
-To create a public channel, select "Public channels" in your Roku Developer Dashboard, then refer to the ["Setting up your Roku channel"](/getting-started/installation/roku#setting-up-your-roku-channel) section for additional instructions.

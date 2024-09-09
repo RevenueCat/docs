@@ -18,15 +18,15 @@ sub fetchOfferings()
   Purchases().getOfferings(sub(offerings, error)
     if error = invalid
       ' Use offerings to build your paywall UI.
-      ' Then call purchaseProduct with the one selected by the user
-      purchaseProduct(offerings.current.annual)
+      ' Then call purchasePackage with the one selected by the user
+      purchasePackage(offerings.current.annual)
     end if
   end sub)
 end sub
 
-' Call purchaseProduct when the user decides to initiate a purchase
-sub purchaseProduct(product)
-  Purchases().purchase(product, sub(result, error)
+' Call purchasePackage when the user decides to initiate a purchase
+sub purchasePackage(package)
+  Purchases().purchase({ package: package }, sub(result, error)
     if error = invalid
       print "Purchase successful"
       print result.transaction

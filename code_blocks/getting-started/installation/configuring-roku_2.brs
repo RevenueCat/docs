@@ -1,5 +1,5 @@
 sub init()
-Purchases().configure({
-    "apiKey": "roku_XXXXX"
-})
+    Purchases().configure({
+        "apiKey": "roku_XXXXX"
+    })
 end sub
