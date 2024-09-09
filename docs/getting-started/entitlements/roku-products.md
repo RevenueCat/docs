@@ -93,7 +93,7 @@ Within your product details, you can select 'Schedule offer' > 'Create new offer
 
 ![](/images/roku/roku-schedule-offer.png)
 
-Please refer to the [Trials and offers](/getting-started/entitlements/roku-products#trials-and-offers) section of this documentation for additional instructions on scheduling your offer. When scheduling an offer, you must input a **Start date** and **End date**.
+Please refer to the [Trials and offers](/getting-started/entitlements/roku-products#trials-and-offers) section of this documentation for additional instructions on creating an offer. When scheduling an offer, you must input a **Start date** and **End date**.
 
 Note that a customer can only receive one free trial or discount offer, regardless if it is a scheduled offer or part of your base product. For example, if you have a monthly subscription product with the following offers:
 - Time-limited offer: Two-month free trial
