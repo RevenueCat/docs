@@ -7,8 +7,10 @@ hidden: false
 
 Want to test you RevenueCat integration? Follow this document to learn how to test specific functions throughout your purchase process as well as help verify that your RevenueCat setup is working properly.
 
-## Configurations
-Wondering if your configuration of the SDK and RevenueCat is working properly? Make sure to check out these key factors in configuration.
+## Configurations [Jaz]
+
+### New to Subscriptions/IAP
+### Existing Code Base
 ### Using RevenueCat for Entitlements
 
 RevenueCat makes it easy to unlock access using entitlements. Entitlements define the level of access your users should have. You can read more about our guide [here](https://www.revenuecat.com/docs/customers/customer-info).
@@ -16,12 +18,8 @@ This approach allows you to utilize RevenueCat as the source of truth by checkin
 
 ### Using Own Backend for Entitlements
 
-You can still use RevenueCat to unlock access via your own backend. This requires some setup, as shown [here](https://www.revenuecat.com/docs/test-and-launch/testing-guide/common-architecture). This setup allows you to maintain your existing system while utilizing RevenueCat’s webhooks to keep your backend in sync with the purchases your users have made.
-We recommend this approach if you have an extensive setup that you don't want to switch over to using RevenueCat exclusively, or if you want to use this setup in addition to unlocking access with the SDK as a backup
+## Migration [Jaz]
 
-
-## Migration
-Performing a migration and want to make sure that everything is working as intended? Make sure to follow this guide to ensure that everyhting is working properly during your migration. 
 ### Client Side Migration
 A client-side migration is best used when you don't have all the receipts or transaction IDs needed for a full receipt import. This approach allows you to migrate users as they update to the latest version of your app with the RevenueCat SDK integrated. However, it may take longer to get all your users into RevenueCat, as it depends on when they choose to upgrade.
 
@@ -30,27 +28,22 @@ If you do have the receipts or transaction IDs, we recommend performing a full i
 You can find more on the client-side migration [here](https://www.revenuecat.com/docs/migrating-to-revenuecat/migrating-existing-subscriptions#client-side-sdk-data-import).
 
 ### Import Migration
-A full receipt import is our recommended approach if you have the data, as it provides a fuller history of your users. This method allows us to capture the full history of a user’s purchases for iOS and the latest snapshot for Google and Stripe.
+### Receipt Forwarding
 
-You can read more on the full import process [here](https://www.revenuecat.com/docs/migrating-to-revenuecat/migrating-existing-subscriptions/receipt-imports).
+## RevenueCat Tools [Mike] 
 
-One thing to note is that you'll want to set up the following in this order:
-1. Set up receipt forwarding as shown [here](https://www.revenuecat.com/docs/migrating-to-revenuecat/migrating-existing-subscriptions#server-side-data-import).
-2. Then, perform the export of your data.
-
-This ensures that no subscriptions are missed during the receipt import process.
-
-
-## RevenueCat Tools
-Looking to ensure that youre making use of our handy tools and that everything is working as intended? Follow this guide to make sure. 
 ### Using RC Paywalls
 To ensure that you are making use out of our Paywalls tool correctly, you will want to make sure that you create a paywall via your RevenueCat dashboard and then display these paywalls via our SDK to your users. More information on how to do this can be found [here](https://www.revenuecat.com/docs/tools/paywalls/displaying-paywalls). We also ahve a test guide which will go over use cases that are good to look out for that can be found [here](testing-guide/use-cases). 
 ### Placements & Targeting 
-To ensure that you are making use out of our Placements and targeting tools, you will want to make sure that you have some defined rules set in your monetization section of your project in RevenueCat. More inforamton on how to set these up can be found [here](https://www.revenuecat.com/docs/tools/targeting#creating-targeting-rules). Once this is set up, to test you will want to creat an app user ID that should fit into a target placement and fetch the offering. This user should be retunred an offering based on the target, you can verify this by creating another app user ID that is not supposed to fit in the offering and comparing this to see if you are shown the correct offering.  
 
+## Extended Workflows [ Jaz & Mike ]
 
-## Different Identification Setups
-To ensure that you're configuring RevenueCat to fit your needs correctly, you will need to ensure that you are following the proper Identification setup needed for your app. We mainly offer three ways of configuring that will help here, follow the outline below to ensure that you are configruing correctly. 
+### Token Tracking
+### Affiliates
+### B2B
+
+## Different Identification Setups [Mike]
+
 ### Anonymous 
 To configure RevenueCat to generate anonymous app user ID's, this will be the easiest configuration setup. All you need to do to ensure your user has an anonymous app user ID in RevenueCat and is able to make purchases and be tracked correctly is configure the SDK without identifying an app user ID on configuration. We have a useful guide which goes over this in more detail [here](https://www.revenuecat.com/docs/customers/user-ids#anonymous-app-user-ids). To ensure that you ahve followed that guide correctly, simply make a fresh sandbox account and open your app. Once this is done, you should be able to see your new user on the RevenueCat dashboard with an anonymous app user ID. 
 ### Identified 
