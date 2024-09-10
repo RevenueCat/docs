@@ -23,6 +23,7 @@
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "medium-zoom": "1.1.0",
+    "papaparse": "^5.4.1",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
