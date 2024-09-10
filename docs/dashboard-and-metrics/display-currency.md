@@ -5,7 +5,7 @@ excerpt: Customize your display currency
 hidden: false
 ---
 
-By default the RevenueCat Dashboard is set to use USD as the display currency, but this can be modified through Account Settings to view your data in other currencies.
+By default the RevenueCat Dashboard is set to use USD as the display currency, but this can be modified through Account Settings to view your data in other supported currencies.
 
 ## Modifying your display currency
 
