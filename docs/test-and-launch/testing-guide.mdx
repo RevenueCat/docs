@@ -7,18 +7,19 @@ hidden: false
 
 Want to test you RevenueCat integration? Follow this document to learn how to test specific functions throughout your purchase process as well as help verify that your RevenueCat setup is working properly.
 
-## Configurations [Jaz]
+## Configurations
 
-### New to Subscriptions/IAP
-### Existing Code Base
 ### Using RevenueCat for Entitlements
 
 RevenueCat makes it easy to unlock access using entitlements. Entitlements define the level of access your users should have. You can read more about our guide [here](https://www.revenuecat.com/docs/customers/customer-info).
 This approach allows you to utilize RevenueCat as the source of truth by checking the CustomerInfo object to see your users' purchases. This is the recommended approach, as it enables you to seamlessly unlock access, while still allowing you to use your backend as a backup if needed during this setup.
 
 ### Using Own Backend for Entitlements
+You can still use RevenueCat to unlock access via your own backend. This requires some setup, as shown [here](https://www.revenuecat.com/docs/test-and-launch/testing-guide/common-architecture). This setup allows you to maintain your existing system while utilizing RevenueCat’s webhooks to keep your backend in sync with the purchases your users have made.
+We recommend this approach if you have an extensive setup that you don't want to switch over to using RevenueCat exclusively, or if you want to use this setup in addition to unlocking access with the SDK as a backup.
 
-## Migration [Jaz]
+
+## Migration
 
 ### Client Side Migration
 A client-side migration is best used when you don't have all the receipts or transaction IDs needed for a full receipt import. This approach allows you to migrate users as they update to the latest version of your app with the RevenueCat SDK integrated. However, it may take longer to get all your users into RevenueCat, as it depends on when they choose to upgrade.
@@ -28,19 +29,25 @@ If you do have the receipts or transaction IDs, we recommend performing a full i
 You can find more on the client-side migration [here](https://www.revenuecat.com/docs/migrating-to-revenuecat/migrating-existing-subscriptions#client-side-sdk-data-import).
 
 ### Import Migration
-### Receipt Forwarding
+A full receipt import is our recommended approach if you have the data, as it provides a fuller history of your users. This method allows us to capture the full history of a user’s purchases for iOS and the latest snapshot for Google and Stripe.
 
-## RevenueCat Tools [Mike] 
+You can read more on the full import process [here](https://www.revenuecat.com/docs/migrating-to-revenuecat/migrating-existing-subscriptions/receipt-imports).
+
+One thing to note is that you'll want to set up the following in this order:
+
+1. Set up receipt forwarding as shown [here](https://www.revenuecat.com/docs/migrating-to-revenuecat/migrating-existing-subscriptions#server-side-data-import).
+2. Then, perform the export of your data.
+
+This ensures that no subscriptions are missed during the receipt import process.
+
+
+
+## RevenueCat Tools 
 
 ### Using RC Paywalls
 To ensure that you are making use out of our Paywalls tool correctly, you will want to make sure that you create a paywall via your RevenueCat dashboard and then display these paywalls via our SDK to your users. More information on how to do this can be found [here](https://www.revenuecat.com/docs/tools/paywalls/displaying-paywalls). We also ahve a test guide which will go over use cases that are good to look out for that can be found [here](testing-guide/use-cases). 
 ### Placements & Targeting 
-
-## Extended Workflows [ Jaz & Mike ]
-
-### Token Tracking
-### Affiliates
-### B2B
+To ensure that you are making use out of our Placements and targeting tools, you will want to make sure that you have some defined rules set in your monetization section of your project in RevenueCat. More inforamton on how to set these up can be found [here](https://www.revenuecat.com/docs/tools/targeting#creating-targeting-rules). Once this is set up, to test you will want to creat an app user ID that should fit into a target placement and fetch the offering. This user should be retunred an offering based on the target, you can verify this by creating another app user ID that is not supposed to fit in the offering and comparing this to see if you are shown the correct offering.
 
 ## Different Identification Setups [Mike]
 
