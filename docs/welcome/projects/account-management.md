@@ -15,7 +15,7 @@ You can change your account email and name from your [account settings](https://
 
 ## How does billing work?
 
-RevenueCat bills based on **Monthly Tracked Revenue**, or MTR, for each plan. MTR is different than Monthly Recurring Revenue, or MRR, and includes the revenue from all purchases and renewals including non-subscription products. You can see your account's current MTR [here](https://app.revenuecat.com/settings/billing).
+RevenueCat bills based on **Monthly Tracked Revenue**, or MTR, for each plan. MTR is different than Monthly Recurring Revenue, or MRR, and includes the revenue from all purchases and renewals including non-subscription products. You can see your account's current MTR [here](https://app.revenuecat.com/settings/billing). Billing periods will not follow the calendar month, but rather will be from the same date of a month until the same date of the next month (for example: July 15th until August 15th).
 
 Read more on our [Pricing](https://www.revenuecat.com/pricing) page.
 
