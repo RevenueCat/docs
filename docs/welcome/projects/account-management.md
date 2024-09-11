@@ -44,6 +44,10 @@ The abilities that would be restricted are as follows:
 - Create new Paywalls
 - Edit existing Paywalls (Using existing Paywalls will remain)
 
+### Where to find invoices?
+
+An invoice will be emailed to the owner of a project at the end of the current billing period. If you want to have the invoices emailed to additional email addresses, you can reach out to [Developer Support](https://app.revenuecat.com/settings/support) in order to have them added to your profile for future invoices. You can also view a history of invoices on the [Invoices page](https://app.revenuecat.com/settings/billing/invoices) under the billing category of the project owner's account settings. The history will only list invoices with non-zero billed amounts, so you may see gaps between billing periods if you do not meet the $2.5k limit in every billing period.
+
 ### Tax & VAT details
 
 Please reach out to [RevenueCat Support](https://app.revenuecat.com/settings/support) if you need Tax IDs or VAT information added to your invoices.
