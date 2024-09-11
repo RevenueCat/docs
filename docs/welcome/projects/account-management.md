@@ -52,10 +52,6 @@ An invoice will be emailed to the owner of a project at the end of the current b
 
 Please reach out to [RevenueCat Support](https://app.revenuecat.com/settings/support) if you need Tax IDs or VAT information added to your invoices.
 
-:::info VAT updates apply to future invoices only
-RevenueCat Support **cannot** add tax IDs and VAT information to invoices that have already been sent, and any added tax IDs and VAT information will only apply to **future** invoices.
-:::
-
 ### Address details
 
 If needed, you can add additional address information to your invoices by clicking '**Update payment method**' and expanding the '**Invoice Details**' section:
@@ -67,7 +63,7 @@ If needed, you can add additional address information to your invoices by clicki
 ## Delete your account
 
 :::danger
-To delete your RevenueCat account, you'll first need to delete **all of your [Projects](/welcome/projects)**. Note that deleting any active Projects will prevent users from accessing their purchases via the RevenueCat SDK but **will not** cancel any of your customer's active subscriptions.
+To delete your RevenueCat account, you'll first need to delete **all of your [Projects](/welcome/projects)**. Note that deleting any active Projects will prevent users from accessing their purchases via the RevenueCat SDK but **will not** cancel any of your customer's active subscriptions. RevenueCat will not delete your projects for you.
 
 Once your projects have been deleted, reach out to RevenueCat Support via the dashboard [Contact Us](https://app.revenuecat.com/settings/support) form in your account settings and request your account to be deleted.
 :::
