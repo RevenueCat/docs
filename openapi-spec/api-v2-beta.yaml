@@ -3523,10 +3523,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
-        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
-        \ in Beta.</div>\n</div>\nLists all Purchases associated with the Customer.\n\
-        \ This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>."
+      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>.'
   /projects/{project_id}/customers/{customer_id}/active_entitlements:
     get:
       summary: Get a list of customer's active entitlements
@@ -4572,6 +4569,7 @@ components:
       - $iterableTemplateId
       - $iterableUserId
       - $keyword
+      - $kochavaDeviceId
       - $mediaSource
       - $mixpanelDistinctId
       - $mparticleId
