@@ -70,7 +70,7 @@ If you want to track new purchases using Google Cloud Pub/Sub, you can enable th
 
 Considerations:
 * RevenueCat will create a subscriber to associate that purchase to
-* The subscriber app user ID will be taken from the
+* The subscriber app user ID will be taken from the `obfuscatedExternalAccountId` field of the transaction
 * If you are using our SDK to track purchases, we might get the notification from the store before the SDK leading to an anonymous users being created and then aliased to the user sent by the SDK.
 
 :::warning
