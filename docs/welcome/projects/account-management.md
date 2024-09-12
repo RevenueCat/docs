@@ -23,7 +23,8 @@ Read more on our [Pricing](https://www.revenuecat.com/pricing) page.
 
 As your app grows, RevenueCat will remain free until you reach $2.5k in MTR, and beyond that limit for everyone on the Pro Plan, we will bill for 1% of revenue. If you do fall below that amount in subsequent months, RevenueCat will return to being free for you.
 
-An example of how you can expect to be charged for the Pro plan can be found below: 
+An example of how you can expect to be charged for the Pro plan can be found below:
+
 - Your MTR Tracked < $2,500 = Free
 - Your MTR Tracked > $2,500 = 1% of your MTR tracked. For instance, if you earned $2,600 in the previous billing cycle, you would incur a charge of $26.
 
@@ -59,6 +60,23 @@ If needed, you can add additional address information to your invoices by clicki
 ![update payment method button](https://github.com/RevenueCat/revenuecat-docs/assets/110489217/79b7b8e5-cb06-438d-91e9-9257c6921211)
 
 ![invoice details expanded](https://github.com/RevenueCat/revenuecat-docs/assets/110489217/a49a859b-1f45-438d-8b46-65e93ca4f48e)
+
+## Display Currency
+
+You can select a currency to be used across the dashboard. This setting allows you to view all financial data in your preferred currency. The available currencies you can choose from are:
+
+- USD: United States Dollar ($)
+- EUR: Euro (€)
+- GBP: British Pound Sterling (£)
+- AUD: Australian Dollar (A$)
+- CAD: Canadian Dollar (C$)
+- JPY: Japanese Yen (¥)
+- BRL: Brazilian Real (R$)
+- KRW: South Korean Won (₩)
+- CNY: Chinese Yuan (¥)
+- MXN: Mexican Peso (MX$)
+
+To change your display currency, navigate to your account settings in the dashboard. This selection will affect how financial information is presented throughout the RevenueCat interface, making it easier to understand your revenue in a familiar currency.
 
 ## Delete your account
 
