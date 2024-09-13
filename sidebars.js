@@ -203,7 +203,6 @@ const testAndLaunchCategory = Category({
       slug: "testing-guide",
       items: [
         Page({slug: "use-cases"}),
-        Page({slug: "common-architecture" }),
         Page({slug: "export-examples"}),
       ]
     }),
@@ -231,6 +230,7 @@ const subscriptionGuidanceCategory = Category({
     Page({ slug: "price-changes" }),
     Page({ slug: "refunds" }),
     Page({ slug: "google-prepaid-plans" }),
+    Page({slug: "common-architecture" }),
   ],
 });
 
