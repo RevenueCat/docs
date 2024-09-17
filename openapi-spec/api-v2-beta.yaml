@@ -4577,6 +4577,7 @@ components:
       - $onesignalUserId
       - $phoneNumber
       - $segmentId
+      - $deviceVersion
       example: $email
     CustomerEntitlement:
       type: object
