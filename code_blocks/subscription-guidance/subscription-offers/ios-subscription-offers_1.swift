@@ -10,4 +10,4 @@ if let discount = package.storeProduct.discounts.first {
 }
 
 // OR: if using async/await
-let promoOffers = await package.storeProduct.getEligiblePromotionalOffers()
+let promoOffers = await package.storeProduct.eligiblePromotionalOffers()

@@ -1,0 +1,42 @@
+
+{
+    current: {
+        identifier: "my_id",
+        metadata: { }, ' Metadata set in the Offering configuration
+        description: "Offering description",
+        annual: {}, ' The configured Annual package, if available
+        monthly: {}, ' The configured Monthly package, if available
+        ' A list of all available packages
+        availablePackages: [
+            {
+                identifier: "package_identifier",
+                packageType: "custom",
+                ' The raw Roku store product
+                 storeProduct: {
+                    code: "yearly_subscription_product"
+                    cost: "$1.99"
+                    description: "Yearly Subscription"
+                    freeTrialQuantity: 0
+                    freeTrialType: "None"
+                    HDPosterUrl: ""
+                    id: "00000000-0000-0000-0000-000000000000"
+                    inStock: "true"
+                    name: "Yearly Subscription"
+                    offerEndDate: "
+                    offerStartDate: ""
+                    productImagePortrait: ""
+                    productImageUrl: ""
+                    productType: "YearlySub"
+                    qty: 0
+                    SDPosterUrl: ""
+                    trialCost: "$0.99"
+                    trialQuantity: 12
+                    trialType: "Months"
+                }
+            }
+        ],
+    },
+    all: [
+        ' An array for all offerings, with the same schema as above
+   ]
+ }
