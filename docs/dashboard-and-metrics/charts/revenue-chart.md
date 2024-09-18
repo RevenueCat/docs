@@ -23,6 +23,7 @@ The Revenue chart provides both the revenue that was generated in a given period
 ### Revenue type
 
 The Revenue chart allows you to select and visualize three different revenue definitions:
+
 1. Revenue: The total revenue generated in a given period, minus refunds from transactions that occurred in that period.
 2. Revenue (net of taxes): Revenue generated in a given period (as defined above), minus our estimate of revenue deducted from the stores for taxes (e.g. VAT, DST, etc).
 3. Proceeds: Revenue generated in a given period (as defined above), minus our estimate of revenue deducted from the stores for taxes and commission.
@@ -61,13 +62,19 @@ For each period, we measure:
 3. Taxes: The total amount deducted for taxes from the revenue generated in a given period.
 4. Store Commission / Fees: The total amount deducted for store commissions and fees from the revenue generated in a given period.
 
-**Formulas**  
+### Formulas
+
 - [Revenue] - [Taxes] = Revenue (net of taxes)
 - [Revenue] - ([Store Commission / Fees] + [Taxes]) = Proceeds
 
 Or, to instead get the amounts deducted for each purpose:
+
 - [Revenue] - [Revenue (net of taxes)] = Amount deducted for taxes
 - [Revenue (net of taxes)] - [Proceeds] = Amount deducted for store commission & fees
+
+## Sample query from Scheduled Data Exports
+
+With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can get daily exports of your transactions from RevenueCat to reproduce and customize measures like this one that are provided by RevenueCat. You can find the full set of available sample queries [here](/integrations/scheduled-data-exports#sample-queries-for-revenuecat-measures).
 
 ## FAQs
 
@@ -78,3 +85,4 @@ Or, to instead get the amounts deducted for each purpose:
 | How are product price changes accounted for in revenue?       | Once we detect a product price change in a specific country or currency, we’ll begin applying it to new subscribers immediately. We expect that existing subscribers are grandfathered in at the current price, and therefore revenue reporting will be inaccurate if that is not the case. We recommend creating a new product instead of changing the price on an existing product. [Learn more here](/subscription-guidance/price-changes).                                                                      |
 | What exchange rates are used when converting to USD?          | We convert transactions to USD using the exchange rate of the purchased currency on the day of purchase. This may differ from how other sources handle exchange rates. For example, Apple's Sales and Trends reports use a rolling average of the previous month's exchange rates, while their payments to developers are exchanged at or near the time of payment. [More info](https://developer.apple.com/help/app-store-connect/measure-app-performance/differences-in-reporting-tools).                         |
 | Why are Proceeds less than $0 for a period?                   | Proceeds may be less than $0 for a period if that period contains Stripe transactions that were low enough prices where Stripe's fee for that transaction exceeded its revenue, resulting in negative proceeds for that transaction. If the negative Proceeds for a period exceed the positive Proceeds from other transactions, the period's Proceeds will be negative.                                                                                                                                            |
+| How can I display my revenue in currencies other than USD?    | By default the RevenueCat Dashboard is set to use USD as the display currency, but this can be modified through Account Settings to view your data in other supported currencies. To learn more, [click here](/dashboard-and-metrics/display-currency).                                                                                                                                                                                                                                                             |

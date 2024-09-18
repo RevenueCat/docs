@@ -25,7 +25,7 @@ First choose the [entitlement name](/getting-started/entitlements). Next select 
 Granting an entitlement from the customer page will go into effect immediately, but you may need to [refresh CustomerInfo](/customers/customer-info) on the client to get the latest active entitlements. The access to the entitlement will automatically be revoked after the selected duration. Note that granted entitlements will work in sandbox and production apps, but the transactions they generate are always considered "production".
 
 :::info
-Granted entitlements will be prefixed with "rc_promo" in the customer dashboard and in SDKs.
+Granted entitlements will be prefixed with `rc_promo` in the customer dashboard and in SDKs. For webhooks, they will be sent as production `NON_RENEWING_PURCHASE` events with their store and period type set to `PROMOTIONAL`.
 :::
 
 ## Removing Granted Entitlements
@@ -33,6 +33,10 @@ Granted entitlements will be prefixed with "rc_promo" in the customer dashboard 
 Granted entitlements will automatically be removed after expiration. To remove access to an entitlement early, use the menu next to the granted entitlement in the Entitlements card on the Customer Profile.
 
 ![](/images/customer-history-remove-granted-entitlement.png)
+
+:::info
+Please note that the "Sandbox data" toggle should be unchecked to remove entitlements for both production and sandbox users.
+:::
 
 ## Granting Entitlements through the REST API
 

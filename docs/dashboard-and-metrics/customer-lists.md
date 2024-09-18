@@ -97,68 +97,64 @@ Customer lists are refreshed every 2 hours automatically
 ## Filters
 
 Filters allow you to choose which customers appear in your list. You can create custom lists with any combination of filters. **All filters are applied as AND filters**.
-![](/images/20c0838-Screenshot_2023-03-27_at_1.20.54_PM_3fa920b6810cad3e7a2e48f7ebbc605d.png "Screenshot 2023-03-27 at 1.20.54 PM.png")
+![](/images/customer_list_filters.png "Customer List Filters")
 
 See the table below for all filters you can apply to your lists.
 
-| Filter                         | Type         | Description                                                                                                                      |
-| ------------------------------ | ------------ | -------------------------------------------------------------------------------------------------------------------------------- |
-| Ad                             | String       | The `$ad` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                         |
-| Ad Group                       | String       | The `$adGroup` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                    |
-| App Version                    | String       | The version of the app that the customer was last seen using.                                                                    |
-| Auto Renew Intent              | Bool         | Whether the customer has opted out of auto-renew or not.                                                                         |
-| Campaign                       | String       | The `$campaign` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                   |
-| Cancellation Date              | Date         | The date the customer unsubscribed from their subscription. Will be set back to `null` if the customer later resubscribes.       |
-| Creative                       | String       | The `$creative` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                   |
-| Email                          | String       | The `$email` [Attribute](/customers/customer-attributes) for the customer.                                                       |
-| Experiment Id                  | String       | The unique ID of the experiment that the customer was enrolled in (if applicable).                                               |
-| Experiment Variant             | String       | The variant in the experiment that the customer was enrolled in (if applicable).                                                 |
-| First Purchase Date            | Date         | The date of the customer's first transaction.                                                                                    |
-| First Seen Date                | Date         | The date the customer was first seen by RevenueCat.                                                                              |
-| GPS Ad Id                      | String       | The `$gpsAdId` [](/customers/customer-attributes#device-identifiers) for the customer.                                           |
-| Granted Entitlement via RC     | Bool         | Whether the customer has been [granted an Entitlement](/dashboard-and-metrics/customer-history/promotionals) or not.             |
-| IDFA                           | String       | The `$idfa` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                                     |
-| IDFV                           | String       | The `$idfv` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                                     |
-| Keyword                        | String       | The `$keyword` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                    |
-| Last Seen App Id               | String       | The ID of the app that the customer was last seen using.                                                                         |
-| Last Seen App Name             | String       | The name of the app that the customer was last seen using.                                                                       |
-| Last Seen Country              | String       | The two-letter ISO 3166-1 alpha-2 code of the country where the user was last seen, determined by IP address.                    |
-| Last Seen Date                 | Date         | The date the customer was last seen by RevenueCat.                                                                               |
-| Last Seen Locale               | String       | The customer's last seen locale.                                                                                                 |
-| Last Seen Platform             | String       | The platform that the customer was last seen using.                                                                              |
-| Last Seen Platform Version     | String       | The version of the platform that the customer was last seen using.                                                               |
-| Last Seen RC SDK Version       | String       | The RevenueCat SDK version being used in the customer's last seen app version.                                                   |
-| Latest Entitlement             | String       | The latest [Entitlement](/getting-started/entitlements) unlocked by the customer.                                                |
-| Latest Expiration Date         | Date         | The latest expiration date of the customer's [Entitlement](/getting-started/entitlements).                                       |
-| Latest Offer                   | String       | The identifier of the latest offer that the customer used to make a purchase (if applicable).                                    |
-| Latest Offer Type              | String       | The type of the latest offer that the customer used to make a purchase (if applicable).                                          |
-| Latest Ownership Type          | String       | The ownership type of the customer's latest purchase, used to distinguish family sharing purchases.                              |
-| Latest Purchased Offering      | String       | The offering that the customer's latest purchased was made from.                                                                 |
-| Latest Product                 | String       | The customer's latest purchased product identifier.                                                                              |
-| Latest Purchase Date           | Date         | The customer's latest transaction date.                                                                                          |
-| Latest Renewal Date            | Date         | The customer's latest renewal date. This could be the same as the Latest Purchase Date.                                          |
-| Latest Store                   | Multi Select | The latest store the customer purchased from.                                                                                    |
-| Latest Store Country           | Multi Select | The latest store country the customer purchased from.                                                                            |
-| Media Source                   | String       | The `$mediaSource` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                |
-| Number of Renewals             | Integer      | The total number of renewals the customer has had. A trial conversion is considered a renewal.                                   |
-| Phone Number                   | String       | The `$phoneNumber` [Attribute](/customers/customer-attributes) for the customer.                                                 |
-| Total Spent                    | Integer      | The total revenue (in USD) spent by the customer.                                                                                |
-| Trial Cancellation Date        | Date         | The date the customer unsubscribed from their free trial. Will be set back to `null` if the customer later resubscribes.         |
-| Trial End Date                 | Date         | The date the customer's free trial expires.                                                                                      |
-| Trial Start Date               | Date         | The date the customer started their free trial.                                                                                  |
-| Made Non-subscription Purchase | Bool         | Whether the customer has made any [non-subscription](/platform-resources/non-subscriptions) purchases or not.                    |
-| Made Sandbox Purchase          | Bool         | Whether the customer has made any sandbox purchases or not.                                                                      |
-| Status                         | Multi Select | The latest status of the customer.                                                                                               |
+| Filter                         | Type         | Description                                                                                                                |
+| ------------------------------ | ------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| Ad                             | String       | The `$ad` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                                   |
+| Ad Group                       | String       | The `$adGroup` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                              |
+| App Version                    | String       | The version of the app that the customer was last seen using.                                                              |
+| Auto Renew Intent              | Bool         | Whether the customer has opted out of auto-renew or not.                                                                   |
+| Campaign                       | String       | The `$campaign` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                             |
+| Cancellation Date              | Date         | The date the customer unsubscribed from their subscription. Will be set back to `null` if the customer later resubscribes. |
+| Creative                       | String       | The `$creative` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                             |
+| Email                          | String       | The `$email` [Attribute](/customers/customer-attributes) for the customer.                                                 |
+| Experiment Id                  | String       | The unique ID of the experiment that the customer was enrolled in (if applicable).                                         |
+| Experiment Variant             | String       | The variant in the experiment that the customer was enrolled in (if applicable).                                           |
+| First Purchase Date            | Date         | The date of the customer's first transaction.                                                                              |
+| First Seen Date                | Date         | The date the customer was first seen by RevenueCat.                                                                        |
+| GPS Ad Id                      | String       | The `$gpsAdId` [](/customers/customer-attributes#device-identifiers) for the customer.                                     |
+| Granted Entitlement via RC     | Bool         | Whether the customer has been [granted an Entitlement](/dashboard-and-metrics/customer-history/promotionals) or not.       |
+| IDFA                           | String       | The `$idfa` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                               |
+| IDFV                           | String       | The `$idfv` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                               |
+| Keyword                        | String       | The `$keyword` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                              |
+| Last Seen App Id               | String       | The ID of the app that the customer was last seen using.                                                                   |
+| Last Seen App Name             | String       | The name of the app that the customer was last seen using.                                                                 |
+| Last Seen Country              | String       | The two-letter ISO 3166-1 alpha-2 code of the country where the user was last seen, determined by IP address.              |
+| Last Seen Date                 | Date         | The date the customer was last seen by RevenueCat.                                                                         |
+| Last Seen Locale               | String       | The customer's last seen locale.                                                                                           |
+| Last Seen Platform             | String       | The platform that the customer was last seen using.                                                                        |
+| Last Seen Platform Version     | String       | The version of the platform that the customer was last seen using.                                                         |
+| Last Seen RC SDK Version       | String       | The RevenueCat SDK version being used in the customer's last seen app version.                                             |
+| Latest Entitlement             | String       | The latest [Entitlement](/getting-started/entitlements) unlocked by the customer.                                          |
+| Latest Expiration Date         | Date         | The latest expiration date of the customer's [Entitlement](/getting-started/entitlements).                                 |
+| Latest Offer                   | String       | The identifier of the latest offer that the customer used to make a purchase (if applicable).                              |
+| Latest Offer Type              | String       | The type of the latest offer that the customer used to make a purchase (if applicable).                                    |
+| Latest Ownership Type          | String       | The ownership type of the customer's latest purchase, used to distinguish family sharing purchases.                        |
+| Latest Purchased Offering      | String       | The offering that the customer's latest purchased was made from.                                                           |
+| Latest Product                 | String       | The customer's latest purchased product identifier.                                                                        |
+| Latest Purchase Date           | Date         | The customer's latest transaction date.                                                                                    |
+| Latest Renewal Date            | Date         | The customer's latest renewal date. This could be the same as the Latest Purchase Date.                                    |
+| Latest Store                   | Multi Select | The latest store the customer purchased from.                                                                              |
+| Latest Store Country           | Multi Select | The latest store country the customer purchased from.                                                                      |
+| Media Source                   | String       | The `$mediaSource` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                          |
+| Number of Renewals             | Integer      | The total number of renewals the customer has had. A trial conversion is considered a renewal.                             |
+| Phone Number                   | String       | The `$phoneNumber` [Attribute](/customers/customer-attributes) for the customer.                                           |
+| Total Spent                    | Integer      | The total revenue (in USD) spent by the customer.                                                                          |
+| Trial Cancellation Date        | Date         | The date the customer unsubscribed from their free trial. Will be set back to `null` if the customer later resubscribes.   |
+| Trial End Date                 | Date         | The date the customer's free trial expires.                                                                                |
+| Trial Start Date               | Date         | The date the customer started their free trial.                                                                            |
+| Made Non-subscription Purchase | Bool         | Whether the customer has made any [non-subscription](/platform-resources/non-subscriptions) purchases or not.              |
+| Made Sandbox Purchase          | Bool         | Whether the customer has made any sandbox purchases or not.                                                                |
+| Status                         | Multi Select | The latest status of the customer.                                                                                         |
 
 :::info Date filters are start of day
 Selecting any date filters will apply to the start of the day. For example, `2021-01-01` will be `2021-01-01T00:00:00` under the hood.
 :::
 
 ## Exporting Data
-
-:::warning Field name changes in April 2024
-We've updated the `app_name` and `app_uuid` fields to `project_name` and `project_id`, since they refer to those values for the Project whose customers are being exported. In addition, new `app_name` and `app_id` fields are available which refer to the App that a customer was last seen using; as well as new fields for app version, platform, experiments, offers, and more.
-:::
 
 The complete list of customers in a list can be exported as a .csv file. Exports are processed in the background, and you'll receive an email with a link to download the file. Emails are sent to the logged in account that requested the export. The download links are shareable and available for 30 days.
 
@@ -216,6 +212,7 @@ Below is a description of the .csv format for the exported data.
 | idfv                          | The `$idfv` [Attribute](/customers/customer-attributes#device-identifiers) for the customer, if set.                                         |
 | gps_ad_id                     | The $gpsAdId [Attribute](/customers/customer-attributes#device-identifiers) for the customer, if set.                                        |
 | custom_attributes             | JSON representation of any custom [Attributes](/customers/customer-attributes) set for the customer.                                         |
+| currency                      | The currency that total_spent is provided in, based on the Display Currency you've configured in Account Settings.                           |
 
 :::info "The last successful export finished recently. Please, wait some minutes before submitting another export."
 Note that there is a wait time of 30 minutes between each export.
@@ -223,7 +220,7 @@ Note that there is a wait time of 30 minutes between each export.
 
 ### Exported files
 
-Customer List exports are CSV files compressed in a GZ file. A GZ file is a compressed file similar to a ZIP file, although it uses a different compression algorithm.
+Customer List exports are CSV files compressed in a GZ file. A GZ file is a compressed file similar to a ZIP file, although it uses a different compression algorithm. The exports use a semicolon delimiter, so if the files are not formatted correctly when viewed as spreadsheets, you may need to change your delimiter settings in the spreadsheet software.
 
 Note that the timestamps in the exports are measured in milliseconds since Unix epoch. To convert these timestamps into a readable date, the formula is `(A1÷86400000)+(DATE(1970,1,1))` where `A1` is the corresponding cell.
 
