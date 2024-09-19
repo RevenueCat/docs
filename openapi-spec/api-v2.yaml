@@ -17,12 +17,20 @@ tags:
   description: Operations about packages.
 - name: Product
   description: Operations about products.
+- name: Purchase
+  description: Operations about purchases.
 - name: Subscription
   description: Operations about subscriptions.
 - name: Invoice
   description: Operations about invoices.
 - name: Project
   description: Operations about projects.
+- name: Subscription Data Model
+  x-modelReference: true
+  description: '<SchemaDefinition schemaRef="#/components/schemas/Subscription" showReadOnly={true}
+    showWriteOnly={true} />
+
+    '
 - name: Overview (v2)
   x-traitTag: true
   description: "<div class=\"theme-admonition theme-admonition-info alert alert--info\"\
@@ -236,6 +244,60 @@ tags:
     \ Refer to the `backoff_ms` field to determine when to try again.\n\n### `unprocessable_entity_error`\n\
     \nRequest is not able to be processed. Please refer to the `message` field for\
     \ more information."
+- name: Representation of Subscriptions
+  x-traitTag: true
+  description: "In comparison to our [v1 REST API](/docs/api-v1#tag/customer_info_model),\
+    \ we have made changes to improve the organization and accessibility of your customers\u2019\
+    \ subscriptions. The data model used in the RevenueCat REST API v2 has several\
+    \ advantages. Firstly, it better abstracts differences between different app stores,\
+    \ making it easier for you to access your data without needing to understand the\
+    \ specificities and idiosyncrasies of each individual store. \n\nAdditionally,\
+    \ the REST API v2 subscription data model provides richer information regarding\
+    \ your subscription data and includes new fields such as:\n\n- `gives_access`:\
+    \ Rather than having to create your own logic to determine if a customer should\
+    \ have access, we will provide you with that information directly.\n- `auto_renewal_status`:\
+    \ Previously you would have to use `unsubscribe_detected_at`, `billing_issues_detected_at`,\
+    \ and other fields to determine the auto renewal status of the customer, now we\
+    \ include this information to take away the estimation work.\n- `status`: Gives\
+    \ you a quick and easy way to gather the status of the customer\u2019s subscription\
+    \ to determine what state they are currently in.\n- `store_subscription_identifier`:\
+    \ Whereas the old data model was missing the store\u2019s subscription identifier\
+    \ (aka the transaction ID directly from the stores), we have included this new\
+    \ field to help identify your customer\u2019s subscription.\n- `total_reveneue_in_usd`:\
+    \ You can easily determine how much a customer has spent for this subscription\
+    \ in USD and utilize it for your own bookkeeping purposes. This object also contains\
+    \ information such as gross, commission, tax, and proceeds to help you break down\
+    \ the customer\u2019s revenue. \n\nTo view more details of fields we have included\
+    \ for the subscription object, check out the [model reference](#tag/Subscription-Data-Model).\
+    \ \n\nEventually we will also expose this sort of information in webhooks and\
+    \ customer event details to incorporate the new data model throughout RevenueCat.\n\
+    \n## What constitutes a new subscription\n\nDifferent stores supported by RevenueCat\
+    \ have different logic to define what is a new subscription vs. a change to an\
+    \ existing subscription. To make it easier to handle subscriptions across different\
+    \ stores, the data model for the RevenueCat REST API v2 is now following a consistent\
+    \ definition of what continues the same subscription vs. a new one:\n\n- After\
+    \ a subscription has lapsed (e.g: after a billing retry or letting subscription\
+    \ expire after an unsubscribe), if a customer subscribes to the same product it\
+    \ will be considered a new subscription (this was previously treated differently\
+    \ on Apple App Store vs. Google Play Store)\n- If the product of a paid subscription\
+    \ is changed, the subscription to the new product will be considered a new subscription.\
+    \ An exception is product changes during a trial period, the post-trial subscription\
+    \ period to a different product will not be considered a new subscription, but\
+    \ a regular trial conversion\n- For family shared subscriptions:\n  - Family shared\
+    \ subscriptions will be considered as a new subscription (albeit with no revenue)\n\
+    \  - If family sharing access is revoked and later re-enabled, this will be considered\
+    \ as a new subscription\n\n### Diagrams for different cases\n\n#### Billing issue:\
+    \ unrecovered\n\n![](/docs/images/api-v2/b39dda4-Billing_issue__unrecovered.png)\n\
+    \n\n#### Billing issue: recovered\n\n![](/docs/images/api-v2/312e3fd-Billing_issue__recovered.png)\n\
+    \n\n#### Lapsed subscription\n\n![](/docs/images/api-v2/dca8cda-Lapsed_subscription.png)\n\
+    \n\n#### Product changes: upgrade (no trial)\n\n![](/docs/images/api-v2/1a8e689-Product_changes__upgrade_no_trial.png)\n\
+    \n\n#### Product changes: downgrade (no trial)\n\n![](/docs/images/api-v2/ae7edfc-Product_changes__downgrade_no_trial.png)\n\
+    \n\n#### Product changes (with trial)\n\n![](/docs/images/api-v2/a4e8115-Product_changes_with_trial.png)\n\
+    \n\n#### Subscription paused: Recovery\n\n![](/docs/images/api-v2/4fa17e9-Subscription_paused__Recovery.png)\n\
+    \n\n#### Subscription paused: Billing issue, recovered\n\n![](/docs/images/api-v2/a10133d-Subscription_paused__Billing_issue_recoverd.png)\n\
+    \n\n#### Subscription paused: Billing issue, unrecovered\n\n![](/docs/images/api-v2/6fa24fb-Subscription_paused__Billing_issue_unrecovered.png)\n\
+    \n\n#### Family shared subscriptions\n\n![](/docs/images/api-v2/1511106-Family_shared_subscriptions.png)\n\
+    \n\n#### Family shared subscriptions: regranted\n\n![](/docs/images/api-v2/b3134c1-Family_shared_subscriptions__regranted.png)"
 paths:
   /projects:
     get:
@@ -4257,6 +4319,7 @@ components:
       - $onesignalUserId
       - $phoneNumber
       - $segmentId
+      - $deviceVersion
       example: $email
     CustomerEntitlement:
       type: object
@@ -5629,7 +5692,7 @@ components:
         environment:
           $ref: '#/components/schemas/Environment'
         store:
-          description: Store the subscription belongs to
+          description: Store the purchase belongs to
           nullable: false
           type: string
           enum:
@@ -5641,14 +5704,14 @@ components:
           - stripe
           example: amazon
         store_purchase_identifier:
-          description: The store subscription identifier
+          description: The store purchase identifier
           nullable: false
           type: string
           minLength: 1
           maxLength: 255
           example: 12345678
         ownership:
-          description: Ownership of the subscription
+          description: Ownership of the purchase
           nullable: false
           oneOf:
           - $ref: '#/components/schemas/Ownership'
@@ -6208,6 +6271,10 @@ x-tagGroups:
   - Rate Limit
   - Expandables
   - Error Handling
+  - Representation of Subscriptions
+- name: Model Reference
+  tags:
+  - Subscription Data Model
 - name: Endpoint Reference
   tags:
   - App
@@ -6217,6 +6284,7 @@ x-tagGroups:
   - Offering
   - Package
   - Product
+  - Purchase
   - Subscription
   - Invoice
   - Project

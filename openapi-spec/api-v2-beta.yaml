@@ -25,7 +25,7 @@ tags:
   description: Operations about invoices.
 - name: Project
   description: Operations about projects.
-- name: Subscription Data Model (Beta)
+- name: Subscription Data Model
   x-modelReference: true
   description: '<SchemaDefinition schemaRef="#/components/schemas/Subscription" showReadOnly={true}
     showWriteOnly={true} />
@@ -244,7 +244,7 @@ tags:
     \ Refer to the `backoff_ms` field to determine when to try again.\n\n### `unprocessable_entity_error`\n\
     \nRequest is not able to be processed. Please refer to the `message` field for\
     \ more information."
-- name: Representation of Subscriptions (Beta)
+- name: Representation of Subscriptions
   x-traitTag: true
   description: "In comparison to our [v1 REST API](/docs/api-v1#tag/customer_info_model),\
     \ we have made changes to improve the organization and accessibility of your customers\u2019\
@@ -4577,6 +4577,7 @@ components:
       - $onesignalUserId
       - $phoneNumber
       - $segmentId
+      - $deviceVersion
       example: $email
     CustomerEntitlement:
       type: object
@@ -5949,7 +5950,7 @@ components:
         environment:
           $ref: '#/components/schemas/Environment'
         store:
-          description: Store the subscription belongs to
+          description: Store the purchase belongs to
           nullable: false
           type: string
           enum:
@@ -5961,14 +5962,14 @@ components:
           - stripe
           example: amazon
         store_purchase_identifier:
-          description: The store subscription identifier
+          description: The store purchase identifier
           nullable: false
           type: string
           minLength: 1
           maxLength: 255
           example: 12345678
         ownership:
-          description: Ownership of the subscription
+          description: Ownership of the purchase
           nullable: false
           oneOf:
           - $ref: '#/components/schemas/Ownership'
@@ -6529,10 +6530,10 @@ x-tagGroups:
   - Rate Limit
   - Expandables
   - Error Handling
-  - Representation of Subscriptions (Beta)
+  - Representation of Subscriptions
 - name: Model Reference
   tags:
-  - Subscription Data Model (Beta)
+  - Subscription Data Model
 - name: Endpoint Reference
   tags:
   - App
