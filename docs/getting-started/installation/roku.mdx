@@ -1,0 +1,238 @@
+---
+title: Roku
+slug: roku
+excerpt: Instructions for installing RevenueCat's Roku SDK
+hidden: false
+---
+
+:::warning Beta Feature
+RevenueCat's Roku support is currently in beta. For interest, please fill out our **[waitlist form](https://rev.cat/roku-beta-interest)**.
+:::
+
+## General setup
+### Prerequisites 
+#### Setting up your Roku developer account
+Follow the [First Steps](https://developer.roku.com/en-gb/docs/developer-program/getting-started/first-steps.md) guide to create a Roku developer account, login to your Roku device and enable developer mode on your Roku device.
+
+#### Setting up your Roku channel
+Once you have your developer account created, head to the [dashboard](https://developer.roku.com/dev/dashboard)
+
+1. First, [create a new Channel](https://developer.roku.com/en-gb/docs/developer-program/publishing/channel-publishing-guide.md#create-a-channel)
+2. If you want to use this channel for testing, make sure the channel is [enabled for billing testing](https://developer.roku.com/en-gb/docs/developer-program/roku-pay/testing/billing-testing.md)
+3. Under "Monetization" -> "Test users", [add a test user](https://developer.roku.com/en-gb/docs/developer-program/roku-pay/quickstart/test-users.md) with the email associated to your Roku device
+4. Under "Monetization" -> "Product", follow the process to submit the tax documents, and after you're approved, you can [create in-channel products](/getting-started/entitlements/roku-products)
+
+### App configuration
+1. Make sure your project has been enabled to create Roku apps. If you're not sure, talk to your RevenueCat contact.
+2. Open the RevenueCat dashboard, select your project, and click on "Add app" > "Roku Store"
+
+![](/images/roku/add-roku-app.png)
+
+![](/images/roku/roku-app.png)
+
+3. Enter your app's name. Navigate to the [Roku Pay Web Services page](https://developer.roku.com/rpay-web-service) to copy your the Roku Pay API key and paste this to the RevenueCat dashboard under 'Roku Pay API Key'
+
+![](/images/roku/roku-api-key.png)
+
+![](/images/roku/roku-name-key.png)
+
+4. Find your Roku Channel ID in your Roku Developer Dashboard and enter this value in the RevenueCat dashboard under 'Roku Channel ID'
+
+![](/images/roku/roku-channel-id.png)
+
+![](/images/roku/roku-multi-channel.png)
+
+<figure>
+[](/images/roku/roku-multi-channel.png)
+<figcaption>Remember to select 'SAVE CHANGES'</figcaption>
+</figure>
+
+5. Once the app is created, click on the "Roku Server to Server notifications settings", copy the "Roku Push Notification URL" which starts with `https://api.revenuecat.com/v1/incoming-webhooks/roku-pay-jwt-notification`. Navigate back to your [Roku Pay Web Services page](https://developer.roku.com/rpay-web-service) (where you found the Roku API key) page and scroll down until you see a section called 'Push Notifications' and paste RevenueCat's Push notifications URL in the text box
+
+![](/images/roku/roku-notification-url.png)
+
+<figure>
+![](/images/roku/roku-notifications.png)
+<figcaption>Remember to select 'SAVE CHANGES'</figcaption>
+</figure>
+
+6. Back to the RevenueCat dashboard, click on "Public API Key" and copy over the value which should start with "roku_XXXXXX". You will need it to configure the SDK later.
+
+![](/images/roku/revenuecat-api-key.png)
+
+### Product configuration
+After you have configured the Roku Store app on RevenueCat, you should [create your in-channel products](/getting-started/entitlements/roku-products) and then follow RevenueCat's regular setup of [entitlements, products, and offerings](/getting-started/entitlements).
+
+## Installing the SDK
+1. Clone the repository:
+
+import rokuClone from "!!raw-loader!@site/code_blocks/getting-started/installation/configuring-roku_1.shell";
+
+<RCCodeBlock tabs={[
+    { type: 'shell', content: rokuClone, name: 'Terminal' }
+]} />
+
+2. Copy the `components/purchases` folder into your app's `components` folder.
+3. Copy the `source/Purchases.brs` file into your app's `source` folder.
+4. Import the SDK in the .xml file of the component where you want to use it:
+
+import rokuXML from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-import-sdk.xml";
+
+<RCCodeBlock tabs={[
+    { type: 'xml', content: rokuXML, name: 'XML' }
+]} />
+
+## Configuring the SDK
+**Important:** The SDK should be used only from SceneGraph components. Calling it from the main thread or from a Task component is not supported.
+
+Initialize the SDK with your api key. You typically do this inside the `init()` method of your main scene.
+
+import rokuConfigure from "!!raw-loader!@site/code_blocks/getting-started/installation/configuring-roku_2.brs";
+
+<RCCodeBlock tabs={[
+    { type: 'brightscript', content: rokuConfigure, name: 'Brightscript' }
+]} />
+
+## Callbacks and error handling
+In methods of the SDK which perform async operations, you can get the result by passing a sub routine or a callback name.
+
+- The first parameter will contain the result.
+- The second parameter will contain an error if there was one, or `invalid` if there wasnt.
+
+**Example:**
+
+import rokuCallbacksErrorHandling from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-callbacks-error-handling.brs";
+
+<RCCodeBlock tabs={[
+    { type: 'brightscript', content: rokuCallbacksErrorHandling, name: 'Brightscript' }
+]} />
+
+## Models 
+
+### Subscriber 
+
+import rokuSubscriber from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-subscriber.brs";
+import rokuLoginLogout from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-login-logout.brs";
+import rokuSubscriberInfo from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-subscriber-info.brs";
+import rokuSubscriberAttributes from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-subscriber-attributes.brs";
+
+<RCCodeBlock tabs={[
+    { type: 'brightscript', content: rokuSubscriber, name: 'Subscriber Object' },
+    { type: 'brightscript', content: rokuLoginLogout, name: 'logIn / logOut' },
+    { type: 'brightscript', content: rokuSubscriberInfo, name: 'Subscriber Info' },
+    { type: 'brightscript', content: rokuSubscriberAttributes, name: 'Subscriber Attributes' }
+]} />
+
+### Offerings 
+import rokuGetOfferings from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-get-offerings.brs";
+import rokuOffersObject from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-offerings-object.txt";
+
+<RCCodeBlock tabs={[
+    { type: 'brightscript', content: rokuOffersObject, name: 'Offerings object' },
+    { type: 'brightscript', content: rokuGetOfferings, name: 'Get Offerings' }
+]} />
+
+### Purchase
+#### Making a purchase
+As a parameter to the `purchase()` method, you can pass an associative array containing one of the following keys:
+
+- `code`: A string containing the product id.
+- `product`: From the `getOfferings` result: e.g. `offerings.current.annual.storeProduct`
+- `package`: From the `getOfferings` result: e.g. `offerings.current.annual`
+
+Additionally,you can pass the following optional parameters:
+
+- `action`: To perform a product change. Valid values: `Upgrade` or `Downgrade`
+
+#### Sync purchases
+This method will post all purchases associated with the current Roku account to RevenueCat and become associated with the current User ID. It should only be used if you're migrating from using your own Roku Pay implementation and want to track previous purchases in RevenueCat.
+
+import rokuPurchaseObject from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-purchase-object.txt";
+import rokuMakePurchase from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-make-purchase.brs";
+import rokuSyncPurchases from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-sync-purchases.brs";
+
+<RCCodeBlock tabs={[
+    { type: 'brightscript', content: rokuPurchaseObject, name: 'Raw transaction' },
+    { type: 'brightscript', content: rokuMakePurchase, name: 'Make purchase' },
+    { type: 'brightscript', content: rokuSyncPurchases, name: 'Sync purchases' }
+]} />
+
+### Error
+The error model constains two fields: `code` and `message`
+
+import rokuError from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-error.txt";
+
+<RCCodeBlock tabs={[
+    { type: 'brightscript', content: rokuError, name: 'Error' }
+]} />
+
+### Tying everything together
+For most apps, the usage of the SDK would look like this:
+
+1. Initialise the SDK
+2. Log in the user
+4. Check if the entitlement is active
+5. Fetch offerings and show your paywall UI
+6. Make a purchase
+
+import rokuTyingTogether from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-tying-together.brs";
+
+<RCCodeBlock tabs={[
+    { type: 'brightscript', content: rokuTyingTogether}
+]} />
+
+## Testing
+:::warning
+Only the "root account user" can test billing on device. If you get added as a collaborator to someone else's developer account, billing testing will not work. You'll need to create your own developer account.
+:::
+
+Roku transactions **do not** have an "associated" environment. Both types of transactions arrive via push notifications, however, there are key differences between them.
+
+- **Price differentiation**:
+    - _Test purchases_: Always have a price of **0**
+    - _Production purchases_: Will have a non-zero price (unless it's a trial)
+- **Charges**:
+    - _Test purchases_: The end customer will not be charged for a test purchase
+    - _Production purchases_: The end customer will be charged according to the product details (e.g: pricing tier, trials, offers, etc)
+
+In order to perform a test purchase, a [test user must be created](https://developer.roku.com/en-gb/docs/developer-program/roku-pay/quickstart/test-users.md) and associated with the channel.
+
+After that, the test user will be able to make test purchases on the channel, regardless of the installation method: Public, Beta or Sideloaded (Billing Testing must be enabled). However, you can only use one Roku channel at a time for testing.
+
+### RevenueCat limitations
+Since Roku transactions do not have an associated environment, RevenueCat defines a **"sandbox"** purchase as any purchase made in a **Sideloaded** channel. A **"production"** purchase is defined as any purchase made in either a **beta** or **public** channel, regardless of whether the end customer was actually charged or not for it.
+
+This also means for any events RevenueCat dispatches containing an [`environment` field](/integrations/webhooks/event-types-and-fields#events-format), the Roku channel where the purchase was made will determine whether the value is set to `SANDBOX` or `PRODUCTION`.
+
+To ensure a clear separation between your "testing" and "production" purchases, we recommend creating a **separate channel** specifically for testing purchases and creating a new [RevenueCat Roku Store app](/getting-started/installation/roku#app-configuration) for that channel.
+
+### Testing with a beta channel
+
+Roku's beta channels are a special channel type to assist with testing your channel in a production-like environment before publishing. 
+
+#### Beta channel rules
+- **120 days**: A beta channel can exist for only 120 days after you create it. After 120 days, the channel will be (1) deleted and removed from your Developer Dashboard and (2) disabled for all users who have it installed
+- **10 channels**: There is a maximum of 10 beta channels at a time
+- **20 test users**: There can only be 20 beta test users per beta channel at any given time
+
+## Beta limitations 
+This feature is currently in beta and has a number of known limitations.
+
+RevenueCat features not yet supported:
+- [RevenueCat paywalls](/tools/paywalls)
+- [Trusted entitlements](/customers/trusted-entitlements)
+- [Offline entitlements](/customers/customer-info#offline-entitlements)
+- [Targeting](/tools/targeting)
+- [Placements](/tools/targeting/placements)
+- [REST API v2](https://www.revenuecat.com/docs/api-v2)
+
+Functionality not yet supported:
+- OTPs (one-time purchases)
+- Consumable purchases
+- Detecting price changes
+- Chargebacks
+- Purchase transfers
+- Extending subscriptions
+- Identifying customers upon configuration
+
+If your use case is not supported above, reach out to [RevenueCat Support](https://app.revenuecat.com/settings/support) so we can discuss more on how to support you!
