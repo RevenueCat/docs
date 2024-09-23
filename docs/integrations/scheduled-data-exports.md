@@ -126,7 +126,7 @@ We strongly recommend keeping the option to "Receive new and updated transaction
 However, handling transaction updates can be tricky, so consider these tips to make it easier:
 
 1. For most stores, `store_transaction_id` will be unique for each transaction, but for Stripe it is not; so for best results we recommend treating every unique set of [`store_transaction_id` + `renewal_number`] as a unique transaction.
-2. Instead of overwriting prior transaction states when receiving an updated transaction, considering adding them as new rows to your output table and setting a property like `is_latest` to ensure you're never double-counting different versions of the same transaction, or `ingested_date` to order the transactions by the most recent version you received from RevenueCat.
+2. Instead of overwriting prior transaction states when receiving an updated transaction, considering adding them as new rows to your output table and setting a property like `is_latest` to ensure you're never double-counting different versions of the same transaction. Or, you could set an `ingested_time` property to order the transactions by the most recent version you received from RevenueCat.
 3. When in doubt, use `updated_at` (provided by RevenueCat in your export) as a reference point to determine the latest version of a transaction if you have multiple prior versions and can't otherwise confidently determine which one is latest.
 
 ## Sample queries for RevenueCat measures
