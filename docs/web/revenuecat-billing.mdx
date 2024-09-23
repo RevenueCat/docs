@@ -166,6 +166,19 @@ We recommend using [Offerings](/getting-started/entitlements#offerings) to confi
   ]}
 />
 
+If you want to [support multiple currencies](./rc-billing/multi-currency-support) and manually specify the currency, you can pass the currency code to the `getOfferings()` method. If you do not specify the currency, RevenueCat will attempt to geolocate the customer and use the currency of the customer's country if it's available, or fall back to the default currency of the app.
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Get current offerings for EUR",
+    },
+  ]}
+/>
+
 It's also possible to access other Offerings besides the Current Offering directly by its identifier.
 
 <RCCodeBlock

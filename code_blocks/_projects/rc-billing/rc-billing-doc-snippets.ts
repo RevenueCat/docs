@@ -67,6 +67,7 @@ try {
 async function getOfferingForEUR(displayPackages :(pkg: Package[]) => void) {
 // MARK: Get current offerings for EUR
 try {
+  // Specify the currency to get offerings for
   const offerings = await Purchases.getSharedInstance().getOfferings({currency: "EUR"});
   if (
     offerings.current !== null &&
