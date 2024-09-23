@@ -64,6 +64,23 @@ try {
 // END
 }
 
+async function getOfferingForEUR(displayPackages :(pkg: Package[]) => void) {
+// MARK: Get current offerings for EUR
+try {
+  const offerings = await Purchases.getSharedInstance().getOfferings({currency: "EUR"});
+  if (
+    offerings.current !== null &&
+    offerings.current.availablePackages.length !== 0
+  ) {
+    // Display packages for sale
+    displayPackages(offerings.current.availablePackages);
+  }
+} catch (e) {
+  // Handle errors
+}
+// END
+}
+
 async function getCustomOffering(displayPackages :(pkg: Package[]) => void) {
 // MARK: Get custom offering
 try {
@@ -96,7 +113,7 @@ async function gettingProduct(displayProduct : (product : Product) => void) {
 // MARK: Getting product
 // Accessing / displaying the monthly product
 try {
-  const offerings = await Purchases.getSharedInstance().getOfferings();
+  const offerings = await Purchases.getSharedInstance().getOfferings({currency: "USD"});
   if (offerings.current && offerings.current.monthly) {
     const product = offerings.current.monthly.rcBillingProduct;
     // Display the price and currency of the RC Billing Product
@@ -137,6 +154,7 @@ export {
   checkForSpecificEntitlement,
   checkForAnyEntitlement,
   getCurrentOffering,
+  getOfferingForEUR,
   getCustomOffering,
   displayingPackages,
   gettingProduct,
