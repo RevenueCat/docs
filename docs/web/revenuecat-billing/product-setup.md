@@ -29,6 +29,6 @@ In the "new product" screen, you can set up the following properties of the prod
     - *Didn't have any subscription yet*: Only customers that have never had any subscription in this Project (including in other Apps of the project) are eligible for a trial.
     - *Didn't have this subscription yet*: Only customers that have never subscribed to this product are eligible for a trial.
 - **Grace period**: Length of the subscription access retention after a billing issue.
-- **Price**: The price that will be charged for every period of the subscription. Currently, only USD is supported.
+- **Price**: The price that will be charged for every period of the subscription in each currency. You can add prices in additional currencies by clicking "Add price". Only one price can be set per currency. [Read more about multi-currency support in RevenueCat Billing](./multi-currency-support).
 
 ![New product configuration page](/images/rc-billing/new-product-configuration.png)
