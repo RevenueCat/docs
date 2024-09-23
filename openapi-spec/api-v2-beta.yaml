@@ -25,7 +25,7 @@ tags:
   description: Operations about invoices.
 - name: Project
   description: Operations about projects.
-- name: Subscription Data Model (Beta)
+- name: Subscription Data Model
   x-modelReference: true
   description: '<SchemaDefinition schemaRef="#/components/schemas/Subscription" showReadOnly={true}
     showWriteOnly={true} />
@@ -244,7 +244,7 @@ tags:
     \ Refer to the `backoff_ms` field to determine when to try again.\n\n### `unprocessable_entity_error`\n\
     \nRequest is not able to be processed. Please refer to the `message` field for\
     \ more information."
-- name: Representation of Subscriptions (Beta)
+- name: Representation of Subscriptions
   x-traitTag: true
   description: "In comparison to our [v1 REST API](/docs/api-v1#tag/customer_info_model),\
     \ we have made changes to improve the organization and accessibility of your customers\u2019\
@@ -2998,7 +2998,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:subscriptions:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Subscription
       parameters:
@@ -3045,10 +3045,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
-        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
-        \ in Beta.</div>\n</div>\nThis endpoint requires the following permission(s):\
-        \ <code>customer_information:subscriptions:read</code>."
+      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.'
   /projects/{project_id}/subscriptions/{subscription_id}/entitlements:
     get:
       summary: Get a list of entitlements associated with a subscription
@@ -3056,7 +3053,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:subscriptions:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Subscription
       parameters:
@@ -3116,10 +3113,8 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
-        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
-        \ in Beta.</div>\n</div>\nLists all Entitlements granted by a Subscription.\n\
-        \ This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>."
+      description: "Lists all Entitlements granted by a Subscription.\n This endpoint\
+        \ requires the following permission(s): <code>customer_information:subscriptions:read</code>."
   /projects/{project_id}/subscriptions/{subscription_id}/actions/cancel:
     post:
       summary: Cancels an active RevenueCat Billing subscription
@@ -3326,7 +3321,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:purchases:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Purchase
       parameters:
@@ -3373,10 +3368,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
-        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
-        \ in Beta.</div>\n</div>\nThis endpoint requires the following permission(s):\
-        \ <code>customer_information:purchases:read</code>."
+      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>.'
   /projects/{project_id}/purchases/{purchase_id}/entitlements:
     get:
       summary: Get a list of entitlements associated with a purchase
@@ -3384,7 +3376,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:purchases:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Purchase
       parameters:
@@ -3444,10 +3436,8 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
-        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
-        \ in Beta.</div>\n</div>\nLists all Entitlements granted by a Purchase.\n\
-        \ This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>."
+      description: "Lists all Entitlements granted by a Purchase.\n This endpoint\
+        \ requires the following permission(s): <code>customer_information:purchases:read</code>."
   /projects/{project_id}/customers/{customer_id}/purchases:
     get:
       summary: Get a list of purchases associated with a customer
@@ -3523,10 +3513,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
-        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
-        \ in Beta.</div>\n</div>\nLists all Purchases associated with the Customer.\n\
-        \ This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>."
+      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>.'
   /projects/{project_id}/customers/{customer_id}/active_entitlements:
     get:
       summary: Get a list of customer's active entitlements
@@ -4572,6 +4559,7 @@ components:
       - $iterableTemplateId
       - $iterableUserId
       - $keyword
+      - $kochavaDeviceId
       - $mediaSource
       - $mixpanelDistinctId
       - $mparticleId
@@ -4579,6 +4567,7 @@ components:
       - $onesignalUserId
       - $phoneNumber
       - $segmentId
+      - $deviceVersion
       example: $email
     CustomerEntitlement:
       type: object
@@ -5951,7 +5940,7 @@ components:
         environment:
           $ref: '#/components/schemas/Environment'
         store:
-          description: Store the subscription belongs to
+          description: Store the purchase belongs to
           nullable: false
           type: string
           enum:
@@ -5963,14 +5952,14 @@ components:
           - stripe
           example: amazon
         store_purchase_identifier:
-          description: The store subscription identifier
+          description: The store purchase identifier
           nullable: false
           type: string
           minLength: 1
           maxLength: 255
           example: 12345678
         ownership:
-          description: Ownership of the subscription
+          description: Ownership of the purchase
           nullable: false
           oneOf:
           - $ref: '#/components/schemas/Ownership'
@@ -6531,10 +6520,10 @@ x-tagGroups:
   - Rate Limit
   - Expandables
   - Error Handling
-  - Representation of Subscriptions (Beta)
+  - Representation of Subscriptions
 - name: Model Reference
   tags:
-  - Subscription Data Model (Beta)
+  - Subscription Data Model
 - name: Endpoint Reference
   tags:
   - App

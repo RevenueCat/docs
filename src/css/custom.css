@@ -33,7 +33,7 @@
   --ifm-menu-color-active: rgb(255, 255, 255);
 
   --ifm-tabs-padding-vertical: 4px;
-  --ifm-tabs-padding-horizontal: 12px;
+  --ifm-tabs-padding-horizontal: 6px;
   --ifm-menu-breadcrumb-link: rgb(0, 0, 0);
 
   --ifm-menu-toc-link: rgb(0, 0, 0);
@@ -193,16 +193,18 @@ article p {
 
 h1 {
   font-size: 2.25rem;
+  font-weight: 800;
 }
 h2 {
   font-size: 1.75rem;
+  font-weight: 700;;
 }
 h3 {
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 1.35rem;
+  font-weight: 700;
 }
 
-.markdown img {
+.markdown > p > img {
   border: 1px solid #ddd;
   border-radius: 16px;
   max-width: 75%;
@@ -237,6 +239,11 @@ html[data-theme="dark"]
 .table-of-contents__link--active {
   color: var(--ifm-menu-toc-link);
   font-weight: 600;
+}
+
+.tabs .tabs__item {
+  letter-spacing: -0.5px;
+  font-size: 14px;
 }
 
 /* Mobile TOC */
@@ -321,6 +328,10 @@ main .row {
 .theme-doc-breadcrumbs {
   max-width: 800px;
   margin: auto;
+}
+
+.google-checkbox p {
+  @apply !m-2;
 }
 
 @layer components {
