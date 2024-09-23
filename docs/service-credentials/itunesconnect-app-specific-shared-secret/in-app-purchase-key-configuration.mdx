@@ -12,6 +12,10 @@ When setting up a new App Store App on RevenueCat, you will need to add an in-ap
 Adding an in-app purchase key to an app with existing transactions may change historic data as we update previously estimated data with corrected data from Apple. As a result, you may see an increased number of updated transactions reported in your [Scheduled Data Exports](/integrations/scheduled-data-exports) and your historical [Charts](/dashboard-and-metrics/charts) data may also gradually update. 
 :::
 
+:::info
+Although App Store Connect separates "In-App Purchases" and "Subscriptions" in its interface, it's important to note that subscriptions are actually a type of In-App Purchase. The In-App Purchase Key is **required for all In-App Purchases**, whether your app offers consumables, non-consumables, subscriptions, or any combination of these.
+:::
+
 ## Setup
 
 ### 1. Generating an In-App Purchase Key
