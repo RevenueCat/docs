@@ -5436,6 +5436,17 @@ components:
       example:
         color: blue
         call_to_action: Subscribe Now!
+    OneTimeProduct:
+      type: object
+      required:
+      - is_consumable
+      nullable: true
+      properties:
+        is_consumable:
+          type: boolean
+          nullable: true
+          description: Indicates whether the product is consumable or not.
+          example: true
     OverviewMetric:
       type: object
       required:
@@ -5700,6 +5711,10 @@ components:
           description: The subscription product object
           nullable: true
           $ref: '#/components/schemas/SubscriptionProduct'
+        one_time:
+          description: The one time product object
+          nullable: true
+          $ref: '#/components/schemas/OneTimeProduct'
         created_at:
           description: The date when the product was created in ms since epoch
           nullable: false
