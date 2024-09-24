@@ -330,6 +330,10 @@ main .row {
   margin: auto;
 }
 
+.google-checkbox p {
+  @apply !m-2;
+}
+
 @layer components {
   .tw-container {
     @apply mx-auto max-w-7xl px-[clamp(1rem,0.0909rem+4.5455vi,3rem)];

@@ -71,6 +71,8 @@ When a user initially signs up for a subscription with a trial, an `INITIAL_PURC
 
 When a user initially signs up for a subscription with a trial, an `INITIAL_PURCHASE` webhook is dispatched. If the customer cancels their subscription at any point during the trial period, a `CANCELLATION` event is sent, but the user will retain entitlement access for the remainder of the trial’s duration. Once the trial duration elapses, an `EXPIRATION` event will be sent and the customer's entitlements will be revoked.
 
+If a user cancels their subscription and the trial expires, but they sign up for the subscription at a later date, this will be considered a trial conversion and a `RENEWAL` event will be dispatched.
+
 Note: Apple requires customers to cancel within 24 hours of the trial’s expiration. If a user cancels less than 24 hours before the trial expires, you may unexpectedly receive a `CANCELLATION` event followed by a `RENEWAL` event.
 
 ![unsuccessful conversion flow](/images/3458b49-unsuccessful-conversion_037fe711960c23c4284610978c5ed951.png)

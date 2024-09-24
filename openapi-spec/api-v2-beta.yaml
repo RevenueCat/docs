@@ -25,7 +25,7 @@ tags:
   description: Operations about invoices.
 - name: Project
   description: Operations about projects.
-- name: Subscription Data Model (Beta)
+- name: Subscription Data Model
   x-modelReference: true
   description: '<SchemaDefinition schemaRef="#/components/schemas/Subscription" showReadOnly={true}
     showWriteOnly={true} />
@@ -244,7 +244,7 @@ tags:
     \ Refer to the `backoff_ms` field to determine when to try again.\n\n### `unprocessable_entity_error`\n\
     \nRequest is not able to be processed. Please refer to the `message` field for\
     \ more information."
-- name: Representation of Subscriptions (Beta)
+- name: Representation of Subscriptions
   x-traitTag: true
   description: "In comparison to our [v1 REST API](/docs/api-v1#tag/customer_info_model),\
     \ we have made changes to improve the organization and accessibility of your customers\u2019\
@@ -472,6 +472,13 @@ paths:
                   amazon:
                     package_name: com.amazon.android.app
                     shared_secret: <Your Amazon Developer Identity Shared Key>
+              RevenueCat Billing:
+                value:
+                  name: My RevenueCat App
+                  type: rc_billing
+                  rc_billing:
+                    seller_company_name: <Your company name>
+                    default_currency: USD
       responses:
         '201':
           description: Success. The app was created
@@ -679,6 +686,34 @@ paths:
                       minLength: 1
                       maxLength: 256
                       nullable: false
+                rc_billing:
+                  description: RevenueCat Billing type details. Should only be used
+                    when type is rc_billing.
+                  type: object
+                  nullable: false
+                  properties:
+                    stripe_account_id:
+                      description: It needs to be connected to your RevenueCat account.
+                        It can be omitted if you only have a single Stripe account
+                        connected to your RevenueCat account.
+                      type: string
+                      nullable: true
+                      minLength: 1
+                      maxLength: 256
+                    seller_company_name:
+                      description: The company name.
+                      type: string
+                      nullable: true
+                      minLength: 1
+                      maxLength: 256
+                    seller_company_support_email:
+                      description: The company support email.
+                      type: string
+                      nullable: true
+                      minLength: 1
+                      maxLength: 320
+                    default_currency:
+                      $ref: '#/components/schemas/RCBillingCurrency'
               additionalProperties: false
             examples:
               Update App Store App properties:
@@ -2998,7 +3033,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:subscriptions:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Subscription
       parameters:
@@ -3045,10 +3080,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
-        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
-        \ in Beta.</div>\n</div>\nThis endpoint requires the following permission(s):\
-        \ <code>customer_information:subscriptions:read</code>."
+      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.'
   /projects/{project_id}/subscriptions/{subscription_id}/entitlements:
     get:
       summary: Get a list of entitlements associated with a subscription
@@ -3056,7 +3088,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:subscriptions:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Subscription
       parameters:
@@ -3116,10 +3148,8 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
-        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
-        \ in Beta.</div>\n</div>\nLists all Entitlements granted by a Subscription.\n\
-        \ This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>."
+      description: "Lists all Entitlements granted by a Subscription.\n This endpoint\
+        \ requires the following permission(s): <code>customer_information:subscriptions:read</code>."
   /projects/{project_id}/subscriptions/{subscription_id}/actions/cancel:
     post:
       summary: Cancels an active RevenueCat Billing subscription
@@ -3326,7 +3356,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:purchases:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Purchase
       parameters:
@@ -3373,10 +3403,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
-        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
-        \ in Beta.</div>\n</div>\nThis endpoint requires the following permission(s):\
-        \ <code>customer_information:purchases:read</code>."
+      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>.'
   /projects/{project_id}/purchases/{purchase_id}/entitlements:
     get:
       summary: Get a list of entitlements associated with a purchase
@@ -3384,7 +3411,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:purchases:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Purchase
       parameters:
@@ -3444,10 +3471,8 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
-        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
-        \ in Beta.</div>\n</div>\nLists all Entitlements granted by a Purchase.\n\
-        \ This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>."
+      description: "Lists all Entitlements granted by a Purchase.\n This endpoint\
+        \ requires the following permission(s): <code>customer_information:purchases:read</code>."
   /projects/{project_id}/customers/{customer_id}/purchases:
     get:
       summary: Get a list of purchases associated with a customer
@@ -3925,6 +3950,7 @@ components:
             - mac_app_store
             - play_store
             - stripe
+            - rc_billing
             example: app_store
           project_id:
             description: The id of the project
@@ -3938,6 +3964,7 @@ components:
       - $ref: '#/components/schemas/MacAppStoreApp'
       - $ref: '#/components/schemas/PlayStoreApp'
       - $ref: '#/components/schemas/StripeApp'
+      - $ref: '#/components/schemas/RCBillingApp'
     AppCreate:
       allOf:
       - type: object
@@ -3965,12 +3992,14 @@ components:
             - mac_app_store
             - play_store
             - stripe
+            - rc_billing
             nullable: false
       - $ref: '#/components/schemas/AmazonAppCreate'
       - $ref: '#/components/schemas/AppStoreAppCreate'
       - $ref: '#/components/schemas/MacAppStoreAppCreate'
       - $ref: '#/components/schemas/PlayStoreAppCreate'
       - $ref: '#/components/schemas/StripeAppCreate'
+      - $ref: '#/components/schemas/RCBillingAppCreate'
     AppStoreApp:
       type: object
       properties:
@@ -4577,6 +4606,7 @@ components:
       - $onesignalUserId
       - $phoneNumber
       - $segmentId
+      - $deviceVersion
       example: $email
     CustomerEntitlement:
       type: object
@@ -5445,6 +5475,17 @@ components:
       example:
         color: blue
         call_to_action: Subscribe Now!
+    OneTimeProduct:
+      type: object
+      required:
+      - is_consumable
+      nullable: true
+      properties:
+        is_consumable:
+          type: boolean
+          nullable: true
+          description: Indicates whether the product is consumable or not.
+          example: true
     OverviewMetric:
       type: object
       required:
@@ -5709,6 +5750,10 @@ components:
           description: The subscription product object
           nullable: true
           $ref: '#/components/schemas/SubscriptionProduct'
+        one_time:
+          description: The one time product object
+          nullable: true
+          $ref: '#/components/schemas/OneTimeProduct'
         created_at:
           description: The date when the product was created in ms since epoch
           nullable: false
@@ -5949,7 +5994,7 @@ components:
         environment:
           $ref: '#/components/schemas/Environment'
         store:
-          description: Store the subscription belongs to
+          description: Store the purchase belongs to
           nullable: false
           type: string
           enum:
@@ -5961,14 +6006,14 @@ components:
           - stripe
           example: amazon
         store_purchase_identifier:
-          description: The store subscription identifier
+          description: The store purchase identifier
           nullable: false
           type: string
           minLength: 1
           maxLength: 255
           example: 12345678
         ownership:
-          description: Ownership of the subscription
+          description: Ownership of the purchase
           nullable: false
           oneOf:
           - $ref: '#/components/schemas/Ownership'
@@ -5976,6 +6021,82 @@ components:
           description: Billing country in ISO alpha 2 code
           nullable: true
           $ref: '#/components/schemas/Country'
+    RCBillingApp:
+      type: object
+      properties:
+        rc_billing:
+          description: Revenue Cat Billing Store type details
+          type: object
+          required:
+          - seller_company_name
+          - default_currency
+          nullable: false
+          properties:
+            stripe_account_id:
+              description: Stripe account connected to your RevenueCat account.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 256
+            seller_company_name:
+              description: The company name.
+              type: string
+              nullable: false
+              minLength: 1
+              maxLength: 256
+            seller_company_support_email:
+              description: The company support email.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 320
+            default_currency:
+              description: The default currency to be used for the app.
+              $ref: '#/components/schemas/RCBillingCurrency'
+    RCBillingAppCreate:
+      type: object
+      properties:
+        rc_billing:
+          description: Revenue Cat Billing Store type details
+          type: object
+          required:
+          - seller_company_name
+          nullable: true
+          properties:
+            stripe_account_id:
+              description: It needs to be connected to your RevenueCat account. It
+                can be omitted if you only have a single Stripe account connected
+                to your RevenueCat account.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 256
+            seller_company_name:
+              description: The company name.
+              type: string
+              nullable: false
+              minLength: 1
+              maxLength: 256
+            seller_company_support_email:
+              description: The company support email.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 320
+            default_currency:
+              $ref: '#/components/schemas/RCBillingCurrency'
+    RCBillingCurrency:
+      type: string
+      description: ISO 4217 currency code
+      nullable: false
+      example: USD
+      enum:
+      - AUD
+      - CAD
+      - EUR
+      - GBP
+      - JPY
+      - USD
     StripeApp:
       type: object
       properties:
@@ -5985,9 +6106,7 @@ components:
           nullable: false
           properties:
             stripe_account_id:
-              description: It needs to be connected to your RevenueCat account. It
-                can be omitted if you only have a single Stripe account connected
-                to your RevenueCat account.
+              description: Stripe account connected to your RevenueCat account.
               type: string
               nullable: true
               minLength: 1
@@ -6007,7 +6126,7 @@ components:
               type: string
               minLength: 1
               maxLength: 256
-              nullable: false
+              nullable: true
     Subscription:
       type: object
       required:
@@ -6529,10 +6648,10 @@ x-tagGroups:
   - Rate Limit
   - Expandables
   - Error Handling
-  - Representation of Subscriptions (Beta)
+  - Representation of Subscriptions
 - name: Model Reference
   tags:
-  - Subscription Data Model (Beta)
+  - Subscription Data Model
 - name: Endpoint Reference
   tags:
   - App
