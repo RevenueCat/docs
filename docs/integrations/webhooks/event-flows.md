@@ -37,7 +37,7 @@ A customer can resubscribe to a subscription if they resume a subscription after
 
 Android customers can pause their subscription, allowing them to halt subscription billing. Their entitlement is revoked at the end of the subscription term. If the customer unpauses their subscription, they regain entitlements and the subscription’s billing cycle resumes. If you’d like to disable pausing for your subscriptions, you can do so through the [Google Play Store Console.](https://developer.android.com/google/play/billing/subscriptions#pause)
 
-![subscription paused flow](/images/0900f59-pause_6cc43e23e96b8ccfa78c2e7a5f99dd75.png)
+![subscription paused flow](/images/event-flow/subscription-pause-flow-09-24.png)
 
 ### Billing Issue Flow
 
