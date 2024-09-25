@@ -153,7 +153,6 @@ This configuration defines two main screens:
    - Refund Request
    - Change Plans
    - Cancel Subscription
-   Each path has an `id`, a `title_key` (which references a localized string), and a `type` that defines the action.
 
 2. **NO_ACTIVE**: This screen is shown when the user doesn't have an active subscription. It typically only offers the option to restore purchases.
 
@@ -161,8 +160,6 @@ You can customize these screens by:
 - Adding or removing paths
 - Changing the order of the paths
 - Modifying the title and subtitle keys to reference different localized strings
-
-Remember that the `title_key`, `subtitle_key`, and each path's `title_key` should correspond to keys in your localization configuration to ensure proper translation across different languages.
 
 #### Paths
 
@@ -176,17 +173,13 @@ import customerCenterPaths from "!!raw-loader!@site/code_blocks/tools/customer-c
 
 Let's break down the configuration for each path:
 
-1. **Missing Purchase** (`MISSING_PURCHASE`):
-   - Used for restoring previous purchases.
+1. **Missing Purchase** (`MISSING_PURCHASE`): Used for restoring previous purchases.
 
-2. **Refund Request** (`REFUND_REQUEST`):
-   - Allows users to request refunds.
+2. **Refund Request** (`REFUND_REQUEST`): Allows users to request refunds.
 
-3. **Change Plans** (`CHANGE_PLANS`):
-   - Enables users to switch between different subscription plans.
+3. **Change Plans** (`CHANGE_PLANS`): Enables users to switch between different subscription plans.
 
-4. **Cancel** (`CANCEL`):
-   - Provides an option for users to cancel their subscription.
+4. **Cancel** (`CANCEL`): Provides an option for users to cancel their subscription.
 
 Key points about paths:
 
