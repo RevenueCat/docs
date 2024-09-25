@@ -45,7 +45,7 @@ In the following step, you can set up the most important information for the new
 
 - **App Name**: The name of the app. This will also be shown in the purchase flow, in emails, and on invoices.
 - **Stripe Account**: The Stripe account to use. To use a different Stripe account not shown in the list, [connect it to RevenueCat first](/web/connect-stripe-account).
-- **Default Currency**: The default currency to use for the prices of the products. [Read more about multi-currency support in RevenueCat Billing](./multi-currency-support).
+- **Default Currency**: The default currency to use for the prices of the products. [Read more about multi-currency support in RevenueCat Billing](/web/revenuecat-billing/multi-currency-support).
 - **Seller Company Name**: The name of your company. This will also be shown in the purchase flow, in emails, and on invoices.
 - **Support Email**: An email address that customers can send support requests to. This will also be shown in the purchase flow, in emails, and on invoices.
 
@@ -159,7 +159,7 @@ We recommend using [Offerings](/getting-started/entitlements#offerings) to confi
   ]}
 />
 
-If you want to [support multiple currencies](./revenuecat-billing/multi-currency-support) and manually specify the currency, you can pass the currency code to the `getOfferings()` method. If you do not specify the currency, RevenueCat will attempt to geolocate the customer and use the currency of the customer's country if it's available, or fall back to the default currency of the app.
+If you want to [support multiple currencies](/web/revenuecat-billing/multi-currency-support) and manually specify the currency, you can pass the currency code to the `getOfferings()` method. If you do not specify the currency, RevenueCat will attempt to geolocate the customer and use the currency of the customer's country if it's available, or fall back to the default currency of the app.
 
 <RCCodeBlock
   tabs={[
