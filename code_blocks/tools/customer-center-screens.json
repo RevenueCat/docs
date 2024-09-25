@@ -1,0 +1,42 @@
+{
+  "screens": {
+    "MANAGEMENT": {
+      "paths": [
+        {
+          "id": "ownmsldfow",
+          "title_key": "path_missing_purchase",
+          "type": "MISSING_PURCHASE"
+        },
+        {
+          "id": "nwodkdnfaoeb",
+          "title_key": "path_refund",
+          "type": "REFUND_REQUEST"
+        },
+        {
+          "id": "nfoaiodifj9",
+          "title_key": "path_change",
+          "type": "CHANGE_PLANS"
+        },
+        {
+          "id": "jnkasldfhas",
+          "title_key": "path_cancel",
+          "type": "CANCEL"
+        }
+      ],
+      "title_key": "screen_management_title",
+      "type": "MANAGEMENT"
+    },
+    "NO_ACTIVE": {
+      "paths": [
+        {
+          "id": "9q9719171o",
+          "title_key": "no_active_check_purchases",
+          "type": "MISSING_PURCHASE"
+        }
+      ],
+      "subtitle_key": "screen_no_active_subtitle",
+      "title_key": "screen_no_active_title",
+      "type": "NO_ACTIVE"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "promotional_offers": {
+    "long_time_user_offer": {
+      "eligibility": [
+        {
+          "amount_in_seconds": 2592000,
+          "comparison": "GREATER",
+          "condition_type": "FIRST_SEEN"
+        }
+      ],
+      "ios_offer_id": "rc-long-time-user-offer",
+      "subtitle_key": "long_time_user_offer_subtitle",
+      "title_key": "long_time_user_offer_title"
+    },
+    "new_purchaser_offer": {
+      "eligibility": [
+        {
+          "amount_in_seconds": 604800,
+          "comparison": "SMALLER",
+          "condition_type": "TIME_SINCE_FIRST_PURCHASE"
+        }
+      ],
+      "ios_offer_id": "rc-new-purchaser-offer",
+      "subtitle_key": "new_purchaser_offer_subtitle",
+      "title_key": "new_purchaser_offer_title"
+    }
+  }
+}
