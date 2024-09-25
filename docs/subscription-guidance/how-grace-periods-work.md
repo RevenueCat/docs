@@ -24,6 +24,10 @@ RevenueCat will only send **one** billing issue event -- additional payment fail
 
 In rare cases, if the billing issue occurs immediately during the inital purchase of a product, it may not be detected by RevenueCat and included in the user's purchase history, even though the store indicates that a billing issue occured on their end. This is because the purchase token was never created by the store, and thus, could not be sent to RevenueCat to be tracked.
 
+### Billing Retry Periods
+
+Each platform handles the length of the periods in which the store attempts to charge the user's payment method again. For Apple, the billing retry period is 60 days, independent of the length of the grace period if one is enabled. For Google Play, the billing retry period will be the combination of the optional grace period, which can be set to 3, 7, 14 or 30 days and the (account hold period)[https://developer.android.com/google/play/billing/lifecycle/subscriptions#account-hold], which can be set to be between 0 and 30 days. During the account hold period, the user will no longer have access to their Entitlements. For Stripe, the billing retry period can be set in their Dashboard under **Settings > Billing > Subscriptions and email > Manage failed payments**.
+
 ### SDK Prompt
 
 Starting in iOS 16.4+, a system-sheet will automatically be displayed if a user encounters a billing issue, with a prompt for the customer to update their payment method. You can test this behavior by following Apple's [instructions](https://developer.apple.com/documentation/storekit/in-app_purchase/testing_in-app_purchases_with_sandbox/testing_failing_subscription_renewals_and_in-app_purchases#4182397).
@@ -36,9 +40,9 @@ Starting in iOS 16.4+, a system-sheet will automatically be displayed if a user 
 
 ### Stripe
 
-Stripe provides some additional options for how to handle what occurs after a customer encounters an issue with their payment. You can find these options in your Stripe dashboard under **Settings > Billing > Subscriptions and email > Manage failed payments**. In each case, we will only generate one billing issue event.
+Stripe provides some additional options for how to handle what occurs after a customer encounters an issue with their payment. You can find these options in your Stripe dashboard under **Settings > Billing > Subscriptions and email > Manage failed payments**. In each case, we will only generate one billing issue event and cancellation event with the reason set to `BILLING_ERROR` when the billing issue is first detected. These options will occur once all billing retry attempts have failed.
 
-1. cancel the subscription: RevenueCat will **revoke access** and generate a `CANCELLATION` event with the reason set to `BILLING_ERROR`.
+1. cancel the subscription: RevenueCat will **revoke access**.
 2. mark the subscription as unpaid: RevenueCat will **revoke access** but continues generating `RENEWAL` events with a zero price while the invoice remains open.
 3. leave the subscription past-due: RevenueCat **will not revoke access** and will continue generating `RENEWAL` events with a zero price. The subscription remains in place but no further payments are attempted.
 
