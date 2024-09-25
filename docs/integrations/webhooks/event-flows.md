@@ -43,7 +43,7 @@ This can sometimes cause the customer history to appear out of order because we 
 
 Android customers can pause their subscription, allowing them to halt subscription billing. Their entitlement is revoked at the end of the subscription term. If the customer unpauses their subscription, they regain entitlements and the subscription’s billing cycle resumes. If you’d like to disable pausing for your subscriptions, you can do so through the [Google Play Store Console.](https://developer.android.com/google/play/billing/subscriptions#pause)
 
-![subscription paused flow](/images/0900f59-pause_6cc43e23e96b8ccfa78c2e7a5f99dd75.png)
+![subscription paused flow](/images/event-flow/subscription-pause-flow-09-24.png)
 
 ### Billing Issue Flow
 
@@ -76,6 +76,8 @@ When a user initially signs up for a subscription with a trial, an `INITIAL_PURC
 ### Trial Flow (Unsuccessful Conversion)
 
 When a user initially signs up for a subscription with a trial, an `INITIAL_PURCHASE` webhook is dispatched. If the customer cancels their subscription at any point during the trial period, a `CANCELLATION` event is sent, but the user will retain entitlement access for the remainder of the trial’s duration. Once the trial duration elapses, an `EXPIRATION` event will be sent and the customer's entitlements will be revoked.
+
+If a user cancels their subscription and the trial expires, but they sign up for the subscription at a later date, this will be considered a trial conversion and a `RENEWAL` event will be dispatched.
 
 Note: Apple requires customers to cancel within 24 hours of the trial’s expiration. If a user cancels less than 24 hours before the trial expires, you may unexpectedly receive a `CANCELLATION` event followed by a `RENEWAL` event.
 

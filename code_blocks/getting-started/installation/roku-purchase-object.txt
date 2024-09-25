@@ -1,0 +1,21 @@
+{
+    amount: "$0.00"
+    code: "yearly_subscription_product"
+    description: "Yearly Subscription"
+    externalCode: ""
+    freeTrialQuantity: 0
+    freeTrialType: "None"
+    name: "Yearly Subscription"
+    originalAmount: "0"
+    productType: "YearlySub"
+    promotionApplied: false
+    purchaseId: "00000000-0000-0000-0000-000000000000"
+    qty: 1
+    replacedOffers: []
+    replacedSubscriptionId: ""
+    rokuCustomerId: "00000000-0000-0000-0000-000000000000"
+    total: "$0.00"
+    trialCost: "$0.99"
+    trialQuantity: 1
+    trialType: "Years"
+}

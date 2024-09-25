@@ -45,9 +45,11 @@ If you're using the Firebase SDK, you'll need to follow [these instructions](htt
 Version 5.0 of the SDK  deprecates the term "Observer Mode" (and the APIs where this term was used), and replaces it
 with `PurchasesAreCompletedBy` (either RevenueCat or your app).
 
-Version 5.0 of the SDK also introduces support for recording purchases made directly by your app calling StoreKit 2.
+Version 5.0 of the SDK also introduces support for tracking purchases made directly by your app calling StoreKit 2.
 
-You can enable it when configuring the SDK:
+If you're using RevenueCat only to track purchases, and you have your own implementation of StoreKit to make purchases, you will need to explicitly provide your StoreKit version when you configure the SDK.
+
+Add this configuration only if you previously had `observerMode: true` in your SDK initialization or your app has its own implementation of StoreKit to make purchases.
 
 import content2 from "!!raw-loader!@site/code_blocks/sdk-guides/ios-native-4x-to-5x-migration_2.swift";
 import content3 from "!!raw-loader!@site/code_blocks/sdk-guides/ios-native-4x-to-5x-migration_3.swift";
@@ -66,19 +68,6 @@ import content4 from "!!raw-loader!@site/code_blocks/sdk-guides/ios-native-4x-to
     {
         type: 'swift',
         content: content4,
-    }
-]}/>
-
-#### Observing Purchases Completed by Your App with StoreKit 1
-
-If purchases are completed by your app using StoreKit 1, you will need to explicitly configure the SDK to use StoreKit 1:
-
-import content5 from "!!raw-loader!@site/code_blocks/sdk-guides/ios-native-4x-to-5x-migration_5.swift";
-
-<RCCodeBlock tabs={[
-    {
-        type: 'swift',
-        content: content5,
     }
 ]}/>
 

@@ -17,12 +17,20 @@ tags:
   description: Operations about packages.
 - name: Product
   description: Operations about products.
+- name: Purchase
+  description: Operations about purchases.
 - name: Subscription
   description: Operations about subscriptions.
 - name: Invoice
   description: Operations about invoices.
 - name: Project
   description: Operations about projects.
+- name: Subscription Data Model
+  x-modelReference: true
+  description: '<SchemaDefinition schemaRef="#/components/schemas/Subscription" showReadOnly={true}
+    showWriteOnly={true} />
+
+    '
 - name: Overview (v2)
   x-traitTag: true
   description: "<div class=\"theme-admonition theme-admonition-info alert alert--info\"\
@@ -236,6 +244,60 @@ tags:
     \ Refer to the `backoff_ms` field to determine when to try again.\n\n### `unprocessable_entity_error`\n\
     \nRequest is not able to be processed. Please refer to the `message` field for\
     \ more information."
+- name: Representation of Subscriptions
+  x-traitTag: true
+  description: "In comparison to our [v1 REST API](/docs/api-v1#tag/customer_info_model),\
+    \ we have made changes to improve the organization and accessibility of your customers\u2019\
+    \ subscriptions. The data model used in the RevenueCat REST API v2 has several\
+    \ advantages. Firstly, it better abstracts differences between different app stores,\
+    \ making it easier for you to access your data without needing to understand the\
+    \ specificities and idiosyncrasies of each individual store. \n\nAdditionally,\
+    \ the REST API v2 subscription data model provides richer information regarding\
+    \ your subscription data and includes new fields such as:\n\n- `gives_access`:\
+    \ Rather than having to create your own logic to determine if a customer should\
+    \ have access, we will provide you with that information directly.\n- `auto_renewal_status`:\
+    \ Previously you would have to use `unsubscribe_detected_at`, `billing_issues_detected_at`,\
+    \ and other fields to determine the auto renewal status of the customer, now we\
+    \ include this information to take away the estimation work.\n- `status`: Gives\
+    \ you a quick and easy way to gather the status of the customer\u2019s subscription\
+    \ to determine what state they are currently in.\n- `store_subscription_identifier`:\
+    \ Whereas the old data model was missing the store\u2019s subscription identifier\
+    \ (aka the transaction ID directly from the stores), we have included this new\
+    \ field to help identify your customer\u2019s subscription.\n- `total_reveneue_in_usd`:\
+    \ You can easily determine how much a customer has spent for this subscription\
+    \ in USD and utilize it for your own bookkeeping purposes. This object also contains\
+    \ information such as gross, commission, tax, and proceeds to help you break down\
+    \ the customer\u2019s revenue. \n\nTo view more details of fields we have included\
+    \ for the subscription object, check out the [model reference](#tag/Subscription-Data-Model).\
+    \ \n\nEventually we will also expose this sort of information in webhooks and\
+    \ customer event details to incorporate the new data model throughout RevenueCat.\n\
+    \n## What constitutes a new subscription\n\nDifferent stores supported by RevenueCat\
+    \ have different logic to define what is a new subscription vs. a change to an\
+    \ existing subscription. To make it easier to handle subscriptions across different\
+    \ stores, the data model for the RevenueCat REST API v2 is now following a consistent\
+    \ definition of what continues the same subscription vs. a new one:\n\n- After\
+    \ a subscription has lapsed (e.g: after a billing retry or letting subscription\
+    \ expire after an unsubscribe), if a customer subscribes to the same product it\
+    \ will be considered a new subscription (this was previously treated differently\
+    \ on Apple App Store vs. Google Play Store)\n- If the product of a paid subscription\
+    \ is changed, the subscription to the new product will be considered a new subscription.\
+    \ An exception is product changes during a trial period, the post-trial subscription\
+    \ period to a different product will not be considered a new subscription, but\
+    \ a regular trial conversion\n- For family shared subscriptions:\n  - Family shared\
+    \ subscriptions will be considered as a new subscription (albeit with no revenue)\n\
+    \  - If family sharing access is revoked and later re-enabled, this will be considered\
+    \ as a new subscription\n\n### Diagrams for different cases\n\n#### Billing issue:\
+    \ unrecovered\n\n![](/docs/images/api-v2/b39dda4-Billing_issue__unrecovered.png)\n\
+    \n\n#### Billing issue: recovered\n\n![](/docs/images/api-v2/312e3fd-Billing_issue__recovered.png)\n\
+    \n\n#### Lapsed subscription\n\n![](/docs/images/api-v2/dca8cda-Lapsed_subscription.png)\n\
+    \n\n#### Product changes: upgrade (no trial)\n\n![](/docs/images/api-v2/1a8e689-Product_changes__upgrade_no_trial.png)\n\
+    \n\n#### Product changes: downgrade (no trial)\n\n![](/docs/images/api-v2/ae7edfc-Product_changes__downgrade_no_trial.png)\n\
+    \n\n#### Product changes (with trial)\n\n![](/docs/images/api-v2/a4e8115-Product_changes_with_trial.png)\n\
+    \n\n#### Subscription paused: Recovery\n\n![](/docs/images/api-v2/4fa17e9-Subscription_paused__Recovery.png)\n\
+    \n\n#### Subscription paused: Billing issue, recovered\n\n![](/docs/images/api-v2/a10133d-Subscription_paused__Billing_issue_recoverd.png)\n\
+    \n\n#### Subscription paused: Billing issue, unrecovered\n\n![](/docs/images/api-v2/6fa24fb-Subscription_paused__Billing_issue_unrecovered.png)\n\
+    \n\n#### Family shared subscriptions\n\n![](/docs/images/api-v2/1511106-Family_shared_subscriptions.png)\n\
+    \n\n#### Family shared subscriptions: regranted\n\n![](/docs/images/api-v2/b3134c1-Family_shared_subscriptions__regranted.png)"
 paths:
   /projects:
     get:
@@ -410,6 +472,13 @@ paths:
                   amazon:
                     package_name: com.amazon.android.app
                     shared_secret: <Your Amazon Developer Identity Shared Key>
+              RevenueCat Billing:
+                value:
+                  name: My RevenueCat App
+                  type: rc_billing
+                  rc_billing:
+                    seller_company_name: <Your company name>
+                    default_currency: USD
       responses:
         '201':
           description: Success. The app was created
@@ -617,6 +686,34 @@ paths:
                       minLength: 1
                       maxLength: 256
                       nullable: false
+                rc_billing:
+                  description: RevenueCat Billing type details. Should only be used
+                    when type is rc_billing.
+                  type: object
+                  nullable: false
+                  properties:
+                    stripe_account_id:
+                      description: It needs to be connected to your RevenueCat account.
+                        It can be omitted if you only have a single Stripe account
+                        connected to your RevenueCat account.
+                      type: string
+                      nullable: true
+                      minLength: 1
+                      maxLength: 256
+                    seller_company_name:
+                      description: The company name.
+                      type: string
+                      nullable: true
+                      minLength: 1
+                      maxLength: 256
+                    seller_company_support_email:
+                      description: The company support email.
+                      type: string
+                      nullable: true
+                      minLength: 1
+                      maxLength: 320
+                    default_currency:
+                      $ref: '#/components/schemas/RCBillingCurrency'
               additionalProperties: false
             examples:
               Update App Store App properties:
@@ -1342,7 +1439,10 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:products:read_write</code>.'
+      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
+        >\n  <div class=\"heading\">Warning</div>\n  <div>This endpoint does not allow\
+        \ to create RevenueCat Billing products.</div>\nThis endpoint requires the\
+        \ following permission(s): <code>project_configuration:products:read_write</code>."
   /projects/{project_id}/entitlements/{entitlement_id}:
     get:
       summary: Get an entitlement
@@ -2929,6 +3029,130 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read_write</code>.'
+  /projects/{project_id}/subscriptions/{subscription_id}:
+    get:
+      summary: Get a subscription
+      operationId: get-subscription
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:subscriptions:read
+      x-release-status: public
+      tags:
+      - Subscription
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: subscription_id
+        description: ID of the subscription
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: sub1a2b3c4d5e
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.'
+  /projects/{project_id}/subscriptions/{subscription_id}/entitlements:
+    get:
+      summary: Get a list of entitlements associated with a subscription
+      operationId: list-subscription-entitlements
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:subscriptions:read
+      x-release-status: public
+      tags:
+      - Subscription
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: subscription_id
+        description: ID of the subscription
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: sub1a2b3c4d5e
+      - name: starting_after
+        in: query
+        required: false
+        schema:
+          type: string
+          example: ent12354
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          example: 10
+          default: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEntitlements'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: "Lists all Entitlements granted by a Subscription.\n This endpoint\
+        \ requires the following permission(s): <code>customer_information:subscriptions:read</code>."
   /projects/{project_id}/subscriptions/{subscription_id}/actions/cancel:
     post:
       summary: Cancels an active RevenueCat Billing subscription
@@ -3128,6 +3352,130 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.'
+  /projects/{project_id}/purchases/{purchase_id}:
+    get:
+      summary: Get a purchase
+      operationId: get-purchase
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:purchases:read
+      x-release-status: public
+      tags:
+      - Purchase
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: purchase_id
+        description: ID of the purchase
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: purc1a2b3c4d5e
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Purchase'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>.'
+  /projects/{project_id}/purchases/{purchase_id}/entitlements:
+    get:
+      summary: Get a list of entitlements associated with a purchase
+      operationId: list-purchase-entitlements
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:purchases:read
+      x-release-status: public
+      tags:
+      - Purchase
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: purchase_id
+        description: ID of the purchase
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: purc1a2b3c4d5e
+      - name: starting_after
+        in: query
+        required: false
+        schema:
+          type: string
+          example: ent12354
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          example: 10
+          default: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEntitlements'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: "Lists all Entitlements granted by a Purchase.\n This endpoint\
+        \ requires the following permission(s): <code>customer_information:purchases:read</code>."
   /projects/{project_id}/customers/{customer_id}/purchases:
     get:
       summary: Get a list of purchases associated with a customer
@@ -3203,10 +3551,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
-        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
-        \ in Beta.</div>\n</div>\nLists all Purchases associated with the Customer.\n\
-        \ This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>."
+      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>.'
   /projects/{project_id}/customers/{customer_id}/active_entitlements:
     get:
       summary: Get a list of customer's active entitlements
@@ -3608,6 +3953,7 @@ components:
             - mac_app_store
             - play_store
             - stripe
+            - rc_billing
             example: app_store
           project_id:
             description: The id of the project
@@ -3621,6 +3967,7 @@ components:
       - $ref: '#/components/schemas/MacAppStoreApp'
       - $ref: '#/components/schemas/PlayStoreApp'
       - $ref: '#/components/schemas/StripeApp'
+      - $ref: '#/components/schemas/RCBillingApp'
     AppCreate:
       allOf:
       - type: object
@@ -3648,12 +3995,14 @@ components:
             - mac_app_store
             - play_store
             - stripe
+            - rc_billing
             nullable: false
       - $ref: '#/components/schemas/AmazonAppCreate'
       - $ref: '#/components/schemas/AppStoreAppCreate'
       - $ref: '#/components/schemas/MacAppStoreAppCreate'
       - $ref: '#/components/schemas/PlayStoreAppCreate'
       - $ref: '#/components/schemas/StripeAppCreate'
+      - $ref: '#/components/schemas/RCBillingAppCreate'
     AppStoreApp:
       type: object
       properties:
@@ -4252,6 +4601,7 @@ components:
       - $iterableTemplateId
       - $iterableUserId
       - $keyword
+      - $kochavaDeviceId
       - $mediaSource
       - $mixpanelDistinctId
       - $mparticleId
@@ -4259,6 +4609,7 @@ components:
       - $onesignalUserId
       - $phoneNumber
       - $segmentId
+      - $deviceVersion
       example: $email
     CustomerEntitlement:
       type: object
@@ -5127,6 +5478,17 @@ components:
       example:
         color: blue
         call_to_action: Subscribe Now!
+    OneTimeProduct:
+      type: object
+      required:
+      - is_consumable
+      nullable: true
+      properties:
+        is_consumable:
+          type: boolean
+          nullable: true
+          description: Indicates whether the product is consumable or not.
+          example: true
     OverviewMetric:
       type: object
       required:
@@ -5391,6 +5753,10 @@ components:
           description: The subscription product object
           nullable: true
           $ref: '#/components/schemas/SubscriptionProduct'
+        one_time:
+          description: The one time product object
+          nullable: true
+          $ref: '#/components/schemas/OneTimeProduct'
         created_at:
           description: The date when the product was created in ms since epoch
           nullable: false
@@ -5631,7 +5997,7 @@ components:
         environment:
           $ref: '#/components/schemas/Environment'
         store:
-          description: Store the subscription belongs to
+          description: Store the purchase belongs to
           nullable: false
           type: string
           enum:
@@ -5643,14 +6009,14 @@ components:
           - stripe
           example: amazon
         store_purchase_identifier:
-          description: The store subscription identifier
+          description: The store purchase identifier
           nullable: false
           type: string
           minLength: 1
           maxLength: 255
           example: 12345678
         ownership:
-          description: Ownership of the subscription
+          description: Ownership of the purchase
           nullable: false
           oneOf:
           - $ref: '#/components/schemas/Ownership'
@@ -5658,6 +6024,82 @@ components:
           description: Billing country in ISO alpha 2 code
           nullable: true
           $ref: '#/components/schemas/Country'
+    RCBillingApp:
+      type: object
+      properties:
+        rc_billing:
+          description: Revenue Cat Billing Store type details
+          type: object
+          required:
+          - seller_company_name
+          - default_currency
+          nullable: false
+          properties:
+            stripe_account_id:
+              description: Stripe account connected to your RevenueCat account.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 256
+            seller_company_name:
+              description: The company name.
+              type: string
+              nullable: false
+              minLength: 1
+              maxLength: 256
+            seller_company_support_email:
+              description: The company support email.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 320
+            default_currency:
+              description: The default currency to be used for the app.
+              $ref: '#/components/schemas/RCBillingCurrency'
+    RCBillingAppCreate:
+      type: object
+      properties:
+        rc_billing:
+          description: Revenue Cat Billing Store type details
+          type: object
+          required:
+          - seller_company_name
+          nullable: true
+          properties:
+            stripe_account_id:
+              description: It needs to be connected to your RevenueCat account. It
+                can be omitted if you only have a single Stripe account connected
+                to your RevenueCat account.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 256
+            seller_company_name:
+              description: The company name.
+              type: string
+              nullable: false
+              minLength: 1
+              maxLength: 256
+            seller_company_support_email:
+              description: The company support email.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 320
+            default_currency:
+              $ref: '#/components/schemas/RCBillingCurrency'
+    RCBillingCurrency:
+      type: string
+      description: ISO 4217 currency code
+      nullable: false
+      example: USD
+      enum:
+      - AUD
+      - CAD
+      - EUR
+      - GBP
+      - JPY
+      - USD
     StripeApp:
       type: object
       properties:
@@ -5667,9 +6109,7 @@ components:
           nullable: false
           properties:
             stripe_account_id:
-              description: It needs to be connected to your RevenueCat account. It
-                can be omitted if you only have a single Stripe account connected
-                to your RevenueCat account.
+              description: Stripe account connected to your RevenueCat account.
               type: string
               nullable: true
               minLength: 1
@@ -5689,7 +6129,7 @@ components:
               type: string
               minLength: 1
               maxLength: 256
-              nullable: false
+              nullable: true
     Subscription:
       type: object
       required:
@@ -6210,6 +6650,10 @@ x-tagGroups:
   - Rate Limit
   - Expandables
   - Error Handling
+  - Representation of Subscriptions
+- name: Model Reference
+  tags:
+  - Subscription Data Model
 - name: Endpoint Reference
   tags:
   - App
@@ -6219,6 +6663,7 @@ x-tagGroups:
   - Offering
   - Package
   - Product
+  - Purchase
   - Subscription
   - Invoice
   - Project

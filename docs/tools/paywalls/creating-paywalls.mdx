@@ -23,7 +23,7 @@ Then, click **+ Add paywall** next to the Offering that you want to create a Pay
 ![Add paywall](/images/5dba69c-Add_pricing_d358c38b060b7c314974edeaed75a21e.png)
 
 :::tip
-If you’re looking to experiment with a new paywall, consider duplicating your default Offering and attaching your new paywall to the duplicated Offering.
+If you’re looking to experiment with a new paywall, consider duplicating your default Offering and attaching your new paywall to the duplicated Offering. Duplicating an Offering with a paywall attached will also duplicate the paywall.
 :::
 
 ### Select a template
@@ -37,6 +37,15 @@ If you need to showcase multiple packages, consider using the following template
 - Template 2 - Sphynx Content
 - Template 4 - Persian Content
 - Template 5 - Bengal Content
+
+If you are using the **#7 - Siamese** template, the minimum supported SDK versions of this Paywall are:
+
+- iOS 5.2.0
+- Android 8.3.0
+- React Native 8.0.0
+- Flutter 7.0.0
+
+If you attempt to serve this Paywall on a lower SDK version we'll provide a fallback Paywall. [Learn more](https://www.revenuecat.com/docs/tools/paywalls/displaying-paywalls#default-paywall).
 
 ## How to configure your Paywall
 
@@ -109,7 +118,7 @@ We support the following variables:
 
 
 Some variables are not available on all version of the SDK. If an unavailable variable is found on an older version of the SDK, RevenueCatUI will automatically display a [default paywall](/tools/paywalls/displaying-paywalls#default-paywall) to avoid showing a broken paywall.
-To prevent this, you may use [Targetting](/tools/targeting) to control who can see a paywall with a newer variable.
+To prevent this, you may use [Targeting](/tools/targeting) to control who can see a paywall with a newer variable.
 
 ### Previewing Paywalls
 

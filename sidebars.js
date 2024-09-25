@@ -70,6 +70,7 @@ const gettingStartedCategory = Category({
           label: "RevenueCat Billing Product Setup",
           slug: "/web/revenuecat-billing/product-setup",
         }),
+        Page({ slug: "roku-products"}),
       ],
     }),
     SubCategory({
@@ -88,6 +89,7 @@ const gettingStartedCategory = Category({
         Page({ slug: "web-sdk" }),
         Page({ slug: "macos" }),
         Page({ slug: "app-builders" }),
+        Page({ slug: "roku"}),
       ],
     }),
     SubCategory({
@@ -288,6 +290,7 @@ const dashboardCategory = Category({
     Page({ slug: "customer-lists" }),
     Page({ slug: "taxes-and-commissions" }),
     Page({ slug: "performance-summaries" }),
+    Page({ slug: "display-currency"}),
     Page({ slug: "supporting-your-customers" }),
     Page({ slug: "audit-logs" }),
   ],
