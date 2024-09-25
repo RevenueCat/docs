@@ -1439,7 +1439,10 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:products:read_write</code>.'
+      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
+        >\n  <div class=\"heading\">Warning</div>\n  <div>This endpoint does not allow\
+        \ to create RevenueCat Billing products.</div>\nThis endpoint requires the\
+        \ following permission(s): <code>project_configuration:products:read_write</code>."
   /projects/{project_id}/entitlements/{entitlement_id}:
     get:
       summary: Get an entitlement
