@@ -8,6 +8,7 @@
           "condition_type": "FIRST_SEEN"
         }
       ],
+      // App Store Connect promo offer id
       "ios_offer_id": "rc-long-time-user-offer",
       "subtitle_key": "long_time_user_offer_subtitle",
       "title_key": "long_time_user_offer_title"
@@ -20,9 +21,38 @@
           "condition_type": "TIME_SINCE_FIRST_PURCHASE"
         }
       ],
+      // App Store Connect promo offer id
       "ios_offer_id": "rc-new-purchaser-offer",
       "subtitle_key": "new_purchaser_offer_subtitle",
       "title_key": "new_purchaser_offer_title"
+    }
+  },
+  "screens": {
+    "MANAGEMENT": {
+      "paths": [
+        {
+          "id": "ownmsldfow",
+          "promotional_offer_key": "long_time_user_offer",
+          "title_key": "path_missing_purchase",
+          "type": "MISSING_PURCHASE"
+        },
+        // other paths
+        {
+          "feedback_survey": {
+            "options": [
+              {
+                "id": "cancel_survey_too_expensive",
+                "promotional_offer_key": "new_purchaser_offer",
+                "title_key": "survey_too_expensive"
+              }
+              // other options
+            ]
+          },
+          "id": "jnkasldfhas",
+          "title_key": "path_cancel",
+          "type": "CANCEL"
+        }
+      ]
     }
   }
 }

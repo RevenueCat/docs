@@ -4,7 +4,7 @@ slug: customer-center
 hidden: true
 ---
 :::warning Beta Feature
-RevenueCat's Customer Center is currently in beta, and only available on iOS.
+RevenueCat's Customer Center is currently in beta, and only available on iOS 15.0+ at the moment. Feedback is welcome!
 :::
 
 ## Overview
@@ -80,11 +80,9 @@ import customerCenterEventsModifier from "!!raw-loader!@site/code_blocks/tools/c
 
 We have added a new section in the Monetization Tools section of the dashboard with some basic configuration options and a JSON editor. This is where you can configure the Customer Center.
 
-For this beta version, we've decided to focus on the SDK, and on getting early feedback on the functionality. The customer center section of the dashboard is mainly a JSON editor of the configuration that will be sent to the SDK. This is not meant to be final and it's built this way for the purpose of getting early feedback on the feature. We are going to be replacing it with a full UI where you will be able to configure what your users see, and how the different sections of the view behave.
-
 We have added some defaults that will probably work for you, but you are encouraged to color configuration, and support email.
 
-The default JSON is configured for the following behavior:
+The default configuration is configured for the following behavior:
 
 - Cancellation, Refund Request, Plan changes and Missing Purchases
 - The cancellation path has a feedback survey with three options: "Too expensive", "Don't use the app", "Bought by mistake".
