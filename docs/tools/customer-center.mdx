@@ -1,0 +1,261 @@
+---
+title: Customer Center
+slug: customer-center
+hidden: true
+---
+:::warning Beta Feature
+RevenueCat's Customer Center is currently in beta, and only available on iOS 15.0+ at the moment. Feedback is welcome!
+:::
+
+## Overview
+
+This central hub is a self-service section that can be added to your app to help your users manage their subscriptions on their own, reducing the support burden on developers like you so you can spend more time building apps and less time dealing with support issues. We are hoping adding this new section to your app can help you reduce customer support interactions, obtain feedback from your users and ultimately reduce churn by retaining them as subscribers, helping you make more money.
+
+## Features currently available
+
+- Users can cancel current subscriptions
+- Users can ask for refunds
+- Users can change their subscription plans
+- Users can restore previous purchases and contact your support email if they have trouble restoring
+- Users will be asked to update their app if they are on an older version before being able to contact your support email
+- Developers can ask for reasons for cancellations or refunds, and automatically offer promo offers to retain users
+- Configuration is done in the RevenueCat dashboard, and advanced configuration is available via JSON
+
+## Current limitations
+
+- Only available on iOS 15+
+- Limited visual configuration options in the dashboard. It is possible to configure the Customer Center via JSON.
+- We are exposing a SwiftUI view and a modifier at the moment. We haven't built a UIKit wrapper to help integrating on UIKit apps, but it's in the roadmap.
+
+## Concepts
+
+### Paths
+
+There are different supported paths. Right now we support Cancellation, Refund Request, Plan changes and Missing Purchases. These are the buttons in the main screen.
+
+### Feedback surveys
+A path can have a feedback survey attached to it, with the options you want. The idea is to be able to offer a promotional offer to a particular feedback survey option, and to be able to analyze why people are for example canceling, or changing plans.
+
+### Promotional offers
+
+Promotional offers are attachable to particular feedback survey options and to paths. We think you might be able to reduce churn if you capture users who are looking for a way to make changes to their subscription if you offer them a discount at that exact time. 
+
+## Usage
+
+You can use the `CustomerCenterView` view directly:
+
+import usageView from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-1.swift";
+
+<RCCodeBlock tabs={[
+    { type: 'swift', content: usageView, name: 'Swift' }
+]} />
+
+Or via a modifier:
+
+import usageModifier from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-2.swift";
+
+<RCCodeBlock tabs={[
+    { type: 'swift', content: usageModifier, name: 'Swift' }
+]} />
+
+### Listening to events
+
+We've added a way to listen to events that occur within the `CustomerCenterView`. For now, we are not posting any event to our backend (like feedback survey selections). We are going to be adding way more events in the future, but these are what are available for now:
+
+import customerCenterEvents from "!!raw-loader!@site/code_blocks/tools/customer-center-events.swift";
+
+<RCCodeBlock tabs={[
+    { type: 'swift', content: customerCenterEvents, name: 'Swift' }
+]} />
+
+If using the modifier:
+
+import customerCenterEventsModifier from "!!raw-loader!@site/code_blocks/tools/customer-center-events-modifier.swift";
+
+<RCCodeBlock tabs={[
+    { type: 'swift', content: customerCenterEventsModifier, name: 'Swift' }
+]} />
+
+### Configuration
+
+We have added a new section in the Monetization Tools section of the dashboard with some basic configuration options and a JSON editor. This is where you can configure the Customer Center.
+
+We have added some defaults that will probably work for you, but you are encouraged to color configuration, and support email.
+
+The default configuration is configured for the following behavior:
+
+- Cancellation, Refund Request, Plan changes and Missing Purchases
+- The cancellation path has a feedback survey with three options: "Too expensive", "Don't use the app", "Bought by mistake".
+  - There's a promotional offer with id `rc-cancel-offer` configured for the "Too expensive" option in the feedback survey for the cancellation path.
+  - There's a promotional offer with id `rc-cancel-offer` configured for the "Don't use the app" option in the feedback survey for the cancellation path.
+- There's a promotional offer with id `rc-refund-offer` configured for the Refund Request path.
+
+If you want to take advantage of the promotional offers, you will need to add them to the your products in App Store Connect using the `rc-cancel-offer` and `rc-refund-offer` ids. You can find more information about promotional offers [here](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#promotional-offers).
+
+It is possible to customize the default configuration by editing the JSON, please refer to the [Advanced configuration](#advanced-configuration) section for more information on how to customize the paths, feedback surveys and promotional offers that your users see.
+
+#### Support email
+
+The support email is the email address that will be used to send emails to the user when they are using the Customer Center. It is used for the "Missing Purchase" path, where the user can contact your support email if they have trouble restoring their purchase. It is also used if the user is trying to manage a subscription that is not an Apple subscription, for example a Play Store subscription.
+
+#### Colors
+
+You can customize the colors of the Customer Center through the UI or the configuration JSON. Here's how the color settings work:
+
+- **Accent Color**: This color is used throughout the entire Customer Center for various UI elements like buttons. If not set, the app's default accent color will be used.
+
+- **Background Color**: This color only applies to the promotional offers views. If not set, the app's default background color will be used.
+
+- **Text Color**: This color only applies to the text in the promotional offers views. If not set, the app's default text color will be used.
+
+- **Button Text Color**: This color only applies to the text in the promotional offers button. If not set, the app's default text color will be used.
+
+- **Button Background Color**: This color only applies to the background of the promotional offers button. If not set, the app's default background color will be used.
+
+Remember, except for the accent color, these color settings only affect the promotional offers views. The rest of the Customer Center will use your app's default colors to maintain consistency with your app's overall design.
+
+If you don't specify any colors, the Customer Center will use your app's default color scheme throughout, ensuring a native look and feel. There are light and dark theme variants available, which you can set both in the UI and in the configuration JSON.
+
+### Advanced configuration
+
+#### Strings localization
+
+The default configuration has been localized for 32 languages. If you want to customize the strings for a specific language, you can do so by editing the JSON. Make sure the ids are correctly referenced in the other parts of the JSON.
+
+If your app doesn't support these many languages, you can remove the languages you don't support to clean up the JSON. Make sure to also remove the locale from the `supported` JSON array as well.
+
+A default locale can be set by editing the `default` field in the JSON inside the `localization` JSON object. This is the fallback language that will be used if the user's language is not supported.
+
+Here's an example of what the localization JSON section looks like:
+
+import customerCenterLocalization from "!!raw-loader!@site/code_blocks/tools/customer-center-localization.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: customerCenterLocalization, name: 'JSON' }
+]} />
+
+#### Screens
+
+The Customer Center is composed of different screens that users can navigate through. The main screens are defined in the `screens` object of the configuration JSON. Here's an example of how the screens are configured:
+
+import customerCenterScreens from "!!raw-loader!@site/code_blocks/tools/customer-center-screens.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: customerCenterScreens, name: 'JSON' }
+]} />
+
+This configuration defines two main screens:
+
+1. **MANAGEMENT**: This is the main screen users see when they have an active subscription. It contains several paths (or actions) that users can take:
+   - Missing Purchase
+   - Refund Request
+   - Change Plans
+   - Cancel Subscription
+
+2. **NO_ACTIVE**: This screen is shown when the user doesn't have an active subscription. It typically only offers the option to restore purchases.
+
+You can customize these screens by:
+- Adding or removing paths
+- Changing the order of the paths
+- Modifying the title and subtitle keys to reference different localized strings
+
+#### Paths
+
+Paths define the different actions users can take within the Customer Center. Each path has a unique configuration that determines its behavior. Here's an example of how paths are configured:
+
+import customerCenterPaths from "!!raw-loader!@site/code_blocks/tools/customer-center-paths.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: customerCenterPaths, name: 'JSON' }
+]} />
+
+Let's break down the configuration for each path:
+
+1. **Missing Purchase** (`MISSING_PURCHASE`): Used for restoring previous purchases.
+
+2. **Refund Request** (`REFUND_REQUEST`): Allows users to request refunds.
+
+3. **Change Plans** (`CHANGE_PLANS`): Enables users to switch between different subscription plans.
+
+4. **Cancel** (`CANCEL`): Provides an option for users to cancel their subscription.
+
+Key points about paths:
+
+- Each path has a unique `id`, `title_key` for localization, and `type` that defines its functionality.
+- Paths can include `promotional_offer_key` to present discounts to users. The `REFUND_REQUEST` path in the above example has a promotional offer configured.
+- Paths can include a `feedback_survey` to gather information from users. The `CANCEL` path demonstrates in the example above how to include a feedback survey with multiple options.
+- Survey options can have their own `promotional_offer_key` for targeted retention efforts.
+
+You can customize these paths by:
+- Adding or removing paths to change available actions.
+- Modifying the `title_key` to change the displayed text (ensure the key exists in your localization configuration).
+- Adding or adjusting `promotional_offer_key` to change or introduce discount offers.
+- Adding or adjusting `feedback_survey` to change or introduce feedback surveys.
+
+#### Feedback surveys
+A path can have a feedback survey attached to it, with the options you want. The idea is to be able to offer a promotional offer to a particular feedback survey option, and to be able to analyze why people are for example canceling, or changing plans.
+
+### Promotional offers
+
+Promotional offers are attachable to particular feedback survey options and to paths. We think you might be able to reduce churn if you capture users who are looking for a way to make changes to their subscription if you offer them a discount at that exact time. 
+
+#### Adding promotional offers
+
+Promotional offers are defined in the `promotional_offers` object of the configuration JSON. Each offer has a unique key that can be referenced from paths or feedback survey options. Here's an example of how promotional offers are configured:
+
+import customerCenterPromotionalOffers from "!!raw-loader!@site/code_blocks/tools/customer-center-promotional-offers.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: customerCenterPromotionalOffers, name: 'JSON' }
+]} />
+
+Key points about promotional offers:
+
+- Each offer has a unique key (e.g., `cancel_promo_offer_key`, `refund_promo_offer_key`).
+- The `eligibility` array defines conditions for when the offer can be presented.
+- `ios_offer_id` should correspond to an offer you've created in App Store Connect. You can find more information about promotional offers [here](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#promotional-offers).
+- `title_key` and `subtitle_key` reference localized strings for the offer's display text.
+
+To use these offers, you link them from paths or feedback survey options using the `promotional_offer_key`. For example:
+
+1. Linking a path to a promotional offer:
+
+import customerCenterPathWithPromoOffer from "!!raw-loader!@site/code_blocks/tools/customer-center-path-with-promo-offer.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: customerCenterPathWithPromoOffer, name: 'JSON' }
+]} />
+
+2. Linking a feedback survey option to a promotional offer:
+
+import customerCenterSurveyOptionWithPromoOffer from "!!raw-loader!@site/code_blocks/tools/customer-center-survey-option-with-promo-offer.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: customerCenterSurveyOptionWithPromoOffer, name: 'JSON' }
+]} />
+
+By configuring promotional offers this way, you can create targeted discount strategies for different user actions or feedback responses.
+
+#### Eligibility conditions for promotional offers
+
+You can customize a promotional offer's eligibility by setting conditions in the `eligibility` array. This allows you to control when and to whom the offer is presented. There are two types of conditions you can use:
+
+1. `FIRST_SEEN`: This condition is based on when the user was first seen by RevenueCat.
+2. `TIME_SINCE_FIRST_PURCHASE`: This condition is based on the time elapsed since the user's first purchase.
+
+For both condition types, you can set the comparison to be either `GREATER` or `SMALLER`, allowing you to target users based on how long they've been using the app or how long they've been customers.
+
+Here's an example of how to set up eligibility conditions:
+
+import customerCenterEligibilityConditions from "!!raw-loader!@site/code_blocks/tools/customer-center-eligibility-conditions.json";
+
+<RCCodeBlock tabs={[
+    { type: 'json', content: customerCenterEligibilityConditions, name: 'JSON' }
+]} />
+
+In this example:
+- The `long_time_user_offer` will only be presented to users who were first seen more than 30 days ago.
+- The `new_purchaser_offer` will only be presented to users who made their first purchase less than 7 days ago.
+
+By using these eligibility conditions, you can create targeted offers for different segments of your user base, potentially increasing the effectiveness of your retention strategies.
+

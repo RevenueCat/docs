@@ -1,0 +1,42 @@
+"paths": [
+    {
+        "id": "path_missing_purchase_id",
+        "title_key": "path_missing_purchase",
+        "type": "MISSING_PURCHASE"
+    },
+    {
+        "id": "path_refund_id",
+        "promotional_offer_key": "refund_promo_offer_key",
+        "title_key": "path_refund",
+        "type": "REFUND_REQUEST"
+    },
+    {
+        "id": "path_change_id",
+        "title_key": "path_change",
+        "type": "CHANGE_PLANS"
+    },
+    {
+        "feedback_survey": {
+        "options": [
+            {
+            "id": "cancel_survey_too_expensive",
+            "promotional_offer_key": "cancel_promo_offer_key",
+            "title_key": "survey_too_expensive"
+            },
+            {
+            "id": "cancel_survey_usage",
+            "promotional_offer_key": "cancel_promo_offer_key",
+            "title_key": "survey_usage"
+            },
+            {
+            "id": "cancel_survey_mistake",
+            "title_key": "survey_mistake"
+            }
+        ],
+        "title_key": "cancel_survey_title"
+        },
+        "id": "path_cancel_id",
+        "title_key": "path_cancel",
+        "type": "CANCEL"
+    }
+]
