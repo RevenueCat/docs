@@ -82,12 +82,12 @@ You can display unique paywalls to different customer segments based on custom a
 
 You can specify up to 50 unique custom attributes per subscriber, with key names up to 40 characters long and values up to 500 characters long. Keys cannot start with `$`, since that prefix is withheld for reserved attributes (see below).
 
-**Custom attribute key checklist:**  
-✅ Key does not contain whitespace  
-✅ Key must start with a letter for non-reserved attributes or "$" for reserved attributes  
-✅ Key does not include any non-alphanumeric characters except `-` and `_`  
-✅ Key is not more than 40 characters  
-✅ Value is not more than 500 characters  
+**Custom attribute key checklist:**
+✅ Key does not contain whitespace
+✅ Key must start with a letter for non-reserved attributes or "$" for reserved attributes
+✅ Key does not include any non-alphanumeric characters except `-` and `_`
+✅ Key is not more than 40 characters
+✅ Value is not more than 500 characters
 ✅ No more than 50 custom attributes
 
 ### Reserved attributes
@@ -125,9 +125,11 @@ Attribute keys beginning with `$` are reserved for RevenueCat. The current list 
 | `$iterableTemplateId`    | The Iterable template ID.                                    |
 | `$firebaseAppInstanceId` | The Firebase instance identifier.                            |
 | `$mixpanelDistinctId`    | The Mixpanel user identifier.                                |
+| `$kochavaDeviceId`       | The unique Kochava device identifier.                        |
 | `$ip`                    | The IP address of the device.                                |
 | `$email`                 | Email address for the user.                                  |
 | `$phoneNumber`           | Phone number for the user.                                   |
+| `$deviceVersion`         | Device, platform and version information.                    |
 
 :::warning attConsentStatus is populated regardless of requesting any permission
 
@@ -179,6 +181,7 @@ Therefore, Google's Advertising ID acts as the primary device identifier for And
 | `$onesignalId`           | [OneSignal](https://onesignal.com/) player identifier                                         |
 | `$clevertapId`           | [CleverTap](https://clevertap.com/) user identifier                                           |
 | `$airshipChannelId`      | [Airship](https://www.airship.com/) channel identifier                                        |
+| `$kochavaDeviceId`      | [Kochava](https://www.kochava.com/) device identifier                                        |
 
 #### Braze User Alias Object
 
@@ -330,7 +333,7 @@ import content22 from "!!raw-loader!@site/code_blocks/customers/subscriber-attri
 />
 
 ## Setting Attributes via the REST API
-If you want to set, update, or delete attributes through the REST API from your own backend, for example, because you haven't implemented the RevenueCat SDK, you can use the `POST /subscribers/{app_user_id}/attributes` [API endpoint](/api-v1#tag/customers/operation/update-subscriber-attributes). 
+If you want to set, update, or delete attributes through the REST API from your own backend, for example, because you haven't implemented the RevenueCat SDK, you can use the `POST /subscribers/{app_user_id}/attributes` [API endpoint](/api-v1#tag/customers/operation/update-subscriber-attributes).
 
 ## Reading Attributes
 
