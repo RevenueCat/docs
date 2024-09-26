@@ -4,6 +4,7 @@ slug: kochava
 excerpt: Integrate Purchases SDK with Kochava for precise revenue tracking
 hidden: false
 ---
+
 With our Kochava integration you can:
 
 - Accurately track subscriptions generated from Kochava campaigns, allowing you to know precisely how much revenue your campaigns generate.
@@ -12,9 +13,9 @@ With our Kochava integration you can:
 
 ### Integration at a Glance
 
-| Includes Revenue | Supports Negative Revenue |   Sends Sandbox Events   | Includes Customer Attributes | Sends Transfer Events |                                        Optional Event Types                                        |
-| :--------------: | :-----------------------: | :----------------------: | :----------------------------: | :-------------------: | :------------------------------------------------------------------------------------------------: |
-|        ✅        |            ✅             | Requires Sandbox App GUID |               Certain Reserved Attributes only               |          ❌           | `non_subscription_purchase_event` `expiration_event` `billing_issue_event` `product_change_event` |
+| Includes Revenue | Supports Negative Revenue |   Sends Sandbox Events    |   Includes Customer Attributes   | Sends Transfer Events |                                       Optional Event Types                                        |
+| :--------------: | :-----------------------: | :-----------------------: | :------------------------------: | :-------------------: | :-----------------------------------------------------------------------------------------------: |
+|        ✅        |            ✅             | Requires Sandbox App GUID | Certain Reserved Attributes only |          ❌           | `non_subscription_purchase_event` `expiration_event` `billing_issue_event` `product_change_event` |
 
 ## 1. Install Kochava SDK
 
@@ -24,35 +25,22 @@ Before RevenueCat can integrate with Kochava, your app should be running the lat
 
 The Kochava integration requires some device-specific data. RevenueCat will only send events into Kochava if the below [Customer Attributes](/customers/customer-attributes) keys have been set for the device.
 
-
-| Key            | Description                                                                                                                                     | Required         |
-| :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :--------------- |
-| `$kochavaDeviceId` | The unique Kochava Device. Id.                                                                                      | ✅ (required)    |
-| `$ip` | The IP address of the device. This is gathered server-side when `$ip` is set to `true`.            | ✅ (required)    |
-| `$deviceVersion` | Device, platform and version information. This is gathered server-side when `$deviceVersion` is set to `true`.                   | ✅ (required)    |
-| `$idfa`        | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ✅ (recommended) |
-| `$gpsAdId`     | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ✅ (recommended) |
-| `$idfv`        | iOS [vender identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ✅ (recommended) |
-
-
-
-:::warning Android ID deprecation
-Due to policy changes from the Play Store, Android ID is no longer collected by RevenueCat's Android SDKs starting on versions 6.9.8+, 7.11.1+, and later major versions.
-
-Therefore, Google's Advertising ID acts as the primary device identifier for Android devices in RevenueCat and when connecting with third-party integrations.
-:::
-
+| Key                | Description                                                                                                                                     | Required         |
+| :----------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :--------------- |
+| `$kochavaDeviceId` | The unique Kochava Device ID.                                                                                                                   | ✅ (required)    |
+| `$ip`              | The IP address of the device. This is gathered server-side when `$ip` is set to `true`.                                                         | ✅ (required)    |
+| `$deviceVersion`   | Device, platform and version information. This is gathered server-side when `$deviceVersion` is set to `true`.                                  | ✅ (required)    |
+| `$idfa`            | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ✅ (recommended) |
+| `$gpsAdId`         | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ✅ (recommended) |
+| `$idfv`            | iOS [vender identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ✅ (recommended) |
 
 When calling the `setKochavaDeviceId()` helper, all of the required customer attributes will be automatically set. Alternatively, these properties can be set manually, like any other [Attributes](/customers/customer-attributes).
-
 
 import kotlinContent from "!!raw-loader!@site/code_blocks/integrations/attribution/kochava_2.kt";
 
 {/* Use the RCCodeBlock component to render the code blocks with tabs */}
 
-<RCCodeBlock tabs={[
-    { type: 'kotlin', content: kotlinContent }
-]} />
+<RCCodeBlock tabs={[{ type: "kotlin", content: kotlinContent }]} />
 
 You should make sure to set attributes after the _Purchases SDK_ is configured, and before the first purchase occurs. It's safe to set attributes multiple times, as only the new/updated values will be sent to RevenueCat.
 
@@ -84,7 +72,6 @@ The below reserved key names can be used to optionally attach campaign data to a
 | `$keyword`     |
 | `$creative`    |
 
-
 ## 3. Send RevenueCat events into Kochava
 
 After you've set up the _Purchases SDK_ to send attribution data from Kochava to RevenueCat, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
@@ -94,14 +81,13 @@ After you've set up the _Purchases SDK_ to send attribution data from Kochava to
 ![](/images/f43c7d1-app.revenuecat.com_projects_85ff18c7_collaborators_1_102e08e408ab8c9a966834182c81cbbc.png "app.revenuecat.com_projects_85ff18c7_collaborators (1).png")
 
 2. Choose **Kochava** from the Integrations menu.
-3. Add your API key, which can be generated in Kochava. For more information on how to access your API key, see the following [Documentation](https://support.freeappanalytics.com/analytics-reports-api/create-and-manage-application-programming-interface-key/).
+3. Add your API key, which can be generated in Kochava. For more information on how to access your API key, see the following [documentation](https://support.freeappanalytics.com/analytics-reports-api/create-and-manage-application-programming-interface-key/).
 4. If strict authentication rules are enabled in the integration, you can add a Secret API Key. Kochava does not enable this by default. There is currently no place in the UI to access your API Secret, so you need to request it from the Kochava support team.
 5. At least one App GUID or Test App GUID must be added. This is called `APP GUID` in the Kochava backend. If you perform [Sanbox Testing](https://www.revenuecat.com/docs/test-and-launch/sandbox), we automatically send events to the corresponding Test App GUID. For example, if you are testing on Android, we will automatically send events linked to the Android Test App GUID.
 6. Enter the event names that RevenueCat will send. The default names are our best attempt at mapping to Kochava event names. **NOTE:** You may lose some functionality if you do not use the default names. See this [Full List of Standard Events](https://support.kochava.com/reference-information/post-install-event-examples/) that Kochava supports.
 7. Select whether you want sales reported as gross revenue (before app store commission) or after store commission and/or estimated taxes.
 
 ![Kochava Integration](/images/kochava_form.png)
-
 
 ## 4. Testing the Kochava integration
 
