@@ -3,22 +3,22 @@
     "MANAGEMENT": {
       "paths": [
         {
-          "id": "ownmsldfow",
+          "id": "management_path_missing_purchases_id",
           "title_key": "path_missing_purchase",
           "type": "MISSING_PURCHASE"
         },
         {
-          "id": "nwodkdnfaoeb",
+          "id": "management_path_refund_id",
           "title_key": "path_refund",
           "type": "REFUND_REQUEST"
         },
         {
-          "id": "nfoaiodifj9",
+          "id": "management_path_change_id",
           "title_key": "path_change",
           "type": "CHANGE_PLANS"
         },
         {
-          "id": "jnkasldfhas",
+          "id": "management_path_cancel_id",
           "title_key": "path_cancel",
           "type": "CANCEL"
         }
@@ -29,7 +29,7 @@
     "NO_ACTIVE": {
       "paths": [
         {
-          "id": "9q9719171o",
+          "id": "no_active_missing_purchases_id",
           "title_key": "no_active_check_purchases",
           "type": "MISSING_PURCHASE"
         }
