@@ -138,7 +138,7 @@ kotlin {
 }
 ```
 
-Lastly, you'll need to change the pod specification from `PurchasesHybridCommon` to `PurchasesHybridCommonUI`. This needs to happen either in your iOS project's `Podfile`, or your Compose Multiplatform module's `build.gradle.kts`, depending on how your Multiplatform module is integrated with your iOS project.
+Lastly, you'll need to make sure you link the `PurchasesHybridCommonUI` native iOS framework. If your iOS app uses Swift Package Manager, add the `PurchasesHybridCommonUI` library to your target in the same way you added the `PurchasesHybridCommon` library. If your iOS app uses CocoaPods, either update its `Podfile`, or update your Compose Multiplatform module's `build.gradle.kts`, depending on how your Multiplatform module is integrated with your iOS project.
 
 
 ### Overview
