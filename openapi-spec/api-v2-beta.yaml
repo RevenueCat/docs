@@ -1381,6 +1381,9 @@ paths:
                     - For Amazon, if it''s a subscription, the term SKU of the subscription.
                     If it''s a one-time purchase, the SKU of the product.
 
+                    - For Roku, this is the product identifier of the subscription
+                    or one-time purchase product.
+
                     '
                   type: string
                   minLength: 1
