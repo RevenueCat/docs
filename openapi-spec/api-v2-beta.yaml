@@ -479,6 +479,14 @@ paths:
                   rc_billing:
                     seller_company_name: <Your company name>
                     default_currency: USD
+              Roku:
+                value:
+                  name: My Roku App
+                  type: roku
+                  roku:
+                    roku_api_key: <Your Roku Pay API Key goes here>
+                    roku_channel_id: 123456
+                    roku_channel_name: History Channel
       responses:
         '201':
           description: Success. The app was created
@@ -714,6 +722,32 @@ paths:
                       maxLength: 320
                     default_currency:
                       $ref: '#/components/schemas/RCBillingCurrency'
+                roku:
+                  description: Roku Channel Store type details. Should only be used
+                    when type is roku.
+                  type: object
+                  nullable: false
+                  properties:
+                    roku_api_key:
+                      description: Roku Pay API key provided on the Roku Pay Web Services
+                        page.
+                      type: string
+                      minLength: 33
+                      maxLength: 33
+                      nullable: true
+                    roku_channel_id:
+                      description: Channel ID provided on the Roku Channel page.
+                      type: string
+                      minLength: 6
+                      maxLength: 6
+                      nullable: true
+                    roku_channel_name:
+                      description: Channel name that is displayed on the Roku Channel
+                        page.
+                      type: string
+                      minLength: 1
+                      maxLength: 30
+                      nullable: true
               additionalProperties: false
             examples:
               Update App Store App properties:
@@ -3954,6 +3988,7 @@ components:
             - play_store
             - stripe
             - rc_billing
+            - roku
             example: app_store
           project_id:
             description: The id of the project
@@ -3968,6 +4003,7 @@ components:
       - $ref: '#/components/schemas/PlayStoreApp'
       - $ref: '#/components/schemas/StripeApp'
       - $ref: '#/components/schemas/RCBillingApp'
+      - $ref: '#/components/schemas/RokuApp'
     AppCreate:
       allOf:
       - type: object
@@ -3996,6 +4032,7 @@ components:
             - play_store
             - stripe
             - rc_billing
+            - roku
             nullable: false
       - $ref: '#/components/schemas/AmazonAppCreate'
       - $ref: '#/components/schemas/AppStoreAppCreate'
@@ -4003,6 +4040,7 @@ components:
       - $ref: '#/components/schemas/PlayStoreAppCreate'
       - $ref: '#/components/schemas/StripeAppCreate'
       - $ref: '#/components/schemas/RCBillingAppCreate'
+      - $ref: '#/components/schemas/RokuAppCreate'
     AppStoreApp:
       type: object
       properties:
@@ -6100,6 +6138,54 @@ components:
       - GBP
       - JPY
       - USD
+    RokuApp:
+      type: object
+      properties:
+        roku:
+          description: Roku Channel Store type details
+          type: object
+          nullable: false
+          properties:
+            roku_channel_id:
+              description: Channel ID provided on the Roku Channel page.
+              type: string
+              nullable: true
+              minLength: 6
+              maxLength: 6
+            roku_channel_name:
+              description: Channel name that is displayed on the Roku Channel page.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 30
+    RokuAppCreate:
+      type: object
+      properties:
+        roku:
+          description: Roku Channel Store details. Should only be used when type is
+            roku.
+          type: object
+          nullable: true
+          properties:
+            roku_api_key:
+              description: Roku Pay API key provided on the Roku Pay Web Services
+                page.
+              type: string
+              nullable: true
+              minLength: 33
+              maxLength: 33
+            roku_channel_id:
+              description: Channel ID provided on the Roku Channel page.
+              type: string
+              nullable: true
+              minLength: 6
+              maxLength: 6
+            roku_channel_name:
+              description: Channel name that is displayed on the Roku Channel page.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 30
     StripeApp:
       type: object
       properties:
