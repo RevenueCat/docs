@@ -486,6 +486,7 @@ const serviceCredentialsCategory = Category({
       items: [Page({ slug: "google-play-checklists" })],
     }),
     Page({ slug: "amazon-appstore-credentials" }),
+    Page({ slug: "roku-credentials"}),
   ],
 });
 
