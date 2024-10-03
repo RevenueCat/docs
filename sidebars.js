@@ -223,6 +223,16 @@ const subscriptionGuidanceCategory = Category({
       slug: "subscription-offers",
       itemsPathPrefix: "subscription-offers/",
       items: [
+        SubCategory({
+          label: "Free Trials & Promo Offers",
+          slug: "subscription-offers",
+          itemsPathPrefix: "subscription-offers/",
+          items: [
+            Page({ slug: "ios-subscription-offers" }),
+            Page({ slug: "google-play-offers" }),
+            Page({ slug: "stripe-free-trials" }),
+          ],
+        }),
         Page({ slug: "ios-subscription-offers" }),
         Page({ slug: "google-play-offers" }),
         Page({ slug: "stripe-free-trials" }),
