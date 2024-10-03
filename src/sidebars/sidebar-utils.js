@@ -8,7 +8,7 @@ const buildItem = (item, pagePrefix) => {
       ),
     };
 
-    if (item.link.id) {
+    if (item.link && item.link.id) {
       object.link = {
         type: "doc",
         id: `${prefix}${item.link.id}`,
@@ -22,6 +22,13 @@ const buildItem = (item, pagePrefix) => {
     return {
       ...item,
       id: `${prefix}${item.id}`,
+    };
+  }
+
+  if (item.type === "link") {
+    return {
+      ...item,
+      href: item.href,
     };
   }
 
@@ -51,23 +58,6 @@ const SubCategory = ({ label, slug, itemsPathPrefix, items, index }) => ({
     },
   }),
   items: items.map((item) => buildItem(item, itemsPathPrefix)),
-});
-
-const Page = ({ slug }) => ({
-  type: "doc",
-  id: slug,
-});
-
-const Link = ({ label, slug }) => ({
-  type: "link",
-  label: `→ ${label}`,
-  href: slug,
-});
-
-const GeneratedIndex = ({ title, link, description }) => ({
-  title,
-  link,
-  description,
 });
 
 module.exports = {
