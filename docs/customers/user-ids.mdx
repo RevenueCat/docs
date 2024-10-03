@@ -107,7 +107,7 @@ In certain cases, iOS may [prewarm](https://developer.apple.com/documentation/ui
 If you are **not** using RevenueCat's anonymous IDs as described above, and are instead providing your own app user ID on configuration, **do not** call `configure` in `application:didFinishLaunchingWithOptions:`. Instead, call the `configure` method in your root view controller's initialization method.
 :::
 
-If you have your own App User IDs at app launch, you can pass those on instantiation to _Purchases_.
+If you have your own App User IDs at app launch, you can pass those on instantiation to _Purchases_. Make sure to not hard-code this identifier, if you do all users will be considered the same one and will share purchases.
 
 import content9 from "!!raw-loader!@site/code_blocks/customers/user-ids_9.swift";
 import content10 from "!!raw-loader!@site/code_blocks/customers/user-ids_10.m";
