@@ -47,14 +47,25 @@ import efaContent from "!!raw-loader!@site/code_blocks/getting-started/installat
 ]} />
 
 ### Link the native iOS SDK
-Since the SDK depends on a native RevenueCat iOS framework, `PurchasesHybridCommon`, this will need to be linked to your existing iOS project. The approach depends on how you currently integrate your existing Kotlin Multiplatform code with your iOS project. 
+Since the SDK depends on a native RevenueCat iOS framework, `PurchasesHybridCommon`, this will need to be linked to your existing iOS project. You have 2 options do to so: using Swift Package Manager and using CocoaPods. It's easiest to pick the dependency manager you're already using in your iOS project. 
+#### Using Swift Package Manager
 
-#### 1. Directly as a local iOS framework
+To add `PurchasesHybridCommon` to your iOS project using Swift Package Manager, do the following: 
+
+1. Select `File » Add Packages Dependencies...` and enter the repository URL `https://github.com/RevenueCat/purchases-hybrid-common` into the search bar (top right). 
+2. Then set the Dependency Rule to `Exact`, and specify the version number to be equal to everything after the '+' in the purchases-kmp version. 
+3. When "Choose Package Products for purchases-hybrid-common" appears, select `PurchasesHybridCommon`. If you plan to use Paywalls, select `PurchasesHybridCommonUI` too. 
+4. Lastly, click "Add Package".
+
+The library should now have been added to the Package Dependencies section.
+
+#### Using CocoaPods
+There are 2 approaches to add `PurchasesHybridCommon` to your iOS project using CocoaPods. The approach depends on how you currently integrate your existing Kotlin Multiplatform code with your iOS project. 
+
+##### 1. Directly as a local iOS framework
 Follow these instructions if your Kotlin Multiplatform module is integrated directly with your iOS project as a local iOS framework. That is, Xcode is calling the `embedAndSignAppleFrameworkForXcode` Gradle task (or the old `packForXcode` task) as part of the build. At the time of writing, if you generated your Kotlin Multiplatform project using the [online wizard](https://kmp.jetbrains.com/), this is how it's set up. 
 
-In this scenario, you need to manually link the transitive dependency on `PurchasesHybridCommon`. One way to do so is using CocoaPods. This is useful if you're already using CocoaPods in your iOS app for dependencies other than your own Kotlin Multipatform module. 
-
-Add the following to your `Podfile`:
+In this scenario, you need to specify the transitive dependency on `PurchasesHybridCommon` in your `Podfile`. Add the following:
 
 import podfileContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_6.ruby";
 
@@ -62,7 +73,7 @@ import podfileContent from "!!raw-loader!@site/code_blocks/getting-started/insta
     { type: 'ruby', content: podfileContent, name: 'Podfile' }
 ]} />
 
-#### 2. Using Cocoapods
+##### 2. Using Cocoapods
 Follow these instructions if your Kotlin Multiplatform module is integrated with your iOS project using CocoaPods. That is, you've applied the `kotlin("native.cocoapods")` Gradle plugin, and set it up such that the `Podfile` specifies a dependency on your Kotlin Multiplatform module. (See also [the Kotlin docs](https://kotlinlang.org/docs/native-cocoapods-xcode.html).)
 
 In this scenario, you can specify the transitive dependency on `PurchasesHybridCommon` using Gradle. To do so, add the following to your `libs.versions.toml`: 
