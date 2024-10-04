@@ -250,7 +250,7 @@ In iOS 18+, StoreKit will send your app a message when a subscriber is eligible 
 
 ![win_back_offer_sk_message.png](/images/win-back-offers/win_back_offer_sk_message.png)
 
-If you'd like to defer displaying the win-back offer sheet until a later time, you can do so in iOS SDK versions 5.X.X and above by setting the `showStoreMessagesAutomatically` flag to `false` in the `Purchases.configure` function. When this flag is set to `false`, the win-back offer sheet will not be displayed automatically, and you will need to manually display the offer sheet using the `showStoreMessages` function:
+If you'd like to defer displaying the win-back offer sheet until a later time, you can do so in iOS SDK versions 5.X.X and above by setting the `showStoreMessagesAutomatically` flag to `false` in the `Purchases.configure` function. When this flag is set to `false`, the win-back offer sheet will not be displayed automatically, and you will need to manually display the offer sheet by calling the `showStoreMessages` function when you'd like it to be displayed:
 
 ```swift
 // Configure Purchases with showStoreMessagesAutomatically set to false
