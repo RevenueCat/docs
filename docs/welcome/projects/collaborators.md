@@ -43,7 +43,7 @@ Available on all-plans, basic permissions give collaborators full read or write 
 
 ### Advanced Permissions
 
-More granular permissions are available for businesses on [Scale](https://www.revenuecat.com/pricing/) and [Enterprise](https://www.revenuecat.com/pricing/) plans.
+More granular permissions are available for businesses on [Enterprise](https://www.revenuecat.com/pricing/) plans.
 
 #### **Growth**
 

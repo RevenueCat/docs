@@ -67,7 +67,7 @@ If the Realized LTV of your Treatment is performing meaningfully worse than your
 - **Trials started**: The number of trials started.
 - **Trials completed**: The number of trials completed. A trial may be completed due to its expiration or its conversion to paid.
 - **Trials converted**: The number of trials that have converted to a paying subscription. Keep in mind that this metric will lag behind trials started due to the length of the trial offered. For example, if you're offering a 7-day trial, for the first 6 days of your experiment you will see trials started but none converted yet.
-- **Trial conversion rate**: The percent of your completed trials that converted to paying subscriptions.
+- **Trial conversion rate**: The percent of your completed trials that converted to paying subscriptions. (_NOTE: A trial is considered complete on the day of its expiration, but it may not be until later that day that a trial conversion occurs and RevenueCat is informed of it by the store(s). This can cause your Trial conversion rate to appear lower than expected early in the day before all potential trial conversions have come through._)
 
 ### Paid customers metric definitions
 
