@@ -263,6 +263,8 @@ Purchases.configure(
 await Purchases.shared.showStoreMessages()
 ```
 
+If you're running other win-back campaigns on non-iOS stores, we recommend deferring displaying the win-back offer message until after you've checked the subscriber's entitlements. If the subscriber has entitlements, then we'd recommend not displaying the message to avoid the subscriber signing up for multiple win-back offers at the same time.
+
 ##### Testing Win-Back Offers Redeemed In Your App from a StoreKit Message
 
 1. [Create a sandbox test account](https://www.revenuecat.com/docs/test-and-launch/sandbox/apple-app-store#create-a-sandbox-test-account)
