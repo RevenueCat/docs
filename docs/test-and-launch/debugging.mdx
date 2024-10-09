@@ -10,6 +10,8 @@ hidden: false
 This section assumes you've followed our [Quickstart](/getting-started/quickstart) section of our Getting Started guide to install and configure our SDK.
 :::
 
+**Setting logLevel**
+
 RevenueCat's SDK will log important information and errors to help you understand what is going on behind the scenes. You can enable more detailed debug logs with the `logLevel` property. You can set this immediately in your app while testing, **before you configure Purchases**.
 
 import db1 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_1.swift";
@@ -61,6 +63,58 @@ import db9 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_9.js";
     },
 ]}/>
 
+**Setting logHandler**
+
+With the RevenueCat SDK's, you can set a custom log handler for redirecting our debug logs to your own logging system. By default, this sends info, warning, and error messages. You can enable this by setting the `logHandler` property. You can set this immediately in your app while testing, **before you configure Purchases**.
+
+import lh1 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_1.swift";
+import lh2 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_2.m";
+import lh3 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_3.kt";
+import lh4 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_4.java";
+import lh5 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_5.js";
+import lh6 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_6.js";
+import lh7 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_7.js";
+import lh8 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_8.js";
+import lh9 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_9.js";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        content: lh1,
+    },
+    {
+        type: 'objc',
+        content: lh2,
+    },
+    {
+        type: 'kotlin',
+        content: lh3,
+    },
+    {
+        type: 'java',
+        content: lh4,
+    },
+    {
+        type: 'rn',
+        content: lh5,
+    },
+    {
+        type: 'flutter',
+        content: lh6,
+    },
+    {
+        type: 'csharp',
+        content: lh7,
+    },
+    {
+        type: 'cordova',
+        content: lh8,
+    },
+    {
+        type: 'capacitor',
+        content: lh9,
+    },
+]}/>
 
 :::info OS_ACTIVITY_MODE
 
