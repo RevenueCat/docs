@@ -57,7 +57,7 @@ With Experiments, you can create A/B tests that serve unique Offerings at each P
 With Placements, your customers will be served an array of Offerings depending on the paywall location they visit, and with Experiments you can A/B test that experience by changing any element of that array.
 
 :::tip Isolating the impact of each paywall change
-If you're looking to isolate the impact of changing just one paywall location, then modify the Offering being served at that Placement in the Treatment group and keep all other Placements the same.
+If you're looking to isolate the impact of changing just one paywall location, then modify the Offering being served at that Placement in the Treatment group and keep all other Placements the same. But be sure to specify your desired Offering for each Placement that your app uses, even if the Offering for a given Placement should be the same on both the Control and Treatment.
 :::
 
 ## Audience customization

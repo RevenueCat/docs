@@ -358,6 +358,7 @@ const integrationsCategory = Category({
         Page({ slug: "appsflyer" }),
         Page({ slug: "branch" }),
         Page({ slug: "facebook-ads" }),
+        Page({ slug: "kochava" }),
         Page({ slug: "singular" }),
         Page({ slug: "splitmetrics-acquire" }),
         Page({ slug: "tenjin" }),
@@ -486,6 +487,7 @@ const serviceCredentialsCategory = Category({
       items: [Page({ slug: "google-play-checklists" })],
     }),
     Page({ slug: "amazon-appstore-credentials" }),
+    Page({ slug: "roku-credentials"}),
   ],
 });
 

@@ -7,7 +7,7 @@ hidden: false
 Targeting allows you to maximize customer lifetime value & paywall effectiveness by creating rules to serve distinct audiences their own Offerings. Instead of having a single Default Offering that all customers receive, you can instead create rules to define an audience and serve them distinct Offerings for each Placement in your app. Plus, you can even schedule new rules to start and end at future dates.
 
 :::tip
-Targeting is available on Pro, Scale, and Enterprise plans. [Click here](https://app.revenuecat.com/settings/billing) to review your plan and consider upgrading.
+Targeting is available on Pro and Enterprise plans. [Click here](https://app.revenuecat.com/settings/billing) to review your plan and consider upgrading.
 :::
 
 import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
