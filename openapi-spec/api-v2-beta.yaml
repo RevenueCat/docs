@@ -3220,7 +3220,7 @@ paths:
           example: sub1a2b3c4d5e
       responses:
         '200':
-          description: Success. The subscription has been successfully canceled
+          description: Success. The subscription has been successfully canceled.
           content:
             application/json:
               schema:
@@ -3282,7 +3282,7 @@ paths:
           example: sub1a2b3c4d5e
       responses:
         '200':
-          description: Success. The subscription has been successfully refunded
+          description: Success. The subscription has been successfully refunded.
           content:
             application/json:
               schema:
@@ -6048,6 +6048,7 @@ components:
           - play_store
           - promotional
           - stripe
+          - rc_billing
           example: amazon
         store_purchase_identifier:
           description: The store purchase identifier
