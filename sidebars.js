@@ -339,6 +339,7 @@ const toolsCategory = Category({
       ],
     }),
     Page({ slug: "paywall-orchestration-with-offerings" }),
+    Page({ slug: "customer-center" }),
   ],
 });
 
