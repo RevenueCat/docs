@@ -162,6 +162,7 @@ const webPurchasesCategory = Category({
       items: [
         Page({ slug: "product-setup" }),
         Page({ slug: "subscription-lifecycle" }),
+        Page({ slug: "multi-currency-support" }),
         Page({ slug: "managing-customer-subscriptions" }),
         Page({ slug: "customer-portal" }),
         Page({ slug: "web-paywall-links" }),
@@ -338,6 +339,7 @@ const toolsCategory = Category({
       ],
     }),
     Page({ slug: "paywall-orchestration-with-offerings" }),
+    Page({ slug: "customer-center" }),
   ],
 });
 
@@ -357,6 +359,7 @@ const integrationsCategory = Category({
         Page({ slug: "appsflyer" }),
         Page({ slug: "branch" }),
         Page({ slug: "facebook-ads" }),
+        Page({ slug: "kochava" }),
         Page({ slug: "singular" }),
         Page({ slug: "splitmetrics-acquire" }),
         Page({ slug: "tenjin" }),
@@ -485,6 +488,7 @@ const serviceCredentialsCategory = Category({
       items: [Page({ slug: "google-play-checklists" })],
     }),
     Page({ slug: "amazon-appstore-credentials" }),
+    Page({ slug: "roku-credentials"}),
   ],
 });
 

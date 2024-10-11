@@ -15,14 +15,16 @@ import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 ![Targeting by Placement Illustration](/images/targeting-by-placement-illustration.png)
 
 ## Supported in the following SDK versions:
-| RevenueCat SDK           | Version required for Paywalls | 
-| :----------------------- | :--------------------------------------------- |
-| purchases-ios             | 4.38.0 and up                 |
-| purchases-android         | 7.7.0 and up                  |
-| react-native-purchases | 7.23.0 and up                 | 
-| purchases-flutter         | 6.22.0 and up                 |
-| purchases-capacitor         | 7.5.0 and up                 |
-| purchases-unity         | 6.9.0 and up                 |
+
+| RevenueCat SDK         | Version required for Placements |
+| :--------------------- | :------------------------------ |
+| purchases-ios          | 4.38.0 and up                   |
+| purchases-android      | 7.7.0 and up                    |
+| react-native-purchases | 7.23.0 and up                   |
+| purchases-flutter      | 6.22.0 and up                   |
+| purchases-capacitor    | 7.5.0 and up                    |
+| purchases-unity        | 6.9.0 and up                    |
+| purchases-js           | 0.8.0 and up                    |
 
 ## Defining Placements
 
@@ -111,6 +113,7 @@ import reactNativeContent4 from "!!raw-loader!@site/code_blocks/tools/targeting_
 import flutterContent5 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_5.dart";
 import capacitorContent6 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_6.ts";
 import unityContent7 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_7.cs";
+import webContent8 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_8.ts";
 
 <RCCodeBlock
   tabs={[
@@ -118,9 +121,14 @@ import unityContent7 from "!!raw-loader!@site/code_blocks/tools/targeting_by_pla
     { type: "kotlin", content: kotlinContent2, name: "Kotlin" },
     { type: "java", content: javaContent3, name: "Java" },
     { type: "flutter", content: flutterContent5, name: "Flutter" },
-    { type: "react-native", content: reactNativeContent4, name: "React Native" },
+    {
+      type: "react-native",
+      content: reactNativeContent4,
+      name: "React Native",
+    },
     { type: "capacitor", content: capacitorContent6, name: "Capacitor" },
     { type: "unity", content: unityContent7, name: "Unity" },
+    { type: "web", content: webContent8, name: "Web" },
   ]}
 />
 
@@ -130,10 +138,6 @@ import unityContent7 from "!!raw-loader!@site/code_blocks/tools/targeting_by_pla
 
 ## FAQs
 
-**Can I run an Experiment to test different Offerings to serve at a given Placement?**
-
-Yes you can! When creating an Experiment, you'll have the same options to add Offerings per Placement like you can when creating Targeting Rules to A/B test the impact of changes made at any Placement in your app.
-
 **Can I still use the existing method to fetch Offerings in some places in my app?**
 
 Absolutely. The existing method will continue to work as it does today, and will return the Offering "for all other cases" if you're using Placements in a Targeting Rule.
@@ -141,3 +145,10 @@ Absolutely. The existing method will continue to work as it does today, and will
 **Can I delete a Placement identifier once I've created it?**
 
 The list of available Placement identifiers to select from is sourced from your existing Targeting Rules, so if you delete all Targeting Rules referencing that Placement, it will no longer be listed in the Dashboard. However, keep in mind that any prior app versions fetching Offerings for that Placement will continue to do so, and the Offering set "for all other cases" will be served in its place.
+
+| Question                                                                                                                        | Answer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Can I run an Experiment to test different Offerings to serve at a given Placement?                                              | Yes you can! When creating an Experiment, you'll have the same options to add Offerings per Placement like you can when creating Targeting Rules to A/B test the impact of changes made at any Placement in your app.                                                                                                                                                                                                                                                                                                                                                                  |
+| Can I still use the existing method to fetch Offerings in some places in my app?                                                | Absolutely. The existing method will continue to work as it does today, and will return the Offering "for all other cases" if you're using Placements in a Targeting Rule.                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Can I delete a Placement identifier once I've created it?                                                                       | The list of available Placement identifiers to select from is sourced from your existing Targeting Rules, so if you delete all Targeting Rules referencing that Placement, it will no longer be listed in the Dashboard. However, keep in mind that any prior app versions fetching Offerings for that Placement will continue to do so, and the Offering set "for all other cases" will be served in its place.                                                                                                                                                                       |
+| What is the relationship between the Placement I set "for all other cases" and the Placement I set "when not using Placements"? | You'll only be asked to specify a Placement "when not using Placements" if you choose to serve "No Offering" "for all other cases". This is because the ability to return a nil Offering is only supported when requesting Offerings by Placement, and you may have old app versions or areas of your app that aren't using Placements where you still need to return some Offering for your paywall to behave correctly. If you choose to serve a specific Offering "for all other cases", then you'll never be asked to specify something else to serve "when not using Placements". |

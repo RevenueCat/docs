@@ -1,0 +1,28 @@
+{
+  "promotional_offers": {
+    "cancel_promo_offer_key": {
+      "eligibility": [
+        {
+          "amount_in_seconds": 1209600,
+          "comparison": "GREATER",
+          "condition_type": "FIRST_SEEN"
+        }
+      ],
+      "ios_offer_id": "rc-cancel-offer",
+      "subtitle_key": "promo_offer_subtitle",
+      "title_key": "promo_offer_title"
+    },
+    "refund_promo_offer_key": {
+      "eligibility": [
+        {
+          "amount_in_seconds": 1209600,
+          "comparison": "GREATER",
+          "condition_type": "FIRST_SEEN"
+        }
+      ],
+      "ios_offer_id": "rc-refund-offer",
+      "subtitle_key": "promo_offer_subtitle",
+      "title_key": "promo_offer_title"
+    }
+  }
+}
