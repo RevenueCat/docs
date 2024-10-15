@@ -23,7 +23,7 @@ When segmenting by other dimensions, such as Country or Store, cohorts are segme
 
 ### Change log
 
-- October 2024: The "Total" row was updated to exclude any incomplete periods when providing the total Subscription Retention for the selected date range to ensure more reliable summaries of that period's performance. In addition, the chart's default date range was updated to **Last 12 months**.
+- October 2024: The "Total" row was updated to exclude any incomplete periods in the relative calculation when providing the total Subscription Retention for the selected date range. This is to ensure more reliable summaries of that period's performance. The absolute calculation will continue to include them. In addition, the chart's default date range was updated to **Last 12 months**.
 - July 2024: The chart was updated to exclude grace period transactions from the count of retained periods for Play Store and Stripe subscriptions, effectively lowering subscription retention for those subscriptions that expired due to the billing issues not being resolved. Read more about the change [here](https://www.revenuecat.com/blog/company/subscription-retention-chart-grace-period-update/).
 
 ## How to use Subscription Retention in your business
