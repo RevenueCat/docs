@@ -19,7 +19,7 @@ sub fetchOfferings()
     if error = invalid
       ' Use offerings to build your paywall UI.
       ' Then call purchasePackage with the one selected by the user
-      purchasePackage(offerings.current.annual)
+      purchasePackage(offerings.current().annual)
     end if
   end sub)
 end sub
