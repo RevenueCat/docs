@@ -15,37 +15,21 @@ With our SplitMetrics Acquire | Formerly SearchAdsHQ integration you can:
 |:----------------:|:-------------------------:|:--------------------:|:------------------------------:|:---------------------:|:---------------------------------------------------------------------------:|
 |         ✅        |             ❌             |           ✅          |                ❌               |           ❌           | `non_subscription_purchase_event` `uncancellation_event` `expiration_event` |
 
-## 1. Send device data to RevenueCat
+## 1. Send attribution data to RevenueCat
 
 The SplitMetrics Acquire integration requires that Apple Search Ads attribution data is sent from the device to RevenueCat. 
 
-The simplest way to collect this information is by setting the `automaticAppleSearchAdsAttributionCollection` property to `true` **before** configuring the _Purchases SDK_.
+The simplest way to collect this information is by calling `enableAdServicesAttributionTokenCollection` **after** configuring the _Purchases SDK_.
 
-import swiftContent from "!!raw-loader!@site/code_blocks/integrations/attribution/splitmetrics-acquire_1.swift";
+import swiftContent from "!!raw-loader!@site/code_blocks/integrations/attribution/apple-search-ads_1.swift"; 
+import objectiveCContent from "!!raw-loader!@site/code_blocks/integrations/attribution/apple-search-ads_2.m"; 
+import flutterContent from "!!raw-loader!@site/code_blocks/integrations/attribution/apple-search-ads_3.dart"; 
+import reactNativeContent from "!!raw-loader!@site/code_blocks/integrations/attribution/apple-search-ads_4.js"; 
+import cordovaContent from "!!raw-loader!@site/code_blocks/integrations/attribution/apple-search-ads_5.js";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent }
-]} />
+<RCCodeBlock tabs={[ { type: 'swift', content: swiftContent }, { type: 'objc', content: objectiveCContent }, { type: 'flutter', content: flutterContent }, { type: 'rn', content: reactNativeContent }, { type: 'cordova', content: cordovaContent } ]} />
 
 Our guide on [Apple Search Ads attribution](/integrations/attribution/apple-search-ads) outlines this step in more detail.
-
-The integration also accepts some optional device-specific data below:
-
-| Key     | Description                                                                                                                              | Required     |
-| :------ | :--------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
-| `$idfa` | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID | ❌ (optional) |
-
-This data should be sent to RevenueCat through reserved [Customer Attributes](/customers/customer-attributes) keys. 
-
-import swiftContent2 from "!!raw-loader!@site/code_blocks/integrations/attribution/splitmetrics-acquire_2.swift";
-
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent2 }
-]} />
-
-:::danger Device identifiers with iOS App Tracking Transparency (iOS 14.5+)
-If you are requesting the App Tracking permission through ATT to access the IDFA, you can call `.collectDeviceIdentifiers()` _again_ if the customer accepts the permission to update the `$idfa` attribute in RevenueCat.
-:::
 
 ## 2. Send RevenueCat events into SplitMetrics Acquire
 
