@@ -1,4 +1,4 @@
-Purchases().purchase({ package: offerings.current.monthly }, sub(result, error)
+Purchases().purchase({ package: offerings.current().monthly }, sub(result, error)
   ' error will be present if the transaction could not be finished
   if error <> invalid
     if result <> invalid and result.userCancelled = true

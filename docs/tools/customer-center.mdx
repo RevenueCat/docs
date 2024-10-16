@@ -7,6 +7,10 @@ hidden: false
 RevenueCat's Customer Center is currently in beta, and only available on iOS 15.0+ at the moment. Feedback is welcome!
 :::
 
+:::tip
+Customer Center is available on Pro and Enterprise plans. If you're on a legacy plan click [here](https://app.revenuecat.com/settings/billing) to review your plan and consider upgrading.
+:::
+
 ## Overview
 
 This central hub is a self-service section that can be added to your app to help your users manage their subscriptions on their own, reducing the support burden on developers like you so you can spend more time building apps and less time dealing with support issues. We are hoping adding this new section to your app can help you reduce customer support interactions, obtain feedback from your users and ultimately reduce churn by retaining them as subscribers, helping you make more money.
@@ -86,11 +90,11 @@ The default configuration is configured for the following behavior:
 
 - Cancellation, Refund Request, Plan changes and Missing Purchases
 - The cancellation path has a feedback survey with three options: "Too expensive", "Don't use the app", "Bought by mistake".
-  - There's a promotional offer with id `rc-cancel-offer` configured for the "Too expensive" option in the feedback survey for the cancellation path.
-  - There's a promotional offer with id `rc-cancel-offer` configured for the "Don't use the app" option in the feedback survey for the cancellation path.
-- There's a promotional offer with id `rc-refund-offer` configured for the Refund Request path.
+  - There's a promotional offer with id `rc_cancel_offer` configured for the "Too expensive" option in the feedback survey for the cancellation path.
+  - There's a promotional offer with id `rc_cancel_offer` configured for the "Don't use the app" option in the feedback survey for the cancellation path.
+- There's a promotional offer with id `rc_refund_offer` configured for the Refund Request path.
 
-If you want to take advantage of the promotional offers, you will need to add them to the your products in App Store Connect using the `rc-cancel-offer` and `rc-refund-offer` ids. You can find more information about promotional offers [here](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#promotional-offers).
+If you want to take advantage of the promotional offers, you will need to add them to the your products in App Store Connect using the `rc_cancel_offer` and `rc_refund_offer` ids. You can find more information about promotional offers [here](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#promotional-offers).
 
 It is possible to customize the default configuration by editing the JSON, please refer to the [Advanced configuration](#advanced-configuration) section for more information on how to customize the paths, feedback surveys and promotional offers that your users see.
 
