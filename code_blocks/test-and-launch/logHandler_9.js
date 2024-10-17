@@ -1,2 +1,2 @@
-//After setting logHandler var to whatever you would like, set the logHandler accordingly. 
+// After configuring a custom log handler, set the `logHandler` property on Purchases
 Purchases.setLogHandler(logHandler);
