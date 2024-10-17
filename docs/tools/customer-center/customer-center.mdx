@@ -1,0 +1,71 @@
+---
+title: Customer Center
+slug: customer-center
+hidden: false
+---
+
+![Customer Center](/images/customer-center.jpeg)
+
+:::warning Beta Feature
+RevenueCat's Customer Center is currently in beta, and only available on iOS 15.0+ at the moment. Feedback is welcome!
+:::
+
+:::tip
+Customer Center is available on Pro and Enterprise plans. If you're on a legacy plan click [here](https://app.revenuecat.com/settings/billing) to review your plan and consider upgrading.
+:::
+
+## Overview
+
+Customer Center is a self-service UI that can be added to your app to help your customers manage their subscriptions on their own. With it, you can prevent churn with pre-emptive promotional offers, capture actionable customer data with exit feedback prompts, and lower support volumes for common inquiries — all without any help from your support team.
+
+## Features currently available
+
+The Customer Center can be configured through the RevenueCat Dashboard, including advanced configuration of the JSON directly.
+
+It can be used to allow customers to:
+
+- Cancel active subscriptions
+- Request refunds
+- Change their subscription plans
+- Restore previous purchases and contact your support email if they have trouble restoring
+
+It can be used to allow developers to:
+
+- Require customers to update their app if they are on an older version before being able to contact your support email
+- Ask customers to provide the reason for their cancellation or refund request
+- Automatically provide promo offers to retain customers
+
+## Current limitations
+
+- Only available on iOS 15+
+- Limited visual configuration options in the dashboard, though advanced configuration is still supported via JSON. [Learn more.](https://www.revenuecat.com/docs/tools/customer-center-configuration#advanced-configuration)
+- We are exposing a SwiftUI view and a modifier, but have not yet built a UIKit wrapper to help integrating on UIKit apps. This is on our roadmap.
+
+## Concepts
+
+### Paths
+
+A path represents a unique subscription problem your customer might need to solve. Today we support:
+
+- Cancellation
+- Refund Request
+- Plan Changes
+- Missing Purchases
+
+When a customer initially opens the Customer Center, these are the main options they'll see to select from.
+
+![Customer Center Paths](/images/customer-center-paths.jpeg)
+
+### Feedback surveys
+
+Any path can have a custom feedback survey attached to it with questions & answers that you define. You might use a survey simply to understand why a customer selected a given path (e.g. why they're looking to cancel), or you may use a survey to motivate them to change their mind with a compelling promotional offer. [Learn more about configuring feedback surveys.](https://www.revenuecat.com/docs/tools/customer-center-configuration)
+
+![Customer Center Cancellation](/images/customer-center-cancel-subscription.jpeg)
+
+### Promotional offers
+
+Promotional offers are attachable to particular feedback survey options and to paths. We think you might be able to reduce churn if you capture customers who are looking for a way to make changes to their subscription if you offer them a discount at that exact time.
+
+## Next steps
+
+To get started integrating the Customer Center in your app, [click here](https://www.revenuecat.com/docs/tools/customer-center-integration). Or, to explore the configuration options for the Customer Center, [click here](https://www.revenuecat.com/docs/tools/customer-center-configuration)
