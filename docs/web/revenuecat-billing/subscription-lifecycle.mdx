@@ -60,6 +60,10 @@ The subscription then enters the billing retry period.
 
 After a renewal payment has failed, RevenueCat will retry charging the customer's payment method on file for up to 30 days.
 
+#### Grace period
+
+You can set up a grace period on a per-product basis. A grace period defines a period of time after a renewal payment has failed, during which the customer retains access to their entitlements. If the payment is recovered within the grace period, the subscription will continue as if the payment was never missed. If the payment is not recovered within the grace period, the subscription will expire.
+
 #### Billing recovery
 
 If one of the retry attempts is successful, RevenueCat will renew the subscription and generate a `RENEWAL` event. Unless the subscription was still in a grace period, the new billing cycle will start on the date that the payment was succesfully recovered.

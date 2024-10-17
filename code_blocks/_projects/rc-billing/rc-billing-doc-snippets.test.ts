@@ -1,5 +1,5 @@
 import { expect, test, vi } from 'vitest';
-import { getCustomerInfo, checkForSpecificEntitlement, checkForAnyEntitlement, getCurrentOffering, getCustomOffering, displayingPackages, gettingProduct, purchasingPackage, configuringSDK} from './rc-billing-doc-snippets';
+import { getCustomerInfo, checkForSpecificEntitlement, checkForAnyEntitlement, getCurrentOffering, getCustomOffering, displayingPackages, gettingProduct, purchasingPackage, configuringSDK, getOfferingForEUR} from './rc-billing-doc-snippets';
 import type { Package, Product } from "@revenuecat/purchases-js";
 import { Purchases } from "@revenuecat/purchases-js";
 
@@ -74,6 +74,21 @@ test('Snippet "Get current offering" works', async () => {
   Purchases.getSharedInstance().close();
 });
 
+test('Snippet "Get current offering for EUR" works', async () => {
+  Purchases.configure(REVENUECAT_BILLING_PUBLIC_API_KEY, "customer_without_entitlement");
+  let pkgs : Package[]|undefined;
+  const callback = vi.fn().mockImplementation((availablePackages : Package[]) => {
+    pkgs = availablePackages;
+  });
+  await getOfferingForEUR(callback);
+  expect(callback).toHaveBeenCalled();
+  expect(pkgs).toBeDefined();
+  expect((pkgs ?? []).length).toBe(1);
+  expect(pkgs !== undefined && pkgs[0]?.identifier).toBe("$rc_monthly");
+  expect(pkgs !== undefined && pkgs[0]?.rcBillingProduct.currentPrice.currency).toBe("EUR");
+  Purchases.getSharedInstance().close();
+});
+
 test('Snippet "Get custom offering" works', async () => {
   Purchases.configure(REVENUECAT_BILLING_PUBLIC_API_KEY, "customer_without_entitlement");
   let pkgs : Package[]|null = null;
@@ -120,7 +135,7 @@ test('Snippet "Getting product" works', async () => {
   await gettingProduct(callback);
   expect(callback).toHaveBeenCalled();
   expect(product).toBeDefined()
-  expect(product?.currentPrice.amount).toBe(1000);
+  expect(product?.currentPrice.amountMicros).toBe(10000000);
   expect(product?.currentPrice.currency).toBe("USD");
   Purchases.getSharedInstance().close();
 });

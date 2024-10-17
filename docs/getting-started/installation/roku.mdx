@@ -10,7 +10,7 @@ RevenueCat's Roku support is currently in beta. For interest, please fill out ou
 :::
 
 ## General setup
-### Prerequisites 
+### Prerequisites
 #### Setting up your Roku developer account
 Follow the [First Steps](https://developer.roku.com/en-gb/docs/developer-program/getting-started/first-steps.md) guide to create a Roku developer account, log in to your Roku device and enable developer mode on your Roku device.
 
@@ -50,7 +50,7 @@ Once you have your developer account created, head to the [dashboard](https://de
 ![](/images/roku/revenuecat-api-key.png)
 
 ### Multi-channel support
-The Roku channel ID is required for supporting multiple channels on a single Roku account. If your Roku account has more than one Roku Channel, you will need to enter your Channel ID for each Roku app on the RevenueCat dashboard. 
+The Roku channel ID is required for supporting multiple channels on a single Roku account. If your Roku account has more than one Roku Channel, you will need to enter your Channel ID for each Roku app on the RevenueCat dashboard.
 
 1. Navigate to your [Roku Developer Dashboard](https://developer.roku.com/dev/dashboard).
 2. On the left-hand side of the Developer Dashboard, you'll see the main navigation panel. Under 'Channel', navigate to where your channel is located (e.g: public or beta channels) and select the channel.
@@ -114,9 +114,9 @@ import rokuCallbacksErrorHandling from "!!raw-loader!@site/code_blocks/getting-s
     { type: 'brightscript', content: rokuCallbacksErrorHandling, name: 'Brightscript' }
 ]} />
 
-## Models 
+## Models
 
-### Subscriber 
+### Subscriber
 
 import rokuSubscriber from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-subscriber.brs";
 import rokuLoginLogout from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-login-logout.brs";
@@ -130,13 +130,15 @@ import rokuSubscriberAttributes from "!!raw-loader!@site/code_blocks/getting-sta
     { type: 'brightscript', content: rokuSubscriberAttributes, name: 'Subscriber Attributes' }
 ]} />
 
-### Offerings 
+### Offerings
 import rokuGetOfferings from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-get-offerings.brs";
 import rokuOffersObject from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-offerings-object.txt";
+import rokuPlacements from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-placements.brs";
 
 <RCCodeBlock tabs={[
     { type: 'brightscript', content: rokuOffersObject, name: 'Offerings object' },
-    { type: 'brightscript', content: rokuGetOfferings, name: 'Get Offerings' }
+    { type: 'brightscript', content: rokuGetOfferings, name: 'Get Offerings' },
+    { type: 'brightscript', content: rokuPlacements, name: 'Get Offerings by Placement' }
 ]} />
 
 ### Purchase
@@ -144,8 +146,8 @@ import rokuOffersObject from "!!raw-loader!@site/code_blocks/getting-started/ins
 As a parameter to the `purchase()` method, you can pass an associative array containing one of the following keys:
 
 - `code`: A string containing the product id.
-- `product`: From the `getOfferings` result: e.g. `offerings.current.annual.storeProduct`
-- `package`: From the `getOfferings` result: e.g. `offerings.current.annual`
+- `product`: From the `getOfferings` result: e.g. `offerings.current().annual.storeProduct`
+- `package`: From the `getOfferings` result: e.g. `offerings.current().annual`
 
 Additionally,you can pass the following optional parameters:
 
@@ -215,14 +217,14 @@ To ensure a clear separation between your "testing" and "production" purchases, 
 
 ### Testing with a beta channel
 
-Roku's beta channels are a special channel type to assist with testing your channel in a production-like environment before publishing. 
+Roku's beta channels are a special channel type to assist with testing your channel in a production-like environment before publishing.
 
 #### Beta channel rules
 - **120 days**: A beta channel can exist for only 120 days after you create it. After 120 days, the channel will be (1) deleted and removed from your Developer Dashboard and (2) disabled for all users who have it installed
 - **10 channels**: There is a maximum of 10 beta channels at a time
 - **20 test users**: There can only be 20 beta test users per beta channel at any given time
 
-## Beta limitations 
+## Beta limitations
 This feature is currently in beta and has a number of known limitations.
 
 RevenueCat features not yet supported:
