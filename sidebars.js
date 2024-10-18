@@ -164,6 +164,7 @@ const webPurchasesCategory = Category({
         Page({ slug: "subscription-lifecycle" }),
         Page({ slug: "multi-currency-support" }),
         Page({ slug: "managing-customer-subscriptions" }),
+        Page({ slug: "refunding-payments" }),
         Page({ slug: "customer-portal" }),
         Page({ slug: "web-paywall-links" }),
       ],
