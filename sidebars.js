@@ -339,6 +339,15 @@ const toolsCategory = Category({
         Page({ slug: "custom-attributes" }),
       ],
     }),
+    SubCategory({
+      label: "Customer Center",
+      slug: "customer-center",
+      itemsPathPrefix: "customer-center/",
+      items: [
+        Page({ slug: "customer-center-integration" }),
+        Page({ slug: "customer-center-configuration" }),
+      ],
+    }),
     Page({ slug: "paywall-orchestration-with-offerings" }),
   ],
 });
