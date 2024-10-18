@@ -63,8 +63,8 @@ You can customize the download page:
 * Subheader
 * Choose whether to show the app download buttons
 * Configure the links for
-	* App Store
-	* Play Store
+* App Store
+* Play Store
 
 ![](/images/rc-billing/web-paywall-link-success-config.png)
 
@@ -80,6 +80,24 @@ Once you are ready, click Save and your changes will be applied immediately.
 As soon as you click save, any subscriber visiting your Web Paywall Link will see the changes immediately.
 
 You can always run tests by creating a Web Paywall Link for another offering.
+:::
+
+## Choose what happens for returning customers
+You can choose what happens when a customer already has an entitlement or an active subscription and they return to this page.
+
+![](/images/rc-billing/web-paywall-link-choose-returning-customers.png)
+
+### Show the success page
+Automatically skips the Package Selection page. It will use the configuration you set up for the success page (show a download page or redirect to a custom URL).
+
+### Allow them to make another purchase
+Allows the returning customer to purchase another product.
+
+:::warning Might fail when purchases
+This configuration is useful for non-consumable products.
+The re-purchase process will fail if the customer tries to purchase the exact same product twice (subscription or non-consumable).
+
+We suggest to create a dedicated offering/web paywall link for non-consumables to make sure all products can be bought as many times as the customer wants.
 :::
 
 ## Sending your Web Paywall Links
