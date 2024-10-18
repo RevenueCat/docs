@@ -99,7 +99,7 @@ We track three distinct Offer Types:
 | Offer Code        | A promo code that the customer enters to receive a discount or free trial (depending on the offer & store). | <ul><li>App Store Offer Codes</li><li>Play Store Promo Codes (Billing Client 4 and earlier)</li></ul>| black_friday_discount (rc.annual.39_99) |
 | Promotional Offer | An offer that the customer received through your own custom logic. | <ul><li>App Store Promotional Offers</li><li>Play Store Promo Codes (Billing Client 4 and earlier)</li></ul> | power_user_promo_offer (rc.annual.39_99) |
 | Win-Back Offer    | An offer that a customer with an expired subscription received to win them back. | <ul><li>App Store Win-Back Offers</li></ul> | example here |
-| Unspecific Offer | A Play Store offer for which we do not know the eligility criteria. |<ul><li>Play Store offers where eligibility criteria is unknown (Billing Client 5 and later)</li></ul> | example here | 
+| Unspecified Offer | A Play Store offer for which we do not know the eligility criteria. |<ul><li>Play Store offers where eligibility criteria is unknown (Billing Client 5 and later)</li></ul> | example here | 
 | No Offer          | When none of the above Offer Types were used on the transaction | None | No Offer |
 
 :::warning
