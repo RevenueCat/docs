@@ -92,12 +92,15 @@ Some of your transactions may result from customer's accepting offers you made t
 
 We track three distinct Offer Types:
 
-| Offer Type        | Description                                                                                                                                                                                                                                                  | Example Offer (where rc.annual.39_99 is the product) |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
-| Intro Offer       | A paid introductory offer than the customer accepts as a discount on their initial subscription period. This does NOT include free trial periods. Includes: - App Store Introductory Offers - Play Store paid offers applied on initial subscription periods | Intro Offer (rc.annual.39_99)                        |
-| Offer Code        | A promo code that the customer enters to receive a discount or free trial (depending on the offer & store). Includes: - App Store Promo Codes - Play Store Promo Codes                                                                                       | black_friday_discount (rc.annual.39_99)              |
-| Promotional Offer | An offer that the customer received through your own custom logic. Includes: - App Store Promotional Offers                                                                                                                                                  | power_user_promo_offer (rc.annual.39_99)             |
-| No Offer          | When none of the above Offer Types were used on the transaction                                                                                                                                                                                              | No Offer                                             |
+| Offer Type | Description | Includes | Example Offer (where rc.annual.39_99 is the product) |
+| ---------- | ----------- | -------- | ---------------------------------------------------- |
+| Free Trial        | A free introductory offer the customer accepts as a free trial. |<ul><li>App Store **Free Trial** Introductory Offers</li><li>Play Store free trial offer applied on initial subscription periods</li></ul> | example here | 
+| Intro Offer       | A paid introductory offer that the customer accepts as a discount on their initial subscription period. This **does NOT** include free trial periods. | <ul><li>App Store **Pay Up Front** and **Pay As You Go** Introductory Offers</li><li>Play Store paid offers applied on initial subscription periods</li></ul> | Intro Offer (rc.annual.39_99) |
+| Offer Code        | A promo code that the customer enters to receive a discount or free trial (depending on the offer & store). | <ul><li>App Store Offer Codes</li><li>Play Store Promo Codes (Billing Client 4 and earlier)</li></ul>| black_friday_discount (rc.annual.39_99) |
+| Promotional Offer | An offer that the customer received through your own custom logic. | <ul><li>App Store Promotional Offers</li><li>Play Store Promo Codes (Billing Client 4 and earlier)</li></ul> | power_user_promo_offer (rc.annual.39_99) |
+| Win-Back Offer    | An offer that a customer with an expired subscription received to win them back. | <ul><li>App Store Win-Back Offers</li></ul> | example here |
+| Unspecific Offer | A Play Store offer for which we do not know the eligility criteria. |<ul><li>Play Store offers where eligibility criteria is unknown (Billing Client 5 and later)</li></ul> | example here | 
+| No Offer          | When none of the above Offer Types were used on the transaction | None | No Offer |
 
 :::warning
 At this time, Google Play Offers on Billing Client 5 and above are only supported when they are applied as offers on initial subscription periods.
