@@ -3192,7 +3192,7 @@ paths:
         \ requires the following permission(s): <code>customer_information:subscriptions:read</code>."
   /projects/{project_id}/subscriptions/{subscription_id}/actions/cancel:
     post:
-      summary: Cancels an active RevenueCat Billing subscription
+      summary: Cancel an active RevenueCat Billing subscription
       operationId: cancel-subscription
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
@@ -3250,11 +3250,12 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>.'
+      description: "Cancel an active RevenueCat Billing subscription. The customer\
+        \ will lose access to the associated entitlements at the end of the current\
+        \ period.\n This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>."
   /projects/{project_id}/subscriptions/{subscription_id}/actions/refund:
     post:
-      summary: Refunds the last payment of an active RevenueCat Billing subscription
-        and revokes access to associated granted entitlements.
+      summary: Refund an active RevenueCat Billing subscription
       operationId: refund-subscription
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
@@ -3312,7 +3313,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>.'
+      description: "Cancel a RevenueCat Billing subscription by refunding the most\
+        \ recent payment. The customer will immediately lose access to the associated\
+        \ entitlements.\n This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>."
   /projects/{project_id}/customers/{customer_id}/subscriptions:
     get:
       summary: Get a list of subscriptions associated with a customer
@@ -3513,6 +3516,69 @@ paths:
           $ref: '#/components/responses/InternalError'
       description: "Lists all Entitlements granted by a Purchase.\n This endpoint\
         \ requires the following permission(s): <code>customer_information:purchases:read</code>."
+  /projects/{project_id}/purchases/{purchase_id}/actions/refund:
+    post:
+      summary: Refund a RevenueCat Billing purchase
+      operationId: refund-purchase
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:purchases:read_write
+      x-release-status: public
+      tags:
+      - Purchase
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: purchase_id
+        description: ID of the purchase
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: purc1a2b3c4d5e
+      responses:
+        '200':
+          description: Success. The purchase has been successfully refunded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Purchase'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: "Refund a RevenueCat Billing purchase and revoke access to associated\
+        \ granted entitlements.\n This endpoint requires the following permission(s):\
+        \ <code>customer_information:purchases:read_write</code>."
   /projects/{project_id}/customers/{customer_id}/purchases:
     get:
       summary: Get a list of purchases associated with a customer
