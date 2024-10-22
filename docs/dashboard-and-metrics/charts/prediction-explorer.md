@@ -10,7 +10,7 @@ The Prediction Explorer allows you to measure the predicted lifetime value (LTV)
 
 import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 
-<YouTubeEmbed videoId="wQMJlWImIX0" title="Prediction Explorer Beta" />
+<YouTubeEmbed videoId="RRMkLgEN_sg" title="Prediction Explorer Beta" />
 
 ### Available settings
 
