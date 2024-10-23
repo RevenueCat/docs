@@ -43,6 +43,7 @@ For detailed information on a particular Chart, refer to the following guides:
 - [Active Subscriptions Movement ](/dashboard-and-metrics/charts/active-subscriptions-movement-chart)
 - [Churn ](/dashboard-and-metrics/charts/churn-chart)
 - [Refund Rate ](/dashboard-and-metrics/charts/refund-rate-chart)
+- [Subscription Status ](/dashboard-and-metrics/charts/subscription-status-chart)
 - [Annual Recurring Revenue (ARR) ](/dashboard-and-metrics/charts/annual-recurring-revenue-arr-chart)
 - [Realized LTV per Customer ](/dashboard-and-metrics/charts/realized-ltv-per-customer-chart)
 - [Realized LTV per Paying Customer ](/dashboard-and-metrics/charts/realized-ltv-per-paying-customer-chart)
@@ -65,7 +66,7 @@ Filters allow you to limit the charts to only include data that matches one or m
 Segments allow you to break down the chart totals into underlying data segments. This is useful for comparing the performance of specific properties, such as monthly vs. annual subscriptions.
 
 | Attribute                 | Description                                                                                                                                                            |
-| :------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| :------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Project                   | The different projects you have access to in RevenueCat. These projects contain your apps across various platforms.                                                    |
 | Apple Search Ads Ad Group | If you're collecting [Apple Search Ads Attribution](/integrations/attribution/apple-search-ads), the specific ad group that drove the install (iOS only).              |
 | Apple Search Ads Campaign | If you're collecting [Apple Search Ads Attribution](/integrations/attribution/apple-search-ads), the specific campaign that drove the install (iOS only).              |
@@ -193,6 +194,10 @@ Give it a name and select _Save_, your chart will be saved on the left-hand side
 ![](/images/e1ba744-Screenshot_2023-03-27_at_2.36.33_PM_7f239f46e30c51d62b4a1040a1fbca12.png "Screenshot 2023-03-27 at 2.36.33 PM.png")
 
 ![](/images/878cc0f-demo.revenuecat.com__1_5704f56b46d8a9c7e420ec327a608ca2.png "demo.revenuecat.com_ (1).png")
+
+## Displaying revenue data in other currencies
+
+By default the RevenueCat Dashboard is set to use USD as the display currency, but this can be modified through Account Settings to view your data in other supported currencies. To learn more, [click here](/dashboard-and-metrics/display-currency).
 
 ## Other Options
 

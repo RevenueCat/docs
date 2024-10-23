@@ -43,7 +43,7 @@ Available on all-plans, basic permissions give collaborators full read or write 
 
 ### Advanced Permissions
 
-More granular permissions are available for businesses on [Scale](https://www.revenuecat.com/pricing/) and [Enterprise](https://www.revenuecat.com/pricing/) plans.
+More granular permissions are available for businesses on [Enterprise](https://www.revenuecat.com/pricing/) plans.
 
 #### **Growth**
 
@@ -73,12 +73,24 @@ Due to the permission levels of [secret keys](/welcome/authentication) they curr
 
 ---
 
-### SSO Configuration
+### Single Sign-On Collaborators
 
-When mapping SSO groups to RevenueCat roles, only one role per SSO group is permitted. If multiple RevenueCat roles are assigned to the same SSO group, RevenueCat will provide the group with the _highest_ level of access defined by the following heirarchy.
+To add collaborators when using SSO, configure how the SSO Groups map to the RevenueCat roles defined above from **Project Settings > Collaborators**.
+
+![Collaborators](/images/0b9s821-revenuecat-collaborators-sso.png)
+
+Add the SSO Group name, select the role you want to grant.
+
+![Collaborators](/images/0csdf21-revenuecat-collaborators-configuration.png)
+
+Once you save these mappings the collaborators will automatically be synchronized. This may take up to a few minutes.
+
+If multiple RevenueCat roles are assigned to the same SSO group, RevenueCat will provide the group with the _highest_ level of access defined by the following heirarchy.
 
 1. Admin
 1. Developer
 1. Growth
 1. Support
 1. View Only
+
+Once you the collaborators for all your projects are correctly configured, make sure to [activate SSO](/welcome/projects/security#activating-single-sign-on).

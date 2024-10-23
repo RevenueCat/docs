@@ -9,11 +9,11 @@ RevenueCat provides a source of truth for a customer's [subscription status](/cu
 
 ## What is a customer in RevenueCat?
 
-In RevenueCat, the term "customer" refers to the person using an app that utilizes RevenueCat to handle or track the user's purchases. Every customer has a unique CustomerInfo object that can be referenced via their App User ID. As described below, the RevenueCat SDK will automatically generate anonymous App User IDs for customers unless a custom App User ID is provided by the developer. Some apps will use a combination of both custom and anonymous App User IDs, or only one App User ID type.
+In RevenueCat, the term "customer" refers to the person using an app that utilizes RevenueCat to handle or track the user's purchases. Every customer has a unique `CustomerInfo` object that can be referenced via their App User ID. As described below, the RevenueCat SDK will automatically generate anonymous App User IDs for customers unless a custom App User ID is provided by the developer. Some apps will use a combination of both custom and anonymous App User IDs, or only one App User ID type.
 
 If you use a combination of anonymous and custom App User IDs, it’s expected that Customers may be merged over time due to various actions they perform within the app, like [logins](/customers/user-ids#login-method-alias-behavior) or [restores](/getting-started/restoring-purchases). Scenarios explaining when merges occur are covered in more detail below, and will depend on the [restore behavior](/getting-started/restoring-purchases#restore-behavior) you select for your project. When a merge of customers occurs, there will be only one App User ID within the `original_app_user_id` field. If you’re listening to [Webhooks](/integrations/webhooks), the other App User IDs associated with the customer will be within an array in the `aliases` field. When referenced via the [SDK](/getting-started/configuring-sdk) or [API](https://www.revenuecat.com/reference/basic), any merged App User IDs will all be treated as the same “customer”. Looking up any of the merged App User IDs in RevenueCat will return the same `CustomerInfo`, customer history, customer attributes, subscription status, etc.
 
-Overall, the concept of a customer in RevenueCat is central to the platform's ability to track and manage in-app purchases and subscriptions. By this form of maintaining a detailed record of each customer's activity, developers can gain insights into their app's revenue streams and make informed decisions to optimize their monetization strategies.
+Overall, the concept of a customer in RevenueCat is central to the platform's ability to track and manage in-app purchases and subscriptions. By maintaining a detailed record of each customer's activity, developers can gain insights into their app's revenue streams, allowing them to make informed decisions to optimize their monetization strategies.
 
 ## Anonymous App User IDs
 
@@ -107,7 +107,7 @@ In certain cases, iOS may [prewarm](https://developer.apple.com/documentation/ui
 If you are **not** using RevenueCat's anonymous IDs as described above, and are instead providing your own app user ID on configuration, **do not** call `configure` in `application:didFinishLaunchingWithOptions:`. Instead, call the `configure` method in your root view controller's initialization method.
 :::
 
-If you have your own App User IDs at app launch, you can pass those on instantiation to _Purchases_.
+If you have your own App User IDs at app launch, you can pass those on instantiation to _Purchases_. Make sure to not hard-code this identifier, if you do all users will be considered the same one and will share purchases.
 
 import content9 from "!!raw-loader!@site/code_blocks/customers/user-ids_9.swift";
 import content10 from "!!raw-loader!@site/code_blocks/customers/user-ids_10.m";

@@ -7,59 +7,15 @@ hidden: false
 
 This guide will walk you through how to get up and running with subscriptions and RevenueCat's SDK with only a few lines of code.
 
-## 1. Create a RevenueCat Account
+## 1. Set up your RevenueCat account
 
-Sign up for a new RevenueCat account [here](https://app.revenuecat.com).
+Before continuing with this guide, follow our [Setting up RevenueCat](/welcome/projects) guide to create a free account and set up your first project.
 
-### Organizations / Enterprise
+<Button href="/docs/welcome/projects">Set up your account →</Button>
 
-We recommend using a company account when registering for RevenueCat and setting up your app within a project. You'll be able to invite the rest of your team as [collaborators](/welcome/projects/collaborators) to your project, but **only the project owner can manage billing**. Project collaborators can't manage billing details.
+## 2. Product Configuration
 
-## 2. Project and App Configuration
-
-### ▶️ Create a Project
-
-Navigate to the RevenueCat dashboard and [add a new project ](https://app.revenuecat.com/overview) from the dropdown in the top navigation menu called _Projects_.
-
-![The popup modal for creating a new Project](/images/db42095-Screen_Shot_2022-11-16_at_3.28.33_PM_f4098e64180b29109c0aad33ca186bd3.png)
-
-### ▶️ Add an App / Platform
-
-From **Project Settings > Apps** in the left menu of the project dashboard, select the platform for the app you will be adding.
-
-![Project dashboard for selecting the app platform](/images/e99ad62-Screen_Shot_2022-11-16_at_3.30.11_PM_bcabee81a896697ce6508da325bb416b.png)
-
-The field **App name** is required to add your app to RevenueCat. For iOS apps **In-App Purchase Key**(iOS) is also required. To make test and production purchases, the **Bundle ID** (iOS) / **Package Name** (Android) as well as the **Shared Secret**(iOS) / **Service Credentials** (Android) **must be configured**.
-
-:::info
-If you try making purchases without a bundle ID and valid credentials, the SDK will fail with a '[receipt is not valid](/test-and-launch/errors#---invalid_receipt)' error as RevenueCat will be unable to validate the transaction with the store.
-:::
-
-The rest of the configuration fields can be added later.
-
-![App configuration page for an Apple App Store app](https://github.com/RevenueCat/revenuecat-docs/assets/5860245/7ddfb6e9-d730-4440-baba-d94bef820288)
-
-:::info Here's a tip!
-After registering your app, we recommend setting up [Platform Server Notifications](/platform-resources/server-notifications). These notifications aren't required but will speed up [webhooks](/integrations/webhooks) and integration delivery times and reduce lag time updating your subscribers.
-:::
-
-:::info Staging vs. Production apps and users
-RevenueCat itself does not have separate environments for staging and production. Rather, the underlying transactions for users are differentiated by sandbox and production.
-
-Any RevenueCat app can make both sandbox and production purchases from the stores. If you do have separate apps for staging and production, you can create multiple projects in RevenueCat to mirror your setup.
-
-Furthermore, users are not separated by environment, either. The same user can have active sandbox purchases and active production purchases at the same time.
-:::
-
-### ▶️ Service Credentials
-
-Service credentials need to be set up for RevenueCat to communicate with the app stores on your behalf. See our guides [App Store Connect Shared Secret](/service-credentials/itunesconnect-app-specific-shared-secret), [App Store In-App Purchase Key](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration), [Play Service Credentials](/service-credentials/creating-play-service-credentials), and [Amazon Appstore Shared Secret](/service-credentials/amazon-appstore-credentials) for more information.
-
-Note that Play service credentials can take up to 36 hours to propagate throughout Google's servers.
-
-## 3. Product Configuration
-
-### ▶️ Store Setup
+### Store Setup
 
 Before you can start using RevenueCat to fetch products, you must configure your products in the respective stores. See the following guides for [App Store Connect](/getting-started/entitlements/ios-products), [Google Play Console](/getting-started/entitlements/android-products), [Amazon Appstore](/getting-started/entitlements/amazon-product-setup), and [Stripe](/getting-started/entitlements/stripe-products) for help navigating through this process.
 
@@ -71,7 +27,9 @@ On iOS, you can delay configuring products in App Store Connect by testing with 
 Read more about setting up StoreKit Configuration files in our [Sandbox Testing](/test-and-launch/sandbox/apple-app-store#ios-14-only-testing-on-the-simulator) guide.
 :::
 
-### ▶️ Configure Products and Entitlements in RevenueCat
+### Configure Products and Entitlements in RevenueCat
+
+<YouTubeEmbed videoId="QxHeZiW4KCA" title="RevenueCat Products, Offerings, and Entitlements Explained" />
 
 Once your in-app products have been configured in [App Store Connect](/getting-started/entitlements/ios-products), [Google Play Console](/getting-started/entitlements/android-products), [Amazon Appstore](/getting-started/entitlements/amazon-product-setup), or [Stripe](/getting-started/entitlements/stripe-products), you'll need to copy that configuration into the RevenueCat dashboard. RevenueCat uses an Entitlements system to control access to premium features, and Offerings to manage the set of products you offer to customers.
 
@@ -79,29 +37,38 @@ Entitlements are the level of access that a customer is "entitled" to after purc
 
 See [Configuring Products](/getting-started/entitlements) to set up your products and then organize them into Offerings or Entitlements.
 
-![Entitlements 2.0](/images/55e2667-1628274-Entitlements_2.0_3dd9cdc954236c9ecc6981598b33cafc.png)
+![Offerings Diagram](/images/getting-started/offerings_visual.png)
 
-## 4. Using RevenueCat's Purchases SDK
+### Build and Design Your Paywall
+
+<YouTubeEmbed videoId="PNiVCdExtkw" title="How to use RevenueCat Paywalls" />
+
+After configuring your offerings, you can jump right into designing a paywall (even before installing the SDK!) by choosing Paywalls in the sidebar of your project dashboard. 
+
+RevenueCat provides several pre-built, customizable paywall templates that you can use to rapidly create a paywall.
+
+If you'd prefer to install the SDK before designing your paywall, you can always come back to this step later. 
+
+<Button href="/docs/tools/paywalls/creating-paywalls">Create a Paywall →</Button>
+<br /><br />
+
+*Want to build your own custom paywall? See [Displaying Products](/getting-started/displaying-products), [Making Purchases](/getting-started/making-purchases), and [Restoring Purchases](/getting-started/restoring-purchases) for more information on manual implementation.*
+
+## 3. Using RevenueCat's Purchases SDK
 
 Our SDK seamlessly implements purchases and subscriptions across platforms while syncing tokens with the RevenueCat server.
 
-### ▶️ Installation
+### SDK Installation
 
-Install the SDK on your preferred platform with our installation guides below.
+Install the SDK on your preferred platform. 
 
-- [iOS/watchOS/tvOS Installation](/getting-started/installation/ios)
-- [Android Installation ](/getting-started/installation/android)
-- [React Native Installation ](/getting-started/installation/reactnative)
-- [Flutter Installation ](/getting-started/installation/flutter)
-- [Kotlin Multiplatform installation](/getting-started/installation/kotlin-multiplatform)
-- [Capacitor / Ionic Installation ](/getting-started/installation/capacitor)
-- [Cordova Installation ](/getting-started/installation/cordova)
-- [Unity Installation ](/getting-started/installation/unity)
-- [macOS / Catalyst Installation ](/getting-started/installation/macos)
+**Note: if you are using RevenueCat's Paywalls, the `RevenueCatUI` package is required during the installation process.**
 
 If you run into issues with the SDK, see [Troubleshooting the SDKs](/test-and-launch/debugging/troubleshooting-the-sdks) for guidance.
 
-### ▶️ Initialize and Configure the SDK
+<Button href="/docs/getting-started/installation">SDK Installation Guides →</Button>
+
+### Initialize and Configure the SDK
 
 :::info Only use your public SDK key to configure Purchases
 You can get your public SDK key from the **API keys** tab under **Project settings** in the dashboard.
@@ -127,7 +94,7 @@ import kmpContent1 from "!!raw-loader!@site/code_blocks/getting-started/configur
 <RCCodeBlock
   tabs={[
     { type: "swift", content: swiftContent },
-    { type: "objectivec", content: objectiveCContent },
+    { type: "objc", content: objectiveCContent },
     { type: "kotlin", content: kotlinContent },
     { type: 'kotlin', content: kmpContent1, name: 'Kotlin Multiplatform' },
     { type: "java", content: javaContent },
@@ -149,151 +116,42 @@ If you're planning to use RevenueCat alongside your existing purchase code, be s
 If you have a user authentication system in your app, you can provide a user identifier at the time of configuration or at a later date with a call to `.logIn()`. To learn more, check out our guide on [Identifying Users](/customers/user-ids).
 :::
 
-### ▶️ Fetch and Display Available Products
+### Present a Paywall
 
-The SDK will automatically fetch the [configured Offerings](/getting-started/entitlements#offerings) and retrieve the product information from Apple, Google, or Amazon. Thus, available products will already be loaded when customers launch your purchase screen.
+At this point, you're ready to present a paywall to your users. If you skipped the paywall setup earlier, that's okay! The SDK will display a default, non-customized paywall. If you want to customize a paywall first, head back up to the [Build and Design Your Paywall](#build-and-design-your-paywall) section.
 
-Below is an example of fetching Offerings. You can utilize Offerings to organize your paywall screen. See our guide on [Displaying Products](/getting-started/displaying-products) for more information and best practices.
+The SDK will automatically fetch the [configured Offerings](/getting-started/entitlements#offerings) and retrieve the product information from Apple, Google, or Amazon. Thus, available products will already be loaded when customers launch your paywall.
 
-import swiftContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_9.swift";
-import objectiveCContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_10.m";
-import kotlinContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_11.kt";
-import javaContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_12.java";
-import flutterContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_13.js";
-import reactNativeContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_14.js";
-import capacitorContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_capacitor-get-offerings.ts";
-import cordovaContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_15.js";
-import unityContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_16.cs";
-import webContent from "!!raw-loader!@site/code_blocks/getting-started/getting-started_17.curl";
-import kmpContent2 from "!!raw-loader!@site/code_blocks/getting-started/getting-started_kmp_2.kts";
+Presenting a paywall varies depending on your platform. See [Displaying Paywalls](/tools/paywalls/displaying-paywalls) to see in-depth examples for each platform.
 
-<RCCodeBlock
-  tabs={[
-    { type: "swift", content: swiftContent2 },
-    { type: "objc", content: objectiveCContent2 },
-    { type: "kotlin", content: kotlinContent2 },
-    { type: 'kotlin', content: kmpContent2, name: 'Kotlin Multiplatform' },
-    { type: "java", content: javaContent2 },
-    { type: "flutter", content: flutterContent2 },
-    { type: "rn", content: reactNativeContent2 },
-    { type: "capacitor", content: capacitorContent2 },
-    { type: "cordova", content: cordovaContent2 },
-    { type: "unity", content: unityContent2 },
-    { type: "curl", content: webContent, name: "Web" },
-  ]}
-/>
+<Button href="/docs/tools/paywalls/displaying-paywalls">Present a Paywall →</Button>
+<br /><br />
 
-#### See it in action
+*Want to display your products manually? See [Displaying Products](/getting-started/displaying-products).*
 
-<body>
-  <a
-    href="https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/PaywallViewController.swift#L24-L35"
-    target="_blank"
-    class="button-text"
-  >
-    Swift
-  </a>
-  <a
-    href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/ui/paywall/PaywallFragment.kt#L60-L65"
-    target="_blank"
-    class="button-text"
-  >
-    Kotlin
-  </a>
-  <a
-    href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/weather.dart#L41-L79"
-    target="_blank"
-    class="button-text"
-  >
-    Flutter
-  </a>
-  <a
-    href="https://github.com/RevenueCat/react-native-purchases/blob/main/examples/MagicWeather/src/screens/PaywallScreen/index.js#L24-L33"
-    target="_blank"
-    class="button-text"
-  >
-    React Native
-  </a>
-</body>
+#### SDK not fetching products or offerings?
 
-If fetching your [Offerings](/getting-started/entitlements#offerings), [products](/getting-started/entitlements#products), or available [packages](/getting-started/entitlements#adding-packages) are empty, it's due to some configuration issue in the respective store.
+A common issue when displaying your paywall or making a purchase is missing or empty offerings. This is almost always a configuration issue.
 
-The most common reasons for this in App Store Connect are an out-of-date 'Paid Applications Agreement' or products not at least in the 'Ready To Submit' state. In Google Play this usually occurs when the app is not published on a closed track and a valid test user added.
+If you're running into this error, please see our [community post](https://community.revenuecat.com/sdks-51/why-are-offerings-or-products-empty-124) for troubleshooting steps.
 
-You can find more info about troubleshooting this issue in our [Help Center](https://support.revenuecat.com/hc/en-us/articles/360041793174).
+### Make a Purchase
 
-### ▶️ Make a Purchase
+Once your paywall is presented, select one of your products to make a purchase. The SDK will handle the purchase flow automatically and send the purchase information to RevenueCat. The RevenueCat SDK will automatically handle sandbox vs. production environments.
 
-The SDK includes a simple method for facilitating purchases. The `purchase:package` takes a package from the fetched Offering and processes the transaction with the respective app store.
+Each platform requires slightly different configuration steps to test in sandbox. See [Sandbox Testing](/test-and-launch/sandbox) for more information.
 
-The code sample below shows the process of purchasing a package and confirming it unlocks the "your_entitlement_id" content. More detail about the `purchase:package` method can be found in our guide on [Making Purchases](/getting-started/making-purchases).
+When the purchase is complete, you can find the purchase associated to the customer in the [RevenueCat dashboard](/dashboard-and-metrics/customer-history). You can [search for the customer](/dashboard-and-metrics/customer-lists#find-an-individual-customer) by their App User ID that you configured, or by the automatically assigned `$RCAnonymousID` that you'll find in your logs.
 
-import swiftContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_1.swift";
-import objectiveCContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_2.m";
-import kotlinContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_3.kt";
-import javaContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_4.java";
-import flutterContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_5.js";
-import reactNativeContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_6.js";
-import cordovaContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_7.js";
-import capacitorContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_capacitor.ts";
-import unityContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_8.cs";
-import kmpContent3 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_kmp_1.kts";
+**Note:** RevenueCat ***always*** validates transactions with the respective store. The dashboard will only reflect purchases that have been successfully validated by the store.
 
-<RCCodeBlock
-  tabs={[
-    { type: "swift", content: swiftContent3 },
-    { type: "objc", content: objectiveCContent3 },
-    { type: "kotlin", content: kotlinContent3 },
-    { type: 'kotlin', content: kmpContent3, name: 'Kotlin Multiplatform' },
-    { type: "java", content: javaContent3 },
-    { type: "flutter", content: flutterContent3 },
-    { type: "rn", content: reactNativeContent3 },
-    { type: "capacitor", content: capacitorContent3 },
-    { type: "cordova", content: cordovaContent3 },
-    { type: "unity", content: unityContent3 }
-  ]}
-/>
+Additionally, the SDK will automatically update the customer's `CustomerInfo` object with the new purchase information. This object contains all the information about the customer's purchases and subscriptions.
 
-#### See it in action
+*Want to manually call the `purchase` method? See [Making Purchases](/getting-started/making-purchases).*
 
-<body>
-  <a
-    href="https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/PaywallViewController.swift#L78-L95"
-    target="_blank"
-    class="button-text"
-  >
-    Swift
-  </a>
-  <a
-    href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/ui/paywall/PaywallFragment.kt#L67-L79"
-    target="_blank"
-    class="button-text"
-  >
-    Kotlin
-  </a>
-  <a
-    href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/paywall.dart#L53-L61"
-    target="_blank"
-    class="button-text"
-  >
-    Flutter
-  </a>
-  <a
-    href="https://github.com/RevenueCat/react-native-purchases/blob/main/examples/MagicWeather/src/components/PackageItem/index.js#L15-L31"
-    target="_blank"
-    class="button-text"
-  >
-    React Native
-  </a>
-</body>
+### Check Subscription Status
 
-:::info Here's a tip!
-`purchase:package` handles the underlying framework interaction and automatically validates purchases with the respective store through our secure servers. This helps reduce in-app purchase fraud and decreases the complexity of your app. Receipt tokens are stored remotely and always kept up to date by RevenueCat.
-:::
-
-### ▶️ Check Subscription Status
-
-The SDK makes it easy to check what active subscriptions the current customer has, too. This can be done by checking a user's CustomerInfo object to see if a specific Entitlement is active, or by checking if the active Entitlements array contains a specific Entitlement ID.
+The SDK makes it easy to check what active subscriptions the current customer has, too. This can be done by checking a user's `CustomerInfo` object to see if a specific Entitlement is active, or by checking if the active Entitlements array contains a specific Entitlement ID.
 
 If you're not using Entitlements (you probably should be!) you can check the array of active subscriptions to see what product IDs from the respective store it contains.
 
@@ -323,40 +181,7 @@ import webContent36 from "!!raw-loader!@site/code_blocks/getting-started/getting
   ]}
 />
 
-#### See it in action
-
-<body>
-  <a
-    href="https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/UserViewController.swift#L37-L45"
-    target="_blank"
-    class="button-text"
-  >
-    Swift
-  </a>
-  <a
-    href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/ui/weather/WeatherFragment.kt#L69-L84"
-    target="_blank"
-    class="button-text"
-  >
-    Kotlin
-  </a>
-  <a
-    href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/weather.dart#L31-L39"
-    target="_blank"
-    class="button-text"
-  >
-    Flutter
-  </a>
-  <a
-    href="https://github.com/RevenueCat/react-native-purchases/blob/main/examples/MagicWeather/src/screens/WeatherScreen/index.js#L29-L46"
-    target="_blank"
-    class="button-text"
-  >
-    React Native
-  </a>
-</body>
-
-You can use this method whenever you need to get the latest status, and it's safe to call this repeatedly throughout the lifecycle of your app. _Purchases_ automatically caches the latest CustomerInfo whenever it updates — so in most cases, this method pulls from the cache and runs very fast.
+You can use this method whenever you need to get the latest status, and it's safe to call this repeatedly throughout the lifecycle of your app. _Purchases_ automatically caches the latest `CustomerInfo` whenever it updates — so in most cases, this method pulls from the cache and runs very fast.
 
 It's typical to call this method when deciding which UI to show the user and whenever the user performs an action that requires a certain entitlement level.
 
@@ -364,78 +189,13 @@ It's typical to call this method when deciding which UI to show the user and whe
 You can access a lot more information about a subscription than simply whether it's active or not. See our guide on [Subscription Status](/customers/customer-info) to learn if subscription is set to renew, if there's an issue detected with the user's credit card, and more.
 :::
 
-### ▶️ Restore Purchases
+### Reacting to Subscription Status Changes
 
-RevenueCat enables your users to restore their in-app purchases, reactivating any content that they previously purchased from the **same store account** (Apple, Google, or Amazon account). We recommend that all apps have some way for users to trigger the restore method. Note that Apple does require a restore mechanism in the event a user loses access to their purchases (e.g: uninstalling/reinstalling the app, losing their account information, etc).
+You can respond to any changes in a customer's `CustomerInfo` by conforming to an optional delegate method, `purchases:receivedUpdated:`.
 
-import swiftContent36 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_1.swift";
-import objectiveCContent37 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_2.m";
-import kotlinContent38 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_3.kt";
-import javaContent39 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_4.java";
-import flutterContent40 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_5.js";
-import reactNativeContent41 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_6.js";
-import cordovaContent43 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_7.js";
-import capacitorContent42 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_capacitor.ts";
-import unityContent44 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_8.cs";
-import kmpContent5 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_kmp_1.kts";
+This method will fire whenever the SDK receives an updated `CustomerInfo` object from calls to `getCustomerInfo()`, `purchase(package:)`, `purchase(product:)`, or `restorePurchases()`.
 
-<RCCodeBlock
-  tabs={[
-    { type: "swift", content: swiftContent36 },
-    { type: "objc", content: objectiveCContent37 },
-    { type: "kotlin", content: kotlinContent38 },
-    { type: 'kotlin', content: kmpContent5, name: 'Kotlin Multiplatform' },
-    { type: "java", content: javaContent39 },
-    { type: "flutter", content: flutterContent40 },
-    { type: "rn", content: reactNativeContent41 },
-    { type: "capacitor", content: capacitorContent42 },
-    { type: "cordova", content: cordovaContent43 },
-    { type: "unity", content: unityContent44 },
-  ]}
-/>
-
-#### See it in action
-
-<body>
-  <a
-    href="https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Controllers/UserViewController.swift#L107-L123"
-    target="_blank"
-    class="button-text"
-  >
-    Swift
-  </a>
-  <a
-    href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/ui/user/UserFragment.kt#L81-L88"
-    target="_blank"
-    class="button-text"
-  >
-    Kotlin
-  </a>
-  <a
-    href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/user.dart#L93-L108"
-    target="_blank"
-    class="button-text"
-  >
-    Flutter
-  </a>
-  <a
-    href="https://github.com/RevenueCat/react-native-purchases/blob/main/examples/MagicWeather/src/components/RestorePurchasesButton/index.js#L11-L18"
-    target="_blank"
-    class="button-text"
-  >
-    React Native
-  </a>
-</body>
-
-If two different [App User IDs](/customers/user-ids) restore transactions from the same underlying store account (Apple, Google, or Amazon account) RevenueCat may attempt to create an alias between the two App User IDs and count them as the same user going forward. See our guide on [Restoring Purchases](/getting-started/restoring-purchases) for more information on the different configurable restore behaviors.
-
-### ▶️ Reacting to Subscription Status Changes
-
-Since the SDK works seamlessly on any platform, changes to a user's purchase info may come from a variety of sources. You can respond to any changes in a customer's CustomerInfo by conforming to an optional delegate method, `purchases:receivedUpdated:`.
-
-This method will fire whenever the SDK receives an updated CustomerInfo object from calls to `getCustomerInfo()`, `purchase(package:)`, `purchase(product:)`, or `restorePurchases()`.
-
-CustomerInfo updates are _not_ pushed to your app from the RevenueCat backend, updates can only happen from an outbound network request to RevenueCat, as mentioned above.
+**Note:** `CustomerInfo` updates are _not_ pushed to your app from the RevenueCat backend, updates can only happen from an outbound network request to RevenueCat, as mentioned above.
 
 Depending on your app, it may be sufficient to ignore the delegate and simply handle changes to customer information the next time your app is launched or in the completion blocks of the SDK methods.
 
@@ -465,38 +225,40 @@ import kmpContent6 from "!!raw-loader!@site/code_blocks/customers/customer-info_
   ]}
 />
 
-#### See it in action
+### Restore Purchases
 
-<body>
-  <a
-    href="https://github.com/RevenueCat/purchases-ios/blob/main/Examples/MagicWeather/MagicWeather/Sources/Lifecycle/AppDelegate.swift#L53-L59"
-    target="_blank"
-    class="button-text"
-  >
-    Swift
-  </a>
-  <a
-    href="https://github.com/RevenueCat/purchases-android/blob/main/examples/MagicWeather/app/src/main/java/com/revenuecat/sample/MainApplication.kt#L26-L51"
-    target="_blank"
-    class="button-text"
-  >
-    Kotlin
-  </a>
-  <a
-    href="https://github.com/RevenueCat/purchases-flutter/blob/main/revenuecat_examples/MagicWeather/lib/src/views/home.dart#L29-L42"
-    target="_blank"
-    class="button-text"
-  >
-    Flutter
-  </a>
-  <a
-    href="https://github.com/RevenueCat/react-native-purchases/blob/main/examples/MagicWeather/src/screens/UserScreen/index.js#L35-L41"
-    target="_blank"
-    class="button-text"
-  >
-    React Native
-  </a>
-</body>
+RevenueCat enables your users to restore their in-app purchases, reactivating any content that they previously purchased from the **same store account** (Apple, Google, or Amazon account). We recommend that all apps have some way for users to trigger the restore method. Note that Apple does require a restore mechanism in the event a user loses access to their purchases (e.g: uninstalling/reinstalling the app, losing their account information, etc).
+
+By default, RevenueCat Paywalls include a 'Restore Purchases' button. You can also trigger this method programmatically.
+
+import swiftContent36 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_1.swift";
+import objectiveCContent37 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_2.m";
+import kotlinContent38 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_3.kt";
+import javaContent39 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_4.java";
+import flutterContent40 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_5.js";
+import reactNativeContent41 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_6.js";
+import cordovaContent43 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_7.js";
+import capacitorContent42 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_capacitor.ts";
+import unityContent44 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_8.cs";
+import kmpContent5 from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_kmp_1.kts";
+
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent36 },
+    { type: "objc", content: objectiveCContent37 },
+    { type: "kotlin", content: kotlinContent38 },
+    { type: 'kotlin', content: kmpContent5, name: 'Kotlin Multiplatform' },
+    { type: "java", content: javaContent39 },
+    { type: "flutter", content: flutterContent40 },
+    { type: "rn", content: reactNativeContent41 },
+    { type: "capacitor", content: capacitorContent42 },
+    { type: "cordova", content: cordovaContent43 },
+    { type: "unity", content: unityContent44 },
+  ]}
+/>
+
+If two different [App User IDs](/customers/user-ids) restore transactions from the same underlying store account (Apple, Google, or Amazon account) RevenueCat may attempt to create an alias between the two App User IDs and count them as the same user going forward. See our guide on [Restoring Purchases](/getting-started/restoring-purchases) for more information on the different configurable restore behaviors.
+
 
 :::success You did it!
 You have now implemented a fully-featured subscription purchasing system without spending a month writing server code. Congrats!
@@ -506,7 +268,7 @@ You have now implemented a fully-featured subscription purchasing system without
 
 To download more complete examples of integrating the SDK, head over to our sample app resources.
 
-**[View Samples ](/platform-resources/sample-apps)**
+<Button href="/docs/platform-resources/sample-apps">View Sample Apps →</Button>
 
 ## Next Steps
 

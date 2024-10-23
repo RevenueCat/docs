@@ -4,57 +4,133 @@ slug: google-play-checklists
 excerpt: Check your configuration setup step by step.
 hidden: false
 ---
+
 The processes for setting up Google Play service credentials and real-time developer notifications to communicate with RevenueCat on your behalf can be complex, and span across multiple consoles and dashboards. Use this handy checklist to go through and make sure you hit each step in your configuration.
 
 Note that while our [credentials guide](/service-credentials/creating-play-service-credentials) and our [developer notifications guide](/platform-resources/server-notifications/google-server-notifications) will move back and forth between the Google Play Console, the Google Cloud Console, and the RevenueCat dashboard, we've combined the steps into categories for ease of use.
 
-***
+---
 
 ## Google Play Service Credentials Checklist
 
 ### In Google Cloud:
 
-- [ ] I have created, either during this process or previously, a Google Cloud project dedicated to this app
-- [ ] I have created a service account under the above Cloud project
-- [ ] I have given the service account the roles of **Pub/Sub Admin** and **Monitoring Viewer**
-- [ ] I have created and downloaded a JSON public key under the service account I created
+<label class="google-checkbox">
+  <input type="checkbox" />I have created, either during this process or
+  previously, a Google Cloud project dedicated to this app
+</label>
+
+<label class="google-checkbox">
+  <input type="checkbox" />I have enabled both the **Google Play Android
+  Developer API** and the **Google Play Developer Reporting API**
+</label>
+
+<label class="google-checkbox">
+  <input type="checkbox" />I have created a service account under the above
+  Cloud project
+</label>
+
+<label class="google-checkbox">
+  <input type="checkbox" />I have given the service account the roles of
+  **Pub/Sub Admin** and **Monitoring Viewer**
+</label>
+
+<label class="google-checkbox">
+  <input type="checkbox" />I have created and downloaded a JSON public key under
+  the service account I created
+</label>
 
 ### In Google Play:
 
-- [ ] I have linked the previously created Google Cloud project to my app under API Access
-- [ ] I clicked **'Manage Play Console Permissions'** under the service account and added these permissions:
-  - [ ] View app information and download bulk reports (read-only)
-  - [ ] View financial data, orders, and cancellation survey response
-  - [ ] Manage orders and subscriptions
-- [ ] I invited the user and the service account is showing as active in **'Users and Permissions'**
-- [ ] After confirming permissions, I selected **'Apply'**, then **'Save Changes'**
+{" "}
+
+<label class="google-checkbox">
+  <input type="checkbox" />I invited the created service account as a user in
+  **'Users and Permissions'** and the status is "Active"
+</label>
+
+{" "}
+
+<label class="google-checkbox">
+  <input type="checkbox" />Under the service account user's **'Account Permissions'** I have added these permissions:
+</label>
+
+<ul>
+  <li> View app information and download bulk reports (read-only)</li>
+  <li> View financial data, orders, and cancellation survey response</li>
+  <li> Manage orders and subscriptions</li>
+</ul>
+
+{" "}
+
+<label class="google-checkbox">
+  <input type="checkbox" />After confirming permissions, I selected **'Apply'**, then **'Save Changes'**
+</label>
+<label class="google-checkbox">
+  <input type="checkbox" />I have uploaded my signed APK or Android App Bundle
+</label>
+<label class="google-checkbox">
+  <input type="checkbox" />I have completed all the steps to approve the release
+</label>
+<label class="google-checkbox">
+  <input type="checkbox" />The app is in a Closed or Open testing track and I've added a tester
+</label>
+<label class="google-checkbox">
+  <input type="checkbox" />My Subscriptions are in an 'Active' state
+</label>
 
 ### In RevenueCat:
 
-- [ ] I added the previously downloaded JSON key file to the RevenueCat dashboard and clicked **'Save Changes'**
-- [ ] I've waited at least 36 hours
+<label class="google-checkbox">
+  <input type="checkbox" />I added the previously downloaded JSON key file to
+  the RevenueCat dashboard and clicked **'Save Changes'**
+</label>
+<label class="google-checkbox">
+  <input type="checkbox" />I've waited at least 36 hours
+</label>
 
-***
+---
 
 ## Google Real-Time Developer Notifications Checklist
 
-- [ ] I have waited to ensure that my service credentials are set up correctly and working as expected
+<label class="google-checkbox">
+  <input type="checkbox" />I have waited to ensure that my service credentials
+  are set up correctly and working as expected
+</label>
 
 ### In Google Cloud:
 
-- [ ] I have enabled the Pub/Sub API for the same project I created service credentials with
+<label class="google-checkbox">
+  <input type="checkbox" />I have enabled the Pub/Sub API for the same project
+  in which I previously created service credentials
+</label>
 
 ### In RevenueCat:
 
-- [ ] I have chosen either an existing Pub/Sub Topic ID or created a new one
-- [ ] I have clicked **'Connect to Google'**
-- [ ] I have copied the topic ID that generated after connecting
+<label class="google-checkbox">
+  <input type="checkbox" />I have chosen either an existing Pub/Sub Topic ID or
+  created a new one
+</label>
+<label class="google-checkbox">
+  <input type="checkbox" />I have clicked **'Connect to Google'**
+</label>
+<label class="google-checkbox">
+  <input type="checkbox" />I have copied the topic ID that generated after
+  connecting
+</label>
 
 ### In Google Play:
 
-- [ ] Under **'Monetize'**, in **'Monetization Setup'**, I pasted the topic ID
-- [ ] I have saved changes and did not see any errors
-- [ ] I clicked **'Send Test Notification'** and confirmed it was received in the RevenueCat dashboard
+<label class="google-checkbox">
+  <input type="checkbox" />Under **'Monetize'**, in **'Monetization Setup'**, I pasted the topic ID
+</label>
+<label class="google-checkbox">
+  <input type="checkbox" />I have saved changes and did not see any errors
+</label>
+<label class="google-checkbox">
+  <input type="checkbox" />I clicked **'Send Test Notification'** and confirmed
+  it was received in the RevenueCat dashboard
+</label>
 
 ## Still having issues?
 

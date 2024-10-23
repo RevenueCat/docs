@@ -12,6 +12,10 @@ When setting up a new App Store App on RevenueCat, you will need to add an in-ap
 Adding an in-app purchase key to an app with existing transactions may change historic data as we update previously estimated data with corrected data from Apple. As a result, you may see an increased number of updated transactions reported in your [Scheduled Data Exports](/integrations/scheduled-data-exports) and your historical [Charts](/dashboard-and-metrics/charts) data may also gradually update. 
 :::
 
+:::info
+Although App Store Connect separates "In-App Purchases" and "Subscriptions" in its interface, it's important to note that subscriptions are actually a type of In-App Purchase. The In-App Purchase Key is **required for all In-App Purchases**, whether your app offers consumables, non-consumables, subscriptions, or any combination of these.
+:::
+
 ## Setup
 
 ### 1. Generating an In-App Purchase Key
@@ -44,9 +48,15 @@ Once you uploaded the in-app purchase .p8 file, you'll see an area to input 'Iss
 
 You can find this Issuer ID in App Store Connect, under _Users and Access → Integrations → In-App Purchase_.
 
-If you haven't done so yet, you'll need to request access to the App Store Connect API. In that case, you will also need to generate a random App Store Connect API key. Access level or name of the key here doesn't matter, but the Issuer ID will not show unless a key has been generated.
+:::info Issuer ID is missing
 
-Copy the Issuer ID, which is now shown at the top of the page, and paste into the RevenueCat 'Issuer ID' field.
+If you do not see an Issuer ID at the top of the page, create an App Store Connect API key. The key name/access level does not matter. 
+
+Once this is generated, the Issuer ID will show at the top of the page. (The Issuer ID is the same for both the In-App Purchase key and the App Store Connect key.)
+
+:::
+
+Copy the Issuer ID and paste into the RevenueCat 'Issuer ID' field.
 
 ![](/images/SCR-20240327-jygo.png)
 
