@@ -4715,6 +4715,7 @@ components:
       - $onesignalId
       - $onesignalUserId
       - $phoneNumber
+      - $posthogUserId
       - $segmentId
       - $deviceVersion
       example: $email
