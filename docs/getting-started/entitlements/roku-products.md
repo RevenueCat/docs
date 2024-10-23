@@ -5,7 +5,7 @@ excerpt: Setting up your in-app purchases in Roku
 hidden: false
 ---
 :::warning Beta Feature
-RevenueCat's Roku support is currently in beta. For interest, please fill out our **[waitlist form](https://rev.cat/roku-beta-interest)**.
+RevenueCat's Roku support is currently in beta.
 :::
 
 To set up in-channel products for Roku, start by logging into the [Roku dashboard](https://developer.roku.com/dev/landing). 
