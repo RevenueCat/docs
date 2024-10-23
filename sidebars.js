@@ -213,9 +213,10 @@ const testAndLaunchCategory = Category({
     SubCategory({
       label: "Testing Guide",
       slug: "testing-guide",
+      itemsPathPrefix: "testing-guide/",
       items: [
-        Page({slug: "use-cases"}),
-        Page({slug: "export-examples"}),
+        Page({ slug: "use-cases" }),
+        Page({ slug: "export-examples" }),
       ]
     }),
     Page({ slug: "launch-checklist" }),
@@ -243,7 +244,7 @@ const subscriptionGuidanceCategory = Category({
     Page({ slug: "price-changes" }),
     Page({ slug: "refunds" }),
     Page({ slug: "google-prepaid-plans" }),
-    Page({slug: "common-architecture" }),
+    Page({ slug: "common-architecture" }),
   ],
 });
 
