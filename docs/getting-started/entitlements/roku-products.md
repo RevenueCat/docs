@@ -5,7 +5,7 @@ excerpt: Setting up your in-app purchases in Roku
 hidden: false
 ---
 :::warning Beta Feature
-RevenueCat's Roku support is currently in beta. For interest, please fill out our **[waitlist form](https://rev.cat/roku-beta-interest)**.
+RevenueCat's Roku support is currently in beta.
 :::
 
 To set up in-channel products for Roku, start by logging into the [Roku dashboard](https://developer.roku.com/dev/landing). 
@@ -13,7 +13,7 @@ To set up in-channel products for Roku, start by logging into the [Roku dashboar
 **This guide assumes basic knowledge of Roku and the Roku dashboard, as well as having a Roku channel set up and ready for products.** For more information, visit Roku's [documentation](https://developer.roku.com/docs/developer-program/getting-started/roku-dev-prog.md).
 
 ## Create a new Product
-This process is going to configure a subscription product, but the steps are similar for creating other products. To configure other types of products, select the appropriate 'Purchase Type'. However, please read our [limitations](/getting-started/installation/roku#introduction) on what we currently support in this beta program. 
+This process is going to configure a subscription product, but the steps are similar for creating other products. To configure other types of products, select the appropriate 'Purchase Type'. However, please read our [limitations](/getting-started/installation/roku#beta-limitations) on what we currently support in this beta program.
 
 To create a new in-channel product, click on products in the sidebar of the Roku Developer Dashboard, then click **Add a new product**.
 
