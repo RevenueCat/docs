@@ -94,7 +94,7 @@ If you want RevenueCat to track new purchases from Apple App Store Server Notifi
 !!!REMINDER!!! INSERT SCREENSHOT HERE
 
 Considerations:
-* RevenueCat will create a subscriber to associate that purchase to
+* RevenueCat will create a subscriber to associate that purchase to.
 * The subscriber's app user ID will be taken from the [`appAccountToken`](https://developer.apple.com/documentation/appstoreserverapi/appaccounttoken) field of the transaction. If this is not available, we will fall back to generating a RevenueCat anonymous app user ID. 
 * If you are using RevenueCat's SDK to track purchases, we may receive the notification directly from the store before the SDK. When this happens, we will follow the app user ID logic as described in the bullet point above, and then proceed with your [transfer behavior](/getting-started/restoring-purchases) for the new app user ID sent by the SDK.
 
