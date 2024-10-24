@@ -1,5 +1,5 @@
 ---
-title: Prediction Explorer (Beta)
+title: Prediction Explorer
 slug: prediction-explorer
 hidden: false
 ---
@@ -8,13 +8,9 @@ hidden: false
 
 The Prediction Explorer allows you to measure the predicted lifetime value (LTV) of various customer cohorts over time to estimate the long-term revenue that may be driven by those cohorts.
 
-:::warning Prediction Explorer Beta
-This chart is currently in beta as we refine our prediction modeling to improve accuracy. If you have feedback or questions on the nature of the chart or the data provided, please don't hesitate to reach out to us. Read the [Limitations](https://www.revenuecat.com/docs/dashboard-and-metrics/charts/prediction-explorer#limitations) section to understand the current limitations during our beta.
-:::
-
 import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 
-<YouTubeEmbed videoId="wQMJlWImIX0" title="Prediction Explorer Beta" />
+<YouTubeEmbed videoId="RRMkLgEN_sg" title="Prediction Explorer Beta" />
 
 ### Available settings
 
@@ -103,7 +99,7 @@ When using the Prediction Explorer to anticipate future performance, its importa
 - Differences in how early or late in a given renewal period subscriptions typically cancel
 - Changes to the product being used that materially change likelihood to cancel or retain
 
-In testing our beta prediction model, we've observed that >75% of Products with at least 2,000 paid subscriptions have 12 month LTV predictions that are >90% accurate. Meaning, the Predicted LTV for those subscriptions is within 10% of the true Realized LTV we observed for those subscriptions.
+In testing our prediction model, we've observed that >75% of Products with at least 2,000 paid subscriptions have 12 month LTV predictions that are >90% accurate. Meaning, the Predicted LTV for those subscriptions is within 10% of the true Realized LTV we observed for those subscriptions.
 
 However, there are also some observable patterns in that testing that influence accuracy:
 
