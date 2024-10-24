@@ -62,21 +62,21 @@ Once that test notification is sent, you can go back to your app config on the R
 ![Google Play Console / RevenueCat Dashboard](/images/f97e8f5-TestNotif_0bce9b9a2dfb308f559aca6b662b3f63.gif)
 
 
-### Tracking new purchases using Google Cloud Pub/Sub
+## Tracking new purchases using Google Cloud Pub/Sub
+By default, RevenueCat ignores any Google Cloud Pub/Sub notifications for purchases that have not yet been sent from the RevenueCat SDK or your servers. These notifications are mainly used to update existing purchases and detect changes.
 
-By default, RevenueCat ignores any notification for a purchase that was not sent to our POST /receipt endpoint. Notifications are mainly used to refresh existing purchases and detect changes.
+If you want RevenueCat to track new purchases via Google Cloud Pub/Sub, you can enable the **"Track new purchases from server-to-server notifications"** option in our Dashboard. This allows RevenueCat to process new purchases from server-to-server notifications that are not yet in our system. This ensures all purchases are tracked, even in the case of network issues between your app and RevenueCat’s backend or if your customer was using a version of the app without the RevenueCat SDK.
 
-If you want to track new purchases using Google Cloud Pub/Sub, you can enable the "Track new purchases" option in our Dashboard. This will allow RevenueCat to create a new purchase for any notification received.
+!!!REMINDER!!! INSERT SCREENSHOT HERE
 
 Considerations:
-* RevenueCat will create a subscriber to associate that purchase to
-* The subscriber app user ID will be taken from the `obfuscatedExternalAccountId` field of the transaction
-* If you are using our SDK to track purchases, we might get the notification from the store before the SDK leading to an anonymous users being created and then aliased to the user sent by the SDK.
+* RevenueCat will create a subscriber to associate that purchase to.
+* The subscriber's app user ID will be taken from the [`obfuscatedExternalAccountId`](https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.subscriptionsv2#externalaccountidentifiers) field of the transaction. If this is not available, we will fall back to generating a RevenueCat anonymous app user ID. 
+* If you are using RevenueCat's SDK to track purchases, we may receive the notification directly from the store before the SDK. When this happens, we will follow the app user ID logic as described in the bullet point above, and then proceed with your [transfer behavior](/getting-started/restoring-purchases) for the new app user ID sent by the SDK.
 
 :::warning
-If you have *Keep with original App User ID* transfer behaviour, or only custom app user IDs, we highly recommend this setting to be turned off
+If you have [*Keep with original App User ID*](/getting-started/restoring-purchases#keep-with-original-app-user-id) transfer behavior or exclusively using custom app user IDs, we highly recommend turning this setting off.
 :::
-
 
 ## Considerations
 
