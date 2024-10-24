@@ -21,6 +21,10 @@ In the "new product" screen, you can set up the following properties of the prod
 - **Title**: Customer-facing title of the Product. Will be shown in the checkout form and on invoices.
 - **Description**: Customer-facing description of the Product. Available from the Web SDK, eg. to show on your paywall.
 - **Display name**: An optional human readable name for the Product, will be shown on the dashboard instead of the identifier.
+- **Product type**: The type of product being sold:
+    - *Auto-renewing subscription*: A recurring subscription purchase, that continues on a given interval until canceled.
+    - *Consumable*: A non-recurring purchase that can be purchased one or more times (repeated).
+    - *Non-consumable*: A non-recurring purchase that can only be purchased once.
 - **Duration**: The billing cycle (period length) of the subscription.
 - **Free trial period**: The duration of a free trial
 - **Trial eligibility**: Which customers have access to the free trial:
@@ -29,6 +33,6 @@ In the "new product" screen, you can set up the following properties of the prod
     - *Didn't have any subscription yet*: Only customers that have never had any subscription in this Project (including in other Apps of the project) are eligible for a trial.
     - *Didn't have this subscription yet*: Only customers that have never subscribed to this product are eligible for a trial.
 - **Grace period**: Length of the subscription access retention after a billing issue.
-- **Price**: The price that will be charged for every period of the subscription. Currently, only USD is supported.
+- **Price**: The price that will be charged for every period of the subscription in each currency. You can add prices in additional currencies by clicking "Add price". Only one price can be set per currency. [Read more about multi-currency support in RevenueCat Billing](/web/revenuecat-billing/multi-currency-support).
 
 ![New product configuration page](/images/rc-billing/new-product-configuration.png)

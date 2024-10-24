@@ -25,7 +25,7 @@ tags:
   description: Operations about invoices.
 - name: Project
   description: Operations about projects.
-- name: Subscription Data Model (Beta)
+- name: Subscription Data Model
   x-modelReference: true
   description: '<SchemaDefinition schemaRef="#/components/schemas/Subscription" showReadOnly={true}
     showWriteOnly={true} />
@@ -244,7 +244,7 @@ tags:
     \ Refer to the `backoff_ms` field to determine when to try again.\n\n### `unprocessable_entity_error`\n\
     \nRequest is not able to be processed. Please refer to the `message` field for\
     \ more information."
-- name: Representation of Subscriptions (Beta)
+- name: Representation of Subscriptions
   x-traitTag: true
   description: "In comparison to our [v1 REST API](/docs/api-v1#tag/customer_info_model),\
     \ we have made changes to improve the organization and accessibility of your customers\u2019\
@@ -263,7 +263,7 @@ tags:
     \ to determine what state they are currently in.\n- `store_subscription_identifier`:\
     \ Whereas the old data model was missing the store\u2019s subscription identifier\
     \ (aka the transaction ID directly from the stores), we have included this new\
-    \ field to help identify your customer\u2019s subscription.\n- `total_reveneue_in_usd`:\
+    \ field to help identify your customer\u2019s subscription.\n- `total_revenue_in_usd`:\
     \ You can easily determine how much a customer has spent for this subscription\
     \ in USD and utilize it for your own bookkeeping purposes. This object also contains\
     \ information such as gross, commission, tax, and proceeds to help you break down\
@@ -472,6 +472,21 @@ paths:
                   amazon:
                     package_name: com.amazon.android.app
                     shared_secret: <Your Amazon Developer Identity Shared Key>
+              RevenueCat Billing:
+                value:
+                  name: My RevenueCat App
+                  type: rc_billing
+                  rc_billing:
+                    seller_company_name: <Your company name>
+                    default_currency: USD
+              Roku:
+                value:
+                  name: My Roku App
+                  type: roku
+                  roku:
+                    roku_api_key: <Your Roku Pay API Key goes here>
+                    roku_channel_id: 123456
+                    roku_channel_name: History Channel
       responses:
         '201':
           description: Success. The app was created
@@ -679,6 +694,60 @@ paths:
                       minLength: 1
                       maxLength: 256
                       nullable: false
+                rc_billing:
+                  description: RevenueCat Billing type details. Should only be used
+                    when type is rc_billing.
+                  type: object
+                  nullable: false
+                  properties:
+                    stripe_account_id:
+                      description: It needs to be connected to your RevenueCat account.
+                        It can be omitted if you only have a single Stripe account
+                        connected to your RevenueCat account.
+                      type: string
+                      nullable: true
+                      minLength: 1
+                      maxLength: 256
+                    seller_company_name:
+                      description: The company name.
+                      type: string
+                      nullable: true
+                      minLength: 1
+                      maxLength: 256
+                    seller_company_support_email:
+                      description: The company support email.
+                      type: string
+                      nullable: true
+                      minLength: 1
+                      maxLength: 320
+                    default_currency:
+                      $ref: '#/components/schemas/RCBillingCurrency'
+                roku:
+                  description: Roku Channel Store type details. Should only be used
+                    when type is roku.
+                  type: object
+                  nullable: false
+                  properties:
+                    roku_api_key:
+                      description: Roku Pay API key provided on the Roku Pay Web Services
+                        page.
+                      type: string
+                      minLength: 33
+                      maxLength: 33
+                      nullable: true
+                    roku_channel_id:
+                      description: Channel ID provided on the Roku Channel page.
+                      type: string
+                      minLength: 6
+                      maxLength: 6
+                      nullable: true
+                    roku_channel_name:
+                      description: Channel name that is displayed on the Roku Channel
+                        page.
+                      type: string
+                      minLength: 1
+                      maxLength: 30
+                      nullable: true
               additionalProperties: false
             examples:
               Update App Store App properties:
@@ -1312,6 +1381,9 @@ paths:
                     - For Amazon, if it''s a subscription, the term SKU of the subscription.
                     If it''s a one-time purchase, the SKU of the product.
 
+                    - For Roku, this is the product identifier of the subscription
+                    or one-time purchase product.
+
                     '
                   type: string
                   minLength: 1
@@ -1404,7 +1476,10 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:products:read_write</code>.'
+      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
+        >\n  <div class=\"heading\">Warning</div>\n  <div>This endpoint does not allow\
+        \ to create RevenueCat Billing products.</div>\nThis endpoint requires the\
+        \ following permission(s): <code>project_configuration:products:read_write</code>."
   /projects/{project_id}/entitlements/{entitlement_id}:
     get:
       summary: Get an entitlement
@@ -2998,7 +3073,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:subscriptions:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Subscription
       parameters:
@@ -3045,10 +3120,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
-        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
-        \ in Beta.</div>\n</div>\nThis endpoint requires the following permission(s):\
-        \ <code>customer_information:subscriptions:read</code>."
+      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.'
   /projects/{project_id}/subscriptions/{subscription_id}/entitlements:
     get:
       summary: Get a list of entitlements associated with a subscription
@@ -3056,7 +3128,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:subscriptions:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Subscription
       parameters:
@@ -3116,13 +3188,11 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
-        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
-        \ in Beta.</div>\n</div>\nLists all Entitlements granted by a Subscription.\n\
-        \ This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>."
+      description: "Lists all Entitlements granted by a Subscription.\n This endpoint\
+        \ requires the following permission(s): <code>customer_information:subscriptions:read</code>."
   /projects/{project_id}/subscriptions/{subscription_id}/actions/cancel:
     post:
-      summary: Cancels an active RevenueCat Billing subscription
+      summary: Cancel an active RevenueCat Billing subscription
       operationId: cancel-subscription
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
@@ -3150,7 +3220,7 @@ paths:
           example: sub1a2b3c4d5e
       responses:
         '200':
-          description: Success. The subscription has been successfully canceled
+          description: Success. The subscription has been successfully canceled.
           content:
             application/json:
               schema:
@@ -3180,11 +3250,12 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>.'
+      description: "Cancel an active RevenueCat Billing subscription. The customer\
+        \ will lose access to the associated entitlements at the end of the current\
+        \ period.\n This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>."
   /projects/{project_id}/subscriptions/{subscription_id}/actions/refund:
     post:
-      summary: Refunds the last payment of an active RevenueCat Billing subscription
-        and revokes access to associated granted entitlements.
+      summary: Refund an active RevenueCat Billing subscription
       operationId: refund-subscription
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
@@ -3212,7 +3283,7 @@ paths:
           example: sub1a2b3c4d5e
       responses:
         '200':
-          description: Success. The subscription has been successfully refunded
+          description: Success. The subscription has been successfully refunded.
           content:
             application/json:
               schema:
@@ -3242,7 +3313,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>.'
+      description: "Cancel a RevenueCat Billing subscription by refunding the most\
+        \ recent payment. The customer will immediately lose access to the associated\
+        \ entitlements.\n This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>."
   /projects/{project_id}/customers/{customer_id}/subscriptions:
     get:
       summary: Get a list of subscriptions associated with a customer
@@ -3326,7 +3399,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:purchases:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Purchase
       parameters:
@@ -3373,10 +3446,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
-        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
-        \ in Beta.</div>\n</div>\nThis endpoint requires the following permission(s):\
-        \ <code>customer_information:purchases:read</code>."
+      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>.'
   /projects/{project_id}/purchases/{purchase_id}/entitlements:
     get:
       summary: Get a list of entitlements associated with a purchase
@@ -3384,7 +3454,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:purchases:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Purchase
       parameters:
@@ -3444,10 +3514,71 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
-        >\n  <div class=\"heading\">Beta</div>\n  <div>This endpoint is currently\
-        \ in Beta.</div>\n</div>\nLists all Entitlements granted by a Purchase.\n\
-        \ This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>."
+      description: "Lists all Entitlements granted by a Purchase.\n This endpoint\
+        \ requires the following permission(s): <code>customer_information:purchases:read</code>."
+  /projects/{project_id}/purchases/{purchase_id}/actions/refund:
+    post:
+      summary: Refund a RevenueCat Billing purchase
+      operationId: refund-purchase
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:purchases:read_write
+      x-release-status: public
+      tags:
+      - Purchase
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: purchase_id
+        description: ID of the purchase
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: purc1a2b3c4d5e
+      responses:
+        '200':
+          description: Success. The purchase has been successfully refunded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Purchase'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: "Refund a RevenueCat Billing purchase and revoke access to associated\
+        \ granted entitlements.\n This endpoint requires the following permission(s):\
+        \ <code>customer_information:purchases:read_write</code>."
   /projects/{project_id}/customers/{customer_id}/purchases:
     get:
       summary: Get a list of purchases associated with a customer
@@ -3925,6 +4056,8 @@ components:
             - mac_app_store
             - play_store
             - stripe
+            - rc_billing
+            - roku
             example: app_store
           project_id:
             description: The id of the project
@@ -3938,6 +4071,8 @@ components:
       - $ref: '#/components/schemas/MacAppStoreApp'
       - $ref: '#/components/schemas/PlayStoreApp'
       - $ref: '#/components/schemas/StripeApp'
+      - $ref: '#/components/schemas/RCBillingApp'
+      - $ref: '#/components/schemas/RokuApp'
     AppCreate:
       allOf:
       - type: object
@@ -3965,12 +4100,16 @@ components:
             - mac_app_store
             - play_store
             - stripe
+            - rc_billing
+            - roku
             nullable: false
       - $ref: '#/components/schemas/AmazonAppCreate'
       - $ref: '#/components/schemas/AppStoreAppCreate'
       - $ref: '#/components/schemas/MacAppStoreAppCreate'
       - $ref: '#/components/schemas/PlayStoreAppCreate'
       - $ref: '#/components/schemas/StripeAppCreate'
+      - $ref: '#/components/schemas/RCBillingAppCreate'
+      - $ref: '#/components/schemas/RokuAppCreate'
     AppStoreApp:
       type: object
       properties:
@@ -4577,6 +4716,7 @@ components:
       - $onesignalUserId
       - $phoneNumber
       - $segmentId
+      - $deviceVersion
       example: $email
     CustomerEntitlement:
       type: object
@@ -5445,6 +5585,17 @@ components:
       example:
         color: blue
         call_to_action: Subscribe Now!
+    OneTimeProduct:
+      type: object
+      required:
+      - is_consumable
+      nullable: true
+      properties:
+        is_consumable:
+          type: boolean
+          nullable: true
+          description: Indicates whether the product is consumable or not.
+          example: true
     OverviewMetric:
       type: object
       required:
@@ -5709,6 +5860,10 @@ components:
           description: The subscription product object
           nullable: true
           $ref: '#/components/schemas/SubscriptionProduct'
+        one_time:
+          description: The one time product object
+          nullable: true
+          $ref: '#/components/schemas/OneTimeProduct'
         created_at:
           description: The date when the product was created in ms since epoch
           nullable: false
@@ -5949,7 +6104,7 @@ components:
         environment:
           $ref: '#/components/schemas/Environment'
         store:
-          description: Store the subscription belongs to
+          description: Store the purchase belongs to
           nullable: false
           type: string
           enum:
@@ -5959,16 +6114,17 @@ components:
           - play_store
           - promotional
           - stripe
+          - rc_billing
           example: amazon
         store_purchase_identifier:
-          description: The store subscription identifier
+          description: The store purchase identifier
           nullable: false
           type: string
           minLength: 1
           maxLength: 255
           example: 12345678
         ownership:
-          description: Ownership of the subscription
+          description: Ownership of the purchase
           nullable: false
           oneOf:
           - $ref: '#/components/schemas/Ownership'
@@ -5976,6 +6132,130 @@ components:
           description: Billing country in ISO alpha 2 code
           nullable: true
           $ref: '#/components/schemas/Country'
+    RCBillingApp:
+      type: object
+      properties:
+        rc_billing:
+          description: Revenue Cat Billing Store type details
+          type: object
+          required:
+          - seller_company_name
+          - default_currency
+          nullable: false
+          properties:
+            stripe_account_id:
+              description: Stripe account connected to your RevenueCat account.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 256
+            seller_company_name:
+              description: The company name.
+              type: string
+              nullable: false
+              minLength: 1
+              maxLength: 256
+            seller_company_support_email:
+              description: The company support email.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 320
+            default_currency:
+              description: The default currency to be used for the app.
+              $ref: '#/components/schemas/RCBillingCurrency'
+    RCBillingAppCreate:
+      type: object
+      properties:
+        rc_billing:
+          description: Revenue Cat Billing Store type details
+          type: object
+          required:
+          - seller_company_name
+          nullable: true
+          properties:
+            stripe_account_id:
+              description: It needs to be connected to your RevenueCat account. It
+                can be omitted if you only have a single Stripe account connected
+                to your RevenueCat account.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 256
+            seller_company_name:
+              description: The company name.
+              type: string
+              nullable: false
+              minLength: 1
+              maxLength: 256
+            seller_company_support_email:
+              description: The company support email.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 320
+            default_currency:
+              $ref: '#/components/schemas/RCBillingCurrency'
+    RCBillingCurrency:
+      type: string
+      description: ISO 4217 currency code
+      nullable: false
+      example: USD
+      enum:
+      - AUD
+      - CAD
+      - EUR
+      - GBP
+      - JPY
+      - USD
+    RokuApp:
+      type: object
+      properties:
+        roku:
+          description: Roku Channel Store type details
+          type: object
+          nullable: false
+          properties:
+            roku_channel_id:
+              description: Channel ID provided on the Roku Channel page.
+              type: string
+              nullable: true
+              minLength: 6
+              maxLength: 6
+            roku_channel_name:
+              description: Channel name that is displayed on the Roku Channel page.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 30
+    RokuAppCreate:
+      type: object
+      properties:
+        roku:
+          description: Roku Channel Store details. Should only be used when type is
+            roku.
+          type: object
+          nullable: true
+          properties:
+            roku_api_key:
+              description: Roku Pay API key provided on the Roku Pay Web Services
+                page.
+              type: string
+              nullable: true
+              minLength: 33
+              maxLength: 33
+            roku_channel_id:
+              description: Channel ID provided on the Roku Channel page.
+              type: string
+              nullable: true
+              minLength: 6
+              maxLength: 6
+            roku_channel_name:
+              description: Channel name that is displayed on the Roku Channel page.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 30
     StripeApp:
       type: object
       properties:
@@ -5985,9 +6265,7 @@ components:
           nullable: false
           properties:
             stripe_account_id:
-              description: It needs to be connected to your RevenueCat account. It
-                can be omitted if you only have a single Stripe account connected
-                to your RevenueCat account.
+              description: Stripe account connected to your RevenueCat account.
               type: string
               nullable: true
               minLength: 1
@@ -6007,7 +6285,7 @@ components:
               type: string
               minLength: 1
               maxLength: 256
-              nullable: false
+              nullable: true
     Subscription:
       type: object
       required:
@@ -6137,7 +6415,9 @@ components:
             \ access is suspended.-paused: the subscription is currently paused and\
             \ should not provide access.<br>\u2022 `unknown`: the subscription is\
             \ in an unknown state. Refer to the _gives_access_ field to determine\
-            \ whether or not to grant access.\n"
+            \ whether or not to grant access.<br>\u2022 `incomplete`: the subscription\
+            \ is in an incomplete state, maybe due to incorrect billing details or\
+            \ because it's scheduled to start in the future.\n"
           nullable: false
           type: string
           enum:
@@ -6148,6 +6428,7 @@ components:
           - in_billing_retry
           - paused
           - unknown
+          - incomplete
           example: trialing
         total_revenue_in_usd:
           description: Total revenue generated by a subscription in USD
@@ -6529,10 +6810,10 @@ x-tagGroups:
   - Rate Limit
   - Expandables
   - Error Handling
-  - Representation of Subscriptions (Beta)
+  - Representation of Subscriptions
 - name: Model Reference
   tags:
-  - Subscription Data Model (Beta)
+  - Subscription Data Model
 - name: Endpoint Reference
   tags:
   - App

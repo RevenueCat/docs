@@ -1,0 +1,41 @@
+{
+  "localization": {
+    "default": "en",
+    "localized_strings": {
+      "cancel_survey_title": {
+        "ar": "لماذا تلغي الاشتراك؟",
+        "ca": "Per què estàs cancel·lant?",
+        "cs": "Proč rušíte?",
+        "da": "Hvorfor annullerer du?",
+        "de": "Warum kündigen Sie?",
+        "el": "Γιατί ακυρώνετε;",
+        "en": "Why are you cancelling?",
+        "es": "¿Por qué estás cancelando?",
+        "fi": "Miksi peruutat?",
+        "fr": "Pourquoi annulez-vous?",
+        "he": "מדוע אתה מבטל?",
+        "hi": "आप रद्द क्यों कर रहे हैं?",
+        "hr": "Zašto otkazujete?",
+        "hu": "Miért mondja le?",
+        "id": "Mengapa Anda membatalkan?",
+        "it": "Perché stai annullando?",
+        "ja": "なぜキャンセルするのですか？",
+        "ko": "왜 취소하시나요?",
+        "ms": "Kenapa anda membatalkan?",
+        "nl": "Waarom annuleer je?",
+        "no": "Hvorfor kansellerer du?",
+        "pl": "Dlaczego anulujesz?",
+        "pt": "Por que você está cancelando?",
+        "ro": "De ce anulați?",
+        "ru": "Почему вы отменяете?",
+        "sk": "Prečo rušíte?",
+        "sv": "Varför avbokar du?",
+        "th": "ทำไมคุณถึงยกเลิก?",
+        "tr": "Neden iptal ediyorsunuz?",
+        "uk": "Чому ви скасовуєте?",
+        "vi": "Tại sao bạn hủy?",
+        "zh": "你为什么要取消？"
+      }
+    }
+  }
+}

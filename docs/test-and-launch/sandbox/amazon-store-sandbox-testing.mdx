@@ -18,6 +18,10 @@ There are three different testing environments in Amazon ([official docs](https:
 While Offerings will load in the App Tester environment, **RevenueCat will only validate purchases in the Live App Testing environment**.
 :::
 
+:::warning
+Amazon provides the option to accelerate timelines for sandbox testing. This is currently not supported by RevenueCat and it can cause wrong timestamps to appear in events. 
+:::
+
 We recommend starting by configuring the App Tester with the same products configured in the RevenueCat dashboard, which will let you get offerings and test how your paywall screen looks. 
 
 When you're ready to test purchasing the products, start a Live App test with a debug APK and download the app in the device via the Amazon Appstore. The installed app should be able to process the purchases and you can test the whole integration. You can also attach the Android Studio debugger to that debug APK downloaded from the Amazon Appstore if needed.

@@ -64,6 +64,8 @@ It's okay to add many apps on the same platform under one project. For example, 
 However, if you have multiple iOS apps that all function independently and don't plan to have a shared subscription you should add them each under different projects.
 :::
 
+If you have multiple apps in RevenueCat but they are a single app in App Store Connect/Google Play Console such as in the case of a development and production app, these should have the same bundle id/package name and in-app purchase/service credentials. If they are different apps, these should have separate identifiers and credentials. 
+
 ### Transferring a Project to Another RevenueCat Account
 
 To transfer specific projects from one account to another, [contact RevenueCat support](https://app.revenuecat.com/settings/support) for assistance.

@@ -1,0 +1,249 @@
+---
+title: Configuring the Customer Center
+slug: customer-center-configuration
+hidden: false
+---
+
+:::warning Beta Feature
+RevenueCat's Customer Center is currently in beta, and only available on iOS 15.0+ at the moment. Feedback is welcome!
+:::
+
+## Overview
+
+Customer Center is a self-service UI that can be added to your app to help your customers manage their subscriptions on their own. With it, you can prevent churn with pre-emptive promotional offers, capture actionable customer data with exit feedback prompts, and lower support volumes for common inquiries — all without any help from your support team.
+
+## Configuration
+
+To configure the Customer Center, locate the Monetization Tools section of your Project Settings and click on **Customer Center**. The default configuration includes a set of paths, feedback surveys, and promotional offers that can be used immediately once your promotional offers are configured; or you can customize the configuration to your specific needs.
+
+### What's configured by default
+
+All four paths are configured by default:
+
+- Cancellation
+- Refund Request
+- Plan changes
+- Missing Purchases
+
+The cancellation path is configured with a feedback survey with the following response options:
+
+1. "Too expensive"
+2. "Don't use the app"
+3. "Bought by mistake"
+
+By default, if your customer selects "Too expensive" or "Don't use the app", they'll receive the promotional offer `rc_cancel_offer`; while customers selecting "Bought by mistake" will receive the promotional offer `rc_refund_offer`. And of course, you can customize these responses and what (if anything) is offered to your liking.
+
+If your customer selects Refund Request, they'll be given the `rc-refund-offer` by default.
+
+:::warning Offers must be created in App Store Connect
+In order for these promotional offers to be given to your customers, they must be first be created in App Store Connect. [Learn more.](https://www.revenuecat.com/docs/tools/customer-center/customer-center-integration#setting-up-promotional-offers)
+:::
+
+If your customer selects Missing Purchases, they'll be prompted to restore purchases.
+
+![Customer Center Missing Purchases](/images/customer-center-missing-purchases.PNG)
+
+The available paths, their feedback surveys, and all associated promotional offers can be customized through **Advanced configuration**. [Learn more.](https://www.revenuecat.com/docs/tools/customer-center/customer-center-configuration#advanced-configuration)
+
+### Support email
+
+The support email is the email address that will be used to send emails to your customer in the following cases:
+
+- If your customer chooses the "Missing Purchase" path, where they can contact you if they have trouble restoring their purchase.
+- It is also used if the user is trying to manage a subscription that is not an Apple subscription, for example a Play Store subscription.
+
+### Color customization
+
+By default, the Customer Center will use your app's default color scheme throughout, ensuring a native look and feel.
+
+However, you can also customize the colors of the Customer Center through the UI or the configuration JSON.
+
+Here's how the color settings work:
+
+- **Accent Color**: This color is used throughout the entire Customer Center for various UI elements like buttons. If not set, the app's default accent color will be used.
+
+- **Background Color**: This color only applies to the promotional offers views. If not set, the app's default background color will be used.
+
+- **Text Color**: This color only applies to the text in the promotional offers views. If not set, the app's default text color will be used.
+
+- **Button Text Color**: This color only applies to the text in the promotional offers button. If not set, the app's default text color will be used.
+
+- **Button Background Color**: This color only applies to the background of the promotional offers button. If not set, the app's default background color will be used.
+
+:::tip
+Remember, except for the accent color, these color settings only affect the promotional offers views. The rest of the Customer Center will use your app's default colors to maintain consistency with your app's overall design.
+:::
+
+In addition, there are light and dark theme variants available, which you can set both in the UI and in the configuration JSON.
+
+## Advanced configuration
+
+### Strings localization
+
+The default configuration has been localized for 32 languages. If you want to customize the strings for a specific language, you can do so by editing the JSON. Make sure the IDs are correctly referenced in the other parts of the JSON.
+
+If your app doesn't support this many languages, you can remove the languages you don't support to simplify the JSON. Make sure to also remove the locale from the `supported` JSON array as well.
+
+A default locale can be set by editing the `default` field in the JSON inside the `localization` JSON object. This is the fallback language that will be used if the user's language is not supported.
+
+Here's an example of what the localization JSON section looks like:
+
+import customerCenterLocalization from "!!raw-loader!@site/code_blocks/tools/customer-center-localization.json";
+
+<RCCodeBlock
+  tabs={[{ type: "json", content: customerCenterLocalization, name: "JSON" }]}
+/>
+
+#### Screens
+
+The Customer Center is composed of different screens that customers can navigate through. The main screens are defined in the `screens` object of the configuration JSON. Here's an example of how the screens are configured:
+
+import customerCenterScreens from "!!raw-loader!@site/code_blocks/tools/customer-center-screens.json";
+
+<RCCodeBlock
+  tabs={[{ type: "json", content: customerCenterScreens, name: "JSON" }]}
+/>
+
+This configuration defines two main screens:
+
+1. **MANAGEMENT**: This is the main screen customers see when they have an active subscription. It contains several paths (or actions) that customers can take:
+
+   - Missing Purchase
+   - Refund Request
+   - Change Plans
+   - Cancel Subscription
+
+2. **NO_ACTIVE**: This screen is shown when the user doesn't have an active subscription. It typically only offers the option to restore purchases.
+
+You can customize these screens by:
+
+- Adding or removing paths
+- Changing the order of the paths
+- Modifying the title and subtitle keys to reference different localized strings
+
+#### Paths
+
+Paths define the different actions customers can take within the Customer Center. Each path has a unique configuration that determines its behavior. Here's an example of how paths are configured:
+
+import customerCenterPaths from "!!raw-loader!@site/code_blocks/tools/customer-center-paths.json";
+
+<RCCodeBlock
+  tabs={[{ type: "json", content: customerCenterPaths, name: "JSON" }]}
+/>
+
+Let's break down the configuration for each path:
+
+1. **Missing Purchase** (`MISSING_PURCHASE`): Used for restoring previous purchases.
+
+2. **Refund Request** (`REFUND_REQUEST`): Allows customers to request refunds.
+
+3. **Change Plans** (`CHANGE_PLANS`): Enables customers to switch between different subscription plans.
+
+4. **Cancel** (`CANCEL`): Provides an option for customers to cancel their subscription.
+
+Key points about paths:
+
+- Each path has a unique `id`, `title_key` for localization, and `type` that defines its functionality.
+- Paths can include `promotional_offer_key` to present discounts to customers. The `REFUND_REQUEST` path in the above example has a promotional offer configured.
+- Paths can include a `feedback_survey` to gather information from customers. The `CANCEL` path demonstrates in the example above how to include a feedback survey with multiple options.
+- Survey options can have their own `promotional_offer_key` for targeted retention efforts.
+
+You can customize these paths by:
+
+- Adding or removing paths to change available actions.
+- Modifying the `title_key` to change the displayed text (ensure the key exists in your localization configuration).
+- Adding or adjusting `promotional_offer_key` to change or introduce discount offers.
+- Adding or adjusting `feedback_survey` to change or introduce feedback surveys.
+
+#### Feedback surveys
+
+Any path can have a feedback survey attached to it with a question & answers that you configure. You might set one up to:
+
+- Understand why customers are looking to cancel their subscription
+- Uncover unmet expectations that led to a refund request, or
+- Attempt to persuade customers to change their mind by delivering a promotional offer based on their specific feedback
+
+### Promotional offers
+
+Promotional offers can be attached to any feedback survey option or path to provide an extended trial, discounted price, or another offer of your choosing.
+
+:::warning Offers must be created in App Store Connect
+In order for these promotional offers to be given to your customers, they must be first be created in App Store Connect. [Learn more.](https://www.revenuecat.com/docs/tools/customer-center/customer-center-integration#setting-up-promotional-offers)
+:::
+
+#### Adding promotional offers
+
+Promotional offers are defined in the `promotional_offers` object of the configuration JSON. Each offer has a unique key that can be referenced from paths or feedback survey options. Here's an example of how promotional offers are configured:
+
+import customerCenterPromotionalOffers from "!!raw-loader!@site/code_blocks/tools/customer-center-promotional-offers.json";
+
+<RCCodeBlock
+  tabs={[
+    { type: "json", content: customerCenterPromotionalOffers, name: "JSON" },
+  ]}
+/>
+
+Key points about promotional offers:
+
+- Each offer has a unique key (e.g., `cancel_promo_offer_key`, `refund_promo_offer_key`).
+- The `eligibility` array defines conditions for when the offer can be presented.
+- `ios_offer_id` must correspond to an offer you've created in App Store Connect.
+- `title_key` and `subtitle_key` reference localized strings for the offer's display text.
+
+To use these offers, you link them from paths or feedback survey options using the `promotional_offer_key`. For example:
+
+1. Linking a path to a promotional offer:
+
+import customerCenterPathWithPromoOffer from "!!raw-loader!@site/code_blocks/tools/customer-center-path-with-promo-offer.json";
+
+<RCCodeBlock
+  tabs={[
+    { type: "json", content: customerCenterPathWithPromoOffer, name: "JSON" },
+  ]}
+/>
+
+2. Linking a feedback survey option to a promotional offer:
+
+import customerCenterSurveyOptionWithPromoOffer from "!!raw-loader!@site/code_blocks/tools/customer-center-survey-option-with-promo-offer.json";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "json",
+      content: customerCenterSurveyOptionWithPromoOffer,
+      name: "JSON",
+    },
+  ]}
+/>
+
+By configuring promotional offers this way, you can create targeted discount strategies for different user actions or feedback responses.
+
+#### Eligibility conditions for promotional offers
+
+You can customize a promotional offer's eligibility by setting conditions in the `eligibility` array. This allows you to control when and to whom the offer is presented. There are two types of conditions you can use:
+
+1. `FIRST_SEEN`: This condition is based on when the user was first seen by RevenueCat.
+2. `TIME_SINCE_FIRST_PURCHASE`: This condition is based on the time elapsed since the user's first purchase.
+
+For both condition types, you can set the comparison to be either `GREATER` or `SMALLER`, allowing you to target customers based on how long they've been using the app or how long they've been customers.
+
+Here's an example of how to set up eligibility conditions:
+
+import customerCenterEligibilityConditions from "!!raw-loader!@site/code_blocks/tools/customer-center-eligibility-conditions.json";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "json",
+      content: customerCenterEligibilityConditions,
+      name: "JSON",
+    },
+  ]}
+/>
+
+In this example:
+
+- The `long_time_user_offer` will only be presented to customers who were first seen more than 30 days ago.
+- The `new_purchaser_offer` will only be presented to customers who made their first purchase less than 7 days ago.
+
+By using these eligibility conditions, you can create targeted offers for different segments of your user base, potentially increasing the effectiveness of your retention strategies.

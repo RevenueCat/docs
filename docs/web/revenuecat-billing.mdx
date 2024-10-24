@@ -11,16 +11,9 @@ RevenueCat Billing and the RevenueCat Web SDK are currently in beta.
 
 ## Introduction
 
-RevenueCat Billing and the Web SDK allow you to easily offer web subscriptions. The feature is currently in beta and has a number of known limitations. Most notably:
+RevenueCat Billing and the Web SDK allow you to easily offer web subscriptions. It utilizes Stripe as the payment gateway. This means you will need to set up and [connect your Stripe account](/web/connect-stripe-account) to RevenueCat. 
 
-- Only USD is currently supported (multi-currency support will follow later)
-- Only subscriptions are currently supported, no one-time purchases
-- There is no support for sales tax or VAT calculation
-- There is no support for discounts or other offers
-- There is no support for our Paywall templates yet
-- Apple Pay and Google Pay are not currently supported as payment methods
-
-Currently, RevenueCat Billing supports using Stripe as the payment gateway. This differs from our [Stripe Billing / Stripe Checkout](/web/stripe) integration in that RevenueCat Billing takes care of the purchase UI, the subscription management portal, and the recurring billing logic. Stripe will still charge a [payment processing fee](https://stripe.com/pricing) if you use RevenueCat Billing, but you will not have to pay [Stripe Billing / Checkout fees](https://stripe.com/billing/pricing).
+RevenueCat Billing differs from our [Stripe Billing / Stripe Checkout](/web/stripe) integration in that it takes care of the purchase UI, the subscription management portal, and the recurring billing logic. Stripe will still charge a [payment processing fee](https://stripe.com/pricing) if you use RevenueCat Billing, but you will not have to pay [Stripe Billing / Checkout fees](https://stripe.com/billing/pricing).
 
 ## Installation
 
@@ -36,11 +29,18 @@ import yarnContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/ins
   ]}
 />
 
+<br />
+
+:::info
+When testing RevenueCat Billing with [unpkg](https://www.unpkg.com/), add `Purchases` before all method names to access them.
+For example, use `Purchases.Purchases.configure()` instead of `Purchases.configure()`.
+:::
+
 ## General setup
 
 ### Connect with Stripe
 
-To get started, you first need to connect your Stripe account with RevenueCat, if you haven't already done so follow the instructions [here](/web/connect-stripe-account).
+To get started, you first need to [connect your Stripe account with RevenueCat](/web/connect-stripe-account), if you haven't already done so. 
 
 ### App configuration
 
@@ -51,6 +51,8 @@ To start using RevenueCat Billing, you will need to add a RevenueCat Billing App
 In the following step, you can set up the most important information for the new App:
 
 - **App Name**: The name of the app. This will also be shown in the purchase flow, in emails, and on invoices.
+- **Stripe Account**: The Stripe account to use. To use a different Stripe account not shown in the list, [connect it to RevenueCat first](/web/connect-stripe-account).
+- **Default Currency**: The default currency to use for the prices of the products. [Read more about multi-currency support in RevenueCat Billing](/web/revenuecat-billing/multi-currency-support).
 - **Seller Company Name**: The name of your company. This will also be shown in the purchase flow, in emails, and on invoices.
 - **Support Email**: An email address that customers can send support requests to. This will also be shown in the purchase flow, in emails, and on invoices.
 
@@ -164,6 +166,19 @@ We recommend using [Offerings](/getting-started/entitlements#offerings) to confi
   ]}
 />
 
+If you want to [support multiple currencies](/web/revenuecat-billing/multi-currency-support) and manually specify the currency, you can pass the currency code to the `getOfferings()` method. If you do not specify the currency, RevenueCat will attempt to geolocate the customer and use the currency of the customer's country if it's available, or fall back to the default currency of the app.
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Get current offerings for EUR",
+    },
+  ]}
+/>
+
 It's also possible to access other Offerings besides the Current Offering directly by its identifier.
 
 <RCCodeBlock
@@ -231,3 +246,13 @@ In contrast to mobile app stores, there is no intermediary between you and the c
 :::
 
 If you use the RevenueCat Billing sandbox API key, Stripe's test mode will be used automatically, and you can use one of Stripe's [test cards](https://docs.stripe.com/testing) to make purchases.
+
+## Current limitations
+
+RevenueCat Billing currently has a number of known limitations. Most notably:
+
+- Only subscriptions are currently supported, no one-time purchases
+- There is no support for sales tax or VAT calculation
+- There is no support for discounts or other offers
+- There is no support for our Paywall templates yet
+- Apple Pay and Google Pay are not currently supported as payment methods

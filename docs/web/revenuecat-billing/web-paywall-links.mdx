@@ -58,13 +58,13 @@ If you choose to show a download page here's how it will look like:
 
 ![](/images/rc-billing/web-paywall-link-success-example.png)
 
-You can customize the:
-* The header
-* The subheader
-* Choose to show or not the app download buttons
+You can customize the download page:
+* Header
+* Subheader
+* Choose whether to show the app download buttons
 * Configure the links for
-	* App Store
-	* Play Store
+* App Store
+* Play Store
 
 ![](/images/rc-billing/web-paywall-link-success-config.png)
 
@@ -82,11 +82,31 @@ As soon as you click save, any subscriber visiting your Web Paywall Link will se
 You can always run tests by creating a Web Paywall Link for another offering.
 :::
 
+## Choose what happens for returning customers
+You can choose what happens when a customer already has an entitlement or an active subscription and they return to this page.
+
+![](/images/rc-billing/web-paywall-link-choose-returning-customers.png)
+
+### Show the success page
+Automatically skips the Package Selection page. It will use the configuration you set up for the success page (show a download page or redirect to a custom URL).
+
+### Allow them to make another purchase
+Allows the returning customer to purchase another product.
+
+:::warning Might fail when purchasing
+This configuration is useful for non-consumable products.
+The re-purchase process will fail if the customer tries to purchase the exact same product twice (subscription or non-consumable).
+
+We suggest to create a dedicated offering/web paywall link for non-consumables to make sure all products can be bought as many times as the customer wants.
+:::
+
 ## Sending your Web Paywall Links
 
-Once you finalize your setup you will receive 2 links:
-* A production URL that looks like `https://pay.rev.cat/<someProductionTokenWeGenerate>/<yourAppUserId>`
-* A sandbox URL that looks like `https://pay.rev.cat/<someSandboxTokenWeGenerate>/<yourAppUserId>`
+Once you finalize your setup you will receive 2 links of the form `https://pay.rev.cat/<someProductionTokenWeGenerate>/<yourAppUserId>` (one for production, the other one for sandbox).
+
+To use these links, you will need to **append the App User ID of the customer** ([URL encoded](https://www.w3schools.com/tags/ref_urlencode.ASP)) you want to be able to subscribe from the link. Without appending the app user ID, the link will not work.
+
+![](/images/rc-billing/web-paywall-link-urls.png)
 
 :::danger Do not send the sandbox URL to customers
 The Sandbox URL allows you to test purchases using [Stripe test card numbers](https://docs.stripe.com/testing#use-test-cards).
@@ -97,13 +117,12 @@ of the Stripe testing cards.
 :::warning Use one unique App User ID per customer
 RevenueCat Billing works with identified customers. You need to specify a unique app user id for each one of the subscribers you
 want to reach with this link. You can read more about this requirement [here](/web/revenuecat-billing#identifying-customers).
-
-If you don't add an App User ID to the link it will redirect to https://www.revenuecat.com/.
 :::
 
-
-![](/images/rc-billing/web-paywall-link-urls.png)
-
 ### URL parameters
+
+#### Email
 If you already have your customer's email address, use `email` to preset an email address on the payment page: `https://pay.rev.cat/<someProductionTokenWeGenerate>/<yourAppUserId>?email=<customerEmail>`
 
+#### Currency
+If you want to specify a currency manually, you can do so by appending the `currency` query parameter to the URL. This will override the automatic currency selection.

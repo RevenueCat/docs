@@ -70,6 +70,7 @@ const gettingStartedCategory = Category({
           label: "RevenueCat Billing Product Setup",
           slug: "/web/revenuecat-billing/product-setup",
         }),
+        Page({ slug: "roku-products"}),
       ],
     }),
     SubCategory({
@@ -88,6 +89,7 @@ const gettingStartedCategory = Category({
         Page({ slug: "web-sdk" }),
         Page({ slug: "macos" }),
         Page({ slug: "app-builders" }),
+        Page({ slug: "roku"}),
       ],
     }),
     SubCategory({
@@ -160,7 +162,9 @@ const webPurchasesCategory = Category({
       items: [
         Page({ slug: "product-setup" }),
         Page({ slug: "subscription-lifecycle" }),
+        Page({ slug: "multi-currency-support" }),
         Page({ slug: "managing-customer-subscriptions" }),
+        Page({ slug: "refunding-payments" }),
         Page({ slug: "customer-portal" }),
         Page({ slug: "web-paywall-links" }),
       ],
@@ -288,6 +292,7 @@ const dashboardCategory = Category({
     Page({ slug: "customer-lists" }),
     Page({ slug: "taxes-and-commissions" }),
     Page({ slug: "performance-summaries" }),
+    Page({ slug: "display-currency"}),
     Page({ slug: "supporting-your-customers" }),
     Page({ slug: "audit-logs" }),
   ],
@@ -334,6 +339,15 @@ const toolsCategory = Category({
         Page({ slug: "custom-attributes" }),
       ],
     }),
+    SubCategory({
+      label: "Customer Center",
+      slug: "customer-center",
+      itemsPathPrefix: "customer-center/",
+      items: [
+        Page({ slug: "customer-center-integration" }),
+        Page({ slug: "customer-center-configuration" }),
+      ],
+    }),
     Page({ slug: "paywall-orchestration-with-offerings" }),
   ],
 });
@@ -354,6 +368,7 @@ const integrationsCategory = Category({
         Page({ slug: "appsflyer" }),
         Page({ slug: "branch" }),
         Page({ slug: "facebook-ads" }),
+        Page({ slug: "kochava" }),
         Page({ slug: "singular" }),
         Page({ slug: "splitmetrics-acquire" }),
         Page({ slug: "tenjin" }),
@@ -482,6 +497,7 @@ const serviceCredentialsCategory = Category({
       items: [Page({ slug: "google-play-checklists" })],
     }),
     Page({ slug: "amazon-appstore-credentials" }),
+    Page({ slug: "roku-credentials"}),
   ],
 });
 

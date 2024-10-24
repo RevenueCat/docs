@@ -57,6 +57,7 @@ const Languages = {
   capacitor: "capacitor",
   typescript: "ts",
   svelte: "svelte",
+  brightscript: "brightscript",
 };
 
 RCCodeBlock.languages = Languages;
@@ -97,6 +98,8 @@ function getTabTitle(type) {
       return "Capacitor";
     case "typescript":
       return "TypeScript";
+    case "brightscript":
+        return "BrightScript";
     default:
       return "Code";
   }
@@ -132,6 +135,8 @@ function getLanguageType(type) {
       return "tsx";
     case "svelte":
       return "html";
+    case "brightscript":
+        return "brightscript";
     default:
       return "Code";
   }

@@ -1,0 +1,4 @@
+{
+  code: 1234,
+  message: "There as an error",
+}

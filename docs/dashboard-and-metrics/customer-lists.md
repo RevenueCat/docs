@@ -99,6 +99,10 @@ Customer lists are refreshed every 2 hours automatically
 Filters allow you to choose which customers appear in your list. You can create custom lists with any combination of filters. **All filters are applied as AND filters**.
 ![](/images/customer_list_filters.png "Customer List Filters")
 
+:::info Duplicating a Customer List
+If you would like to create another version of a List with further filters, you can open the filters menu and click the "Create New List" button, which will become clickable after adding the additional filters that you would like to be applied to the new version. Once you click the button, it will show a prompt to name this new Customer List, which will be created after you name it. The original Customer List will remain the same without the newly-added filters. 
+:::
+
 See the table below for all filters you can apply to your lists.
 
 | Filter                         | Type         | Description                                                                                                                |
