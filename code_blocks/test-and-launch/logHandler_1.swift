@@ -16,7 +16,6 @@ let handler: (LogLevel, String) -> Void  = { level, message in
     }
 }
 
-
 // After configuring a custom log handler, set the `logHandler` property on Purchases
 Purchases.logHandler = handler
 Purchases.configure(withAPIKey: <public_sdk_key>, appUserID: <my_app_user_id>)
