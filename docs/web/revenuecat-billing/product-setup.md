@@ -21,6 +21,10 @@ In the "new product" screen, you can set up the following properties of the prod
 - **Title**: Customer-facing title of the Product. Will be shown in the checkout form and on invoices.
 - **Description**: Customer-facing description of the Product. Available from the Web SDK, eg. to show on your paywall.
 - **Display name**: An optional human readable name for the Product, will be shown on the dashboard instead of the identifier.
+- **Product type**: The type of product being sold:
+    - *Auto-renewing subscription*: A recurring subscription purchase, that continues on a given interval until canceled.
+    - *Consumable*: A non-recurring purchase that can be purchased one or more times (repeated).
+    - *Non-consumable*: A non-recurring purchase that can only be purchased once.
 - **Duration**: The billing cycle (period length) of the subscription.
 - **Free trial period**: The duration of a free trial
 - **Trial eligibility**: Which customers have access to the free trial:
