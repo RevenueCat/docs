@@ -165,6 +165,7 @@ const webPurchasesCategory = Category({
         Page({ slug: "subscription-lifecycle" }),
         Page({ slug: "multi-currency-support" }),
         Page({ slug: "managing-customer-subscriptions" }),
+        Page({ slug: "refunding-payments" }),
         Page({ slug: "customer-portal" }),
         Page({ slug: "web-paywall-links" }),
       ],
@@ -339,8 +340,16 @@ const toolsCategory = Category({
         Page({ slug: "custom-attributes" }),
       ],
     }),
+    SubCategory({
+      label: "Customer Center",
+      slug: "customer-center",
+      itemsPathPrefix: "customer-center/",
+      items: [
+        Page({ slug: "customer-center-integration" }),
+        Page({ slug: "customer-center-configuration" }),
+      ],
+    }),
     Page({ slug: "paywall-orchestration-with-offerings" }),
-    Page({ slug: "customer-center" }),
   ],
 });
 

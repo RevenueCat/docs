@@ -29,6 +29,13 @@ import yarnContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/ins
   ]}
 />
 
+<br />
+
+:::info
+When testing RevenueCat Billing with [unpkg](https://www.unpkg.com/), add `Purchases` before all method names to access them.
+For example, use `Purchases.Purchases.configure()` instead of `Purchases.configure()`.
+:::
+
 ## General setup
 
 ### Connect with Stripe
