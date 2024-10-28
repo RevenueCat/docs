@@ -161,6 +161,7 @@ const webPurchasesCategory = Category({
       itemsPathPrefix: "revenuecat-billing/",
       items: [
         Page({ slug: "product-setup" }),
+        Page({ slug: "customization" }),
         Page({ slug: "subscription-lifecycle" }),
         Page({ slug: "multi-currency-support" }),
         Page({ slug: "managing-customer-subscriptions" }),
