@@ -1,4 +1,4 @@
-import Purchases
+import RevenueCat
 
 @main
 struct SampleApp: App {
