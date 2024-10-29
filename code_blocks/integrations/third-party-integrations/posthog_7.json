@@ -1,0 +1,30 @@
+{
+    "api_key": "<posthog_project_api_key>",
+    "distinct_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+    "timestamp": "2024-10-22T08:34:56.123412Z",
+    "event": "rc_uncancellation_event",
+    "properties": {
+        "insert_id": "d1dca188-6a16-4109-b663-778c0dfe9124",
+        "currency": "USD",
+        "revenue": 0.0,
+        "product_id": "premium",
+        "subscriber_attributes": {},
+        "period_type": "NORMAL",
+        "purchased_at": "2024-10-22T08:34:56Z",
+        "expiration_at": "2024-11-22T08:34:56Z",
+        "entitlement_id": "pro",
+        "entitlement_ids": [
+            "pro"
+        ],
+        "presented_offering_id": "subscription",
+        "transaction_id": "1123142348431",
+        "original_transaction_id": "1123142348431",
+        "aliases": ["$RCAnonymousID:87c6049c58069238dce29853916d624c"],
+        "app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "original_app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "store": "APP_STORE",
+        "app_id": "appe2a3da5a50",
+        "platform": "iOS",
+        "rc_subscription_status": "active"
+    }
+}

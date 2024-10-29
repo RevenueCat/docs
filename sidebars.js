@@ -408,6 +408,7 @@ const integrationsCategory = Category({
         Page({ slug: "slack" }),
         Page({ slug: "statsig" }),
         Page({ slug: "superwall" }),
+        Page({ slug: "posthog" }),
       ],
     }),
     SubCategory({

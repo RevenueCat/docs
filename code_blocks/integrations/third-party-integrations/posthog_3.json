@@ -1,0 +1,32 @@
+{
+    "api_key": "<posthog_project_api_key>",
+    "distinct_id": "123a4b56-7890-12cd-345e-67f90gh1ij1k",
+    "timestamp": "2024-10-22T08:34:56.123412Z",
+    "event": "rc_trial_converted_event",
+    "properties": {
+        "insert_id": "d1dca188-6a16-4109-b663-778c0dfe9124",
+        "currency": "USD",
+        "revenue": 19.99,
+        "product_id": "rc_3999_1y_1w0",
+        "subscriber_attributes": {
+            "$posthogUserId": "123a4b56-7890-12cd-345e-67f90gh1ij1k"
+        },
+        "period_type": "NORMAL",
+        "purchased_at": "2024-10-22T08:34:56Z",
+        "expiration_at": "2024-11-22T08:34:56Z",
+        "entitlement_id": null,
+        "entitlement_ids": [
+            "pro"
+        ],
+        "presented_offering_id": null,
+        "transaction_id": "1123142348431",
+        "original_transaction_id": "1123142348431",
+        "aliases": ["$RCAnonymousID:87c6049c58069238dce29853916d624c"],
+        "app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "original_app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "store": "APP_STORE",
+        "app_id": "appe2a3da5a50",
+        "platform": "iOS",
+        "rc_subscription_status": "active"
+    }
+}
