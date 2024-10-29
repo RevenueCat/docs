@@ -65,7 +65,7 @@ Once that test notification is sent, you can go back to your app config on the R
 ## Tracking new purchases using Google Cloud Pub/Sub
 By default, RevenueCat ignores any Google Cloud Pub/Sub notifications for purchases that have not yet been posted to the RevenueCat API by one of our SDKs or from your own backend. For RevenueCat to track new purchases from Google Cloud Pub/Sub, you can enable the **"Track new purchases from server-to-server notifications"** option in our Dashboard. This allows RevenueCat to process new purchases from server-to-server notifications that are not yet in our system. This ensures all purchases are tracked, even in the case of network issues between your app and RevenueCat’s backend or if your customer was using a version of the app without the RevenueCat SDK.
 
-!!!REMINDER!!! INSERT SCREENSHOT HERE
+![](/images/no_code_toggle.png)
 
 Considerations:
 * RevenueCat will create a subscriber to associate that purchase with.
