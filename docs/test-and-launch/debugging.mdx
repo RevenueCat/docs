@@ -61,7 +61,6 @@ import db9 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_9.js";
     },
 ]}/>
 
-
 :::info OS_ACTIVITY_MODE
 
 On iOS, disabling `OS_ACTIVITY_MODE` in your Xcode scheme will block debug logs from printing in the console. If you have debug logs enabled, but don't see any output, go to `Product -> Scheme -> Edit Scheme...` in Xcode and uncheck the `OS_ACTIVITY_MODE` environment variable.
@@ -173,6 +172,59 @@ import db15 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_12.tx
     {
         type: 'emojis',
         content: db15,
+    },
+]}/>
+
+### Custom Log Handling
+
+You can set a custom log handler for redirecting debug logs to your own logging system. By default, this sends info, warning, and error messages. You can enable this by setting the `logHandler` property. You should set this immediately in your app while testing, **before** you configure Purchases.
+
+import lh1 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_1.swift";
+import lh2 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_2.m";
+import lh3 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_3.kt";
+import lh4 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_4.java";
+import lh5 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_5.js";
+import lh6 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_6.js";
+import lh7 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_7.js";
+import lh8 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_8.js";
+import lh9 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_9.js";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        content: lh1,
+    },
+    {
+        type: 'objc',
+        content: lh2,
+    },
+    {
+        type: 'kotlin',
+        content: lh3,
+    },
+    {
+        type: 'java',
+        content: lh4,
+    },
+    {
+        type: 'rn',
+        content: lh5,
+    },
+    {
+        type: 'flutter',
+        content: lh6,
+    },
+    {
+        type: 'csharp',
+        content: lh7,
+    },
+    {
+        type: 'cordova',
+        content: lh8,
+    },
+    {
+        type: 'capacitor',
+        content: lh9,
     },
 ]}/>
 
