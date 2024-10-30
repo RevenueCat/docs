@@ -1,22 +1,22 @@
 ---
-title: Posthog
+title: PostHog
 slug: posthog
-excerpt: Integrate in-app subscription events from RevenueCat with Posthog
+excerpt: Integrate in-app subscription events from RevenueCat with PostHog
 hidden: false
 ---
 
 :::success Pro Integration
-The Posthog integration is to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
+The PostHog integration is to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
 :::
 
-Posthog can be a useful integration tool for seeing all events and revenue that occur for your app even if it’s not active for a period of time. You can use Posthog’s product analytics to find patterns in customer behavior and inform marketing strategies.
+PostHog can be a useful integration tool for seeing all events and revenue that occur for your app even if it’s not active for a period of time. You can use PostHog's product analytics to find patterns in customer behavior and inform marketing strategies.
 
-With our Posthog integration, you can:
+With our PostHog integration, you can:
 
 - Create a behavioral cohort of customers based on specific actions, such as watching a specific episode of a show after subscribing. Follow a cohort throughout their lifecycle to realize overarching trends.
 - Measure the path of a user from marketing material to the purchase of a subscription.
 
-With accurate and up-to-date subscription data in Posthog, you'll be set to turbocharge your product analytics ⚡️
+With accurate and up-to-date subscription data in PostHog, you'll be set to turbocharge your product analytics ⚡️
 
 ### Integration at a Glance
 
@@ -26,7 +26,7 @@ With accurate and up-to-date subscription data in Posthog, you'll be set to turb
 
 ## Events
 
-The Posthog integration tracks the following events:
+The PostHog integration tracks the following events:
 
 | Event                     | Default Event Name                 | Description                                                                                                                                                                                                                                                                                                                                 | App Store | Play Store | Amazon | Stripe | Promo |
 | ------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---------- | ------ | ------ | ----- |
@@ -43,58 +43,58 @@ The Posthog integration tracks the following events:
 | Billing Issues            | rc_billing_issue_event             | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR.                                                                                                                                          | ✅        | ✅         | ✅     | ✅     | ❌    |
 | Product Change            | rc_product_change_event            | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](/subscription-guidance/managing-subscriptions) for more details on updates, downgrades, and crossgrades.                                                                         | ✅        | ✅         | ❌     | ✅     | ❌    |
 
-For events that have revenue, such as trial conversions and renewals, RevenueCat will automatically record this amount along with the event in Posthog.
+For events that have revenue, such as trial conversions and renewals, RevenueCat will automatically record this amount along with the event in PostHog.
 
 ## Setup
 
-### 1. Set Posthog User Identity
+### 1. Set PostHog User Identity
 
-In order to associate RevenueCat data with a Posthog User, the RevenueCat `$posthogUserId` [Attribute](/customers/customer-attributes) should be set in RevenueCat. If this field does not exist, RevenueCat will fallback to the RevenueCat app user ID. You can read more about Posthog user profiles in Posthog's [Identifying users](https://posthog.com/docs/product-analytics/identify) documentation.
+In order to associate RevenueCat data with a PostHog User, the RevenueCat `$posthogUserId` [Attribute](/customers/customer-attributes) should be set in RevenueCat. If this field does not exist, RevenueCat will fallback to the RevenueCat app user ID. You can read more about PostHog user profiles in PostHog's [Identifying users](https://posthog.com/docs/product-analytics/identify) documentation.
 
-### 2. Send RevenueCat Events to Posthog
+### 2. Send RevenueCat Events to PostHog
 
-After you've set up the Purchase SDK and Posthog SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
+After you've set up the Purchase SDK and PostHog SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
 
 1. Navigate to your app in the RevenueCat and find the _Integrations_ card in the left menu. Select **+ New**
 
 ![](/images/82692c7-app.revenuecat.com_projects_85ff18c7_collaborators_1_73d6dc81e85972dbbc157674b1182fb8.png)
 
-2. Choose **Posthog** from the Integrations menu
-3. Add your Posthog [Project API key](https://posthog.com/docs/api) to the **API key** field in RevenueCat. The integration uses only public endpoints, so there is no need to set up personal API keys.
+2. Choose **PostHog** from the Integrations menu
+3. Add your PostHog [Project API key](https://posthog.com/docs/api) to the **API key** field in RevenueCat. The integration uses only public endpoints, so there is no need to set up personal API keys.
 4. Enter the event names that RevenueCat will send or choose the default event names
 5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
-![Posthog configuration page](/images/posthog_integration_setup.png "Posthog configuration page")
+![PostHog configuration page](/images/posthog_integration_setup_2.png "PostHog configuration page")
 
-:::info Posthog sandbox environment
-Posthog recommends having a production and sandbox project to separate live and testing environments. You can input both keys in the RevenueCat Posthog settings page.
+:::info PostHog sandbox environment
+PostHog recommends having a production and sandbox project to separate live and testing environments. You can input both keys in the RevenueCat PostHog settings page.
 :::
 
-## Testing the Posthog integration
+## Testing the PostHog integration
 
 ### Make a sandbox purchase with a new user
 
 Simulate a new user installing your app, and go through your app flow to complete the [sandbox purchase](/test-and-launch/sandbox).
 
-### Check that the Posthog event delivered successfully
+### Check that the PostHog event delivered successfully
 
-While still on the Customer View, select the purchase event in the [Customer History](/dashboard-and-metrics/customer-history) page and make sure that the Posthog integration event exists and was delivered successfully.
+While still on the Customer View, select the purchase event in the [Customer History](/dashboard-and-metrics/customer-history) page and make sure that the PostHog integration event exists and was delivered successfully.
 
-![Check that the Posthog event was delivered](/images/posthog_event_details.png "Check that the Posthog event was delivered")
+![Check that the PostHog event was delivered](/images/posthog_event_details.png "Check that the PostHog event was delivered")
 
-### Check the Posthog dashboard for the delivered event
+### Check the PostHog dashboard for the delivered event
 
-Navigate to your Posthog dashboard > People and groups. In the 'People &amp; groups' tab, you will see the event's user created as a Person.
+Navigate to your PostHog dashboard > People and groups. In the 'People &amp; groups' tab, you will see the event's user created as a Person.
 
-![Check that a Posthog Person has been created](/images/posthog_people_and_groups.png "Check that a Posthog Person has been created")
+![Check that a PostHog Person has been created](/images/posthog_people_and_groups.png "Check that a PostHog Person has been created")
 
-Navigate to your Posthog dashboard > Data management. In the 'Events' tab, you will see events RevenueCat has dispatched to Posthog.
+Navigate to your PostHog dashboard > Data management. In the 'Events' tab, you will see events RevenueCat has dispatched to PostHog.
 
-![Check that a Posthog Event has been created](/images/posthog_events_list.png "Check that a Posthog Event has been created")
+![Check that a PostHog Event has been created](/images/posthog_events_list.png "Check that a PostHog Event has been created")
 
 ## Sample Events
 
-Below are sample JSONs that are delivered to Posthog for events.
+Below are sample JSONs that are delivered to PostHog for events.
 
 import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/posthog_1.json";
 import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/posthog_2.json";
@@ -118,7 +118,7 @@ import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/t
 
 ## Subscription Status Attribute
 
-Whenever RevenueCat sends an event to Posthog, we'll update the `rc_subscription_status` user attribute with any applicable changes, using one of the following values:
+Whenever RevenueCat sends an event to PostHog, we'll update the `rc_subscription_status` user attribute with any applicable changes, using one of the following values:
 
 | Status              | Description                                                                                                                                |
 | :------------------ | :----------------------------------------------------------------------------------------------------------------------------------------- |

@@ -404,11 +404,11 @@ const integrationsCategory = Category({
         Page({ slug: "mixpanel" }),
         Page({ slug: "mparticle" }),
         Page({ slug: "onesignal" }),
+        Page({ slug: "posthog" }),
         Page({ slug: "segment" }),
         Page({ slug: "slack" }),
         Page({ slug: "statsig" }),
         Page({ slug: "superwall" }),
-        Page({ slug: "posthog" }),
       ],
     }),
     SubCategory({
