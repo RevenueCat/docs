@@ -68,7 +68,9 @@ If you have multiple apps in RevenueCat but they are a single app in App Store C
 
 ### Transferring a Project to Another RevenueCat Account
 
-To transfer specific projects from one account to another, [contact RevenueCat support](https://app.revenuecat.com/settings/support) for assistance.
+To transfer specific projects from one account to another, [contact RevenueCat support](https://app.revenuecat.com/settings/support) for assistance. At this time only entire projects can be transferred, this cannot be done on an app-level.
+
+If you are changing the App Store Connect or Google Developer account, this will require credentials to be regenerated for both. For Apple, these are the [app-specific shared secret](https://www.revenuecat.com/docs/service-credentials/itunesconnect-app-specific-shared-secret), the [in-app purchase key](https://www.revenuecat.com/docs/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration), and the [App Store Connect API key](https://www.revenuecat.com/docs/service-credentials/itunesconnect-app-specific-shared-secret/app-store-connect-api-key-configuration). The new owner will want to make sure their Paid Applications Agreement is signed with Apple. For Google, these are the [service credentials](https://www.revenuecat.com/docs/service-credentials/creating-play-service-credentials). To reduce any downtime, we recommend the new owner generate these credentials in advance and test them on a RevenueCat project to make sure they are validated and working before the transfer.
 
 ## Invite your team
 
