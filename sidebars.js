@@ -450,6 +450,7 @@ const platformResourcesCategory = Category({
         Page({ slug: "apple-family-sharing" }),
         Page({ slug: "legacy-mac-apps" }),
         Page({ slug: "swiftui-helpers" }),
+        Page({ slug: "handling-refund-requests"},)
       ],
     }),
     SubCategory({
