@@ -1,5 +1,5 @@
 {
-    "api_key": "<posthog_project_api_key>",
+    "api_key": "<PostHog project API key>",
     "distinct_id": "123a4b56-7890-12cd-345e-67f90gh1ij1k",
     "timestamp": "2024-10-22T08:34:56.123412Z",
     "event": "rc_trial_converted_event",

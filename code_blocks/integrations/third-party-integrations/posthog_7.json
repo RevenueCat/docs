@@ -1,5 +1,5 @@
 {
-    "api_key": "<posthog_project_api_key>",
+    "api_key": "<PostHog project API key>",
     "distinct_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
     "timestamp": "2024-10-22T08:34:56.123412Z",
     "event": "rc_uncancellation_event",
