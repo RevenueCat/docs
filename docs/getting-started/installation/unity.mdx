@@ -58,6 +58,18 @@ The Purchases package will include a MonoBehavior called Purchases. This will be
 
 `StoreKit` should automatically be linked. If you run into any issues, add *StoreKit.framework* to *Linked Frameworks and Libraries* in Xcode.
 
+### Set the correct launchMode (Android only)
+
+Depending on your user's payment method, they may be asked by Google Play to verify their purchase in their (banking) app. This means they will have to background your app and go to another app to verify the purchase. If your Activity's `launchMode` is set to anything other than `standard` or `singleTop`, backgrounding your app can cause the purchase to get cancelled. To avoid this, set the `launchMode` of your Activity to `standard` or `singleTop` in your Android project's `AndroidManifest.xml` file:
+
+import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_launchmode.xml";
+
+<RCCodeBlock tabs={[
+    { type: 'xml', content: launchModeContent, name: 'AndroidManifest.xml' }
+]} />
+
+You can find Android's documentation on the various `launchMode` options [here](https://developer.android.com/guide/topics/manifest/activity-element#lmode).
+
 ### Subclass Purchases.Listener MonoBehavior
 
 The Purchases behavior takes one additional parameter, a GameObject with a Purchases.Listener component. This will be where you handle purchase events, and updated subscriber information from RevenueCat. Here is a simple example:

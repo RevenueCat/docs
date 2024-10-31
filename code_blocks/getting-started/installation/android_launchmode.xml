@@ -1,0 +1,3 @@
+<activity 
+    android:name="com.your.Activity"
+    android:launchMode="standard" />  <!-- or singleTop -->
