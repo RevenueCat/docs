@@ -263,6 +263,7 @@ const dashboardCategory = Category({
         Page({ slug: "monthly-recurring-revenue-movement-chart" }),
         Page({ slug: "monthly-recurring-revenue-mrr-chart" }),
         Page({ slug: "new-paid-subscriptions-chart" }),
+        Page({ slug: "new-customers-chart" }),
         Page({ slug: "new-trials-chart" }),
         Page({ slug: "non-subscription-purchases-chart" }),
         Page({ slug: "prediction-explorer" }),
