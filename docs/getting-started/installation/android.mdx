@@ -47,6 +47,18 @@ import xmlContent from "!!raw-loader!@site/code_blocks/getting-started/installat
 ]} />
 :::
 
+### Set the correct launchMode
+
+Depending on your user's payment method, they may be asked by Google Play to verify their purchase in their (banking) app. This means they will have to background your app and go to another app to verify the purchase. If your Activity's `launchMode` is set to anything other than `standard` or `singleTop`, backgrounding your app can cause the purchase to get cancelled. To avoid this, set the `launchMode` of your Activity to `standard` or `singleTop` in your `AndroidManifest.xml` file, like so:
+
+import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_launchmode.xml";
+
+<RCCodeBlock tabs={[
+    { type: 'xml', content: launchModeContent, name: 'AndroidManifest.xml' }
+]} />
+
+You can find Android's documentation on the various `launchMode` options [here](https://developer.android.com/guide/topics/manifest/activity-element#lmode).
+
 ## Amazon
 
 ### Additional Dependencies
