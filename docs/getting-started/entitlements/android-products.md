@@ -110,6 +110,10 @@ This is related to this notice:
 
 If you are relying solely on RevenueCat for your subscriptions, you can safely select "Make editable".
 
+## Editing products
+
+You can edit pricing, naming, and other metadata of products in Google Play Console and those changes will be available in your app within a few hours.
+
 ## Integrate with RevenueCat
 
 If you're ready to integrate your new Google Play in-app product with RevenueCat, continue our [product setup guide ](/getting-started/entitlements).
