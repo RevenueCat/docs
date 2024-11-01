@@ -128,6 +128,7 @@ Attribute keys beginning with `$` are reserved for RevenueCat. The current list 
 | `$ip`                    | The IP address of the device.                                |
 | `$email`                 | Email address for the user.                                  |
 | `$phoneNumber`           | Phone number for the user.                                   |
+| `$posthogUserId`         | The PostHog User ID                                          |
 | `$deviceVersion`         | Device, platform and version information.                    |
 
 :::warning attConsentStatus is populated regardless of requesting any permission
@@ -146,12 +147,12 @@ You may see the following as a response from this attribute:
 
 #### Device Identifiers
 
-| Key          | Description                   |
-| :----------- | :---------------------------- |
-| `$idfa`      | Apple advertising identifier  |
-| `$idfv`      | Apple vendor identifier       |
-| `$gpsAdId`   | Google advertising identifier |
-| `$ip`        | IP Address                    |
+| Key        | Description                   |
+| :--------- | :---------------------------- |
+| `$idfa`    | Apple advertising identifier  |
+| `$idfv`    | Apple vendor identifier       |
+| `$gpsAdId` | Google advertising identifier |
+| `$ip`      | IP Address                    |
 
 :::info Device identifiers can't be changed once set
 
@@ -180,7 +181,8 @@ Therefore, Google's Advertising ID acts as the primary device identifier for And
 | `$onesignalId`           | [OneSignal](https://onesignal.com/) player identifier                                         |
 | `$clevertapId`           | [CleverTap](https://clevertap.com/) user identifier                                           |
 | `$airshipChannelId`      | [Airship](https://www.airship.com/) channel identifier                                        |
-| `$kochavaDeviceId`      | [Kochava](https://www.kochava.com/) device identifier                                        |
+| `$kochavaDeviceId`       | [Kochava](https://www.kochava.com/) device identifier                                         |
+| `$posthogUserId`         | [PostHog](https://posthog.com) user identifier                                                |
 
 #### Braze User Alias Object
 
@@ -332,6 +334,7 @@ import content22 from "!!raw-loader!@site/code_blocks/customers/subscriber-attri
 />
 
 ## Setting Attributes via the REST API
+
 If you want to set, update, or delete attributes through the REST API from your own backend, for example, because you haven't implemented the RevenueCat SDK, you can use the `POST /subscribers/{app_user_id}/attributes` [API endpoint](/api-v1#tag/customers/operation/update-subscriber-attributes).
 
 ## Reading Attributes
