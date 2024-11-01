@@ -90,7 +90,11 @@ Filters and segments do not apply to the 'New Customers' number. It is possible 
 
 Some of your transactions may result from customer's accepting offers you made to them, and RevenueCat allows you to filter and/or segment charts by those offers to understand how they're contributing to business performance.
 
-We track three distinct Offer Types:
+Here’s a quick look at the different offer types and how they're mapped between what the stores call them and how we refer to them.
+
+![](/images/store_offers_diagram.png)
+
+For more details, check out the chart below.
 
 | Offer Type | Description | Includes | Example Offer (where rc.annual.39_99 is the product) |
 | ---------- | ----------- | -------- | ---------------------------------------------------- |
