@@ -4717,6 +4717,7 @@ components:
       - $phoneNumber
       - $posthogUserId
       - $segmentId
+      - $tenjinId
       - $deviceVersion
       example: $email
     CustomerEntitlement:
