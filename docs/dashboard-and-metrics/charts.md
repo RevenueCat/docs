@@ -94,12 +94,12 @@ We track three distinct Offer Types:
 
 | Offer Type | Description | Includes | Example Offer (where rc.annual.39_99 is the product) |
 | ---------- | ----------- | -------- | ---------------------------------------------------- |
-| Free Trial        | A free introductory offer the customer accepts as a free trial. |<ul><li>App Store **Free Trial** Introductory Offers</li><li>Play Store free trial offer applied on initial subscription periods</li></ul> | example here | 
-| Introductory Offer       | A paid introductory offer that the customer accepts as a discount on their initial subscription period. This **does NOT** include free trial periods. | <ul><li>App Store **Pay Up Front** and **Pay As You Go** Introductory Offers</li><li>Play Store paid offers applied on initial subscription periods</li></ul> | Intro Offer (rc.annual.39_99) |
+| Free Trial        | A free introductory offer the customer accepts as a free trial. |<ul><li>App Store **Free Trial** Introductory Offers</li><li>Play Store free trial offer applied on initial subscription periods</li></ul> | <ul><li>App Store: Free trial (rc.annual.39_99)</li><li>Play Store: freetrial</li></ul> | 
+| Introductory Offer       | A paid introductory offer that the customer accepts as a discount on their initial subscription period. This **does NOT** include free trial periods. | <ul><li>App Store **Pay Up Front** and **Pay As You Go** Introductory Offers</li><li>Play Store paid offers applied on initial subscription periods</li></ul> | <ul><li>App Store: Intro Offer (rc.annual.39_99)</li><li>Play Store: introprice</li></ul>|
 | Offer Code        | A promo code that the customer enters to receive a discount or free trial (depending on the offer & store). | <ul><li>App Store Offer Codes</li><li>Play Store Promo Codes (Billing Client 4 and earlier)</li></ul>| black_friday_discount (rc.annual.39_99) |
-| Promotional Offer | An offer that the customer received through your own custom logic. | <ul><li>App Store Promotional Offers</li><li>Play Store Promo Codes (Billing Client 4 and earlier)</li></ul> | power_user_promo_offer (rc.annual.39_99) |
-| Win-Back Offer    | An offer that a customer with an expired subscription received to win them back. | <ul><li>App Store Win-Back Offers</li></ul> | example here |
-| Unspecified Offer | A Play Store offer for which we do not know the eligility criteria. |<ul><li>Play Store offers where eligibility criteria is unknown (Billing Client 5 and later)</li></ul> | example here | 
+| Promotional Offer | An offer that the customer received through your own custom logic. | <ul><li>App Store Promotional Offers</li></ul> | power_user_promo_offer (rc.annual.39_99) |
+| Win-Back Offer    | An offer that a customer with an expired subscription received to win them back. | <ul><li>App Store Win-Back Offers</li></ul> | winback_monthly_offer |
+| Unspecified Offer | A Play Store offer for which we do not know the eligility criteria. |<ul><li>Play Store offers where eligibility criteria is unknown, including cases where a Play Store free trial or paid offer is redeemed after the initial subscription period</li></ul> | holiday_2024_december | 
 | No Offer          | When none of the above Offer Types were used on the transaction | None | No Offer |
 
 :::warning
