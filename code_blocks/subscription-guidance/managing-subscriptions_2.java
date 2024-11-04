@@ -1,7 +1,7 @@
 Purchases.getSharedInstance().purchase(
 	new PurchaseParams.Builder(activity, pkg)
-		.oldProductId("old_product_id")
-		.googleProrationMode(GoogleProrationMode.IMMEDIATE_WITHOUT_PRORATION)
+		.oldProductId("oldProductId:oldBasePlanId")
+		.googleReplacementMode(GoogleReplacementMode.WITHOUT_PRORATION)
 		.build(),
 	new PurchaseCallback() {
 		@Override
