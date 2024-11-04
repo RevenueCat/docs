@@ -103,15 +103,13 @@ For more details, check out the chart below.
 | Offer Code        | A promo code that the customer enters to receive a discount or free trial (depending on the offer & store). | <ul><li>App Store Offer Codes</li><li>Play Store Promo Codes (Billing Client 4 and earlier)</li></ul>| black_friday_discount (rc.annual.39_99) |
 | Promotional Offer | An offer that the customer received through your own custom logic. | <ul><li>App Store Promotional Offers</li></ul> | power_user_promo_offer (rc.annual.39_99) |
 | Win-Back Offer    | An offer that a customer with an expired subscription received to win them back. | <ul><li>App Store Win-Back Offers</li></ul> | winback_monthly_offer (rc.annual.39_99) |
-| Unspecified Offer | A Play Store offer for which we do not know the eligility criteria. |<ul><li>Play Store offers where eligibility criteria is unknown, including cases where a Play Store free trial or paid offer is redeemed after the initial subscription period</li></ul> | holiday_2024_december (rc.annual.39_99) | 
-| No Offer          | When none of the above Offer Types were used on the transaction | None | No Offer |
+| Unspecified Offer | A Play Store offer for which we do not know the eligility criteria. |<ul><li>All other BC5 offers that are not applied on initial subscription periods</li></ul> | holiday_2024_december (rc.annual.39_99) | 
+| No Offer          | When none of the above Offer Types were used on the transaction. | None | No Offer |
 
 :::warning
-At this time, Google Play Offers on Billing Client 5 and above are only supported when they are applied as offers on initial subscription periods.
+At this time, Stripe coupon codes are not supported at this time.
 
-In addition, Stripe coupon codes are not supported at this time.
-
-(In both cases, revenue for those transactions _is_ correctly tracked, but the promo identifier is not supported for analysis in Charts)
+(Revenue for those transactions _is_ correctly tracked, but the promo identifier is not supported for analysis in Charts)
 :::
 
 When filtering or segmenting by Offer Type, you'll be able to measure the aggregate usage of that Offer Type across all Stores and Products.
