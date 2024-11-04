@@ -113,7 +113,7 @@ For more details, check out the chart below.
 | No Offer          | When none of the above Offer Types were used on the transaction. | None | No Offer |
 
 :::warning
-At this time, Stripe coupon codes are not supported at this time.
+At this time, Stripe coupon codes are not supported.
 
 (Revenue for those transactions _is_ correctly tracked, but the promo identifier is not supported for analysis in Charts)
 :::
