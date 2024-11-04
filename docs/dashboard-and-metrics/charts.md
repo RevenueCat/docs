@@ -90,9 +90,15 @@ Filters and segments do not apply to the 'New Customers' number. It is possible 
 
 Some of your transactions may result from customer's accepting offers you made to them, and RevenueCat allows you to filter and/or segment charts by those offers to understand how they're contributing to business performance.
 
-Here’s a quick look at the different offer types and how they're mapped between what the stores call them and how we refer to them.
+Here’s a quick look at the different offer types, showing how each is mapped from the store terminology to our terminology.
 
-![](/images/store_offers_diagram.png)
+Below are the definitions for App Store offer types:
+
+![](/images/app_store_offer_types.png)
+
+Below are the definitions for Play Store offer types:
+
+![](/images/play_store_offer_types.png)
 
 For more details, check out the chart below.
 
