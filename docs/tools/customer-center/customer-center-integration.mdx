@@ -63,6 +63,12 @@ Unique promotional offers can be assigned to different paths and survey response
 
 ### Required promotional offers
 
-By default, the Customer Center is configured to use the promotional offer `rc_cancel_offer` for applicable cancellation survey responses, and `rc_refund_offer` for applicable cancellation survey responses & the refund request path.
+The Customer Center will automatically show promotional offers based on specific user actions during the cancellation or refund process. Here’s how it works:
+
+Cancellation Offers: For responses in the cancellation survey, the system will use a promotional offer labeled with the suffix rc_cancel_offer. RevenueCat will automatically look for and display this promotion if the offer id in App Store Connect ends with rc_cancel_offer.
+
+Refund Offers: When a user requests a refund, RevenueCat will show the promotional offer with the suffix `rc_refund_offer` in the promotion offer id.
+
+This setup enables RevenueCat to automatically match the right offer based on a user’s actions, providing a seamless experience for both cancellation and refund requests.
 
 **These promotional offers must be created in App Store Connect in order to be shown to customers.** You may also customize your configuration to provide other offers, or provide them at other points. [Learn more about configuring the Customer Center.](https://www.revenuecat.com/docs/tools/customer-center/customer-center-configuration)
