@@ -23,14 +23,14 @@ You can use the `CustomerCenterView` view directly:
 
 import usageView from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-1.swift";
 
-<RCCodeBlock tabs={[{ type: "swift", content: usageView, name: "Swift" }]} />
+<RCCodeBlock tabs={[{ type: "swift", content: usageView, name: "SwiftUI" }]} />
 
 Or via a modifier:
 
 import usageModifier from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-2.swift";
 
 <RCCodeBlock
-  tabs={[{ type: "swift", content: usageModifier, name: "Swift" }]}
+  tabs={[{ type: "swift", content: usageModifier, name: "SwiftUI" }]}
 />
 
 ### Listening to events
@@ -55,7 +55,7 @@ import customerCenterEventsModifier from "!!raw-loader!@site/code_blocks/tools/c
 
 ## Setting up promotional offers
 
-Promotional offers on the App Store allow you to provide a custom price or trial for a product to existing or previosuly subscribed customers. These offers are used in the Customer Center to incentivze customers to stay subscribed who otherwise intend to cancel their subscription or request a refund.
+Promotional offers on the App Store allow you to provide a custom price or trial for a product to existing or previosuly subscribed customers. These offers are used in the Customer Center to incentivize customers to stay subscribed who otherwise intend to cancel their subscription or request a refund.
 
 Unique promotional offers can be assigned to different paths and survey responses in the Customer Center, but first they must be setup in App Store Connect.
 
@@ -63,6 +63,27 @@ Unique promotional offers can be assigned to different paths and survey response
 
 ### Required promotional offers
 
-By default, the Customer Center is configured to use the promotional offer `rc_cancel_offer` for applicable cancellation survey responses, and `rc_refund_offer` for applicable cancellation survey responses & the refund request path.
+The Customer Center will automatically show promotional offers based on specific user actions. By default we have defined it for refunds and cancellations but it can be modified to any of the defined paths. Here’s how it works:
+
+Cancellation Offers: By default, for responses in the cancellation survey, RevenueCat will use a promotional offer where the id has the suffix `rc_cancel_offer`.
+
+Refund Offers: By default, when a user requests a refund, RevenueCat will show the promotional offer with the suffix `rc_refund_offer` in the promotion offer id.
+
+This setup enables RevenueCat to automatically match the right offer based on a user’s actions, providing a seamless experience for both cancellation and refund requests.
+
+You can customize both refund and cancellation ids in the Advanced Configuration JSON:
+```
+"promotional_offers": {
+  "cancel_promo_offer_key": {
+    "ios_offer_id": $YOUR_CUSTOM_CANCELLATION_ID,
+    ...
+  },
+  "refund_promo_offer_key": {
+    "ios_offer_id": $YOUR_CUSTOM_OFFER_ID,
+    ...
+  }
+},
+```
+If the SDK cannot locate a matching promotional offer id, it will bypass the survey and proceed with the user’s requested action—either canceling or refunding the subscription.
 
 **These promotional offers must be created in App Store Connect in order to be shown to customers.** You may also customize your configuration to provide other offers, or provide them at other points. [Learn more about configuring the Customer Center.](https://www.revenuecat.com/docs/tools/customer-center/customer-center-configuration)
