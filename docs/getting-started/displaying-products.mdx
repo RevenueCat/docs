@@ -31,27 +31,37 @@ import unityContent9 from "!!raw-loader!@site/code_blocks/getting-started/displa
 import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
 import kmpContent1 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_kmp_1.kts";
 
-
-<RCCodeBlock tabs={[
-    { type: 'swift', content: docsTesterSwift, name: 'Swift', region: 'Displaying products' },
-    { type: 'objc', content: objectiveCContent2, name: 'Objective-C' },
-    { type: 'kotlin', content: kotlinContent3 },
-    { type: 'kotlin', content: kmpContent1, name: 'Kotlin Multiplatform' },
-    { type: 'java', content: javaContent4 },
-    { type: 'flutter', content: flutterContent5, name: 'Flutter' },
-    { type: 'rn', content: reactNativeContent6, name: 'React Native' },
-    { type: 'cordova', content: cordovaContent7, name: 'Cordova' },
-    { type: 'capacitor', content: capacitorContent8, name: 'Capacitor' },
-    { type: 'unity', content: unityContent9, name: 'Unity' },
-    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Get current offerings"},
-]} />
+<RCCodeBlock
+  tabs={[
+    {
+      type: "swift",
+      content: docsTesterSwift,
+      name: "Swift",
+      region: "Displaying products",
+    },
+    { type: "objc", content: objectiveCContent2, name: "Objective-C" },
+    { type: "kotlin", content: kotlinContent3 },
+    { type: "kotlin", content: kmpContent1, name: "Kotlin Multiplatform" },
+    { type: "java", content: javaContent4 },
+    { type: "flutter", content: flutterContent5, name: "Flutter" },
+    { type: "rn", content: reactNativeContent6, name: "React Native" },
+    { type: "cordova", content: cordovaContent7, name: "Cordova" },
+    { type: "capacitor", content: capacitorContent8, name: "Capacitor" },
+    { type: "unity", content: unityContent9, name: "Unity" },
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Get current offerings",
+    },
+  ]}
+/>
 
 :::warning Avoid pre-warming offerings cache in your Android's Application
-Don't call `getOfferings` in your Android app's `Application.onCreate`. 
+Don't call `getOfferings` in your Android app's `Application.onCreate`.
 
 This might trigger additional network requests in some situations (like push notifications) without need, using your customer's data. The offerings cache should be pre-fetched automatically by the SDK.
 :::
-
 
 :::info Offerings, products or available packages empty
 If your offerings, products, or available packages are empty, it's due to some configuration issue in App Store Connect or the Play Console.
@@ -86,8 +96,8 @@ import javaContent3 from "!!raw-loader!@site/code_blocks/tools/targeting_by_plac
 <RCCodeBlock
   tabs={[
     { type: "swift", content: swiftContent1 },
-    { type: 'kotlin', content: kotlinContent2, name: 'Kotlin' },
-    { type: 'java', content: javaContent3, name: 'Java' },
+    { type: "kotlin", content: kotlinContent2, name: "Kotlin" },
+    { type: "java", content: javaContent3, name: "Java" },
   ]}
 />
 
@@ -107,30 +117,41 @@ import capacitorContent17 from "!!raw-loader!@site/code_blocks/getting-started/d
 import unityContent18 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_16.cs";
 import kmpContent2 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_kmp_2.kts";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: docsTesterSwift, name: 'Swift', region: 'Custom Offering identifiers'},
-    { type: 'objc', content: objectiveCContent11, name: 'Objective-C' },
-    { type: 'kotlin', content: kotlinContent12 },
-    { type: 'kotlin', content: kmpContent2, name: 'Kotlin Multiplatform' },
-    { type: 'java', content: javaContent13 },
-    { type: 'flutter', content: flutterContent14, name: 'Flutter' },
-    { type: 'rn', content: reactNativeContent15, name: 'React Native' },
-    { type: 'cordova', content: cordovaContent16, name: 'Cordova' },
-    { type: 'capacitor', content: capacitorContent17, name: 'Capacitor' },
-    { type: 'unity', content: unityContent18, name: 'Unity' },
-    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Get custom offering"},
-]} />
-
+<RCCodeBlock
+  tabs={[
+    {
+      type: "swift",
+      content: docsTesterSwift,
+      name: "Swift",
+      region: "Custom Offering identifiers",
+    },
+    { type: "objc", content: objectiveCContent11, name: "Objective-C" },
+    { type: "kotlin", content: kotlinContent12 },
+    { type: "kotlin", content: kmpContent2, name: "Kotlin Multiplatform" },
+    { type: "java", content: javaContent13 },
+    { type: "flutter", content: flutterContent14, name: "Flutter" },
+    { type: "rn", content: reactNativeContent15, name: "React Native" },
+    { type: "cordova", content: cordovaContent16, name: "Cordova" },
+    { type: "capacitor", content: capacitorContent17, name: "Capacitor" },
+    { type: "unity", content: unityContent18, name: "Unity" },
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Get custom offering",
+    },
+  ]}
+/>
 
 ## Displaying Packages
 
 Packages help abstract platform-specific products by grouping equivalent products across iOS, Android, and web. A package is made up of three parts: identifier, type, and underlying store product.
 
-| Name       | Description                                                                                                                                                  |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Identifier | The package identifier (e.g. `com.revenuecat.app.monthly`)                                                                                                   |
+| Name       | Description                                                                                                                                                                                      |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Identifier | The package identifier (e.g. `com.revenuecat.app.monthly`)                                                                                                                                       |
 | Type       | The type of the package: <br/> - `UNKNOWN` <br/> - `CUSTOM` <br/> - `LIFETIME` <br/> - `ANNUAL` <br/> - `SIX_MONTH` <br/> - `THREE_MONTH` <br/> - `TWO_MONTH` <br/> - `MONTHLY` <br/> - `WEEKLY` |
-| Product    | The underlying product that is mapped to this package which includes details about the price and duration.                                                   |
+| Product    | The underlying product that is mapped to this package which includes details about the price and duration.                                                                                       |
 
 Packages can be access in a few different ways:
 
@@ -145,17 +166,32 @@ import reactNativeContent28 from "!!raw-loader!@site/code_blocks/getting-started
 import capacitorCordovaContent29 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_22.js";
 import unityContent30 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_23.cs";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: docsTesterSwift, name: 'Swift', region: 'Displaying packages' },
-    { type: 'objc', content: objectiveCContent25 },
-    { type: 'kotlin', content: kotlinContent26 },
-    { type: 'flutter', content: flutterContent27, name: 'Flutter' },
-    { type: 'rn', content: reactNativeContent28, name: 'React Native' },
-    { type: 'cordova', content: capacitorCordovaContent29, name: 'Capacitor/Cordova' },
-    { type: 'unity', content: unityContent30, name: 'Unity' },
-    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Displaying packages"},
-]} />
-
+<RCCodeBlock
+  tabs={[
+    {
+      type: "swift",
+      content: docsTesterSwift,
+      name: "Swift",
+      region: "Displaying packages",
+    },
+    { type: "objc", content: objectiveCContent25 },
+    { type: "kotlin", content: kotlinContent26 },
+    { type: "flutter", content: flutterContent27, name: "Flutter" },
+    { type: "rn", content: reactNativeContent28, name: "React Native" },
+    {
+      type: "cordova",
+      content: capacitorCordovaContent29,
+      name: "Capacitor/Cordova",
+    },
+    { type: "unity", content: unityContent30, name: "Unity" },
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Displaying packages",
+    },
+  ]}
+/>
 
 #### Getting the Product from the Package
 
@@ -171,21 +207,31 @@ import capacitorContent39 from "!!raw-loader!@site/code_blocks/getting-started/d
 import unityContent40 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_31.cs";
 import kmpContent3 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_kmp_3.kts";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: docsTesterSwift, name: 'Swift', region: "Getting the Product" },
-    { type: 'objc', content: objectiveCContent33, name: 'Objective-C' },
-    { type: 'kotlin', content: kotlinContent34, name: 'Kotlin' },
-    { type: 'kotlin', content: kmpContent3, name: 'Kotlin Multiplatform' },
-    { type: 'java', content: javaContent35, name: 'Java' },
-    { type: 'flutter', content: flutterContent36, name: 'Flutter' },
-    { type: 'rn', content: reactNativeContent37, name: 'React Native' },
-    { type: 'cordova', content: cordovaContent38, name: 'Cordova' },
-    { type: 'capacitor', content: capacitorContent39, name: 'Capacitor' },
-    { type: 'unity', content: unityContent40, name: 'Unity' },
-    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Getting product"},
-]} />
-
-
+<RCCodeBlock
+  tabs={[
+    {
+      type: "swift",
+      content: docsTesterSwift,
+      name: "Swift",
+      region: "Getting the Product",
+    },
+    { type: "objc", content: objectiveCContent33, name: "Objective-C" },
+    { type: "kotlin", content: kotlinContent34, name: "Kotlin" },
+    { type: "kotlin", content: kmpContent3, name: "Kotlin Multiplatform" },
+    { type: "java", content: javaContent35, name: "Java" },
+    { type: "flutter", content: flutterContent36, name: "Flutter" },
+    { type: "rn", content: reactNativeContent37, name: "React Native" },
+    { type: "cordova", content: cordovaContent38, name: "Cordova" },
+    { type: "capacitor", content: capacitorContent39, name: "Capacitor" },
+    { type: "unity", content: unityContent40, name: "Unity" },
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Getting product",
+    },
+  ]}
+/>
 
 ## Choosing which Offering to display
 
@@ -193,7 +239,9 @@ In practice, you may not want to display the default current Offering to every u
 
 For example, displaying a higher priced Offering to users that came from [paid acquisition](/integrations/attribution) to help recover ad costs, or a specific Offering designed to show [iOS Subscription Offers](/subscription-guidance/subscription-offers/ios-subscription-offers) when a user has [cancelled their subscription](/customers/customer-info#section-get-entitlement-information).
 
-This can be accomplished with custom Offering identifiers for each of these "cohorts".
+This can be accomplished through Targeting, which supports a handful of predefined dimensions from RevenueCat or **any** custom attribute you set for your customers. [Learn more here.](https://www.revenuecat.com/docs/tools/targeting)
+
+Or, alternatively, you could write your own logic locally in your app to serve custom Offering identifiers for each cohort you have in mind.
 
 import objectiveCContent42 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_33.m";
 import kotlinContent43 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_34.kt";
@@ -215,7 +263,7 @@ import kmpContent4 from "!!raw-loader!@site/code_blocks/getting-started/displayi
     },
     { type: "objc", content: objectiveCContent42, name: "Objective-C" },
     { type: "kotlin", content: kotlinContent43, name: "Kotlin" },
-    { type: 'kotlin', content: kmpContent4, name: 'Kotlin Multiplatform' },
+    { type: "kotlin", content: kmpContent4, name: "Kotlin Multiplatform" },
     { type: "java", content: javaContent44, name: "Java" },
     { type: "flutter", content: flutterContent45, name: "Flutter" },
     { type: "rn", content: reactNativeContent46, name: "React Native" },
@@ -224,10 +272,6 @@ import kmpContent4 from "!!raw-loader!@site/code_blocks/getting-started/displayi
     { type: "unity", content: unityContent49, name: "Unity" },
   ]}
 />
-
-:::info
-As of now, cohort logic needs to be managed outside of RevenueCat.
-:::
 
 ## Best Practices
 
