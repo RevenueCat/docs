@@ -4685,6 +4685,7 @@ components:
       - $amazonAdId
       - $amplitudeDeviceId
       - $amplitudeUserId
+      - $appleRefundHandlingPreference
       - $apnsTokens
       - $appsflyerId
       - $appsflyerSharingFilter
