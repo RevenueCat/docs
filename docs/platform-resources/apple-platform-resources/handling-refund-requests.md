@@ -25,10 +25,16 @@ For all refund requests, you can select from the following options:
 Choose the option that best fits the majority of your use cases.
 
 ### Overriding refund preference
-If, for example, you chose "Always prefer declining refunds", but have a specific customer or certain conditions under which you'd prefer Apple to grant a refund, you can override this preference before the customer submits their refund request directly to Apple.
+If, for example, you chose "Always prefer declining refunds", but have a specific customer or certain conditions under which you'd prefer Apple to grant a refund, you can override this preference before your customer submits their refund request directly to Apple.
 
-To do so, you can use RevenueCat's [customer attributes](/customers/customer-attributes) to set a specific preference for any customer. RevenueCat provides a reserved customer attribute field, (INSERT RESERVED FIELD NAME), where you can set values such as:
-- (INSERT POTENTIAL VALUES HERE)
+To do so, you can use RevenueCat's [customer attributes](/customers/customer-attributes) to set a specific preference for any customer. RevenueCat provides a reserved customer attribute field, `$refundHandlingPreference`, where you can set values such as:
+- `GRANT`: You prefer that Apple grants the refund for this customer
+- `DECLINE`: You prefer that Apple declines the refund for this customer
+- `LET_APPLE_DECIDE`: You have no preference regarding apple's decision to grant ot decline the refund for this customer
+
+:::info Overriding only applies when feature is enabled
+Overriding the customer's refund preference will only apply if you have enabled handling refund requests from the dashboard. If you selected the "Do not handle" option, we will not send additional data over to Apple, regardless of what value the customer's `$refundHandlingPreference` has.
+:::
 
 ### Obtaining customer consent
 By enabling this feature, you confirm that you have obtained consent from your customers to share their consumption data with Apple. For general guidelines from Apple, visit their [documentation](https://developer.apple.com/documentation/appstoreserverapi/send_consumption_information#3921151).
@@ -41,15 +47,15 @@ Below are the [properties](https://developer.apple.com/documentation/appstoreser
 | Property                   | Description                 |          What RevenueCat sends           |
 |----------------------------|-----------------------------|------------------------------------------|
 | accountTenure              | The age of the customer’s account. | <ul><li>If customer exists in RC: Calculate age based on the creation date of that customer and assess the [range](https://developer.apple.com/documentation/appstoreserverapi/accounttenure). </li><li>If customer does not exist in RC: 0 (*undeclared*)</li></ul> |
-| appAccountToken            | The optionally UUID of the in-app user account that completed the in-app purchase transaction. | <ul><li> If you are setting appAccountToken: We'll take the appAccountToken of the transaction </li><li>If you are not setting appAccountToken: 0 (*undeclared*)</li></ul>|
-| consumptionStatus          | A value that indicates the extent to which the customer consumed the in-app purchase. | TO CONFIRM!!! |
+| appAccountToken            | The optionally UUID of the in-app user account that completed the in-app purchase transaction. | Empty string |
+| consumptionStatus          | A value that indicates the extent to which the customer consumed the in-app purchase. | 0 (*undeclared*) |
 | customerConsented          | A Boolean value of true or false that indicates whether the customer consented to provide consumption data. | true, by turning this on this functionality, we assume you are asking your customers for consent. |
 | deliveryStatus             | A value that indicates whether the app successfully delivered an in-app purchase that works properly. | <ul><li> If the transaction exists in RC: 0 (*The app delivered the consumable in-app purchase and it’s working properly.*) </li><li>If the transaction does not exist in RC: 5 (*The app didn’t deliver the consumable in-app purchase for other reasons.*)</li></ul> |
 | lifetimeDollarsPurchased   | A value that indicates the total amount, in USD, of in-app purchases the customer has made in your app, across all platforms. | Calculate the total of non-refunded transactions in USD and assess the [range](https://developer.apple.com/documentation/appstoreserverapi/lifetimedollarspurchased). |
 | lifetimeDollarsRefunded    | A value that indicates the total amount, in USD, of refunds the customer has received, in your app, across all platforms. | Calculate the total of refunded transactions in USD and assess the [range](https://developer.apple.com/documentation/appstoreserverapi/lifetimedollarsrefunded). |
-| platform                   | A value that indicates the platform on which the customer consumed the in-app purchase. | 1 (*An Apple platform*) |
+| platform                   | A value that indicates the platform on which the customer consumed the in-app purchase. | <ul><li> If your customer only has transactions from the App Store: 1 (*An Apple platform*) </li><li>If your customer has transactions from multiple stores: 0 (*undeclared*)</li></ul> |
 | playTime                   | A value that indicates the amount of time that the customer used the app. | 0 (*undeclared*) |
-| refundPreference           | A value that indicates your preference, based on your operational logic, as to whether Apple should grant the refund. | <ul><li> The value for your customer's reserved customer attribute !!!INSERT FIELD HERE!!! </li><li>Otherwise, we will fall back to the option you chose in the dropdown selector</li></ul> | 
+| refundPreference           | A value that indicates your preference, based on your operational logic, as to whether Apple should grant the refund. | <ul><li> The value for your customer's reserved customer attribute `$refundHandlingPreference` </li><li>Otherwise, we will fall back to the option you chose in the dropdown selector</li></ul> | 
 | sampleContentProvided      | A Boolean value of true or false that indicates whether you provided, prior to its purchase, a free sample or trial of the content, or information about its functionality. | true |
 | userStatus                 | The status of the customer’s account. | <ul><li> If the transaction exists in RC: 1 (*The customer’s account is active.*)</li><li>If the transaction does not exist in RC: 0 (*undeclared*)</li></ul> |
 
