@@ -32,7 +32,7 @@ If, for example, you chose "Always prefer declining refunds", but have a specifi
 To do so, you can use RevenueCat's [customer attributes](/customers/customer-attributes) to set a specific preference for any customer. RevenueCat provides a reserved customer attribute field, `$appleRefundHandlingPreference`, where you can set values such as:
 - `GRANT_REFUND`: You prefer that Apple grants the refund for this customer
 - `DECLINE_REFUND`: You prefer that Apple declines the refund for this customer
-- `LET_APPLE_DECIDE`: You have no preference regarding apple's decision to grant ot decline the refund for this customer
+- `LET_APPLE_DECIDE`: You have no preference regarding Apple's decision to grant or decline the refund for this customer
 
 :::info Overriding only applies when feature is enabled
 Overriding the customer's refund preference will only apply if you have enabled handling refund requests from the dashboard. If you selected the "Do not handle" option, we will not send additional data over to Apple, regardless of what value the customer's `$appleRefundHandlingPreference` has.
