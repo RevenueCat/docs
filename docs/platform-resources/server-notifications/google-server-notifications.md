@@ -68,12 +68,14 @@ By default, RevenueCat ignores any Google Cloud Pub/Sub notifications for purcha
 ![](/images/no_code_toggle.png)
 
 Considerations:
-* RevenueCat will create a subscriber to associate that purchase with.
-* The subscriber's app user ID will be taken from the [`obfuscatedExternalAccountId`](https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.subscriptionsv2#externalaccountidentifiers) field of the transaction. If this is not available, we will fall back to generating a RevenueCat anonymous app user ID. 
+* The subscriber's app user ID will be taken from the [`obfuscatedExternalAccountId`](https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.subscriptionsv2#externalaccountidentifiers) field of the transaction. 
+    * If the `obfuscatedExternalAccountId` is set and does not match with an existing subscriber: RevenueCat will create a new subscriber with an app user ID matching the `obfuscatedExternalAccountId` value provided.
+    * If the `obfuscatedExternalAccountId` is set and matches with an existing subscriber: No new subscriber will be created, and the purchase will be linked to that existing subscriber. 
+    * If the `obfuscatedExternalAccountId` is not set: RevenueCat will generate an anonymous app user ID to associate that purchase with.
 * If you are using RevenueCat's SDK to track purchases, we may receive the notification directly from the store before the SDK. When this happens, we will follow the app user ID logic as described in the bullet point above, and then proceed with your [transfer behavior](/getting-started/restoring-purchases) for the new app user ID sent by the SDK.
 
 :::warning
-If you have enabled [*Keep with original App User ID*](/getting-started/restoring-purchases#keep-with-original-app-user-id) transfer behavior or are exclusively using custom app user IDs, we highly recommend turning this setting off unless you are not setting the `obfuscatedExternalAccountId`.
+If you have enabled [*Keep with original App User ID*](/getting-started/restoring-purchases#keep-with-original-app-user-id) or [*Transfer if there are no active subscriptions*](/getting-started/restoring-purchases#transfer-if-there-are-no-active-subscriptions) transfer behavior, we highly recommend turning this setting off unless you are not setting the `obfuscatedExternalAccountId` or if the `obfuscatedExternalAccountId` will match their RevenueCat app user ID.
 :::
 
 ## Considerations
