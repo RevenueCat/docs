@@ -15,13 +15,16 @@ Integrating RevenueCat with your backend allows you to seamlessly manage subscri
 ### Process Flow
 #### 1. App: Paywall Load and Offer Display
 Paywall Load: When users open the app, the paywall loads and displays the available subscription offerings in the UI.
+
 User Makes Purchase: Users can choose a subscription plan and proceed with the purchase.
 #### 2. RevenueCat SDK: Handling Purchases
 Fetch Offerings: The RevenueCat SDK fetches available offerings and displays them to the user.
 
-Process Purchase: When a user selects an offering and makes a purchase, the SDK processes the transaction.
+Process Purchase: The RevenueCat backend validates and processes the purchase details received from the SDK.
 
-Complete Purchas: The SDK finalizes the purchase, and the results are sent to the RevenueCat backend for further processing.
+Complete Purchase: The SDK finalizes the purchase, and the results are sent to the RevenueCat backend for further processing.
+
+Restore Purchase: The SDK allows you to regain access to entitlements after a transfer happens from one app user ID to another. 
 #### 3. RevenueCat Backend: Subscription Management
 Process Purchase: The RevenueCat backend validates and processes the purchase details received from the SDK.
 
@@ -38,7 +41,7 @@ Perform Entitlement Sync: The app backend performs an entitlement synchronizatio
 Persist Entitlements in DB: Once fetched, the backend persists these entitlements in the database, ensuring accurate and up-to-date access controls.
 
 #### 5. App: Content Unlocking
-Query Database for Subscription Status: The app queries the backend database to check the user’s subscription status.
+Query Database for Subscription Status: The app queries your backend database to check the user’s subscription status.
 
 Unlock Content: If the subscription is active, the app unlocks the relevant premium content for the user.
 
