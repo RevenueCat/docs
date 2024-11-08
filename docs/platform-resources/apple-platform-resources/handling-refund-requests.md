@@ -9,7 +9,7 @@ The Apple App Store evaluates several factors when deciding whether to approve o
 ## Prerequisites
 In order for RevenueCat to be notified of refund requests, you must have Apple App Store Server Notifications configured. If you do not have this set up yet, follow our setup instructions [here](/platform-resources/server-notifications/apple-server-notifications). 
 
-Regardless of if you're on V1 or V2 of Apple App Store Server Notifications, RevenueCat supports both versions and we will be able to detect refund requests from Apple.
+Regardless of if you're on V1 or V2 of Apple App Store Server Notifications, RevenueCat supports both versions and we will be able to detect refund requests from Apple. For the best reliability, we recommend using V2 of the notifications.
 
 ## Handling of Refund Requests
 To allow RevenueCat to send additional data of your customer's purchases to Apple, navigate to your RevenueCat app settings page and expand the **"Handling of refund requests"** section.
