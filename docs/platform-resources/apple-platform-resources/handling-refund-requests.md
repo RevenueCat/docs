@@ -22,7 +22,7 @@ For all refund requests, you can select from the following options:
 - **Do not handle**: RevenueCat will not respond to Apple's refund request on your behalf.
 - **Always prefer granting refunds**: You prefer that Apple grants the refund.
 - **Always prefer declining refunds**: You prefer that Apple declines the refund.
-- **Submit data without preference**: You have no preference regarding Apple's decision to grant or decline the refund.
+- **Submit consumption data and let Apple decide**: You have no preference regarding Apple's decision to grant or decline the refund.
 
 Choose the option that best fits the majority of your use cases.
 
