@@ -170,6 +170,7 @@ const webPurchasesCategory = Category({
         Page({ slug: "customer-portal" }),
         Page({ slug: "web-paywall-links" }),
         Page({ slug: "localization" }),
+        Page({ slug: "anonymous-purchases" }),
       ],
     }),
     Page({ slug: "stripe" }),
