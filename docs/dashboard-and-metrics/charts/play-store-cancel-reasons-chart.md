@@ -11,7 +11,7 @@ When a Play Store subscription is canceled, customers are asked to select their 
 ### Available settings
 
 - Filters: Yes
-- Segments: Yes
+- Segments: No
 
 ## How to use Play Store Cancel Reasons in your business
 
