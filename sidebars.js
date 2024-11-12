@@ -266,6 +266,7 @@ const dashboardCategory = Category({
         Page({ slug: "new-customers-chart" }),
         Page({ slug: "new-trials-chart" }),
         Page({ slug: "non-subscription-purchases-chart" }),
+        Page({ slug: "play-store-cancel-reasons-chart" }),
         Page({ slug: "prediction-explorer" }),
         Page({ slug: "realized-ltv-per-customer-chart" }),
         Page({ slug: "realized-ltv-per-paying-customer-chart" }),
