@@ -40,7 +40,7 @@ Integrations are configured from the RevenueCat dashboard by navigating to your 
 
 Although RevenueCat can parse historical subscription data for charts and data exports, **historical subscription changes do not generate events into any integrations**. If a historical subscription is sent to RevenueCat, an event will be generated for the latest event that occurred only. This way, any downstream systems can have the latest subscription state synced even if the complete subscription event history is not present.
 
-For non-renewable products in iOS, we send events for all historical purchases that happened in the past 30 days.
+For non-renewable products in iOS projects that use StoreKit 2, we send events for all historical purchases that happened in the past 30 days.
 
 ## Debugging Integrations
 
