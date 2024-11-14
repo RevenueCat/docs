@@ -18,7 +18,13 @@ To ensure RevenueCat receives notifications about these requests, you must have 
 
 This chart provides insight into the outcomes of refund requests for your Apple App Store purchases, showing the volume of granted and declined refunds, as well as requests still awaiting a decision. By analyzing these trends, you can identify shifts in approval patterns and understand how frequently your customers are requesting refunds.
 
-If you're looking to influence these outcomes, RevenueCat's [Handling Request Requests](/platform-resources/apple-platform-resources/handling-refund-requests) feature can help by sending additional data to Apple, which may reduce the number of refunds granted.
+It may be especially useful to analyze your refund requests by the refund reasons that your customers are giving (tip: use the 100% Stacked column chart type for this). Segmenting the chart by "Refund request reason" lets you see how often customers cite reasons like "Unintended Purchase" or "Unsatisfied with Purchase", helping you pinpoint specific areas for improvement. For example, a high volume of refund requests under "Unsatisfied with Purchase" might suggest a need to refine descriptions or messaging.
+
+:::info Unknown refund reason
+Apple provides the refund reasons through their V2 notifications. If your chart is showing only "UNKNOWN" when segmenting by "Refund request reason", your app is most likely utilizing Apple's V1 notifications.
+:::
+
+If you're looking to influence Apple's refund decision, RevenueCat's [Handling Request Requests](/platform-resources/apple-platform-resources/handling-refund-requests) feature can help by sending additional data to Apple, which may reduce the number of refunds granted.
 
 ## Calculation
 
