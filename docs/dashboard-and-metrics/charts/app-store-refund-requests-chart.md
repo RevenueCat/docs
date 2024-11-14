@@ -31,6 +31,7 @@ If you're looking to influence Apple's refund decision, RevenueCat's [Handling R
 Each period counts the total number of App Store refund requests received, broken down by the resolution:
 - Refund Granted: Apple approved the refund.
 - Refund Declined: Apple denied the refund.
+- Refund Reversed: Apple has reversed a previously granted refund.
 - No Resolution: This is a temporary state that indicates Apple's decision is pending.
 
 :::info Using Apple's V2 notifications for faster updates
