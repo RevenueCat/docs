@@ -41,9 +41,17 @@ Overriding the customer's refund preference will only apply if you have enabled 
 :::
 
 ### Obtaining customer consent
-By enabling this feature, you confirm that you have obtained consent from your customers to share their consumption data with Apple. For general guidelines from Apple, visit their [documentation](https://developer.apple.com/documentation/appstoreserverapi/send_consumption_information#3921151).
+By enabling this feature, you confirm that you have obtained consent from your customers to share their consumption data with Apple.
 
-If you have a use case where you only update your Privacy Policy (or an equivalent document) for new customers, while existing customers remain on the original terms, contact [RevenueCat support](https://app.revenuecat.com/settings/support) for assistance.
+Here's a template to help get you started:
+
+> **Consent to Share Consumption Data with Apple:**
+>
+> By using our app and making in-app purchases, you consent to our sharing of data regarding your usage and consumption of purchased content with Apple, as part of our efforts to resolve refund requests. This information may include details about how you have accessed and interacted with the purchased content. The purpose of sharing this data is to help Apple make an informed decision regarding refund requests. We ensure that such data sharing is done in compliance with Apple's policies and only as necessary to process your requests.
+
+For general guidelines from Apple, visit their [documentation](https://developer.apple.com/documentation/appstoreserverapi/send_consumption_information#3921151).
+
+If you have a use case where you only update your Terms & Conditions (or an equivalent document) for new customers, while existing customers remain on the original terms, contact [RevenueCat support](https://app.revenuecat.com/settings/support) for assistance.
 
 ## Data RevenueCat sends to Apple
 Below are the [properties](https://developer.apple.com/documentation/appstoreserverapi/consumptionrequest) and data that RevenueCat will send to Apple when a refund request comes in.
