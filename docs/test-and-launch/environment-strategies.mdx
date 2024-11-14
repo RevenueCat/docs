@@ -5,8 +5,8 @@ excerpt: Recommended Environment Strategies for your use cases.
 hidden: false
 ---
 This document contains our recommended best practices for navigating between different environments when building your app. When building and testing an app, using distinct environments like DEV, TEST, and PROD can be very helpful but can also be complicated in picking what is best for your needs. Each environment can help serve a specific purpose, from early-stage development to final user-ready deployment. This document provides an overview of the best practices and recommended approaches for using these environments to your advantage. By understanding when and how to use different environments, you can streamline your workflows, catch issues early, and confidently release a polished app to your users. Follow this guide to ensuring a smooth and error-free user experience. 
-## Single Project for DEV/TEST/PROD ##
-If you would like to keep things short and simple by using a single project with the same RevenueCat API keys for all environments (DEV, TEST, and PROD), this is possible and we recommend following this approach. Key considerations for this method include:
+## Single Project for Each Environment ##
+If you would like to keep things short and simple as well as use DEV,TEST, and PROD environments, you can do this by simply setting up one [project](https://www.revenuecat.com/docs/welcome/projects#configuring-projects) in RevenueCat. RevenueCat will automatically determine if a purchase is from the [Sandbox](https://www.revenuecat.com/docs/test-and-launch/sandbox) environment or Production. With this method, you will have the same RevenueCat API keys for all environments (DEV, TEST, and PROD) and can take advantage of RevenueCats events to identify the difference between purchases made in the Sandbox vs production as well as use the RevenueCat dashboard to [toggle between sandbox and production transactions](https://www.revenuecat.com/docs/test-and-launch/sandbox#viewing-sandbox-data). Key details for this method include:
 
 **Unified API Keys:** This approach allows you to use the same RevenueCat API keys across all environments, reducing complexity in your app configuration.
 
@@ -30,7 +30,7 @@ This approach is best for indie projects or cases where the added complexity of 
 This approach increases the risk of accidentally updating one project while forgetting to update others. If you choose this route, ensure that any changes or updates are consistently applied across all projects to maintain alignment.
 :::
 
-For teams looking to maintain complete separation of data across all environments, you can create separate RevenueCat projects for DEV, TEST, and PROD. We recommend this approach to ensure that each environment has different API keys and is seperated from one another. Key details include:
+For teams looking to maintain complete separation of data across all environments, you can create separate [RevenueCat projects](https://www.revenuecat.com/docs/welcome/projects#configuring-projects) for each environment that you plan to support. DEV, TEST, and PROD environments are the most common that we see. We recommend this approach to ensure that each environment has different API keys assosiated with it and they are seperated from one another. Once you setup a seperate project for each environment, you will be able to deceipher which events are coming from certain environments as well as keep all transactions from different environments completely seperated. Key details to this approach include:
 
 **Environment-Specific API Keys:** In your app code, you would supply different API keys depending on the environment to keep everyhting seperate from one another.
 
