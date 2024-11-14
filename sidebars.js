@@ -209,7 +209,6 @@ const testAndLaunchCategory = Category({
       ],
     }),
     Page({ slug: "recommended-approaches" }),
-    //Page({ slug: "recommended-approaches" }),
     Page({ slug: "launch-checklist" }),
     Page({ slug: "app-store-rejections" }),
   ],

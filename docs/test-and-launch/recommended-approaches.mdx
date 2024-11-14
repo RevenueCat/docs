@@ -25,6 +25,11 @@ If you would like to keep things short and simple by using a single project with
 This approach is best for indie projects or cases where the added complexity of multiple projects is unnecessary.
 
 ## Separate Projects for Each Environment ##
+
+:::warning 
+This approach increases the risk of accidentally updating one project while forgetting to update others. If you choose this route, ensure that any changes or updates are consistently applied across all projects to maintain alignment.
+:::
+
 For teams looking to maintain complete separation of data across all environments, you can create separate RevenueCat projects for DEV, TEST, and PROD. We recommend this approach to ensure that each environment has different API keys and is seperated from one another. Key details include:
 
 **Environment-Specific API Keys:** In your app code, you would supply different API keys depending on the environment to keep everyhting seperate from one another.
