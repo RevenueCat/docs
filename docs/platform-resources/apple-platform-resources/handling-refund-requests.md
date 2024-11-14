@@ -6,6 +6,8 @@ hidden: false
 
 The Apple App Store evaluates several factors when deciding whether to approve or deny your customer's refund request. RevenueCat can help influence this process by providing Apple additional data about your customer's consumption of the purchase, along with your preferred resolution at the time of their refund request. Apple will use this information to help inform their refund decisions. 
 
+For additional insights in your refund requests, check out our [App Store Refund Requests Chart](/dashboard-and-metrics/charts/app-store-refund-requests-chart).
+
 ## Prerequisites
 In order for RevenueCat to be notified of refund requests, you must have Apple App Store Server Notifications configured. If you do not have this set up yet, follow our setup instructions [here](/platform-resources/server-notifications/apple-server-notifications). 
 
