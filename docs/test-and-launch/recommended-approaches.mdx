@@ -1,0 +1,46 @@
+---
+title: Recommended Approaches
+slug: recommended-approaches
+excerpt: Recommended-approaches for test environments
+hidden: false
+---
+This document contains our recommended best practices for test environments. When building and testing an app, using distinct environments like the DEV, TEST, and PROD is recommended for ensuring a smooth and error-free user experience. Each environment serves a specific purpose, from early-stage development to final user-ready deployment. This document provides an overview of the best practices and recommended approaches for using these environments effectively. By understanding when and how to use DEV, TEST, and PROD, you can streamline your workflows, catch issues early, and confidently release a polished app to your users.
+## Single Project for DEV/TEST/PROD ##
+If you would like to keep things short and simple by using a single project with the same RevenueCat API keys for all environments (DEV, TEST, and PROD), this is possible and we recommend following this approach. Key considerations for this method include:
+
+**Unified API Keys:** This approach allows you to use the same RevenueCat API keys across all environments, reducing complexity in your app configuration.
+
+**Sandbox Testing:** All purchase testing is conducted in the sandbox, our webhook events include an environment value which will allow you to easily distinguish between purchases and which environment they came from.
+
+**Data Filtering:** You can filter Customer History and the Overview section specifically for sandbox purchases or create custom Customer Lists to view sandbox data separately from production data.
+
+**Advantages:**
+- Minimal setup and maintenance.
+- Works well for smaller projects or teams that prioritize simplicity.
+
+**Considerations:**
+- Less setup but more of a chance to cause confusion between users and events making purchases in different environments.
+- More suited for smaller teams or projects with looser environment requirements.
+
+This approach is best for indie projects or cases where the added complexity of multiple projects is unnecessary.
+
+## Separate Projects for Each Environment ##
+For teams looking to maintain complete separation of data across all environments, you can create separate RevenueCat projects for DEV, TEST, and PROD. We recommend this approach to ensure that each environment has different API keys and is seperated from one another. Key details include:
+
+**Environment-Specific API Keys:** In your app code, you would supply different API keys depending on the environment to keep everyhting seperate from one another.
+
+**Sandbox and Production Separation:** This approach ensures no overlap between sandbox and production data, keeping the data for each environment entirely isolated.
+
+**Bundle ID Customization:** You may choose to use different bundle IDs corresponding to separate apps on the App Store for each environment. These seperate apps will ikley be unreleased because you wont want to release a test or dev app on the app store. 
+
+**Reusability of In-App Purchase Keys:** If the projects belong to the same App Store Connect account, you can use the same In-App Purchase Key for all projects, avoiding redundant setup steps.
+
+**Advantages:**
+- Clear separation of data across environments.
+- Better control over environment-specific settings and configurations.
+
+**Considerations:**
+- Requires additional setup and ongoing maintenance.
+- More suited for larger teams or projects with stricter environment requirements.
+
+This approach is best for teams that prioritize complete data isolation or have complex testing needs.
