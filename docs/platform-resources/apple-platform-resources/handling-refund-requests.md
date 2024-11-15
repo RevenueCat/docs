@@ -36,6 +36,10 @@ To do so, you can use RevenueCat's [customer attributes](/customers/customer-att
 - `DECLINE_REFUND`: You prefer that Apple declines the refund for this customer
 - `LET_APPLE_DECIDE`: You have no preference regarding Apple's decision to grant or decline the refund for this customer
 
+You can configure this attribute programmatically through our [SDK](/customers/customer-attributes#setting-attributes) and [REST API](/customers/customer-attributes#setting-attributes-via-the-rest-api), or manually through our custom setter in the customer page.
+
+![](/images/apple-handling-refunds-attribute-setter.png)
+
 :::info Overriding only applies when feature is enabled
 Overriding the customer's refund preference will only apply if you have enabled handling refund requests from the dashboard. If you selected the "Do not handle" option, we will not send additional data over to Apple, regardless of what value the customer's `$appleRefundHandlingPreference` has.
 :::
