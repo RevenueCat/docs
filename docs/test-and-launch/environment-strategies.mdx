@@ -8,7 +8,7 @@ This document contains our recommended best practices for navigating between dif
 
 Each environment can help serve a specific purpose, from early-stage development to final user-ready deployment. This document provides an overview of the best practices and recommended approaches for using these environments to your advantage. By understanding when and how to use different environments, you can streamline your workflows, catch issues early, and confidently release a polished app to your users. Follow this guide to ensure a smooth and error-free user experience.
 ## Single Project Approach ##
-If you would like to keep things short and simple as well as use DEV,TEST, and PROD environments, you can do this by simply setting up one [project](https://www.revenuecat.com/docs/welcome/projects#configuring-projects) in RevenueCat. RevenueCat will automatically determine if a purchase is from the [Sandbox](https://www.revenuecat.com/docs/test-and-launch/sandbox) environment or Production. 
+If you would like to keep things short and simple as well as use DEV, TEST, and PROD environments, you can do this by simply setting up one [project](https://www.revenuecat.com/docs/welcome/projects#configuring-projects) in RevenueCat. RevenueCat will automatically determine if a purchase is from the [Sandbox](https://www.revenuecat.com/docs/test-and-launch/sandbox) environment or Production. 
 
 With this method, you will have the same RevenueCat API keys for all environments (DEV, TEST, and PROD). You can take advantage of RevenueCats events to identify the difference between purchases made in the Sandbox vs production, as well as use the RevenueCat dashboard to [toggle between sandbox and production transactions](https://www.revenuecat.com/docs/test-and-launch/sandbox#viewing-sandbox-data). Key details for this method include:
 
@@ -42,7 +42,7 @@ We recommend this approach when testing and separation of concerns is a priority
 
 **Sandbox and Production Separation:** This approach ensures no overlap between sandbox and production data, keeping the data for each environment entirely isolated.
 
-**Bundle ID Customization:** You may choose to use different bundle IDs corresponding to separate apps for each environment. While all apps will be uploaded to the App Store Connect or Google Play, these separate apps should stay unreleased with only the PROD app released into production.
+**Bundle ID Customization:** You may choose to use different bundle IDs corresponding to separate apps for each environment. While all apps will be uploaded to App Store Connect or Google Play, these separate apps should stay unreleased with only the PROD app released into production.
 
 **Reusability of In-App Purchase Keys:** If the projects belong to the same App Store Connect account, you can use the same In-App Purchase Key for all projects, avoiding redundant setup steps.
 
