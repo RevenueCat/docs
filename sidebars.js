@@ -211,6 +211,7 @@ const testAndLaunchCategory = Category({
         Page({ slug: "amazon-store-sandbox-testing" }),
       ],
     }),
+    Page({ slug: "environment-strategies" }),
     Page({ slug: "launch-checklist" }),
     Page({ slug: "app-store-rejections" }),
   ],
