@@ -51,7 +51,7 @@ This document provides a bunch of key use cases that you can use to verify the s
 2. Open your Paywall or purchase modal.
 3. Select the product that you would like to test.
 4. Purchase the product.
-5. Open up the Revenuecat [overview](https://app.revenuecat.com/overview) page and check to see if you see a recent purchase for this product with the app user ID of the user that you configured the SDK with.
+5. Open up the RevenueCat [overview](https://app.revenuecat.com/overview) page and check to see if you see a recent purchase for this product with the App User ID of the user that you configured the SDK with.
 
 **Expected Results:** Purchase goes through successfully, user has the entitlement, and you are able to see the purchase in the RevenueCat dashboard.
 
@@ -67,13 +67,13 @@ This document provides a bunch of key use cases that you can use to verify the s
 
 - [Handling refunds](https://www.revenuecat.com/docs/subscription-guidance/refunds)
 
-**Preconditions:** App installed, app user ID already has a subscription or purchase.
+**Preconditions:** App installed, App User ID already has a subscription or purchase.
 
 **Steps:**
 
 Google Play:
 
-1. Open the RevenueCat dashboard for the app user ID that you are testing with that has a current subscription.
+1. Open the RevenueCat dashboard for the App User ID that you are testing with that has a current subscription.
 2. Navigate to the user's purchase event that you would like to refund.
 3. Click the refund button in the top right corner of the event details.
 4. Verify that the refund has happened by checking the customer history of this user 24 hours later and ensuring that a `CANCELLATION` event has occurred with the reason field set to `CUSTOMER_SUPPORT`.
@@ -105,11 +105,11 @@ Since granting refunds is done through the App Store themselves, testing this in
 
 - [Handling refunds](https://www.revenuecat.com/docs/subscription-guidance/managing-subscriptions#cancelling-subscriptions)
 
-**Preconditions:** App installed, RevenueCat configured, and current subscription on app user ID.
+**Preconditions:** App installed, RevenueCat configured, and current subscription on App User ID.
 
 **Steps:**
 
-1. Open the app with an app user ID that already has a subscription.
+1. Open the app with an App User ID that already has a subscription.
 2. Ensure that the subscription is renewed properly.
 3. Cancel the subscription through the settings on your device or through our [API](https://www.revenuecat.com/docs/api-v1#tag/transactions/operation/cancel-a-google-subscription) for purchases made on Google Play.
 4. Verify that the user has received a `CANCELLATION` event on their RevenueCat customer history. We will send this event as soon as the cancellation has started, the actual expiration event will come as soon as the current subscription period ends.
@@ -128,7 +128,7 @@ Since granting refunds is done through the App Store themselves, testing this in
 
 - [Event types](https://www.revenuecat.com/docs/integrations/webhooks/event-types-and-fields#event-types)
 
-**Preconditions:** App installed, app user ID has a current subscription.
+**Preconditions:** App installed, App User ID has a current subscription.
 
 **Steps:**
 
@@ -151,14 +151,14 @@ Since granting refunds is done through the App Store themselves, testing this in
 
 - [Upgrades, Downgrades, and Management](https://www.revenuecat.com/docs/subscription-guidance/managing-subscriptions)
 
-**Preconditions:** App installed, subscripion groups set up properly in App Store Connect, and the current logged-in app user ID has a subscription.
+**Preconditions:** App installed, subscription groups set up properly in App Store Connect, and the current logged-in App User ID has a subscription.
 
 **Steps:**
 
 1. Open the app with an app user that already has a subscription.
 2. Open the subscription page or paywall in your app.
 3. Start a purchase for a subscription that would be an upgrade.
-4. Check the RevenueCat dashboard for that app user ID and ensure that you see a `PRODUCT_CHANGE` event.
+4. Check the RevenueCat dashboard for that App User ID and ensure that you see a `PRODUCT_CHANGE` event.
 5. Check the `PRODUCT_CHANGE` event to see that the old product is the correct product and the new product is the correct product that you selected.
 
 **Expected Results:** New subscription starts and old subscription ends.
@@ -177,14 +177,14 @@ Since granting refunds is done through the App Store themselves, testing this in
 
 - [Free Trials and Promo Offers](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers)
 
-**Preconditions:** App installed, RevenueCat configured, Fresh app user ID created with a new store account, and Initial purchases working.
+**Preconditions:** App installed, RevenueCat configured, fresh App User ID created with a new store account, and initial purchases working.
 
 **Steps:**
 
 1. Open the app with a fresh sandbox user.
 2. Make sure the paywall and paysheet show the free trial and terms.
 3. Purchase the product with the free trial attached.
-4. Open that app user ID's customer history in RevenueCat.
+4. Open that App User ID's customer history in RevenueCat.
 5. Verify that the purchase event has a free trial by checking to ensure the `period_type` in their purchase was set to `TRIAL`. If you are checking for an intro offer, ensure that the `period_type` is `INTRO`.
 
 **Expected Results:** The customer history indicates that a trial was started or an intro offer was applied.
@@ -344,7 +344,7 @@ Purchases.sharedInstance.purchaseWith(
 **Related Docs**
 [Identifying Users](https://www.revenuecat.com/docs/customers/user-ids)
 
-**Preconditions:** App installed, Sandbox environment enabled, RevenueCat debug logs enabled and RevenueCat configure()called without App User ID.
+**Preconditions:** App installed, Sandbox environment enabled, RevenueCat debug logs enabled and RevenueCat `configure()` called without App User ID.
 
 **Example Code:**
 
@@ -403,7 +403,7 @@ Purchases.sharedInstance.purchaseWith(
 
 **Expected Results:** An Identified ID is successfully attributed to the customer
 
-**Pass/Fail Criteria:** Identified User is seen on the RevenueCat dashboard, debug logs and CustomerInfo Object.
+**Pass/Fail Criteria:** Identified User is seen on the RevenueCat dashboard, debug logs, and CustomerInfo Object.
 
 </details>
 <details>
@@ -597,20 +597,20 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 
 - [Syncing Purchases](https://www.revenuecat.com/docs/getting-started/restoring-purchases#syncing-purchases-without-user-interaction)
 
-**Preconditions:** App installed, Two subscriber IDs, first subscriber ID has a current subscription, another subscriber ID has no subscription.
+**Preconditions:** App installed, two subscriber IDs, first subscriber ID has a current subscription, another subscriber ID has no subscription.
 
 **Steps:**
 
-1. Open the app with the currently subscribed app user ID.
-2. Close the app, and create a new app user ID.
-3. Open the app with the new app user ID that previously didn't have a subscription.
+1. Open the app with the currently subscribed App User ID.
+2. Close the app, and create a new App User ID.
+3. Open the app with the new App User ID that previously didn't have a subscription.
 4. If you are calling `syncPurchases()` on app launch, this user should have gotten the subscription and entitlements transferred on app launch.
 5. Test to see if you can access your paid content.
-6. Verify that the transfer happened by checking the new app user ID's customer history and looking for a `TRANSFER` event.
+6. Verify that the transfer happened by checking the new App User ID's customer history and looking for a `TRANSFER` event.
 
-**Expected Results:** Subscription and entitlements are transferred to the new app user ID.
+**Expected Results:** Subscription and entitlements are transferred to the new App User ID.
 
-**Pass/Fail Criteria:** Fresh app user ID is able to access paid content without paying for a new subscription.
+**Pass/Fail Criteria:** Fresh App User ID is able to access paid content without paying for a new subscription.
 
 </details>
 <details>
@@ -647,7 +647,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 
 - [Transfer if there are no active subscriptions](https://www.revenuecat.com/docs/getting-started/restoring-purchases#transfer-if-there-are-no-active-subscriptions)
 
-**Preconditions:** App installed, Three app user ID's, first app user ID has a current subscription, second app user ID has no subscription, and the third app user ID has a subscription to the same product.
+**Preconditions:** App installed, three App User ID's, first App User ID has a current subscription, second App User ID has no subscription, and the third App User ID has a subscription to the same product.
 
 **Steps:**
 
@@ -734,7 +734,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 
 - [Displaying paywalls](https://www.revenuecat.com/docs/tools/paywalls/displaying-paywalls)
 
-**Preconditions:** App installed, Paywall set up in Revenuecat, and a fresh app user ID with no purchases.
+**Preconditions:** App installed, Paywall set up in RevenueCat, and a fresh App User ID with no purchases.
 
 **Steps:**
 
@@ -759,7 +759,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 
 - [Paywall localization](https://www.revenuecat.com/docs/tools/paywalls/creating-paywalls#localization)
 
-**Preconditions:** App installed, Paywall set up in Revenuecat, fresh app user ID, device and store account is set to the country that's localization is to be tested.
+**Preconditions:** App installed, Paywall set up in RevenueCat, fresh App User ID, device and store account is set to the country that localization is to be tested.
 
 **Steps:**
 
@@ -781,7 +781,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 
 - [Paywall values (Intro offer eligibility)](https://www.revenuecat.com/docs/tools/paywalls/creating-paywalls#intro-offer-eligibility)
 
-**Preconditions:** App installed, Paywall set up in Revenuecat, and fresh app user ID.
+**Preconditions:** App installed, Paywall set up in RevenueCat, and fresh App User ID.
 
 **Steps:**
 
