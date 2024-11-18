@@ -43,7 +43,7 @@ This document provides a bunch of key use cases that you can use to verify the s
 - [Purchase flow](https://www.revenuecat.com/docs/integrations/webhooks/event-flows#subscription-lifecycle)
 - [Making purchases](https://www.revenuecat.com/docs/getting-started/making-purchases)
 
-**Preconditions:** App installed, Ensure the device is logged into an account that will make sandbox purchases, and RevenueCat configured.
+**Preconditions:** App installed, Ensure the device is logged into an account that will make sandbox purchases and RevenueCat configured.
 
 **Steps:**
 
@@ -53,7 +53,7 @@ This document provides a bunch of key use cases that you can use to verify the s
 4. Purchase the product.
 5. Open up the RevenueCat [overview](https://app.revenuecat.com/overview) page and check to see if you see a recent purchase for this product with the App User ID of the user that you configured the SDK with.
 
-**Expected Results:** Purchase goes through successfully, user has the entitlement, and you are able to see the purchase in the RevenueCat dashboard.
+**Expected Results:** Purchase goes through successfully, the user has the entitlement, and you are able to see the purchase in the RevenueCat dashboard.
 
 **Pass/Fail Criteria:** Purchase is seen on the RevenueCat dashboard.
 
@@ -137,7 +137,7 @@ Since granting refunds is done through the App Store themselves, testing this in
 3. Wait until your current subscription's expiration time and check to ensure that once this time hits the user no longer has access to their entitlements.
 4. To verify, check the RevenueCat dashboard of the user for an `EXPIRATION` event at the time of the expiration.
 
-**Expected Results:** Expected Results: The user loses access to the entitlement at the end of the current billing cycle and `EXPIRATION` event follows at the time of expiration.
+**Expected Results:** Expected Results: The user loses access to the entitlement at the end of the current billing cycle and an `EXPIRATION` event follows at the time of expiration.
 
 **Pass/Fail Criteria:** Verify that the user no longer has access to the entitlement after the expiration has been triggered.
 
@@ -165,7 +165,7 @@ Since granting refunds is done through the App Store themselves, testing this in
 
 **Pass/Fail Criteria:** 
 - **Google Play:** The new subscription is started on time based on the `PRORATION` method that you use.
-- **iOS:** The new subscription is started on time based on apples timing for whether this was an upgrade, downgrade, or a crossgrade.
+- **iOS:** The new subscription is started on time based on Apple's timing for whether this was an upgrade, downgrade, or crossgrade.
 
 </details>
 <details>
@@ -254,7 +254,7 @@ Purchases.sharedInstance.purchaseWith(
 
 2. **Handling Developer-Determined Offers:**
 
-   - Offers with the `rc-ignore-offer` tag are not automatically applied, and developer-determined offers are handled according to the setup in the Google Play Console.
+   - Offers with the `rc-ignore-offer` tag are not automatically applied, and developer-determined offers are handled according to the set up in the Google Play Console.
 
 3. **Manual Offer Selection:**
    - The purchase uses the manually selected `SubscriptionOption`, correctly applying the intended offer, such as a specific introductory offer or base plan.
@@ -541,7 +541,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 
 2. **Log in with a custom App User ID**
 
-   - Use the `.logIn("<my_app_user_id>")` method to log in with a custom App User ID. This hsould also result in the new app user ID being aliased with the anonymous app user ID.
+   - Use the `.logIn("<my_app_user_id>")` method to log in with a custom App User ID. This should also result in the new app user ID being aliased with the anonymous app user ID.
    - Verify that the `customerInfo` object reflects the custom App User ID.
 
 3. **Log out of the current user**
@@ -562,7 +562,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 
 1. **Initial Log In with Custom App User ID:**
 
-   - The `customerInfo` object should correctly reflect the custom App User ID (`<my_app_user_id>`), showing associated subscription status and purchase history.
+   - The `customerInfo` object should correctly reflect the custom App User ID (`<my_app_user_id>`), showing the associated subscription status and purchase history.
 
 2. **Log Out:**
 
@@ -597,7 +597,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 
 - [Syncing Purchases](https://www.revenuecat.com/docs/getting-started/restoring-purchases#syncing-purchases-without-user-interaction)
 
-**Preconditions:** App installed, two subscriber IDs, first subscriber ID has a current subscription, another subscriber ID has no subscription.
+**Preconditions:** App installed, two App User IDs, The first App User ID has a current subscription, and the other App User ID has no subscription.
 
 **Steps:**
 
@@ -622,12 +622,12 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 
 - [Transfer to a new app user ID](https://www.revenuecat.com/docs/getting-started/restoring-purchases#transfer-to-new-app-user-id)
 
-**Preconditions:** App installed, Two subscriber IDs, first subscriber ID has a current subscription, other subscriber ID has no subscription.
+**Preconditions:** App installed, Two App User IDs, The first App User ID has a current subscription, and the other App User ID has no subscription.
 
 **Steps:**
 
 1. Open the app with the currently subscribed app user ID and verify this user has access to paid content.
-2. Close the app, create a new app user ID .
+2. Close the app, and create a new app user ID.
 3. Open the app with the new app user ID that previously did not have a subscription.
 4. Navigate to your payment screen and hit your "Restore Purchases" button.
 5. If this works, you should now gain access to paid content that was previously attached to the other app user ID.
@@ -647,7 +647,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 
 - [Transfer if there are no active subscriptions](https://www.revenuecat.com/docs/getting-started/restoring-purchases#transfer-if-there-are-no-active-subscriptions)
 
-**Preconditions:** App installed, three App User ID's, first App User ID has a current subscription, second App User ID has no subscription, and the third App User ID has a subscription to the same product.
+**Preconditions:** App installed, three App User IDs, first App User ID has a current subscription, second App User ID has no subscription, and the third App User ID has a subscription to the same product.
 
 **Steps:**
 
@@ -659,7 +659,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 6. Open the app again
 7. Login to your app user ID which already has an active subscription.
 8. Navigate to your payment screen and hit your "Restore Purchases" button.
-9. You should now see an error message stating that we cant restore this purchase.
+9. You should now see an error message stating that we can't restore this purchase.
 10. Verify that no `TRANSFER` event happened on the third app user ID's customer history.
 
 **Expected Results:** Subscription and entitlements are transferred to the second app user ID. The third app user ID is not able to restore purchases as they already previously have a subscription.
@@ -676,7 +676,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 
 - [Keep with original App User ID](https://www.revenuecat.com/docs/getting-started/restoring-purchases#keep-with-original-app-user-id)
 
-**Preconditions:** App installed, two app user ID's, the first app user ID has a subscription, the second one does not.
+**Preconditions:** App installed, two app user IDs, the first app user ID has a subscription, the second one does not.
 
 **Steps:**
 
@@ -689,7 +689,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 7. You should now see an error message when restoring because this purchase belongs to the other app user ID.
 8. Verify that no `TRANSFER` event happened on the second app user ID's customer history.
 
-**Expected Results:** Subscription and entitlements are not transferred to the second app user ID. this user is also not able to make a purchase while logged in with the same store account.
+**Expected Results:** Subscription and entitlements are not transferred to the second app user ID. This user is also not able to make a purchase while logged in with the same store account.
 
 **Pass/Fail Criteria:** Purchases stay with the original user that made them and do not transfer to other users.
 
@@ -703,7 +703,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 
 - [Share between App User IDs](https://www.revenuecat.com/docs/getting-started/restoring-purchases#share-between-app-user-ids-legacy)
 
-**Preconditions:** App installed, two app user ID's, the first app user ID has a subscription, the second one does not.
+**Preconditions:** App installed, two app user IDs, the first app user ID has a subscription, the second one does not.
 
 **Steps:**
 
@@ -719,7 +719,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 
 **Expected Results:** First and second app user IDs are aliased and both share the same customer history, purchases, and entitlements.
 
-**Pass/Fail Criteria:** User is correctly aliased in the customer history and the new user has the entitlements of the old user.
+**Pass/Fail Criteria:** The user is correctly aliased in the customer history and the new user has the entitlements of the old user.
 
 </details>
 
@@ -745,7 +745,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 5. Ensure that the purchase went through by checking your app for paid content/entitlements.
 6. Verify that the purchase went through by checking the customer history of the app user ID and verifying that a new purchase event has been created.
 
-**Expected Results:** User is shown the correct paywall and purchase flow works as intended.
+**Expected Results:** The user is shown the correct paywall and the purchase flow works as intended.
 
 **Pass/Fail Criteria:** Users purchase is seen on customer history and the paywall displayed to the user was correct.
 
@@ -753,7 +753,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 <details>
   <summary>Localization</summary>
 
-**Description:** To ensure that your Paywall Localization's are set up correctly, follow this test guide.
+**Description:** To ensure that your Paywall localization's are set up correctly, follow this test guide.
 
 **Related docs:**
 
@@ -789,7 +789,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 2. Navigate to your paywall screen.
 3. Ensure that your intro offer is being shown on your paywall as well as the discount between different packages.
 4. Purchase a package that has an intro offer attached.
-5. Check the RevenueCat dashboard customer history for that app user ID and ensure that a `INITAL_PURCHASE` event was made with the Intro offer attached to it. This event should look like the intro offers discussed above in the test guide.
+5. Check the RevenueCat dashboard customer history for that app user ID and ensure that an `INITAL_PURCHASE` event was made with the Intro offer attached to it. This event should look like the intro offers discussed above in the test guide.
 
 **Expected Results:** User is shown the paywall with their intro offer attached and the user is able to make the purchase with the intro offer attached.
 
