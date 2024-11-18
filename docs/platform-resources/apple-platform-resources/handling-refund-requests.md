@@ -36,14 +36,26 @@ To do so, you can use RevenueCat's [customer attributes](/customers/customer-att
 - `DECLINE_REFUND`: You prefer that Apple declines the refund for this customer
 - `LET_APPLE_DECIDE`: You have no preference regarding Apple's decision to grant or decline the refund for this customer
 
+You can configure this attribute programmatically through our [SDK](/customers/customer-attributes#setting-attributes) and [REST API](/customers/customer-attributes#setting-attributes-via-the-rest-api), or manually through our custom setter in the customer page.
+
+![](/images/apple-handling-refunds-attribute-setter.png)
+
 :::info Overriding only applies when feature is enabled
 Overriding the customer's refund preference will only apply if you have enabled handling refund requests from the dashboard. If you selected the "Do not handle" option, we will not send additional data over to Apple, regardless of what value the customer's `$appleRefundHandlingPreference` has.
 :::
 
 ### Obtaining customer consent
-By enabling this feature, you confirm that you have obtained consent from your customers to share their consumption data with Apple. For general guidelines from Apple, visit their [documentation](https://developer.apple.com/documentation/appstoreserverapi/send_consumption_information#3921151).
+By enabling this feature, you confirm that you have obtained consent from your customers to share their consumption data with Apple.
 
-If you have a use case where you only update your Privacy Policy (or an equivalent document) for new customers, while existing customers remain on the original terms, contact [RevenueCat support](https://app.revenuecat.com/settings/support) for assistance.
+Here's a template to help get you started:
+
+> **Consent to Share Consumption Data with Apple:**
+>
+> By using our app and making in-app purchases, you consent to our sharing of data regarding your usage and consumption of purchased content with Apple, as part of our efforts to resolve refund requests. This information may include details about how you have accessed and interacted with the purchased content. The purpose of sharing this data is to help Apple make an informed decision regarding refund requests. We ensure that such data sharing is done in compliance with Apple's policies and only as necessary to process your requests.
+
+For general guidelines from Apple, visit their [documentation](https://developer.apple.com/documentation/appstoreserverapi/send_consumption_information#3921151).
+
+If you have a use case where you only update your Terms & Conditions (or an equivalent document) for new customers, while existing customers remain on the original terms, contact [RevenueCat support](https://app.revenuecat.com/settings/support) for assistance.
 
 ## Data RevenueCat sends to Apple
 Below are the [properties](https://developer.apple.com/documentation/appstoreserverapi/consumptionrequest) and data that RevenueCat will send to Apple when a refund request comes in.
