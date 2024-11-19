@@ -14,6 +14,7 @@ Deleting users through the RevenueCat dashboard or API clears out all of their d
 Deleting a user with live purchases may have downstream effects on charts and reporting.
 :::
 
-:::info Deleting a user from RevenueCat won't cancel their subscriptions
+:::info Deleting a user from RevenueCat won't cancel mobile subscriptions
 You can cancel a user's Google Play subscription before deleting them via our [API](https://docs.revenuecat.com/reference#revoke-a-google-subscription). It's not possible for you to cancel a user's Apple subscription; this is a limitation of the App Store.
+RevenueCat Billing (web) subscriptions are always canceled when the user is deleted.
 :::
