@@ -211,6 +211,15 @@ const testAndLaunchCategory = Category({
         Page({ slug: "amazon-store-sandbox-testing" }),
       ],
     }),
+    SubCategory({
+      label: "Testing Guide",
+      slug: "testing-guide",
+      itemsPathPrefix: "testing-guide/",
+      items: [
+        Page({ slug: "use-cases" }),
+        Page({ slug: "export-examples" }),
+      ]
+    }),
     Page({ slug: "environment-strategies" }),
     Page({ slug: "launch-checklist" }),
     Page({ slug: "app-store-rejections" }),
@@ -237,6 +246,7 @@ const subscriptionGuidanceCategory = Category({
     Page({ slug: "price-changes" }),
     Page({ slug: "refunds" }),
     Page({ slug: "google-prepaid-plans" }),
+    Page({ slug: "common-architecture" }),
   ],
 });
 
