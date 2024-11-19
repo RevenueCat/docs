@@ -308,7 +308,7 @@ You can disable Streamlined Purchasing in App Store Connect under *Apps* → *Yo
 
 ![disable_streamlined_purchasing.png](/images/win-back-offers/disable_streamlined_purchasing.png)
 
-After a user starts a win-back redemption flow on the App Store and opens your app, the RevenueCat SDK will call the `PurchasesDelegate.purchases(readyForPromotedProduct:startPurchase)` function to let your app know that the user has started a redemption flow. Your app should perform whatever actions it needs to do before the redemption flow continues. When your app is ready for the user to complete the redemption flow, you should call the `startPurchase` callback provided in the `readyForPromotedProduct` function.
+After a user starts a win-back redemption flow on the App Store and opens your app, the RevenueCat SDK will call the `PurchasesDelegate.purchases(readyForPromotedProduct:startPurchase)` delegate function to let your app know that the user has started a redemption flow. Your app should then perform any actions it needs to do before the redemption flow continues. When your app is ready for the user to complete the redemption flow, you should call the `startPurchase` callback provided in the `readyForPromotedProduct` function.
 
 import streamlinedPurchasingDisabled from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offer-redemption-app-store-streamlined-purchasing-disabled.swift";
 
