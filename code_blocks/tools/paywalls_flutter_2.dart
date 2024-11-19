@@ -1,6 +1,7 @@
 import 'package:purchases_ui_flutter/purchases_ui_flutter.dart';
 
-// In your own Widget:
+// Note: Avoid placing PaywallView inside a modal or bottom sheet (e.g., using showModalBottomSheet).
+// Instead, include it directly in your widget.
 @override
 Widget build(BuildContext context) {
   return Scaffold(

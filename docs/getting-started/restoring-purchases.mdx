@@ -63,15 +63,9 @@ The default behavior is to transfer purchases between identified App User IDs if
 
 If an identified App User ID restores and the owner of the receipt is anonymous, the anonymous identifiers will be merged (aliased) into the same customer profile in RevenueCat and treated as the same customer going forward. If an anonymous ID restores and the owner of the receipt is an identified App User ID, we will resort to the specified restore behavior and transfer the receipt to the anonymous user. And finally, if an anonymous ID restores and the owner of the receipt is also anonymous, the anonymous identifiers will be merged (aliased).
 
-#### Google Play on Android
-
-Due to platform limitations, purchases will be transferred as soon as you call `configure` if a user's purchases are already associated with another app user ID.
-
-This may cause unexpected transfers of purchases between app user IDs, especially for apps with optional logins or users with multiple devices. To prevent this behavior, you should wait to call `configure` until you have the appropriate app user ID for your customer.
-
 ### Transfer if there are no active subscriptions
 
-This behavior will transfer the purchases to the new App User ID unless they contain an active subscription. This behavior is especially beneficial if you have strict business logic that associate subscriptions with a given App User ID, but you still want churned subscribers who might later return to your app with a new App User ID to start a new subscription. This is especially relevant on iOS, where a receipt contains all purchases associated with a given Apple ID, so in the case of using the behavior "Keep with original App User ID", the customer would be able to start a new subscription on the store, but they would not be able to gain access because RevenueCat would associate that new subscription with the original App User ID (since it is on the same Apple receipt).
+This behavior will transfer the purchases to the new App User ID unless they contain an active subscription. This behavior is especially beneficial if you have strict business logic that associate subscriptions with a given App User ID, but you still want churned subscribers who might later return to your app with a new App User ID to start a new subscription. This is especially relevant on iOS, where a receipt contains all purchases associated with a given Apple Account, so in the case of using the behavior "Keep with original App User ID", the customer would be able to start a new subscription on the store, but they would not be able to gain access because RevenueCat would associate that new subscription with the original App User ID (since it is on the same Apple receipt).
 
 Note that the presence of one-time (non-subscription) purchases does not prevent transfers from happening.
 
@@ -110,6 +104,19 @@ The legacy behavior is to merge (alias) any App User IDs that restore the same u
 Consumables and non-renewing subscriptions can only be restored by using an acount system with custom [App User IDs](/customers/user-ids). This is due to these types of in-app purchases not showing up on the underlying store receipt after the transaction is finished.
 
 By logging in your users with a custom App User ID, RevenueCat can continue to provide transaction details in a user's [CustomerInfo](/customers/customer-info) for their previous consumable and non-renewing subscription purchases.
+
+## Considerations for enabling "Track New Purchases from Server-to-Server Notifications"
+
+If you plan to enable the "Track new purchases from server-to-server notifications" feature ([Apple reference](/platform-resources/server-notifications/apple-server-notifications#tracking-new-purchases-using-apple-app-store-server-notifications), [Google reference](/platform-resources/server-notifications/google-server-notifications#tracking-new-purchases-using-google-cloud-pubsub)), please review your transfer behavior settings carefully. Enabling this feature may result in customers not receiving access to their entitlements if certain transfer settings are in place.
+  
+To ensure smooth functionality:
+1. Confirm that you **are not** using the "Keep with original App User ID" or "Transfer if there are no active subscriptions" setting in combination with this feature, **or**
+2. Check that you **are not** setting `appAccountToken` or `obfuscatedExternalAccountId` fields, **or**
+3. Verify that any `appAccountToken` or `obfuscatedExternalAccountId` set for your customers will match their RevenueCat App User ID.
+
+If you meet any of the above conditions, you can proceed with enabling the feature. 
+
+If not, it may happen that we first track a purchase for **App User ID A** from a server-to-server notification and later we receive the same purchase from the SDK or the REST API under a different **App User ID B**. In this case, no transfer will occur, and **App User ID B** will never get access to the entitlement. 
 
 ## Next Steps
 

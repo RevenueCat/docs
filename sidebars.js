@@ -161,6 +161,7 @@ const webPurchasesCategory = Category({
       itemsPathPrefix: "revenuecat-billing/",
       items: [
         Page({ slug: "product-setup" }),
+        Page({ slug: "customization" }),
         Page({ slug: "subscription-lifecycle" }),
         Page({ slug: "multi-currency-support" }),
         Page({ slug: "managing-customer-subscriptions" }),
@@ -219,6 +220,7 @@ const testAndLaunchCategory = Category({
         Page({ slug: "export-examples" }),
       ]
     }),
+    Page({ slug: "environment-strategies" }),
     Page({ slug: "launch-checklist" }),
     Page({ slug: "app-store-rejections" }),
   ],
@@ -264,6 +266,7 @@ const dashboardCategory = Category({
         Page({ slug: "active-trials-chart" }),
         Page({ slug: "active-trials-movement-chart" }),
         Page({ slug: "annual-recurring-revenue-arr-chart" }),
+        Page({ slug: "app-store-refund-requests-chart"}),
         Page({ slug: "charts-feature-incomplete-periods" }),
         Page({ slug: "churn-chart" }),
         Page({ slug: "cohort-explorer" }),
@@ -271,9 +274,11 @@ const dashboardCategory = Category({
         Page({ slug: "initial-conversion-chart" }),
         Page({ slug: "monthly-recurring-revenue-movement-chart" }),
         Page({ slug: "monthly-recurring-revenue-mrr-chart" }),
+        Page({ slug: "new-customers-chart" }),
         Page({ slug: "new-paid-subscriptions-chart" }),
         Page({ slug: "new-trials-chart" }),
         Page({ slug: "non-subscription-purchases-chart" }),
+        Page({ slug: "play-store-cancel-reasons-chart" }),
         Page({ slug: "prediction-explorer" }),
         Page({ slug: "realized-ltv-per-customer-chart" }),
         Page({ slug: "realized-ltv-per-paying-customer-chart" }),
@@ -413,6 +418,7 @@ const integrationsCategory = Category({
         Page({ slug: "mixpanel" }),
         Page({ slug: "mparticle" }),
         Page({ slug: "onesignal" }),
+        Page({ slug: "posthog" }),
         Page({ slug: "segment" }),
         Page({ slug: "slack" }),
         Page({ slug: "statsig" }),
@@ -458,6 +464,7 @@ const platformResourcesCategory = Category({
         Page({ slug: "apple-family-sharing" }),
         Page({ slug: "legacy-mac-apps" }),
         Page({ slug: "swiftui-helpers" }),
+        Page({ slug: "handling-refund-requests"},)
       ],
     }),
     SubCategory({

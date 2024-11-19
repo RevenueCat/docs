@@ -29,6 +29,13 @@ import yarnContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/ins
   ]}
 />
 
+<br />
+
+:::info
+When testing RevenueCat Billing with [unpkg](https://www.unpkg.com/), add `Purchases` before all method names to access them.
+For example, use `Purchases.Purchases.configure()` instead of `Purchases.configure()`.
+:::
+
 ## General setup
 
 ### Connect with Stripe
@@ -47,6 +54,7 @@ In the following step, you can set up the most important information for the new
 - **Stripe Account**: The Stripe account to use. To use a different Stripe account not shown in the list, [connect it to RevenueCat first](/web/connect-stripe-account).
 - **Default Currency**: The default currency to use for the prices of the products. [Read more about multi-currency support in RevenueCat Billing](/web/revenuecat-billing/multi-currency-support).
 - **Seller Company Name**: The name of your company. This will also be shown in the purchase flow, in emails, and on invoices.
+- **Appearance**: Allows customizing the colors of the purchase flow. [Read more about customizing the appearance](/web/revenuecat-billing/customization).
 - **Support Email**: An email address that customers can send support requests to. This will also be shown in the purchase flow, in emails, and on invoices.
 
 ![New RevenueCat Billing App](/images/rc-billing/new-rc-billing-app-form.png)
