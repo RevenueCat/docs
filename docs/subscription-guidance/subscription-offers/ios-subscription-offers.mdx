@@ -310,14 +310,11 @@ You can disable Streamlined Purchasing in App Store Connect under *Apps* → *Yo
 
 After a user starts a win-back redemption flow on the App Store and opens your app, the RevenueCat SDK will call the `PurchasesDelegate.purchases(readyForPromotedProduct:startPurchase)` function to let your app know that the user has started a redemption flow. Your app should perform whatever actions it needs to do before the redemption flow continues. When your app is ready for the user to complete the redemption flow, you should call the `startPurchase` callback provided in the `readyForPromotedProduct` function.
 
-import iosWinBackOfferRedemptionAppStoreStreamlinedPurchasingDisabled from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offer-redemption-app-store-streamlined-purchasing-disabled.swift";
+import streamlinedPurchasingDisabled from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offer-redemption-app-store-streamlined-purchasing-disabled.swift";
+
 <RCCodeBlock tabs={[
-    {
-        type: 'swift',
-        title: "Swift",
-        content: iosWinBackOfferRedemptionAppStoreStreamlinedPurchasingDisabled,
-    }
-]}/>
+    { type: 'swift', content: streamlinedPurchasingDisabled, name: 'Swift' }
+]} />
 
 In addition to the steps mentioned above to configure your win-back offer, we recommend doing the following:
 
@@ -328,23 +325,25 @@ In addition to the steps mentioned above to configure your win-back offer, we re
 
 You can display win-back offers to subscribers on your paywall for users to redeem using iOS SDK versions 5.10+. After configuring your win-back offers, you can use our SDK to fetch the win-back offers that a subscriber is eligible for for a given product:
 
-import ios-winback-offers-fetch-eligible-winback-offers from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers.swift";
+import fetchEligibleWinbacks from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers.swift";
+
 <RCCodeBlock tabs={[
     {
         type: 'swift',
         title: "Swift",
-        content: ios-winback-offers-fetch-eligible-winback-offers,
+        content: fetchEligibleWinbacks,
     }
 ]}/>
 
 Once the user has selected a win-back offer that they'd like to redeem, you can purchase it with the SDK:
 
-import ios-winback-offers-purchase-winback-offer from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer.swift";
+import purchaseWinbackOffer from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer.swift";
+
 <RCCodeBlock tabs={[
     {
         type: 'swift',
         title: "Swift",
-        content: ios-winback-offers-purchase-winback-offer,
+        content: purchaseWinbackOffer,
     }
 ]}/>
 
@@ -352,12 +351,13 @@ import ios-winback-offers-purchase-winback-offer from "!!raw-loader!@site/code_b
 
 You can also redeem win-back offers in a StoreKit StoreView (paywall) with the following SwiftUI code:
 
-import ios-winback-offer-storekit-storeview from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offer-storekit-storeview.swift";
+import winbackOfferStoreKitStoreView from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offer-storekit-storeview.swift";
+
 <RCCodeBlock tabs={[
     {
         type: 'swift',
         title: "Swift",
-        content: ios-winback-offer-storekit-storeview,
+        content: winbackOfferStoreKitStoreView,
     }
 ]}/>
 
