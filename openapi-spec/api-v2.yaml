@@ -954,6 +954,7 @@ paths:
                   maxLength: 50
                   items:
                     type: object
+                    additionalProperties: false
                     properties:
                       name:
                         description: The name of the attribute
@@ -4685,6 +4686,7 @@ components:
       - $amazonAdId
       - $amplitudeDeviceId
       - $amplitudeUserId
+      - $appleRefundHandlingPreference
       - $apnsTokens
       - $appsflyerId
       - $appsflyerSharingFilter
@@ -4716,6 +4718,10 @@ components:
       - $onesignalUserId
       - $phoneNumber
       - $posthogUserId
+      - $telemetryDeckUserId
+      - $telemetryDeckAppId
+      - telemetry_deck_user_id
+      - telemetry_deck_app_id
       - $segmentId
       - $tenjinId
       - $deviceVersion
