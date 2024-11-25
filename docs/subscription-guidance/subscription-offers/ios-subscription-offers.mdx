@@ -326,12 +326,18 @@ In addition to the steps mentioned above to configure your win-back offer, we re
 You can display win-back offers to subscribers on your paywall for users to redeem using iOS SDK versions 5.10+. After configuring your win-back offers, you can use our SDK to fetch the win-back offers that a subscriber is eligible for for a given product:
 
 import fetchEligibleWinbacks from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers.swift";
+import fetchEligibleWinbacksReactNative from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers-react-native.ts";
 
 <RCCodeBlock tabs={[
     {
         type: 'swift',
         title: "Swift",
         content: fetchEligibleWinbacks,
+    },
+    {
+        type: 'ts',
+        title: "React Native",
+        content: fetchEligibleWinbacksReactNative,
     }
 ]}/>
 
@@ -342,12 +348,18 @@ Note: The `eligibleWinBackOffers` function only returns the win-back offers that
 Once the user has selected a win-back offer that they'd like to redeem, you can purchase it with the SDK:
 
 import purchaseWinbackOffer from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer.swift";
+import purchaseWinbackOfferReactNative from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer-react-native.ts";
 
 <RCCodeBlock tabs={[
     {
         type: 'swift',
         title: "Swift",
         content: purchaseWinbackOffer,
+    },
+    {
+        type: 'ts',
+        title: "React Native",
+        content: purchaseWinbackOfferReactNative,
     }
 ]}/>
 
