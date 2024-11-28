@@ -10,13 +10,13 @@ RevenueCat Billing and the RevenueCat Web SDK are currently in beta.
 
 ## Overview
 
-RevenueCat Billing supports the following payment methods for charging customers in the checkout:
+RevenueCat Billing currently supports the following payment methods for charging subscription and one-time purchases:
 - **Credit card:** Enabled by default, supports for all major card networks, and 3D Secure authentication (via Stripe)
-- **Apple Pay:** A low-friction wallet payment method for customers on iOS or macOS devices (via Stripe)
+- **Apple Pay:** A low-friction wallet payment method for customers with stored credit cards on iOS or macOS devices (via Stripe)
 - **Google Pay:** A low-friction wallet payment method with the ability to use stored credit cards from Google Play, YouTube, Chrome and Android (via Stripe).
 
 :::info RevenuCat Billing manages payment methods
-In general, RevenueCat Billing manages the payment methods that are shown to customers. Other than the additional required configuration for Apple Pay & Google Pay below, you do not need to manage this from your Stripe account.
+In general, RevenueCat Billing manages the payment methods that are shown to customers. Other than the additional required configuration below, you do not need to manage or enable payment methods in your Stripe account.
 :::
 
 ## Configuring credit cards
@@ -25,26 +25,20 @@ There is nothing you need to do to configure to accept credit card payments, whi
 
 ## Configuring Apple Pay & Google Pay
 
-Both Apple Pay and Google Pay are wallets that require the domain where the payment takes place to be registered in the Stripe dashboard:
+To use Apple Pay and Google Pay, you need to register the domain where the payment takes place in the Stripe dashboard:
 
-- If you're taking payments through Web Paywall Links, you'll need to add the `pay.rev.cat` domain.
+- If you're taking payments through [Web Paywall Links](/web/revenuecat-billing/web-paywall-links/), you should add the `pay.rev.cat` domain.
+- If you're initiating purchases with the [Web SDK](/web/revenuecat-billing/), you should add your own domain where payments take place.
 
-- If you're initiating purchases with the Web SDK, you'll need to add your own domain where payments take place (and additionally verify its ownership for Apple Pay). ([read more](https://docs.stripe.com/payments/payment-methods/pmd-registration?dashboard-or-api=dashboard#verify-domain-with-apple)).
 
-
-### How to add and verify payment domains
-
-**If you're initiating purchases with the Web SDK:**
-First, follow the instructions [on this page](https://docs.stripe.com/payments/payment-methods/pmd-registration?dashboard-or-api=dashboard#verify-domain-with-apple) and upload the domain verification file at the correct URL on your domain.
+### How to add payment domains
 
 1. Go to the [Payment Method Domains](https://dashboard.stripe.com/settings/payment_method_domains) page in your Stripe Dashboard.
 1. Click "Add a new domain", enter `pay.rev.cat`, and click "Save".
-1. (Web SDK only) Click "Add a new domain", and enter your domain where your purchases take place, including subdomain. Click "Save".
+1. (Web SDK only) Click "Add a new domain", and enter the domain where purchases take place on your website, including the subdomain. Click "Save".
 
-You should see the added domains in the list next to a green "Enabled" tag. In the case of Apple Pay and domain verification, it may take some time before the process is complete, and it's marked as "Enabled" in the payment domain list. Stripe Won't show the payment method to customers until this time, and you'll see an "Apple Pay not ready" tag in the domain list:
+You should see the added domains in the list next to a green "Enabled" tag.
 
-![Apple Pay domain not ready](/images/rc-billing/apple-pay-domain-not-ready.png)
-
-Once enabled, Apple Pay and Google Pay will show up alongside the credit card payment method in the checkout form, when available to the customer. There are no further steps required to handle payments.
+Once enabled, Apple Pay and Google Pay will be displayed next to the credit card payment method in the checkout form, when available to the customer. There are no further steps required to handle payments with these methods.
 
 ![Apple Pay in checkout](/images/rc-billing/rc-billing-apple-pay.png)
