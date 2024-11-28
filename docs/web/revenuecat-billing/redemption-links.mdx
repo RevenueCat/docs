@@ -5,3 +5,50 @@ excerpt: Allow customers to purchase products and subscriptions on the web and r
 hidden: false
 ---
 
+:::warning Beta Feature
+RevenueCat Billing and the RevenueCat Web SDK are currently in beta.
+:::
+
+## Overview
+Redemption Links is a Web2App feature that allows you to seamlessly connect web purchases with native mobile apps. This reduces friction from the purchase flow, and can be useful for campaigns and other initiatives where handling purchases on the web is easier and more flexible.
+
+Redeeming purchases with Redemption Links means that you do not need to provide App User IDs when initializing the purchase, and users can therefore check out "anonymously", with the purchase being assigned to the logged in user when they're linked into the mobile app.
+
+https://api.revenuecat.com/rcbilling/v1/redirect?url=rc-d458f1e3a2://redeem_web_purchase?redemption_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9qZWN0X2lkIjoiN2IxYTExMGYiLCJvcmlnaW5hbF9jdXN0b21lcl9pZCI6Indkam9hcGR3YSIsImlzcyI6InJldmVudWVjYXQuY29tIiwiaWF0IjoxNzMyNTUzMzgwLCJleHAiOjE3MzI1NTY5ODB9.fsAkS6epvQ7zGi-MKlZDFqF6u5fqfy7Dffnn3F72C78
+
+## How Redemption Links Work
+Here's how a purchase and redemption flow looks, once you've configured and enabled the feature:
+
+1. The customer purchases a product through RC Billing, and the usual purchase flow (NEW: app user ID not required when initializing the flow)
+1. We provide a redemption link at the end of the purchase flow: both in the success page, and the email receipt
+1. On tapping the redemption link, users are redirected to the app (using a custom URL scheme)
+1. The app, having registered our custom URL scheme, recognizes the purchase and associates it with the user.
+1. The user has access to their entitlements inside the mobile app. That’s it!
+
+
+## How to configure Redemption Links to redeem web purchases in your apps
+
+### Prepare your mobile apps to accept custom URL schemes from RevenueCat
+
+:::warning Updated mobile apps must be released to users
+When the Redemption Links feature is enabled, links will be sent to customers that use custom URL schemes (to redirect the user into your app). Users on older versions of your apps without the custom URL scheme configuration will not be able to use these links to redeem purchases. You should therefore make sure the majority of users have adopted your new version before distributing Redemption Links.
+:::
+
+**On Android:**
+
+Android dev instructions here
+
+**On iOS:**
+
+iOS dev instructions here
+
+
+### Enable Redemption Links in the RevenueCat Dashboard
+
+1. Navigate to your RevenueCat Billing app in the dashboard
+2. Under App Information in the Settings tab, make sure you've added: App icon, App name, and at lease one store links for app downloads
+3. Under Redemption Links, set the feature to Enabled
+
+SCREENSHOT NEEDS UPDATING
+![](/images/rc-billing/redemption-links-configure.png)
+
