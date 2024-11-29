@@ -33,6 +33,10 @@ To use Apple Pay and Google Pay, you need to register the domain where the payme
 
 ### How to add payment domains
 
+:::info Add payment domains in Live mode for production payments
+Payment domains added in Test mode can be tested in Sandbox, using real cards (no real charges will be made). You need to add domains in Live mode to enable production purchases.
+:::
+
 1. Go to the [Payment Method Domains](https://dashboard.stripe.com/settings/payment_method_domains) page in your Stripe Dashboard.
 1. Click "Add a new domain", enter `pay.rev.cat`, and click "Save".
 1. (Web SDK only) Click "Add a new domain", and enter the domain where purchases take place on your website, including the subdomain. Click "Save".
