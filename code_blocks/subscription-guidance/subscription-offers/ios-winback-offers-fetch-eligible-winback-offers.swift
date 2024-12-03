@@ -1,5 +1,5 @@
 let eligibleWinBackOffers: [WinBackOffer] = try await Purchases.shared.eligibleWinBackOffers(
-    forProduct: product
+    forPackage: package
 )
 
-// Now, display these eligible win-back offers on your paywall
+// TODO: display eligible win-back offers in your UI
