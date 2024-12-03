@@ -25,6 +25,10 @@ There is nothing you need to do to configure to accept credit card payments, whi
 
 ## Configuring Apple Pay & Google Pay
 
+:::warning Apple Pay & Google Pay payment methods not currently supported
+Due to issues with the way that wallet payments are presented to customers in the RevenueCat Billing checkout, we do not recommend enabling either Apple Pay or Google Pay. If you're actively using them on production, we recommend removing them as an option by deleting the approved domains (below) in your Stripe account.
+:::
+
 To use Apple Pay and Google Pay, you need to register the domain where the payment takes place in the Stripe dashboard:
 
 - If you're taking payments through [Web Paywall Links](/web/revenuecat-billing/web-paywall-links/), you should add the `pay.rev.cat` domain.
