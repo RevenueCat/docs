@@ -7,14 +7,10 @@ hidden: false
 
 RevenueCat does not require server notifications from Stripe, however doing so can speed up webhook and integration delivery times and reduce lag time for [Charts](/dashboard-and-metrics/charts).
 
-TODO: Confirm if we changed the behavior to juse ignore events for receipts we don't have in our system
-
 :::warning Send Stripe token to RevenueCat
 Stripe Server Notifications only work if the receipt exists in RevenueCat when the event is dispatched from Stripe. If the receipt doesn't exist, the event will fail. This includes test events from Stripe.
 
 You'll need to follow our [Stripe Web Payments](/web/stripe) guide and send your purchase tokens to RevenueCat before proceeding with this guide.
-
-However, if you have enabled the ["Track new purchases from server-to-server notifications"](/platform-resources/server-notifications/stripe-server-notifications#tracking-new-purchases-using-stripe-server-notifications) feature, you **do not** need to send your purchase token to RevenueCat before proceeding with this guide.
 :::
 
 ![Required and optional notifications from Stripe](/images/98a0f1c-stripe_notifications_aec74502997f2c0b977a7e6477cb5adf.png)
@@ -34,7 +30,7 @@ However, if you have enabled the ["Track new purchases from server-to-server not
 - charge.refunded
 - invoice.updated
 
-If you plan to enable the ["Track new purchases from server-to-server notifications"](/platform-resources/server-notifications/stripe-server-notifications#tracking-new-purchases-using-stripe-server-notifications) feature, you can also select the following events:
+If you plan to enable the ["Track new purchases from server-to-server notifications"](/platform-resources/server-notifications/stripe-server-notifications#tracking-new-purchases-using-stripe-server-notifications) feature, you should also select the following events:
 - customer.subscription.created
 - checkout.session.completed
 
@@ -56,7 +52,7 @@ If you choose other events besides what's listed above, our API will respond wit
 ![](/images/44eb66c-Screen_Shot_2021-12-01_at_5.57.29_PM_47e00510cc368278d0798009e6685cd8.png "Screen Shot 2021-12-01 at 5.57.29 PM.png")
 
 ## Tracking new purchases using Stripe Server Notifications
-By default, RevenueCat will fail for any Stripe Server Notifications for purchases that have not yet been posted to the RevenueCat API from your own backend. For RevenueCat to track new purchases from Stripe Server Notifications, you can enable the **"Track new purchases from server-to-server notifications"** option in our Dashboard. This allows RevenueCat to process new purchases from server-to-server notifications that are not yet in our system. This ensures all purchases are tracked, even in the case of network issues between your server's and RevenueCat's.
+By default, RevenueCat will not process Stripe Server Notifications for any purchases that have not yet been posted to the RevenueCat API from your own backend. For RevenueCat to track new purchases from Stripe Server Notifications, you can enable the **"Track new purchases from server-to-server notifications"** option in our Dashboard. This allows RevenueCat to process new purchases from server-to-server notifications that are not yet in our system. This ensures all purchases are tracked, even in the case of network issues between your server's and RevenueCat's.
 
 ![](/images/stripe_no_code_configuration.png)
 
