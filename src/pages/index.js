@@ -218,7 +218,7 @@ function LandingPage() {
                 Targeting
               </span>
             </Link>
-            <Link href="/docs/welcome/projects/account-management">
+            <Link href="/docs/web/revenuecat-billing">
               <span className="flex items-center gap-3">
                 <BillingIcon width="16" />
                 RevenueCat Billing
