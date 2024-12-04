@@ -55,6 +55,9 @@ In order for Stripe subscriptions to unlock [entitlements](/getting-started/enti
 Failure to complete this step will result in untracked Stripe subscriptions in RevenueCat.
 :::
 
+The following sections provide step-by-step instructions for two methods of sending Stripe tokens to RevenueCat. Whether you prefer a manual integration through the API or automated processing using the "Track new purchases from server-to-sever notifications" feature, this section will guide you in setting up your configuration to ensure all purchases are tracked.   
+
+### Manually through our API
 You can send your Stripe subscriptions to RevenueCat through the [POST receipt endpoint](/migrating-to-revenuecat/migrating-existing-subscriptions/receipt-imports). When using Stripe Checkout, you should listen to and send subscriptions to RevenueCat only after either of these events have completed:
 - `customer.subscription.created`
 - `checkout.session.completed`
@@ -79,11 +82,16 @@ import curlContent from "!!raw-loader!@site/code_blocks/getting-started/stripe_1
     { type:'curl', content: curlContent }
 ]} />
 
+### Track new purchases from server-to-server-notifications
+RevenueCat can automatically process Stripe tokens sent through server-to-server notifications. To enable automatic processing of Stripe purchases, ensure the following features are enabled:
+- [Stripe Server Notifications](/platform-resources/server-notifications/stripe-server-notifications)
+- [Track new purchases from server-to-server notifications](/platform-resources/server-notifications/stripe-server-notifications#tracking-new-purchases-using-stripe-server-notifications)
+
 ### One-time Stripe purchases
 
 RevenueCat supports one-time purchases as well as subscription purchases through Stripe.
 
-One-time purchases require using Stripe Checkout, and you'll need to send us the Checkout Session ID as the fetch_token. Additionally, you'll need to use Stripe's [Prices](https://stripe.com/docs/api/prices) objects. RevenueCat supports both one-time purchases and subscriptions made through Stripe Checkout.
+One-time purchases require using Stripe Checkout, and you'll need to send us the Checkout Session ID as the fetch_token if you are manually sending Stripe tokens to RevenueCat. Additionally, you'll need to use Stripe's [Prices](https://stripe.com/docs/api/prices) objects. RevenueCat supports both one-time purchases and subscriptions made through Stripe Checkout.
 
 :::info App User ID is required
 In order for a Stripe subscription to be honored within an app, the _Purchases SDK_ needs to be configured with the same App User ID associated with the Stripe subscription.
