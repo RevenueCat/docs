@@ -1,3 +1,6 @@
+import RevenueCatUI
+...
+
 var body: some View {
     Group {
         NavigationStack {

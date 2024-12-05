@@ -1,3 +1,6 @@
+import RevenueCatUI
+...
+
 VStack {
     Button {
         self.presentingCustomerCenter = true
