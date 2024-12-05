@@ -6,4 +6,4 @@ Purchases.configure(this, "public_sdk_key")
 Purchases.sharedInstance.collectDeviceIdentifiers()
 
 // Set the Tenjin ID
-Purchases.sharedInstance.setTenjinAnalyticsInstallationID();
+Purchases.sharedInstance.setTenjinAnalyticsInstallationID(tenjinAnalyticsId);
