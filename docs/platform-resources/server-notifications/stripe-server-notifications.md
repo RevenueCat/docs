@@ -30,6 +30,10 @@ You'll need to follow our [Stripe Web Payments](/web/stripe) guide and send your
 - charge.refunded
 - invoice.updated
 
+If you plan to enable the ["Track new purchases from server-to-server notifications"](/platform-resources/server-notifications/stripe-server-notifications#tracking-new-purchases-using-stripe-server-notifications) feature, you should also select the following events:
+- customer.subscription.created
+- checkout.session.completed
+
 It's important to only select these events.
 
 ![Screen Shot 2022-08-08 at 2.24.58 PM.png](/images/c1f3542-Screen_Shot_2022-08-08_at_2.24.58_PM_4d2f0f228412b78eeb63c6255d15d5cf.png)
@@ -46,6 +50,26 @@ If you choose other events besides what's listed above, our API will respond wit
 7. Paste it in the **Stripe Webhook Secret** input field and save. The input field should now look like this:
 
 ![](/images/44eb66c-Screen_Shot_2021-12-01_at_5.57.29_PM_47e00510cc368278d0798009e6685cd8.png "Screen Shot 2021-12-01 at 5.57.29 PM.png")
+
+## Tracking new purchases using Stripe Server Notifications
+By default, RevenueCat will not process Stripe Server Notifications for any purchases that have not yet been posted to the RevenueCat API from your own backend. For RevenueCat to track new purchases from Stripe Server Notifications, you can enable the **"Track new purchases from server-to-server notifications"** option in our Dashboard. This allows RevenueCat to process new purchases from server-to-server notifications that are not yet in our system. This ensures all purchases are tracked, even in the case of network issues between your server's and RevenueCat's.
+
+![](/images/stripe_no_code_configuration.png)
+
+### App User ID Detection Methods
+RevenueCat provides flexible ways to detect the App User ID for purchases coming through Stripe Server Notifications. The Stripe purchase will be associated with the detected App User ID.
+1. **Use anonymous App User IDs**: RevenueCat will generate a RevenueCat anonymous App User ID to associate the purchase with.
+2. **Use Stripe Customer ID as App User ID**: RevenueCat will use the [Stripe Customer ID field](https://docs.stripe.com/api/customers/object#customer_object-id) as the RevenueCat App User ID. Only select this option if you plan on using Stripe's Customer ID as your customer's App User ID throughout your system.
+3. **Read App User ID from a Stripe metadata field**: If you are storing your customer's RevenueCat App User ID through [Stripe metadata](https://docs.stripe.com/metadata), you can specify the metadata field name in the `Metadata field key` textbox. Ensure that the metadata value will exactly match your RevenueCat App User ID.
+
+:::info Additional information about using Stripe Customer ID as App User ID
+In some cases, a Stripe Checkout Session may have a `NULL` value for the Stripe Customer ID. This can happen when a purchase is made by a "guest customer". In these instances, RevenueCat will associate the purchase with an anonymous App User ID.
+:::
+
+### Considerations
+* If your setup involves you [manually sending us the Stripe token](/web/stripe#5-send-stripe-tokens-to-revenuecat), RevenueCat may receive the notification from Stripe before your server's request. In this case:
+    * The App User ID detection method described above will be applied.
+    * RevenueCat will then follow your [transfer behavior](/getting-started/restoring-purchases) for the App User ID provided in your request.
 
 ## Stripe Webhook 400 Errors
 
