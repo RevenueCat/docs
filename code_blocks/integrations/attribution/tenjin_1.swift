@@ -7,4 +7,4 @@ Purchases.configure(withAPIKey: "public_sdk_key")
 Purchases.shared.attribution.collectDeviceIdentifiers()
 
 // Set the Tenjin ID
-Purchases.shared.attribution.setTenjinAnalyticsInstallationID()
+Purchases.shared.attribution.setTenjinAnalyticsInstallationID(tenjinAnalyticsId)
