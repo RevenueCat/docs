@@ -47,6 +47,10 @@ import kotlinContent from "!!raw-loader!@site/code_blocks/integrations/attributi
   ]}
 />
 
+:::info Availability
+`setTenjinAnalyticsInstallationID()` is available on iOS version 5.8.0+, Android version 8.10.0+, and is coming soon to our hybrid SDKs.
+:::
+
 You should make sure to call `collectDeviceIdentifiers()` after the _Purchases SDK_ is configured, and before the first purchase occurs. It's safe to call this multiple times, as only the new/updated values will be sent to RevenueCat. If the Tenjin ID is not set, events will be sent with only the platform-specific advertising identifier.
 
 :::danger Device identifiers with iOS App Tracking Transparency (iOS 14.5+)
