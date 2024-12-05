@@ -62,6 +62,10 @@ RevenueCat provides flexible ways to detect the App User ID for purchases coming
 2. **Use Stripe Customer ID as App User ID**: RevenueCat will use the [Stripe Customer ID field](https://docs.stripe.com/api/customers/object#customer_object-id) as the RevenueCat App User ID. Only select this option if you plan on using Stripe's Customer ID as your customer's App User ID throughout your system.
 3. **Read App User ID from a Stripe metadata field**: If you are storing your customer's RevenueCat App User ID through [Stripe metadata](https://docs.stripe.com/metadata), you can specify the metadata field name in the `Metadata field key` textbox. Ensure that the metadata value will exactly match your RevenueCat App User ID.
 
+:::info Additional information about using Stripe Customer ID as App User ID
+In some cases, a Stripe Checkout Session may have a `NULL` value for the Stripe Customer ID. This can happen when a purchase is made by a "guest customer". In these instances, RevenueCat will associate the purchase with an anonymous App User ID.
+:::
+
 ### Considerations
 * If your setup involves you [manually sending us the Stripe token](/web/stripe#5-send-stripe-tokens-to-revenuecat), RevenueCat may receive the notification from Stripe before your server's request. In this case:
     * The App User ID detection method described above will be applied.
