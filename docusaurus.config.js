@@ -17,7 +17,7 @@ const HOCKEYSTACK_API_KEY = process.env.HOCKEYSTACK_API_KEY || "SET_BY_CI";
 const GOOGLE_SITE_VERIFICATION =
   process.env.GOOGLE_SITE_VERIFICATION || "SET_BY_CI";
 
-import redirects from "./src/redirects/redirects";
+import redirects from "./src/redirects/redirects.js";
 import tailwindPlugin from "./src/plugins/tailwind/tailwind-config.cjs";
 
 /** @type {import('@docusaurus/types').Config} */
