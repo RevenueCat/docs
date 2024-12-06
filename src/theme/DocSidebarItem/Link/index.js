@@ -1,11 +1,18 @@
 import React from "react";
 import clsx from "clsx";
 import { ThemeClassNames } from "@docusaurus/theme-common";
-import { isActiveSidebarItem } from "@docusaurus/theme-common/internal";
+import { isActiveSidebarItem as isActiveSidebarItemInternal } from "@docusaurus/theme-common/internal";
 import Link from "@docusaurus/Link";
 import isInternalUrl from "@docusaurus/isInternalUrl";
 import IconExternalLink from "@theme/Icon/ExternalLink";
 import styles from "./styles.module.css";
+
+// Fallback logic for isActiveSidebarItem
+function isActiveSidebarItemFallback(item, activePath) {
+  if (!item || !activePath) return false;
+  return activePath.startsWith(item.href);
+}
+
 export default function DocSidebarItemLink({
   item,
   onItemClick,
@@ -15,8 +22,11 @@ export default function DocSidebarItemLink({
   ...props
 }) {
   const { href, label, className, autoAddBaseUrl } = item;
+  const isActiveSidebarItem =
+    isActiveSidebarItemInternal || isActiveSidebarItemFallback;
   const isActive = isActiveSidebarItem(item, activePath);
   const isInternalLink = isInternalUrl(href);
+
   return (
     <li className={clsx("w-full", className)} key={label}>
       <Link
