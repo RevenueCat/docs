@@ -1,19 +1,26 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import clsx from "clsx";
 import RightIcon from "@site/static/img/right.svg";
 import {
+  ThemeClassNames,
   useThemeConfig,
   usePrevious,
   Collapsible,
   useCollapsible,
 } from "@docusaurus/theme-common";
-import { findFirstSidebarItemLink } from "@docusaurus/theme-common";
+import {
+  isActiveSidebarItem,
+  findFirstSidebarItemLink,
+  useDocSidebarItemsExpandedState,
+  isSamePath,
+} from "@docusaurus/theme-common/internal";
 import Link from "@docusaurus/Link";
 import { translate } from "@docusaurus/Translate";
 import useIsBrowser from "@docusaurus/useIsBrowser";
-import { useActiveDocContext } from "@docusaurus/plugin-content-docs/client";
 import DocSidebarItems from "@theme/DocSidebarItems";
 
+// If we navigate to a category and it becomes active, it should automatically
+// expand itself
 function useAutoExpandActiveCategory({ isActive, collapsed, updateCollapsed }) {
   const wasActive = usePrevious(isActive);
   useEffect(() => {
@@ -24,12 +31,22 @@ function useAutoExpandActiveCategory({ isActive, collapsed, updateCollapsed }) {
   }, [isActive, wasActive, collapsed, updateCollapsed]);
 }
 
+/**
+ * When a collapsible category has no link, we still link it to its first child
+ * during SSR as a temporary fallback. This allows to be able to navigate inside
+ * the category even when JS fails to load, is delayed or simply disabled
+ * React hydration becomes an optional progressive enhancement
+ * see https://github.com/facebookincubator/infima/issues/36#issuecomment-772543188
+ * see https://github.com/facebook/docusaurus/issues/3030
+ */
 function useCategoryHrefWithSSRFallback(item) {
   const isBrowser = useIsBrowser();
   return useMemo(() => {
     if (item.href && !item.linkUnlisted) {
       return item.href;
     }
+    // In these cases, it's not necessary to render a fallback
+    // We skip the "findFirstCategoryLink" computation
     if (isBrowser || !item.collapsible) {
       return undefined;
     }
@@ -76,6 +93,7 @@ function CollapseButton({
 export default function DocSidebarItemCategory({
   item,
   onItemClick,
+  activePath,
   level,
   index,
   ...props
@@ -88,32 +106,38 @@ export default function DocSidebarItemCategory({
       sidebar: { autoCollapseCategories },
     },
   } = useThemeConfig();
-
-  const { activeDoc } = useActiveDocContext();
   const hrefWithSSRFallback = useCategoryHrefWithSSRFallback(item);
-
-  const isActive =
-    activeDoc && items.some((subItem) => activeDoc.path === subItem.href);
-  const isCurrentPage = activeDoc?.path === href;
-
-  const [collapsed, setCollapsed] = useState(() => {
-    if (!collapsible) {
-      return false;
-    }
-    return isActive ? false : item.collapsed;
+  const isActive = isActiveSidebarItem(item, activePath);
+  const isCurrentPage = isSamePath(href, activePath);
+  const { collapsed, setCollapsed } = useCollapsible({
+    // Active categories are always initialized as expanded. The default
+    // (`item.collapsed`) is only used for non-active categories.
+    initialState: () => {
+      if (!collapsible) {
+        return false;
+      }
+      return isActive ? false : item.collapsed;
+    },
   });
+  const { expandedItem, setExpandedItem } = useDocSidebarItemsExpandedState();
 
+  // Use this instead of `setCollapsed`, because it is also reactive
   const updateCollapsed = (toCollapsed = !collapsed) => {
+    setExpandedItem(toCollapsed ? null : index);
     setCollapsed(toCollapsed);
   };
-
   useAutoExpandActiveCategory({ isActive, collapsed, updateCollapsed });
 
   useEffect(() => {
-    if (collapsible && autoCollapseCategories) {
+    if (
+      collapsible &&
+      expandedItem != null &&
+      expandedItem !== index &&
+      autoCollapseCategories
+    ) {
       setCollapsed(true);
     }
-  }, [collapsible, autoCollapseCategories]);
+  }, [collapsible, expandedItem, index, setCollapsed, autoCollapseCategories]);
 
   return (
     <li
@@ -196,7 +220,7 @@ export default function DocSidebarItemCategory({
           items={items}
           tabIndex={collapsed ? -1 : 0}
           onItemClick={onItemClick}
-          activePath={activeDoc?.path}
+          activePath={activePath}
           level={level + 1}
         />
       </Collapsible>
