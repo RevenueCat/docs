@@ -98,21 +98,32 @@ Filters and segments do not apply to the 'New Customers' number. It is possible 
 
 Some of your transactions may result from customer's accepting offers you made to them, and RevenueCat allows you to filter and/or segment charts by those offers to understand how they're contributing to business performance.
 
-We track three distinct Offer Types:
+Here’s a quick look at the different offer types, showing how each is mapped from the store terminology to our terminology.
 
-| Offer Type        | Description                                                                                                                                                                                                                                                  | Example Offer (where rc.annual.39_99 is the product) |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
-| Intro Offer       | A paid introductory offer than the customer accepts as a discount on their initial subscription period. This does NOT include free trial periods. Includes: - App Store Introductory Offers - Play Store paid offers applied on initial subscription periods | Intro Offer (rc.annual.39_99)                        |
-| Offer Code        | A promo code that the customer enters to receive a discount or free trial (depending on the offer & store). Includes: - App Store Promo Codes - Play Store Promo Codes                                                                                       | black_friday_discount (rc.annual.39_99)              |
-| Promotional Offer | An offer that the customer received through your own custom logic. Includes: - App Store Promotional Offers                                                                                                                                                  | power_user_promo_offer (rc.annual.39_99)             |
-| No Offer          | When none of the above Offer Types were used on the transaction                                                                                                                                                                                              | No Offer                                             |
+Below are the definitions for App Store offer types:
+
+![](/images/app_store_offer_types.png)
+
+Below are the definitions for Play Store offer types:
+
+![](/images/play_store_offer_types.png)
+
+For more details, check out the chart below.
+
+| Offer Type | Description | Includes | Example Offer (where rc.annual.39_99 is the product) |
+| ---------- | ----------- | -------- | ---------------------------------------------------- |
+| Free Trial        | A free introductory offer the customer accepts as a free trial. |<ul><li>App Store **Free Trial** Introductory Offers</li><li>Play Store free trial offer applied on initial subscription periods</li></ul> | <ul><li>App Store: Free trial (rc.annual.39_99)</li><li>Play Store: free_trial_offer (rc.annual.39_99)</li></ul> | 
+| Introductory Offer       | A paid introductory offer that the customer accepts as a discount on their initial subscription period. This **does NOT** include free trial periods. | <ul><li>App Store **Pay Up Front** and **Pay As You Go** Introductory Offers</li><li>Play Store paid offers applied on initial subscription periods, including sequential discounted payments after the first subscription start</li></ul> | <ul><li>App Store: Intro Offer (rc.annual.39_99)</li><li>Play Store: intro_price_offer (rc.annual.39_99)</li></ul>|
+| Offer Code        | A promo code that the customer enters to receive a discount or free trial (depending on the offer & store). | <ul><li>App Store Offer Codes</li><li>Play Store Promo Codes (Billing Client 4 and earlier)</li></ul>| black_friday_discount (rc.annual.39_99) |
+| Promotional Offer | An offer that the customer received through your own custom logic. | <ul><li>App Store Promotional Offers</li></ul> | power_user_promo_offer (rc.annual.39_99) |
+| Win-Back Offer    | An offer that a customer with an expired subscription received to win them back. | <ul><li>App Store Win-Back Offers</li></ul> | winback_monthly_offer (rc.annual.39_99) |
+| Unspecified Offer | A Play Store offer for which we do not know the eligility criteria. |<ul><li>All other BC5 offers that are not applied on initial subscription periods</li></ul> | holiday_2024_december (rc.annual.39_99) | 
+| No Offer          | When none of the above Offer Types were used on the transaction. | None | No Offer |
 
 :::warning
-At this time, Google Play Offers on Billing Client 5 and above are only supported when they are applied as offers on initial subscription periods.
+At this time, Stripe coupon codes are not supported.
 
-In addition, Stripe coupon codes are not supported at this time.
-
-(In both cases, revenue for those transactions _is_ correctly tracked, but the promo identifier is not supported for analysis in Charts)
+(Revenue for those transactions _is_ correctly tracked, but the promo identifier is not supported for analysis in Charts)
 :::
 
 When filtering or segmenting by Offer Type, you'll be able to measure the aggregate usage of that Offer Type across all Stores and Products.
