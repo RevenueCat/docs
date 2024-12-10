@@ -1,0 +1,76 @@
+---
+title: Localization
+slug: localization
+hidden: false
+---
+
+:::warning Beta Feature
+RevenueCat Billing and the RevenueCat Web SDK are currently in beta.
+:::
+
+## Overview
+
+- RevenueCat Billing currently supports language localization in the Web SDK, with support for 33 languages.
+- Localization affects the entire purchase flow, including the checkout form (excluding any possible secondary payment flows such as 3D Secure authentication).
+- Product names and descriptions are not localized, and will be shown in their original form (as defined in the RevenueCat Dashboard).
+- Localization of prices is handled through [multi-currency support](/web/revenuecat-billing/multi-currency-support/); you should configure this separately.
+
+### Beta limitations
+Currently, the following limitations apply while RevenueCat Billing is in beta:
+- It is not possible to override any strings for the given languages.
+- It is not possible to define a language for us in Web Paywall Links (hosted purchase flow).
+- Some of the supported languages may have minor translation issues, and we're working to validate them (please [contact us]("mailto:support@revenuecat.com") with any corrections or general feedback on translations).
+
+
+## How to use localization support in purchases-js
+
+:::info Web SDK version compatibility
+Localization is supported in purchases-js version x.xx and above.
+:::
+
+When invoking `purchase()`, you can provide selected and default languages using the `PurchaseParams` interface:
+
+- `selectedLocale` : The locale to use in the purchase flow (if not specified, English will be used)
+- `defaultLocale` : The default locale to use if the selectedLocale is not available. This defaults to English.
+
+If you want to fall back to the browser's locale as a default, it's recommended to set `defaultLocale` to the browser locale.
+
+## Supported languages
+
+The following language codes can be used as locales:
+
+| Language code | Language name |
+| ------------- | ------------- |
+| ar | Arabic |
+| ca | Catalan |
+| zh_Hans | Chinese (Simplified) |
+| zh_Hant | Chinese (Traditional) |
+| hr | Croatian |
+| cs | Czech |
+| da | Danish |
+| nl | Dutch |
+| en | English |
+| fi | Finnish |
+| fr | French |
+| de | German |
+| el | Greek |
+| he | Hebrew |
+| hi | Hindi |
+| hu | Hungarian |
+| id | Indonesian |
+| it | Italian |
+| ja | Japanese |
+| ko | Korean |
+| ms | Malay |
+| no | Norwegian |
+| pl | Polish |
+| pt | Portuguese |
+| ro | Romanian |
+| ru | Russian |
+| sk | Slovak |
+| es | Spanish |
+| sv | Swedish |
+| th | Thai |
+| tr | Turkish |
+| uk | Ukrainian |
+| vi | Vietnamese |

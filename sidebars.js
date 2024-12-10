@@ -169,6 +169,7 @@ const webPurchasesCategory = Category({
         Page({ slug: "refunding-payments" }),
         Page({ slug: "customer-portal" }),
         Page({ slug: "web-paywall-links" }),
+        Page({ slug: "localization" }),
       ],
     }),
     Page({ slug: "stripe" }),
