@@ -18,7 +18,7 @@ RevenueCat Billing and the RevenueCat Web SDK are currently in beta.
 ### Beta limitations
 Currently, the following limitations apply while RevenueCat Billing is in beta:
 - It is not possible to override any strings for the given languages.
-- It is not possible to define a language for us in Web Paywall Links (hosted purchase flow).
+- It is not possible to specify the language used in Web Paywall Links (hosted purchase flow).
 - Some of the supported languages may have minor translation issues, and we're working to validate them (please [contact us]("mailto:support@revenuecat.com") or [open an issue](https://github.com/RevenueCat/purchases-js/issues) in our github repo with any corrections or general feedback on translations).
 
 
@@ -30,14 +30,22 @@ Localization is supported in purchases-js version x.xx and above.
 
 When invoking `purchase()`, you can provide selected and default languages using the `PurchaseParams` interface:
 
-- `selectedLocale` : The locale to use in the purchase flow (if not specified, English will be used)
-- `defaultLocale` : The default locale to use if the selectedLocale is not available. This defaults to English.
+import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
 
-If you want to fall back to the browser's locale as a default, it's recommended to set `defaultLocale` to the browser locale.
+<RCCodeBlock
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Configuring locale",
+    },
+  ]}
+/>
 
 ## Supported languages
 
-The following language codes can be used as locales:
+The following language codes can be specified as locales:
 
 | Language code | Language name |
 | ------------- | ------------- |

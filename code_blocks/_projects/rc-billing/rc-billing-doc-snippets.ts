@@ -149,6 +149,25 @@ try {
 // END
 }
 
+async function configuringLocale(){
+
+  // MARK: Configuring locale
+const pkg = (await Purchases.getSharedInstance().getOfferings()).current?.availablePackages[0];
+try{
+  const { customerInfo, redemptionInfo } = await Purchases.purchase({
+          rcPackage: pkg,
+          purchaseOption: option,
+          // specify spanish as selected locale
+          selectedLocale: "es"
+          // specify english as default locale
+          defaultLocale: "en"
+  });
+} catch (e) {
+   // Something went wrong while purchasing
+}
+// END
+}
+
 export {
   configuringSDK,
   getCustomerInfo,
@@ -160,4 +179,5 @@ export {
   displayingPackages,
   gettingProduct,
   purchasingPackage,
+  configuringLocale,
 }
