@@ -71,6 +71,10 @@ In some cases, a Stripe Checkout Session may have a `NULL` value for the Stripe 
     * The App User ID detection method described above will be applied.
     * RevenueCat will then follow your [transfer behavior](/getting-started/restoring-purchases) for the App User ID provided in your request.
 
+:::warning Customer attributes in events
+RevenueCat will start processing the purchase as soon as we receive Stripe's server notification. If you rely on [RevenueCat customer attributes](/customers/customer-attributes) being attached to the customer before the purchase is created on RevenueCat (e.g: sending customer attributes to your enabled [third-party integrations](/integrations/third-party-integrations) or [webhooks](/integrations/webhooks)), you should make sure to **send and sync** the customer attributes as soon as you have them or before the purchase is completed.
+:::
+
 ## Stripe Webhook 400 Errors
 
 Sometimes you may experience 400 errors when connecting to Stripe. Generally these happen when there is something wrong with your configuration or your Stripe account is not properly connected to RevenueCat.
