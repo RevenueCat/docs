@@ -35,26 +35,89 @@ Here's how a purchase and redemption flow looks, once you've configured and enab
 After the Redemption Links feature is enabled and users complete the purchase flow without an anonymous App User ID, custom URL schemes will be sent distributed (to redirect the user into your app and redeem the purchase). Users on older app versions that aren't configured to accept custom URL schemes will not be able to use these links. You should therefore make sure most (ideally all) users have updated to your new version before sending them to a purchase flow without an App User ID.
 :::
 
-**On Android:**
+The SDK versions supporting Redemption Links are:
 
-The minimum SDK version for this feature is [5.11.0](https://github.com/RevenueCat/purchases-ios/releases/tag/5.11.0).
+| RevenueCat SDK           | Versions supporting Redemption Links |
+| :----------------------- | :------------------------------- |
+| purchases-android        | 8.10.5 and above                 |
+| purchases-ios            | 5.13.0 and above                 |
+| purchases-flutter        | Coming soon                      |
+| purchases-unity          | Coming soon                      |
+| react-native-purchases   | Coming soon                      |
+| purchases-kmp            | Coming soon                      |
+| purchases-capacitor      | Coming soon                      |
 
-_TODO: Android-specfic instructions here_
+In order to be able to redeem the redemption links in your mobile apps, follow these steps
 
-**Testing these changes:**
-1. Go to a Web Paywall Link configured in an Offering
-1. copy the sandbox url, paste it in the running simulator web browser (without appending any app_user_id at the end of the url so that an anonymous one will be automatically generated)
-1. Complete the sandbox purchase, and then click the redemption link on the success page. (your Android app should be opened automatically and the entitlement made available to your user).
+#### 1. Copy the custom URL scheme from the RevenueCat Dashboard
 
+You can get this in the RevenueCat dashboard, inside your RevenueCat Billing app’s settings, under “Redemption Links”
 
-**On iOS:**
+![](/images/rc-billing/redemption-links-dashboard-2.png)
 
-_TODO: iOS-specific instructions here_
+#### 2. Allow your app to respond to links with your custom scheme
 
-**Testing these changes:**
-1. Go to a Web Paywall Link configured in an Offering
-1. copy the sandbox url, paste it in the running simulator web browser (without appending any app_user_id at the end of the url so that an anonymous one will be automatically generated)
-1. Complete the sandbox purchase, and then click the redemption link on the success page. (your iOS app should be opened automatically and the entitlement made available to your user).
+##### iOS
+
+In iOS, you need to define a custom URL schema. You can do this in Xcode, from your xcodeproj file, Info tab, URL Types section. Then add your custom scheme from Step 1 in the “URL Schemes” field. You can see a screenshot here, but remember to replace `<YOUR_CUSTOM_SCHEME>` with the one you obtained in step 1.
+
+![](/images/rc-billing/redemption-links-xcode-1.png)
+
+ You can see official instructions by Apple [here](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app).
+
+##### Android
+
+In Android, you need to add a deep linking intent filter for the provided scheme. You can do that by adding the following intent filter inside your `AndroidManifest.xml` activity and replacing `<YOUR_CUSTOM_SCHEME>` with the scheme you copied in step 1. Note that it’s fine to have multiple intent filters for the same activity.
+
+import redemptionAndroidManifest from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_androidmanifest.xml";
+
+<RCCodeBlock tabs={[
+    { type: 'xml', content: redemptionAndroidManifest, name: 'AndroidManifest.xml' }
+]} />
+
+You can check out official docs by Google [here](https://developer.android.com/training/app-links/deep-linking#adding-filters).
+
+#### 3. Perform redemption using our SDKs
+
+Our SDKs provide APIs to perform the redemptions and provide you with the result of that redemption. 
+
+##### iOS
+
+If using SwiftUI, you can use the `onWebPurchaseRedemptionAttempt` modifier to automatically perform redemption of Redemption Links once the app is opened with them.
+
+import swiftUIModifier from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_swift_ui_modifier.swift";
+
+<RCCodeBlock tabs={[
+    { type: 'swift', title: "SwiftUI Modifier", content: swiftUIModifier, },
+]}/>
+
+Alternatively, if you don’t want to perform the redemption automatically or if you're not using Swift UI, you can use the provided URL extension `asWebPurchaseRedemption` and then perform the redemption using `Purchases.shared.redeemWebPurchase` as follows:
+
+import alternativeSwift from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_alternative_swift.swift";
+
+<RCCodeBlock tabs={[
+    { type: 'swift', title: "Alternative Swift", content: alternativeSwift, },
+]}/>
+
+##### Android
+
+In Android, you first need to obtain the link and make sure it’s a Redemption Link, then redeem it using the `redeemWebPurchase` method. You can see an example of this in the following code block:
+
+import androidRedemption1 from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_android.kt";
+
+<RCCodeBlock tabs={[
+    { type: 'kotlin', title: "Android Redemption", content: androidRedemption1, },
+]}/>
+
+#### 4. Verify your setup
+
+Once you’ve followed the steps above, in order to verify that your integration worked correctly you can open your app using a deep link in the format: `<YOUR_CUSTOM_SCHEME>://redeem_web_purchase?redemption_token=<ANY_TOKEN>`
+
+For example, `rc-d458f1e3a2://redeem_web_purchase?redemption_token=invalid_token`.
+
+You can use a deep link test app or write the deep link in a notes app and click on it. Alternatively, if you’re using an iOS simulator you can run this command in your mac terminal: `xcrun simctl openurl booted "<YOUR_CUSTOM_SCHEME>://redeem_web_purchase?redemption_token=<ANY_TOKEN>"`, and on android you can follow the instructions [here](https://developer.android.com/training/app-links/deep-linking#testing-filters).
+
+Then, you need to make sure that you display the appropriate UI in your app. In this case, an invalid link error.
 
 ### Configure Redemption Links in the RevenueCat Dashboard
 
