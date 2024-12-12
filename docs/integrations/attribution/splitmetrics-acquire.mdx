@@ -31,7 +31,11 @@ import cordovaContent from "!!raw-loader!@site/code_blocks/integrations/attribut
 
 Our guide on [Apple Search Ads attribution](/integrations/attribution/apple-search-ads) outlines this step in more detail.
 
-## 2. Send RevenueCat events into SplitMetrics Acquire
+## 2. Enable the Apple Search Ads Integration
+
+Please ensure you've enabled the [Basic](/integrations/attribution/apple-search-ads#basic) or [Advanced](/integrations/attribution/apple-search-ads#advanced) Apple Search Ads integration in the RevenueCat dashboard.
+
+## 3. Send RevenueCat events into SplitMetrics Acquire
 
 After you've set up the _Purchases SDK_ to send device data to RevenueCat, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
 
@@ -52,7 +56,7 @@ After you've set up the _Purchases SDK_ to send device data to RevenueCat, you c
 Make sure to remove all client-side tracking of revenue. Since RevenueCat will be sending events for all revenue actions, tracking purchases yourself directly into SplitMetrics Acquire | Formerly SearchAdsHQ can lead to double counting of revenue.
 :::
 
-## 3. Testing the SplitMetrics Acquire integration
+## 4. Testing the SplitMetrics Acquire integration
 
 You can test the SplitMetrics Acquire integration end-to-end before going live. It's recommended that you test the integration is working properly for new users, and any existing users that may update their app to a new version.
 
