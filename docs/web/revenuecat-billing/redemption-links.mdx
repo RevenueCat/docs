@@ -51,7 +51,7 @@ In order to be able to redeem the redemption links in your mobile apps, follow t
 
 #### 1. Copy the custom URL scheme from the RevenueCat Dashboard
 
-You can get this in the RC dashboard, inside your RCBilling app’s settings, under “Redemption Links”
+You can get this in the RevenueCat dashboard, inside your RevenueCat Billing app’s settings, under “Redemption Links”
 
 ![](/images/rc-billing/redemption-links-dashboard-2.png)
 
@@ -108,6 +108,16 @@ import androidRedemption1 from "!!raw-loader!@site/code_blocks/web/revenuecat-bi
 <RCCodeBlock tabs={[
     { type: 'kotlin', title: "Android Redemption", content: androidRedemption1, },
 ]}/>
+
+#### 4. Verify your setup
+
+Once you’ve followed the steps above, in order to verify that your integration worked correctly you can open your app using a deep link in the format: `<YOUR_CUSTOM_SCHEME>://redeem_web_purchase?redemption_token=<ANY_TOKEN>`
+
+For example, `rc-d458f1e3a2://redeem_web_purchase?redemption_token=invalid_token`.
+
+You can use a deep link test app or write the deep link in a notes app and click on it. Alternatively, if you’re using an iOS simulator you can run this command in your mac terminal: `xcrun simctl openurl booted "<YOUR_CUSTOM_SCHEME>://redeem_web_purchase?redemption_token=<ANY_TOKEN>"`, and on android you can follow the instructions [here](https://developer.android.com/training/app-links/deep-linking#testing-filters).
+
+Then, you need to make sure that you display the appropriate UI in your app. In this case, an invalid link error.
 
 ### Configure Redemption Links in the RevenueCat Dashboard
 
