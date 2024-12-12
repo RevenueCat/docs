@@ -159,8 +159,6 @@ try{
           purchaseOption: option,
           // specify spanish as selected locale
           selectedLocale: "es"
-          // specify english as default locale
-          defaultLocale: "en"
   });
 } catch (e) {
    // Something went wrong while purchasing
