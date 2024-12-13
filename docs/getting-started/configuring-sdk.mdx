@@ -75,8 +75,9 @@ Debug logs will provide detailed log output in Xcode or LogCat for what is going
 
 ### Configuration for users in Mainland China
 
-We have had reports of our API getting blocked in mainland China. 
-If your app has a significant user base in mainland China, we recommend setting the `proxyURL` property to `https://api.rc-backup.com/` before initializing the RevenueCat SDK. Make sure this happens before configuring the SDK. 
+We’ve received reports of our API being blocked in mainland China. 
+
+While we work on a long-term solution, if your app has a significant user base in this region, set the proxyURL property to `https://api.rc-backup.com/` before initializing the RevenueCat SDK. Ensure this configuration occurs prior to SDK setup to prevent connection issues for users in mainland China.
 
 :::caution If you already have a proxy server
 If you have your own proxy server and already use the `proxyURL` API, you don't need any further configuration.
