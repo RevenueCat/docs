@@ -32,7 +32,7 @@ Amazon Appstore Real-time Notifications only work if the receipt exists in Reven
 
 ![Endpoint verification status in Amazon Appstore Console](/images/amazon/amazon_s2s_appstore_verified.png "Endpoint verification status in Amazon Appstore Console")
 
-7. In the RevenueCat dashboard, you should see a **Received at** timestamp for the endpoint too.
+7. In the RevenueCat dashboard, you should see a **Last received at** timestamp for the endpoint too.
 
 ![Last received timestamp in RevenueCat dashboard](/images/amazon/amazon_s2s_last_received_at.png "Last received timestamp in RevenueCat dashboard")
 
