@@ -1,1 +1,1 @@
-Purchases.proxyURL = URL(string: "https://api.rc-backup.com/")!
+Purchases.proxyURL = URL("https://api.rc-backup.com/")
