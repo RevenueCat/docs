@@ -1,0 +1,1 @@
+await Purchases.setProxyURL({ url: 'https://api.rc-backup.com/' });
