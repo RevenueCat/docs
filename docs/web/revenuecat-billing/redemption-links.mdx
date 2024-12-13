@@ -53,7 +53,7 @@ In order to be able to redeem the redemption links in your mobile apps, follow t
 
 You can get this in the RevenueCat dashboard, inside your RevenueCat Billing app’s settings, under “Redemption Links”
 
-![](/images/rc-billing/redemption-links-dashboard-2.png)
+![](/images/rc-billing/redemption-links-dashboard-disabled.png)
 
 #### 2. Allow your app to respond to links with your custom scheme
 
@@ -121,11 +121,23 @@ Then, you need to make sure that you display the appropriate UI in your app. In 
 
 ### Configure Redemption Links in the RevenueCat Dashboard
 
-1. Navigate to your RevenueCat Billing app in the dashboard
-2. Under App Information in the Settings tab, make sure you add: App icon, App name, and at lease one store link for either the App Store or Google Play Store
-3. Under Redemption Links, set the feature to Enabled
+:::info Test redemption links in sandbox mode before enabling for production purchases
+Use the "Enable only for Sandbox" setting to test the full purchase flow, including deep-linking into your app. This will ensure that you don't send redemption links to customers before they're functioning and tested.
+:::
 
+#### Configuring Web Paywall Links
+
+
+#### How to test in sandbox mode
+
+1. Navigate to your project in the RevenueCat dashboard, and then the RevenueCat Billing app.
+
+2. Under App Information in the Settings tab, make sure you have added: App icon, App name, and at least one store link for either the App Store or Google Play Store:
 
 ![](/images/rc-billing/redemption-links-dashboard-1.png)
 
-![](/images/rc-billing/redemption-links-dashboard-2.png)
+3. Under Redemption Links, set the feature to "Enable only for Sandbox":
+
+![](/images/rc-billing/redemption-links-dashboard-sandbox.png)
+
+4. Use the sandbox purchase flow to make a test purchase on a mobile device where your app is installed (either through [Web Paywall Links](/web/revenuecat-billing/web-paywall-links) sandbox URL, or the [Web SDK](/web/revenuecat-billing) with a sandbox API key).
