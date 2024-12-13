@@ -110,16 +110,6 @@ paths:
           schema:
             type: string
             example: ios
-        - name: X-Is-Sandbox
-          in: header
-          description:
-            Optionally set the X-Is-Sandbox header to `true` to include Apple StoreKit test transactions
-            of this Customer. Don't set this
-            in production. The SDK will automatically set this for your based on the
-            environment of the app.
-          schema:
-            type: boolean
-            default: false
       responses:
         "200":
           description: |
