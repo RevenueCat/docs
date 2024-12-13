@@ -32,6 +32,16 @@ import unityContent59 from "!!raw-loader!@site/code_blocks/getting-started/confi
 import kmpContent from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_10_kmp.kts";
 import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
 
+import swiftChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_1_china_url.swift";
+import objectiveCChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_2_china_url.m";
+import kotlinChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_3_china_url.kt";
+import kmpChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_10_kmp_china_url.kts";
+import javaChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_4_china_url.java";
+import flutterChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_5_china_url.js";
+import reactChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_6_china_url.js";
+import cordovaChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_7_china_url.js";
+import capacitorChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_8_capacitor_china_url.ts";
+import unityChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_9_china_url.cs";
 
 <RCCodeBlock tabs={[
     { type: 'swift', content: swiftContent50, name: 'Swift' },
@@ -63,6 +73,23 @@ Be sure to enable and view debug logs before filing a ticket with RevenueCat Sup
 As detailed in the sample code above, debug logs can be enabled or disabled by setting the `Purchases.logLevel` property before configuring _Purchases_.
 
 Debug logs will provide detailed log output in Xcode or LogCat for what is going on behind the scenes and should be the first thing you check if your app is behaving unexpectedly, and also to confirm there aren't any unhandled warnings or errors.
+
+### Configuration for Users in Mainland China
+
+If your app has a significant user base in mainland China, we recommend setting the `proxyURL` property before initializing the SDK. 
+
+<RCCodeBlock tabs={[
+    { type: 'swift', content: swiftChinaWorkaround, name: 'Swift' },
+    { type: 'objc', content: objectiveCChinaWorkaround, name: 'Objective-C' },
+    { type: 'kotlin', content: kotlinChinaWorkaround, name: 'Kotlin' },
+    { type: 'kotlin', content: kmpChinaWorkaround, name: 'Kotlin Multiplatform' },
+    { type: 'java', content: javaChinaWorkaround, name: 'Java' },
+    { type: 'flutter', content: flutterChinaWorkaround, name: 'Flutter' },
+    { type: 'rn', content: reactChinaWorkaround, name: 'React Native' },
+    { type: 'cordova', content: cordovaChinaWorkaround, name: 'Cordova' },
+    { type: 'capacitor', content: capacitorChinaWorkaround, name: 'Capacitor' },
+    { type: 'unity', content: unityChinaWorkaround, name: 'Unity' },
+]} />
 
 ### Additional Configuration Options
 
