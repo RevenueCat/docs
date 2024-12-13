@@ -13,7 +13,7 @@ Amazon Appstore Real-time Notifications only work if the receipt exists in Reven
 
 ## Setup Instructions
 
-1. Navigate to your **app settings** in the RevenueCat dashboard by selecting your app from **Project Settings > Apps**.
+1. Navigate to your **Amazon app settings** in the RevenueCat dashboard by selecting your app from **Project Settings > Apps**.
 2. Expand the **Amazon Real-time Notifications settings** section and copy the endpoint provided under **Amazon Real-time Notifications URL**.
 
 ![Copy the Amazon Real-time Notifications URL from RevenueCat](/images/amazon/amazon_s2s_copy_url.png "Copy the Amazon Real-time Notifications URL from RevenueCat")
