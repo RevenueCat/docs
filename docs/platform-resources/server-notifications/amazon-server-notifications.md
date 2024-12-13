@@ -8,7 +8,7 @@ hidden: false
 RevenueCat does not require server notifications from Amazon Appstore, however doing so can speed up webhook and integration delivery times and reduce lag time for [Charts](/dashboard-and-metrics/charts).
 
 :::warning Receipt must exist in RevenueCat
-Amazon Appstore Real-time Notifications only work if the receipt exists in RevenueCat when the event is dispatched from Amazon Appstore. If the receipt doesn't exist, the event will fail.
+Amazon Appstore Real-time Notifications only work if the receipt exists in RevenueCat when the event is dispatched from Amazon Appstore. If the receipt doesn't exist, the notification will be ignored.
 :::
 
 ## Setup Instructions
