@@ -491,6 +491,7 @@ const platformResourcesCategory = Category({
         Page({ slug: "apple-server-notifications" }),
         Page({ slug: "google-server-notifications" }),
         Page({ slug: "stripe-server-notifications" }),
+        Page({ slug: "amazon-server-notifications" }),
       ],
     }),
     Page({ slug: "sample-apps" }),
