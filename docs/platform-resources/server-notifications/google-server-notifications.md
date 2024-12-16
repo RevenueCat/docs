@@ -86,7 +86,7 @@ RevenueCat will start processing the purchase as soon as we receive the Google C
 :::
 
 :::warning
-If you have enabled [*Keep with original App User ID*](/getting-started/restoring-purchases#keep-with-original-app-user-id) or [*Transfer if there are no active subscriptions*](/getting-started/restoring-purchases#transfer-if-there-are-no-active-subscriptions) transfer behavior, we highly recommend turning this setting off unless you have selected the "Use anonymous App User IDs" as the detection method or are not using the RevenueCat SDK for tracking purchases.
+If you have enabled [*Keep with original App User ID*](/getting-started/restoring-purchases#keep-with-original-app-user-id) or [*Transfer if there are no active subscriptions*](/getting-started/restoring-purchases#transfer-if-there-are-no-active-subscriptions) transfer behavior, we highly recommend turning this setting off unless you have selected the "Use anonymous App User IDs" as the App User ID detection method or are [using RevenueCat without our SDK](/migrating-to-revenuecat/sdk-or-not/sdk-less-integration).
 :::
 
 ## Considerations
