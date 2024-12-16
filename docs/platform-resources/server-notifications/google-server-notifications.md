@@ -61,25 +61,32 @@ Once that test notification is sent, you can go back to your app config on the R
 
 ![Google Play Console / RevenueCat Dashboard](/images/f97e8f5-TestNotif_0bce9b9a2dfb308f559aca6b662b3f63.gif)
 
-
 ## Tracking new purchases using Google Cloud Pub/Sub
 By default, RevenueCat ignores any Google Cloud Pub/Sub notifications for purchases that have not yet been posted to the RevenueCat API by one of our SDKs or from your own backend. For RevenueCat to track new purchases from Google Cloud Pub/Sub, you can enable the **"Track new purchases from server-to-server notifications"** option in our Dashboard. This allows RevenueCat to process new purchases from server-to-server notifications that are not yet in our system. This ensures all purchases are tracked, even in the case of network issues between your app and RevenueCat’s backend or if your customer was using a version of the app without the RevenueCat SDK.
 
 ![](/images/no_code_toggle.png)
 
+### App User ID Detection Methods
+RevenueCat provides different ways to detect the App User ID for purchases coming through Google Pub/Sub notifications. The purchase will be associated with the detected App User ID.
+1. **Use anonymous App User IDs:** RevenueCat will generate a RevenueCat anonymous App User ID to associate the new purchase with. If you are using the RevenueCat SDK, we **strongly recommend** selecting this option. The RevenueCat SDK automatically sets the `obfuscatedExternalAccountId` as a hashed App User ID, which can cause unintended overwrites.
+2. **Use Google's obfuscatedExternalAccountId as App User ID:** RevenueCat will use the [`obfuscatedExternalAccountId`](https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.subscriptionsv2#externalaccountidentifiers) field as the RevenueCat App User ID. Only select this option if you are using both the `obfuscatedExternalAccountId` field as your RevenueCat app user ID **and** are [using RevenueCat without our SDK](/migrating-to-revenuecat/sdk-or-not/sdk-less-integration).
+
+The diagram below will help you determine which App User ID detection method to select based on your setup.
+
+![](/images/google_no_code_app_user_id.png)
 ### Considerations
-* The subscriber's app user ID will be taken from the [`obfuscatedExternalAccountId`](https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.subscriptionsv2#externalaccountidentifiers) field of the transaction. 
+* If you have selected the "Use Google's obfuscatedExternalAccountId as App User ID" option:
     * If the `obfuscatedExternalAccountId` is set and does not match with an existing subscriber: RevenueCat will create a new subscriber with an app user ID matching the `obfuscatedExternalAccountId` value provided.
-    * If the `obfuscatedExternalAccountId` is set and matches with an existing subscriber: No new subscriber will be created, and the purchase will be linked to that existing subscriber. 
+    * If the `obfuscatedExternalAccountId` is set and matches with an existing subscriber: The purchase will be linked to that existing subscriber. 
     * If the `obfuscatedExternalAccountId` is not set: RevenueCat will generate an anonymous app user ID to associate that purchase with.
-* If you are using RevenueCat's SDK to track purchases, we may receive the notification directly from the store before the SDK. When this happens, we will follow the app user ID logic as described in the bullet point above, and then proceed with your [transfer behavior](/getting-started/restoring-purchases) for the new app user ID sent by the SDK.
+* If you are using RevenueCat's SDK to track purchases, we may receive the notification directly from the store before the SDK. When this happens, the App User ID detection method described above will be applied, and then RevenueCat will follow your [transfer behavior](/getting-started/restoring-purchases) for the new app user ID sent by the SDK.
 
 :::warning Customer attributes in events
-RevenueCat will start processing the purchase as soon as we receive the Google Cloud Pub/Sub notification. If you rely on [RevenueCat customer attributes](/customers/customer-attributes) being attached to the customer before the purchase is created on RevenueCat (e.g: sending customer attributes to your enabled [third-party integrations](/integrations/third-party-integrations) or [webhooks](/integrations/webhooks)), you should make sure to **send and sync** the customer attributes as soon as you have them or before the purchase is completed.
+RevenueCat will start processing the purchase as soon as we receive the Google Cloud Pub/Sub notification. If you rely on [RevenueCat customer attributes](/customers/customer-attributes) being attached to the customer before the purchase is created on RevenueCat (e.g: sending customer attributes to your enabled [third-party integrations](/integrations/third-party-integrations) or [webhooks](/integrations/webhooks)), ensure you **send and sync** customer attributes as early as possible. Delays can result in missing attributes for purchases, which may affect third-party integrations or webhook events.
 :::
 
 :::warning
-If you have enabled [*Keep with original App User ID*](/getting-started/restoring-purchases#keep-with-original-app-user-id) or [*Transfer if there are no active subscriptions*](/getting-started/restoring-purchases#transfer-if-there-are-no-active-subscriptions) transfer behavior, we highly recommend turning this setting off unless you are not setting the `obfuscatedExternalAccountId` or if the `obfuscatedExternalAccountId` will match their RevenueCat app user ID.
+If you have enabled [*Keep with original App User ID*](/getting-started/restoring-purchases#keep-with-original-app-user-id) or [*Transfer if there are no active subscriptions*](/getting-started/restoring-purchases#transfer-if-there-are-no-active-subscriptions) transfer behavior, we highly recommend turning this setting off unless you have selected the "Use anonymous App User IDs" as the detection method or are not using the RevenueCat SDK for tracking purchases.
 :::
 
 ## Considerations
