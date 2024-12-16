@@ -11,7 +11,6 @@ class MainActivity : Activity() {
         handleWebPurchaseRedemption(intent)
     }
 
-    @OptIn(ExperimentalPreviewRevenueCatPurchasesAPI::class)
     private fun handleWebPurchaseRedemption(intent: Intent) {
         // This allows to obtain the Redemption Link from the intent if any.
         val webPurchaseRedemption = intent.asWebPurchaseRedemption()
