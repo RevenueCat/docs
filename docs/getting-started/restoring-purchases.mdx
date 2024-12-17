@@ -109,13 +109,14 @@ By logging in your users with a custom App User ID, RevenueCat can continue to p
 
 If you plan to enable the "Track new purchases from server-to-server notifications" feature ([Apple reference](/platform-resources/server-notifications/apple-server-notifications#tracking-new-purchases-using-apple-app-store-server-notifications), [Google reference](/platform-resources/server-notifications/google-server-notifications#tracking-new-purchases-using-google-cloud-pubsub)), please review your transfer behavior settings carefully. Enabling this feature may result in customers not receiving access to their entitlements if certain transfer settings are in place.
   
-To ensure smooth functionality:
+To ensure smooth functionality, please refer to the diagram below before proceeding:
+
+![](/images/no_code_restore_behavior.png)
+
 1. Confirm that you **are not** using the "Keep with original App User ID" or "Transfer if there are no active subscriptions" setting in combination with this feature, **or**
 2. Check that you **are not** setting `appAccountToken` or `obfuscatedExternalAccountId` fields, **or**
-3. If you are [using RevenueCat without our SDK](/migrating-to-revenuecat/sdk-or-not/sdk-less-integration), verify that any `appAccountToken` or `obfuscatedExternalAccountId` set for your customers will match their [RevenueCat App User ID](/customers/user-ids#logging-in-with-a-custom-app-user-id) **and** the app user ID is a valid UUID (RFC 4122 version 4).
-
-**For Google Cloud Pub/Sub:**
-If you select the "Use anonymous App User ID" App User ID detection method, there are no conflicts or issues with any restore behavior.
+3. Verify that any `appAccountToken` or `obfuscatedExternalAccountId` set for your customers will match their [RevenueCat App User ID](/customers/user-ids#logging-in-with-a-custom-app-user-id) **and** the app user ID is a valid UUID (RFC 4122 version 4).
+    * If you are using Google Pub/Sub notifications and are using the RevenueCat SDK in your app, ensure that you have selected the "Use anonymous App User ID" App User ID detection method.
 
 If you meet any of the above conditions, you can proceed with enabling the feature. 
 
