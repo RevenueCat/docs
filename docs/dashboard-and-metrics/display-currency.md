@@ -12,7 +12,7 @@ By default the RevenueCat Dashboard is set to use USD as the display currency, b
 To modify the display currency being used for your account, simply:
 
 1. Click on [Account](https://app.revenuecat.com/settings/account)
-2. Click in the Display Currency dropdown to display the list of available currencies
+2. Under the [Date and Region section](https://app.revenuecat.com/settings/dateregion), click the Display Currency dropdown to display the list of available currencies
 3. Select the currency you'd like to switch to
 4. Click **Update** to save your changes
 

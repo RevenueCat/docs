@@ -1,22 +1,21 @@
-import React from "react";
 import clsx from "clsx";
-import { ThemeClassNames } from "@docusaurus/theme-common";
-import { isActiveSidebarItem } from "@docusaurus/theme-common/internal";
 import Link from "@docusaurus/Link";
 import isInternalUrl from "@docusaurus/isInternalUrl";
 import IconExternalLink from "@theme/Icon/ExternalLink";
-import styles from "./styles.module.css";
+import { useActiveDocContext } from "@docusaurus/plugin-content-docs/client";
+
 export default function DocSidebarItemLink({
   item,
   onItemClick,
-  activePath,
   level,
   index,
   ...props
 }) {
   const { href, label, className, autoAddBaseUrl } = item;
-  const isActive = isActiveSidebarItem(item, activePath);
+  const { activeDoc } = useActiveDocContext(); // Get the active document context
+  const isActive = activeDoc?.path === href; // Determine if the current link matches the active doc
   const isInternalLink = isInternalUrl(href);
+
   return (
     <li className={clsx("w-full", className)} key={label}>
       <Link

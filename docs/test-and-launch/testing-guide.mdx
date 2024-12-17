@@ -1,0 +1,65 @@
+---
+title: Testing Guide
+slug: testing-guide
+excerpt: Is my RevenueCat integration working? 
+hidden: false
+---
+
+Want to test your RevenueCat integration? Follow this document to learn how to test specific functions throughout your purchase process as well as help verify that your RevenueCat setup is working properly.
+
+## Configurations
+
+### Using RevenueCat for Entitlements
+
+RevenueCat makes it easy to unlock access using entitlements. Entitlements define the level of access your users should have. You can read more about entitlements in our guide [here](https://www.revenuecat.com/docs/customers/customer-info).
+This approach allows you to utilize RevenueCat as the single source of truth by checking the CustomerInfo object to see your users' purchases. This recommended approach enables you to unlock access seamlessly while still allowing you to use your backend as a backup if needed.
+
+### Using Own Backend for Entitlements
+You can still use RevenueCat to unlock access via your own backend. This requires some setup, as shown [here](https://www.revenuecat.com/docs/test-and-launch/testing-guide/common-architecture). This setup allows you to maintain your existing system while utilizing RevenueCat’s webhooks to keep your backend in sync with the purchases your users have made.
+We recommend this approach if you have an extensive setup and don't want to switch to using RevenueCat exclusively, or if you want to unlock entitlements with the SDK and have your own backend as a fallback.
+
+
+## Migration
+
+### Client Side Migration
+A client-side migration is best used when you don't have access to the raw base64 Apple receipts, StoreKit 2 signed transactions or Google purchase tokens needed for a full receipt import. This approach allows you to migrate users as they update to the latest version of your app with the RevenueCat SDK integrated. However, it may take longer to get all your users into RevenueCat, as it depends on when they choose to upgrade.
+
+If you do have the receipts or transaction IDs, we recommend performing a full import, as it will provide more complete and accurate data.
+
+You can find more on the client-side migration [here](https://www.revenuecat.com/docs/migrating-to-revenuecat/migrating-existing-subscriptions#client-side-sdk-data-import).
+
+### Import Migration
+If you do have access to Apple receipts, StoreKit 2 signed transactions, or Google purchase tokens, our recommend approach is a server-side data migration, as it provides a fuller history of your users. This method allows us to capture the full history of a user’s purchases for iOS and the latest snapshot for Google and Stripe.
+
+You can find out more about server-side migration [here](https://www.revenuecat.com/docs/migrating-to-revenuecat/migrating-existing-subscriptions#server-side-data-import).
+
+If you have a very large amount of receipts to import, a full receipt import is our recommended approach if you have the data, as it provides a fuller history of your users. This method allows us to capture the full history of a user’s purchases for iOS and the latest snapshot for Google and Stripe.
+
+You can read more on the full import process [here](https://www.revenuecat.com/docs/migrating-to-revenuecat/migrating-existing-subscriptions/receipt-imports).
+
+One thing to note is that you'll want to set up the following in this order:
+
+1. Set up receipt forwarding as shown [here](https://www.revenuecat.com/docs/migrating-to-revenuecat/migrating-existing-subscriptions#server-side-data-import).
+2. Then, perform the export of your data.
+
+This ensures that no subscriptions are missed during the receipt import process.
+
+## RevenueCat Tools 
+
+### Using RC Paywalls
+To ensure that you are making use out of our [Paywalls](https://www.revenuecat.com/docs/tools/paywalls) tool correctly, please follow the instructions [here](https://www.revenuecat.com/docs/tools/paywalls/displaying-paywalls) for how to create a paywall in the RevenueCat dashboard and display it to your users with the RevenueCat SDK. We also have a [testing guide](https://github.com/RevenueCat/docusaurus/pull/testing-guide/use-cases) which details common testing use cases.
+### Placements & Targeting 
+To ensure that you are making use of our [Placements](https://www.revenuecat.com/docs/tools/targeting/placements) and [Targeting](https://www.revenuecat.com/docs/tools/targeting) tools, you will want to make sure that you have some defined rules set in the monetization section of your project in the RevenueCat dashboard. More information on how to set these up can be found [here](https://www.revenuecat.com/docs/tools/targeting#creating-targeting-rules).
+
+To test your rules, create a new user in your app that matches a targeting rule or placement and [fetch the offering](https://www.revenuecat.com/docs/getting-started/displaying-products#fetching-offerings) in the SDK. This user should be returned the correct offering based on the rule, which you can verify by creating another app user that shouldn't match your rules and comparing their returned offerings.
+
+## Different Identification Setups
+
+### Anonymous 
+If you don't use an authentication system in your app, configuring RevenueCat to use anonymous app user IDs is the simplest option. Simply configure the SDK without providing a custom app user ID, and RevenueCat will assign an anonymous ID that will enable full purchase tracking.
+
+We have a useful guide which goes over this in more detail [here](https://www.revenuecat.com/docs/customers/user-ids#anonymous-app-user-ids). To verify that you have followed that guide correctly, simply make a fresh [sandbox account](https://www.revenuecat.com/docs/test-and-launch/sandbox) and open your app. Once this is done, you should be able to see your new user in the RevenueCat dashboard with an anonymous app user ID.
+### Identified 
+To configure RevenueCat to use Identified app user IDs, simply provide your app user ID when configuring the RevenueCat SDK. We have a useful guide which goes over this in more detail [here](https://www.revenuecat.com/docs/customers/user-ids#provide-app-user-id-on-configuration).
+### Mixed
+To configure RevenueCat to use both Anonymous and Identified App User ID's, this setup will be a little different and dependent on your use case. To do this, you can configure the SDK without identifying an app user ID initially, and then call the `login()` method with the identified App User ID that you would like to have the user login to. More information on this can be found [here](https://www.revenuecat.com/docs/customers/user-ids#provide-app-user-id-after-configuration). Going this route will also allow you to use the `logout()` method with less penalty because calling `logout()` will automatically generate an anonymous App User ID for that user that was previously logged in. 

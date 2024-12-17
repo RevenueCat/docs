@@ -194,7 +194,7 @@ Below is a description of the .csv format for the exported data.
 | subscription_opt_out_at       | Epoch timestamp in milliseconds when a subscription or trial cancellation was detected by RevenueCat.                                        |
 | trial_opt_out_at              | Epoch timestamp in milliseconds when the latest trial cancellation was detected by RevenueCat.                                               |
 | total_renewals                | The total number of subscription renewals for the customer.                                                                                  |
-| total_spent                   | The total amount spent by the customer in USD.                                                                                               |
+| total_spent                   | The total amount spent by the customer, shown in the currency selected in your Account Settings.                                                                                               |
 | latest_store                  | The latest store that the customer purchased from.                                                                                           |
 | latest_store_country          | The latest store country that the customer purchased from.                                                                                   |
 | latest_auto_renew_intent      | Boolean indicating whether the customer has chosen to have their subscription or trial auto-renew.                                           |

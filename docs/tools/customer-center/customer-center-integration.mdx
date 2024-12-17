@@ -4,9 +4,10 @@ slug: customer-center-integration
 hidden: false
 ---
 
-:::warning Beta Feature
-RevenueCat's Customer Center is currently in beta, and only available on iOS 15.0+ at the moment. Feedback is welcome!
-:::
+
+import YouTubeEmbed from '@site/src/components/YouTubeEmbed';
+
+<YouTubeEmbed videoId="yraB5gQCUPE" title="Integrating the Customer Center" />
 
 ## Overview
 
@@ -63,27 +64,26 @@ Unique promotional offers can be assigned to different paths and survey response
 
 ### Required promotional offers
 
+:::warning Offers must be created in App Store Connect
+You need to add the App Store promotional offer ids you want to use for each of your products in the Offers tab of the Customer Center settings. Otherwise, the promotional offer will not be shown to customers.
+:::
+
 The Customer Center will automatically show promotional offers based on specific user actions. By default we have defined it for refunds and cancellations but it can be modified to any of the defined paths. Here’s how it works:
 
-Cancellation Offers: By default, for responses in the cancellation survey, RevenueCat will use a promotional offer where the id has the suffix `rc_cancel_offer`.
+![Promotional Offers Configuration](/images/customer-center-promo-offers-config.png)
 
-Refund Offers: By default, when a user requests a refund, RevenueCat will show the promotional offer with the suffix `rc_refund_offer` in the promotion offer id.
+**Cancellation Retention Discount**: By default, for responses in the cancellation survey, RevenueCat will use a promotional offer that you can customize in the Offers tab of the Customer Center settings.
+
+**Refund Retention Discount**: By default, when a user requests a refund, RevenueCat will use a promotional offer that you can customize in the Offers tab of the Customer Center settings.
 
 This setup enables RevenueCat to automatically match the right offer based on a user’s actions, providing a seamless experience for both cancellation and refund requests.
 
-You can customize both refund and cancellation ids in the Advanced Configuration JSON:
-```
-"promotional_offers": {
-  "cancel_promo_offer_key": {
-    "ios_offer_id": $YOUR_CUSTOM_CANCELLATION_ID,
-    ...
-  },
-  "refund_promo_offer_key": {
-    "ios_offer_id": $YOUR_CUSTOM_OFFER_ID,
-    ...
-  }
-},
-```
 If the SDK cannot locate a matching promotional offer id, it will bypass the survey and proceed with the user’s requested action—either canceling or refunding the subscription.
 
-**These promotional offers must be created in App Store Connect in order to be shown to customers.** You may also customize your configuration to provide other offers, or provide them at other points. [Learn more about configuring the Customer Center.](https://www.revenuecat.com/docs/tools/customer-center/customer-center-configuration)
+**These promotional offers must be created in App Store Connect in order to be shown to customers.** After creating a promotional offer for a product in App Store Connect, you have to assign it to a particular offer in the Offers tab of the Customer Center settings.
+
+For example, if you want to assign an offer with id "monthly_subscription_refund_offer" that you just created for your monthly subscription product, you would go to the Offers tab of the Customer Center settings and edit the "Refund Retention Discount" offer, and assign the promotional offer id to that monthly subscription product.
+
+![Assigning an Apple promotional offer](/images/customer-center-assign-promo-offer.png)
+
+You may also customize your configuration to provide other offers, or provide them at other points. [Learn more about configuring the Customer Center.](https://www.revenuecat.com/docs/tools/customer-center/customer-center-configuration)

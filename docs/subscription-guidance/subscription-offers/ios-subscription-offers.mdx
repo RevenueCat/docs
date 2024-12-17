@@ -191,15 +191,14 @@ Next, you’ll be asked to provide the specifics of your win-back offer, includi
 
 Subscribers can redeem a win-back offer in several ways. We're currently developing support for redeeming win-back offers within our SDK, and we will update this documentation as more redemption options become available.
 
-| Win-Back Offer Purchasing Method                           | Supported By RevenueCat? | Notes                                                                                                   |
-|------------------------------------------------------------|--------------------------|---------------------------------------------------------------------------------------------------------|
-| [Through the App Store with Streamlined Purchasing Enabled](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#redeeming-a-win-back-offer-through-the-app-store-with-streamlined-purchasing-enabled)  | ✅ Yes                   | Should not be used if you require a subscriber to perform an action before purchasing (e.g. signing in) |
-| Through Your App with Your Own IAP Code                    | ✅ Yes                   | More info on using your own IAP code [here](https://www.revenuecat.com/docs/migrating-to-revenuecat/sdk-or-not/finishing-transactions) |
-| [Through Your App From a StoreKit Message](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#redeeming-a-win-back-offer-in-your-app-from-a-storekit-message)                   | ✅ Yes                   | Deferring when the message is displayed requires SDK version 5.6.0+                                                                    |
-| Through the App Store with Streamlined Purchasing Disabled | ❌ No, Coming Soon       |                                                                                                                                        |
-| Through Your Paywall                                       | ❌ No, Coming Soon       |                                                                                                                                        |
-| Through a StoreKit StoreView                               | ❌ No, Coming Soon       |                                                                                                                                        |
-| Through a StoreKit SubscriptionStoreView                   | ❌ No, Coming Soon       |                                                                                                                                        |
+| Win-Back Offer Purchasing Method                           | Notes                                                                                                   |
+|------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| [Through the App Store with Streamlined Purchasing Enabled](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#redeeming-a-win-back-offer-through-the-app-store-with-streamlined-purchasing-enabled)  | Should not be used if you require a subscriber to perform an action before purchasing (e.g. signing in). Requires iOS SDK version 5.0.0+ |
+| [Through Your App From a StoreKit Message](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#redeeming-a-win-back-offer-in-your-app-from-a-storekit-message)                   | Requires iOS SDK version 5.6.0+                                                                    |
+| [Through the App Store with Streamlined Purchasing Disabled](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#redeeming-a-win-back-offer-through-the-app-store-with-streamlined-purchasing-disabled) | Requires iOS SDK version 5.9.0+                                                                                                              |
+| [Through Your Paywall](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#redeeming-a-win-back-offer-on-your-paywall)                                       | Requires iOS SDK version 5.10.0+                                                                                                                                        |
+| [Through a StoreKit StoreView](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#redeeming-a-win-back-offer-in-a-storekit-storeview)                               | Requires iOS SDK version 5.0.0+                                                                                                                                       |
+| Through Your App with Your Own IAP Code                    | Supported, you can find more info on using your own IAP code [here](https://www.revenuecat.com/docs/migrating-to-revenuecat/sdk-or-not/finishing-transactions) |
 
 #### Redeeming a Win-Back Offer Through the App Store with Streamlined Purchasing Enabled
 
@@ -300,6 +299,97 @@ Repeat steps 5-17 to test redeeming win-back offers multiple times.
 :::warning
 In our testing, we've found that this method of testing does not work 100% of the time, and that sometimes there can be a noticeable delay between when you leave the Settings app and when the win-back offer redemption sheet is displayed.
 :::
+
+##### Redeeming a Win-Back Offer Through the App Store with Streamlined Purchasing Disabled
+
+Purchasing win-back offers through the App Store uses Streamlined Purchasing by default, meaning that subscribers can complete the entire win-back offer redemption flow in the App Store. If you require users to perform an action in your app before making a purchase, like signing in, you can disable Streamlined Purchasing. When Streamlined Purchasing is disabled, subscribers will start the win-back redemption flow in the App Store, but will complete the flow in your app. Support for redeeming win-back offers from the App Store with Streamlined Purchasing disabled is available in the iOS SDK versions 5.9.0+.
+
+You can disable Streamlined Purchasing in App Store Connect under *Apps* → *Your App* → *Subscriptions* → *Streamlined Purchasing*.
+
+![disable_streamlined_purchasing.png](/images/win-back-offers/disable_streamlined_purchasing.png)
+
+After a user starts a win-back redemption flow on the App Store and opens your app, the RevenueCat SDK will call the `PurchasesDelegate.purchases(readyForPromotedProduct:startPurchase)` delegate function to let your app know that the user has started a redemption flow. Your app should then perform any actions it needs to do before the redemption flow continues. When your app is ready for the user to complete the redemption flow, you should call the `startPurchase` callback provided in the `readyForPromotedProduct` function.
+
+import streamlinedPurchasingDisabled from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offer-redemption-app-store-streamlined-purchasing-disabled.swift";
+
+<RCCodeBlock tabs={[
+    { type: 'swift', content: streamlinedPurchasingDisabled, name: 'Swift' }
+]} />
+
+In addition to the steps mentioned above to configure your win-back offer, we recommend doing the following:
+
+1. Mandatory: Upload an image for your win-back offer in App Store Connect ([instructions](https://developer.apple.com/help/app-store-connect/manage-in-app-purchases/view-and-edit-in-app-purchase-information#add-or-remove-an-image)).
+2. Enable [Apple App Store Notifications](https://www.revenuecat.com/docs/platform-resources/server-notifications/apple-server-notifications) so that RevenueCat can be notified of win-back offers redeemed through the App Store, even if the user does not open your app.
+
+##### Redeeming a Win-Back Offer on your Paywall
+
+You can display win-back offers to subscribers on your paywall for users to redeem using iOS SDK versions 5.10+. After configuring your win-back offers, you can use our SDK to fetch the win-back offers that a subscriber is eligible for for a given product:
+
+import fetchEligibleWinbacks from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers.swift";
+import fetchEligibleWinbacksReactNative from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers-react-native.ts";
+import fetchEligibleWinbacksFlutter from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers-flutter.dart";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        title: "Swift",
+        content: fetchEligibleWinbacks,
+    },
+    {
+        type: 'ts',
+        title: "React Native",
+        content: fetchEligibleWinbacksReactNative,
+    },
+    {
+        type: 'flutter',
+        title: "Flutter",
+        content: fetchEligibleWinbacksFlutter,
+    }
+]}/>
+
+:::info ☝️
+Note: The `eligibleWinBackOffers` function only returns the win-back offers that the current subscriber is eligible for, not all of the win-back offers that you've created for a product. It will return an empty array when the subscriber is not eligible for any win-back offers.
+:::
+
+Once the user has selected a win-back offer that they'd like to redeem, you can purchase it with the SDK:
+
+import purchaseWinbackOffer from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer.swift";
+import purchaseWinbackOfferReactNative from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer-react-native.ts";
+import purchaseWinbackOfferFlutter from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer-flutter.dart";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        title: "Swift",
+        content: purchaseWinbackOffer,
+    },
+    {
+        type: 'ts',
+        title: "React Native",
+        content: purchaseWinbackOfferReactNative,
+    },
+    {
+        type: 'flutter',
+        title: "Flutter",
+        content: purchaseWinbackOfferFlutter,
+    }
+]}/>
+
+For more information on displaying and purchasing products on your paywall, check out our [Displaying Products](https://www.revenuecat.com/docs/getting-started/displaying-products) and [Making Purchases](https://www.revenuecat.com/docs/getting-started/making-purchases) guides.
+
+#### Redeeming a Win-Back Offer in a StoreKit StoreView
+
+You can also redeem win-back offers in a [StoreKit StoreView](https://developer.apple.com/documentation/storekit/storeview) with the following SwiftUI code:
+
+import winbackOfferStoreKitStoreView from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offer-storekit-storeview.swift";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        title: "Swift",
+        content: winbackOfferStoreKitStoreView,
+    }
+]}/>
 
 ### Considerations
 

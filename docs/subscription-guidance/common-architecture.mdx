@@ -1,0 +1,54 @@
+---
+title: Common Architecture
+slug: common-architecture
+excerpt: Most common architecture Common setup w/ RC
+hidden: false
+---
+
+
+## Entitlements On Your Existing Backend 
+
+Integrating RevenueCat with your backend allows you to seamlessly manage subscription purchases and unlock content for users while keeping your existing setup intact. By using RevenueCat’s SDK and webhooks, you can ensure that your backend stays synchronized with user purchases and entitlements, providing a reliable and up-to-date system for managing access to premium content.
+
+![Entitlement on Backend](/images/entitlement_on_backend_screenshot.png)
+
+### Process Flow
+#### 1. App: Paywall Load and Offer Display
+Paywall Load: When users open the app, the paywall loads and displays the available subscription offerings in the UI.
+
+User Makes Purchase: Users can choose a subscription plan and proceed with the purchase.
+#### 2. RevenueCat SDK: Handling Purchases
+Fetch Offerings: The RevenueCat SDK fetches available offerings and displays them to the user.
+
+Process Purchase: The RevenueCat backend validates and processes the purchase details received from the SDK.
+
+Complete Purchase: The SDK finalizes the purchase, and the results are sent to the RevenueCat backend for further processing.
+
+Restore Purchase: The SDK allows you to regain access to entitlements after a transfer happens from one app user ID to another. 
+#### 3. RevenueCat Backend: Subscription Management
+Process Purchase: The RevenueCat backend validates and processes the purchase details received from the SDK.
+
+Unlock Entitlements: Once the purchase is confirmed, RevenueCat unlocks the corresponding entitlements.
+
+Dispatch Webhooks & Events: RevenueCat sends webhooks and events to your backend and any other third-party integrations configured, keeping everything in sync.
+
+Fetch Entitlements: The backend fetches the updated entitlements data.
+#### 4. App Backend: Entitlement Synchronization
+Receive Webhooks: Your backend receives an initial purchase webhook from RevenueCat, indicating a change in subscription status or new purchase.
+
+Perform Entitlement Sync: The app backend performs an entitlement synchronization by fetching the latest entitlement details from RevenueCat.
+
+Persist Entitlements in DB: Once fetched, the backend persists these entitlements in the database, ensuring accurate and up-to-date access controls.
+
+#### 5. App: Content Unlocking
+Query Database for Subscription Status: The app queries your backend database to check the user’s subscription status.
+
+Unlock Content: If the subscription is active, the app unlocks the relevant premium content for the user.
+
+
+
+
+
+
+
+

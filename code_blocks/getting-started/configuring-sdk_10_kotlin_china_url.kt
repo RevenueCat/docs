@@ -1,0 +1,1 @@
+Purchases.proxyURL = URL("https://api.rc-backup.com/")

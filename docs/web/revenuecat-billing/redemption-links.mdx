@@ -13,26 +13,39 @@ RevenueCat Billing and the RevenueCat Web SDK are currently in beta.
 Redemption Links is a Web2App feature that allows you to seamlessly connect web purchases with native mobile apps. This reduces friction from the purchase flow, and can be useful for campaigns and other initiatives where handling purchases on the web is easier and more flexible.
 
 :::info App User IDs no longer required for web purchases
-Handling purchases with Redemption Links means that you do not need to provide an App User ID when initializing the purchase, and users can therefore check out anonymously. The purchase is then assigned to the logged in user when they're directed into the mobile app _after_ the purchase.
+Handling purchases with Redemption Links means that you do not need to provide an App User ID when initializing the purchase, and customers can therefore check out anonymously. The purchase is then assigned to the logged in customer when they're directed into the mobile app _after_ the purchase.
 :::
 
 ## How Redemption Links Work
 Here's how a purchase and redemption flow looks, once you've configured and enabled the feature:
 
 1. The RC Billing purchase flow is initialized, either through the web SDK `purchase()` method, or by linking to a Web Paywall Link (App User ID not required at this stage)
-1. The customer purchases a subscription or non-subscription product throught the web checkout.
+1. The customer purchases a subscription or non-subscription product through the web checkout.
 1. The customer receives a **redemption link** at the end of the purchase flow, both on the success page, and in the email receipt for the purchase.
-1. On tapping the redemption link, users are linked into the mobile app (using a custom URL scheme).
-1. The app handles associating the purchase with the user, either by aliasing or transferring the purchase.
-1. The user has access to their entitlements associated with the web purchase.
+1. On tapping the redemption link, customers are linked into the mobile app (using a custom URL scheme).
+1. The app handles associating the purchase with the customer, either by aliasing or transferring the purchase.
+1. The customer has access to their entitlements associated with the web purchase.
 
+### Purchase Association Behavior
+When a customer redeems a web purchase in your app, RevenueCat will automatically handle associating the purchase based on the App User IDs involved:
+
+| Current App User ID | Web Purchase Owner | Result |
+| :----------------- | :----------------- | :----- |
+| Anonymous          | Anonymous          | App customer and Web Purchase Owner have CustomerInfo merged (aliased) |
+| Anonymous          | Identified         | App customer and Web Purchase Owner have CustomerInfo merged (aliased) |
+| Identified         | Anonymous          | App customer and Web Purchase Owner have CustomerInfo merged (aliased) |
+| Identified         | Identified         | Follows project's [restore behavior](/getting-started/restoring-purchases#transferring-purchases-seen-on-multiple-app-user-ids) (default: transfer the purchase to the new App User ID) |
+
+In most cases, the App User IDs will be merged (aliased) and treated as the same customer going forward. The exception is when both App User IDs are identified - in this case, it follows your project's configured [restore behavior](/getting-started/restoring-purchases#transferring-purchases-seen-on-multiple-app-user-ids).
+
+After successful redemption, the customer will immediately have access to their entitlements regardless of which association method was used.
 
 ## How to configure Redemption Links to redeem web purchases in your mobile apps
 
 ### Update your mobile app(s) to accept custom URL schemes from RevenueCat
 
 :::warning Updated mobile apps must be adopted before deploying the feature
-After the Redemption Links feature is enabled and users complete the purchase flow without an anonymous App User ID, custom URL schemes will be sent distributed (to redirect the user into your app and redeem the purchase). Users on older app versions that aren't configured to accept custom URL schemes will not be able to use these links. You should therefore make sure most (ideally all) users have updated to your new version before sending them to a purchase flow without an App User ID.
+After the Redemption Links feature is enabled and customers complete the purchase flow without an anonymous App User ID, custom URL schemes will be sent distributed (to redirect the customer into your app and redeem the purchase). Customers on older app versions that aren't configured to accept custom URL schemes will not be able to use these links. You should therefore make sure most (ideally all) customers have updated to your new version before sending them to a purchase flow without an App User ID.
 :::
 
 The SDK versions supporting Redemption Links are:

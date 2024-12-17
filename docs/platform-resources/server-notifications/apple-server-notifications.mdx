@@ -5,7 +5,7 @@ excerpt: Sending App Store server notifications to RevenueCat
 hidden: false
 ---
 
-RevenueCat does not require server notifications from the App Store, however doing so can speed up webhook and integration delivery times and reduce lag time for [Charts](/dashboard-and-metrics/charts).
+RevenueCat does not require server notifications from the App Store, however doing so can speed up webhook and integration delivery times, reduce lag time for [Charts](/dashboard-and-metrics/charts), and allow you to use our [Handling Refund Requests](/platform-resources/apple-platform-resources/handling-refund-requests) feature.
 
 ## Setup Instructions
 
@@ -19,6 +19,14 @@ RevenueCat does not require server notifications from the App Store, however doi
    ![Screen Shot 2021-11-03 at 10.03.27 AM](/images/f870a23-Screen_Shot_2021-11-03_at_10.03.27_AM_7645d7e77d55b6ab44b5c7085c7c3775.png)
 
 ## Considerations
+RevenueCat will be able to process V1 or V2 notifications, however, we recommend utilizing V2 for the following reasons:
+- [Auto-detect price changes](/subscription-guidance/price-changes)
+- Better reliability for [handling refund requests](/platform-resources/apple-platform-resources/handling-refund-requests)
+
+Here are some key points to keep in mind when considering this switch:
+- RevenueCat continues to operate normally without relying on notifications. Even if there's a brief downtime during the transition, there is no risk of data interruptions.
+- Apple has [deprecated](https://developer.apple.com/documentation/appstoreservernotifications/app-store-server-notifications-v1) their V1 notifications and will continue to make improvements to their V2 notifications.
+- The main reason to stay on V1 notifications is if your system has specific logic tied to V1. For example, if you have custom logic for processing notifications and are forwarding V1 notifications from RevenueCat to your own systems or from your systems to RevenueCat. You will have to update your custom logic before making the switch to V2.
 
 :::info Only one server notification URL supported
 
@@ -91,12 +99,16 @@ By default, RevenueCat ignores any Apple App Store Server Notifications for purc
 
 ![](/images/no_code_toggle.png)
 
-Considerations:
+### Considerations
 * The subscriber's app user ID will be taken from the [`appAccountToken`](https://developer.apple.com/documentation/appstoreserverapi/appaccounttoken) field of the transaction. 
     * If the `appAccountToken` is set and does not match with an existing subscriber: RevenueCat will create a new subscriber with an app user ID matching the `appAccountToken` value set.
     * If the `appAccountToken` is set and matches with an existing subscriber: No new subscriber will be created, and the purchase will be linked to that existing subscriber. 
     * If the `appAccountToken` is not set: RevenueCat will generate an anonymous app user ID to associate that purchase with.
 * If you are using RevenueCat's SDK to track purchases, we may receive the notification directly from the store before the SDK. When this happens, we will follow the app user ID logic as described in the bullet point above, and then proceed with your [transfer behavior](/getting-started/restoring-purchases) for the new app user ID sent by the SDK.
+
+:::warning Customer attributes in events
+RevenueCat will start processing the purchase as soon as we receive the Apple server notification. If you rely on [RevenueCat customer attributes](/customers/customer-attributes) being attached to the customer before the purchase is created on RevenueCat (e.g: sending customer attributes to your enabled [third-party integrations](/integrations/third-party-integrations) or [webhooks](/integrations/webhooks)), you should make sure to **send and sync** the customer attributes as soon as you have them or before the purchase is completed.
+:::
 
 :::warning
 If you have enabled [*Keep with original App User ID*](/getting-started/restoring-purchases#keep-with-original-app-user-id) or [*Transfer if there are no active subscriptions*](/getting-started/restoring-purchases#transfer-if-there-are-no-active-subscriptions) transfer behavior, we highly recommend turning this setting off unless you are not setting the `appAccountToken` or if the `appAccountToken` will match their RevenueCat app user ID.

@@ -1,0 +1,1 @@
+Purchases.setProxyURL(new URL("https://api.rc-backup.com/"));

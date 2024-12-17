@@ -477,7 +477,7 @@ paths:
                   name: My RevenueCat App
                   type: rc_billing
                   rc_billing:
-                    seller_company_name: <Your company name>
+                    app_name: <Your app name>
                     default_currency: USD
               Roku:
                 value:
@@ -708,14 +708,18 @@ paths:
                       nullable: true
                       minLength: 1
                       maxLength: 256
-                    seller_company_name:
-                      description: The company name.
+                    app_name:
+                      description: Shown in checkout, emails, and receipts sent to
+                        customers.
                       type: string
                       nullable: true
                       minLength: 1
                       maxLength: 256
-                    seller_company_support_email:
-                      description: The company support email.
+                    support_email:
+                      description: Used as the `reply to` address in all emails sent
+                        to customers, to allow them to receive support.  If you leave
+                        this field blank, your RevenueCat account email address will
+                        be used.
                       type: string
                       nullable: true
                       minLength: 1
@@ -954,6 +958,10 @@ paths:
                   maxLength: 50
                   items:
                     type: object
+                    additionalProperties: false
+                    required:
+                    - name
+                    - value
                     properties:
                       name:
                         description: The name of the attribute
@@ -4685,6 +4693,7 @@ components:
       - $amazonAdId
       - $amplitudeDeviceId
       - $amplitudeUserId
+      - $appleRefundHandlingPreference
       - $apnsTokens
       - $appsflyerId
       - $appsflyerSharingFilter
@@ -4716,6 +4725,10 @@ components:
       - $onesignalUserId
       - $phoneNumber
       - $posthogUserId
+      - $telemetryDeckUserId
+      - $telemetryDeckAppId
+      - telemetry_deck_user_id
+      - telemetry_deck_app_id
       - $segmentId
       - $tenjinId
       - $deviceVersion
@@ -6152,13 +6165,30 @@ components:
               minLength: 1
               maxLength: 256
             seller_company_name:
-              description: The company name.
+              description: The company name.  This field is deprecated. Please, use
+                `app_name` instead.
+              type: string
+              nullable: false
+              minLength: 1
+              maxLength: 256
+              deprecated: true
+            app_name:
+              description: Shown in checkout, emails, and receipts sent to customers.
               type: string
               nullable: false
               minLength: 1
               maxLength: 256
             seller_company_support_email:
-              description: The company support email.
+              description: The company support email. This field is deprecated. Please,
+                use `support_email` instead.
+              type: string
+              nullable: true
+              minLength: 1
+              maxLength: 320
+              deprecated: true
+            support_email:
+              description: 'Used as the `reply to` address in all emails sent to customers,
+                to allow them to receive support. '
               type: string
               nullable: true
               minLength: 1
@@ -6173,7 +6203,7 @@ components:
           description: Revenue Cat Billing Store type details
           type: object
           required:
-          - seller_company_name
+          - app_name
           nullable: true
           properties:
             stripe_account_id:
@@ -6184,14 +6214,16 @@ components:
               nullable: true
               minLength: 1
               maxLength: 256
-            seller_company_name:
-              description: The company name.
+            app_name:
+              description: Shown in checkout, emails, and receipts sent to customers.
               type: string
               nullable: false
               minLength: 1
               maxLength: 256
-            seller_company_support_email:
-              description: The company support email.
+            support_email:
+              description: Used as the `reply to` address in all emails sent to customers,
+                to allow them to receive support.  If you leave this field blank,
+                your RevenueCat account email address will be used.
               type: string
               nullable: true
               minLength: 1

@@ -39,23 +39,31 @@ We strive to provide clear and accurate insights into your data, but we cannot g
 
 For detailed information on a particular Chart, refer to the following guides:
 
-- [Active Subscriptions ](/dashboard-and-metrics/charts/active-subscriptions-chart)
-- [Active Subscriptions Movement ](/dashboard-and-metrics/charts/active-subscriptions-movement-chart)
-- [Churn ](/dashboard-and-metrics/charts/churn-chart)
-- [Refund Rate ](/dashboard-and-metrics/charts/refund-rate-chart)
-- [Subscription Status ](/dashboard-and-metrics/charts/subscription-status-chart)
-- [Annual Recurring Revenue (ARR) ](/dashboard-and-metrics/charts/annual-recurring-revenue-arr-chart)
-- [Realized LTV per Customer ](/dashboard-and-metrics/charts/realized-ltv-per-customer-chart)
-- [Realized LTV per Paying Customer ](/dashboard-and-metrics/charts/realized-ltv-per-paying-customer-chart)
-- [Monthly Recurring Revenue (MRR) ](/dashboard-and-metrics/charts/monthly-recurring-revenue-mrr-chart)
-- [Monthly Recurring Revenue Movement ](/dashboard-and-metrics/charts/monthly-recurring-revenue-movement-chart)
-- [Revenue ](/dashboard-and-metrics/charts/revenue-chart)
-- [Conversion to Paying ](/dashboard-and-metrics/charts/conversion-to-paying-chart)
-- [Initial Conversion ](/dashboard-and-metrics/charts/initial-conversion-chart)
-- [Trial Conversion ](/dashboard-and-metrics/charts/trial-conversion-chart)
-- [Subscription Retention ](/dashboard-and-metrics/charts/subscription-retention-chart)
-- [Active Trials ](/dashboard-and-metrics/charts/active-trials-chart)
-- [Active Trials Movement ](/dashboard-and-metrics/charts/active-trials-movement-chart)
+- [Active Subscriptions](/dashboard-and-metrics/charts/active-subscriptions-chart)
+- [Active Subscriptions Movement](/dashboard-and-metrics/charts/active-subscriptions-movement-chart)
+- [Active Trials](/dashboard-and-metrics/charts/active-trials-chart)
+- [Active Trials Movement](/dashboard-and-metrics/charts/active-trials-movement-chart)
+- [Annual Recurring Revenue (ARR)](/dashboard-and-metrics/charts/annual-recurring-revenue-arr-chart)
+- [App Store Refund Requests](/dashboard-and-metrics/charts/app-store-refund-requests-chart)
+- [Churn](/dashboard-and-metrics/charts/churn-chart)
+- [Cohort Explorer](/dashboard-and-metrics/charts/cohort-explorer)
+- [Conversion to Paying](/dashboard-and-metrics/charts/conversion-to-paying-chart)
+- [Initial Conversion](/dashboard-and-metrics/charts/initial-conversion-chart)
+- [Monthly Recurring Revenue (MRR)](/dashboard-and-metrics/charts/monthly-recurring-revenue-mrr-chart)
+- [Monthly Recurring Revenue Movement](/dashboard-and-metrics/charts/monthly-recurring-revenue-movement-chart)
+- [New Customers](/dashboard-and-metrics/charts/new-customers-chart)
+- [New Paid Subscriptions](/dashboard-and-metrics/charts/new-paid-subscriptions-chart)
+- [New Trials](/dashboard-and-metrics/charts/new-trials-chart)
+- [Non-subscription Purchases](/dashboard-and-metrics/charts/non-subscription-purchases-chart)
+- [Play Store Cancel Reasons](/dashboard-and-metrics/charts/play-store-cancel-reasons-chart)
+- [Prediction Explorer](/dashboard-and-metrics/charts/prediction-explorer)
+- [Realized LTV per Customer](/dashboard-and-metrics/charts/realized-ltv-per-customer-chart)
+- [Realized LTV per Paying Customer](/dashboard-and-metrics/charts/realized-ltv-per-paying-customer-chart)
+- [Refund Rate](/dashboard-and-metrics/charts/refund-rate-chart)
+- [Revenue](/dashboard-and-metrics/charts/revenue-chart)
+- [Subscription Retention](/dashboard-and-metrics/charts/subscription-retention-chart)
+- [Subscription Status](/dashboard-and-metrics/charts/subscription-status-chart)
+- [Trial Conversion](/dashboard-and-metrics/charts/trial-conversion-chart)
 
 ## Filters and Segments
 
@@ -90,21 +98,32 @@ Filters and segments do not apply to the 'New Customers' number. It is possible 
 
 Some of your transactions may result from customer's accepting offers you made to them, and RevenueCat allows you to filter and/or segment charts by those offers to understand how they're contributing to business performance.
 
-We track three distinct Offer Types:
+Here’s a quick look at the different offer types, showing how each is mapped from the store terminology to our terminology.
 
-| Offer Type        | Description                                                                                                                                                                                                                                                  | Example Offer (where rc.annual.39_99 is the product) |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
-| Intro Offer       | A paid introductory offer than the customer accepts as a discount on their initial subscription period. This does NOT include free trial periods. Includes: - App Store Introductory Offers - Play Store paid offers applied on initial subscription periods | Intro Offer (rc.annual.39_99)                        |
-| Offer Code        | A promo code that the customer enters to receive a discount or free trial (depending on the offer & store). Includes: - App Store Promo Codes - Play Store Promo Codes                                                                                       | black_friday_discount (rc.annual.39_99)              |
-| Promotional Offer | An offer that the customer received through your own custom logic. Includes: - App Store Promotional Offers                                                                                                                                                  | power_user_promo_offer (rc.annual.39_99)             |
-| No Offer          | When none of the above Offer Types were used on the transaction                                                                                                                                                                                              | No Offer                                             |
+Below are the definitions for App Store offer types:
+
+![](/images/app_store_offer_types.png)
+
+Below are the definitions for Play Store offer types:
+
+![](/images/play_store_offer_types.png)
+
+For more details, check out the chart below.
+
+| Offer Type | Description | Includes | Example Offer (where rc.annual.39_99 is the product) |
+| ---------- | ----------- | -------- | ---------------------------------------------------- |
+| Free Trial        | A free introductory offer the customer accepts as a free trial. |<ul><li>App Store **Free Trial** Introductory Offers</li><li>Play Store free trial offer applied on initial subscription periods</li></ul> | <ul><li>App Store: Free trial (rc.annual.39_99)</li><li>Play Store: free_trial_offer (rc.annual.39_99)</li></ul> | 
+| Introductory Offer       | A paid introductory offer that the customer accepts as a discount on their initial subscription period. This **does NOT** include free trial periods. | <ul><li>App Store **Pay Up Front** and **Pay As You Go** Introductory Offers</li><li>Play Store paid offers applied on initial subscription periods, including sequential discounted payments after the first subscription start</li></ul> | <ul><li>App Store: Intro Offer (rc.annual.39_99)</li><li>Play Store: intro_price_offer (rc.annual.39_99)</li></ul>|
+| Offer Code        | A promo code that the customer enters to receive a discount or free trial (depending on the offer & store). | <ul><li>App Store Offer Codes</li><li>Play Store Promo Codes (Billing Client 4 and earlier)</li></ul>| black_friday_discount (rc.annual.39_99) |
+| Promotional Offer | An offer that the customer received through your own custom logic. | <ul><li>App Store Promotional Offers</li></ul> | power_user_promo_offer (rc.annual.39_99) |
+| Win-Back Offer    | An offer that a customer with an expired subscription received to win them back. | <ul><li>App Store Win-Back Offers</li></ul> | winback_monthly_offer (rc.annual.39_99) |
+| Unspecified Offer | A Play Store offer for which we do not know the eligility criteria. |<ul><li>All other BC5 offers that are not applied on initial subscription periods</li></ul> | holiday_2024_december (rc.annual.39_99) | 
+| No Offer          | When none of the above Offer Types were used on the transaction. | None | No Offer |
 
 :::warning
-At this time, Google Play Offers on Billing Client 5 and above are only supported when they are applied as offers on initial subscription periods.
+At this time, Stripe coupon codes are not supported.
 
-In addition, Stripe coupon codes are not supported at this time.
-
-(In both cases, revenue for those transactions _is_ correctly tracked, but the promo identifier is not supported for analysis in Charts)
+(Revenue for those transactions _is_ correctly tracked, but the promo identifier is not supported for analysis in Charts)
 :::
 
 When filtering or segmenting by Offer Type, you'll be able to measure the aggregate usage of that Offer Type across all Stores and Products.

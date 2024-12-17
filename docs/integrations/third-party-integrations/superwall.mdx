@@ -21,25 +21,24 @@ With our Superwall integration, you can:
 ### Integration at a Glance
 
 | Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Customer Attributes | Sends Transfer Events | Optional Event Types |
-| :--------------: | :-----------------------: | :------------------: | :----------------------------: | :-------------------: | :------------------: |
-|        ✅        |            ✅             |          ✅          |               ✅               |          ✅           |          ❌          |
+| :--------------: | :-----------------------: | :------------------: | :--------------------------: | :-------------------: | :------------------: |
+|        ✅        |            ✅             |          ✅          |              ✅              |          ✅           |          ❌          |
 
 ## Events
 
 The Superwall integration tracks the following events:
 
-| Event Type        | Default Event Name  | Description                                                                                                                                                                                                                                                                                                                              | App Store | Play Store | Amazon | Stripe | Promo |
-|-------------------|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|------------|--------|--------|-------|
-| Initial Purchase  | `INITIAL_PURCHASE`  | A new subscription has been purchased.                                                                                                                                                                                                                                                                                                     | ✅        | ✅         | ✅     | ✅     | ❌   |
-| Renewal           | `RENEWAL`           | An existing subscription has been renewed or a lapsed user has resubscribed.                                                                                                                                                                                                                                                              | ✅        | ✅         | ✅     | ✅     | ❌   |
-| Cancellation      | `CANCELLATION`      | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](/integrations/webhooks/event-types-and-fields#cancellation-and-expiration-reasons) for more details.                                                                                                                                              | ✅        | ✅         | ✅     | ✅     | ✅   |
-| Uncancellation    | `UNCANCELLATION`    | A non-expired cancelled subscription has been re-enabled.                                                                                                                                                                                                                                                                                 | ✅        | ✅         | ✅     | ❌     | ❌   |
-| Non Subscription Purchase | `NON_RENEWING_PURCHASE` | A customer has made a purchase that will not auto-renew.                                                                                                                                                                                                                                                                               | ✅        | ✅         | ✅     | ✅     | ✅   |
-| Subscription Paused | `SUBSCRIPTION_PAUSED` | A subscription has been paused.                                                                                                                                                                                                                                                                                                           | ❌        | ✅         | ❌     | ❌     | ❌   |
-| Expiration        | `EXPIRATION`        | A subscription has expired and access should be removed. If you have [Platform Server Notifications](/platform-resources/server-notifications) configured, this event will occur as soon as we are notified (within seconds to minutes) of the expiration. If you do not have notifications configured, delays may be approximately 1 hour. | ✅        | ✅         | ✅     | ✅     | ✅   |
-| Billing Issue     | `BILLING_ISSUE`     | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR.                                                                                                                                 | ✅        | ✅         | ✅     | ✅     | ❌   |
-| Product Change    | `PRODUCT_CHANGE`    | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](/subscription-guidance/managing-subscriptions) for more details on updates, downgrades, and crossgrades.                                                                                                                                                     | ✅        | ✅         | ❌     | ✅     | ❌   |
-| Transfer          | `TRANSFER`          | A transfer of transactions and entitlements was initiated between one App User ID(s) to another. Please note: Two events will be sent for each transfer, one for the original user and another for the destination user.                                                                                                                                                                                                                                         | ✅        | ✅         | ✅     | ✅     | ❌   |
+| Event Type                | Default Event Name      | Description                                                                                                                                                                                                                                                                                                                                 | App Store | Play Store | Amazon | Stripe | Promo |
+| ------------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---------- | ------ | ------ | ----- |
+| Initial Purchase          | `INITIAL_PURCHASE`      | A new subscription has been purchased.                                                                                                                                                                                                                                                                                                      | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Renewal                   | `RENEWAL`               | An existing subscription has been renewed or a lapsed user has resubscribed.                                                                                                                                                                                                                                                                | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Cancellation              | `CANCELLATION`          | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](/integrations/webhooks/event-types-and-fields#cancellation-and-expiration-reasons) for more details.                                                                                                                                                 | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Uncancellation            | `UNCANCELLATION`        | A non-expired cancelled subscription has been re-enabled.                                                                                                                                                                                                                                                                                   | ✅        | ✅         | ✅     | ❌     | ❌    |
+| Non Subscription Purchase | `NON_RENEWING_PURCHASE` | A customer has made a purchase that will not auto-renew.                                                                                                                                                                                                                                                                                    | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Subscription Paused       | `SUBSCRIPTION_PAUSED`   | A subscription has been paused.                                                                                                                                                                                                                                                                                                             | ❌        | ✅         | ❌     | ❌     | ❌    |
+| Expiration                | `EXPIRATION`            | A subscription has expired and access should be removed. If you have [Platform Server Notifications](/platform-resources/server-notifications) configured, this event will occur as soon as we are notified (within seconds to minutes) of the expiration. If you do not have notifications configured, delays may be approximately 1 hour. | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Billing Issue             | `BILLING_ISSUE`         | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR.                                                                                                                                          | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Product Change            | `PRODUCT_CHANGE`        | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](/subscription-guidance/managing-subscriptions) for more details on updates, downgrades, and crossgrades.                                                                         | ✅        | ✅         | ❌     | ✅     | ❌    |
 
 ## Setup
 
@@ -91,24 +90,36 @@ import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/t
 import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/superwall_5.json";
 import subscriptionPausedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/superwall_6.json";
 
-<RCCodeBlock tabs={[
-    { type: 'json', content: initialPurchaseContent, name: 'Initial Purchase' },
-    { type: 'json', content: renewalContent, name: 'Renewal' },
-    { type: 'json', content: cancellationContent, name: 'Cancellation' },
-    { type: 'json', content: uncancellationContent, name: 'Uncancellation' },
-    { type: 'json', content: nonSubscriptionPurchaseContent, name: 'Non Subscription Purchase' },
-    { type: 'json', content: subscriptionPausedContent, name: 'Subscription Paused' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "json", content: initialPurchaseContent, name: "Initial Purchase" },
+    { type: "json", content: renewalContent, name: "Renewal" },
+    { type: "json", content: cancellationContent, name: "Cancellation" },
+    { type: "json", content: uncancellationContent, name: "Uncancellation" },
+    {
+      type: "json",
+      content: nonSubscriptionPurchaseContent,
+      name: "Non Subscription Purchase",
+    },
+    {
+      type: "json",
+      content: subscriptionPausedContent,
+      name: "Subscription Paused",
+    },
+  ]}
+/>
 
 import expirationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/superwall_7.json";
 import billingIssueContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/superwall_8.json";
 import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/superwall_9.json";
 
-<RCCodeBlock tabs={[
-    { type: 'json', content: expirationContent, name: 'Expiration' },
-    { type: 'json', content: billingIssueContent, name: 'Billing Issue' },
-    { type: 'json', content: productChangeContent, name: 'Product Change' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "json", content: expirationContent, name: "Expiration" },
+    { type: "json", content: billingIssueContent, name: "Billing Issue" },
+    { type: "json", content: productChangeContent, name: "Product Change" },
+  ]}
+/>
 
 :::success You've done it!
 You should start seeing subscription data from RevenueCat appear in Superwall.

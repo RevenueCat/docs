@@ -1,0 +1,58 @@
+---
+title: Recommended Environment Strategies
+slug: environment-strategies
+excerpt: Recommended Environment Strategies for your use cases.
+hidden: false
+---
+This document contains our recommended best practices for navigating between different environments when building your app. When building and testing an app, using distinct environments like DEV, TEST, and PROD can be very helpful but can also be complicated in picking what is best for your needs. 
+
+Each environment can help serve a specific purpose, from early-stage development to final user-ready deployment. This document provides an overview of the best practices and recommended approaches for using these environments to your advantage. By understanding when and how to use different environments, you can streamline your workflows, catch issues early, and confidently release a polished app to your users. Follow this guide to ensure a smooth and error-free user experience.
+## Single Project Approach ##
+If you would like to keep things short and simple as well as use DEV, TEST, and PROD environments, you can do this by simply setting up one [project](https://www.revenuecat.com/docs/welcome/projects#configuring-projects) in RevenueCat. RevenueCat will automatically determine if a purchase is from the [Sandbox](https://www.revenuecat.com/docs/test-and-launch/sandbox) environment or Production. 
+
+With this method, you will have the same RevenueCat API keys for all environments (DEV, TEST, and PROD). You can take advantage of RevenueCats events to identify the difference between purchases made in the Sandbox vs production, as well as use the RevenueCat dashboard to [toggle between sandbox and production transactions](https://www.revenuecat.com/docs/test-and-launch/sandbox#viewing-sandbox-data). Key details for this method include:
+
+**Unified API Keys:** This approach allows you to use the same RevenueCat API keys across all environments, reducing complexity in your app configuration.
+
+**Sandbox Testing:** All purchase testing is conducted in the sandbox. Our webhook events include an environment value, which allows you to easily distinguish between purchases and which environment they came from.
+
+**Data Filtering:** You can filter Customer History and the Overview section specifically for sandbox purchases or create custom Customer Lists to view sandbox data separately from production data.
+
+**Advantages:**
+- Minimal setup and maintenance.
+- Works well for smaller projects or teams that prioritize simplicity.
+
+**Considerations:**
+- Less setup but more of a chance to cause confusion between users and events making purchases in different environments.
+- More suited for smaller teams or projects with looser environment requirements.
+
+This approach is best for indie projects or cases where the added complexity of multiple projects is unnecessary.
+
+## Separate Projects for Each Environment ##
+
+:::warning 
+This approach increases the risk of projects becoming out of sync, leading to possible issues between environments. If you choose this route, ensure that any changes or updates are consistently applied across all projects to maintain alignment.
+:::
+
+For teams looking to maintain complete separation of data across all environments, you can create separate [RevenueCat projects](https://www.revenuecat.com/docs/welcome/projects#configuring-projects) for each environment that you plan to support. DEV, TEST, and PROD environments are the most common that we see. 
+
+We recommend this approach when testing and separation of concerns is a priority for your development team. This approach ensures that each environment has different API keys associated with it and are fully separate from one another. Once you set up a separate project for each environment, you will be able to decipher which events are coming from certain environments as well as keep all transactions from different environments isolated. Key details of this approach include:
+
+**Environment-Specific API Keys:** In your app code, you would supply different API keys depending on the environment to keep everything separate from one another.
+
+**Sandbox and Production Separation:** This approach ensures no overlap between sandbox and production data, keeping the data for each environment entirely isolated.
+
+**Bundle ID Customization:** You may choose to use different bundle IDs corresponding to separate apps for each environment. While all apps will be uploaded to App Store Connect or Google Play, these separate apps should stay unreleased with only the PROD app released into production.
+
+**Reusability of In-App Purchase Keys:** If the projects belong to the same App Store Connect account, you can use the same In-App Purchase Key for all projects, avoiding redundant setup steps.
+
+**Advantages:**
+- Clear separation of data across environments.
+- Better control over environment-specific settings and configurations.
+
+**Considerations:**
+- Requires additional setup and ongoing maintenance.
+- More suited for larger teams or projects with stricter environment requirements.
+- Significant duplication is necessary. You will need to manually replicate all aspects for each environment to ensure a consistent experience during testing. This includes paywalls, targeting rules, offerings, and more.
+
+This approach is best for teams that prioritize complete data isolation or have complex testing needs.
