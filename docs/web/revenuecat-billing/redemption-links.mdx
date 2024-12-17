@@ -26,6 +26,19 @@ Here's how a purchase and redemption flow looks, once you've configured and enab
 1. The app handles associating the purchase with the customer, either by aliasing or transferring the purchase.
 1. The customer has access to their entitlements associated with the web purchase.
 
+### Purchase Association Behavior
+When a customer redeems a web purchase in your app, RevenueCat will automatically handle associating the purchase based on the App User IDs involved:
+
+| Current App User ID | Web Purchase Owner | Result |
+| :----------------- | :----------------- | :----- |
+| Anonymous          | Anonymous          | App customer and Web Purchase Owner have CustomerInfo merged (aliased) |
+| Anonymous          | Identified         | App customer and Web Purchase Owner have CustomerInfo merged (aliased) |
+| Identified         | Anonymous          | App customer and Web Purchase Owner have CustomerInfo merged (aliased) |
+| Identified         | Identified         | Follows project's [restore behavior](/getting-started/restoring-purchases#transferring-purchases-seen-on-multiple-app-user-ids) (default: transfer the purchase to the new App User ID) |
+
+In most cases, the App User IDs will be merged (aliased) and treated as the same customer going forward. The exception is when both App User IDs are identified - in this case, it follows your project's configured [restore behavior](/getting-started/restoring-purchases#transferring-purchases-seen-on-multiple-app-user-ids).
+
+After successful redemption, the customer will immediately have access to their entitlements regardless of which association method was used.
 
 ## How to configure Redemption Links to redeem web purchases in your mobile apps
 
