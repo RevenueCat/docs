@@ -6836,6 +6836,7 @@ security:
 x-revenuecat-hidden: true
 servers:
 - url: https://api.revenuecat.com/v2
+- url: https://api.rc-backup.com/v2
 x-tagGroups:
 - name: General
   tags:
