@@ -1019,8 +1019,6 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:customers:read
-      x-expandable-fields:
-      - attributes: customer_information:customers:read
       x-release-status: public
       tags:
       - Customer
@@ -1042,21 +1040,6 @@ paths:
           minLength: 1
           maxLength: 1500
           example: 19b8de26-77c1-49f1-aa18-019a391603e2
-      - name: expand
-        in: query
-        description: "Specifies which fields in the response should be expanded.\n\
-          \ Accepted values are: `attributes` (requires `customer_information:customers:read`\
-          \ permission)."
-        required: false
-        schema:
-          type: array
-          items:
-            maxLength: 5000
-            minLength: 1
-            type: string
-            enum:
-            - attributes
-            example: attributes
       responses:
         '200':
           description: Success
@@ -1182,7 +1165,7 @@ paths:
         in: query
         description: "Specifies which fields in the response should be expanded.\n\
           \ Accepted values are: `app` (requires `project_configuration:apps:read`\
-          \ permission)."
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -1325,7 +1308,7 @@ paths:
         in: query
         description: "Specifies which fields in the response should be expanded.\n\
           \ Accepted values are: `items.app` (requires `project_configuration:apps:read`\
-          \ permission)."
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -1539,7 +1522,7 @@ paths:
         in: query
         description: "Specifies which fields in the response should be expanded.\n\
           \ Accepted values are: `product` (requires `project_configuration:products:read`\
-          \ permission)."
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -1751,7 +1734,7 @@ paths:
         in: query
         description: "Specifies which fields in the response should be expanded.\n\
           \ Accepted values are: `items.product` (requires `project_configuration:products:read`\
-          \ permission)."
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -2128,8 +2111,8 @@ paths:
         in: query
         description: "Specifies which fields in the response should be expanded.\n\
           \ Accepted values are: `package` (requires `project_configuration:packages:read`\
-          \ permission), `package.product` (requires `project_configuration:products:read`\
-          \ permission)."
+          \ permissions), `package.product` (requires `project_configuration:products:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -2349,8 +2332,8 @@ paths:
         in: query
         description: "Specifies which fields in the response should be expanded.\n\
           \ Accepted values are: `items.package` (requires `project_configuration:packages:read`\
-          \ permission), `items.package.product` (requires `project_configuration:products:read`\
-          \ permission)."
+          \ permissions), `items.package.product` (requires `project_configuration:products:read`\
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -2501,7 +2484,7 @@ paths:
         in: query
         description: "Specifies which fields in the response should be expanded.\n\
           \ Accepted values are: `product` (requires `project_configuration:products:read`\
-          \ permission)."
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -2725,7 +2708,7 @@ paths:
         in: query
         description: "Specifies which fields in the response should be expanded.\n\
           \ Accepted values are: `items.product` (requires `project_configuration:products:read`\
-          \ permission)."
+          \ permissions)."
         required: false
         schema:
           type: array
@@ -3816,172 +3799,6 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.'
-  /projects/{project_id}/customers/{customer_id}/attributes:
-    get:
-      summary: Get a list of the customer's attributes
-      operationId: list-customer-attributes
-      x-revenuecat-rate-limiting-domain: customer_information
-      x-scopes:
-      - customer_information:customers:read
-      x-release-status: public
-      tags:
-      - Customer
-      parameters:
-      - name: project_id
-        description: ID of the project
-        required: true
-        in: path
-        schema:
-          type: string
-          maxLength: 255
-          example: proj1ab2c3d4
-      - name: customer_id
-        in: path
-        description: ID of the customer
-        required: true
-        schema:
-          type: string
-          minLength: 1
-          maxLength: 1500
-          example: 19b8de26-77c1-49f1-aa18-019a391603e2
-      - name: starting_after
-        in: query
-        required: false
-        schema:
-          type: string
-          example: ent12354
-      - name: limit
-        in: query
-        required: false
-        schema:
-          type: integer
-          example: 10
-          default: 20
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListCustomerAttributes'
-          headers:
-            RevenueCat-Rate-Limit-Current-Usage:
-              $ref: '#/components/headers/RateLimitCurrentUsage'
-            RevenueCat-Rate-Limit-Current-Limit:
-              $ref: '#/components/headers/RateLimitCurrentLimit'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/RateLimited'
-        '500':
-          $ref: '#/components/responses/InternalError'
-        '503':
-          $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.'
-    post:
-      summary: Set a customer's attributes
-      operationId: set-customer-attributes
-      x-revenuecat-rate-limiting-domain: customer_information
-      x-scopes:
-      - customer_information:customers:read_write
-      x-release-status: public
-      tags:
-      - Customer
-      parameters:
-      - name: project_id
-        description: ID of the project
-        required: true
-        in: path
-        schema:
-          type: string
-          maxLength: 255
-          example: proj1ab2c3d4
-      - name: customer_id
-        in: path
-        description: ID of the customer
-        required: true
-        schema:
-          type: string
-          minLength: 1
-          maxLength: 1500
-          example: 19b8de26-77c1-49f1-aa18-019a391603e2
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties: false
-              required:
-              - attributes
-              properties:
-                attributes:
-                  type: array
-                  nullable: false
-                  minItems: 1
-                  maxItems: 50
-                  items:
-                    type: object
-                    additionalProperties: false
-                    required:
-                    - name
-                    - value
-                    properties:
-                      name:
-                        description: The name of the attribute
-                        nullable: false
-                        minLength: 1
-                        maxLength: 40
-                        oneOf:
-                        - $ref: '#/components/schemas/CustomerAttributeReservedName'
-                        - $ref: '#/components/schemas/CustomerAttributeCustomName'
-                        example: $email
-                      value:
-                        description: The value of the attribute. Use null to delete
-                          the attribute.
-                        type: string
-                        maxLength: 500
-                        nullable: true
-                    example: cat@revenuecat.com
-      responses:
-        '200':
-          description: Success. The customer attributes were set
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListCustomerAttributes'
-          headers:
-            RevenueCat-Rate-Limit-Current-Usage:
-              $ref: '#/components/headers/RateLimitCurrentUsage'
-            RevenueCat-Rate-Limit-Current-Limit:
-              $ref: '#/components/headers/RateLimitCurrentLimit'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '409':
-          $ref: '#/components/responses/Conflict'
-        '422':
-          $ref: '#/components/responses/UnprocessableEntity'
-        '423':
-          $ref: '#/components/responses/Locked'
-        '429':
-          $ref: '#/components/responses/RateLimited'
-        '500':
-          $ref: '#/components/responses/InternalError'
-        '503':
-          $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.'
   /projects/{project_id}/customers/{customer_id}/invoices:
     get:
       summary: Get a list of the customer's invoices
@@ -4839,8 +4656,6 @@ components:
           description: The experiment enrollment object
           nullable: true
           $ref: '#/components/schemas/ExperimentEnrollment'
-        attributes:
-          $ref: '#/components/schemas/ListCustomerAttributes'
     CustomerAlias:
       type: object
       required:
@@ -4861,37 +4676,6 @@ components:
         created_at:
           nullable: false
           description: The time when the alias was created
-          type: integer
-          example: 1658399423658
-    CustomerAttribute:
-      type: object
-      required:
-      - name
-      - value
-      - updated_at
-      - object
-      properties:
-        object:
-          description: String representing the object's type. Objects of the same
-            type share the same value.
-          enum:
-          - customer.attribute
-          type: string
-        name:
-          nullable: false
-          description: The name of the attribute. Reserved attributes are prefixed
-            with a `$`.
-          type: string
-          maxLength: 1500
-          example: $email
-        value:
-          nullable: true
-          description: The value of the attribute.
-          type: string
-          example: garfield@revenuecat.com
-        updated_at:
-          nullable: false
-          description: The time when the attribute was last updated.
           type: integer
           example: 1658399423658
     CustomerAttributeCustomName:
@@ -5368,37 +5152,6 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/aliases
-    ListCustomerAttributes:
-      type: object
-      required:
-      - items
-      - next_page
-      - object
-      - url
-      title: CustomerAttributeList
-      properties:
-        object:
-          description: String representing the object's type. Objects of the same
-            type share the same value. Always has the value `list`.
-          enum:
-          - list
-          type: string
-        items:
-          description: Details about each object.
-          items:
-            $ref: '#/components/schemas/CustomerAttribute'
-          type: array
-        next_page:
-          description: URL to access the next page of the customer's aliases. If not
-            present / null, there is no next page
-          type: string
-          nullable: true
-          example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/attributes?starting_after=myCustomAttribute
-        url:
-          description: The URL where this list can be accessed.
-          maxLength: 5000
-          type: string
-          example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/attributes
     ListCustomerInvoices:
       type: object
       required:
