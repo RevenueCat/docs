@@ -104,26 +104,24 @@ The method will throw an exception if the SDK has not yet been configured.
 
 ## Identifying Customers
 
-The RevenueCat Web SDK supports both identified and non-identified (anonymous) customers, offering flexibility in how you manage user accounts and subscriptions. Anonymous and identified customers are supported by the sdk and by the [Web Paywall Links](/web/revenuecat-billing/web-paywall-links).
-
+The RevenueCat Web SDK supports both [identified](/customers/user-ids) and [non-identified (anonymous)](/customers/user-ids#anonymous-app-user-ids) customers, offering flexibility in how you manage user accounts and subscriptions.
+Anonymous and identified customers are supported by the SDK and by the [Web Paywall Links](/web/revenuecat-billing/web-paywall-links).
 Here’s how these options work:
 
 ### Identified Customers
 
-For [identified customers](/customers/user-ids), you provide a unique App User ID linked to the customer’s account. This is ideal for apps with authentication mechanisms or shared subscription access between platforms (e.g., web and mobile). To implement this approach:
+For identified customers, you provide a unique App User ID linked to the customer’s account. This is ideal for apps with authentication mechanisms or shared subscription access between platforms (e.g., web and mobile). To implement this approach:
 * Use a third-party authentication provider like [Firebase](https://firebase.google.com/docs/auth) / [Supabase](https://supabase.com/docs/guides/auth) or a library like [auth.js](https://authjs.dev/).
 * By sharing authentication across your web app and mobile apps, customers can seamlessly access subscriptions they purchased on any platform without additional configuration—just map products to the correct entitlements.
 
 ### Non-Identified (Anonymous) Customers
 
-With Redemption Links, [anonymous customers](/customers/user-ids#anonymous-app-user-ids) can now purchase subscriptions on the web without requiring an account. These customers can later redeem their purchases on mobile apps or other platforms.
+With Redemption Links, anonymous customers can now purchase subscriptions on the web without requiring an account. These customers can later redeem their purchases on mobile apps or other platforms.
 Redemption Links enable you to:
 * Share subscription access without requiring user authentication.
 * Ensure purchases remain accessible, even for anonymous users.
 
-### Implementation Suggestions:
-* If using identified customers, pass the App User ID to your web app via URL parameters (e.g., through email links) or through RevenueCat’s [Web Paywall Links](/web/revenuecat-billing/web-paywall-links).
-* If targeting non-identified customers, enable the Redemption Links to provide an easy way for the customer to redeem their purchase autonomously.
+Find out more about Redemption Links and how to set them up [here](/web/revenuecat-billing/redemption-links/) .
 
 ## Getting customer information
 
