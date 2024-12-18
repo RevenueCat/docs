@@ -24,6 +24,7 @@ import npmContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/inst
 import yarnContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/installation-yarn.shell";
 import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
 
+
 <RCCodeBlock
 	tabs={[
 		{type: "shell", content: npmContent, name: "npm"},
@@ -114,12 +115,38 @@ For identified customers, you provide a unique App User ID linked to the custome
 * Use a third-party authentication provider like [Firebase](https://firebase.google.com/docs/auth) / [Supabase](https://supabase.com/docs/guides/auth) or a library like [auth.js](https://authjs.dev/).
 * By sharing authentication across your web app and mobile apps, customers can seamlessly access subscriptions they purchased on any platform without additional configuration—just map products to the correct entitlements.
 
+Here’s how you can configure `purchases-js` to use identified customers:
+
+<RCCodeBlock
+	tabs={[
+		{
+			type: "ts",
+			content: rcBillingContent,
+			name: "Web (JS/TS)",
+			region: "Configuring SDK",
+		},
+	]}
+/>
+
 ### Non-Identified (Anonymous) Customers
 
 With Redemption Links, anonymous customers can now purchase subscriptions on the web without requiring an account. These customers can later redeem their purchases on mobile apps or other platforms.
 Redemption Links enable you to:
 * Share subscription access without requiring user authentication.
 * Ensure purchases remain accessible, even for anonymous users.
+
+Here’s how you can configure `purchases-js` to use anonymous customers:
+
+<RCCodeBlock
+	tabs={[
+		{
+			type: "ts",
+			content: rcBillingContent,
+			name: "Web (JS/TS)",
+			region: "Configuring SDK Anon",
+		},
+	]}
+/>
 
 Find out more about Redemption Links and how to set them up [here](/web/revenuecat-billing/redemption-links/) .
 
