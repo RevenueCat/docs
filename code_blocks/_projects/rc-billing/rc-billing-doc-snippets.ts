@@ -12,6 +12,17 @@ const purchases = Purchases.configure(REVENUECAT_BILLING_PUBLIC_API_KEY, appUser
 return purchases;
 }
 
+function configuringSDKWithAnonUser(REVENUECAT_BILLING_PUBLIC_API_KEY: string) {
+// MARK: Configuring SDK Anonymous
+// This function will generate a unique anonymous ID for the user.
+// Make sure to enable the Redemption Links feature in the RevenueCat dashboard and use the
+// redemption link to redeem the purchase in your mobile app.
+const appUserId = Purchases.generateRevenueCatAnonymousAppUserId();
+const purchases = Purchases.configure(REVENUECAT_BILLING_PUBLIC_API_KEY, appUserId);
+// END
+return purchases;
+}
+
 async function getCustomerInfo() : Promise<CustomerInfo | null> {
 let customerInfo : CustomerInfo|null = null;
 // MARK: Getting customer information
