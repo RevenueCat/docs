@@ -18,6 +18,10 @@ import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 - Segments: No
 - Cohort selection: Yes
 
+## Change log
+
+- December 2024: We discovered and fixed a bug that caused predicted LTV of cancelled subscriptions to be included in the data, when instead a very small portion of this predicted LTV should be included to account for uncancellations and reactivations.
+
 ## Terminology
 
 | Term                 | Definition                                                                                                                                                                                                                                                                                                         |
