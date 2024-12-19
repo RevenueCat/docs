@@ -20,7 +20,7 @@ import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 
 ## Change log
 
-- December 2024: We discovered and fixed a bug that caused predicted LTV of cancelled subscriptions to be included in the data, when instead a very small portion of this predicted LTV should be included to account for uncancellations and reactivations.
+- December 2024: We discovered and fixed a bug that caused predicted LTV of cancelled subscriptions to be fully included in the data, when instead a very small portion of this predicted LTV should be included to account for uncancellations and reactivations.
 
 ## Terminology
 
