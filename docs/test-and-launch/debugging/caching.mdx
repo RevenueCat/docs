@@ -65,7 +65,8 @@ The `app_user_id` and `CustomerInfo` are cached between app launches.
 
 ### How does the cache work if the user is offline?
 
-The `app_user_id` and `CustomerInfo` are cached. `CustomerInfo` will be returned while offline forever if the user never goes online, unless something happens that invalidates the cache. Currently`offerings` do not persist between app launches, so you will need to cache this data and display them yourself when the app is offline.
+The `app_user_id` and `CustomerInfo` are cached. `CustomerInfo` will be returned while offline forever if the user never goes online, unless something happens that invalidates the cache. Currently `offerings` do not persist between app launches, so you will need to cache this data and display them yourself when the app is offline.
+
 The system grants a grace period for active entitlements when the user is offline. If the user's entitlement was active at the time they went offline, it will remain active for up to three days. After this period, the entitlement will no longer be displayed as active unless the user goes online to refresh their data. This ensures that users cannot exploit offline caching to retain access to features they are no longer entitled to.  
 
 ### When to use invalidateCustomerInfoCache()?
