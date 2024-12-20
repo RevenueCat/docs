@@ -246,8 +246,8 @@ const config = {
                 href: "https://community.revenuecat.com",
               },
               {
-                label: "Twitter",
-                href: "https://twitter.com/RevenueCat",
+                label: "X",
+                href: "https://x.com/RevenueCat",
               },
             ],
           },
