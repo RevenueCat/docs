@@ -92,6 +92,16 @@ import cocoapodsGradle from "!!raw-loader!@site/code_blocks/getting-started/inst
     { type: 'kotlin', content: cocoapodsGradle, name: 'build.gradle.kts' }
 ]} />
 
+Finally, add the following `post_install` script to your iOS app target in your `Podfile`. For instance, if your Kotlin Multiplatform module is named `shared`, it should look something like this: 
+
+import podfilePostInstallContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_8.ruby";
+
+<RCCodeBlock tabs={[
+    { type: 'ruby', content: podfilePostInstallContent, name: 'Podfile' }
+]} />
+
+This avoids the compiler looking for an app icon in your Kotlin Multiplatform module.
+
 ### Set the correct launchMode for Android
 
 Depending on your user's payment method, they may be asked by Google Play to verify their purchase in their (banking) app. This means they will have to background your app and go to another app to verify the purchase. If your Activity's `launchMode` is set to anything other than `standard` or `singleTop`, backgrounding your app can cause the purchase to get cancelled. To avoid this, set the `launchMode` of your Activity to `standard` or `singleTop` in your Android app's `AndroidManifest.xml` file:
