@@ -92,14 +92,15 @@ import cocoapodsGradle from "!!raw-loader!@site/code_blocks/getting-started/inst
     { type: 'kotlin', content: cocoapodsGradle, name: 'build.gradle.kts' }
 ]} />
 
-###### Missing app icon
-In this scenario, if you get a compilation error at the `CompileAssetCatalog` step complaining about a missing app icon, add the following `post_install` script to your iOS app target in your `Podfile`. For instance, if your Kotlin Multiplatform module is named `shared`, it would look something like this: 
+Finally, add the following `post_install` script to your iOS app target in your `Podfile`. For instance, if your Kotlin Multiplatform module is named `shared`, it should look something like this: 
 
 import podfilePostInstallContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_8.ruby";
 
 <RCCodeBlock tabs={[
     { type: 'ruby', content: podfilePostInstallContent, name: 'Podfile' }
 ]} />
+
+This avoids the compiler looking for an app icon in your Kotlin Multiplatform module.
 
 ### Set the correct launchMode for Android
 
