@@ -1,27 +1,32 @@
 ---
-title: Overview
+title: Welcome
 slug: overview
+sidebar_label: Welcome
 excerpt: Everything you need to implement and manage in-app purchases and subscriptions
-hidden: false
-categorySlug: welcome-1
-order: 0
 ---
 
-RevenueCat is a powerful and reliable in-app purchase server that makes it easy to build, analyze, and grow your subscriber base whether you're just starting out or already have millions of customers.
+RevenueCat is a powerful and reliable in-app purchase platform that makes it easy to build, analyze, and grow your subscriber base whether you're just starting out or already have millions of customers. With RevenueCat, you can rapidly configure dynamic paywalls, run experiments, and visualize your subscriber base.
 
 :::info
 We host live office hours every other Friday, where we demo the platform and answer your questions live. [Register for the next office hours →](https://app.livestorm.co/revenuecat/live-revenuecat-demo?type=detailed)
 :::
 
-## Choose an Implementation Path
+## Set up your account
 
-### Add in-app purchases to your app
+RevenueCat accounts are free to set up, all you need is an email address.
 
-Are you building a new app, or are you adding in-app purchases or subscriptions to your app for the first time? Add the SDK and start monetizing your iOS, Android, and Amazon apps.
+**Tip**: Signing up as an organization? Use a company account that can manage billing.
 
-<Button href="/docs/getting-started/quickstart">Add subscriptions to your app →</Button>
+<Button href="https://app.revenuecat.com/signup"
+target="\_blank">Create an account →</Button>
 
-### Migrate existing subscriptions to RevenueCat
+## Start implementing
+
+Get started by creating a new project and connecting to a store.
+
+<Button href="/docs/projects/overview">Create a project →</Button>
+
+## Migrating existing subscriptions?
 
 Whether you have just one or one million subscribers, you can easily replace your existing setup with RevenueCat. Supercharge your business and start taking advantage of powerful features like Experiments, Paywalls, and Targeting.
 

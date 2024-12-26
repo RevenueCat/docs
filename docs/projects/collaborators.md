@@ -1,8 +1,8 @@
 ---
-title: Invite your team
+title: Collaboration
+sidebar_label: Collaboration
 slug: collaborators
 excerpt: Invite others to collaborate on your project
-hidden: false
 ---
 
 Collaborators allow you to give team members controlled access to your RevenueCat Project.

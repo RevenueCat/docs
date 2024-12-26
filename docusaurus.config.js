@@ -141,9 +141,9 @@ const config = {
           },
           {
             type: "docSidebar",
-            sidebarId: "growthSidebar",
+            sidebarId: "dataSidebar",
             position: "left",
-            label: "Growth Docs",
+            label: "Metrics & Data Docs",
           },
           {
             label: "REST API",

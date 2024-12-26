@@ -1,23 +1,20 @@
 ---
 title: Identifying Customers
-slug: user-ids
+slug: identifying-customers
 excerpt: How RevenueCat handles user identity
 hidden: false
 ---
 
 RevenueCat provides a source of truth for a customer's [subscription status](/customers/customer-info) across different platforms. User identity is one of the most important components of many mobile applications, and it's crucial to make sure the subscription status that RevenueCat is tracking is associated with the correct user.
 
-## What is a customer in RevenueCat?
+:::info What is a customer in RevenueCat?
 
-In RevenueCat, the term "customer" refers to the person using an app that utilizes RevenueCat to handle or track the user's purchases. Every customer has a unique `CustomerInfo` object that can be referenced via their App User ID. As described below, the RevenueCat SDK will automatically generate anonymous App User IDs for customers unless a custom App User ID is provided by the developer. Some apps will use a combination of both custom and anonymous App User IDs, or only one App User ID type.
-
-If you use a combination of anonymous and custom App User IDs, it’s expected that Customers may be merged over time due to various actions they perform within the app, like [logins](/customers/user-ids#login-method-alias-behavior) or [restores](/getting-started/restoring-purchases). Scenarios explaining when merges occur are covered in more detail below, and will depend on the [restore behavior](/getting-started/restoring-purchases#restore-behavior) you select for your project. When a merge of customers occurs, there will be only one App User ID within the `original_app_user_id` field. If you’re listening to [Webhooks](/integrations/webhooks), the other App User IDs associated with the customer will be within an array in the `aliases` field. When referenced via the [SDK](/getting-started/configuring-sdk) or [API](https://www.revenuecat.com/reference/basic), any merged App User IDs will all be treated as the same “customer”. Looking up any of the merged App User IDs in RevenueCat will return the same `CustomerInfo`, customer history, customer attributes, subscription status, etc.
-
-Overall, the concept of a customer in RevenueCat is central to the platform's ability to track and manage in-app purchases and subscriptions. By maintaining a detailed record of each customer's activity, developers can gain insights into their app's revenue streams, allowing them to make informed decisions to optimize their monetization strategies.
+For an overview of what a customer is in RevenueCat, see [What is a Customer?](/customers/user-ids).
+:::
 
 ## Anonymous App User IDs
 
-If you don't provide an App User ID when instantiating the Purchases SDK, RevenueCat will generate a new random App User ID for you and cache it on the device. In the event that the user deletes and reinstalls the app, a new random App User ID will be generated.
+By default, if you don't provide an App User ID when configuring the Purchases SDK, RevenueCat will generate a new random App User ID for you and cache it on the device. In the event that the user deletes and reinstalls the app, a new random App User ID will be generated.
 
 
 
@@ -79,7 +76,7 @@ import contentKmpAnon from "!!raw-loader!@site/code_blocks/customers/user-ids_km
 
 For SDK versions 3+, anonymous App User IDs are always prefixed with `$RCAnonymousID:`, which may be useful for identifying anonymous users on your server.
 
-:::info Capture Anonymous IDs for Debugging
+:::info Surface Anonymous IDs for Debugging
 If your app does not enforce the use of custom App User IDs, you should consider revealing the user's App User ID in your app's support page. This will help expedite support requests, including those with RevenueCat Support.
 
 You can find the App User ID on the `CustomerInfo` [object](/customers/customer-info#get-user-information).
@@ -262,6 +259,15 @@ Note that anonymous App User IDs are not able to share subscription status acros
 A user can only [manage their subscription](/subscription-guidance/managing-subscriptions) on the platform it was purchased from.
 :::
 
+## Aliases
+
+If you use a combination of anonymous and custom App User IDs, it’s expected that Customers may be merged over time due to various actions they perform within the app, like [logins](/customers/user-ids#login-method-alias-behavior) or [restores](/getting-started/restoring-purchases). Scenarios explaining when merges occur are covered in more detail below, and will depend on the [restore behavior](/getting-started/restoring-purchases#restore-behavior) you select for your project. 
+
+When a merge of customers occurs, there will be only one App User ID within the `original_app_user_id` field. If you’re listening to [Webhooks](/integrations/webhooks), the other App User IDs associated with the customer will be within an array in the `aliases` field. 
+
+When referenced via the [SDK](/getting-started/configuring-sdk) or [API](https://www.revenuecat.com/reference/basic), any merged App User IDs will all be treated as the same “customer”. Looking up any of the merged App User IDs in RevenueCat will return the same `CustomerInfo`, customer history, customer attributes, subscription status, etc.
+
+
 ## How to only use Custom App User IDs
 
 To only use custom App User IDs, you must take care not to generate any anonymous App User IDs in the SDK. Anonymous App User IDs are generated when the SDK is configured without a provided custom App User ID, and are also created on `logOut()` as mentioned above. Many apps use a combination of anonymous App User IDs and their own custom App User IDs via an authentication system to provide flexibility in their user purchase flows. However, some applications are intended only to be used while using a known App User ID, without anonymous users at all. Some limits of anonymous IDs include added difficulty in personalization of user experiences, optimization of monetization strategies, and not being able to share subscriptions across platforms. Depending on the application's [transfer behavior](/getting-started/restoring-purchases), a provided user's subscription may be transferred to an anonymous ID - which can only be brought back through a [restore](/getting-started/restoring-purchases) on the original purchase platform.
@@ -302,11 +308,11 @@ You should never hardcode a string as an App User ID, since every install will b
 
 :::
 
-:::danger 🚨 Don't use blocked App User IDs
+## Blocked App User IDs
 
-Certain App User IDs are blocked in RevenueCat. This is by design to help developers that may be unintentionally passing non-unique strings as user identifiers. The current block-list is: `'no_user'`, `'null'`, `'none'`, `'nil'`, `'(null)'`, `'NaN`, `'\\x00'`(`NULL` character), `''`(empty string), `'unidentified'`, `'undefined'`, `'unknown'`, `'anonymous'`, `'guest'`, `'-1'`, `'0'`, `'[]'`, `'{}'`, `'[object Object]'` and any App User IDs containing the character `/`.
+Certain App User IDs are blocked in RevenueCat. This is by design to help developers that may be unintentionally passing non-unique strings as user identifiers. 
 
-:::
+The current block-list is: `'no_user'`, `'null'`, `'none'`, `'nil'`, `'(null)'`, `'NaN`, `'\\x00'`(`NULL` character), `''`(empty string), `'unidentified'`, `'undefined'`, `'unknown'`, `'anonymous'`, `'guest'`, `'-1'`, `'0'`, `'[]'`, `'{}'`, `'[object Object]'` and any App User IDs containing the character `/`.
 
 ## Next Steps
 
