@@ -50,6 +50,13 @@ const welcomeCategory = Category({
   ],
 });
 
+const projectsCategory = Category({
+  emoji: "🚀",
+  label: "Projects",
+  itemsPathPrefix: "projects/",
+  items: [Page({ slug: "projects" })],
+});
+
 const gettingStartedCategory = Category({
   emoji: "🚀",
   label: "Getting Started",
@@ -70,7 +77,7 @@ const gettingStartedCategory = Category({
           label: "RevenueCat Billing Product Setup",
           slug: "/web/revenuecat-billing/product-setup",
         }),
-        Page({ slug: "roku-products"}),
+        Page({ slug: "roku-products" }),
       ],
     }),
     SubCategory({
@@ -89,7 +96,7 @@ const gettingStartedCategory = Category({
         Page({ slug: "web-sdk" }),
         Page({ slug: "macos" }),
         Page({ slug: "app-builders" }),
-        Page({ slug: "roku"}),
+        Page({ slug: "roku" }),
       ],
     }),
     SubCategory({
@@ -218,10 +225,7 @@ const testAndLaunchCategory = Category({
       label: "Testing Guide",
       slug: "testing-guide",
       itemsPathPrefix: "testing-guide/",
-      items: [
-        Page({ slug: "use-cases" }),
-        Page({ slug: "export-examples" }),
-      ]
+      items: [Page({ slug: "use-cases" }), Page({ slug: "export-examples" })],
     }),
     Page({ slug: "environment-strategies" }),
     Page({ slug: "launch-checklist" }),
@@ -259,39 +263,9 @@ const dashboardCategory = Category({
   itemsPathPrefix: "dashboard-and-metrics/",
   items: [
     Page({ slug: "overview" }),
-    SubCategory({
+    Link({
       label: "Charts",
-      slug: "charts",
-      itemsPathPrefix: "charts/",
-      items: [
-        Page({ slug: "active-subscriptions-chart" }),
-        Page({ slug: "active-subscriptions-movement-chart" }),
-        Page({ slug: "active-trials-chart" }),
-        Page({ slug: "active-trials-movement-chart" }),
-        Page({ slug: "annual-recurring-revenue-arr-chart" }),
-        Page({ slug: "app-store-refund-requests-chart"}),
-        Page({ slug: "charts-feature-incomplete-periods" }),
-        Page({ slug: "churn-chart" }),
-        Page({ slug: "cohort-explorer" }),
-        Page({ slug: "conversion-to-paying-chart" }),
-        Page({ slug: "initial-conversion-chart" }),
-        Page({ slug: "monthly-recurring-revenue-movement-chart" }),
-        Page({ slug: "monthly-recurring-revenue-mrr-chart" }),
-        Page({ slug: "new-customers-chart" }),
-        Page({ slug: "new-paid-subscriptions-chart" }),
-        Page({ slug: "new-trials-chart" }),
-        Page({ slug: "non-subscription-purchases-chart" }),
-        Page({ slug: "customer-center-survey-responses-chart" }),
-        Page({ slug: "play-store-cancel-reasons-chart" }),
-        Page({ slug: "prediction-explorer" }),
-        Page({ slug: "realized-ltv-per-customer-chart" }),
-        Page({ slug: "realized-ltv-per-paying-customer-chart" }),
-        Page({ slug: "refund-rate-chart" }),
-        Page({ slug: "revenue-chart" }),
-        Page({ slug: "subscription-retention-chart" }),
-        Page({ slug: "subscription-status-chart" }),
-        Page({ slug: "trial-conversion-chart" }),
-      ],
+      slug: "/dashboard-and-metrics/charts",
     }),
     SubCategory({
       label: "Customer History",
@@ -311,7 +285,7 @@ const dashboardCategory = Category({
     Page({ slug: "customer-lists" }),
     Page({ slug: "taxes-and-commissions" }),
     Page({ slug: "performance-summaries" }),
-    Page({ slug: "display-currency"}),
+    Page({ slug: "display-currency" }),
     Page({ slug: "supporting-your-customers" }),
     Page({ slug: "audit-logs" }),
   ],
@@ -337,17 +311,9 @@ const toolsCategory = Category({
       itemsPathPrefix: "offering-metadata/",
       items: [Page({ slug: "offering-metadata-examples" })],
     }),
-    SubCategory({
+    Link({
       label: "Experiments",
-      slug: "experiments-v1",
-      itemsPathPrefix: "experiments-v1/",
-      items: [
-        Page({ slug: "experiments-overview-v1" }),
-        Page({ slug: "creating-offerings-to-test" }),
-        Page({ slug: "configuring-experiments-v1" }),
-        Page({ slug: "experiments-results-v1" }),
-        Page({ slug: "experiment-results-summaries"}),
-      ],
+      slug: "/tools/experiments-v1",
     }),
     SubCategory({
       label: "Targeting",
@@ -469,7 +435,7 @@ const platformResourcesCategory = Category({
         Page({ slug: "apple-family-sharing" }),
         Page({ slug: "legacy-mac-apps" }),
         Page({ slug: "swiftui-helpers" }),
-        Page({ slug: "handling-refund-requests"},)
+        Page({ slug: "handling-refund-requests" }),
       ],
     }),
     SubCategory({
@@ -520,7 +486,7 @@ const serviceCredentialsCategory = Category({
       items: [Page({ slug: "google-play-checklists" })],
     }),
     Page({ slug: "amazon-appstore-credentials" }),
-    Page({ slug: "roku-credentials"}),
+    Page({ slug: "roku-credentials" }),
   ],
 });
 
@@ -548,6 +514,167 @@ const sdkMigrationCategory = Category({
   ],
 });
 
+const chartsCategory = Category({
+  emoji: "📈",
+  label: "Charts",
+  itemsPathPrefix: "dashboard-and-metrics/",
+  items: [
+    Page({ slug: "charts" }),
+    SubCategory({
+      label: "Actives Charts",
+      items: [
+        Page({ slug: "charts/active-subscriptions-chart" }),
+        Page({ slug: "charts/active-subscriptions-movement-chart" }),
+        Page({ slug: "charts/active-trials-chart" }),
+        Page({ slug: "charts/active-trials-movement-chart" }),
+      ],
+      index: {
+        title: "Active Charts",
+        link: "dashboard-and-metrics/charts/active-charts",
+      },
+    }),
+    SubCategory({
+      label: "Conversion Charts",
+      items: [
+        Page({ slug: "charts/trial-conversion-chart" }),
+        Page({ slug: "charts/initial-conversion-chart" }),
+
+        Page({ slug: "charts/conversion-to-paying-chart" }),
+      ],
+      index: {
+        title: "Conversion Charts",
+        link: "dashboard-and-metrics/charts/conversion-charts",
+      },
+    }),
+    SubCategory({
+      label: "Customer Charts",
+      items: [
+        Page({ slug: "charts/subscription-status-chart" }),
+        Page({ slug: "charts/new-customers-chart" }),
+        Page({ slug: "charts/customer-center-survey-responses-chart" }),
+        Page({ slug: "charts/app-store-refund-requests-chart" }),
+        Page({ slug: "charts/play-store-cancel-reasons-chart" }),
+      ],
+      index: {
+        title: "Customer Charts",
+        link: "dashboard-and-metrics/charts/customer-charts",
+      },
+    }),
+    SubCategory({
+      label: "Explorer Charts",
+      items: [
+        Page({ slug: "charts/cohort-explorer" }),
+        Page({ slug: "charts/prediction-explorer" }),
+      ],
+      index: {
+        title: "Explorer Charts",
+        link: "dashboard-and-metrics/charts/explorer-charts",
+      },
+    }),
+    SubCategory({
+      label: "LTV Charts",
+      items: [
+        Page({ slug: "charts/realized-ltv-per-customer-chart" }),
+        Page({ slug: "charts/realized-ltv-per-paying-customer-chart" }),
+        Page({ slug: "charts/churn-chart" }),
+      ],
+      index: {
+        title: "LTV Charts",
+        link: "dashboard-and-metrics/charts/ltv-charts",
+      },
+    }),
+    SubCategory({
+      label: "Purchase Charts",
+      items: [
+        Page({ slug: "charts/new-paid-subscriptions-chart" }),
+        Page({ slug: "charts/new-trials-chart" }),
+        Page({ slug: "charts/non-subscription-purchases-chart" }),
+        Page({ slug: "charts/refund-rate-chart" }),
+      ],
+      index: {
+        title: "Purchase Charts",
+        link: "dashboard-and-metrics/charts/purchase-charts",
+      },
+    }),
+    SubCategory({
+      label: "Retention Charts",
+      items: [Page({ slug: "charts/subscription-retention-chart" })],
+      index: {
+        title: "Retention Charts",
+        link: "dashboard-and-metrics/charts/retention-charts",
+      },
+    }),
+    SubCategory({
+      label: "Revenue Charts",
+      items: [
+        Page({ slug: "charts/revenue-chart" }),
+        Page({ slug: "charts/annual-recurring-revenue-arr-chart" }),
+        Page({ slug: "charts/monthly-recurring-revenue-mrr-chart" }),
+        Page({ slug: "charts/monthly-recurring-revenue-movement-chart" }),
+      ],
+      index: {
+        title: "Revenue Charts",
+        link: "dashboard-and-metrics/charts/revenue-charts",
+      },
+    }),
+    Page({ slug: "charts/charts-feature-incomplete-periods" }),
+  ],
+});
+
+const dataExportCategory = Category({
+  emoji: "📦",
+  label: "Data Exports",
+  itemsPathPrefix: "integrations/",
+  items: [
+    Page({ slug: "scheduled-data-exports" }),
+    SubCategory({
+      label: "Configuration",
+      itemsPathPrefix: "scheduled-data-exports/",
+      items: [
+        Page({ slug: "scheduled-data-exports-s3" }),
+        Page({ slug: "scheduled-data-exports-azure" }),
+        Page({ slug: "scheduled-data-exports-gcp" }),
+      ],
+      index: {
+        title: "Configuration",
+        link: "integrations/scheduled-data-exports/configuration",
+      },
+    }),
+    SubCategory({
+      label: "Data Export Versions",
+      itemsPathPrefix: "scheduled-data-exports/",
+      items: [
+        Page({ slug: "data-export-version-5" }),
+        Page({ slug: "data-export-version-4" }),
+        Page({ slug: "data-export-version-3" }),
+      ],
+      index: {
+        title: "Data Export Versions",
+        link: "integrations/scheduled-data-exports/data-export-versions",
+      },
+    }),
+  ],
+});
+
+const experimentsCategory = Category({
+  emoji: "🧪",
+  label: "Experiments",
+  itemsPathPrefix: "tools/experiments-v1/",
+  items: [
+    Page({ slug: "experiments-overview-v1" }),
+    SubCategory({
+      label: "Creating Experiments",
+      slug: "configuring-experiments-v1",
+      items: [Page({ slug: "creating-offerings-to-test" })],
+    }),
+    SubCategory({
+      label: "Analyzing Results",
+      slug: "experiments-results-v1",
+      items: [Page({ slug: "experiment-results-summaries" })],
+    }),
+  ],
+});
+
 // Add the top level categories to the defaultSidebar object
 // The defaultSidebar is referenced in docusaurus.config.js
 const sidebars = {
@@ -567,6 +694,7 @@ const sidebars = {
     supportCategory,
     sdkMigrationCategory,
   ],
+  growthSidebar: [chartsCategory, experimentsCategory, dataExportCategory],
 };
 
 export default sidebars;

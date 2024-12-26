@@ -1,5 +1,6 @@
 ---
 title: Experiments Overview
+sidebar_label: Overview
 slug: experiments-overview-v1
 hidden: false
 ---

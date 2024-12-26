@@ -4,8 +4,6 @@ slug: customer-center-survey-responses-chart
 hidden: false
 ---
 
-## Definition
-
 The Customer Center Survey Responses chart breaks down the survey responses from customers who have interacted with the Customer Center by the selected response option so you can see why customers are cancelling, changing plans, or asking for refunds, and how the reasons are trending over time.
 
 ### Available settings

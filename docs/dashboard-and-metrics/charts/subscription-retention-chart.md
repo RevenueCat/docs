@@ -4,8 +4,6 @@ slug: subscription-retention-chart
 hidden: false
 ---
 
-## Definition
-
 Subscription Retention shows you how paying subscriptions renew and retain over time by cohorts, which are segmented by subscription start date by default, but can be segmented by other fields like Country or Product as well.
 
 ### Available settings

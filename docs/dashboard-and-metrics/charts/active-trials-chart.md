@@ -4,8 +4,6 @@ slug: active-trials-chart
 hidden: false
 ---
 
-## Definition
-
 The Active Trials chart measures the number of unexpired free trials at the end of a given period. Similar to [Active Subscriptions](/dashboard-and-metrics/charts/active-subscriptions-chart), a trial is considered active until it expires, regardless of its auto-renew status.
 
 The volume of Active Trials is an important leading indicator to growth of Active Subscriptions, and ultimately of your MRR. If the volume of active trials is increasing or decreasing it indicates that your business may be accelerating or decelerating respectively. The [Active Trials Movement](/dashboard-and-metrics/charts/active-trials-movement-chart) chart and [Initial Conversion](/dashboard-and-metrics/charts/initial-conversion-chart) chart can help you understand the nature of these movements.
@@ -26,6 +24,7 @@ For each period, the count of Active Trials represents the number of unexpired f
 To understand how that snapshot is generated for each period, check out the [Active Trials Movement](/dashboard-and-metrics/charts/active-trials-movement-chart) chart.
 
 ## Sample query from Scheduled Data Exports
+
 With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can get daily exports of your transactions from RevenueCat to reproduce and customize measures like this one that are provided by RevenueCat. You can find the full set of available sample queries [here](/integrations/scheduled-data-exports#sample-queries-for-revenuecat-measures).
 
 ## FAQs

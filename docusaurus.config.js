@@ -137,7 +137,13 @@ const config = {
             type: "docSidebar",
             sidebarId: "defaultSidebar",
             position: "left",
-            label: "Documentation",
+            label: "Implementation Docs",
+          },
+          {
+            type: "docSidebar",
+            sidebarId: "growthSidebar",
+            position: "left",
+            label: "Growth Docs",
           },
           {
             label: "REST API",
