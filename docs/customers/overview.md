@@ -16,7 +16,7 @@ Alternatively, you can provide a custom App User ID for a customer. This can be 
 
 Some apps may use a combination of both anonymous and custom App User IDs, or only one App User ID type.
 
-<Button href="/docs/customers/user-ids">How to identify customers →</Button>
+<Button href="/docs/customers/identifying-customers">How to identify customers →</Button>
 
 ## Getting Subscription Status
 
