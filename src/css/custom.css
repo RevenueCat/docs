@@ -205,12 +205,15 @@ h3 {
 }
 
 .markdown > p > img {
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   border-radius: 16px;
   max-width: 75%;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  padding: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.05) 0px 0.5px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 0.5px;
+
 }
 
 html[data-theme="dark"].markdown img {
