@@ -155,7 +155,7 @@ const paywallsCategory = Category({
   itemsPathPrefix: "",
   items: [
     SubCategory({
-      label: "Paywalls",
+      label: "RevenueCat Paywalls (Recommended)",
       slug: "tools/paywalls",
       itemsPathPrefix: "tools/paywalls/",
       items: [
@@ -165,7 +165,7 @@ const paywallsCategory = Category({
       ],
     }),
     SubCategory({
-      label: "Custom Paywalls",
+      label: "Manual Implementation",
       itemsPathPrefix: "getting-started/",
       items: [
         Page({ slug: "displaying-products" }),
@@ -182,7 +182,7 @@ const paywallsCategory = Category({
       ],
       // TODO: add a custom page for this, i.e. 'slug' instead of 'index'
       index: {
-        title: "Custom Paywalls",
+        title: "Custom Paywalls (Manual Implementation)",
         link: "paywalls/custom-paywalls",
       },
     }),

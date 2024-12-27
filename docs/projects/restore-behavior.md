@@ -50,3 +50,17 @@ The legacy behavior is to merge (alias) any App User IDs that restore the same u
 | Has an optional login mechanism and / or allows customers to purchase before creating an account in my app.                                                                | **Transfer to new App User ID**. Required to make sure customers that purchase without an account can restore transactions.                                                                                         |
 | Requires all customers to create an account before purchasing.                                                                                                             | **Transfer to new App User ID**. Recommended to help customers restore transactions even if they forget previous account information.                                                                               |
 | Requires all customers to create an account before purchasing, and has strict business logic that requires purchases to only ever be associated with a single App User ID. | **Keep with original App User ID**. Will make sure that transactions never get transferred between accounts. Your support team should be prepared to guide customers through an account recovery process if needed. |
+
+## Considerations for enabling "Track New Purchases from Server-to-Server Notifications"
+
+If you plan to enable the "Track new purchases from server-to-server notifications" feature ([Apple reference](/platform-resources/server-notifications/apple-server-notifications#tracking-new-purchases-using-apple-app-store-server-notifications), [Google reference](/platform-resources/server-notifications/google-server-notifications#tracking-new-purchases-using-google-cloud-pubsub)), please review your transfer behavior settings carefully. Enabling this feature may result in customers not receiving access to their entitlements if certain transfer settings are in place.
+
+To ensure smooth functionality:
+
+1. Confirm that you **are not** using the "Keep with original App User ID" or "Transfer if there are no active subscriptions" setting in combination with this feature, **or**
+2. Check that you **are not** setting `appAccountToken` or `obfuscatedExternalAccountId` fields, **or**
+3. Verify that any `appAccountToken` or `obfuscatedExternalAccountId` set for your customers will match their [RevenueCat App User ID](/customers/user-ids#logging-in-with-a-custom-app-user-id) **and** the app user ID is a valid UUID (RFC 4122 version 4).
+
+If you meet any of the above conditions, you can proceed with enabling the feature.
+
+If not, it may happen that we first track a purchase for **App User ID A** from a server-to-server notification and later we receive the same purchase from the SDK or the REST API under a different **App User ID B**. In this case, no transfer will occur, and **App User ID B** will never get access to the entitlement.
