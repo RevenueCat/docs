@@ -44,7 +44,7 @@ When relying on entitlements to enable access to certain content, it's important
 
 Since an entitlement represents a level of access that a user is entitled to, you'll want to check for entitlement status in your app to unlock the appropriate content. If an entitlement is active, you can unlock the associated content. If an entitlement is inactive, you can display a paywall to the user.
 
-You can use the RevenueCat SDK to check for entitlement status, with the `getCustomerInfo` method. You can read more about checking subscription and purchase status in the [Checking Subscription Status](/docs/customers/customer-info) guide.
+You can use the RevenueCat SDK to check for entitlement status, with the `getCustomerInfo` method. You can read more about checking subscription and purchase status in the [Checking Subscription Status](/customers/customer-info) guide.
 
 ## Next steps
 
