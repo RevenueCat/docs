@@ -128,7 +128,7 @@ try {
   const offerings = await Purchases.getSharedInstance().getOfferings({currency: "USD"});
   if (offerings.current && offerings.current.monthly) {
     const product = offerings.current.monthly.rcBillingProduct;
-    // Display the price and currency of the RC Billing Product
+    // Display the price and currency of the RevenueCat Billing Product
     displayProduct(product);
   }
 } catch (e) {

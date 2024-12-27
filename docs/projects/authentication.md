@@ -10,7 +10,7 @@ RevenueCat authenticates requests from the RevenueCat SDK and the [REST API](/ap
 There are two types of API keys:
 
 - **Public** API keys (also known as **App specific keys** in the dashboard) are meant to make non-potent changes to subscribers, and must be used to [configure the SDK](/getting-started/configuring-sdk). Each app under a project is automatically provided with a public API key.
-- **Secret** API keys, prefixed `sk_`, should be kept confidential and only stored on your own servers. Your secret API keys can perform restricted API requests such as deleting subscribers and granting entitlements. Secret API keys are project-wide and can be created and revoked by project [Admins](/welcome/projects/collaborators).
+- **Secret** API keys, prefixed `sk_`, should be kept confidential and only stored on your own servers. Your secret API keys can perform restricted API requests such as deleting subscribers and granting entitlements. Secret API keys are project-wide and can be created and revoked by project [Admins](/projects/collaborators).
 
 ## Finding API Keys
 

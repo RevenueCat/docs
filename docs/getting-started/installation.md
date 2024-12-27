@@ -18,3 +18,9 @@ _Purchases_ is our SDK that correctly implements purchases and subscriptions acr
 - [Web Installation →](/getting-started/installation/web-sdk)
 - [macOS / Catalyst Installation →](/getting-started/installation/macos)
 - [Roku →](/getting-started/installation/roku)
+
+## Next steps
+
+After you've installed the SDK, it's time to configure it with your API key.
+
+<Button href="/docs/getting-started/configuring-sdk">Configure the SDK →</Button>

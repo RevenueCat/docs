@@ -7,7 +7,7 @@ excerpt: Connect your project to App Store Connect, Google Play Console, and mor
 
 Once you've created a [project](/projects/overview), you'll need to connect it to the stores and platforms you want to support and set up [Server Notifications](/platform-resources/server-notifications).
 
-Click the **+ Add App** button in the top right of your project sidebar to see the list of stores and platforms you can connect to.
+Click the **+ Add App** button in the top right of your project sidebar to see the list of stores and payment providers you can connect to.
 
 ![Add App](/images/projects/add-an-app.png)
 

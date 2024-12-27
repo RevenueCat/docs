@@ -11,13 +11,13 @@ target="\_blank">Create an Account →</Button>
 
 ### Organizations / Enterprise
 
-We recommend using a company account when registering for RevenueCat and setting up your app within a project. You'll be able to invite the rest of your team as [collaborators](/welcome/projects/collaborators) to your project, but **only the project owner can manage billing**. Project collaborators can't manage billing details.
+We recommend using a company account when registering for RevenueCat and setting up your app within a project. You'll be able to invite the rest of your team as [collaborators](/projects/collaborators) to your project, but **only the project owner can manage billing**. Project collaborators can't manage billing details.
 
 ## Invite your team
 
 Collaborators allow you to give team members controlled access to your RevenueCat Project.
 
-Read more about collaborators and permissions in our [Invite your team](/welcome/projects/collaborators) guide.
+Read more about collaborators and permissions in our [Invite your team](/projects/collaborators) guide.
 
 ## Done with this setup?
 

@@ -84,7 +84,7 @@ const projectsCategory = Category({
     Page({ slug: "projects/projects-overview" }),
     Page({ slug: "projects/connect-a-store" }),
     SubCategory({
-      label: "Server Notifications",
+      label: "Connect Server Notifications",
       slug: "platform-resources/server-notifications",
       itemsPathPrefix: "platform-resources/server-notifications/",
       items: [
@@ -106,7 +106,7 @@ const mobileSDKCategory = Category({
   items: [
     Page({ slug: "quickstart" }),
     SubCategory({
-      label: "Installing the SDK",
+      label: "Install the SDK",
       slug: "installation",
       itemsPathPrefix: "installation/",
       items: [
@@ -125,7 +125,7 @@ const mobileSDKCategory = Category({
       ],
     }),
     SubCategory({
-      label: "Configuring the SDK",
+      label: "Configure the SDK",
       slug: "configuring-sdk",
       items: [Page({ slug: "configuring-sdk/ios-app-extensions" })],
     }),
@@ -212,10 +212,37 @@ const offeringsCategory = Category({
     SubCategory({
       label: "Products Overview",
       slug: "getting-started/entitlements",
-      itemsPathPrefix: "getting-started/entitlements/",
+      itemsPathPrefix: "",
       items: [
         SubCategory({
+          label: "Subscription Products",
+          itemsPathPrefix: "subscription-guidance/",
+          items: [
+            SubCategory({
+              label: "Free Trials & Promo Offers",
+              slug: "subscription-offers",
+              itemsPathPrefix: "subscription-offers/",
+              items: [
+                Page({ slug: "ios-subscription-offers" }),
+                Page({ slug: "google-play-offers" }),
+                Page({ slug: "stripe-free-trials" }),
+              ],
+            }),
+            Page({ slug: "how-grace-periods-work" }),
+            Page({ slug: "managing-subscriptions" }),
+            Page({ slug: "price-changes" }),
+            Page({ slug: "refunds" }),
+            Page({ slug: "google-prepaid-plans" }),
+          ],
+          index: {
+            title: "Subscription Products",
+            link: "subscription-guidance/overview",
+          },
+        }),
+        Page({ slug: "platform-resources/non-subscriptions" }),
+        SubCategory({
           label: "Store Product Setup",
+          itemsPathPrefix: "getting-started/entitlements/",
           items: [
             Page({ slug: "ios-products" }),
             Page({ slug: "android-products" }),
@@ -337,29 +364,6 @@ const testAndLaunchCategory = Category({
   ],
 });
 
-const subscriptionGuidanceCategory = Category({
-  emoji: "📝",
-  label: "Subscription Guidance",
-  itemsPathPrefix: "subscription-guidance/",
-  items: [
-    SubCategory({
-      label: "Free Trials & Promo Offers",
-      slug: "subscription-offers",
-      itemsPathPrefix: "subscription-offers/",
-      items: [
-        Page({ slug: "ios-subscription-offers" }),
-        Page({ slug: "google-play-offers" }),
-        Page({ slug: "stripe-free-trials" }),
-      ],
-    }),
-    Page({ slug: "how-grace-periods-work" }),
-    Page({ slug: "managing-subscriptions" }),
-    Page({ slug: "price-changes" }),
-    Page({ slug: "refunds" }),
-    Page({ slug: "google-prepaid-plans" }),
-  ],
-});
-
 const integrationsCategory = Category({
   emoji: "🔌",
   label: "Integrations",
@@ -367,7 +371,7 @@ const integrationsCategory = Category({
   items: [
     Page({ slug: "integrations" }),
     SubCategory({
-      label: "Attribution",
+      label: "Attribution Integrations",
       slug: "attribution",
       itemsPathPrefix: "attribution/",
       items: [
@@ -380,19 +384,6 @@ const integrationsCategory = Category({
         Page({ slug: "singular" }),
         Page({ slug: "splitmetrics-acquire" }),
         Page({ slug: "tenjin" }),
-      ],
-    }),
-    SubCategory({
-      label: "Scheduled Data Exports",
-      slug: "scheduled-data-exports",
-      itemsPathPrefix: "scheduled-data-exports/",
-      items: [
-        Page({ slug: "data-export-version-3" }),
-        Page({ slug: "data-export-version-4" }),
-        Page({ slug: "data-export-version-5" }),
-        Page({ slug: "scheduled-data-exports-azure" }),
-        Page({ slug: "scheduled-data-exports-gcp" }),
-        Page({ slug: "scheduled-data-exports-s3" }),
       ],
     }),
     SubCategory({
@@ -429,6 +420,10 @@ const integrationsCategory = Category({
         Page({ slug: "sample-events" }),
       ],
     }),
+    Link({
+      label: "Scheduled Data Exports",
+      slug: "/integrations/scheduled-data-exports",
+    }),
     Page({ slug: "partner-built-integrations" }),
     Page({ slug: "stripe-app" }),
   ],
@@ -439,15 +434,6 @@ const platformResourcesCategory = Category({
   label: "Platform Resources",
   itemsPathPrefix: "platform-resources/",
   items: [
-    Page({ slug: "implementation-responsibilities" }),
-    Page({ slug: "developer-store-payments" }),
-    Page({ slug: "sdk-reference" }),
-    SubCategory({
-      label: "Amazon Platform Resources",
-      slug: "amazon-platform-resources",
-      itemsPathPrefix: "amazon-platform-resources/",
-      items: [Page({ slug: "amazon-small-business-accelerator-program" })],
-    }),
     SubCategory({
       label: "Apple Platform Resources",
       slug: "apple-platform-resources",
@@ -472,8 +458,12 @@ const platformResourcesCategory = Category({
         Page({ slug: "google-play-quota-increase-request" }),
       ],
     }),
-    Page({ slug: "non-subscriptions" }),
-    Page({ slug: "sample-apps" }),
+    SubCategory({
+      label: "Amazon Platform Resources",
+      slug: "amazon-platform-resources",
+      itemsPathPrefix: "amazon-platform-resources/",
+      items: [Page({ slug: "amazon-small-business-accelerator-program" })],
+    }),
   ],
 });
 
@@ -514,15 +504,37 @@ const supportCategory = Category({
 
 const sdkMigrationCategory = Category({
   emoji: "📘",
-  label: "SDK Migration Guides",
-  itemsPathPrefix: "sdk-guides/",
+  label: "SDK Reference",
+  itemsPathPrefix: "",
   items: [
-    Page({ slug: "android-native-4x-to-5x-migration" }),
-    Page({ slug: "android-native-5x-to-6x-migration" }),
-    Page({ slug: "android-native-6x-to-7x-migration" }),
-    Page({ slug: "android-native-7x-to-8x-migration" }),
-    Page({ slug: "ios-native-3x-to-4x-migration" }),
-    Page({ slug: "ios-native-4x-to-5x-migration" }),
+    Page({ slug: "platform-resources/sdk-reference" }),
+    Page({ slug: "platform-resources/sample-apps" }),
+    SubCategory({
+      label: "Android Migration Guides",
+      itemsPathPrefix: "sdk-guides/",
+      items: [
+        Page({ slug: "android-native-4x-to-5x-migration" }),
+        Page({ slug: "android-native-5x-to-6x-migration" }),
+        Page({ slug: "android-native-6x-to-7x-migration" }),
+        Page({ slug: "android-native-7x-to-8x-migration" }),
+      ],
+      index: {
+        title: "Android Migration Guides",
+        link: "sdk-guides/android-migration-guides",
+      },
+    }),
+    SubCategory({
+      label: "iOS Migration Guides",
+      itemsPathPrefix: "sdk-guides/",
+      items: [
+        Page({ slug: "ios-native-3x-to-4x-migration" }),
+        Page({ slug: "ios-native-4x-to-5x-migration" }),
+      ],
+      index: {
+        title: "iOS Migration Guides",
+        link: "sdk-guides/ios-migration-guides",
+      },
+    }),
   ],
 });
 
@@ -706,6 +718,8 @@ const guidesCategory = Category({
   label: "Guides",
   itemsPathPrefix: "",
   items: [
+    Page({ slug: "platform-resources/implementation-responsibilities" }),
+    Page({ slug: "platform-resources/developer-store-payments" }),
     SubCategory({
       label: "Testing Guide",
       slug: "guides/testing-guide",
@@ -745,7 +759,6 @@ const sidebars = {
     offeringsCategory,
     paywallsCategory,
     customersCategory,
-    subscriptionGuidanceCategory,
     chartsDummyCategory,
     experimentsCategory,
     testAndLaunchCategory,
