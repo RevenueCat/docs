@@ -22,7 +22,7 @@ You can customize your project by setting a name as well as your global [restore
 
 - **Project Name**: The name of your project.
 - **Project ID**: The unique identifier for your project, used in the v2 API.
-- **Restore Behavior**: The behavior of the SDK when a user restores their purchases. [Learn more](/getting-started/restoring-purchases).
+- **Restore Behavior**: The behavior of the SDK when a user restores their purchases. [Learn more](/projects/restore-behavior).
 
 ### Transferring Ownership
 

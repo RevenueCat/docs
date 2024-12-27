@@ -94,8 +94,18 @@ const projectsCategory = Category({
         Page({ slug: "amazon-server-notifications" }),
       ],
     }),
-    Page({ slug: "projects/authentication" }),
-    Page({ slug: "projects/collaborators" }),
+    SubCategory({
+      label: "Project Settings",
+      items: [
+        Page({ slug: "projects/authentication" }),
+        Page({ slug: "projects/collaborators" }),
+        Page({ slug: "projects/restore-behavior" }),
+      ],
+      index: {
+        title: "Project Settings",
+        link: "projects/project-settings",
+      },
+    }),
   ],
 });
 
@@ -147,6 +157,7 @@ const paywallsCategory = Category({
       slug: "tools/paywalls",
       itemsPathPrefix: "tools/paywalls/",
       items: [
+        Page({ slug: "installation" }),
         Page({ slug: "creating-paywalls" }),
         Page({ slug: "displaying-paywalls" }),
       ],
@@ -497,8 +508,8 @@ const supportCategory = Category({
   label: "RevenueCat Support",
   itemsPathPrefix: "revenuecat-support/",
   items: [
-    Page({ slug: "support-first-steps" }),
     Page({ slug: "general-troubleshooting" }),
+    Page({ slug: "support-first-steps" }),
   ],
 });
 
