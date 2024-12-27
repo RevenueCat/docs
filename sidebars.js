@@ -140,6 +140,7 @@ const mobileSDKCategory = Category({
       items: [Page({ slug: "configuring-sdk/ios-app-extensions" })],
     }),
     Link({ label: "Identifying Users", slug: "/customers/user-ids" }),
+    Link({ label: "Present a Paywall", slug: "/tools/paywalls" }),
     Link({
       label: "Checking Subscription Status",
       slug: "/customers/customer-info",
@@ -308,7 +309,7 @@ const customersCategory = Category({
   itemsPathPrefix: "",
   items: [
     SubCategory({
-      label: "What is a Customer?",
+      label: "Customers Overview",
       slug: "customers/overview",
       items: [
         Page({ slug: "customers/user-ids" }),
