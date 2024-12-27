@@ -83,6 +83,7 @@ const projectsCategory = Category({
   items: [
     Page({ slug: "projects/projects-overview" }),
     Page({ slug: "projects/connect-a-store" }),
+    Link({ label: "Import Products", slug: "/getting-started/entitlements" }),
     SubCategory({
       label: "Connect Server Notifications",
       slug: "platform-resources/server-notifications",
