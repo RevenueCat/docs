@@ -1,6 +1,6 @@
 ---
-title: Connect a Store
-sidebar_label: Connect a Store
+title: Connect to a Store
+sidebar_label: Connect to a Store
 slug: connect-a-store
 excerpt: Connect your project to App Store Connect, Google Play Console, and more
 ---
