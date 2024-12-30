@@ -194,7 +194,6 @@ const webSDKCategory = Category({
   label: "Web Purchases",
   itemsPathPrefix: "web/",
   items: [
-    Page({ slug: "connect-stripe-account" }),
     SubCategory({
       label: "RevenueCat Billing & Web SDK",
       slug: "revenuecat-billing",
@@ -442,66 +441,136 @@ const integrationsCategory = Category({
   ],
 });
 
+// this section is a mess, but it's a combination of the old platform-resources and service-credentials sections
+// to retain links to the old pages, it took a bit of maneuvering
 const platformResourcesCategory = Category({
-  emoji: "📚",
-  label: "Platform Resources",
-  itemsPathPrefix: "platform-resources/",
-  items: [
-    SubCategory({
-      label: "Apple Platform Resources",
-      slug: "apple-platform-resources",
-      itemsPathPrefix: "apple-platform-resources/",
-      items: [
-        Page({ slug: "app-store-small-business-program" }),
-        Page({ slug: "apple-app-privacy" }),
-        Page({ slug: "apple-family-sharing" }),
-        Page({ slug: "legacy-mac-apps" }),
-        Page({ slug: "swiftui-helpers" }),
-        Page({ slug: "handling-refund-requests" }),
-      ],
-    }),
-    SubCategory({
-      label: "Google Platform Resources",
-      slug: "google-platform-resources",
-      itemsPathPrefix: "google-platform-resources/",
-      items: [
-        Page({ slug: "google-play-pass" }),
-        Page({ slug: "reduced-service-fee" }),
-        Page({ slug: "google-plays-data-safety" }),
-        Page({ slug: "google-play-quota-increase-request" }),
-      ],
-    }),
-    SubCategory({
-      label: "Amazon Platform Resources",
-      slug: "amazon-platform-resources",
-      itemsPathPrefix: "amazon-platform-resources/",
-      items: [Page({ slug: "amazon-small-business-accelerator-program" })],
-    }),
-  ],
-});
-
-const serviceCredentialsCategory = Category({
-  emoji: "🔑",
-  label: "Service Credentials",
-  itemsPathPrefix: "service-credentials/",
+  emoji: "🛠️",
+  label: "Store Configuration",
+  itemsPathPrefix: "",
   items: [
     SubCategory({
       label: "Apple App Store",
-      slug: "itunesconnect-app-specific-shared-secret",
-      itemsPathPrefix: "itunesconnect-app-specific-shared-secret/",
+      slug: "platform-resources/apple-platform-resources",
       items: [
-        Page({ slug: "in-app-purchase-key-configuration" }),
-        Page({ slug: "app-store-connect-api-key-configuration" }),
+        SubCategory({
+          label: "Service Credentials",
+          slug: "service-credentials/itunesconnect-app-specific-shared-secret",
+          items: [
+            Page({
+              slug: "service-credentials/itunesconnect-app-specific-shared-secret",
+            }),
+            Page({
+              slug: "service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration",
+            }),
+            Page({
+              slug: "service-credentials/itunesconnect-app-specific-shared-secret/app-store-connect-api-key-configuration",
+            }),
+          ],
+          index: {
+            title: "App Store Service Credentials",
+            link: "store-configuration/app-store/service-credentials",
+            description:
+              "How to configure your shared secret, in-app purchase key, and App Store Connect API key.",
+          },
+        }),
+        Link({
+          label: "Server Notifications",
+          slug: "/platform-resources/server-notifications/apple-server-notifications",
+        }),
+        SubCategory({
+          label: "FAQs",
+          itemsPathPrefix: "platform-resources/apple-platform-resources/",
+          items: [
+            Page({
+              slug: "app-store-small-business-program",
+            }),
+            Page({
+              slug: "apple-app-privacy",
+            }),
+            Page({
+              slug: "apple-family-sharing",
+            }),
+            Page({
+              slug: "handling-refund-requests",
+            }),
+          ],
+          index: {
+            title: "Apple App Store FAQs",
+            link: "store-configuration/app-store/faqs",
+            description:
+              "Additional guidance for the Apple App Store, including small business program, app privacy, family sharing, and handling refund requests.",
+          },
+        }),
       ],
     }),
     SubCategory({
       label: "Google Play Store",
-      slug: "creating-play-service-credentials",
-      itemsPathPrefix: "creating-play-service-credentials/",
-      items: [Page({ slug: "google-play-checklists" })],
+      slug: "platform-resources/google-platform-resources",
+      itemsPathPrefix: "",
+      items: [
+        SubCategory({
+          label: "Service Credentials",
+          slug: "service-credentials/creating-play-service-credentials",
+          itemsPathPrefix:
+            "service-credentials/creating-play-service-credentials/",
+          items: [Page({ slug: "google-play-checklists" })],
+        }),
+        Link({
+          label: "Server Notifications",
+          slug: "/platform-resources/server-notifications/google-server-notifications",
+        }),
+        SubCategory({
+          label: "FAQs",
+          itemsPathPrefix: "platform-resources/google-platform-resources/",
+          items: [
+            Page({ slug: "google-play-pass" }),
+            Page({ slug: "reduced-service-fee" }),
+            Page({ slug: "google-plays-data-safety" }),
+            Page({ slug: "google-play-quota-increase-request" }),
+          ],
+          index: {
+            title: "Google Play Store FAQs",
+            link: "store-configuration/google/faqs",
+            description:
+              "Additional guidance for the Google Play Store, including pass, reduced service fee, data safety, and quota increase request.",
+          },
+        }),
+      ],
     }),
-    Page({ slug: "amazon-appstore-credentials" }),
-    Page({ slug: "roku-credentials" }),
+    SubCategory({
+      label: "Amazon Appstore",
+      slug: "platform-resources/amazon-platform-resources",
+      itemsPathPrefix: "",
+      items: [
+        Page({ slug: "service-credentials/amazon-appstore-credentials" }),
+        Link({
+          label: "Server Notifications",
+          slug: "/platform-resources/server-notifications/amazon-server-notifications",
+        }),
+        SubCategory({
+          label: "FAQs",
+          itemsPathPrefix: "platform-resources/amazon-platform-resources/",
+          items: [Page({ slug: "amazon-small-business-accelerator-program" })],
+          index: {
+            title: "Amazon Appstore FAQs",
+            link: "store-configuration/amazon/faqs",
+            description:
+              "Additional guidance for the Amazon Appstore, including small business accelerator program.",
+          },
+        }),
+      ],
+    }),
+    Page({ slug: "service-credentials/roku-credentials" }),
+    SubCategory({
+      label: "Web",
+      items: [Page({ slug: "web/connect-stripe-account" })],
+      index: {
+        title: "Web Configuration",
+        link: "store-configuration/web",
+        description:
+          "How to configure RevenueCat for RevenueCat Billing or Stripe.",
+      },
+    }),
   ],
 });
 
@@ -777,7 +846,6 @@ const sidebars = {
     testAndLaunchCategory,
     integrationsCategory,
     platformResourcesCategory,
-    serviceCredentialsCategory,
     supportCategory,
     guidesCategory,
     sdkMigrationCategory,
