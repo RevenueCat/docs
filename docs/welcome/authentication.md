@@ -30,6 +30,10 @@ Reminder, never embed secret API keys in your app or website.
 
 Secret API keys can be used to make any API request on behalf of your RevenueCat account, such as granting entitlement access and deleting subscribers for your app. You should only create secret API keys if you need to use them and should ensure they are kept out of any publicly accessible areas such as GitHub, client-side code, and so forth.
 
+:::warning Only configure the Purchases SDK with your public API key
+Consider rotating your secret API keys regularly to ensure they are not compromised. Do the same when there is risk of leak (e.g. departures of employees with access to secret keys).
+:::
+
 ### Adding and Revoking Secret API Keys
 
 You can create as many secret API keys as you need, and they can be revoked at any time. When a secret API key is revoked, it's invalidated immediately and can no longer make any requests.
