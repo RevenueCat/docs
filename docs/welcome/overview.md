@@ -5,6 +5,8 @@ sidebar_label: Welcome
 excerpt: Everything you need to implement and manage in-app purchases and subscriptions
 ---
 
+MARKETING PLACEHOLDER
+
 RevenueCat is a powerful and reliable in-app purchase platform that makes it easy to build, analyze, and grow your subscriber base whether you're just starting out or already have millions of customers. With RevenueCat, you can rapidly configure dynamic paywalls, run experiments, and visualize your subscriber base.
 
 :::info
@@ -15,8 +17,6 @@ We host live office hours every other Friday, where we demo the platform and ans
 
 RevenueCat accounts are free to set up, all you need is an email address.
 
-**Tip**: Signing up as an organization? Use a company account that can manage billing.
-
 <Button href="https://app.revenuecat.com/signup"
 target="\_blank">Create an account →</Button>
 
@@ -26,11 +26,9 @@ Get started by creating a new project and connecting to a store.
 
 <Button href="/docs/projects/overview">Create a project →</Button>
 
-## Migrating existing subscriptions?
+### Migrating existing subscriptions?
 
-Whether you have just one or one million subscribers, you can easily replace your existing setup with RevenueCat. Supercharge your business and start taking advantage of powerful features like Experiments, Paywalls, and Targeting.
-
-<Button href="/docs/migrating-to-revenuecat/migration-paths">Migrate to RevenueCat →</Button>
+Whether you have just one or one million subscribers, you can easily replace your existing setup with RevenueCat. Supercharge your business and start taking advantage of powerful features like Experiments, Paywalls, and Targeting. Read our [migration guide](/docs/migrating-to-revenuecat/migration-paths) for more information.
 
 ## Browse features
 
