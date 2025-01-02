@@ -1,31 +1,34 @@
 ---
-title: Overview
+title: Welcome
 slug: overview
+sidebar_label: Welcome
 excerpt: Everything you need to implement and manage in-app purchases and subscriptions
-hidden: false
-categorySlug: welcome-1
-order: 0
 ---
 
-RevenueCat is a powerful and reliable in-app purchase server that makes it easy to build, analyze, and grow your subscriber base whether you're just starting out or already have millions of customers.
+**Build, Analyze, and Grow In-App Revenue with Ease**
 
-:::info
+RevenueCat is the go-to platform for developers who want to focus on building amazing products—not dealing with the complexities of billing and app stores. With dynamic paywalls, actionable analytics, and plug-and-play experimentation tools, RevenueCat helps you make smarter decisions and drive growth, whether you're just starting out or scaling to millions of customers.
+
+:::info See it in action
 We host live office hours every other Friday, where we demo the platform and answer your questions live. [Register for the next office hours →](https://app.livestorm.co/revenuecat/live-revenuecat-demo?type=detailed)
 :::
 
-## Choose an Implementation Path
+## Set up your account
 
-### Add in-app purchases to your app
+RevenueCat accounts are free to set up, all you need is an email address.
 
-Are you building a new app, or are you adding in-app purchases or subscriptions to your app for the first time? Add the SDK and start monetizing your iOS, Android, and Amazon apps.
+<Button href="https://app.revenuecat.com/signup"
+target="\_blank">Create an account →</Button>
 
-<Button href="/docs/getting-started/quickstart">Add subscriptions to your app →</Button>
+## Start implementing
 
-### Migrate existing subscriptions to RevenueCat
+Get started by creating a new project and connecting to a store.
 
-Whether you have just one or one million subscribers, you can easily replace your existing setup with RevenueCat. Supercharge your business and start taking advantage of powerful features like Experiments, Paywalls, and Targeting.
+<Button href="/docs/projects/overview">Create a project →</Button>
 
-<Button href="/docs/migrating-to-revenuecat/migration-paths">Migrate to RevenueCat →</Button>
+### Migrating existing subscriptions?
+
+Whether you have just one or one million subscribers, you can easily replace your existing setup with RevenueCat. Supercharge your business and start taking advantage of powerful features like Experiments, Paywalls, and Targeting. Read our [migration guide](/migrating-to-revenuecat/migration-paths) for more information.
 
 ## Browse features
 
@@ -61,4 +64,4 @@ Whether you have just one or one million subscribers, you can easily replace you
 
 Talk to an expert to learn how RevenueCat can help grow your business.
 
-[Talk to Sales →](https://www.revenuecat.com/talk-to-sales/)
+<Button href="https://www.revenuecat.com/talk-to-sales/">Talk to Sales →</Button>

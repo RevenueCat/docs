@@ -4,8 +4,6 @@ slug: prediction-explorer
 hidden: false
 ---
 
-## Definition
-
 The Prediction Explorer allows you to measure the predicted lifetime value (LTV) of various customer cohorts over time to estimate the long-term revenue that may be driven by those cohorts.
 
 import YouTubeEmbed from "@site/src/components/YouTubeEmbed";

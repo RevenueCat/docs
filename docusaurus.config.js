@@ -134,10 +134,20 @@ const config = {
         },
         items: [
           {
-            type: "docSidebar",
-            sidebarId: "defaultSidebar",
-            position: "left",
             label: "Documentation",
+            to: "/welcome/overview",
+            items: [
+              {
+                type: "docSidebar",
+                sidebarId: "defaultSidebar",
+                label: "Implementing RevenueCat",
+              },
+              {
+                type: "docSidebar",
+                sidebarId: "dataSidebar",
+                label: "Charts, Metrics, & Data Reference",
+              },
+            ],
           },
           {
             label: "REST API",
@@ -200,14 +210,18 @@ const config = {
             position: "left",
           },
           {
-            label: "Sign Up",
-            to: "https://app.revenuecat.com/signup",
+            label: "Account",
             position: "right",
-          },
-          {
-            label: "Sign In",
-            to: "https://app.revenuecat.com/login",
-            position: "right",
+            items: [
+              {
+                label: "Sign Up",
+                to: "https://app.revenuecat.com/signup",
+              },
+              {
+                label: "Sign In",
+                to: "https://app.revenuecat.com/login",
+              },
+            ],
           },
         ],
       },

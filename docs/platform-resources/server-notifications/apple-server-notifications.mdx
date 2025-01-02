@@ -18,7 +18,94 @@ RevenueCat does not require server notifications from the App Store, however doi
 4. Under the **App Information > App Store Server Notifications** section, paste the entire URL from RevenueCat in both the **Production Server URL** field and the **Sandbox Server URL** field. You can use either _Version 1_ or _Version 2_ notifications, but _Version 2_ notifications are recommended to use features such as [auto-detecting price changes](/subscription-guidance/price-changes).
    ![Screen Shot 2021-11-03 at 10.03.27 AM](/images/f870a23-Screen_Shot_2021-11-03_at_10.03.27_AM_7645d7e77d55b6ab44b5c7085c7c3775.png)
 
+## Tracking new purchases using Apple App Store Server Notifications
+
+By default, RevenueCat ignores any Apple App Store Server Notifications for purchases that have not yet been posted to the RevenueCat API by one of our SDKs or from your own backend. For RevenueCat to track new purchases from Apple App Store Server Notifications, you can enable the **"Track new purchases from server-to-server notifications"** option in our Dashboard. 
+
+Enabling this option ensures that all purchases are tracked, even in the case of network issues between your app and RevenueCat’s backend or if your customer was using a version of the app without the RevenueCat SDK.
+
+![](/images/no_code_toggle.png)
+
+### User identity
+
+* The subscriber's app user ID will be taken from the [`appAccountToken`](https://developer.apple.com/documentation/appstoreserverapi/appaccounttoken) field of the transaction. 
+    * If the `appAccountToken` is set and does not match with an existing subscriber: RevenueCat will create a new subscriber with an app user ID matching the `appAccountToken` value set.
+    * If the `appAccountToken` is set and matches with an existing subscriber: No new subscriber will be created, and the purchase will be linked to that existing subscriber. 
+    * If the `appAccountToken` is not set: RevenueCat will generate an anonymous app user ID to associate that purchase with.
+* If you are using RevenueCat's SDK to track purchases, we may receive the notification directly from the store before the SDK. When this happens, we will follow the app user ID logic as described in the bullet point above, and then proceed with your [transfer behavior](/getting-started/restoring-purchases) for the new app user ID sent by the SDK.
+
+:::warning Customer attributes in events
+RevenueCat will start processing the purchase as soon as we receive the Apple server notification. If you rely on [RevenueCat customer attributes](/customers/customer-attributes) being attached to the customer before the purchase is created on RevenueCat (e.g: sending customer attributes to your enabled [third-party integrations](/integrations/third-party-integrations) or [webhooks](/integrations/webhooks)), you should make sure to **send and sync** the customer attributes as soon as you have them or before the purchase is completed.
+:::
+
+:::warning
+If you have enabled [*Keep with original App User ID*](/getting-started/restoring-purchases#keep-with-original-app-user-id) or [*Transfer if there are no active subscriptions*](/getting-started/restoring-purchases#transfer-if-there-are-no-active-subscriptions) transfer behavior, we highly recommend turning this setting off unless you are not setting the `appAccountToken` or if the `appAccountToken` will match their RevenueCat app user ID.
+:::
+
+
+## Receiving Apple notifications on your server
+
+Most customers won't need to receive Apple's notifications to their server directly. Instead, we recommend using RevenueCat's [webhooks](/integrations/webhooks) integration to receive notifications about user purchases on your server.
+
+<details>
+<summary>Let RevenueCat forward Apple notifications to your server (recommended)</summary>
+
+If you still want to receive Apple's notifications to your server, you can configure RevenueCat to forward them to a URL that you specify.
+
+1. Navigate to your iOS app under **Project settings > Apps** in the RevenueCat dashboard.
+2. Scroll to the **Apple Server to Server notification settings** section, and enter your server's URL in **Apple Server Notification Forwarding URL**.
+3. Click **Save Changes** in the top right corner.
+   ![This will forward any Apple's server to server notifications that RevenueCat receives to "my-server.com".](/images/43c4fb7-2023-02-06_16.40.29_app-development.revenuecat.com_012d0490f18d_e261a95ad3a057c27599f6fe51722d0b.png)
+
+:::info
+If your server needs to have specific hostnames or IP addresses on its allowlist to receive App Store Server Notifications, you can add the hostname `dps.iso.aple.com` and IP addresses `17.58.0.0/18` and `17.58.192.0/18`. These IP addresses are same for sandbox and production.
+:::
+</details>
+
+<details>
+<summary>Forwarding Apple notifications to RevenueCat</summary>
+
+:::warning Use RevenueCat's forwarding functionality instead
+
+While you can forward Apple S2S notifications to RevenueCat, we strongly recommend setting RevenueCat as the S2S notification URL in App Store Connect and letting RevenueCat forward the events to your server to ensure that the events are sent correctly.
+:::
+Apple only supports a single server notification URL. If you're already using the notifications on your server and are unable to [set up RevenueCat's forwarding URL](/platform-resources/server-notifications/apple-server-notifications#setting-up-revenuecat-to-forward-apple-notifications-to-your-server), you can still forward the payload to the **Apple Server Notification URL** provided in the app settings of your RevenueCat project.
+
+Here's how we recommend doing this:
+
+**1. Configure your server to receive Apple notifications**
+
+First, make sure your server meets the criteria outlined in Apple's [Enabling App Store Notifications](https://developer.apple.com/documentation/storekit/in-app_purchase/subscriptions_and_offers/enabling_app_store_server_notifications) page or you won't receive notifications.
+
+Then, in your app settings on App Store Connect, enter a subscription status URL that links to your server (see step 4 of the [Setup Instructions](/platform-resources/server-notifications/apple-server-notifications#setup-instructions) above).
+
+**2. Receive Apple notifications on your server**
+
+Apple sends notifications as JSON data via an HTTP POST request to the URL you provided on App Store Connect.
+
+Wherever you handle this POST request in your code, be sure to respond to Apple with a status code. Responding with a 4xx or 5xx status code will permit Apple to retry the post a few more times.
+
+**3. Forward Apple notifications to RevenueCat**
+
+As soon as your server successfully receives a notification, send the payload to RevenueCat. To do this, make an HTTP POST request to the **Apple Server Notification URL** provided in the app settings of your RevenueCat project.
+
+The payload should be passed along **as-is** in the data value of your request. Any manipulation you want to do with the data should happen after forwarding to RevenueCat.
+
+Here's a basic example of these steps using Node, Express, and Axios:
+
+import content from "!!raw-loader!@site/code_blocks/platform-resources/apple-server-notifications_1.js";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'js',
+        content: content,
+    }
+]}/>
+
+</details>
+
 ## Considerations
+
 RevenueCat will be able to process V1 or V2 notifications, however, we recommend utilizing V2 for the following reasons:
 - [Auto-detect price changes](/subscription-guidance/price-changes)
 - Better reliability for [handling refund requests](/platform-resources/apple-platform-resources/handling-refund-requests)
@@ -38,78 +125,4 @@ If you want to also receive these notifications on your own server for one or bo
 :::tip Apple S2S notifications update subscriptions for existing users
 
 If RevenueCat receives a notification for a user that doesn't have any purchases in RevenueCat, a 200 code will be sent and the request will be ignored, so the last received notification timestamp won't be updated. Keep this in mind when forwarding events yourself.
-:::
-
-## [Option 1 (recommended)] Setting up RevenueCat to forward Apple notifications to your server
-
-If you still want to receive Apple's notifications to your server, you can configure RevenueCat to forward them to a URL that you specify.
-
-1. Navigate to your iOS app under **Project settings > Apps** in the RevenueCat dashboard.
-2. Scroll to the **Apple Server to Server notification settings** section, and enter your server's URL in **Apple Server Notification Forwarding URL**.
-3. Click **Save Changes** in the top right corner.
-   ![This will forward any Apple's server to server notifications that RevenueCat receives to "my-server.com".](/images/43c4fb7-2023-02-06_16.40.29_app-development.revenuecat.com_012d0490f18d_e261a95ad3a057c27599f6fe51722d0b.png)
-
-:::info
-If your server needs to have specific hostnames or IP addresses on its allowlist to receive App Store Server Notifications, you can add the hostname `dps.iso.aple.com` and IP addresses `17.58.0.0/18` and `17.58.192.0/18`. These IP addresses are same for sandbox and production.
-:::
-
-## [Option 2] Forwarding Apple notifications to RevenueCat
-
-:::warning Use RevenueCat's forwarding functionality instead
-
-While you can forward Apple S2S notifications to RevenueCat, we strongly recommend setting RevenueCat as the S2S notification URL in App Store Connect and letting RevenueCat forward the events to your server to ensure that the events are sent correctly.
-:::
-Apple only supports a single server notification URL. If you're already using the notifications on your server and are unable to [set up RevenueCat's forwarding URL](/platform-resources/server-notifications/apple-server-notifications#setting-up-revenuecat-to-forward-apple-notifications-to-your-server), you can still forward the payload to the **Apple Server Notification URL** provided in the app settings of your RevenueCat project.
-
-Here's how we recommend doing this:
-
-### 1. Configure your server to receive Apple notifications
-
-First, make sure your server meets the criteria outlined in Apple's [Enabling App Store Notifications](https://developer.apple.com/documentation/storekit/in-app_purchase/subscriptions_and_offers/enabling_app_store_server_notifications) page or you won't receive notifications.
-
-Then, in your app settings on App Store Connect, enter a subscription status URL that links to your server (see step 4 of the [Setup Instructions](/platform-resources/server-notifications/apple-server-notifications#setup-instructions) above).
-
-### 2. Receive Apple notifications on your server
-
-Apple sends notifications as JSON data via an HTTP POST request to the URL you provided on App Store Connect.
-
-Wherever you handle this POST request in your code, be sure to respond to Apple with a status code. Responding with a 4xx or 5xx status code will permit Apple to retry the post a few more times.
-
-### 3. Forward Apple notifications to RevenueCat
-
-As soon as your server successfully receives a notification, send the payload to RevenueCat. To do this, make an HTTP POST request to the **Apple Server Notification URL** provided in the app settings of your RevenueCat project.
-
-The payload should be passed along **as-is** in the data value of your request. Any manipulation you want to do with the data should happen after forwarding to RevenueCat.
-
-Here's a basic example of these steps using Node, Express, and Axios:
-
-
-import content from "!!raw-loader!@site/code_blocks/platform-resources/apple-server-notifications_1.js";
-
-<RCCodeBlock tabs={[
-    {
-        type: 'js',
-        content: content,
-    }
-]}/>
-
-
-## Tracking new purchases using Apple App Store Server Notifications
-By default, RevenueCat ignores any Apple App Store Server Notifications for purchases that have not yet been posted to the RevenueCat API by one of our SDKs or from your own backend. For RevenueCat to track new purchases from Apple App Store Server Notifications, you can enable the **"Track new purchases from server-to-server notifications"** option in our Dashboard. This allows RevenueCat to process new purchases from server-to-server notifications that are not yet in our system. This ensures all purchases are tracked, even in the case of network issues between your app and RevenueCat’s backend or if your customer was using a version of the app without the RevenueCat SDK.
-
-![](/images/no_code_toggle.png)
-
-### Considerations
-* The subscriber's app user ID will be taken from the [`appAccountToken`](https://developer.apple.com/documentation/appstoreserverapi/appaccounttoken) field of the transaction. 
-    * If the `appAccountToken` is set and does not match with an existing subscriber: RevenueCat will create a new subscriber with an app user ID matching the `appAccountToken` value set.
-    * If the `appAccountToken` is set and matches with an existing subscriber: No new subscriber will be created, and the purchase will be linked to that existing subscriber. 
-    * If the `appAccountToken` is not set: RevenueCat will generate an anonymous app user ID to associate that purchase with.
-* If you are using RevenueCat's SDK to track purchases, we may receive the notification directly from the store before the SDK. When this happens, we will follow the app user ID logic as described in the bullet point above, and then proceed with your [transfer behavior](/getting-started/restoring-purchases) for the new app user ID sent by the SDK.
-
-:::warning Customer attributes in events
-RevenueCat will start processing the purchase as soon as we receive the Apple server notification. If you rely on [RevenueCat customer attributes](/customers/customer-attributes) being attached to the customer before the purchase is created on RevenueCat (e.g: sending customer attributes to your enabled [third-party integrations](/integrations/third-party-integrations) or [webhooks](/integrations/webhooks)), you should make sure to **send and sync** the customer attributes as soon as you have them or before the purchase is completed.
-:::
-
-:::warning
-If you have enabled [*Keep with original App User ID*](/getting-started/restoring-purchases#keep-with-original-app-user-id) or [*Transfer if there are no active subscriptions*](/getting-started/restoring-purchases#transfer-if-there-are-no-active-subscriptions) transfer behavior, we highly recommend turning this setting off unless you are not setting the `appAccountToken` or if the `appAccountToken` will match their RevenueCat app user ID.
 :::

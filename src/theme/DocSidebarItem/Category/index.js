@@ -120,7 +120,7 @@ export default function DocSidebarItemCategory({
       className={clsx(
         "w-full",
         {
-          "mb-4": isTopLevelCategory,
+          "mb-2": isTopLevelCategory,
         },
         className
       )}
@@ -156,7 +156,7 @@ export default function DocSidebarItemCategory({
           className={clsx(
             "text-[14px] hover:no-underline relative w-full pl-2",
             {
-              "font-semibold text-[16px] pl-4 text-base-700 dark:text-base-300":
+              "font-semibold text-[14px] pl-4 text-base-900 dark:text-base-300 mt-2":
                 isTopLevelCategory,
             },
             isCurrentPage

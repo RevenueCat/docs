@@ -1,5 +1,6 @@
 ---
 title: Experiment Results Summaries
+sidebar_label: "Weekly Summaries"
 slug: experiment-results-summaries
 hidden: false
 ---

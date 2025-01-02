@@ -66,6 +66,8 @@
     "Ubuntu", "Cantarell", "Noto Sans", "sans-serif", "BlinkMacSystemFont",
     "'Segoe UI'", "Helvetica", "Arial", "sans-serif", "'Apple Color Emoji'",
     "'Segoe UI Emoji'", "'Segoe UI Symbol'";
+
+  --primary-action-color: rgb(87, 108, 219);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -195,22 +197,37 @@ h1 {
   font-size: 2.25rem;
   font-weight: 800;
 }
+
 h2 {
   font-size: 1.75rem;
-  font-weight: 700;;
+  font-weight: 700; 
 }
+
 h3 {
   font-size: 1.35rem;
   font-weight: 700;
 }
 
+h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.markdown > h2 {
+  border-top: 1px solid #ddd;
+  padding-top: 3rem;
+}
+
 .markdown > p > img {
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   border-radius: 16px;
   max-width: 75%;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  padding: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.05) 0px 0.5px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 0.5px;
+
 }
 
 html[data-theme="dark"].markdown img {

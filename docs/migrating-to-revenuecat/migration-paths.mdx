@@ -1,5 +1,5 @@
 ---
-title: Migrating to RevenueCat
+title: Migrate to RevenueCat
 slug: migration-paths
 excerpt: How to migrate existing apps to RevenueCat
 hidden: false
@@ -32,14 +32,28 @@ Because RevenueCat knows the rich subscription status of all customers, it can s
 
 Level up your data, marketing, and product teams be sending actionable events into the tools they use and finally get clean, normalized, and actionable subscription data into you systems.
 
-## Choosing your integration path
+## Start migrating
 
-To migrate an existing app, you will first need to decide whether to integrate the RevenueCat SDK in your apps, or if a server-side integration is sufficient for your needs. You can even use the RevenueCat SDK alongside your existing in-app purchasing code to selectively use RevenueCat SDK features.
+### Connect to a store and set up Server Notifications (required)
 
-[Read more about how to decide whether or not you need the RevenueCat SDK →](/migrating-to-revenuecat/sdk-or-not)
+You can start populating data in RevenueCat with minimal effort by connecting to a store and setting up Server Notifications. 
 
-## Importing historical purchases
+By toggling 'Track new purchases' in your RevenueCat app settings, RevenueCat will automatically start tracking new purchases that we receive from the connected store, with no SDK implementation required.
 
-Once you have determined your integration path, you will also want to send your historical purchases to RevenueCat in order to have the full customer history and have accurate historic information in charts, customer lists, etc. 
+Get started with our [Connect to a Store](/projects/connect-a-store) guide to learn how to connect to a store and set up Server Notifications.
 
-[Read more about how to import historical purchase data →](/migrating-to-revenuecat/migrating-existing-subscriptions)
+### Import historical purchases (optional)
+
+After you've connected to a store, you can import historical purchases to RevenueCat. This will give you a complete history of all your customers and allow you to see accurate historic information in charts, customer lists, etc.
+
+Read our [Migrating Existing Subscriptions](/migrating-to-revenuecat/migrating-existing-subscriptions) guide to learn how to import historical purchases.
+
+### Integrate the RevenueCat SDK (optional)
+
+RevenueCat's SDK provides powerful features like Paywalls, Experiments, and Targeting. If you're looking to take advantage of these features, you'll need to integrate the RevenueCat SDK into your app. Get started with our [Installing the SDK](/getting-started/installation) guide.    
+
+_Not sure if you need the SDK? Read our [SDK or Not](/migrating-to-revenuecat/sdk-or-not) guide to learn more about the benefits of the SDK._
+
+#### Use existing purchase code
+
+Do you have existing purchase code that you'd like to keep? No problem - RevenueCat's SDK can detect purchases made with your existing code, without needing to migrate your purchase logic. [Read more](/migrating-to-revenuecat/sdk-or-not/finishing-transactions) about how to finish transactions with your existing code.

@@ -4,8 +4,6 @@ slug: new-trials-chart
 hidden: false
 ---
 
-## Definition
-
 The New Trials chart measures the number of newly started trials in a period. Unlike the Trial Conversion Rate chart, which is cohorted by a customer's First Seen Date, this chart is cohorted by Trial Start Date; and therefore counts the trial starts in a period regardless of when the underlying customer was first seen.
 
 ### Available settings

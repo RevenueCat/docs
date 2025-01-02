@@ -39,7 +39,7 @@ Select 'Sign in with RevenueCat' and log in with your RevenueCat account credent
 The RevenueCat App is now installed to your Stripe account!
 
 :::info Project owner must connect with Stripe
-Only the owner of the RevenueCat project can connect a Stripe account for their apps - no [collaborators](/welcome/projects/collaborators) will be able to add or remove a Stripe connection.
+Only the owner of the RevenueCat project can connect a Stripe account for their apps - no [collaborators](/projects/collaborators) will be able to add or remove a Stripe connection.
 :::
 
 ## Using the RevenueCat App

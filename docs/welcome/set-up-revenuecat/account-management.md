@@ -7,7 +7,7 @@ hidden: false
 
 ## Account Security & 2FA
 
-Read more about account security and two-factor authentication in our [Account Security](/welcome/projects/security) guide.
+Read more about account security and two-factor authentication in our [Account Security](/welcome/set-up-revenuecat/security) guide.
 
 ## Update your email or name
 
@@ -63,25 +63,10 @@ If needed, you can add additional address information to your invoices by clicki
 
 ## Display Currency
 
-You can select a currency to be used across the dashboard. This setting allows you to view all financial data in your preferred currency. The available currencies you can choose from are:
-
-- USD: United States Dollar ($)
-- EUR: Euro (€)
-- GBP: British Pound Sterling (£)
-- AUD: Australian Dollar (A$)
-- CAD: Canadian Dollar (C$)
-- JPY: Japanese Yen (¥)
-- BRL: Brazilian Real (R$)
-- KRW: South Korean Won (₩)
-- CNY: Chinese Yuan (¥)
-- MXN: Mexican Peso (MX$)
-
-To change your display currency, navigate to your account settings in the dashboard. This selection will affect how financial information is presented throughout the RevenueCat interface, making it easier to understand your revenue in a familiar currency.
+You can select a currency to be used across the dashboard. See [Display Currency](/dashboard-and-metrics/display-currency) for more information.
 
 ## Delete your account
 
-:::danger
-To delete your RevenueCat account, you'll first need to delete **all of your [Projects](/welcome/projects)**. Note that deleting any active Projects will prevent users from accessing their purchases via the RevenueCat SDK but **will not** cancel any of your customer's active subscriptions. RevenueCat will not delete your projects for you.
+To delete your RevenueCat account, you'll first need to delete **all of your [Projects](/projects/overview)**. Please note, deleting any active Projects will prevent users from accessing their purchases via the RevenueCat SDK but **will not** cancel any of your customer's active subscriptions. RevenueCat will not delete your projects for you.
 
 Once your projects have been deleted, reach out to RevenueCat Support via the dashboard [Contact Us](https://app.revenuecat.com/settings/support) form in your account settings and request your account to be deleted.
-:::

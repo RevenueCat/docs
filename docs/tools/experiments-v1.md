@@ -1,5 +1,6 @@
 ---
 title: Experiments
+sidebar_label: Introduction
 slug: experiments-v1
 excerpt: A/B testing two offerings in your app
 hidden: false
@@ -24,7 +25,7 @@ With Experiments, you can remotely A/B test:
 
 Plus, you can run multiple tests simultaneously on distinct audience or subsets of the same audience to accelerate your learning, and can do so for any Placement you've configured to optimize each of them.
 
-## Get started with Experiments
+## Next steps
 
 - If you're just getting started, make sure your app is ready to use [experiments ](/tools/experiments-v1/experiments-overview-v1)
 - If you've not yet created an Offering for your test hypothesis, [check out our guide to get started ](/tools/experiments-v1/creating-offerings-to-test)

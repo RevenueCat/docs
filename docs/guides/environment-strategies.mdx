@@ -1,5 +1,5 @@
 ---
-title: Recommended Environment Strategies
+title: Environment Strategies
 slug: environment-strategies
 excerpt: Recommended Environment Strategies for your use cases.
 hidden: false
@@ -8,7 +8,7 @@ This document contains our recommended best practices for navigating between dif
 
 Each environment can help serve a specific purpose, from early-stage development to final user-ready deployment. This document provides an overview of the best practices and recommended approaches for using these environments to your advantage. By understanding when and how to use different environments, you can streamline your workflows, catch issues early, and confidently release a polished app to your users. Follow this guide to ensure a smooth and error-free user experience.
 ## Single Project Approach ##
-If you would like to keep things short and simple as well as use DEV, TEST, and PROD environments, you can do this by simply setting up one [project](https://www.revenuecat.com/docs/welcome/projects#configuring-projects) in RevenueCat. RevenueCat will automatically determine if a purchase is from the [Sandbox](https://www.revenuecat.com/docs/test-and-launch/sandbox) environment or Production. 
+If you would like to keep things short and simple as well as use DEV, TEST, and PROD environments, you can do this by simply setting up one [project](/projects/overview) in RevenueCat. RevenueCat will automatically determine if a purchase is from the [Sandbox](https://www.revenuecat.com/docs/test-and-launch/sandbox) environment or Production. 
 
 With this method, you will have the same RevenueCat API keys for all environments (DEV, TEST, and PROD). You can take advantage of RevenueCats events to identify the difference between purchases made in the Sandbox vs production, as well as use the RevenueCat dashboard to [toggle between sandbox and production transactions](https://www.revenuecat.com/docs/test-and-launch/sandbox#viewing-sandbox-data). Key details for this method include:
 
@@ -34,7 +34,7 @@ This approach is best for indie projects or cases where the added complexity of 
 This approach increases the risk of projects becoming out of sync, leading to possible issues between environments. If you choose this route, ensure that any changes or updates are consistently applied across all projects to maintain alignment.
 :::
 
-For teams looking to maintain complete separation of data across all environments, you can create separate [RevenueCat projects](https://www.revenuecat.com/docs/welcome/projects#configuring-projects) for each environment that you plan to support. DEV, TEST, and PROD environments are the most common that we see. 
+For teams looking to maintain complete separation of data across all environments, you can create separate [RevenueCat projects](/projects/overview) for each environment that you plan to support. DEV, TEST, and PROD environments are the most common that we see. 
 
 We recommend this approach when testing and separation of concerns is a priority for your development team. This approach ensures that each environment has different API keys associated with it and are fully separate from one another. Once you set up a separate project for each environment, you will be able to decipher which events are coming from certain environments as well as keep all transactions from different environments isolated. Key details of this approach include:
 

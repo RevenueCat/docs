@@ -4,8 +4,6 @@ slug: new-customers-chart
 hidden: false
 ---
 
-## Definition
-
 The New Customers chart measures the number of customers first seen in a given period. In RevenueCat, the term "customer" refers to the person using an app, regardless of whether they have yet made a purchase. You can use our conversion charts to measure the portion of these customers that then start trials, convert to paid, etc. Any customers who are aliased to another customer will be excluded from this chart.
 
 This number will directly correspond with the count of New Customers used in our conversion, LTV, and explorer charts which provide additional measures in relation to the count of New Customers for a given period.

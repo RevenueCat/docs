@@ -5,15 +5,9 @@ excerpt: How to migrate subscriptions from your existing setup
 hidden: false
 ---
 
-## Choosing Your Import Path
+Importing existing purchase data to RevenueCat can be done server-side, or client-side. 
 
-Importing existing purchase data to RevenueCat can be done server-side, or client-side. A server side migration is preferable whenever possible because it ensures that all subscriptions will be recorded in RevenueCat regardless of any in-app activity.
-
-**Do you have all of the raw base64 Apple receipts, StoreKit 2 signed transactions and/or Google / Amazon purchase tokens saved in your database?**
-
-**Yes** [Server-side data import →](#server-side-data-import)
-
-**No** [Client-side data import →](#client-side-sdk-data-import)
+A server-side migration is preferable whenever possible because it ensures that all subscriptions will be recorded in RevenueCat regardless of any in-app activity, but if you don't have your existing purchase tokens or receipts stored, you can use a client-side migration.
 
 ### Server Side Data Import
 

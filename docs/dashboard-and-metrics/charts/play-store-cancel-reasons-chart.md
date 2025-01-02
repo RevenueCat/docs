@@ -4,8 +4,6 @@ slug: play-store-cancel-reasons-chart
 hidden: false
 ---
 
-## Definition
-
 When a Play Store subscription is canceled, customers are asked to select their cancellaton reason from the available options. This chart breaks down your Play Store subscription cancellations by the chosen cancel reason so you can see why customers are cancelling, and how the reasons are trending over time.
 
 ### Available settings

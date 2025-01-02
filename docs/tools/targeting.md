@@ -1,5 +1,5 @@
 ---
-title: Targeting
+title: Offering Targeting
 slug: targeting
 hidden: false
 ---
@@ -147,9 +147,9 @@ The App that your customer is currently using. Commonly used to target by store 
 
 The App Version of a specified App that your customer is currently using. When assessing App Versions using more than or less than operators, we apply semantic versioning logic.
 
-**RC SDK Version**:
+**RevenueCat SDK Version**:
 
-The RC SDK Version of a specified SDK flavor of the App Versions that your customer is currently using. Commonly used to target RevenueCat Paywalls only to RC SDK Versions that explicitly support them.
+The RevenueCat SDK Version of a specified SDK flavor of the App Versions that your customer is currently using. Commonly used to target RevenueCat Paywalls only to RevenueCat SDK Versions that explicitly support them.
 
 **Platform**:
 
@@ -158,11 +158,11 @@ The platform that your customer is currently using (e.g. iOS, watchOS, Android).
 ### How conditions interact with each other
 
 - Dimensions like Country and App which have a defined set of possible values can be added with an "is any of" or "is not any of" to select individual values or sets of values to include/exclude
-- Dimensions like App Version and RC SDK Version which have an ever expanding set of possible values can be added with is/is not or more than/less than operators.
+- Dimensions like App Version and RevenueCat SDK Version which have an ever expanding set of possible values can be added with is/is not or more than/less than operators.
 - Multiple conditions can be added for each dimension with an AND relationship, to create rules such as:
   - App version is more than or equal to 1.1.0
   - App version is less than 1.2.0
-- App Version and RC SDK Version must always have a specified App or SDK (respectively), since the intended version to target may be different between the App or RC SDK flavor you're targeting.
+- App Version and RevenueCat SDK Version must always have a specified App or SDK (respectively), since the intended version to target may be different between the App or RevenueCat SDK flavor you're targeting.
 
 ![When filtering by App version, select the App that the filter applies to first.](/images/bb9ce00-App_version_filter_55349032fe4ebd446375b98f5871f74b.png)
 

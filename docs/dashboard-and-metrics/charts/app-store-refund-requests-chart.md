@@ -4,7 +4,6 @@ slug: app-store-refund-requests-chart
 hidden: false
 ---
 
-## Definition
 When customers request a refund for their Apple App Store purchases, they must do so directly through Apple. This chart visualizes those requests, breaking them down by their resolution status &mdash; whether the refund was granted, declined, or is still awaiting Apple's decision.
 
 To ensure RevenueCat receives notifications about these requests, you must have [Apple App Store Server Notifications](/platform-resources/server-notifications/apple-server-notifications) configured. For the most accurate and timely data, we recommend using [Apple's V2 notifications](/platform-resources/server-notifications/apple-server-notifications#considerations).
@@ -29,6 +28,7 @@ If you're looking to influence Apple's refund decision, RevenueCat's [Handling R
 ## Calculation
 
 Each period counts the total number of App Store refund requests received, broken down by the resolution:
+
 - Refund Granted: Apple approved the refund.
 - Refund Declined: Apple denied the refund.
 - Refund Reversed: Apple has reversed a previously granted refund.

@@ -4,8 +4,6 @@ slug: monthly-recurring-revenue-mrr-chart
 hidden: false
 ---
 
-## Definition
-
 The Monthly Recurring Revenue (MRR) chart measures the normalized revenue of your active paid subscriptions down to a monthly value. It’s a way of normalizing the scale of your business to better understand your velocity or size outside of the fluctuations that may arise from varying subscription durations. It doesn't map directly to revenue, but it is a useful standardization.
 
 MRR is computed by "normalizing" subscriptions to a 1-month period. Non-recurring subscriptions, consumable, or one-time purchases are not computed in MRR. For example:
@@ -54,9 +52,9 @@ For each period, MRR is calculated as a snapshot based on the count of active su
 To understand how that snapshot is generated for each period, check out the [MRR Movement](/dashboard-and-metrics/charts/monthly-recurring-revenue-movement-chart) chart.
 
 ## Sample query from Scheduled Data Exports
+
 With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can get daily exports of your transactions from RevenueCat to reproduce and customize measures like this one that are provided by RevenueCat. You can find the full set of available sample queries [here](/integrations/scheduled-data-exports#sample-queries-for-revenuecat-measures).
 ]} />
-
 
 ## FAQs
 

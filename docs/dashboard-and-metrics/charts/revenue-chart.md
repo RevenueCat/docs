@@ -4,8 +4,6 @@ slug: revenue-chart
 hidden: false
 ---
 
-## Definition
-
 The Revenue chart displays the total revenue generated during a given period minus refunds.
 
 All revenue from a new paid subscription or renewal is credited to the period the transaction occurred in, so unlike normalized views like MRR, revenue may experience more significant period-over-period fluctuations depending on your mix of subscription durations being started or renewed.
