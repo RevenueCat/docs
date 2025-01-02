@@ -5,11 +5,11 @@ sidebar_label: Welcome
 excerpt: Everything you need to implement and manage in-app purchases and subscriptions
 ---
 
-MARKETING PLACEHOLDER
+**Build, Analyze, and Grow In-App Revenue with Ease**
 
-RevenueCat is a powerful and reliable in-app purchase platform that makes it easy to build, analyze, and grow your subscriber base whether you're just starting out or already have millions of customers. With RevenueCat, you can rapidly configure dynamic paywalls, run experiments, and visualize your subscriber base.
+RevenueCat is the go-to platform for developers who want to focus on building amazing products—not dealing with the complexities of billing and app stores. With dynamic paywalls, actionable analytics, and plug-and-play experimentation tools, RevenueCat helps you make smarter decisions and drive growth, whether you're just starting out or scaling to millions of customers.
 
-:::info
+:::info See it in action
 We host live office hours every other Friday, where we demo the platform and answer your questions live. [Register for the next office hours →](https://app.livestorm.co/revenuecat/live-revenuecat-demo?type=detailed)
 :::
 
@@ -64,4 +64,4 @@ Whether you have just one or one million subscribers, you can easily replace you
 
 Talk to an expert to learn how RevenueCat can help grow your business.
 
-[Talk to Sales →](https://www.revenuecat.com/talk-to-sales/)
+<Button href="https://www.revenuecat.com/talk-to-sales/">Talk to Sales →</Button>

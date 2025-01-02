@@ -1,13 +1,12 @@
 ---
-title: Configure Offerings
-slug: offerings
+title: Offerings
+sidebar_label: Offerings
+slug: overview
 ---
 
-Offerings are the selection of products that are "offered" to a user on your paywall. RevenueCat Offerings are optional, but enable features like:
+Offerings are the selection of [products](/offerings/products-overview) that are "offered" to a user on your paywall. Using RevenueCat Offerings is optional, but enable features like Paywalls, Experiments, and Targeting.
 
-- Dynamic Paywalls
-- Targeting
-- Experiments
+<YouTubeEmbed videoId="QxHeZiW4KCA" title="RevenueCat Products, Offerings, and Entitlements Explained" />
 
 Offerings allow you to choose which combination of products are shown to a user on your paywall or upsell screen. For example your default Offering may contain a monthly and annual subscription, but you might want to experiment with Offerings with a different combination of subscription durations, trial lengths, prices, etc.
 

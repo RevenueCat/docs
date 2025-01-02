@@ -82,7 +82,6 @@ const projectsCategory = Category({
   items: [
     Page({ slug: "projects/projects-overview" }),
     Page({ slug: "projects/connect-a-store" }),
-    Link({ label: "Import Products", slug: "/getting-started/entitlements" }),
     SubCategory({
       label: "Connect Server Notifications",
       slug: "platform-resources/server-notifications",
@@ -221,8 +220,34 @@ const offeringsCategory = Category({
   itemsPathPrefix: "",
   items: [
     SubCategory({
-      label: "Products Overview",
+      label: "Entitlements",
       slug: "getting-started/entitlements",
+      items: [Page({ slug: "customers/trusted-entitlements" })],
+    }),
+    SubCategory({
+      label: "Offerings",
+      slug: "offerings/overview",
+      items: [
+        SubCategory({
+          label: "Offering Metadata",
+          slug: "tools/offering-metadata",
+          itemsPathPrefix: "tools/offering-metadata/",
+          items: [Page({ slug: "offering-metadata-examples" })],
+        }),
+      ],
+    }),
+    SubCategory({
+      label: "Targeting",
+      slug: "tools/targeting",
+      itemsPathPrefix: "tools/targeting/",
+      items: [
+        Page({ slug: "placements" }),
+        Page({ slug: "custom-attributes" }),
+      ],
+    }),
+    SubCategory({
+      label: "Product Configuration",
+      slug: "offerings/products-overview",
       itemsPathPrefix: "",
       items: [
         SubCategory({
@@ -271,32 +296,6 @@ const offeringsCategory = Category({
             link: "offerings/products/setup",
           },
         }),
-      ],
-    }),
-    SubCategory({
-      label: "Entitlements",
-      slug: "offerings/entitlements",
-      items: [Page({ slug: "customers/trusted-entitlements" })],
-    }),
-    SubCategory({
-      label: "Offerings",
-      slug: "offerings/offerings",
-      items: [
-        SubCategory({
-          label: "Offering Metadata",
-          slug: "tools/offering-metadata",
-          itemsPathPrefix: "tools/offering-metadata/",
-          items: [Page({ slug: "offering-metadata-examples" })],
-        }),
-      ],
-    }),
-    SubCategory({
-      label: "Targeting",
-      slug: "tools/targeting",
-      itemsPathPrefix: "tools/targeting/",
-      items: [
-        Page({ slug: "placements" }),
-        Page({ slug: "custom-attributes" }),
       ],
     }),
   ],

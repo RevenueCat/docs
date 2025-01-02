@@ -1,78 +1,58 @@
 ---
-title: Products Overview
-sidebar_label: Products Overview
-slug: entitlements
-excerpt: Use Entitlements and Offerings to organize and display products
-hidden: false
+title: Entitlements
 ---
+{/* I'm including this, because this doc historically had a lot of information on product configuration, and not just entitlements. this is to keep some kind of continuity for legacy links to this page */}
 
-There are three levels of product configuration available within RevenueCat, that are scoped to projects:
+:::info Looking for details on product configuration?
+See [Products Overview](/offerings/products-overview) for more information on configuring products and importing them to RevenueCat.
+:::
 
-- Offerings, a remote-configurable group of products that is displayed to your users in a paywall
-- Products, the individual SKUs that users actually purchase on each platform
-- Entitlements, the level of access that users are entitled to after purchasing a product
+RevenueCat Entitlements represent a level of access, features, or content that a user is "entitled" to. Entitlements are scoped to a [project](/projects/overview), and are typically unlocked after a user purchases a [product](/offerings/products-overview).
 
-<YouTubeEmbed videoId="QxHeZiW4KCA" title="RevenueCat Products, Offerings, and Entitlements Explained" />
+Entitlements are used to ensure a user has appropriate access to content based on their purchases, without having to manage all of the product identifiers in your app code. For example, you can use entitlements to unlock "pro" features after a user purchases a subscription.
 
+Most apps only have one entitlement, unlocking all premium features. However, if you had two tiers of content such as Gold and Platinum, you would have 2 entitlements.
 
-The RevenueCat dashboard allows you to specify what level of access each product should unlock for your users, which can greatly simplify your in-app code to check for subscription access. 
+A user's entitlements are shared across all apps contained within the same project.
 
-The dashboard also allows you to configure which in-app products are shown to your users remotely, so you can control how they're presented without the need to update your app. This is great for experimenting how different product configurations affect key subscription metrics.
+### Creating an Entitlement
 
-![An example of how products in Apple, Google, and Stripe translate to Products, Entitlements, and Offerings in RevenueCat.](/images/fb06e40-Screen_Shot_2020-07-01_at_6.12.53_PM_1af060245ecc584ec346645267c86b18.png)
+To create a new entitlement, click **Entitlements** in the left menu of the **Project** dashboard and click **+ New.** You'll need to enter a unique identifier for your entitlement that you can reference in your app, like "pro".
 
-The diagram above illustrates how products from Apple, Google, and Stripe would tie into RevenueCat. The configuration is explained in more detail below.
+Most apps only have one entitlement, but create as many as you need. For example a navigation app may have a subscription to "pro" access, and one-time purchases to unlock specific map regions. In this case there would probably be one "pro" entitlement, and additional entitlements for each map region that could be purchased.
 
-## Products
+![](/images/d09bed8-app.revenuecat.com_projects_3310b6dd_entitlements_fac76e7e636bfc467b3b956483e8d89c.png "app.revenuecat.com_projects_3310b6dd_entitlements.png")
 
-Products are the individual SKUs that users actually purchase. The stores (Apple, Google, Stripe, and Amazon) process these SKUs and charge the user.
+### Attaching Products to Entitlements
 
-### Store Configuration
+Once entitlements are created, you should attach products to entitlements. This lets RevenueCat know which entitlements to unlock for users after they purchase a specific product.
 
-No matter how you choose to use RevenueCat, you'll need to first have products set up in the stores. This is done outside of RevenueCat, and where you set things like price, duration, and free trials. If you've never set up products before or need a refresher (or tips and tricks) check out these guides:
+When viewing an Entitlement, click the **Attach** button to attach a product. If you've already added your products, you'll be able to select one from the list to attach.
 
-- **[iOS / App Store Connect ](/getting-started/entitlements/ios-products)**
-- **[Android / Google Play Console ](/getting-started/entitlements/android-products)**
-- **[Android / Amazon Appstore ](/getting-started/entitlements/amazon-product-setup)**
-- **[Stripe ](/getting-started/entitlements/stripe-products)**
+![](/images/24f890c-app.revenuecat.com_projects_3310b6dd_entitlements_1_e617fcc0747ceaa82d2a0de7bd51f500.png "app.revenuecat.com_projects_3310b6dd_entitlements (1).png")
 
-### RevenueCat Configuration
+When a product that is attached to an entitlement is purchased, that entitlement becomes active for the duration of the product. Subscription products will unlock entitlements for the subscription duration, and non-consumable and consumable purchases that are attached to an entitlement will unlock that content **forever**.
 
-After your products are set up in the stores, you'll also need to set up a 1-to-1 mapping of the products in RevenueCat as well.
+If you have non-subscription products, you may or may not want to add them to entitlements depending on your use case. If the product is non-consumable (e.g. lifetime access to "pro" features), you likely want to attach it to an entitlement. However, if it is consumable (e.g. purchase more lives in a game) you likely do not want to add them to an entitlement.
 
-Navigate to the **Products** tab in the settings for your project in the RevenueCat dashboard. To add a new product, click the **+ New** button and enter the product identifier **exactly as it appears in the store**, as well as the store that the product belongs to.
+Attaching an entitlement to a product will grant that entitlement to any customers that have previously purchased that product. Likewise, detaching an entitlement from a product will remove it for any customers that have previously purchased that product.
 
-These product identifiers are the link between RevenueCat, and Apple, Google, Stripe, or Amazon.
+When designing your Entitlement structure, keep in mind that a single product can unlock multiple entitlements, and multiple products may unlock the same entitlement.
 
-![](/images/47e4904-Screenshot_2023-03-20_at_16.04.55_2bf3bf6fb0d0340d8c4cd509e6f7aa43.png "Screenshot 2023-03-20 at 16.04.55.png")
-
-After clicking "New", you also have the opportunity to directly import products for the following stores: Apple App Store, subscriptions from Google Play Store. Support for importing from other stores will be added in the future.
-
-If you choose to set up subscription products manually for Google Play apps, you will need to add both the subscription ID and the base plan ID, which you can find in Google Play Console as per the following screenshot:
-
-![](/images/dc9d124-9d0e770-Screen_Shot_2023-01-12_at_5.07.03_PM_a7f6bebfee549b1da0ddafbc10858bd2.png "9d0e770-Screen_Shot_2023-01-12_at_5.07.03_PM.png")
+![Example Entitlement structure with associated Apple, Google, Stripe, or Amazon product identifiers.](/images/5bb6bc2-Screen_Shot_2020-07-01_at_6.14.38_PM_09c0e0bae337c2735b544bf285d73dc2.png "Screen Shot 2020-07-01 at 6.14.38 PM.png")
 
 :::info
-If a user purchases a product that has not been set up in RevenueCat, the purchase will still go through and be tracked in RevenueCat.
+When relying on entitlements to enable access to certain content, it's important that you remember to add new products to their associated entitlements if needed. Failing to add your products to an entitlement, could lead to your users making purchases that don't unlock access to the promised content.
 :::
 
-To make it easier to identify your products in RevenueCat, you can optionally set a display name for them by:
+## Checking Entitlement Status
 
-1. Navigating to a product's configuration page
-2. Clicking **Edit**
-3. Entering your desired display name
-4. Clicking **Save**
+Since an entitlement represents a level of access that a user is entitled to, you'll want to check for entitlement status in your app to unlock the appropriate content. If an entitlement is active, you can unlock the associated content. If an entitlement is inactive, you can display a paywall to the user.
 
-:::info
-Product display names must be unique within an app. It's a good practice to include the product duration in the display name to avoid name overlaps, for example: 'My Pro Subscription Monthly', 'My Pro Subscription Yearly' etc".
-:::
-
-:::warning
-Product display names are currently supported in Charts, and will be supported throughout the Dashboard in the near future.
-:::
+You can use the RevenueCat SDK to check for entitlement status, with the `getCustomerInfo` method. You can read more about checking subscription and purchase status in the [Checking Subscription Status](/customers/customer-info) guide.
 
 ## Next steps
 
-If you've added your products in the dashboard, it's time to create an Entitlement.
+If you've configured your entitlements, it's time to create an Offering.
 
-<Button href="/docs/offerings/entitlements">Create an Entitlement →</Button>
+<Button href="/docs/offerings/overview">Create an Offering →</Button>
