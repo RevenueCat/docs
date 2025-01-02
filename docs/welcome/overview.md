@@ -28,7 +28,7 @@ Get started by creating a new project and connecting to a store.
 
 ### Migrating existing subscriptions?
 
-Whether you have just one or one million subscribers, you can easily replace your existing setup with RevenueCat. Supercharge your business and start taking advantage of powerful features like Experiments, Paywalls, and Targeting. Read our [migration guide](/docs/migrating-to-revenuecat/migration-paths) for more information.
+Whether you have just one or one million subscribers, you can easily replace your existing setup with RevenueCat. Supercharge your business and start taking advantage of powerful features like Experiments, Paywalls, and Targeting. Read our [migration guide](/migrating-to-revenuecat/migration-paths) for more information.
 
 ## Browse features
 
