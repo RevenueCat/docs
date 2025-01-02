@@ -29,7 +29,7 @@ Available on all-plans, basic permissions give collaborators full read or write 
 
 ✅ This role is for anyone who needs similar access as the project owner. They can view and manage everything except billing. This role can invite other collaborators to your project.
 
-❌ They cannot view or manage any billing information (only the project owner can perform these actions).
+❌ They cannot view or manage any account billing information (only the project owner can perform these actions).
 
 ---
 
