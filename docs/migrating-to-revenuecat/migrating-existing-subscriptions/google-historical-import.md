@@ -5,9 +5,11 @@ excerpt: Importing historical Google Play transactions into RevenueCat
 hidden: false
 ---
 
-## Google Historical Import
+Doing a Google historical import overcomes some limitations of the Play Store receipts and allows RevenueCat to ingest subscription history dating back to July 2023.
 
-Doing a Google historical import overcomes some limitations of the Play Store receipts and allows RevenueCat to ingest subscription history dating back to July 2023. When migrating to RevenueCat, whether by [forwarding your receipt](/migrating-to-revenuecat/sdk-or-not/sdk-less-integration) or installing the SDK, your Google Play subscription history may be incomplete, because Google does not provide status information for purchase tokens that have expired more than 90 days ago, and for newer tokens, Google only provides the current state, not the history. By combining your migration with Google Historical Imports, RevenueCat will be able to fill in the gaps in your subscription history.
+When migrating to RevenueCat, whether by [forwarding your receipt](/migrating-to-revenuecat/sdk-or-not/sdk-less-integration) or installing the SDK, your Google Play subscription history may be incomplete, because Google does not provide status information for purchase tokens that have expired more than 90 days ago, and for newer tokens, Google only provides the current state, not the history.
+
+By combining your migration with Google Historical Imports, RevenueCat will be able to fill in the gaps in your subscription history.
 
 ## Setup
 

@@ -53,15 +53,6 @@ const welcomeCategory = Category({
       itemsPathPrefix: "migrating-to-revenuecat/",
       items: [
         SubCategory({
-          label: "Choose your Integration Path",
-          slug: "sdk-or-not",
-          itemsPathPrefix: "sdk-or-not/",
-          items: [
-            Page({ slug: "sdk-less-integration" }),
-            Page({ slug: "finishing-transactions" }),
-          ],
-        }),
-        SubCategory({
           label: "Import Historical Purchases",
           slug: "migrating-existing-subscriptions",
           itemsPathPrefix: "migrating-existing-subscriptions/",
@@ -70,7 +61,15 @@ const welcomeCategory = Category({
             Page({ slug: "google-historical-import" }),
           ],
         }),
-        Page({ slug: "swiftystorekit" }),
+        SubCategory({
+          label: "Do I need the SDK?",
+          slug: "sdk-or-not",
+          itemsPathPrefix: "",
+          items: [
+            Page({ slug: "sdk-or-not/sdk-less-integration" }),
+            Page({ slug: "sdk-or-not/finishing-transactions" }),
+          ],
+        }),
       ],
     }),
   ],
@@ -802,6 +801,7 @@ const guidesCategory = Category({
   items: [
     Page({ slug: "platform-resources/implementation-responsibilities" }),
     Page({ slug: "platform-resources/developer-store-payments" }),
+    Page({ slug: "migrating-to-revenuecat/swiftystorekit" }),
     SubCategory({
       label: "Testing Guide",
       slug: "guides/testing-guide",
