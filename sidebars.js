@@ -226,7 +226,7 @@ const offeringsCategory = Category({
     }),
     SubCategory({
       label: "Offerings",
-      slug: "offerings/overview",
+      slug: "offerings/offerings",
       items: [
         SubCategory({
           label: "Offering Metadata",
