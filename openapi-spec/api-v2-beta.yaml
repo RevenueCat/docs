@@ -5162,6 +5162,7 @@ components:
       type: object
       required:
       - id
+      - name
       - variant
       - object
       nullable: true
@@ -5173,6 +5174,9 @@ components:
           - experiment_enrollment
           type: string
         id:
+          type: string
+          maxLength: 1500
+        name:
           type: string
           maxLength: 1500
         variant:
