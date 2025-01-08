@@ -200,6 +200,10 @@ const config = {
             position: "left",
           },
           {
+            type: "custom-chat",
+            position: "right",
+          },
+          {
             label: "Sign Up",
             to: "https://app.revenuecat.com/signup",
             position: "right",

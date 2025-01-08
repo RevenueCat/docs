@@ -15,6 +15,8 @@ import TargetingIcon from "@site/static/img/flow-chart.svg";
 import BillingIcon from "@site/static/img/card.svg";
 import DashboardIcon from "@site/static/img/dashboard.svg";
 
+import Chat from "../components/Chat/Chat.tsx";
+
 const Link = ({ href, children, ...rest }) => (
   <a
     href={href}
@@ -30,6 +32,8 @@ function LandingPage() {
 
   return (
     <>
+      <Chat />
+
       {/* Hero */}
       <section className="py-20 max-w-7xl mx-auto size-full">
         <div className="tw-container w-full flex flex-col gap-16 max-w-none lg:flex-row-reverse lg:justify-between items-center">
