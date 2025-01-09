@@ -734,7 +734,7 @@ const redirects = {
     },
     {
       to: "/paywalls",
-      from: "tools/paywalls",
+      from: "/tools/paywalls",
     },
     {
       to: "/tools/targeting",
