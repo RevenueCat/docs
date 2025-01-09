@@ -314,6 +314,34 @@ const dashboardCategory = Category({
   ],
 });
 
+const paywallsCategory = Category({
+  emoji: "💰",
+  label: "Paywalls",
+  itemsPathPrefix: "paywalls/",
+  items: [
+    Page({ slug: "paywalls" }),
+    Page({ slug: "creating-paywalls" }),
+    SubCategory({
+      label: "Creating Paywalls (v2 - Beta)",
+      slug: "creating-paywalls-v2",
+      itemsPathPrefix: "creating-paywalls-v2/",
+      items: [
+        Page({ slug: "components" }),
+        Page({ slug: "component-properties" }),
+        Page({ slug: "variables" }),
+        Page({ slug: "additional-paywall-states" }),
+      ],
+    }),
+    SubCategory({
+      label: "Offering Metadata",
+      slug: "offering-metadata",
+      itemsPathPrefix: "offering-metadata/",
+      items: [Page({ slug: "offering-metadata-examples" })],
+    }),
+    Page({ slug: "displaying-paywalls" }),
+  ]
+});
+
 const toolsCategory = Category({
   emoji: "🛠",
   label: "Tools",
