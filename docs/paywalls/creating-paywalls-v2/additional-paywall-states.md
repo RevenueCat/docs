@@ -47,6 +47,6 @@ To configure the selected state of each package:
 2. Click on the `Selected` tab at the top of that package's properties panel
 3. While on the selected tab, all changes to any properties will only apply to the selected state of that component
 
---> screenshot <--
+[screenshot]
 
 Any changes you make to the default state of the package will also apply to the selected state unless you've manually set that property's selected state to something else. In other words, when you change properties like margin & padding on the default state, we'll apply that to the selected state too so you don't need to make the same changes twice; and when you update the border color of the selected state, we won't overwrite that if you update the border of the default state later on.

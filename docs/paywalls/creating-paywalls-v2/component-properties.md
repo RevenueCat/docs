@@ -16,15 +16,15 @@ Position properties only apply to parent components, since they control how the 
 
 A parent component's **axis** controls whether its child components are arranged horizontally, vertically, or three-dimensionally.
 
---> illustration <--
+[illustration]
 
 **Alignment** determines how components are arranged against that axis; such as top, center, or bottom aligned elements across a horizontal axis.
 
---> illustration <--
+[illustration]
 
 **Distribution** determines how components are spaced along the defined axis. The available options are:
 
---> illustration <--
+[illustration]
 
 Last, **child spacing** determines exactly how much space should be set between each child component.
 
@@ -36,7 +36,7 @@ Each component's **width** and **height** can be sized to:
 2. Fill the available space for the component
 3. Occupy a fixed space
 
---> illustration <--
+[illustration]
 
 ### Layout properties
 
@@ -44,7 +44,7 @@ Each component's spacing can be configured through **margin** (added space outsi
 
 By default, you can configure horizontal and vertical margin and padding simultaneously, or you can click on the icon to the right of the property to switch to configuring each value uniquely.
 
---> screenshot <--
+[screenshot]
 
 ### Appearance properties
 
@@ -54,7 +54,7 @@ A component's **shape** can additionally be configured to select between rectang
 
 Last, if the rectangle shape is used, then its **corner radius** can also be configured.
 
---> screenshot <--
+[screenshot]
 
 ### Border properties
 
@@ -64,4 +64,4 @@ Parent components can additionally have a specified **border color** and **borde
 
 Parent components can have a drop shadow configured for them via a customizable **position** (x and y axis offset), **blur** (size of the shadow effect), and **color**.
 
---> screenshot <--
+[screenshot]
