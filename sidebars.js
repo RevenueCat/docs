@@ -348,15 +348,6 @@ const toolsCategory = Category({
   itemsPathPrefix: "tools/",
   items: [
     SubCategory({
-      label: "Paywalls",
-      slug: "paywalls",
-      itemsPathPrefix: "paywalls/",
-      items: [
-        Page({ slug: "creating-paywalls" }),
-        Page({ slug: "displaying-paywalls" }),
-      ],
-    }),
-    SubCategory({
       label: "Offering Metadata",
       slug: "offering-metadata",
       itemsPathPrefix: "offering-metadata/",
