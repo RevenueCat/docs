@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
 import CatIcon from "@site/static/img/cat-chat.svg";
+import CatIconStatic from "@site/static/img/sprite-1.svg";
 import { Textarea } from "../ui/textarea";
 import { cn } from "../../lib/utils";
 import { Spinner } from "../Spinner/Spinner";
@@ -63,7 +64,7 @@ function QuestionAsker() {
     }
     typingTimeoutRef.current = setTimeout(() => {
       setIsTyping(false);
-    }, 1000);
+    }, 500);
   };
 
   return (
@@ -89,6 +90,9 @@ function QuestionAsker() {
                 className="col-span-3 border-base-200 focus-visible:ring-primary focus-visible:ring-2 font-body"
               />
             </div>
+            {question && !isTyping && (
+              <CatIconStatic className="absolute -top-2 right-0 w-11 h-8" />
+            )}
             {isTyping && !loading && !answer && (
               <div
                 className={`${styles["image-animation"]} absolute -top-2 right-0`}

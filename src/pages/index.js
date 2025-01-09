@@ -32,8 +32,6 @@ function LandingPage() {
 
   return (
     <>
-      <Chat />
-
       {/* Hero */}
       <section className="py-20 max-w-7xl mx-auto size-full">
         <div className="tw-container w-full flex flex-col gap-16 max-w-none lg:flex-row-reverse lg:justify-between items-center">
