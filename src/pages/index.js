@@ -196,7 +196,7 @@ function LandingPage() {
                 Experiments
               </span>
             </Link>
-            <Link href="/docs/tools/paywalls">
+            <Link href="/docs/paywalls">
               <span className="flex items-center gap-3">
                 <PaywallsIcon width="16" />
                 Paywalls

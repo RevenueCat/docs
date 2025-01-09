@@ -717,16 +717,24 @@ const redirects = {
       from: "/offerings-guide",
     },
     {
-      to: "/tools/paywalls/creating-paywalls",
+      to: "/paywalls/creating-paywalls",
       from: "/creating-paywalls",
     },
     {
-      to: "/tools/paywalls/displaying-paywalls",
+      to: "/paywalls/creating-paywalls",
+      from: "/paywalls/creating-paywalls",
+    },
+    {
+      to: "/paywalls/displaying-paywalls",
       from: "/displaying-paywalls",
     },
     {
-      to: "/tools/paywalls",
-      from: "/paywalls",
+      to: "/paywalls/displaying-paywalls",
+      from: "/paywalls/displaying-paywalls",
+    },
+    {
+      to: "/paywalls",
+      from: "tools/paywalls",
     },
     {
       to: "/tools/targeting",
@@ -1424,15 +1432,15 @@ const redirects = {
       from: "/offerings-guide.html",
     },
     {
-      to: "/tools/paywalls/creating-paywalls",
+      to: "/paywalls/creating-paywalls",
       from: "/creating-paywalls.html",
     },
     {
-      to: "/tools/paywalls/displaying-paywalls",
+      to: "/paywalls/displaying-paywalls",
       from: "/displaying-paywalls.html",
     },
     {
-      to: "/tools/paywalls",
+      to: "/paywalls",
       from: "/paywalls.html",
     },
     {

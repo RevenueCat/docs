@@ -45,7 +45,7 @@ If you are using the **#7 - Siamese** template, the minimum supported SDK versio
 - React Native 8.0.0
 - Flutter 7.0.0
 
-If you attempt to serve this Paywall on a lower SDK version we'll provide a fallback Paywall. [Learn more](https://www.revenuecat.com/docs/tools/paywalls/displaying-paywalls#default-paywall).
+If you attempt to serve this Paywall on a lower SDK version we'll provide a fallback Paywall. [Learn more](https://www.revenuecat.com/docs/paywalls/displaying-paywalls#default-paywall).
 
 ## How to configure your Paywall
 
@@ -116,7 +116,7 @@ We support the following variables:
 | sub_offer_price_2              | The localized price of the second introductory offer of a given package (Google Play only)              | $4.99                     | \*      | \*          |
 | sub_relative_discount          | The localized discount percentage compared to the most expensive package per period                     | 19% off                   | 4.26.0  | 7.2.0       |
 
-Some variables are not available on all version of the SDK. If an unavailable variable is found on an older version of the SDK, RevenueCatUI will automatically display a [default paywall](/tools/paywalls/displaying-paywalls#default-paywall) to avoid showing a broken paywall.
+Some variables are not available on all version of the SDK. If an unavailable variable is found on an older version of the SDK, RevenueCatUI will automatically display a [default paywall](/paywalls/displaying-paywalls#default-paywall) to avoid showing a broken paywall.
 To prevent this, you may use [Targeting](/tools/targeting) to control who can see a paywall with a newer variable.
 
 ### Previewing Paywalls

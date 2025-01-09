@@ -39,7 +39,7 @@ Whether you have just one or one million subscribers, you can easily replace you
 <FeatureItem
   title="Paywalls"
   subtitle="Remotely configure your product offering with powerful paywalls."
-  link="/docs/tools/paywalls"
+  link="/docs/paywalls"
   emoji="💰"
 />
 
