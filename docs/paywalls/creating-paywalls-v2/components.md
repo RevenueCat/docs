@@ -78,11 +78,11 @@ The stack component allows you to create a container of underlying components th
 
 Stacks, and all other parent components, have position properties that determine how the child components are arranged within the parent. This allows you to control the axis on which those components are aligned, how they're aligned, how they're distributed, and the spacing between each child component.
 
-![Stack properties](static/images/paywalls-stack-properties.png)
+![Stack properties](/images/paywalls-stack-properties.png)
 
 To add a component to a stack, click the `+` button in that stack's row in the Components Panel. You can also drag any existing component into a stack, or click the `...` button on existing component to `Embed in stack`, placing it within a new stack.
 
-![Stack options](static/images/paywalls-stack-options.png)
+![Stack options](/images/paywalls-stack-options.png)
 
 ## Package
 
@@ -90,7 +90,7 @@ The package component allows you to add a package to your paywall which your cus
 
 At the top of the properties list, you'll need to select the package from your Offering that this package component should reference, and then decide whether this package should be selected by default when a customer loads your paywall.
 
-![Package properties](static/images/paywalls-package-properties.png)
+![Package properties](/images/paywalls-package-properties.png)
 
 In addition, package's are unique in that they can have both a **Default** and a **Selected** state configured for them, so that you can add unique styling to differentiate the two; such as a unique icon, border color, or background.
 
