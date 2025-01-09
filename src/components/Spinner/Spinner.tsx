@@ -3,7 +3,7 @@ import React, { FC } from "react";
 const LoaderStatic= ({
   ...restProps
 }) => {
-  const fillColor = "#a1a1aa";
+  const fillColor = "#ffffff";
 
   return (
     <svg

@@ -1,0 +1,26 @@
+.image-animation {
+    width: 44px; /* Width of your images */
+    height: 32px; /* Height of your images */
+    background-size: cover; /* Ensure the images fit the container */
+    animation: image-sequence 0.1s steps(1) infinite;
+    animation: image-sequence 0.4s steps(1) infinite;
+  }
+
+  @keyframes image-sequence {
+    0% {
+      background-image: url("/img/sprite-1.svg");
+    }
+    25% {
+      background-image: url("/img/sprite-2.svg");
+    }
+    50% {
+      background-image: url("/img/sprite-3.svg");
+    }
+    75% {
+      background-image: url("/img/sprite-4.svg");
+    }
+    100% {
+        background-image: url("/img/sprite-1.svg");
+    }
+}
+  
