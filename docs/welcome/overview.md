@@ -50,7 +50,7 @@ Whether you have just one or one million subscribers, you can easily replace you
   title="Events & Integrations"
   subtitle="Clean, normalized subscription data at your fingertips and in every system."
   link="/docs/integrations/integrations"
-  emoji="🔔"
+  emoji="🔌"
 />
 
 <FeatureItem
