@@ -90,7 +90,6 @@ const mobileSDKCategory = Category({
         Page({ slug: "cordova" }),
         Page({ slug: "unity" }),
         Page({ slug: "web-sdk" }),
-        Page({ slug: "macos" }),
         Page({ slug: "app-builders" }),
         Page({ slug: "roku" }),
       ],
