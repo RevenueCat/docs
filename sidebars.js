@@ -159,6 +159,17 @@ const paywallsCategory = Category({
       items: [
         Page({ slug: "installation" }),
         Page({ slug: "creating-paywalls" }),
+        SubCategory({
+          label: "Creating Paywalls (v2 - Beta)",
+          slug: "tools/paywalls/creating-paywalls-v2",
+          itemsPathPrefix: "tools/paywalls/creating-paywalls-v2",
+          items: [
+            Page({ slug: "components" }),
+            Page({ slug: "component-properties" }),
+            Page({ slug: "variables" }),
+            Page({ slug: "additional-paywall-states" }),
+          ],
+        }),
         Page({ slug: "displaying-paywalls" }),
       ],
     }),
