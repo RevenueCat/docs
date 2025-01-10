@@ -1,6 +1,7 @@
 ---
 title: Webhooks
 slug: webhooks
+sidebar_label: Overview
 excerpt: Enhanced server-to-server notifications from webhooks
 hidden: false
 ---

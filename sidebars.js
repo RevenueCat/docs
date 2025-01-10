@@ -374,71 +374,6 @@ const testAndLaunchCategory = Category({
   ],
 });
 
-const integrationsCategory = Category({
-  emoji: "🔌",
-  label: "Integrations",
-  itemsPathPrefix: "integrations/",
-  items: [
-    Page({ slug: "integrations" }),
-    SubCategory({
-      label: "Attribution Integrations",
-      slug: "attribution",
-      itemsPathPrefix: "attribution/",
-      items: [
-        Page({ slug: "adjust" }),
-        Page({ slug: "apple-search-ads" }),
-        Page({ slug: "appsflyer" }),
-        Page({ slug: "branch" }),
-        Page({ slug: "facebook-ads" }),
-        Page({ slug: "kochava" }),
-        Page({ slug: "singular" }),
-        Page({ slug: "splitmetrics-acquire" }),
-        Page({ slug: "tenjin" }),
-      ],
-    }),
-    SubCategory({
-      label: "Third-Party Integrations",
-      slug: "third-party-integrations",
-      itemsPathPrefix: "third-party-integrations/",
-      items: [
-        Page({ slug: "airship" }),
-        Page({ slug: "amplitude" }),
-        Page({ slug: "braze" }),
-        Page({ slug: "clevertap" }),
-        Page({ slug: "discord" }),
-        Page({ slug: "firebase-integration" }),
-        Page({ slug: "intercom" }),
-        Page({ slug: "iterable" }),
-        Page({ slug: "mixpanel" }),
-        Page({ slug: "mparticle" }),
-        Page({ slug: "onesignal" }),
-        Page({ slug: "posthog" }),
-        Page({ slug: "segment" }),
-        Page({ slug: "slack" }),
-        Page({ slug: "telemetrydeck" }),
-        Page({ slug: "statsig" }),
-        Page({ slug: "superwall" }),
-      ],
-    }),
-    SubCategory({
-      label: "Webhooks",
-      slug: "webhooks",
-      itemsPathPrefix: "webhooks/",
-      items: [
-        Page({ slug: "event-flows" }),
-        Page({ slug: "event-types-and-fields" }),
-        Page({ slug: "sample-events" }),
-      ],
-    }),
-    Link({
-      label: "Scheduled Data Exports",
-      slug: "/integrations/scheduled-data-exports",
-    }),
-    Page({ slug: "partner-built-integrations" }),
-    Page({ slug: "stripe-app" }),
-  ],
-});
-
 // this section is a mess, but it's a combination of the old platform-resources and service-credentials sections
 // to retain links to the old pages, it took a bit of maneuvering
 const platformResourcesCategory = Category({
@@ -829,6 +764,137 @@ const chartsDummyCategory = Category({
   ],
 });
 
+const integrationsDummyCategory = Category({
+  emoji: "📈",
+  label: "Events & Integrations Reference",
+  itemsPathPrefix: "",
+  items: [
+    Link({
+      label: "Events",
+      slug: "/integrations/integrations",
+    }),
+    Link({
+      label: "Attribution & MMPs",
+      slug: "/integrations/attribution",
+    }),
+    Link({
+      label: "Third-Party Integrations",
+      slug: "/integrations/third-party-integrations",
+    }),
+    Link({
+      label: "Webhooks",
+      slug: "/integrations/webhooks",
+    }),
+  ],
+});
+
+const eventsCategory = Category({
+  emoji: "🔔",
+  label: "Events",
+  itemsPathPrefix: "",
+  items: [Page({ slug: "integrations/integrations" })],
+});
+
+const webhooksCategory = Category({
+  emoji: "⚡️",
+  label: "Webhooks",
+  itemsPathPrefix: "",
+  items: [
+    Page({ slug: "integrations/webhooks" }),
+    SubCategory({
+      label: "Resources",
+      itemsPathPrefix: "integrations/webhooks/",
+      items: [
+        Page({ slug: "event-flows" }),
+        Page({ slug: "event-types-and-fields" }),
+        Page({ slug: "sample-events" }),
+      ],
+      index: {
+        title: "Resources",
+        link: "integrations/webhooks/resources",
+      },
+    }),
+  ],
+});
+
+const attributionCategory = Category({
+  emoji: "📐",
+  label: "Attribution & MMPs",
+  itemsPathPrefix: "",
+  items: [
+    Page({ slug: "integrations/attribution" }),
+    SubCategory({
+      label: "Supported Providers",
+      itemsPathPrefix: "integrations/attribution/",
+      items: [
+        Page({ slug: "adjust" }),
+        Page({ slug: "apple-search-ads" }),
+        Page({ slug: "appsflyer" }),
+        Page({ slug: "branch" }),
+        Page({ slug: "facebook-ads" }),
+        Page({ slug: "kochava" }),
+        Page({ slug: "singular" }),
+        Page({ slug: "splitmetrics-acquire" }),
+        Page({ slug: "tenjin" }),
+      ],
+      index: {
+        title: "Supported Providers",
+        link: "integrations/attribution/supported-providers",
+      },
+    }),
+  ],
+});
+
+const thirdPartyIntegrationsCategory = Category({
+  emoji: "🔌",
+  label: "Integrations",
+  itemsPathPrefix: "",
+  items: [
+    Page({ slug: "integrations/third-party-integrations" }),
+    SubCategory({
+      label: "Supported Integrations",
+      itemsPathPrefix: "integrations/third-party-integrations/",
+      items: [
+        Page({ slug: "airship" }),
+        Page({ slug: "amplitude" }),
+        Page({ slug: "braze" }),
+        Page({ slug: "clevertap" }),
+        Page({ slug: "discord" }),
+        Page({ slug: "firebase-integration" }),
+        Page({ slug: "intercom" }),
+        Page({ slug: "iterable" }),
+        Page({ slug: "mixpanel" }),
+        Page({ slug: "mparticle" }),
+        Page({ slug: "onesignal" }),
+        Page({ slug: "posthog" }),
+        Page({ slug: "segment" }),
+        Page({ slug: "slack" }),
+        Page({ slug: "telemetrydeck" }),
+        Page({ slug: "statsig" }),
+        Page({ slug: "superwall" }),
+      ],
+      index: {
+        title: "Supported Integrations",
+        link: "integrations/third-party-integrations/supported-integrations",
+      },
+    }),
+  ],
+});
+
+const integrationsMoreCategory = Category({
+  emoji: "➕",
+  label: "More",
+  itemsPathPrefix: "",
+  items: [
+    Link({
+      label: "Scheduled Data Exports",
+      slug: "/integrations/scheduled-data-exports",
+    }),
+    Page({ slug: "integrations/partner-built-integrations" }),
+    Page({ slug: "integrations/stripe-app" }),
+  ],
+});
+
 // Add the top level categories to the defaultSidebar object
 // The defaultSidebar is referenced in docusaurus.config.js
 const sidebars = {
@@ -843,13 +909,20 @@ const sidebars = {
     chartsDummyCategory,
     experimentsCategory,
     testAndLaunchCategory,
-    integrationsCategory,
+    integrationsDummyCategory,
     platformResourcesCategory,
     supportCategory,
     guidesCategory,
     sdkMigrationCategory,
   ],
   dataSidebar: [metricsCategory, chartsCategory, dataExportCategory],
+  integrationsSidebar: [
+    eventsCategory,
+    webhooksCategory,
+    thirdPartyIntegrationsCategory,
+    attributionCategory,
+    integrationsMoreCategory,
+  ],
 };
 
 export default sidebars;

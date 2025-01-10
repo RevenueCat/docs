@@ -130,7 +130,6 @@ const config = {
         logo: {
           alt: "RevenueCat Logo",
           src: "img/logo-rc.svg",
-          href: "https://www.revenuecat.com/",
         },
         items: [
           {
@@ -140,7 +139,12 @@ const config = {
               {
                 type: "docSidebar",
                 sidebarId: "defaultSidebar",
-                label: "Implementing RevenueCat",
+                label: "Implementation Reference",
+              },
+              {
+                type: "docSidebar",
+                sidebarId: "integrationsSidebar",
+                label: "Events & Integrations Reference",
               },
               {
                 type: "docSidebar",
