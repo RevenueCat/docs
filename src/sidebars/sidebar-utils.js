@@ -60,7 +60,7 @@ const Page = ({ slug }) => ({
 
 const Link = ({ label, slug }) => ({
   type: "link",
-  label: `→ ${label}`,
+  label: `${label} →`,
   href: slug,
 });
 

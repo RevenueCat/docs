@@ -84,9 +84,9 @@ To mark an offer as backwards compatible, click the overflow menu and select "Us
 
 ![](/images/f309ab8-Screen_Shot_2022-07-07_at_2.12.18_PM_4979d641e4ad1bd1a1f4ca3fe8dc9224.png "Screen Shot 2022-07-07 at 2.12.18 PM.png")
 
-### Add non-consumable products 
+### Add non-consumable products
 
-If you want your customers to be able to purchase a certain In-App product only once (for example, a lifetime purchase), you need to configure the product as a non-consumable when creating it in the RC dashboard. 
+If you want your customers to be able to purchase a certain In-App product only once (for example, a lifetime purchase), you need to configure the product as a non-consumable when creating it in the RevenueCat dashboard.
 
 ![](/images/non-consumable-android-support.png "non-consumable-android-support.png")
 

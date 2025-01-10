@@ -1,6 +1,7 @@
 ---
 title: Events Overview
 slug: integrations
+sidebar_label: Introduction
 excerpt: Learn about events and integrations from RevenueCat
 hidden: false
 ---

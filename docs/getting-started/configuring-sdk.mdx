@@ -17,7 +17,7 @@ Once you've [installed](/getting-started/installation) the SDK for your app, it'
 
 You should only configure _Purchases_ once, usually early in your application lifecycle. After configuration, the same instance is shared throughout your app by accessing the `.shared` instance in the SDK.
 
-Make sure you configure _Purchases_ with your public SDK key only. You can read more about the different API keys available in our [Authentication guide](/welcome/authentication).
+Make sure you configure _Purchases_ with your public SDK key only. You can read more about the different API keys available in our [Authentication guide](/projects/authentication).
 
 import swiftContent50 from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_1.swift";
 import swiftUIContent51 from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_2.swift";
@@ -113,7 +113,7 @@ Additional configuration options on the `.shared` instance of _Purchases_.
 
 #### Delegates
 
-`DELEGATE` `purchases:receivedUpdated`
+##### `DELEGATE` `purchases:receivedUpdated`
 
 Called whenever _Purchases_ receives an updated `CustomerInfo` object. This may happen periodically throughout the life of the app if new information becomes available (e.g. after making a purchase).
 
@@ -121,9 +121,7 @@ Called whenever _Purchases_ receives an updated `CustomerInfo` object. This may 
 Note: RevenueCat doesn't push new data to the SDK, so this method is only called when CustomerInfo is updated from another SDK method or after a purchase is made.
 :::
 
-***
-
-`DELEGATE` `purchases:readyForPromotedProduct`
+##### `DELEGATE` `purchases:readyForPromotedProduct`
 
 Called when a user initiates a promoted in-app purchase from the App Store. If your app is able to handle a purchase at the current time, run the `defermentBlock` in this method. If the app is not in a state to make a purchase: cache the `defermentBlock`, then call the `defermentBlock` when the app is ready to make the promoted purchase. If the purchase should never be made, you don't need to ever call the `defermentBlock` and _Purchases_ will not proceed with promoted purchases.
 
@@ -131,7 +129,7 @@ Called when a user initiates a promoted in-app purchase from the App Store. If y
 
 #### Listeners
 
-`LISTENER` `UpdatedCustomerInfoListener`
+##### `LISTENER` `UpdatedCustomerInfoListener`
 
 Called whenever _Purchases_ receives an updated `CustomerInfo` object. This may happen periodically throughout the life of the app if new information becomes available (e.g. after making a purchase).
 
@@ -139,6 +137,8 @@ Called whenever _Purchases_ receives an updated `CustomerInfo` object. This may 
 Note: RevenueCat doesn't push new data to the SDK, so this method is only called when CustomerInfo is updated from another SDK method or after a purchase is made.
 :::
 
-:::warning NodeJS
-There is no way to import RevenueCat into NodeJS, we don't make any such modules or sdks. The best option is to use our APIs directly using Node fetch. In our API docs you should use our JavaScript language to do so.
-:::
+## Next steps
+
+Once you've configured the SDK, it's time to add your products in the dashboard.
+
+<Button href="/docs/offerings/products-overview">Add your products →</Button>

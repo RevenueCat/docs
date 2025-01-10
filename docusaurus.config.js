@@ -130,14 +130,28 @@ const config = {
         logo: {
           alt: "RevenueCat Logo",
           src: "img/logo-rc.svg",
-          href: "https://www.revenuecat.com/",
         },
         items: [
           {
-            type: "docSidebar",
-            sidebarId: "defaultSidebar",
-            position: "left",
             label: "Documentation",
+            to: "/welcome/overview",
+            items: [
+              {
+                type: "docSidebar",
+                sidebarId: "defaultSidebar",
+                label: "Implementation Reference",
+              },
+              {
+                type: "docSidebar",
+                sidebarId: "integrationsSidebar",
+                label: "Events & Integrations Reference",
+              },
+              {
+                type: "docSidebar",
+                sidebarId: "dataSidebar",
+                label: "Charts, Metrics, & Data Reference",
+              },
+            ],
           },
           {
             label: "REST API",
@@ -154,42 +168,6 @@ const config = {
             ],
           },
           {
-            label: "SDK Reference",
-            to: "/platform-resources/sdk-reference",
-            position: "left",
-            items: [
-              {
-                label: "iOS SDK",
-                to: "https://revenuecat.github.io/purchases-ios-docs/",
-              },
-              {
-                label: "Android SDK",
-                to: "https://sdk.revenuecat.com/android/index.html",
-              },
-              {
-                label: "Flutter SDK",
-                to: "https://pub.dev/documentation/purchases_flutter/6.5.0/",
-              },
-              {
-                label: "React Native SDK",
-                to: "https://revenuecat.github.io/react-native-purchases-docs",
-              },
-              {
-                label: "Capacitor SDK",
-                to: "https://www.npmjs.com/package/@revenuecat/purchases-capacitor",
-              },
-              {
-                label: "Cordova SDK",
-                to: "https://revenuecat.github.io/cordova-plugin-purchases-docs/",
-              },
-
-              {
-                label: "Web SDK",
-                to: "https://revenuecat.github.io/purchases-js-docs",
-              },
-            ],
-          },
-          {
             label: "Blog",
             to: "https://www.revenuecat.com/blog/",
             position: "left",
@@ -200,14 +178,18 @@ const config = {
             position: "left",
           },
           {
-            label: "Sign Up",
-            to: "https://app.revenuecat.com/signup",
+            label: "Account",
             position: "right",
-          },
-          {
-            label: "Sign In",
-            to: "https://app.revenuecat.com/login",
-            position: "right",
+            items: [
+              {
+                label: "Sign Up",
+                to: "https://app.revenuecat.com/signup",
+              },
+              {
+                label: "Sign In",
+                to: "https://app.revenuecat.com/login",
+              },
+            ],
           },
         ],
       },

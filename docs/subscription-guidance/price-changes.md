@@ -7,7 +7,7 @@ hidden: false
 
 If subscription prices are changed via App Store Connect or Google Play, any active subscribers may need to opt-in to the new price. If the user does not opt-in, their subscription may be canceled by [Apple](https://help.apple.com/app-store-connect/#/devc9870599e) or [Google](https://support.google.com/googleplay/android-developer/answer/140504?hl=en).
 
-:::warning
+:::warning Propagation
 Price changes can take 24 hours to propagate the App Store and Google Play.
 :::
 
@@ -27,11 +27,11 @@ Price decreases will be effective immediately for new purchases and will apply t
 
 For more information about App Store price changes, see [Managing Prices](https://developer.apple.com/app-store/subscriptions/#managing-prices-for-existing-subscribers) from Apple.
 
-### Price Detection
+### Automatic Price Detection
 
 RevenueCat uses a best-effort approach for tracking App Store transaction prices. By default, RevenueCat tracks prices at the time of purchase and assumes any subscriptions will renew at this purchase price. Therefore, if you ever raise the price of a product, RevenueCat's reporting from that point will only be accurate if you choose to grandfather existing subscriptions at the current price.
 
-Of course, this may not be ideal if you regularly make price changes or you don't want to grandfather your existing users. To enable automatic price detection for App Store price changes to keep your transaction price data accurate, you'll need to:
+Of course, this may not be ideal if you regularly make price changes or you don't want to grandfather your existing users. To enable **automatic price detection** for App Store price changes to keep your transaction price data accurate, you'll need to:
 
 - Enable [platform server notifications](/platform-resources/server-notifications/apple-server-notifications) using `V2` App Store Server Notifications
 - Upload your App Store Connect API Key as detailed [here](/service-credentials/itunesconnect-app-specific-shared-secret/app-store-connect-api-key-configuration)

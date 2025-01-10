@@ -108,7 +108,7 @@ function LandingPage() {
             <h2 className="font-normal mb-0 lg:mb-8 text-2xl lg:text-3xl">
               Popular Articles
             </h2>
-            <Link href="/docs/welcome/projects">Setting up RevenueCat</Link>
+            <Link href="/docs/projects/overview">Setting up RevenueCat</Link>
             <Link href="/docs/getting-started/entitlements">
               Configuring Products
             </Link>

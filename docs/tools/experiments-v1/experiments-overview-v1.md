@@ -1,5 +1,6 @@
 ---
-title: Experiments Overview
+title: Getting Started with Experiments
+sidebar_label: Getting Started
 slug: experiments-overview-v1
 hidden: false
 ---

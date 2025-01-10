@@ -733,8 +733,12 @@ const redirects = {
       from: "/targeting",
     },
     {
-      to: "/welcome/authentication",
+      to: "/projects/authentication",
       from: "/authentication",
+    },
+    {
+      to: "/projects/authentication",
+      from: "/welcome/authentication",
     },
     {
       to: "/welcome/building-new",
@@ -745,20 +749,36 @@ const redirects = {
       from: "/existing-apps",
     },
     {
-      to: "/welcome/projects/account-management",
+      to: "/welcome/set-up-revenuecat/account-management",
       from: "/account-management",
     },
     {
-      to: "/welcome/projects/collaborators",
+      to: "/welcome/set-up-revenuecat/account-management",
+      from: "/welcome/projects/account-management",
+    },
+    {
+      to: "/projects/collaborators",
       from: "/collaborators",
     },
     {
-      to: "/welcome/projects/security",
+      to: "/projects/collaborators",
+      from: "/welcome/projects/collaborators",
+    },
+    {
+      to: "/welcome/set-up-revenuecat/security",
       from: "/security",
     },
     {
-      to: "/welcome/projects",
+      to: "/welcome/set-up-revenuecat/security",
+      from: "/welcome/projects/security",
+    },
+    {
+      to: "/projects/overview",
       from: "/projects",
+    },
+    {
+      to: "/projects/overview",
+      from: "/welcome/projects",
     },
     {
       to: "/welcome/overview",
@@ -1440,32 +1460,52 @@ const redirects = {
       from: "/targeting.html",
     },
     {
-      to: "/welcome/authentication",
-      from: "/authentication.html",
+      to: "/projects/authentication",
+      from: "/authentication",
+    },
+    {
+      to: "/projects/authentication",
+      from: "/welcome/authentication",
     },
     {
       to: "/welcome/building-new",
-      from: "/building-new.html",
+      from: "/building-new",
     },
     {
       to: "/welcome/existing-apps",
-      from: "/existing-apps.html",
+      from: "/existing-apps",
     },
     {
-      to: "/welcome/projects/account-management",
+      to: "/welcome/set-up-revenuecat/account-management",
       from: "/account-management.html",
     },
     {
-      to: "/welcome/projects/collaborators",
+      to: "/welcome/set-up-revenuecat/account-management",
+      from: "/welcome/projects/account-management.html",
+    },
+    {
+      to: "/projects/collaborators",
       from: "/collaborators.html",
     },
     {
-      to: "/welcome/projects/security",
+      to: "/projects/collaborators",
+      from: "/welcome/projects/collaborators.html",
+    },
+    {
+      to: "/welcome/set-up-revenuecat/security",
       from: "/security.html",
     },
     {
-      to: "/welcome/projects",
+      to: "/welcome/set-up-revenuecat/security",
+      from: "/welcome/projects/security.html",
+    },
+    {
+      to: "/projects/overview",
       from: "/projects.html",
+    },
+    {
+      to: "/projects/overview",
+      from: "/welcome/projects.html",
     },
     {
       to: "/welcome/overview",
