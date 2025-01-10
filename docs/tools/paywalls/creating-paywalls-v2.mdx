@@ -46,7 +46,7 @@ Stacks, packages, buttons, and the footer are all parents components which can c
 
 [Learn more about each component.](/tools/paywalls/creating-paywalls-v2/components)
 
-## Getting started
+## Building paywalls
 
 You can start creating your paywall by either:
 
@@ -64,15 +64,49 @@ Once you've selected a template or picked starting from scratch, you'll land on 
 3. **Preview**: The preview of your paywall.
 4. **Control panel**: The options to change the locale, light/dark mode, and other preview settings to see how your paywall looks in various scenarios. The control panel is also where you can manage localizations through one page instead of modifying them component-by-component.
 
-### Arranging components
+### Adding components
 
 Components can be added to a paywall in two ways:
 
 1. Directly to the main paywall with the **+ Add Component** button
-2. Directly within a complex component, such as a stack, with the **+** button in that component's row in the layers panel.
+2. Directly within a compparentlex component, such as a stack, with the **+** button in that component's row in the components panel.
 
-Once a component has been added to a paywall, you can determine its order by dragging it vertically in the stack, or determine its parent component by dragging it underneath the desired parent and indenting it horizontally.
+Once a component has been added to a paywall, you can determine its order on your paywall by dragging it vertically in the stack, or determine its parent component by dragging it underneath the desired parent and indenting it horizontally.
+
+![Arrange components](/images/paywalls-arrange-components.gif)
 
 :::tip Parent & child components
 A child component will be subject to the axis, alignment, distribution, and child spacing properties of the parent component; and will be impacted by other properties such as margin & padding.
 :::
+
+### Modifying components
+
+When you click on a component in the components panel, you'll see it displayed in the component properties panel on the right side of your screen. These properties represent the configurable elements of each component that can be used to give it a unique look and feel.
+
+Many properties for controlling layout, size, and appearance are similar between components; but each one has their own unique properties that are specific to the use cases of that component.
+
+[Learn more about component properties.](/tools/paywalls/creating-paywalls-v2/component-properties)
+
+![Stack properties](/images/paywalls-stack-properties.png)
+
+In addition, by clicking on the **...** option in a component's row in the components panel, you can rename, duplicate, or delete any component.
+
+![Stack options](/images/paywalls-stack-options.png)
+
+### Saving a paywall
+
+When creating a new paywall, you can save your changes at any time by clicking the **Save Changes** button at the top right of the page.
+
+This will save your paywall in an inactive state so that you can continue editing it, but it will not yet be sent to your app and made available to customers.
+
+To make your paywall available to customers, click **Publish Paywall**. Once a paywall is published, it will be available via the RevenueCat SDK and therefore can be seen by your customers depending on how you're serving Offerings to them.
+
+:::tip Required components
+All paywalls must have a purchase button and at least one package added in order to be publishable.
+:::
+
+:::warning Minimum supported SDK version
+Paywalls built through the new v2 paywall editor are only supported on RevenueCat Native iOS SDK versions x.x.x+ or later. If you have existing app version serving RevenueCat Paywalls, setup a [Targeting Rule](/tools/targeting) to continue serving them a v1 paywall, so that only customers on supported app versions are served a new v2 paywall.
+:::
+
+[Learn more about displaying paywalls.](/tools/paywalls/displaying-paywalls)
