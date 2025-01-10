@@ -47,9 +47,16 @@ Whether you have just one or one million subscribers, you can easily replace you
 />
 
 <FeatureItem
-  title="Data, Analytics, & Integrations"
+  title="Events & Integrations"
   subtitle="Clean, normalized subscription data at your fingertips and in every system."
-  link="/docs/integrations/third-party-integrations"
+  link="/docs/integrations/integrations"
+  emoji="🔔"
+/>
+
+<FeatureItem
+  title="Charts, Metrics, & Data"
+  subtitle="Get insights into your business with charts, metrics, and data exports."
+  link="/docs/dashboard-and-metrics/overview"
   emoji="📈"
 />
 
