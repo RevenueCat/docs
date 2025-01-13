@@ -22,9 +22,9 @@ Within each Offering, there must be one or more **Packages**. Packages are simp
 
 ### Default Offering
 
-RevenueCat Offerings include a **default**, or "current" Offering. This is the Offering that will be returned in the Purchases SDK as a customer's `current` Offering when using the `getOfferings` method if no other conditions apply to them.
+The RevenueCat dashboard allows you to choose which Offering should be the Default Offering for customers in your Project. This Default Offering will be returned in the Purchases SDK as a customer's `current` Offering when using the `getOfferings` method if no other conditions apply to them.
 
-For example, your default Offering may contain a monthly and annual subscription, but you might want to experiment with Offerings with a different combination of subscription durations, trial lengths, prices, etc.
+If you build your paywall to reference the `current` Offering, instead of hardcoding an identifier value, you can change this Offering from the dashboard to dynamically display different Offerings at any time, either by modifying your Project's Default Offering or by utilizing features like [Targeting](https://www.revenuecat.com/docs/tools/targeting) and [Experiments](https://www.revenuecat.com/docs/tools/targeting). We strongly recommend utilizing the `current` Offering feature. See [Displaying Products](/getting-started/displaying-products) for more info.
 
 ## Creating an Offering
 
@@ -33,11 +33,6 @@ To create an Offering, navigate to the Offerings tab to your project settings in
 You'll be prompted to enter an **Identifier** and **Description** for your offering. _Note that the offering identifier cannot be changed later_. Once you've entered this information, click **Add**.
 
 ![Screenshot](/images/7508f4b-Screenshot_2023-12-05_at_10.17.25_PM_4a7403e5b880248ab9c00c129c89edd6.png)
-
-**Default Offering**  
-The RevenueCat dashboard allows you to choose which Offering should be the Default Offering for customers in your Project. This Default Offering will be returned in the Purchases SDK as a customer's `current` Offering when using the `getOfferings` method if no other conditions apply to them.
-
-If you build your paywall to reference the `current` Offering, instead of hardcoding an identifier value, you can change this Offering from the dashboard to dynamically display different Offerings at any time, either by modifying your Project's Default Offering or by utilizing features like [Targeting](https://www.revenuecat.com/docs/tools/targeting) and [Experiments](https://www.revenuecat.com/docs/tools/targeting). We strongly recommend utilizing the `current` Offering feature. See [Displaying Products](/getting-started/displaying-products) for more info.
 
 ### Adding Packages
 
