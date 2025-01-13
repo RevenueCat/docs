@@ -291,6 +291,19 @@ In contrast to mobile app stores, there is no intermediary between you and the c
 
 If you use the RevenueCat Billing sandbox API key, Stripe's test mode will be used automatically, and you can use one of Stripe's [test cards](https://docs.stripe.com/testing) to make purchases.
 
+### Renewals in Sandbox
+
+Sandbox subscriptions renew faster than actual subscriptions to facilitate testing. They also automatically renew up to a maximum of 6 cycles. At that point, the subscription will be automatically cancelled.
+
+The following table shows the duration of each feature in sandbox mode:
+
+| Feature               | Duration                              |
+| --------------------- | ------------------------------------- |
+| Trial duration        | 5 minutes                             |
+| Subscription duration | 5 minutes and up to 6 cycles          |
+| Grace period duration | 3 minutes                             |
+| Billing retries       | Every 3 minutes and up to 5 attemptts |
+
 ## Current limitations
 
 RevenueCat Billing currently has a number of known limitations. Most notably:
