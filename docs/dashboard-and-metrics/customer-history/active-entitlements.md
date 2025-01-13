@@ -52,6 +52,18 @@ Transferring an entitlement will:
 Transferring entitlements works with the block-restore behavior
 :::
 
+## Refunding and Cancelling Purchases
+
+Google Play and RevenueCat Billing purchases can be refunded directly through the RevenueCat dashboard. Granting a refund will immediately expire the subscription and remove any entitlement access. By refunding directly through RevenueCat you can ensure that refunds are accounted for immediately in all charts and integrations. 
+
+RevenueCat Billing subscriptions and Google Play subscriptions in the trial period can also be cancelled, which means that they will not renew at the next expiration date.
+
+The entry point for refunding and cancelling purchases is the "..." menu on the subscription in the "Entitlements" card of the customer profile.
+
+![](/images/refunding-and-cancelling.png)
+
+Apple doesn’t allow developers to grant refunds themselves, only through Apple customer support. However, Apple refunds are tracked with RevenueCat and accounted for in all charts and integrations.
+
 ## Next Steps
 
 - [Granted entitlements](/dashboard-and-metrics/customer-history/promotionals)
