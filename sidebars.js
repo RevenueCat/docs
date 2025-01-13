@@ -563,6 +563,7 @@ const metricsCategory = Category({
     Page({ slug: "overview" }),
     Page({ slug: "taxes-and-commissions" }),
     Page({ slug: "performance-summaries" }),
+    Page({ slug: "anomaly-detection-notifications" }),
     Page({ slug: "display-currency" }),
   ],
 });
