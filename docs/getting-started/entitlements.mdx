@@ -1,77 +1,15 @@
 ---
-title: Configuring Products
-slug: entitlements
-excerpt: Use Entitlements and Offerings to organize and display products
-hidden: false
+title: Entitlements
 ---
+{/* I'm including this, because this doc historically had a lot of information on product configuration, and not just entitlements. this is to keep some kind of continuity for legacy links to this page */}
 
-The RevenueCat dashboard allows you to specify what level of access each product should unlock for your users, which can greatly simplify your in-app code to check for subscription access. The dashboard also allows you to configure which in-app products are shown to your users remotely, so you can control how they're presented without the need to update your app. This is great for experimenting how different product configurations affect key subscription metrics.
-
-<YouTubeEmbed videoId="QxHeZiW4KCA" title="RevenueCat Products, Offerings, and Entitlements Explained" />
-
-There are three levels of product configuration available within RevenueCat:
-
-1. Products
-2. Entitlements
-3. Offerings
-
-![An example of how products in Apple, Google, and Stripe translate to Products, Entitlements, and Offerings in RevenueCat.](/images/fb06e40-Screen_Shot_2020-07-01_at_6.12.53_PM_1af060245ecc584ec346645267c86b18.png)
-
-The diagram above illustrates how products from Apple, Google, and Stripe would tie into RevenueCat. The configuration is explained in more detail below.
-
-## Products
-
-Products are the individual SKUs that users actually purchase. The stores (Apple, Google, Stripe, and Amazon) process these SKUs and charge the user.
-
-### Store Configuration
-
-No matter how you choose to use RevenueCat, you'll need to first have products set up in the stores. This is done outside of RevenueCat, and where you set things like price, duration, and free trials. If you've never set up products before or need a refresher (or tips and tricks) check out these guides:
-
-- **[iOS / App Store Connect ](/getting-started/entitlements/ios-products)**
-- **[Android / Google Play Console ](/getting-started/entitlements/android-products)**
-- **[Android / Amazon Appstore ](/getting-started/entitlements/amazon-product-setup)**
-- **[Stripe ](/getting-started/entitlements/stripe-products)**
-
-### RevenueCat Configuration
-
-After your products are set up in the stores, you'll also need to set up a 1-to-1 mapping of the products in RevenueCat as well.
-
-Navigate to the **Products** tab in the settings for your project in the RevenueCat dashboard. To add a new product, click the **+ New** button and enter the product identifier **exactly as it appears in the store**, as well as the store that the product belongs to.
-
-These product identifiers are the link between RevenueCat, and Apple, Google, Stripe, or Amazon.
-
-![](/images/47e4904-Screenshot_2023-03-20_at_16.04.55_2bf3bf6fb0d0340d8c4cd509e6f7aa43.png "Screenshot 2023-03-20 at 16.04.55.png")
-
-After clicking "New", you also have the opportunity to directly import products for the following stores: Apple App Store, subscriptions from Google Play Store. Support for importing from other stores will be added in the future.
-
-If you choose to set up subscription products manually for Google Play apps, you will need to add both the subscription ID and the base plan ID, which you can find in Google Play Console as per the following screenshot:
-
-![](/images/dc9d124-9d0e770-Screen_Shot_2023-01-12_at_5.07.03_PM_a7f6bebfee549b1da0ddafbc10858bd2.png "9d0e770-Screen_Shot_2023-01-12_at_5.07.03_PM.png")
-
-:::info
-If a user purchases a product that has not been set up in RevenueCat, the purchase will still go through and be tracked in RevenueCat.
+:::info Looking for details on product configuration?
+See [Products Overview](/offerings/products-overview) for more information on configuring products and importing them to RevenueCat.
 :::
 
-To make it easier to identify your products in RevenueCat, you can optionally set a display name for them by:
+RevenueCat Entitlements represent a level of access, features, or content that a user is "entitled" to. Entitlements are scoped to a [project](/projects/overview), and are typically unlocked after a user purchases a [product](/offerings/products-overview).
 
-1. Navigating to a product's configuration page
-2. Clicking **Edit**
-3. Entering your desired display name
-4. Clicking **Save**
-
-:::info
-Product display names must be unique within an app. It's a good practice to include the product duration in the display name to avoid name overlaps, for example: 'My Pro Subscription Monthly', 'My Pro Subscription Yearly' etc".
-:::
-
-:::warning
-Product display names are currently supported in Charts, and will be supported throughout the Dashboard in the near future.
-:::
-
-## Entitlements
-
-An entitlement represents a level of access, features, or content that a user is "entitled" to.
-
-Entitlements are used to ensure a user has appropriate access to content based on their purchases, without having to manage all of the product identifiers in your app code.
+Entitlements are used to ensure a user has appropriate access to content based on their purchases, without having to manage all of the product identifiers in your app code. For example, you can use entitlements to unlock "pro" features after a user purchases a subscription.
 
 Most apps only have one entitlement, unlocking all premium features. However, if you had two tiers of content such as Gold and Platinum, you would have 2 entitlements.
 
@@ -107,69 +45,14 @@ When designing your Entitlement structure, keep in mind that a single product ca
 When relying on entitlements to enable access to certain content, it's important that you remember to add new products to their associated entitlements if needed. Failing to add your products to an entitlement, could lead to your users making purchases that don't unlock access to the promised content.
 :::
 
-## Offerings
+## Checking Entitlement Status
 
-Offerings are the selection of products that are "offered" to a user on your paywall. They're an optional, but recommended feature of RevenueCat that can make it easier to change and experiment with your paywalls.
+Since an entitlement represents a level of access that a user is entitled to, you'll want to check for entitlement status in your app to unlock the appropriate content. If an entitlement is active, you can unlock the associated content. If an entitlement is inactive, you can display a paywall to the user.
 
-Offerings allow you to choose which combination of products are shown to a user on your paywall or upsell screen. For example your default Offering may contain a monthly and annual subscription, but you might want to experiment with Offerings with a different combination of subscription durations, trial lengths, prices, etc.
+You can use the RevenueCat SDK to check for entitlement status, with the `getCustomerInfo` method. You can read more about checking subscription and purchase status in the [Checking Subscription Status](/customers/customer-info) guide.
 
-Within each Offering, there must be one or more **Packages**. Packages are simply a group of equivalent products across iOS, Android, and web. If your app is available on multiple platforms, then a Package would contain all of the equivalent product Ids from each platform.
+## Next steps
 
-![](/images/c4f0b08-Screen_Shot_2020-07-01_at_6.35.06_PM_bebc522b7112c8d3fe6a4549256ba588.png "Screen Shot 2020-07-01 at 6.35.06 PM.png")
+If you've configured your entitlements, it's time to create an Offering.
 
-### Creating an Offering
-
-To create an Offering, navigate to the Offerings tab to your project settings in the RevenueCat dashboard, and click **+ New** to get started.
-
-You'll be prompted to enter an **Identifier** and **Description** for your offering. _Note that the offering identifier cannot be changed later_. Once you've entered this information, click **Add**.
-
-![Screenshot](/images/7508f4b-Screenshot_2023-12-05_at_10.17.25_PM_4a7403e5b880248ab9c00c129c89edd6.png)
-
-**Default Offering**  
-The RevenueCat dashboard allows you to choose which Offering should be the Default Offering for customers in your Project. This Default Offering will be returned in the Purchases SDK as a customer's `current` Offering when using the `getOfferings` method if no other conditions apply to them.
-
-If you build your paywall to reference the `current` Offering, instead of hardcoding an identifier value, you can change this Offering from the dashboard to dynamically display different Offerings at any time, either by modifying your Project's Default Offering or by utilizing features like [Targeting](https://www.revenuecat.com/docs/tools/targeting) and [Experiments](https://www.revenuecat.com/docs/tools/targeting). We strongly recommend utilizing the `current` Offering feature. See [Displaying Products](/getting-started/displaying-products) for more info.
-
-### Adding Packages
-
-Each Offering you create should contain at least one Package that holds cross-platform products.
-
-To create a package, click into your new Offering, then click **+ New** in the Packages section. In the popup, choose an **Identifier** from the dropdown that corresponds with the duration of the package. If a duration isn't suitable for your package (e.g. consumable purchases), then you can choose a custom identifier. Include a **Description**, then click **Add**.
-
-![](/images/f416859-Screenshot_2023-03-21_at_10.57.10_dc01f310276ab6c27a087da90a72a782.png "Screenshot 2023-03-21 at 10.57.10.png")
-
-Click into the newly created package and begin attaching product by clicking **Attach**.
-
-![](/images/0c981f7-Screenshot_2023-03-21_at_10.51.29_6b599e6b850c5fc7ef2631a5adec12e9.png "Screenshot 2023-03-21 at 10.51.29.png")
-
-On the next screen, you'll see dropdowns to select the appropriate product for each store. Choose the appropriate products, then click **Attach**.
-
-![](/images/9bad7ea-Screenshot_2023-03-21_at_10.54.31_7ebbf8f6f7f03c93fc30178ec082fffd.png "Screenshot 2023-03-21 at 10.54.31.png")
-
-For Google Play store products, if you select a non backwards-compatible product and the [app compatibility setting](/getting-started/entitlements/google-subscriptions-and-backwards-compatibility) is set to "SDK v6+ and backwards compatible", you will have the ability to configure a backwards compatible fallback product. This product will be available for purchase in previous versions of the SDK which don't yet support non backwards compatible products.
-
-![](/images/fba3a35-Screenshot_2023-03-21_at_10.54.52_499e0d4c200876ac2fb91f6174911865.png "Screenshot 2023-03-21 at 10.54.52.png")
-
-:::info
-Any product can be added to an Offering, even if it's not part of any Entitlement. This can come in handy if your app's paywall contains a combination of subscription products that unlock Entitlements, and consumable products that do not.
-:::
-
-Continue this process until all of the packages are created for your Offering, and all Offerings are created.
-
-The packages within an offering can be updated at any time, and their display order can be modified by dragging their position in the table. This display order will be reflected in the SDK when you fetch Offerings.
-
-![](/images/de814f7-app.revenuecat.com_projects_85ff18c7_offerings_packages_pkge2ed0611690_attach_2_a52581f352630063980b5d583618970a.png "app.revenuecat.com_projects_85ff18c7_offerings_packages_pkge2ed0611690_attach (2).png")
-
-### Removing Packages
-
-Packages can be removed from an Offering at any time. This can be useful if you want to update your paywall on-the-fly without an app update.
-
-Removing a package from an Offering **does not** remove the products from RevenueCat, remove transactions, or remove the products from any Entitlements. You can re-add a package and products at any time.
-
-![](/images/dff40c4-Screen_Shot_2022-12-05_at_12.12.05_PM_8a4763f6533fdd43a377809bc374da70.png "Screen Shot 2022-12-05 at 12.12.05 PM.png")
-
-## Next Steps
-
-You've successfully created Entitlements, Offerings, and Packages, and have attached products to be used in your app.
-
-Continue on to [Displaying Products](/getting-started/displaying-products) to start showing your new Offering in your app.
+<Button href="/docs/offerings/overview">Create an Offering →</Button>

@@ -3,159 +3,28 @@ title: Paywalls
 slug: paywalls
 hidden: false
 ---
+
 RevenueCat's Paywalls allow you to remotely configure your entire paywall view without any code changes or app updates. Whether you’re building a new app, exploring new paywall concepts, or diving into experimentation; RevenueCat’s Paywalls make it easy to get started.
-
-## Paywalls are supported in the following SDK versions:
-| RevenueCat SDK           | Version required for Paywalls | 
-| :----------------------- | :--------------------------------------------- |
-| purchases-ios             | 4.26.0 and up                 |
-| purchases-android         | 7.1.0 and up                  |
-| react-native-purchases-ui | 7.15.0 and up                 | 
-| purchases-flutter         | 6.15.0 and up                 |
-| purchases-kmp             | 1.0.0 and up                  |
-
-:::info
-Within the SDKs, Paywalls are available on the following platforms:
-- iOS 15.0+
-- visionOS 1.0+
-- Mac Catalyst 15.0+
-- watchOS 8.0+
-- Android 7.0 (API level 24)
-
-Support for more platforms is coming soon: macOS, tvOS, and others!
-:::
 
 import YouTubeEmbed from '@site/src/components/YouTubeEmbed';
 
 <YouTubeEmbed videoId="xSc9ICeyJpk" title="Introducing RevenueCat Paywalls" />
 
-## How Paywalls work
+You can think of a Paywall as an optional feature of your Offering. An Offering is the collection of Products which are organized into Packages to be displayed to your customers as a single "offer" across platforms. Now, with Paywalls, you can control the actual view that is used to display that "offer" in addition to controlling the products that are offered.
 
-### iOS Installation
+Therefore, you can create a unique Paywall for each of your Offerings, and can create an unlimited number of Offerings & Paywalls for each variation you want to test with Experiments.
 
-#### Using SPM:
-
-##### If you already have `RevenueCat` in your project:
-
-1. Open your project settings and select "Package Dependencies":
-
-![Change version](https://github.com/RevenueCat/purchases-ios/assets/685609/d317fd33-8270-4d9b-9b38-8f5f14342b04)
-
-2. Double-click and make sure version is at least `4.26.0`:
-
-![Configure version](https://github.com/RevenueCat/purchases-ios/assets/685609/f537a1e1-a1ab-4e6f-986c-05abdcf1dd9f)
-
-3. Open your target settings and find "Frameworks, Libraries, and Embedded Content":
-
-![Find frameworks in your target](https://github.com/RevenueCat/purchases-ios/assets/685609/af078e9a-4b98-42c6-8ca7-6f79aebdf3e0)
-
-4. Add `RevenueCatUI`:
-
-![Add RevenueCatUI dependency](https://github.com/RevenueCat/purchases-ios/assets/685609/c2a3498c-b80d-405c-bdf6-75de927ea58e)
-
-##### First time integrating the RevenueCat SDK:
-
-1. Click File -> Add Packages...
-
-2. Search for `git@github.com:RevenueCat/purchases-ios.git` and make sure version is at least `4.26.0`:
-
-![Adding purchases-ios dependency](https://github.com/RevenueCat/purchases-ios/assets/685609/18291043-5710-4944-ba12-7d6d83bde240)
-
-3. Add `RevenueCat` and `RevenueCatUI` SPM dependency to your project:
-
-![Add paywall](/images/9140485-Screenshot_2023-08-04_at_12.08.07_78343500e565bc1fd0fceaac72486876.png)
-
-#### Using CocoaPods:
-
-Add the following to your `Podfile`:
-```ruby
-pod 'RevenueCat'
-pod 'RevenueCatUI'
-```
-
-### Android Installation
-
-1. Add `RevenueCatUI`:
-```groovy build.gradle
-implementation 'com.revenuecat.purchases:purchases:7.1.0'
-implementation 'com.revenuecat.purchases:purchases-ui:7.1.0'
-```
-
-:::danger
-Android paywalls is currently behind an experimental flag (`ExperimentalPreviewRevenueCatUIPurchasesAPI`).
-
-It is safe to release app updates with it. We guarantee that paywalls will continue to work and any changes will always be backwards compatible.
-
-They are stable, but migration steps may be required in the future. We'll do our best to minimize any changes you have to make.
-:::
-
-### React Native Installation
-
-- Update your `package.json` to include `react-native-purchases-ui`:
-```json
-{
-  "dependencies": {
-    "react-native-purchases": "7.15.0",
-    "react-native-purchases-ui": "7.15.0"
-  }
-}
-```
-
-### Flutter Installation
-
-- Add `purchases-ui-flutter` in your `pubspec.yaml`:
-```yaml
-dependencies:
-  purchases_flutter: 6.15.0
-  purchases_ui_flutter: 6.15.0
-```
-- For Android, you need to change your `MainActivity` to subclass `FlutterFragmentActivity` instead of `FlutterActivity`.
-
-### Kotlin Multiplatform Installation
-
-Add the following Maven coordinates to your `libs.versions.toml`:
-```toml libs.versions.toml
-[versions] 
-purchases-kmp = "1.1.0+13.3.0"
-
-[libraries]
-purchases-core = { module = "com.revenuecat.purchases:purchases-kmp-core", version.ref = "purchases-kmp" }
-purchases-ui = { module = "com.revenuecat.purchases:purchases-kmp-ui", version.ref = "purchases-kmp" }
-```
-
-Then add the dependencies to the `commonMain` sourceset in your Compose Multiplatform module's `build.gradle.kts`:
-```kotlin build.gradle.kts
-kotlin {
-    // ...
-    sourceSets {
-        // ...
-        commonMain.dependencies {  
-            // Add the purchases-kmp dependencies.
-            implementation(libs.purchases.core)  
-            implementation(libs.purchases.ui)  
-        }
-    }
-}
-```
-
-Lastly, you'll need to make sure you link the `PurchasesHybridCommonUI` native iOS framework. If your iOS app uses Swift Package Manager, add the `PurchasesHybridCommonUI` library to your target in the same way you added the `PurchasesHybridCommon` library. If your iOS app uses CocoaPods, either update its `Podfile`, or update your Compose Multiplatform module's `build.gradle.kts`, depending on how your Multiplatform module is integrated with your iOS project.
-
-
-### Overview
+### Getting Started
 
 Our paywall templates use native code to deliver smooth, intuitive experiences to your customers when you’re ready to deliver them an Offering; and you can use our Dashboard to pick the right template and configuration to meet your needs.
 
 To use RevenueCat Paywalls, simply:
 
-1. [Create a Paywall](/tools/paywalls/creating-paywalls) on the Dashboard for the [Offering](/getting-started/entitlements) you intend to serve to your customers
+1. [Install the RevenueCat UI SDK](/tools/paywalls/installation)
 
-2. See [displaying paywalls](/tools/paywalls/displaying-paywalls) for how to display it into your app.
+2. [Create a Paywall](/tools/paywalls/creating-paywalls) on the Dashboard for the [Offering](/getting-started/entitlements) you intend to serve to your customers
 
-### Offerings and Paywalls
-
-You can think of a Paywall as an optional feature of your Offering. An Offering is the collection of Products which are organized into Packages to be displayed to your customers as a single "offer" across platforms. Now, with Paywalls, you can control the actual view that is used to display that "offer" in addition to controlling the products that are offered.
-
-Therefore, you can create a unique Paywall for each of your Offerings, and can create an unlimited number of Offerings & Paywalls for each variation you want to test with Experiments.
+3. See [displaying paywalls](/tools/paywalls/displaying-paywalls) for how to display it into your app.
 
 ## Limitations
 

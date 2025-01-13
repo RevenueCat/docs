@@ -4,8 +4,6 @@ slug: active-subscriptions-movement-chart
 hidden: false
 ---
 
-## Definition
-
 The Active Subscriptions Movement chart measures the change in unique paid subscriptions over a period. Active Subscriptions Movement can be thought of as a breakdown of what caused the change in the [Active Subscriptions](/dashboard-and-metrics/charts/active-subscriptions-chart) count between two periods.
 
 ### Available settings
@@ -35,6 +33,7 @@ For a given period, the difference of these counts is the Movement measured in t
 [New Actives] - [Churned Actives] = Active Subscription Movement
 
 ## Sample query from Scheduled Data Exports
+
 With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can get daily exports of your transactions from RevenueCat to reproduce and customize measures like this one that are provided by RevenueCat. You can find the full set of available sample queries [here](/integrations/scheduled-data-exports#sample-queries-for-revenuecat-measures).
 
 ## FAQs

@@ -5,9 +5,11 @@ excerpt: Importing historical Google Play transactions into RevenueCat
 hidden: false
 ---
 
-## Google Historical Import
+Doing a Google historical import overcomes some limitations of the Play Store receipts and allows RevenueCat to ingest subscription history dating back to July 2023.
 
-Doing a Google historical import overcomes some limitations of the Play Store receipts and allows RevenueCat to ingest subscription history dating back to July 2023. When migrating to RevenueCat, whether by [forwarding your receipt](/migrating-to-revenuecat/sdk-or-not/sdk-less-integration) or installing the SDK, your Google Play subscription history may be incomplete, because Google does not provide status information for purchase tokens that have expired more than 90 days ago, and for newer tokens, Google only provides the current state, not the history. By combining your migration with Google Historical Imports, RevenueCat will be able to fill in the gaps in your subscription history.
+When migrating to RevenueCat, whether by [forwarding your receipt](/migrating-to-revenuecat/sdk-or-not/sdk-less-integration) or installing the SDK, your Google Play subscription history may be incomplete, because Google does not provide status information for purchase tokens that have expired more than 90 days ago, and for newer tokens, Google only provides the current state, not the history.
+
+By combining your migration with Google Historical Imports, RevenueCat will be able to fill in the gaps in your subscription history.
 
 ## Setup
 
@@ -16,7 +18,7 @@ Doing a Google historical import overcomes some limitations of the Play Store re
 You should make sure you have the following before proceeding with the setup:
 
 - An existing Play Store app with Google Play purchases
-- Created at least [1 project](/welcome/projects#configure-a-new-project) with [1 Play Store app](/welcome/projects#adding-an-app-to-a-project) in RevenueCat
+- Created at least [1 project](/projects/overview) with [1 Play Store app](/projects/connect-a-store) in RevenueCat
 - Uploaded your Google Play package in your RevenueCat Play Store app settings
 - Created and uploaded your [Google Service Credentials](/service-credentials/creating-play-service-credentials) to a Play Store app in RevenueCat. It is imperative you grant Financial Access to RevenueCat. Failure to do so may result in delays importing your Google Play data.
 - Enabled [Google Real-Time Developer Notifications](/platform-resources/server-notifications/google-server-notifications)
@@ -52,7 +54,7 @@ Google Historical Imports pulls information directly from Google Play's sales re
 
 ### App User IDs
 
-For Google Play purchases that RevenueCat **is not** already tracking, we will generate transactions with a RC anonymous ID.
+For Google Play purchases that RevenueCat **is not** already tracking, we will generate transactions with a RevenueCat anonymous ID.
 
 ### Event Data
 

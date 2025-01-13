@@ -1,5 +1,6 @@
 ---
 title: Creating Offerings to Test
+sidebar_label: "Guide: Creating Offerings to Test"
 slug: creating-offerings-to-test
 hidden: false
 ---

@@ -7,7 +7,7 @@ hidden: false
 
 _Purchases_ is our SDK that correctly implements purchases and subscriptions across platforms while syncing tokens with the RevenueCat server. Check out the install guides below integrate the SDK into all of your apps.
 
-- [iOS Installation →](/getting-started/installation/ios)
+- [iOS & Apple Platforms Installation →](/getting-started/installation/ios)
 - [Android Installation →](/getting-started/installation/android)
 - [React Native Installation →](/getting-started/installation/reactnative)
 - [Flutter Installation →](/getting-started/installation/flutter)
@@ -16,5 +16,10 @@ _Purchases_ is our SDK that correctly implements purchases and subscriptions acr
 - [Capacitor Installation →](/getting-started/installation/capacitor)
 - [Unity Installation →](/getting-started/installation/unity)
 - [Web Installation →](/getting-started/installation/web-sdk)
-- [macOS / Catalyst Installation →](/getting-started/installation/macos)
 - [Roku →](/getting-started/installation/roku)
+
+## Next steps
+
+After you've installed the SDK, it's time to configure it with your API key.
+
+<Button href="/docs/getting-started/configuring-sdk">Configure the SDK →</Button>

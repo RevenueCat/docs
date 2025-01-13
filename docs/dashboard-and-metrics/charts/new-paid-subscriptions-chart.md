@@ -4,8 +4,6 @@ slug: new-paid-subscriptions-chart
 hidden: false
 ---
 
-## Definition
-
 The New Paid Subscriptions chart measures the number of subscriptions that first paid in a period, broken down by how the subscription was created.
 
 When a subscription has its first payment, it becomes an Active Subscription, and therefore Total New Paid Subscriptions in this chart can be directly compared with New Actives in the Active Subscriptions Movement chart.

@@ -7,15 +7,13 @@ hidden: false
 
 If you've [configured Offerings](/getting-started/entitlements) in RevenueCat, you can control which products are shown to users without requiring an app update. Building paywalls that are dynamic and can react to different product configurations gives you maximum flexibility to make remote updates.
 
-![](/images/edbe93c-Screen_Shot_2019-09-20_at_8.42.23_AM_59c150580bdd5ebf10173ddbb9629fc7.png "Screen Shot 2019-09-20 at 8.42.23 AM.png")
-
 :::info
 Before products and offerings can be fetched from RevenueCat, be sure to initialize the Purchases SDK by following our [Quickstart](/getting-started/quickstart) guide.
 :::
 
 ## Fetching Offerings
 
-Offerings are fetched through the SDK based on their [configuration](/getting-started/entitlements) in the RevenueCat dashboard.
+Offerings are fetched through the SDK based on their [configuration](/offerings/overview) in the RevenueCat dashboard.
 
 The `getOfferings` method will fetch the Offerings from RevenueCat. These are pre-fetched in most cases on app launch, so the completion block to get offerings won't need to make a network request in most cases.
 
