@@ -84,7 +84,7 @@ Offerings are fetched through the SDK via the `getOfferings` method. These are p
 
 For more information on how to fetch Offerings, see our [Displaying Products](/getting-started/displaying-products) guide.
 
-To fetch a user's Offering configuration via the REST API, see our [API Reference](/api-v1).
+To fetch a user's Offering configuration via the REST API, see our [API Reference](/api-v1#tag/offerings/operation/get-offerings).
 
 ## Next steps
 
