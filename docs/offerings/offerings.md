@@ -8,13 +8,25 @@ Offerings are the selection of [products](/offerings/products-overview) that are
 
 <YouTubeEmbed videoId="QxHeZiW4KCA" title="RevenueCat Products, Offerings, and Entitlements Explained" />
 
-Offerings allow you to choose which combination of products are shown to a user on your paywall or upsell screen. For example your default Offering may contain a monthly and annual subscription, but you might want to experiment with Offerings with a different combination of subscription durations, trial lengths, prices, etc.
+## How Offerings Work
+
+Offerings are a way to group products together to display to users. You can think of them as a "paywall" that contains a set of products.
+
+Offerings are created and configured in the RevenueCat dashboard. When using [RevenueCat Paywalls](/tools/paywalls), you'll configure a single paywall that is paired to a single Offering.
+
+### Packages
 
 Within each Offering, there must be one or more **Packages**. Packages are simply a group of equivalent products across iOS, Android, and web. If your app is available on multiple platforms, then a Package would contain all of the equivalent product identifiers from each platform.
 
 ![](/images/c4f0b08-Screen_Shot_2020-07-01_at_6.35.06_PM_bebc522b7112c8d3fe6a4549256ba588.png "Screen Shot 2020-07-01 at 6.35.06 PM.png")
 
-### Creating an Offering
+### Default Offering
+
+RevenueCat Offerings include a **default**, or "current" Offering. This is the Offering that will be returned in the Purchases SDK as a customer's `current` Offering when using the `getOfferings` method if no other conditions apply to them.
+
+For example, your default Offering may contain a monthly and annual subscription, but you might want to experiment with Offerings with a different combination of subscription durations, trial lengths, prices, etc.
+
+## Creating an Offering
 
 To create an Offering, navigate to the Offerings tab to your project settings in the RevenueCat dashboard, and click **+ New** to get started.
 
@@ -64,6 +76,20 @@ Packages can be removed from an Offering at any time. This can be useful if you 
 Removing a package from an Offering **does not** remove the products from RevenueCat, remove transactions, or remove the products from any Entitlements. You can re-add a package and products at any time.
 
 ![](/images/dff40c4-Screen_Shot_2022-12-05_at_12.12.05_PM_8a4763f6533fdd43a377809bc374da70.png "Screen Shot 2022-12-05 at 12.12.05 PM.png")
+
+## Paywalls
+
+Offerings can be paired with a [paywall](/tools/paywalls) that is configured in the RevenueCat dashboard. RevenueCat Paywalls are an easy way to display a set of products to a user, and can be configured remotely.
+
+You can read more about how to create and configure paywalls in our [Paywalls](/tools/paywalls) guide.
+
+## Fetching Offerings
+
+Offerings are fetched through the SDK via the `getOfferings` method. These are pre-fetched in most cases on app launch, so the completion block to get offerings won't need to make a network request in most cases.
+
+For more information on how to fetch Offerings, see our [Displaying Products](/getting-started/displaying-products) guide.
+
+To fetch a user's Offering configuration via the REST API, see our [API Reference](/api-v1).
 
 ## Next steps
 
