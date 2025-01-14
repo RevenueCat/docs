@@ -942,8 +942,9 @@ components:
                 properties:
                   expires_date:
                     type: string
-                    description: Date when the entitlement expires / expired (in ISO 8601 format, may be in the past).
+                    description: Date when the entitlement expires / expired (in ISO 8601 format, may be in the past). `null` if it is a lifetime entitlement.
                     example: "2024-12-12T14:04:03Z"
+                    nullable: true
                   grace_period_expires_date:
                     type: string
                     description: Date when any potential grace period of the entitlement expires / expired (in ISO 8601 format, may be in the past). `null` if the Customer has never been in a grace period.
