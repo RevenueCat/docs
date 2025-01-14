@@ -29,7 +29,7 @@ If you configure an [In-App Purchase Key](/service-credentials/itunesconnect-app
 
 **Subscriptions**
 
-✅ Active Google Play subscriptions may be refunded directly through the RevenueCat dashboard. Click on the respective transaction event on the customer page and hit \"Refund\" in the upper right. [Documentation](/dashboard-and-metrics/customer-history#refunding-purchases) for reference.
+✅ Active Google Play subscriptions may be refunded directly through the RevenueCat dashboard. Click on the "..." menu on the subscription in the "Entitlements" card of the customer profile and then select \"Refund\". [Documentation](/dashboard-and-metrics/customer-history/active-entitlements#refunding-and-cancelling-purchases) for reference.
 
 Refunds can also be granted programmatically through the RevenueCat [REST API](https://docs.revenuecat.com/reference#revoke-a-google-subscription). This will immediately revoke access to the Google subscription and issue a refund for the last purchase.
 
@@ -55,11 +55,11 @@ Refunds granted through Amazon customer service **will not** be detected as a re
 
 ## RevenueCat Dashboard
 
-**Android** purchases can be refunded directly through the RevenueCat dashboard. Granting a refund will immediately expire the subscription and remove any entitlement access. By refunding directly through RevenueCat you can ensure that refunds are accounted for immediately in all charts and integrations.
+**Google Play** and **RevenueCat Billing** purchases can be refunded directly through the RevenueCat dashboard. Granting a refund will immediately expire the subscription and remove any entitlement access. By refunding directly through RevenueCat you can ensure that refunds are accounted for immediately in all charts and integrations.
 
 Apple doesn’t allow developers to grant refunds themselves, only through Apple customer support. However, Apple refunds are tracked with RevenueCat and accounted for in all charts and integrations.
 
-![](/images/9def41e-app.revenuecat.com_activity_270f6f8f_event_909c784d-ba27-4e33-8e7c-020e4db714ef_2_3560069cb19e697a1a52ada4d71c641c.png "app.revenuecat.com_activity_270f6f8f_event_909c784d-ba27-4e33-8e7c-020e4db714ef (2).png")
+![](/images/refunding-and-cancelling.png)
 
 ## Troubleshooting
 

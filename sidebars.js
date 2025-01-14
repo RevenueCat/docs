@@ -34,45 +34,7 @@ const welcomeCategory = Category({
   emoji: "👋",
   label: "New to RevenueCat?",
   itemsPathPrefix: "",
-  items: [
-    SubCategory({
-      label: "Welcome",
-      slug: "welcome/overview",
-      items: [
-        Page({ slug: "welcome/set-up-revenuecat/account-management" }),
-        SubCategory({
-          label: "Security",
-          slug: "welcome/set-up-revenuecat/security",
-          items: [Page({ slug: "dashboard-and-metrics/audit-logs" })],
-        }),
-      ],
-    }),
-    SubCategory({
-      label: "Migrate to RevenueCat",
-      slug: "migrating-to-revenuecat/migration-paths",
-      itemsPathPrefix: "migrating-to-revenuecat/",
-      items: [
-        SubCategory({
-          label: "Import Historical Purchases",
-          slug: "migrating-existing-subscriptions",
-          itemsPathPrefix: "migrating-existing-subscriptions/",
-          items: [
-            Page({ slug: "receipt-imports" }),
-            Page({ slug: "google-historical-import" }),
-          ],
-        }),
-        SubCategory({
-          label: "Do I need the SDK?",
-          slug: "sdk-or-not",
-          itemsPathPrefix: "",
-          items: [
-            Page({ slug: "sdk-or-not/sdk-less-integration" }),
-            Page({ slug: "sdk-or-not/finishing-transactions" }),
-          ],
-        }),
-      ],
-    }),
-  ],
+  items: [Page({ slug: "welcome/overview" })],
 });
 
 const projectsCategory = Category({
@@ -113,7 +75,8 @@ const mobileSDKCategory = Category({
   label: "RevenueCat SDK",
   itemsPathPrefix: "getting-started/",
   items: [
-    Page({ slug: "quickstart" }),
+    Page({ slug: "projects/projects-overview" }),
+    Page({ slug: "projects/connect-a-store" }),
     SubCategory({
       label: "Install the SDK",
       slug: "installation",
@@ -128,7 +91,6 @@ const mobileSDKCategory = Category({
         Page({ slug: "cordova" }),
         Page({ slug: "unity" }),
         Page({ slug: "web-sdk" }),
-        Page({ slug: "macos" }),
         Page({ slug: "app-builders" }),
         Page({ slug: "roku" }),
       ],
@@ -519,6 +481,20 @@ const platformResourcesCategory = Category({
   ],
 });
 
+const accountCategory = Category({
+  emoji: "🏠",
+  label: "RevenueCat Account",
+  itemsPathPrefix: "",
+  items: [
+    Page({ slug: "welcome/set-up-revenuecat/account-management" }),
+    SubCategory({
+      label: "Security",
+      slug: "welcome/set-up-revenuecat/security",
+      items: [Page({ slug: "dashboard-and-metrics/audit-logs" })],
+    }),
+  ],
+});
+
 const supportCategory = Category({
   emoji: "🛟",
   label: "RevenueCat Support",
@@ -526,6 +502,33 @@ const supportCategory = Category({
   items: [
     Page({ slug: "general-troubleshooting" }),
     Page({ slug: "support-first-steps" }),
+  ],
+});
+
+const migrateToRevenueCatCategory = Category({
+  emoji: "📘",
+  label: "Migrate to RevenueCat",
+  itemsPathPrefix: "migrating-to-revenuecat/",
+  items: [
+    Page({ slug: "migration-paths" }),
+    SubCategory({
+      label: "Import Historical Purchases",
+      slug: "migrating-existing-subscriptions",
+      itemsPathPrefix: "migrating-existing-subscriptions/",
+      items: [
+        Page({ slug: "receipt-imports" }),
+        Page({ slug: "google-historical-import" }),
+      ],
+    }),
+    SubCategory({
+      label: "Do I need the SDK?",
+      slug: "sdk-or-not",
+      itemsPathPrefix: "",
+      items: [
+        Page({ slug: "sdk-or-not/sdk-less-integration" }),
+        Page({ slug: "sdk-or-not/finishing-transactions" }),
+      ],
+    }),
   ],
 });
 
@@ -923,7 +926,9 @@ const sidebars = {
     testAndLaunchCategory,
     integrationsDummyCategory,
     platformResourcesCategory,
+    accountCategory,
     supportCategory,
+    migrateToRevenueCatCategory,
     guidesCategory,
     sdkMigrationCategory,
   ],
