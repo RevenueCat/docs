@@ -18,7 +18,7 @@ To grant a customer access to an entitlement, start by clicking the "Grant" butt
 
 ![Image](/images/customer-history-grant-entitlement.png)
 
-First choose the [entitlement name](/getting-started/entitlements). Next select a preset duraction or **Until date** to choose a custom end date. Finally, click **Grant**. You can grant multiple entitlements if you have different levels of access.
+First choose the [entitlement name](/getting-started/entitlements). Next select a preset duration or **Until date** to choose a custom end date. Finally, click **Grant**. You can grant multiple entitlements if you have different levels of access.
 
 ![](/images/customer-history-grant-entitlement-modal.png)
 
@@ -40,7 +40,7 @@ Please note that the "Sandbox data" toggle should be unchecked to remove entitle
 
 ## Granting Entitlements through the REST API
 
-Looking to programatically grant entitlements? View the REST API documentation [here](https://docs.revenuecat.com/reference/grant-a-promotional-entitlement).
+Looking to programmatically grant entitlements? View the REST API documentation [here](https://docs.revenuecat.com/reference/grant-a-promotional-entitlement).
 
 ## Next Steps
 

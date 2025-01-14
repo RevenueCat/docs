@@ -59,18 +59,6 @@ The `event_timestamp_ms` field refers to the time that the event was generated, 
 
 Ex: Checking the event_timestamp_ms will show that the renewal occurs after the billing issue. This value gets updated after the app stores backdate this in the receipt
 
-## Refunding Purchases
-
-Android purchases can be refunded directly through the RevenueCat dashboard. Granting a refund will immediately expire the subscription and remove any entitlement access. By refunding directly through RevenueCat you can ensure that refunds are accounted for immediately in all charts and integrations.
-
-![](/images/e2cb2fe-Screenshot_2023-06-12_at_15.01.32_979f71f45243d4c79cbd6f4a03bbc515.png)
-
-In case of subscriptions in trial period, you have the option to cancel the subscription and prevent the user from converting to a paid subscription.
-
-![](/images/07fe246-Screenshot_2023-06-12_at_14.58.30_84a9a7b9baecaa47f5725700fe68a753.png)
-
-Apple doesn’t allow developers to grant refunds themselves, only through Apple customer support. However, Apple refunds are tracked with RevenueCat and accounted for in all charts and integrations.
-
 ## Next Steps
 
 - [Active Subscriptions Chart](/dashboard-and-metrics/charts/active-subscriptions-chart)
