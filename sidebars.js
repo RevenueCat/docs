@@ -122,7 +122,7 @@ const paywallsCategory = Category({
         Page({ slug: "installation" }),
         Page({ slug: "creating-paywalls" }),
         SubCategory({
-          label: "Creating Paywalls (v2 - Beta)",
+          label: "Creating Paywalls (v2)",
           slug: "creating-paywalls-v2",
           itemsPathPrefix: "creating-paywalls-v2/",
           items: [
