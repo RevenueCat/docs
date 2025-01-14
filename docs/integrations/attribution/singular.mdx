@@ -4,6 +4,7 @@ slug: singular
 excerpt: Integrate Purchases SDK with Singular for precise revenue tracking
 hidden: false
 ---
+
 With our Singular integration you can:
 
 - Accurately track subscriptions generated from Singular campaigns, allowing you to know precisely how much revenue your campaigns generate.
@@ -12,20 +13,20 @@ With our Singular integration you can:
 
 ### Integration at a Glance
 
-| Includes Revenue | Supports Negative Revenue |   Sends Sandbox Events   |  Includes Customer Attributes  | Sends Transfer Events |                                                                   Optional Event Types                                                                   |
-| :--------------: | :-----------------------: | :----------------------: | :------------------------------: | :-------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| Includes Revenue | Supports Negative Revenue |   Sends Sandbox Events   |   Includes Customer Attributes   | Sends Transfer Events |                                                                 Optional Event Types                                                                  |
+| :--------------: | :-----------------------: | :----------------------: | :------------------------------: | :-------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------: |
 |        ✅        |            ✅             | Requires sandbox SDK key | Certain Reserved Attributes only |          ❌           | `non_subscription_purchase_event` `uncancellation_event` `subscription_paused_event` `expiration_event` `billing_issues_event` `product_change_event` |
 
 ## 1. Send device data to RevenueCat
 
 The Singular integration requires some device-specific data. RevenueCat will only send events into Singular if the below [Customer Attribute](/customers/customer-attributes) keys have been set for the device.
 
-| Key          | Description                                                                                                                                     | Required          |
-| :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :---------------- |
-| `$idfa`      | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ✅ (iOS only)     |
-| `$idfv`      | iOS [vender identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ✅ (iOS only)     |
-| `$gpsAdId`   | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ✅ (Android only) |
-| `$ip`        | The IP address of the device                                                                                                                    | ❌ (optional)     |
+| Key        | Description                                                                                                                                     | Required          |
+| :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :---------------- |
+| `$idfa`    | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ✅ (iOS only)     |
+| `$idfv`    | iOS [vender identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ✅ (iOS only)     |
+| `$gpsAdId` | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ✅ (Android only) |
+| `$ip`      | The IP address of the device                                                                                                                    | ❌ (optional)     |
 
 :::warning Android ID deprecation
 Due to policy changes from the Play Store, Android ID is no longer collected by RevenueCat's Android SDKs starting on versions 6.9.8+, 7.11.1+, and later major versions.
@@ -38,10 +39,12 @@ These properties can be set manually, like any other [Attributes](/customers/cus
 import swiftContent from "!!raw-loader!@site/code_blocks/integrations/attribution/singular_1.swift";
 import kotlinContent from "!!raw-loader!@site/code_blocks/integrations/attribution/singular_2.kt";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent, name: 'Swift' },
-    { type: 'kotlin', content: kotlinContent, name: 'Kotlin' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent, name: "Swift" },
+    { type: "kotlin", content: kotlinContent, name: "Kotlin" },
+  ]}
+/>
 
 You should make sure to call `collectDeviceIdentifiers()` after the _Purchases SDK_ is configured, and before the first purchase occurs. It's safe to call this multiple times, as only the new/updated values will be sent to RevenueCat.
 
@@ -95,6 +98,10 @@ RevenueCat's events do not include receipts from the stores, since we validate p
 5. Select whether you want RevenueCat to report proceeds (after app store cut) or revenue (gross sales).
 
 ![Screenshot](https://github.com/RevenueCat/revenuecat-docs/assets/112121235/fc91a616-85f8-4361-861a-473678108316)
+
+:::info Report early renewals
+By default, we will send a renewal's event time as the time when its due, but some stores may process their renewals early. Enable this setting in the Dashboard to report an early renewal's occurrence time instead of the time when the new subscription period is due to start to Singular, which may be especially useful when passing events to 3rd party sources from Singular that may not support an event time being in the future.
+:::
 
 ## 3. Testing the Singular integration
 
