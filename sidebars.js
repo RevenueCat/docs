@@ -75,8 +75,7 @@ const mobileSDKCategory = Category({
   label: "RevenueCat SDK",
   itemsPathPrefix: "getting-started/",
   items: [
-    Page({ slug: "projects/projects-overview" }),
-    Page({ slug: "projects/connect-a-store" }),
+    Page({ slug: "quickstart" }),
     SubCategory({
       label: "Install the SDK",
       slug: "installation",
