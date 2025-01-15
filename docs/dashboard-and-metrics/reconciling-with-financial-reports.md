@@ -26,9 +26,9 @@ When considering how to compare the Revenue chart with the App Store's financial
 
 ## How the App Store's financial reports work
 
-Apple’s monthly [financial reports](https://developer.apple.com/help/app-store-connect/getting-paid/download-financial-reports/) provide a list of transactions whose **settlement date** falls within that fiscal month being reported on. These are the transactions that you will receive a payout for on the scheduled payout date for that fiscal month. The report's primary purpose is to inform you of the transaction's that will be included in your payout, and to (1) estimate your proceeds [before they're paid to you] or (2) describe your proceeds [after they're paid to you].
+Apple’s monthly [financial reports](https://developer.apple.com/help/app-store-connect/getting-paid/download-financial-reports/) provide a list of transactions whose **settlement date** falls within the fiscal month that's being reported on. These are the transactions that you will receive a payout for on the scheduled payout date for that fiscal month. The report's primary purpose is to inform you of the transactions that will be included in your payout, and to (1) estimate your proceeds [before they're paid to you] or (2) describe your proceeds [after they're paid to you].
 
-A transaction's settlement date is the date when the customer's payment is actually made to Apple. Frequently this will occur on the same day that a transaction is initiated by the customer, but Apple will also batch some payments together and charge them at once at a later time, or a customer may be due to renew their subscription on a given date and the attempted payment may fail until some later time in their grace period.
+A transaction's settlement date is the date when the customer's payment is actually made to Apple. Often this will occur on the same day that a transaction is initiated by the customer; but may also occur on a later date, such as when Apple batches some payments together and charges them at once at a later time, or when a customer is due to renew their subscription on a given date but the attempted payment fails until some later date in their grace period.
 
 The result is that the day a transaction is initiated and the day it settles is not always the same, and therefore a transaction may be paid out in a later fiscal month than the one it was initiatied in.
 
@@ -36,13 +36,13 @@ The result is that the day a transaction is initiated and the day it settles is 
 
 Beyond the differences in what these data sources are intended for, there are also key differences in available data and definitions that can cause discrepancies between them, and its important to understand those differences so that you know exactly what's being measured and can make the most informed decisions.
 
-### Settlement Date vs. Transaction Date
+### Settlement date vs. transaction date
 
-One of the primary distinctions is how transactions are grouped and reported. Apple’s financial reports include transactions based on their settlement dates, while RevenueCat groups them by transaction dates. For instance, a subscription renewal that was due on November 29, fails to renew, but later succeeds on December 4 during its grace period will appear in Apple’s financial reports based on the settlement date of December 4, while RevenueCat reports it on November 29, when the payment was due.
+One of the primary distinctions is how transactions are grouped and reported. Apple’s financial reports include transactions based on their settlement dates, while RevenueCat groups them by transaction dates. For instance, a subscription renewal that was due on November 29, but fails to renew, and then later succeeds on December 4 during its grace period will appear in Apple’s financial reports based on the settlement date of December 4, while RevenueCat will report it on November 29, when the payment was due.
 
 The primary reason for this is that **Apple does not provide information to developers about transaction settlement dates**, so the best data we have is the date when the transaction was initiated. Though this is a better source for understanding customer behavior, it does cause differences in the number of transactions being reported on in a given period.
 
-### Monthly Calendar vs. Fiscal Calendar
+### Monthly calendar vs. fiscal calendar
 
 Apple’s payout schedule adheres to their fiscal calendar, which almost never identically matches a calendar month. For example, their January 2025 fiscal month runs from December 29, 2024, to February 1, 2025.
 
