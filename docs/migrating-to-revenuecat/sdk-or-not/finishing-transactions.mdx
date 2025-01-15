@@ -8,7 +8,7 @@ hidden: false
 
 If you already have your own in-app purchase handling logic in your app and want to start using RevenueCat alongside it, you might need to set the SDK configuration option that your app will **complete the purchases itself** (configuration option `purchasesAreCompletedBy`, see code below). Completing a purchase tells the device billing library that a purchase has been processed and can be discarded. RevenueCat does this by default, however, this may interfere with pre-existing purchase handling code in your app.
 
-If you set the SDK option that your app will complete purchases itself, you can still make use of most of RevenueCat's features, without replacing your existing purchase handling code.
+If you set the SDK option that your app will complete purchases itself, you can still make use of most of RevenueCat's features, without replacing your existing purchase handling code. If you're making purchases on iOS, be sure to set the `storeKitVersion` to the version of StoreKit you're using.
 
 :::info Observer mode
 The setting where your app completes purchases was formerly called "observer mode". Older versions of the SDK (currently including the iOS and cross-platform SDKs) still refer to this terminology.
