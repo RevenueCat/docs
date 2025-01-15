@@ -564,6 +564,7 @@ const metricsCategory = Category({
     Page({ slug: "taxes-and-commissions" }),
     Page({ slug: "performance-summaries" }),
     Page({ slug: "display-currency" }),
+    Page({ slug: "reconciling-with-financial-reports" }),
   ],
 });
 
