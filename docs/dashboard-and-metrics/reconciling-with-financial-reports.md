@@ -6,7 +6,7 @@ hidden: false
 
 # RevenueCat and the App Store's financial reports
 
-When managing your app's revenue and overall financial performance, you might frequently need to use both our [Revenue chart](https://app.revenuecat.com/charts/revenue) and the [App Store’s financial reports](https://developer.apple.com/help/app-store-connect/getting-paid/download-financial-reports/) for different purposes. While they both report on the financial performance of your app, there are meaningful differences in the recommended use caess and available data between those sources. Understanding these differences can help you better interpret the data and make more informed decisions.
+When managing your app's revenue and overall financial performance, you might frequently need to use both our [Revenue chart](https://app.revenuecat.com/charts/revenue) and the [App Store’s financial reports](https://developer.apple.com/help/app-store-connect/getting-paid/download-financial-reports/) for different purposes. While they both report on the financial performance of your app, there are meaningful differences in the recommended use cases and available data between those sources. Understanding these differences can help you better interpret the data and make more informed decisions.
 
 ## How the Revenue chart works
 
