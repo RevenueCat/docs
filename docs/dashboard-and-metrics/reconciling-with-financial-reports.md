@@ -20,6 +20,12 @@ The Revenue chart supports three different revenue measurements, which can be se
 2. **Revenue (net of taxes)**: Revenue generated in a given period (as defined above), minus our estimate of revenue deducted from the stores for taxes (e.g. VAT, DST, etc).
 3. **Proceeds**: Revenue generated in a given period (as defined above), minus our estimate of revenue deducted from the stores for taxes and commission.
 
+For example, if you sold a product for $99.99 that was not refunded:
+
+- Revenue: $99.99
+- Revenue (net of taxes): $94.99 ($99.99 after 5% was deducted for taxes)
+- Proceeds: $66.49 ($94.99 after 30% was deducted for commission)
+
 When considering how to compare the Revenue chart with the App Store's financial reports, you should focus on **Proceeds**, since that measure represents the closest proxy we have to how you will be paid by Apple for a given transaction.
 
 ![Revenue chart](/images/revenue-chart.png)
