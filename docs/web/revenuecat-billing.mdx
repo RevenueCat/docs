@@ -293,21 +293,38 @@ If you use the RevenueCat Billing sandbox API key, Stripe's test mode will be us
 
 ### Renewals in Sandbox
 
-Sandbox subscriptions renew faster than actual subscriptions to facilitate testing. They also automatically renew up to a maximum of 6 times. At that point, the subscription will be automatically cancelled.
+Sandbox subscriptions renew faster than actual subscriptions to facilitate testing. They can renew a maximum of six times. At that point, the subscription will be automatically cancelled.
 
-The following table shows the duration of each feature in sandbox mode:
+The following table lists the sandbox renewal periods for subscriptions of various durations. These times are approximate, and you may see small variations. To ensure accuracy, check the current status after each subscription expiration.
 
-| Feature               | Duration                              |
-| --------------------- | ------------------------------------- |
-| Trial duration        | 5 minutes                             |
-| Subscription duration | 5 minutes and up to 6 renewals        |
-| Grace period duration | 3 minutes                             |
-| Billing retries       | Every 3 minutes and up to 5 attemptts |
+#### Subscription Renewal Periods
 
-## Current limitations
+| Production Subscription Period | Sandbox Subscription Period |
+| ------------------------------ | ---------------------------- |
+| 1 day (P1D)                    | 5 minutes                    |
+| 3 days (P3D)                   | 5 minutes                    |
+| 1 week (P1W)                   | 5 minutes                    |
+| 2 weeks (P2W)                  | 5 minutes                    |
+| 1 month (P1M)                  | 5 minutes                    |
+| 2 months (P2M)                 | 10 minutes                   |
+| 3 months (P3M)                 | 15 minutes                   |
+| 6 months (P6M)                 | 30 minutes                   |
+| 1 year (P1Y)                   | 60 minutes                   |
+
+#### Time-based Subscription Features
+
+Time-based subscription features such as free trials are also shortened for sandbox testing. The following table identifies the sandbox time periods associated with these features:
+
+| Feature               | Sandbox Period                       |
+| --------------------- | ------------------------------------ |
+| Trial duration        | 5 minutes                            |
+| Grace period duration | 3 minutes                            |
+| Billing retries       | Every 3 minutes and up to 5 attempts |
+
+## Current Limitations
 
 RevenueCat Billing currently has a number of known limitations. Most notably:
 
-- There is no support for sales tax or VAT calculation
-- There is no support for discounts or other offers
-- There is no support for our Paywall templates yet
+- There is no support for sales tax or VAT calculation.
+- There is no support for discounts or other offers.
+- There is no support for our Paywall templates yet.
