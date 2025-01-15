@@ -74,7 +74,7 @@ Therefore, in order to compare identical periods between the Revenue chart and y
 
 ### Estimated exchange rates, taxes, and commissions
 
-While Apple’s reports do provide currency conversion rates, taxes, and commissions, their reports are intentionally anonymized, which means that data cannot be matched to specific transactions. Without a way to connect data from Apple’s financial reports to individual transactions in RevenueCat, we can only know that some purchase had certain rates and deductions — but not which customer or transaction they applied to. This is why estimation is needed.
+While Apple’s reports do provide currency conversion rates, taxes, and commissions, their reports are intentionally anonymized. Without a way to connect data from Apple’s financial reports to individual transactions in RevenueCat, we can only know that some purchase had certain rates and deductions — but not which customer or transaction they applied to. This is why estimation is needed.
 
 In the case of taxes and commissions, we use our system to estimate the amount deducted from the gross revenue of the transaction to yield proceeds based on Apple's pricing schedule which quotes the proceeds you can expect for each price in each currency. [Learn more about how we estimate taxes and commissions.](https://www.revenuecat.com/docs/dashboard-and-metrics/taxes-and-commissions)
 
