@@ -32,6 +32,22 @@ A transaction's settlement date is the date when the customer's payment is actua
 
 The result is that the day a transaction is initiated and the day it settles is not always the same, and therefore a transaction may be paid out in a later fiscal month than the one it was initiatied in.
 
+### Price fields
+
+There are a few different fields in the App Store's financial reports that refer to the price paid by customers and the proceeds you'll generate as a result, and its important to understand the differences between them:
+
+1. **Partner Share**: "Proceeds you receive per unit. This is the Customer Price minus applicable taxes and Apple’s commission, per Schedule 2 of the Paid Apps Agreement."
+2. **Extended Partner Share**: "Quantity multiplied by Partner Share."
+3. **Customer Price**: "Price per unit billed to the customer, which you set for your app or in-app purchase in App Store Connect. This includes any applicable taxes we collect and remit per Schedule 2 of the Paid Apps Agreement."
+
+([Source](https://developer.apple.com/help/app-store-connect/reference/financial-report-fields))
+
+**Customer Price** is comparable to **Revenue** in RevenueCat, while **Partner Share** is comparable to **Proceeds**.
+
+:::Accounting for quantity
+The **Quantity** field will inform you how many transactions of a given type there were in the fiscal month being reported on. When analyzing your proceeds, you must always take this field into account to get the correct figure, either by multiplying Customer Price or Partner Share by Quantity yourself, or by using the Extended Partner Share field.
+:::
+
 ## Key Differences
 
 Beyond the differences in what these data sources are intended for, there are also key differences in available data and definitions that can cause discrepancies between them, and its important to understand those differences so that you know exactly what's being measured and can make the most informed decisions.
