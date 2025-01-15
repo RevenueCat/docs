@@ -74,13 +74,9 @@ Therefore, in order to compare identical periods between the Revenue chart and y
 
 ### Estimated exchange rates, taxes, and commissions
 
-Apple does not provide joinable\* transaction-level detail on the taxes and commissions deducted from a transaction to yield its proceeds, nor the exchange rate that's used to convert that payment from its purchase currency to the payout currency.
+While Apple’s reports do provide currency conversion rates, taxes, and commissions, their reports are intentionally anonymized, which means that data cannot be matched to specific transactions. Without a way to connect data from Apple’s financial reports to individual transactions in RevenueCat, we can only know that some purchase had certain rates and deductions — but not which customer or transaction they applied to. This is why estimation is needed.
 
 In the case of taxes and commissions, we use our system to estimate the amount deducted from the gross revenue of the transaction to yield proceeds based on Apple's pricing schedule which quotes the proceeds you can expect for each price in each currency. [Learn more about how we estimate taxes and commissions.](https://www.revenuecat.com/docs/dashboard-and-metrics/taxes-and-commissions)
-
-:::info Joinable data
-Revenue data in RevenueCat is tied directly to a transaction made by a customer, which means it can be segmented and analyzed by other facts about that customer or their purchase: like their install month, the Apple Search Ads Campaign they were attributed to, and much more. Without a joinable field between Apple's financial reports, or other reports with information on taxes and commissions, we can only know that _some_ transaction had those attributes -- not which one, and therefore not which customer, which is why estimation is needed.
-:::
 
 In the case of exchange rates, Apple describes their process [here](https://developer.apple.com/help/app-store-connect/getting-paid/overview-of-receiving-payments):
 
