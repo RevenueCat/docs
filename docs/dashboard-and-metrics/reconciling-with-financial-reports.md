@@ -82,7 +82,7 @@ In the case of exchange rates, Apple describes their process [here](https://deve
 
 > Our bank converts payment amounts into the currency of your bank account. The exchange rate is established by our bank and, due to Apple's volume, is generally a more favorable rate than used by your local bank. The rates are typically the spot rate on the date of payment and no more than three business days prior to the date the proceeds are received into your account.
 
-Ultimately, that means the exchange rate that's used will not be set in stone until close to the payout date for that fiscal month, which is ~33 days after the end of the period, and therefore could be up to 60 days after the transaction occurred. And beyond that, the exact exchange rate that's used is likely better than what's publicly quoted on that day.
+Ultimately, that means the exchange rate that's used will not be set in stone until close to the payout date for that fiscal month, which is ~33 days after the end of the period, and therefore could be up to 68 days after the transaction occurred. And beyond that, the exact exchange rate that's used is likely better than what's publicly quoted on that day.
 
 To bridge this gap, RevenueCat converts transactions from their purchase currency to USD based on values from [Open Exchange Rates](https://openexchangerates.org/) as of the purchase date of the transaction (or to any other [display currency](https://www.revenuecat.com/docs/dashboard-and-metrics/display-currency) you have set in the Dashboard). However, that means there may be differences in the exact revenue being attributed for each transaction, especially during periods of meaningful exchange rate volatility.
 
