@@ -8,7 +8,6 @@ Purchases.PurchasesConfiguration.Builder builder = Purchases.PurchasesConfigurat
 Purchases.PurchasesConfiguration purchasesConfiguration =
     builder.SetUserDefaultsSuiteName("user_default")
     .SetDangerousSettings(new Purchases.DangerousSettings(false))
-    .SetObserverMode(true)
     .SetUseAmazon(false)
     .SetAppUserId(appUserId)
     .Build();
