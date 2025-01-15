@@ -44,7 +44,7 @@ There are a few different fields in the App Store's financial reports that refer
 
 **Customer Price** is comparable to **Revenue** in RevenueCat, while **Partner Share** is comparable to **Proceeds**.
 
-:::Accounting for quantity
+:::info Accounting for quantity
 The **Quantity** field will inform you how many transactions of a given type there were in the fiscal month being reported on. When analyzing your proceeds, you must always take this field into account to get the correct figure, either by multiplying Customer Price or Partner Share by Quantity yourself, or by using the Extended Partner Share field.
 :::
 
