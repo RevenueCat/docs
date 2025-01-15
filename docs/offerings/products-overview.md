@@ -68,4 +68,4 @@ Product display names must be unique within an app. It's a good practice to incl
 
 If you've added your products in the dashboard, it's time to create an Entitlement.
 
-<Button href="/docs/offerings/entitlements">Create an Entitlement →</Button>
+<Button href="/docs/getting-started/entitlements">Create an Entitlement →</Button>
