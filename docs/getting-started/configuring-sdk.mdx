@@ -103,7 +103,7 @@ If you have your own proxy server and already use the `proxyURL` API, you don't 
 #### Listening for CustomerInfo updates
 
 :::info Note
-RevenueCat doesn't push new data to the SDK, so this method is only called when CustomerInfo is updated from another SDK method or after a purchase is made.
+RevenueCat doesn't push new data to the SDK, so this method is only called when CustomerInfo is updated from another SDK method or after a purchase is made on the current device.
 :::
 
 Implement the following delegate method to receive updates to the `CustomerInfo` object:
@@ -132,7 +132,7 @@ If the purchase should never be made, you don't need to ever call the `deferment
 #### Listening for CustomerInfo updates
 
 :::info Note
-RevenueCat doesn't push new data to the SDK, so this method is only called when CustomerInfo is updated from another SDK method or after a purchase is made.
+RevenueCat doesn't push new data to the SDK, so this method is only called when CustomerInfo is updated from another SDK method or after a purchase is made on the current device.
 :::
 
 Implement the following listener to receive updates to the `CustomerInfo` object:
