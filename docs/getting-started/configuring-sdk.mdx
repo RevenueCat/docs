@@ -70,7 +70,7 @@ Debug logs will provide detailed log output in Xcode or LogCat for what is going
 The SDK allows additional configuration on first setup:
 
 - **API Key (required)**: The public API key that corresponds to your app, found via **Project Settings > API keys > App specific keys** in the RevenueCat dashboard.
-- **App User ID (optional)**: An identifier for the current user. Pass `null` if you don't have a user identifier at the time of configuration and RevenueCat will generate an anonymous Id for you. See our [guide on identifying users](/customers/user-ids) for more information.
+- **App User ID (optional)**: An identifier for the current user. Pass `null` if you don't have a user identifier at the time of configuration, RevenueCat will generate an anonymous App User ID for you. See our [guide on identifying users](/customers/user-ids) for more information.
 - **Purchases Completed By (optional)**: A boolean value to tell RevenueCat not to [complete purchases](/migrating-to-revenuecat/sdk-or-not/finishing-transactions). Only set purchase completion to your app if you have your own code handling purchases.
 - **User Defaults (optional, iOS only)**: A key to override the standard user defaults used to cache `CustomerInfo`. This is required if you need to access `CustomerInfo` in an [iOS App Extension](https://developer.apple.com/app-extensions/).
 
