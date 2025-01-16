@@ -221,7 +221,8 @@ import contentKmpLogin from "!!raw-loader!@site/code_blocks/customers/user-ids_k
     
 ]}/>
 
-#### `logIn()` method alias behavior
+<details>
+<summary>`logIn()` method alias behavior</summary>
 
 When logging in from an Anonymous ID to a provided custom App User ID, RevenueCat will decide whether the identities should be merged (aliased) into the same CustomerInfo object or not. This is decided depending on whether the provided custom App User ID already exists, and if it does exist whether it has an anonymous alias already.
 
@@ -231,6 +232,8 @@ When logging in from an Anonymous ID to a provided custom App User ID, RevenueCa
 | Anonymous           | Yes                                         | No                                               | Anonymous ID and Provided ID have CustomerInfo merged.     |
 | Anonymous           | Yes                                         | Yes                                              | CustomerInfo transfers to Provided ID, no aliases created. |
 | Non-anonymous       | Any                                         | Any                                              | CustomerInfo transfers to Provided ID, no aliases created. |
+
+</details>
 
 ### Logging Out
 
@@ -254,11 +257,15 @@ When referenced via the [SDK](/getting-started/configuring-sdk) or [API](https:/
 
 ## Tips for Setting App User IDs
 
+**ℹ️ Every app user ID must be unique per user.** 
+
+If you don't have your own user IDs for some of your users, you should not pass any value for the App User ID on configuration which will rely on the anonymous IDs created by RevenueCat.
+
 **ℹ️ App User IDs should not be guessable**
 
 RevenueCat provides subscription status via the public API, having App User IDs that are easily guessed is not good. It is recommended to use a non-guessable pseudo-random ID, like a UUID (RFC 4122 version 4).
 
-**ℹ️ App User IDs should be shorter than 100 characters**
+**ℹ️ Length limitations**
 
 App User IDs should not be longer than 100 characters.
 
@@ -273,8 +280,6 @@ Advertising identifiers should not be used as App User IDs since they can be eas
 **🚨 Don't hardcode strings as App User IDs**
 
 You should never hardcode a string as an App User ID, since every install will be treated as the same user in RevenueCat. **This will create problems and could unlock entitlements for users that haven't actually purchased.**
-
-**Every app user ID must be unique per user.** If you don't have your own user IDs for some of your users, you should not pass any value for the App User ID on configuration which will rely on the anonymous IDs created by RevenueCat.
 
 ## Blocked App User IDs
 
