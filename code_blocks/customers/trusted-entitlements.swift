@@ -1,4 +1,4 @@
 Purchases.configure(
     with: Configuration.Builder(withAPIKey: <api_key>)
-        .with(entitlementVerificationMode: .informational)
+        .with(entitlementVerificationMode: .disabled)
 )

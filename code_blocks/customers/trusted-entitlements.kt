@@ -1,5 +1,5 @@
 Purchases.configure(
     PurchasesConfiguration.Builder(context, apiKey = <api_key>)
-        .entitlementVerificationMode(EntitlementVerificationMode.INFORMATIONAL)
+        .entitlementVerificationMode(EntitlementVerificationMode.DISABLED)
         .build()
 )
