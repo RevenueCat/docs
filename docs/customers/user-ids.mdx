@@ -307,7 +307,7 @@ The most frequent place that anonymous App User IDs are created is when the SDK 
 
 #### Do not Logout the User
 
-After the user is logged in with a known App User ID, they may want to logout or switch accounts on your application - logout and then login with a different known ID. However, calling logout in the SDK will result in an anonymous App User ID being created. Simply do not logout the SDK. In the case of switching accounts, you can call login when the user logs in to the different account with their new App User ID.
+After the user is logged in with a known App User ID, they may want to logout or switch accounts on your application (e.g., logout and then login with a different known ID). However, calling logout in the SDK will result in an anonymous App User ID being created. To resolve this, simply **do not logout the SDK**. In the case of switching accounts, you can call login when the user logs in to the different account with their new App User ID.
 
 </details>
 <details>
