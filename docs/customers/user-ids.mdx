@@ -7,16 +7,15 @@ hidden: false
 
 RevenueCat provides a source of truth for a customer's [subscription status](/customers/customer-info) across different platforms. User identity is one of the most important components of many mobile applications, and it's crucial to make sure the subscription status that RevenueCat is tracking is associated with the correct user.
 
-:::info What is a customer in RevenueCat?
-
 For an overview of what a customer is in RevenueCat, see [What is a Customer?](/customers/user-ids).
-:::
 
 ## Anonymous App User IDs
 
-By default, if you don't provide an App User ID when configuring the Purchases SDK, RevenueCat will generate a new random App User ID for you and cache it on the device. In the event that the user deletes and reinstalls the app, a new random App User ID will be generated.
+By default, if you don't provide an App User ID when configuring the Purchases SDK, RevenueCat will generate a new random App User ID (prefixed with `$RCAnonymousID:`) for you, and will cache it on the device. 
 
+In the event that the user deletes and reinstalls the app, the cache will be cleared and a new random anonymous App User ID will be generated.
 
+Anonymous App User IDs are **not** able to share subscription status across apps and platforms, but are suitable for many apps that don't require authentication and only support a single platform.
 
 import content1 from "!!raw-loader!@site/code_blocks/customers/user-ids_1.swift";
 import content2 from "!!raw-loader!@site/code_blocks/customers/user-ids_2.m";
@@ -74,15 +73,7 @@ import contentKmpAnon from "!!raw-loader!@site/code_blocks/customers/user-ids_km
     
 ]}/>
 
-For SDK versions 3+, anonymous App User IDs are always prefixed with `$RCAnonymousID:`, which may be useful for identifying anonymous users on your server.
-
-:::info Surface Anonymous IDs for Debugging
-If your app does not enforce the use of custom App User IDs, you should consider revealing the user's App User ID in your app's support page. This will help expedite support requests, including those with RevenueCat Support.
-
-You can find the App User ID on the `CustomerInfo` [object](/customers/customer-info#get-user-information).
-:::
-
-## Logging In with a Custom App User ID
+## Custom App User IDs
 
 Setting your own App User ID will allow you to reference users in the RevenueCat dashboard, via the API, as well as in the [webhooks](/integrations/webhooks) and other integrations.
 
@@ -91,18 +82,14 @@ Using an externally managed App User ID also provides a mechanism by which to re
 - When a user deletes and reinstalls your app - using the same App User ID will ensure they still have access to subscriptions previously started without requiring a [restore](/getting-started/restoring-purchases) .
 - When the user logs in on multiple devices - you can honor a subscription that was purchased on one device across any other platform.
 
-:::info 
-App User IDs are case-sensitive.
+App User IDs are case-sensitive and are scoped to a whole Project. A user logged into the same App User ID on different platforms will be considered the same user and can access the entitlements they have purchased on any platform.
+
+:::info Managing Subscriptions
+
+A user can only [manage their subscription](/subscription-guidance/managing-subscriptions) on the platform it was purchased from.
 :::
 
-### Provide App User ID on configuration
-
-:::danger iOS 15+ Prewarming
-
-In certain cases, iOS may [prewarm](https://developer.apple.com/documentation/uikit/app_and_environment/responding_to_the_launch_of_your_app/about_the_app_launch_sequence?language=objc) your app - this essentially means your app will be launched silently in the background to improve app launch times for your users.
-
-If you are **not** using RevenueCat's anonymous IDs as described above, and are instead providing your own app user ID on configuration, **do not** call `configure` in `application:didFinishLaunchingWithOptions:`. Instead, call the `configure` method in your root view controller's initialization method.
-:::
+### Logging in during configuration
 
 If you have your own App User IDs at app launch, you can pass those on instantiation to _Purchases_. Make sure to not hard-code this identifier, if you do all users will be considered the same one and will share purchases.
 
@@ -165,9 +152,11 @@ import contentKmp from "!!raw-loader!@site/code_blocks/customers/user-ids_kmp.kt
 
 Often times, you may not have your own App User IDs until later in the application lifecycle. In these cases, you can pass the App User ID later through the `.logIn()` method.
 
-### Provide App User ID after configuration
+### Logging in after configuration
 
 If your app doesn't receive its own App User ID until later in its lifecycle, you can set (or change) the App User ID at any time by calling `.logIn()`. If the logged in identity does not already exist in RevenueCat, it will be created automatically.
+
+This flow will generate an anonymous App User ID for the user first, then may (*see below*) alias the anonymous App User ID to the provided custom App User ID.
 
 import content17 from "!!raw-loader!@site/code_blocks/customers/user-ids_17.swift";
 import content18 from "!!raw-loader!@site/code_blocks/customers/user-ids_18.m";
@@ -225,39 +214,39 @@ import contentKmpLogin from "!!raw-loader!@site/code_blocks/customers/user-ids_k
     
 ]}/>
 
-##### `logIn()` method alias behavior
+<details>
+<summary>`logIn()` method alias behavior</summary>
 
 When logging in from an Anonymous ID to a provided custom App User ID, RevenueCat will decide whether the identities should be merged (aliased) into the same CustomerInfo object or not. This is decided depending on whether the provided custom App User ID already exists, and if it does exist whether it has an anonymous alias already.
 
-| Current App User ID | Provided Custom App User ID already exists? | Provided Custom App User ID has anonymous alias? | Result                                                     |
+| Current App User ID | Provided Custom App User ID already exists? | Provided Custom App User ID already has an anonymous alias? | Result                                                     |
 | :------------------ | :------------------------------------------ | :----------------------------------------------- | :--------------------------------------------------------- |
 | Anonymous           | No                                          | N/A                                              | Anonymous ID and Provided ID have CustomerInfo merged.     |
 | Anonymous           | Yes                                         | No                                               | Anonymous ID and Provided ID have CustomerInfo merged.     |
 | Anonymous           | Yes                                         | Yes                                              | CustomerInfo transfers to Provided ID, no aliases created. |
 | Non-anonymous       | Any                                         | Any                                              | CustomerInfo transfers to Provided ID, no aliases created. |
 
-## Logging Out
+</details>
+
+### Logging Out
 
 When an identified user logs out of your application you should call the `logOut()` method within the SDK. This will generate a new anonymous App User ID for the logged out state. However, if you plan to use only custom App User ID's, you can follow the [instructions here](/customers/user-ids#how-to-only-use-custom-app-user-ids).
 
-### Logging back in
+#### Logging back in
 
 To log in a new user, the provided App User ID should be set again with `.logIn()`.
 
-### Switching accounts
+#### Switching accounts
 
 If you need to switch from one provided App User ID to another, it's okay to call the `.logIn()` method directly - you do not need to call `logOut()` first.
 
-## Sharing Subscriptions Across Apps and Platforms
+## Supporting your customers
 
-Apps within the same RevenueCat [Project](/projects/overview) share the same App User ID namespace, which means that they also share subscriptions. A user logged in to the same user ID in different apps of the same Project will have access to the same entitlements. This allows sharing of subscription status between different apps, even on different platforms.
+We strongly recommend revealing the App User ID to your customers somewhere within your app. Typically, developers choose to display the App User ID in a settings screen.
 
-Note that anonymous App User IDs are not able to share subscription status across apps and platforms, so you'll need to identify with a custom App User ID via your own authentication system.
+Allowing your customers to view and copy their App User ID can help with troubleshooting and support if they need to contact you or your support team.
 
-:::info Managing Subscriptions
-
-A user can only [manage their subscription](/subscription-guidance/managing-subscriptions) on the platform it was purchased from.
-:::
+You can retrieve the currently identified App User ID via the `Purchases.shared.appUserID` property.
 
 ## Aliases
 
@@ -267,52 +256,68 @@ When a merge of customers occurs, there will be only one App User ID within the 
 
 When referenced via the [SDK](/getting-started/configuring-sdk) or [API](https://www.revenuecat.com/reference/basic), any merged App User IDs will all be treated as the same “customer”. Looking up any of the merged App User IDs in RevenueCat will return the same `CustomerInfo`, customer history, customer attributes, subscription status, etc.
 
+## Tips for Setting Custom App User IDs
 
-## How to only use Custom App User IDs
+**ℹ️ Every app user ID must be unique per user.** 
 
-To only use custom App User IDs, you must take care not to generate any anonymous App User IDs in the SDK. Anonymous App User IDs are generated when the SDK is configured without a provided custom App User ID, and are also created on `logOut()` as mentioned above. Many apps use a combination of anonymous App User IDs and their own custom App User IDs via an authentication system to provide flexibility in their user purchase flows. However, some applications are intended only to be used while using a known App User ID, without anonymous users at all. Some limits of anonymous IDs include added difficulty in personalization of user experiences, optimization of monetization strategies, and not being able to share subscriptions across platforms. Depending on the application's [transfer behavior](/getting-started/restoring-purchases), a provided user's subscription may be transferred to an anonymous ID - which can only be brought back through a [restore](/getting-started/restoring-purchases) on the original purchase platform.
+If you don't have your own user IDs for some of your users, you should not pass any value for the App User ID on configuration, which will then rely on the anonymous IDs created by RevenueCat.
 
-In any case, to never see Anonymous IDs, you only need to make sure to do the following: Only configure the SDK with a custom App User ID, and never call `.logout()`.
+**ℹ️ App User IDs should not be guessable**
 
-### Only Configure the SDK with a custom App User ID
+RevenueCat provides subscription status via the public API; it is not good to have App User IDs that are easily guessed. A non-guessable pseudo-random ID, like a UUID (RFC 4122 version 4), is recommended.
 
-The most frequent place that anonymous App User IDs are created is when the SDK is first [configured](/getting-started/configuring-sdk). Calling `.configure` on the SDK without providing a known user ID will cause the SDK to generate an Anonymous ID for the current user. To avoid anonymous IDs, you will need to identify the user’s ID, before configuring the SDK. Many applications use their own authentication system, often shared on multiple platforms, to identify users and provide their unique App User IDs.
+**ℹ️ Length limitations**
 
-### Do not Logout the User
+App User IDs should not be longer than 100 characters.
 
-After the user is logged in with a known App User ID, they may want to logout or switch accounts on your application - logout and then login with a different known ID. However, calling logout in the SDK will result in an anonymous App User ID being created. Simply do not logout the SDK. In the case of switching accounts, you can call login when the user logs in to the different account with their new App User ID.
+**⚠️ Don't set emails as App User IDs**
 
-## Tips for Setting App User IDs
+For the above reasons about guessability, and GDPR compliance, we don't recommend using email addresses as App User IDs.
 
-| ℹ️ App User IDs Should Not Be Guessable                                                                                                                                         |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| RevenueCat provides subscription status via the public API, having App User IDs that are easily guessed is not good. It is recommended to use a non-guessable pseudo-random ID, like a UUID (RFC 4122 version 4).|
+**⚠️ Don't set IDFA as App User IDs**
 
-| ℹ️ Keep App User IDs shorter than 100 characters       |
-| :----------------------------------------------------- |
-| App User IDs should not be longer than 100 characters. |
+Advertising identifiers should not be used as App User IDs since they can be easily rotated and are not unique across users if limit ad tracking is enabled.
 
-| ⚠️ Don't set emails as App User IDs                                                                                     |
-| :---------------------------------------------------------------------------------------------------------------------- |
-| For the above reasons about guessability, and GDPR compliance, we don't recommend using email addresses as App User IDs |
-
-| ⚠️ Don't set IDFA as App User IDs                                                                                                                            |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Advertising identifiers should not be used as App User IDs since they can be easily rotated and are not unique across users if limit ad tracking is enabled. |
-
-:::danger 🚨 Don't hardcode strings as App User IDs
+**🚨 Don't hardcode strings as App User IDs**
 
 You should never hardcode a string as an App User ID, since every install will be treated as the same user in RevenueCat. **This will create problems and could unlock entitlements for users that haven't actually purchased.**
-
-**Every app user ID must be unique per user.** If you don't have your own user IDs for some of your users, you should not pass any value for the App User ID on configuration which will rely on the anonymous IDs created by RevenueCat.
-
-:::
 
 ## Blocked App User IDs
 
 Certain App User IDs are blocked in RevenueCat. This is by design to help developers that may be unintentionally passing non-unique strings as user identifiers. 
 
 The current block-list is: `'no_user'`, `'null'`, `'none'`, `'nil'`, `'(null)'`, `'NaN`, `'\\x00'`(`NULL` character), `''`(empty string), `'unidentified'`, `'undefined'`, `'unknown'`, `'anonymous'`, `'guest'`, `'-1'`, `'0'`, `'[]'`, `'{}'`, `'[object Object]'` and any App User IDs containing the character `/`.
+
+## Advanced Topics
+
+<details>
+<summary>How to force only using Custom App User IDs</summary>
+
+To only use custom App User IDs, you must take care not to generate any anonymous App User IDs in the SDK. 
+
+Anonymous App User IDs are generated when the SDK is configured without a provided custom App User ID, and are also created on `logOut()` as mentioned above. Many apps use a combination of anonymous App User IDs and their own custom App User IDs via an authentication system to provide flexibility in their user purchase flows. However, some applications are intended only to be used while using a known App User ID, without anonymous users at all. 
+
+Some limits of anonymous IDs include added difficulty in personalization of user experiences, optimization of monetization strategies, and not being able to share subscriptions across platforms. Depending on the application's [transfer behavior](/getting-started/restoring-purchases), a provided user's subscription may be transferred to an anonymous ID - which can only be brought back through a [restore](/getting-started/restoring-purchases) on the original purchase platform.
+
+In any case, to never see Anonymous IDs, you only need to make sure to do the following: Only configure the SDK with a custom App User ID, and never call `.logout()`.
+
+#### Only Configure the SDK with a custom App User ID
+
+The most frequent place that anonymous App User IDs are created is when the SDK is first [configured](/getting-started/configuring-sdk). Calling `.configure` on the SDK without providing a known user ID will cause the SDK to generate an anonymous ID for the current user. To avoid anonymous IDs, you will need to identify the user’s ID before configuring the SDK. Many applications use their own authentication system, often shared on multiple platforms, to identify users and provide their unique App User IDs.
+
+#### Do not Logout the User
+
+After the user is logged in with a known App User ID, they may want to logout or switch accounts on your application (e.g., logout and then login with a different known ID). However, calling logout in the SDK will result in an anonymous App User ID being created. To resolve this, simply **do not logout the SDK**. In the case of switching accounts, you can call login when the user logs in to the different account with their new App User ID.
+
+</details>
+<details>
+<summary>iOS 15 Prewarming</summary>
+
+In certain cases on iOS 15 devices, iOS may [prewarm](https://developer.apple.com/documentation/uikit/app_and_environment/responding_to_the_launch_of_your_app/about_the_app_launch_sequence?language=objc) your app - this essentially means your app will be launched silently in the background to improve app launch times for your users.
+
+If you are **not** using RevenueCat's anonymous IDs as described above, and are instead providing your own app user ID on configuration, **do not** call `configure` in `application:didFinishLaunchingWithOptions:`. Instead, call the `configure` method in your root view controller's initialization method.
+
+</details>
 
 ## Next Steps
 

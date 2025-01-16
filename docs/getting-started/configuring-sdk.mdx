@@ -9,15 +9,15 @@ If this is your first time integrating RevenueCat into your app, we recommend fo
 View our migration guide to v4.x [here](/sdk-guides/ios-native-3x-to-4x-migration).
 :::
 
-## Basic Configuration
-
-### Initialization
+## Initialization
 
 Once you've [installed](/getting-started/installation) the SDK for your app, it's time to initialize and configure it.
 
 You should only configure _Purchases_ once, usually early in your application lifecycle. After configuration, the same instance is shared throughout your app by accessing the `.shared` instance in the SDK.
 
 Make sure you configure _Purchases_ with your public SDK key only. You can read more about the different API keys available in our [Authentication guide](/projects/authentication).
+
+**Note:** If you're using a hybrid SDK, such as React Native or Flutter, you'll need to initialize the SDK with a separate API key for each platform (i.e., iOS and Android). The keys can be found in the RevenueCat dashboard under **Project Settings > API keys > App specific keys**.
 
 import swiftContent50 from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_1.swift";
 import swiftUIContent51 from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_2.swift";
@@ -43,11 +43,11 @@ import capacitorChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-sta
 import unityChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_9_china_url.cs";
 
 <RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent50, name: 'Swift' },
     { type: 'swift', content: swiftUIContent51, name: 'SwiftUI' },
+    { type: 'swift', content: swiftContent50, name: 'Swift' },
     { type: 'objc', content: objectiveCContent52, name: 'Objective-C' },
     { type: 'kotlin', content: kotlinContent53, name: 'Kotlin' },
-    { type: 'kotlin', content: kmpContent, name: 'Kotlin Multiplatform' },
+    { type: 'kotlin', content: kmpContent, name: 'Kotlin MP' },
     { type: 'java', content: javaContent54, name: 'Java' },
     { type: 'flutter', content: flutterContent55, name: 'Flutter' },
     { type: 'rn', content: reactNativeContent56, name: 'React Native' },
@@ -57,27 +57,28 @@ import unityChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-started
     { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Configuring SDK"},
 ]} />
 
-:::danger iOS 15+ Prewarming
-In certain cases, calling `configure` in `application:didFinishLaunchingWithOptions:` should be avoided. See [Identifying Users](/customers/user-ids#provide-app-user-id-on-configuration) for more information.
-:::
+## Enabling Debug Logs
 
-:::info SwiftUI App Protocol
-Using SwiftUI's App protocol? Check out our [resource](/platform-resources/apple-platform-resources/swiftui-helpers) on setting up the _Purchases_ SDK with SwiftUI.
-:::
-
-### Enabling Debug Logs
-
-Be sure to enable and view debug logs before filing a ticket with RevenueCat Support.
+Be sure to enable and view debug logs while implementing the SDK and testing your app. Debug logs contain important information about what's happening behind the scenes and should be the first thing you check if your app is behaving unexpectedly.
 
 As detailed in the sample code above, debug logs can be enabled or disabled by setting the `Purchases.logLevel` property before configuring _Purchases_.
 
 Debug logs will provide detailed log output in Xcode or LogCat for what is going on behind the scenes and should be the first thing you check if your app is behaving unexpectedly, and also to confirm there aren't any unhandled warnings or errors.
 
-### Configuration for users in Mainland China
+## Additional Configuration
+
+The SDK allows additional configuration on first setup:
+
+- **API Key (required)**: The public API key that corresponds to your app, found via **Project Settings > API keys > App specific keys** in the RevenueCat dashboard.
+- **App User ID (optional)**: An identifier for the current user. Pass `null` if you don't have a user identifier at the time of configuration, RevenueCat will generate an anonymous App User ID for you. See our [guide on identifying users](/customers/user-ids) for more information.
+- **Purchases Completed By (optional)**: A boolean value to tell RevenueCat not to [complete purchases](/migrating-to-revenuecat/sdk-or-not/finishing-transactions). Only set purchase completion to your app if you have your own code handling purchases.
+- **User Defaults (optional, iOS only)**: A key to override the standard user defaults used to cache `CustomerInfo`. This is required if you need to access `CustomerInfo` in an [iOS App Extension](https://developer.apple.com/app-extensions/).
+
+### Proxies & configuration for users in Mainland China
 
 We’ve received reports of our API being blocked in mainland China. 
 
-While we work on a long-term solution, if your app has a significant user base in this region, set the proxyURL property to `https://api.rc-backup.com/` before initializing the RevenueCat SDK. Ensure this configuration occurs prior to SDK setup to prevent connection issues for users in mainland China.
+While we work on a long-term solution, if your app has a significant user base in this region, set the `proxyURL` property to `https://api.rc-backup.com/` before initializing the RevenueCat SDK. Ensure this configuration occurs prior to SDK setup to prevent connection issues for users in mainland China.
 
 :::caution If you already have a proxy server
 If you have your own proxy server and already use the `proxyURL` API, you don't need any further configuration.
@@ -87,7 +88,7 @@ If you have your own proxy server and already use the `proxyURL` API, you don't 
     { type: 'swift', content: swiftChinaWorkaround, name: 'Swift' },
     { type: 'objc', content: objectiveCChinaWorkaround, name: 'Objective-C' },
     { type: 'kotlin', content: kotlinChinaWorkaround, name: 'Kotlin' },
-    { type: 'kotlin', content: kotlinChinaWorkaround, name: 'Kotlin Multiplatform' },
+    { type: 'kotlin', content: kotlinChinaWorkaround, name: 'Kotlin MP' },
     { type: 'java', content: javaChinaWorkaround, name: 'Java' },
     { type: 'flutter', content: flutterChinaWorkaround, name: 'Flutter' },
     { type: 'rn', content: reactChinaWorkaround, name: 'React Native' },
@@ -96,46 +97,51 @@ If you have your own proxy server and already use the `proxyURL` API, you don't 
     { type: 'unity', content: unityChinaWorkaround, name: 'Unity' },
 ]} />
 
-### Additional Configuration Options
-
-The SDK allows additional configuration on first setup:
-
-- **API Key (required)**: The public API key that corresponds to your app, found via **Project Settings > API keys > App specific keys** in the RevenueCat dashboard.
-- **App User ID (optional)**: An identifier for the current user. Pass `null` if you don't have a user identifier at the time of configuration and RevenueCat will generate an anonymous Id for you. See our [guide on identifying users](/customers/user-ids) for more information.
-- **Purchases Completed By (optional)**: A boolean value to tell RevenueCat not to [complete purchases](/migrating-to-revenuecat/sdk-or-not/finishing-transactions). Only set purchase completion to your app if you have your own code handling purchases.
-- **User Defaults (optional, iOS only)**: A key to override the standard user defaults used to cache `CustomerInfo`. This is required if you need to access `CustomerInfo` in an [iOS App Extension](https://developer.apple.com/app-extensions/).
-
-## Advanced Configuration
-
-Additional configuration options on the `.shared` instance of _Purchases_.
 
 ### iOS
 
-#### Delegates
+#### Listening for CustomerInfo updates
 
-##### `DELEGATE` `purchases:receivedUpdated`
+:::info Note
+RevenueCat doesn't push new data to the SDK, so this method is only called when CustomerInfo is updated from another SDK method or after a purchase is made on the current device.
+:::
+
+Implement the following delegate method to receive updates to the `CustomerInfo` object:
+
+```
+purchases:receivedUpdated
+```
 
 Called whenever _Purchases_ receives an updated `CustomerInfo` object. This may happen periodically throughout the life of the app if new information becomes available (e.g. after making a purchase).
 
-:::info
-Note: RevenueCat doesn't push new data to the SDK, so this method is only called when CustomerInfo is updated from another SDK method or after a purchase is made.
-:::
+#### Handling Promoted Purchases
 
-##### `DELEGATE` `purchases:readyForPromotedProduct`
+Implement the following delegate method to handle promoted purchases:
+```
+purchases:readyForPromotedProduct
+```
 
-Called when a user initiates a promoted in-app purchase from the App Store. If your app is able to handle a purchase at the current time, run the `defermentBlock` in this method. If the app is not in a state to make a purchase: cache the `defermentBlock`, then call the `defermentBlock` when the app is ready to make the promoted purchase. If the purchase should never be made, you don't need to ever call the `defermentBlock` and _Purchases_ will not proceed with promoted purchases.
+Called when a user initiates a promoted in-app purchase from the App Store. If your app is able to handle a purchase at the current time, run the `defermentBlock` in this method. 
+
+If the app is not in a state to make a purchase: cache the `defermentBlock`, then call the `defermentBlock` when the app is ready to make the promoted purchase. 
+
+If the purchase should never be made, you don't need to ever call the `defermentBlock` and _Purchases_ will not proceed with promoted purchases.
 
 ### Android
 
-#### Listeners
+#### Listening for CustomerInfo updates
 
-##### `LISTENER` `UpdatedCustomerInfoListener`
+:::info Note
+RevenueCat doesn't push new data to the SDK, so this method is only called when CustomerInfo is updated from another SDK method or after a purchase is made on the current device.
+:::
+
+Implement the following listener to receive updates to the `CustomerInfo` object:
+
+```
+UpdatedCustomerInfoListener
+```
 
 Called whenever _Purchases_ receives an updated `CustomerInfo` object. This may happen periodically throughout the life of the app if new information becomes available (e.g. after making a purchase).
-
-:::info
-Note: RevenueCat doesn't push new data to the SDK, so this method is only called when CustomerInfo is updated from another SDK method or after a purchase is made.
-:::
 
 ## Next steps
 
