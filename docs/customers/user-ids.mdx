@@ -9,7 +9,6 @@ RevenueCat provides a source of truth for a customer's [subscription status](/cu
 
 For an overview of what a customer is in RevenueCat, see [What is a Customer?](/customers/user-ids).
 
-
 ## Anonymous App User IDs
 
 By default, if you don't provide an App User ID when configuring the Purchases SDK, RevenueCat will generate a new random App User ID (prefixed with `$RCAnonymousID:`) for you, and will cache it on the device. 
@@ -73,12 +72,6 @@ import contentKmpAnon from "!!raw-loader!@site/code_blocks/customers/user-ids_km
     },
     
 ]}/>
-
-{/* :::info Surface Anonymous IDs for Debugging
-If your app does not enforce the use of custom App User IDs, you should consider revealing the user's App User ID in your app's support page. This will help expedite support requests, including those with RevenueCat Support.
-
-You can find the App User ID on the `CustomerInfo` [object](/customers/customer-info#get-user-information).
-::: */}
 
 ## Custom App User IDs
 
@@ -246,6 +239,14 @@ To log in a new user, the provided App User ID should be set again with `.logIn(
 #### Switching accounts
 
 If you need to switch from one provided App User ID to another, it's okay to call the `.logIn()` method directly - you do not need to call `logOut()` first.
+
+## Supporting your customers
+
+We strongly recommend revealing the App User ID to your customers somewhere within your app. Typically, developers choose to display the App User ID in a settings screen.
+
+Allowing your customers to view and copy their App User ID can help with troubleshooting and support if they need to contact you or your support team.
+
+You can retrieve the currently identified App User ID via the `Purchases.shared.appUserID` property.
 
 ## Aliases
 
