@@ -303,7 +303,7 @@ In any case, to never see Anonymous IDs, you only need to make sure to do the fo
 
 #### Only Configure the SDK with a custom App User ID
 
-The most frequent place that anonymous App User IDs are created is when the SDK is first [configured](/getting-started/configuring-sdk). Calling `.configure` on the SDK without providing a known user ID will cause the SDK to generate an Anonymous ID for the current user. To avoid anonymous IDs, you will need to identify the user’s ID, before configuring the SDK. Many applications use their own authentication system, often shared on multiple platforms, to identify users and provide their unique App User IDs.
+The most frequent place that anonymous App User IDs are created is when the SDK is first [configured](/getting-started/configuring-sdk). Calling `.configure` on the SDK without providing a known user ID will cause the SDK to generate an anonymous ID for the current user. To avoid anonymous IDs, you will need to identify the user’s ID before configuring the SDK. Many applications use their own authentication system, often shared on multiple platforms, to identify users and provide their unique App User IDs.
 
 #### Do not Logout the User
 
