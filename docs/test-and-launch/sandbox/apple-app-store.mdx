@@ -206,19 +206,21 @@ Make sure the the _View Sandbox Data_ toggle is enabled in the navigation bar.
 
 ## Working with Subscriptions
 
-In the the sandbox environment, subscription renewals happen at an accelerated rate, and auto-renewable subscriptions renew a maximum of six times per day. This enables you to test how your app handles a subscription renewal, a subscription lapse, and a subscription history that includes gaps.
+In the the sandbox environment, subscription renewals happen at an accelerated rate. 
 
-Because of the accelerated expiration and renewal rates, sometimes not all renewals are reflected in the RevenueCat customer dashboard.
+As of December 2024, Apple changed TestFlight subscription renewals to occur once every 24 hours, regardless of the subscription duration. Previously, TestFlight subscriptions renewed every few minutes, allowing for rapid testing of multiple billing cycles within a single day. 
+
+This change was not formally announced by Apple but can be found in their [documentation](https://developer.apple.com/help/app-store-connect/test-a-beta-version/subscription-renewal-rate-in-testflight).
 
 | Production subscription period | Sandbox subscription renewal |
 |-------------------------------|-----------------------------|
-| 3 days                        | 2 minutes                   |
-| 1 week                        | 3 minutes                   |
-| 1 month                       | 5 minutes                   |
-| 2 months                      | 10 minutes                  |
-| 3 months                      | 15 minutes                  |
-| 6 months                      | 30 minutes                  |
-| 1 year                        | 1 hour                      |
+| 3 days                        | 1 day                       |
+| 1 week                        | 1 day                       |
+| 1 month                       | 1 day                       |
+| 2 months                      | 1 day                       |
+| 3 months                      | 1 day                       |
+| 6 months                      | 1 day                       |
+| 1 year                        | 1 day                       |
 
 ## Deleting Test Users
 
