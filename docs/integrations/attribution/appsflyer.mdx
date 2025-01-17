@@ -4,6 +4,7 @@ slug: appsflyer
 excerpt: Integrate Purchases SDK with AppsFlyer for precise revenue tracking
 hidden: false
 ---
+
 With our AppsFlyer integration you can:
 
 - Accurately track subscriptions generated from AppsFlyer campaigns, allowing you to know precisely how much revenue your campaigns generate.
@@ -12,9 +13,9 @@ With our AppsFlyer integration you can:
 
 ### Integration at a Glance
 
-| Includes Revenue | Supports Negative Revenue |   Sends Sandbox Events   | Includes Customer Attributes | Sends Transfer Events |                                        Optional Event Types                                        |
-| :--------------: | :-----------------------: | :----------------------: | :----------------------------: | :-------------------: | :------------------------------------------------------------------------------------------------: |
-|        ✅        |            ✅             | Requires Sandbox API key |               ❌               |          ❌           | `non_subscription_purchase_event` `expiration_event` `billing_issue_event` `product_change_event` |
+| Includes Revenue | Supports Negative Revenue |   Sends Sandbox Events   | Includes Customer Attributes | Sends Transfer Events |                                       Optional Event Types                                        |
+| :--------------: | :-----------------------: | :----------------------: | :--------------------------: | :-------------------: | :-----------------------------------------------------------------------------------------------: |
+|        ✅        |            ✅             | Requires Sandbox API key |              ❌              |          ❌           | `non_subscription_purchase_event` `expiration_event` `billing_issue_event` `product_change_event` |
 
 ## 1. Install Appsflyer SDK
 
@@ -45,10 +46,12 @@ import kotlinContent from "!!raw-loader!@site/code_blocks/integrations/attributi
 
 {/* Use the RCCodeBlock component to render the code blocks with tabs */}
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent },
-    { type: 'kotlin', content: kotlinContent }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent },
+    { type: "kotlin", content: kotlinContent },
+  ]}
+/>
 
 You should make sure to set attributes after the _Purchases SDK_ is configured, and before the first purchase occurs. It's safe to set this multiple times, as only the new/updated values will be sent to RevenueCat. **If the AppsFlyer ID is not set, the customer's App User ID will be used instead.**
 
@@ -106,12 +109,17 @@ After you've set up the _Purchases SDK_ to send attribution data from AppsFlyer 
 ![](/images/f43c7d1-app.revenuecat.com_projects_85ff18c7_collaborators_1_102e08e408ab8c9a966834182c81cbbc.png "app.revenuecat.com_projects_85ff18c7_collaborators (1).png")
 
 2. Choose **AppsFlyer** from the Integrations menu
-3. Add your generic developer key if you use one AppsFlyer project for both iOS and android in the Developer Key field **OR** If you have specific developer keys for iOS and/or Android, add those in the associated UI fields
+3. Add your general developer key/token if you use one AppsFlyer account for both iOS and Android in the developer key field in the **General configuration** path, or if you have specific developer keys for iOS and/or Android, add those in the associated UI fields in the **App configuration** path
 4. If you have specific sandbox developer keys for iOS and/or Android, add those in the associated UI fields
 5. Enter the event names that RevenueCat will send or choose the default event names
 6. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
-![AppsFlyer Integration](/images/974687c-AppsFlyer_Integration_d261e99446139d6cc9540f25f6d5ff30.png)
+:::info S2S tokens
+If the token you're using to connect with AppsFlyer is a S2S token, be sure to check **Key is a S2S token** for your integration, since those keys use a unique endpoint. [Learn more about AppsFlyer token types.](https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-API-and-Server-to-server-S2S-tokens)
+:::
+
+![AppsFlyer Integration Configuration](/images/appsflyer-config.png)
+![AppsFlyer Integration Events](/images/appsflyer-events.png)
 
 ## 4. Testing the Appsflyer integration
 
