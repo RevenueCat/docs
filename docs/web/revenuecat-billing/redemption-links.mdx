@@ -10,19 +10,20 @@ RevenueCat Billing and the RevenueCat Web SDK are currently in beta.
 :::
 
 ## Overview
-Redemption Links is a Web2App feature that allows you to seamlessly connect web purchases with native mobile apps. This reduces friction from the purchase flow, increases conversion and can be useful for campaigns and other projects where handling purchases on the web is easier and more flexible.
+Redemption Links are one-time-use deep links generated after a customer completes a web purchase. These links allow customers to associate their web purchase with their account in your app. By tapping the link, customers are redirected into the app, where is purchase is automatically linked to their App User ID, granting them access to the associated entitlements.
+Redemption Links can increase conversion and be incredibly useful for projects like marketing campaigns.
 
 :::info App User IDs no longer required for web purchases
-Using web purchases with Redemption Links means that you do not need to provide an App User ID when initializing the purchase, and customers can therefore check out anonymously. The purchase is associated with the logged in customer when they're directed into the mobile app _after_ the purchase is complete.
+Using web purchases with Redemption Links means that you do not need to provide an App User ID when initializing the purchase, and customers can therefore check out anonymously.
 :::
 
 ## How Redemption Links work
 Here's how a purchase and redemption flow looks, once you've configured and enabled the feature:
 
-1. The RevenueCat Billing purchase flow is initialized, either through the web SDK `purchase()` method, or by linking to a Web Paywall Link (App User ID not required at this stage)
+1. The RevenueCat Billing purchase flow is initialized, either through the web SDK `purchase()` method, or through a [Web Paywall Link](/web/revenuecat-billing/web-paywall-links) (App User ID not required at this stage)
 1. The customer purchases a subscription or non-subscription product through the web checkout.
-1. The customer receives a **redemption link** at the end of the purchase flow, both on the success page, and in the email receipt for the purchase.
-1. On tapping the redemption link, customers are linked into the mobile app (using a custom URL scheme).
+1. The **customer receives a redemption link** at the end of the purchase flow, both on the success page, and in the email receipt for the purchase.
+1. On tapping the redemption link, customers are brought into the mobile app (using a custom URL scheme provided by RevenueCat).
 1. The app handles associating the purchase with the customer, either by aliasing or transferring the purchase.
 1. The customer has access to their entitlements associated with the web purchase.
 
@@ -50,7 +51,7 @@ In order to be able to redeem the redemption links in your mobile apps, follow t
 
 #### 1. Copy the custom URL scheme from the RevenueCat Dashboard
 
-You can find this in the RevenueCat dashboard, inside your RevenueCat Billing app’s settings, under “Redemption Links”. It is unique to your RevenueCat Billing app: 
+You can find this in the RevenueCat dashboard, inside your RevenueCat Billing app’s settings, under “Redemption Links”. It is unique to your RevenueCat Billing app:
 
 ![](/images/rc-billing/redemption-links-dashboard-disabled.png)
 
@@ -78,7 +79,7 @@ You can check out official docs from Google [here](https://developer.android.com
 
 #### 3. Perform redemption using our SDKs
 
-Our SDKs provide APIs to perform the redemptions and provide you with the result of that redemption. 
+Our SDKs provide APIs to perform the redemptions and provide you with the result of that redemption.
 
 ##### iOS
 
@@ -124,9 +125,6 @@ Then, you need to make sure that you display the appropriate UI in your app. In 
 Use the "Enable only for Sandbox" setting to test the full purchase flow, including deep-linking into your app. This will ensure that you don't send redemption links to customers before they're functioning and tested.
 :::
 
-#### Configuring Web Paywall Links
-
-
 #### How to test Redemption Links in sandbox mode
 
 1. Navigate to your project in the RevenueCat dashboard, and then the RevenueCat Billing app.
@@ -152,10 +150,10 @@ When a customer redeems a web purchase in your app, RevenueCat will automaticall
 | Anonymous          | Anonymous          | App customer and Web Purchase Owner have CustomerInfo merged (aliased) |
 | Anonymous          | Identified         | App customer and Web Purchase Owner have CustomerInfo merged (aliased) |
 | Identified         | Anonymous          | App customer and Web Purchase Owner have CustomerInfo merged (aliased) |
-| Identified         | Identified         | Follows project's [restore behavior](/getting-started/restoring-purchases#transferring-purchases-seen-on-multiple-app-user-ids) (default: transfer the purchase to the new App User ID) |
+| Identified         | Identified         | Follows project's [restore behavior](/projects/restore-behavior) (The default is to transfer the purchase to the new App User ID) |
 
 
-In most cases, the App User IDs will be merged (aliased) and treated as the same customer going forward. The exception is when both App User IDs are identified - in this case, it follows your project's configured [restore behavior](/getting-started/restoring-purchases#transferring-purchases-seen-on-multiple-app-user-ids).
+In most cases, the App User IDs will be merged (aliased) and treated as the same customer going forward. The exception is when both App User IDs are identified - in this case, it follows your project's configured [restore behavior](/projects/restore-behavior).
 
 After successful redemption, the customer will immediately have access to their entitlements regardless of which association method was used.
 
