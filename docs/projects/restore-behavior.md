@@ -60,6 +60,6 @@ If you plan to enable the "Track new purchases from server-to-server notificatio
 3. Verify that any `appAccountToken` or `obfuscatedExternalAccountId` set for your customers will match their [RevenueCat App User ID](/customers/user-ids#logging-in-with-a-custom-app-user-id) **and** the app user ID is a valid UUID (RFC 4122 version 4). **or**
 4. If you are using Google Pub/Sub notifications and are using the RevenueCat SDK in your app, ensure that you have selected the "Use anonymous App User ID" App User ID detection method.
 
-If you meet any of the above conditions, you can proceed with enabling the feature. 
+If you meet any of the above conditions, you can proceed with enabling the feature.
 
-If not, it may happen that we first track a purchase for **App User ID A** from a server-to-server notification and later we receive the same purchase from the SDK or the REST API under a different **App User ID B**. In this case, no transfer will occur, and **App User ID B** will never get access to the entitlement. 
+If not, it may happen that we first track a purchase for **App User ID A** from a server-to-server notification and later we receive the same purchase from the SDK or the REST API under a different **App User ID B**. In this case, no transfer will occur, and **App User ID B** will never get access to the entitlement.
