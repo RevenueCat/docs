@@ -74,19 +74,15 @@ Therefore, in order to compare identical periods between the Revenue chart and y
 
 ### Estimated exchange rates, taxes, and commissions
 
-Apple does not provide joinable\* transaction-level detail on the taxes and commissions deducted from a transaction to yield its proceeds, nor the exchange rate that's used to convert that payment from its purchase currency to the payout currency.
+While Apple’s reports do provide currency conversion rates, taxes, and commissions, their reports are intentionally anonymized. Without a way to connect data from Apple’s financial reports to individual transactions in RevenueCat, we can only know that some purchase had certain rates and deductions — but not which customer or transaction they applied to. This is why estimation is needed.
 
 In the case of taxes and commissions, we use our system to estimate the amount deducted from the gross revenue of the transaction to yield proceeds based on Apple's pricing schedule which quotes the proceeds you can expect for each price in each currency. [Learn more about how we estimate taxes and commissions.](https://www.revenuecat.com/docs/dashboard-and-metrics/taxes-and-commissions)
-
-:::info Joinable data
-Revenue data in RevenueCat is tied directly to a transaction made by a customer, which means it can be segmented and analyzed by other facts about that customer or their purchase: like their install month, the Apple Search Ads Campaign they were attributed to, and much more. Without a joinable field between Apple's financial reports, or other reports with information on taxes and commissions, we can only know that _some_ transaction had those attributes -- not which one, and therefore not which customer, which is why estimation is needed.
-:::
 
 In the case of exchange rates, Apple describes their process [here](https://developer.apple.com/help/app-store-connect/getting-paid/overview-of-receiving-payments):
 
 > Our bank converts payment amounts into the currency of your bank account. The exchange rate is established by our bank and, due to Apple's volume, is generally a more favorable rate than used by your local bank. The rates are typically the spot rate on the date of payment and no more than three business days prior to the date the proceeds are received into your account.
 
-Ultimately, that means the exchange rate that's used will not be set in stone until close to the payout date for that fiscal month, which is ~33 days after the end of the period, and therefore could be up to 60 days after the transaction occurred. And beyond that, the exact exchange rate that's used is likely better than what's publicly quoted on that day.
+Ultimately, that means the exchange rate that's used will not be set in stone until close to the payout date for that fiscal month, which is ~33 days after the end of the period, and therefore could be up to 68 days after the transaction occurred. And beyond that, the exact exchange rate that's used is likely better than what's publicly quoted on that day.
 
 To bridge this gap, RevenueCat converts transactions from their purchase currency to USD based on values from [Open Exchange Rates](https://openexchangerates.org/) as of the purchase date of the transaction (or to any other [display currency](https://www.revenuecat.com/docs/dashboard-and-metrics/display-currency) you have set in the Dashboard). However, that means there may be differences in the exact revenue being attributed for each transaction, especially during periods of meaningful exchange rate volatility.
 
