@@ -193,6 +193,14 @@ const redirects = {
       from: "/performance-summaries",
     },
     {
+      to: "/dashboard-and-metrics/anomaly-detection-notifications",
+      from: "/anomaly-detection",
+    },
+    {
+      to: "/dashboard-and-metrics/anomaly-detection-notifications",
+      from: "/anomaly-detection-notifications",
+    },
+    {
       to: "/dashboard-and-metrics/taxes-and-commissions",
       from: "/taxes-and-commissions",
     },
