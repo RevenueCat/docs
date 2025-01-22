@@ -5,6 +5,10 @@ excerpt: Get notified about revenue anomalies with custom threshold or auto dete
 hidden: false
 ---
 
+:::warning Beta Feature
+Anomaly Detection Notifications are currently in beta.
+:::
+
 With **Anomaly Detection Notifications**, you can receive email alerts about potential revenue anomalies for your projects. Choose between **Custom Threshold Alerts** or **Auto Detection Alerts** to monitor significant changes in revenue. Alerts are sent twice daily, evaluating the last 24 hours of data.
 
 ## How can I enable Anomaly Detection Notifications?
@@ -39,3 +43,17 @@ Currently, you can only set one alert (Custom Threshold or Auto Detection) per p
 | How do I know if an alert was triggered by a false positive?                                  | You can review your revenue trends on the RevenueCat Dashboard to validate alerts. If you encounter consistent false positives, reach out through [Support](https://app.revenuecat.com/settings/support). |
 
 ---
+
+## Beta Limitations
+
+Anomaly Detection is currently in beta, and there are a few limitations to be aware of:
+
+- Fixed check frequency: Anomalies are evaluated twice daily, meaning sudden changes between checks may not trigger an immediate alert.
+- False positives and false negatives:  
+  - A false positive means you might receive an alert for a revenue change that isn't actually an anomaly (e.g., expected fluctuations due to promotions or seasonality).  
+  - A false negative means a real anomaly might not be detected, especially if it's subtle or follows an unusual but valid pattern.  
+  - We are currently tweaking the alert thresholds to improve accuracy and reduce unnecessary alerts.  
+
+We are continuously improving the model to reduce these cases, but it’s always a good idea to cross-check alerts with your own revenue trends.
+
+If you notice any issues or have feedback, please reach out to [RevenueCat Support](https://app.revenuecat.com/settings/support).
