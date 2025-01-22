@@ -17,12 +17,7 @@ Trusted Entitlements is supported in iOS SDK version 4.25.0 and up, and Android 
 
 ### Configuration
 
-SDKs can be configured in one of 3 `EntitlementVerificationMode`'s:
-
-- Disabled (*default*): equivalent to no verification. Susceptible to request tampering.
-- Informational (*beta*): No behavior change, but the result of verification is included in `EntitlementInfos` / `EntitlementInfo`.
-- Enforced (*coming soon*): verification failures result in `ErrorCode.signatureVerificationFailed` error being thrown.
-
+Trusted Entitlements is enabled by default and it doesn't have any impact on performance or behavior by default. You can disable it by doing the following:
 
 
 import content1 from "!!raw-loader!@site/code_blocks/customers/trusted-entitlements.swift";
@@ -68,7 +63,7 @@ import content7 from "!!raw-loader!@site/code_blocks/customers/trusted-entitleme
 
 ### Verification
 
-When configuring the SDK with `EntitlementVerificationMode.informational`, `EntitlementInfo` contains the verification result:
+When Trusted Entitlements are enabled, `EntitlementInfo` contains the verification result:
 
 import content8 from "!!raw-loader!@site/code_blocks/customers/verification-result.swift";
 import content9 from "!!raw-loader!@site/code_blocks/customers/verification-result.m";
@@ -115,9 +110,9 @@ Additionally, verification errors are always forwarded to `Purchases.errorHandle
 
 ## Edge cases
 
-### Cache invalidation
+### Cache leftover
 
-Transitioning an app from `EntitlementVerificationMode.disabled` to `EntitlementVerificationMode.informational` means that cached data would not be verified. In order for a user to be able to rely on this new behavior, the SDKs invalidate caches when this change is detected, so that all subsequent data requests are guaranteed to have validation information.
+Transitioning an app from `EntitlementVerificationMode.disabled` to `EntitlementVerificationMode.informational` means that cached data would not be verified. The SDK will keep using that cached data, which should be updated with the result of the verification after a request to the RevenueCat servers is performed successfully. In this scenario, the `EntitlementInfo` will have a VerificationResult of "not requested". You may clear the CustomerInfo cache by calling the `Purchases/invalidateCustomerInfoCache()` method in the SDK if you want to avoid having unverified entitlements.
 
 ### Key replacement
 
