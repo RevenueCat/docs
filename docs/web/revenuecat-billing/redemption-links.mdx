@@ -40,9 +40,9 @@ The SDK versions supporting Redemption Links are:
 | :----------------------- | :------------------------------- |
 | purchases-android        | 8.10.6 and above                 |
 | purchases-ios            | 5.14.1 and above                 |
-| purchases-flutter        | Coming soon                      |
-| purchases-unity          | Coming soon                      |
-| react-native-purchases   | Coming soon                      |
+| purchases-flutter        | 8.4.0 and above                  |
+| purchases-unity          | 7.4.1 and above                  |
+| react-native-purchases   | 8.5.0 and above                  |
 | purchases-kmp            | Coming soon                      |
 | purchases-capacitor      | Coming soon                      |
 
@@ -106,6 +106,42 @@ import androidRedemption1 from "!!raw-loader!@site/code_blocks/web/revenuecat-bi
 
 <RCCodeBlock tabs={[
     { type: 'kotlin', title: "Android Redemption", content: androidRedemption1, },
+]}/>
+
+##### Flutter
+
+In our Flutter SDK, you will need to obtain the deep link first. Please read the official docs on how to parse deep links: https://docs.flutter.dev/ui/navigation/deep-linking. You can use [app_links](https://pub.dev/packages/app_links) or similar libraries to obtain the deep link.
+
+Once you have the deep link, you can use the following snippet to perform the redemption:
+
+import flutterRedemption from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_flutter.dart";
+
+<RCCodeBlock tabs={[
+    { type: 'dart', title: "Flutter Redemption", content: flutterRedemption, },
+]}/>
+
+##### React Native
+
+In our React Native SDK, you will need to obtain the deep link first. Please read the official docs on how to parse deep links: https://reactnavigation.org/docs/deep-linking/.
+
+Once you have the deep link, you can use the following snippet to perform the redemption:
+
+import reactNativeRedemption from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_react.ts";
+
+<RCCodeBlock tabs={[
+    { type: 'typescript', title: "React Native Redemption", content: reactNativeRedemption, },
+]}/>
+
+##### Unity
+
+In our Unity SDK, you will need to obtain the deep link first. Please read the official docs on how to parse deep links: https://docs.unity3d.com/Manual/deep-linking.html.
+
+Once you have the deep link, you can use the following snippet to perform the redemption:
+
+import unityRedemption from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_unity.cs";
+
+<RCCodeBlock tabs={[
+    { type: 'csharp', title: "Unity Redemption", content: unityRedemption, },
 ]}/>
 
 #### 4. Verify your setup
