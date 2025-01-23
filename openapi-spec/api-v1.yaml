@@ -987,6 +987,10 @@ components:
                 items:
                   type: object
                   properties:
+                    display_name:
+                      type: string
+                      description: The display name of the product as configured in the RevenueCat dashboard.
+                      example: "Lifetime Access"
                     id:
                       type: string
                       example: cadba0c81b
@@ -995,6 +999,16 @@ components:
                       type: boolean
                       description: Whether or not the purchase was made in sandbox mode.
                       example: false
+                    price:
+                      type: object
+                      description: The price of the transaction in the currency the product was purchased in.
+                      properties:
+                        amount:
+                          type: number
+                          example: 9.99
+                        currency:
+                          type: string
+                          example: USD
                     purchase_date:
                       type: string
                       example: "2019-04-05T21:52:45Z"
@@ -1063,6 +1077,10 @@ components:
                     type: string
                     example: "2019-08-14T21:07:40Z"
                     description: Date when the subscription expires/expired (in ISO 8601 format).
+                  display_name:
+                    type: string
+                    description: The display name of the product as configured in the RevenueCat dashboard.
+                    example: "Monthly Subscription"
                   grace_period_expires_date:
                     type: string
                     example: "2019-08-14T21:07:40Z"
@@ -1091,6 +1109,16 @@ components:
                       - `trial`: The product is in a free trial period  
                       - `intro`: The product is in an introductory pricing period
                     example: NORMAL
+                  price:
+                    type: object
+                    description: The price of the transaction in the currency the product was purchased in. Can be 0 for free trials.
+                    properties:
+                      amount:
+                        type: number
+                        example: 9.99
+                      currency:
+                        type: string
+                        example: USD
                   purchase_date:
                     type: string
                     description: Date when the last subscription period started (in ISO 8601 format).
