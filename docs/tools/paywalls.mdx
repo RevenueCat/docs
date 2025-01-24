@@ -6,7 +6,7 @@ hidden: false
 
 RevenueCat's Paywalls allow you to remotely configure your entire paywall view without any code changes or app updates. Whether you’re building a new app, exploring new paywall concepts, or diving into experimentation; RevenueCat’s Paywalls make it easy to get started.
 
-import YouTubeEmbed from '@site/src/components/YouTubeEmbed';
+import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 
 <YouTubeEmbed videoId="xSc9ICeyJpk" title="Introducing RevenueCat Paywalls" />
 
@@ -26,22 +26,28 @@ To use RevenueCat Paywalls, simply:
 
 3. See [displaying paywalls](/tools/paywalls/displaying-paywalls) for how to display it into your app.
 
+:::info Paywalls v2 Beta
+We've recently released our new paywall editor in public beta. If you're looking to check out Paywalls v2 while in beta, [click here](/tools/paywalls/creating-paywalls-v2).
+:::
+
 ## Limitations
 
 ### Platforms (support for more coming)
-* ✅  iOS 15.0 and higher
-* ✅  visionOS 1.0 and higher
-* ✅  Mac Catalyst 15.0 and higher
-* ✅  watchOS 8.0 and higher
-* ✅  Android 7.0 (API level 24)
-* ❌  macOS
-* ❌  tvOS
+
+- ✅ iOS 15.0 and higher
+- ✅ visionOS 1.0 and higher
+- ✅ Mac Catalyst 15.0 and higher
+- ✅ watchOS 8.0 and higher
+- ✅ Android 7.0 (API level 24)
+- ❌ macOS
+- ❌ tvOS
 
 ### Android's Google Play developer determined offers
+
 Paywalls in Android will use the default subscription option which, in case you use [developer determined offers](/subscription-guidance/subscription-offers/google-play-offers#eligibility-criteria), will always be available, providing these types of offers always to your users. If you want to avoid this behavior when using paywalls, add the `rc-ignore-offer` tag to the developer determined offer from your product.
 
 ## Next Steps
 
-* Now that you know how our paywalls work, read about [creating paywalls](/tools/paywalls/creating-paywalls)
-* Once you're ready to see your paywalls in action, you can follow our guides on [displaying paywalls](/tools/paywalls/displaying-paywalls)
-* If you need inspiration with some paywall examples, you can try our [Paywalls Tester app](https://github.com/RevenueCat/purchases-ios/tree/main/Tests/TestingApps/PaywallsTester)
+- Now that you know how our paywalls work, read about [creating paywalls](/tools/paywalls/creating-paywalls)
+- Once you're ready to see your paywalls in action, you can follow our guides on [displaying paywalls](/tools/paywalls/displaying-paywalls)
+- If you need inspiration with some paywall examples, you can try our [Paywalls Tester app](https://github.com/RevenueCat/purchases-ios/tree/main/Tests/TestingApps/PaywallsTester)
