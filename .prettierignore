@@ -1,0 +1,6 @@
+tools
+code_blocks
+openapi-spec
+# TODO: Reformat. MDX is whitespace sensitive, so it requires making sure all the docs still look good.
+**/*.md
+**/*.mdx
