@@ -95,11 +95,20 @@ In addition, by clicking on the **...** option in a component's row in the compo
 
 ### Saving a paywall
 
+When saving a paywall, there are two different states it can be saved in depending on what you're ready to do with it.
+
+| Paywall State | Description                                                                                                                                                                                                                                                                               |
+| :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Inactive      | Paywalls that you do not wish to serve to customers. You can think of these as drafts, or works in progress. Inactive Paywalls will not be available through the SDK.                                                                                                                     |
+| Published     | Paywalls that you may wish to serve to customers. These will always be returned on supported SDK versions. Whether they will be served to customers depends on whether you've configured the associated Offering as the Default Offering, or are serving it via Targeting or Experiments. |
+
 When creating a new paywall, you can save your changes at any time by clicking the **Save Changes** button at the top right of the page.
 
 This will save your paywall in an inactive state so that you can continue editing it, but it will not yet be sent to your app and made available to customers.
 
 To make your paywall available to customers, click **Publish Paywall**. Once a paywall is published, it will be available via the RevenueCat SDK and therefore can be seen by your customers depending on how you're serving Offerings to them.
+
+You can also set a published paywall to be inactive, or vice versa, at any time.
 
 :::tip Required components
 All paywalls must have a purchase button and at least one package added in order to be publishable.
