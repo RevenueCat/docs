@@ -1,62 +1,71 @@
-import React from 'react';
+import React from "react";
 import styles from "./item.styles.module.css";
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 interface ContentCardLinkProps {
-    link: string;
-    title: string;
+  link: string;
+  title: string;
 }
 export interface ContentCardItemProps {
-    title: string;
-    subtitle: string;
-    link: string;
-    icon: string;
-    links: ContentCardLinkProps[];
+  title: string;
+  subtitle: string;
+  link: string;
+  icon: string;
+  links: ContentCardLinkProps[];
 }
 
-const ContentCardItem: React.FC<ContentCardItemProps> = ({ title, subtitle, link, icon, links }) => {
-    let img = useBaseUrl(`/images/${icon}`);
-    
-    // Determine the href for the root <a> tag
-    const rootHref = link || (links && links.length > 0 ? links[0].link : "");
+const ContentCardItem: React.FC<ContentCardItemProps> = ({
+  title,
+  subtitle,
+  link,
+  icon,
+  links,
+}) => {
+  let img = useBaseUrl(`/images/${icon}`);
 
-    return (
-        <a href={rootHref} className={styles["feature-container"]}>
-            <div className={styles["content"]}>
-                <h2 className={styles["title"]}>
-                    {title}
-                </h2>
-                <p className={styles["subtitle"]}>{subtitle}</p>
-                
-                <ul className={styles["links-list"]}>
-                    {links && links.map((link, index) => (
-                        <li key={index}>
-                            <a href={link.link ? link.link : ""} className={styles["link"]}>
-                                {link.title}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
+  // Determine the href for the root <a> tag
+  const rootHref = link || (links && links.length > 0 ? links[0].link : "");
 
-            </div>
-            <div className={styles["icon-background"]}>
-                <img src={img} alt={title} />
-            </div>
-        </a>
-    );
+  return (
+    <a href={rootHref} className={styles["feature-container"]}>
+      <div className={styles["content"]}>
+        <h2 className={styles["title"]}>{title}</h2>
+        <p className={styles["subtitle"]}>{subtitle}</p>
+
+        <ul className={styles["links-list"]}>
+          {links &&
+            links.map((link, index) => (
+              <li key={index}>
+                <a href={link.link ? link.link : ""} className={styles["link"]}>
+                  {link.title}
+                </a>
+              </li>
+            ))}
+        </ul>
+      </div>
+      <div className={styles["icon-background"]}>
+        <img src={img} alt={title} />
+      </div>
+    </a>
+  );
 };
 
 export default ContentCardItem;
 
-export const ContentCardItemProvider: React.FC<ContentCardItemProps> = ({ title, subtitle, link, icon, links }) => {
-    return (
-      <ContentCardItem
-        title={title}
-        subtitle={subtitle}
-        link={link}
-        icon={icon}
-        links={links}
-      />
-    );
-  };
-  
+export const ContentCardItemProvider: React.FC<ContentCardItemProps> = ({
+  title,
+  subtitle,
+  link,
+  icon,
+  links,
+}) => {
+  return (
+    <ContentCardItem
+      title={title}
+      subtitle={subtitle}
+      link={link}
+      icon={icon}
+      links={links}
+    />
+  );
+};

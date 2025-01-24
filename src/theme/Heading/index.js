@@ -20,7 +20,7 @@ export default function Heading({ as: As, id, ...props }) {
     },
     {
       heading: typeof props.children === "string" ? props.children : id,
-    }
+    },
   );
 
   return (
@@ -33,7 +33,7 @@ export default function Heading({ as: As, id, ...props }) {
           : styles.anchorWithStickyNavbar,
         props.className,
         As === "h2" && "mt-16",
-        As === "h3" && "mt-12"
+        As === "h3" && "mt-12",
       )}
       id={id}
     >
