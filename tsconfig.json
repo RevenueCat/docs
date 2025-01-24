@@ -1,7 +1,7 @@
 {
-    "extends": "@docusaurus/tsconfig",
-    "compilerOptions": {
-      "baseUrl": ".",
-      "jsx": "react-jsx",
-    }
+  "extends": "@docusaurus/tsconfig",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "react-jsx"
   }
+}
