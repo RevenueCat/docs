@@ -267,6 +267,11 @@ There are also several listeners that can be used to handle the paywall lifecycl
 
 ### How to display a footer Paywall on your custom paywall
 
+:::warning
+`PaywallFooterContainerView` is not supported when [React Native's New Architecture](https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here) is enabled.
+Please see this [GitHub issue](https://github.com/RevenueCat/react-native-purchases/issues/1158#issuecomment-2613000475) for more information.
+:::
+
 RevenueCatUI also has a paywall variation that can be displayed as a footer below your custom paywall.
 This allows you to design your paywall exactly as you want with native components while still using RevenueCat UI to handle it.
 This is done by using `<RevenueCatUI.PaywallFooterContainerView>`.
