@@ -70,7 +70,7 @@ RCCodeBlock.propTypes = {
       title: PropTypes.string,
       name: PropTypes.string,
       region: PropTypes.string,
-    })
+    }),
   ).isRequired,
 };
 
@@ -99,7 +99,7 @@ function getTabTitle(type) {
     case "typescript":
       return "TypeScript";
     case "brightscript":
-        return "BrightScript";
+      return "BrightScript";
     default:
       return "Code";
   }
@@ -136,7 +136,7 @@ function getLanguageType(type) {
     case "svelte":
       return "html";
     case "brightscript":
-        return "brightscript";
+      return "brightscript";
     default:
       return "Code";
   }

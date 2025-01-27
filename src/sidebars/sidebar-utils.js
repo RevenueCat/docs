@@ -4,7 +4,7 @@ const buildItem = (item, pagePrefix) => {
     let object = {
       ...item,
       items: item.items.map((subItem) =>
-        buildItem(subItem, prefix + (subItem.itemsPrefix || ""))
+        buildItem(subItem, prefix + (subItem.itemsPrefix || "")),
       ),
     };
 

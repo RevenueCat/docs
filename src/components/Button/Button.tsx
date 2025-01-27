@@ -22,7 +22,7 @@ const Button: React.FC<ButtonType> = ({
         variant === "primary"
           ? "bg-primary text-white hover:bg-primaryDark"
           : "bg-transparent text-primary hover:bg-base-100 dark:hover:bg-base-800",
-        additionalClasses
+        additionalClasses,
       )}
       href={href}
       target={target}
