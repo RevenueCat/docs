@@ -1472,10 +1472,6 @@ const redirects = {
       from: "/building-new",
     },
     {
-      to: "/welcome/existing-apps",
-      from: "/existing-apps",
-    },
-    {
       to: "/welcome/set-up-revenuecat/account-management",
       from: "/account-management.html",
     },
