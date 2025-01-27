@@ -364,3 +364,12 @@ main .row {
     @apply w-full grid grid-cols-1 gap-6 xl:grid-cols-2;
   }
 }
+
+/* See src/theme/Root.js > useEmbedMode */
+body[data-embed="true"] {
+  nav,
+  aside.theme-doc-sidebar-container,
+  footer {
+    display: none !important;
+  }
+}
