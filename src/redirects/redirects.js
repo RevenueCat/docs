@@ -1556,8 +1556,12 @@ const redirects = {
       from: "/dashboard-and-metrics/customers-group/promotionals",
     },
     {
-      to: "/web/revenuecat-billing",
+      to: "/web/web-billing",
       from: "/web/rc-billing",
+    },
+    {
+      to: "/web/web-billing",
+      from: "/web/revenuecat-billing",
     },
   ],
 };
