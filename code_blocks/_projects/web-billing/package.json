@@ -1,5 +1,5 @@
 {
-  "name": "rc-billing-code-snippets",
+  "name": "web-billing-code-snippets",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
   "type": "module",
   "author": "RevenueCat",
   "dependencies": {
-    "@revenuecat/purchases-js": "^0.7.0"
+    "@revenuecat/purchases-js": "^0.15.1"
   },
   "devDependencies": {
     "eslint": "^8.56.0",

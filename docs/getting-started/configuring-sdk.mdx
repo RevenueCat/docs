@@ -30,7 +30,7 @@ import cordovaContent57 from "!!raw-loader!@site/code_blocks/getting-started/con
 import capacitorContent58 from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_8_capacitor.ts";
 import unityContent59 from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_9.cs";
 import kmpContent from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_10_kmp.kts";
-import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
+import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/web-billing/web-billing-doc-snippets.ts";
 
 import swiftChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_1_china_url.swift";
 import objectiveCChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_2_china_url.m";
@@ -76,7 +76,7 @@ The SDK allows additional configuration on first setup:
 
 ### Proxies & configuration for users in Mainland China
 
-We’ve received reports of our API being blocked in mainland China. 
+We’ve received reports of our API being blocked in mainland China.
 
 While we work on a long-term solution, if your app has a significant user base in this region, set the `proxyURL` property to `https://api.rc-backup.com/` before initializing the RevenueCat SDK. Ensure this configuration occurs prior to SDK setup to prevent connection issues for users in mainland China.
 
@@ -121,9 +121,9 @@ Implement the following delegate method to handle promoted purchases:
 purchases:readyForPromotedProduct
 ```
 
-Called when a user initiates a promoted in-app purchase from the App Store. If your app is able to handle a purchase at the current time, run the `defermentBlock` in this method. 
+Called when a user initiates a promoted in-app purchase from the App Store. If your app is able to handle a purchase at the current time, run the `defermentBlock` in this method.
 
-If the app is not in a state to make a purchase: cache the `defermentBlock`, then call the `defermentBlock` when the app is ready to make the promoted purchase. 
+If the app is not in a state to make a purchase: cache the `defermentBlock`, then call the `defermentBlock` when the app is ready to make the promoted purchase.
 
 If the purchase should never be made, you don't need to ever call the `defermentBlock` and _Purchases_ will not proceed with promoted purchases.
 

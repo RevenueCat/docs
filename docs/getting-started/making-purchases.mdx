@@ -4,7 +4,7 @@ slug: making-purchases
 excerpt: Process a transaction with Apple or Google
 hidden: false
 ---
-The SDK has a simple method, `purchase(package:)`, that takes a package from the fetched Offering and purchases the underlying product with Apple, Google, or Amazon. 
+The SDK has a simple method, `purchase(package:)`, that takes a package from the fetched Offering and purchases the underlying product with Apple, Google, or Amazon.
 
 import swiftContent1 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_1.swift";
 import objectiveCContent2 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_2.m";
@@ -15,7 +15,7 @@ import reactNativeContent6 from "!!raw-loader!@site/code_blocks/getting-started/
 import cordovaContent7 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_7.js";
 import capacitorContent8 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_capacitor.ts";
 import unityContent9 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_8.cs";
-import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
+import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/web-billing/web-billing-doc-snippets.ts";
 import kmpContent from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_kmp_1.kts";
 
 <RCCodeBlock tabs={[
@@ -36,10 +36,10 @@ The `purchase(package:)` completion block will contain an updated [CustomerInfo]
 
 If the `error` object is present, then the purchase failed. See our guide on [Error Handling](/test-and-launch/errors) for the specific error types.
 
-The `userCancelled` boolean is a helper for handling user cancellation errors. There will still be an error object if the user cancels, but you can optionally check the boolean instead of unwrapping the error completely. 
+The `userCancelled` boolean is a helper for handling user cancellation errors. There will still be an error object if the user cancels, but you can optionally check the boolean instead of unwrapping the error completely.
 
 :::info RevenueCat automatically finishes/acknowledges/consumes transactions
-Transactions (new and previous transactions that are synced) will be automatically completed (finished on iOS, acknowledged and consumed in Android), and will be made available through the RevenueCat SDK / Dashboard / ETL Exports. 
+Transactions (new and previous transactions that are synced) will be automatically completed (finished on iOS, acknowledged and consumed in Android), and will be made available through the RevenueCat SDK / Dashboard / ETL Exports.
 
 If you are migrating an existing app to RevenueCat and want to continue using your own in-app purchase logic, you can tell the SDK that [your app is completing transactions](/migrating-to-revenuecat/sdk-or-not/finishing-transactions) if you don't wish to have transactions completed automatically, but you will have to make sure that you complete them yourself.
 :::

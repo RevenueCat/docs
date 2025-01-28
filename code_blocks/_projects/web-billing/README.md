@@ -1,9 +1,9 @@
 # Web Billing docs code snippets
 
-This folder contains the Web Billing code snippets for the docs in the file `rc-billing-doc-snippets.ts`. Each snippet is contained in a region that starts with `// MARK {identifier}` and ends with `// END`. Snippets are then extracted by passing a `region` parameter to the tab of the `RCCodeBlock` in the documentation, like this:
+This folder contains the Web Billing code snippets for the docs in the file `web-billing-doc-snippets.ts`. Each snippet is contained in a region that starts with `// MARK {identifier}` and ends with `// END`. Snippets are then extracted by passing a `region` parameter to the tab of the `RCCodeBlock` in the documentation, like this:
 
 ```
-import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
+import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/web-billing/web-billing-doc-snippets.ts";
 
 <RCCodeBlock tabs={[
     { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Configuring SDK"},
@@ -17,8 +17,6 @@ The above approach allows testing the code snippets. To test the code snippets, 
 ```
 npm install
 ```
-
-Please note: While Web Billing is not yet public, you will need to set a `NODE_AUTH_TOKEN`, see [here](https://github.com/RevenueCat/purchases-js?tab=readme-ov-file#installation), to install the `@revenuecat/purchases-js` package.
 
 If there has been an update to the `purchases-js` package, you might have to run
 
@@ -38,4 +36,4 @@ Right now, the tests mostly test the functionality of getting offerings and prod
 
 ## Adding code snippets
 
-When adding a new code snippet, please also add tests in the file `rc-billing-doc-snippets.test.ts`. You can have a look at the example tests to get inspiration.
+When adding a new code snippet, please also add tests in the file `web-billing-doc-snippets.test.ts`. You can have a look at the example tests to get inspiration.

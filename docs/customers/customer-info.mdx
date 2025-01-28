@@ -9,7 +9,7 @@ RevenueCat makes it easy to determine subscription status and more with the Reve
 
 ## Getting subscription status via the SDK
 
-The CustomerInfo object contains all of the purchase and subscription data available about a customer. 
+The CustomerInfo object contains all of the purchase and subscription data available about a customer.
 
 This object is updated whenever a purchase or restore occurs and periodically throughout the lifecycle of your app. The latest information can always be retrieved by calling `getCustomerInfo()`:
 
@@ -22,7 +22,7 @@ import content6 from "!!raw-loader!@site/code_blocks/customers/customer-info_6.j
 import content7 from "!!raw-loader!@site/code_blocks/customers/customer-info_7.js";
 import contentCapacitor from "!!raw-loader!@site/code_blocks/customers/customer-info_add_listener_capacitor.ts";
 import content8 from "!!raw-loader!@site/code_blocks/customers/customer-info_8.cs";
-import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
+import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/web-billing/web-billing-doc-snippets.ts";
 
 
 
@@ -181,7 +181,7 @@ See our [Restoring Purchases](/getting-started/restoring-purchases) guide for mo
 
 ### Cache
 
-The SDK caches the user's subscription information to reduce your app's reliance on the network. 
+The SDK caches the user's subscription information to reduce your app's reliance on the network.
 
 Users who unlock entitlements will be able to access them even without an internet connection. The SDK will update the cache if it's older than 5 minutes, but only if you call `getCustomerInfo()`, make a purchase, or restore purchases, so it's a good idea to call `getCustomerInfo()` any time a user accesses premium content.
 
@@ -217,10 +217,10 @@ import contentKmp from "!!raw-loader!@site/code_blocks/customers/customer-info_k
         type: 'kotlin',
         content: content27,
     },
-    { 
-        type: 'kotlin', 
-        content: contentKmp, 
-        name: 'Kotlin Multiplatform' 
+    {
+        type: 'kotlin',
+        content: contentKmp,
+        name: 'Kotlin Multiplatform'
     },
     {
         type: 'java',
@@ -320,9 +320,9 @@ RevenueCat can handle refunds across all platforms for both subscription and non
 
 In the very uncommon case that RevenueCat servers don't respond as expected, the SDK is prepared to verify Apple/Google/Amazon's purchases on the device itself and grant entitlements temporarily. This allows your customers to have an almost seamless experience in this unlikely scenario, improving even more on our reliability. This happens automatically, so you don't need to do anything, the entitlements will appear in the `CustomerInfo`.
 
-Offline Entitlements is automatically enabled when our SDK attempts to reach our servers and they can't respond. It automatically is disabled when our servers respond successful http responses again. 
+Offline Entitlements is automatically enabled when our SDK attempts to reach our servers and they can't respond. It automatically is disabled when our servers respond successful http responses again.
 
-In order to do this, the SDK caches the relationships between products and entitlements you have setup in your RevenueCat dashboard. Then, when it tries to post a purchase to RevenueCat's servers, and these respond with an error, we will use the purchases from the stores and these relationships to grant entitlements. 
+In order to do this, the SDK caches the relationships between products and entitlements you have setup in your RevenueCat dashboard. Then, when it tries to post a purchase to RevenueCat's servers, and these respond with an error, we will use the purchases from the stores and these relationships to grant entitlements.
 
 ### Some things to note:
 - No information is lost when Offline Entitlements are active. All purchases are recorded and will be processed by our servers automatically once they are back online, with no action needed from you or your users.
