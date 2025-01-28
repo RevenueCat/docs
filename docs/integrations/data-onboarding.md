@@ -5,24 +5,24 @@ excerpt: Get Started with Your Data in RevenueCat
 hidden: false
 ---
 
-So, you're a data person, huh? Well you’re in luck, because we have a lot of it. Here, we’ll cover some of the basics to help you get started with RevenueCat. 
+So, you're a data person, huh? Well you’re in luck, because we have a lot of it. Here, we’ll cover some of the basics to help you get started with RevenueCat.
 
 ## Core Data Definitions
 
-Let’s start with some definitions to help you understand & analyze your RevenueCat data. You can think about the following core metrics as foundational measures for your conversion funnel. 
+Let’s start with some definitions to help you understand & analyze your RevenueCat data. You can think about the following core metrics as foundational measures for your conversion funnel.
 
-* New Customers: 'New Customers' includes the number of unique users (App User IDs) created in a given time window. Multiple App User IDs aliased together will be counted as 1 New Customer. Note: New Customers ≠ Active Subscribers. New Customers simply represents new users that were seen in your app. 
-* Initial Conversions: Customers that converted on any product or subscription within the specified Conversion Timeframe 
-* Active Subscriptions: Active Subscriptions shows the number of unexpired, paid subscriptions. This includes active paid subscriptions which may be cancelled, or within a grace period, until they expire. 
+- New Customers: 'New Customers' includes the number of unique users (App User IDs) created in a given time window. Multiple App User IDs aliased together will be counted as 1 New Customer. Note: New Customers ≠ Active Subscribers. New Customers simply represents new users that were seen in your app.
+- Initial Conversions: Customers that converted on any product or subscription within the specified Conversion Timeframe
+- Active Subscriptions: Active Subscriptions shows the number of unexpired, paid subscriptions. This includes active paid subscriptions which may be cancelled, or within a grace period, until they expire.
 
 ## Example Chart: Trial Conversions
 
-This becomes a bit more nuanced when observing all current states of your users, including trials, pending conversions, and abandons. A chart that data engineers reference frequently is Trial Conversion Chart, which gives a detailed view into the conversion  funnel, from New Customer to Trials Started, Converted, Pending & Abandoned. 
-  
-* Trials Started: The number of new customers that were first seen during the cohort period.
-* Conversion Rate: The number of trials started by customers in this cohort.
-* Pending Rate: The number of active trials that are set to auto-convert on completion.
-* Abandon Rate: The number of trials that have completed without converting or that are active but are not set to auto-convert on completion.
+This becomes a bit more nuanced when observing all current states of your users, including trials, pending conversions, and abandons. A chart that data engineers reference frequently is Trial Conversion Chart, which gives a detailed view into the conversion funnel, from New Customer to Trials Started, Converted, Pending & Abandoned.
+
+- Trials Started: The number of new customers that were first seen during the cohort period.
+- Conversion Rate: The number of trials started by customers in this cohort.
+- Pending Rate: The number of active trials that are set to auto-convert on completion.
+- Abandon Rate: The number of trials that have completed without converting or that are active but are not set to auto-convert on completion.
 
 ## Solving Common Data Challenges with RevenueCat
 
@@ -32,8 +32,7 @@ This becomes a bit more nuanced when observing all current states of your users,
 
 RevenueCat events work by connecting directly to the app stores, meaning they are not dependent on any in-app usage or activity and are always sent from RevenueCat's servers. Server-side event detection is crucial for subscription apps since most interesting events occur when your app is inactive (e.g. trial conversions, renewals, cancellations, etc.).
 
-Read more about <a href="https://www.revenuecat.com/docs/integrations/integrations">Events</a> and explore <a href="https://www.revenuecat.com/docs/integrations/webhooks/event-flows">Common Webhook Flows</a> used to notify you throughout a customer’s journey. 
-
+Read more about <a href="https://www.revenuecat.com/docs/integrations/integrations">Events</a> and explore <a href="https://www.revenuecat.com/docs/integrations/webhooks/event-flows">Common Webhook Flows</a> used to notify you throughout a customer’s journey.
 
 ### More Popular Features & FAQs
 
@@ -43,4 +42,3 @@ Read more about <a href="https://www.revenuecat.com/docs/integrations/integratio
 4. <a href="https://www.revenuecat.com/docs/integrations/integrations">Events Overview & Getting Data Out of RevenueCat</a>
 5. <a href="https://www.revenuecat.com/docs/integrations/scheduled-data-exports">Scheduled Data Exports</a>
 6. <a href="https://www.revenuecat.com/docs/integrations/third-party-integrations">3rd Party Integrations</a>
-

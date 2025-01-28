@@ -15,7 +15,7 @@ Please note that depending on the size, bulk imports can take time to complete, 
 
 If you already have existing purchases or subscriptions and have been saving the complete raw receipt files or tokens, you can import those purchases into RevenueCat. If you don't have the proper data saved on your server, see the client-side migration section of the [Migrating Subscriptions](/migrating-to-revenuecat/migrating-existing-subscriptions) doc.
 
-Before kicking off an import, it's important that new purchases are being forwarded. This can be achieved by integrating the SDK or forwarding receipts/purchase tokens from your backend via our REST API. 
+Before kicking off an import, it's important that new purchases are being forwarded. This can be achieved by integrating the SDK or forwarding receipts/purchase tokens from your backend via our REST API.
 
 :::info Bulk imports DO NOT trigger webhooks or integrations
 Bulk imports done by RevenueCat will not trigger any webhook or integration events. If this is a requirement, then you'll need to perform an import using the REST API as mentioned above.
@@ -26,6 +26,7 @@ Bulk imports done by RevenueCat will not trigger any webhook or integration even
 To do a receipt import we'll need a CSV file for each of the stores you want to import data from (Apple App Store, Google Play Store, Stripe). The CSV needs to contain the columns outlined below.
 
 =======
+
 #### Apple App Store
 
 - app_user_id
