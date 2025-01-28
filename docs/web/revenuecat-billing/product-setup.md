@@ -13,7 +13,7 @@ Web Billing is currently in beta.
 
 To create a new Web Billing product, open the RevenueCat dashboard, go to your project's settings, and under "Products" click on "New", and then select your Web Billing App:
 
-![New product button in the products screen](/images/rc-billing/new-product.png)
+![New product button in the products screen](/images/web-billing/new-product.png)
 
 In the "new product" screen, you can set up the following properties of the product:
 
@@ -35,4 +35,4 @@ In the "new product" screen, you can set up the following properties of the prod
 - **Grace period**: Length of the subscription access retention after a billing issue. *See [Sandbox testing](/web/web-billing#renewals-in-sandbox) for more information about durations in sandbox mode.*
 - **Price**: The price that will be charged for every period of the subscription in each currency. You can add prices in additional currencies by clicking "Add price". Only one price can be set per currency. [Read more about multi-currency support in RevenueCat Billing](/web/web-billing/multi-currency-support).
 
-![New product configuration page](/images/rc-billing/new-product-configuration.png)
+![New product configuration page](/images/web-billing/new-product-configuration.png)
