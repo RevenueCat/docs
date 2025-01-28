@@ -29,7 +29,10 @@ Read more about setting up StoreKit Configuration files in our [Sandbox Testing]
 
 ### Configure Products and Entitlements in RevenueCat
 
-<YouTubeEmbed videoId="QxHeZiW4KCA" title="RevenueCat Products, Offerings, and Entitlements Explained" />
+<YouTubeEmbed
+  videoId="QxHeZiW4KCA"
+  title="RevenueCat Products, Offerings, and Entitlements Explained"
+/>
 
 Once your in-app products have been configured in [App Store Connect](/getting-started/entitlements/ios-products), [Google Play Console](/getting-started/entitlements/android-products), [Amazon Appstore](/getting-started/entitlements/amazon-product-setup), or [Stripe](/getting-started/entitlements/stripe-products), you'll need to copy that configuration into the RevenueCat dashboard. RevenueCat uses an Entitlements system to control access to premium features, and Offerings to manage the set of products you offer to customers.
 
@@ -43,16 +46,19 @@ See [Configuring Products](/getting-started/entitlements) to set up your product
 
 <YouTubeEmbed videoId="PNiVCdExtkw" title="How to use RevenueCat Paywalls" />
 
-After configuring your offerings, you can jump right into designing a paywall (even before installing the SDK!) by choosing Paywalls in the sidebar of your project dashboard. 
+After configuring your offerings, you can jump right into designing a paywall (even before installing the SDK!) by choosing Paywalls in the sidebar of your project dashboard.
 
 RevenueCat provides several pre-built, customizable paywall templates that you can use to rapidly create a paywall.
 
-If you'd prefer to install the SDK before designing your paywall, you can always come back to this step later. 
+If you'd prefer to install the SDK before designing your paywall, you can always come back to this step later.
 
-<Button href="/docs/tools/paywalls/creating-paywalls">Create a Paywall →</Button>
-<br /><br />
+<Button href="/docs/tools/paywalls/creating-paywalls">
+  Create a Paywall →
+</Button>
+<br />
+<br />
 
-*Want to build your own custom paywall? See [Displaying Products](/getting-started/displaying-products), [Making Purchases](/getting-started/making-purchases), and [Restoring Purchases](/getting-started/restoring-purchases) for more information on manual implementation.*
+_Want to build your own custom paywall? See [Displaying Products](/getting-started/displaying-products), [Making Purchases](/getting-started/making-purchases), and [Restoring Purchases](/getting-started/restoring-purchases) for more information on manual implementation._
 
 ## 3. Using RevenueCat's Purchases SDK
 
@@ -60,13 +66,15 @@ Our SDK seamlessly implements purchases and subscriptions across platforms while
 
 ### SDK Installation
 
-Install the SDK on your preferred platform. 
+Install the SDK on your preferred platform.
 
 **Note: if you are using RevenueCat's Paywalls, the `RevenueCatUI` package is required during the installation process.**
 
 If you run into issues with the SDK, see [Troubleshooting the SDKs](/test-and-launch/debugging/troubleshooting-the-sdks) for guidance.
 
-<Button href="/docs/getting-started/installation">SDK Installation Guides →</Button>
+<Button href="/docs/getting-started/installation">
+  SDK Installation Guides →
+</Button>
 
 ### Initialize and Configure the SDK
 
@@ -96,7 +104,7 @@ import kmpContent1 from "!!raw-loader!@site/code_blocks/getting-started/configur
     { type: "swift", content: swiftContent },
     { type: "objc", content: objectiveCContent },
     { type: "kotlin", content: kotlinContent },
-    { type: 'kotlin', content: kmpContent1, name: 'Kotlin Multiplatform' },
+    { type: "kotlin", content: kmpContent1, name: "Kotlin Multiplatform" },
     { type: "java", content: javaContent },
     { type: "flutter", content: flutterContent },
     { type: "rn", content: reactNativeContent },
@@ -124,10 +132,13 @@ The SDK will automatically fetch the [configured Offerings](/getting-started/ent
 
 Presenting a paywall varies depending on your platform. See [Displaying Paywalls](/tools/paywalls/displaying-paywalls) to see in-depth examples for each platform.
 
-<Button href="/docs/tools/paywalls/displaying-paywalls">Present a Paywall →</Button>
-<br /><br />
+<Button href="/docs/tools/paywalls/displaying-paywalls">
+  Present a Paywall →
+</Button>
+<br />
+<br />
 
-*Want to display your products manually? See [Displaying Products](/getting-started/displaying-products).*
+_Want to display your products manually? See [Displaying Products](/getting-started/displaying-products)._
 
 #### SDK not fetching products or offerings?
 
@@ -143,11 +154,11 @@ Each platform requires slightly different configuration steps to test in sandbox
 
 When the purchase is complete, you can find the purchase associated to the customer in the [RevenueCat dashboard](/dashboard-and-metrics/customer-history). You can [search for the customer](/dashboard-and-metrics/customer-lists#find-an-individual-customer) by their App User ID that you configured, or by the automatically assigned `$RCAnonymousID` that you'll find in your logs.
 
-**Note:** RevenueCat ***always*** validates transactions with the respective store. The dashboard will only reflect purchases that have been successfully validated by the store.
+**Note:** RevenueCat **_always_** validates transactions with the respective store. The dashboard will only reflect purchases that have been successfully validated by the store.
 
 Additionally, the SDK will automatically update the customer's `CustomerInfo` object with the new purchase information. This object contains all the information about the customer's purchases and subscriptions.
 
-*Want to manually call the `purchase` method? See [Making Purchases](/getting-started/making-purchases).*
+_Want to manually call the `purchase` method? See [Making Purchases](/getting-started/making-purchases)._
 
 ### Check Subscription Status
 
@@ -215,7 +226,7 @@ import kmpContent6 from "!!raw-loader!@site/code_blocks/customers/customer-info_
     { type: "swift", content: swiftContent44 },
     { type: "objc", content: objectiveCContent45 },
     { type: "kotlin", content: kotlinContent46 },
-    { type: 'kotlin', content: kmpContent6, name: 'Kotlin Multiplatform' },
+    { type: "kotlin", content: kmpContent6, name: "Kotlin Multiplatform" },
     { type: "java", content: javaContent47 },
     { type: "flutter", content: flutterContent48 },
     { type: "rn", content: reactNativeContent49 },
@@ -247,7 +258,7 @@ import kmpContent5 from "!!raw-loader!@site/code_blocks/getting-started/restorin
     { type: "swift", content: swiftContent36 },
     { type: "objc", content: objectiveCContent37 },
     { type: "kotlin", content: kotlinContent38 },
-    { type: 'kotlin', content: kmpContent5, name: 'Kotlin Multiplatform' },
+    { type: "kotlin", content: kmpContent5, name: "Kotlin Multiplatform" },
     { type: "java", content: javaContent39 },
     { type: "flutter", content: flutterContent40 },
     { type: "rn", content: reactNativeContent41 },
@@ -258,7 +269,6 @@ import kmpContent5 from "!!raw-loader!@site/code_blocks/getting-started/restorin
 />
 
 If two different [App User IDs](/customers/user-ids) restore transactions from the same underlying store account (Apple, Google, or Amazon account) RevenueCat may attempt to create an alias between the two App User IDs and count them as the same user going forward. See our guide on [Restoring Purchases](/getting-started/restoring-purchases) for more information on the different configurable restore behaviors.
-
 
 :::success You did it!
 You have now implemented a fully-featured subscription purchasing system without spending a month writing server code. Congrats!

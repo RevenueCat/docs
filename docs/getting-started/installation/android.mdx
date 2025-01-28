@@ -4,6 +4,7 @@ slug: android
 excerpt: Instructions for installing Purchases SDK for Android
 hidden: false
 ---
+
 ## What is RevenueCat?
 
 RevenueCat provides a backend and a wrapper around StoreKit and Google Play Billing to make implementing in-app purchases and subscriptions easy. With our SDK, you can build and manage your app business on any platform without having to maintain IAP infrastructure. You can read more about [how RevenueCat fits into your app](https://www.revenuecat.com/blog/growth/where-does-revenuecat-fit-in-your-app/) or you can [sign up free](https://app.revenuecat.com/signup) to start building.
@@ -18,10 +19,7 @@ Purchases for Android (Google Play and Amazon Appstore) is available on Maven an
 
 import content from "!!raw-loader!@site/code_blocks/getting-started/installation/android_1.groovy";
 
-<RCCodeBlock tabs={[
-    { type: 'groovy', content: content, name: 'Groovy' }
-]} />
-
+<RCCodeBlock tabs={[{ type: "groovy", content: content, name: "Groovy" }]} />
 
 ### Import Purchases
 
@@ -29,9 +27,7 @@ You should now be able to import `Purchases`.
 
 import javaContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_2.java";
 
-<RCCodeBlock tabs={[
-    { type: 'java', content: javaContent, name: 'Java' }
-]} />
+<RCCodeBlock tabs={[{ type: "java", content: javaContent, name: "Java" }]} />
 
 ### Configure Proguard (Optional)
 
@@ -42,9 +38,9 @@ Purchases uses AndroidX App Startup under the hood. Make sure you have not remov
 
 import xmlContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_workmanager_manifest.xml";
 
-<RCCodeBlock tabs={[
-    { type: 'xml', content: xmlContent, name: 'AndroidManifest.xml' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "xml", content: xmlContent, name: "AndroidManifest.xml" }]}
+/>
 :::
 
 ### Set the correct launchMode
@@ -53,9 +49,11 @@ Depending on your user's payment method, they may be asked by Google Play to ver
 
 import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_launchmode.xml";
 
-<RCCodeBlock tabs={[
-    { type: 'xml', content: launchModeContent, name: 'AndroidManifest.xml' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "xml", content: launchModeContent, name: "AndroidManifest.xml" },
+  ]}
+/>
 
 You can find Android's documentation on the various `launchMode` options [here](https://developer.android.com/guide/topics/manifest/activity-element#lmode).
 
@@ -67,9 +65,9 @@ Add a new dependency to the build.gradle apart from the regular `purchases` depe
 
 import unityContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_3.groovy";
 
-<RCCodeBlock tabs={[
-    { type: 'groovy', content: unityContent, name: 'Groovy' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "groovy", content: unityContent, name: "Groovy" }]}
+/>
 
 ### Add Amazon public key
 

@@ -4,6 +4,7 @@ slug: facebook-ads
 excerpt: Integrate Purchases SDK with Facebook Ads for precise revenue tracking
 hidden: false
 ---
+
 With our Facebook Ads integration you can:
 
 - Accurately track subscriptions generated from Facebook Ad campaigns, allowing you to know precisely how much revenue your campaigns generate.
@@ -13,8 +14,8 @@ With our Facebook Ads integration you can:
 ### Integration at a Glance
 
 | Includes Revenue | Supports Negative Revenue |               Sends Sandbox Events               | Includes Customer Attributes | Sends Transfer Events | Optional Event Types |
-| :--------------: | :-----------------------: | :----------------------------------------------: | :----------------------------: | :-------------------: | :------------------: |
-|        ✅        |            ❌             | Requires sandbox Client Token and sandbox App ID |               ❌               |          ❌           |          ❌          |
+| :--------------: | :-----------------------: | :----------------------------------------------: | :--------------------------: | :-------------------: | :------------------: |
+|        ✅        |            ❌             | Requires sandbox Client Token and sandbox App ID |              ❌              |          ❌           |          ❌          |
 
 ## 1. Install Facebook SDK
 
@@ -51,12 +52,14 @@ import flutterContent from "!!raw-loader!@site/code_blocks/integrations/attribut
 import kotlinContent from "!!raw-loader!@site/code_blocks/integrations/attribution/facebook-ads_3.kt";
 import reactNativeContent from "!!raw-loader!@site/code_blocks/integrations/attribution/facebook-ads_4.js";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent },
-    { type: 'flutter', content: flutterContent},
-    { type: 'kotlin', content: kotlinContent },
-    { type: 'rn', content: reactNativeContent }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent },
+    { type: "flutter", content: flutterContent },
+    { type: "kotlin", content: kotlinContent },
+    { type: "rn", content: reactNativeContent },
+  ]}
+/>
 
 You should make sure to set attributes after the _Purchases SDK_ is configured, and before the first purchase occurs. It's safe to set this multiple times, as only the new/updated values will be sent to RevenueCat.
 
@@ -82,9 +85,7 @@ import swiftContent2 from "!!raw-loader!@site/code_blocks/integrations/attributi
 
 {/* Use the RCCodeBlock component to render the code blocks with tabs */}
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent2 }
-]} />
+<RCCodeBlock tabs={[{ type: "swift", content: swiftContent2 }]} />
 
 You can see Facebook's App Events Reference [here](https://developers.facebook.com/docs/app-events/reference).
 

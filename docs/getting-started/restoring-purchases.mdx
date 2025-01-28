@@ -20,18 +20,20 @@ import capacitorContent from "!!raw-loader!@site/code_blocks/getting-started/res
 import unityContent from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_8.cs";
 import kmpContent from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_kmp_1.kts";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent },
-    { type: 'objectivec', content: objectiveCContent },
-    { type: 'kotlin', content: kotlinContent },
-    { type: 'kotlin', content: kmpContent, name: 'Kotlin Multiplatform' },
-    { type: 'java', content: javaContent },
-    { type: 'flutter', content: flutterContent, name: 'Flutter' },
-    { type: 'rn', content: reactNativeContent, name: 'React Native' },
-    { type: 'cordova', content: cordovaContent, name: 'Cordova' },
-    { type: 'capacitor', content: capacitorContent, name: 'Capacitor' },
-    { type: 'unity', content: unityContent, name: 'Unity' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent },
+    { type: "objectivec", content: objectiveCContent },
+    { type: "kotlin", content: kotlinContent },
+    { type: "kotlin", content: kmpContent, name: "Kotlin Multiplatform" },
+    { type: "java", content: javaContent },
+    { type: "flutter", content: flutterContent, name: "Flutter" },
+    { type: "rn", content: reactNativeContent, name: "React Native" },
+    { type: "cordova", content: cordovaContent, name: "Cordova" },
+    { type: "capacitor", content: capacitorContent, name: "Capacitor" },
+    { type: "unity", content: unityContent, name: "Unity" },
+  ]}
+/>
 
 The `restorePurchases` method **should not** be triggered programmatically, since it may cause OS level sign-in prompts to appear, and should only be called from some user interaction (e.g. tapping a "Restore" button.)
 
