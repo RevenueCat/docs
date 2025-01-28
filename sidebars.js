@@ -155,8 +155,8 @@ const webSDKCategory = Category({
   items: [
     SubCategory({
       label: "Web Billing & Web SDK",
-      slug: "revenuecat-billing",
-      itemsPathPrefix: "revenuecat-billing/",
+      slug: "web-billing",
+      itemsPathPrefix: "web-billing/",
       items: [
         Page({ slug: "product-setup" }),
         Page({ slug: "customization" }),
@@ -249,7 +249,7 @@ const offeringsCategory = Category({
             Page({ slug: "stripe-products" }),
             Link({
               label: "Web Billing Product Setup",
-              slug: "/web/revenuecat-billing/product-setup",
+              slug: "/web/web-billing/product-setup",
             }),
             Page({ slug: "roku-products" }),
           ],

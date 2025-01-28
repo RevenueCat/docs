@@ -69,7 +69,7 @@ In iOS, you need to define a custom URL schema. You can do this in Xcode, from y
 
 In Android, you need to add a deep linking intent filter for the provided scheme. You can do that by adding the following intent filter inside your `AndroidManifest.xml` activity and replacing `<YOUR_CUSTOM_SCHEME>` with the scheme you copied in step 1. Note that it’s fine to have multiple intent filters for the same activity.
 
-import redemptionAndroidManifest from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_androidmanifest.xml";
+import redemptionAndroidManifest from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_androidmanifest.xml";
 
 <RCCodeBlock tabs={[
     { type: 'xml', content: redemptionAndroidManifest, name: 'AndroidManifest.xml' }
@@ -85,7 +85,7 @@ Our SDKs provide APIs to perform the redemptions and provide you with the result
 
 If using SwiftUI, you can use the `onWebPurchaseRedemptionAttempt` modifier to automatically perform redemption of Redemption Links once the app is opened with them.
 
-import swiftUIModifier from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_swift_ui_modifier.swift";
+import swiftUIModifier from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_swift_ui_modifier.swift";
 
 <RCCodeBlock tabs={[
     { type: 'swift', title: "SwiftUI Modifier", content: swiftUIModifier, },
@@ -93,7 +93,7 @@ import swiftUIModifier from "!!raw-loader!@site/code_blocks/web/revenuecat-billi
 
 Alternatively, if you don’t want to perform the redemption automatically or if you're not using Swift UI, you can use the provided URL extension `asWebPurchaseRedemption` and then perform the redemption using `Purchases.shared.redeemWebPurchase` as follows:
 
-import alternativeSwift from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_alternative_swift.swift";
+import alternativeSwift from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_alternative_swift.swift";
 
 <RCCodeBlock tabs={[
     { type: 'swift', title: "Alternative Swift", content: alternativeSwift, },
@@ -103,7 +103,7 @@ import alternativeSwift from "!!raw-loader!@site/code_blocks/web/revenuecat-bill
 
 In Android, you first need to obtain the link and make sure it’s a Redemption Link, then redeem it using the `redeemWebPurchase` method. You can see an example of this in the following code block:
 
-import androidRedemption1 from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_android.kt";
+import androidRedemption1 from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_android.kt";
 
 <RCCodeBlock tabs={[
     { type: 'kotlin', title: "Android Redemption", content: androidRedemption1, },
@@ -115,7 +115,7 @@ In our Flutter SDK, you will need to obtain the deep link first. Please read the
 
 Once you have the deep link, you can use the following snippet to perform the redemption:
 
-import flutterRedemption from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_flutter.dart";
+import flutterRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_flutter.dart";
 
 <RCCodeBlock tabs={[
     { type: 'dart', title: "Flutter Redemption", content: flutterRedemption, },
@@ -127,7 +127,7 @@ In our React Native SDK, you will need to obtain the deep link first. Please rea
 
 Once you have the deep link, you can use the following snippet to perform the redemption:
 
-import reactNativeRedemption from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_react.ts";
+import reactNativeRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_react.ts";
 
 <RCCodeBlock tabs={[
     { type: 'typescript', title: "React Native Redemption", content: reactNativeRedemption, },
@@ -139,7 +139,7 @@ In our Unity SDK, you will need to obtain the deep link first. Please read the o
 
 Once you have the deep link, you can use the following snippet to perform the redemption:
 
-import unityRedemption from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_unity.cs";
+import unityRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_unity.cs";
 
 <RCCodeBlock tabs={[
     { type: 'csharp', title: "Unity Redemption", content: unityRedemption, },
@@ -173,7 +173,7 @@ Use the "Enable only for Sandbox" setting to test the full purchase flow, includ
 
 ![](/images/web-billing/redemption-links-dashboard-sandbox.png)
 
-4. Use the sandbox purchase flow to make a test purchase on a mobile device where your app is installed (either through [Web Paywall Links](/web/revenuecat-billing/web-paywall-links) sandbox URL, or the [Web SDK](/web/revenuecat-billing) with a sandbox API key).
+4. Use the sandbox purchase flow to make a test purchase on a mobile device where your app is installed (either through [Web Paywall Links](/web/web-billing/web-paywall-links) sandbox URL, or the [Web SDK](/web/web-billing) with a sandbox API key).
 
 ### Purchase Association Behavior
 :::info Terminology

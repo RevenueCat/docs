@@ -52,7 +52,7 @@ To connect your app to the Roku Store, you'll need to add your **App name**, and
 
 Web Billing (formerly known as RevenueCat Billing) and the Web SDK allow you to easily offer web subscriptions by taking advantage of RevenueCat's powerful features, including dynamic paywalls, a customer portal, and more.
 
-- [Learn more about Web Billing](/web/revenuecat-billing)
+- [Learn more about Web Billing](/web/web-billing)
 
 #### Stripe (Manual Integration)
 
