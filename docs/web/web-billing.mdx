@@ -22,7 +22,7 @@ Start by installing the `@revenuecat/purchases-js` package using the package man
 
 import npmContent from "!!raw-loader!@site/code_blocks/_projects/web-billing/installation-npm.shell";
 import yarnContent from "!!raw-loader!@site/code_blocks/_projects/web-billing/installation-yarn.shell";
-import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/web-billing/web-billing-doc-snippets.ts";
+import webBillingContent from "!!raw-loader!@site/code_blocks/_projects/web-billing/web-billing-doc-snippets.ts";
 
 
 <RCCodeBlock
@@ -88,7 +88,7 @@ Configure the RevenueCat Web SDK by calling the static `configure()` method of t
 	tabs={[
 		{
 			type: "ts",
-			content: rcBillingContent,
+			content: webBillingContent,
 			name: "Web (JS/TS)",
 			region: "Configuring SDK",
 		},
@@ -123,7 +123,7 @@ Here’s how you can configure `purchases-js` to use identified customers:
 	tabs={[
 		{
 			type: "ts",
-			content: rcBillingContent,
+			content: webBillingContent,
 			name: "Web (JS/TS)",
 			region: "Configuring SDK",
 		},
@@ -143,7 +143,7 @@ Here’s how you can configure `purchases-js` to use anonymous customers:
 	tabs={[
 		{
 			type: "ts",
-			content: rcBillingContent,
+			content: webBillingContent,
 			name: "Web (JS/TS)",
 			region: "Configuring SDK Anon",
 		},
@@ -160,7 +160,7 @@ You can access the customer information using the `getCustomerInfo()` method of 
 	tabs={[
 		{
 			type: "ts",
-			content: rcBillingContent,
+			content: webBillingContent,
 			name: "Web (JS/TS)",
 			region: "Getting customer information",
 		},
@@ -173,7 +173,7 @@ You can then use the `entitlements` property of the `CustomerInfo` object to che
 	tabs={[
 		{
 			type: "ts",
-			content: rcBillingContent,
+			content: webBillingContent,
 			name: "Web (JS/TS)",
 			region: "Check for specific entitlement",
 		},
@@ -186,7 +186,7 @@ If your app has multiple entitlements, you might also want to check if the custo
 	tabs={[
 		{
 			type: "ts",
-			content: rcBillingContent,
+			content: webBillingContent,
 			name: "Web (JS/TS)",
 			region: "Check for any entitlement",
 		},
@@ -203,7 +203,7 @@ We recommend using [Offerings](/getting-started/entitlements#offerings) to confi
 	tabs={[
 		{
 			type: "ts",
-			content: rcBillingContent,
+			content: webBillingContent,
 			name: "Web (JS/TS)",
 			region: "Get current offerings",
 		},
@@ -216,7 +216,7 @@ If you want to [support multiple currencies](/web/web-billing/multi-currency-sup
 	tabs={[
 		{
 			type: "ts",
-			content: rcBillingContent,
+			content: webBillingContent,
 			name: "Web (JS/TS)",
 			region: "Get current offerings for EUR",
 		},
@@ -229,7 +229,7 @@ It's also possible to access other Offerings besides the Current Offering direct
 	tabs={[
 		{
 			type: "ts",
-			content: rcBillingContent,
+			content: webBillingContent,
 			name: "Web (JS/TS)",
 			region: "Get custom offering",
 		},
@@ -246,7 +246,7 @@ Each Offering contains a list of Packages. Packages can be accessed in a few dif
 	tabs={[
 		{
 			type: "ts",
-			content: rcBillingContent,
+			content: webBillingContent,
 			name: "Web (JS/TS)",
 			region: "Displaying packages",
 		},
@@ -259,7 +259,7 @@ Each Package contains information about the product in the `rcBillingProduct` pr
 	tabs={[
 		{
 			type: "ts",
-			content: rcBillingContent,
+			content: webBillingContent,
 			name: "Web (JS/TS)",
 			region: "Getting product",
 		},
@@ -274,7 +274,7 @@ To purchase a package, use the `purchase()` method of the `Purchases` object. It
 	tabs={[
 		{
 			type: "ts",
-			content: rcBillingContent,
+			content: webBillingContent,
 			name: "Web (JS/TS)",
 			region: "Purchasing package",
 		},
