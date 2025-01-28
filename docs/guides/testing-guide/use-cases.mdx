@@ -87,7 +87,7 @@ iOS:
 Since granting refunds is done through the App Store themselves, testing this in the sandbox environment is not currently possible
 :::
 
-**Expected Results:** 
+**Expected Results:**
 1. Users are able to request a refund
 2. For Google Play, you are able to grant the refund via the Dashboard or API
 3. For iOS, you direct them to Apple customer support
@@ -163,7 +163,7 @@ Since granting refunds is done through the App Store themselves, testing this in
 
 **Expected Results:** New subscription starts and old subscription ends.
 
-**Pass/Fail Criteria:** 
+**Pass/Fail Criteria:**
 - **Google Play:** The new subscription is started on time based on the `PRORATION` method that you use.
 - **iOS:** The new subscription is started on time based on Apple's timing for whether this was an upgrade, downgrade, or crossgrade.
 
@@ -727,7 +727,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 
 <details>
   <summary>Displaying Paywalls and making purchases</summary>
-  
+
   **Description:** To ensure that your Paywall is opening properly and functioning properly, follow this test guide.
 
 **Related docs:**
@@ -797,7 +797,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 
 </details>
 
-### RevenueCat Billing
+### Web Billing
 
 <details>
   <summary>Purchase Flow</summary>
@@ -859,7 +859,7 @@ try {
   <summary>Free Trials </summary>
 
 **Description:**
-Test the application and eligibility of free trials for subscriptions through RevenueCat Billing, ensuring that the correct trial period is applied based on the customer's eligibility criteria.
+Test the application and eligibility of free trials for subscriptions through Web Billing, ensuring that the correct trial period is applied based on the customer's eligibility criteria.
 
 **Related Docs:**
 

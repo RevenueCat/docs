@@ -1,19 +1,19 @@
 ---
-title: RevenueCat Billing and Web SDK
-slug: revenuecat-billing
-excerpt: Offer web subscriptions with RevenueCat Billing
+title: Web Billing and Web SDK
+slug: web-billing
+excerpt: Offer web subscriptions with Web Billing
 hidden: false
 ---
 
 :::warning Beta Feature
-RevenueCat Billing and the RevenueCat Web SDK are currently in beta.
+Web Billing and the RevenueCat Web SDK are currently in beta.
 :::
 
 ## Introduction
 
-RevenueCat Billing and the Web SDK allow you to easily offer web subscriptions. It utilizes Stripe as the payment gateway. This means you will need to set up and [connect your Stripe account](/web/connect-stripe-account) to RevenueCat.
+Web Billing (formerly RevenueCat Billing) and the Web SDK allow you to easily offer web subscriptions. It utilizes Stripe as the payment gateway. This means you will need to set up and [connect your Stripe account](/web/connect-stripe-account) to RevenueCat.
 
-RevenueCat Billing differs from our [Stripe Billing / Stripe Checkout](/web/stripe) integration in that it takes care of the purchase UI, the subscription management portal, and the recurring billing logic. Stripe will still charge a [payment processing fee](https://stripe.com/pricing) if you use RevenueCat Billing, but you will not have to pay [Stripe Billing / Checkout fees](https://stripe.com/billing/pricing).
+Web Billing differs from our [Stripe Billing / Stripe Checkout](/web/stripe) integration in that it takes care of the purchase UI, the subscription management portal, and the recurring billing logic. Stripe will still charge a [payment processing fee](https://stripe.com/pricing) if you use Web Billing, but you will not have to pay [Stripe Billing / Checkout fees](https://stripe.com/billing/pricing).
 
 ## Installation
 
@@ -35,7 +35,7 @@ import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billin
 <br/>
 
 :::info
-When testing RevenueCat Billing with [unpkg](https://www.unpkg.com/), add `Purchases` before all method names to access them.
+When testing Web Billing with [unpkg](https://www.unpkg.com/), add `Purchases` before all method names to access them.
 For example, use `Purchases.Purchases.configure()` instead of `Purchases.configure()`.
 :::
 
@@ -47,14 +47,14 @@ To get started, you first need to [connect your Stripe account with RevenueCat](
 
 ### App configuration
 
-To start using RevenueCat Billing, you will need to add a RevenueCat Billing App to your project. To do that, go the project settings, and in the "Apps" section, click "New", then "RevenueCat Billing":
+To start using Web Billing, you will need to add a Web Billing App to your project. To do that, go the project settings, and in the "Apps" section, click "New", then "Web Billing":
 
-![New RevenueCat Billing App](/images/rc-billing/new-rc-billing-app.png)
+![New Web Billing App](/images/rc-billing/new-rc-billing-app.png)
 
 In the following step, you can set up the most important information for the new App:
 
 - **Stripe Account**: The Stripe account to use. To use a different Stripe account not shown in the list, [connect it to RevenueCat first](/web/connect-stripe-account).
-- **Default Currency**: The default currency to use for the prices of the products. [Read more about multi-currency support in RevenueCat Billing](/web/revenuecat-billing/multi-currency-support).
+- **Default Currency**: The default currency to use for the prices of the products. [Read more about multi-currency support in Web Billing](/web/revenuecat-billing/multi-currency-support).
 - **App Name**: The name of the app. This will also be shown in the purchase flow, in emails, and on invoices.
 - **Support Email**: An email address that customers can send support requests to. This will also be shown in the purchase flow, in emails, and on invoices.
 - **Store URLs**: Links to your native iOS and Android apps that are used in the checkout and emails, to enable customers to download them after purchasing.
@@ -62,7 +62,7 @@ In the following step, you can set up the most important information for the new
 - **Appearance**: The Appearance tab allows customizing the look and feel of the purchase flow, including colors, button shapes and more. [Read more about customizing the appearance](/web/revenuecat-billing/customization).
 
 
-![New RevenueCat Billing App](/images/rc-billing/new-rc-billing-app-form.png)
+![New Web Billing App](/images/rc-billing/new-rc-billing-app-form.png)
 
 After creating the app, some additional fields will be shown:
 
@@ -283,13 +283,13 @@ To purchase a package, use the `purchase()` method of the `Purchases` object. It
 
 ## Testing
 
-You can use Stripe's [Test Mode](https://stripe.com/docs/test-mode) to test your RevenueCat Billing integration.
+You can use Stripe's [Test Mode](https://stripe.com/docs/test-mode) to test your Web Billing integration.
 
 :::warning Ensure proper sandbox testing
 In contrast to mobile app stores, there is no intermediary between you and the customer, and no App Review before you start charging customers money. Therefore, you should make sure that you have properly tested your implementation in sandbox mode before shipping your web subscriptions.
 :::
 
-If you use the RevenueCat Billing sandbox API key, Stripe's test mode will be used automatically, and you can use one of Stripe's [test cards](https://docs.stripe.com/testing) to make purchases.
+If you use the Web Billing sandbox API key, Stripe's test mode will be used automatically, and you can use one of Stripe's [test cards](https://docs.stripe.com/testing) to make purchases.
 
 ### Renewals in Sandbox
 
@@ -323,7 +323,7 @@ Time-based subscription features such as free trials are also shortened for sand
 
 ## Current Limitations
 
-RevenueCat Billing currently has a number of known limitations. Most notably:
+Web Billing currently has a number of known limitations. Most notably:
 
 - There is no support for sales tax or VAT calculation.
 - There is no support for discounts or other offers.

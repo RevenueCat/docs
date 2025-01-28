@@ -154,7 +154,7 @@ const webSDKCategory = Category({
   itemsPathPrefix: "web/",
   items: [
     SubCategory({
-      label: "RevenueCat Billing & Web SDK",
+      label: "Web Billing & Web SDK",
       slug: "revenuecat-billing",
       itemsPathPrefix: "revenuecat-billing/",
       items: [
@@ -248,7 +248,7 @@ const offeringsCategory = Category({
             Page({ slug: "amazon-product-setup" }),
             Page({ slug: "stripe-products" }),
             Link({
-              label: "RevenueCat Billing Product Setup",
+              label: "Web Billing Product Setup",
               slug: "/web/revenuecat-billing/product-setup",
             }),
             Page({ slug: "roku-products" }),
@@ -463,7 +463,7 @@ const platformResourcesCategory = Category({
         title: "Web Configuration",
         link: "store-configuration/web",
         description:
-          "How to configure RevenueCat for RevenueCat Billing or Stripe.",
+          "How to configure RevenueCat for Web Billing or Stripe.",
       },
     }),
   ],

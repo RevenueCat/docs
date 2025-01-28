@@ -3,7 +3,7 @@ title: General Troubleshooting
 slug: general-troubleshooting
 hidden: false
 ---
-If you are having any issues in RevenueCat, below is a list of some common questions that we see and some quick ways to troubleshoot them. If you are still having issues after checking this document, please feel free to reach out to [support](https://app.revenuecat.com/settings/support) or check out our [community](https://community.revenuecat.com/)! 
+If you are having any issues in RevenueCat, below is a list of some common questions that we see and some quick ways to troubleshoot them. If you are still having issues after checking this document, please feel free to reach out to [support](https://app.revenuecat.com/settings/support) or check out our [community](https://community.revenuecat.com/)!
 
 ## General Issues
 ### Products or Offerings can't be fetched, or Offerings are empty?
@@ -25,7 +25,7 @@ Here's how it works under the hood:
 If the stores are unable to return valid products, it means that somewhere in that cycle there is a configuration issue. If there is a typo in your product identifier, the request will fail. If the bundle ID doesn't match the configuration in App Store Connect (or package name for Google Play, etc.), the request will fail. The guide linked above details the potential configuration issues.
 
 ### Customer can't access their entitlements?
-This can happen for multiple reasons, but the most common reasons for this are the following: 
+This can happen for multiple reasons, but the most common reasons for this are the following:
 1. The user's identifier changed (via re-installation, created a new account, etc.). This is very common, and should be an expected part of your app's flow. This can happen automatically at times, like after a re-install of your app.
 3. The user's subscription purchases expired (in this case, they should re-purchase).
 
@@ -44,7 +44,7 @@ While this may seem unexpected at times, this is **extremely common**, and is a 
 1. The user is logged into the underlying store account, indicating ownership of those purchases.
 2. The user is attempting to restore those purchases from a different app user ID than the one that already owns the purchases.
 
-We recommend also looking more into your transfer settings as this can chang the behavior in your app when a transfer is made. More information on this can be found [here](https://www.revenuecat.com/docs/getting-started/restoring-purchases#transferring-purchases-seen-on-multiple-app-user-ids). 
+We recommend also looking more into your transfer settings as this can chang the behavior in your app when a transfer is made. More information on this can be found [here](https://www.revenuecat.com/docs/getting-started/restoring-purchases#transferring-purchases-seen-on-multiple-app-user-ids).
 
 ### I accidentally logged in all of my app users with the same app user ID.
 A simple way to fix this issue can be found below:
@@ -54,15 +54,15 @@ A simple way to fix this issue can be found below:
 2. Wait until most of your users get the update.
 3. Delete the hard-coded app user ID from the [dashboard](https://www.revenuecat.com/docs/dashboard-and-metrics/customer-history/manage-users) or the [API](https://www.revenuecat.com/docs/api-v1#tag/customers/operation/delete-subscriber).
 4. Users who were reset/reidentified will need to restore purchases in order to re-gain their entitlements and re-link their subscription with their current app user ID.
-:::info 
-You can delete the hard-coded user at any time that you see it pop up in the dashboard (This might happen since some users may be slower to update the app). 
+:::info
+You can delete the hard-coded user at any time that you see it pop up in the dashboard (This might happen since some users may be slower to update the app).
 :::
 
-### Can I reset customer attributes? 
-While you can't directly reset customer attributes, you can delete your current attribute by passing null or an empty string as the key value. Once you do this you will have to call restorePurchases or syncPurchases to trigger an update to the cache. Individual attributes can also be cleared for a specific user in their customer view. Once you do this, you will be able to set these attributes to whatever they need to be set to effectively resetting them. 
+### Can I reset customer attributes?
+While you can't directly reset customer attributes, you can delete your current attribute by passing null or an empty string as the key value. Once you do this you will have to call restorePurchases or syncPurchases to trigger an update to the cache. Individual attributes can also be cleared for a specific user in their customer view. Once you do this, you will be able to set these attributes to whatever they need to be set to effectively resetting them.
 
 ### Help, I am having issues with the SDK.
-We have gone ahead and created a document to troubleshoot SDK problems which we recommend checking out [here](https://www.revenuecat.com/docs/test-and-launch/debugging/troubleshooting-the-sdks)! 
+We have gone ahead and created a document to troubleshoot SDK problems which we recommend checking out [here](https://www.revenuecat.com/docs/test-and-launch/debugging/troubleshooting-the-sdks)!
 
 ### What countries are supported?
 Since RevenueCat works as a wrapper for purchases made by the respective store, we will support purchases from countries that each of the respective stores support.
@@ -70,19 +70,19 @@ Since RevenueCat works as a wrapper for purchases made by the respective store, 
 - [Google Play Store supported countries](https://support.google.com/googleplay/answer/143779?hl=en-GB&sjid=12085401994901043904-NC)
 - [Amazon App Store supported countries](https://www.amazon.com/gp/help/customer/display.html?nodeId=GG6HESXQN45DZQ8N)
 - [Stripe supported countries](https://stripe.com/global)
-- [RevenueCat Billing](https://www.revenuecat.com/docs/web/revenuecat-billing) - Since RevenueCat billing supports using Stripe as the payment gateway, we currently will use the same supported countries as Stripe does as seen in the link above.
+- [Web Billing](https://www.revenuecat.com/docs/web/revenuecat-billing) - Since Web Billing supports using Stripe as the payment gateway, we currently will use the same supported countries as Stripe does as seen in the link above.
 
 ### Why does my app keep getting rejected?
-If your app is being rejected from the respective store it can be for many different reasons. We have a useful document [here](https://www.revenuecat.com/docs/test-and-launch/app-store-rejections) that goes over common reasons for rejection and how to help get your app approved! 
+If your app is being rejected from the respective store it can be for many different reasons. We have a useful document [here](https://www.revenuecat.com/docs/test-and-launch/app-store-rejections) that goes over common reasons for rejection and how to help get your app approved!
 
 ## Service credentials issues
-Service credentials issues can be tricky and can occur for multiple reasons but will stop you from making purchases successfully. Below is a list of things to check for your credentials in each store. 
+Service credentials issues can be tricky and can occur for multiple reasons but will stop you from making purchases successfully. Below is a list of things to check for your credentials in each store.
 
 ### Google Play Service credentials Troubleshooting.
-We have a great document [here](https://www.revenuecat.com/docs/service-credentials/creating-play-service-credentials/google-play-checklists) that goes over how to check which part of your credentials is failing and if it is failing how to fix the issue at hand. We recommend checking that out if you are experiencing any issues in relation to this! 
+We have a great document [here](https://www.revenuecat.com/docs/service-credentials/creating-play-service-credentials/google-play-checklists) that goes over how to check which part of your credentials is failing and if it is failing how to fix the issue at hand. We recommend checking that out if you are experiencing any issues in relation to this!
 
 ### App Store Connect API Key.
-Make sure to verify that your key ID and Issuer ID are set correctly in correlation with the file that you uploaded. 
+Make sure to verify that your key ID and Issuer ID are set correctly in correlation with the file that you uploaded.
 
 ## Event Issues
 

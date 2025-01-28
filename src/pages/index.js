@@ -221,7 +221,7 @@ function LandingPage() {
             <Link href="/docs/web/revenuecat-billing">
               <span className="flex items-center gap-3">
                 <BillingIcon width="16" />
-                RevenueCat Billing
+                Web Billing
               </span>
             </Link>
             <Link href="/docs/dashboard-and-metrics/overview">

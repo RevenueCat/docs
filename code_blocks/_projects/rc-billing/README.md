@@ -1,6 +1,6 @@
-# RevenueCat Billing docs code snippets
+# Web Billing docs code snippets
 
-This folder contains the RevenueCat Billing code snippets for the docs in the file `rc-billing-doc-snippets.ts`. Each snippet is contained in a region that starts with `// MARK {identifier}` and ends with `// END`. Snippets are then extracted by passing a `region` parameter to the tab of the `RCCodeBlock` in the documentation, like this:
+This folder contains the Web Billing code snippets for the docs in the file `rc-billing-doc-snippets.ts`. Each snippet is contained in a region that starts with `// MARK {identifier}` and ends with `// END`. Snippets are then extracted by passing a `region` parameter to the tab of the `RCCodeBlock` in the documentation, like this:
 
 ```
 import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
@@ -18,7 +18,7 @@ The above approach allows testing the code snippets. To test the code snippets, 
 npm install
 ```
 
-Please note: While RevenueCat Billing is not yet public, you will need to set a `NODE_AUTH_TOKEN`, see [here](https://github.com/RevenueCat/purchases-js?tab=readme-ov-file#installation), to install the `@revenuecat/purchases-js` package.
+Please note: While Web Billing is not yet public, you will need to set a `NODE_AUTH_TOKEN`, see [here](https://github.com/RevenueCat/purchases-js?tab=readme-ov-file#installation), to install the `@revenuecat/purchases-js` package.
 
 If there has been an update to the `purchases-js` package, you might have to run
 

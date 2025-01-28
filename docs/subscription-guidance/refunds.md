@@ -33,7 +33,7 @@ If you configure an [In-App Purchase Key](/service-credentials/itunesconnect-app
 
 Refunds can also be granted programmatically through the RevenueCat [REST API](https://docs.revenuecat.com/reference#revoke-a-google-subscription). This will immediately revoke access to the Google subscription and issue a refund for the last purchase.
 
-If a refund is granted by Google or initiated through the Google Play console, it **may take up to 24 hours** to be detected by RevenueCat. Refunds due to no acknowledgement of purchases are not detected automatically. You also must refund and revoke in order for RevenueCat to detect this, only refunding will not be detected. See Google's documentation [here](https://support.google.com/googleplay/android-developer/answer/2741495?hl=en#zippy=%2Crefund-subscriptions-including-refund-and-revoke) on this. 
+If a refund is granted by Google or initiated through the Google Play console, it **may take up to 24 hours** to be detected by RevenueCat. Refunds due to no acknowledgement of purchases are not detected automatically. You also must refund and revoke in order for RevenueCat to detect this, only refunding will not be detected. See Google's documentation [here](https://support.google.com/googleplay/android-developer/answer/2741495?hl=en#zippy=%2Crefund-subscriptions-including-refund-and-revoke) on this.
 
 **Non-subscriptions**
 
@@ -55,7 +55,7 @@ Refunds granted through Amazon customer service **will not** be detected as a re
 
 ## RevenueCat Dashboard
 
-**Google Play** and **RevenueCat Billing** purchases can be refunded directly through the RevenueCat dashboard. Granting a refund will immediately expire the subscription and remove any entitlement access. By refunding directly through RevenueCat you can ensure that refunds are accounted for immediately in all charts and integrations.
+**Google Play** and **Web Billing** purchases can be refunded directly through the RevenueCat dashboard. Granting a refund will immediately expire the subscription and remove any entitlement access. By refunding directly through RevenueCat you can ensure that refunds are accounted for immediately in all charts and integrations.
 
 Apple doesn’t allow developers to grant refunds themselves, only through Apple customer support. However, Apple refunds are tracked with RevenueCat and accounted for in all charts and integrations.
 
@@ -74,7 +74,7 @@ If you are are seeing delays or non-existent consumable refunds, make sure that 
 
 If the option to refund is missing from the RevenueCat dashboard, it might be that the subscription is no longer active. Please check the Google Play Console for the order details to confirm this, see Google's documentation [here](https://support.google.com/googleplay/android-developer/answer/2741495?hl=en).
 
-If you refunded via the Google Play Console or it was granted by Google, it **may take up to 24 hours** to be detected by RevenueCat. If a refund does not revoke access or the refund is due to no acknowledgement of purchases, then RevenueCat will not pick up on it. You would need to refund and revoke in order for RevenueCat to detect this, see Google's documentation [here](https://support.google.com/googleplay/android-developer/answer/2741495?hl=en#zippy=%2Crefund-subscriptions-including-refund-and-revoke). 
+If you refunded via the Google Play Console or it was granted by Google, it **may take up to 24 hours** to be detected by RevenueCat. If a refund does not revoke access or the refund is due to no acknowledgement of purchases, then RevenueCat will not pick up on it. You would need to refund and revoke in order for RevenueCat to detect this, see Google's documentation [here](https://support.google.com/googleplay/android-developer/answer/2741495?hl=en#zippy=%2Crefund-subscriptions-including-refund-and-revoke).
 
 
 ### Stripe
