@@ -1563,12 +1563,56 @@ const redirects = {
       to: "/web/web-billing",
       from: "/web/revenuecat-billing",
     },
+    {
+      to: "/web/web-billing/customer-portal",
+      from: "/web/revenuecat-billing/customer-portal",
+    },
+    {
+      to: "/web/web-billing/customization",
+      from: "/web/revenuecat-billing/customization",
+    },
+    {
+      to: "/web/web-billing/localization",
+      from: "/web/revenuecat-billing/localization",
+    },
+    {
+      to: "/web/web-billing/managing-customer-subscriptions",
+      from: "/web/revenuecat-billing/managing-customer-subscriptions",
+    },
+    {
+      to: "/web/web-billing/multi-currency-support",
+      from: "/web/revenuecat-billing/multi-currency-support",
+    },
+    {
+      to: "/web/web-billing/payment-methods",
+      from: "/web/revenuecat-billing/payment-methods",
+    },
+    {
+      to: "/web/web-billing/product-setup",
+      from: "/web/revenuecat-billing/product-setup",
+    },
+    {
+      to: "/web/web-billing/redemption-links",
+      from: "/web/revenuecat-billing/redemption-links",
+    },
+    {
+      to: "/web/web-billing/refunding-payments",
+      from: "/web/revenuecat-billing/refunding-payments",
+    },
+    {
+      to: "/web/web-billing/subscription-lifecycle",
+      from: "/web/revenuecat-billing/subscription-lifecycle",
+    },
+    {
+      to: "/web/web-billing/web-paywall-links",
+      from: "/web/revenuecat-billing/web-paywall-links",
+    },
   ],
 };
 
 // Add redirects with a .html appended to the "from" path for redirecting in S3/Cloudfront
 redirects.redirects.push(
-  ...redirects.redirects.map(({ from, to }) => ({ from: `${from}.html`, to })),
+  ...redirects.redirects.map(({ from, to }) => ({ from: `${from}.html`, to }))
 );
 
 export default redirects;
