@@ -161,6 +161,7 @@ const webSDKCategory = Category({
         Page({ slug: "product-setup" }),
         Page({ slug: "customization" }),
         Page({ slug: "subscription-lifecycle" }),
+        Page({ slug: "lifecycle-emails" }),
         Page({ slug: "payment-methods" }),
         Page({ slug: "multi-currency-support" }),
         Page({ slug: "managing-customer-subscriptions" }),
