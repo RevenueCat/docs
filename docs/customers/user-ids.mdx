@@ -156,7 +156,7 @@ Often times, you may not have your own App User IDs until later in the applicati
 
 If your app doesn't receive its own App User ID until later in its lifecycle, you can set (or change) the App User ID at any time by calling `.logIn()`. If the logged in identity does not already exist in RevenueCat, it will be created automatically.
 
-This flow will generate an anonymous App User ID for the user first, then may (*see below*) alias the anonymous App User ID to the provided custom App User ID.
+This flow will generate an anonymous App User ID for the user first, then may (*see below*) alias the anonymous App User ID to the provided custom App User ID. In this case if you integrated webhooks, `original_app_user_id` will be the anonymous id and `app_user_id` will be the provided id.
 
 import content17 from "!!raw-loader!@site/code_blocks/customers/user-ids_17.swift";
 import content18 from "!!raw-loader!@site/code_blocks/customers/user-ids_18.m";
