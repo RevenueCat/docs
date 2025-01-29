@@ -56,7 +56,7 @@ At the moment, RevenueCat does not support One-time Purchase and One-time Purcha
     - One to three-digit tier numbers are used for 99 cent pricing. To calculate, you can subtract 1 cent from the tier to get the corresponding price. For example, Tier 100 is $99.99 (`$100 - $0.01 = $99.99`).
     - Four-digit tier numbers are used for 49 cent pricing. To calculate this, you can add 49 cents to the last two digits in the tier. For example, Tier 1030 is $30.49 (30 is the last 2 digits &#8594; `$30 + $0.49 = $30.49`).
 
-Once you select a price tier, a chart will appear that displays the purchase price, net price, and proceeeds for each country the product is available for.
+Once you select a price tier, a chart will appear that displays the purchase price, net price, and proceeds for each country the product is available for.
 - **Purchase price**: Reflects the amount your customer will pay.
 - **Net price**: This is the pre-tax price.
 - **Your proceeds**: This is the amount you will receive from Roku for the sale of the product.
@@ -119,7 +119,7 @@ Note that deleting a product without first changing its **Cleared for Sale** sta
 ## Product groups
 Product groups are used for upgrade/downgrade functionality and to prevent double billing your customers. For more information regarding upgrades/downgrades, please visit our documentation on [_Upgrades, Downgrades, & Management_](/subscription-guidance/managing-subscriptions#roku).
 
-To set up a product group, nagivate to your _'Manage In-Channel Products' > 'All product groups' > 'Add a new group'_
+To set up a product group, navigate to your _'Manage In-Channel Products' > 'All product groups' > 'Add a new group'_
 
 ![](/images/roku/roku-product-group.png)
 

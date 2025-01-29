@@ -66,7 +66,7 @@ final class Container {
 
     }
 
-    func supressWarning(_ any: Any?) {
+    func suppressWarning(_ any: Any?) {
 
     }
 
@@ -79,9 +79,9 @@ final class Container {
         let packageById = offerings.offering(identifier: "experiment_group")?.package(identifier: "<package_id>")
         // END
 
-        // supress warnings
-        supressWarning(packages)
-        supressWarning(monthlyPackage)
-        supressWarning(packageById)
+        // suppress warnings
+        suppressWarning(packages)
+        suppressWarning(monthlyPackage)
+        suppressWarning(packageById)
     }
 }

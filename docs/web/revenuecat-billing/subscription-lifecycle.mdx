@@ -66,7 +66,7 @@ You can set up a grace period on a per-product basis. A grace period defines a p
 
 #### Billing recovery
 
-If one of the retry attempts is successful, RevenueCat will renew the subscription and generate a `RENEWAL` event. Unless the subscription was still in a grace period, the new billing cycle will start on the date that the payment was succesfully recovered.
+If one of the retry attempts is successful, RevenueCat will renew the subscription and generate a `RENEWAL` event. Unless the subscription was still in a grace period, the new billing cycle will start on the date that the payment was successfully recovered.
 
 As an example, consider a monthly subscription started on 1 January, for which the first renewal on 1 February failed, and no grace period was set up. If the payment gets recovered on 10 February, the next billing cycle will run from 10 February to 10 March.
 

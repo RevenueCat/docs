@@ -85,7 +85,7 @@ Add the SSO Group name, select the role you want to grant.
 
 Once you save these mappings the collaborators will automatically be synchronized. This may take up to a few minutes.
 
-If multiple RevenueCat roles are assigned to the same SSO group, RevenueCat will provide the group with the _highest_ level of access defined by the following heirarchy.
+If multiple RevenueCat roles are assigned to the same SSO group, RevenueCat will provide the group with the _highest_ level of access defined by the following hierarchy.
 
 1. Admin
 1. Developer
