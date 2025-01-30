@@ -82,16 +82,16 @@ iOS:
 
 1. When a user tries to issue a refund, verify that you immediately direct them to the Apple support page: https://support.apple.com/en-us/HT204084
 2. Once a user gets a refund granted through Apple, verify that the refund has been seen by us by checking the customer history of this user 24 hours later and ensuring that a `CANCELLATION` event has occurred with the reason field set to `CUSTOMER_SUPPORT`.
-:::warning Sandbox testing
+   :::warning Sandbox testing
 
 Since granting refunds is done through the App Store themselves, testing this in the sandbox environment is not currently possible
 :::
 
-**Expected Results:** 
+**Expected Results:**
+
 1. Users are able to request a refund
 2. For Google Play, you are able to grant the refund via the Dashboard or API
 3. For iOS, you direct them to Apple customer support
-
 
 **Pass/Fail Criteria:** Verify that the refund is seen in RevenueCat in the `CANCELLATION` event.
 
@@ -163,7 +163,8 @@ Since granting refunds is done through the App Store themselves, testing this in
 
 **Expected Results:** New subscription starts and old subscription ends.
 
-**Pass/Fail Criteria:** 
+**Pass/Fail Criteria:**
+
 - **Google Play:** The new subscription is started on time based on the `PRORATION` method that you use.
 - **iOS:** The new subscription is started on time based on Apple's timing for whether this was an upgrade, downgrade, or crossgrade.
 
@@ -416,6 +417,7 @@ Purchases.sharedInstance.purchaseWith(
 - [RevenueCat Documentation - Displaying Products](https://www.revenuecat.com/docs/getting-started/displaying-products)
 
 **Preconditions:**
+
 - The RevenueCat SDK is integrated into the app.
 - Offerings are configured in the RevenueCat dashboard. \* The app's paywalls are set up to display offerings and packages.
 
@@ -789,7 +791,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 2. Navigate to your paywall screen.
 3. Ensure that your intro offer is being shown on your paywall as well as the discount between different packages.
 4. Purchase a package that has an intro offer attached.
-5. Check the RevenueCat dashboard customer history for that app user ID and ensure that an `INITAL_PURCHASE` event was made with the Intro offer attached to it. This event should look like the intro offers discussed above in the test guide.
+5. Check the RevenueCat dashboard customer history for that app user ID and ensure that an `INITIAL_PURCHASE` event was made with the Intro offer attached to it. This event should look like the intro offers discussed above in the test guide.
 
 **Expected Results:** User is shown the paywall with their intro offer attached and the user is able to make the purchase with the intro offer attached.
 
@@ -933,6 +935,7 @@ if (!("gold_entitlement" in customerInfo.entitlements.active)) {
 - The customer loses access to any entitlements associated with the subscription.
 
 **Pass/Fail Criteria:**
+
 - **Pass:** The subscription expires correctly, and access to entitlements is revoked.
 - **Fail:** If the subscription does not expire as expected or entitlements are not revoked, the test fails.
 

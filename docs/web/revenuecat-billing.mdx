@@ -19,20 +19,18 @@ RevenueCat Billing differs from our [Stripe Billing / Stripe Checkout](/web/stri
 
 Start by installing the `@revenuecat/purchases-js` package using the package manager of your choice:
 
-
 import npmContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/installation-npm.shell";
 import yarnContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/installation-yarn.shell";
 import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
 
-
 <RCCodeBlock
-	tabs={[
-		{type: "shell", content: npmContent, name: "npm"},
-		{type: "shell", content: yarnContent, name: "yarn"},
-	]}
+  tabs={[
+    { type: "shell", content: npmContent, name: "npm" },
+    { type: "shell", content: yarnContent, name: "yarn" },
+  ]}
 />
 
-<br/>
+<br />
 
 :::info
 When testing RevenueCat Billing with [unpkg](https://www.unpkg.com/), add `Purchases` before all method names to access them.
@@ -61,7 +59,6 @@ In the following step, you can set up the most important information for the new
 - **Redemption Links settings**: See [Redemption Links](/web/revenuecat-billing/redemption-links/) for how to configure them.
 - **Appearance**: The Appearance tab allows customizing the look and feel of the purchase flow, including colors, button shapes and more. [Read more about customizing the appearance](/web/revenuecat-billing/customization).
 
-
 ![New RevenueCat Billing App](/images/rc-billing/new-rc-billing-app-form.png)
 
 After creating the app, some additional fields will be shown:
@@ -82,17 +79,15 @@ In contrast to Apple App Store, Google Play Store, and Stripe Billing products, 
 
 Configure the RevenueCat Web SDK by calling the static `configure()` method of the `Purchases` class:
 
-
-
 <RCCodeBlock
-	tabs={[
-		{
-			type: "ts",
-			content: rcBillingContent,
-			name: "Web (JS/TS)",
-			region: "Configuring SDK",
-		},
-	]}
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Configuring SDK",
+    },
+  ]}
 />
 
 :::warning Only configure once
@@ -114,40 +109,42 @@ Here’s how these options work:
 ### Identified Customers
 
 For identified customers, you provide a unique App User ID linked to the customer’s account. This is ideal for apps with authentication mechanisms or shared subscription access between platforms (e.g., web and mobile). To implement this approach:
-* Use a third-party authentication provider like [Firebase](https://firebase.google.com/docs/auth) / [Supabase](https://supabase.com/docs/guides/auth) or a library like [auth.js](https://authjs.dev/).
-* By sharing authentication across your web app and mobile apps, customers can seamlessly access subscriptions they purchased on any platform without additional configuration—just map products to the correct entitlements.
+
+- Use a third-party authentication provider like [Firebase](https://firebase.google.com/docs/auth) / [Supabase](https://supabase.com/docs/guides/auth) or a library like [auth.js](https://authjs.dev/).
+- By sharing authentication across your web app and mobile apps, customers can seamlessly access subscriptions they purchased on any platform without additional configuration—just map products to the correct entitlements.
 
 Here’s how you can configure `purchases-js` to use identified customers:
 
 <RCCodeBlock
-	tabs={[
-		{
-			type: "ts",
-			content: rcBillingContent,
-			name: "Web (JS/TS)",
-			region: "Configuring SDK",
-		},
-	]}
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Configuring SDK",
+    },
+  ]}
 />
 
 ### Anonymous Customers
 
 With Redemption Links, anonymous customers can now purchase subscriptions on the web without requiring an account. These customers can later redeem their purchases on mobile apps or other platforms.
 Redemption Links enable you to:
-* Share subscription access without requiring user authentication.
-* Ensure purchases remain accessible, even for anonymous users.
+
+- Share subscription access without requiring user authentication.
+- Ensure purchases remain accessible, even for anonymous users.
 
 Here’s how you can configure `purchases-js` to use anonymous customers:
 
 <RCCodeBlock
-	tabs={[
-		{
-			type: "ts",
-			content: rcBillingContent,
-			name: "Web (JS/TS)",
-			region: "Configuring SDK Anon",
-		},
-	]}
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Configuring SDK Anon",
+    },
+  ]}
 />
 
 Find out more about Redemption Links and how to set them up [here](/web/revenuecat-billing/redemption-links/) .
@@ -157,40 +154,40 @@ Find out more about Redemption Links and how to set them up [here](/web/revenuec
 You can access the customer information using the `getCustomerInfo()` method of the `Purchases` object:
 
 <RCCodeBlock
-	tabs={[
-		{
-			type: "ts",
-			content: rcBillingContent,
-			name: "Web (JS/TS)",
-			region: "Getting customer information",
-		},
-	]}
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Getting customer information",
+    },
+  ]}
 />
 
 You can then use the `entitlements` property of the `CustomerInfo` object to check whether the customer has access to a specific entitlement:
 
 <RCCodeBlock
-	tabs={[
-		{
-			type: "ts",
-			content: rcBillingContent,
-			name: "Web (JS/TS)",
-			region: "Check for specific entitlement",
-		},
-	]}
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Check for specific entitlement",
+    },
+  ]}
 />
 
 If your app has multiple entitlements, you might also want to check if the customer has any active entitlements:
 
 <RCCodeBlock
-	tabs={[
-		{
-			type: "ts",
-			content: rcBillingContent,
-			name: "Web (JS/TS)",
-			region: "Check for any entitlement",
-		},
-	]}
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Check for any entitlement",
+    },
+  ]}
 />
 
 ## Building your paywall
@@ -200,40 +197,40 @@ If your app has multiple entitlements, you might also want to check if the custo
 We recommend using [Offerings](/getting-started/entitlements#offerings) to configure which products get presented to the customer. You can access the offerings for a given app user ID with the (asynchronous) method `purchases.getOfferings()`. The current offering for the customer is contained in the `current` property of the return value.
 
 <RCCodeBlock
-	tabs={[
-		{
-			type: "ts",
-			content: rcBillingContent,
-			name: "Web (JS/TS)",
-			region: "Get current offerings",
-		},
-	]}
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Get current offerings",
+    },
+  ]}
 />
 
 If you want to [support multiple currencies](/web/revenuecat-billing/multi-currency-support) and manually specify the currency, you can pass the currency code to the `getOfferings()` method. If you do not specify the currency, RevenueCat will attempt to geolocate the customer and use the currency of the customer's country if it's available, or fall back to the default currency of the app.
 
 <RCCodeBlock
-	tabs={[
-		{
-			type: "ts",
-			content: rcBillingContent,
-			name: "Web (JS/TS)",
-			region: "Get current offerings for EUR",
-		},
-	]}
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Get current offerings for EUR",
+    },
+  ]}
 />
 
 It's also possible to access other Offerings besides the Current Offering directly by its identifier.
 
 <RCCodeBlock
-	tabs={[
-		{
-			type: "ts",
-			content: rcBillingContent,
-			name: "Web (JS/TS)",
-			region: "Get custom offering",
-		},
-	]}
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Get custom offering",
+    },
+  ]}
 />
 
 Each Offering contains a list of Packages. Packages can be accessed in a few different ways:
@@ -243,27 +240,27 @@ Each Offering contains a list of Packages. Packages can be accessed in a few dif
 3. via the `.packagesById` property of an Offering, keyed by the package identifier
 
 <RCCodeBlock
-	tabs={[
-		{
-			type: "ts",
-			content: rcBillingContent,
-			name: "Web (JS/TS)",
-			region: "Displaying packages",
-		},
-	]}
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Displaying packages",
+    },
+  ]}
 />
 
 Each Package contains information about the product in the `rcBillingProduct` property:
 
 <RCCodeBlock
-	tabs={[
-		{
-			type: "ts",
-			content: rcBillingContent,
-			name: "Web (JS/TS)",
-			region: "Getting product",
-		},
-	]}
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Getting product",
+    },
+  ]}
 />
 
 ### Purchasing a package
@@ -271,14 +268,14 @@ Each Package contains information about the product in the `rcBillingProduct` pr
 To purchase a package, use the `purchase()` method of the `Purchases` object. It returns a `Promise<{customerInfo: CustomerInfo}>`. To handle errors, you should catch any exceptions that occur.
 
 <RCCodeBlock
-	tabs={[
-		{
-			type: "ts",
-			content: rcBillingContent,
-			name: "Web (JS/TS)",
-			region: "Purchasing package",
-		},
-	]}
+  tabs={[
+    {
+      type: "ts",
+      content: rcBillingContent,
+      name: "Web (JS/TS)",
+      region: "Purchasing package",
+    },
+  ]}
 />
 
 ## Testing
@@ -300,16 +297,16 @@ The following table lists the sandbox renewal periods for subscriptions of vario
 #### Subscription Renewal Periods
 
 | Production Subscription Period | Sandbox Subscription Period |
-| ------------------------------ | ---------------------------- |
-| 1 day (P1D)                    | 5 minutes                    |
-| 3 days (P3D)                   | 5 minutes                    |
-| 1 week (P1W)                   | 5 minutes                    |
-| 2 weeks (P2W)                  | 5 minutes                    |
-| 1 month (P1M)                  | 5 minutes                    |
-| 2 months (P2M)                 | 10 minutes                   |
-| 3 months (P3M)                 | 15 minutes                   |
-| 6 months (P6M)                 | 30 minutes                   |
-| 1 year (P1Y)                   | 60 minutes                   |
+| ------------------------------ | --------------------------- |
+| 1 day (P1D)                    | 5 minutes                   |
+| 3 days (P3D)                   | 5 minutes                   |
+| 1 week (P1W)                   | 5 minutes                   |
+| 2 weeks (P2W)                  | 5 minutes                   |
+| 1 month (P1M)                  | 5 minutes                   |
+| 2 months (P2M)                 | 10 minutes                  |
+| 3 months (P3M)                 | 15 minutes                  |
+| 6 months (P6M)                 | 30 minutes                  |
+| 1 year (P1Y)                   | 60 minutes                  |
 
 #### Time-based Subscription Features
 

@@ -17,10 +17,10 @@ Although RevenueCat is primarily used to handle subscription purchases, our SDK 
 
 ## Platform Support
 
-| Platform |                       Supported Purchase Types                        |
-| :------: | :-------------------------------------------------------------------: |
-|   iOS    |       Consumables, non-consumables, non-renewing subscriptions        |
-| Android  |                Consumables, non-renewing subscriptions                |
+| Platform |                                     Supported Purchase Types                                     |
+| :------: | :----------------------------------------------------------------------------------------------: |
+|   iOS    |                     Consumables, non-consumables, non-renewing subscriptions                     |
+| Android  |                             Consumables, non-renewing subscriptions                              |
 |  Stripe  | One-time purchases supported when using [Stripe Checkout](/web/stripe#one-time-stripe-purchases) |
 
 :::warning Google Play Store IAPs
@@ -29,6 +29,7 @@ Google Play Store does not provide an option to mark IAPs as consumable or non-c
 
 To replicate the behavior of a non-consumable IAP for Android users, you must ensure your user will not be offered the IAP after the initial purchase. Failure to do so will enable the user to re-purchase the IAP.
 :::
+
 ## Entitlements
 
 Entitlements are used to unlock access to content after a user purchases a product. This means: if you add a consumable product to an entitlement, RevenueCat will report that entitlement as unlocked (forever), even after one purchase. This is because there is no expiration date for consumables, like there is for a subscription. This may work for some use-cases, but generally, you wouldn't add a consumable product to an entitlement meant to be unlocked by a subscription.
@@ -63,15 +64,16 @@ If you haven't already, you'll need to set up products in the respective app sto
 
 Attach your products to each package, and you're ready to use to Purchases SDK to display your offering. On iOS, you could fetch the offering like this:
 
-
 import content1 from "!!raw-loader!@site/code_blocks/platform-resources/non-subscriptions_1.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: content1,
-    }
-]}/>
+      type: "swift",
+      content: content1,
+    },
+  ]}
+/>
 
 For more information displaying products, check out the [Displaying Products](/getting-started/displaying-products) guide.
 
@@ -79,12 +81,14 @@ When you're ready to purchase one of the coin packages, pass the package object 
 
 import content2 from "!!raw-loader!@site/code_blocks/platform-resources/non-subscriptions_2.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: content2,
-    }
-]}/>
+      type: "swift",
+      content: content2,
+    },
+  ]}
+/>
 
 :::warning
 It's important to note that at the moment, logic for keeping track of consumable redemptions must be handled outside of RevenueCat. We recommend your server is set up to receive [Webhook](/integrations/webhooks) events for `NON_RENEWING_PURCHASE` to appropriately provide consumable content for your users.

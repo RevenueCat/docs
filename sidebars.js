@@ -124,6 +124,28 @@ const paywallsCategory = Category({
       ],
     }),
     SubCategory({
+      label: "RevenueCat Paywalls v2 (Beta)",
+      slug: "tools/paywalls-v2",
+      itemsPathPrefix: "tools/paywalls-v2/",
+      items: [
+        Page({ slug: "installation" }),
+        SubCategory({
+          label: "Creating Paywalls",
+          slug: "creating-paywalls",
+          itemsPathPrefix: "creating-paywalls/",
+          items: [
+            Page({ slug: "components" }),
+            Page({ slug: "component-properties" }),
+            Page({ slug: "variables" }),
+            Page({ slug: "customer-states" }),
+            Page({ slug: "localization" }),
+            Page({ slug: "app-review" }),
+          ],
+        }),
+        Page({ slug: "displaying-paywalls" }),
+      ],
+    }),
+    SubCategory({
       label: "Manual Implementation",
       itemsPathPrefix: "getting-started/",
       items: [
@@ -161,6 +183,7 @@ const webSDKCategory = Category({
         Page({ slug: "product-setup" }),
         Page({ slug: "customization" }),
         Page({ slug: "subscription-lifecycle" }),
+        Page({ slug: "lifecycle-emails" }),
         Page({ slug: "payment-methods" }),
         Page({ slug: "multi-currency-support" }),
         Page({ slug: "managing-customer-subscriptions" }),

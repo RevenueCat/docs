@@ -14,24 +14,24 @@ RevenueCat can send you Slack message to a channel any time an event happens in 
 ### Integration at a Glance
 
 | Includes Revenue | Supports Negative Revenue | Sends Sandbox Events  | Includes Customer Attributes | Sends Transfer Events | Optional Event Types |
-| :--------------: | :-----------------------: | :-------------------: | :----------------------------: | :-------------------: | :------------------: |
-|        ✅        |            ❌             | Toggle on in Settings |               ❌               |          ❌           |          ❌          |
+| :--------------: | :-----------------------: | :-------------------: | :--------------------------: | :-------------------: | :------------------: |
+|        ✅        |            ❌             | Toggle on in Settings |              ❌              |          ❌           |          ❌          |
 
 ## Events
 
 The Slack integration tracks the following events:
 
-| Event Type           | Default Event Name (Fallback)                                      | Description                                                                                                                                                      | App Store | Play Store | Amazon | Stripe | Promo |
-|----------------------|-------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|------------|--------|--------|-------|
-| Initial Purchase      | Customer `<user_id>` just started a subscription of `<product_id>` | A new subscription has been purchased.                                                                                                                           | ✅        | ✅         | ✅     | ✅     | ❌   |
-| Trial Started         | Customer `<user_id>` just started a free trial of `<product_id>`   | The start of an auto-renewing subscription product free trial.                                                                                                   | ✅        | ✅         | ✅     | ✅     | ❌   |
-| Trial Converted       | Customer `<user_id>` just converted from a free trial of `<product_id>` | When an auto-renewing subscription product converts from a free trial to normal paid period.                                                                    | ✅        | ✅         | ✅     | ✅     | ❌   |
-| Trial Cancelled       | Customer `<user_id>` just cancelled their free trial of `<product_id>` | When a user turns off renewals for an auto-renewing subscription product during a free trial period.                                                           | ✅        | ✅         | ✅     | ✅     | ❌   |
-| Renewal               | Customer `<user_id>` just renewed their subscription of `<product_id>` | An existing subscription has been renewed or a lapsed user has resubscribed.                                                                                     | ✅        | ✅         | ✅     | ✅     | ❌   |
-| Cancellation          | Customer `<user_id>` just cancelled their subscription of `<product_id>` | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](/integrations/webhooks/event-types-and-fields#cancellation-and-expiration-reasons) for more details. | ✅        | ✅         | ✅     | ✅     | ✅   |
-| Non Subscription Purchase | Customer `<user_id>` just purchased `<product_id>` | A customer has made a purchase that will not auto-renew.                                                                                                      | ✅        | ✅         | ✅     | ✅     | ✅   |
-| Billing Issue         | Customer `<user_id>` got a billing issue on `<product_id>` | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR. | ✅        | ✅         | ✅     | ✅     | ❌   |
-| Product Change        | Customer `<user_id>` got a product change from `<old_product_id>` to `<new_product_id>` | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](/subscription-guidance/managing-subscriptions) for more details on updates, downgrades, and crossgrades. | ✅        | ✅         | ❌     | ✅     | ❌   |
+| Event Type                | Default Event Name (Fallback)                                                           | Description                                                                                                                                                                                                                                                         | App Store | Play Store | Amazon | Stripe | Promo |
+| ------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---------- | ------ | ------ | ----- |
+| Initial Purchase          | Customer `<user_id>` just started a subscription of `<product_id>`                      | A new subscription has been purchased.                                                                                                                                                                                                                              | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Trial Started             | Customer `<user_id>` just started a free trial of `<product_id>`                        | The start of an auto-renewing subscription product free trial.                                                                                                                                                                                                      | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Trial Converted           | Customer `<user_id>` just converted from a free trial of `<product_id>`                 | When an auto-renewing subscription product converts from a free trial to normal paid period.                                                                                                                                                                        | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Trial Cancelled           | Customer `<user_id>` just cancelled their free trial of `<product_id>`                  | When a user turns off renewals for an auto-renewing subscription product during a free trial period.                                                                                                                                                                | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Renewal                   | Customer `<user_id>` just renewed their subscription of `<product_id>`                  | An existing subscription has been renewed or a lapsed user has resubscribed.                                                                                                                                                                                        | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Cancellation              | Customer `<user_id>` just cancelled their subscription of `<product_id>`                | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](/integrations/webhooks/event-types-and-fields#cancellation-and-expiration-reasons) for more details.                                                                         | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Non Subscription Purchase | Customer `<user_id>` just purchased `<product_id>`                                      | A customer has made a purchase that will not auto-renew.                                                                                                                                                                                                            | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Billing Issue             | Customer `<user_id>` got a billing issue on `<product_id>`                              | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR.                                                                  | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Product Change            | Customer `<user_id>` got a product change from `<old_product_id>` to `<new_product_id>` | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](/subscription-guidance/managing-subscriptions) for more details on updates, downgrades, and crossgrades. | ✅        | ✅         | ❌     | ✅     | ❌    |
 
 ## Configure Slack Workspace
 
@@ -80,21 +80,29 @@ import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/t
 import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/slack_5.json";
 import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/slack_6.json";
 
-<RCCodeBlock tabs={[
-    { type: 'json', content: initialPurchaseContent, name: "Initial Purchase" },
-    { type: 'json', content: trialStartedContent, name: "Trial Started" },
-    { type: 'json', content: trialConvertedContent, name: "Trial Converted" },
-    { type: 'json', content: trialCancelledContent, name: "Trial Cancelled" },
-    { type: 'json', content: renewalContent, name: "Renewal" },
-    { type: 'json', content: cancellationContent, name: "Cancellation" }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "json", content: initialPurchaseContent, name: "Initial Purchase" },
+    { type: "json", content: trialStartedContent, name: "Trial Started" },
+    { type: "json", content: trialConvertedContent, name: "Trial Converted" },
+    { type: "json", content: trialCancelledContent, name: "Trial Cancelled" },
+    { type: "json", content: renewalContent, name: "Renewal" },
+    { type: "json", content: cancellationContent, name: "Cancellation" },
+  ]}
+/>
 
 import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/slack_7.json";
 import billingIssueContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/slack_8.json";
 import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/slack_9.json";
 
-<RCCodeBlock tabs={[
-    { type: 'json', content: nonSubscriptionPurchaseContent, name: "Non-subscription Purchase" },
-    { type: 'json', content: billingIssueContent, name: "Billing Issue" },
-    { type: 'json', content: productChangeContent, name: "Product Change" }
-]} />
+<RCCodeBlock
+  tabs={[
+    {
+      type: "json",
+      content: nonSubscriptionPurchaseContent,
+      name: "Non-subscription Purchase",
+    },
+    { type: "json", content: billingIssueContent, name: "Billing Issue" },
+    { type: "json", content: productChangeContent, name: "Product Change" },
+  ]}
+/>

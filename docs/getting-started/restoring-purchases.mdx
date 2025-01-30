@@ -20,18 +20,20 @@ import capacitorContent from "!!raw-loader!@site/code_blocks/getting-started/res
 import unityContent from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_8.cs";
 import kmpContent from "!!raw-loader!@site/code_blocks/getting-started/restoring-purchases_kmp_1.kts";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent },
-    { type: 'objectivec', content: objectiveCContent },
-    { type: 'kotlin', content: kotlinContent },
-    { type: 'kotlin', content: kmpContent, name: 'Kotlin Multiplatform' },
-    { type: 'java', content: javaContent },
-    { type: 'flutter', content: flutterContent, name: 'Flutter' },
-    { type: 'rn', content: reactNativeContent, name: 'React Native' },
-    { type: 'cordova', content: cordovaContent, name: 'Cordova' },
-    { type: 'capacitor', content: capacitorContent, name: 'Capacitor' },
-    { type: 'unity', content: unityContent, name: 'Unity' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent },
+    { type: "objectivec", content: objectiveCContent },
+    { type: "kotlin", content: kotlinContent },
+    { type: "kotlin", content: kmpContent, name: "Kotlin Multiplatform" },
+    { type: "java", content: javaContent },
+    { type: "flutter", content: flutterContent, name: "Flutter" },
+    { type: "rn", content: reactNativeContent, name: "React Native" },
+    { type: "cordova", content: cordovaContent, name: "Cordova" },
+    { type: "capacitor", content: capacitorContent, name: "Capacitor" },
+    { type: "unity", content: unityContent, name: "Unity" },
+  ]}
+/>
 
 The `restorePurchases` method **should not** be triggered programmatically, since it may cause OS level sign-in prompts to appear, and should only be called from some user interaction (e.g. tapping a "Restore" button.)
 
@@ -54,7 +56,7 @@ When a user restores purchases that are already attached to another user, Revenu
 
 ## Restoring Purchases for Consumables and Non-renewing Subscriptions
 
-Consumables and non-renewing subscriptions can only be restored by using an acount system with custom [App User IDs](/customers/user-ids). This is due to these types of in-app purchases not showing up on the underlying store receipt after the transaction is finished.
+Consumables and non-renewing subscriptions can only be restored by using an account system with custom [App User IDs](/customers/user-ids). This is due to these types of in-app purchases not showing up on the underlying store receipt after the transaction is finished.
 
 By logging in your users with a custom App User ID, RevenueCat can continue to provide transaction details in a user's [CustomerInfo](/customers/customer-info) for their previous consumable and non-renewing subscription purchases.
 

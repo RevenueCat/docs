@@ -96,13 +96,25 @@ The default sidebar is rendered at the bottom of `sidebars.js`.
 
 ### Installation
 
-```
-$ yarn
-```
+- Install dependencies
+
+  ```sh
+  $ yarn install
+  ```
+
+- Optionally install [typos-cli](https://github.com/crate-ci/typos)
+
+  ```sh
+  brew install typos-cli
+  ```
+
+  See the link for other options.
+
+  This is optional, but will enable running it via the pre-commit hook. You can also use the recommended [vscode extension](https://marketplace.visualstudio.com/items?itemName=tekumara.typos-vscode) or let it run via GitHub Actions when you create a PR.
 
 ### Local Development
 
-```
+```sh
 $ yarn start
 ```
 
@@ -110,7 +122,7 @@ This command starts a local development server and opens up a browser window. Mo
 
 ### Build
 
-```
+```sh
 $ yarn build
 ```
 

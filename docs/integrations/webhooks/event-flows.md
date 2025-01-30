@@ -33,11 +33,12 @@ A customer can resubscribe to a subscription if they resume a subscription after
 
 For resubscriptions on Google Play, Google may classify the transaction as a renewal rather than an initial purchase. While we typically mark a resubscription as an `INITIAL_PURCHASE`, there are cases where it may be marked as a `RENEWAL` based on the information provided by Google. This discrepancy is due to Google's timeframe and how they consider the transaction to either be marked as a renewal or an initial purchase.
 
-This can sometimes cause the customer history to appear out of order because we backdate the renewal to the effective renewal date on the customer dashboard however, the actual event will show the original time of the renewal in the `event_timestamp_ms` field. 
+This can sometimes cause the customer history to appear out of order because we backdate the renewal to the effective renewal date on the customer dashboard however, the actual event will show the original time of the renewal in the `event_timestamp_ms` field.
+
 - `RENEWAL`: If the resubscription occurs during the grace period before expiration.
 - `INITIAL_PURCHASE`: If the resubscription occurs after the previous subscription has expired.
 
-![resubscribe flow](/images/resubscribe-flow-updated.png) 
+![resubscribe flow](/images/resubscribe-flow-updated.png)
 
 ### Subscription Paused Flow (Android Only)
 

@@ -19,29 +19,29 @@ With our Segment integration, you can:
 With accurate and up-to-date subscription data in Segment, you'll be set to turbocharge your user engagement ⚡️
 
 ### Integration at a Glance
-| Includes Revenue | Supports Negative Revenue |  Sends Sandbox Events | Includes Customer Attributes | Sends Transfer Events |                                                                   Optional Event Types                                                                   |
-|:----------------:|:-------------------------:|:---------------------:|:------------------------------:|:---------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------:|
-|         ✅        |             ✅             | Toggle on in Settings |                ✅               |           ❌           | `non_subscription_purchase_event` `uncancellation_event` `subscription_paused_event` `expiration_event` `billing_issue_event` `product_change_event` |
+
+| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events  | Includes Customer Attributes | Sends Transfer Events |                                                                 Optional Event Types                                                                 |
+| :--------------: | :-----------------------: | :-------------------: | :--------------------------: | :-------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------: |
+|        ✅        |            ✅             | Toggle on in Settings |              ✅              |          ❌           | `non_subscription_purchase_event` `uncancellation_event` `subscription_paused_event` `expiration_event` `billing_issue_event` `product_change_event` |
 
 ## Events
 
 The Segment integration tracks the following events:
 
-| Event Type           | Default Event Name           | Description                                                                                                                                                      | App Store | Play Store | Amazon | Stripe | Promo |
-|----------------------|------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|------------|--------|--------|-------|
-| Initial Purchase      | `rc_initial_purchase_event`  | A new subscription has been purchased.                                                                                                                           | ✅        | ✅         | ✅     | ✅     | ❌   |
-| Trial Started         | `rc_trial_started_event`     | The start of an auto-renewing subscription product free trial.                                                                                                   | ✅        | ✅         | ✅     | ✅     | ❌   |
-| Trial Converted       | `rc_trial_converted_event`   | When an auto-renewing subscription product converts from a free trial to normal paid period.                                                                    | ✅        | ✅         | ✅     | ✅     | ❌   |
-| Trial Cancelled       | `rc_trial_cancelled_event`   | When a user turns off renewals for an auto-renewing subscription product during a free trial period.                                                           | ✅        | ✅         | ✅     | ✅     | ❌   |
-| Renewal               | `rc_renewal_event`           | An existing subscription has been renewed or a lapsed user has resubscribed.                                                                                     | ✅        | ✅         | ✅     | ✅     | ❌   |
-| Cancellation          | `rc_cancellation_event`      | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](/integrations/webhooks/event-types-and-fields#cancellation-and-expiration-reasons) for more details. | ✅        | ✅         | ✅     | ✅     | ✅   |
-| Uncancellation        | `rc_uncancellation_event`    | A non-expired cancelled subscription has been re-enabled.                                                                                                         | ✅        | ✅         | ✅     | ❌     | ❌   |
-| Non Subscription Purchase | `rc_non_subscription_purchase_event` | A customer has made a purchase that will not auto-renew.                                                                                                      | ✅        | ✅         | ✅     | ✅     | ✅   |
-| Subscription Paused   | `rc_subscription_paused_event` | A subscription has been paused.                                                                                                                                   | ❌        | ✅         | ❌     | ❌     | ❌   |
-| Expiration            | `rc_expiration_event`        | A subscription has expired and access should be removed. If you have [Platform Server Notifications](/platform-resources/server-notifications) configured, this event will occur as soon as we are notified (within seconds to minutes) of the expiration. If you do not have notifications configured, delays may be approximately 1 hour. | ✅        | ✅         | ✅     | ✅     | ✅   |
-| Billing Issue         | `rc_billing_issue_event`     | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR. | ✅        | ✅         | ✅     | ✅     | ❌   |
-| Product Change        | `rc_product_change_event`    | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](/subscription-guidance/managing-subscriptions) for more details on updates, downgrades, and crossgrades. | ✅        | ✅         | ❌     | ✅     | ❌   |
-
+| Event Type                | Default Event Name                   | Description                                                                                                                                                                                                                                                                                                                                 | App Store | Play Store | Amazon | Stripe | Promo |
+| ------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---------- | ------ | ------ | ----- |
+| Initial Purchase          | `rc_initial_purchase_event`          | A new subscription has been purchased.                                                                                                                                                                                                                                                                                                      | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Trial Started             | `rc_trial_started_event`             | The start of an auto-renewing subscription product free trial.                                                                                                                                                                                                                                                                              | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Trial Converted           | `rc_trial_converted_event`           | When an auto-renewing subscription product converts from a free trial to normal paid period.                                                                                                                                                                                                                                                | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Trial Cancelled           | `rc_trial_cancelled_event`           | When a user turns off renewals for an auto-renewing subscription product during a free trial period.                                                                                                                                                                                                                                        | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Renewal                   | `rc_renewal_event`                   | An existing subscription has been renewed or a lapsed user has resubscribed.                                                                                                                                                                                                                                                                | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Cancellation              | `rc_cancellation_event`              | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](/integrations/webhooks/event-types-and-fields#cancellation-and-expiration-reasons) for more details.                                                                                                                                                 | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Uncancellation            | `rc_uncancellation_event`            | A non-expired cancelled subscription has been re-enabled.                                                                                                                                                                                                                                                                                   | ✅        | ✅         | ✅     | ❌     | ❌    |
+| Non Subscription Purchase | `rc_non_subscription_purchase_event` | A customer has made a purchase that will not auto-renew.                                                                                                                                                                                                                                                                                    | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Subscription Paused       | `rc_subscription_paused_event`       | A subscription has been paused.                                                                                                                                                                                                                                                                                                             | ❌        | ✅         | ❌     | ❌     | ❌    |
+| Expiration                | `rc_expiration_event`                | A subscription has expired and access should be removed. If you have [Platform Server Notifications](/platform-resources/server-notifications) configured, this event will occur as soon as we are notified (within seconds to minutes) of the expiration. If you do not have notifications configured, delays may be approximately 1 hour. | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Billing Issue             | `rc_billing_issue_event`             | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR.                                                                                                                                          | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Product Change            | `rc_product_change_event`            | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](/subscription-guidance/managing-subscriptions) for more details on updates, downgrades, and crossgrades.                                                                         | ✅        | ✅         | ❌     | ✅     | ❌    |
 
 For events that have revenue, such as trial conversions and renewals, RevenueCat will automatically record this amount along with the event in Segment.
 
@@ -57,12 +57,13 @@ import swiftContent from "!!raw-loader!@site/code_blocks/integrations/third-part
 import objectiveCContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_2.m";
 import javaContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_3.java";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent },
-    { type: 'objc', content: objectiveCContent },
-    { type: 'java', content: javaContent }
-]} />
-
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent },
+    { type: "objc", content: objectiveCContent },
+    { type: "java", content: javaContent },
+  ]}
+/>
 
 ### 2. Generate a Segment Write Key
 
@@ -74,7 +75,7 @@ In Segment, add a HTTP API as a source and copy the Write Key.
 
 After you've set up the _Purchases SDK_ and Segment SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**  
+1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
 
 ![](/images/e8335b8-app.revenuecat.com_projects_85ff18c7_collaborators_1_bbda265d00b29ed549364e80f118a0d3.png)
 
@@ -99,15 +100,17 @@ import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-pa
 import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_9.json";
 import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_10.json";
 
-<RCCodeBlock tabs={[
-    { type: 'json', content: initialPurchaseContent, name: "Initial Purchase" },
-    { type: 'json', content: trialStartedContent, name: "Trial Started" },
-    { type: 'json', content: trialConvertedContent, name: "Trial Converted" },
-    { type: 'json', content: trialCancelledContent, name: "Trial Cancelled" },
-    { type: 'json', content: renewalContent, name: "Renewal" },
-    { type: 'json', content: cancellationContent, name: "Cancellation" },
-    { type: 'json', content: uncancellationContent, name: "Uncancellation" }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "json", content: initialPurchaseContent, name: "Initial Purchase" },
+    { type: "json", content: trialStartedContent, name: "Trial Started" },
+    { type: "json", content: trialConvertedContent, name: "Trial Converted" },
+    { type: "json", content: trialCancelledContent, name: "Trial Cancelled" },
+    { type: "json", content: renewalContent, name: "Renewal" },
+    { type: "json", content: cancellationContent, name: "Cancellation" },
+    { type: "json", content: uncancellationContent, name: "Uncancellation" },
+  ]}
+/>
 
 import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_11.json";
 import subscriptionPausedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_12.json";
@@ -115,31 +118,41 @@ import expirationContent from "!!raw-loader!@site/code_blocks/integrations/third
 import billingIssueContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_14.json";
 import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_15.json";
 
-<RCCodeBlock tabs={[
-    { type: 'json', content: nonSubscriptionPurchaseContent, name: "Non-subscription Purchase" },
-    { type: 'json', content: subscriptionPausedContent, name: "Subscription Paused" },
-    { type: 'json', content: expirationContent, name: "Expiration" },
-    { type: 'json', content: billingIssueContent, name: "Billing Issue" },
-    { type: 'json', content: productChangeContent, name: "Product Change" }
-]} />
+<RCCodeBlock
+  tabs={[
+    {
+      type: "json",
+      content: nonSubscriptionPurchaseContent,
+      name: "Non-subscription Purchase",
+    },
+    {
+      type: "json",
+      content: subscriptionPausedContent,
+      name: "Subscription Paused",
+    },
+    { type: "json", content: expirationContent, name: "Expiration" },
+    { type: "json", content: billingIssueContent, name: "Billing Issue" },
+    { type: "json", content: productChangeContent, name: "Product Change" },
+  ]}
+/>
 
 ## Subscription Status Attribute
 
 Whenever RevenueCat sends an event to Segment, we'll update the `rc_subscription_status` user attribute with any applicable changes, using one of the following values:
 
-| Status              | Description                                                                                                                                  |
-| :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------- |
-| active              | The customer has an active, paid subscription which is set to renew at their next renewal date.                                              |
-| intro               | The customer has an active, paid subscription through a paid introductory offer.                                                             |
-| cancelled           | The customer has a paid subscription which is set to expire at their next renewal date.                                                      |
-| grace_period        | The customer has a paid subscription which has entered a grace period after failing to renew successfully.                                   |
-| trial               | The customer is in a trial period which is set to convert to paid at the end of their trial period.                                          |
-| cancelled_trial     | The customer is in a trial period which is set to expire at the end of their trial period.                                                   |
-| grace_period_trial  | The customer was in a trial period and has now entered a grace period after failing to renew successfully.                                   |
-| expired             | The customer's subscription has expired.                                                                                                     |
-| promotional         | The customer has access to an entitlement through a RevenueCat [Granted Entitlement](/dashboard-and-metrics/customer-history/promotionals)   |
-| expired_promotional | The customer previously had access to an entitlement through a RevenueCat Granted Entitlement that has since expired.                        |
-| paused              | The customer has a paid subscription which has been paused and is set to resume at some future date.                                         |
+| Status              | Description                                                                                                                                |
+| :------------------ | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| active              | The customer has an active, paid subscription which is set to renew at their next renewal date.                                            |
+| intro               | The customer has an active, paid subscription through a paid introductory offer.                                                           |
+| cancelled           | The customer has a paid subscription which is set to expire at their next renewal date.                                                    |
+| grace_period        | The customer has a paid subscription which has entered a grace period after failing to renew successfully.                                 |
+| trial               | The customer is in a trial period which is set to convert to paid at the end of their trial period.                                        |
+| cancelled_trial     | The customer is in a trial period which is set to expire at the end of their trial period.                                                 |
+| grace_period_trial  | The customer was in a trial period and has now entered a grace period after failing to renew successfully.                                 |
+| expired             | The customer's subscription has expired.                                                                                                   |
+| promotional         | The customer has access to an entitlement through a RevenueCat [Granted Entitlement](/dashboard-and-metrics/customer-history/promotionals) |
+| expired_promotional | The customer previously had access to an entitlement through a RevenueCat Granted Entitlement that has since expired.                      |
+| paused              | The customer has a paid subscription which has been paused and is set to resume at some future date.                                       |
 
 For customers with multiple active subscriptions, this attribute will represent the status of only the subscription for which the most recent event occurred.
 

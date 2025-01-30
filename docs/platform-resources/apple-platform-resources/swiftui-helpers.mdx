@@ -13,15 +13,16 @@ The Purchases SDK includes a debug overlay that allows developers to see various
 
 SwiftUI Previews allow developers to preview their views directly in Xcode without building and running your app. The Purchases SDK includes convenience types for displaying mock products and offerings to avoid having to build and run your app to test your paywall.
 
-
 import content1 from "!!raw-loader!@site/code_blocks/platform-resources/swiftui-app-lifecycle_1.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: content1,
-    }
-]}/>
+      type: "swift",
+      content: content1,
+    },
+  ]}
+/>
 
 ## SDK Initialization
 
@@ -33,12 +34,14 @@ For basic initialization without delegate methods, you can implement the App `in
 
 import content2 from "!!raw-loader!@site/code_blocks/platform-resources/swiftui-app-lifecycle_2.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: content2,
-    }
-]}/>
+      type: "swift",
+      content: content2,
+    },
+  ]}
+/>
 
 ### Option 2: App Delegate
 
@@ -46,16 +49,18 @@ Another method of initialization is to use the `@UIApplicationDelegateAdaptor` p
 
 #### Creating a Delegate
 
-Begin by creating a delegate class and initializing the *Purchases* SDK like the following:
+Begin by creating a delegate class and initializing the _Purchases_ SDK like the following:
 
 import content3 from "!!raw-loader!@site/code_blocks/platform-resources/swiftui-app-lifecycle_3.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: content3,
-    }
-]}/>
+      type: "swift",
+      content: content3,
+    },
+  ]}
+/>
 
 #### Attaching the Delegate
 
@@ -63,13 +68,15 @@ As previously mentioned, the new `@UIApplicationDelegateAdaptor` property attach
 
 import content4 from "!!raw-loader!@site/code_blocks/platform-resources/swiftui-app-lifecycle_4.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: content4,
-    }
-]}/>
+      type: "swift",
+      content: content4,
+    },
+  ]}
+/>
 
-Build and run the app, and *Purchases* will be initialized on app launch.
+Build and run the app, and _Purchases_ will be initialized on app launch.
 
 For more information on configuring the SDK, check out the [Configuring SDK](/getting-started/configuring-sdk) guide.

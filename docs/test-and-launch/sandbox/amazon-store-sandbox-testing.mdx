@@ -3,13 +3,15 @@ title: Amazon Appstore
 slug: amazon-store-sandbox-testing
 hidden: false
 ---
-:::info 
+
+:::info
 This section assumes you've followed our [Quickstart](/getting-started/quickstart) section of our Getting Started guide to install and configure our SDK.
 :::
 
 There are two options for sandbox testing: an Android device with the Amazon Appstore installed (which can be downloaded [here](https://www.amazon.com/gp/mas/get/amazonapp)), or on an Amazon device running Fire OS, like a Fire TV.
 
 There are three different testing environments in Amazon ([official docs](https://developer.amazon.com/docs/in-app-purchasing/iap-testing-overview.html)):
+
 - App Tester. There's an app called App Tester that can be installed in your testing device and configured with a JSON to load testing products.
 - Live App Testing. This is similar to a beta or TestFlight release. You create an APK, upload it to the Amazon Appstore, add testers and start the test.
 - Production.
@@ -19,10 +21,10 @@ While Offerings will load in the App Tester environment, **RevenueCat will only 
 :::
 
 :::warning
-Amazon provides the option to accelerate timelines for sandbox testing. This is currently not supported by RevenueCat and it can cause wrong timestamps to appear in events. 
+Amazon provides the option to accelerate timelines for sandbox testing. This is currently not supported by RevenueCat and it can cause wrong timestamps to appear in events.
 :::
 
-We recommend starting by configuring the App Tester with the same products configured in the RevenueCat dashboard, which will let you get offerings and test how your paywall screen looks. 
+We recommend starting by configuring the App Tester with the same products configured in the RevenueCat dashboard, which will let you get offerings and test how your paywall screen looks.
 
 When you're ready to test purchasing the products, start a Live App test with a debug APK and download the app in the device via the Amazon Appstore. The installed app should be able to process the purchases and you can test the whole integration. You can also attach the Android Studio debugger to that debug APK downloaded from the Amazon Appstore if needed.
 
