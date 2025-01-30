@@ -1,0 +1,20 @@
+# https://lefthook.dev/configuration/
+
+skip_output:
+  - execution_out
+pre-commit:
+  parallel: true
+  jobs:
+    - name: prettier
+      run: yarn prettier --ignore-unknown --write {staged_files}
+      stage_fixed: true
+      glob: "*.{js,ts,jsx,tsx,mjs,mts,cjs,cts,html,css,json,md,mdx,yml,yaml}"
+    - name: typos
+      run: |
+        if ! command -v typos 2>&1 >/dev/null
+        then
+            echo "typos is not installed https://github.com/crate-ci/typos?tab=readme-ov-file#install"
+            exit 0
+        fi
+
+        typos

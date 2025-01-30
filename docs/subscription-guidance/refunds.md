@@ -65,7 +65,7 @@ Apple doesn’t allow developers to grant refunds themselves, only through Apple
 
 ### Apple
 
-If you are seeing delays or non-existent non-subcription refunds, make sure that [Platform Server Notifications](/platform-resources/server-notifications) are enabled.
+If you are seeing delays or non-existent non-subscription refunds, make sure that [Platform Server Notifications](/platform-resources/server-notifications) are enabled.
 
 If you are are seeing delays or non-existent consumable refunds, make sure that the  [In-App Purchase Key](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration) is configured.
 
