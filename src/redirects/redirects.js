@@ -729,6 +729,14 @@ const redirects = {
       from: "/paywalls",
     },
     {
+      to: "/tools/paywalls-v2",
+      from: "/tools/paywalls/creating-paywalls-v2",
+    },
+    {
+      to: "/tools/paywalls-v2",
+      from: "/paywalls-v2",
+    },
+    {
       to: "/tools/targeting",
       from: "/targeting",
     },

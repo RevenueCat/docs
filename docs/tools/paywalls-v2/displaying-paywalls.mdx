@@ -55,15 +55,21 @@ import objc5 from "!!raw-loader!@site/code_blocks/tools/paywalls_5.m";
 
 ### Handling paywall navigation
 
-[Outline:
+When creating a paywall, consider whether it will be presented in a sheet, or as a view. Sheets won't require a dedicated close button, whereas views should have them unless you intend to provide a hard paywall to your customers that cannot be bypassed.
 
-1. When creating a paywall, consider whether it will be presented in a sheet, or as a view.
-2. Sheets won't require a dedicated close button, whereas views should have them unless you're building a hard paywall (explicit instructions on how we recommend setting up a hard paywall?)
-3. .onRequestedDismissal() caveat if applicable?]
+### Additional changes from original Paywalls
 
-:::info Footer mode from original Paywalls
+#### Footer Paywalls
+
 Paywalls v2 does not support footer Paywalls. If your app requests the Paywall for an Offering to display that has a v2 Paywall, it will display a default version of that paywall instead (see below). Footer mode can still be used on original Paywalls templates using the existing method, or the new `.originalTemplatePaywallFooter()` method on iOS SDK versions 5.16.0+.
-:::
+
+#### Close buttons
+
+Paywalls v2 does not require the `displayCloseButton` parameter, and it will have no effect if used, since close buttons can be optionally added directly to your paywall as a component if desired.
+
+#### Font provider
+
+Paywalls v2 does not support passing in a custom font provider via the `PaywallFontProvider` method that original Paywalls used. Instead, in the near future you'll be able to configure Paywalls to use the font providers you've already installed in your app directly from the Dashboard. Using this method will have no effect on Paywalls v2.
 
 ## Default Paywall
 
