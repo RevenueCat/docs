@@ -4,6 +4,7 @@ slug: flutter
 excerpt: Instructions for installing Purchases SDK for Flutter
 hidden: false
 ---
+
 ## What is RevenueCat?
 
 RevenueCat provides a backend and a wrapper around StoreKit and Google Play Billing to make implementing in-app purchases and subscriptions easy. With our SDK, you can build and manage your app business on any platform without having to maintain IAP infrastructure. You can read more about [how RevenueCat fits into your app](https://www.revenuecat.com/blog/growth/where-does-revenuecat-fit-in-your-app/) or you can [sign up free](https://app.revenuecat.com/signup) to start building.
@@ -17,13 +18,11 @@ Minimum target: iOS 11.0+
 
 [![Release](https://img.shields.io/github/release/RevenueCat/purchases-flutter.svg?style=flat)](https://github.com/RevenueCat/purchases-flutter/releases)
 
-To use this plugin, add `purchases_flutter` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/)  (and run an implicit dart pub get):
+To use this plugin, add `purchases_flutter` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/) (and run an implicit dart pub get):
 
 import content from "!!raw-loader!@site/code_blocks/getting-started/installation/flutter_1.yaml";
 
-<RCCodeBlock tabs={[
-    { type: 'yaml', content: content, name: 'YAML' }
-]} />
+<RCCodeBlock tabs={[{ type: "yaml", content: content, name: "YAML" }]} />
 
 Alternatively run this command:
 
@@ -32,14 +31,17 @@ Alternatively run this command:
 ```
 
 ### iOS Deployment Target
+
 RevenueCat is compatible with iOS 11.0 or higher. Flutter does not automatically set the iOS deployment target for your project. You need to make sure that the deployment target is set to 11.0 or higher. To do that, simply edit `ios/Podfile` and add the following line if it's not already there:
 
 ```
 platform :ios, '11.0'
 ```
+
 Set it to 11.0 or a higher version for RevenueCat to work.
 
 ### iOS Swift Version
+
 RevenueCat requires Swift >= 5.0 to work. If the `Podfile` in your project's `ios` folder specifies a Swift version, make sure that it's at least 5.0, otherwise you may run into build issues.
 
 ### Set the correct launchMode for Android
@@ -48,9 +50,11 @@ Depending on your user's payment method, they may be asked by Google Play to ver
 
 import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_launchmode.xml";
 
-<RCCodeBlock tabs={[
-    { type: 'xml', content: launchModeContent, name: 'AndroidManifest.xml' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "xml", content: launchModeContent, name: "AndroidManifest.xml" },
+  ]}
+/>
 
 You can find Android's documentation on the various `launchMode` options [here](https://developer.android.com/guide/topics/manifest/activity-element#lmode).
 
@@ -60,9 +64,7 @@ You should now be able to import `purchases_flutter`.
 
 import content2 from "!!raw-loader!@site/code_blocks/getting-started/installation/flutter_2.kt";
 
-<RCCodeBlock tabs={[
-    { type: 'flutter', content: content2, name: 'Dart' }
-]} />
+<RCCodeBlock tabs={[{ type: "flutter", content: content2, name: "Dart" }]} />
 
 :::info Enable In-App Purchase capability for iOS projects in Xcode
 Don't forget to enable the In-App Purchase capability for your iOS project under `Project Target -> Capabilities -> In-App Purchase`
@@ -75,12 +77,14 @@ Don't forget to enable the In-App Purchase capability for your iOS project under
 :::warning
 If you're using other plugins like [mobx](https://pub.dev/packages/flutter_mobx), you may run into conflicts with types from other plugins having the same name as those defined in `purchases_flutter`.<br/>
 If this happens, you can resolve the ambiguity in the types by adding an import alias, for example:
+
 ```dart
 import 'package:purchases_flutter/purchases_flutter.dart' as purchases;
 ```
+
 After that, you can reference the types from `purchases_flutter` as `purchases.Foo`, like `purchases.PurchaserInfo`.
 :::
 
 ## Next Steps
 
-* Now that you've installed the Purchases SDK in Flutter, get started by [configuring an instance of Purchases →](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)
+- Now that you've installed the Purchases SDK in Flutter, get started by [configuring an instance of Purchases →](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)

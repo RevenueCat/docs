@@ -4,6 +4,7 @@ slug: ios
 excerpt: Instructions for installing RevenueCat SDK for iOS
 hidden: false
 ---
+
 ## What is RevenueCat?
 
 RevenueCat provides a backend and a wrapper around StoreKit and Google Play Billing to make implementing in-app purchases and subscriptions easy. With our SDK, you can build and manage your app business on any platform without having to maintain IAP infrastructure. You can read more about [how RevenueCat fits into your app](https://www.revenuecat.com/blog/growth/where-does-revenuecat-fit-in-your-app/) or you can [sign up free](https://app.revenuecat.com/signup) to start building.
@@ -12,26 +13,29 @@ RevenueCat provides a backend and a wrapper around StoreKit and Google Play Bill
 
 [![Release](https://img.shields.io/github/release/RevenueCat/purchases-ios.svg?style=flat)](https://github.com/RevenueCat/purchases-ios/releases)
 
-RevenueCat for iOS can be installed either via [CocoaPods](/getting-started/installation/ios#section-install-via-cocoapods), [Carthage](ios#section-install-via-carthage), or [Swift Package Manager](/getting-started/installation/ios#section-install-via-swift-package-manager). 
+RevenueCat for iOS can be installed either via [CocoaPods](/getting-started/installation/ios#section-install-via-cocoapods), [Carthage](ios#section-install-via-carthage), or [Swift Package Manager](/getting-started/installation/ios#section-install-via-swift-package-manager).
 
 :::info
 Already have 4.x installed? View our [migration guide to 5.x →](/sdk-guides/ios-native-4x-to-5x-migration)
 :::
 
-<YouTubeEmbed videoId="QS7BTorY4-U" title="Set up RevenueCat Purchases SDK for iOS" />
+<YouTubeEmbed
+  videoId="QS7BTorY4-U"
+  title="Set up RevenueCat Purchases SDK for iOS"
+/>
 
 ### Install via Swift Package Manager
 
-You can use Swift Package Manager to add RevenueCat to your Xcode project. 
+You can use Swift Package Manager to add RevenueCat to your Xcode project.
 
 :::tip Speed up the Swift Package Manager installation
 
-Use a mirror of the main repository by selecting `File » Add Packages Dependencies...` and entering the repository URL (`https://github.com/RevenueCat/purchases-ios-spm.git`) into the search bar (top right). 
+Use a mirror of the main repository by selecting `File » Add Packages Dependencies...` and entering the repository URL (`https://github.com/RevenueCat/purchases-ios-spm.git`) into the search bar (top right).
 
 This will integrate far more quickly than using the main repository directly.
 :::
 
-Set the Dependency Rule to `Up to next major`, and the version number to `5.0.0 < 6.0.0`. 
+Set the Dependency Rule to `Up to next major`, and the version number to `5.0.0 < 6.0.0`.
 
 When "Choose Package Products for purchases-ios" appears, only select `RevenueCat` and `RevenueCatUI` and click "Add Package".
 
@@ -45,25 +49,23 @@ To always use the latest release, add the following to your Podfile:
 
 import iosPodfileContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_1.ruby";
 
-<RCCodeBlock tabs={[
-    { type: 'ruby', content: iosPodfileContent, name: 'Podfile' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "ruby", content: iosPodfileContent, name: "Podfile" }]}
+/>
 
 Alternatively, pin to a specific minor version:
 
 import iosRubyContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_2.ruby";
 
-<RCCodeBlock tabs={[
-    { type: 'ruby', content: iosRubyContent, name: 'Ruby' }
-]} />
+<RCCodeBlock tabs={[{ type: "ruby", content: iosRubyContent, name: "Ruby" }]} />
 
 And then run:
 
 import iosTerminalContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_3.ruby";
 
-<RCCodeBlock tabs={[
-    { type: 'ruby', content: iosTerminalContent, name: 'Terminal' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "ruby", content: iosTerminalContent, name: "Terminal" }]}
+/>
 
 This will add `RevenueCat.framework` to your workspace.
 
@@ -73,28 +75,26 @@ To always use the latest release, add the following to your Cartfile:
 
 import iosCartfileContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_4.txt";
 
-<RCCodeBlock tabs={[
-    { type: 'text', content: iosCartfileContent, name: 'Cartfile' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "text", content: iosCartfileContent, name: "Cartfile" }]}
+/>
 
 Alternatively, pin to a specific minor version:
 
 import iosTextContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_5.txt";
 
-<RCCodeBlock tabs={[
-    { type: 'text', content: iosTextContent, name: 'Text' }
-]} />
+<RCCodeBlock tabs={[{ type: "text", content: iosTextContent, name: "Text" }]} />
 
 #### Carthage with XCFrameworks
 
-If you're using Carthage version >= 0.37, you can use RevenueCat as an XCFramework instead of a Universal Framework. This makes setup easier, since you don't have to set up build phases at all. 
+If you're using Carthage version >= 0.37, you can use RevenueCat as an XCFramework instead of a Universal Framework. This makes setup easier, since you don't have to set up build phases at all.
 To use XCFrameworks with Carthage, you need to pass in `--use-xcframeworks`.
 
 import iosShellContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_6.shell";
 
-<RCCodeBlock tabs={[
-    { type: 'shell', content: iosShellContent, name: 'Terminal' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "shell", content: iosShellContent, name: "Terminal" }]}
+/>
 
 More information on using XCFrameworks with Carthage is available at https://github.com/carthage/Carthage/#building-platform-independent-xcframeworks-xcode-12-and-above
 
@@ -108,9 +108,9 @@ Run:
 
 import iosTextContent2 from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_7.txt";
 
-<RCCodeBlock tabs={[
-    { type: 'text', content: iosTextContent2, name: 'Text' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "text", content: iosTextContent2, name: "Text" }]}
+/>
 
 ## Import the SDK
 
@@ -123,10 +123,12 @@ You should now be able to `import RevenueCat`.
 import iosSwiftContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_8.swift";
 import iosObjectiveCContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_9.m";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: iosSwiftContent, name: 'Swift' },
-    { type: 'objectivec', content: iosObjectiveCContent, name: 'Objective-C' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: iosSwiftContent, name: "Swift" },
+    { type: "objectivec", content: iosObjectiveCContent, name: "Objective-C" },
+  ]}
+/>
 
 :::info Enable In-App Purchase capability for your project
 Don't forget to enable the In-App Purchase capability for your project under `Project Target -> Capabilities -> In-App Purchase`
@@ -136,4 +138,4 @@ Don't forget to enable the In-App Purchase capability for your project under `Pr
 
 ## Next Steps
 
-* Now that you've installed the SDK in your iOS app, get started by [configuring an instance of Purchases →](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)
+- Now that you've installed the SDK in your iOS app, get started by [configuring an instance of Purchases →](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)
