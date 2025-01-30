@@ -55,10 +55,12 @@ In order for Stripe subscriptions to unlock [entitlements](/getting-started/enti
 Failure to complete this step will result in untracked Stripe subscriptions in RevenueCat.
 :::
 
-The following sections provide step-by-step instructions for two methods of sending Stripe tokens to RevenueCat. Whether you prefer a manual integration through the API or automated processing using the "Track new purchases from server-to-sever notifications" feature, this section will guide you in setting up your configuration to ensure all purchases are tracked.   
+The following sections provide step-by-step instructions for two methods of sending Stripe tokens to RevenueCat. Whether you prefer a manual integration through the API or automated processing using the "Track new purchases from server-to-sever notifications" feature, this section will guide you in setting up your configuration to ensure all purchases are tracked.
 
 ### Manually through our API
+
 You can send your Stripe subscriptions to RevenueCat through the [POST receipt endpoint](/migrating-to-revenuecat/migrating-existing-subscriptions/receipt-imports). When using Stripe Checkout, you should listen to and send subscriptions to RevenueCat only after either of these events have completed:
+
 - `customer.subscription.created`
 - `checkout.session.completed`
 
@@ -66,6 +68,7 @@ You can send your Stripe subscriptions to RevenueCat through the [POST receipt e
 We recommend that you listen to `customer.subscription.created` for subscriptions and `checkout.session.completed` for one-time purchases for the simplest flow.
 :::
 The only required fields when sending your Stripe purchase to the RevenueCat API are the following:
+
 - `fetch_token`: Your Stripe subscription ID (`sub_...`) OR your Stripe Checkout Session ID
 - `app_user_id`: The App User ID that the subscription should be applied to
 
@@ -78,12 +81,12 @@ Stripe subscriptions are automatically refreshed by RevenueCat the same way as s
 
 import curlContent from "!!raw-loader!@site/code_blocks/getting-started/stripe_1.curl";
 
-<RCCodeBlock tabs={[
-    { type:'curl', content: curlContent }
-]} />
+<RCCodeBlock tabs={[{ type: "curl", content: curlContent }]} />
 
 ### Track new purchases from server-to-server-notifications
+
 RevenueCat can automatically process Stripe tokens sent through server-to-server notifications. To enable automatic processing of Stripe purchases, ensure the following features are enabled:
+
 - [Stripe Server Notifications](/platform-resources/server-notifications/stripe-server-notifications)
 - [Track new purchases from server-to-server notifications](/platform-resources/server-notifications/stripe-server-notifications#tracking-new-purchases-using-stripe-server-notifications)
 

@@ -5,7 +5,6 @@ excerpt: View and understand Purchases logs
 hidden: false
 ---
 
-
 :::tip
 This section assumes you've followed our [Quickstart](/getting-started/quickstart) section of our Getting Started guide to install and configure our SDK.
 :::
@@ -22,50 +21,51 @@ import db7 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_7.js";
 import db8 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_8.js";
 import db9 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_9.js";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: db1,
+      type: "swift",
+      content: db1,
     },
     {
-        type: 'objc',
-        content: db2,
+      type: "objc",
+      content: db2,
     },
     {
-        type: 'kotlin',
-        content: db3,
+      type: "kotlin",
+      content: db3,
     },
     {
-        type: 'java',
-        content: db4,
+      type: "java",
+      content: db4,
     },
     {
-        type: 'rn',
-        content: db5,
+      type: "rn",
+      content: db5,
     },
     {
-        type: 'flutter',
-        content: db6,
+      type: "flutter",
+      content: db6,
     },
     {
-        type: 'csharp',
-        content: db7,
+      type: "csharp",
+      content: db7,
     },
     {
-        type: 'cordova',
-        content: db8,
+      type: "cordova",
+      content: db8,
     },
     {
-        type: 'capacitor',
-        content: db9,
+      type: "capacitor",
+      content: db9,
     },
-]}/>
+  ]}
+/>
 
 :::info OS_ACTIVITY_MODE
 
 On iOS, disabling `OS_ACTIVITY_MODE` in your Xcode scheme will block debug logs from printing in the console. If you have debug logs enabled, but don't see any output, go to `Product -> Scheme -> Edit Scheme...` in Xcode and uncheck the `OS_ACTIVITY_MODE` environment variable.
 :::
-
 
 ## Debug UI
 
@@ -78,18 +78,20 @@ RevenueCat's iOS 4.22.0+ and Android 6.9.2+ SDKs provide an overlay for your app
 import db10 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_9.swift";
 import db11 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_10.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: db10,
-        title: "SwiftUI"
+      type: "swift",
+      content: db10,
+      title: "SwiftUI",
     },
     {
-        type: 'swift',
-        content: db11,
-        title: "UIKit"
+      type: "swift",
+      content: db11,
+      title: "UIKit",
     },
-]}/>
+  ]}
+/>
 
 You can export your configuration details in JSON format to share with RevenueCat support if you need to open a support ticket.
 
@@ -106,21 +108,25 @@ In order to use the overlay, you need to include the debug view library which is
 import db12 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_13.groovy";
 import db13 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_14.kt";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'groovy',
-        content: db12,
+      type: "groovy",
+      content: db12,
     },
-]}/>
+  ]}
+/>
 
 Then, you can use it from your own `@Composable`'s like this:
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'jetpack',
-        content: db13,
+      type: "jetpack",
+      content: db13,
     },
-]}/>
+  ]}
+/>
 
 ### Reference
 
@@ -142,20 +148,20 @@ Emojis currently available on the following platforms:
 - Android version >= 4.0.2
 - iOS version >= 3.10.1
 
-| Icon(s) | Log Level | Description                                      | Required Actions                                      |
-| ------- | --------- | ------------------------------------------------ | ----------------------------------------------------- |
+| Icon(s) | Log Level | Description                                      | Required Actions                                                     |
+| ------- | --------- | ------------------------------------------------ | -------------------------------------------------------------------- |
 | 🍎 ‼️   | Error     | Error/warning messages generated from Apple      | View [error handling doc](/test-and-launch/errors) if on Error level |
 | 🤖 ‼️   | Error     | Error/warning messages generated from Google     | View [error handling doc](/test-and-launch/errors) if on Error level |
 | 📦 ‼️   | Error     | Error/warning messages generated from Amazon     | View [error handling doc](/test-and-launch/errors) if on Error level |
-| 😿 ‼️   | Error     | Error messages generated from RevenueCat         | View [error handling doc](/test-and-launch/errors)                  |
-| 😻       | Debug     | Success messages generated from RevenueCat       | No action required, for informational purposes         |
-| 😻💰    | Info      | RevenueCat received purchase information         | No action required, for informational purposes         |
-| 💰       | Debug     | Messages related to your products                | No action required, for informational purposes         |
-| ℹ️       | Debug     | Messages detailing events that occur in your app | No action required, for informational purposes         |
-| 👤       | Debug     | Messages related to a user's App User ID         | No action required, for informational purposes         |
-| ⚠️       | Warn      | Warning messages about implementation            | View log message for additional information           |
+| 😿 ‼️   | Error     | Error messages generated from RevenueCat         | View [error handling doc](/test-and-launch/errors)                   |
+| 😻      | Debug     | Success messages generated from RevenueCat       | No action required, for informational purposes                       |
+| 😻💰    | Info      | RevenueCat received purchase information         | No action required, for informational purposes                       |
+| 💰      | Debug     | Messages related to your products                | No action required, for informational purposes                       |
+| ℹ️      | Debug     | Messages detailing events that occur in your app | No action required, for informational purposes                       |
+| 👤      | Debug     | Messages related to a user's App User ID         | No action required, for informational purposes                       |
+| ⚠️      | Warn      | Warning messages about implementation            | View log message for additional information                          |
 
-Messages that have the double red exclamation marks prefix (‼️) attached provides important information regarding your implementation and may require your attention. Paying attention to the source of the message will assist you during the development process. Be sure to address these logs before shipping your app. 
+Messages that have the double red exclamation marks prefix (‼️) attached provides important information regarding your implementation and may require your attention. Paying attention to the source of the message will assist you during the development process. Be sure to address these logs before shipping your app.
 
 ### Sample Output
 
@@ -164,16 +170,18 @@ Below are sample logs generated when setting `debugLogsEnabled = true`. Keep an 
 import db14 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_11.txt";
 import db15 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_12.txt";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'text',
-        content: db14,
+      type: "text",
+      content: db14,
     },
     {
-        type: 'emojis',
-        content: db15,
+      type: "emojis",
+      content: db15,
     },
-]}/>
+  ]}
+/>
 
 ### Custom Log Handling
 
@@ -189,44 +197,46 @@ import lh7 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_7.js"
 import lh8 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_8.js";
 import lh9 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_9.js";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: lh1,
+      type: "swift",
+      content: lh1,
     },
     {
-        type: 'objc',
-        content: lh2,
+      type: "objc",
+      content: lh2,
     },
     {
-        type: 'kotlin',
-        content: lh3,
+      type: "kotlin",
+      content: lh3,
     },
     {
-        type: 'java',
-        content: lh4,
+      type: "java",
+      content: lh4,
     },
     {
-        type: 'rn',
-        content: lh5,
+      type: "rn",
+      content: lh5,
     },
     {
-        type: 'flutter',
-        content: lh6,
+      type: "flutter",
+      content: lh6,
     },
     {
-        type: 'csharp',
-        content: lh7,
+      type: "csharp",
+      content: lh7,
     },
     {
-        type: 'cordova',
-        content: lh8,
+      type: "cordova",
+      content: lh8,
     },
     {
-        type: 'capacitor',
-        content: lh9,
+      type: "capacitor",
+      content: lh9,
     },
-]}/>
+  ]}
+/>
 
 ## Debugging with Hybrids
 
@@ -238,12 +248,11 @@ Xcode and Android Studio are our recommended IDEs for debugging. If you are a de
 
 ### Android Studio
 
-[Install Android Studio from the Google Developers website.](https://developer.android.com/studio/install) You can open the main folder of your app in Android Studio either from the main menu or from your file finder. There shouldn't be any additional editing needed to build and run your app, although you most likely need to set up a [virtual Android device](https://developer.android.com/studio/run/managing-avds) when running your app for the first time. The debugging output will open automatically upon building within the Android Studio window, and from here you can follow the instructions above. 
+[Install Android Studio from the Google Developers website.](https://developer.android.com/studio/install) You can open the main folder of your app in Android Studio either from the main menu or from your file finder. There shouldn't be any additional editing needed to build and run your app, although you most likely need to set up a [virtual Android device](https://developer.android.com/studio/run/managing-avds) when running your app for the first time. The debugging output will open automatically upon building within the Android Studio window, and from here you can follow the instructions above.
 
 ### Expo
 
 Expo can be a useful framework when developing Android and iOS apps with [React Native](/getting-started/installation/reactnative#option-2-using-expo), however it can be difficult to view debug logs during development. Expo apps for iOS can use Console.app on Mac to view debug logs, while Android projects are still recommended to use Android Studio. Here is the [Expo documentation](https://docs.expo.dev/debugging/runtime-issues/#native-debugging) for full native debugging with Xcode and Android Studio. For specific help on debugging your React Native Expo project, feel free to reach out to [RevenueCat support](https://app.revenuecat.com/settings/support).
-
 
 ### No and Low Code App Builders
 
@@ -251,10 +260,10 @@ When debugging with No and Low Code App Builders, it's important to remember tha
 
 ### Considerations
 
-- You can open your Xcode project directly from Google - to do so, right click on the `ios` folder, hover over Flutter, and click "OpenIOS module in Xcode". 
-- You can also run and debug your iOS project inside Android Studio itself by adding an iOS simulator and choosing it as the device before building. To do this however, you will still need Xcode installed. 
+- You can open your Xcode project directly from Google - to do so, right click on the `ios` folder, hover over Flutter, and click "OpenIOS module in Xcode".
+- You can also run and debug your iOS project inside Android Studio itself by adding an iOS simulator and choosing it as the device before building. To do this however, you will still need Xcode installed.
 - Flutter projects using Swift may fail to show debug logs in the console if you are using Android Studio. We recommend running your Flutter iOS project using Xcode to view debug logs from the Purchases SDK.
-- If using Flutterflow or another low to no code app builder, it may not be possible for you to see debug logs. We recommend reaching out to the app builder's support team directly to help troubleshoot. 
+- If using Flutterflow or another low to no code app builder, it may not be possible for you to see debug logs. We recommend reaching out to the app builder's support team directly to help troubleshoot.
 
 ## Next Steps
 

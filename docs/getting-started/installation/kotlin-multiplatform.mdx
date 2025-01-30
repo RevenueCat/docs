@@ -4,6 +4,7 @@ slug: kotlin-multiplatform
 excerpt: Instructions for installing Purchases SDK for Kotlin Multiplatform
 hidden: false
 ---
+
 ## What is RevenueCat?
 
 RevenueCat provides a backend and a wrapper around StoreKit and Google Play Billing to make implementing in-app purchases and subscriptions easy. With our SDK, you can build and manage your app business on any platform without having to maintain IAP infrastructure. You can read more about [how RevenueCat fits into your app](https://www.revenuecat.com/blog/growth/where-does-revenuecat-fit-in-your-app/) or you can [sign up free](https://app.revenuecat.com/signup) to start building.
@@ -25,80 +26,86 @@ Add the following coordinates to your `libs.versions.toml`.
 
 import versionsContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_1.toml";
 
-<RCCodeBlock tabs={[
-    { content: versionsContent, name: 'libs.versions.toml' }
-]} />
+<RCCodeBlock
+  tabs={[{ content: versionsContent, name: "libs.versions.toml" }]}
+/>
 
-You can now add the dependency to your `commonMain` source set in your module's `build.gradle.kts`. 
+You can now add the dependency to your `commonMain` source set in your module's `build.gradle.kts`.
 
 import buildGradle1 from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_2.kts";
 
-<RCCodeBlock tabs={[
-    { type: 'kotlin', content: buildGradle1, name: 'build.gradle.kts' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "kotlin", content: buildGradle1, name: "build.gradle.kts" }]}
+/>
 
 ### Opt in to ExperimentalForeignApi
-Since the SDK uses generated Kotlin bindings for native code on iOS, you will need to opt in to `ExperimentalForeignApi` in your iOS source sets. To do so, add the following to your module's `build.gradle.kts`. 
+
+Since the SDK uses generated Kotlin bindings for native code on iOS, you will need to opt in to `ExperimentalForeignApi` in your iOS source sets. To do so, add the following to your module's `build.gradle.kts`.
 
 import efaContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_3.kts";
 
-<RCCodeBlock tabs={[
-    { type: 'kotlin', content: efaContent, name: 'build.gradle.kts' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "kotlin", content: efaContent, name: "build.gradle.kts" }]}
+/>
 
 ### Link the native iOS SDK
-Since the SDK depends on a native RevenueCat iOS framework, `PurchasesHybridCommon`, this will need to be linked to your existing iOS project. You have 2 options do to so: using Swift Package Manager and using CocoaPods. It's easiest to pick the dependency manager you're already using in your iOS project. 
+
+Since the SDK depends on a native RevenueCat iOS framework, `PurchasesHybridCommon`, this will need to be linked to your existing iOS project. You have 2 options do to so: using Swift Package Manager and using CocoaPods. It's easiest to pick the dependency manager you're already using in your iOS project.
+
 #### Using Swift Package Manager
 
-To add `PurchasesHybridCommon` to your iOS project using Swift Package Manager, do the following: 
+To add `PurchasesHybridCommon` to your iOS project using Swift Package Manager, do the following:
 
-1. Select `File » Add Packages Dependencies...` and enter the repository URL `https://github.com/RevenueCat/purchases-hybrid-common` into the search bar (top right). 
-2. Then set the Dependency Rule to `Exact`, and specify the version number to be equal to everything after the '+' in the purchases-kmp version. 
-3. When "Choose Package Products for purchases-hybrid-common" appears, select `PurchasesHybridCommon`. If you plan to use Paywalls, select `PurchasesHybridCommonUI` too. 
+1. Select `File » Add Packages Dependencies...` and enter the repository URL `https://github.com/RevenueCat/purchases-hybrid-common` into the search bar (top right).
+2. Then set the Dependency Rule to `Exact`, and specify the version number to be equal to everything after the '+' in the purchases-kmp version.
+3. When "Choose Package Products for purchases-hybrid-common" appears, select `PurchasesHybridCommon`. If you plan to use Paywalls, select `PurchasesHybridCommonUI` too.
 4. Lastly, click "Add Package".
 
 The library should now have been added to the Package Dependencies section.
 
 #### Using CocoaPods
-There are 2 approaches to add `PurchasesHybridCommon` to your iOS project using CocoaPods. The approach depends on how you currently integrate your existing Kotlin Multiplatform code with your iOS project. 
+
+There are 2 approaches to add `PurchasesHybridCommon` to your iOS project using CocoaPods. The approach depends on how you currently integrate your existing Kotlin Multiplatform code with your iOS project.
 
 ##### 1. Directly as a local iOS framework
-Follow these instructions if your Kotlin Multiplatform module is integrated directly with your iOS project as a local iOS framework. That is, Xcode is calling the `embedAndSignAppleFrameworkForXcode` Gradle task (or the old `packForXcode` task) as part of the build. At the time of writing, if you generated your Kotlin Multiplatform project using the [online wizard](https://kmp.jetbrains.com/), this is how it's set up. 
+
+Follow these instructions if your Kotlin Multiplatform module is integrated directly with your iOS project as a local iOS framework. That is, Xcode is calling the `embedAndSignAppleFrameworkForXcode` Gradle task (or the old `packForXcode` task) as part of the build. At the time of writing, if you generated your Kotlin Multiplatform project using the [online wizard](https://kmp.jetbrains.com/), this is how it's set up.
 
 In this scenario, you need to specify the transitive dependency on `PurchasesHybridCommon` in your `Podfile`. Add the following:
 
 import podfileContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_6.ruby";
 
-<RCCodeBlock tabs={[
-    { type: 'ruby', content: podfileContent, name: 'Podfile' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "ruby", content: podfileContent, name: "Podfile" }]}
+/>
 
 ##### 2. Using Cocoapods
+
 Follow these instructions if your Kotlin Multiplatform module is integrated with your iOS project using CocoaPods. That is, you've applied the `kotlin("native.cocoapods")` Gradle plugin, and set it up such that the `Podfile` specifies a dependency on your Kotlin Multiplatform module. (See also [the Kotlin docs](https://kotlinlang.org/docs/native-cocoapods-xcode.html).)
 
-In this scenario, you can specify the transitive dependency on `PurchasesHybridCommon` using Gradle. To do so, add the following to your `libs.versions.toml`: 
+In this scenario, you can specify the transitive dependency on `PurchasesHybridCommon` using Gradle. To do so, add the following to your `libs.versions.toml`:
 
 import commonVersion from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_4.toml";
 
-<RCCodeBlock tabs={[
-    { content: commonVersion, name: 'libs.versions.toml' }
-]} />
+<RCCodeBlock tabs={[{ content: commonVersion, name: "libs.versions.toml" }]} />
 
 Now you can add the following to your module's `build.gradle.kts`:
 
 import cocoapodsGradle from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_5.kts";
 
-<RCCodeBlock tabs={[
-    { type: 'kotlin', content: cocoapodsGradle, name: 'build.gradle.kts' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "kotlin", content: cocoapodsGradle, name: "build.gradle.kts" },
+  ]}
+/>
 
-Finally, add the following `post_install` script to your iOS app target in your `Podfile`. For instance, if your Kotlin Multiplatform module is named `shared`, it should look something like this: 
+Finally, add the following `post_install` script to your iOS app target in your `Podfile`. For instance, if your Kotlin Multiplatform module is named `shared`, it should look something like this:
 
 import podfilePostInstallContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_8.ruby";
 
-<RCCodeBlock tabs={[
-    { type: 'ruby', content: podfilePostInstallContent, name: 'Podfile' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "ruby", content: podfilePostInstallContent, name: "Podfile" }]}
+/>
 
 This avoids the compiler looking for an app icon in your Kotlin Multiplatform module.
 
@@ -108,9 +115,11 @@ Depending on your user's payment method, they may be asked by Google Play to ver
 
 import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_launchmode.xml";
 
-<RCCodeBlock tabs={[
-    { type: 'xml', content: launchModeContent, name: 'AndroidManifest.xml' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "xml", content: launchModeContent, name: "AndroidManifest.xml" },
+  ]}
+/>
 
 You can find Android's documentation on the various `launchMode` options [here](https://developer.android.com/guide/topics/manifest/activity-element#lmode).
 
@@ -120,20 +129,20 @@ You should now be able to import `Purchases`.
 
 import importContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_7.kts";
 
-<RCCodeBlock tabs={[
-    { type: 'kotlin', content: importContent, name: 'commonMain' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "kotlin", content: importContent, name: "commonMain" }]}
+/>
 
 :::warning
 On Android, Purchases uses AndroidX App Startup under the hood. Make sure you have not removed the `androidx.startup.InitializationProvider` completely in your manifest. If you need to remove specific initializers, such as `androidx.work.WorkManagerInitializer`, set `tools:node="merge"` on the provider, and `tools:node="remove"` on the meta-data of the initializer you want to remove.
 
 import xmlContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_workmanager_manifest.xml";
 
-<RCCodeBlock tabs={[
-    { type: 'xml', content: xmlContent, name: 'AndroidManifest.xml' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "xml", content: xmlContent, name: "AndroidManifest.xml" }]}
+/>
 :::
 
 ## Next Steps
 
-* Now that you've installed the Purchases SDK in Kotlin Multiplatform, get started by [configuring an instance of Purchases →](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)
+- Now that you've installed the Purchases SDK in Kotlin Multiplatform, get started by [configuring an instance of Purchases →](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)

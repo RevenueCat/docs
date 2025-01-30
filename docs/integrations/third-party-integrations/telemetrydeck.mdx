@@ -15,7 +15,7 @@ TelemetryDeck can be a useful integration tool for seeing all events and revenue
 
 | Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Customer Attributes | Sends Transfer Events |                                                                 Optional Event Types                                                                 |
 | :--------------: | :-----------------------: | :------------------: | :--------------------------: | :-------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------: |
-|        ✅        |            ✅             |   ✅   |              ✅              |          ✅           | `non_subscription_purchase_event` `uncancellation_event` `subscription_paused_event` `expiration_event` `billing_issue_event` `product_change_event` |
+|        ✅        |            ✅             |          ✅          |              ✅              |          ✅           | `non_subscription_purchase_event` `uncancellation_event` `subscription_paused_event` `expiration_event` `billing_issue_event` `product_change_event` |
 
 ## Setup
 
@@ -24,6 +24,7 @@ Please follow the instructions in [TelemetryDeck's documentation](https://teleme
 ### 1. Set TelemetryDeck User Identity
 
 In order to associate RevenueCat data with a TelemetryDeck User, the following [Customer Attributes](/customers/customer-attributes) should be set in RevenueCat:
+
 - `$telemetryDeckAppId`: This attribute should be set to your TelemetryDeck App ID, the same one you pass into the TelemetryDeck SDK for initialization.
 - `$telemetryDeckUserId`: This attribute needs to be the already-hashed user identifier that TelemetryDeck is using.
 
@@ -37,7 +38,6 @@ After you've set up the Purchase SDK and TelemetryDeck SDK to have the same user
 
 2. Choose **TelemetryDeck** from the Integrations menu
 
-![](/images/telemetrydeck-integration-tile.png)
-3. Click **Add Integration**
+![](/images/telemetrydeck-integration-tile.png) 3. Click **Add Integration**
 
 That's it! No configuration is needed on the RevenueCat side.

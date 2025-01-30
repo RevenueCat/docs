@@ -4,6 +4,7 @@ slug: reactnative
 excerpt: Instructions for installing Purchases SDK for React Native
 hidden: false
 ---
+
 ## What is RevenueCat?
 
 RevenueCat provides a backend and a wrapper around StoreKit and Google Play Billing to make implementing in-app purchases and subscriptions easy. With our SDK, you can build and manage your app business on any platform without having to maintain IAP infrastructure. You can read more about [how RevenueCat fits into your app](https://www.revenuecat.com/blog/where-does-revenuecat-fit-in-your-app) or you can [sign up free](https://app.revenuecat.com/signup) to start building.
@@ -12,12 +13,12 @@ RevenueCat provides a backend and a wrapper around StoreKit and Google Play Bill
 
 [![Release](https://img.shields.io/github/release/RevenueCat/react-native-purchases.svg?style=flat)](https://github.com/RevenueCat/react-native-purchases/releases)
 
-Make sure that the deployment target for iOS is at least 13.4 and Android is at least 6.0 (API 23) [as defined here](https://github.com/facebook/react-native#-requirements). 
+Make sure that the deployment target for iOS is at least 13.4 and Android is at least 6.0 (API 23) [as defined here](https://github.com/facebook/react-native#-requirements).
 
 ### Option 1: React-Native package
 
 Purchases for React-Native can be installed either via npm or yarn.
-We recommend using the latest version of React Native, or making sure that the version is at least greater than 0.64. 
+We recommend using the latest version of React Native, or making sure that the version is at least greater than 0.64.
 
 #### Option 1.1: Using auto-linking
 
@@ -26,25 +27,29 @@ Recent versions of React Native will automatically link the SDK, so all that's n
 import reactNativeNpmContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_1.shell";
 import reactNativeYarnContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_2.shell";
 
-<RCCodeBlock tabs={[
-    { type: 'shell', content: reactNativeNpmContent, name: 'npm' },
-    { type: 'shell', content: reactNativeYarnContent, name: 'yarn' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "shell", content: reactNativeNpmContent, name: "npm" },
+    { type: "shell", content: reactNativeYarnContent, name: "yarn" },
+  ]}
+/>
 
 #### Option 1.2: Manual linking
 
-<RCCodeBlock tabs={[
-    { type: 'shell', content: reactNativeNpmContent, name: 'npm' },
-    { type: 'shell', content: reactNativeYarnContent, name: 'yarn' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "shell", content: reactNativeNpmContent, name: "npm" },
+    { type: "shell", content: reactNativeYarnContent, name: "yarn" },
+  ]}
+/>
 
 After that, you should link the library to the native projects by doing:
 
 import reactNativeShellContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_5.shell";
 
-<RCCodeBlock tabs={[
-    { type: 'shell', content: reactNativeShellContent, name: 'Shell' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "shell", content: reactNativeShellContent, name: "Shell" }]}
+/>
 
 ### Option 2: Using Expo
 
@@ -72,9 +77,11 @@ Depending on your user's payment method, they may be asked by Google Play to ver
 
 import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_launchmode.xml";
 
-<RCCodeBlock tabs={[
-    { type: 'xml', content: launchModeContent, name: 'AndroidManifest.xml' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "xml", content: launchModeContent, name: "AndroidManifest.xml" },
+  ]}
+/>
 
 You can find Android's documentation on the various `launchMode` options [here](https://developer.android.com/guide/topics/manifest/activity-element#lmode).
 
@@ -84,9 +91,7 @@ You should now be able to import `Purchases`.
 
 import reactNativeJsContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_7.js";
 
-<RCCodeBlock tabs={[
-    { type: 'rn', content: reactNativeJsContent}
-]} />
+<RCCodeBlock tabs={[{ type: "rn", content: reactNativeJsContent }]} />
 
 :::info Include BILLING permission for Android projects
 Don't forget to include the `BILLING` permission in your AndroidManifest.xml file
@@ -94,9 +99,15 @@ Don't forget to include the `BILLING` permission in your AndroidManifest.xml fil
 
 import reactNativeXmlContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_8.xml";
 
-<RCCodeBlock tabs={[
-    { type: 'xml', content: reactNativeXmlContent, name: 'AndroidManifest.xml' }
-]} />
+<RCCodeBlock
+  tabs={[
+    {
+      type: "xml",
+      content: reactNativeXmlContent,
+      name: "AndroidManifest.xml",
+    },
+  ]}
+/>
 
 :::info Enable In-App Purchase capability for your iOS project
 Don't forget to enable the In-App Purchase capability for your project under `Project Target -> Capabilities -> In-App Purchase`
@@ -106,4 +117,4 @@ Don't forget to enable the In-App Purchase capability for your project under `Pr
 
 ## Next Steps
 
-* Now that you've installed the Purchases SDK in your React Native app, get started by [initializing an instance of Purchases →](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)
+- Now that you've installed the Purchases SDK in your React Native app, get started by [initializing an instance of Purchases →](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)

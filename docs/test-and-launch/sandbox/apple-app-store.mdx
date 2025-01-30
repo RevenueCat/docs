@@ -61,7 +61,10 @@ If you do not see the option to add a sandbox account under iOS settings, make a
 
 ## StoreKit 1: Testing on the Simulator
 
-<YouTubeEmbed videoId="YyKVQvExBdM" title="Apple Sandbox: StoreKit Configuration File" />
+<YouTubeEmbed
+  videoId="YyKVQvExBdM"
+  title="Apple Sandbox: StoreKit Configuration File"
+/>
 
 <br />
 
@@ -94,7 +97,6 @@ While you can cancel and refund subscriptions through Xcode's **Manage Transacti
 
 However, the RevenueCat SDK is still able to detect there are no active subscriptions and the appropriate entitlements will be removed when the app is restarted again.
 :::
-
 
 ### Step 1: Add a StoreKit Configuration File
 
@@ -155,10 +157,12 @@ You're ready to make purchases locally in the simulator!
 :::
 
 ## Testing Subscription Offers on the Simulator
+
 For sandbox and production [subscription offers](/subscription-guidance/subscription-offers/ios-subscription-offers), they are signed using the [In-App Key](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration). However, when using a StoreKit Configuration file, the key used to sign offers must be exported from Xcode directly.
 
 ### Step 1: Finding your Subscription Offers Key
-Open the  `.storekit` file where the subscriptions offers are configured, and go to Editor → Subscription Offers Key.
+
+Open the `.storekit` file where the subscriptions offers are configured, and go to Editor → Subscription Offers Key.
 
 ![Find Subscription Offers Key](/images/finding_subscriptions_offer_key_image_1.png)
 
@@ -169,11 +173,13 @@ After selecting 'Subscription Offers Key', you will see your key ID and private 
 Note that the private key stored in the “.storekit” file is unique per file and Xcode allows you to re-generate the key for a given file. If you re-generate your key, be sure to follow these steps again to upload your new key to RevenueCat.
 
 ### Step 2: Save your private key as a .p8 file
+
 Manually save the text of the private key in a file called `SubscriptionKey_XXXXXX.p8` where `XXXXXX` is the key ID. Following this example, the file would be named `SubscriptionKey_BD3A7A04.p8`.
 
 We only accept files smaller than 512B. We recommend utilizing an editor such as Visual Studio Code when creating your .p8 file.
 
 ### Step 3: Upload your file to RevenueCat
+
 This file can now be uploaded to the RevenueCat dashboard under your iOS app settings page → Storekit Subscription Offer Key. Be sure to copy and paste over your key ID from Xcode to the `Key ID` box.
 
 ![Add key ID](/images/upload_your_file_to_revenuecat_image.png)
@@ -209,31 +215,32 @@ Make sure the the _View Sandbox Data_ toggle is enabled in the navigation bar.
 ## Working with Subscriptions
 
 ### Sandbox
+
 In the the sandbox environment, subscription renewals happen at an accelerated rate, and auto-renewable subscriptions renew a maximum of six times per day. This enables you to test how your app handles a subscription renewal, a subscription lapse, and a subscription history that includes gaps.
 
 Because of the accelerated expiration and renewal rates, sometimes not all renewals are reflected in the RevenueCat customer dashboard.
 
 ### TestFlight
-As of December 2024, Apple changed TestFlight subscription renewals to occur once every 24 hours, regardless of the subscription duration. Previously, TestFlight subscriptions renewed every few minutes, allowing for rapid testing of multiple billing cycles within a single day. 
+
+As of December 2024, Apple changed TestFlight subscription renewals to occur once every 24 hours, regardless of the subscription duration. Previously, TestFlight subscriptions renewed every few minutes, allowing for rapid testing of multiple billing cycles within a single day.
 
 This change was not formally announced by Apple but can be found in their [documentation](https://developer.apple.com/help/app-store-connect/test-a-beta-version/subscription-renewal-rate-in-testflight).
 
 <br />
 
 | Production subscription period | Sandbox subscription renewal | TestFlight subscription renewal |
-|-------------------------------|-----------------------------|-----------------------------|
-| 3 days                        | 2 minutes                   | 1 day                       |
-| 1 week                        | 3 minutes                   | 1 day                       |
-| 1 month                       | 5 minutes                   | 1 day                       |
-| 2 months                      | 10 minutes                  | 1 day                       |
-| 3 months                      | 15 minutes                  | 1 day                       |
-| 6 months                      | 30 minutes                  | 1 day                       |
-| 1 year                        | 1 hour                      | 1 day                       |
+| ------------------------------ | ---------------------------- | ------------------------------- |
+| 3 days                         | 2 minutes                    | 1 day                           |
+| 1 week                         | 3 minutes                    | 1 day                           |
+| 1 month                        | 5 minutes                    | 1 day                           |
+| 2 months                       | 10 minutes                   | 1 day                           |
+| 3 months                       | 15 minutes                   | 1 day                           |
+| 6 months                       | 30 minutes                   | 1 day                           |
+| 1 year                         | 1 hour                       | 1 day                           |
 
 ## Deleting Test Users
 
 When testing, it may be helpful to delete a customer and all their receipts from RevenueCat to simulate a new installation. You can delete a specific user from the customer dashboard in RevenueCat. See our [docs on deleting users](/dashboard-and-metrics/customer-history/manage-users) for more information.
-
 
 :::danger Maximum number of App Store subscription receipts
 For performance reasons, RevenueCat limits the number of App Store subscription receipts per customer to 100. Having more than 100 subscription receipts on a single customer is not going to happen in production, but can easily happen during sandbox testing. Simply deleting the customer will solve this problem.

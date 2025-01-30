@@ -4,12 +4,13 @@ slug: cordova
 excerpt: Instructions for installing Purchases SDK for Cordova
 hidden: false
 ---
+
 ## What is RevenueCat?
 
 RevenueCat provides a backend and a wrapper around StoreKit and Google Play Billing to make implementing in-app purchases and subscriptions easy. With our SDK, you can build and manage your app business on any platform without having to maintain IAP infrastructure. You can read more about [how RevenueCat fits into your app](https://www.revenuecat.com/blog/growth/where-does-revenuecat-fit-in-your-app/) or you can [sign up free](https://app.revenuecat.com/signup) to start building.
 
 :::danger The Cordova SDK is deprecated
-The Cordova SDK is now deprecated. We suggest using our [Capacitor SDK](/getting-started/installation/capacitor) instead. 
+The Cordova SDK is now deprecated. We suggest using our [Capacitor SDK](/getting-started/installation/capacitor) instead.
 
 The Cordova SDK will receive maintenance updates, but new RevenueCat features and new major versions will not be made available. Billing Client v7 will be the latest version this SDK will ever support (it won't be updated to v8), which means that Google will not allow updates to your app after August 31st, 2026 [Read more about Google's Billing Client deprecation schedule](https://developer.android.com/google/play/billing/deprecation-faq)
 :::
@@ -18,9 +19,9 @@ The Cordova SDK will receive maintenance updates, but new RevenueCat features an
 
 import content from "!!raw-loader!@site/code_blocks/getting-started/installation/cordova_1.shell";
 
-<RCCodeBlock tabs={[
-    { type: 'shell', content: content, name: 'Installation' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "shell", content: content, name: "Installation" }]}
+/>
 
 ## Additional Android Setup
 
@@ -30,24 +31,29 @@ Depending on your user's payment method, they may be asked by Google Play to ver
 
 import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_launchmode.xml";
 
-<RCCodeBlock tabs={[
-    { type: 'xml', content: launchModeContent, name: 'AndroidManifest.xml' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "xml", content: launchModeContent, name: "AndroidManifest.xml" },
+  ]}
+/>
 
 You can find Android's documentation on the various `launchMode` options [here](https://developer.android.com/guide/topics/manifest/activity-element#lmode).
 
 ## Additional iOS Setup
 
 ### Add In-app Purchase Capability to Project
+
 The In-app Purchase capability isn't required to install the SDK, but it is required to make purchases.
+
 1. In Xcode, in project manager, select your app target.
 2. Open the `Signing and Capabilities` tab.
 3. Click the `+ Capability` button and double-click on In-App Purchase.
-![](/images/75574fc-Screen_Shot_2020-02-19_at_4.43.13_PM_eebd70add07dffea591603870ded41c3.png "Screen Shot 2020-02-19 at 4.43.13 PM.png")
+   ![](/images/75574fc-Screen_Shot_2020-02-19_at_4.43.13_PM_eebd70add07dffea591603870ded41c3.png "Screen Shot 2020-02-19 at 4.43.13 PM.png")
 
 ### Add Strip Frameworks Phase if using cordova-plugin-purchases 1.1.0 or lower
 
 The App Store, in its infinite wisdom, still rejects fat frameworks, so we need to strip our framework before it is deployed. To do this, add the following script phase to your build.
+
 1. In Xcode, in project manager, select your app target.
 2. Open the `Build Phases` tab
 3. Add a new `Run Script`, name it `Strip Frameworks`
@@ -61,6 +67,7 @@ You have to make sure that the `SWIFT_LANGUAGE_VERSION` is set if it's not alrea
 
 You can either set it in the project yourself, or use an external plugin like https://www.npmjs.com/package/cordova-plugin-add-swift-support.
 In order to set it yourself:
+
 1. In Xcode, in project manager, select your app target.
 2. Open the `Build Settings` tab
 3. Look for the `Swift Language Version` setting.
@@ -74,9 +81,15 @@ The types are shipped inside the npm package. You can import them like this:
 
 import cordovaTypesContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ionic_typescript_cordova.ts";
 
-<RCCodeBlock tabs={[
-    { type: 'cordova', content: cordovaTypesContent, name: 'Cordova Typescript types' }
-]} />
+<RCCodeBlock
+  tabs={[
+    {
+      type: "cordova",
+      content: cordovaTypesContent,
+      name: "Cordova Typescript types",
+    },
+  ]}
+/>
 
 ## Angular
 
@@ -84,9 +97,9 @@ Wait for the Platform to be ready, then configure the plugin in your `src/app/ap
 
 import cordovaAngularContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ionic_angular_cordova.ts";
 
-<RCCodeBlock tabs={[
-    { type: 'cordova', content: cordovaAngularContent, name: 'Cordova' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "cordova", content: cordovaAngularContent, name: "Cordova" }]}
+/>
 
 ## React
 
@@ -94,10 +107,10 @@ Import the plugin object then use its static methods:
 
 import cordovaReactContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ionic_react_cordova.ts";
 
-<RCCodeBlock tabs={[
-    { type: 'cordova', content: cordovaReactContent, name: 'Cordova' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "cordova", content: cordovaReactContent, name: "Cordova" }]}
+/>
 
 ## Next Steps
 
-* Now that you've installed the Purchases SDK in your Cordova app, get started by [initializing an instance of Purchases →](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)
+- Now that you've installed the Purchases SDK in your Cordova app, get started by [initializing an instance of Purchases →](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)

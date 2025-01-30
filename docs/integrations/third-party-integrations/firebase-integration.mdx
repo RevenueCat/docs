@@ -19,16 +19,16 @@ This Firebase integration has 2 parts that can be used independently of each oth
 
 Each part of the integration requires additional setup, which you can see outlined in the table below.
 
-| Integration        | What's required                                                                                                         |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| Google Analytics   | ✅ `$firebaseAppInstanceId` customer attribute <br /> ❌ (optional, but highly recommended) Setting Firebase user identity  |
-| Firebase Extension | ✅ Setting Firebase user identity                                                                                       |
+| Integration        | What's required                                                                                                            |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| Google Analytics   | ✅ `$firebaseAppInstanceId` customer attribute <br /> ❌ (optional, but highly recommended) Setting Firebase user identity |
+| Firebase Extension | ✅ Setting Firebase user identity                                                                                          |
 
 ### Integration at a Glance
 
 | Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Customer Attributes | Sends Transfer Events | Optional Event Types |
-| :--------------: | :-----------------------: | :------------------: | :----------------------------: | :-------------------: | :------------------: |
-|        ✅        |            ❌             |          ✅          |               ❌               |          ✅           |          ❌          |
+| :--------------: | :-----------------------: | :------------------: | :--------------------------: | :-------------------: | :------------------: |
+|        ✅        |            ❌             |          ✅          |              ❌              |          ✅           |          ❌          |
 
 ## 1. Set up Firebase services in your project
 
@@ -51,9 +51,7 @@ You should make sure to use the Firebase UID as the RevenueCat app user ID when 
 
 import swiftContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_1.swift";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent }
-]} />
+<RCCodeBlock tabs={[{ type: "swift", content: swiftContent }]} />
 
 ## 3. Send analytics events to Google Analytics
 
@@ -65,9 +63,7 @@ Please ensure you're getting the app instance ID from the [Firebase Analytics](h
 
 import swiftContent2 from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_2.swift";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent2 }
-]} />
+<RCCodeBlock tabs={[{ type: "swift", content: swiftContent2 }]} />
 
 :::warning
 Setting an incorrect app instance ID will prevent events from displaying in Google Analytics.
@@ -104,20 +100,19 @@ Remember to select 'Add Integration'.
 
 The Google Analytics portion of the Firebase integration tracks the following events:
 
-| Event Type                       | Default Event Name  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | App Store | Play Store | Amazon | Stripe | Promo |
-|----------------------------------|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|------------|--------|--------|-------|
-| Initial Purchase                 | purchase            | A new subscription has been purchased.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | ✅         | ✅          | ✅      | ✅      | ❌     |
-| Trial Started                    | rc_trial_start      | The start of an auto-renewing subscription product free trial.                                                                                                                                                                                                                                                                                                                                                                                                                                               | ✅         | ✅          | ✅      | ✅      | ❌     |
-| Renewal (incl. trial conversion) | purchase            | An existing subscription has been renewed or a lapsed user has resubscribed.                                                                                                                                                                                                                                                                                                                                                                                                                                  | ✅         | ✅          | ✅      | ✅      | ❌     |
-| Cancellation (incl. during trial)| rc_cancellation     | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](/integrations/webhooks/event-types-and-fields#cancellation-and-expiration-reasons) for more details.                                                                                                                                                                                                                                                                                                          | ✅         | ✅          | ✅      | ✅      | ✅     |
-| Uncancellation                   | rc_uncancellation   | A non-expired cancelled subscription has been re-enabled.                                                                                                                                                                                                                                                                                                                                                                                                                                                    | ✅         | ✅          | ✅      | ❌      | ❌     |
-| Non Subscription Purchase        | purchase            | A customer has made a purchase that will not auto-renew.                                                                                                                                                                                                                                                                                                                                                                                                                                                     | ✅         | ✅          | ✅      | ✅      | ✅     |
-| Subscription Paused              | rc_subscription_paused | A subscription has been paused.                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | ❌         | ✅          | ❌      | ❌      | ❌     |
-| Expiration                       | rc_expiration       | A subscription has expired and access should be removed. If you have [Platform Server Notifications](/platform-resources/server-notifications) configured, this event will occur as soon as we are notified (within seconds to minutes) of the expiration. If you do not have notifications configured, delays may be approximately 1 hour.                                                                                                                           | ✅         | ✅          | ✅      | ✅      | ✅     |
-| Billing Issue                    | rc_billing_issue    | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR.                                                                                                                                                                                                                                                                                                          | ✅         | ✅          | ✅      | ✅      | ❌     |
-| Product Change                   | rc_product_change   | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](/subscription-guidance/managing-subscriptions) for more details on updates, downgrades, and crossgrades.                                                                                                                                                                                                                                 | ✅         | ✅          | ❌      | ✅      | ❌     |
-| Transfer                         | rc_transfer_event   | A transfer of transactions and entitlements was initiated between one App User ID(s) to another. Please note: Two events will be sent for each transfer, one for the original user and another for the destination user.                                                                                                                                                                                                                                                                                                                                                                                                              | ✅         | ✅          | ✅      | ✅      | ❌     |
-
+| Event Type                        | Default Event Name     | Description                                                                                                                                                                                                                                                                                                                                 | App Store | Play Store | Amazon | Stripe | Promo |
+| --------------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---------- | ------ | ------ | ----- |
+| Initial Purchase                  | purchase               | A new subscription has been purchased.                                                                                                                                                                                                                                                                                                      | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Trial Started                     | rc_trial_start         | The start of an auto-renewing subscription product free trial.                                                                                                                                                                                                                                                                              | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Renewal (incl. trial conversion)  | purchase               | An existing subscription has been renewed or a lapsed user has resubscribed.                                                                                                                                                                                                                                                                | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Cancellation (incl. during trial) | rc_cancellation        | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](/integrations/webhooks/event-types-and-fields#cancellation-and-expiration-reasons) for more details.                                                                                                                                                 | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Uncancellation                    | rc_uncancellation      | A non-expired cancelled subscription has been re-enabled.                                                                                                                                                                                                                                                                                   | ✅        | ✅         | ✅     | ❌     | ❌    |
+| Non Subscription Purchase         | purchase               | A customer has made a purchase that will not auto-renew.                                                                                                                                                                                                                                                                                    | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Subscription Paused               | rc_subscription_paused | A subscription has been paused.                                                                                                                                                                                                                                                                                                             | ❌        | ✅         | ❌     | ❌     | ❌    |
+| Expiration                        | rc_expiration          | A subscription has expired and access should be removed. If you have [Platform Server Notifications](/platform-resources/server-notifications) configured, this event will occur as soon as we are notified (within seconds to minutes) of the expiration. If you do not have notifications configured, delays may be approximately 1 hour. | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Billing Issue                     | rc_billing_issue       | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR.                                                                                                                                          | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Product Change                    | rc_product_change      | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](/subscription-guidance/managing-subscriptions) for more details on updates, downgrades, and crossgrades.                                                                         | ✅        | ✅         | ❌     | ✅     | ❌    |
+| Transfer                          | rc_transfer_event      | A transfer of transactions and entitlements was initiated between one App User ID(s) to another. Please note: Two events will be sent for each transfer, one for the original user and another for the destination user.                                                                                                                    | ✅        | ✅         | ✅     | ✅     | ❌    |
 
 ### Testing Google Analytics
 
@@ -160,9 +155,7 @@ Set your security rules so that only authenticated users can access customer inf
 
 import firebaseRules from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_3.js";
 
-<RCCodeBlock tabs={[
-    { type: 'js', content: firebaseRules }
-]} />
+<RCCodeBlock tabs={[{ type: "js", content: firebaseRules }]} />
 
 ### Enable Firebase Extension
 
@@ -206,20 +199,20 @@ Follow [this installation link](https://console.firebase.google.com/project/_/ex
 
 ##### Available Events:
 
-| Event                  | Description                                                                                                                |
-| :--------------------- | :------------------------------------------------------------------------------------------------------------------------- |
-| `test`                 | Occurs whenever a test event issued through the RevenueCat dashboard.                                                      |
-| `initial_purchase`     | Occurs whenever a new subscription has been purchased or a lapsed user has resubscribed.                                   |
+| Event                   | Description                                                                                                                |
+| :---------------------- | :------------------------------------------------------------------------------------------------------------------------- |
+| `test`                  | Occurs whenever a test event issued through the RevenueCat dashboard.                                                      |
+| `initial_purchase`      | Occurs whenever a new subscription has been purchased or a lapsed user has resubscribed.                                   |
 | `non_renewing_purchase` | Occurs whenever a customer has made a purchase that will not auto-renew.                                                   |
-| `renewal `             | Occurs whenever an existing subscription has been renewed.                                                                 |
-| `product_change`       | Occurs whenever a subscriber has changed the product of their subscription.                                                |
-| `cancellation`         | Occurs whenever a subscription or non-renewing purchase has been cancelled. See cancellation reasons for more details.     |
-| `uncancellation `      | Occurs whenever an auto-renew status has been re-enabled for a subscription.                                               |
-| `billing_issue`        | Occurs whenever there has been a problem trying to charge the subscriber. This does not mean the subscription has expired. |
-| `subscriber_alias`     | Deprecated. Occurs whenever a new app_user_id has been registered for an existing subscriber.                              |
-| `subscription_paused`  | Occurs whenever a subscription has been paused.                                                                            |
-| `transfer `            | Occurs whenever a transfer of transactions and entitlements was initiated between one App User ID(s) to another.           |
-| `expiration `          | Occurs whenever a subscription has expired and access should be removed.                                                   |
+| `renewal `              | Occurs whenever an existing subscription has been renewed.                                                                 |
+| `product_change`        | Occurs whenever a subscriber has changed the product of their subscription.                                                |
+| `cancellation`          | Occurs whenever a subscription or non-renewing purchase has been cancelled. See cancellation reasons for more details.     |
+| `uncancellation `       | Occurs whenever an auto-renew status has been re-enabled for a subscription.                                               |
+| `billing_issue`         | Occurs whenever there has been a problem trying to charge the subscriber. This does not mean the subscription has expired. |
+| `subscriber_alias`      | Deprecated. Occurs whenever a new app_user_id has been registered for an existing subscriber.                              |
+| `subscription_paused`   | Occurs whenever a subscription has been paused.                                                                            |
+| `transfer `             | Occurs whenever a transfer of transactions and entitlements was initiated between one App User ID(s) to another.           |
+| `expiration `           | Occurs whenever a subscription has expired and access should be removed.                                                   |
 
 - Select 'Install extension'. This will take about 3-5 minutes to complete
 
@@ -331,14 +324,16 @@ import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/t
 import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_8.json";
 import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_9.json";
 
-<RCCodeBlock tabs={[
-    { type: 'json', content: initialPurchaseContent, name: 'Initial Purchase' },
-    { type: 'json', content: trialStartedContent, name: 'Trial Started' },
-    { type: 'json', content: trialCancelledContent, name: 'Trial Cancelled' },
-    { type: 'json', content: trialConvertedContent, name: 'Trial Converted' },
-    { type: 'json', content: renewalContent, name: 'Renewal' },
-    { type: 'json', content: cancellationContent, name: 'Cancellation' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "json", content: initialPurchaseContent, name: "Initial Purchase" },
+    { type: "json", content: trialStartedContent, name: "Trial Started" },
+    { type: "json", content: trialCancelledContent, name: "Trial Cancelled" },
+    { type: "json", content: trialConvertedContent, name: "Trial Converted" },
+    { type: "json", content: renewalContent, name: "Renewal" },
+    { type: "json", content: cancellationContent, name: "Cancellation" },
+  ]}
+/>
 
 import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_10.json";
 import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_11.json";
@@ -348,15 +343,25 @@ import billingIssuesContent from "!!raw-loader!@site/code_blocks/integrations/th
 import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_15.json";
 import transferContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_16.json";
 
-<RCCodeBlock tabs={[
-    { type: 'json', content: uncancellationContent, name: 'Uncancellation' },
-    { type: 'json', content: nonSubscriptionPurchaseContent, name: 'Non Subscription Purchase' },
-    { type: 'json', content: subscriptionPausedContent, name: 'Subscription Paused' },
-    { type: 'json', content: expirationContent, name: 'Expiration' },
-    { type: 'json', content: billingIssuesContent, name: 'Billing Issues' },
-    { type: 'json', content: productChangeContent, name: 'Product Change' },
-    { type: 'json', content: transferContent, name: 'Transfer' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "json", content: uncancellationContent, name: "Uncancellation" },
+    {
+      type: "json",
+      content: nonSubscriptionPurchaseContent,
+      name: "Non Subscription Purchase",
+    },
+    {
+      type: "json",
+      content: subscriptionPausedContent,
+      name: "Subscription Paused",
+    },
+    { type: "json", content: expirationContent, name: "Expiration" },
+    { type: "json", content: billingIssuesContent, name: "Billing Issues" },
+    { type: "json", content: productChangeContent, name: "Product Change" },
+    { type: "json", content: transferContent, name: "Transfer" },
+  ]}
+/>
 
 ### Using the Extension
 
@@ -366,9 +371,7 @@ To check access to entitlements, you can either [use the RevenueCat SDK](/gettin
 
 import jsContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_17.js";
 
-<RCCodeBlock tabs={[
-    { type: 'js', content: jsContent }
-]} />
+<RCCodeBlock tabs={[{ type: "js", content: jsContent }]} />
 
 #### List a user's active subscriptions
 
@@ -376,9 +379,7 @@ To list a user's active subscriptions, you could use the following Firebase code
 
 import jsContent2 from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_18.js";
 
-<RCCodeBlock tabs={[
-    { type: 'js', content: jsContent2 }
-]} />
+<RCCodeBlock tabs={[{ type: "js", content: jsContent2 }]} />
 
 #### React to subscription lifecycle events
 

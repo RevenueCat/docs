@@ -14,7 +14,7 @@ You can always start with a no-code integration, and add the SDK later. In the c
 ## No-code, or server-side integration
 
 RevenueCat can automatically detect purchases by enabling "Track new purchases" in your RevenueCat app settings after enabling [Server Notifications](/platform-resources/server-notifications). This will automatically start tracking purchases that we receive from a connected store or app, with no SDK implementation required. Read more about [how to connect to a store](/projects/connect-a-store) and start tracking new purchases from Server Notifications.
- 
+
 If you want to manually send purchases to RevenueCat, you can do so by sending receipts and/or purchase tokens to the `POST /receipts` [REST API endpoint](/api-v1#tag/transactions/operation/receipts). This will create the customer in RevenueCat, RevenueCat will validate the purchase and keep the purchase status up-to-date.
 
 ## Using RevenueCat without the SDK
