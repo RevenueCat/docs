@@ -737,6 +737,14 @@ const redirects = {
       from: "/paywalls",
     },
     {
+      to: "/tools/paywalls-v2",
+      from: "/tools/paywalls/creating-paywalls-v2",
+    },
+    {
+      to: "/tools/paywalls-v2",
+      from: "/paywalls-v2",
+    },
+    {
       to: "/tools/targeting",
       from: "/targeting",
     },
@@ -1478,10 +1486,6 @@ const redirects = {
     {
       to: "/welcome/building-new",
       from: "/building-new",
-    },
-    {
-      to: "/welcome/existing-apps",
-      from: "/existing-apps",
     },
     {
       to: "/welcome/set-up-revenuecat/account-management",
