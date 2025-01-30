@@ -87,6 +87,10 @@ In all three cases, a monthly subscription is shown that started on January 1st.
 
 The subscription can be canceled by the customer (via the [customer portal](./customer-portal)) or by the developer (via the [dashboard or API](./managing-customer-subscriptions)). If the subscription is cancelled, RevenueCat will generate a `CANCELLATION` event. The subscription will continue to be active until the end of the current period. At the end of the period, the subscription will expire.
 
+## Uncancelation
+
+Uncancelations occur when a customer reactivates auto-renewal (via the [customer portal](./customer-portal)) for a subscription that was previously canceled but that didn't expired yet. When this happens, RevenueCat generates an `UNCANCELLATION` event. The subscription continues without interruption and the customer maintains their entitlements throughout the process.
+
 ## Refunds
 
 You can refund the most recent subscription period of a subscription [from the RevenueCat Dashboard](./managing-customer-subscriptions). Refunds will result in a `CANCELLATION` event with a `cancellation_reason` of `CUSTOMER_SUPPORT`. If a subscription is refunded, the customer immediately loses access to any associated entitlements.
