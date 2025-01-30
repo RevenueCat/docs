@@ -14,7 +14,6 @@ RevenueCat Paywalls will, by default, show paywalls fullscreen and there are mul
 - Custom logic with `presentPaywallIfNeeded`
 - Manually with `PaywallView` or `PaywallViewController`
 
-
 import swift1 from "!!raw-loader!@site/code_blocks/tools/paywalls_1.swift";
 import swift2 from "!!raw-loader!@site/code_blocks/tools/paywalls_2.swift";
 import swift3 from "!!raw-loader!@site/code_blocks/tools/paywalls_3.swift";
@@ -57,7 +56,7 @@ However, a `PaywallView` will not have a close button by default. This gives you
 
 If desired, you can pass `displayCloseButton: true` when creating `PaywallView` to display a close button automatically.
 
-This close button will automatically take the color of your app's tint color. You can also override it by using [`View.tintColor`](https://developer.apple.com/documentation/swiftui/view/tint(_:)-23xyq): `PaywallView(...).tintColor(Color.red)`.
+This close button will automatically take the color of your app's tint color. You can also override it by using [`View.tintColor`](<https://developer.apple.com/documentation/swiftui/view/tint(_:)-23xyq>): `PaywallView(...).tintColor(Color.red)`.
 
 You can also set `.onRequestedDismissal()` PaywallView's modifier to modify the dismissal behavior of the PaywallView. By default, the paywall will close automatically when completing a purchase, or when pressing the close button. You can use this modifier to customize the behavior of the close button. If you're using UIKit there's also a `dismissRequestedHandler` parameter in the `PaywallViewController` initializer that you can use to handle the dismissal of the paywall.
 
@@ -65,7 +64,12 @@ You can also set `.onRequestedDismissal()` PaywallView's modifier to modify the 
 
 RevenueCatUI also has a paywall variation that can be displayed as a footer below your custom paywall. This allows you to design your paywall exactly as you want with native components while still using RevenueCat UI to handle it. This is done by adding the `.paywallFooter()` view modifier to your view.
 
+:::info New view modifier for footer Paywalls
+In iOS SDK versions 5.16.0+, which support Paywalls v2, the original `.paywallFooter()` method has been deprecated and replaced with a new `.originalTemplatePaywallFooter()` method. The behavior is identical, but its important to keep in mind that footer Paywalls are only supported on original Paywalls, and therefore if your app uses them it should only use Offerings with original Paywalls.
+:::
+
 The footer paywall mainly consists of the following:
+
 - Purchase button
 - Package details text
 - Package selection (if there are any multiple packages configured)
@@ -75,18 +79,20 @@ This is all remotely configured and RevenueCatUI handles all the intro offer eli
 import swift5 from "!!raw-loader!@site/code_blocks/tools/paywalls_5.swift";
 import swift6 from "!!raw-loader!@site/code_blocks/tools/paywalls_6.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        title: "Current Offering",
-        content: swift5,
+      type: "swift",
+      title: "Current Offering",
+      content: swift5,
     },
     {
-        type: 'swift',
-        title: "Specific Offering",
-        content: swift6,
+      type: "swift",
+      title: "Specific Offering",
+      content: swift6,
     },
-]}/>
+  ]}
+/>
 
 ### How to use custom fonts
 
@@ -101,18 +107,20 @@ If you need more control over your font preferences, you can create your own `Pa
 import swift7 from "!!raw-loader!@site/code_blocks/tools/paywalls_7.swift";
 import swift8 from "!!raw-loader!@site/code_blocks/tools/paywalls_8.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        title: "By Font Name",
-        content: swift7,
+      type: "swift",
+      title: "By Font Name",
+      content: swift7,
     },
     {
-        type: 'swift',
-        title: "Manual PaywallFontProvider",
-        content: swift8,
+      type: "swift",
+      title: "Manual PaywallFontProvider",
+      content: swift8,
     },
-]}/>
+  ]}
+/>
 
 ## Android
 
@@ -173,6 +181,7 @@ RevenueCatUI also has a paywall variation that can be displayed as a footer belo
 This is done by using the `PaywallFooter` composable.
 
 The footer paywall mainly consists of the following:
+
 - Purchase button
 - Package details text
 - Package selection (if there are any multiple packages configured)
@@ -182,18 +191,20 @@ This is all remotely configured and RevenueCatUI handles all the intro offer eli
 import kotlin5 from "!!raw-loader!@site/code_blocks/tools/paywalls_5.kt";
 import kotlin6 from "!!raw-loader!@site/code_blocks/tools/paywalls_6.kt";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'kotlin',
-        title: "Current Offering",
-        content: kotlin5,
+      type: "kotlin",
+      title: "Current Offering",
+      content: kotlin5,
     },
     {
-        type: 'kotlin',
-        title: "Specific Offering",
-        content: kotlin6,
+      type: "kotlin",
+      title: "Specific Offering",
+      content: kotlin6,
     },
-]}/>
+  ]}
+/>
 
 ### How to use custom fonts
 
@@ -210,29 +221,30 @@ import kotlin8 from "!!raw-loader!@site/code_blocks/tools/paywalls_compose_font_
 import kotlin9 from "!!raw-loader!@site/code_blocks/tools/paywalls_activity_single_resource_font.kt";
 import kotlin10 from "!!raw-loader!@site/code_blocks/tools/paywalls_activity_single_google_font.kt";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'kotlin',
-        title: "Compose single font",
-        content: kotlin7,
+      type: "kotlin",
+      title: "Compose single font",
+      content: kotlin7,
     },
     {
-        type: 'kotlin',
-        title: "Compose font per style",
-        content: kotlin8,
+      type: "kotlin",
+      title: "Compose font per style",
+      content: kotlin8,
     },
     {
-        type: 'kotlin',
-        title: "Activity single resource font",
-        content: kotlin9,
+      type: "kotlin",
+      title: "Activity single resource font",
+      content: kotlin9,
     },
     {
-        type: 'kotlin',
-        title: "Activity single Google font",
-        content: kotlin10,
+      type: "kotlin",
+      title: "Activity single Google font",
+      content: kotlin10,
     },
-]}/>
-
+  ]}
+/>
 
 ## React Native
 
@@ -244,22 +256,23 @@ There are several ways to present paywalls:
 - Using `RevenueCatUI.presentPaywallIfNeeded`: this will present a paywall only if the customer does not have an unlocked entitlement.
 - Manually presenting `<RevenueCatUI.Paywall>`: this gives you more flexibility on how the paywall is presented.
 
-
 import rn1 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_1.ts";
 import rn2 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_2.ts";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'rn',
-        title: "RevenueCatUI.presentPaywall",
-        content: rn1,
+      type: "rn",
+      title: "RevenueCatUI.presentPaywall",
+      content: rn1,
     },
     {
-        type: 'rn',
-        title: "RevenueCatUI.Paywall",
-        content: rn2,
-    }
-]}/>
+      type: "rn",
+      title: "RevenueCatUI.Paywall",
+      content: rn2,
+    },
+  ]}
+/>
 
 If desired, you can pass `displayCloseButton: true` inside the `options` method when creating a `PaywallView` to display a close button in the paywall. You will need to react by using the `onDismiss` listener.
 
@@ -272,6 +285,7 @@ This allows you to design your paywall exactly as you want with native component
 This is done by using `<RevenueCatUI.PaywallFooterContainerView>`.
 
 The footer paywall mainly consists of the following:
+
 - Purchase button
 - Package details text
 - Package selection (if there are any multiple packages configured)
@@ -280,13 +294,15 @@ This is all remotely configured and RevenueCatUI handles all the intro offer eli
 
 import rn3 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_3.ts";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'rn',
-        title: "RevenueCatUI.PaywallFooterContainerView",
-        content: rn3,
-    }
-]}/>
+      type: "rn",
+      title: "RevenueCatUI.PaywallFooterContainerView",
+      content: rn3,
+    },
+  ]}
+/>
 
 :::warning
 `PaywallFooterContainerView` only works correctly when phone is in portrait mode.
@@ -297,6 +313,7 @@ Landscape mode support for `PaywallFooterContainerView` is coming soon.
 
 When using `RevenueCatUI.Paywall` or `RevenueCatUI.PaywallFooterContainerView`, you may use one of the provided listeners to react to user actions.
 Available listeners at this time are:
+
 - onPurchaseStarted
 - onPurchaseCompleted
 - onPurchaseError
@@ -314,6 +331,7 @@ By default, a paywall will use the the system default font which supports dynami
 
 In order to add a font family, add it in your react native app and make sure to run `npx react-native-asset` so it's added to the native components. Supported font types are `.ttf` and `.otf`.
 Make sure the file names follow the convention:
+
 - Regular: MyFont.ttf/MyFont.otf
 - Bold: MyFont_bold.ttf/MyFont_bold.otf
 - Italic: MyFont_italic.ttf/MyFont_italic.otf
@@ -325,24 +343,25 @@ import rn4 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_4.ts";
 import rn5 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_5.ts";
 import rn6 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_6.ts";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'rn',
-        title: "Full Screen",
-        content: rn4,
+      type: "rn",
+      title: "Full Screen",
+      content: rn4,
     },
     {
-        type: 'rn',
-        title: "Footer",
-        content: rn5,
+      type: "rn",
+      title: "Footer",
+      content: rn5,
     },
     {
-        type: 'rn',
-        title: "presentPaywall",
-        content: rn6,
+      type: "rn",
+      title: "presentPaywall",
+      content: rn6,
     },
-]}/>
-
+  ]}
+/>
 
 ## Flutter
 
@@ -357,18 +376,20 @@ There are several ways to present paywalls:
 import flutter1 from "!!raw-loader!@site/code_blocks/tools/paywalls_flutter_1.dart";
 import flutter2 from "!!raw-loader!@site/code_blocks/tools/paywalls_flutter_2.dart";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'flutter',
-        title: "RevenueCatUI.presentPaywall",
-        content: flutter1,
+      type: "flutter",
+      title: "RevenueCatUI.presentPaywall",
+      content: flutter1,
     },
     {
-        type: 'flutter',
-        title: "PaywallView",
-        content: flutter2,
-    }
-]}/>
+      type: "flutter",
+      title: "PaywallView",
+      content: flutter2,
+    },
+  ]}
+/>
 
 If desired, you can pass `displayCloseButton: true` when creating a `PaywallView` to display a close button in the paywall.
 You will need to react by using the `onDismiss` listener.
@@ -380,6 +401,7 @@ This allows you to design your paywall exactly as you want with native component
 This is done by using `PaywallFooterView`.
 
 The footer paywall mainly consists of the following:
+
 - Purchase button
 - Package details text
 - Package selection (if there are any multiple packages configured)
@@ -388,18 +410,21 @@ This is all remotely configured and RevenueCatUI handles all the intro offer eli
 
 import flutter3 from "!!raw-loader!@site/code_blocks/tools/paywalls_flutter_3.dart";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'flutter',
-        title: "PaywallFooterView",
-        content: flutter3,
-    }
-]}/>
+      type: "flutter",
+      title: "PaywallFooterView",
+      content: flutter3,
+    },
+  ]}
+/>
 
 ### Listeners
 
 When using `PaywallView` or `PaywallFooterView`, you may use one of the provided listeners to react to user actions.
 Available listeners at this time are:
+
 - onPurchaseStarted
 - onPurchaseCompleted
 - onPurchaseError
@@ -415,13 +440,15 @@ You can present a fullscreen Paywall using the `Paywall` composable. You have th
 
 import kmp1 from "!!raw-loader!@site/code_blocks/tools/paywalls_kmp_1.kts";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'kotlin',
-        title: "Paywall",
-        content: kmp1,
-    }
-]}/>
+      type: "kotlin",
+      title: "Paywall",
+      content: kmp1,
+    },
+  ]}
+/>
 
 If desired, you can set `shouldDisplayDismissButton` to `true` in your `PaywallOptions` to display a close button in the paywall. You will need to react to it using the `dismissRequest` listener.
 
@@ -431,6 +458,7 @@ RevenueCatUI also has a paywall variation that can be displayed as a footer belo
 This is done by using the `PaywallFooter` composable.
 
 The footer paywall mainly consists of the following:
+
 - Purchase button
 - Package details text
 - Package selection (if there are any multiple packages configured)
@@ -439,18 +467,21 @@ This is all remotely configured and RevenueCatUI handles all the intro offer eli
 
 import kmp2 from "!!raw-loader!@site/code_blocks/tools/paywalls_kmp_2.kts";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'kotlin',
-        title: "PaywallFooter",
-        content: kmp2,
-    }
-]}/>
+      type: "kotlin",
+      title: "PaywallFooter",
+      content: kmp2,
+    },
+  ]}
+/>
 
 ### Listeners
 
 When using `Paywall` or `PaywallFooter`, you may use one of the provided listeners to react to user actions.
 Available listeners at this time are:
+
 - onPurchaseStarted
 - onPurchaseCompleted
 - onPurchaseError
@@ -466,4 +497,3 @@ The default paywall displays all packages in the offering.
 
 On iOS it uses the app's `accentColor` for styling.
 On Android, it uses the app's `Material3`'s `ColorScheme`.
-
