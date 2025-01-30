@@ -74,6 +74,22 @@ Don't forget to enable the In-App Purchase capability for your iOS project under
 
 ![](/images/66c301a-65db383-Screen_Shot_2018-12-18_at_9.15.09_AM_51ae7051850be013d83c1e9a8f107b61.png "65db383-Screen_Shot_2018-12-18_at_9.15.09_AM.png")
 
+:::info Include BILLING permission for Android projects
+Don't forget to include the `BILLING` permission in your AndroidManifest.xml file
+:::
+
+import reactNativeXmlContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_8.xml";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "xml",
+      content: reactNativeXmlContent,
+      name: "AndroidManifest.xml",
+    },
+  ]}
+/>
+
 :::warning
 If you're using other plugins like [mobx](https://pub.dev/packages/flutter_mobx), you may run into conflicts with types from other plugins having the same name as those defined in `purchases_flutter`.<br/>
 If this happens, you can resolve the ambiguity in the types by adding an import alias, for example:

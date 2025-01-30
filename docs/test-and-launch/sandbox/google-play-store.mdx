@@ -67,6 +67,22 @@ If your app is completely new, you may need to make your app available to your c
 
 Generate a signed APK or use Android App Bundle to upload a signed APK to the alpha track you just created. You don’t even need to roll out the release. Just upload the APK. You can find more information about this in this support article [https://support.google.com/googleplay/android-developer/answer/7159011](https://support.google.com/googleplay/android-developer/answer/7159011)
 
+:::info Include BILLING permission for Android projects
+You may need to include the `BILLING` permission in your AndroidManifest.xml file in order to unlock product creating in Google Play Console.
+:::
+
+import reactNativeXmlContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_8.xml";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "xml",
+      content: reactNativeXmlContent,
+      name: "AndroidManifest.xml",
+    },
+  ]}
+/>
+
 ## Make a purchase
 
 Before you can make a purchase, make sure your release has been approved and available.
