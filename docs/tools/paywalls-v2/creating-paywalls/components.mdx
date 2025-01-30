@@ -15,7 +15,7 @@ Components are the individual building blocks of your paywall that can be arrang
 | Icon            | Used to add a customizable icon from our provided list                                     |
 | Stack           | Used as a parent component to jointly configure its child components                       |
 | Package         | Used to add a selectable package with custom styling, text, etc.                           |
-| Purchase button | The call to action that envokes a purchase attempt of the selected package.                |
+| Purchase button | The call to action that invokes a purchase attempt of the selected package.                |
 | Button          | Used to add other interactions; such as a link to your Privacy Policy, a back button, etc. |
 | Footer          | A configurable portion of your paywall whose position can be fixed and uniquely styled.    |
 
@@ -25,7 +25,7 @@ Stacks, packages, buttons, and the footer are all complex components which can c
 
 ## Common component properties
 
-Most components have common properties such as padding, margin, border, and more that can be used to control their look and layout. To learn more about these common component properties, [click here.](/tools/paywalls/creating-paywalls-v2/component-properties)
+Most components have common properties such as padding, margin, border, and more that can be used to control their look and layout. To learn more about these common component properties, [click here.](/tools/paywalls-v2/creating-paywalls/component-properties)
 
 ## Text component
 
@@ -35,11 +35,11 @@ Text components can additionally be embedded in other parent components like sta
 
 All text components support variables, which are dynamic values that will be set based on the package being referenced. When a text component is within a package, its variable values will always refer to that package; and text components outside of a package will always refer to the currently selected package.
 
-[Learn more about variables.](/tools/paywalls/creating-paywalls-v2/components)
+[Learn more about variables.](/tools/paywalls-v2/creating-paywalls/components)
 
 In addition, all text components support having a unique value for customers that are eligible for intro offers, so that you can reference those offers anywhere on your paywall. You can set this value using the `Text field for an introductory offer` property on any text component.
 
-[Learn more about setting unique values for customers eligible for intro offers.](/tools/paywalls/creating-paywalls-v2/customer-states)
+[Learn more about setting unique values for customers eligible for intro offers.](/tools/paywalls-v2/creating-paywalls/customer-states)
 
 ### Font size
 
@@ -79,11 +79,11 @@ An image can have a overlay applied of a solid color or a gradient, along with a
 1. Add a background image with a semi-transparent overlay color that matches your app's branding
 2. Apply a gradient overlay to smoothly transition from the image to your paywall's background color
 
-### Alternate text
+### Alt text
 
-Alternate text can be configured for each image to make them more accessible.
+Alt text can be configured for each image to make them more accessible.
 
-To configure atl. text, first open that image in the media gallery, which you can accesss by clicking on `Replace image` within an image component's properties. Then, hover of the image you want to edit and click the eye icon that appears to view its details.
+To configure alt text, first open that image in the media gallery, which you can accesss by clicking on `Replace image` within an image component's properties. Then, hover of the image you want to edit and click the eye icon that appears to view its details.
 
 ![Image details](/images/paywalls-image-details.png)
 
@@ -125,10 +125,10 @@ At the top of the properties list, you'll need to select the package from your O
 
 In addition, package's are unique in that they can have both a **Default** and a **Selected** state configured for them, so that you can add unique styling to differentiate the two; such as a unique icon, border color, or background.
 
-[Learn more about selected state styling.](/tools/paywalls/creating-paywalls-v2/customer-states)
+[Learn more about selected state styling.](/tools/paywalls-v2/creating-paywalls/customer-states)
 
 :::tip
-The package component defines the selectable that a customer may tap on to select the package, so be sure to create suitable margin between it and other elements to make it easy for customers to tap on the correct package.
+The package component defines the selectable area that a customer may tap on to select the package, so be sure to create suitable margin between it and other elements to make it easy for customers to tap on the correct package.
 :::
 
 ## Purchase button

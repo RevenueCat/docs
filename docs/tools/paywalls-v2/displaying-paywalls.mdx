@@ -1,0 +1,79 @@
+---
+title: Displaying Paywalls (v2)
+slug: displaying-paywalls
+hidden: false
+---
+
+:::info Paywalls v2 Beta
+These docs refer to our beta of Paywalls v2. For our original Paywalls which already support iOS, Android, React Native, Flutter, and KMP, [click here](/tools/paywalls/installation).
+:::
+
+## iOS
+
+### How to display a Paywall in your app
+
+RevenueCat Paywalls v2 will show paywalls fullscreen, and there are multiple ways to do this with SwiftUI and UIKit.
+
+- Depending on an entitlement with `presentPaywallIfNeeded`
+- Custom logic with `presentPaywallIfNeeded`
+- Manually with `PaywallView` or `PaywallViewController`
+
+import swift1 from "!!raw-loader!@site/code_blocks/tools/paywalls_1.swift";
+import swift2 from "!!raw-loader!@site/code_blocks/tools/paywalls_2.swift";
+import swift3 from "!!raw-loader!@site/code_blocks/tools/paywalls_3.swift";
+import swift4 from "!!raw-loader!@site/code_blocks/tools/paywalls_4.swift";
+import objc5 from "!!raw-loader!@site/code_blocks/tools/paywalls_5.m";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        title: "Entitlement",
+        content: swift1,
+    },
+    {
+        type: 'swift',
+        title: "Custom Logic",
+        content: swift2,
+    },
+    {
+        type: 'swift',
+        title: "Manually",
+        content: swift3,
+    },
+    {
+        type: 'swift',
+        title: "Manually (UIKit)",
+        content: swift4,
+    },
+    {
+        type: 'objc',
+        title: "Manually (UIKit and Objective-C)",
+        content: objc5,
+    },
+
+]}/>
+
+### Handling paywall navigation
+
+[Outline:
+
+1. When creating a paywall, consider whether it will be presented in a sheet, or as a view.
+2. Sheets won't require a dedicated close button, whereas views should have them unless you're building a hard paywall (explicit instructions on how we recommend setting up a hard paywall?)
+3. .onRequestedDismissal() caveat if applicable?]
+
+:::info Footer Mode from original Paywalls
+Paywalls v2 does not support Footer Mode. If your app requests the Paywall for an Offering to display that has a v2 Paywall, it will display a default version of that paywall instead (see below). Footer Mode can still be used on original paywall templates using the existing method, or the new `originalTemplatePaywallFooter()` method on iOS SDK versions 5.16.0+.
+:::
+
+## Default Paywall
+
+If you attempt to display a Paywall for an Offering that doesn't have one configured, or that has a Paywall configured which is not supported on the installed SDK version, the RevenueCatUI SDK will display a default Paywall.
+
+The default paywall displays all packages in the Offering.
+
+On iOS it uses the app's `accentColor` for styling.
+On Android, it uses the app's `Material3`'s `ColorScheme`.
+
+:::tip Targeting
+If your app supports our original Paywall templates, consider using Targeting to create an audience that only receives your v2 Paywall if they're using RC iOS SDK version 5.16.0+. This will ensure that older app versions continue to receive the Offering and Paywall that they support, while any app versions running a supported RC iOS SDK version receive your new v2 Paywall. (Learn more about Targeting.)[tools/targeting]
+:::
