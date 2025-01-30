@@ -25,8 +25,8 @@ In the "new product" screen, you can set up the following properties of the prod
     - *Auto-renewing subscription*: A recurring subscription purchase, that continues on a given interval until canceled.
     - *Consumable*: A non-recurring purchase that can be purchased one or more times (repeated).
     - *Non-consumable*: A non-recurring purchase that can only be purchased once.
-- **Duration**: The billing cycle (period length) of the subscription. *See [Sandbox testing](/web/revenuecat-billing#renewals-in-sandbox) for more information about durations in sandbox mode.*
-- **Free trial period**: The duration of a free trial. *See [Sandbox testing](/web/revenuecat-billing#renewals-in-sandbox) for more information about durations in sandbox mode.*
+- **Duration**: The billing cycle (period length) of the subscription. *See [Sandbox testing](/web/web-billing#renewals-in-sandbox) for more information about durations in sandbox mode.*
+- **Free trial period**: The duration of a free trial. *See [Sandbox testing](/web/web-billing#renewals-in-sandbox) for more information about durations in sandbox mode.*
 - **Trial eligibility**: Which customers have access to the free trial:
     - *Everyone*: Every customer will start a subscription to this product with a trial, even if they had a trial before. *Please note:* If you choose this option, it means that customers could continuously cancel their trial and start another trial to keep getting free access.
     - *Has never made any purchase*: Only customers that have never made any purchase in this Project (including non-subscription purchases and purchases in other Apps of this project) are eligible for a trial.

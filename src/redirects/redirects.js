@@ -1607,6 +1607,10 @@ const redirects = {
       to: "/web/web-billing/web-paywall-links",
       from: "/web/revenuecat-billing/web-paywall-links",
     },
+    {
+      to: "/web/web-billing/lifecycle-emails",
+      from: "/web/revenuecat-billing/lifecycle-emails",
+    },
   ],
 };
 
