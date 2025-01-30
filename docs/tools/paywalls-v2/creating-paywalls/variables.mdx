@@ -10,7 +10,7 @@ For some Paywall strings you may want to set values based on the package that’
 
 To make this easier and ensure accuracy, we recommend using **Variables** for these values that are package-specific.
 
-For example, to show a CTA like “Try 7 Days Free & Subscribe”, you should instead use the `{{ product.offer_period_with_unit  }}` variable, and enter “Try `{{ product.offer_period_with_unit  }}` free & subscribe” to ensure the string is accurate for any product you use, even if you make changes to the nature of the offer in the future.
+For example, to describe a trial that offers "1 week free", you should use the `{{ product.offer_period_with_unit  }}` variable to insert `1 week` to ensure the string is accurate for any product you use, even if you make changes to the product or its introductory offer in the future.
 
 We support the following variables:
 
