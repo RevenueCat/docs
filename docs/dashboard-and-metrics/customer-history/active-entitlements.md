@@ -54,7 +54,7 @@ Transferring entitlements works with the block-restore behavior
 
 ## Refunding and Cancelling Purchases
 
-Google Play and Web Billing purchases can be refunded directly through the RevenueCat dashboard. Granting a refund will immediately expire the subscription and remove any entitlement access. By refunding directly through RevenueCat you can ensure that refunds are accounted for immediately in all charts and integrations.
+Google Play and Web Billing (formerly RevenueCat Billing) purchases can be refunded directly through the RevenueCat dashboard. Granting a refund will immediately expire the subscription and remove any entitlement access. By refunding directly through RevenueCat you can ensure that refunds are accounted for immediately in all charts and integrations.
 
 Web Billing subscriptions and Google Play subscriptions in the trial period can also be cancelled, which means that they will not renew at the next expiration date.
 

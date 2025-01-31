@@ -19,5 +19,5 @@ Deleting a user with live purchases may have downstream effects on charts and re
 - You can cancel a user's Google Play subscription before deleting them via our [API](https://docs.revenuecat.com/reference#revoke-a-google-subscription).
 - It's not possible for you to cancel a user's Apple subscription; this is a limitation of the App Store.
 - Stripe Web Payments subscriptions are not canceled automatically, and should be canceled directly in the [Stripe Dashboard](https://support.stripe.com/questions/how-to-pause-payment-collection-or-cancel-subscriptions).
-- Web Billing subscriptions are always canceled immediately when the user is deleted.
+- Web Billing (formerly RevenueCat Billing) subscriptions are always canceled immediately when the user is deleted.
   :::

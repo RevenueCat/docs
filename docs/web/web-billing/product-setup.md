@@ -8,10 +8,10 @@ hidden: false
 # Web Billing Product Setup
 
 :::warning Beta Feature
-Web Billing is currently in beta.
+Web Billing (formerly RevenueCat Billing) is currently in beta.
 :::
 
-To create a new Web Billing product, open the RevenueCat dashboard, go to your project's settings, and under "Products" click on "New", and then select your Web Billing App:
+To create a new Web Billing (formerly RevenueCat Billing) product, open the RevenueCat dashboard, go to your project's settings, and under "Products" click on "New", and then select your Web Billing App:
 
 ![New product button in the products screen](/images/web-billing/new-product.png)
 

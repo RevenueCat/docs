@@ -6,7 +6,7 @@ hidden: false
 ---
 
 :::warning Beta Feature
-Web Billing and the RevenueCat Web SDK are currently in beta.
+Web Billing (formerly RevenueCat Billing) and the RevenueCat Web SDK are currently in beta.
 :::
 
 Customers purchasing through Web Billing (formerly RevenueCat Billing) will receive emails related to their subscriptions and other purchases on the web.
@@ -29,16 +29,16 @@ Only the `Page background` and `Primary button` colors are used to brand emails.
 
 You can find a complete list of customer emails below, in addition to the triggers that are used to send them.
 
-| Email                                    | Trigger                                                                                                       | Call to action                                                                              |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| Free trial start                         | The customer started a free trial                                                                             | n/a                                                                                         |
-| Initial purchase                         | The customer made a successful purchase (either a subscription or one-time purchase)                          | Redeem purchase (when [Redemption Links](/web/revenuecat-billing/redemption-links) enabled) |
-| Redemption link refresh                  | The customer attempted to use an expired redemption link, so a new one was sent to them                       | Redeem purchase (when [Redemption Links](/web/revenuecat-billing/redemption-links) enabled) |
-| Customer portal login                    | The customer initiated access to the [customer portal](/web/revenuecat-billing/customer-portal)               | Manage subscription in [customer portal](/web/revenuecat-billing/customer-portal)           |
-| Subscription renewal                     | The customer's subscription automatically renewed at the end of their billing period                          | n/a                                                                                         |
-| Failed payment                           | A renewal payment failed (after several retries)                                                              | Manage subscription in [customer portal](/web/revenuecat-billing/customer-portal)           |
-| Subscription cancelation                 | The customer canceled their subscription                                                                      | Renew subscription in [customer portal](/web/revenuecat-billing/customer-portal)            |
-| Subscription renewed (after cancelation) | The customer renewed their subscription after previously canceling, before it expired                         | n/a                                                                                         |
-| Subscription expiry                      | The customer's subscription expired and will not be renewed                                                   | n/a                                                                                         |
-| Chargeback detected                      | RevenueCat detected a chargeback from the customer, and the subscription was immediately canceled as a result | n/a                                                                                         |
-| Refund issued                            | A refund was issued to the customer                                                                           | n/a                                                                                         |
+| Email                                    | Trigger                                                                                                       | Call to action                                                                       |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Free trial start                         | The customer started a free trial                                                                             | n/a                                                                                  |
+| Initial purchase                         | The customer made a successful purchase (either a subscription or one-time purchase)                          | Redeem purchase (when [Redemption Links](/web/web-billing/redemption-links) enabled) |
+| Redemption link refresh                  | The customer attempted to use an expired redemption link, so a new one was sent to them                       | Redeem purchase (when [Redemption Links](/web/web-billing/redemption-links) enabled) |
+| Customer portal login                    | The customer initiated access to the [customer portal](/web/web-billing/customer-portal)                      | Manage subscription in [customer portal](/web/web-billing/customer-portal)           |
+| Subscription renewal                     | The customer's subscription automatically renewed at the end of their billing period                          | n/a                                                                                  |
+| Failed payment                           | A renewal payment failed (after several retries)                                                              | Manage subscription in [customer portal](/web/web-billing/customer-portal)           |
+| Subscription cancelation                 | The customer canceled their subscription                                                                      | Renew subscription in [customer portal](/web/web-billing/customer-portal)            |
+| Subscription renewed (after cancelation) | The customer renewed their subscription after previously canceling, before it expired                         | n/a                                                                                  |
+| Subscription expiry                      | The customer's subscription expired and will not be renewed                                                   | n/a                                                                                  |
+| Chargeback detected                      | RevenueCat detected a chargeback from the customer, and the subscription was immediately canceled as a result | n/a                                                                                  |
+| Refund issued                            | A refund was issued to the customer                                                                           | n/a                                                                                  |
