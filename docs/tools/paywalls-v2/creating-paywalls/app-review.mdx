@@ -1,0 +1,31 @@
+---
+title: Getting your paywall approved through app review
+slug: app-review
+hidden: false
+---
+
+Paywalls are frequently one of the most scrutinized areas of your app in App Store and Play Store review, since the stores want to ensure apps are setting clear expectations about what’s being offered to customers. Below are some of the most common rejection reasons, and how you can best position yourself to avoid them with RevenueCat Paywalls:
+
+**Full billed amount is not clearly shown**
+Though it can be useful to show the relative value of one option over another by comparing the two with a common duration (e.g. normalizing your $49.99/yr subscription to the equivalent of $4.16/mo), it’s important that the full billed amount ($49.99/yr) is clearly provided on your paywall.
+
+You can provide this using variables like `product.price_per_period` / `product.price_per_period_abbreviated` depending on your preferred format.
+
+However, other variables like `product.price_per_month` or `product.price` on their own may not satisfy this requirement unless your paywall clearly states the full billed amount and recurrence in some other way.
+
+**Introductory offer is not clearly shown**
+Similar to the full billed amount, if the nature of the introductory offer is not clear enough on your paywall, your app may also get rejected for that reason, since this is what the customer is about to receive (and potentially pay for) immediately upon converting.
+
+To address this with RevenueCat Paywalls, consider using `product.offer_price` and `product.offer_period` in either your package details or your CTA to ensure that the introductory offer is clearly disclosed.
+
+:::info
+India has particularly strict rules regarding the disclosure of offer terms, and you may find that your paywall is more likely to get rejected for that reason if its offered in India.
+:::
+
+**The opportunity to cancel is not clearly disclosed**
+In addition, in some cases the store will look for explicit language around the fact that customers can cancel their subscription, as well as how they might do that; so considering adding these notes if you want to be sure to avoid a rejection for that reason. (e.g. "Try free for x days, then $y/mo. Cancel anytime.")
+
+**Missing terms & conditions or missing privacy policy**
+Though the App Store in particular no longer requires these policies to be accessible directly from your paywall, they do still require that they are accessible _somewhere_ in your app, and the paywall is a common place for them to be.
+
+If either the terms & conditions or the privacy policy of your app is missing, or just too difficult to find in the reviewer's opinion, your app may be rejected for that. To prevent this, try providing the terms & privacy policy on your paywall through RevenueCat Paywalls so they'll be easy for your customers and for app reviewers to find.

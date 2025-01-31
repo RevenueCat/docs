@@ -61,9 +61,9 @@ In the policy editor, switch to the JSON view and paste in the following code. B
 
 import jsonContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports/scheduled-data-exports-s3_1.jsonc";
 
-<RCCodeBlock tabs={[
-    { type: 'json', content: jsonContent, name: 'Access Policy' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "json", content: jsonContent, name: "Access Policy" }]}
+/>
 
 This policy will allow RevenueCat to list the contents of your bucket, as well as read, write, delete files to it. When you've pasted in the code, click **Review policy\***.
 
@@ -134,4 +134,3 @@ Download the CSV or enter your access key and secret access key into RevenueCat.
 **Error: `The provided ETL credentials or bucket name are incorrect.`**
 
 Please ensure your IAM policy reflects the correct bucket name. If you've changed the bucket name, you'll need to update the policy to reflect the new name.
-

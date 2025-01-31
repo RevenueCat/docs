@@ -292,7 +292,7 @@ tags:
   description: |
     ## Backfill new transaction in the subscription
 
-    If subscription statuses arrive out of order (eg. RevenueCat receives a previous subscription period before a subsequent subscription period), RevenueCat needs to make a decision about how the history of the susbcription looked like. This section describes various scenarios that can occur.
+    If subscription statuses arrive out of order (eg. RevenueCat receives a previous subscription period before a subsequent subscription period), RevenueCat needs to make a decision about how the history of the subscription looked like. This section describes various scenarios that can occur.
 
     ### Context
 

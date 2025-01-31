@@ -4,6 +4,7 @@ slug: subscription-offers
 excerpt: How to give your customers subscription discounts
 hidden: false
 ---
+
 Subscription offers give you the opportunity to provide limited time discounts in order to attract or retain subscribers and can be an important part of a subscription lifecycle.
 
 ## Introductory Offers & Free Trials
@@ -31,13 +32,15 @@ RevenueCat uses a best-effort approach to checking eligibility based on previous
 
 import swift1 from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers_1.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        title: "Swift",
-        content: swift1,
-    }
-]}/>
+      type: "swift",
+      title: "Swift",
+      content: swift1,
+    },
+  ]}
+/>
 
 :::info Only supported on iOS
 Checking introductory eligibility is only supported on iOS. Using the `checkTrialOrIntroductoryEligibility` method on our cross-platform SDKs (for example, React Native or Flutter) will not return a valid eligibility on Android.
@@ -45,11 +48,11 @@ Checking introductory eligibility is only supported on iOS. Using the `checkTria
 
 ### Google Play
 
-Google Play allows setting up multiple offers per base plan and allows differentiating between Google Play determined eligibility and developer determined eligibility. Our SDKs provide several ways to select which offer to apply. 
+Google Play allows setting up multiple offers per base plan and allows differentiating between Google Play determined eligibility and developer determined eligibility. Our SDKs provide several ways to select which offer to apply.
 
 #### Automatic application of trials and introductory offers
 
-If you pass a `StoreProduct` or `Package` to `PurchaseParams.Builder`, the RevenueCat SDK automatically applies an available free trial or introductory offer. This resembles the automatic application of free trials and introductory periods on Apple App Store and Amazon App Store and on Google Play before the [May 2022 subscription changes](https://developer.android.com/google/play/billing/compatibility). 
+If you pass a `StoreProduct` or `Package` to `PurchaseParams.Builder`, the RevenueCat SDK automatically applies an available free trial or introductory offer. This resembles the automatic application of free trials and introductory periods on Apple App Store and Amazon App Store and on Google Play before the [May 2022 subscription changes](https://developer.android.com/google/play/billing/compatibility).
 
 The logic to determine the offer that applies to the purchase is based on the following logic:
 
@@ -74,13 +77,15 @@ The `subscriptionOptions` property also has a number of convenience properties t
 
 import kt1 from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers_2.kt";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'kotlin',
-        title: "Kotlin",
-        content: kt1,
-    }
-]}/>
+      type: "kotlin",
+      title: "Kotlin",
+      content: kt1,
+    },
+  ]}
+/>
 
 ## Setting up Subscription Offers
 

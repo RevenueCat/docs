@@ -6835,7 +6835,7 @@ components:
           type: string
           pattern: ^(-?)P(?=\d|T\d)(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)([DW]))?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?$
           nullable: true
-          description: The duration of the subcription's trial period in ISO-8601
+          description: The duration of the subscription's trial period in ISO-8601
             standard
           example: P1W
   headers:

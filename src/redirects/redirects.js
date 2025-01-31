@@ -737,6 +737,14 @@ const redirects = {
       from: "/paywalls",
     },
     {
+      to: "/tools/paywalls-v2",
+      from: "/tools/paywalls/creating-paywalls-v2",
+    },
+    {
+      to: "/tools/paywalls-v2",
+      from: "/paywalls-v2",
+    },
+    {
       to: "/tools/targeting",
       from: "/targeting",
     },
@@ -1480,10 +1488,6 @@ const redirects = {
       from: "/building-new",
     },
     {
-      to: "/welcome/existing-apps",
-      from: "/existing-apps",
-    },
-    {
       to: "/welcome/set-up-revenuecat/account-management",
       from: "/account-management.html",
     },
@@ -1616,7 +1620,7 @@ const redirects = {
 
 // Add redirects with a .html appended to the "from" path for redirecting in S3/Cloudfront
 redirects.redirects.push(
-  ...redirects.redirects.map(({ from, to }) => ({ from: `${from}.html`, to }))
+  ...redirects.redirects.map(({ from, to }) => ({ from: `${from}.html`, to })),
 );
 
 export default redirects;

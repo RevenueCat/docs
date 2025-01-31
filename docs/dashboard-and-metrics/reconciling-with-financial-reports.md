@@ -36,7 +36,7 @@ Apple’s monthly [financial reports](https://developer.apple.com/help/app-store
 
 A transaction's settlement date is the date when the customer's payment is actually made to Apple. Often this will occur on the same day that a transaction is initiated by the customer; but may also occur on a later date, such as when Apple batches some payments together and charges them at once at a later time, or when a customer is due to renew their subscription on a given date but the attempted payment fails until some later date in their grace period.
 
-The result is that the day a transaction is initiated and the day it settles is not always the same, and therefore a transaction may be paid out in a later fiscal month than the one it was initiatied in.
+The result is that the day a transaction is initiated and the day it settles is not always the same, and therefore a transaction may be paid out in a later fiscal month than the one it was initiated in.
 
 ### Price fields
 
@@ -98,6 +98,6 @@ When using these data sources to operate your business, we recommend that you:
 
 - Use RevenueCat for trend analysis, real-time insights, and estimating future earnings.
 - Rely on Apple’s financial reports for accurate payout data, financial reporting, and all accounting use cases.
-- And always keep in mind these nuances of settlment dates, Apple's fiscal calendar, exchange rates, tax & commission estimations, and refund attribution when attempting to reconcile the two data sources.
+- And always keep in mind these nuances of settlement dates, Apple's fiscal calendar, exchange rates, tax & commission estimations, and refund attribution when attempting to reconcile the two data sources.
 
 By understanding the methodologies behind these tools, you can better utilize their strengths and make informed decisions when operating your business.

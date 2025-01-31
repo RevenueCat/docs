@@ -37,14 +37,14 @@ To see this option, you must first fill in all required metadata so that the sta
 
 If you've already released a version of your app containing in-app purchases, you can create new products in App Store Connect without having to release an update to your app. You'll have to submit new products for review independently of a new app version, and they must be in the 'Approved' state before they'll be available for purchase.
 
-If you're having trouble fetching products in Testflight or a local build, see our community article on [the most common reasons this occurs](https://community.revenuecat.com/featured-articles-55/app-rejections-86). 
+If you're having trouble fetching products in Testflight or a local build, see our community article on [the most common reasons this occurs](https://community.revenuecat.com/featured-articles-55/app-rejections-86).
 
 > **Re-submit for review**
 > If you're able to test purchases on your device successfully but App Review runs into issues fetching products, it's likely an issue with their environment. There isn't much you can do in these cases- some users have had to re-submit the same build up to a dozen times before being approved.
 
 ## Error during purchase
 
-If an error occurs during the purchase process, it will be one of the errors outlined in our [Error Handling guide here](/test-and-launch/errors). Understanding what error triggered the rejection is the only way to make sure the issue gets resolved. 
+If an error occurs during the purchase process, it will be one of the errors outlined in our [Error Handling guide here](/test-and-launch/errors). Understanding what error triggered the rejection is the only way to make sure the issue gets resolved.
 
 If the reviewer provides a screenshot of an error popup - use that to help track down the issue. RevenueCat itself will never display a user-facing popup or error message, so look through your app to find the code that triggered the alert and work backwards to determine the error message.
 

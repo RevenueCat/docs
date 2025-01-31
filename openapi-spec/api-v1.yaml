@@ -171,7 +171,7 @@ paths:
           required: true
       responses:
         "200":
-          description: Customer succesfully deleted.
+          description: Customer successfully deleted.
           content:
             application/json:
               schema:
@@ -186,7 +186,7 @@ paths:
                     example: XXX-XXXXX-XXXXX-XX
                   deleted:
                     type: boolean
-                    description: Whether or not the customer was succesfully deleted
+                    description: Whether or not the customer was successfully deleted
                     example: true
       deprecated: false
   "/receipts":
@@ -476,7 +476,7 @@ paths:
       responses:
         "200":
           description: |
-            Entitlement was succesfully revoked.
+            Entitlement was successfully revoked.
                         
             Returns the updated [Customer Info](#tag/customer_info_model) for the Customer.
           content:
@@ -685,7 +685,7 @@ paths:
       responses:
         "201":
           description: |
-            Offering was succesfully overridden.
+            Offering was successfully overridden.
 
             Returns the updated [Customer Info](#tag/customer_info_model) for the Customer.
           content:
@@ -712,7 +712,7 @@ paths:
       responses:
         "201":
           description: |
-            Offering override was succesfully removed.
+            Offering override was successfully removed.
 
             Returns the updated [Customer Info](#tag/customer_info_model) for the Customer.
           content:
@@ -812,7 +812,7 @@ paths:
       responses:
         "200":
           description: |
-            Purchase was succesfully refunded and revoked.
+            Purchase was successfully refunded and revoked.
 
             Returns the updated [Customer Info](#tag/customer_info_model) for the Customer.
           content:
@@ -843,7 +843,7 @@ paths:
       responses:
         "200":
           description: |
-            Subscription was succesfully canceled.
+            Subscription was successfully canceled.
 
             Returns the updated [Customer Info](#tag/customer_info_model) for the Customer.
           content:
@@ -1056,7 +1056,7 @@ components:
                     example: red
                   updated_at_ms:
                     type: integer
-                    description: The time that the Attribut was last updated, in milliseconds since Epoch.
+                    description: The time that the Attribute was last updated, in milliseconds since Epoch.
                     example: 1564162810884
             subscriptions:
               type: object

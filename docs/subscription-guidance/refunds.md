@@ -65,17 +65,15 @@ Apple doesn’t allow developers to grant refunds themselves, only through Apple
 
 ### Apple
 
-If you are seeing delays or non-existent non-subcription refunds, make sure that [Platform Server Notifications](/platform-resources/server-notifications) are enabled.
+If you are seeing delays or non-existent non-subscription refunds, make sure that [Platform Server Notifications](/platform-resources/server-notifications) are enabled.
 
-If you are are seeing delays or non-existent consumable refunds, make sure that the  [In-App Purchase Key](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration) is configured.
-
+If you are are seeing delays or non-existent consumable refunds, make sure that the [In-App Purchase Key](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration) is configured.
 
 ### Google Play
 
 If the option to refund is missing from the RevenueCat dashboard, it might be that the subscription is no longer active. Please check the Google Play Console for the order details to confirm this, see Google's documentation [here](https://support.google.com/googleplay/android-developer/answer/2741495?hl=en).
 
 If you refunded via the Google Play Console or it was granted by Google, it **may take up to 24 hours** to be detected by RevenueCat. If a refund does not revoke access or the refund is due to no acknowledgement of purchases, then RevenueCat will not pick up on it. You would need to refund and revoke in order for RevenueCat to detect this, see Google's documentation [here](https://support.google.com/googleplay/android-developer/answer/2741495?hl=en#zippy=%2Crefund-subscriptions-including-refund-and-revoke).
-
 
 ### Stripe
 

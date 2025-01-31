@@ -124,6 +124,28 @@ const paywallsCategory = Category({
       ],
     }),
     SubCategory({
+      label: "RevenueCat Paywalls v2 (Beta)",
+      slug: "tools/paywalls-v2",
+      itemsPathPrefix: "tools/paywalls-v2/",
+      items: [
+        Page({ slug: "installation" }),
+        SubCategory({
+          label: "Creating Paywalls",
+          slug: "creating-paywalls",
+          itemsPathPrefix: "creating-paywalls/",
+          items: [
+            Page({ slug: "components" }),
+            Page({ slug: "component-properties" }),
+            Page({ slug: "variables" }),
+            Page({ slug: "customer-states" }),
+            Page({ slug: "localization" }),
+            Page({ slug: "app-review" }),
+          ],
+        }),
+        Page({ slug: "displaying-paywalls" }),
+      ],
+    }),
+    SubCategory({
       label: "Manual Implementation",
       itemsPathPrefix: "getting-started/",
       items: [
@@ -462,8 +484,7 @@ const platformResourcesCategory = Category({
       index: {
         title: "Web Configuration",
         link: "store-configuration/web",
-        description:
-          "How to configure RevenueCat for Web Billing or Stripe.",
+        description: "How to configure RevenueCat for Web Billing or Stripe.",
       },
     }),
   ],

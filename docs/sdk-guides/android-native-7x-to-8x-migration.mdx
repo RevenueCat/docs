@@ -18,15 +18,15 @@ This migration guide has detailed class, property, and method changes.
 
 ### Class/interface changes
 
-| New                                                              |
-|------------------------------------------------------------------|
-| `InstallmentsInfo`                                               |
-| `GoogleInstallmentsInfo`                                         |
-| `PurchaseConfiguration.pendingTransactionsForPrepaidPlansEnabled`|
-| `SubscriptionOption.installmentsInfo`                            |
+| New                                                               |
+| ----------------------------------------------------------------- |
+| `InstallmentsInfo`                                                |
+| `GoogleInstallmentsInfo`                                          |
+| `PurchaseConfiguration.pendingTransactionsForPrepaidPlansEnabled` |
+| `SubscriptionOption.installmentsInfo`                             |
 
 | Removed                                                               |
-|-----------------------------------------------------------------------|
+| --------------------------------------------------------------------- |
 | `UpgradeInfo`                                                         |
 | `ProrationMode`                                                       |
 | `GoogleProrationMode`                                                 |
@@ -44,21 +44,26 @@ RevenueCat SDK v8 bumps minimum Android SDK version from Android 4.4 (API level 
 We've added support for [Google Play Installment subscriptions](https://rev.cat/googleplayinstallmentsubscriptions) which is a type of subscription where customers pay for the subscription in multiple installments over a period of time, rather than paying the entire subscription fee upfront. We've also extended our [product import functionality](/sdk-guides/android-native-5x-to-6x-migration#1-automatic-import) to import installment subscription products from the Google Play Console.
 
 If you're looking to use Google's installment plans, all you'll need to do is create a base plan for an Installment subscription in Google Play Console! You can access the installment plan details from the SDK by using the `SubscriptionOption.installmentsInfo` property, like this:
+
 ```kotlin
 val offerings = purchases.awaitOfferings()
 // This provides the number of installments the customer commits to, and the number of installments the customer commits to upon a renewal.
 val installmentsInfo = offerings.current?.monthly?.product?.defaultOption?.installmentsInfo
 ```
+
 The `installmentsInfo` includes the following installment subscription details:
+
 - `commitmentPaymentsCount`: Number of payments the customer commits to in order to purchase the subscription.
 - `renewalCommitmentPaymentsCount`: The number of payments the user commits to upon a renewal. This number can either be 1, where the subscription will behave as a monthly subscription, or your commitment payment count number, where the subscription will renew for another commitment.
 
 Installment subscriptions are currently only available in 4 countries: Brazil, Italy, Spain and France. (check Google Play Console for latest availability). As a result, these products will not be loaded in non-supported countries and you will need to provide a fallback to a different RevenueCat package.
 
-## Support for Google Play pending purchases 
+## Support for Google Play pending purchases
+
 We've added support for [Google Play pending transactions](https://rev.cat/googleplaypendingtransactions) for prepaid subscriptions. These are transactions that require one or more additional steps between customer initiation and the payment method being processed. For example, a user could start a transaction which involves them paying cash at a physical location.
 
 Pending transactions for a prepaid subscription is disabled by default. If you want to enable this behavior during configuration of the RevenueCat SDK:
+
 ```kotlin
 Purchases.configure(
     PurchasesConfiguration.Builder(applicationContext, apiKey)

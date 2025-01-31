@@ -3,6 +3,7 @@ title: Configuring the SDK
 slug: configuring-sdk
 hidden: false
 ---
+
 If this is your first time integrating RevenueCat into your app, we recommend following our [Quickstart](/getting-started/quickstart) guide.
 
 :::info Using an older SDK (v3.x)
@@ -42,20 +43,27 @@ import cordovaChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-start
 import capacitorChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_8_capacitor_china_url.ts";
 import unityChinaWorkaround from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk_9_china_url.cs";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftUIContent51, name: 'SwiftUI' },
-    { type: 'swift', content: swiftContent50, name: 'Swift' },
-    { type: 'objc', content: objectiveCContent52, name: 'Objective-C' },
-    { type: 'kotlin', content: kotlinContent53, name: 'Kotlin' },
-    { type: 'kotlin', content: kmpContent, name: 'Kotlin MP' },
-    { type: 'java', content: javaContent54, name: 'Java' },
-    { type: 'flutter', content: flutterContent55, name: 'Flutter' },
-    { type: 'rn', content: reactNativeContent56, name: 'React Native' },
-    { type: 'cordova', content: cordovaContent57, name: 'Cordova' },
-    { type: 'capacitor', content: capacitorContent58, name: 'Capacitor' },
-    { type: 'unity', content: unityContent59, name: 'Unity' },
-    { type: 'ts', content: webBillingContent, name: "Web (JS/TS)" , region: "Configuring SDK"},
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftUIContent51, name: "SwiftUI" },
+    { type: "swift", content: swiftContent50, name: "Swift" },
+    { type: "objc", content: objectiveCContent52, name: "Objective-C" },
+    { type: "kotlin", content: kotlinContent53, name: "Kotlin" },
+    { type: "kotlin", content: kmpContent, name: "Kotlin MP" },
+    { type: "java", content: javaContent54, name: "Java" },
+    { type: "flutter", content: flutterContent55, name: "Flutter" },
+    { type: "rn", content: reactNativeContent56, name: "React Native" },
+    { type: "cordova", content: cordovaContent57, name: "Cordova" },
+    { type: "capacitor", content: capacitorContent58, name: "Capacitor" },
+    { type: "unity", content: unityContent59, name: "Unity" },
+    {
+      type: "ts",
+      content: webBillingContent,
+      name: "Web (JS/TS)",
+      region: "Configuring SDK",
+    },
+  ]}
+/>
 
 ## Enabling Debug Logs
 
@@ -84,19 +92,20 @@ While we work on a long-term solution, if your app has a significant user base i
 If you have your own proxy server and already use the `proxyURL` API, you don't need any further configuration.
 :::
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftChinaWorkaround, name: 'Swift' },
-    { type: 'objc', content: objectiveCChinaWorkaround, name: 'Objective-C' },
-    { type: 'kotlin', content: kotlinChinaWorkaround, name: 'Kotlin' },
-    { type: 'kotlin', content: kotlinChinaWorkaround, name: 'Kotlin MP' },
-    { type: 'java', content: javaChinaWorkaround, name: 'Java' },
-    { type: 'flutter', content: flutterChinaWorkaround, name: 'Flutter' },
-    { type: 'rn', content: reactChinaWorkaround, name: 'React Native' },
-    { type: 'cordova', content: cordovaChinaWorkaround, name: 'Cordova' },
-    { type: 'capacitor', content: capacitorChinaWorkaround, name: 'Capacitor' },
-    { type: 'unity', content: unityChinaWorkaround, name: 'Unity' },
-]} />
-
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftChinaWorkaround, name: "Swift" },
+    { type: "objc", content: objectiveCChinaWorkaround, name: "Objective-C" },
+    { type: "kotlin", content: kotlinChinaWorkaround, name: "Kotlin" },
+    { type: "kotlin", content: kotlinChinaWorkaround, name: "Kotlin MP" },
+    { type: "java", content: javaChinaWorkaround, name: "Java" },
+    { type: "flutter", content: flutterChinaWorkaround, name: "Flutter" },
+    { type: "rn", content: reactChinaWorkaround, name: "React Native" },
+    { type: "cordova", content: cordovaChinaWorkaround, name: "Cordova" },
+    { type: "capacitor", content: capacitorChinaWorkaround, name: "Capacitor" },
+    { type: "unity", content: unityChinaWorkaround, name: "Unity" },
+  ]}
+/>
 
 ### iOS
 
@@ -117,6 +126,7 @@ Called whenever _Purchases_ receives an updated `CustomerInfo` object. This may 
 #### Handling Promoted Purchases
 
 Implement the following delegate method to handle promoted purchases:
+
 ```
 purchases:readyForPromotedProduct
 ```

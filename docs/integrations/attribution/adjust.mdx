@@ -4,6 +4,7 @@ slug: adjust
 excerpt: Integrate Purchases SDK with Adjust for precise revenue tracking
 hidden: false
 ---
+
 With our Adjust integration you can:
 
 - Accurately track subscriptions generated from Adjust campaigns, allowing you to know precisely how much revenue your campaigns generate.
@@ -12,9 +13,9 @@ With our Adjust integration you can:
 
 ### Integration at a Glance
 
-| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Customer Attributes | Sends Transfer Events |                      Optional Event Types                       |
-| :--------------: | :-----------------------: | :------------------: | :----------------------------: | :-------------------: | :-------------------------------------------------------------: |
-|        ✅        |            ❌             |          ✅          |               ❌               |          ❌           | `non_subscription_purchase_event_token` `expiration_event_token` |
+| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Customer Attributes | Sends Transfer Events |                       Optional Event Types                       |
+| :--------------: | :-----------------------: | :------------------: | :--------------------------: | :-------------------: | :--------------------------------------------------------------: |
+|        ✅        |            ❌             |          ✅          |              ❌              |          ❌           | `non_subscription_purchase_event_token` `expiration_event_token` |
 
 ## 1. Install Adjust SDK
 
@@ -24,13 +25,13 @@ Before RevenueCat can integrate with Adjust, your app should be running the late
 
 The Adjust integration requires some device-specific data. RevenueCat will only send events into Adjust if the below [Customer Attribute](/customers/customer-attributes) keys have been set for the device.
 
-| Key          | Description                                                                                                                                     | Required         |
-| :----------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :--------------- |
-| `$adjustId`  | Adjust Id. The unique Adjust identifier for the user                                                                                            | ✅ (required)    |
-| `$idfa`      | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ✅ (recommended) |
-| `$gpsAdId`   | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ✅ (recommended) |
-| `$idfv`      | iOS [vender identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ✅ (recommended) |
-| `$ip`        | The IP address of the device                                                                                                                    | ✅ (recommended) |
+| Key         | Description                                                                                                                                     | Required         |
+| :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :--------------- |
+| `$adjustId` | Adjust Id. The unique Adjust identifier for the user                                                                                            | ✅ (required)    |
+| `$idfa`     | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ✅ (recommended) |
+| `$gpsAdId`  | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ✅ (recommended) |
+| `$idfv`     | iOS [vender identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ✅ (recommended) |
+| `$ip`       | The IP address of the device                                                                                                                    | ✅ (recommended) |
 
 :::warning Android ID deprecation
 Due to policy changes from the Play Store, Android ID is no longer collected by RevenueCat's Android SDKs starting on versions 6.9.8+, 7.11.1+, and later major versions.
@@ -43,16 +44,18 @@ These properties can be set manually, like any other [Customer Attributes](/cust
 import swiftContent from "!!raw-loader!@site/code_blocks/integrations/attribution/adjust_1.swift";
 import javaContent from "!!raw-loader!@site/code_blocks/integrations/attribution/adjust_2.java";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: RCCodeBlock.languages.swift,
-        content: swiftContent,
+      type: RCCodeBlock.languages.swift,
+      content: swiftContent,
     },
     {
-        type: RCCodeBlock.languages.java,
-        content: javaContent,
-    }
-]}/>
+      type: RCCodeBlock.languages.java,
+      content: javaContent,
+    },
+  ]}
+/>
 
 You should make sure to set attributes after the _Purchases SDK_ is configured, and before the first purchase occurs. It's safe to set this multiple times, as only the new/updated values will be sent to RevenueCat.
 
@@ -107,9 +110,11 @@ If you've enabled [S2S authentication on Adjust](https://help.adjust.com/en/arti
 If you have a specific token per platform, you can override it on each platform section.
 
 #### iOS
+
 ![](/images/adjust-ios-oauth-token.png)
 
-#### Android 
+#### Android
+
 ![](/images/adjust-android-oauth-token.png)
 
 :::danger Missing Authentication Token Error (401)
@@ -164,4 +169,4 @@ Below is a sample event sent to Adjust. The type of the event (e.g. initial purc
 
 import jsonContent from "!!raw-loader!@site/code_blocks/integrations/attribution/adjust_3.json";
 
-<RCCodeBlock tabs={[{ type: 'json', content: jsonContent }]} />
+<RCCodeBlock tabs={[{ type: "json", content: jsonContent }]} />

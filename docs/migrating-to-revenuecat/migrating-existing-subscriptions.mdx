@@ -5,7 +5,7 @@ excerpt: How to migrate subscriptions from your existing setup
 hidden: false
 ---
 
-Importing existing purchase data to RevenueCat can be done server-side, or client-side. 
+Importing existing purchase data to RevenueCat can be done server-side, or client-side.
 
 A server-side migration is preferable whenever possible because it ensures that all subscriptions will be recorded in RevenueCat regardless of any in-app activity, but if you don't have your existing purchase tokens or receipts stored, you can use a client-side migration.
 
@@ -35,19 +35,19 @@ The way to do this is: if your existing in-app purchase code knows that the cust
 
 See the following pseudo example.
 
-
 import content from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/migrating-existing-subscriptions_1.js";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: content,
-    }
-]}/>
+      type: "swift",
+      content: content,
+    },
+  ]}
+/>
 
 When a customer launches with the first version containing RevenueCat it will trigger a sync. Once the sync is complete, it won't be triggered again.
 
 :::warning Do not sync or restore on every app launch
 It's okay to trigger a sync once per subscriber programmatically the first time they open a version of your app containing RevenueCat. You **should not** call this programmatically on every app launch for every user. This can increase latency in your app and can unintentionally alias customers together.
 :::
-

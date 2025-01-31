@@ -49,10 +49,10 @@ To define which Offerings should be served for an audience at each Placement, cl
 ![Add Placement](/images/add-placement.png)
 
 :::tip Targeting "Any audience"
-If you want to use Placements to serve unique Offerings at different paywall locations for all customers, you can do so by creating a Targeting Rule that targets "Any audience" as its condition. Then, order that rule at the bottom of your list of Live rules if you want other audience-specific Targeting Rules to supercede it.
+If you want to use Placements to serve unique Offerings at different paywall locations for all customers, you can do so by creating a Targeting Rule that targets "Any audience" as its condition. Then, order that rule at the bottom of your list of Live rules if you want other audience-specific Targeting Rules to supersede it.
 :::
 
-Then, select the Offering you want to display, and enter the identifier of the Placement you want to serve that Offering on. If this is your first time using that Placement, you'll need to click **Add** to add its identifer to your list. Once you've saved this rule, that Placement will be available to select in other Targeting Rules.
+Then, select the Offering you want to display, and enter the identifier of the Placement you want to serve that Offering on. If this is your first time using that Placement, you'll need to click **Add** to add its identifier to your list. Once you've saved this rule, that Placement will be available to select in other Targeting Rules.
 
 ![Create a Placement](/images/create-a-placement.png)
 
@@ -78,7 +78,7 @@ Simply select **No Offering** for a given Placement in order to have a null valu
 Be sure that your app is setup to expect and handle a nil value being returned when using the `getCurrentOffering(forPlacement: "string")` method if you expect to use Targeting in this way.
 :::
 
-If you've chosen to serve **No Offering** "for all other cases" in a Targeting Rule, then you'll also need to specify an Offering to serve "when not using Placements", so that any calls to getOfferings in your current app or prior app versions still have some Offering identifer returned in case they're not designed to handle a null value.
+If you've chosen to serve **No Offering** "for all other cases" in a Targeting Rule, then you'll also need to specify an Offering to serve "when not using Placements", so that any calls to getOfferings in your current app or prior app versions still have some Offering identifier returned in case they're not designed to handle a null value.
 
 ## Fetching Offerings by Placement
 
