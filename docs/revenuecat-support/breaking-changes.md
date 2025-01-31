@@ -9,7 +9,7 @@ At RevenueCat, we strive to provide a stable and reliable platform for developer
 
 ## Semantic Versioning (SemVer)
 
-We follow Semantic Versioning (SemVer) for our SDKs to ensure predictable and transparent versioning. This means:
+We follow [Semantic Versioning (SemVer)](https://semver.org/) for our SDKs to ensure predictable and transparent versioning. This means:
 
 - Major versions (X.0.0) may introduce breaking changes.
 
