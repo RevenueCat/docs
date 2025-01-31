@@ -23,11 +23,11 @@ The following types of changes are not considered breaking:
 
 1. Additive API changes, such as:
 
-  - Adding new optional fields to API responses.
+  1. Adding new optional fields to API responses.
 
-  - Introducing new endpoints without modifying existing ones.
+  2. Introducing new endpoints without modifying existing ones.
 
-  - Expanding webhook event payloads with additional fields.
+  3. Expanding webhook event payloads with additional fields.
 
 2. Introducing new SDK methods that do not affect existing ones.
 
