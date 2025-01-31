@@ -6,7 +6,7 @@ hidden: false
 ---
 
 :::warning Beta Feature
-RevenueCat Billing and the RevenueCat Web SDK are currently in beta.
+Web Billing (formerly RevenueCat Billing) and the RevenueCat Web SDK are currently in beta.
 :::
 
 ## Overview
@@ -22,7 +22,7 @@ Using web purchases with Redemption Links means that you do not need to provide 
 
 Here's how a purchase and redemption flow looks, once you've configured and enabled the feature:
 
-1. The RevenueCat Billing purchase flow is initialized, either through the web SDK `purchase()` method, or through a [Web Paywall Link](/web/revenuecat-billing/web-paywall-links) (App User ID not required at this stage)
+1. The Web Billing purchase flow is initialized, either through the web SDK `purchase()` method, or through a [Web Paywall Link](/web/web-billing/web-paywall-links) (App User ID not required at this stage)
 1. The customer purchases a subscription or non-subscription product through the web checkout.
 1. The **customer receives a redemption link** at the end of the purchase flow, both on the success page, and in the email receipt for the purchase.
 1. On tapping the redemption link, customers are brought into the mobile app (using a custom URL scheme provided by RevenueCat).
@@ -53,9 +53,9 @@ In order to be able to redeem the redemption links in your mobile apps, follow t
 
 #### 1. Copy the custom URL scheme from the RevenueCat Dashboard
 
-You can find this in the RevenueCat dashboard inside your RevenueCat Billing app’s settings, under “Redemption Links”. It is unique to your RevenueCat Billing app:
+You can find this in the RevenueCat dashboard inside your Web Billing app’s settings, under “Redemption Links”. It is unique to your Web Billing app:
 
-![](/images/rc-billing/redemption-links-dashboard-disabled.png)
+![](/images/web-billing/redemption-links-dashboard-disabled.png)
 
 #### 2. Allow your app to respond to links with your custom scheme
 
@@ -63,7 +63,7 @@ You can find this in the RevenueCat dashboard inside your RevenueCat Billing app
 
 In iOS, you need to define a custom URL schema. You can do this in Xcode, from your xcodeproj file, Info tab, URL Types section. Then add your custom scheme from Step 1 in the “URL Schemes” field. You can see a screenshot here, but remember to replace `<YOUR_CUSTOM_SCHEME>` with the one you obtained in step 1.
 
-![](/images/rc-billing/redemption-links-xcode-1.png)
+![](/images/web-billing/redemption-links-xcode-1.png)
 
 You can see official instructions by Apple [here](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app).
 
@@ -71,7 +71,7 @@ You can see official instructions by Apple [here](https://developer.apple.com/do
 
 In Android, you need to add a deep linking intent filter for the provided scheme. You can do that by adding the following intent filter inside your `AndroidManifest.xml` activity and replacing `<YOUR_CUSTOM_SCHEME>` with the scheme you copied in step 1. Note that it’s fine to have multiple intent filters for the same activity.
 
-import redemptionAndroidManifest from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_androidmanifest.xml";
+import redemptionAndroidManifest from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_androidmanifest.xml";
 
 <RCCodeBlock
   tabs={[
@@ -93,7 +93,7 @@ Our SDKs provide APIs to perform the redemptions and provide you with the result
 
 If using SwiftUI, you can use the `onWebPurchaseRedemptionAttempt` modifier to automatically perform redemption of Redemption Links once the app is opened with them.
 
-import swiftUIModifier from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_swift_ui_modifier.swift";
+import swiftUIModifier from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_swift_ui_modifier.swift";
 
 <RCCodeBlock
   tabs={[
@@ -103,7 +103,7 @@ import swiftUIModifier from "!!raw-loader!@site/code_blocks/web/revenuecat-billi
 
 Alternatively, if you don’t want to perform the redemption automatically or if you're not using Swift UI, you can use the provided URL extension `asWebPurchaseRedemption` and then perform the redemption using `Purchases.shared.redeemWebPurchase` as follows:
 
-import alternativeSwift from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_alternative_swift.swift";
+import alternativeSwift from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_alternative_swift.swift";
 
 <RCCodeBlock
   tabs={[
@@ -115,7 +115,7 @@ import alternativeSwift from "!!raw-loader!@site/code_blocks/web/revenuecat-bill
 
 In Android, you first need to obtain the link and make sure it’s a Redemption Link, then redeem it using the `redeemWebPurchase` method. You can see an example of this in the following code block:
 
-import androidRedemption1 from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_android.kt";
+import androidRedemption1 from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_android.kt";
 
 <RCCodeBlock
   tabs={[
@@ -133,7 +133,7 @@ In our Flutter SDK, you will need to obtain the deep link first. Please read the
 
 Once you have the deep link, you can use the following snippet to perform the redemption:
 
-import flutterRedemption from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_flutter.dart";
+import flutterRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_flutter.dart";
 
 <RCCodeBlock
   tabs={[
@@ -147,7 +147,7 @@ In our React Native SDK, you will need to obtain the deep link first. Please rea
 
 Once you have the deep link, you can use the following snippet to perform the redemption:
 
-import reactNativeRedemption from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_react.ts";
+import reactNativeRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_react.ts";
 
 <RCCodeBlock
   tabs={[
@@ -165,7 +165,7 @@ In our Unity SDK, you will need to obtain the deep link first. Please read the o
 
 Once you have the deep link, you can use the following snippet to perform the redemption:
 
-import unityRedemption from "!!raw-loader!@site/code_blocks/web/revenuecat-billing/redemption_unity.cs";
+import unityRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_unity.cs";
 
 <RCCodeBlock
   tabs={[
@@ -191,17 +191,17 @@ Use the "Enable only for Sandbox" setting to test the full purchase flow, includ
 
 #### How to test Redemption Links in sandbox mode
 
-1. Navigate to your project in the RevenueCat dashboard, and then the RevenueCat Billing app.
+1. Navigate to your project in the RevenueCat dashboard, and then the Web Billing app.
 
 2. Under App Information in the Settings tab, make sure you have added: App icon, App name, and at least one store link for either the App Store or Google Play Store:
 
-![](/images/rc-billing/redemption-links-dashboard-1.png)
+![](/images/web-billing/redemption-links-dashboard-1.png)
 
 3. Under Redemption Links, set the feature to "Enable only for Sandbox":
 
-![](/images/rc-billing/redemption-links-dashboard-sandbox.png)
+![](/images/web-billing/redemption-links-dashboard-sandbox.png)
 
-4. Use the sandbox purchase flow to make a test purchase on a mobile device where your app is installed (either through [Web Paywall Links](/web/revenuecat-billing/web-paywall-links) sandbox URL, or the [Web SDK](/web/revenuecat-billing) with a sandbox API key).
+4. Use the sandbox purchase flow to make a test purchase on a mobile device where your app is installed (either through [Web Paywall Links](/web/web-billing/web-paywall-links) sandbox URL, or the [Web SDK](/web/web-billing) with a sandbox API key).
 
 ### Purchase Association Behavior
 

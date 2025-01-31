@@ -1,29 +1,29 @@
 ---
 title: Subscription Lifecycle
 slug: subscription-lifecycle
-excerpt: RevenueCat Billing subscription lifecycle
+excerpt: Web Billing subscription lifecycle
 hidden: false
 ---
 
 :::warning Beta Feature
-RevenueCat Billing and the RevenueCat Web SDK are currently in beta.
+Web Billing (formerly RevenueCat Billing) and the RevenueCat Web SDK are currently in beta.
 :::
 
 ## Overview
 
-Here is an overview of the various states that a RevenueCat Billing subscription can take on, as well as the events that are being sent as a subscription transitions from one state to the other. For more details, read the following sections.
+Here is an overview of the various states that a Web Billing subscription can take on, as well as the events that are being sent as a subscription transitions from one state to the other. For more details, read the following sections.
 
-![](/images/rc-billing/subscription-lifecycle.png)
+![](/images/web-billing/subscription-lifecycle.png)
 
 ## Starting a subscription
 
-The process to start a subscription is initiated by calling the [purchase method in the SDK](/web/revenuecat-billing#purchasing-a-package). The subscription starts only if and when the initial payment is confirmed – if the customer cancels the checkout form, or if the initial payment for the subscription fails, no subscription is generated, and no events will be generated.
+The process to start a subscription is initiated by calling the [purchase method in the SDK](/web/web-billing#purchasing-a-package). The subscription starts only if and when the initial payment is confirmed – if the customer cancels the checkout form, or if the initial payment for the subscription fails, no subscription is generated, and no events will be generated.
 
 When the subscription is successfully started, RevenueCat generates an `INITIAL_PURCHASE` [event](/integrations/webhooks/event-types-and-fields). An invoice is then generated and sent to the customer via email, along with a link to the [customer portal](./customer-portal).
 
 ## Offers
 
-RevenueCat Billing does not yet support any offers or discounts.
+Web Billing does not yet support any offers or discounts.
 
 ## Free Trials
 
@@ -75,7 +75,7 @@ As an example, consider a monthly subscription started on 1 January, for which t
 
 The following image illustrates the timelines and events sent for a successful billing recovery under different circumstances. If the billing retry period ends without being able to recover the payment, no further events get sent, and the subscription remains expired.
 
-![](/images/rc-billing/billing-retry-and-grace-period.png)
+![](/images/web-billing/billing-retry-and-grace-period.png)
 
 In all three cases, a monthly subscription is shown that started on January 1st. The first renewal payment on February 1st failed.
 

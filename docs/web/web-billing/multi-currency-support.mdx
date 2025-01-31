@@ -5,24 +5,24 @@ hidden: false
 ---
 
 :::warning Beta Feature
-RevenueCat Billing and the RevenueCat Web SDK are currently in beta.
+Web Billing (formerly RevenueCat Billing) and the RevenueCat Web SDK are currently in beta.
 :::
 
 ## Overview
 
-RevenueCat Billing supports multiple currencies for your web subscriptions.
+Web Billing (formerly RevenueCat Billing) supports multiple currencies for your web subscriptions.
 
 ### App setup
 
-In the setup of the RevenueCat Billing app, you can select the default currency for the app. This currency will be used for customers whose location is not supported by any of the currencies you have configured, or when the customer's location is undetermined.
+In the setup of the Web Billing app, you can select the default currency for the app. This currency will be used for customers whose location is not supported by any of the currencies you have configured, or when the customer's location is undetermined.
 
-![App configuration page](/images/rc-billing/new-rc-billing-app-for-currency.png)
+![App configuration page](/images/web-billing/new-web-billing-app-for-currency.png)
 
 ### Product setup
 
 When creating a new product in the RevenueCat dashboard, you can set the price for each currency you want to support. Each product can have only one price per currency. You can add additional currencies to a product by editing it, but you can't change the currency of an existing price or remove a currency.
 
-![New product configuration page](/images/rc-billing/new-product-configuration.png)
+![New product configuration page](/images/web-billing/new-product-configuration.png)
 
 ### Making a purchase
 
@@ -34,13 +34,13 @@ When a customer makes a purchase, RevenueCat will automatically select the price
 
 If you want to specify a currency manually, you can do so by passing the `currency` parameter when calling the `getOfferings` method of the Web SDK. This will override the automatic currency selection.
 
-import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
+import webBillingContent from "!!raw-loader!@site/code_blocks/_projects/web-billing/web-billing-doc-snippets.ts";
 
 <RCCodeBlock
   tabs={[
     {
       type: "ts",
-      content: rcBillingContent,
+      content: webBillingContent,
       name: "Web (JS/TS)",
       region: "Get current offerings for EUR",
     },
