@@ -472,7 +472,7 @@ paths:
                   amazon:
                     package_name: com.amazon.android.app
                     shared_secret: <Your Amazon Developer Identity Shared Key>
-              RevenueCat Billing:
+              Web Billing:
                 value:
                   name: My RevenueCat App
                   type: rc_billing
@@ -695,8 +695,8 @@ paths:
                       maxLength: 256
                       nullable: false
                 rc_billing:
-                  description: RevenueCat Billing type details. Should only be used
-                    when type is rc_billing.
+                  description: Web Billing type details. Should only be used when
+                    type is rc_billing.
                   type: object
                   nullable: false
                   properties:
@@ -717,7 +717,7 @@ paths:
                       maxLength: 256
                     support_email:
                       description: Used as the `reply to` address in all emails sent
-                        to customers, to allow them to receive support.  If you leave
+                        to customers, to allow them to receive support. If you leave
                         this field blank, your RevenueCat account email address will
                         be used.
                       type: string
@@ -1503,8 +1503,8 @@ paths:
           $ref: '#/components/responses/InternalError'
       description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
         >\n  <div class=\"heading\">Warning</div>\n  <div>This endpoint does not allow\
-        \ to create RevenueCat Billing products.</div>\nThis endpoint requires the\
-        \ following permission(s): <code>project_configuration:products:read_write</code>."
+        \ to create Web Billing products.</div>\nThis endpoint requires the following\
+        \ permission(s): <code>project_configuration:products:read_write</code>."
   /projects/{project_id}/entitlements/{entitlement_id}:
     get:
       summary: Get an entitlement
@@ -3217,7 +3217,7 @@ paths:
         \ requires the following permission(s): <code>customer_information:subscriptions:read</code>."
   /projects/{project_id}/subscriptions/{subscription_id}/actions/cancel:
     post:
-      summary: Cancel an active RevenueCat Billing subscription
+      summary: Cancel an active Web Billing subscription
       operationId: cancel-subscription
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
@@ -3275,12 +3275,12 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "Cancel an active RevenueCat Billing subscription. The customer\
-        \ will lose access to the associated entitlements at the end of the current\
-        \ period.\n This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>."
+      description: "Cancel an active Web Billing subscription. The customer will lose\
+        \ access to the associated entitlements at the end of the current period.\n\
+        \ This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>."
   /projects/{project_id}/subscriptions/{subscription_id}/actions/refund:
     post:
-      summary: Refund an active RevenueCat Billing subscription
+      summary: Refund an active Web Billing subscription
       operationId: refund-subscription
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
@@ -3338,9 +3338,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "Cancel a RevenueCat Billing subscription by refunding the most\
-        \ recent payment. The customer will immediately lose access to the associated\
-        \ entitlements.\n This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>."
+      description: "Cancel a Web Billing subscription by refunding the most recent\
+        \ payment. The customer will immediately lose access to the associated entitlements.\n\
+        \ This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>."
   /projects/{project_id}/customers/{customer_id}/subscriptions:
     get:
       summary: Get a list of subscriptions associated with a customer
@@ -3543,7 +3543,7 @@ paths:
         \ requires the following permission(s): <code>customer_information:purchases:read</code>."
   /projects/{project_id}/purchases/{purchase_id}/actions/refund:
     post:
-      summary: Refund a RevenueCat Billing purchase
+      summary: Refund a Web Billing purchase
       operationId: refund-purchase
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
@@ -3601,7 +3601,7 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: "Refund a RevenueCat Billing purchase and revoke access to associated\
+      description: "Refund a Web Billing purchase and revoke access to associated\
         \ granted entitlements.\n This endpoint requires the following permission(s):\
         \ <code>customer_information:purchases:read_write</code>."
   /projects/{project_id}/customers/{customer_id}/purchases:
