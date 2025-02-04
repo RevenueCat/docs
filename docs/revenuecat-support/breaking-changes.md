@@ -40,5 +40,5 @@ When a breaking change is necessary, we follow these best practices:
 
 Our goal is to minimize disruptions while ensuring RevenueCat continues to evolve and improve. If you have any concerns about a potential breaking change, please reach out via our support channels or check our changelog for the latest updates.
 
-For further clarification or to discuss how a change might impact your integration, feel free to contact us!
+For further clarification or to discuss how a change might impact your integration, feel free to [contact us](https://app.revenuecat.com/settings/support)!
 
