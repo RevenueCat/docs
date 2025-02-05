@@ -172,14 +172,27 @@ const paywallsCategory = Category({
 
 const webSDKCategory = Category({
   emoji: "🌎",
-  label: "Web Purchases",
+  label: "RevenueCat Web",
   itemsPathPrefix: "web/",
   items: [
+    Page({ slug: "overview" }),
     SubCategory({
-      label: "Web Billing & Web SDK",
-      slug: "web-billing",
-      itemsPathPrefix: "web-billing/",
+      label: "Integrate the Web SDK",
+      slug: "web-sdk",
+      itemsPathPrefix: "",
+      items: [Page({ slug: "subscription-lifecycle" })],
+    }),
+    SubCategory({
+      label: "Web Paywall Links (low-code)",
+      slug: "web-paywall-links",
+      itemsPathPrefix: "web-paywall-links/",
+      items: [Page({ slug: "customization" })],
+    }),
+    SubCategory({
+      label: "Configuring web purchases",
+      slug: "configuring-web-purchases",
       items: [
+        Page({ slug: "customization" }),
         Page({ slug: "product-setup" }),
         Page({ slug: "customization" }),
         Page({ slug: "subscription-lifecycle" }),
@@ -189,12 +202,15 @@ const webSDKCategory = Category({
         Page({ slug: "managing-customer-subscriptions" }),
         Page({ slug: "refunding-payments" }),
         Page({ slug: "customer-portal" }),
-        Page({ slug: "web-paywall-links" }),
         Page({ slug: "localization" }),
         Page({ slug: "redemption-links" }),
       ],
     }),
-    Page({ slug: "stripe" }),
+    SubCategory({
+      label: "Payment integrations",
+      slug: "payment-integrations",
+      items: [Page({ slug: "stripe" })],
+    }),
   ],
 });
 
