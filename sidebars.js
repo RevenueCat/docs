@@ -183,17 +183,15 @@ const webSDKCategory = Category({
       items: [Page({ slug: "subscription-lifecycle" })],
     }),
     SubCategory({
-      label: "Web Paywall Links (low-code)",
+      label: "Web Paywall Links (low code)",
       slug: "web-paywall-links",
       itemsPathPrefix: "web-paywall-links/",
-      items: [Page({ slug: "customization" })],
+      items: [Page({ slug: "customization" }), Page({ slug: "distribution" })],
     }),
     SubCategory({
-      label: "Configuring web purchases",
-      slug: "configuring-web-purchases",
+      label: "Configuring web products & purchases",
+      slug: "product-setup",
       items: [
-        Page({ slug: "customization" }),
-        Page({ slug: "product-setup" }),
         Page({ slug: "customization" }),
         Page({ slug: "subscription-lifecycle" }),
         Page({ slug: "lifecycle-emails" }),
