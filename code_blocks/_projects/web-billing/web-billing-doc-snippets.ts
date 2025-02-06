@@ -127,7 +127,7 @@ async function gettingProduct(displayProduct : (product : Product) => void) {
 try {
   const offerings = await Purchases.getSharedInstance().getOfferings({currency: "USD"});
   if (offerings.current && offerings.current.monthly) {
-    const product = offerings.current.monthly.rcBillingProduct;
+    const product = offerings.current.monthly.webBillingProduct;
     // Display the price and currency of the Web Billing Product
     displayProduct(product);
   }
