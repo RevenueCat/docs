@@ -135,7 +135,7 @@ test('Snippet "Get current offering for EUR" works', async () => {
   expect((pkgs ?? []).length).toBe(1);
   expect(pkgs !== undefined && pkgs[0]?.identifier).toBe("$rc_monthly");
   expect(
-    pkgs !== undefined && pkgs[0]?.rcBillingProduct.currentPrice.currency
+    pkgs !== undefined && pkgs[0]?.webBillingProduct.currentPrice.currency
   ).toBe("EUR");
   Purchases.getSharedInstance().close();
 });
