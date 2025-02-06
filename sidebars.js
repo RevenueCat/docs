@@ -177,13 +177,14 @@ const webSDKCategory = Category({
   items: [
     SubCategory({
       label: "Integrating Web Billing",
-      slug: "overview",
-      itemsPathPrefix: "",
+      slug: "web-billing/overview",
+      itemsPathPrefix: "web-billing/",
       items: [Page({ slug: "web-sdk" }), Page({ slug: "web-paywall-links" })],
     }),
     SubCategory({
       label: "Configuring Web Purchases",
-      slug: "product-setup",
+      slug: "web-billing/product-setup",
+      itemsPathPrefix: "web-billing/",
       items: [
         Page({ slug: "customization" }),
         Page({ slug: "subscription-lifecycle" }),
@@ -193,13 +194,14 @@ const webSDKCategory = Category({
         Page({ slug: "redemption-links" }),
       ],
     }),
-    Page({ slug: "managing-customer-subscriptions" }),
-    Page({ slug: "refunding-payments" }),
-    Page({ slug: "customer-portal" }),
-    Page({ slug: "lifecycle-emails" }),
+    Page({ slug: "web-billing/managing-customer-subscriptions" }),
+    Page({ slug: "web-billing/refunding-payments" }),
+    Page({ slug: "web-billing/customer-portal" }),
+    Page({ slug: "web-billing/lifecycle-emails" }),
     SubCategory({
-      label: "Integrate External Payments",
+      label: "External Payments Integrations",
       slug: "payment-integrations",
+      itemsPathPrefix: "integrations/",
       items: [Page({ slug: "stripe" })],
     }),
   ],
