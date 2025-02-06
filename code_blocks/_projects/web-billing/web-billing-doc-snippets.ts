@@ -167,8 +167,6 @@ const pkg = (await Purchases.getSharedInstance().getOfferings()).current?.availa
 try{
   const { customerInfo, redemptionInfo } = await Purchases.purchase({
           rcPackage: pkg,
-          purchaseOption: option,
-          // specify spanish as selected locale
           selectedLocale: "es"
   });
 } catch (e) {
@@ -189,4 +187,5 @@ export {
   gettingProduct,
   purchasingPackage,
   configuringLocale,
+  configuringSDKWithAnonUser,
 }
