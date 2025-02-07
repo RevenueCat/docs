@@ -4836,8 +4836,7 @@ components:
         active_entitlements:
           $ref: '#/components/schemas/ListCustomerActiveEntitlements'
           description: List of the entitlements currently active for the customer.
-            This is an expandable property, only available in the "Get a customer"
-            endpoint
+            This property is only available in the "Get a customer" endpoint.
         experiment:
           description: The experiment enrollment object
           nullable: true
@@ -4845,7 +4844,7 @@ components:
         attributes:
           $ref: '#/components/schemas/ListCustomerAttributes'
           description: List of the attributes of the customer. This is an expandable
-            property, only available in the "Get a customer" endpoint
+            property, only available in the "Get a customer" endpoint.
     CustomerAlias:
       type: object
       required:
