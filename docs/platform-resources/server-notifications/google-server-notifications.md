@@ -5,7 +5,7 @@ excerpt: Sending Google Play server notifications to RevenueCat
 hidden: false
 ---
 
-RevenueCat does not require anything further than service credentials to communicate with Google, but setting up [real-time server notifications](https://developer.android.com/google/play/billing/realtime_developer_notifications) is a strongly recommended process that can improve price accuracy, speed up webhook and integration delivery times and reduce lag time for [Charts](/dashboard-and-metrics/charts).
+RevenueCat does not require anything other than service credentials to communicate with Google, but setting up [real-time server notifications](https://developer.android.com/google/play/billing/realtime_developer_notifications) is a strongly recommended process that can improve price accuracy, speed up webhook and integration delivery times, and reduce lag time for [Charts](/dashboard-and-metrics/charts).
 
 <YouTubeEmbed videoId="hWub02tNdJ0" title="Setting Up Google Real-Time Developer Notifications" />
 
