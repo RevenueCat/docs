@@ -5,7 +5,7 @@ excerpt: Setting up your web purchases using Web Billing
 hidden: false
 ---
 
-# Configuring Web Purchases & Products
+# Configuring Web Billing
 
 :::warning Beta Feature
 Web Billing (formerly RevenueCat Billing) is currently in beta.

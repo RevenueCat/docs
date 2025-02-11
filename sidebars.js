@@ -176,13 +176,13 @@ const webSDKCategory = Category({
   itemsPathPrefix: "web/",
   items: [
     SubCategory({
-      label: "Integrating Web Billing",
+      label: "Integrate Web Billing",
       slug: "web-billing/overview",
       itemsPathPrefix: "web-billing/",
       items: [Page({ slug: "web-sdk" }), Page({ slug: "web-paywall-links" })],
     }),
     SubCategory({
-      label: "Configuring Web Purchases",
+      label: "Configure Web Billing",
       slug: "web-billing/product-setup",
       itemsPathPrefix: "web-billing/",
       items: [
