@@ -10,7 +10,7 @@ RevenueCat does not require server notifications from Stripe, however doing so c
 :::warning Send Stripe token to RevenueCat
 Stripe Server Notifications only work if the receipt exists in RevenueCat when the event is dispatched from Stripe. If the receipt doesn't exist, the event will fail. This includes test events from Stripe.
 
-You'll need to follow our [Stripe Web Payments](/web/stripe) guide and send your purchase tokens to RevenueCat before proceeding with this guide.
+You'll need to follow our [Stripe Web Payments](/web/integrations/stripe) guide and send your purchase tokens to RevenueCat before proceeding with this guide.
 :::
 
 ![Required and optional notifications from Stripe](/images/98a0f1c-stripe_notifications_aec74502997f2c0b977a7e6477cb5adf.png)
@@ -72,7 +72,7 @@ In some cases, a Stripe Checkout Session may have a `NULL` value for the Stripe 
 
 ### Considerations
 
-- If your setup involves you [manually sending us the Stripe token](/web/stripe#5-send-stripe-tokens-to-revenuecat), RevenueCat may receive the notification from Stripe before your server's request. In this case:
+- If your setup involves you [manually sending us the Stripe token](/web/integrations/stripe#5-send-stripe-tokens-to-revenuecat), RevenueCat may receive the notification from Stripe before your server's request. In this case:
   - The App User ID detection method described above will be applied.
   - RevenueCat will then follow your [transfer behavior](/getting-started/restoring-purchases) for the App User ID provided in your request.
 
