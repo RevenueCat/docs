@@ -41,11 +41,11 @@ const redirects = {
       to: "/api-v2#tag/Error-Handling/Error-Types",
     },
     {
-      to: "/web/stripe",
+      to: "/web/integrations/stripe",
       from: "/getting-started/stripe/in-app-purchases-with-stripe-rfa",
     },
     {
-      to: "/web/stripe",
+      to: "/web/integrations/stripe",
       from: "/getting-started/stripe",
     },
     {
@@ -309,11 +309,11 @@ const redirects = {
       from: "/restoring-purchases",
     },
     {
-      to: "/web/stripe",
+      to: "/web/integrations/stripe",
       from: "/in-app-purchases-with-stripe-rfa",
     },
     {
-      to: "/web/stripe",
+      to: "/web/integrations/stripe",
       from: "/stripe",
     },
     {
@@ -1044,11 +1044,11 @@ const redirects = {
       from: "/restoring-purchases.html",
     },
     {
-      to: "/web/stripe",
+      to: "/web/integrations/stripe",
       from: "/in-app-purchases-with-stripe-rfa.html",
     },
     {
-      to: "/web/stripe",
+      to: "/web/integrations/stripe",
       from: "/stripe.html",
     },
     {
@@ -1560,11 +1560,11 @@ const redirects = {
       from: "/dashboard-and-metrics/customers-group/promotionals",
     },
     {
-      to: "/web/web-billing",
+      to: "/web/web-billing/web-sdk",
       from: "/web/rc-billing",
     },
     {
-      to: "/web/web-billing",
+      to: "/web/web-billing/web-sdk",
       from: "/web/revenuecat-billing",
     },
     {
@@ -1612,8 +1612,12 @@ const redirects = {
       from: "/web/revenuecat-billing/web-paywall-links",
     },
     {
-      to: "/web/web-billing/lifecycle-emails",
-      from: "/web/revenuecat-billing/lifecycle-emails",
+      to: "/web/integrations/stripe",
+      from: "/web/stripe",
+    },
+    {
+      to: "/web/web-billing/web-sdk",
+      from: "/web/web-billing",
     },
   ],
 };
