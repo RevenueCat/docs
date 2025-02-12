@@ -217,6 +217,8 @@ Purchasing win-back offers through the App Store uses Streamlined Purchasing by 
 1. Mandatory: Upload an image for your win-back offer in App Store Connect ([instructions](https://developer.apple.com/help/app-store-connect/manage-in-app-purchases/view-and-edit-in-app-purchase-information#add-or-remove-an-image)).
 2. Enable [Apple App Store Notifications](https://www.revenuecat.com/docs/platform-resources/server-notifications/apple-server-notifications) so that RevenueCat can be notified of win-back offers redeemed through the App Store, even if the user does not open your app.
 
+Please note that win-back offers redeemed through the Manage Subscriptions page in user's Apple account always behave as if Streamline Purchasing is on, so your app should be prepared to handle this flow even if you disable Streamline Purchasing in App Store Connect.
+
 ##### Testing Win-Back Offers Redeemed Through the App Store with Streamlined Purchasing Enabled
 
 Testing win-back offers redeemed through the App Store with Streamlined Purchasing enabled can only be performed in the sandbox environment on a physical device. To test win-back offers redeemed this way:
