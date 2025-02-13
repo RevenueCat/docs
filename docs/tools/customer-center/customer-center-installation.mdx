@@ -1,0 +1,80 @@
+---
+title: Installing the SDK
+sidebar_label: Installation
+---
+
+Customer Center is included as part of the RevenueCatUI package in the RevenueCat SDK. You'll need to install the RevenueCatUI package in your project to use it.
+
+#### Supported SDK versions
+
+:::info
+Support for Flutter, React Native, and Kotlin Multiplatform is coming soon!
+:::
+
+| RevenueCat SDK           | Version required for Customer Center |
+| :----------------------- | :---------------------------------- |
+| purchases-ios            | 5.14.0 and up                       |
+| purchases-android        | 8.12.0 and up                       |
+
+Within the SDKs, Customer Center is available on the following platforms:
+- ✅ iOS 15.0 and higher
+- ✅ Mac Catalyst 15.0 and higher
+- ✅ Android 7.0 (API level 24)
+- ❌ macOS
+- ❌ tvOS
+- ❌ watchOS
+- ❌ visionOS
+
+## Native iOS Installation
+
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-ios.svg?style=flat)](https://github.com/RevenueCat/purchases-ios/releases)
+
+### Using SPM:
+
+#### If you already have `RevenueCat` in your project:
+
+1. Open your project settings and select "Package Dependencies":
+
+![Change version](https://github.com/RevenueCat/purchases-ios/assets/685609/d317fd33-8270-4d9b-9b38-8f5f14342b04)
+
+2. Double-click and make sure version is at least `5.14.0`:
+
+![Configure version](https://github.com/RevenueCat/purchases-ios/assets/685609/f537a1e1-a1ab-4e6f-986c-05abdcf1dd9f)
+
+3. Open your target settings and find "Frameworks, Libraries, and Embedded Content":
+
+![Find frameworks in your target](https://github.com/RevenueCat/purchases-ios/assets/685609/af078e9a-4b98-42c6-8ca7-6f79aebdf3e0)
+
+4. Add `RevenueCatUI`:
+
+![Add RevenueCatUI dependency](https://github.com/RevenueCat/purchases-ios/assets/685609/c2a3498c-b80d-405c-bdf6-75de927ea58e)
+
+#### First time integrating the RevenueCat SDK:
+
+1. Click File -> Add Packages...
+
+2. Search for `git@github.com:RevenueCat/purchases-ios.git` and make sure version is at least `5.14.0`:
+
+![Adding purchases-ios dependency](https://github.com/RevenueCat/purchases-ios/assets/685609/18291043-5710-4944-ba12-7d6d83bde240)
+
+3. Add `RevenueCat` and `RevenueCatUI` SPM dependency to your project:
+
+![Add paywall](/images/9140485-Screenshot_2023-08-04_at_12.08.07_78343500e565bc1fd0fceaac72486876.png)
+
+### Using CocoaPods:
+
+Add the following to your `Podfile`:
+```ruby
+pod 'RevenueCat'
+pod 'RevenueCatUI'
+```
+
+## Native Android Installation
+
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-android.svg?style=flat)](https://github.com/RevenueCat/purchases-android/releases)
+
+1. Add `RevenueCatUI`:
+```groovy build.gradle
+implementation 'com.revenuecat.purchases:purchases:<latest version>'
+implementation 'com.revenuecat.purchases:purchases-ui:<latest version>'
+```
