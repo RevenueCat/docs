@@ -331,6 +331,7 @@ const customersCategory = Category({
       items: [
         Page({ slug: "customer-center-installation" }),
         Page({ slug: "customer-center-integration" }),
+        Page({ slug: "customer-center-integration-android" }),
         Page({ slug: "customer-center-configuration" }),
       ],
     }),

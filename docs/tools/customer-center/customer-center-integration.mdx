@@ -1,6 +1,6 @@
 ---
-title: Integrating Customer Center
-sidebar_label: Integration
+title: Integrating Customer Center on iOS
+sidebar_label: iOS Integration
 slug: customer-center-integration
 hidden: false
 ---
@@ -18,9 +18,11 @@ There are only two steps to integrate Customer Center in your app:
 1. Implementing the Customer Center view in your app
 2. Setting up promotional offers
 
-## Implementation
+## Integration
 
-### iOS
+:::info Android support
+Customer Center is now available on Android! [Learn more about integrating Customer Center on Android here.](/tools/customer-center/customer-center-integration-android)
+:::
 
 You can use the `CustomerCenterView` directly:
 
@@ -56,56 +58,28 @@ import customerCenterEventsModifier from "!!raw-loader!@site/code_blocks/tools/c
   ]}
 />
 
-### Android
-
-There's a `CustomerCenter` composable that can be used to display the Customer Center. It's intended to be used as a full screen composable so make sure to use it with a `fillMaxSize` modifier:
-
-import usageViewKotlin from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-1.kt";
-
-<RCCodeBlock
-  tabs={[
-    { type: "kotlin", content: usageViewKotlin, name: "Kotlin" },
-  ]}
-/>
-
 ## Setting up promotional offers
 
-Unique promotional offers can be assigned to different paths and survey responses in the Customer Center, but first they must be setup in App Store Connect and Google Play Console.
-
-### App Store
+Unique promotional offers can be assigned to different paths and survey responses in the Customer Center, but first they must be setup in App Store Connect.
 
 Promotional offers on the App Store allow you to provide a custom price or trial for a product to existing or previously subscribed customers. These offers are used in the Customer Center to 
 incentivize customers to stay subscribed who otherwise intend to cancel their subscription or request a refund.
 
 [Learn how to setup promotional offers in App Store Connect here.](/subscription-guidance/subscription-offers/ios-subscription-offers#promotional-offers)
 
-### Play Store
-
-Offers on the Play Store allow you to provide a custom price or a trial (or both) for a product. There are [different types of offers](/subscription-guidance/subscription-offers/google-play-offers#eligibility-criteria) that can be created in the Play Store. For the Customer Center, you will be using the **Developer determined** type.
-
-Additionally, **add the `rc-customer-center` tag** to the developer determined offer from your product so that the offer is only available to Customer Center **and not used as a default offer when purchasing the product**. 
-
-:::warning Offers must be created in Google Play Console and tagged
-Don't forget to add the tag `rc-customer-center` to the offer so that the offer is only available to Customer Center and not used as a default offer when purchasing the product or in Paywalls.
-:::
-
-![Play Store Offer Setup](/images/customer-center/play-store-offer.png)
-
-[Learn how to setup promotional offers in Google Play Console here.](/subscription-guidance/subscription-offers/google-play-offers#promotional-offers)
-
 ### Required promotional offers
 
-:::warning Offers must be created in App Store Connect and Google Play Console
+:::warning Offers must be created in App Store Connect
 You need to add the store specific promotional offer ids you want to use for each of your products in the Offers tab of the Customer Center settings. Otherwise, the promotional offer will not be shown to customers.
 :::
 
-The Customer Center will automatically show offers based on specific user actions. By default we have defined it for refunds (iOS only) and cancellations but it can be modified to any of the defined paths. Here’s how it works:
+The Customer Center will automatically show offers based on specific user actions. By default we have defined it for refunds and cancellations but it can be modified to any of the defined paths. Here’s how it works:
 
 ![Promotional Offers Configuration](/images/customer-center-promo-offers-config.png)
 
 - **Cancellation Retention Discount**: By default, for responses in the cancellation survey, RevenueCat will use a promotional offer that you can customize in the Offers tab of the Customer Center settings.
 
-- **Refund Retention Discount (iOS only)**: By default, when a user requests a refund in iOS, RevenueCat will use a promotional offer that you can customize in the Offers tab of the Customer Center settings.
+- **Refund Retention Discount**: By default, when a user requests a refund in iOS, RevenueCat will use a promotional offer that you can customize in the Offers tab of the Customer Center settings.
 
 This setup enables RevenueCat to automatically match the right offer based on a user’s actions, providing a seamless experience for both cancellation and refund requests.
 
@@ -115,7 +89,7 @@ The SDK will automatically match the right offer based on a user’s actions and
 It is currently not possible to offer an upgrade offer for a different product than the one the user is currently subscribed to.
 :::
 
-**These promotional offers must be created in App Store Connect and Google Play Console in order to be shown to customers.** After creating a promotional offer for a product in App Store Connect or Google Play Console, you have to assign it to a particular offer in the Offers tab of the Customer Center settings.
+**These promotional offers must be created in App Store Connect in order to be shown to customers.** After creating a promotional offer for a product in App Store Connect, you have to assign it to a particular offer in the Offers tab of the Customer Center settings.
 
 For example, if you just created an offer with id "monthly_subscription_refund_offer" in App Store Connect for your monthly subscription product, you would go to the Offers tab of the Customer Center settings and edit the "Refund Retention Discount" offer, and assign the id of the promotional offer id to that monthly subscription product.
 
