@@ -14,9 +14,9 @@ The default configuration includes a set of paths, feedback surveys, and promoti
 All four management options are configured by default:
 
 - Cancellation
-- Refund Request
-- Plan changes
 - Missing Purchases
+- Refund Request (iOS only)
+- Plan changes (iOS only)
 
 The cancellation option is configured with a feedback survey with the following response options:
 
@@ -24,24 +24,48 @@ The cancellation option is configured with a feedback survey with the following 
 2. "Don't use the app"
 3. "Bought by mistake"
 
-By default, if your customer selects "Too expensive" or "Don't use the app", they'll receive the promotional offer `rc_cancel_offer`; while customers selecting "Bought by mistake" will receive the promotional offer `rc_refund_offer`. And of course, you can customize these responses and what (if anything) is offered to your liking.
+You can check the responses of feedback surveys in the [Customer Center Survey Responses chart](https://app.revenuecat.com/charts/customer_center_surveys).
 
-If your customer selects Refund Request, they'll be given the `rc-refund-offer` by default.
+By default, if your customer selects "Too expensive" or "Don't use the app", they'll receive the promotional offer `Cancellation Retention Discount`. And of course, you can customize these responses and what (if anything) is offered to your liking.
+
+If your customer selects Refund Request, they'll be given the `Refunds Retention Discount` by default.
 
 :::warning Offers must be created in App Store Connect
-In order for these promotional offers to be given to your customers, they must be first be created in App Store Connect. [Learn more.](https://www.revenuecat.com/docs/tools/customer-center/customer-center-integration#setting-up-promotional-offers)
+In order for these promotional offers to be given to your customers, they must be first be created in App Store Connect and Google Play Console. [Learn more.](/docs/tools/customer-center/customer-center-integration#setting-up-promotional-offers)
 :::
 
-If your customer selects Missing Purchases, they'll be prompted to restore purchases.
+If your customer selects the "Missing Purchase" option, they'll be prompted to restore purchases.
 
 ![Customer Center Missing Purchases](/images/customer-center-missing-purchases.PNG)
 
 ### Support email
 
-The support email is the email address that will be used to send emails to your customer in the following cases:
+The support email is optional and it is the email address that will be used to send emails to your customer in the following cases:
 
 - If your customer chooses the "Missing Purchase" option, where they can contact you if they have trouble restoring their purchase.
-- It is also used if the user is trying to manage a subscription that is not an Apple subscription, for example a Play Store subscription.
+- It is also used if the user is trying to manage a subscription that was purchased on a different store than the one they are currently on, for example a Play Store subscription on an iOS device.
+
+The user will only be prompted to contact you if you have configured a support email.
+
+### Update warning (iOS only)
+
+It is possible to show a warning to users not on the latest version of your app. This can be useful to ensure users are using the latest version of your app to manage their subscriptions.
+
+To enable this, you can enable the "Show a warning to users not on the latest version of your app" option in the Customer Center settings.
+
+// TODO
+![Customer Center Update Warning](/images/customer-center-update-warning.png)
+
+### Purchase history (iOS only)
+
+The customer center tries to primarily show the details that are most meaningful to the user. But it is possible to show more details on the purchase history to users.
+
+To enable this, you can enable the "Display a link to purchase history in the main screen of the Customer Center" option in the Customer Center settings. This will display a link to the purchase history in the main screen of the Customer Center.
+
+This view also contains information that is only displayed on debug builds of your app which can be useful to diagnose issues with the purchases history.
+
+// TODO
+![Customer Center Purchase History](/images/customer-center-purchase-history.png)
 
 ### Color customization
 
@@ -61,11 +85,11 @@ Here's how the color settings work:
 
 - **Button Background Color**: This color only applies to the background of the promotional offers button. If not set, the app's default background color will be used.
 
+In addition, there are light and dark theme variants available, which you can set in the configuration UI.
+
 :::tip
 Remember, except for the accent color, these color settings only affect the promotional offers views. The rest of the Customer Center will use your app's default colors to maintain consistency with your app's overall design.
 :::
-
-In addition, there are light and dark theme variants available, which you can set in the configuration UI.
 
 ## Advanced configuration
 
@@ -78,9 +102,9 @@ This configuration defines two main screens:
 1. **Management screen for users with an active subscription**: This is the main screen customers see when they have an active subscription. It contains several paths (or actions) that customers can take:
 
    - Missing Purchase
-   - Refund Request
-   - Change Plans
    - Cancel Subscription
+   - Refund Request (iOS only)
+   - Change Plans (iOS only)
 
 2. **Management screen for users without an active subscription**: This screen is shown when the customers don't have an active subscription. It typically only offers the option to restore purchases.
 
@@ -98,9 +122,9 @@ Let's break down the configuration for each management option:
 
 1. **Missing Purchase**: Used for restoring previous purchases.
 
-2. **Refund Request**: Allows customers to request refunds.
+2. **Refund Request (iOS only)**: Allows customers to request refunds.
 
-3. **Change Plans**: Enables customers to switch between different subscription plans.
+3. **Change Plans (iOS only)**: Enables customers to switch between different subscription plans.
 
 4. **Cancel**: Provides an option for customers to cancel their subscription.
 
@@ -127,6 +151,8 @@ Any management option can have a feedback survey attached to it with a question 
 - Uncover unmet expectations that led to a refund request, or
 - Attempt to persuade customers to change their mind by delivering a promotional offer based on their specific feedback
 
+You can check the responses of feedback surveys in the [Customer Center Survey Responses chart](https://app.revenuecat.com/charts/customer_center_surveys).
+
 ### Promotional offers
 
 Promotional offers can be attached to any feedback survey option or management option to provide an extended trial, discounted price, or another offer of your choosing.
@@ -134,7 +160,7 @@ Promotional offers can be attached to any feedback survey option or management o
 #### Adding promotional offers
 
 :::warning Offers must be created in App Store Connect
-In order for these promotional offers to be given to your customers, they must be first be created in App Store Connect. [Learn more.](https://www.revenuecat.com/docs/tools/customer-center/customer-center-integration#setting-up-promotional-offers)
+In order for these promotional offers to be given to your customers, they must be first be created in App Store Connect. [Learn more.](/docs/tools/customer-center/customer-center-integration#setting-up-promotional-offers)
 :::
 
 Promotional offers are defined in the Offers tab of the Customer Center settings. Each offer can be referenced from management options or feedback survey options.
@@ -144,7 +170,7 @@ Key points about promotional offers:
 - Each offer has a unique reference which is internal and used to reference the offer from management options or feedback survey options (e.g., `Cancelation Retention Discount`, `Refund Retention Discount`).
 - The eligibility criteria defines conditions for when the offer can be presented.
 - The title and subtitle reference localized strings for the offer's display text.
-- The product mapping is a map of Apple Store product identifiers to promotional offer identifiers. The promotional offer has to be created in App Store Connect before it can be used. [Learn more.](https://www.revenuecat.com/docs/tools/customer-center/customer-center-integration#setting-up-promotional-offers) 
+- The product mapping is a map of store product identifiers to promotional offer identifiers. The promotional offer has to be created in App Store Connect before it can be used. [Learn more.](/docs/tools/customer-center/customer-center-integration#setting-up-promotional-offers) 
 
 To use these offers, you link them from management options or feedback survey options in the configuration tab.
 

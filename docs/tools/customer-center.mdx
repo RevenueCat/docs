@@ -12,15 +12,6 @@ Customer Center is a self-service UI that can be added to your app to help your 
 Customer Center is available on Pro and Enterprise plans. If you're on a legacy plan click [here](https://app.revenuecat.com/settings/billing) to review your plan and consider upgrading.
 :::
 
-## Customer Center is supported in the following SDK version:
-| RevenueCat SDK           | Version required for Customer Center | 
-| :----------------------- | :--------------------------------------------- |
-| purchases-ios             | 5.14.0 and up                 |
-
-:::warning
-RevenueCat's Customer Center is currently only available on iOS 15.0+ at the moment.
-Support for more platforms is coming soon.
-:::
 
 import YouTubeEmbed from '@site/src/components/YouTubeEmbed';
 
@@ -33,8 +24,8 @@ The Customer Center can be configured through the RevenueCat Dashboard.
 It can be used to allow customers to:
 
 - Cancel active subscriptions
-- Request refunds
-- Change their subscription plans
+- Request refunds (iOS only)
+- Change their subscription plans (iOS only)
 - Restore previous purchases and contact your support email if they have trouble restoring
 - Link to external websites
 - Link to other app sections using deeplinks
@@ -45,9 +36,29 @@ It can be used to allow developers to:
 - Ask customers to provide the reason for their cancellation or refund request
 - Automatically provide promo offers to retain customers
 
-## Current limitations
+### Getting Started
 
-- Only available on iOS 15+
+Our paywall templates use native code to deliver smooth, intuitive experiences to your customers when you’re ready to deliver them an Offering; and you can use our Dashboard to pick the right template and configuration to meet your needs.
+
+To use RevenueCat Paywalls, simply:
+
+1. [Install the RevenueCat UI SDK](/tools/customer-center/installation)
+
+2. [Create a Paywall](/tools/paywalls/creating-paywalls) on the Dashboard for the [Offering](/getting-started/entitlements) you intend to serve to your customers
+
+3. See [displaying paywalls](/tools/paywalls/displaying-paywalls) for how to display it into your app.
+
+## Limitations
+
+### Platforms (support for more coming)
+
+- ✅ iOS 15.0 and higher
+- ✅ Mac Catalyst 15.0 and higher
+- ✅ Android 7.0 (API level 24)
+- ❌ macOS
+- ❌ tvOS
+- ❌ watchOS
+- ❌ visionOS
 
 ## Concepts
 
@@ -56,9 +67,9 @@ It can be used to allow developers to:
 There are 4 main management options that customers can choose from. Today we support:
 
 - Cancellation
-- Refund Request
-- Plan Changes
 - Missing Purchases
+- Refund Request (iOS only)
+- Plan Changes (iOS only)
 
 When a customer initially opens the Customer Center, these are the main options they'll see to select from.
 
@@ -78,4 +89,5 @@ Promotional offers are attachable to particular feedback survey options and to p
 
 ## Next steps
 
-To get started integrating the Customer Center in your app, [click here](https://www.revenuecat.com/docs/tools/customer-center/customer-center-integration). Or, to explore the configuration options for the Customer Center, [click here](https://www.revenuecat.com/docs/tools/customer-center/customer-center-configuration)
+- Now that you know how our Customer Center works, read about [integrating the Customer Center in your app](/tools/customer-center/customer-center-integration)
+- Or, to explore the configuration options for the Customer Center, [click here](/tools/customer-center/customer-center-configuration)

@@ -329,6 +329,7 @@ const customersCategory = Category({
       slug: "tools/customer-center",
       itemsPathPrefix: "tools/customer-center/",
       items: [
+        Page({ slug: "customer-center-installation" }),
         Page({ slug: "customer-center-integration" }),
         Page({ slug: "customer-center-configuration" }),
       ],
