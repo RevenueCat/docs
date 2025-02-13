@@ -314,7 +314,7 @@ Repeat steps 5-17 to test redeeming win-back offers multiple times.
 In our testing, we've found that this method of testing does not work 100% of the time, and that sometimes there can be a noticeable delay between when you leave the Settings app and when the win-back offer redemption sheet is displayed.
 :::
 
-##### Redeeming a Win-Back Offer Through the App Store with Streamlined Purchasing Disabled
+#### Redeeming a Win-Back Offer Through the App Store with Streamlined Purchasing Disabled
 
 Purchasing win-back offers through the App Store uses Streamlined Purchasing by default, meaning that subscribers can complete the entire win-back offer redemption flow in the App Store. If you require users to perform an action in your app before making a purchase, like signing in, you can disable Streamlined Purchasing. When Streamlined Purchasing is disabled, subscribers will start the win-back redemption flow in the App Store, but will complete the flow in your app. Support for redeeming win-back offers from the App Store with Streamlined Purchasing disabled is available in the iOS SDK versions 5.9.0+.
 
@@ -337,7 +337,7 @@ In addition to the steps mentioned above to configure your win-back offer, we re
 1. Mandatory: Upload an image for your win-back offer in App Store Connect ([instructions](https://developer.apple.com/help/app-store-connect/manage-in-app-purchases/view-and-edit-in-app-purchase-information#add-or-remove-an-image)).
 2. Enable [Apple App Store Notifications](https://www.revenuecat.com/docs/platform-resources/server-notifications/apple-server-notifications) so that RevenueCat can be notified of win-back offers redeemed through the App Store, even if the user does not open your app.
 
-##### Redeeming a Win-Back Offer With a Unique Win-Back Offer URL
+#### Redeeming a Win-Back Offer With a Unique Win-Back Offer URL
 Apple generates a unique URL for your win-back offer upon creation, which you can find on the offer's page in App Store Connect. This URL uses the format `https://apps.apple.com/win-back/{win_back_offer_id}`. Eligible subscribers can use this URL to redeem the win-back offer in your app.
 
 ![Win-Back Offer URL in App Store Connect](/images/win-back-offers/win-back-offer-url-app-store-connect.png)
