@@ -7,7 +7,7 @@ hidden: false
 Web Billing supports custom metadata that you can send along when executing the purchase.
 The metadata will be propagated to webhook events and the Stripe Customer object to track additional information about the purchase.
 
-Thanks to the new metadata functionality, `purchases-js` will also automatically collect any `utm` parameter in the URL and send it as metadata when invoking `purchase()`.
+`purchases-js` will also automatically collect any `utm` parameters in the URL and send it as metadata when invoking `purchase()`.
 You can opt-out of this behavior by setting the `autoCollectUTMAsMetadata` flag to `false` in the `configure` method.
 
 ## How to send custom metadata when invoking purchase()
