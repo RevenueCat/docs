@@ -1,0 +1,9 @@
+# This file is used to ignore commits in the GitHub blame view
+#   https://docs.github.com/en/repositories/working-with-files/using-files/viewing-and-understanding-files#ignore-commits-in-the-blame-view
+# Use the following command to use this ignoreRevsFile locally:
+#   git config blame.ignoreRevsFile .git-blame-ignore-revs
+
+# 2025-01-27 Add Prettier (#614)
+23877548a1cb83f9dccf14c7069d5db79b42ffb3
+# 2025-01-30 Reformat .md/.mdx files with Prettier (#620)
+31ba54ad2b3944f48d21d8292bc62f02b4d07aeb
