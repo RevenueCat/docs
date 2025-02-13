@@ -43,7 +43,7 @@ The Iterable integration tracks the following events:
 | Billing Issue             | Custom              | rc_billing_issue_event             | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR.                                                                  | ✅        | ✅         | ✅     | ✅     | ❌    |
 | Product Change            | Custom              | rc_product_change_event            | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](/subscription-guidance/managing-subscriptions) for more details on updates, downgrades, and crossgrades. | ✅        | ✅         | ❌     | ✅     | ❌    |
 
-For events that have revenue, such as trial conversions and renewals, RevenueCat will automatically record this amount along with the event in Iterable.
+For events that have revenue, such as trial conversions and renewals, RevenueCat will automatically record this amount along with the event in Iterable. Bear in mind that revenue will always be reported in USD. If it's been made with a different currency, we'll automatically convert it to USD. You can find the currency of the original transaction in the `currency` field of the event.
 
 ## Setup
 
