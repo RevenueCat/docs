@@ -6,7 +6,7 @@ hidden: false
 
 RevenueCat's Paywalls allow you to remotely configure your entire paywall view without any code changes or app updates. Whether you're building a new app, exploring new paywall concepts, or diving into experimentation; RevenueCat's Paywalls make it easy to get started.
 
-And now, Paywalls v2 has been built from the ground up to allow you to build fully customizable layouts from underlying components, and its available in beta on iOS.
+And now, Paywalls v2 has been built from the ground up to allow you to build fully customizable layouts from underlying components, and its available in beta on iOS, Android, Kotlin Multiplatform, React Native and Flutter.
 
 import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 
@@ -15,9 +15,17 @@ import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 :::warning Beta Limitations
 Paywalls v2 is currently in beta, and has the following limitations:
 
-1. Only available on our Native iOS SDK, on versions 5.16.0+. **You must update your RevenueCat SDK to use paywalls built with the new editor.**
+1. Available in our iOS, Android, Kotlin Multiplatform, React Native and Flutter SDKs. **You must update your RevenueCat SDK to use paywalls built with the new editor.**
 2. Not supported on watchOS, or visionOS.
 3. Footer mode from our original templates is not supported, [learn more here](/tools/paywalls-v2/displaying-paywalls).
+
+| RevenueCat SDK           | Version required for Paywalls v2 | 
+| :----------------------- | :--------------------------------------------- |
+| purchases-ios             | 5.16.0 and up                 |
+| purchases-android         | 8.12.0 and up                  |
+| react-native-purchases | 8.6.0 and up                 | 
+| purchases-flutter         | 8.5.0 and up                 |
+| purchases-kmp             | 1.5.0+13.18.0 and up                  |
    :::
 
 You can think of a Paywall as an optional feature of your Offering. An Offering is the collection of Products which are organized into Packages to be displayed to your customers as a single "offer" across platforms. Now, with Paywalls, you can control the actual view that is used to display that "offer" in addition to controlling the products that are offered.
@@ -41,7 +49,7 @@ To use RevenueCat Paywalls v2, simply:
 ### Platforms (support for more coming)
 
 - ✅ iOS 15.0 and higher
-- ❌ Android (coming soon)
+- ✅ Android 7.0 (API level 24) and higher
 - ❌ Mac Catalyst
 - ❌ visionOS
 - ❌ watchOS
