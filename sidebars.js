@@ -192,6 +192,7 @@ const webSDKCategory = Category({
         Page({ slug: "multi-currency-support" }),
         Page({ slug: "localization" }),
         Page({ slug: "redemption-links" }),
+        Page({ slug: "tax" }),
       ],
     }),
     Page({ slug: "web-billing/managing-customer-subscriptions" }),

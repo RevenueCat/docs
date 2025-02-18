@@ -1,0 +1,55 @@
+---
+title: Tax Handling
+slug: tax
+excerpt: How to configure and charge sales tax & VAT to customers purchasing through Web Billing
+hidden: false
+---
+
+:::warning Beta Feature
+Web Billing (formerly RevenueCat Billing) and the RevenueCat Web SDK are currently in beta.
+:::
+
+If you're selling subscriptions and purchases through Web Billing, you may need to register for and charge sales tax and VAT to customers, depending on your business setup and local laws.
+
+Unlike the mobile app stores which act as a merchant of record and handle all taxes, selling directly to customers on the web means taking on any tax obligations that apply, based on:
+
+- The location of your business
+- The tax jurisdiction of your customers (country, state/province and county)
+- The category of product you're selling
+
+## Stripe Tax support in Web Billing
+
+RevenueCat integrates with [Stripe Tax](https://stripe.com/tax), which manages registered tax rates and allows you to calculate and collect taxes directly in the Web Billing checkout.
+
+### Additional Stripe fees
+
+If you enable Stripe Tax in your RevenueCat integration, Stripe will charge you the [standard per-transaction fees](https://stripe.com/tax/pricing), for transactions where you're registered to collect taxes. This is in addition to the base Stripe fee for transactions.
+
+### Supported countries
+
+A full list of countries where Stripe Tax allows you to calculate and collect taxes are available in [Stripe's documentation](https://docs.stripe.com/tax/supported-countries?locale=en-GB#supported-countries).
+
+## How to use Configure Stripe Tax with Web Billing
+
+#### 1: Set up Stripe Tax in your Stripe dashboard
+
+If you have not yet configured Stripe Tax, you should follow the instructions [in your dashboard](https://dashboard.stripe.com/tax/overview) to enable automatic tax calculation (these steps may vary depending on your business location).
+
+#### 2: Add tax registrations for relevant locations
+
+Tax rates won't be added to transactions until there are tax registrations added on the [Registrations page](https://dashboard.stripe.com/tax/registrations).
+
+You can use Stripe's built-in threshold monitoring to understand when you need to register for sales tax in a given location. The process for registering varies depending on the authority you're registering with.
+
+#### 3: Enable tax collection in the RevenueCat dashboard
+
+1. Navigate to the Web Billing payment provider in your RevenueCat account.
+1. In the **payment provider** settings, enable "automatically collect taxes using Stripe Tax" and save the changes.
+
+When you've completed these steps, the following behaviors will be enabled:
+
+- When a customer begins a purchase through a Web Paywall Link or Web SDK purchase flow, their tax location will be determined.
+- If there is a tax rate in Stripe that should be applied, it will be applied to the transaction.
+- The customer will see any taxes broken out in the checkout, and in email receipts.
+- Subscription renewals will also have relevant tax rates applied.
+- You will be able to use [Stripe Tax reports](https://dashboard.stripe.com/tax/reporting) in the Stripe dashboard.
