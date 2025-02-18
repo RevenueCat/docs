@@ -8,9 +8,9 @@ hidden: false
 These docs refer to our beta of Paywalls v2. For our original Paywalls, [click here](/tools/paywalls/installation).
 :::
 
-## iOS
+## Platform specific instructions
 
-### How to display a Paywall in your app
+### iOS
 
 RevenueCat Paywalls v2 will show paywalls fullscreen, and there are multiple ways to do this with SwiftUI and UIKit.
 
@@ -53,13 +53,7 @@ import objc5 from "!!raw-loader!@site/code_blocks/tools/paywalls_5.m";
 
 ]}/>
 
-### Handling paywall navigation
-
-When creating a paywall, consider whether it will be presented in a sheet, or as a full screen view. Sheets won't require a dedicated close button. Full screen views should have either a close button (if presented) or a back button (if pushed in a navigation stack) unless you intend to provide a hard paywall to your customers that cannot be bypassed.
-
-## Android
-
-### How to display a fullscreen Paywall in your app
+### Android
 
 RevenueCat Paywalls will, by default, show paywalls fullscreen and there are multiple ways to do this with `Activity`s and Jetpack Compose.
 
@@ -102,9 +96,7 @@ import paywallsActivityJava from "!!raw-loader!@site/code_blocks/tools/paywalls_
 
 ]}/>
 
-## React Native
-
-### How to display a fullscreen Paywall in your app
+### React Native
 
 There are several ways to present paywalls:
 
@@ -130,13 +122,12 @@ import rn2 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_2.ts";
   ]}
 />
 
-If desired, you can pass `displayCloseButton: true` inside the `options` method when creating a `PaywallView` to display a close button in the paywall. You will need to react by using the `onDismiss` listener.
-
 There are also several listeners that can be used to handle the paywall lifecycle, such as `onPurchaseStarted`, `onPurchaseCompleted`, and `onRestoreStarted`.
 
-### Listeners
+#### Listeners
 
-When using `RevenueCatUI.Paywall` or `RevenueCatUI.PaywallFooterContainerView`, you may use one of the provided listeners to react to user actions.
+When using `RevenueCatUI.Paywall`, you may use one of the provided listeners to react to user actions.
+
 Available listeners at this time are:
 
 - onPurchaseStarted
@@ -148,9 +139,7 @@ Available listeners at this time are:
 - onRestoreError
 - onDismiss
 
-## Flutter
-
-### How to display a fullscreen Paywall in your app
+### Flutter
 
 There are several ways to present paywalls:
 
@@ -176,12 +165,9 @@ import flutter2 from "!!raw-loader!@site/code_blocks/tools/paywalls_flutter_2.da
   ]}
 />
 
-If desired, you can pass `displayCloseButton: true` when creating a `PaywallView` to display a close button in the paywall.
-You will need to react by using the `onDismiss` listener.
+#### Listeners
 
-### Listeners
-
-When using `PaywallView` or `PaywallFooterView`, you may use one of the provided listeners to react to user actions.
+When using `PaywallView`, you may use one of the provided listeners to react to user actions.
 Available listeners at this time are:
 
 - onPurchaseStarted
@@ -191,9 +177,7 @@ Available listeners at this time are:
 - onRestoreError
 - onDismiss
 
-## Kotlin Multiplatform
-
-### How to display a fullscreen Paywall in your app
+### Kotlin Multiplatform
 
 You can present a fullscreen Paywall using the `Paywall` composable. You have the flexibility to decide when to call this. You could, for instance, add it to your navigation graph.
 
@@ -209,11 +193,9 @@ import kmp1 from "!!raw-loader!@site/code_blocks/tools/paywalls_kmp_1.kts";
   ]}
 />
 
-If desired, you can set `shouldDisplayDismissButton` to `true` in your `PaywallOptions` to display a close button in the paywall. You will need to react to it using the `dismissRequest` listener.
+#### Listeners
 
-### Listeners
-
-When using `Paywall` or `PaywallFooter`, you may use one of the provided listeners to react to user actions.
+When using `Paywall`, you may use one of the provided listeners to react to user actions.
 Available listeners at this time are:
 
 - onPurchaseStarted
@@ -223,6 +205,10 @@ Available listeners at this time are:
 - onRestoreStarted
 - onRestoreCompleted
 - onRestoreError
+
+## Handling paywall navigation
+
+When creating a paywall, consider whether it will be presented in a sheet, or as a full screen view. Sheets won't require a dedicated close button. Full screen views should have either a close button (if presented modally) or a back button (if part of a navigation stack or host) unless you intend to provide a hard paywall to your customers that cannot be bypassed.
 
 ## Changes from original Paywalls
 
