@@ -6,22 +6,28 @@ sidebar_label: Installation
 RevenueCat Paywalls are included as part of the RevenueCatUI package in the RevenueCat SDK. You'll need to install the RevenueCatUI package in your project to use Paywalls.
 
 :::info Paywalls v2 Beta
-These docs refer to our beta of Paywalls v2. For installation requirements of original Paywalls which already support iOS, Android, React Native, Flutter, and KMP, [click here](/tools/paywalls/installation).
+These docs refer to our beta of Paywalls v2. For installation requirements of original Paywalls, [click here](/tools/paywalls/installation).
 :::
 
 #### Supported SDK versions
 
-| RevenueCat SDK            | Version required for Paywalls v2 |
-| :------------------------ | :------------------------------- |
-| purchases-ios             | 5.16.0 and up                    |
-| purchases-android         | Coming soon                      |
-| react-native-purchases-ui | Coming soon                      |
-| purchases-flutter         | Coming soon                      |
-| purchases-kmp             | Coming soon                      |
+| RevenueCat SDK           | Version required for Paywalls v2 | 
+| :----------------------- | :--------------------------------------------- |
+| purchases-ios             | 5.16.0 and up                 |
+| purchases-android         | 8.12.2 and up                  |
+| react-native-purchases | 8.6.1 and up                 | 
+| purchases-flutter         | 8.5.0 and up                 |
+| purchases-kmp             | 1.5.1+13.18.1 and up                  |
 
-:::info
-Within the SDKs, Paywalls are available on iOS 15.0+, with additional platforms coming soon.
-:::
+### Platforms (support for more coming)
+
+- ✅ iOS 15.0 and higher
+- ✅ Android 7.0 (API level 24) and higher
+- ❌ Mac Catalyst
+- ❌ visionOS
+- ❌ watchOS
+- ❌ macOS
+- ❌ tvOS
 
 ## Native iOS Installation
 
@@ -65,3 +71,70 @@ Add the following to your `Podfile`:
 pod 'RevenueCat'
 pod 'RevenueCatUI'
 ```
+
+## Native Android Installation
+
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-android.svg?style=flat)](https://github.com/RevenueCat/purchases-android/releases)
+
+1. Add `RevenueCatUI`:
+```groovy build.gradle
+implementation 'com.revenuecat.purchases:purchases:<latest version>'
+implementation 'com.revenuecat.purchases:purchases-ui:<latest version>'
+```
+
+## React Native Installation
+
+[![Release](https://img.shields.io/github/release/RevenueCat/react-native-purchases.svg?style=flat)](https://github.com/RevenueCat/react-native-purchases/releases)
+
+- Update your `package.json` to include `react-native-purchases-ui`:
+```json
+{
+  "dependencies": {
+    "react-native-purchases": "<latest version>",
+    "react-native-purchases-ui": "<latest version>"
+  }
+}
+```
+
+## Flutter Installation
+
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-flutter.svg?style=flat)](https://github.com/RevenueCat/purchases-flutter/releases)
+
+- Add `purchases-ui-flutter` in your `pubspec.yaml`:
+```yaml
+dependencies:
+  purchases_flutter: <latest version>
+  purchases_ui_flutter: <latest version>
+```
+- For Android, you need to change your `MainActivity` to subclass `FlutterFragmentActivity` instead of `FlutterActivity`.
+
+## Kotlin Multiplatform Installation
+
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-kmp.svg?style=flat)](https://github.com/RevenueCat/purchases-kmp/releases)
+
+Add the following Maven coordinates to your `libs.versions.toml`:
+```toml libs.versions.toml
+[versions] 
+purchases-kmp = "<latest version>"
+
+[libraries]
+purchases-core = { module = "com.revenuecat.purchases:purchases-kmp-core", version.ref = "purchases-kmp" }
+purchases-ui = { module = "com.revenuecat.purchases:purchases-kmp-ui", version.ref = "purchases-kmp" }
+```
+
+Then add the dependencies to the `commonMain` sourceset in your Compose Multiplatform module's `build.gradle.kts`:
+```kotlin build.gradle.kts
+kotlin {
+    // ...
+    sourceSets {
+        // ...
+        commonMain.dependencies {  
+            // Add the purchases-kmp dependencies.
+            implementation(libs.purchases.core)  
+            implementation(libs.purchases.ui)  
+        }
+    }
+}
+```
+
+Lastly, you'll need to make sure you link the `PurchasesHybridCommonUI` native iOS framework. If your iOS app uses Swift Package Manager, add the `PurchasesHybridCommonUI` library to your target in the same way you added the `PurchasesHybridCommon` library. If your iOS app uses CocoaPods, either update its `Podfile`, or update your Compose Multiplatform module's `build.gradle.kts`, depending on how your Multiplatform module is integrated with your iOS project.
