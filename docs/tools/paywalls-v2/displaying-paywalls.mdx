@@ -210,6 +210,25 @@ Available listeners at this time are:
 
 When creating a paywall, consider whether it will be presented in a sheet, or as a full screen view. Sheets won't require a dedicated close button. Full screen views should have either a close button (if presented modally) or a back button (if part of a navigation stack or host) unless you intend to provide a hard paywall to your customers that cannot be bypassed.
 
+## Custom fonts
+
+Paywalls v2 supports custom fonts, but it works slightly differently than original Paywalls. In the paywall editor, every text component has a "Font family" property with a gear icon next to it. Clicking the gear icon allows you to configure your font families. In the modal that opens, you can name your font family, and set up the corresponding font for both Android and iOS. Fonts you can use include:
+
+- System fonts
+- Any of `sans-serif`, `serif`, or `monospace`
+- Custom fonts already included in your app
+
+### Including custom fonts in your app
+
+#### Android
+To add a custom font to your Android app, place the font file in the `res/font` folder. Make sure that the filename (without the extension) corresponds to the font name in the paywall editor. See [the official Android documentation](https://developer.android.com/develop/ui/views/text-and-emoji/fonts-in-xml) for more information.
+
+#### iOS
+To add a custom font to your iOS app, go to _File_ and then _Add Files to “Your Project Name”_. The font file should be a target member of your app, and be registered with iOS by adding the "Fonts provided by the application" key to your _Info.plist_ file. Make sure that the filename (without the extension) corresponds to the font name in the paywall editor. See [the official iOS documentation](https://developer.apple.com/documentation/uikit/adding-a-custom-font-to-your-app) for more information.
+
+#### Kotlin Multiplatform, React Native, and Flutter
+Adding custom fonts to a hybrid app involves adding the font files to the underlying Android and iOS projects following the instructions above.
+
 ## Changes from original Paywalls
 
 #### Footer Paywalls
