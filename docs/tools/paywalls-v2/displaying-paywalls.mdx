@@ -212,7 +212,7 @@ When creating a paywall, consider whether it will be presented in a sheet, or as
 
 ## Custom fonts
 
-Paywalls v2 supports custom fonts, but it works slightly differently than original Paywalls. In the paywall editor, every text component has a "Font family" property with a gear icon next to it. Clicking the gear icon allows you to configure your font families. In the modal that opens, you can name your font family, and set up the corresponding font for both Android and iOS. Fonts you can use include:
+Paywalls v2 supports custom fonts, but it works slightly differently than original Paywalls. The `FontProvider` in the SDKs is ignored for v2 Paywalls. Instead, every text component in the paywall editor has a "Font family" property with a gear icon next to it. Clicking the gear icon allows you to configure your font families. In the modal that opens, you can name your font family, and set up the corresponding font for both Android and iOS. Fonts you can use include:
 
 - System fonts
 - Any of `sans-serif`, `serif`, or `monospace`
@@ -241,7 +241,7 @@ Paywalls v2 does not require the `displayCloseButton` parameter (or equivalent f
 
 #### Font provider
 
-Paywalls v2 does not support passing in a custom font provider as original Paywalls did. Instead, you can now configure Paywalls to use the font providers you've already installed in your app directly from the Dashboard. Using the original handler will have no effect on Paywalls v2.
+Paywalls v2 does not support passing in a custom font provider as original Paywalls did. Instead, you can now configure Paywalls to use the fonts you've already installed in your app directly from the Dashboard. Using the original handler will have no effect on Paywalls v2. See the [Custom fonts](#custom-fonts) section for more information. 
 
 ## Default Paywall
 
