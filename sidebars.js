@@ -172,29 +172,39 @@ const paywallsCategory = Category({
 
 const webSDKCategory = Category({
   emoji: "🌎",
-  label: "Web Purchases",
+  label: "RevenueCat Web",
   itemsPathPrefix: "web/",
   items: [
     SubCategory({
-      label: "Web Billing & Web SDK",
-      slug: "web-billing",
+      label: "Integrate Web Billing",
+      slug: "web-billing/overview",
+      itemsPathPrefix: "web-billing/",
+      items: [Page({ slug: "web-sdk" }), Page({ slug: "web-paywall-links" })],
+    }),
+    SubCategory({
+      label: "Configure Web Billing",
+      slug: "web-billing/product-setup",
       itemsPathPrefix: "web-billing/",
       items: [
-        Page({ slug: "product-setup" }),
         Page({ slug: "customization" }),
         Page({ slug: "subscription-lifecycle" }),
-        Page({ slug: "lifecycle-emails" }),
         Page({ slug: "payment-methods" }),
         Page({ slug: "multi-currency-support" }),
-        Page({ slug: "managing-customer-subscriptions" }),
-        Page({ slug: "refunding-payments" }),
-        Page({ slug: "customer-portal" }),
-        Page({ slug: "web-paywall-links" }),
         Page({ slug: "localization" }),
         Page({ slug: "redemption-links" }),
+        Page({ slug: "custom-metadata" }),
       ],
     }),
-    Page({ slug: "stripe" }),
+    Page({ slug: "web-billing/managing-customer-subscriptions" }),
+    Page({ slug: "web-billing/refunding-payments" }),
+    Page({ slug: "web-billing/customer-portal" }),
+    Page({ slug: "web-billing/lifecycle-emails" }),
+    SubCategory({
+      label: "External Payments Integrations",
+      slug: "payment-integrations",
+      itemsPathPrefix: "integrations/",
+      items: [Page({ slug: "stripe" })],
+    }),
   ],
 });
 
@@ -319,7 +329,9 @@ const customersCategory = Category({
       slug: "tools/customer-center",
       itemsPathPrefix: "tools/customer-center/",
       items: [
+        Page({ slug: "customer-center-installation" }),
         Page({ slug: "customer-center-integration" }),
+        Page({ slug: "customer-center-integration-android" }),
         Page({ slug: "customer-center-configuration" }),
       ],
     }),

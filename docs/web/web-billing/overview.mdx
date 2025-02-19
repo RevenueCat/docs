@@ -1,0 +1,50 @@
+---
+title: Web Billing overview
+slug: overview
+excerpt: High level overview of RevenueCat's web billing features
+hidden: false
+---
+
+:::warning Beta Feature
+Web Billing (formerly RevenueCat Billing) and the RevenueCat Web SDK are currently in beta.
+:::
+
+# Web Billing overview
+
+RevenueCat Web Billing allows you to easily start selling subscriptions and one-time purchases on the web, and connect them with the same subscriptions and entitlements on mobile.
+
+This enables use cases such as:
+
+- Running paid acquisition campaigns linked to a web purchase flow
+- Running web-based win-back campaigns with special offers tailored to customers with churned subscriptions
+- Collecting web payments from an existing audience, without the need to install the app first or create an account
+- Offering a unified experience for your app across mobile and web, with the same set of entitlements
+
+## Web Billing integration paths
+
+#### Web SDK
+
+If you run a dynamic web app and have access to the code, you should consider integrating the Web SDK, as a way to initialize purchases (similarly to RevenueCat's mobile SDKs).
+
+[Get started with the Web SDK](web-sdk)
+
+#### Web Payment Links (low code)
+
+If you want a low-code way to collect payments from customers, you can use Web Payment Links, which provide a customizable purchase flow hosted by RevenueCat. This is useful if you need to distribute payment links from static systems such as emails, social media, or a static landing page.
+
+[Get started with Web Paywall Links](web-paywall-links)
+
+## Web Billing vs. Stripe Billing integration
+
+**Web Billing** is RevenueCat's full subscription management solution, which uses Stripe as a payment processor.
+
+- It takes care of the end-to-end purchase UI
+- It manages the complete subscription lifecycle, including the recurring billing logic (instead of Stripe Billing)
+- It provides a RevenueCat subscription management portal for customers
+- It doesn't add any fees on top of RevenueCat's existing product fee (Stripe transaction fees still apply)
+
+**Our Stripe Billing integration** allows you to use Stripe Billing for subscriptions, and sync them to RevenueCat.
+
+If you're getting started with web billing for your apps, it's recommended to use RevenueCat Web Billing for a deeper integration with the RevenueCat platform.
+
+If you already have a Stripe Billing implementation with active subscriptions and customers, you may want to maintain that setup and use our [Stripe Billing](/web/integrations/stripe) integration.

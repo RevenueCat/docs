@@ -1,5 +1,5 @@
 ---
-title: Stripe Web Payments
+title: Stripe Billing
 slug: stripe
 excerpt: Allow your users to subscribe to your app via Stripe
 hidden: false
@@ -9,7 +9,7 @@ RevenueCat currently supports web payments through Stripe. This allows you to le
 
 Remember that it is against Apple's App Store terms to provide a different system than in-app purchases for digital goods. Make sure you don't promote your web subscriptions from inside your app. Your app may get rejected, or banned.
 
-Before launching your Stripe integration, be sure to read the limitations that apply to [working with web payments](/web/stripe#working-with-web-payments).
+Before launching your Stripe integration, be sure to read the limitations that apply to [working with web payments](#working-with-web-payments).
 
 ## 1. Connect with Stripe
 
@@ -17,11 +17,11 @@ To get started, you first need to connect your Stripe account with RevenueCat, i
 
 ## 2. Create products and plans on Stripe
 
-Create your Stripe product(s) using [their billing dashboard](https://dashboard.stripe.com/subscriptions/products). In Stripe, a _product_ can have multiple _pricing plans_. These are useful if you want to offer different price points for the same product and work similar to _offerings_ and _products_ in RevenueCat.
+Create and manage your Stripe product(s) directly in [the Stripe dashboard](https://dashboard.stripe.com/subscriptions/products). In Stripe, a _product_ can have multiple _prices_. These are useful if you want to offer different price points for the same product and work similar to _offerings_ and _products_ in RevenueCat.
 
 ![](/images/8154aeb-Screen_Shot_2018-12-06_at_14.26.56_38ccc6af46e3d44f82ade1c883522a12.png "Screen Shot 2018-12-06 at 14.26.56.png")
 
-You can read more about **products and plans** in [their official documentation](https://stripe.com/docs/billing/quickstart).
+You can read more about **products and plans** in [Stripe's official documentation](https://stripe.com/docs/billing/quickstart).
 
 :::warning Important
 RevenueCat only supports **per unit** and **recurring quantity** subscription plans. Metered usage and tiers are currently not supported.
