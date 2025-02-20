@@ -355,6 +355,18 @@ main .row {
   @apply !m-2;
 }
 
+.google-checkbox input {
+  margin-right: 12px;
+}
+
+.checklist-checkbox p {
+  @apply !m-2;
+}
+
+.checklist-checkbox input {
+  margin-right: 12px;
+}
+
 @layer components {
   .tw-container {
     @apply mx-auto max-w-7xl px-[clamp(1rem,0.0909rem+4.5455vi,3rem)];
@@ -372,4 +384,442 @@ body[data-embed="true"] {
   footer {
     display: none !important;
   }
+}
+
+.troubleshooting-wizard {
+  background: var(--ifm-background-surface-color);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 24px 0;
+  border: 1px solid #ddd;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.05) 0px 0.5px 0px 0px,
+    rgba(0, 0, 0, 0.05) 0px 0px 0px 0.5px;
+}
+
+/* Add dark mode support */
+html[data-theme="dark"] .troubleshooting-wizard {
+  border: 1px solid #4e4e4e;
+}
+
+.wizard-header {
+  margin-bottom: 24px;
+}
+
+.wizard-header h2 {
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 0;
+}
+
+.step-counter {
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 16px;
+}
+
+.step-content {
+  margin-bottom: 24px;
+}
+
+.step-content h3 {
+  margin-bottom: 12px;
+}
+
+.caption {
+  font-size: 0.9em;
+  color: var(--ifm-color-emphasis-600);
+  font-style: italic;
+  margin-top: 8px;
+}
+
+.step-image {
+  max-width: 100%;
+  margin: 16px 0;
+  border-radius: 4px;
+}
+
+.wizard-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding-left: 12px;
+}
+
+.wizard-navigation {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-button {
+  padding: 8px 16px;
+  border: 1px solid var(--ifm-color-primary);
+  background: var(--ifm-color-primary);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nav-button:hover:not(:disabled) {
+  background: var(--ifm-color-primary-darker);
+}
+
+.step-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 12px;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.step-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.step-checkbox span {
+  font-size: 0.9em;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.platform-selector {
+  padding: 24px;
+  text-align: center;
+}
+
+.platform-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.platform-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.platform-button:hover {
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-color-emphasis-100);
+}
+
+.platform-icon {
+  font-size: 1.2em;
+}
+
+.platform-change-button {
+  margin-top: 12px;
+  padding: 4px 12px;
+  font-size: 0.9em;
+  color: var(--ifm-color-emphasis-700);
+  background: transparent;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.platform-change-button:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
+
+.wizard-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.view-mode-toggle {
+  display: flex;
+  gap: 1px;
+  background: var(--ifm-color-emphasis-200);
+  padding: 2px;
+  border-radius: 6px;
+}
+
+.view-mode-button {
+  padding: 6px 12px;
+  font-size: 0.9em;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--ifm-color-emphasis-700);
+  transition: all 0.2s ease;
+}
+
+.view-mode-button.active {
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-color-emphasis-900);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.list-view-step {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+}
+
+.list-view-step .step-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+  padding: 16px;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+}
+
+.list-view-step .step-checkbox:hover {
+  background: var(--ifm-color-emphasis-50);
+}
+
+.list-view-step .step-checkbox input[type="checkbox"] {
+  margin-top: 4px;
+}
+
+.list-view-step .step-content {
+  flex: 1;
+  margin: 0;
+}
+
+.list-view-step .step-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+}
+
+.list-view-step .step-content p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.list-view-step .step-content .caption {
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+.list-view-step .step-content .step-image {
+  margin: 12px 0 0 0;
+}
+
+.platform-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9em;
+}
+
+.platform-label {
+  color: var(--ifm-color-emphasis-600);
+}
+
+.platform-current {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-900);
+}
+
+.platform-change-button {
+  margin: 0;
+  padding: 4px 8px;
+  font-size: 0.85em;
+}
+
+.final-step {
+  text-align: center;
+  padding: 32px 0;
+}
+
+.final-step-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.final-step-buttons button {
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.success-button {
+  background: var(--ifm-color-success);
+  border: 1px solid var(--ifm-color-success);
+  color: white;
+}
+
+.success-button:hover {
+  background: var(--ifm-color-success-darker);
+}
+
+.failure-button {
+  background: transparent;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-700);
+}
+
+.failure-button:hover {
+  border-color: var(--ifm-color-emphasis-500);
+  color: var(--ifm-color-emphasis-900);
+}
+
+.success-message,
+.failure-message {
+  text-align: center;
+  padding: 32px 0;
+}
+
+.success-message h3 {
+  color: var(--ifm-color-success);
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+.failure-message h3 {
+  margin-bottom: 16px;
+}
+
+.community-link {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 8px 16px;
+  background: var(--ifm-color-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.community-link:hover {
+  background: var(--ifm-color-primary-darker);
+  text-decoration: none;
+  color: white;
+}
+
+.start-over-button {
+  margin-top: 24px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid var(--ifm-color-success);
+  color: var(--ifm-color-success);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+}
+
+.start-over-button:hover {
+  background: var(--ifm-color-success);
+  color: white;
+}
+
+.failure-message .community-link {
+  margin-bottom: 24px;
+  display: inline-block;
+}
+
+.failure-message .start-over-button {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
+
+.failure-message .start-over-button:hover {
+  background: var(--ifm-color-primary);
+  color: white;
+}
+
+.caption a {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.caption a:hover {
+  text-decoration: underline;
+}
+
+.platform-selector-button {
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  color: var(--ifm-color-emphasis-900);
+  font-weight: 500;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.platform-selector-button:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  background: var(--ifm-color-emphasis-50);
+}
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ifm-color-emphasis-200);
+  transition: all 0.2s ease;
+}
+
+.step-dot.active {
+  background: var(--ifm-color-primary);
+  transform: scale(1.25);
+}
+
+.step-dot.completed {
+  background: var(--ifm-color-success);
 }

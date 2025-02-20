@@ -292,6 +292,7 @@ const offeringsCategory = Category({
         }),
       ],
     }),
+    Page({ slug: "offerings/troubleshooting" }),
   ],
 });
 
