@@ -47,7 +47,7 @@ const ListViewStep: React.FC<{ step: Step; isCompleted: boolean; onToggle: () =>
       />
       <div className="step-content">
         <h3>{step.title}</h3>
-        <p>{step.description}</p>
+        <p dangerouslySetInnerHTML={createMarkup(step.description)} />
         {step.caption && (
           <p 
             className="caption"
@@ -293,7 +293,7 @@ export const TroubleshootingWizard: React.FC<TroubleshootingWizardProps> = ({
         <div className="wizard-content">
           <div className="step-content">
             <h3>{platformSteps[currentStep].title}</h3>
-            <p>{platformSteps[currentStep].description}</p>
+            <p dangerouslySetInnerHTML={createMarkup(platformSteps[currentStep].description)} />
             {platformSteps[currentStep].caption && (
               <p 
                 className="caption"
