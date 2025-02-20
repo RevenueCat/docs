@@ -297,6 +297,7 @@ const offeringsCategory = Category({
 });
 
 const customersCategory = Category({
+  emoji: "👥",
   label: "Customers",
   itemsPathPrefix: "",
   items: [
