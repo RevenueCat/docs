@@ -1,0 +1,109 @@
+---
+title: Troubleshooting Empty Products/Offerings
+sidebar_label: Troubleshooting
+slug: troubleshooting-offerings
+---
+
+import { TroubleshootingWizard } from '@site/src/components/TroubleshootingWizard';
+
+A common issue after configuring your products in the RevenueCat dashboard is that the products aren't able to be retrieved from the SDK. Typically, this is due to a configuration issue.
+
+<YouTubeEmbed videoId="HbF-5tpaBzc" title="Troubleshooting Offerings" />
+
+
+Here's how it works under the hood:
+
+- Products are configured in the RevenueCat dashboard.
+- The SDK retrieves the product identifiers from the RevenueCat API.
+- The SDK uses that response to retrieve the products from the store on the device.
+
+Since the actual products that your users purchase can only be retrieved from the stores directly on the device, any inconsistencies in the configuration between RevenueCat and the stores will prevent the products from being retrieved for purchase.
+
+<TroubleshootingWizard
+  title="Troubleshooting Wizard"
+  subtitle="Follow these steps to verify your product configuration"
+  platforms={[
+    { id: 'ios', name: 'iOS / Apple Platforms', icon: '' },
+    { id: 'android', name: 'Android / Google Play', icon: '🤖' },
+    { id: 'amazon', name: 'Android / Amazon Appstore', icon: '📦' }
+  ]}
+  steps={[
+    {
+      title: "Check App Store Connect Agreements",
+      description: "Verify that all agreements (including the Paid Applications Agreement) have been signed and banking details have been completed in App Store Connect.",
+      caption: "Note: The Paid Applications Agreement may have expired - please check its status.",
+      platforms: ['ios']
+    },
+    {
+      title: "Check Google Play Console Agreements",
+      description: "Verify that all agreements have been signed and banking details have been completed in Google Play Console.",
+      platforms: ['android']
+    },
+    {
+      title: "Published on a Closed Track",
+      description: "Ensure your app is published on a closed track in Google Play Console. Google Play requires all apps to be published on a closed track before products can be fetched, even when just testing.",
+      platforms: ['android']
+    },
+    {
+      title: "Verify Product Status",
+      description: "Ensure the products are in the 'Ready to Submit' or 'Approved' state in App Store Connect.",
+      platforms: ['ios']
+    },
+    {
+      title: "Product Identifier Match",
+      description: "Confirm the product identifier in the RevenueCat dashboard exactly matches the product identifier in your store.",
+      platforms: ['ios', 'android', 'amazon']
+    },
+    {
+      title: "Physical Device Testing",
+      description: "Ensure you're testing on a physical device and not a simulator.",
+      caption: "Simulators do not have access to the live App Store API, and will only work with StoreKit Configuration files.",
+      platforms: ['ios']
+    },
+    {
+      title: "Physical Device Testing",
+      description: "Ensure you're testing on a physical device and not a simulator.",
+      caption: "Simulators do not have access to the live store APIs.",
+      platforms: ['android', 'amazon']
+    },
+    {
+      title: "Bundle ID Validation",
+      description: "Verify the Bundle ID in the RevenueCat dashboard matches the Bundle ID in App Store Connect and your Xcode project exactly.",
+      caption: "This is case-sensitive. If you're using multiple environments with different Bundle IDs, be sure to check the Bundle ID in each environment.",
+      platforms: ['ios']
+    },
+    {
+      title: "Package Name Validation",
+      description: "Verify the package name in the RevenueCat dashboard matches the package name in Google Play Console and your Android project exactly.",
+      caption: "This is case-sensitive. If you're using multiple environments with different package names, be sure to check the package name in each environment.",
+      platforms: ['android', 'amazon']
+    },
+    {
+      title: "API Key Platform Check",
+      description: "Confirm you're using the correct platform-specific API key. The RevenueCat SDK uses different API keys for each platform.",
+      caption: "For example, if you use a Google key for iOS, the wrong product configuration will be retrieved, and products will not be able to be fetched.",
+      platforms: ['ios', 'android', 'amazon']
+    },
+    {
+      title: "StoreKit Configuration",
+      description: "Confirm your Xcode scheme does not have a StoreKit Configuration file configured if attempting to test with the live App Store API.",
+      platforms: ['ios']
+    },
+    {
+      title: "Recent App Release",
+      description: "If you've recently released your app, please note that products may not be available for up to 24 hours after release.",
+      platforms: ['ios', 'android', 'amazon']
+    },
+    {
+      title: "Testing Locally",
+      description: "When testing locally, you need to set up the AppTester app from Amazon, and in AppTester you need to upload a JSON file with all of the products you offer. You can download a ready-to-use JSON file from the Amazon developer console.",
+      caption: "Follow this guide to learn how to upload the JSON file to AppTester: <a href='https://developer.amazon.com/docs/in-app-purchasing/iap-install-and-configure-app-tester.html' target='_blank' rel='noopener noreferrer'>Amazon AppTester Guide</a>",
+      platforms: ['amazon']
+    },
+    {
+      title: "Testing Locally", 
+      description: "When testing locally, you should be able to display the products (assuming AppTester is installed, sandbox mode is enabled and the products JSON is correctly uploaded), but purchases won't be validated by RevenueCat.",
+      platforms: ['amazon']
+    }
+  ]}
+/>

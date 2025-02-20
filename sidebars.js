@@ -292,11 +292,11 @@ const offeringsCategory = Category({
         }),
       ],
     }),
+    Page({ slug: "offerings/troubleshooting" }),
   ],
 });
 
 const customersCategory = Category({
-  emoji: "👥",
   label: "Customers",
   itemsPathPrefix: "",
   items: [
