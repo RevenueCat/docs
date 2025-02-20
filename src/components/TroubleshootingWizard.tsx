@@ -249,18 +249,12 @@ export const TroubleshootingWizard: React.FC<TroubleshootingWizardProps> = ({
         <h2>{title}</h2>
         {subtitle && <p className="subtitle">{subtitle}</p>}
         <div className="wizard-controls">
-          <div className="platform-info">
-            <span className="platform-label">Platform:</span>
-            <span className="platform-current">
-              {selectedPlatformName}
-              <button 
-                className="platform-change-button"
-                onClick={() => setSelectedPlatform(null)}
-              >
-                Change
-              </button>
-            </span>
-          </div>
+          <button 
+            className="platform-selector-button"
+            onClick={() => setSelectedPlatform(null)}
+          >
+            {selectedPlatformName}
+          </button>
           <div className="view-mode-toggle">
             <button
               className={`view-mode-button ${viewMode === 'wizard' ? 'active' : ''}`}

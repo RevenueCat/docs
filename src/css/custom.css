@@ -756,3 +756,21 @@ body[data-embed="true"] {
 .caption a:hover {
   text-decoration: underline;
 }
+
+.platform-selector-button {
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  color: var(--ifm-color-emphasis-900);
+  font-weight: 500;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.platform-selector-button:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  background: var(--ifm-color-emphasis-50);
+}
