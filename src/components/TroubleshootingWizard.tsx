@@ -127,6 +127,23 @@ const FailureMessage: React.FC<{ onStartOver: () => void }> = ({ onStartOver }) 
   </div>
 );
 
+const StepIndicator: React.FC<{ 
+  currentStep: number; 
+  totalSteps: number;
+  completedSteps: boolean[];
+}> = ({ currentStep, totalSteps, completedSteps }) => (
+  <div className="step-indicator">
+    {Array.from({ length: totalSteps }, (_, index) => (
+      <div 
+        key={index} 
+        className={`step-dot ${index === currentStep ? 'active' : ''} ${
+          completedSteps[index] ? 'completed' : ''
+        }`}
+      />
+    ))}
+  </div>
+);
+
 export const TroubleshootingWizard: React.FC<TroubleshootingWizardProps> = ({
   title,
   subtitle,
@@ -274,10 +291,6 @@ export const TroubleshootingWizard: React.FC<TroubleshootingWizardProps> = ({
 
       {viewMode === 'wizard' ? (
         <div className="wizard-content">
-          <div className="step-counter">
-            Step {currentStep + 1} of {platformSteps.length}
-          </div>
-
           <div className="step-content">
             <h3>{platformSteps[currentStep].title}</h3>
             <p>{platformSteps[currentStep].description}</p>
@@ -305,21 +318,28 @@ export const TroubleshootingWizard: React.FC<TroubleshootingWizardProps> = ({
             </label>
           </div>
 
-          <div className="wizard-navigation">
-            <button
-              onClick={goToPreviousStep}
-              disabled={currentStep === 0}
-              className="nav-button"
-            >
-              Previous
-            </button>
-            <button
-              onClick={goToNextStep}
-              disabled={!completedSteps[currentStep]}
-              className="nav-button"
-            >
-              Next
-            </button>
+          <div className="wizard-footer">
+            <StepIndicator 
+              currentStep={currentStep}
+              totalSteps={platformSteps.length}
+              completedSteps={completedSteps}
+            />
+            <div className="wizard-navigation">
+              <button
+                onClick={goToPreviousStep}
+                disabled={currentStep === 0}
+                className="nav-button"
+              >
+                Previous
+              </button>
+              <button
+                onClick={goToNextStep}
+                disabled={!completedSteps[currentStep]}
+                className="nav-button"
+              >
+                Next
+              </button>
+            </div>
           </div>
         </div>
       ) : (

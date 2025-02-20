@@ -433,10 +433,26 @@ body[data-embed="true"] {
   border-radius: 4px;
 }
 
+.wizard-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding-left: 12px;
+}
+
 .wizard-navigation {
   display: flex;
   gap: 12px;
-  justify-content: flex-end;
 }
 
 .nav-button {
@@ -773,4 +789,29 @@ body[data-embed="true"] {
   border-color: var(--ifm-color-primary);
   color: var(--ifm-color-primary);
   background: var(--ifm-color-emphasis-50);
+}
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ifm-color-emphasis-200);
+  transition: all 0.2s ease;
+}
+
+.step-dot.active {
+  background: var(--ifm-color-primary);
+  transform: scale(1.25);
+}
+
+.step-dot.completed {
+  background: var(--ifm-color-success);
 }
