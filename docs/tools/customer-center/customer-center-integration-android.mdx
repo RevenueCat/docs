@@ -20,6 +20,10 @@ There are only two steps to integrate Customer Center in your app:
 
 ## Integration
 
+:::warning
+Before integrating the Customer Center in Android, you need to add the com.revenuecat.purchases:purchases-ui SDK 8.12.0 or higher to your app. Follow the [RevenueCatUI installation guide](/tools/customer-center/customer-center-installation#native-android-installation) for more information.
+:::
+
 There's a `CustomerCenter` composable that can be used to display the Customer Center. It's intended to be used as a full screen composable so make sure to use it with a `fillMaxSize` modifier:
 
 import usageViewKotlin from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-1.kt";
@@ -47,6 +51,10 @@ Don't forget to add the tag `rc-customer-center` to the offer so that the offer 
 [Learn how to setup promotional offers in Google Play Console here.](/subscription-guidance/subscription-offers/google-play-offers#promotional-offers)
 
 ### Required promotional offers
+
+:::warning Offer changes are not reflected immediately
+Offer changes in Google Play Console are not reflected immediately on the device/emulator. It can take up to 24 hours for the offer changes to be reported by the Play Store on the device/emulator. Cleaning the cache of the Play Store app on the device/emulator can help speed up the process.
+:::
 
 :::warning Offers must be created in Google Play Console
 You need to add the store specific promotional offer ids you want to use for each of your products in the Offers tab of the Customer Center settings. Otherwise, the promotional offer will not be shown to customers.
