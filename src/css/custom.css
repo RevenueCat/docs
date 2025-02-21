@@ -392,7 +392,8 @@ body[data-embed="true"] {
   padding: 24px;
   margin: 24px 0;
   border: 1px solid #ddd;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
     rgba(0, 0, 0, 0.05) 0px 0.5px 0px 0px,
     rgba(0, 0, 0, 0.05) 0px 0px 0px 0.5px;
 }
@@ -822,4 +823,121 @@ html[data-theme="dark"] .troubleshooting-wizard {
 
 .step-dot.completed {
   background: var(--ifm-color-success);
+}
+
+/* Mobile styles for troubleshooting wizard */
+@media (max-width: 768px) {
+  .troubleshooting-wizard {
+    padding: 16px;
+    margin: 16px 0;
+    border-radius: 12px;
+  }
+
+  .wizard-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .platform-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .platform-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .wizard-controls {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .view-mode-toggle {
+    width: 100%;
+    justify-content: stretch;
+    display: flex;
+  }
+
+  .view-mode-button {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 16px;
+  }
+
+  .platform-selector-button {
+    width: 100%;
+  }
+
+  .wizard-navigation {
+    width: 100%;
+  }
+
+  .nav-button {
+    flex: 1;
+    text-align: center;
+  }
+
+  .step-image {
+    width: 100%;
+    margin: 12px 0;
+  }
+
+  .final-step-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .final-step-buttons button {
+    width: 100%;
+  }
+
+  /* Improve list view on mobile */
+  .list-view-step .step-checkbox {
+    padding: 12px;
+  }
+
+  .list-view-step .step-content h3 {
+    font-size: 1rem;
+  }
+
+  .list-view-step .step-content p {
+    font-size: 0.9rem;
+  }
+
+  /* Make step indicators more compact */
+  .step-indicator {
+    gap: 6px;
+    padding-left: 0;
+  }
+
+  .step-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .wizard-footer {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .step-indicator {
+    order: -1; /* Move steps above buttons */
+    width: 100%;
+    justify-content: center;
+    padding-left: 0;
+    margin-bottom: 0; /* Remove bottom margin since we have gap */
+  }
+
+  .wizard-navigation {
+    width: 100%;
+    justify-content: center; /* Center the buttons */
+    gap: 16px; /* Slightly larger gap between buttons */
+  }
+
+  .nav-button {
+    flex: 0 1 auto; /* Don't force buttons to fill width */
+    min-width: 100px; /* Give buttons a minimum width */
+  }
 }
