@@ -4,12 +4,22 @@ sidebar_label: React Native Integration
 slug: customer-center-react-native
 hidden: false
 ---
+## Overview
+
+Customer Center is a self-service UI that can be added to your app to help your customers manage their subscriptions on their own. With it, you can prevent churn with pre-emptive promotional offers, capture actionable customer data with exit feedback prompts, and lower support volumes for common inquiries — all without any help from your support team.
+
+There are only three steps to integrate Customer Center in your app:
+
+1. Installing the RevenueCat UI SDK in your app
+1. Implementing the Customer Center view in your app
+1. Setting up promotional offers in both App Store Connect and Google Play Console
 
 ## Installation
 
 [![Release](https://img.shields.io/github/release/RevenueCat/react-native-purchases.svg?style=flat)](https://github.com/RevenueCat/react-native-purchases/releases)
 
-- Update your `package.json` to include `react-native-purchases-ui`:
+Before integrating the Customer Center in Android, update your `package.json` to include `react-native-purchases-ui` 8.6.0 or higher to your app.
+
 ```json
 {
   "dependencies": {
@@ -26,3 +36,12 @@ Opening the customer center is as simple as:
 ```tsx
 await RevenueCatUI.presentCustomerCenter();
 ```
+
+## Setup promotional offers
+
+Promotional Offers allow developers to apply custom pricing and trials to new customers and to existing and lapsed subscriptions. Unique promotional offers can be assigned to different paths and survey responses in the Customer Center, but first they must be setup in App Store Connect and Google Play Store.
+
+The Customer Center will automatically show offers based on specific user actions. By default we have defined it for cancellations but it can be modified to any of the defined paths. For React Native you are going to have to configure these promotional offers in both Google Play Console and App Store Connect.
+Refer to [configuring Google Play Store promotional offers](/tools/customer-center/customer-center-promo-offers-google) and [configuring App Store Connect promotional offers](/tools/customer-center/customer-center-promo-offers-apple) for detailed instructions.
+
+Learn more about configuring the Customer Center in the [configuration guide](/tools/customer-center/customer-center-configuration).
