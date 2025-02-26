@@ -10,7 +10,7 @@ export const CustomerCenterSDKTable: React.FC = () => {
     {
       name: "purchases-android",
       link: "https://github.com/RevenueCat/purchases-android",
-      version: "8.12.0 and higher",
+      version: "8.12.1 and higher",
     },
     {
       name: "react-native-purchases-ui",

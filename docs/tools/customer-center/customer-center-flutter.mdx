@@ -21,9 +21,5 @@ dependencies:
 Opening the customer center is as simple as:
 
 ```dart
-  static Future<void> presentCustomerCenter() async {
-    await _methodChannel.invokeMethod(
-      'presentCustomerCenter',
-    );
-  }
+  await RevenueCatUI.presentCustomerCenter();
 ```
