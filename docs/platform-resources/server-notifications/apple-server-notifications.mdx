@@ -30,7 +30,7 @@ Enabling this option ensures that all purchases are tracked, even in the case of
 
 New purchases are associated with the [App User ID](/customers/identifying-customers/) that matches the [`appAccountToken`](https://developer.apple.com/documentation/appstoreserverapi/appaccounttoken) field of the transaction. If you are using RevenueCat's SDK to track purchases, we will set the appAccountToken for you. The appAccountToken will **_not_** be set if:
 
-1. You are using something other than a valid UUID for the App User ID (RevenueCat iOS SDK v5.0+ only—previous versions will set the App User ID as the `appAccountToken`)
+1. You are using something other than a valid UUID for the App User ID
 
 2. We receive the notification directly from the store before we receive it from the SDK
 
