@@ -331,9 +331,11 @@ const customersCategory = Category({
       itemsPathPrefix: "tools/customer-center/",
       items: [
         Page({ slug: "customer-center-installation" }),
+        Page({ slug: "customer-center-configuration" }),
         Page({ slug: "customer-center-integration" }),
         Page({ slug: "customer-center-integration-android" }),
-        Page({ slug: "customer-center-configuration" }),
+        Page({ slug: "customer-center-flutter" }),
+        Page({ slug: "customer-center-react-native" }),
       ],
     }),
     Page({ slug: "dashboard-and-metrics/customer-lists" }),

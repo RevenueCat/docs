@@ -1,0 +1,29 @@
+---
+title: Integrating Customer Center on Flutter
+sidebar_label: Flutter Integration
+slug: customer-center-flutter
+hidden: false
+---
+
+## Installation
+
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-flutter.svg?style=flat)](https://github.com/RevenueCat/purchases-flutter/releases)
+
+- Add `purchases-ui-flutter` in your `pubspec.yaml`:
+```yaml
+dependencies:
+  purchases_flutter: <latest version>
+  purchases_ui_flutter: <latest version>
+```
+
+## Integration
+
+Opening the customer center is as simple as:
+
+```dart
+  static Future<void> presentCustomerCenter() async {
+    await _methodChannel.invokeMethod(
+      'presentCustomerCenter',
+    );
+  }
+```
