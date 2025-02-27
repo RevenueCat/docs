@@ -33,61 +33,8 @@ It can be used to allow customers to:
 It can be used to allow developers to:
 
 - Require customers to update their app if they are on an older version before being able to contact your support email
-- Ask customers to provide the reason for their cancellation or refund request
-- Automatically provide promo offers to retain customers
-
-### Getting Started
-
-To use Customer Center, simply:
-
-1. [Install](/tools/customer-center/customer-center-installation) the RevenueCat UI SDK:
-
-import CustomerCenterSDKTable from '@site/src/components/CustomerCenter/CustomerCenterSDKTable';
-
-<CustomerCenterSDKTable />
-
-2. [Integrate](/tools/customer-center/customer-center-integration) the Customer Center into your app
-
-3. [Configure](/tools/customer-center/customer-center-configuration) the Customer Center on the Dashboard
-
-## Limitations
-
-### Platforms (support for more coming)
-
-- ✅ iOS 15.0 and higher
-- ✅ Mac Catalyst 15.0 and higher
-- ✅ Android 7.0 (API level 24)
-- ❌ macOS
-- ❌ tvOS
-- ❌ watchOS
-- ❌ visionOS
-
-## Concepts
-
-### Management options
-
-There are 4 main management options that customers can choose from. Today we support:
-
-- Cancellation
-- Missing Purchases
-- Refund Request (iOS only)
-- Plan Changes (iOS only)
-
-When a customer initially opens the Customer Center, these are the main options they'll see to select from.
-
-![Customer Center Paths](/images/customer-center/paths.png)
-
-### Feedback surveys
-
-Any management option can have a custom feedback survey attached to it with a question & answers that you define. You might use a survey simply to understand why a customer selected a given path (e.g. why they're looking to cancel), or you may use a survey to motivate them to change their mind with a compelling promotional offer. [Learn more about configuring feedback surveys.](https://www.revenuecat.com/docs/tools/customer-center/customer-center-configuration)
-
-![Customer Center Cancellation](/images/customer-center/cancel-subscription.png)
-
-### Promotional offers
-
-Promotional offers are attachable to particular feedback survey options and to paths. We think you might be able to reduce churn if you capture customers who are looking for a way to make changes to their subscription if you offer them a discount at that exact time.
-
-![Customer Center Promotional Offer](/images/customer-center-promo-offer.png)
+- Ask customers to provide the reason for their cancellation or refund request (see [Configuring feedback prompts](/tools/customer-center/customer-center-configuration#feedback-prompts-1) for more details)
+- Automatically provide promo offers to retain customers (see [Configuring promo offers](/tools/customer-center/customer-center-configuration#promotional-offers-1) for more details)
 
 ## Next steps
 

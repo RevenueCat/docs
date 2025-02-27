@@ -4,12 +4,17 @@ sidebar_label: Flutter Integration
 slug: customer-center-flutter
 hidden: false
 ---
+import { sdkVersions } from '@site/src/components/CustomerCenter/CustomerCenterSDKTable';
+import OverviewPartial from './_customer-center-installation-overview.mdx';
+
+<OverviewPartial />
 
 ## Installation
 
 [![Release](https://img.shields.io/github/release/RevenueCat/purchases-flutter.svg?style=flat)](https://github.com/RevenueCat/purchases-flutter/releases)
 
-- Add `purchases-ui-flutter` in your `pubspec.yaml`:
+Before integrating the Customer Center in Flutter, add `purchases_ui_flutter` <code>{sdkVersions.flutter}</code> or higher in your `pubspec.yaml`:
+
 ```yaml
 dependencies:
   purchases_flutter: <latest version>
@@ -23,3 +28,12 @@ Opening the customer center is as simple as:
 ```dart
   await RevenueCatUI.presentCustomerCenter();
 ```
+
+## Setup promotional offers
+
+Promotional Offers allow developers to apply custom pricing and trials to new customers and to existing and lapsed subscriptions. Unique promotional offers can be assigned to different paths and survey responses in the Customer Center, but first they must be setup in App Store Connect and Google Play Store.
+
+The Customer Center will automatically show offers based on specific user actions. By default we have defined it for cancellations but it can be modified to any of the defined paths. For Flutter you are going to have to configure these promotional offers in both Google Play Console and App Store Connect.
+Refer to [configuring Google Play Store promotional offers](/tools/customer-center/customer-center-promo-offers-google) and [configuring App Store Connect promotional offers](/tools/customer-center/customer-center-promo-offers-apple) for detailed instructions.
+
+Learn more about configuring the Customer Center in the [configuration guide](/tools/customer-center/customer-center-configuration).
