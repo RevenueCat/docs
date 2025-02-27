@@ -4,6 +4,7 @@ sidebar_label: Android Integration
 slug: customer-center-integration-android
 hidden: false
 ---
+import { sdkVersions } from '@site/src/components/CustomerCenter/CustomerCenterSDKTable';
 
 import YouTubeEmbed from '@site/src/components/YouTubeEmbed';
 
@@ -23,7 +24,7 @@ There are only two steps to integrate Customer Center in your app:
 
 [![Release](https://img.shields.io/github/release/RevenueCat/purchases-android.svg?style=flat)](https://github.com/RevenueCat/purchases-android/releases)
 
-Before integrating the Customer Center in Android, you need to add the com.revenuecat.purchases:purchases-ui SDK 8.12.1 or higher to your app.
+Before integrating the Customer Center in Android, you need to add the `com.revenuecat.purchases:purchases-ui` SDK <code>{sdkVersions.android}</code> or higher to your app.
 
 ```groovy build.gradle
 implementation 'com.revenuecat.purchases:purchases:<latest version>'

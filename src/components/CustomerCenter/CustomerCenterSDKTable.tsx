@@ -1,30 +1,37 @@
 import React from "react";
 
+export const sdkVersions = {
+  ios: "5.14.0",
+  android: "8.12.2",
+  reactNative: "8.6.0",
+  flutter: "8.7.0",
+};
+
 export const CustomerCenterSDKTable: React.FC = () => {
   const sdkData = [
     {
       name: "Native iOS",
       sdk: "RevenueCatUI",
       link: "https://github.com/RevenueCat/purchases-ios",
-      version: "5.14.0 and higher",
+      version: `${sdkVersions.ios} and higher`,
     },
     {
       name: "Native Android",
       sdk: "com.revenuecat.purchases:purchases-ui",
       link: "https://github.com/RevenueCat/purchases-android",
-      version: "8.12.1 and higher",
+      version: `${sdkVersions.android} and higher`,
     },
     {
       name: "React Native",
       sdk: "react-native-purchases-ui",
       link: "https://github.com/RevenueCat/react-native-purchases",
-      version: "8.6.0 and higher",
+      version: `${sdkVersions.reactNative} and higher`,
     },
     {
       name: "Flutter",
       sdk: "purchases_ui_flutter",
       link: "https://github.com/RevenueCat/purchases-flutter",
-      version: "8.7.0 and higher",
+      version: `${sdkVersions.flutter} and higher`,
     },
     {
       name: "Kotlin Multiplatform",

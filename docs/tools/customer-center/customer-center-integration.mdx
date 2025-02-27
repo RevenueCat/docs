@@ -5,6 +5,8 @@ slug: customer-center-integration
 hidden: false
 ---
 
+import { sdkVersions } from '@site/src/components/CustomerCenter/CustomerCenterSDKTable';
+
 import YouTubeEmbed from '@site/src/components/YouTubeEmbed';
 
 <YouTubeEmbed videoId="yraB5gQCUPE" title="Integrating the Customer Center" />
@@ -23,7 +25,7 @@ There are only three steps to integrate Customer Center in your app:
 
 [![Release](https://img.shields.io/github/release/RevenueCat/purchases-ios.svg?style=flat)](https://github.com/RevenueCat/purchases-ios/releases)
 
-Before integrating the Customer Center in iOS, you need to add the RevenueCatUI SDK 5.14.0 or higher to your app.
+Before integrating the Customer Center in iOS, you need to add the RevenueCatUI SDK <code>{sdkVersions.ios}</code> or higher to your app.
 
 ### Using SPM
 
@@ -33,7 +35,7 @@ Before integrating the Customer Center in iOS, you need to add the RevenueCatUI 
 
 ![Change version](https://github.com/RevenueCat/purchases-ios/assets/685609/d317fd33-8270-4d9b-9b38-8f5f14342b04)
 
-2. Double-click and make sure version is at least `5.14.0`:
+2. Double-click and make sure version is at least <code>{sdkVersions.ios}</code>:
 
 ![Configure version](https://github.com/RevenueCat/purchases-ios/assets/685609/f537a1e1-a1ab-4e6f-986c-05abdcf1dd9f)
 
@@ -49,7 +51,7 @@ Before integrating the Customer Center in iOS, you need to add the RevenueCatUI 
 
 1. Click File -> Add Packages...
 
-2. Search for `git@github.com:RevenueCat/purchases-ios.git` and make sure version is at least `5.14.0`:
+2. Search for `git@github.com:RevenueCat/purchases-ios.git` and make sure version is at least <code>{sdkVersions.ios}</code>:
 
 ![Adding purchases-ios dependency](https://github.com/RevenueCat/purchases-ios/assets/685609/18291043-5710-4944-ba12-7d6d83bde240)
 

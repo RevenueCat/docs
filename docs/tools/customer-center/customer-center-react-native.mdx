@@ -4,6 +4,8 @@ sidebar_label: React Native Integration
 slug: customer-center-react-native
 hidden: false
 ---
+import { sdkVersions } from '@site/src/components/CustomerCenter/CustomerCenterSDKTable';
+
 ## Overview
 
 Customer Center is a self-service UI that can be added to your app to help your customers manage their subscriptions on their own. With it, you can prevent churn with pre-emptive promotional offers, capture actionable customer data with exit feedback prompts, and lower support volumes for common inquiries — all without any help from your support team.
@@ -18,7 +20,7 @@ There are only three steps to integrate Customer Center in your app:
 
 [![Release](https://img.shields.io/github/release/RevenueCat/react-native-purchases.svg?style=flat)](https://github.com/RevenueCat/react-native-purchases/releases)
 
-Before integrating the Customer Center in React Native, update your `package.json` to include `react-native-purchases-ui` 8.6.0 or higher to your app.
+Before integrating the Customer Center in React Native, update your `package.json` to include `react-native-purchases-ui` <code>{sdkVersions.reactNative}</code> or higher to your app.
 
 ```json
 {
