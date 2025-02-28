@@ -5,10 +5,6 @@ excerpt: Allow customers to purchase products and subscriptions on the web and s
 hidden: false
 ---
 
-:::warning Beta Feature
-Web Billing (formerly RevenueCat Billing) and the RevenueCat Web SDK are currently in beta.
-:::
-
 ## Overview
 
 Redemption Links are one-time-use deep links generated after a customer completes a web purchase. These links allow customers to associate their web purchase with their account in your app. By tapping the link, customers are redirected into the app where the purchase is automatically linked to their App User ID, granting them access to the associated entitlements.
@@ -182,9 +178,7 @@ Once you have the deep link, you can use the following snippet to perform the re
 import kmpRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_kmp.kt";
 
 <RCCodeBlock
-  tabs={[
-    { type: "kotlin", title: "KMP Redemption", content: kmpRedemption },
-  ]}
+  tabs={[{ type: "kotlin", title: "KMP Redemption", content: kmpRedemption }]}
 />
 
 ##### Capacitor
@@ -197,7 +191,11 @@ import capacitorRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/
 
 <RCCodeBlock
   tabs={[
-    { type: "typescript", title: "Capacitor Redemption", content: capacitorRedemption },
+    {
+      type: "typescript",
+      title: "Capacitor Redemption",
+      content: capacitorRedemption,
+    },
   ]}
 />
 
