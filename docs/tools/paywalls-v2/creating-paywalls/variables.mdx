@@ -57,3 +57,9 @@ The paywall preview is generated using our example values for each package liste
 
 To see a more accurate preview, we recommend running your application on your physical device or in the simulator, as this will present details based on the actual information for the products you're displaying on that device.
 :::
+
+## FAQs
+
+| Question     | Answer  |
+| ------------------ | ------------------|
+| How is the `product.relative_discount` variable calculated? |  `relative_discount` returns the localized discount percentage of a given package compared to the most expensive package per period that's offered on your paywall. For example, if you're displaying a monthly package that is $10/month, and a yearly package that is $80/year (or $6.67/month), the relative discount for the annual package is 67%. Because of this, we recommend only using this variable within packages that are NOT the most expensive package per period, as the most expensive package will have a null value returned, since its relative discount is null. |

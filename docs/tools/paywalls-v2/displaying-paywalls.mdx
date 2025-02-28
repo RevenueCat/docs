@@ -12,7 +12,7 @@ These docs refer to our beta of Paywalls v2. For our original Paywalls, [click h
 
 ### iOS
 
-RevenueCat Paywalls v2 will show paywalls fullscreen, and there are multiple ways to do this with SwiftUI and UIKit.
+RevenueCat Paywalls v2 will show paywalls fullscreen on iPhone, and there are multiple ways to do this with SwiftUI and UIKit.
 
 - Depending on an entitlement with `presentPaywallIfNeeded`
 - Custom logic with `presentPaywallIfNeeded`
@@ -52,6 +52,11 @@ import objc5 from "!!raw-loader!@site/code_blocks/tools/paywalls_5.m";
     },
 
 ]}/>
+
+#### Paywalls on iPad
+When using `presentPaywallIfNeeded` to display a paywall on iPad, we'll automatically show a paywall in a modal that is roughly iPhone sized. If instead you prefer to show a paywall that is full screen on iPad, you can use the `PaywallView` or `PaywallViewController` methods instead.
+
+![Paywalls on iPad](/images/paywalls-on-ipad.png)
 
 ### Android
 
