@@ -331,9 +331,24 @@ const customersCategory = Category({
       itemsPathPrefix: "tools/customer-center/",
       items: [
         Page({ slug: "customer-center-installation" }),
-        Page({ slug: "customer-center-integration" }),
-        Page({ slug: "customer-center-integration-android" }),
-        Page({ slug: "customer-center-configuration" }),
+        SubCategory({
+          label: "Configuration",
+          slug: "customer-center-configuration",
+          items: [
+            Page({ slug: "customer-center-promo-offers-apple" }),
+            Page({ slug: "customer-center-promo-offers-google" }),
+          ],
+        }),
+        SubCategory({
+          label: "Integration",
+          slug: "customer-center-integration",
+          items: [
+            Page({ slug: "customer-center-integration" }),
+            Page({ slug: "customer-center-integration-android" }),
+            Page({ slug: "customer-center-flutter" }),
+            Page({ slug: "customer-center-react-native" }),
+          ],
+        }),
       ],
     }),
     Page({ slug: "dashboard-and-metrics/customer-lists" }),
