@@ -4834,19 +4834,18 @@ components:
           type: integer
           example: 1658399423658
         active_entitlements:
-          description: List of the entitlements currently active for the customer.
-            This property is only available in the "Get a customer" endpoint.
-          nullable: true
-          $ref: '#/components/schemas/ListCustomerActiveEntitlements'
+          allOf:
+            - description: List of the entitlements currently active for the customer. This property is only available in the "Get a customer" endpoint.
+              nullable: true
+            - $ref: '#/components/schemas/ListCustomerActiveEntitlements'
         experiment:
-          description: The experiment enrollment object
           nullable: true
           $ref: '#/components/schemas/ExperimentEnrollment'
         attributes:
-          description: List of the attributes of the customer. This is an expandable
-            property, only available in the "Get a customer" endpoint.
-          nullable: true
-          $ref: '#/components/schemas/ListCustomerAttributes'
+          allOf:
+            - description: List of the attributes of the customer. This is an expandable property, only available in the "Get a customer" endpoint.
+              nullable: true
+            - $ref: '#/components/schemas/ListCustomerAttributes'
     CustomerAlias:
       type: object
       required:
