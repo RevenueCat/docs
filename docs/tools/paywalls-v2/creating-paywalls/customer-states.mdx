@@ -1,0 +1,52 @@
+---
+title: Designing for other customer states
+slug: customer-states
+hidden: false
+---
+
+# Designing for other customer states
+
+Customers may use your paywall in many different states -- such as in dark mode, or while eligible for an introductory offer -- and these states may benefit from having their own configured properties to make your paywall work best in each situation.
+
+## Light mode / dark mode
+
+Paywalls are configured for light mode by default, but if your app supports dark mode you can additionally configure colors and images to be used for dark mode.
+
+To configure your paywall for dark mode:
+
+1. Click on `Light mode` in the settings above the paywall preview
+2. Click `Dark mode` in the dropdown to preview & edit your paywall in dark mode
+3. While in dark mode, all configurable elements (colors & images) will display the moon icon next to them instead of the sun icon.
+
+![Dark mode icons](/images/paywalls-dark-mode.png)
+
+:::tip
+You can also click the sun/moon icon to switch between light and dark mode as you're working with each property.
+:::
+
+## Intro offer eligibility
+
+All text fields can be configured to have unique strings based on whether the customer viewing the paywall is or is not eligible for an introductory offer.
+
+To configure a custom string for a text component based on intro offer eligibility:
+
+1. Click on the text component in the Layers panel you'd like to configure
+2. Click the `+` icon next to `Text field for an introductory offer` to expand that property and enter a custom string
+
+:::tip Play Store Offers
+On the Play Store, customers may be presented multiple offers to begin their subscription. If that's the case for your app, use the `Play Store only: Text field for multiple introductory offers` property to configure a custom string for those customers, and consider using the secondary offer variables to reference the correct price and duration of the second offer if needed.
+:::
+
+## Selected state of packages
+
+When multiple packages are offered to a customer, one will be selected by default, and they may optionally select any of the other packages to purchase before tapping the purchase button. Your paywall should style the selected state and the default state of the package uniquely to make it clear to the customer which one is currently selected, such as by including a unique icon within the package, differentiating the border color or background color, etc.
+
+To configure the selected state of each package:
+
+1. Click on the package component in the Layers panel you'd like to configure
+2. Click on the `Selected` tab at the top of that package's properties panel
+3. While on the selected tab, all changes to any properties will only apply to the selected state of that component
+
+![Selected state](/images/paywalls-selected-state.png)
+
+Any changes you make to the default state of the package will also apply to the selected state unless you've manually set that property's selected state to something else. In other words, when you change properties like margin & padding on the default state, we'll apply that to the selected state too so you don't need to make the same changes twice; and when you update the border color of the selected state, we won't overwrite that if you update the border of the default state later on.

@@ -15,6 +15,7 @@ With our Apple Search Ads integration you can:
 - Filter and segment RevenueCat charts by Apple Search Ads campaigns or ad groups.
 
 Collecting Apple Search Ads data is a two part process:
+
 1. You must collect the user's attribution token and send it to RevenueCat
 2. With this token, RevenueCat will request attribution data from Apple directly within a 24 hour period
 
@@ -98,13 +99,15 @@ import flutterContent from "!!raw-loader!@site/code_blocks/integrations/attribut
 import reactNativeContent from "!!raw-loader!@site/code_blocks/integrations/attribution/apple-search-ads_4.js";
 import cordovaContent from "!!raw-loader!@site/code_blocks/integrations/attribution/apple-search-ads_5.js";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent },
-    { type: 'objc', content: objectiveCContent },
-    { type: 'flutter', content: flutterContent },
-    { type: 'rn', content: reactNativeContent },
-    { type: 'cordova', content: cordovaContent }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent },
+    { type: "objc", content: objectiveCContent },
+    { type: "flutter", content: flutterContent },
+    { type: "rn", content: reactNativeContent },
+    { type: "cordova", content: cordovaContent },
+  ]}
+/>
 
 That's it! The Purchases SDK will collect the attribution token and send it to RevenueCat in the background.
 
@@ -118,7 +121,7 @@ To request consent from a user, implement the `requestTrackingAuthorization` met
 
 import swiftContent2 from "!!raw-loader!@site/code_blocks/integrations/attribution/apple-search-ads_6.swift";
 
-<RCCodeBlock tabs={[{ type: 'swift', content: swiftContent2 }]} />
+<RCCodeBlock tabs={[{ type: "swift", content: swiftContent2 }]} />
 
 After automatic collection is enabled, Purchases will sync the attribution token with the RevenueCat backend. Please note that if you enable automatic collection _before_ requesting authorization, the attribution token will only be valid for Standard and not Detailed attribution data.
 

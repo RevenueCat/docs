@@ -4,7 +4,8 @@ slug: making-purchases
 excerpt: Process a transaction with Apple or Google
 hidden: false
 ---
-The SDK has a simple method, `purchase(package:)`, that takes a package from the fetched Offering and purchases the underlying product with Apple, Google, or Amazon. 
+
+The SDK has a simple method, `purchase(package:)`, that takes a package from the fetched Offering and purchases the underlying product with Apple, Google, or Amazon.
 
 import swiftContent1 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_1.swift";
 import objectiveCContent2 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_2.m";
@@ -15,37 +16,44 @@ import reactNativeContent6 from "!!raw-loader!@site/code_blocks/getting-started/
 import cordovaContent7 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_7.js";
 import capacitorContent8 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_capacitor.ts";
 import unityContent9 from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_8.cs";
-import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
+import webBillingContent from "!!raw-loader!@site/code_blocks/_projects/web-billing/web-billing-doc-snippets.ts";
 import kmpContent from "!!raw-loader!@site/code_blocks/getting-started/making-purchases_kmp_1.kts";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: swiftContent1 },
-    { type: 'objc', content: objectiveCContent2 },
-    { type: 'kotlin', content: kotlinContent3 },
-    { type: 'kotlin', content: kmpContent, name: 'Kotlin Multiplatform' },
-    { type: 'java', content: javaContent4 },
-    { type: 'flutter', content: flutterContent5 },
-    { type: 'rn', content: reactNativeContent6 },
-    { type: 'cordova', content: cordovaContent7 },
-    { type: 'capacitor', content: capacitorContent8 },
-    { type: 'unity', content: unityContent9 },
-    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)" , region: "Purchasing package"},
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent1 },
+    { type: "objc", content: objectiveCContent2 },
+    { type: "kotlin", content: kotlinContent3 },
+    { type: "kotlin", content: kmpContent, name: "Kotlin Multiplatform" },
+    { type: "java", content: javaContent4 },
+    { type: "flutter", content: flutterContent5 },
+    { type: "rn", content: reactNativeContent6 },
+    { type: "cordova", content: cordovaContent7 },
+    { type: "capacitor", content: capacitorContent8 },
+    { type: "unity", content: unityContent9 },
+    {
+      type: "ts",
+      content: webBillingContent,
+      name: "Web (JS/TS)",
+      region: "Purchasing package",
+    },
+  ]}
+/>
 
 The `purchase(package:)` completion block will contain an updated [CustomerInfo](/customers/customer-info) object if successful, along with some details about the transaction.
 
 If the `error` object is present, then the purchase failed. See our guide on [Error Handling](/test-and-launch/errors) for the specific error types.
 
-The `userCancelled` boolean is a helper for handling user cancellation errors. There will still be an error object if the user cancels, but you can optionally check the boolean instead of unwrapping the error completely. 
+The `userCancelled` boolean is a helper for handling user cancellation errors. There will still be an error object if the user cancels, but you can optionally check the boolean instead of unwrapping the error completely.
 
 :::info RevenueCat automatically finishes/acknowledges/consumes transactions
-Transactions (new and previous transactions that are synced) will be automatically completed (finished on iOS, acknowledged and consumed in Android), and will be made available through the RevenueCat SDK / Dashboard / ETL Exports. 
+Transactions (new and previous transactions that are synced) will be automatically completed (finished on iOS, acknowledged and consumed in Android), and will be made available through the RevenueCat SDK / Dashboard / ETL Exports.
 
 If you are migrating an existing app to RevenueCat and want to continue using your own in-app purchase logic, you can tell the SDK that [your app is completing transactions](/migrating-to-revenuecat/sdk-or-not/finishing-transactions) if you don't wish to have transactions completed automatically, but you will have to make sure that you complete them yourself.
 :::
 
 ## Next Steps
 
-* Don't forget to provide some way for customers to [restore their purchases](/getting-started/restoring-purchases)
-* With purchases coming through, make sure they're [linked to the correct app user ID](/customers/user-ids)
-* If you're ready to test, start with our guides on [sandbox testing](/test-and-launch/sandbox)
+- Don't forget to provide some way for customers to [restore their purchases](/getting-started/restoring-purchases)
+- With purchases coming through, make sure they're [linked to the correct app user ID](/customers/user-ids)
+- If you're ready to test, start with our guides on [sandbox testing](/test-and-launch/sandbox)

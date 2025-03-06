@@ -3,6 +3,7 @@ title: iOS App Extensions
 slug: ios-app-extensions
 hidden: false
 ---
+
 [App Extensions](https://developer.apple.com/app-extensions/) in iOS are an important component of the iOS ecosystem that are supported by RevenueCat. The most popular use of App Extensions for subscription apps are Today Widgets and iMessage apps.
 
 :::warning Purchases aren't allowed on extensions
@@ -17,8 +18,10 @@ After you enable app groups, you will be able to access a user's active subscrip
 
 import iosAppExtensionsSwiftContent from "!!raw-loader!@site/code_blocks/getting-started/configuring-sdk/ios-app-extensions_1.swift";
 
-<RCCodeBlock tabs={[
-    { type: 'swift', content: iosAppExtensionsSwiftContent, name: 'Swift' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: iosAppExtensionsSwiftContent, name: "Swift" },
+  ]}
+/>
 
 Now the app extension and parent app can both use the a shared UserDefaults suite.

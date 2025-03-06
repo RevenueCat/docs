@@ -4,17 +4,21 @@ slug: unity
 excerpt: Instructions for installing Purchases SDK for Unity
 hidden: false
 ---
+
 ## What is RevenueCat?
 
 RevenueCat provides a backend and a wrapper around StoreKit and Google Play Billing to make implementing in-app purchases and subscriptions easy. With our SDK, you can build and manage your app business on any platform without having to maintain IAP infrastructure. You can read more about [how RevenueCat fits into your app](https://www.revenuecat.com/blog/where-does-revenuecat-fit-in-your-app) or you can [sign up free](https://app.revenuecat.com/signup) to start building.
 
 ## Installation
 
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-unity.svg?style=flat)](https://github.com/RevenueCat/purchases-unity/releases)
+
 We provide 2 ways to install our SDK: via Unity Package Manager (UPM) in the OpenUPM registry, or as a `.unitypackage`.
 
 ### Option 1 (recommended): Install using OpenUPM
-  
+
 1. First you need to import the [EDM4U](https://github.com/googlesamples/unity-jar-resolver) plugin into your project if you haven't already. This plugin will add all the Android and iOS dependencies automatically when building your project. To do this, you can:
+
    - Download the `external-dependency-manager-latest.unitypackage` file from the root of the [EDM4U](https://github.com/googlesamples/unity-jar-resolver) repo.
    - [Import](https://docs.unity3d.com/Manual/AssetPackagesImport.html) the downloaded `unitypackage` to your project.
 
@@ -56,7 +60,7 @@ The Purchases package will include a MonoBehavior called Purchases. This will be
 
 ### Link StoreKit (iOS only)
 
-`StoreKit` should automatically be linked. If you run into any issues, add *StoreKit.framework* to *Linked Frameworks and Libraries* in Xcode.
+`StoreKit` should automatically be linked. If you run into any issues, add _StoreKit.framework_ to _Linked Frameworks and Libraries_ in Xcode.
 
 ### Set the correct launchMode (Android only)
 
@@ -64,9 +68,11 @@ Depending on your user's payment method, they may be asked by Google Play to ver
 
 import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_launchmode.xml";
 
-<RCCodeBlock tabs={[
-    { type: 'xml', content: launchModeContent, name: 'AndroidManifest.xml' }
-]} />
+<RCCodeBlock
+  tabs={[
+    { type: "xml", content: launchModeContent, name: "AndroidManifest.xml" },
+  ]}
+/>
 
 You can find Android's documentation on the various `launchMode` options [here](https://developer.android.com/guide/topics/manifest/activity-element#lmode).
 
@@ -76,9 +82,9 @@ The Purchases behavior takes one additional parameter, a GameObject with a Purch
 
 import unityCSharpContent from "!!raw-loader!@site/code_blocks/getting-started/installation/unity_1.cs";
 
-<RCCodeBlock tabs={[
-    { type: 'unity', content: unityCSharpContent, name: 'Unity' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "unity", content: unityCSharpContent, name: "Unity" }]}
+/>
 
 ## Unity Editor
 
@@ -120,15 +126,15 @@ Modify the `mainTemplate.gradle` to include the following at the end of the depe
 
 import unityGroovyContent from "!!raw-loader!@site/code_blocks/getting-started/installation/unity_2.groovy";
 
-<RCCodeBlock tabs={[
-    { type: 'groovy', content: unityGroovyContent, name: 'Groovy' }
-]} />
+<RCCodeBlock
+  tabs={[{ type: "groovy", content: unityGroovyContent, name: "Groovy" }]}
+/>
 
-Perform a clean up of the resolved dependencies using the `Assets/External Dependency Manager/Android Resolver/Delete Resolved Libraries` menu. This will cleanup the previously downloaded .aars in `Assets/Plugins/Android`. Otherwise you could end up with duplicated classes errors. 
+Perform a clean up of the resolved dependencies using the `Assets/External Dependency Manager/Android Resolver/Delete Resolved Libraries` menu. This will cleanup the previously downloaded .aars in `Assets/Plugins/Android`. Otherwise you could end up with duplicated classes errors.
 
 Also make sure to perform a resolve, so External Dependency Manager adds the right dependencies to the generated `build.gradle`.
 
-:::danger 
+:::danger
 The above instructions will also apply if using other plugin that includes the Android InAppBillingService class, or for some other reason you get an error regarding duplicated classes.
 :::
 
@@ -154,7 +160,7 @@ Download `Purchases-UnityIAP.unityPackage` and install as normal. Skip the rest 
 
 **side by side with Unity IAP 3.3.0 < 4.4.0**
 
-Download `Purchases-UnityIAP.unityPackage` and install as normal. Skip the rest of the instructions in this page. 
+Download `Purchases-UnityIAP.unityPackage` and install as normal. Skip the rest of the instructions in this page.
 
 ### Completing Transactions with your own IAP Code
 
@@ -176,4 +182,4 @@ On Android, RevenueCat **will not** consume or acknowledge any purchase if [you 
 
 ## Next Steps
 
-* Now that you've installed the Purchases SDK in your Unity app, get started [building with Purchases →](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)
+- Now that you've installed the Purchases SDK in your Unity app, get started [building with Purchases →](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)

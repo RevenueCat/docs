@@ -1,0 +1,45 @@
+---
+title: Integrating Customer Center on Android
+sidebar_label: Android Integration
+slug: customer-center-integration-android
+hidden: false
+---
+import { sdkVersions } from '@site/src/components/CustomerCenter/CustomerCenterSDKTable';
+
+import YouTubeEmbed from '@site/src/components/YouTubeEmbed';
+import OverviewPartial from './_customer-center-installation-overview.mdx';
+
+<YouTubeEmbed videoId="yraB5gQCUPE" title="Integrating the Customer Center" />
+
+<OverviewPartial />
+
+## Installation
+
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-android.svg?style=flat)](https://github.com/RevenueCat/purchases-android/releases)
+
+Before integrating the Customer Center in Android, you need to add the `com.revenuecat.purchases:purchases-ui` SDK <code>{sdkVersions.android}</code> or higher to your app.
+
+```groovy build.gradle
+implementation 'com.revenuecat.purchases:purchases:<latest version>'
+implementation 'com.revenuecat.purchases:purchases-ui:<latest version>'
+```
+
+## Integration
+There's a `CustomerCenter` composable that can be used to display the Customer Center. It's intended to be used as a full screen composable so make sure to use it with a `fillMaxSize` modifier:
+
+import usageViewKotlin from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-1.kt";
+
+<RCCodeBlock
+  tabs={[
+    { type: "kotlin", content: usageViewKotlin, name: "Kotlin" },
+  ]}
+/>
+
+## Setup promotional offers
+
+Promotional Offers allow developers to apply custom pricing and trials to new customers and to existing and lapsed subscriptions. Unique promotional offers can be assigned to different paths and survey responses in the Customer Center, but first they must be setup in Google Play Console.
+
+The Customer Center will automatically show offers based on specific user actions. By default we have defined it for cancellations but it can be modified to any of the defined paths. Refer to [configuring Google Play Store promotional offers](/tools/customer-center/customer-center-promo-offers-google) for detailed instructions.
+
+Learn more about configuring the Customer Center in the [configuration guide](/tools/customer-center/customer-center-configuration).
+

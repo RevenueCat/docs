@@ -46,10 +46,12 @@ We do not take your location as a developer into account when estimating taxes t
 ### Calculating taxes for the mobile stores
 
 The App Store, Google Play Store, and Amazon Appstore stores appear to charge both [Value-Added Tax](<https://taxfoundation.org/tax-basics/value-added-tax-vat/#:~:text=A%20Value%2DAdded%20Tax%20(VAT)%20is%20a%20consumption%20tax,a%20tax%20on%20final%20consumption.>) (VAT) and the [digital services taxes](https://taxfoundation.org/digital-tax-europe-2020/) (DST) that have been put in place by several countries. However, they do not apply identical tax rates for each country, so we:
+
 1. Find the proceeds quoted by the store for a given price in a given country
 2. Use that to determine the tax rate being charged to yield proceeds
 
 To then calculate the portion of a given transaction that was deducted for taxes, we:
+
 1. Use the found tax rate to determine what was deducted from the customer price due to taxes: `price / (1 + [tax rate]) = [amount deducted for taxes]`
 2. Divide the amount deducted due to taxes from the customer price to get the `tax_percentage` that's provided in events, used to calculate Charts, etc: `[amount deducted for taxes] / price = tax_percentage`
 

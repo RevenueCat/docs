@@ -23,7 +23,7 @@ You must first verify your email address with us in order to receive Experiment 
 
 ## What will be included in my Experiment Results Summaries?
 
-We'll send you an email for each experiment you've had running in the last week in the Projects that you've subcribed to receive these summaries for. It will include the latest results for the experiment, focused on the following key metrics.
+We'll send you an email for each experiment you've had running in the last week in the Projects that you've subscribed to receive these summaries for. It will include the latest results for the experiment, focused on the following key metrics.
 
 | Metric                    | Definition                                                                                                                                                                                         |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

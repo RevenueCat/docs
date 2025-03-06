@@ -21,26 +21,29 @@ Apple recommends registering an `SKPaymentTransactionObserver` as soon as the ap
 
 **SwiftyStoreKit:**
 
-
 import ssk_1 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/swiftystorekit_1.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: ssk_1,
-    }
-]}/>
+      type: "swift",
+      content: ssk_1,
+    },
+  ]}
+/>
 
 **RevenueCat:**
 
 import ssk_2 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/swiftystorekit_2.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: ssk_2,
-    }
-]}/>
+      type: "swift",
+      content: ssk_2,
+    },
+  ]}
+/>
 
 **Migration Steps:**
 Remove the SwiftyStoreKit `completeTransactions()` method, and replace it with the _Purchases SDK_ `configure()` method.
@@ -55,23 +58,27 @@ Remove the SwiftyStoreKit `completeTransactions()` method, and replace it with t
 
 import ssk_3 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/swiftystorekit_3.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: ssk_3,
-    }
-]}/>
+      type: "swift",
+      content: ssk_3,
+    },
+  ]}
+/>
 
 **RevenueCat:**
 
 import ssk_4 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/swiftystorekit_4.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: ssk_4,
-    }
-]}/>
+      type: "swift",
+      content: ssk_4,
+    },
+  ]}
+/>
 
 **Migration Steps:**
 In RevenueCat, Offerings are [configured in the dashboard](/getting-started/entitlements), and mapped to `SKProduct`s. Once you setup your products in RevenueCat, replace `retrieveProductsInfo()` in SwiftyStoreKit with `offerings()` in _Purchases SDK_.
@@ -84,23 +91,27 @@ Products are automatically fetched and cached when the _Purchases SDK_ is config
 
 import ssk_5 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/swiftystorekit_5.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: ssk_5,
-    }
-]}/>
+      type: "swift",
+      content: ssk_5,
+    },
+  ]}
+/>
 
 **RevenueCat:**
 
 import ssk_6 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/swiftystorekit_6.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: ssk_6,
-    }
-]}/>
+      type: "swift",
+      content: ssk_6,
+    },
+  ]}
+/>
 
 **Migration Steps:**
 In SwiftyStoreKit, purchases can be initiated from a product Id or an `SKProduct`. In _Purchases SDK_ the preferred method is to provide a package to purchase. Replace the `purchaseProduct()` method in SwiftyStoreKit with `purchase(package:)`, and pass the package that was included with the RevenueCat Offering.
@@ -115,23 +126,27 @@ To check if the subscription has been successfully activated, check if the `cust
 
 import ssk_7 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/swiftystorekit_7.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: ssk_7,
-    }
-]}/>
+      type: "swift",
+      content: ssk_7,
+    },
+  ]}
+/>
 
 **RevenueCat:**
 
 import ssk_8 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/swiftystorekit_8.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: ssk_8,
-    }
-]}/>
+      type: "swift",
+      content: ssk_8,
+    },
+  ]}
+/>
 
 **Migration Steps:**
 RevenueCat handles purchases initiated through the App Store with an optional delegate method. Replace the `shouldAddStorePaymentHandler` in SwiftyStoreKit with the `shouldPurchasePromoProduct` in _Purchases SDK_.
@@ -144,23 +159,27 @@ With _Purchases SDK_ you have the option of deferring the purchase until a later
 
 import ssk_9 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/swiftystorekit_9.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: ssk_9,
-    }
-]}/>
+      type: "swift",
+      content: ssk_9,
+    },
+  ]}
+/>
 
 **RevenueCat:**
 
 import ssk_10 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/swiftystorekit_10.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: ssk_10,
-    }
-]}/>
+      type: "swift",
+      content: ssk_10,
+    },
+  ]}
+/>
 
 **Migration Steps:**
 The _Purchases SDK_ has a similar method to SwiftyStoreKit to restore transactions - replace `restorePurchases()` in SwiftyStoreKit with `restoreTransactions()`. To check if the subscription has been restored, check if the `customerInfo` object contains an active entitlement for the "pro" content you configured in the RevenueCat dashboard.
@@ -177,23 +196,27 @@ Receipts are automatically verified by RevenueCat. You don't need any local or s
 
 import ssk_11 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/swiftystorekit_11.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: ssk_11,
-    }
-]}/>
+      type: "swift",
+      content: ssk_11,
+    },
+  ]}
+/>
 
 **RevenueCat:**
 
 import ssk_12 from "!!raw-loader!@site/code_blocks/migrating-to-revenuecat/swiftystorekit_12.swift";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: ssk_12,
-    }
-]}/>
+      type: "swift",
+      content: ssk_12,
+    },
+  ]}
+/>
 
 **Migration Steps:**
 RevenueCat keeps a subscribers status up-to-date on the server and shares this information with the _Purchases SDK_ to determine what subscriptions are active for the current user.

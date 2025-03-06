@@ -1,0 +1,40 @@
+---
+title: Lifecycle emails
+slug: lifecycle-emails
+excerpt: Details of emails sent to subscribers about their purchases and subscriptions
+hidden: false
+---
+
+Customers purchasing through Web Billing (formerly RevenueCat Billing) will receive emails related to their subscriptions and other purchases on the web.
+
+Emails sent to customers:
+
+- Come from a RevenueCat domain
+- Display your **app name** as the sender (configured in Web Billing settings)
+- Use your **support email address** as the _reply-to_ (configured in the Web Billing app settings, if set) or `noreply@revenuecat.com` by default”
+
+## Email customization
+
+Lifecycle emails are lightly customized according to your brand colors configured in the RevenueCat dashboard (see [Customization](/web/web-billing/customization)).
+
+Only the `Page background` and `Primary button` colors are used to brand emails. Text colors are automatically determined, based on contrast with the background.
+
+![](/images/web-billing/customization_in_emails.png)
+
+## All emails, triggers, and calls to action
+
+You can find a complete list of customer emails below, in addition to the triggers that are used to send them.
+
+| Email                                    | Trigger                                                                                                       | Call to action                                                                       |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Free trial start                         | The customer started a free trial                                                                             | n/a                                                                                  |
+| Initial purchase                         | The customer made a successful purchase (either a subscription or one-time purchase)                          | Redeem purchase (when [Redemption Links](/web/web-billing/redemption-links) enabled) |
+| Redemption link refresh                  | The customer attempted to use an expired redemption link, so a new one was sent to them                       | Redeem purchase (when [Redemption Links](/web/web-billing/redemption-links) enabled) |
+| Customer portal login                    | The customer initiated access to the [customer portal](/web/web-billing/customer-portal)                      | Manage subscription in [customer portal](/web/web-billing/customer-portal)           |
+| Subscription renewal                     | The customer's subscription automatically renewed at the end of their billing period                          | n/a                                                                                  |
+| Failed payment                           | A renewal payment failed (after several retries)                                                              | Manage subscription in [customer portal](/web/web-billing/customer-portal)           |
+| Subscription cancelation                 | The customer canceled their subscription                                                                      | Renew subscription in [customer portal](/web/web-billing/customer-portal)            |
+| Subscription renewed (after cancelation) | The customer renewed their subscription after previously canceling, before it expired                         | n/a                                                                                  |
+| Subscription expiry                      | The customer's subscription expired and will not be renewed                                                   | n/a                                                                                  |
+| Chargeback detected                      | RevenueCat detected a chargeback from the customer, and the subscription was immediately canceled as a result | n/a                                                                                  |
+| Refund issued                            | A refund was issued to the customer                                                                           | n/a                                                                                  |

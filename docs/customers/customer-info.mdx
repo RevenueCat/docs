@@ -9,7 +9,7 @@ RevenueCat makes it easy to determine subscription status and more with the Reve
 
 ## Getting subscription status via the SDK
 
-The CustomerInfo object contains all of the purchase and subscription data available about a customer. 
+The CustomerInfo object contains all of the purchase and subscription data available about a customer.
 
 This object is updated whenever a purchase or restore occurs and periodically throughout the lifecycle of your app. The latest information can always be retrieved by calling `getCustomerInfo()`:
 
@@ -22,9 +22,7 @@ import content6 from "!!raw-loader!@site/code_blocks/customers/customer-info_6.j
 import content7 from "!!raw-loader!@site/code_blocks/customers/customer-info_7.js";
 import contentCapacitor from "!!raw-loader!@site/code_blocks/customers/customer-info_add_listener_capacitor.ts";
 import content8 from "!!raw-loader!@site/code_blocks/customers/customer-info_8.cs";
-import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billing/rc-billing-doc-snippets.ts";
-
-
+import webBillingContent from "!!raw-loader!@site/code_blocks/_projects/web-billing/web-billing-doc-snippets.ts";
 
 <RCCodeBlock tabs={[
     {
@@ -63,10 +61,9 @@ import rcBillingContent from "!!raw-loader!@site/code_blocks/_projects/rc-billin
         type: 'unity',
         content: content8,
     },
-    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)", region: "Getting customer information" },
+    { type: 'ts', content: webBillingContent, name: "Web (JS/TS)", region: "Getting customer information" },
 
 ]}/>
-
 
 It's safe to call `getCustomerInfo()` frequently throughout your app. Since the SDK updates and caches the latest CustomerInfo when the app becomes active, the completion block won't need to make a network request in most cases.
 
@@ -85,41 +82,48 @@ import content14 from "!!raw-loader!@site/code_blocks/customers/customer-info_14
 import content15 from "!!raw-loader!@site/code_blocks/customers/customer-info_15.js";
 import content16 from "!!raw-loader!@site/code_blocks/customers/customer-info_16.cs";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: content9,
+      type: "swift",
+      content: content9,
     },
     {
-        type: 'objc',
-        content: content10,
+      type: "objc",
+      content: content10,
     },
     {
-        type: 'kotlin',
-        content: content11,
+      type: "kotlin",
+      content: content11,
     },
     {
-        type: 'java',
-        content: content12,
+      type: "java",
+      content: content12,
     },
     {
-        type: 'flutter',
-        content: content13,
+      type: "flutter",
+      content: content13,
     },
     {
-        type: 'rn',
-        content: content14,
+      type: "rn",
+      content: content14,
     },
     {
-        type: 'cordova',
-        content: content15,
+      type: "cordova",
+      content: content15,
     },
     {
-        type: 'unity',
-        content: content16,
+      type: "unity",
+      content: content16,
     },
-    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)", region: "Check for specific entitlement" },
-]}/>
+    {
+      type: "ts",
+      content: webBillingContent,
+      name: "Web (JS/TS)",
+      region: "Check for specific entitlement",
+    },
+  ]}
+/>
 
 If your app has multiple entitlements, you might also want to check if the customer has any active entitlements:
 
@@ -132,42 +136,48 @@ import content22 from "!!raw-loader!@site/code_blocks/customers/customer-info_22
 import content23 from "!!raw-loader!@site/code_blocks/customers/customer-info_23.js";
 import content24 from "!!raw-loader!@site/code_blocks/customers/customer-info_24.cs";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: content17,
+      type: "swift",
+      content: content17,
     },
     {
-        type: 'objc',
-        content: content18,
+      type: "objc",
+      content: content18,
     },
     {
-        type: 'kotlin',
-        content: content19,
+      type: "kotlin",
+      content: content19,
     },
     {
-        type: 'java',
-        content: content20,
+      type: "java",
+      content: content20,
     },
     {
-        type: 'flutter',
-        content: content21,
+      type: "flutter",
+      content: content21,
     },
     {
-        type: 'rn',
-        content: content22,
+      type: "rn",
+      content: content22,
     },
     {
-        type: 'cordova',
-        content: content23,
+      type: "cordova",
+      content: content23,
     },
     {
-        type: 'unity',
-        content: content24,
+      type: "unity",
+      content: content24,
     },
-    { type: 'ts', content: rcBillingContent, name: "Web (JS/TS)", region: "Check for any entitlement" },
-]}/>
-
+    {
+      type: "ts",
+      content: webBillingContent,
+      name: "Web (JS/TS)",
+      region: "Check for any entitlement",
+    },
+  ]}
+/>
 
 It's important to note that CustomerInfo will be empty if no purchases have been made and no transactions have been synced. This means that entitlements may not exist in CustomerInfo even if they have been set up in the RevenueCat dashboard.
 
@@ -181,7 +191,7 @@ See our [Restoring Purchases](/getting-started/restoring-purchases) guide for mo
 
 ### Cache
 
-The SDK caches the user's subscription information to reduce your app's reliance on the network. 
+The SDK caches the user's subscription information to reduce your app's reliance on the network.
 
 Users who unlock entitlements will be able to access them even without an internet connection. The SDK will update the cache if it's older than 5 minutes, but only if you call `getCustomerInfo()`, make a purchase, or restore purchases, so it's a good idea to call `getCustomerInfo()` any time a user accesses premium content.
 
@@ -204,49 +214,51 @@ import contentCapacitor2 from "!!raw-loader!@site/code_blocks/customers/customer
 import content32 from "!!raw-loader!@site/code_blocks/customers/customer-info_32.cs";
 import contentKmp from "!!raw-loader!@site/code_blocks/customers/customer-info_kmp_1.kts";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: content25,
-    },
-    {
-        type: 'objc',
-        content: content26,
+      type: "swift",
+      content: content25,
     },
     {
-        type: 'kotlin',
-        content: content27,
-    },
-    { 
-        type: 'kotlin', 
-        content: contentKmp, 
-        name: 'Kotlin Multiplatform' 
+      type: "objc",
+      content: content26,
     },
     {
-        type: 'java',
-        content: content28,
+      type: "kotlin",
+      content: content27,
     },
     {
-        type: 'flutter',
-        content: content29,
+      type: "kotlin",
+      content: contentKmp,
+      name: "Kotlin Multiplatform",
     },
     {
-        type: 'rn',
-        content: content30,
+      type: "java",
+      content: content28,
     },
     {
-        type: 'cordova',
-        content: content31,
+      type: "flutter",
+      content: content29,
     },
     {
-        type: 'capacitor',
-        content: contentCapacitor2,
+      type: "rn",
+      content: content30,
     },
     {
-        type: 'unity',
-        content: content32,
+      type: "cordova",
+      content: content31,
     },
-]}/>
+    {
+      type: "capacitor",
+      content: contentCapacitor2,
+    },
+    {
+      type: "unity",
+      content: content32,
+    },
+  ]}
+/>
 
 ### Reference
 
@@ -266,13 +278,12 @@ The `CustomerInfo` object gives you access to the following information about a 
 | All Purchased Product Identifiers | An array of product identifiers purchased by the user regardless of expiration.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | All Expiration Dates By Product   | A map of product identifiers to expiration dates.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | All Purchase Dates By Product     | A map of product identifiers to purchase dates.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| Non Subscription Transactions     | A list of all the non-subscription transactions purchased by the user.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Non Subscription Transactions     | A list of all the non-subscription transactions purchased by the user.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | Latest Expiration Date            | The latest expiration date of all purchased products.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | Active Subscriptions              | An array of subscription product identifiers that are active. You should be using [entitlement](/getting-started/entitlements) though.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | Entitlements                      | `EntitlementInfo` objects that contain information about the user's entitlements, such as subscription state. [See more below](/customers/customer-info#get-entitlement-information).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 
 </details>
-
 
 <details>
 <summary>EntitlementInfo Reference</summary>
@@ -298,19 +309,20 @@ The `EntitlementInfo` object gives you access to all of the information about th
 
 </details>
 
-
 ## Getting subscription status via the REST API
 
-If you  need to get a user's subscription status from outside of the _Purchases SDK_, for example, from your own backend, you should use the REST API. You can read the full API reference [here](https://docs.revenuecat.com/reference).
+If you need to get a user's subscription status from outside of the _Purchases SDK_, for example, from your own backend, you should use the REST API. You can read the full API reference [here](https://docs.revenuecat.com/reference).
 
 import content33 from "!!raw-loader!@site/code_blocks/customers/customer-info_33.curl";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'curl',
-        content: content33,
+      type: "curl",
+      content: content33,
     },
-]}/>
+  ]}
+/>
 
 ## Handling Refunds
 
@@ -320,11 +332,12 @@ RevenueCat can handle refunds across all platforms for both subscription and non
 
 In the very uncommon case that RevenueCat servers don't respond as expected, the SDK is prepared to verify Apple/Google/Amazon's purchases on the device itself and grant entitlements temporarily. This allows your customers to have an almost seamless experience in this unlikely scenario, improving even more on our reliability. This happens automatically, so you don't need to do anything, the entitlements will appear in the `CustomerInfo`.
 
-Offline Entitlements is automatically enabled when our SDK attempts to reach our servers and they can't respond. It automatically is disabled when our servers respond successful http responses again. 
+Offline Entitlements is automatically enabled when our SDK attempts to reach our servers and they can't respond. It automatically is disabled when our servers respond successful http responses again.
 
-In order to do this, the SDK caches the relationships between products and entitlements you have setup in your RevenueCat dashboard. Then, when it tries to post a purchase to RevenueCat's servers, and these respond with an error, we will use the purchases from the stores and these relationships to grant entitlements. 
+In order to do this, the SDK caches the relationships between products and entitlements you have setup in your RevenueCat dashboard. Then, when it tries to post a purchase to RevenueCat's servers, and these respond with an error, we will use the purchases from the stores and these relationships to grant entitlements.
 
 ### Some things to note:
+
 - No information is lost when Offline Entitlements are active. All purchases are recorded and will be processed by our servers automatically once they are back online, with no action needed from you or your users.
 - The data for these purchases won't appear in our RevenueCat graphs and webhooks until it's successfully pushed.
 - Purchases won't be recognized cross-platform while using Offline Entitlements.

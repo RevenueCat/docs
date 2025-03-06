@@ -1,0 +1,13 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/master/schema.json": [
+      "lefthook.yml",
+      "lefthook-local.yml"
+    ]
+  }
+}

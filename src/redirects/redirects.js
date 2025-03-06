@@ -41,11 +41,11 @@ const redirects = {
       to: "/api-v2#tag/Error-Handling/Error-Types",
     },
     {
-      to: "/web/stripe",
+      to: "/web/integrations/stripe",
       from: "/getting-started/stripe/in-app-purchases-with-stripe-rfa",
     },
     {
-      to: "/web/stripe",
+      to: "/web/integrations/stripe",
       from: "/getting-started/stripe",
     },
     {
@@ -309,11 +309,11 @@ const redirects = {
       from: "/restoring-purchases",
     },
     {
-      to: "/web/stripe",
+      to: "/web/integrations/stripe",
       from: "/in-app-purchases-with-stripe-rfa",
     },
     {
-      to: "/web/stripe",
+      to: "/web/integrations/stripe",
       from: "/stripe",
     },
     {
@@ -737,6 +737,14 @@ const redirects = {
       from: "/paywalls",
     },
     {
+      to: "/tools/paywalls-v2",
+      from: "/tools/paywalls/creating-paywalls-v2",
+    },
+    {
+      to: "/tools/paywalls-v2",
+      from: "/paywalls-v2",
+    },
+    {
       to: "/tools/targeting",
       from: "/targeting",
     },
@@ -1036,11 +1044,11 @@ const redirects = {
       from: "/restoring-purchases.html",
     },
     {
-      to: "/web/stripe",
+      to: "/web/integrations/stripe",
       from: "/in-app-purchases-with-stripe-rfa.html",
     },
     {
-      to: "/web/stripe",
+      to: "/web/integrations/stripe",
       from: "/stripe.html",
     },
     {
@@ -1480,10 +1488,6 @@ const redirects = {
       from: "/building-new",
     },
     {
-      to: "/welcome/existing-apps",
-      from: "/existing-apps",
-    },
-    {
       to: "/welcome/set-up-revenuecat/account-management",
       from: "/account-management.html",
     },
@@ -1556,15 +1560,71 @@ const redirects = {
       from: "/dashboard-and-metrics/customers-group/promotionals",
     },
     {
-      to: "/web/revenuecat-billing",
+      to: "/web/web-billing/web-sdk",
       from: "/web/rc-billing",
+    },
+    {
+      to: "/web/web-billing/web-sdk",
+      from: "/web/revenuecat-billing",
+    },
+    {
+      to: "/web/web-billing/customer-portal",
+      from: "/web/revenuecat-billing/customer-portal",
+    },
+    {
+      to: "/web/web-billing/customization",
+      from: "/web/revenuecat-billing/customization",
+    },
+    {
+      to: "/web/web-billing/localization",
+      from: "/web/revenuecat-billing/localization",
+    },
+    {
+      to: "/web/web-billing/managing-customer-subscriptions",
+      from: "/web/revenuecat-billing/managing-customer-subscriptions",
+    },
+    {
+      to: "/web/web-billing/multi-currency-support",
+      from: "/web/revenuecat-billing/multi-currency-support",
+    },
+    {
+      to: "/web/web-billing/payment-methods",
+      from: "/web/revenuecat-billing/payment-methods",
+    },
+    {
+      to: "/web/web-billing/product-setup",
+      from: "/web/revenuecat-billing/product-setup",
+    },
+    {
+      to: "/web/web-billing/redemption-links",
+      from: "/web/revenuecat-billing/redemption-links",
+    },
+    {
+      to: "/web/web-billing/refunding-payments",
+      from: "/web/revenuecat-billing/refunding-payments",
+    },
+    {
+      to: "/web/web-billing/subscription-lifecycle",
+      from: "/web/revenuecat-billing/subscription-lifecycle",
+    },
+    {
+      to: "/web/web-billing/web-paywall-links",
+      from: "/web/revenuecat-billing/web-paywall-links",
+    },
+    {
+      to: "/web/integrations/stripe",
+      from: "/web/stripe",
+    },
+    {
+      to: "/web/web-billing/web-sdk",
+      from: "/web/web-billing",
     },
   ],
 };
 
 // Add redirects with a .html appended to the "from" path for redirecting in S3/Cloudfront
 redirects.redirects.push(
-  ...redirects.redirects.map(({ from, to }) => ({ from: `${from}.html`, to }))
+  ...redirects.redirects.map(({ from, to }) => ({ from: `${from}.html`, to })),
 );
 
 export default redirects;

@@ -1,0 +1,22 @@
+{
+  "name": "Node.js",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        //
+        "esbenp.prettier-vscode",
+        "unifiedjs.vscode-mdx"
+      ]
+    }
+  },
+  "onCreateCommand": "yarn install",
+  "postAttachCommand": "yarn start",
+  "forwardPorts": [3030],
+  "portsAttributes": {
+    "3030": {
+      "label": "Docusaurus Dev Server"
+    }
+  },
+  "remoteUser": "node"
+}

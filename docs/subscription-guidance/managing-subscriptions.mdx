@@ -4,9 +4,10 @@ slug: managing-subscriptions
 excerpt: Making changes to a customer's subscription
 hidden: false
 ---
-Some parts of a customer's subscription can be managed directly through RevenueCat, other parts can only be managed by the customer directly in the respective stores (Apple, Google, Stripe, and Amazon). Learn how to upgrade/downgrade, cancel, and refund subscriptions here! 
 
-For information about Stripe, you can read more about working with web payments [here](/web/stripe/#working-with-web-payments).
+Some parts of a customer's subscription can be managed directly through RevenueCat, other parts can only be managed by the customer directly in the respective stores (Apple, Google, Stripe, and Amazon). Learn how to upgrade/downgrade, cancel, and refund subscriptions here!
+
+For information about Stripe, you can read more about working with web payments [here](/web/integrations/stripe/#working-with-web-payments).
 
 ## Upgrade or Downgrade a Subscription
 
@@ -16,7 +17,7 @@ The app stores do not allow developers (you) to upgrade or downgrade a subscript
 
 ### App Store
 
-There are no code changes required to support upgrades, downgrades, and crossgrades for iOS subscriptions in your app. A customer can choose to upgrade, downgrade, or crossgrade between subscriptions as often as they like. 
+There are no code changes required to support upgrades, downgrades, and crossgrades for iOS subscriptions in your app. A customer can choose to upgrade, downgrade, or crossgrade between subscriptions as often as they like.
 
 According to [Apple](https://developer.apple.com/app-store/subscriptions#ranking), when a customer changes their subscription level, access to the new product can vary depending on the change:
 
@@ -36,31 +37,32 @@ When a customer upgrades products during an introductory period (including a fre
 
 In order to perform upgrades and downgrades for Google Play subscriptions, you will need to set the old product ID on `PurchaseParams.Builder`. Replacement mode is optional and will default to `WITHOUT_PRORATION`.
 
-
 import kt1 from "!!raw-loader!@site/code_blocks/subscription-guidance/managing-subscriptions_1.kt";
 import java1 from "!!raw-loader!@site/code_blocks/subscription-guidance/managing-subscriptions_2.java";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'kotlin',
-        title: "Kotlin",
-        content: kt1,
+      type: "kotlin",
+      title: "Kotlin",
+      content: kt1,
     },
-     {
-        type: 'java',
-        title: "Java",
-        content: java1,
-    }
-]}/>
+    {
+      type: "java",
+      title: "Java",
+      content: java1,
+    },
+  ]}
+/>
 
 Google documentation provides [examples of each replacement mode](https://developer.android.com/google/play/billing/subscriptions#replacement-modes), behavior when [upgrading with free trial or intro price offers](https://developer.android.com/google/play/billing/subscriptions#upgrade-free-trial), and [recommendations](https://developer.android.com/google/play/billing/subscriptions#replacement-recommendations) for which replacement mode to use in different scenarios.
 
-| Mode                          | Description                                                                                                                                                                                                                                                                                                                                                                 |
-|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **WITHOUT_PRORATION**     | Old subscription is cancelled, and new subscription takes effect immediately. User is charged for the full price of the new subscription on the old subscription's expiration date. This is the default behavior. Google recommends this mode for upgrading while in a free trial.                                                                                   |
-| **WITH_TIME_PRORATION**   | Old subscription is cancelled, and new subscription takes effect immediately. Any time remaining on the old subscription is used to push out the first payment date for the new subscription. User is charged the full price of new subscription once that prorated time has passed. The purchase will fail if this mode is used when switching between `SubscriptionOption`s of the same `StoreProduct`. |
-| **CHARGE_FULL_PRICE**     | Replacement takes effect immediately, and the user is charged full price of new plan and is given a full billing cycle of subscription, plus remaining prorated time from the old plan.                                                                                                                                                                                     |
-| **CHARGE_PRORATED_PRICE** | Replacement takes effect immediately, and the billing cycle remains the same. The price difference for the remaining period is then charged to the user. Note: This option is available only for a subscription upgrade, where the price per unit of time increases. Google recommends this mode for upgrading to a more expensive tier, and for upgrading while in a free trial which will end access to the free trial. |
+| Mode                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **WITHOUT_PRORATION**     | Old subscription is cancelled, and new subscription takes effect immediately. User is charged for the full price of the new subscription on the old subscription's expiration date. This is the default behavior. Google recommends this mode for upgrading while in a free trial.                                                                                                                                                                |
+| **WITH_TIME_PRORATION**   | Old subscription is cancelled, and new subscription takes effect immediately. Any time remaining on the old subscription is used to push out the first payment date for the new subscription. User is charged the full price of new subscription once that prorated time has passed. The purchase will fail if this mode is used when switching between `SubscriptionOption`s of the same `StoreProduct`.                                         |
+| **CHARGE_FULL_PRICE**     | Replacement takes effect immediately, and the user is charged full price of new plan and is given a full billing cycle of subscription, plus remaining prorated time from the old plan.                                                                                                                                                                                                                                                           |
+| **CHARGE_PRORATED_PRICE** | Replacement takes effect immediately, and the billing cycle remains the same. The price difference for the remaining period is then charged to the user. Note: This option is available only for a subscription upgrade, where the price per unit of time increases. Google recommends this mode for upgrading to a more expensive tier, and for upgrading while in a free trial which will end access to the free trial.                         |
 | **DEFERRED**              | Replacement takes effect when the old plan expires, and the new price will be charged at the same time. Google recommends this mode for downgrading to a less expensive tier, and for changing recurring period on the same tier (from monthly to annual). **Important**: [Google Server Notifications](/platform-resources/server-notifications/google-server-notifications) are required to be configured for `DEFERRED` mode to work properly. |
 
 ### Amazon Appstore
@@ -78,14 +80,14 @@ Please note when your customer cancels a pending downgrade transaction through t
 
 #### [PRODUCT_CHANGE](/dashboard-and-metrics/customer-history#event-types) events and webhooks
 
-- The `expiration_at_ms` will always be for the product the customer is changing from (old product). 
-- The `PRODUCT_CHANGE` webhook should be considered informative, and does not mean that the product change has gone into effect. When the product change goes into effect you will receive a `RENEWAL` event on Apple and Stripe or a `INITIAL_PURCHASE` event on Google Play. 
+- The `expiration_at_ms` will always be for the product the customer is changing from (old product).
+- The `PRODUCT_CHANGE` webhook should be considered informative, and does not mean that the product change has gone into effect. When the product change goes into effect you will receive a `RENEWAL` event on Apple and Stripe or a `INITIAL_PURCHASE` event on Google Play.
 
 ## Prorations and Revenue Metrics
 
 ### App Store
 
-For Apple transactions,  prorated revenue **will not** be shown in the [Customer History](/dashboard-and-metrics/customer-history) page. However, prorated revenue **will** be calculated for your chart and overview data.
+For Apple transactions, prorated revenue **will not** be shown in the [Customer History](/dashboard-and-metrics/customer-history) page. However, prorated revenue **will** be calculated for your chart and overview data.
 
 ### Google Play
 
@@ -95,12 +97,12 @@ For Google transactions, prorated revenue will be shown in the [Customer History
 
 Cancelling (or unsubscribing) from subscriptions is handled differently on each platform. Cancellations are automatically detected by RevenueCat within a few hours of occurring. This detection time can be increased to near real-time by enabling [Platform Server Notifications](/platform-resources/server-notifications).
 
-| Store       | Behavior                                                                                                                                                                                                                                                                                                                                                      |
-|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Apple       | Apple does not allow developers to manage subscriptions on behalf of users. Your customers have to manually opt-out of renewal. The [Apple subscription terms](https://support.apple.com/en-us/HT202039) require users to cancel subscriptions at least 24 hours before the next renewal.                                                                 |
+| Store       | Behavior                                                                                                                                                                                                                                                                                                                                                                                            |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Apple       | Apple does not allow developers to manage subscriptions on behalf of users. Your customers have to manually opt-out of renewal. The [Apple subscription terms](https://support.apple.com/en-us/HT202039) require users to cancel subscriptions at least 24 hours before the next renewal.                                                                                                           |
 | Google Play | Google allows developers to cancel auto-renewing subscriptions on behalf of customers via Google Play Console or Google's API. For prepaid subscriptions, neither the customer nor the developer can cancel the subscription as it already has an expiration date. If you're looking to refund and revoke a subscription via RevenueCat's dashboard, see [Refunds](/subscription-guidance/refunds). |
-| Stripe      | Subscriptions can be cancelled on behalf of customers via the Stripe dashboard or REST API. Refer to Stripe documentation for more info.                                                                                                                                                                                                                      |
-| Amazon      | Amazon does not allow developers to cancel subscriptions on behalf of users. Once a subscription is purchased for a period, it is valid through that period and cannot be cancelled.                                                                                                                                                                         |
+| Stripe      | Subscriptions can be cancelled on behalf of customers via the Stripe dashboard or REST API. Refer to Stripe documentation for more info.                                                                                                                                                                                                                                                            |
+| Amazon      | Amazon does not allow developers to cancel subscriptions on behalf of users. Once a subscription is purchased for a period, it is valid through that period and cannot be cancelled.                                                                                                                                                                                                                |
 
 ### Using the `managementURL` to Help Customers Cancel a Subscription
 
@@ -117,18 +119,20 @@ The `managementURL` is a great way to allow customers to check the status of and
 import swift1 from "!!raw-loader!@site/code_blocks/subscription-guidance/managing-subscriptions_3.swift";
 import kt2 from "!!raw-loader!@site/code_blocks/subscription-guidance/managing-subscriptions_4.kt";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        title: "Swift",
-        content: swift1,
+      type: "swift",
+      title: "Swift",
+      content: swift1,
     },
-     {
-        type: 'kotlin',
-        title: "Kotlin",
-        content: kt2,
-    }
-]}/>
+    {
+      type: "kotlin",
+      title: "Kotlin",
+      content: kt2,
+    },
+  ]}
+/>
 
 :::warning Deleting a User
 Deleting a user from RevenueCat **WILL NOT** cancel their subscription. The user can still trigger the [Restore Purchases](/getting-started/making-purchases#restoring-purchases) method to re-sync their transactions with RevenueCat servers.

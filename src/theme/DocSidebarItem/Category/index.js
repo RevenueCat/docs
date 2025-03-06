@@ -53,7 +53,7 @@ function CollapseButton({
                 message: "Expand sidebar category '{label}'",
                 description: "The ARIA label to expand the sidebar category",
               },
-              { label: categoryLabel }
+              { label: categoryLabel },
             )
           : translate(
               {
@@ -61,7 +61,7 @@ function CollapseButton({
                 message: "Collapse sidebar category '{label}'",
                 description: "The ARIA label to collapse the sidebar category",
               },
-              { label: categoryLabel }
+              { label: categoryLabel },
             )
       }
       type="button"
@@ -122,7 +122,7 @@ export default function DocSidebarItemCategory({
         {
           "mb-2": isTopLevelCategory,
         },
-        className
+        className,
       )}
     >
       <div
@@ -131,7 +131,7 @@ export default function DocSidebarItemCategory({
           {
             "bg-primary/15": isCurrentPage,
           },
-          { "hover:!bg-transparent": isTopLevelCategory }
+          { "hover:!bg-transparent": isTopLevelCategory },
         )}
       >
         {href && collapsible && (
@@ -148,7 +148,7 @@ export default function DocSidebarItemCategory({
               { "rotate-90": !collapsed },
               isCurrentPage
                 ? "text-primary"
-                : "text-base-700 group-hover/category:text-base-400 dark:text-base-300 dark:group-hover/category:text-base-600"
+                : "text-base-700 group-hover/category:text-base-400 dark:text-base-300 dark:group-hover/category:text-base-600",
             )}
           />
         )}
@@ -162,7 +162,7 @@ export default function DocSidebarItemCategory({
             isCurrentPage
               ? "text-primary"
               : !isTopLevelCategory &&
-                  "text-base-700 hover:text-base-400 dark:text-base-300 dark:group-hover/category:text-base-600"
+                  "text-base-700 hover:text-base-400 dark:text-base-300 dark:group-hover/category:text-base-600",
           )}
           onClick={
             collapsible
@@ -181,7 +181,9 @@ export default function DocSidebarItemCategory({
           }
           aria-current={isCurrentPage ? "page" : undefined}
           aria-expanded={collapsible ? !collapsed : undefined}
-          href={collapsible ? hrefWithSSRFallback ?? "#" : hrefWithSSRFallback}
+          href={
+            collapsible ? (hrefWithSSRFallback ?? "#") : hrefWithSSRFallback
+          }
           {...props}
         >
           {isTopLevelCategory && (

@@ -124,6 +124,28 @@ const paywallsCategory = Category({
       ],
     }),
     SubCategory({
+      label: "RevenueCat Paywalls v2 (Beta)",
+      slug: "tools/paywalls-v2",
+      itemsPathPrefix: "tools/paywalls-v2/",
+      items: [
+        Page({ slug: "installation" }),
+        SubCategory({
+          label: "Creating Paywalls",
+          slug: "creating-paywalls",
+          itemsPathPrefix: "creating-paywalls/",
+          items: [
+            Page({ slug: "components" }),
+            Page({ slug: "component-properties" }),
+            Page({ slug: "variables" }),
+            Page({ slug: "customer-states" }),
+            Page({ slug: "localization" }),
+            Page({ slug: "app-review" }),
+          ],
+        }),
+        Page({ slug: "displaying-paywalls" }),
+      ],
+    }),
+    SubCategory({
       label: "Manual Implementation",
       itemsPathPrefix: "getting-started/",
       items: [
@@ -150,28 +172,39 @@ const paywallsCategory = Category({
 
 const webSDKCategory = Category({
   emoji: "🌎",
-  label: "Web Purchases",
+  label: "RevenueCat Web",
   itemsPathPrefix: "web/",
   items: [
     SubCategory({
-      label: "RevenueCat Billing & Web SDK",
-      slug: "revenuecat-billing",
-      itemsPathPrefix: "revenuecat-billing/",
+      label: "Integrate Web Billing",
+      slug: "web-billing/overview",
+      itemsPathPrefix: "web-billing/",
+      items: [Page({ slug: "web-sdk" }), Page({ slug: "web-paywall-links" })],
+    }),
+    SubCategory({
+      label: "Configure Web Billing",
+      slug: "web-billing/product-setup",
+      itemsPathPrefix: "web-billing/",
       items: [
-        Page({ slug: "product-setup" }),
         Page({ slug: "customization" }),
         Page({ slug: "subscription-lifecycle" }),
         Page({ slug: "payment-methods" }),
         Page({ slug: "multi-currency-support" }),
-        Page({ slug: "managing-customer-subscriptions" }),
-        Page({ slug: "refunding-payments" }),
-        Page({ slug: "customer-portal" }),
-        Page({ slug: "web-paywall-links" }),
         Page({ slug: "localization" }),
         Page({ slug: "redemption-links" }),
+        Page({ slug: "custom-metadata" }),
       ],
     }),
-    Page({ slug: "stripe" }),
+    Page({ slug: "web-billing/managing-customer-subscriptions" }),
+    Page({ slug: "web-billing/refunding-payments" }),
+    Page({ slug: "web-billing/customer-portal" }),
+    Page({ slug: "web-billing/lifecycle-emails" }),
+    SubCategory({
+      label: "External Payments Integrations",
+      slug: "payment-integrations",
+      itemsPathPrefix: "integrations/",
+      items: [Page({ slug: "stripe" })],
+    }),
   ],
 });
 
@@ -247,8 +280,8 @@ const offeringsCategory = Category({
             Page({ slug: "amazon-product-setup" }),
             Page({ slug: "stripe-products" }),
             Link({
-              label: "RevenueCat Billing Product Setup",
-              slug: "/web/revenuecat-billing/product-setup",
+              label: "Web Billing Product Setup",
+              slug: "/web/web-billing/product-setup",
             }),
             Page({ slug: "roku-products" }),
           ],
@@ -259,6 +292,7 @@ const offeringsCategory = Category({
         }),
       ],
     }),
+    Page({ slug: "offerings/troubleshooting" }),
   ],
 });
 
@@ -296,8 +330,25 @@ const customersCategory = Category({
       slug: "tools/customer-center",
       itemsPathPrefix: "tools/customer-center/",
       items: [
-        Page({ slug: "customer-center-integration" }),
-        Page({ slug: "customer-center-configuration" }),
+        Page({ slug: "customer-center-installation" }),
+        SubCategory({
+          label: "Configuration",
+          slug: "customer-center-configuration",
+          items: [
+            Page({ slug: "customer-center-promo-offers-apple" }),
+            Page({ slug: "customer-center-promo-offers-google" }),
+          ],
+        }),
+        SubCategory({
+          label: "Integration",
+          slug: "customer-center-integration",
+          items: [
+            Page({ slug: "customer-center-integration" }),
+            Page({ slug: "customer-center-integration-android" }),
+            Page({ slug: "customer-center-flutter" }),
+            Page({ slug: "customer-center-react-native" }),
+          ],
+        }),
       ],
     }),
     Page({ slug: "dashboard-and-metrics/customer-lists" }),
@@ -461,8 +512,7 @@ const platformResourcesCategory = Category({
       index: {
         title: "Web Configuration",
         link: "store-configuration/web",
-        description:
-          "How to configure RevenueCat for RevenueCat Billing or Stripe.",
+        description: "How to configure RevenueCat for Web Billing or Stripe.",
       },
     }),
   ],

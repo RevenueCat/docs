@@ -20,7 +20,7 @@ RevenueCat does not require server notifications from the App Store, however doi
 
 ## Tracking new purchases using Apple App Store Server Notifications
 
-By default, RevenueCat ignores any Apple App Store Server Notifications for purchases that have not yet been posted to the RevenueCat API by one of our SDKs or from your own backend. For RevenueCat to track new purchases from Apple App Store Server Notifications, you can enable the **"Track new purchases from server-to-server notifications"** option in our Dashboard. 
+By default, RevenueCat ignores any Apple App Store Server Notifications for purchases that have not yet been posted to the RevenueCat API by one of our SDKs or from your own backend. For RevenueCat to track new purchases from Apple App Store Server Notifications, you can enable the **"Track new purchases from server-to-server notifications"** option in our Dashboard.
 
 Enabling this option ensures that all purchases are tracked, even in the case of network issues between your app and RevenueCat’s backend or if your customer was using a version of the app without the RevenueCat SDK.
 
@@ -28,20 +28,21 @@ Enabling this option ensures that all purchases are tracked, even in the case of
 
 ### User identity
 
-* The subscriber's app user ID will be taken from the [`appAccountToken`](https://developer.apple.com/documentation/appstoreserverapi/appaccounttoken) field of the transaction. 
-    * If the `appAccountToken` is set and does not match with an existing subscriber: RevenueCat will create a new subscriber with an app user ID matching the `appAccountToken` value set.
-    * If the `appAccountToken` is set and matches with an existing subscriber: No new subscriber will be created, and the purchase will be linked to that existing subscriber. 
-    * If the `appAccountToken` is not set: RevenueCat will generate an anonymous app user ID to associate that purchase with.
-* If you are using RevenueCat's SDK to track purchases, we may receive the notification directly from the store before the SDK. When this happens, we will follow the app user ID logic as described in the bullet point above, and then proceed with your [transfer behavior](/getting-started/restoring-purchases) for the new app user ID sent by the SDK.
+New purchases are associated with the [App User ID](/customers/identifying-customers/) that matches the [`appAccountToken`](https://developer.apple.com/documentation/appstoreserverapi/appaccounttoken) field of the transaction. If you are using RevenueCat's SDK to track purchases, we will set the appAccountToken for you. The appAccountToken will **_not_** be set if:
+
+1. You are using something other than a valid UUID for the App User ID
+
+2. We receive the notification directly from the store before we receive it from the SDK
+
+If the transaction's `appAccountToken` is not set, or if the `appAccountToken` does not match with an existing subscriber, RevenueCat will generate an anonymous App User ID to associate that purchase with. We will then proceed with your [transfer behavior](/getting-started/restoring-purchases) for the new App User ID set by the SDK.
 
 :::warning Customer attributes in events
 RevenueCat will start processing the purchase as soon as we receive the Apple server notification. If you rely on [RevenueCat customer attributes](/customers/customer-attributes) being attached to the customer before the purchase is created on RevenueCat (e.g: sending customer attributes to your enabled [third-party integrations](/integrations/third-party-integrations) or [webhooks](/integrations/webhooks)), you should make sure to **send and sync** the customer attributes as soon as you have them or before the purchase is completed.
 :::
 
 :::warning
-If you have enabled [*Keep with original App User ID*](/getting-started/restoring-purchases#keep-with-original-app-user-id) or [*Transfer if there are no active subscriptions*](/getting-started/restoring-purchases#transfer-if-there-are-no-active-subscriptions) transfer behavior, we highly recommend turning this setting off unless you are not setting the `appAccountToken` or if the `appAccountToken` will match their RevenueCat app user ID.
+If you have enabled [_Keep with original App User ID_](/getting-started/restoring-purchases#keep-with-original-app-user-id) or [_Transfer if there are no active subscriptions_](/getting-started/restoring-purchases#transfer-if-there-are-no-active-subscriptions) transfer behavior, we highly recommend turning this setting off unless you are not setting the `appAccountToken` or if the `appAccountToken` will match their RevenueCat app user ID.
 :::
-
 
 ## Receiving Apple notifications on your server
 
@@ -60,6 +61,7 @@ If you still want to receive Apple's notifications to your server, you can confi
 :::info
 If your server needs to have specific hostnames or IP addresses on its allowlist to receive App Store Server Notifications, you can add the hostname `dps.iso.aple.com` and IP addresses `17.58.0.0/18` and `17.58.192.0/18`. These IP addresses are same for sandbox and production.
 :::
+
 </details>
 
 <details>
@@ -95,22 +97,26 @@ Here's a basic example of these steps using Node, Express, and Axios:
 
 import content from "!!raw-loader!@site/code_blocks/platform-resources/apple-server-notifications_1.js";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'js',
-        content: content,
-    }
-]}/>
+      type: "js",
+      content: content,
+    },
+  ]}
+/>
 
 </details>
 
 ## Considerations
 
 RevenueCat will be able to process V1 or V2 notifications, however, we recommend utilizing V2 for the following reasons:
+
 - [Auto-detect price changes](/subscription-guidance/price-changes)
 - Better reliability for [handling refund requests](/platform-resources/apple-platform-resources/handling-refund-requests)
 
 Here are some key points to keep in mind when considering this switch:
+
 - RevenueCat continues to operate normally without relying on notifications. Even if there's a brief downtime during the transition, there is no risk of data interruptions.
 - Apple has [deprecated](https://developer.apple.com/documentation/appstoreservernotifications/app-store-server-notifications-v1) their V1 notifications and will continue to make improvements to their V2 notifications.
 - The main reason to stay on V1 notifications is if your system has specific logic tied to V1. For example, if you have custom logic for processing notifications and are forwarding V1 notifications from RevenueCat to your own systems or from your systems to RevenueCat. You will have to update your custom logic before making the switch to V2.

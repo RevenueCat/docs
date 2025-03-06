@@ -1,0 +1,41 @@
+---
+title: Managing Subscriptions
+slug: managing-customer-subscriptions
+excerpt: How to manage Web Billing customer subscriptions in the dashboard
+hidden: false
+---
+
+## Managing customer subscriptions through the RevenueCat dashboard
+
+You can manage Web Billing (formerly RevenueCat Billing) subscriptions of your customers via the RevenueCat dashboard. To get started, go to a the profile of a customer who has a Web Billing subscription.
+
+### Accessing invoices
+
+To access invoices of a Web Billing customer, in the Customer History, find the relevant invoice event, and click to view the details:
+
+![](/images/web-billing/customer-history-invoice.png)
+
+In the event details, you will find the payment status of the invoice, as well as a link to download the invoice:
+
+![](/images/web-billing/invoice-details.png)
+
+### Canceling subscriptions
+
+You can cancel a customer's subscription. This means that the subscription will expire at the end of the current billing period. The customer will retain access to their entitlements until the subscription expires.
+
+To cancel a subscription, click on the "..." menu on the subscription in the "Entitlements" card of the customer profile and then select "Cancel subscription".
+
+![](/images/refunding-and-cancelling.png)
+
+### Refunding subscription payments
+
+See [Refunding payments](./refunding-payments).
+
+## Managing customer subscriptions through the REST API
+
+You can manage Web Billing subscriptions through the REST API with the following endpoints:
+
+- [List subscriptions](/api-v2#tag/Customer/operation/list-subscriptions)
+- [Cancel Web Billing subscription](/api-v2#tag/Subscription/operation/cancel-subscription)
+- [List a customer's invoices](/api-v2#tag/Invoice/operation/list-customer-invoices)
+- [Download a PDF invoice](/api-v2#tag/Invoice/operation/get-invoice)

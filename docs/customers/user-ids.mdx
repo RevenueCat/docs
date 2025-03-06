@@ -11,7 +11,7 @@ For an overview of what a customer is in RevenueCat, see [What is a Customer?](/
 
 ## Anonymous App User IDs
 
-By default, if you don't provide an App User ID when configuring the Purchases SDK, RevenueCat will generate a new random App User ID (prefixed with `$RCAnonymousID:`) for you, and will cache it on the device. 
+By default, if you don't provide an App User ID when configuring the Purchases SDK, RevenueCat will generate a new random App User ID (prefixed with `$RCAnonymousID:`) for you, and will cache it on the device.
 
 In the event that the user deletes and reinstalls the app, the cache will be cleared and a new random anonymous App User ID will be generated.
 
@@ -28,50 +28,51 @@ import contentCapacitor1 from "!!raw-loader!@site/code_blocks/customers/user-ids
 import content8 from "!!raw-loader!@site/code_blocks/customers/user-ids_unity.cs";
 import contentKmpAnon from "!!raw-loader!@site/code_blocks/customers/user-ids_kmp_anon.kts";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: content1,
+      type: "swift",
+      content: content1,
     },
     {
-        type: 'objc',
-        content: content2,
+      type: "objc",
+      content: content2,
     },
     {
-        type: 'kotlin',
-        content: content3,
+      type: "kotlin",
+      content: content3,
     },
     {
-        type: 'kotlin',
-        content: contentKmpAnon,
-        name: 'Kotlin Multiplatform',
+      type: "kotlin",
+      content: contentKmpAnon,
+      name: "Kotlin Multiplatform",
     },
     {
-        type: 'java',
-        content: content4,
+      type: "java",
+      content: content4,
     },
     {
-        type: 'flutter',
-        content: content5,
+      type: "flutter",
+      content: content5,
     },
     {
-        type: 'rn',
-        content: content6,
+      type: "rn",
+      content: content6,
     },
     {
-        type: 'cordova',
-        content: content7,
+      type: "cordova",
+      content: content7,
     },
     {
-        type: 'capacitor',
-        content: contentCapacitor1,
+      type: "capacitor",
+      content: contentCapacitor1,
     },
     {
-        type: 'unity',
-        content: content8,
+      type: "unity",
+      content: content8,
     },
-    
-]}/>
+  ]}
+/>
 
 ## Custom App User IDs
 
@@ -104,51 +105,51 @@ import contentCapacitor2 from "!!raw-loader!@site/code_blocks/customers/user-ids
 import content16 from "!!raw-loader!@site/code_blocks/customers/user-ids_16.cs";
 import contentKmp from "!!raw-loader!@site/code_blocks/customers/user-ids_kmp.kts";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: content9,
+      type: "swift",
+      content: content9,
     },
     {
-        type: 'objc',
-        content: content10,
+      type: "objc",
+      content: content10,
     },
     {
-        type: 'kotlin',
-        content: content11,
+      type: "kotlin",
+      content: content11,
     },
     {
-        type: 'kotlin',
-        content: contentKmp,
-        name: 'Kotlin Multiplatform',
+      type: "kotlin",
+      content: contentKmp,
+      name: "Kotlin Multiplatform",
     },
     {
-        type: 'java',
-        content: content12,
+      type: "java",
+      content: content12,
     },
     {
-        type: 'flutter',
-        content: content13,
+      type: "flutter",
+      content: content13,
     },
     {
-        type: 'rn',
-        content: content14,
+      type: "rn",
+      content: content14,
     },
     {
-        type: 'cordova',
-        content: content15,
+      type: "cordova",
+      content: content15,
     },
     {
-        type: 'capacitor',
-        content: contentCapacitor2,
+      type: "capacitor",
+      content: contentCapacitor2,
     },
     {
-        type: 'unity',
-        content: content16,
+      type: "unity",
+      content: content16,
     },
-    
-]}/>
-
+  ]}
+/>
 
 Often times, you may not have your own App User IDs until later in the application lifecycle. In these cases, you can pass the App User ID later through the `.logIn()` method.
 
@@ -156,7 +157,7 @@ Often times, you may not have your own App User IDs until later in the applicati
 
 If your app doesn't receive its own App User ID until later in its lifecycle, you can set (or change) the App User ID at any time by calling `.logIn()`. If the logged in identity does not already exist in RevenueCat, it will be created automatically.
 
-This flow will generate an anonymous App User ID for the user first, then may (*see below*) alias the anonymous App User ID to the provided custom App User ID.
+This flow will generate an anonymous App User ID for the user first, then may (_see below_) alias the anonymous App User ID to the provided custom App User ID. In this case if you integrated webhooks, `original_app_user_id` will be the anonymous id and `app_user_id` will be the provided id.
 
 import content17 from "!!raw-loader!@site/code_blocks/customers/user-ids_17.swift";
 import content18 from "!!raw-loader!@site/code_blocks/customers/user-ids_18.m";
@@ -169,50 +170,51 @@ import contentCapacitor3 from "!!raw-loader!@site/code_blocks/customers/user-ids
 import content24 from "!!raw-loader!@site/code_blocks/customers/user-ids_24.cs";
 import contentKmpLogin from "!!raw-loader!@site/code_blocks/customers/user-ids_kmp_login.kts";
 
-<RCCodeBlock tabs={[
+<RCCodeBlock
+  tabs={[
     {
-        type: 'swift',
-        content: content17,
+      type: "swift",
+      content: content17,
     },
     {
-        type: 'objc',
-        content: content18,
+      type: "objc",
+      content: content18,
     },
     {
-        type: 'kotlin',
-        content: content19,
+      type: "kotlin",
+      content: content19,
     },
     {
-        type: 'kotlin',
-        content: contentKmpLogin,
-        name: 'Kotlin Multiplatform',
+      type: "kotlin",
+      content: contentKmpLogin,
+      name: "Kotlin Multiplatform",
     },
     {
-        type: 'java',
-        content: content20,
+      type: "java",
+      content: content20,
     },
     {
-        type: 'flutter',
-        content: content21,
+      type: "flutter",
+      content: content21,
     },
     {
-        type: 'rn',
-        content: content22,
+      type: "rn",
+      content: content22,
     },
     {
-        type: 'cordova',
-        content: content23,
+      type: "cordova",
+      content: content23,
     },
     {
-        type: 'capacitor',
-        content: contentCapacitor3,
+      type: "capacitor",
+      content: contentCapacitor3,
     },
     {
-        type: 'unity',
-        content: content24,
+      type: "unity",
+      content: content24,
     },
-    
-]}/>
+  ]}
+/>
 
 <details>
 <summary>`logIn()` method alias behavior</summary>
@@ -220,11 +222,11 @@ import contentKmpLogin from "!!raw-loader!@site/code_blocks/customers/user-ids_k
 When logging in from an Anonymous ID to a provided custom App User ID, RevenueCat will decide whether the identities should be merged (aliased) into the same CustomerInfo object or not. This is decided depending on whether the provided custom App User ID already exists, and if it does exist whether it has an anonymous alias already.
 
 | Current App User ID | Provided Custom App User ID already exists? | Provided Custom App User ID already has an anonymous alias? | Result                                                     |
-| :------------------ | :------------------------------------------ | :----------------------------------------------- | :--------------------------------------------------------- |
-| Anonymous           | No                                          | N/A                                              | Anonymous ID and Provided ID have CustomerInfo merged.     |
-| Anonymous           | Yes                                         | No                                               | Anonymous ID and Provided ID have CustomerInfo merged.     |
-| Anonymous           | Yes                                         | Yes                                              | CustomerInfo transfers to Provided ID, no aliases created. |
-| Non-anonymous       | Any                                         | Any                                              | CustomerInfo transfers to Provided ID, no aliases created. |
+| :------------------ | :------------------------------------------ | :---------------------------------------------------------- | :--------------------------------------------------------- |
+| Anonymous           | No                                          | N/A                                                         | Anonymous ID and Provided ID have CustomerInfo merged.     |
+| Anonymous           | Yes                                         | No                                                          | Anonymous ID and Provided ID have CustomerInfo merged.     |
+| Anonymous           | Yes                                         | Yes                                                         | CustomerInfo transfers to Provided ID, no aliases created. |
+| Non-anonymous       | Any                                         | Any                                                         | CustomerInfo transfers to Provided ID, no aliases created. |
 
 </details>
 
@@ -250,15 +252,15 @@ You can retrieve the currently identified App User ID via the `Purchases.shared.
 
 ## Aliases
 
-If you use a combination of anonymous and custom App User IDs, it’s expected that Customers may be merged over time due to various actions they perform within the app, like [logins](/customers/user-ids#login-method-alias-behavior) or [restores](/getting-started/restoring-purchases). Scenarios explaining when merges occur are covered in more detail below, and will depend on the [restore behavior](/getting-started/restoring-purchases#restore-behavior) you select for your project. 
+If you use a combination of anonymous and custom App User IDs, it’s expected that Customers may be merged over time due to various actions they perform within the app, like [logins](/customers/user-ids#login-method-alias-behavior) or [restores](/getting-started/restoring-purchases). Scenarios explaining when merges occur are covered in more detail below, and will depend on the [restore behavior](/getting-started/restoring-purchases#restore-behavior) you select for your project.
 
-When a merge of customers occurs, there will be only one App User ID within the `original_app_user_id` field. If you’re listening to [Webhooks](/integrations/webhooks), the other App User IDs associated with the customer will be within an array in the `aliases` field. 
+When a merge of customers occurs, there will be only one App User ID within the `original_app_user_id` field. If you’re listening to [Webhooks](/integrations/webhooks), the other App User IDs associated with the customer will be within an array in the `aliases` field.
 
 When referenced via the [SDK](/getting-started/configuring-sdk) or [API](https://www.revenuecat.com/reference/basic), any merged App User IDs will all be treated as the same “customer”. Looking up any of the merged App User IDs in RevenueCat will return the same `CustomerInfo`, customer history, customer attributes, subscription status, etc.
 
 ## Tips for Setting Custom App User IDs
 
-**ℹ️ Every app user ID must be unique per user.** 
+**ℹ️ Every app user ID must be unique per user.**
 
 If you don't have your own user IDs for some of your users, you should not pass any value for the App User ID on configuration, which will then rely on the anonymous IDs created by RevenueCat.
 
@@ -284,7 +286,7 @@ You should never hardcode a string as an App User ID, since every install will b
 
 ## Blocked App User IDs
 
-Certain App User IDs are blocked in RevenueCat. This is by design to help developers that may be unintentionally passing non-unique strings as user identifiers. 
+Certain App User IDs are blocked in RevenueCat. This is by design to help developers that may be unintentionally passing non-unique strings as user identifiers.
 
 The current block-list is: `'no_user'`, `'null'`, `'none'`, `'nil'`, `'(null)'`, `'NaN`, `'\\x00'`(`NULL` character), `''`(empty string), `'unidentified'`, `'undefined'`, `'unknown'`, `'anonymous'`, `'guest'`, `'-1'`, `'0'`, `'[]'`, `'{}'`, `'[object Object]'` and any App User IDs containing the character `/`.
 
@@ -293,9 +295,9 @@ The current block-list is: `'no_user'`, `'null'`, `'none'`, `'nil'`, `'(null)'`,
 <details>
 <summary>How to force only using Custom App User IDs</summary>
 
-To only use custom App User IDs, you must take care not to generate any anonymous App User IDs in the SDK. 
+To only use custom App User IDs, you must take care not to generate any anonymous App User IDs in the SDK.
 
-Anonymous App User IDs are generated when the SDK is configured without a provided custom App User ID, and are also created on `logOut()` as mentioned above. Many apps use a combination of anonymous App User IDs and their own custom App User IDs via an authentication system to provide flexibility in their user purchase flows. However, some applications are intended only to be used while using a known App User ID, without anonymous users at all. 
+Anonymous App User IDs are generated when the SDK is configured without a provided custom App User ID, and are also created on `logOut()` as mentioned above. Many apps use a combination of anonymous App User IDs and their own custom App User IDs via an authentication system to provide flexibility in their user purchase flows. However, some applications are intended only to be used while using a known App User ID, without anonymous users at all.
 
 Some limits of anonymous IDs include added difficulty in personalization of user experiences, optimization of monetization strategies, and not being able to share subscriptions across platforms. Depending on the application's [transfer behavior](/getting-started/restoring-purchases), a provided user's subscription may be transferred to an anonymous ID - which can only be brought back through a [restore](/getting-started/restoring-purchases) on the original purchase platform.
 

@@ -1,0 +1,258 @@
+---
+title: Redemption Links
+slug: redemption-links
+excerpt: Allow customers to purchase products and subscriptions on the web and seamlessly access them in-app
+hidden: false
+---
+
+## Overview
+
+Redemption Links are one-time-use deep links generated after a customer completes a web purchase. These links allow customers to associate their web purchase with their account in your app. By tapping the link, customers are redirected into the app where the purchase is automatically linked to their App User ID, granting them access to the associated entitlements.
+Redemption Links can increase conversion and be incredibly useful for projects like marketing campaigns.
+
+:::info App User IDs no longer required for web purchases
+Using web purchases with Redemption Links means that you do not need to provide an App User ID when initializing the purchase, and customers can therefore check out anonymously.
+:::
+
+## How Redemption Links work
+
+Here's how a purchase and redemption flow looks, once you've configured and enabled the feature:
+
+1. The Web Billing purchase flow is initialized, either through the web SDK `purchase()` method, or through a [Web Paywall Link](/web/web-billing/web-paywall-links) (App User ID not required at this stage)
+1. The customer purchases a subscription or non-subscription product through the web checkout.
+1. The **customer receives a redemption link** at the end of the purchase flow, both on the success page, and in the email receipt for the purchase.
+1. On tapping the redemption link, customers are brought into the mobile app (using a custom URL scheme provided by RevenueCat).
+1. The app handles associating the purchase with the customer, either by aliasing or transferring the purchase.
+1. The customer has access to their entitlements associated with the web purchase.
+
+## How to configure Redemption Links to redeem web purchases on mobile
+
+### Update your mobile app(s) to register custom URL schemes from RevenueCat
+
+:::warning Updated mobile apps must be adopted
+After Redemption Links are enabled, customers purchasing with an anonymous App User ID will be shown app deep links (to redirect the customer into your app and redeem the purchase). Any customers on older app versions that aren't configured to accept custom URL schemes will not be able to use these links. You should therefore make sure that as many customers as possible have updated to your new app version before sending them to a purchase flow without an App User ID.
+:::
+
+The SDK versions supporting Redemption Links are:
+
+| RevenueCat SDK         | Versions supporting Redemption Links |
+| :--------------------- | :----------------------------------- |
+| purchases-android      | 8.10.6 and above                     |
+| purchases-ios          | 5.14.1 and above                     |
+| purchases-flutter      | 8.4.0 and above                      |
+| purchases-unity        | 7.4.1 and above                      |
+| react-native-purchases | 8.5.0 and above                      |
+| purchases-kmp          | 1.6.0+13.19.0 and above              |
+| purchases-capacitor    | 10.1.0 and above                     |
+
+In order to be able to redeem the redemption links in your mobile apps, follow these steps
+
+#### 1. Copy the custom URL scheme from the RevenueCat Dashboard
+
+You can find this in the RevenueCat dashboard inside your Web Billing app’s settings, under “Redemption Links”. It is unique to your Web Billing app:
+
+![](/images/web-billing/redemption-links-dashboard-disabled.png)
+
+#### 2. Allow your app to respond to links with your custom scheme
+
+##### iOS
+
+In iOS, you need to define a custom URL schema. You can do this in Xcode, from your xcodeproj file, Info tab, URL Types section. Then add your custom scheme from Step 1 in the “URL Schemes” field. You can see a screenshot here, but remember to replace `<YOUR_CUSTOM_SCHEME>` with the one you obtained in step 1.
+
+![](/images/web-billing/redemption-links-xcode-1.png)
+
+You can see official instructions by Apple [here](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app).
+
+##### Android
+
+In Android, you need to add a deep linking intent filter for the provided scheme. You can do that by adding the following intent filter inside your `AndroidManifest.xml` activity and replacing `<YOUR_CUSTOM_SCHEME>` with the scheme you copied in step 1. Note that it’s fine to have multiple intent filters for the same activity.
+
+import redemptionAndroidManifest from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_androidmanifest.xml";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "xml",
+      content: redemptionAndroidManifest,
+      name: "AndroidManifest.xml",
+    },
+  ]}
+/>
+
+You can check out official docs from Google [here](https://developer.android.com/training/app-links/deep-linking#adding-filters).
+
+#### 3. Perform redemption using our SDKs
+
+Our SDKs provide APIs to perform the redemptions and provide you with the result of that redemption.
+
+##### iOS
+
+If using SwiftUI, you can use the `onWebPurchaseRedemptionAttempt` modifier to automatically perform redemption of Redemption Links once the app is opened with them.
+
+import swiftUIModifier from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_swift_ui_modifier.swift";
+
+<RCCodeBlock
+  tabs={[
+    { type: "swift", title: "SwiftUI Modifier", content: swiftUIModifier },
+  ]}
+/>
+
+Alternatively, if you don’t want to perform the redemption automatically or if you're not using Swift UI, you can use the provided URL extension `asWebPurchaseRedemption` and then perform the redemption using `Purchases.shared.redeemWebPurchase` as follows:
+
+import alternativeSwift from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_alternative_swift.swift";
+
+<RCCodeBlock
+  tabs={[
+    { type: "swift", title: "Alternative Swift", content: alternativeSwift },
+  ]}
+/>
+
+##### Android
+
+In Android, you first need to obtain the link and make sure it’s a Redemption Link, then redeem it using the `redeemWebPurchase` method. You can see an example of this in the following code block:
+
+import androidRedemption1 from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_android.kt";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "kotlin",
+      title: "Android Redemption",
+      content: androidRedemption1,
+    },
+  ]}
+/>
+
+##### Flutter
+
+In our Flutter SDK, you will need to obtain the deep link first. Please read the official docs on how to parse deep links: https://docs.flutter.dev/ui/navigation/deep-linking. You can use [app_links](https://pub.dev/packages/app_links) or similar libraries to obtain the deep link.
+
+Once you have the deep link, you can use the following snippet to perform the redemption:
+
+import flutterRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_flutter.dart";
+
+<RCCodeBlock
+  tabs={[
+    { type: "dart", title: "Flutter Redemption", content: flutterRedemption },
+  ]}
+/>
+
+##### React Native
+
+In our React Native SDK, you will need to obtain the deep link first. Please read the official docs on how to parse deep links: https://reactnavigation.org/docs/deep-linking/.
+
+Once you have the deep link, you can use the following snippet to perform the redemption:
+
+import reactNativeRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_react.ts";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "typescript",
+      title: "React Native Redemption",
+      content: reactNativeRedemption,
+    },
+  ]}
+/>
+
+##### Unity
+
+In our Unity SDK, you will need to obtain the deep link first. Please read the official docs on how to parse deep links: https://docs.unity3d.com/Manual/deep-linking.html.
+
+Once you have the deep link, you can use the following snippet to perform the redemption:
+
+import unityRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_unity.cs";
+
+<RCCodeBlock
+  tabs={[
+    { type: "csharp", title: "Unity Redemption", content: unityRedemption },
+  ]}
+/>
+
+##### Kotlin Multiplatform
+
+In our Kotlin Multiplatform SDK, you will need to obtain the deep link first. There are several ways to do this, using a 3rd party library, or by writing the relevant android/iOS code in your app and passing the url back to the shared kotlin code.
+
+Once you have the deep link, you can use the following snippet to perform the redemption:
+
+import kmpRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_kmp.kt";
+
+<RCCodeBlock
+  tabs={[{ type: "kotlin", title: "KMP Redemption", content: kmpRedemption }]}
+/>
+
+##### Capacitor
+
+In our Capacitor SDK, you will need to obtain the deep link first. Please read the official docs on how to parse deep links: https://capacitorjs.com/docs/guides/deep-links.
+
+Once you have the deep link, you can use the following snippet to perform the redemption:
+
+import capacitorRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_capacitor.ts";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "typescript",
+      title: "Capacitor Redemption",
+      content: capacitorRedemption,
+    },
+  ]}
+/>
+
+#### 4. Verify your setup
+
+Once you’ve followed the steps above, in order to verify that your integration worked correctly you can open your app using a deep link in the format: `<YOUR_CUSTOM_SCHEME>://redeem_web_purchase?redemption_token=<ANY_TOKEN>`
+
+For example, `rc-d458f1e3a2://redeem_web_purchase?redemption_token=invalid_token`.
+
+You can use a deep link test app or write the deep link in a notes app and click on it. Alternatively, if you’re using an iOS simulator you can run this command in your mac terminal: `xcrun simctl openurl booted "<YOUR_CUSTOM_SCHEME>://redeem_web_purchase?redemption_token=<ANY_TOKEN>"`, and on android you can follow the instructions [here](https://developer.android.com/training/app-links/deep-linking#testing-filters).
+
+Then, you need to make sure that you display the appropriate UI in your app. In this case, an invalid link error.
+
+### Configure Redemption Links in the RevenueCat Dashboard
+
+:::info Test redemption links in sandbox mode before enabling for production purchases
+Use the "Enable only for Sandbox" setting to test the full purchase flow, including deep-linking into your app. This will ensure that you don't send redemption links to customers before they're functioning and tested.
+:::
+
+#### How to test Redemption Links in sandbox mode
+
+1. Navigate to your project in the RevenueCat dashboard, and then the Web Billing app.
+
+2. Under App Information in the Settings tab, make sure you have added: App icon, App name, and at least one store link for either the App Store or Google Play Store:
+
+![](/images/web-billing/redemption-links-dashboard-1.png)
+
+3. Under Redemption Links, set the feature to "Enable only for Sandbox":
+
+![](/images/web-billing/redemption-links-dashboard-sandbox.png)
+
+4. Use the sandbox purchase flow to make a test purchase on a mobile device where your app is installed (either through [Web Paywall Links](/web/web-billing/web-paywall-links) sandbox URL, or the [Web SDK](/web/web-billing/web-sdk) with a sandbox API key).
+
+### Purchase Association Behavior
+
+:::info Terminology
+In this context, `Identified` means a Custom App User ID has been set, while `Anonymous` refers to an App User ID automatically generated by RevenueCat.
+:::
+When a customer redeems a web purchase in your app, RevenueCat will automatically handle associating the purchase based on the App User IDs involved:
+
+| Current App User ID | Web Purchase Owner | Result                                                                                                                            |
+| :------------------ | :----------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
+| Anonymous           | Anonymous          | App customer and Web Purchase Owner have CustomerInfo merged (aliased)                                                            |
+| Anonymous           | Identified         | App customer and Web Purchase Owner have CustomerInfo merged (aliased)                                                            |
+| Identified          | Anonymous          | App customer and Web Purchase Owner have CustomerInfo merged (aliased)                                                            |
+| Identified          | Identified         | Follows project's [restore behavior](/projects/restore-behavior) (The default is to transfer the purchase to the new App User ID) |
+
+In most cases, the App User IDs will be merged (aliased) and treated as the same customer going forward. The exception is when both App User IDs are identified - in this case, it follows your project's configured [restore behavior](/projects/restore-behavior).
+
+After successful redemption, the customer will immediately have access to their entitlements regardless of which association method was used.
+
+## FAQs
+
+#### How can I make sure that customers can't share redemption links with other people and allow anyone to access premium entitlements in my app?
+
+A redemption link is only valid for one single redemption of a purchase — once redeemed, it's no longer valid.
+
+#### Can my customers redeem their purchases on multiple devices?
+
+Customers can redeem a single purchase multiple times (i.e. on a different devices) — on each occasion they'll be sent a new redemption link to their billing email address, valid for one new redemption.

@@ -1,0 +1,58 @@
+---
+title: Supporting Multiple Currencies
+slug: multi-currency-support
+hidden: false
+---
+
+## Overview
+
+Web Billing (formerly RevenueCat Billing) supports multiple currencies for your web subscriptions.
+
+### App setup
+
+In the setup of the Web Billing app, you can select the default currency for the app. This currency will be used for customers whose location is not supported by any of the currencies you have configured, or when the customer's location is undetermined.
+
+![App configuration page](/images/web-billing/new-web-billing-app-for-currency.png)
+
+### Product setup
+
+When creating a new product in the RevenueCat dashboard, you can set the price for each currency you want to support. Each product can have only one price per currency. You can add additional currencies to a product by editing it, but you can't change the currency of an existing price or remove a currency.
+
+![New product configuration page](/images/web-billing/new-product-configuration.png)
+
+### Making a purchase
+
+When a customer makes a purchase, RevenueCat will automatically select the price in the currency that best matches the customer's location. This happens regardless of whether the purchase is made through the Web SDK or a Web Paywall Link. If the customer's currency is not supported, RevenueCat will default to the default currency.
+
+### Specifying a currency manually
+
+#### Web SDK
+
+If you want to specify a currency manually, you can do so by passing the `currency` parameter when calling the `getOfferings` method of the Web SDK. This will override the automatic currency selection.
+
+import webBillingContent from "!!raw-loader!@site/code_blocks/_projects/web-billing/web-billing-doc-snippets.ts";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "ts",
+      content: webBillingContent,
+      name: "Web (JS/TS)",
+      region: "Get current offerings for EUR",
+    },
+  ]}
+/>
+
+#### Web Paywall Links
+
+When generating a Web Paywall Link, you can specify the currency by appending the `currency` query parameter to the URL. This will override the automatic currency selection.
+
+Example:
+
+```
+https://pay.rev.cat/<paywall_ID>/<app_user_ID>?currency=EUR
+```
+
+### Differentiating prices in the same currency
+
+Given that each product can have only one price per currency, if you want to offer different prices for the same product in the same currency, you will need to create a new product with a different identifier. You can then use [targeting](/tools/targeting) to show the correct product to the customer based on their location or other criteria.
