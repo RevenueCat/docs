@@ -30,7 +30,7 @@ If you build your paywall to reference the `current` Offering, instead of hardco
 
 To create an Offering, navigate to the Offerings tab to your project settings in the RevenueCat dashboard, and click **+ New** to get started.
 
-You'll be prompted to enter an **Identifier** and **Description** for your offering. _Note that the offering identifier cannot be changed later_. Once you've entered this information, click **Add**.
+You'll be prompted to enter an **Identifier** and **Description** for your offering. _Note that the offering identifier cannot be changed later_. Once you've entered this information, click **Save**.
 
 ![Screenshot](/images/7508f4b-Screenshot_2023-12-05_at_10.17.25_PM_4a7403e5b880248ab9c00c129c89edd6.png)
 
@@ -38,7 +38,7 @@ You'll be prompted to enter an **Identifier** and **Description** for your offer
 
 Each Offering you create should contain at least one Package that holds cross-platform products.
 
-To create a package, click into your new Offering, then click **+ New** in the Packages section. In the popup, choose an **Identifier** from the dropdown that corresponds with the duration of the package. If a duration isn't suitable for your package (e.g. consumable purchases), then you can choose a custom identifier. Include a **Description**, then click **Add**.
+To create a package, click into your new Offering, then click **+ New** in the Packages section. In the popup, choose an **Identifier** from the dropdown that corresponds with the duration of the package. If a duration isn't suitable for your package (e.g. consumable purchases), then you can choose a custom identifier. Include a **Description**, then click **Save**.
 
 ![](/images/f416859-Screenshot_2023-03-21_at_10.57.10_dc01f310276ab6c27a087da90a72a782.png "Screenshot 2023-03-21 at 10.57.10.png")
 
