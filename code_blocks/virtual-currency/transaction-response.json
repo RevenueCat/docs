@@ -1,0 +1,11 @@
+{
+    "object": "virtual_currencies_partial_balance",
+    "partial_balance": {
+        "GLD": {
+             "amount": 80
+        },
+        "SLV": {
+             "amount": 40
+        }
+    }
+}

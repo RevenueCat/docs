@@ -1,0 +1,10 @@
+
+curl --location 'https://api.revenuecat.com/v2/projects/<YOUR_PROJECT_ID>/customers/<YOUR_CUSTOMER_ID>/virtual_currencies/transactions' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer sk_***************************' \
+--data '{
+    "adjustments": {
+        "GLD": -20,
+        "SLV": -10
+    }
+}'

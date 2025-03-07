@@ -1,0 +1,5 @@
+POST app_backend/reward
+{
+   "prize": "500 GLD"
+   "reason": "NEW_LEVEL_UNLCOKED"
+}
