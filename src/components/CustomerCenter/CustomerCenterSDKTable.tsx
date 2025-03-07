@@ -37,7 +37,7 @@ export const CustomerCenterSDKTable: React.FC = () => {
       name: "Kotlin Multiplatform",
       sdk: "com.revenuecat.purchases:purchases-kmp-ui",
       link: "https://github.com/RevenueCat/purchases-kmp",
-      version: "Coming soon",
+      version: `${sdkVersions.kmp} and higher`,
     },
   ];
 

@@ -347,6 +347,7 @@ const customersCategory = Category({
             Page({ slug: "customer-center-integration-android" }),
             Page({ slug: "customer-center-flutter" }),
             Page({ slug: "customer-center-react-native" }),
+            Page({ slug: "customer-center-kmp" }),
           ],
         }),
       ],
