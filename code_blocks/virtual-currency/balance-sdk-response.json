@@ -1,0 +1,10 @@
+{
+    "balance": {
+        "GLD": {
+             "amount": 80
+        },
+        "SLV": {
+             "amount": 40
+        }
+    }
+}
