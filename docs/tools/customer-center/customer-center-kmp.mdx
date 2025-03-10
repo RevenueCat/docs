@@ -1,0 +1,64 @@
+---
+title: Integrating Customer Center on Kotlin Multiplatform
+sidebar_label: Kotlin Multiplatform Integration
+slug: customer-center-kmp
+hidden: false
+---
+import { sdkVersions } from '@site/src/components/CustomerCenter/CustomerCenterSDKTable';
+import OverviewPartial from './_customer-center-installation-overview.mdx';
+
+<OverviewPartial />
+
+## Installation
+
+CustomerCenter for Kotlin Multiplatform is available on Maven Central and can be included via Gradle starting at <code>{sdkVersions.kmp}</code>.
+
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-kmp.svg?style=flat)](https://github.com/RevenueCat/purchases-kmp/releases)
+
+Add the following Maven coordinates to your `libs.versions.toml`:
+```toml libs.versions.toml
+[versions] 
+purchases-kmp = "<version>"
+
+[libraries]
+purchases-core = { module = "com.revenuecat.purchases:purchases-kmp-core", version.ref = "<version>" }
+purchases-ui = { module = "com.revenuecat.purchases:purchases-kmp-ui", version.ref = "<version>" }
+```
+
+Then add the dependencies to the `commonMain` sourceset in your Compose Multiplatform module's `build.gradle.kts`:
+```kotlin build.gradle.kts
+kotlin {
+    // ...
+    sourceSets {
+        // ...
+        commonMain.dependencies {  
+            // Add the purchases-kmp dependencies.
+            implementation(libs.purchases.core)  
+            implementation(libs.purchases.ui)  
+        }
+    }
+}
+```
+
+Lastly, you'll need to make sure you link the `PurchasesHybridCommonUI` native iOS framework. If your iOS app uses Swift Package Manager, add the `PurchasesHybridCommonUI` library to your target in the same way you added the `PurchasesHybridCommon` library. If your iOS app uses CocoaPods, either update its `Podfile`, or update your Compose Multiplatform module's `build.gradle.kts`, depending on how your Multiplatform module is integrated with your iOS project.
+
+## Integration
+
+Opening the customer center is as simple as:
+
+```kotlin
+CustomerCenter(
+  onDismiss = { 
+    // handle dismiss gracefully
+   },
+)
+```
+
+## Setup promotional offers
+
+Promotional Offers allow developers to apply custom pricing and trials to new customers and to existing and lapsed subscriptions. Unique promotional offers can be assigned to different paths and survey responses in the Customer Center, but first they must be setup in App Store Connect and Google Play Store.
+
+The Customer Center will automatically show offers based on specific user actions. By default we have defined it for cancellations but it can be modified to any of the defined paths. For React Native you are going to have to configure these promotional offers in both Google Play Console and App Store Connect.
+Refer to [configuring Google Play Store promotional offers](/tools/customer-center/customer-center-promo-offers-google) and [configuring App Store Connect promotional offers](/tools/customer-center/customer-center-promo-offers-apple) for detailed instructions.
+
+Learn more about configuring the Customer Center in the [configuration guide](/tools/customer-center/customer-center-configuration).
