@@ -5,6 +5,7 @@ export const sdkVersions = {
   android: "8.12.2",
   reactNative: "8.6.0",
   flutter: "8.7.0",
+  kmp: "1.7.0",
 };
 
 export const CustomerCenterSDKTable: React.FC = () => {
