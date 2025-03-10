@@ -18,11 +18,11 @@ CustomerCenter for Kotlin Multiplatform is available on Maven Central and can be
 Add the following Maven coordinates to your `libs.versions.toml`:
 ```toml libs.versions.toml
 [versions] 
-purchases-kmp = "<latest version>"
+purchases-kmp = "`${sdkVersions.ios}`"
 
 [libraries]
-purchases-core = { module = "com.revenuecat.purchases:purchases-kmp-core", version.ref = "purchases-kmp" }
-purchases-ui = { module = "com.revenuecat.purchases:purchases-kmp-ui", version.ref = "purchases-kmp" }
+purchases-core = { module = "com.revenuecat.purchases:purchases-kmp-core", version.ref = "`${sdkVersions.ios}`" }
+purchases-ui = { module = "com.revenuecat.purchases:purchases-kmp-ui", version.ref = "`${sdkVersions.ios}`" }
 ```
 
 Then add the dependencies to the `commonMain` sourceset in your Compose Multiplatform module's `build.gradle.kts`:
