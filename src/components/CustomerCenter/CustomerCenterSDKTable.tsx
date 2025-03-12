@@ -5,6 +5,7 @@ export const sdkVersions = {
   android: "8.12.2",
   reactNative: "8.6.0",
   flutter: "8.7.0",
+  kmp: "1.7.0",
 };
 
 export const CustomerCenterSDKTable: React.FC = () => {
@@ -37,7 +38,7 @@ export const CustomerCenterSDKTable: React.FC = () => {
       name: "Kotlin Multiplatform",
       sdk: "com.revenuecat.purchases:purchases-kmp-ui",
       link: "https://github.com/RevenueCat/purchases-kmp",
-      version: "Coming soon",
+      version: `${sdkVersions.kmp} and higher`,
     },
   ];
 

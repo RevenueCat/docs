@@ -57,9 +57,9 @@ Please reach out to [RevenueCat Support](https://app.revenuecat.com/settings/sup
 
 If needed, you can add additional address information to your invoices by clicking '**Update payment method**' and expanding the '**Invoice Details**' section:
 
-![update payment method button](https://github.com/RevenueCat/revenuecat-docs/assets/110489217/79b7b8e5-cb06-438d-91e9-9257c6921211)
+![update payment method button](/images/79b7b8e5-update-payment-method-button-cb06-438d-91e9-9257c6921211.png)
 
-![invoice details expanded](https://github.com/RevenueCat/revenuecat-docs/assets/110489217/a49a859b-1f45-438d-8b46-65e93ca4f48e)
+![invoice details expanded](/images/a49a859b-invoice-details-expanded-65e93ca4f48e.png)
 
 ## Display Currency
 
