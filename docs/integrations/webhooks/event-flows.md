@@ -97,7 +97,7 @@ Immediate changes occur:
 - On the Google Play Store, for all proration modes except `DEFERRED` (ie. all proration modes starting with `IMMEDIATE`)
 - For immediate product changes in Stripe. Please note: The `RENEWAL` event may show the same `purchased_at_ms` as the original subscription (ie. t₀), because that is how Stripe represents the status of the subscription after the product change.
 
-![immediate product change flow](https://github.com/RevenueCat/revenuecat-docs/assets/14286938/461fc856-60c5-4a9b-b568-22ef7295e212)
+![immediate product change flow](/images/461fc856-immediate-product-change_22ef7295e212.png)
 
 ### Product Change at Period End
 
@@ -110,7 +110,7 @@ Changes at period end occur:
 - On the Google Play Store, for the proration mode `DEFERRED`
 - For scheduled product changes in Stripe
 
-![product change at end of period flow](https://github.com/RevenueCat/revenuecat-docs/assets/14286938/6441cc2b-aef9-4c45-8477-e5154829756a)
+![product change at end of period flow](/images/6441cc2b-product-change-at-end-of-period-e5154829756a.png)
 
 ## Other
 
