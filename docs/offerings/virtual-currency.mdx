@@ -44,7 +44,38 @@ Once your customer purchase the associated products they will get the defined am
 
 ![](/images/virtual-currency/vc-balance.png)
 
-## API Endpoints
+## SDK Beta Installation
+SDK support for virtual currencies is currently in beta, and as such requires the usage of a beta build. Please note that the virtual currency APIs in these betas are subject to change without warning in future releases. The beta virtual currency features are currently available in the native iOS and Android SDKs.
+
+### iOS
+Use the `virtual-currency-beta` branch of the purchases-ios SDK to access the virtual currency beta features. If you’re using Swift Package Manager, you can do this in Xcode like so:
+
+![](/images/virtual-currency/ios-spm-virtual-currency-beta-branch-configuration.png)
+
+### Android
+
+When adding the purchases-android SDK to your app, use the most recent `vc-beta` version when adding `purchases-android` to your `build.gradle`:
+
+[![Latest Virtual Currency Android Beta Release](https://img.shields.io/github/release/RevenueCat/purchases-android.svg?filter=*vc-beta*&style=flat)](https://github.com/RevenueCat/purchases-android/releases)
+
+```kotlin
+implementation 'com.revenuecat.purchases:purchases:8.14.2-vc-beta.1'
+```
+
+When you use the beta virtual currency features, you’ll need to annotate your function/class with the `@OptIn(ExperimentalPreviewRevenueCatPurchasesAPI::class)` annotation:
+
+import androidExperimentalAPIAnnotationExample from "!!raw-loader!@site/code_blocks/virtual-currency/vc-android-experimental-api-annotation-example.kt";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "kotlin",
+      content: androidExperimentalAPIAnnotationExample,
+    },
+  ]}
+/>
+
+## Usage
 
 ### Prerequisites
 
@@ -104,11 +135,11 @@ import content3 from "!!raw-loader!@site/code_blocks/virtual-currency/transactio
 
 ### Reading balances
 
+#### From your backend
+
 The following endpoint allows you to retrieve a customer's current balance from your backend:
 
 import content4 from "!!raw-loader!@site/code_blocks/virtual-currency/balance.curl";
-
-// test
 
 <RCCodeBlock
   tabs={[
@@ -132,49 +163,23 @@ import content5 from "!!raw-loader!@site/code_blocks/virtual-currency/balance-re
   ]}
 />
 
-### Displaying balance within the app
+#### From the SDK
+If you're using the virtual currency SDK betas, you can fetch the virtual currency balances from the [CustomerInfo](https://www.revenuecat.com/docs/customers/customer-info) object in the SDK:
 
-Virtual currency baalnces can be retrieved directly from the device using your app's public API key (found via Project Settings > API keys > App specific keys in the RevenueCat dashboard).
-
-Currently we have two options for displaying balances in your app:
-
-#### Calling virtual currency balances V1 endpoint
-
-import content6 from "!!raw-loader!@site/code_blocks/virtual-currency/balance-sdk.curl";
+import fetchVCBalancesSwift from "!!raw-loader!@site/code_blocks/virtual-currency/vc-balance-sdk-ios.swift";
+import fetchVCBalancesKotlin from "!!raw-loader!@site/code_blocks/virtual-currency/vc-balance-sdk-android.kt";
 
 <RCCodeBlock
   tabs={[
     {
-      type: "curl",
-      content: content6,
+      type: "swift",
+      content: fetchVCBalancesSwift,
+      name: "Swift",
     },
-  ]}
-/>
-
-You will receive the following response:
-
-import content7 from "!!raw-loader!@site/code_blocks/virtual-currency/balance-sdk-response.json";
-
-<RCCodeBlock
-  tabs={[
     {
-      type: "json",
-      content: content7,
-    },
-  ]}
-/>
-
-#### Retrieving the customer info object
-
-The [customer's info response](/getting-started/quickstart#check-subscription-status) is enriched with a new object: `virtual_currencies`.
-
-import content8 from "!!raw-loader!@site/code_blocks/virtual-currency/customer-info.txt";
-
-<RCCodeBlock
-  tabs={[
-    {
-      type: "json",
-      content: content8,
+      type: "kotlin",
+      content: fetchVCBalancesKotlin,
+      name: "Kotlin",
     },
   ]}
 />
