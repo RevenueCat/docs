@@ -5,12 +5,25 @@ excerpt: Customizing Web Billing and the purchase flow
 hidden: false
 ---
 
-The appearance of certain elements of the Web Billing (formerly RevenueCat Billing) experience can be customized to match your app's branding. This includes the colors and shapes of certain UI elements.
+Using the appearance editor in the RevenueCat Dashboard, yuou can customize the appearance of the Web Billing UI to match your app's branding. This includes the colors and shapes of certain UI elements.
 
-This customization currently applies to the purchase flow (ie. the UI elements shown when making a purchase from the Web SDK or Web Paywall Links), as well as the Web Paywall Links.
+This customization currently applies to:
 
-To customize the appearance of the Web Billing experience, go to the App settings in the RevenueCat dashboard and navigate to the **Appearance** tab. You can configure the following options there:
+- The purchase flow initiated by the Web SDK
+- Web Paywall Links
+- [Lifecycle emails](/web/web-billing/lifecycle-emails) sent to customers.
 
+To customize the appearance to your brand, go to the app settings for your Web Billing app in the RevenueCat dashboard, select to the **Appearance** tab and click **Open Editor**. Here you'll see a mobile preview of the checkout, with styling applied.
+
+![](/images/web-billing/customization.png)
+
+:::warning Default styling changes for SDK v1.0.0
+The default (uncustomized) appearance changed with the release of SDK v1.0.0, and we recommend updating to the latest version to benefit from these design changes. You can use SDK version switcher on this page to preview the design for each version.
+:::
+
+You can customize the following elements:
+
+- **Theme**: Apply a preset collection of colors & styles
 - **Page background**: Used for the background of the page for [Web Paywall Links](/web/web-billing/web-paywall-links).
 - **Product info background**: Used for the panel showing information about the purchased product in the purchase flow.
 - **Form background**: Used for the background of the purchase form.
@@ -19,5 +32,3 @@ To customize the appearance of the Web Billing experience, go to the App setting
 - **Error**: Used for error messages and other negative UI elements.
 - **Shapes**: The shape of the purchase modal dialog, buttons, form elements, and package cards in the purchase flow and Web Paywall Links.
 - **Show product description in checkout**: If set, the product description will be shown in the product info panel of the purchase flow.
-
-![](/images/web-billing/customization.png)
