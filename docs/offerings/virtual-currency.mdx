@@ -75,7 +75,7 @@ import androidExperimentalAPIAnnotationExample from "!!raw-loader!@site/code_blo
   ]}
 />
 
-## API Endpoints
+## Usage
 
 ### Prerequisites
 
@@ -135,6 +135,8 @@ import content3 from "!!raw-loader!@site/code_blocks/virtual-currency/transactio
 
 ### Reading balances
 
+#### From your backend
+
 The following endpoint allows you to retrieve a customer's current balance from your backend:
 
 import content4 from "!!raw-loader!@site/code_blocks/virtual-currency/balance.curl";
@@ -163,9 +165,7 @@ import content5 from "!!raw-loader!@site/code_blocks/virtual-currency/balance-re
   ]}
 />
 
-### Displaying balance within the app
-
-#### With the SDK
+#### From the SDK
 If you're using the virtual currency SDK betas, you can fetch the virtual currency balances from the [CustomerInfo](https://www.revenuecat.com/docs/customers/customer-info) object in the SDK:
 
 import fetchVCBalancesSwift from "!!raw-loader!@site/code_blocks/virtual-currency/vc-balance-sdk-ios.swift";
@@ -182,53 +182,6 @@ import fetchVCBalancesKotlin from "!!raw-loader!@site/code_blocks/virtual-curren
       type: "kotlin",
       content: fetchVCBalancesKotlin,
       name: "Kotlin",
-    },
-  ]}
-/>
-
-#### Through the REST API
-
-Virtual currency baalnces can be retrieved directly from the device using your app's public API key (found via Project Settings > API keys > App specific keys in the RevenueCat dashboard).
-
-Currently we have two options for displaying balances in your app:
-
-##### Calling virtual currency balances V1 endpoint
-
-import content6 from "!!raw-loader!@site/code_blocks/virtual-currency/balance-sdk.curl";
-
-<RCCodeBlock
-  tabs={[
-    {
-      type: "curl",
-      content: content6,
-    },
-  ]}
-/>
-
-You will receive the following response:
-
-import content7 from "!!raw-loader!@site/code_blocks/virtual-currency/balance-sdk-response.json";
-
-<RCCodeBlock
-  tabs={[
-    {
-      type: "json",
-      content: content7,
-    },
-  ]}
-/>
-
-##### Retrieving the customer info object
-
-The [customer's info response](/getting-started/quickstart#check-subscription-status) is enriched with a new object: `virtual_currencies`.
-
-import content8 from "!!raw-loader!@site/code_blocks/virtual-currency/customer-info.txt";
-
-<RCCodeBlock
-  tabs={[
-    {
-      type: "json",
-      content: content8,
     },
   ]}
 />
