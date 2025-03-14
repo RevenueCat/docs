@@ -9,7 +9,7 @@ hidden: false
 Scheduled data exports are available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
 :::
 
-RevenueCat can automatically send data deliveries of all of your apps' transaction data to various cloud storage providers. These are in the form of [gzip compressed](https://en.wikipedia.org/wiki/Gzip) .csv files delivered daily. The exports use a semicolon delimiter, so if they do not appear to be formatted correctly when viewed as spreadsheets, you may need to change your delimiter settings in the spreadsheet software.
+RevenueCat can automatically send data deliveries of all of your apps' transaction data to various cloud storage providers. These are in the form of [gzip compressed](https://en.wikipedia.org/wiki/Gzip) .csv files delivered daily. The exports use a comma delimiter, so if they do not appear to be formatted correctly when viewed as spreadsheets, you may need to change your delimiter settings in the spreadsheet software.
 
 ## Setup Instructions
 
