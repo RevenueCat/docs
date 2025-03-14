@@ -1,0 +1,3 @@
+
+curl --location 'https://api.revenuecat.com/v1/subscribers/<YOUR_CUSTOMER_ID>/virtual_currencies' \
+    --header 'Authorization: Bearer appl_*******************' \

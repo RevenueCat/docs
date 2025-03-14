@@ -1,0 +1,4 @@
+POST app_backend/virtual_product_purchase
+{
+   "product_id": "machine_gun"
+}

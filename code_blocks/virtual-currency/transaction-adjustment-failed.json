@@ -1,0 +1,8 @@
+{
+    "doc_url": "https://errors.rev.cat/unprocessable-entity-error",
+    "message": "Customer's balance is not enough to perform the transaction.",
+    "object": "error",
+    "param": "adjustments",
+    "retryable": false,
+    "type": "unprocessable_entity_error"
+}
