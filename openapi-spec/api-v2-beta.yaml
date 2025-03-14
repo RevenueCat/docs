@@ -4930,6 +4930,7 @@ components:
       - $campaign
       - $clevertapId
       - $creative
+      - $customerioId
       - $displayName
       - $email
       - $fbAnonId
