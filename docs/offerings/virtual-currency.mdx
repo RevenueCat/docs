@@ -8,7 +8,7 @@ hidden: true
 Virtual currencies are digital assets used within your app to facilitate transactions, unlock premium features, or enhance user engagement. These currencies are typically acquired through in-app purchases, rewards, or gameplay achievements and do not have intrinsic real-world value outside the application. They can be used for purchasing virtual goods, upgrading characters, or accessing exclusive content. Common examples include in-game coins, tokens, or points. You can leverage virtual currencies to monetize apps, encourage user retention, and create a more immersive experience.
 
 :::info
-This is still an early version of this feature and changes may occur. For access, please reach out to our support team.
+This is still an early version of this feature and is subject to change without warning in future releases. For access, please request it [here](https://form.typeform.com/to/DUXgfEJN).
 :::
 
 ## Configuration
@@ -45,9 +45,11 @@ Once your customer purchase the associated products they will get the defined am
 ![](/images/virtual-currency/vc-balance.png)
 
 ## SDK Beta Installation
+
 SDK support for virtual currencies is currently in beta, and as such requires the usage of a beta build. Please note that the virtual currency APIs in these betas are subject to change without warning in future releases. The beta virtual currency features are currently available in the native iOS and Android SDKs.
 
 ### iOS
+
 Use the `virtual-currency-beta` branch of the purchases-ios SDK to access the virtual currency beta features. If you’re using Swift Package Manager, you can do this in Xcode like so:
 
 ![](/images/virtual-currency/ios-spm-virtual-currency-beta-branch-configuration.png)
@@ -164,6 +166,7 @@ import content5 from "!!raw-loader!@site/code_blocks/virtual-currency/balance-re
 />
 
 #### From the SDK
+
 If you're using the virtual currency SDK betas, you can fetch the virtual currency balances from the [CustomerInfo](https://www.revenuecat.com/docs/customers/customer-info) object in the SDK:
 
 import fetchVCBalancesSwift from "!!raw-loader!@site/code_blocks/virtual-currency/vc-balance-sdk-ios.swift";
