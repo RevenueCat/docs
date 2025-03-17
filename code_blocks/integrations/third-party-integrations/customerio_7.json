@@ -1,0 +1,54 @@
+{
+  "batch": [
+    {
+      "action": "identify",
+      "attributes": {
+        "aliases": ["$RCAnonymousID:87c6049c58069238dce29853916d624c"],
+        "app_id": "appe2a3da5a50",
+        "app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "original_app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "platform": "iOS",
+        "rc_subscription_status": "expired",
+        "subscriber_attributes": {}
+      },
+      "identifiers": {
+        "id": "$RCAnonymousID:87c6049c58069238dce29853916d624c"
+      },
+      "type": "person"
+    },
+    {
+      "action": "event",
+      "attributes": {
+        "aliases": ["$RCAnonymousID:87c6049c58069238dce29853916d624c"],
+        "app_id": "appe2a3da5a50",
+        "app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "currency": "USD",
+        "entitlement_id": null,
+        "entitlement_ids": null,
+        "expiration_at": "2025-03-14T16:52:10Z",
+        "expiration_reason": "UNSUBSCRIBE",
+        "is_family_share": false,
+        "offer_code": null,
+        "original_app_user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
+        "original_transaction_id": "1123142348431",
+        "period_type": "NORMAL",
+        "platform": "iOS",
+        "presented_offering_id": null,
+        "product_id": "premium",
+        "purchased_at": "2025-03-13T16:52:10Z",
+        "rc_subscription_status": "expired",
+        "revenue": 0,
+        "store": "APP_STORE",
+        "subscriber_attributes": {},
+        "transaction_id": "1123142348431"
+      },
+      "id": "d1dca188-6a16-4109-b663-778c0dfe9124",
+      "identifiers": {
+        "id": "$RCAnonymousID:87c6049c58069238dce29853916d624c"
+      },
+      "name": "rc_expiration_event",
+      "timestamp": 1741884730,
+      "type": "person"
+    }
+  ]
+}
