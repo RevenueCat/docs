@@ -1,0 +1,33 @@
+version: 2
+updates:
+  # weekly minor updates, grouped in a single PR
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    versioning-strategy: increase
+    groups:
+      all:
+        # only minor and patch updates in the grouped PR
+        update-types: [minor, patch]
+        patterns:
+          - "*"
+
+      # ... the rest go in standalone PRs per package/grouped scope as defined below
+
+      docusaurus:
+        update-types: [major]
+        patterns:
+          - "@docusaurus/*"
+      react:
+        update-types: [major]
+        patterns:
+          - "react"
+          - "@types/react"
+          - "react-dom"
+          - "@types/react-dom"
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
