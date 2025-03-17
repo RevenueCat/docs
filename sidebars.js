@@ -914,6 +914,7 @@ const thirdPartyIntegrationsCategory = Category({
         Page({ slug: "amplitude" }),
         Page({ slug: "braze" }),
         Page({ slug: "clevertap" }),
+        Page({ slug: "customerio" }),
         Page({ slug: "discord" }),
         Page({ slug: "firebase-integration" }),
         Page({ slug: "intercom" }),
