@@ -4,7 +4,7 @@ export const sdkVersions = {
   ios: "5.14.0",
   android: "8.12.2",
   reactNative: "8.6.0",
-  flutter: "8.7.0",
+  flutter: "8.6.0",
   kmp: "1.7.0",
 };
 
