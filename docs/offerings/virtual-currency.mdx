@@ -5,10 +5,10 @@ slug: virtual-currency
 hidden: false
 ---
 
-Virtual currencies are digital assets used within your app to facilitate transactions, unlock premium features, or enhance user engagement. These currencies are typically acquired through in-app purchases, rewards, or gameplay achievements and do not have intrinsic real-world value outside the application. They can be used for purchasing virtual goods, upgrading characters, or accessing exclusive content. Common examples include in-game coins, tokens, or points. You can leverage virtual currencies to monetize apps, encourage user retention, and create a more immersive experience.
+Virtual currencies are digital assets used within your app to facilitate transactions, unlock premium features, or enhance customer engagement. These currencies are typically acquired through in-app purchases, rewards, or gameplay achievements and do not have intrinsic real-world value outside the application. They can be used for purchasing virtual goods, upgrading characters, or accessing exclusive content. Common examples include tokens, coins, credits, or other units that can be replenished through purchases. You can leverage virtual currencies to monetize apps, encourage customer retention, and create a more immersive experience.
 
 :::info
-This is still an early version of this feature and is subject to change without warning in future releases. For access, please request it [here](https://form.typeform.com/to/DUXgfEJN).
+This feature is in an early stage and may change without notice in future releases. To request access, please do so [here](https://form.typeform.com/to/DUXgfEJN).
 :::
 
 ## Configuration
@@ -22,7 +22,9 @@ In RevenueCat, virtual currencies are defined at the project level. You can conf
 2. Select **“+ New” button** in the top right corner. The **“New Currency”** form will appear. Enter a code and a name for your currency.
 
 - **Code**: This is used across various APIs to identify the virtual currency (e.g: GLD)
+- **Icon** (_optional_): Choose an icon to visually represent this currency in the dashboard
 - **Name**: This should be a readable name for the currency that you're creating (e.g: GOLD)
+- **Description** (_optional_): A description of what this currency represents or how it is used (e.g: Can be used to purchase in-app items)
 
 ![](/images/virtual-currency/vc-setup.png)
 
@@ -33,7 +35,7 @@ In RevenueCat, virtual currencies are defined at the project level. You can conf
 You can associate as many products as you want with your virtual currency and you can also associate a product with more than one virtual currency, meaning once it's purchased, multiple types of virtual currencies are added to the customer's balance. If you have not yet configured any products, see our [documentation](/offerings/products/setup-index) for further instructions.
 
 :::warning Only non-subscription products are supported
-Currently, only [non-Subscription products](/platform-resources/non-subscriptions) are properly supported (e.g: consumables). Any subscription product that is associated with a Virtual Currency will not grant any virtual currencies upon an initial purchase or a renewal.
+Currently, only [non-subscription products](/platform-resources/non-subscriptions), such as consumables, are supported for currency grants. When a customer purchases a non-subscription product linked to a virtual currency, we will automatically grant the corresponding currency amount to their balance. Subscription-based products are not yet supported for this functionality.
 :::
 
 4. Remember to select "SAVE" in the upper right-hand corner. Repeat this process if to create more than one currency.
@@ -81,7 +83,7 @@ import androidExperimentalAPIAnnotationExample from "!!raw-loader!@site/code_blo
 
 ### Prerequisites
 
-The endpoints available for virtual currency are supported through our REST V2 API endpoints. You will need a secret key to access it. Make sure that your key has Read & Write permissions for Customer Purchases Configuration. See our [documentation](<https://www.revenuecat.com/docs/api-v2#tag/Overview-(v2)/Authentication>) for more details on how you can access RevenueCat’s REST V2 APIs.
+The endpoints available for virtual currency are supported through our REST V2 API endpoints. You will need a secret key to access it. Make sure that your key at least has Read & Write permissions for Customer Purchases Configuration. See our [documentation](<https://www.revenuecat.com/docs/api-v2#tag/Overview-(v2)/Authentication>) for more details on how you can access RevenueCat’s REST V2 APIs.
 
 ![](/images/virtual-currency/api-secret-key.png)
 
@@ -191,11 +193,11 @@ import fetchVCBalancesKotlin from "!!raw-loader!@site/code_blocks/virtual-curren
 
 Virtual currencies is a very powerful feature that RevenueCat provides, however it needs to be used correctly to ensure high standards of security. Here are some necessary requirements in order to make sure that bad actors cannot exploit your system for their benefit or to harm other users of your app.
 
-### Virtual Currency transactions should be securely initiated by a backend server
+### Virtual currency transactions should be securely initiated by a backend server
 
-All the transactions that add or remove virtual currencies to your customer balances, except for In-App Purchases, should be initiated by the backend of your Application. These requests require RevenueCat secret API keys to be authenticated, and these keys need to be securely stored and never be exposed to the public.
+Transactions that add or remove virtual currencies to your customer balances, except for In-App Purchases, should be initiated by the backend of your Application. These requests require RevenueCat secret API keys to be authenticated, and these keys need to be securely stored and never be exposed to the public.
 
-It’s fine if your backend provides APIs for your app to initiate Virtual Currency transactions, however, these APIs should not allow direct modifications of customer balances. Instead they should only support operations that do not require direct input of amounts and they should always perform the necessary validations to ensure that the customer has the rights and meets the requirements to perform the requested transaction.
+It’s fine if your backend provides APIs for your app to initiate virtual currency transactions, however, these APIs should not allow direct modifications of customer balances. Instead they should only support operations that do not require direct input of amounts and they should always perform the necessary validations to ensure that the customer has the rights and meets the requirements to perform the requested transaction.
 
 See some examples of secure and unsecure backend APIs:
 
@@ -223,4 +225,4 @@ Here are a few options to consider:
 - Single sign on using widely used services (Google, Facebook, Apple etc)
 - Other equivalent or stronger technologies
 
-With this you will ensure that requests that could trigger Virtual Currency transactions for an account of your app can only be initiated by the actual account owner.
+With this you will ensure that requests that could trigger virtual currency transactions for an account of your app can only be initiated by the actual account owner.
