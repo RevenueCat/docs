@@ -143,6 +143,7 @@ const paywallsCategory = Category({
           ],
         }),
         Page({ slug: "displaying-paywalls" }),
+        Page({ slug: "change-log" }),
       ],
     }),
     SubCategory({
