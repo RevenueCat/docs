@@ -1,0 +1,24 @@
+{
+    "request_date": "2025-02-26T09:01:09Z",
+    "request_date_ms": 1740560469661,
+    "subscriber": {
+        "entitlements": {},
+        "first_seen": "2025-02-12T18:35:17Z",
+        "last_seen": "2025-02-14T14:53:26Z",
+        "management_url": null,
+        "non_subscriptions": { ... },
+        "original_app_user_id": ...,
+        "original_application_version": ...,
+        "original_purchase_date": ...,
+        "other_purchases": {...},
+        "subscriptions": {...},
+        "virtual_currencies": {
+            "GLD": {
+                "amount": 80
+            },
+            "SLV": {
+                "amount": 40
+            }
+        }
+    }
+}
