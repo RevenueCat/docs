@@ -143,6 +143,7 @@ const paywallsCategory = Category({
           ],
         }),
         Page({ slug: "displaying-paywalls" }),
+        Page({ slug: "change-log" }),
       ],
     }),
     SubCategory({
@@ -292,6 +293,7 @@ const offeringsCategory = Category({
         }),
       ],
     }),
+    Page({ slug: "offerings/virtual-currency" }),
     Page({ slug: "offerings/troubleshooting" }),
   ],
 });
