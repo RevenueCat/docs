@@ -4,7 +4,7 @@ sidebar_label: Troubleshooting
 slug: troubleshooting-offerings
 ---
 
-import { TroubleshootingWizard } from '@site/src/components/TroubleshootingWizard';
+import { TroubleshootingWizard } from "@site/src/components/TroubleshootingWizard";
 
 A common issue after configuring your products in the RevenueCat dashboard is that the products aren't able to be retrieved from the SDK. Typically, this is due to a configuration issue.
 
@@ -15,7 +15,6 @@ There's a problem with your configuration. None of the products registered in th
 ```
 
 <YouTubeEmbed videoId="HbF-5tpaBzc" title="Troubleshooting Offerings" />
-
 
 Here's how it works under the hood:
 
@@ -29,93 +28,123 @@ Since the actual products that your users purchase can only be retrieved from th
   title="Troubleshooting Guide"
   subtitle="Follow these steps to verify your product configuration"
   platforms={[
-    { id: 'ios', name: 'iOS / Apple Platforms', icon: '' },
-    { id: 'android', name: 'Android / Google Play', icon: '🤖' },
-    { id: 'amazon', name: 'Android / Amazon Appstore', icon: '📦' }
+    { id: "ios", name: "iOS / Apple Platforms", icon: "" },
+    { id: "android", name: "Android / Google Play", icon: "🤖" },
+    { id: "amazon", name: "Android / Amazon Appstore", icon: "📦" },
   ]}
   steps={[
     {
       title: "Check App Store Connect Agreements",
-      description: "Verify that all agreements (including the Paid Applications Agreement) in App Store Connect > Business have been signed and banking details have been completed in App Store Connect. This can take up to 24 hours to propagate after completing, including if your developer program expires and is then renewed.",
-      caption: "Note: The Paid Applications Agreement may have expired - please check its status.",
-      platforms: ['ios']
+      description:
+        "Verify that all agreements (including the Paid Applications Agreement) in App Store Connect > Business have been signed and banking details have been completed in App Store Connect. This can take up to 24 hours to propagate after completing, including if your developer program expires and is then renewed.",
+      caption:
+        "Note: The Paid Applications Agreement may have expired - please check its status.",
+      platforms: ["ios"],
+    },
+    {
+      title: "Ensure Apple Developer Membership Program is active",
+      description:
+        "Ensure that your <a href='https://developer.apple.com/' target='_blank' rel='noopener noreferrer'>Apple Developer Membership</a> program is active, has a valid payment method on file, and is set to auto-renew.",
+      caption:
+        "Note: Please ensure the auto-renewal date is set to <strong>before</strong> the membership expiration date.",
+      platforms: ["ios"],
     },
     {
       title: "Check Google Play Console Agreements",
-      description: "Verify that all agreements have been signed and banking details have been completed in Google Play Console.",
-      platforms: ['android']
+      description:
+        "Verify that all agreements have been signed and banking details have been completed in Google Play Console.",
+      platforms: ["android"],
     },
     {
       title: "Published on a Closed Track",
-      description: "Ensure your app is published on a <a href='https://www.revenuecat.com/docs/test-and-launch/sandbox/google-play-store#create-a-closed-track-and-add-a-tester-to-it' target='_blank' rel='noopener noreferrer'>closed track</a> in Google Play Console. Google Play requires all apps to be published on a closed track before products can be fetched, even when just testing.",
-      platforms: ['android']
+      description:
+        "Ensure your app is published on a <a href='https://www.revenuecat.com/docs/test-and-launch/sandbox/google-play-store#create-a-closed-track-and-add-a-tester-to-it' target='_blank' rel='noopener noreferrer'>closed track</a> in Google Play Console. Google Play requires all apps to be published on a closed track before products can be fetched, even when just testing.",
+      platforms: ["android"],
     },
     {
       title: "Licensed Testers",
-      description: "Add a licensed tester in Google Play Console > Settings > License testing. Add here the account you are using in your real device (the account you are logged in with).",
-      caption: "Read our guide here: <a href='https://www.revenuecat.com/docs/test-and-launch/sandbox/google-play-store#create-a-test-user-and-configure-licensing-testing' target='_blank' rel='noopener noreferrer'>Create a Test User and Configure Licensed Testing</a>",
-      platforms: ['android']
+      description:
+        "Add a licensed tester in Google Play Console > Settings > License testing. Add here the account you are using in your real device (the account you are logged in with).",
+      caption:
+        "Read our guide here: <a href='https://www.revenuecat.com/docs/test-and-launch/sandbox/google-play-store#create-a-test-user-and-configure-licensing-testing' target='_blank' rel='noopener noreferrer'>Create a Test User and Configure Licensed Testing</a>",
+      platforms: ["android"],
     },
     {
       title: "Verify Product Status",
-      description: "Ensure the products are in the 'Ready to Submit' or 'Approved' state in App Store Connect. If you're submitting your first in-app purchase or adding a new in-app purchase type to your app, you'll need to submit it for review with a new version of your app. <em>Please ensure you <strong>do not</strong> separately submit your products for review without the app itself.</em>",
-      platforms: ['ios']
+      description:
+        "Ensure the products are in the 'Ready to Submit' or 'Approved' state in App Store Connect. If you're submitting your first in-app purchase or adding a new in-app purchase type to your app, you'll need to submit it for review with a new version of your app. <em>Please ensure you <strong>do not</strong> separately submit your products for review without the app itself.</em>",
+      platforms: ["ios"],
     },
     {
       title: "Product Identifier Match",
-      description: "Confirm the product identifiers in the RevenueCat dashboard exactly match the product identifiers in your store.",
-      platforms: ['ios', 'android', 'amazon']
+      description:
+        "Confirm the product identifiers in the RevenueCat dashboard exactly match the product identifiers in your store.",
+      platforms: ["ios", "android", "amazon"],
     },
     {
       title: "Physical Device Testing",
-      description: "We strongly recommend testing on a physical device and not a simulator. Additionally, ensure you're logged into a <a href='https://www.revenuecat.com/docs/test-and-launch/sandbox/apple-app-store' target='_blank' rel='noopener noreferrer'>sandbox</a> Apple Account on the device (not a production Apple Account).",
-      caption: "Simulators do not have access to the live App Store API, and will only work with StoreKit Configuration files.",
-      platforms: ['ios']
+      description:
+        "We strongly recommend testing on a physical device and not a simulator. Additionally, ensure you're logged into a <a href='https://www.revenuecat.com/docs/test-and-launch/sandbox/apple-app-store' target='_blank' rel='noopener noreferrer'>sandbox</a> Apple Account on the device (not a production Apple Account).",
+      caption:
+        "Simulators do not have access to the live App Store API, and will only work with StoreKit Configuration files.",
+      platforms: ["ios"],
     },
     {
       title: "Physical Device Testing",
-      description: "We strongly recommend testing on a physical device and not a simulator.",
+      description:
+        "We strongly recommend testing on a physical device and not a simulator.",
       caption: "Simulators do not have access to the live store APIs.",
-      platforms: ['android', 'amazon']
+      platforms: ["android", "amazon"],
     },
     {
       title: "Bundle ID Validation",
-      description: "Verify the Bundle ID in the RevenueCat dashboard matches the Bundle ID in App Store Connect and your Xcode project exactly.",
-      caption: "This is case-sensitive. If you're using <a href='https://www.revenuecat.com/docs/guides/environment-strategies' target='_blank' rel='noopener noreferrer'>multiple environments</a> with different Bundle IDs, be sure to check the Bundle ID in each environment.",
-      platforms: ['ios']
+      description:
+        "Verify the Bundle ID in the RevenueCat dashboard matches the Bundle ID in App Store Connect and your Xcode project exactly.",
+      caption:
+        "This is case-sensitive. If you're using <a href='https://www.revenuecat.com/docs/guides/environment-strategies' target='_blank' rel='noopener noreferrer'>multiple environments</a> with different Bundle IDs, be sure to check the Bundle ID in each environment.",
+      platforms: ["ios"],
     },
     {
       title: "Package Name Validation",
-      description: "Verify the package name in the RevenueCat dashboard matches the package name in Google Play Console/Amazon Appstore and your Android project exactly.",
-      caption: "This is case-sensitive. If you're using <a href='https://www.revenuecat.com/docs/guides/environment-strategies' target='_blank' rel='noopener noreferrer'>multiple environments</a> with different package names, be sure to check the package name in each environment.",
-      platforms: ['android', 'amazon']
+      description:
+        "Verify the package name in the RevenueCat dashboard matches the package name in Google Play Console/Amazon Appstore and your Android project exactly.",
+      caption:
+        "This is case-sensitive. If you're using <a href='https://www.revenuecat.com/docs/guides/environment-strategies' target='_blank' rel='noopener noreferrer'>multiple environments</a> with different package names, be sure to check the package name in each environment.",
+      platforms: ["android", "amazon"],
     },
     {
       title: "API Key Platform Check",
-      description: "Configure the RevenueCat SDK with the correct app-specific <a href='https://www.revenuecat.com/docs/projects/authentication' target='_blank' rel='noopener noreferrer'>API key</a>. The RevenueCat SDK uses different API keys for each platform.",
-      caption: "For example, if you use a Google key for iOS, the wrong product configuration will be retrieved, and products will not be able to be fetched.",
-      platforms: ['ios', 'android', 'amazon']
+      description:
+        "Configure the RevenueCat SDK with the correct app-specific <a href='https://www.revenuecat.com/docs/projects/authentication' target='_blank' rel='noopener noreferrer'>API key</a>. The RevenueCat SDK uses different API keys for each platform.",
+      caption:
+        "For example, if you use a Google key for iOS, the wrong product configuration will be retrieved, and products will not be able to be fetched.",
+      platforms: ["ios", "android", "amazon"],
     },
     {
       title: "StoreKit Configuration",
-      description: "Confirm your Xcode scheme does not have a StoreKit Configuration file configured if attempting to test with the live App Store API.",
-      platforms: ['ios']
+      description:
+        "Confirm your Xcode scheme does not have a StoreKit Configuration file configured if attempting to test with the live App Store API.",
+      platforms: ["ios"],
     },
     {
       title: "Recent App Release",
-      description: "If you've recently released your app with new in-app products, please note that these products may not be available for up to 24 hours after release.",
-      platforms: ['ios', 'android', 'amazon']
+      description:
+        "If you've recently released your app with new in-app products, please note that these products may not be available for up to 24 hours after release.",
+      platforms: ["ios", "android", "amazon"],
     },
     {
       title: "Testing Locally",
-      description: "When testing locally, you need to set up the AppTester app from Amazon, and in AppTester you need to upload a JSON file with all of the products you offer. You can download a ready-to-use JSON file from the Amazon developer console.",
-      caption: "Follow this guide to learn how to upload the JSON file to AppTester: <a href='https://developer.amazon.com/docs/in-app-purchasing/iap-install-and-configure-app-tester.html' target='_blank' rel='noopener noreferrer'>Amazon AppTester Guide</a>",
-      platforms: ['amazon']
+      description:
+        "When testing locally, you need to set up the AppTester app from Amazon, and in AppTester you need to upload a JSON file with all of the products you offer. You can download a ready-to-use JSON file from the Amazon developer console.",
+      caption:
+        "Follow this guide to learn how to upload the JSON file to AppTester: <a href='https://developer.amazon.com/docs/in-app-purchasing/iap-install-and-configure-app-tester.html' target='_blank' rel='noopener noreferrer'>Amazon AppTester Guide</a>",
+      platforms: ["amazon"],
     },
     {
-      title: "Testing Locally", 
-      description: "When testing locally, you should be able to display the products (assuming AppTester is installed, sandbox mode is enabled and the products JSON is correctly uploaded), but purchases won't be validated by RevenueCat.",
-      platforms: ['amazon']
-    }
+      title: "Testing Locally",
+      description:
+        "When testing locally, you should be able to display the products (assuming AppTester is installed, sandbox mode is enabled and the products JSON is correctly uploaded), but purchases won't be validated by RevenueCat.",
+      platforms: ["amazon"],
+    },
   ]}
 />

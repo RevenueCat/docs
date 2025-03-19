@@ -1,0 +1,2 @@
+curl --location 'https://api.revenuecat.com/v2/projects/<YOUR_PROJECT_ID>/customers/<YOUR_CUSTOMER_ID>/virtual_currencies' \
+--header 'Authorization: Bearer sk_***************************'
