@@ -336,6 +336,10 @@ import content22 from "!!raw-loader!@site/code_blocks/customers/subscriber-attri
   ]}
 />
 
+## Syncing Attributes
+
+Syncing of the attributes happens when the app is foregrounded, backgrounded, or when making a purchase. You can use the syncAttributesAndOfferingsIfNeeded() method to explicitly sync attributes mid-session, which will automatically refresh the cached Offering as well.
+
 ## Setting Attributes via the REST API
 
 If you want to set, update, or delete attributes through the REST API from your own backend, for example, because you haven't implemented the RevenueCat SDK, you can use the `POST /subscribers/{app_user_id}/attributes` [API endpoint](/api-v1#tag/customers/operation/update-subscriber-attributes).
