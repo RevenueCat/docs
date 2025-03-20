@@ -32,8 +32,9 @@ await RevenueCatUI.presentCustomerCenter({
       // iOS only
       // Refund request completed
     },
-    onManagementOptionSelected: ({ option, url }: { option: CustomerCenterManagementOption; url: string }) => {
+    onManagementOptionSelected: ({ option, url }: { option: CustomerCenterManagementOption; url?: string }) => {
       // User selected a management option
+      // url is only present for custom_url options
     },
   }
 }); 
