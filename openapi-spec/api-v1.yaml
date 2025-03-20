@@ -223,7 +223,7 @@ paths:
                 fetch_token:
                   type: string
                   description:
-                    For iOS, the base64 encoded receipt file, for Android
+                    For iOS, the base64 encoded receipt file (or JWSTransaction for StoreKit2), for Android
                     the receipt token, for Amazon the receipt, and for Stripe the
                     subscription ID or the Stripe Checkout Session ID.
                 product_id:
