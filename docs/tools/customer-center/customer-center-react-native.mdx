@@ -29,6 +29,16 @@ Opening the customer center is as simple as:
 await RevenueCatUI.presentCustomerCenter();
 ```
 
+#### Listening to events
+
+We've added a way to listen to events that occur within the Customer Center. For now, we are not posting any event to our backend (like feedback survey selections). We are going to be adding way more events in the future, but these are what are available for now:
+
+import customerCenterEventsReactNative from "!!raw-loader!@site/code_blocks/tools/customer-center-events-react-native.tsx";
+
+<RCCodeBlock
+  tabs={[{ type: "tsx", content: customerCenterEventsReactNative, name: "React Native" }]}
+/>
+
 ## Setup promotional offers
 
 Promotional Offers allow developers to apply custom pricing and trials to new customers and to existing and lapsed subscriptions. Unique promotional offers can be assigned to different paths and survey responses in the Customer Center, but first they must be setup in App Store Connect and Google Play Store.
