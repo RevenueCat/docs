@@ -40,10 +40,10 @@ import usageActivityKotlin from "!!raw-loader!@site/code_blocks/tools/customer-c
 
 ### Ensuring Proper Theming for Customer Center
 
-To ensure that Customer Center displays correctly with the right colors, contrast, and theme consistency, it needs to be wrapped inside MaterialTheme.
+To ensure that Customer Center displays correctly with the right colors, contrast, and theme consistency, it needs to be wrapped in Material 3's `MaterialTheme`.
 This allows it to dynamically adapt to dark and light mode while applying the correct Material Design colors to all UI elements.
-If your app already wraps its composables in MaterialTheme, no additional changes are needed.
-However, if CustomerCenter is the only composable in your hierarchy, you may need to explicitly wrap it in MaterialTheme to ensure proper theming.
+If your app already uses Material 3's `MaterialTheme` with appropriate color schemes for dark and light mode, no additional changes are needed.
+However, if CustomerCenter is the only composable in your hierarchy, if you're using Material 2, or if you're using another theming system, you may need to explicitly wrap it in Material 3's `MaterialTheme` to ensure proper theming.
 
 import usageThemeKotlin from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-3.kt";
 
