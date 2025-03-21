@@ -7,15 +7,15 @@ hidden: false
 
 Promotional Offers allow developers to apply custom pricing and trials to new customers and to existing and lapsed subscriptions. Unique promotional offers can be assigned to different paths and survey responses in the Customer Center, but first they must be setup in Play Store.
 
-The Customer Center will automatically show offers based on specific user actions. By default we have defined it for cancellations but it can be modified to any of the defined paths. Here’s how it works:
+The Customer Center will automatically show offers based on specific user actions. By default we have defined it for cancellations but it can be modified to any of the defined paths. Here's how it works:
 
 ![Promotional Offers Configuration](/images/customer-center-promo-offers-config.png)
 
 - **Cancellation Retention Discount**: By default, for responses in the cancellation survey, RevenueCat will use a promotional offer that you can customize in the Offers tab of the Customer Center settings.
 
-This setup enables RevenueCat to automatically match the right offer based on a user’s actions, providing a seamless experience when user tries to cancel their active subscription.
+This setup enables RevenueCat to automatically match the right offer based on a user's actions, providing a seamless experience when user tries to cancel their active subscription.
 
-The SDK will automatically match the right offer based on a user’s actions and its active subscription. If the SDK cannot locate a matching promotional offer id for the currently active user's subscription, it will bypass the survey and proceed with the user’s requested action—either canceling or refunding the subscription.
+The SDK will automatically match the right offer based on a user's actions and its active subscription. If the SDK cannot locate a matching promotional offer id for the currently active user's subscription, it will bypass the survey and proceed with the user's requested action—either canceling or refunding the subscription.
 
 **These promotional offers must be created in App Store Connect and Google Play Store in order to be shown to customers**
 
@@ -29,10 +29,12 @@ Unique promotional offers can be assigned to different paths and survey response
 
 Offers on the Play Store allow you to provide a custom price or a trial (or both) for a product. There are [different types of offers](/subscription-guidance/subscription-offers/google-play-offers#eligibility-criteria) that can be created in the Play Store. For the Customer Center, you will be using the **Developer determined** type.
 
-Additionally, **add the `rc-customer-center` tag** to the developer determined offer from your product so that the offer is only available to Customer Center **and not used as a default offer when purchasing the product**. 
+Additionally, **add both the `rc-customer-center` and `rc-ignore-offer` tags** to the developer determined offer from your product. The `rc-customer-center` tag ensures the offer is only available to Customer Center **and not used as a default offer when purchasing the product**, while the `rc-ignore-offer` tag prevents the offer from being shown to users with older SDK versions.
 
 :::warning Offers must be created in Google Play Console and tagged
-Don't forget to add the tag `rc-customer-center` to the offer so that the offer is only available to Customer Center and not used as a default offer when purchasing the product or in Paywalls.
+Don't forget to add both tags:
+- `rc-customer-center`: Makes the offer only available in the Customer Center and not used as a default offer when purchasing the product or in Paywalls
+- `rc-ignore-offer`: Prevents the offer from being shown to users with older SDK versions that don't support the Customer Center
 :::
 
 ![Play Store Offer Setup](/images/customer-center/play-store-offer.png)

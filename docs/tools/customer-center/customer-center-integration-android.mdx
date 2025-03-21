@@ -28,6 +28,76 @@ import usageViewKotlin from "!!raw-loader!@site/code_blocks/tools/customer-cente
   ]}
 />
 
+Alternatively, you can instantiate the Customer Center as an Activity:
+
+import usageActivityKotlin from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-2.kt";
+
+<RCCodeBlock
+  tabs={[
+    { type: "kotlin", content: usageActivityKotlin, name: "Kotlin" },
+  ]}
+/>
+
+### Ensuring Proper Theming for Customer Center
+
+To ensure that Customer Center displays correctly with the right colors, contrast, and theme consistency, it needs to be wrapped in Material 3's `MaterialTheme`.
+This allows it to dynamically adapt to dark and light mode while applying the correct Material Design colors to all UI elements.
+If your app already uses Material 3's `MaterialTheme` with appropriate color schemes for dark and light mode, no additional changes are needed.
+However, if CustomerCenter is the only composable in your hierarchy, if you're using Material 2, or if you're using another theming system, you may need to explicitly wrap it in Material 3's `MaterialTheme` to ensure proper theming.
+
+import usageThemeKotlin from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-3.kt";
+
+<RCCodeBlock
+  tabs={[
+    { type: "kotlin", content: usageThemeKotlin, name: "Kotlin" },
+  ]}
+/>
+
+### Listening to Customer Center Events
+
+You can listen to Customer Center events in two ways: using a global listener, or using a local listener through the CustomerCenter composable options.
+
+First, create a CustomerCenterListener implementation:
+
+import eventsBaseKotlin from "!!raw-loader!@site/code_blocks/tools/customer-center-events-android-base.kt";
+
+<RCCodeBlock
+  tabs={[
+    { type: "kotlin", content: eventsBaseKotlin, name: "Kotlin" },
+  ]}
+/>
+
+Then, you can use it in one of two ways:
+
+1. As a global listener that will be called for all Customer Center instances:
+
+import eventsGlobalKotlin from "!!raw-loader!@site/code_blocks/tools/customer-center-events-android-global.kt";
+
+<RCCodeBlock
+  tabs={[
+    { type: "kotlin", content: eventsGlobalKotlin, name: "Kotlin" },
+  ]}
+/>
+
+2. As a local listener through the CustomerCenter composable options:
+
+import eventsLocalKotlin from "!!raw-loader!@site/code_blocks/tools/customer-center-events-android-local.kt";
+
+<RCCodeBlock
+  tabs={[
+    { type: "kotlin", content: eventsLocalKotlin, name: "Kotlin" },
+  ]}
+/>
+
+The following events are available:
+
+- `onManagementOptionSelected`: Called when a user selects a management option (missing purchase, cancel, or custom URL)
+- `onRestoreStarted`: Called when the restore process begins
+- `onRestoreCompleted`: Called when the restore process completes successfully
+- `onRestoreFailed`: Called when the restore process fails
+- `onShowingManageSubscriptions`: Called when the manage subscriptions screen is shown
+- `onFeedbackSurveyCompleted`: Called when a user completes a feedback survey
+
 ## Setup promotional offers
 
 Promotional Offers allow developers to apply custom pricing and trials to new customers and to existing and lapsed subscriptions. Unique promotional offers can be assigned to different paths and survey responses in the Customer Center, but first they must be setup in Google Play Console.
