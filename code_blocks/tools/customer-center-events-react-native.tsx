@@ -1,5 +1,5 @@
 import { RevenueCatUI } from 'react-native-purchases-ui';
-import { CustomerInfo, PurchasesError, REFUND_REQUEST_STATUS, CustomerCenterManagementOption } from 'react-native-purchases';
+import { CustomerInfo, PurchasesError, REFUND_REQUEST_STATUS, CustomerCenterManagementOptionEvent } from 'react-native-purchases';
 
 await RevenueCatUI.presentCustomerCenter({
   callbacks: {
@@ -32,7 +32,7 @@ await RevenueCatUI.presentCustomerCenter({
       // iOS only
       // Refund request completed
     },
-    onManagementOptionSelected: ({ option, url }: { option: CustomerCenterManagementOption; url?: string }) => {
+    onManagementOptionSelected: ({option, url}: CustomerCenterManagementOptionEvent) => {
       // User selected a management option
       // url is only present for custom_url options
     },
