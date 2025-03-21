@@ -233,7 +233,7 @@ With this you will ensure that requests that could trigger virtual currency tran
 
 As a common practice, you may implement retries to handle network or other errors when submitting a Virtual Currency transaction. If you want to ensure that your transaction will only be executed once, even if your request reaches our server more than one times, you can make use of our `Idempotency-Key` HTTP header. Make sure that you pass an identifier that uniquely identifies your transaction (e.g. a UUID) and it will be guaranteed that your transaction will be executed at most one time.
 
-import content1 from "!!raw-loader!@site/code_blocks/virtual-currency/idempotency-key.curl";
+import idempotencyKeyExample from "!!raw-loader!@site/code_blocks/virtual-currency/idempotency-key.curl";
 
 ### Virtual Currencies are not transferable
 
