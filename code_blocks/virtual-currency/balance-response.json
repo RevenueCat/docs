@@ -1,11 +1,17 @@
 {
-    "balance": {
-        "GLD": {
-             "amount": 80
+    "items": [
+        {
+            "balance": 80,
+            "currency_code": "GLD",
+            "object": "virtual_currency_balance"
         },
-        "SLV": {
-             "amount": 40
+        {
+            "balance": 40,
+            "currency_code": "SLV",
+            "object": "virtual_currency_balance"
         }
-    },
-    "object": "virtual_currencies_balance"
+    ],
+    "next_page": null,
+    "object": "list",
+    "url": "https://api.revenuecat.com/v2/projects/<YOUR_PROJECT_ID>/customers/<YOUR_CUSTOMER_ID>/virtual_currencies"
 }

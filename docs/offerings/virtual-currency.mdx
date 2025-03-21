@@ -226,3 +226,24 @@ Here are a few options to consider:
 - Other equivalent or stronger technologies
 
 With this you will ensure that requests that could trigger virtual currency transactions for an account of your app can only be initiated by the actual account owner.
+
+## Tips & Hints
+
+### Ensuring exactly one execution of Virtual Currency transactions
+
+As a common practice, you may implement retries to handle network or other errors when submitting a Virtual Currency transaction. If you want to ensure that your transaction will only be executed once, even if your request reaches our server more than one times, you can make use of our `Idempotency-Key` HTTP header. Make sure that you pass an identifier that uniquely identifies your transaction (e.g. a UUID) and it will be guaranteed that your transaction will be executed at most one time.
+
+import idempotencyKeyExample from "!!raw-loader!@site/code_blocks/virtual-currency/idempotency-key.curl";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "curl",
+      content: idempotencyKeyExample,
+    },
+  ]}
+/>
+
+### Virtual Currencies are not transferable
+
+In contrast to regular In-App purchases that can be transferred to other customers during [purchase restores](/projects/restore-behavior), Virtual Currencies are not transferable, and once granted they will remain with the same customer until they are consumed.
