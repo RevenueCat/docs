@@ -1,0 +1,77 @@
+---
+title: Paddle Billing
+slug: paddle
+excerpt: Allow your users to subscribe to your app via Paddle
+hidden: false
+---
+
+RevenueCat currently supports web payments through Paddle. This allows you to let users subscribe on your own website using Paddle, and automatically unlock access based on the Paddle subscription through the _Purchases SDK_.
+
+Remember that it is against Apple's App Store terms to provide a different system than in-app purchases for digital goods. Make sure you don't promote your web subscriptions from inside your app. Your app may get rejected, or banned.
+
+Before launching your Paddle integration, be sure to read the limitations that apply to [working with web payments](#working-with-web-payments).
+
+## 1. Create a new Paddle app
+
+Paddle has a different environment for sandbox and production. As environments are independent, you will need to create a new Paddle app for each environment and mark it as sandbox if it's connected to sandbox, otherwise it will be marked as production.
+
+![](/images/paddle/new-app.png)
+
+## 2. Create products and prices on Paddle
+
+Create and manage your Paddle product(s) directly in [the Paddle dashboard](https://vendors.paddle.com/products-v2). In Paddle, a _product_ can have multiple _prices_. These are useful if you want to offer different price points for the same product and work similar to _offerings_ and _products_ in RevenueCat.
+
+![](/images/paddle/create-product.png")
+
+![](/images/paddle/create-price.png")
+
+You can read more about **products and prices** in [Paddle's official documentation](https://developer.paddle.com/build/products/create-products-prices).
+
+## 3. Create subscriptions on Paddle
+
+The typical setup consists of a website that uses [Paddle checkout](https://developer.paddle.com/concepts/sell/self-serve-checkout) to tokenize the customer payment information, and send this information to your server. After that, your server will be able to subscribe your customer to a product.
+
+On the server-side, you can use [Paddle's REST API](https://developer.paddle.com/api-reference/overview) or their library for your favorite programming language. 
+
+Alternatively, you can also use the Paddle dashboard for manually creating the subscriptions for testing.
+
+## 4. Add your Paddle products to your project's entitlements
+
+Add your Paddle products to your project's [entitlements](/getting-started/entitlements) to easily group the products for your app. RevenueCat will send Paddle subscriptions to your app the same way we do for the other app stores.
+
+## 5. Send Paddle tokens to RevenueCat
+
+:::danger Crucial step
+Failure to complete this step will result in untracked Paddle subscriptions in RevenueCat.
+:::
+
+The following sections provide step-by-step instructions for two methods of sending Paddle tokens to RevenueCat. Whether you prefer a manual integration through the API or automated processing using the "Track new purchases from server-to-sever notifications" feature, this section will guide you in setting up your configuration to ensure all purchases are tracked.
+
+### Manually through our API
+
+You can send your Paddle subscriptions to RevenueCat through the [POST receipt endpoint](/migrating-to-revenuecat/migrating-existing-subscriptions/receipt-imports). 
+
+The only required fields when sending your Paddle purchase to the RevenueCat API are the following:
+
+- `fetch_token`: Your Paddle subscription ID (`sub_...`) OR your Paddle transaction ID (`txn_...`)
+- `app_user_id`: The App User ID that the subscription should be applied to
+
+**Headers**
+
+- `X-Platform`: Should be set to `paddle`.
+- `Authorization`: It should be `Bearer YOUR_REVENUECAT_PADDLE_APP_PUBLIC_API_KEY`
+
+import curlContent from "!!raw-loader!@site/code_blocks/getting-started/paddle_1.curl";
+
+<RCCodeBlock tabs={[{ type: "curl", content: curlContent }]} />
+
+### Track new purchases from server-to-server-notifications
+
+RevenueCat can automatically process PAddle tokens sent through server-to-server notifications. To enable automatic processing of Paddle purchases, ensure the following features are enabled:
+
+- [Paddle Server Notifications](/platform-resources/server-notifications/paddle-server-notifications)
+- [Track new purchases from server-to-server notifications](/platform-resources/server-notifications/paddle-server-notifications#tracking-new-purchases-using-paddle-server-notifications)
+
+## Limitations of the Paddle integration
+
+- We support purchases that contain only one product. Multiple products on a single purchase are not supported.
