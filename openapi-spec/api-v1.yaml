@@ -1145,6 +1145,11 @@ components:
                       - `amazon`: The product was purchased through the Amazon Appstore.
                       - `stripe`: The product was purchased through Stripe.
                       - `promotional`: The product was [granted via RevenueCat](#tag/entitlements/operation/grant-a-promotional-entitlement).
+                  store_transaction_id:
+                    type: string
+                    example: GPA.6801-7988-0152-76034..5
+                    description: |
+                      Identifier of the purchase in the store's API.
                   unsubscribe_detected_at:
                     type: string
                     description: Date when RevenueCat detected that auto-renewal was turned off for this subsription (in ISO 8601 format). Note the subscription may still be active, check the `expires_date` attribute.
@@ -1187,7 +1192,8 @@ components:
               period_type: normal
               purchase_date: "2019-07-14T20:07:40Z"
               refunded_at:
-              store: app_store
+              store: play_store
+              store_transaction_id: GPA.6801-7988-0152-76034..5
               unsubscribe_detected_at: "2019-07-17T22:48:38Z"
             onemonth:
               auto_resume_date:
@@ -1201,6 +1207,7 @@ components:
               purchase_date: "2019-06-17T22:42:55Z"
               refunded_at:
               store: app_store
+              store_transaction_id: 1000000652379790
               unsubscribe_detected_at: "2019-06-17T22:48:38Z"
             rc_promo_pro_cat_monthly:
               auto_resume_date:
@@ -1214,6 +1221,7 @@ components:
               purchase_date: "2019-07-26T01:02:16Z"
               refunded_at:
               store: promotional
+              store_transaction_id: a42db3af39530cb82b17eaf9c6576393
               unsubscribe_detected_at: null
     Offerings:
       value:
