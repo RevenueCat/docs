@@ -1,3 +1,5 @@
+import androidx.compose.material3.MaterialTheme
+
 val isDarkTheme = isSystemInDarkTheme()
 val colorScheme = if (isDarkTheme) darkColorScheme() else lightColorScheme()
 
