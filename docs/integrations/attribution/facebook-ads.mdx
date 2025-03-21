@@ -91,23 +91,34 @@ You can see Facebook's App Events Reference [here](https://developers.facebook.c
 
 ## 3. Send RevenueCat events into Facebook Ads Manager
 
-:::info Meta Conversions API
-We are in the process of rolling out a new Facebook Ads integration that uses the [Conversions API](https://developers.facebook.com/docs/marketing-api/conversions-api/). We support both the Conversions API and the legacy App Events API for compatibility, but recommend using the Conversions API for better reliability and long-term support.
-
-Learn more in the [sending RevenueCat events with the Conversions API](/integrations/attribution/facebook-ads#5-send-revenuecat-events-into-meta-events-manager) section below.
-:::
-
 After you've set up the _Purchases SDK_ to send attribution data to RevenueCat, you can turn on the integration from the RevenueCat dashboard.
 
 1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
 
 ![](/images/814313f-app.revenuecat.com_projects_85ff18c7_collaborators_1_8f59efa6a22dfccb9079d21a042756d8.png)
 
-2. Choose **Facebook** from the Integrations menu.
-3. Add your Facebook App ID for production events (and optionally an App ID for sandbox events).
-4. Add the Facebook Client Token for your app (and for the sandbox App ID if included). You can find your Client Token in the Facebook dashboard under your **App > Settings > Advanced > Client Token**. You may need to click the 'Reset' button if there's no Client Token visible.
-5. (Optional) You can toggle between different names for Facebook events.
+2. Choose **Facebook Ads** from the Integrations menu.
+
+### Integrating with the Conversions API
+
+We recommend integrating with the Conversions API for better reliability and long-term support. If you choose to setup a Conversions API integration, you can follow the steps below:
+
+1. Select the **Conversions API** integration type.
+2. Add your Datasource ID for production events (and optionally an Datasource ID for sandbox events). You can find this ID in the Events Manager, selecting which datasource you'd like to use.
+3. Add the Client Token for your app (and for the sandbox Datasource if included). You can find your Client Token in the Events Manager dashboard, under your selected **Datasource > Settings > Generate Access Token**.
+4. Modify the option to `Send events when ATT consent is not authorized` if desired. [Learn more](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/app-data).
+5. (Optional) You can toggle between different names for Facebook events. The default values are set based on what the most natural equivalent Facebook event is for the RevenueCat event being configure, as defined below.
 6. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
+
+### Integrating with the App Events API
+
+If you choose to integrate with the App Events API, you can follow the steps below:
+
+1. Select the **App Events API** integration type.
+2. Add your Facebook App ID for production events (and optionally an App ID for sandbox events).
+3. Add the Facebook Client Token for your app (and for the sandbox App ID if included). You can find your Client Token in the Facebook dashboard under your **App > Settings > Advanced > Client Token**. You may need to click the 'Reset' button if there's no Client Token visible.
+4. (Optional) You can toggle between different names for Facebook events. The default values are set based on what the most natural equivalent Facebook event is for the RevenueCat event being configured, as defined below.
+5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
 ![Facebook Ads configuration screen](/images/67c785e-app.revenuecat.com_projects_85ff18c7_integrations_branch_2_e86db9a213fbd0654ee5d2168209329a.png)
 
@@ -150,20 +161,6 @@ While still on the Customer View, click into the test purchase event in the [Cus
 :::success
 You have completed the Events API integration! You can stop here or continue with the rest of the documentation to learn how to set up the Conversions API.
 :::
-
-## 5. Send RevenueCat events with the Conversions API
-
-After you've set up the _Purchases SDK_ to send attribution data to RevenueCat, you can "turn on" the integration from the RevenueCat dashboard.
-
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
-
-![](/images/814313f-app.revenuecat.com_projects_85ff18c7_collaborators_1_8f59efa6a22dfccb9079d21a042756d8.png)
-
-2. Choose **Facebook** from the Integrations menu.
-3. Add your Datasource ID for production events (and optionally an Datasource ID for sandbox events). You can find this ID in the Events Manager, selecting which datasource you'd like to use.
-4. Add the Client Token for your app (and for the sandbox Datasource if included). You can find your Client Token in the Events Manager dashboard, under your selected **Datasource > Settings > Generate Access Token**.
-5. (Optional) You can toggle between different names for Facebook events. The recommended values are the same as with the [Events API integration](/integrations/attribution/facebook-ads#event-names).
-6. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
 ## 6. View Events in Facebook
 
