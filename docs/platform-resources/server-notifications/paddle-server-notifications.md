@@ -10,9 +10,7 @@ RevenueCat does not require server notifications from Paddle, however doing so c
 ## Setup Instructions
 
 1. Navigate to your **app settings** in the RevenueCat dashboard by selecting your app from **Project Settings > Apps**.
-2. Expand the **Webhook Configuration** section and cick on **Apply in Paddle**.
-
-
+2. Expand the **Webhook Configuration** section and click on **Apply in Paddle**.
 
 ## Tracking new purchases using Paddle Server Notifications
 
@@ -26,7 +24,6 @@ RevenueCat provides flexible ways to detect the App User ID for purchases coming
 
 1. **Use anonymous App User IDs**: RevenueCat will generate a RevenueCat anonymous App User ID to associate the purchase with.
 2. **Read App User ID from a Paddle metadata field**: If you are storing your customer's RevenueCat App User ID through [Paddle custom data](https://developer.paddle.com/api-reference/about/custom-data), you can specify the metadata field name in the `Metadata field key` textbox. Ensure that the metadata value will exactly match your RevenueCat App User ID. If the transaction does not have a metadata field, the purchase will be associated with an anonymous App User ID.
-
 
 ### Considerations
 
