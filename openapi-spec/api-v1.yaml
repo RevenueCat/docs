@@ -288,6 +288,7 @@ paths:
                           `null` or an empty string, the attribute will be deleted.
                       updated_at_ms:
                         type: integer
+                        format: int64
                         description:
                           UNIX epoch in milliseconds of when the attribute
                           was updated. This value is used to resolve conflicts,
@@ -402,6 +403,7 @@ paths:
               properties:
                 end_time_ms:
                   type: integer
+                  format: int64
                   description:
                     A Unix epoch in milliseconds for when the
                     entitlement should expire. The entitlement will always be granted immediately.
@@ -426,8 +428,9 @@ paths:
                   deprecated: true
                 start_time_ms:
                   type: integer
+                  format: int64
                   description:
-                    A Unix epoch in milliseconds used to determine the expiration date, 
+                    A Unix epoch in milliseconds used to determine the expiration date,
                     by adding `duration` to `start_time_ms`. Regardless of what `start_time_ms` is set to,
                     the entitlement will always be granted immediately. If `start_time_ms`
                     is not provided, the `duration` will be added to the current time to
@@ -441,7 +444,7 @@ paths:
       responses:
         "201":
           description: |
-            Entitlement was successfully granted. 
+            Entitlement was successfully granted.
 
             Returns the updated [Customer Info](#tag/customer_info_model) for the Customer.
           content:
@@ -477,7 +480,7 @@ paths:
         "200":
           description: |
             Entitlement was successfully revoked.
-                        
+
             Returns the updated [Customer Info](#tag/customer_info_model) for the Customer.
           content:
             application/json:
@@ -513,7 +516,7 @@ paths:
         "200":
           description: |
             Subscription was successfully refunded and revoked.
-                        
+
             Returns the updated [Customer Info](#tag/customer_info_model) for the Customer.
           content:
             application/json:
@@ -555,6 +558,7 @@ paths:
                             `null` or an empty string, the attribute will be deleted.
                         updated_at_ms:
                           type: integer
+                          format: int64
                           description:
                             UNIX epoch in milliseconds of when the attribute
                             was updated. This value is used to resolve conflicts,
@@ -568,7 +572,7 @@ paths:
         "200":
           description: |
             Attributes were successfully updated.
-               
+
             Returns the updated [Customer Info](#tag/customer_info_model) for the Customer.
           content:
             application/json:
@@ -643,6 +647,7 @@ paths:
               properties:
                 expiry_time_ms:
                   type: integer
+                  format: int64
                   description:
                     The desired next expiry time to assign to the subscription,
                     in milliseconds since the Epoch. The given time must be later/greater
@@ -652,7 +657,7 @@ paths:
         "200":
           description: |
             Subscription was successfully deferred.
-                      
+
             Returns the updated [Customer Info](#tag/customer_info_model) for the Customer.
           content:
             application/json:
@@ -925,6 +930,7 @@ components:
           example: "2019-07-26T17:40:10Z"
         request_date_ms:
           type: integer
+          format: int64
           description: Date of the request in milliseconds since Epoch.
           example: 1564162810884
         subscriber:
@@ -953,7 +959,7 @@ components:
                   product_identifier:
                     type: string
                     description: |
-                      The identifier of the product that is responsible for this entitlement being granted.<br><br>Please note: in some cases, if there are problems with validating the purchase with the store, the correct product identifier might temporarily be unavailable. 
+                      The identifier of the product that is responsible for this entitlement being granted.<br><br>Please note: in some cases, if there are problems with validating the purchase with the store, the correct product identifier might temporarily be unavailable.
                     example: onetime
                   purchase_date:
                     type: string
@@ -970,12 +976,12 @@ components:
             management_url:
               type: string
               description: |
-                URL to manage the active subscription of the Customer. If the Customer has an active iOS subscription, this will point to the App Store, if the Customer has an active Play Store subscription it will point there.  
+                URL to manage the active subscription of the Customer. If the Customer has an active iOS subscription, this will point to the App Store, if the Customer has an active Play Store subscription it will point there.
 
-                If there are no active subscriptions it will be null.  
-                  
-                If the Customer has multiple active subscriptions for different platforms, this will take the value of the OS in the `X-Platform` header into consideration:  
-                - If the request was made on an OS for which there are active subscriptions, this will return the URL for the store that matches the header.  
+                If there are no active subscriptions it will be null.
+
+                If the Customer has multiple active subscriptions for different platforms, this will take the value of the OS in the `X-Platform` header into consideration:
+                - If the request was made on an OS for which there are active subscriptions, this will return the URL for the store that matches the header.
                 - If the request was made on a different OS or the OS was not included in the X-Platform header, this will return the URL for the store of the subscription with the farthest future expiration date.
               example: https://apps.apple.com/account/subscriptions
             non_subscriptions:
@@ -1018,10 +1024,10 @@ components:
                       example: app_store
                       description: |
                         Identifier of the store of the purchase:
-                        - `app_store`: The product was purchased through Apple App Store.  
-                        - `mac_app_store`: The product was purchased through the Mac App Store.  
-                        - `play_store`: The product was purchased through the Google Play Store.  
-                        - `amazon`: The product was purchased through the Amazon Appstore.  
+                        - `app_store`: The product was purchased through Apple App Store.
+                        - `mac_app_store`: The product was purchased through the Mac App Store.
+                        - `play_store`: The product was purchased through the Google Play Store.
+                        - `amazon`: The product was purchased through the Amazon Appstore.
                         - `stripe`: The product was purchased through Stripe.
             original_app_user_id:
               type: string
@@ -1056,6 +1062,7 @@ components:
                     example: red
                   updated_at_ms:
                     type: integer
+                    format: int64
                     description: The time that the Attribute was last updated, in milliseconds since Epoch.
                     example: 1564162810884
             subscriptions:
@@ -1098,15 +1105,15 @@ components:
                     enum: [PURCHASED, FAMILY_SHARED]
                     description: |
                       How the Customer received access to this subscription:
-                      - `PURCHASED`: The Customer purchased the product.  
+                      - `PURCHASED`: The Customer purchased the product.
                       - `FAMILY_SHARED`: The Customer has access to the product via their family.
                   period_type:
                     type: string
                     enum: [normal, trial, intro]
                     description: |
                       Type of the current subscription period_type:
-                      - `normal`: The product is in a normal period (default)  
-                      - `trial`: The product is in a free trial period  
+                      - `normal`: The product is in a normal period (default)
+                      - `trial`: The product is in a free trial period
                       - `intro`: The product is in an introductory pricing period
                     example: NORMAL
                   price:
@@ -1132,11 +1139,11 @@ components:
                     example: app_store
                     description: |
                       Identifier of the store of the purchase:
-                      - `app_store`: The product was purchased through Apple App Store.  
-                      - `mac_app_store`: The product was purchased through the Mac App Store.  
-                      - `play_store`: The product was purchased through the Google Play Store.  
-                      - `amazon`: The product was purchased through the Amazon Appstore.  
-                      - `stripe`: The product was purchased through Stripe.  
+                      - `app_store`: The product was purchased through Apple App Store.
+                      - `mac_app_store`: The product was purchased through the Mac App Store.
+                      - `play_store`: The product was purchased through the Google Play Store.
+                      - `amazon`: The product was purchased through the Amazon Appstore.
+                      - `stripe`: The product was purchased through Stripe.
                       - `promotional`: The product was [granted via RevenueCat](#tag/entitlements/operation/grant-a-promotional-entitlement).
                   unsubscribe_detected_at:
                     type: string
