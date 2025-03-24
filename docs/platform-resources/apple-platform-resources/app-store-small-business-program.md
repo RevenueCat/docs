@@ -5,7 +5,7 @@ excerpt: How to have the reduced commission rate reflected in RevenueCat
 hidden: false
 ---
 
-Apple recently announced the new App Store Small Business Program, aiming to reduce Apple's commission of App Store sales for small businesses from 30% to 15%.
+Apple has a program in place, aimed at reducing their commission of App Store sales for small businesses from 30% to 15%: the App Store Small Business Program.
 
 While there are specific terms that Apple requires to be eligible for the program, generally most developers who earn under $1 million in App Store revenue per year can apply. You can read more about the App Store Small Business Program [here](https://developer.apple.com/app-store/small-business-program/).
 
