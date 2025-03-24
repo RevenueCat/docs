@@ -22,7 +22,7 @@ By default, RevenueCat will not process Paddle Server Notifications for any purc
 
 ### App User ID Detection Methods
 
-RevenueCat provides flexible ways to detect the App User ID for purchases coming through Stripe Server Notifications. The Stripe purchase will be associated with the detected App User ID.
+RevenueCat provides flexible ways to detect the App User ID for purchases coming through Paddle Server Notifications. The Paddle purchase will be associated with the detected App User ID.
 
 1. **Use anonymous App User IDs**: RevenueCat will generate a RevenueCat anonymous App User ID to associate the purchase with.
 2. **Read App User ID from a Paddle metadata field**: If you are storing your customer's RevenueCat App User ID through [Paddle custom data](https://developer.paddle.com/api-reference/about/custom-data), you can specify the metadata field name in the `Metadata field key` textbox. Ensure that the metadata value will exactly match your RevenueCat App User ID. If the transaction does not have a metadata field, the purchase will be associated with an anonymous App User ID.
