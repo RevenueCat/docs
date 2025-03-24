@@ -204,7 +204,7 @@ const webSDKCategory = Category({
       label: "External Payments Integrations",
       slug: "payment-integrations",
       itemsPathPrefix: "integrations/",
-      items: [Page({ slug: "stripe" })],
+      items: [Page({ slug: "stripe" }), Page({ slug: "paddle" })],
     }),
   ],
 });
@@ -280,6 +280,7 @@ const offeringsCategory = Category({
             Page({ slug: "google-subscriptions-and-backwards-compatibility" }),
             Page({ slug: "amazon-product-setup" }),
             Page({ slug: "stripe-products" }),
+            Page({ slug: "paddle-products" }),
             Link({
               label: "Web Billing Product Setup",
               slug: "/web/web-billing/product-setup",
