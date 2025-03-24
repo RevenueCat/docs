@@ -9,6 +9,19 @@ To set up products for Paddle, start by logging into the Paddle Dashboard. This 
 
 ## Create a new Product
 
+To create a new product, expand the **Catalog** section in the sidebar and click **Product**.
+
+On the top right corner of the page, click **New Product**.
+
+![](/images/paddle/create-product.png)
+
+Enter a name for the product and click **Save**.
+
+Then on the prices section, click **New Price**.
+
+![](/images/paddle/create-price.png)
+
+Enter a base price, select the type of pricing (recurring or one-time) and click **Save**.
 
 
 ## Integrate with RevenueCat
