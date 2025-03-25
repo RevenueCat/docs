@@ -18,7 +18,7 @@ This means that your charts are always up-to-date, without having to rely on any
 Due to the limitations of the sandbox environments, charts are only displayed for production transaction data.
 :::
 
-## Data Discrepancies
+## Data differences between systems
 
 Reconciling data between multiple sources is a fundamental challenge for all analytics systems. As a consequence, in-app purchase data from Apple, Google, or Stripe may not match what RevenueCat reports in Charts or in [Overview](/dashboard-and-metrics/overview). Common reasons for these discrepancies are:
 
@@ -30,7 +30,7 @@ When reporting tax information, please use the data provided by the payment proc
 
 Please see our [community post](https://community.revenuecat.com/featured-articles-55/about-data-discrepancies-116) for a more in-depth discussion of data discrepancies.
 
-## Recreating Our Charts
+## Recreating our Charts
 
 Calculating in-app purchase metrics at scale is a complex process: Each of our metrics entail making decisions as to how users are grouped (i.e., cohorts), how users with different subscription histories are compared, etc.
 
@@ -68,31 +68,34 @@ For detailed information on a particular Chart, refer to the following guides:
 
 ## Filters and Segments
 
-All charts can be filtered, while subscription, revenue, and active trial charts can be filtered and/or segmented.
+All charts can be filtered, and most charts support segmenting, though in some cases with a limited set of dimensions.
 
 Filters allow you to limit the charts to only include data that matches one or more attributes. This is useful when you want to check the performance of a specific property, such as a certain country or product identifier.
 
 Segments allow you to break down the chart totals into underlying data segments. This is useful for comparing the performance of specific properties, such as monthly vs. annual subscriptions.
 
-| Attribute                 | Description                                                                                                                                                            |
-| :------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Project                   | The different projects you have access to in RevenueCat. These projects contain your apps across various platforms.                                                    |
-| Apple Search Ads Ad Group | If you're collecting [Apple Search Ads Attribution](/integrations/attribution/apple-search-ads), the specific ad group that drove the install (iOS only).              |
-| Apple Search Ads Campaign | If you're collecting [Apple Search Ads Attribution](/integrations/attribution/apple-search-ads), the specific campaign that drove the install (iOS only).              |
-| Country                   | The device locale that was recorded with the purchase or the last known locale of the customer. May be unknown.                                                        |
-| First Purchase Month      | The month that the first purchase (incl. free trials) was recorded for the user (segment option only).                                                                 |
-| Install Month             | The month that the user was first seen by RevenueCat (segment option only).                                                                                            |
-| Offer                     | The offer that was used for a transaction (if applicable).                                                                                                             |
-| Offer type                | They type of offer that was used for a transaction (if applicable).                                                                                                    |
-| Offering                  | The offering identifier set in RevenueCat.                                                                                                                             |
-| Placement                 | The custom paywall location that was defined in your app to serve an Offering.                                                                                         |
-| Product Duration          | The duration of the normal subscription period (not trial or intro period).                                                                                            |
-| Product                   | The product identifier set in the store.                                                                                                                               |
-| Store                     | The store that processed the purchase. Either App Store, Play Store, Amazon Appstore, or Stripe.                                                                       |
-| Targeting Rule            | A collection of conditions that, when they are true for a given customer, will result in that customer matching the rule and being served the corresponding Offerings. |
+| Attribute                   | Description                                                                                                                                                                                                                                   |
+| :-------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Project                     | The different projects you have access to in RevenueCat. These projects contain your apps across various platforms.                                                                                                                           |
+| Attribution Source          | If you're collecting [Apple Search Ads Attribution](/integrations/attribution/apple-search-ads), the source that the install derived from, between Apple Search Ads and Organic (iOS only).                                                   |
+| Apple Search Ads Campaign   | If you're collecting [Apple Search Ads Attribution](/integrations/attribution/apple-search-ads), the specific campaign that drove the install (iOS only).                                                                                     |
+| Apple Search Ads Ad Group   | If you're collecting [Apple Search Ads Attribution](/integrations/attribution/apple-search-ads), the specific ad group that drove the install (iOS only).                                                                                     |
+| Apple Search Ads Keyword    | If you're collecting [Apple Search Ads Attribution](/integrations/attribution/apple-search-ads), the specific keyword that drove the install (iOS only).                                                                                      |
+| Apple Search Ads Claim Type | If you're collecting [Apple Search Ads Attribution](/integrations/attribution/apple-search-ads), the attribution type that drove the install, `Click` for click-through attribution and `Impression` for view-through attribution (iOS only). |
+| Country                     | The device locale that was recorded with the purchase or the last known locale of the customer. May be unknown.                                                                                                                               |
+| First Purchase Month        | The month that the first purchase (incl. free trials) was recorded for the user (segment option only).                                                                                                                                        |
+| Install Month               | The month that the user was first seen by RevenueCat (segment option only).                                                                                                                                                                   |
+| Offer                       | The offer that was used for a transaction (if applicable).                                                                                                                                                                                    |
+| Offer type                  | They type of offer that was used for a transaction (if applicable).                                                                                                                                                                           |
+| Offering                    | The offering identifier set in RevenueCat.                                                                                                                                                                                                    |
+| Placement                   | The custom paywall location that was defined in your app to serve an Offering.                                                                                                                                                                |
+| Product Duration            | The duration of the normal subscription period (not trial or intro period).                                                                                                                                                                   |
+| Product                     | The product identifier set in the store.                                                                                                                                                                                                      |
+| Store                       | The store that processed the purchase. Either App Store, Play Store, Amazon Appstore, or Stripe.                                                                                                                                              |
+| Targeting Rule              | A collection of conditions that, when they are true for a given customer, will result in that customer matching the rule and being served the corresponding Offerings.                                                                        |
 
-:::info Filters do not affect 'New Customers' number
-Filters and segments do not apply to the 'New Customers' number. It is possible for customers to jump between web, iOS, and Android devices, so these filters only apply to transactions, which always happen through a particular Store.
+:::info Product filters do not affect 'New Customers' number
+Filters that refer to product dimensions such as Product, Product Duration, and Store do not apply to the 'New Customers' measure, since a New Customer may not have made a purchase and therefore not all New Customers could be filtered by this dimension. Other measures in these charts, such as Trial Starts or Realized LTV, can be filtered by product dimensions since the measures are derived from purchases.
 :::
 
 ### Understanding offers

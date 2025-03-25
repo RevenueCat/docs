@@ -127,41 +127,45 @@ After automatic collection is enabled, Purchases will sync the attribution token
 
 ## 3. View attribution data in RevenueCat
 
-After the _Purchases SDK_ has collected attribution for some users, you'll be able to segment and view charts for those conversions.
-
-### Choose conversion level
-
-In the 'Select Segment' dropdown choose _Apple search ads group_ or _Apple search ads campaign_ from the Segment section.
-
-![](/images/e566bfe-Screenshot_2023-03-28_at_2.09.54_PM_619e658f60de250211667f004811e65e.png)
+After the _Purchases SDK_ has collected attribution for some users, you'll be able to use Charts to analyze your Apple Search Ads data.
 
 ### View charts
 
-Apple Search Ad attribution is available as segments and filters in the following charts:
+Apple Search Ad attribution is available as segments and filters in the vast majority of applicable charts that measure subscription, trial, revenue, lifetime value, and conversion data.
 
-- Active Subscriptions
-- Churn
-- Refund Rate
-- Annual Recurring Revenue (ARR)
-- Monthly Recurring Revenue (MRR)
-- Revenue
-- Active Trials
+The charts without support for Apple Search Ads attribution are:
 
-![](/images/230537e-asa_chart_0d19b792771a898372ab35ddc90231bc.png "asa_chart.png")
+- Subscription Retention
+- Customer Center Survey Responses
+- Play Store Cancel Reasons
+- App Store Refund Requests
 
-### Filter chart to compare individual campaigns or ad groups
+![](/images/attribution-source-in-charts.png "attribution-source-in-charts.png")
 
-Select and deselect rows to compare individual campaigns or ad sets
+### Available filters/segments
+
+We support the following filters and segments for Apple Search Ads:
+
+1. `Attribution source`: Breakdown your measures by `Apple Search Ads` or `Organic`.
+2. `Apple search ads campaign`: Breakdown your measures by the campaign they derived from.
+3. `Apple search ads group`: Breakdown your measures by the ad group they derived from.
+4. `Apple search ads keyword`: Breakdown your measures by the keyword they derived from.
+5. `Apple search ads claim type`: Breakdown your measures by the claim type of `Click` for click-through attribution, or `Impression` for view-through attribution.
+
+![](/images/e566bfe-Screenshot_2023-03-28_at_2.09.54_PM_619e658f60de250211667f004811e65e.png)
+
+### Filter chart to compare individual campaigns, ad groups, or keywords
+
+Select and deselect rows to compare individual campaigns, ad sets, or keywords
 
 ![](/images/3719b43-asa_rows_d737ef6c25bfed76555d4eae86d92a64.png "asa_rows.png")
 
 :::info
-The value of `Unspecified` is used to group transactions that are attributed to an Apple Search Ads ad, but do not have a specified Campaign Name or Ad Group Name. This is almost always because the ad has been delivered through an Apple Search Ads Basic account, where campaign names and ad group names are not specified.
-
+The value of `Unspecified` is used to group transactions that are attributed to an Apple Search Ads ad, but do not have a specified Campaign Name, Ad Group Name, or Keyword. This is almost always because the ad has been delivered through an Apple Search Ads Basic account, where these names are not specified.
 :::
 
 :::info
-The value of `Organic` is used to group transactions that are not attributed to an Apple Search Ads campaign. This means it was an organic install or users with limit ad tracking enabled.
+The value of `Organic` is used to group transactions that are not attributed to an Apple Search Ads campaign. This means it was an organic install or users with limit ad tracking enabled. To exclude organic installs from your charts, you can filter by `Attribution source` and select `Apple Search Ads`.
 :::
 
 :::warning Allow up to 7 days to gather attribution data
