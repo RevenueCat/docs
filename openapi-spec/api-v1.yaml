@@ -1022,9 +1022,6 @@ components:
                     store:
                       type: string
                       example: app_store
-                    store_transaction_id:
-                      type: string
-                      example: GPA.3314-8787-2119-77742
                       description: |
                         Identifier of the store of the purchase:
                         - `app_store`: The product was purchased through Apple App Store.
@@ -1032,6 +1029,11 @@ components:
                         - `play_store`: The product was purchased through the Google Play Store.
                         - `amazon`: The product was purchased through the Amazon Appstore.
                         - `stripe`: The product was purchased through Stripe.
+                    store_transaction_id:
+                      type: string
+                      example: GPA.3314-8787-2119-77742
+                      description: |
+                        Identifier of the purchase in the store's API.
             original_app_user_id:
               type: string
               example: XXX-XXXXX-XXXXX-XX
