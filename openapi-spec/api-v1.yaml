@@ -1022,6 +1022,9 @@ components:
                     store:
                       type: string
                       example: app_store
+                    store_transaction_id:
+                      type: string
+                      example: GPA.3314-8787-2119-77742
                       description: |
                         Identifier of the store of the purchase:
                         - `app_store`: The product was purchased through Apple App Store.
@@ -1176,6 +1179,7 @@ components:
                 is_sandbox: true
                 purchase_date: "2019-04-05T21:52:45Z"
                 store: app_store
+                store_transaction_id: "GPA.3314-8787-2119-77742"
           original_app_user_id: XXX-XXXXX-XXXXX-XX
           original_application_version: "1.0"
           original_purchase_date: "2019-01-30T23:54:10Z"
