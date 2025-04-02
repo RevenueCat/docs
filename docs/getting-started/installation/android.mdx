@@ -17,17 +17,29 @@ RevenueCat provides a backend and a wrapper around StoreKit and Google Play Bill
 
 Purchases for Android (Google Play and Amazon Appstore) is available on Maven and can be included via Gradle.
 
-import content from "!!raw-loader!@site/code_blocks/getting-started/installation/android_1.groovy";
+import buildGradle1 from "!!raw-loader!@site/code_blocks/getting-started/installation/android_4.kts";
+import buildGradle2 from "!!raw-loader!@site/code_blocks/getting-started/installation/android_1.groovy";
 
-<RCCodeBlock tabs={[{ type: "groovy", content: content, name: "Groovy" }]} />
+<RCCodeBlock
+  tabs={[
+      { type: "kotlin", content: buildGradle1, name: "kts" },
+      { type: "groovy", content: buildGradle2, name: "groovy" },
+    ]}
+/>
 
 ### Import Purchases
 
 You should now be able to import `Purchases`.
 
+import kotlinContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_5.kt";
 import javaContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_2.java";
 
-<RCCodeBlock tabs={[{ type: "java", content: javaContent, name: "Java" }]} />
+<RCCodeBlock
+  tabs={[
+      { type: "kotlin", content: kotlinContent, name: "kotlin" },
+      { type: "java", content: javaContent, name: "java" },
+    ]}
+/>
 
 ### Configure Proguard (Optional)
 
@@ -63,10 +75,14 @@ You can find Android's documentation on the various `launchMode` options [here](
 
 Add a new dependency to the build.gradle apart from the regular `purchases` dependency. These new dependencies have the classes needed to use Amazon IAP:
 
-import unityContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_3.groovy";
+import amazonGradle1 from "!!raw-loader!@site/code_blocks/getting-started/installation/android_6.kts";
+import amazonGradle2 from "!!raw-loader!@site/code_blocks/getting-started/installation/android_3.groovy";
 
 <RCCodeBlock
-  tabs={[{ type: "groovy", content: unityContent, name: "Groovy" }]}
+  tabs={[
+      { type: "kotlin", content: amazonGradle1, name: "kts" },
+      { type: "groovy", content: amazonGradle2, name: "groovy" },
+    ]}
 />
 
 ### Add Amazon public key
