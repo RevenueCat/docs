@@ -1,4 +1,4 @@
-Purchases.sharedInstance.getCustomerInfo({ error -> /* Optional error handling */ }) { customerInfo ->
+Purchases.sharedInstance.getCustomerInfoWith({ error -> /* Optional error handling */ }) { customerInfo ->
     val managementURL = customerInfo.managementURL
     // display the managementURL in your app
 }
