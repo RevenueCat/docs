@@ -1,0 +1,1 @@
+implementation("com.revenuecat.purchases:purchases:8.15.1")
