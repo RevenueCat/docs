@@ -1,3 +1,4 @@
-Purchases.sharedInstance.getCustomerInfoWith({ error -> /* Optional error handling */ }) { customerInfo ->
-  // access latest customerInfo
-}
+Purchases.sharedInstance.getCustomerInfoWith(
+    onError = { error -> /* Optional error handling */ },
+    onSuccess = { customerInfo -> /* Access latest customerInfo */ },
+)
