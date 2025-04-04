@@ -17,10 +17,11 @@ If you are looking to _consume_ notifications about subscription purchases on yo
 - Google Real-Time Developer Notifications: [Setup →](/platform-resources/server-notifications/google-server-notifications)
 - Amazon Appstore Real-time Notifications: [Setup →](/platform-resources/server-notifications/amazon-server-notifications)
 - Stripe Server Notifications: [Setup →](/platform-resources/server-notifications/stripe-server-notifications) (Required for Stripe)
+- Paddle Server Notifications: [Setup →](/platform-resources/server-notifications/paddle-server-notifications.md)
 
 ## Confirming Connection
 
-You can confirm the Apple, Google, and/or Stripe notifications are being delivered properly to RevenueCat by observing the '_Last received_' timestamp next to the section header.
+You can confirm the Apple, Google, Stripe, and/or Paddle notifications are being delivered properly to RevenueCat by observing the '_Last received_' timestamp next to the section header.
 
 If you've had subscription activity in your app but this value is missing or stale, double check the configuration steps above.
 

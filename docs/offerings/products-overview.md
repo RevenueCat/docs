@@ -18,6 +18,7 @@ No matter how you choose to use RevenueCat, you'll need to first have products s
 - **[Android / Google Play Console ](/getting-started/entitlements/android-products)**
 - **[Android / Amazon Appstore ](/getting-started/entitlements/amazon-product-setup)**
 - **[Stripe ](/getting-started/entitlements/stripe-products)**
+- **[Paddle ](/getting-started/entitlements/paddle-products)**
 
 ### Free trials, promotional offers, and other product configuration
 

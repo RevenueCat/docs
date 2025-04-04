@@ -60,6 +60,12 @@ Stripe is a popular payment processor that allows you to accept payments from cu
 
 - [Learn more about Stripe](/web/integrations/stripe)
 
+#### Paddle
+
+Paddle is a popular all-in-one payment infrastructure that allows you to accept payments from customers and acts as a merchant of record. RevenueCat integrates with Paddle to allow you to easily offer subscriptions and manage your customers.
+
+- [Learn more about Paddle](/web/integrations/paddle)
+
 ## Platform Server Notifications
 
 After adding your app, we recommend setting up [Platform Server Notifications](/platform-resources/server-notifications). These notifications will ensure RevenueCat is notified of purchases and subscription events as soon as possible, and will speed up [webhooks](/integrations/webhooks) and integration delivery times.
