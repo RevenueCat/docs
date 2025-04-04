@@ -1,0 +1,10 @@
+{
+  "virtual_currencies": {
+    "GLD": {
+      "balance": 80
+    },
+    "SLV": {
+      "balance": 40
+    }
+  }
+}

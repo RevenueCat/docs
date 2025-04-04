@@ -56,6 +56,10 @@ Use the `virtual-currency-beta` branch of the purchases-ios SDK to access the vi
 
 ![](/images/virtual-currency/ios-spm-virtual-currency-beta-branch-configuration.png)
 
+If you're using CocoaPods, set your `purchases-ios` version to the most recent `vc-beta` version in your Podfile:
+
+[![Latest Virtual Currency iOS Beta Release](https://img.shields.io/github/release/RevenueCat/purchases-ios.svg?filter=*vc-beta*&style=flat)](https://github.com/RevenueCat/purchases-ios/releases)
+
 ### Android
 
 When adding the purchases-android SDK to your app, use the most recent `vc-beta` version when adding `purchases-android` to your `build.gradle`:
@@ -63,6 +67,8 @@ When adding the purchases-android SDK to your app, use the most recent `vc-beta`
 [![Latest Virtual Currency Android Beta Release](https://img.shields.io/github/release/RevenueCat/purchases-android.svg?filter=*vc-beta*&style=flat)](https://github.com/RevenueCat/purchases-android/releases)
 
 ```kotlin
+// build.gradle
+
 implementation 'com.revenuecat.purchases:purchases:8.14.2-vc-beta.1'
 ```
 
@@ -79,6 +85,31 @@ import androidExperimentalAPIAnnotationExample from "!!raw-loader!@site/code_blo
   ]}
 />
 
+### React Native
+When installing the purchases SDK in your app, use the latest virtual currencies beta version:
+
+[![Latest Virtual Currency React Native Beta Release](https://img.shields.io/github/release/RevenueCat/react-native-purchases.svg?filter=*vc-beta*&style=flat)](https://github.com/RevenueCat/react-native-purchases/releases)
+
+```json
+// Package.json
+
+"dependencies": {
+  "react-native-purchases": "8.9.1-vc-beta.1",
+}
+```
+
+### Flutter
+When installing the purchases SDK in your app, use the latest virtual currencies beta version in your `pubspec.yaml` file:
+
+[![Latest Virtual Currency Flutter Beta Release](https://img.shields.io/github/release/RevenueCat/purchases-flutter.svg?filter=*vc-beta*&style=flat)](https://github.com/RevenueCat/purchases-flutter/releases)
+
+```yaml
+# pubspec.yaml
+
+dependencies:
+  purchases_flutter: '8.7.0-vc-beta.1'
+```
+
 ## Usage
 
 ### Prerequisites
@@ -86,6 +117,9 @@ import androidExperimentalAPIAnnotationExample from "!!raw-loader!@site/code_blo
 The endpoints available for virtual currency are supported through our REST V2 API endpoints. You will need a secret key to access it. Make sure that your key at least has Read & Write permissions for Customer Purchases Configuration. See our [documentation](<https://www.revenuecat.com/docs/api-v2#tag/Overview-(v2)/Authentication>) for more details on how you can access RevenueCat’s REST V2 APIs.
 
 ![](/images/virtual-currency/api-secret-key.png)
+
+### Limitations
+The maximum amount of a single virtual currency that a customer can own must be between zero and two billion (2,000,000,000). Negative balances are not supported.
 
 ### Depositing or spending
 
@@ -173,6 +207,8 @@ If you're using the virtual currency SDK betas, you can fetch the virtual curren
 
 import fetchVCBalancesSwift from "!!raw-loader!@site/code_blocks/virtual-currency/vc-balance-sdk-ios.swift";
 import fetchVCBalancesKotlin from "!!raw-loader!@site/code_blocks/virtual-currency/vc-balance-sdk-android.kt";
+import fetchVCBalancesReactNative from "!!raw-loader!@site/code_blocks/virtual-currency/vc-balance-sdk-react-native.ts";
+import fetchVCBalancesFlutter from "!!raw-loader!@site/code_blocks/virtual-currency/vc-balance-sdk-flutter.dart";
 
 <RCCodeBlock
   tabs={[
@@ -185,6 +221,33 @@ import fetchVCBalancesKotlin from "!!raw-loader!@site/code_blocks/virtual-curren
       type: "kotlin",
       content: fetchVCBalancesKotlin,
       name: "Kotlin",
+    },
+    {
+      type: "rn",
+      content: fetchVCBalancesReactNative,
+      name: "React Native",
+    },
+    {
+      type: "flutter",
+      content: fetchVCBalancesFlutter,
+      name: "Flutter",
+    },
+  ]}
+/>
+
+## RevenueCat's Firebase Extension integration
+
+If you have the [Firebase Extension integration](/integrations/third-party-integrations/firebase-integration#4-send-customer-information-to-firestore) enabled, RevenueCat will include the customer's virtual currency balance in the dispatched events' payload. Balance changes due to other reasons, such as manual adjustments through our REST API V2 endpoints **will not** trigger an event.
+
+When an event is dispatched, the Firebase Extension event payload will include a `virtual_currencies` object containing the customer's **total balance** for each currency after the purchase. The below example shows the customer's total balance for "GLD" is 80, while "SLV" is 40.
+
+import firebaseExtensionPayload from "!!raw-loader!@site/code_blocks/virtual-currency/firebase-balance.json";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "json",
+      content: firebaseExtensionPayload,
     },
   ]}
 />
