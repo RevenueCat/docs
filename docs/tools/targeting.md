@@ -1,5 +1,5 @@
 ---
-title: Offering Targeting
+title: Targeting
 slug: targeting
 hidden: false
 ---
