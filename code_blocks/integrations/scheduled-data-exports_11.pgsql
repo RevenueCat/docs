@@ -2,7 +2,7 @@
 
 WITH
 
-filtered_subscriptipon_transactions AS (
+filtered_subscription_transactions AS (
     SELECT
         *,
         CASE WHEN effective_end_time IS NOT NULL THEN
@@ -78,14 +78,14 @@ actives AS (
         END
     ) AS renewal_mrr
     
-  FROM filtered_subscriptipon_transactions
+  FROM filtered_subscription_transactions
   GROUP BY 1),
   
 expirations AS (
   SELECT
     DATE(effective_end_time) AS date,
     SUM(transaction_mrr) AS expired_mrr
-  FROM filtered_subscriptipon_transactions
+  FROM filtered_subscription_transactions
   GROUP BY 1)
 
 SELECT
