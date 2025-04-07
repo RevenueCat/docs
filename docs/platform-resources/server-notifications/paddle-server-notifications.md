@@ -12,6 +12,8 @@ RevenueCat does not require server notifications from Paddle, however doing so c
 1. Navigate to your **app settings** in the RevenueCat dashboard by selecting your app from **Project Settings > Apps**.
 2. Expand the **Webhook Configuration** section and click on **Apply in Paddle**.
 
+![](/images/paddle/apply-in-paddle.png)
+
 ## Tracking new purchases using Paddle Server Notifications
 
 By default, RevenueCat will not process Paddle Server Notifications for any purchases that have not yet been posted to the RevenueCat API from your own backend. For RevenueCat to track new purchases from Paddle Server Notifications, you can enable the **"Track new purchases from server-to-server notifications"** option in our Dashboard. This allows RevenueCat to process new purchases from server-to-server notifications that are not yet in our system. This ensures all purchases are tracked, even in the case of network issues between your server's and RevenueCat's.
@@ -23,7 +25,7 @@ By default, RevenueCat will not process Paddle Server Notifications for any purc
 RevenueCat provides flexible ways to detect the App User ID for purchases coming through Paddle Server Notifications. The Paddle purchase will be associated with the detected App User ID.
 
 1. **Use anonymous App User IDs**: RevenueCat will generate a RevenueCat anonymous App User ID to associate the purchase with.
-2. **Read App User ID from a Paddle metadata field**: If you are storing your customer's RevenueCat App User ID through [Paddle custom data](https://developer.paddle.com/api-reference/about/custom-data), you can specify the metadata field name in the `Metadata field key` textbox. Ensure that the metadata value will exactly match your RevenueCat App User ID. If the transaction does not have a metadata field, the purchase will be associated with an anonymous App User ID.
+2. **Read App User ID from a Paddle metadata field**: If you are storing your customer's RevenueCat App User ID through [Paddle custom data](https://developer.paddle.com/api-reference/about/custom-data), you can specify the metadata field name in the `Metadata field key` textbox. RevenueCat will read custom data from the subscription and transaction entities. Ensure that the metadata value will exactly match your RevenueCat App User ID. If the transaction does not have a metadata field, the purchase will be associated with an anonymous App User ID.
 
 ### Considerations
 

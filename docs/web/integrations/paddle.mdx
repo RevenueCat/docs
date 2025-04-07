@@ -5,11 +5,9 @@ excerpt: Allow your users to subscribe to your app via Paddle
 hidden: false
 ---
 
-RevenueCat currently supports web payments through Paddle. This allows you to let users subscribe on your own website using Paddle, and automatically unlock access based on the Paddle subscription through the _Purchases SDK_.
+RevenueCat currently supports web payments through Paddle. This allows you to let subscribers subscribe on your own website using Paddle, and automatically unlock access based on the Paddle subscription through the _Purchases SDK_.
 
 Remember that it is against Apple's App Store terms to provide a different system than in-app purchases for digital goods. Make sure you don't promote your web subscriptions from inside your app. Your app may get rejected, or banned.
-
-Before launching your Paddle integration, be sure to read the limitations that apply to [working with web payments](#working-with-web-payments).
 
 ## 1. Create a new Paddle app
 
@@ -19,13 +17,7 @@ Paddle has a different environment for sandbox and production. As environments a
 
 ## 2. Create products and prices on Paddle
 
-Create and manage your Paddle product(s) directly in [the Paddle dashboard](https://vendors.paddle.com/products-v2). In Paddle, a _product_ can have multiple _prices_. These are useful if you want to offer different price points for the same product and work similar to _offerings_ and _products_ in RevenueCat.
-
-![](/images/paddle/create-product.png)
-
-![](/images/paddle/create-price.png)
-
-You can read more about **products and prices** in [Paddle's official documentation](https://developer.paddle.com/build/products/create-products-prices).
+You can create products and prices following the [Paddle Product Setup](/getting-started/entitlements/paddle-products) guide.
 
 ## 3. Create subscriptions on Paddle
 
