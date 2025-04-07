@@ -1,10 +1,11 @@
-import { Platform } from 'react-native';
+import { Platform, useEffect } from 'react-native';
+import Purchases from 'react-native-purchases';
 
 //...
 
-export default class App extends React.Component {
+export default function App() {
  
-  componentDidMount() {
+  useEffect(() => {
     Purchases.setDebugLogsEnabled(true);
     
     if (Platform.OS === 'ios') {
@@ -16,5 +17,5 @@ export default class App extends React.Component {
         await Purchases.configure({ apiKey: "public_amazon_sdk_key", useAmazon: true });
     }
     
-  }
+  }, []);
 }

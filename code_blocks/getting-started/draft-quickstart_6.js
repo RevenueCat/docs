@@ -1,8 +1,11 @@
-export default class App extends React.Component {
+import { useEffect } from 'react-native';
+import Purchases from 'react-native-purchases';
+
+export default function App() {
   
-  componentDidMount() {
+  useEffect(() => {
     Purchases.setDebugLogsEnabled(true);
     Purchases.setup("public_sdk_key");
-  }
+  }, []);
   
 }
