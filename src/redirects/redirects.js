@@ -333,7 +333,7 @@ const redirects = {
       from: "/branch",
     },
     {
-      to: "/integrations/attribution/facebook-ads",
+      to: "/integrations/attribution/meta-ads",
       from: "/facebook-ads",
     },
     {
@@ -1068,8 +1068,12 @@ const redirects = {
       from: "/branch.html",
     },
     {
-      to: "/integrations/attribution/facebook-ads",
+      to: "/integrations/attribution/meta-ads",
       from: "/facebook-ads.html",
+    },
+    {
+      to: "/integrations/attribution/meta-ads",
+      from: "/integrations/attribution/facebook-ads",
     },
     {
       to: "/integrations/attribution/singular",
@@ -1624,7 +1628,7 @@ const redirects = {
 
 // Add redirects with a .html appended to the "from" path for redirecting in S3/Cloudfront
 redirects.redirects.push(
-  ...redirects.redirects.map(({ from, to }) => ({ from: `${from}.html`, to })),
+  ...redirects.redirects.map(({ from, to }) => ({ from: `${from}.html`, to }))
 );
 
 export default redirects;
