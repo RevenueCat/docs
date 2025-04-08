@@ -86,6 +86,7 @@ import androidExperimentalAPIAnnotationExample from "!!raw-loader!@site/code_blo
 />
 
 ### React Native
+
 When installing the purchases SDK in your app, use the latest virtual currencies beta version:
 
 [![Latest Virtual Currency React Native Beta Release](https://img.shields.io/github/release/RevenueCat/react-native-purchases.svg?filter=*vc-beta*&style=flat)](https://github.com/RevenueCat/react-native-purchases/releases)
@@ -99,6 +100,7 @@ When installing the purchases SDK in your app, use the latest virtual currencies
 ```
 
 ### Flutter
+
 When installing the purchases SDK in your app, use the latest virtual currencies beta version in your `pubspec.yaml` file:
 
 [![Latest Virtual Currency Flutter Beta Release](https://img.shields.io/github/release/RevenueCat/purchases-flutter.svg?filter=*vc-beta*&style=flat)](https://github.com/RevenueCat/purchases-flutter/releases)
@@ -107,18 +109,27 @@ When installing the purchases SDK in your app, use the latest virtual currencies
 # pubspec.yaml
 
 dependencies:
-  purchases_flutter: '8.7.0-vc-beta.1'
+  purchases_flutter: "8.7.0-vc-beta.1"
 ```
 
 ## Usage
 
 ### Prerequisites
 
-The endpoints available for virtual currency are supported through our REST V2 API endpoints. You will need a secret key to access it. Make sure that your key at least has Read & Write permissions for Customer Purchases Configuration. See our [documentation](<https://www.revenuecat.com/docs/api-v2#tag/Overview-(v2)/Authentication>) for more details on how you can access RevenueCat’s REST V2 APIs.
+The endpoints available for virtual currency are supported through our Developer API (2.0.0). You will need a secret key to access it. Make sure that your key at least has Read & Write permissions for Customer Purchases Configuration. See our [documentation](<https://www.revenuecat.com/docs/api-v2#tag/Overview-(v2)/Authentication>) for more details on how you can access RevenueCat’s Developer APIs.
 
 ![](/images/virtual-currency/api-secret-key.png)
 
+#### Rate limits
+
+All endpoints for virtual currency under our Developer API are subject to a rate limit of 480 requests per minute. If you exceed this limit, the API will return a 429 Too Many Requests status code, indicating that the rate limit has been reached.
+
+To avoid service interruptions, we recommend implementing retry logic. If you hit the rate limit, the API response will include a `Retry-After` header, specifying the amount of time (in seconds) you need to wait before making further requests.
+
+For more information on handling rate limits and using the Retry-After header, please refer to our [API documentation](https://www.revenuecat.com/docs/api-v2#tag/Rate-Limit).
+
 ### Limitations
+
 The maximum amount of a single virtual currency that a customer can own must be between zero and two billion (2,000,000,000). Negative balances are not supported.
 
 ### Depositing or spending
