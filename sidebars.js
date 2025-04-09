@@ -890,7 +890,7 @@ const attributionCategory = Category({
         Page({ slug: "apple-search-ads" }),
         Page({ slug: "appsflyer" }),
         Page({ slug: "branch" }),
-        Page({ slug: "facebook-ads" }),
+        Page({ slug: "meta-ads" }),
         Page({ slug: "kochava" }),
         Page({ slug: "singular" }),
         Page({ slug: "splitmetrics-acquire" }),

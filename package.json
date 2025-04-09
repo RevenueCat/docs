@@ -35,14 +35,17 @@
     "@docusaurus/tsconfig": "^3.7.0",
     "@docusaurus/types": "^3.7.0",
     "autoprefixer": "^10.4.21",
-    "lefthook": "^1.11.5",
+    "lefthook": "^1.11.6",
     "postcss": "^8.5.3",
     "postcss-import": "^16.1.0",
     "postcss-preset-env": "^10.1.5",
     "prettier": "^3.5.3",
     "raw-loader": "^4.0.2",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.3"
+  },
+  "resolutions": {
+    "redoc": "2.4.0"
   },
   "browserslist": {
     "production": [
