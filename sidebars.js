@@ -52,6 +52,7 @@ const projectsCategory = Category({
         Page({ slug: "apple-server-notifications" }),
         Page({ slug: "google-server-notifications" }),
         Page({ slug: "stripe-server-notifications" }),
+        Page({ slug: "paddle-server-notifications" }),
         Page({ slug: "amazon-server-notifications" }),
       ],
     }),
@@ -204,7 +205,7 @@ const webSDKCategory = Category({
       label: "External Payments Integrations",
       slug: "payment-integrations",
       itemsPathPrefix: "integrations/",
-      items: [Page({ slug: "stripe" })],
+      items: [Page({ slug: "stripe" }), Page({ slug: "paddle" })],
     }),
   ],
 });
@@ -280,6 +281,7 @@ const offeringsCategory = Category({
             Page({ slug: "google-subscriptions-and-backwards-compatibility" }),
             Page({ slug: "amazon-product-setup" }),
             Page({ slug: "stripe-products" }),
+            Page({ slug: "paddle-products" }),
             Link({
               label: "Web Billing Product Setup",
               slug: "/web/web-billing/product-setup",
@@ -888,7 +890,7 @@ const attributionCategory = Category({
         Page({ slug: "apple-search-ads" }),
         Page({ slug: "appsflyer" }),
         Page({ slug: "branch" }),
-        Page({ slug: "facebook-ads" }),
+        Page({ slug: "meta-ads" }),
         Page({ slug: "kochava" }),
         Page({ slug: "singular" }),
         Page({ slug: "splitmetrics-acquire" }),
