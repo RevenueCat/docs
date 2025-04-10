@@ -154,3 +154,11 @@ If you are expecting a billing issue event, it may take a few hours for the Reve
 :::success That's it!
 You can now allow users to subscribe from the web or within your app, and let them access their subscription anywhere.
 :::
+
+## Troubleshooting
+
+**A Stripe purchase is missing/not found in RevenueCat**
+
+If a Stripe purchase seems to be missing in RevenueCat, first double check you've got the right App User ID. Sometimes users may have multiple accounts, and may contact you referencing the wrong identifier.
+
+If you're sure you've got the right App User ID, you'll likely need to re-send the purchase token and App User ID to our API as detailed above, or wait for a new subscription event to occur (if you have `Track new purchases from server-to-server-notifications` enabled). The end-user won't be able to directly restore their Stripe purchases to sync to RevenueCat as is possible with the mobile app stores.
