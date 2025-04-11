@@ -62,7 +62,7 @@ If you're looking to isolate the impact of changing just one paywall location, t
 
 ## Audience customization
 
-Then, you can optionally customize the audience who will be enrolled through your experiment through **Customize enrollment criteria** and **New customers to enroll**.
+Then, you can optionally customize the audience who will be enrolled through your experiment through **Customize enrollment criteria** and **New customers to enroll**. Please note: only new customers will be enrolled in Experiments. Existing customers will not be enrolled. 
 
 **Customize enrollment criteria**
 

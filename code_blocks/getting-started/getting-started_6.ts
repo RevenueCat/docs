@@ -1,10 +1,11 @@
-import { Platform } from 'react-native';
+import { Platform, useEffect } from 'react-native';
+import Purchases from 'react-native-purchases';
 
 //...
 
-export default class App extends React.Component {
+export default function App() {
 
-  componentDidMount() {
+  useEffect(() => {
     Purchases.setLogLevel(LOG_LEVEL.VERBOSE);
 
     if (Platform.OS === 'ios') {
@@ -16,5 +17,5 @@ export default class App extends React.Component {
        Purchases.configure({ apiKey: <revenuecat_project_amazon_api_key>, useAmazon: true });
     }
 
-  }
+  }, []);
 }

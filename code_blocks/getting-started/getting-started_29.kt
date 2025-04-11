@@ -1,5 +1,8 @@
-Purchases.sharedInstance.getCustomerInfo({ error -> /* Optional error handling */ }) { customerInfo ->
-  if (customerInfo.entitlements[<my_entitlement_identifier>]?.isActive == true) {
-    // Grant user "pro" access
-  }
-}
+Purchases.sharedInstance.getCustomerInfoWith(
+    onError = { error -> /* Optional error handling */ },
+    onSuccess = { customerInfo ->
+        if (customerInfo.entitlements[<my_entitlement_identifier>]?.isActive == true) {
+            // Grant user "pro" access
+        }
+    }
+)
