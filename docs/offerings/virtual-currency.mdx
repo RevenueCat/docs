@@ -109,7 +109,7 @@ When installing the purchases SDK in your app, use the latest virtual currencies
 # pubspec.yaml
 
 dependencies:
-  purchases_flutter: '8.7.0-vc-beta.1'
+  purchases_flutter: "8.7.0-vc-beta.1"
 ```
 
 ## Usage
@@ -131,56 +131,6 @@ For more information on handling rate limits and using the Retry-After header, p
 ### Limitations
 
 The maximum amount of a single virtual currency that a customer can own must be between zero and two billion (2,000,000,000). Negative balances are not supported.
-
-### Depositing or spending
-
-You can deposit or spend currency by calling the virtual currency transactions REST API V2 endpoint from the backend of your app:
-
-import content1 from "!!raw-loader!@site/code_blocks/virtual-currency/transactions.curl";
-
-<RCCodeBlock
-  tabs={[
-    {
-      type: "curl",
-      content: content1,
-    },
-  ]}
-/>
-
-The example request will deduct 20 GLD and 10 SLV from the customer's balance. Upon successful execution, the response will contain the updated balances of the virtual currencies that were spent.
-
-Note that sufficient balances of both currency types are required for the transaction to succeed. If not, the transaction will fail with HTTP 422 error and no virtual currency will be deducted.
-
-import content2 from "!!raw-loader!@site/code_blocks/virtual-currency/transaction-response.json";
-import failed_adjustment from "!!raw-loader!@site/code_blocks/virtual-currency/transaction-adjustment-failed.json";
-
-<RCCodeBlock
-  tabs={[
-    {
-      type: "json",
-      content: content2,
-      name: "200",
-    },
-    {
-      type: "json",
-      content: failed_adjustment,
-      name: "422",
-    },
-  ]}
-/>
-
-Multiple virtual currency types can be adjusted in a single transaction. Deductions and additions can also be combined. For example, you can execute the conversion of 50 GLD to 200 SLV with the following transaction:
-
-import content3 from "!!raw-loader!@site/code_blocks/virtual-currency/transaction-adjustment.json";
-
-<RCCodeBlock
-  tabs={[
-    {
-      type: "json",
-      content: content3,
-    },
-  ]}
-/>
 
 ### Reading balances
 
@@ -242,6 +192,56 @@ import fetchVCBalancesFlutter from "!!raw-loader!@site/code_blocks/virtual-curre
       type: "flutter",
       content: fetchVCBalancesFlutter,
       name: "Flutter",
+    },
+  ]}
+/>
+
+### Depositing or spending
+
+You can deposit or spend currency by calling the virtual currency transactions REST API V2 endpoint from the backend of your app:
+
+import content1 from "!!raw-loader!@site/code_blocks/virtual-currency/transactions.curl";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "curl",
+      content: content1,
+    },
+  ]}
+/>
+
+The example request will deduct 20 GLD and 10 SLV from the customer's balance. Upon successful execution, the response will contain the updated balances of the virtual currencies that were spent.
+
+Note that sufficient balances of both currency types are required for the transaction to succeed. If not, the transaction will fail with HTTP 422 error and no virtual currency will be deducted.
+
+import content2 from "!!raw-loader!@site/code_blocks/virtual-currency/transaction-response.json";
+import failed_adjustment from "!!raw-loader!@site/code_blocks/virtual-currency/transaction-adjustment-failed.json";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "json",
+      content: content2,
+      name: "200",
+    },
+    {
+      type: "json",
+      content: failed_adjustment,
+      name: "422",
+    },
+  ]}
+/>
+
+Multiple virtual currency types can be adjusted in a single transaction. Deductions and additions can also be combined. For example, you can execute the conversion of 50 GLD to 200 SLV with the following transaction:
+
+import content3 from "!!raw-loader!@site/code_blocks/virtual-currency/transaction-adjustment.json";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "json",
+      content: content3,
     },
   ]}
 />
