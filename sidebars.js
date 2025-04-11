@@ -63,10 +63,7 @@ const projectsCategory = Category({
         Page({ slug: "projects/collaborators" }),
         Page({ slug: "projects/restore-behavior" }),
       ],
-      index: {
-        title: "Project Settings",
-        link: "projects/project-settings",
-      },
+      index: { title: "Project Settings", link: "projects/project-settings" },
     }),
   ],
 });
@@ -156,9 +153,7 @@ const paywallsCategory = Category({
           label: "Making Purchases",
           slug: "making-purchases",
           items: [
-            Page({
-              slug: "making-purchases/android-with-jetpack-compose",
-            }),
+            Page({ slug: "making-purchases/android-with-jetpack-compose" }),
           ],
         }),
         Page({ slug: "restoring-purchases" }),
@@ -181,7 +176,11 @@ const webSDKCategory = Category({
       label: "Integrate Web Billing",
       slug: "web-billing/overview",
       itemsPathPrefix: "web-billing/",
-      items: [Page({ slug: "web-sdk" }), Page({ slug: "web-paywall-links" })],
+      items: [
+        Page({ slug: "web-sdk" }),
+        Page({ slug: "web-paywall-links" }),
+        Page({ slug: "testing" }),
+      ],
     }),
     SubCategory({
       label: "Configure Web Billing",
@@ -431,18 +430,10 @@ const platformResourcesCategory = Category({
           label: "FAQs",
           itemsPathPrefix: "platform-resources/apple-platform-resources/",
           items: [
-            Page({
-              slug: "app-store-small-business-program",
-            }),
-            Page({
-              slug: "apple-app-privacy",
-            }),
-            Page({
-              slug: "apple-family-sharing",
-            }),
-            Page({
-              slug: "handling-refund-requests",
-            }),
+            Page({ slug: "app-store-small-business-program" }),
+            Page({ slug: "apple-app-privacy" }),
+            Page({ slug: "apple-family-sharing" }),
+            Page({ slug: "handling-refund-requests" }),
           ],
           index: {
             title: "Apple App Store FAQs",
@@ -816,10 +807,7 @@ const chartsDummyCategory = Category({
       label: "Overview Metrics",
       slug: "/dashboard-and-metrics/overview",
     }),
-    Link({
-      label: "Charts",
-      slug: "/dashboard-and-metrics/charts",
-    }),
+    Link({ label: "Charts", slug: "/dashboard-and-metrics/charts" }),
   ],
 });
 
@@ -828,22 +816,13 @@ const integrationsDummyCategory = Category({
   label: "Events & Integrations Reference",
   itemsPathPrefix: "",
   items: [
-    Link({
-      label: "Events",
-      slug: "/integrations/integrations",
-    }),
-    Link({
-      label: "Attribution & MMPs",
-      slug: "/integrations/attribution",
-    }),
+    Link({ label: "Events", slug: "/integrations/integrations" }),
+    Link({ label: "Attribution & MMPs", slug: "/integrations/attribution" }),
     Link({
       label: "Third-Party Integrations",
       slug: "/integrations/third-party-integrations",
     }),
-    Link({
-      label: "Webhooks",
-      slug: "/integrations/webhooks",
-    }),
+    Link({ label: "Webhooks", slug: "/integrations/webhooks" }),
   ],
 });
 
@@ -868,10 +847,7 @@ const webhooksCategory = Category({
         Page({ slug: "event-types-and-fields" }),
         Page({ slug: "sample-events" }),
       ],
-      index: {
-        title: "Resources",
-        link: "integrations/webhooks/resources",
-      },
+      index: { title: "Resources", link: "integrations/webhooks/resources" },
     }),
   ],
 });
