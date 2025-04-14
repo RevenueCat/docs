@@ -58,19 +58,15 @@ The paywall preview is generated using our example values for each package liste
 To see a more accurate preview, we recommend running your application on your physical device or in the simulator, as this will present details based on the actual information for the products you're displaying on that device.
 
 ## Variable modifiers
-Our SDKs support a handful of modifiers that can be used to format the variable values:
+We support a handful of modifiers that can be used to format the variable values:
 - `uppercase`: Converts the value to uppercase.
 - `lowercase`: Converts the value to lowercase.
-- `capitalize`: Capitalizes the first letter of the value.
+- `capitalize`: Capitalizes the first letter of each word in the value.
 
 These modifiers can be used with the `|` operator after the variable name, for example:
 - `{{ product.price_per_period }}` will yield `$2.99/week`
 - `{{ product.price_per_period | uppercase }}` will yield `$2.99/WEEK`
 - `{{ product.price_per_period | capitalize }}` will yield `$2.99/Week`
-
-:::info Dashboard support
-The dashboard currently does not support previewing the variable modifiers, but that support will be coming soon.
-:::
 
 ## FAQs
 
