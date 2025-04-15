@@ -7,83 +7,169 @@ hidden: false
 ---
 
 :::success Pro Integration
-Webhooks are available on our Pro plan. If you are on one of our legacy plans without access to webhooks, migrate to our new [Pro plan](https://www.revenuecat.com/pricing/) to get access.
+Webhooks are available on our Pro plan. If you're on a legacy plan without access to webhooks, consider migrating to the new [Pro plan](https://www.revenuecat.com/pricing/) to unlock this feature.
 :::
 
-RevenueCat can send you notifications any time an event happens in your app. This is useful for subscription and purchase events, which will allow you to monitor state changes for your subscribers and react accordingly.
+RevenueCat webhooks let you receive real-time updates whenever key events occur in your app — such as purchases, renewals, cancellations, or billing issues. This enables you to keep your backend in sync with the subscription lifecycle and automate customer-related actions.
 
-With webhooks integrated, you can:
+### With webhooks, you can:
 
-- Maintain an up-to-date record of subscriptions and purchases in your own backend
-- Trigger automations and workflows based on the subscription lifecycle
-- Remind subscribers of the benefits of your app when they decide to unsubscribe, or let them know when there are billing issues.
+- Keep your internal subscription data updated across systems
+- Automate actions like sending reminder emails, logging analytics events, or adjusting user permissions
+- Handle billing issues proactively, such as alerting customers when a payment fails
+- Monitor the health and performance of your subscription infrastructure
+
+---
 
 ## Registering Your Webhook URL
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+To start receiving webhook events, you need to register your server endpoint in the RevenueCat dashboard:
+
+1. Go to your project in the [RevenueCat dashboard](https://app.revenuecat.com/).
+2. Click on the _Integrations_ card in the left menu, then select **+ New**.
+3. Choose **Webhooks** from the list of integrations.
+4. Provide a name for the webhook integration. If you set up multiple URLs (e.g. for dev and prod), naming helps you keep them organized.
+5. Enter the HTTPS endpoint URL where you'd like to receive the POST requests.
+6. (Optional) Set an authorization header that RevenueCat will include with each request. Use this to validate incoming calls.
+7. Choose whether to receive events for:
+   - Production purchases
+   - Sandbox purchases
+   - Or both
+8. Select the apps you want to receive events for: a specific app or all apps in the project.
+9. (Optional) Filter which event types you'd like to receive. This helps limit unnecessary traffic to your backend.
 
 ![](/images/6b982d2-app.revenuecat.com_projects_85ff18c7_collaborators_1_cc8d6f58c19d73f2024156cbed4bbf95.png)
-
-2. Choose 'Webhooks' from the Integrations menu
-3. Name the new Webhook integration. You can set up multiple webhook URLs, the name helps differentiate them.
-4. Enter the HTTPS URL of the endpoint that you want to receive your webhooks
-5. (Optional) Set authorization header that will be sent with each POST request
-6. Select whether to send events for production purchases, sandbox purchases, or both
-7. Select if the webhook events should be sent only for one app or for all apps of the project
-8. (Optional) Filter the kinds of events that should be sent to the webhook URL.
-
 ![](/images/6a07a8cf-webhook-integration-7d9cd735e95d.png)
 
-:::info Best Practices: Webhook authorization
-We recommended setting an authorization header value via the RevenueCat dashboard. When set, RevenueCat will send this header in every request. Your server can use this to authenticate the webhooks from RevenueCat.
+:::info Best Practices: Webhook Authorization
+Always set an authorization header via the dashboard. RevenueCat will include this header with each request. Your server should validate this to ensure the webhook is coming from RevenueCat.
 :::
 
-RevenueCat will send `POST` requests to your server, in which the body will be a JSON representation of the notification. Your server should return a **200 status code**. Any other status code will be considered a failure by our backend. RevenueCat will retry later (up to 5 times) with an increasing delay (5, 10, 20, 40, and 80 minutes). After 5 retries, we will stop sending notifications.
+---
 
-If you're receiving a webhook it's important to respond quickly so you don't accidentally run over a timeout limit. We recommend that apps defer processing until after the response has been sent.
+## How Webhooks Work
 
-:::info Multiple webhook integrations per project
-You can set up multiple webhook integrations per project – for example, if you use a different backend for production and sandbox/testing, you can set up two webhook integrations, filtered to the respective environment.
-:::
+RevenueCat sends `POST` requests to your registered endpoint. The body of the request is a JSON payload containing the event data.
 
-## Webhook Events
+**Example:**
 
-For webhook event types and fields, see [here](/integrations/webhooks/event-types-and-fields).
+```json
+{
+  "event": {
+    "id": "evt_1234567890",
+    "type": "INITIAL_PURCHASE",
+    "environment": "PRODUCTION",
+    "app_user_id": "user_abc123",
+    "product_id": "premium_monthly",
+    "purchased_at": "2025-04-16T12:34:56Z"
+  }
+}
+```
 
-## Testing
+Your server should:
 
-You can test your server side implementation by purchasing [sandbox subscriptions](/test-and-launch/sandbox) or by issuing test webhook events through [RevenueCat's dashboard](http://app.revenuecat.com).
+- Return an HTTP `200` response if processing is successful.
+- Any non-200 response is considered a failure and will trigger a retry.
+
+### Retry Behavior
+
+If your server fails to respond or returns a non-200 status code, RevenueCat will retry the webhook up to **5 times** with exponential backoff:
+
+| Attempt | Delay |
+|--------:|-------|
+| 1st     | 5 minutes |
+| 2nd     | 10 minutes |
+| 3rd     | 20 minutes |
+| 4th     | 40 minutes |
+| 5th     | 80 minutes |
+
+**Note:** Processing should be fast. To avoid timeout errors, respond quickly and handle any long-running work asynchronously.
+
+---
+
+## Testing Webhooks
+
+### Manual Testing Tools
+
+To test your endpoint before going live, use tools like:
+
+- [**Beeceptor**](https://beeceptor.com): Quickly create a custom endpoint to inspect and debug incoming webhook requests. You can view headers, body, and simulate error responses.
+- [**Typed Webhook**](https://typedwebhook.tools/): Validates your endpoint schema and lets you view formatted event data.
+
+These tools are great when you're prototyping your webhook handlers or debugging specific events.
+
+### Simulated Events via RevenueCat
+
+You can also simulate real webhook events:
+
+1. Make a [sandbox purchase](/test-and-launch/sandbox) in your app.
+2. Or trigger test events from the **RevenueCat Dashboard**.
 
 ![](/images/ad2c8e64-webhook-testing-c841349f3b7e.png)
 
-When testing with sandbox purchases, the `environment` value will be `SANDBOX`. RevenueCat itself does not have sandbox and production environments, so this value is only determined by the type of transaction received from the store. The same customer in RevenueCat can have both sandbox and production transactions associated with their account.
+> In sandbox mode, the `environment` field in the webhook payload will be `SANDBOX`. You can differentiate environments using this flag in your code.
+
+---
+
+## Webhook Events
+
+RevenueCat supports a variety of event types that reflect changes in the user's subscription lifecycle.
+
+➡️ For the full list of supported webhook events and their payload structure, check the [Event Types and Fields](/integrations/webhooks/event-types-and-fields) documentation.
+
+---
 
 ## Syncing Subscription Status
 
-Webhooks are commonly used to sync a customer's subscription status across multiple systems. Because different webhook events contain unique information, we recommend calling the `GET /subscribers` [REST API](https://www.revenuecat.com/docs/api-v1#tag/customers) endpoint after receiving any webhook. That way, the customer's information is always in the same format and is easily synced to your database. This approach is simpler than writing custom logic to handle each webhook event, and has the added benefit of making your system more robust and scalable.
+It’s common to use webhooks to keep your customer data consistent across systems. But instead of parsing every individual event in detail, we recommend the following pattern:
 
-## Security and Best Practices
+1. Receive the webhook
+2. Use the event data to identify the affected user
+3. Call the `GET /subscribers` endpoint in the [RevenueCat REST API](https://www.revenuecat.com/docs/api-v1#tag/customers)
+4. Sync the returned subscriber object with your database
 
-### Authorization
+This approach gives you a consistent, up-to-date view of the customer’s full subscription status, reducing the chance of partial or outdated data.
 
-You can configure the authorization header used for webhook requests via the [dashboard](https://app.revenuecat.com/). Your server should verify the validity of the authorization header for every notification.
+---
 
-### Response Duration
+## Best Practices
 
-If your server doesn't finish the response in 60s, RevenueCat will disconnect. We then retry up to 5 times. We recommend that apps respond quickly and defer processing until after the response has been sent.
+### ✅ Authorization
 
-### Delivery Delays
+Always verify the webhook’s authorization header. This ensures the request is coming from RevenueCat and not a malicious actor.
 
-Most webhooks are usually delivered within 5 to 60 seconds of the event occurring - cancellation events usually are delivered within 2hrs of the user cancelling their subscription. You should be aware of these delivery times when designing your app.
+### ⚡ Respond Quickly
 
-### Future Proofing
+RevenueCat times out webhook requests after **60 seconds**. Respond immediately, then handle any intensive tasks asynchronously.
 
-You should be able to handle webhooks that include additional fields to what's shown here, including new event types. We may add new fields or event types in the future without changing the API version. We _won't_ remove fields or events without proper API versioning and deprecation.
+### ⏳ Delivery Times
 
-### Handle duplicate events
+- Most webhooks are delivered within 5 to 60 seconds of the triggering event.
+- Cancellation-related events may take up to 2 hours to be delivered.
 
-RevenueCat makes our best effort for “at least one delivery” of webhooks. In some _rare_ situations, your application may receive a webhook for the same event more than once, and it is something your webhook processing should be prepared to handle. We recommend you to guard against duplicated events by making your webhook processing idempotent. For example, you can keep track of the event `id` we send with each webhook to ensure you are processing the event only once.
+Design your user experience and backend systems with these delivery windows in mind.
 
-## Sample Webhook Events
+### 🔄 Idempotency
 
-For sample webhook events, see [here](/integrations/webhooks/sample-events).
+Webhooks are designed for **at least once** delivery. In rare cases, your system may receive the same event more than once.
+
+To avoid duplicated processing:
+
+- Use the unique `event.id` sent with every webhook
+- Maintain a log or cache of processed events
+- Skip any duplicate events
+
+### 🧱 Forward Compatibility
+
+Your webhook handlers should gracefully handle unexpected fields or new event types. RevenueCat may add fields to existing events without a version bump. Never hard-code exact field structures.
+
+---
+
+## Sample Webhook Payloads
+
+Need to see real examples?
+
+Check out the [Sample Events](/integrations/webhooks/sample-events) page for example payloads from different event types.
+
+---
+
