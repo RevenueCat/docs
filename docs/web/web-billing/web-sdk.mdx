@@ -128,7 +128,7 @@ Here’s how you can configure `purchases-js` to use identified customers:
 
 ### Anonymous Customers
 
-With Redemption Links, anonymous customers can now purchase subscriptions on the web without requiring an account. These customers can later redeem their purchases on mobile apps or other platforms.
+With [Redemption Links](/web/web-billing/redemption-links/), anonymous customers can now purchase subscriptions on the web without being logged into an account. These customers can later redeem their purchases on mobile apps or other platforms.
 Redemption Links enable you to:
 
 - Share subscription access without requiring user authentication.
@@ -278,50 +278,15 @@ To purchase a package, use the `purchase()` method of the `Purchases` object. It
   ]}
 />
 
+### Customizing the purchase flow
+
+The `purchase()` method accepts a `PurchaseParams` object to set custom purchase options, including the following:
+
+- Send the customer's billing email address, skipping the email collection step (`customerEmail`)
+- Setting the selected and default locales (`defaultLocale`, `selectedLocale`) — see [Localization](/web/web-billing/localization)
+- Setting the HTML target element for the purchase flow to be rendered in (`htmlTarget`)
+- Passing purchase metadata to be sent to the backend (`metadata`) — see [Custom Metadata](/web/web-billing/custom-metadata)
+
 ## Testing
 
-You can use Stripe's [Test Mode](https://stripe.com/docs/test-mode) to test your Web Billing integration.
-
-:::warning Ensure proper sandbox testing
-In contrast to mobile app stores, there is no intermediary between you and the customer, and no App Review before you start charging customers money. Therefore, you should make sure that you have properly tested your implementation in sandbox mode before shipping your web subscriptions.
-:::
-
-If you use the Web Billing sandbox API key, Stripe's test mode will be used automatically, and you can use one of Stripe's [test cards](https://docs.stripe.com/testing) to make purchases.
-
-### Renewals in Sandbox
-
-Sandbox subscriptions renew faster than actual subscriptions to facilitate testing. They can renew a maximum of six times. At that point, the subscription will be automatically cancelled.
-
-The following table lists the sandbox renewal periods for subscriptions of various durations. These times are approximate, and you may see small variations. To ensure accuracy, check the current status after each subscription expiration.
-
-#### Subscription Renewal Periods
-
-| Production Subscription Period | Sandbox Subscription Period |
-| ------------------------------ | --------------------------- |
-| 1 day (P1D)                    | 5 minutes                   |
-| 3 days (P3D)                   | 5 minutes                   |
-| 1 week (P1W)                   | 5 minutes                   |
-| 2 weeks (P2W)                  | 5 minutes                   |
-| 1 month (P1M)                  | 5 minutes                   |
-| 2 months (P2M)                 | 10 minutes                  |
-| 3 months (P3M)                 | 15 minutes                  |
-| 6 months (P6M)                 | 30 minutes                  |
-| 1 year (P1Y)                   | 60 minutes                  |
-
-#### Time-based Subscription Features
-
-Time-based subscription features such as free trials are also shortened for sandbox testing. The following table identifies the sandbox time periods associated with these features:
-
-| Feature               | Sandbox Period                       |
-| --------------------- | ------------------------------------ |
-| Trial duration        | 5 minutes                            |
-| Grace period duration | 3 minutes                            |
-| Billing retries       | Every 3 minutes and up to 5 attempts |
-
-## Current Limitations
-
-Web Billing currently has a number of known limitations. Most notably:
-
-- There is no support for sales tax or VAT calculation.
-- There is no support for discounts or other offers.
-- There is no support for our Paywall templates yet.
+See [Testing Web Purchases](/web/web-billing/testing)
