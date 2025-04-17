@@ -308,7 +308,7 @@ paths:
       - project_configuration:apps:read
       x-release-status: public
       tags:
-      - Apps
+      - App
       parameters:
       - name: project_id
         description: ID of the project
@@ -6578,6 +6578,13 @@ components:
           enum:
           - public_api_key
           type: string
+        id:
+          description: The ID of the public API key
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: apikey12345
         key:
           description: The value of the public API key
           nullable: false
