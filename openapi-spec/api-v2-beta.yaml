@@ -299,6 +299,60 @@ tags:
     \n\n#### Family shared subscriptions\n\n![](/docs/images/api-v2/1511106-Family_shared_subscriptions.png)\n\
     \n\n#### Family shared subscriptions: regranted\n\n![](/docs/images/api-v2/b3134c1-Family_shared_subscriptions__regranted.png)"
 paths:
+  /projects/{project_id}/apps/{app_id}/public_api_keys:
+    get:
+      summary: Get a list of the public API keys of an app
+      operationId: list-app-public-api-keys
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:apps:read
+      x-release-status: public
+      tags:
+      - Apps
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: app_id
+        description: ID of the app
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: app1ab2c3d4
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPublicApiKeys'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.'
   /projects:
     get:
       summary: Get a list of projects
@@ -4493,9 +4547,6 @@ components:
           type: object
           required:
           - bundle_id
-          - subscription_private_key
-          - subscription_key_id
-          - subscription_key_issuer
           nullable: false
           properties:
             bundle_id:
@@ -5810,6 +5861,37 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects
+    ListPublicApiKeys:
+      type: object
+      required:
+      - items
+      - next_page
+      - object
+      - url
+      title: PublicApiKeyList
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value. Always has the value `list`.
+          enum:
+          - list
+          type: string
+        items:
+          description: Details about each object.
+          items:
+            $ref: '#/components/schemas/PublicApiKey'
+          type: array
+        next_page:
+          description: URL to access the next page of the app's public API keys. If
+            not present / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/projec1a2b3c4d/apps/app1a2b3c4d/public_api_keys?starting_after=pub1a2b3c4d
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/projec1a2b3c4d/apps/app1a2b3c4d/public_api_keys
     ListPurchases:
       type: object
       required:
@@ -6476,6 +6558,49 @@ components:
           example: MagicWeather
         created_at:
           description: The date when the project was created in ms since epoch
+          nullable: false
+          type: integer
+          format: int64
+          example: 1658399423658
+    PublicApiKey:
+      type: object
+      required:
+      - id
+      - key
+      - app_id
+      - created_at
+      - environment
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - public_api_key
+          type: string
+        key:
+          description: The value of the public API key
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: goog_1ab2c3d4
+        environment:
+          description: The environment the public API key is for
+          nullable: false
+          enum:
+          - production
+          - sandbox
+          type: string
+        app_id:
+          description: The ID of the app the public API key is for
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: app1a2b3c4
+        created_at:
+          description: The date when the public API key was created in ms since epoch
           nullable: false
           type: integer
           format: int64
