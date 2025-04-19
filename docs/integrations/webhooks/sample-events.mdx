@@ -47,7 +47,7 @@ import subscriptionExtendedContent from "!!raw-loader!@site/code_blocks/integrat
     { type: "json", content: expirationContent, name: "Expiration" },
     { type: "json", content: transferContent, name: "Transfer" },
     { type: "json", content: refundContent, name: "Refund" },
-    { type: "json", content: refundContent, name: "Refund Reversed" },
+    { type: "json", content: refundReversedContent, name: "Refund Reversed" },
     { type: "json", content: productChangeContent, name: "Product Change" },
     {
       type: "json",
@@ -79,7 +79,7 @@ import invoiceIssuanceContent from "!!raw-loader!@site/code_blocks/integrations/
   ]}
 />
 
-In cases when the stores are down, RevenueCat can grant a [temporary entitlement](/integrations/webhooks/event-types-and-fields#event-types) until the stores are operational.
+In cases when the stores are down, RevenueCat may grant a [temporary entitlement](/integrations/webhooks/event-types-and-fields#event-types) until the stores are operational.
 
 import temporaryEntitlementGrantContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-event-temporary-entitlement-grant.json";
 
