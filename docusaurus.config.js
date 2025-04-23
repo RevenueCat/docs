@@ -62,6 +62,9 @@ const config = {
         theme: {
           customCss: "./src/css/custom.css",
         },
+        googleTagManager: {
+          containerId: 'GTM-NJWQK6DX',
+        },
       }),
     ],
     [
@@ -123,6 +126,9 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        respectPrefersColorScheme: true,
+      },
       // Replace with your project's social card
       image: "img/social-preview.jpg",
       navbar: {

@@ -16,7 +16,7 @@ Minimum target: iOS 11.0+
 
 ## Installation
 
-[![Release](https://img.shields.io/github/release/RevenueCat/purchases-flutter.svg?style=flat)](https://github.com/RevenueCat/purchases-flutter/releases)
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-flutter.svg?filter=!*beta*&style=flat)](https://github.com/RevenueCat/purchases-flutter/releases)
 
 To use this plugin, add `purchases_flutter` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/) (and run an implicit dart pub get):
 
@@ -57,6 +57,22 @@ import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/in
 />
 
 You can find Android's documentation on the various `launchMode` options [here](https://developer.android.com/guide/topics/manifest/activity-element#lmode).
+
+### Optional: Change MainActivity subclass
+
+If you plan to use [RevenueCat Paywalls](/tools/paywalls-v2), your `MainActivity` needs to subclass `FlutterFragmentActivity` instead of `FlutterActivity`.
+
+import flutterMainActivity from "!!raw-loader!@site/code_blocks/getting-started/installation/flutter_mainactivity.kt";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "MainActivity.kt",
+      content: flutterMainActivity,
+      name: "MainActivity.kt",
+    },
+  ]}
+/>
 
 ## Import Purchases
 

@@ -14,13 +14,15 @@ Components are the individual building blocks of your paywall that can be arrang
 | Image           | Used to add an uploaded image                                                              |
 | Icon            | Used to add a customizable icon from our provided list                                     |
 | Stack           | Used as a parent component to jointly configure its child components                       |
+| Carousel        | Used to add a carousel of pages that a customer can swipe through                         |
+| Timeline        | Used to add a timeline of connected items                     |
 | Package         | Used to add a selectable package with custom styling, text, etc.                           |
 | Purchase button | The call to action that invokes a purchase attempt of the selected package.                |
 | Button          | Used to add other interactions; such as a link to your Privacy Policy, a back button, etc. |
 | Footer          | A configurable portion of your paywall whose position can be fixed and uniquely styled.    |
 
 :::info Parent components
-Stacks, packages, buttons, and the footer are all complex components which can contain other components within them.
+Stacks, carousels, packages, buttons, and the footer are all complex components which can contain other components within them.
 :::
 
 ## Common component properties
@@ -40,6 +42,20 @@ All text components support variables, which are dynamic values that will be set
 In addition, all text components support having a unique value for customers that are eligible for intro offers, so that you can reference those offers anywhere on your paywall. You can set this value using the `Text field for an introductory offer` property on any text component.
 
 [Learn more about setting unique values for customers eligible for intro offers.](/tools/paywalls-v2/creating-paywalls/customer-states)
+
+### Custom fonts
+
+Each text component can be configured to use a different font family of your preference. Fonts you can use include:
+
+- System fonts
+- Any of `sans-serif`, `serif`, or `monospace`
+- Custom fonts already included in your app
+
+[Learn more about setting custom fonts.](/tools/paywalls-v2/displaying-paywalls#custom-fonts)
+
+:::info Previewing custom fonts
+The Dashboard does not yet support previewing custom fonts. Instead, you'll see the system font in the dashboard preview for all text components.
+:::
 
 ### Font size
 
@@ -115,6 +131,51 @@ To add a component to a stack, click the `+` button in that stack's row in the C
 
 ![Stack options](/images/paywalls-stack-options.png)
 
+## Carousel
+
+The carousel component allows you to create a carousel of pages that a customer can swipe through. These pages are their own stacks, and therefore can contain almost any other components that are supported in Paywalls.
+
+To control how pages are displayed in the carousel, you can configure the following properties:
+- **Page spacing**: Determines the space separating each page in the carousel
+- **Page peek**: Determines the portion of the prior and later pages which will be visible (if applicable)
+- **Open on**: Determines which page will be open when the carousel is first displayed
+- **Start again after last page (loop)**: Determines whether the carousel will loop back to the first page after the last page is reached
+- **Automatically advance pages**: Determines whether the carousel will automatically advance to the next page after a configurable delay
+
+![Carousel properties](/images/paywalls-v2-carousel-properties.png)
+
+:::warning SDK compatibility
+The earliest beta versions of our iOS SDK do not support the carousel component. Update to at least 5.18.0 to use this component, though we recommend updating to the latest version to get all fixes and improvements related to the carousel.
+:::
+
+### Page control
+
+Each carousel has a **Page control** component that allows you to customize the appearance of the controller, or if the individual **Indicators**. Page indicators can be modified to have a unique appearance based on whether they are in the default state or the active state.
+
+![Page indicator properties](/images/paywalls-v2-page-indicator-properties.png)
+
+In addition, the position of the page control component can be set to **Top** or **Bottom** via the carousel component.
+
+## Timeline
+
+The timeline component allows you to create a vertical stack of items that can be connected to simulate a timeline, or any other progression you want to illustrate.
+
+To control how items are displayed in the timeline, you can configure the following properties:
+- **Align icon**: Select between the icons being aligned with the **Title** or the **Title and description**
+- Spacing of an **Item**: The vertical space between each item in the timeline
+- Spacing of each **Title and description**: The vertical space between the title and description of each item
+- Spacing of each **Column gutter**: The horizontal space between the vertically connected icons of each item and their text & description
+
+Within each item component, you can configure the properties of its connector to control its width, vertical margin, and color.
+
+:::tip Vertical margin of connectors
+A connector's position begins and ends at the center of each icon it intersects with. If you want to instead set the connector to start or end before those points, add enough vertical margin to move its start or end point beyond the space covered by the icon.
+:::
+
+All items in a timeline must have an icon and a title, but the description field is optional and can be deleted if it is not desired. Each of those components can be configured individually, just as they can outside of a timeline.
+
+![Timeline properties](/images/paywalls-v2-timeline-properties.png)
+
 ## Package
 
 The package component allows you to add a package to your paywall which your customer may select to purchase. Since a package is a parent component, you can add any other components within it to style your package however you'd like.
@@ -159,11 +220,4 @@ To differentiate between your fixed footer and your other paywall content, we'll
 
 ## Coming soon
 
-We're already working on additional components that will be supported in the near future, such as:
-
-- Carousel
-- Timeline
-- Tabs
-- Video
-
-Have a component in mind you want to see added? [Let us know about it!](https://form.typeform.com/to/Fuamg1Er)
+We're already working on additional components that will be supported in the near future to support things like multi-tier paywalls and trial toggles. Have a component in mind you want to see added? [Let us know about it!](https://form.typeform.com/to/Fuamg1Er)

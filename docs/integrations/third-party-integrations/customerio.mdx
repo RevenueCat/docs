@@ -1,0 +1,133 @@
+---
+title: Customer.io
+slug: customerio
+excerpt: Integrate in-app subscription events from RevenueCat with Customer.io
+hidden: false
+---
+
+:::success Pro Integration
+The Customer.io integration is to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
+:::
+
+Customer.io can be a powerful integration tool for automating targeted messaging based on real-time customer behavior. With Customer.io's flexible automation platform, you can design personalized journeys that adapt to each user's subscription lifecycle.
+
+With our Customer.io integration, you can:
+
+- Create an onboarding flow for users who have subscribed but have not yet engaged with the tutorial or first steps of your product.
+- Send a push notification to churned users and [offer them a discount](/subscription-guidance/subscription-offers/ios-subscription-offers).
+
+With accurate and up-to-date subscription data in Customer.io, you'll be set to turbocharge your campaigns ⚡️
+
+### Integration at a Glance
+
+| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Customer Attributes | Sends Transfer Events |                                                                 Optional Event Types                                                                 |
+| :--------------: | :-----------------------: | :------------------: | :--------------------------: | :-------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------: |
+|        ✅        |            ✅             |   Requires API key   |              ✅              |          ❌           | `non_subscription_purchase_event` `uncancellation_event` `subscription_paused_event` `expiration_event` `billing_issue_event` `product_change_event` |
+
+## Events
+
+The Customer.io integration tracks the following events:
+
+| Event                     | Default Event Name                 | Description                                                                                                                                                                                                                                                                                                                                 | App Store | Play Store | Amazon | Stripe | Promo |
+| ------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---------- | ------ | ------ | ----- |
+| Initial Purchase          | rc_initial_purchase_event          | A new subscription has been purchased.                                                                                                                                                                                                                                                                                                      | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Trial Started             | rc_trial_started_event             | The start of an auto-renewing subscription product free trial.                                                                                                                                                                                                                                                                              | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Trial Converted           | rc_trial_converted_event           | When an auto-renewing subscription product converts from a free trial to normal paid period.                                                                                                                                                                                                                                                | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Trial Cancelled           | rc_trial_cancelled_event           | When a user turns off renewals for an auto-renewing subscription product during a free trial period.                                                                                                                                                                                                                                        | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Renewal                   | rc_renewal_event                   | An existing subscription has been renewed or a lapsed user has resubscribed.                                                                                                                                                                                                                                                                | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Cancellation              | rc_cancellation_event              | A subscription or non-renewing purchase has been cancelled. See [cancellation reasons](/integrations/webhooks/event-types-and-fields#cancellation-and-expiration-reasons) for more details.                                                                                                                                                 | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Uncancellation            | rc_uncancellation_event            | A non-expired cancelled subscription has been re-enabled.                                                                                                                                                                                                                                                                                   | ✅        | ✅         | ✅     | ❌     | ❌    |
+| Non Subscription Purchase | rc_non_subscription_purchase_event | A customer has made a purchase that will not auto-renew.                                                                                                                                                                                                                                                                                    | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Subscription Paused       | rc_subscription_paused_event       | A subscription has been paused.                                                                                                                                                                                                                                                                                                             | ❌        | ✅         | ❌     | ❌     | ❌    |
+| Expiration                | rc_expiration_event                | A subscription has expired and access should be removed. If you have [Platform Server Notifications](/platform-resources/server-notifications) configured, this event will occur as soon as we are notified (within seconds to minutes) of the expiration. If you do not have notifications configured, delays may be approximately 1 hour. | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Billing Issues            | rc_billing_issue_event             | There has been a problem trying to charge the subscriber. This does not mean the subscription has expired. Can be safely ignored if listening to CANCELLATION event + cancel_reason=BILLING_ERROR.                                                                                                                                          | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Product Change            | rc_product_change_event            | A subscriber has changed the product of their subscription. This does not mean the new subscription is in effect immediately. See [Managing Subscriptions](/subscription-guidance/managing-subscriptions) for more details on updates, downgrades, and crossgrades.                                                                         | ✅        | ✅         | ❌     | ✅     | ❌    |
+
+For events that have revenue, such as trial conversions and renewals, RevenueCat will automatically record this amount along with the event in Customer.io. Bear in mind that revenue will always be reported in USD. If it's been made with a different currency, we'll automatically convert it to USD. You can find the currency of the original transaction in the `currency` field of the event.
+
+## Setup
+
+### 1. Set Customer.io User Identity
+
+In order to associate RevenueCat data with a Customer.io Person, the RevenueCat `$customerioId` [Attribute](/customers/customer-attributes) should be set in RevenueCat to the Person's `cio_id`. If this field does not exist, RevenueCat will fallback to using the RevenueCat app user ID as the `id`. You can read more about how the association works in Customer.io's [Identifying people](https://docs.customer.io/journeys/identifying-people/#identifiers) documentation.
+
+:::warning
+You can't create a new Person when using `$customerioId`. If no Person has a `cio_id` with that value, Customer.io will either skip the event or reject it (for example, in case of malformed values).
+:::
+
+### 2. Send RevenueCat Events to Customer.io
+
+After you've set up the Purchase SDK and Customer.io SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
+
+1. Navigate to your app in the RevenueCat and find the _Integrations_ card in the left menu. Select **+ New**
+
+![](/images/82692c7-app.revenuecat.com_projects_85ff18c7_collaborators_1_73d6dc81e85972dbbc157674b1182fb8.png)
+
+2. Choose **Customer.io** from the Integrations menu
+3. Add your Site ID and API key
+4. Enter the event names that RevenueCat will send or choose the default event names
+5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
+
+![Customer.io configuration page](/images/customerio_integration_setup.png "Customer.io configuration page")
+
+## Testing the Customer.io integration
+
+### Make a sandbox purchase with a new user
+
+Simulate a new user installing your app, and go through your app flow to complete the [sandbox purchase](/test-and-launch/sandbox).
+
+### Check that the Customer.io event delivered successfully
+
+While still on the Customer View, select the purchase event in the [Customer History](/dashboard-and-metrics/customer-history) page and make sure that the Customer.io integration event exists and was delivered successfully.
+
+![Check that the Customer.io event was delivered](/images/customerio_event_details.png "Check that the Customer.io event was delivered")
+
+### Check the Customer.io dashboard for the delivered event
+
+Navigate to your Customer.io dashboard > Activity Logs. In the 'Identified' tab, you will see that an event was delivered and a Person was created.
+
+![Check Customer.io Activity Logs](/images/customerio_activity_logs.png "Check Customer.io Activity Logs")
+
+## Sample Events
+
+Below are sample JSONs that are delivered to Customer.io for events.
+
+import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/customerio_1.json";
+import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/customerio_2.json";
+import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/customerio_3.json";
+import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/customerio_4.json";
+import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/customerio_5.json";
+import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/customerio_6.json";
+import expirationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/customerio_7.json";
+
+<RCCodeBlock
+  tabs={[
+    { type: "json", content: initialPurchaseContent, name: "Initial Purchase" },
+    { type: "json", content: trialStartedContent, name: "Trial Started" },
+    { type: "json", content: trialConvertedContent, name: "Trial Converted" },
+    { type: "json", content: trialCancelledContent, name: "Trial Cancelled" },
+    { type: "json", content: renewalContent, name: "Renewal" },
+    { type: "json", content: cancellationContent, name: "Cancellation" },
+    { type: "json", content: expirationContent, name: "Expiration" },
+  ]}
+/>
+
+## Subscription Status Attribute
+
+Whenever RevenueCat sends an event to Customer.io, we'll update the `rc_subscription_status` user attribute with any applicable changes, using one of the following values:
+
+| Status              | Description                                                                                                                                |
+| :------------------ | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| active              | The customer has an active, paid subscription which is set to renew at their next renewal date.                                            |
+| intro               | The customer has an active, paid subscription through a paid introductory offer.                                                           |
+| cancelled           | The customer has a paid subscription which is set to expire at their next renewal date.                                                    |
+| grace_period        | The customer has a paid subscription which has entered a grace period after failing to renew successfully.                                 |
+| trial               | The customer is in a trial period which is set to convert to paid at the end of their trial period.                                        |
+| cancelled_trial     | The customer is in a trial period which is set to expire at the end of their trial period.                                                 |
+| grace_period_trial  | The customer was in a trial period and has now entered a grace period after failing to renew successfully.                                 |
+| expired             | The customer's subscription has expired.                                                                                                   |
+| promotional         | The customer has access to an entitlement through a RevenueCat [Granted Entitlement](/dashboard-and-metrics/customer-history/promotionals) |
+| expired_promotional | The customer previously had access to an entitlement through a RevenueCat Granted Entitlement that has since expired.                      |
+| paused              | The customer has a paid subscription which has been paused and is set to resume at some future date.                                       |
+
+For customers with multiple active subscriptions, this attribute will represent the status of only the subscription for which the most recent event occurred.

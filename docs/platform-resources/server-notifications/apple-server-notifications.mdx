@@ -28,11 +28,13 @@ Enabling this option ensures that all purchases are tracked, even in the case of
 
 ### User identity
 
-- The subscriber's app user ID will be taken from the [`appAccountToken`](https://developer.apple.com/documentation/appstoreserverapi/appaccounttoken) field of the transaction.
-  - If the `appAccountToken` is set and does not match with an existing subscriber: RevenueCat will create a new subscriber with an app user ID matching the `appAccountToken` value set.
-  - If the `appAccountToken` is set and matches with an existing subscriber: No new subscriber will be created, and the purchase will be linked to that existing subscriber.
-  - If the `appAccountToken` is not set: RevenueCat will generate an anonymous app user ID to associate that purchase with.
-- If you are using RevenueCat's SDK to track purchases, we may receive the notification directly from the store before the SDK. When this happens, we will follow the app user ID logic as described in the bullet point above, and then proceed with your [transfer behavior](/getting-started/restoring-purchases) for the new app user ID sent by the SDK.
+New purchases are associated with the [App User ID](/customers/identifying-customers/) that matches the [`appAccountToken`](https://developer.apple.com/documentation/appstoreserverapi/appaccounttoken) field of the transaction. If you are using RevenueCat's SDK to track purchases, we will set the appAccountToken for you. The appAccountToken will **_not_** be set if:
+
+1. You are using something other than a valid UUID for the App User ID
+
+2. We receive the notification directly from the store before we receive it from the SDK
+
+If the transaction's `appAccountToken` is not set, or if the `appAccountToken` does not match with an existing subscriber, RevenueCat will generate an anonymous App User ID to associate that purchase with. We will then proceed with your [transfer behavior](/getting-started/restoring-purchases) for the new App User ID set by the SDK.
 
 :::warning Customer attributes in events
 RevenueCat will start processing the purchase as soon as we receive the Apple server notification. If you rely on [RevenueCat customer attributes](/customers/customer-attributes) being attached to the customer before the purchase is created on RevenueCat (e.g: sending customer attributes to your enabled [third-party integrations](/integrations/third-party-integrations) or [webhooks](/integrations/webhooks)), you should make sure to **send and sync** the customer attributes as soon as you have them or before the purchase is completed.
@@ -128,5 +130,5 @@ If you want to also receive these notifications on your own server for one or bo
 
 :::tip Apple S2S notifications update subscriptions for existing users
 
-If RevenueCat receives a notification for a user that doesn't have any purchases in RevenueCat, a 200 code will be sent and the request will be ignored, so the last received notification timestamp won't be updated. Keep this in mind when forwarding events yourself.
+If RevenueCat receives a notification for a user that doesn't have any purchases in RevenueCat, a 200 status code will be returned and the request will be ignored, meaning the last received notification timestamp won't be updated. Keep this in mind when forwarding events yourself. However, if you've defined an **Apple Server Notification Forwarding URL**, the notification will still be forwarded to that endpoint.
 :::

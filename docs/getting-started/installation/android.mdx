@@ -13,21 +13,35 @@ RevenueCat provides a backend and a wrapper around StoreKit and Google Play Bill
 
 ### Installation
 
-[![Release](https://img.shields.io/github/release/RevenueCat/purchases-android.svg?style=flat)](https://github.com/RevenueCat/purchases-android/releases)
-
 Purchases for Android (Google Play and Amazon Appstore) is available on Maven and can be included via Gradle.
 
-import content from "!!raw-loader!@site/code_blocks/getting-started/installation/android_1.groovy";
+You can find the latest version below, and for more details, visit the [Releases page](https://github.com/RevenueCat/purchases-android/releases).
 
-<RCCodeBlock tabs={[{ type: "groovy", content: content, name: "Groovy" }]} />
+[![Release](https://img.shields.io/github/v/release/RevenueCat/purchases-android.svg?&style=flat)](https://github.com/RevenueCat/purchases-android/releases)
+
+import buildGradle1 from "!!raw-loader!@site/code_blocks/getting-started/installation/android_4.kts";
+import buildGradle2 from "!!raw-loader!@site/code_blocks/getting-started/installation/android_1.groovy";
+
+<RCCodeBlock
+  tabs={[
+      { type: "kotlin", content: buildGradle1, name: "Kotlin" },
+      { type: "groovy", content: buildGradle2, name: "Groovy" },
+    ]}
+/>
 
 ### Import Purchases
 
 You should now be able to import `Purchases`.
 
+import kotlinContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_5.kt";
 import javaContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_2.java";
 
-<RCCodeBlock tabs={[{ type: "java", content: javaContent, name: "Java" }]} />
+<RCCodeBlock
+  tabs={[
+      { type: "kotlin", content: kotlinContent, name: "Kotlin" },
+      { type: "java", content: javaContent, name: "Java" },
+    ]}
+/>
 
 ### Configure Proguard (Optional)
 
@@ -61,12 +75,20 @@ You can find Android's documentation on the various `launchMode` options [here](
 
 ### Additional Dependencies
 
-Add a new dependency to the build.gradle apart from the regular `purchases` dependency. These new dependencies have the classes needed to use Amazon IAP:
+Add a new dependency to the `build.gradle` apart from the regular `purchases` dependency. These new dependencies have the classes needed to use Amazon IAP:
 
-import unityContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_3.groovy";
+You can find the latest version below, and for more details, visit the [Releases page](https://github.com/RevenueCat/purchases-android/releases).
+
+[![Release](https://img.shields.io/github/v/release/RevenueCat/purchases-android.svg?&style=flat)](https://github.com/RevenueCat/purchases-android/releases)
+
+import amazonGradle1 from "!!raw-loader!@site/code_blocks/getting-started/installation/android_6.kts";
+import amazonGradle2 from "!!raw-loader!@site/code_blocks/getting-started/installation/android_3.groovy";
 
 <RCCodeBlock
-  tabs={[{ type: "groovy", content: unityContent, name: "Groovy" }]}
+  tabs={[
+      { type: "kotlin", content: amazonGradle1, name: "Kotlin" },
+      { type: "groovy", content: amazonGradle2, name: "Groovy" },
+    ]}
 />
 
 ### Add Amazon public key

@@ -5,14 +5,14 @@ hidden: false
 ---
 
 :::info Paywalls v2 Beta
-These docs refer to our beta of Paywalls v2. For our original Paywalls which already support iOS, Android, React Native, Flutter, and KMP, [click here](/tools/paywalls/installation).
+These docs refer to our beta of Paywalls v2. For our original Paywalls, [click here](/tools/paywalls/installation).
 :::
 
-## iOS
+## Platform specific instructions
 
-### How to display a Paywall in your app
+### iOS
 
-RevenueCat Paywalls v2 will show paywalls fullscreen, and there are multiple ways to do this with SwiftUI and UIKit.
+RevenueCat Paywalls v2 will show paywalls in a sheet or fullscreen on iPhone, and there are multiple ways to do this with SwiftUI and UIKit.
 
 - Depending on an entitlement with `presentPaywallIfNeeded`
 - Custom logic with `presentPaywallIfNeeded`
@@ -53,11 +53,188 @@ import objc5 from "!!raw-loader!@site/code_blocks/tools/paywalls_5.m";
 
 ]}/>
 
-### Handling paywall navigation
+#### Paywalls on iPad
+When using `presentPaywallIfNeeded` to display a paywall on iPad, we'll automatically show a paywall in a modal that is roughly iPhone sized. If instead you prefer to show a paywall that is full screen on iPad, you can use the `PaywallView` or `PaywallViewController` methods instead.
 
-When creating a paywall, consider whether it will be presented in a sheet, or as a full screen view. Sheets won't require a dedicated close button. Full screen views should have either a close button (if presented) or a back button (if pushed in a navigation stack) unless you intend to provide a hard paywall to your customers that cannot be bypassed.
+![Paywalls on iPad](/images/paywalls-on-ipad.jpeg)
 
-### Additional changes from original Paywalls
+### Android
+
+RevenueCat Paywalls will, by default, show paywalls fullscreen and there are multiple ways to do this with `Activity`s and Jetpack Compose.
+
+- Depending on an entitlement with `PaywallDialog`
+- Custom logic with `PaywallDialog`
+- Manually with `Paywall`, `PaywallDialog`, or `PaywallActivityLauncher`
+
+import kotlin1 from "!!raw-loader!@site/code_blocks/tools/paywalls_1.kt";
+import kotlin2 from "!!raw-loader!@site/code_blocks/tools/paywalls_2.kt";
+import kotlin3 from "!!raw-loader!@site/code_blocks/tools/paywalls_3.kt";
+import kotlin4 from "!!raw-loader!@site/code_blocks/tools/paywalls_4.kt";
+import paywallsActivityJava from "!!raw-loader!@site/code_blocks/tools/paywalls_activity_java.java";
+
+<RCCodeBlock tabs={[
+    {
+        type: 'kotlin',
+        title: "Entitlement",
+        content: kotlin1,
+    },
+    {
+        type: 'kotlin',
+        title: "Custom Logic",
+        content: kotlin2,
+    },
+    {
+        type: 'kotlin',
+        title: "Manually",
+        content: kotlin3,
+    },
+    {
+        type: 'kotlin',
+        title: "Manually (Activity)",
+        content: kotlin4,
+    },
+    {
+        type: 'java',
+        title: "Manually (Activity) - Java",
+        content: paywallsActivityJava,
+    }
+
+]}/>
+
+### React Native
+
+There are several ways to present paywalls:
+
+- Using `RevenueCatUI.presentPaywall`: this will display a paywall when invoked.
+- Using `RevenueCatUI.presentPaywallIfNeeded`: this will present a paywall only if the customer does not have an unlocked entitlement.
+- Manually presenting `<RevenueCatUI.Paywall>`: this gives you more flexibility on how the paywall is presented.
+
+import rn1 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_1.ts";
+import rn2 from "!!raw-loader!@site/code_blocks/tools/paywalls_rn_2.ts";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "rn",
+      title: "RevenueCatUI.presentPaywall",
+      content: rn1,
+    },
+    {
+      type: "rn",
+      title: "RevenueCatUI.Paywall",
+      content: rn2,
+    },
+  ]}
+/>
+
+There are also several listeners that can be used to handle the paywall lifecycle, such as `onPurchaseStarted`, `onPurchaseCompleted`, and `onRestoreStarted`.
+
+#### Listeners
+
+When using `RevenueCatUI.Paywall`, you may use one of the provided listeners to react to user actions.
+
+Available listeners at this time are:
+
+- onPurchaseStarted
+- onPurchaseCompleted
+- onPurchaseError
+- onPurchaseCancelled
+- onRestoreStarted
+- onRestoreCompleted
+- onRestoreError
+- onDismiss
+
+### Flutter
+
+There are several ways to present paywalls:
+
+- Using `RevenueCatUI.presentPaywall`: this will display a paywall when invoked.
+- Using `RevenueCatUI.presentPaywallIfNeeded`: this will present a paywall only if the customer does not have an unlocked entitlement.
+- Manually presenting `PaywallView`: this gives you more flexibility on how the paywall is presented.
+
+import flutter1 from "!!raw-loader!@site/code_blocks/tools/paywalls_flutter_1.dart";
+import flutter2 from "!!raw-loader!@site/code_blocks/tools/paywalls_flutter_2.dart";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "flutter",
+      title: "RevenueCatUI.presentPaywall",
+      content: flutter1,
+    },
+    {
+      type: "flutter",
+      title: "PaywallView",
+      content: flutter2,
+    },
+  ]}
+/>
+
+#### Listeners
+
+When using `PaywallView`, you may use one of the provided listeners to react to user actions.
+Available listeners at this time are:
+
+- onPurchaseStarted
+- onPurchaseCompleted
+- onPurchaseError
+- onRestoreCompleted
+- onRestoreError
+- onDismiss
+
+### Kotlin Multiplatform
+
+You can present a fullscreen Paywall using the `Paywall` composable. You have the flexibility to decide when to call this. You could, for instance, add it to your navigation graph.
+
+import kmp1 from "!!raw-loader!@site/code_blocks/tools/paywalls_kmp_1.kts";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "kotlin",
+      title: "Paywall",
+      content: kmp1,
+    },
+  ]}
+/>
+
+#### Listeners
+
+When using `Paywall`, you may use one of the provided listeners to react to user actions.
+Available listeners at this time are:
+
+- onPurchaseStarted
+- onPurchaseCompleted
+- onPurchaseError
+- onPurchaseCancelled
+- onRestoreStarted
+- onRestoreCompleted
+- onRestoreError
+
+## Handling paywall navigation
+
+When creating a paywall, consider whether it will be presented in a sheet, or as a full screen view. Sheets won't require a dedicated close button. Full screen views should have either a close button (if presented modally) or a back button (if part of a navigation stack or host) unless you intend to provide a hard paywall to your customers that cannot be bypassed.
+
+## Custom fonts
+
+Paywalls v2 supports custom fonts, but it works slightly differently than original Paywalls. The `FontProvider` in the SDKs is ignored for v2 Paywalls. Instead, every text component in the paywall editor has a "Font family" property with a gear icon next to it. Clicking the gear icon allows you to configure your font families. In the modal that opens, you can name your font family, and set up the corresponding font for both Android and iOS. Fonts you can use include:
+
+- System fonts
+- Any of `sans-serif`, `serif`, or `monospace`
+- Custom fonts already included in your app
+
+### Including custom fonts in your app
+
+#### Android
+To add a custom font to your Android app, place the font file in the `res/font` folder. Make sure that the filename (without the extension) corresponds to the font name in the paywall editor. See [the official Android documentation](https://developer.android.com/develop/ui/views/text-and-emoji/fonts-in-xml) for more information.
+
+#### iOS
+To add a custom font to your iOS app, go to _File_ and then _Add Files to “Your Project Name”_. The font file should be a target member of your app, and be registered with iOS by adding the "Fonts provided by the application" key to your _Info.plist_ file. Make sure that the filename (without the extension) corresponds to the font name in the paywall editor. See [the official iOS documentation](https://developer.apple.com/documentation/uikit/adding-a-custom-font-to-your-app) for more information.
+
+#### Kotlin Multiplatform, React Native, and Flutter
+Adding custom fonts to a hybrid app involves adding the font files to the underlying Android and iOS projects following the instructions above.
+
+## Changes from original Paywalls
 
 #### Footer Paywalls
 
@@ -65,11 +242,11 @@ Paywalls v2 does not support footer Paywalls. If your app requests the Paywall f
 
 #### Close buttons
 
-Paywalls v2 does not require the `displayCloseButton` parameter, and it will have no effect if used, since close buttons can be optionally added directly to your paywall as a component if desired.
+Paywalls v2 does not require the `displayCloseButton` parameter (or equivalent for other platforms), and it will have no effect if used, since close buttons can be optionally added directly to your paywall as a component if desired.
 
 #### Font provider
 
-Paywalls v2 does not support passing in a custom font provider via the `PaywallFontProvider` handler that original Paywalls used. Instead, in the near future you'll be able to configure Paywalls to use the font providers you've already installed in your app directly from the Dashboard. Using this handler will have no effect on Paywalls v2.
+Paywalls v2 does not support passing in a custom font provider as original Paywalls did. Instead, you can now configure Paywalls to use the fonts you've already installed in your app directly from the Dashboard. Using the original handler will have no effect on Paywalls v2. See the [Custom fonts](#custom-fonts) section for more information. 
 
 ## Default Paywall
 
@@ -81,5 +258,5 @@ On iOS it uses the app's `accentColor` for styling.
 On Android, it uses the app's `Material3`'s `ColorScheme`.
 
 :::tip Targeting
-If your app supports our original Paywall templates, consider using Targeting to create an audience that only receives your v2 Paywall if they're using RC iOS SDK version 5.16.0+. This will ensure that older app versions continue to receive the Offering and Paywall that they support, while any app versions running a supported RC iOS SDK version receive your new v2 Paywall. [Learn more about Targeting.](/tools/targeting)
+If your app supports our original Paywall templates, consider using Targeting to create an audience that only receives your v2 Paywall if they're using an SDK version that does not support Paywalls v2. This will ensure that older app versions continue to receive the Offering and Paywall that they support, while any app versions running a supported RC SDK version receive your new v2 Paywall. [Learn more about Targeting.](/tools/targeting)
 :::

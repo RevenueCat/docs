@@ -5,10 +5,6 @@ excerpt: High level overview of RevenueCat's web billing features
 hidden: false
 ---
 
-:::warning Beta Feature
-Web Billing (formerly RevenueCat Billing) and the RevenueCat Web SDK are currently in beta.
-:::
-
 # Web Billing overview
 
 RevenueCat Web Billing allows you to easily start selling subscriptions and one-time purchases on the web, and connect them with the same subscriptions and entitlements on mobile.
@@ -34,17 +30,41 @@ If you want a low-code way to collect payments from customers, you can use Web P
 
 [Get started with Web Paywall Links](web-paywall-links)
 
+### Current limitations
+
+Web Billing currently has a number of known limitations. Most notably:
+
+- There is no support for sales tax or VAT calculation.
+- There is no support for discounts or other offers.
+- There is no support for our Paywall templates yet.
+
 ## Web Billing vs. Stripe Billing integration
 
 **Web Billing** is RevenueCat's full subscription management solution, which uses Stripe as a payment processor.
 
 - It takes care of the end-to-end purchase UI
 - It manages the complete subscription lifecycle, including the recurring billing logic (instead of Stripe Billing)
-- It provides a RevenueCat subscription management portal for customers
-- It doesn't add any fees on top of RevenueCat's existing product fee (Stripe transaction fees still apply)
+- It provides a RevenueCat purchase portal for customers
 
 **Our Stripe Billing integration** allows you to use Stripe Billing for subscriptions, and sync them to RevenueCat.
 
 If you're getting started with web billing for your apps, it's recommended to use RevenueCat Web Billing for a deeper integration with the RevenueCat platform.
 
 If you already have a Stripe Billing implementation with active subscriptions and customers, you may want to maintain that setup and use our [Stripe Billing](/web/integrations/stripe) integration.
+
+### Fee comparison
+
+RevenueCat Web is included in [RevenueCat's price](https://www.revenuecat.com/pricing); there are no additional RevenueCat fees to support subscriptions and purchases on the web.
+
+If you use Web Billing, the following additional Stripe fees apply (US pricing):
+
+- Stripe transaction fee: 2.9% + 30¢
+- (optional) Stripe Tax fee: 50¢ per transaction in tax-registered locations
+
+If you use Stripe Billing and the RevenueCat Stripe Billing integration, the following additional fees apply (US pricing):
+
+- Stripe transaction: fee 2.9% + 30¢
+- Stripe Billing fee: 0.7% of volume or $620.00 per month
+- (optional) Stripe Tax fee: 50¢ per transaction in tax-registered locations
+
+Note that Stripe fees vary per country and pricing plan, and are subject to change — refer to [Stripe's Pricing page](https://stripe.com/pricing) for the latest fees.

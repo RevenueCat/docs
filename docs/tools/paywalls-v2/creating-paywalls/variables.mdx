@@ -52,8 +52,24 @@ We support the following variables:
 | product.relative_discount                  | 19%               | 19%               | 19%               | 19%               | 19%               | 19%               | 19%              |
 | product.store_product_name                 | Pro Access        | Pro Access        | Pro Access        | Pro Access        | Pro Access        | Pro Access        | Pro Access       |
 
-:::warning Variable preview values
+## Variable preview values
 The paywall preview is generated using our example values for each package listed above, and therefore will differ from the actual values for the product's you choose to present on your paywall.
 
 To see a more accurate preview, we recommend running your application on your physical device or in the simulator, as this will present details based on the actual information for the products you're displaying on that device.
-:::
+
+## Variable modifiers
+We support a handful of modifiers that can be used to format the variable values:
+- `uppercase`: Converts the value to uppercase.
+- `lowercase`: Converts the value to lowercase.
+- `capitalize`: Capitalizes the first letter of each word in the value.
+
+These modifiers can be used with the `|` operator after the variable name, for example:
+- `{{ product.price_per_period }}` will yield `$2.99/week`
+- `{{ product.price_per_period | uppercase }}` will yield `$2.99/WEEK`
+- `{{ product.price_per_period | capitalize }}` will yield `$2.99/Week`
+
+## FAQs
+
+| Question     | Answer  |
+| ------------------ | ------------------|
+| How is the `product.relative_discount` variable calculated? |  `relative_discount` returns the localized discount percentage of a given package compared to the most expensive package per period that's offered on your paywall. For example, if you're displaying a monthly package that is $10/month, and a yearly package that is $80/year (or $6.67/month), the relative discount for the annual package is 67%. Because of this, we recommend only using this variable within packages that are NOT the most expensive package per period, as the most expensive package will have a null value returned, since its relative discount is null. |

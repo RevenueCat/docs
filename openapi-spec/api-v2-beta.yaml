@@ -299,6 +299,60 @@ tags:
     \n\n#### Family shared subscriptions\n\n![](/docs/images/api-v2/1511106-Family_shared_subscriptions.png)\n\
     \n\n#### Family shared subscriptions: regranted\n\n![](/docs/images/api-v2/b3134c1-Family_shared_subscriptions__regranted.png)"
 paths:
+  /projects/{project_id}/apps/{app_id}/public_api_keys:
+    get:
+      summary: Get a list of the public API keys of an app
+      operationId: list-app-public-api-keys
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:apps:read
+      x-release-status: public
+      tags:
+      - App
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: app_id
+        description: ID of the app
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: app1ab2c3d4
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPublicApiKeys'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.'
   /projects:
     get:
       summary: Get a list of projects
@@ -3816,6 +3870,173 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.'
+  /projects/{project_id}/customers/{customer_id}/virtual_currencies:
+    get:
+      summary: Get a list of customer's virtual currencies balances
+      operationId: list-virtual-currencies-balances
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:purchases:read
+      x-release-status: beta
+      tags:
+      - Customer
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: customer_id
+        in: path
+        description: ID of the customer
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: 19b8de26-77c1-49f1-aa18-019a391603e2
+      - name: include_empty_balances
+        in: query
+        required: false
+        schema:
+          type: boolean
+          example: true
+      - name: starting_after
+        in: query
+        required: false
+        schema:
+          type: string
+          example: ent12354
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          example: 10
+          default: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListVirtualCurrenciesBalances'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>.'
+  /projects/{project_id}/customers/{customer_id}/virtual_currencies/transactions:
+    post:
+      summary: Create a virtual currencies transaction
+      operationId: create-virtual-currencies-transaction
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:purchases:read_write
+      x-release-status: beta
+      tags:
+      - Customer
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: customer_id
+        in: path
+        description: ID of the customer
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: 19b8de26-77c1-49f1-aa18-019a391603e2
+      - name: Idempotency-Key
+        in: header
+        schema:
+          type: string
+          example: 1234-5678-9101-1121
+        description: This is an optional idempotency key to ensure exactly once execution
+          of the request.
+      - name: include_empty_balances
+        in: query
+        required: false
+        schema:
+          type: boolean
+          example: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - adjustments
+              properties:
+                adjustments:
+                  description: The adjustments to the virtual currencies
+                  type: object
+                  additionalProperties:
+                    type: integer
+                reference:
+                  description: The reference of the transaction
+                  type: string
+                  nullable: true
+              additionalProperties: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListVirtualCurrenciesBalances'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read_write</code>.'
   /projects/{project_id}/customers/{customer_id}/attributes:
     get:
       summary: Get a list of the customer's attributes
@@ -4236,6 +4457,7 @@ components:
             description: The date when the app was created in ms since epoch
             nullable: false
             type: integer
+            format: int64
             example: 1658399423658
           type:
             description: The platform of the app
@@ -4325,9 +4547,6 @@ components:
           type: object
           required:
           - bundle_id
-          - subscription_private_key
-          - subscription_key_id
-          - subscription_key_issuer
           nullable: false
           properties:
             bundle_id:
@@ -4827,24 +5046,32 @@ components:
           nullable: false
           description: The first time the customer was seen
           type: integer
+          format: int64
           example: 1658399423658
         last_seen_at:
           nullable: true
           description: The last time the customer was seen
           type: integer
+          format: int64
           example: 1658399423658
         active_entitlements:
-          $ref: '#/components/schemas/ListCustomerActiveEntitlements'
-          description: List of the entitlements currently active for the customer.
-            This property is only available in the "Get a customer" endpoint.
+          allOf:
+          - type: object
+            description: List of the entitlements currently active for the customer.
+              This property is only available in the "Get a customer" endpoint.
+            nullable: true
+          - $ref: '#/components/schemas/ListCustomerActiveEntitlements'
         experiment:
           description: The experiment enrollment object
           nullable: true
           $ref: '#/components/schemas/ExperimentEnrollment'
         attributes:
-          $ref: '#/components/schemas/ListCustomerAttributes'
-          description: List of the attributes of the customer. This is an expandable
-            property, only available in the "Get a customer" endpoint.
+          allOf:
+          - type: object
+            description: List of the attributes of the customer. This is an expandable
+              property, only available in the "Get a customer" endpoint.
+            nullable: true
+          - $ref: '#/components/schemas/ListCustomerAttributes'
     CustomerAlias:
       type: object
       required:
@@ -4866,6 +5093,7 @@ components:
           nullable: false
           description: The time when the alias was created
           type: integer
+          format: int64
           example: 1658399423658
     CustomerAttribute:
       type: object
@@ -4897,6 +5125,7 @@ components:
           nullable: false
           description: The time when the attribute was last updated.
           type: integer
+          format: int64
           example: 1658399423658
     CustomerAttributeCustomName:
       type: string
@@ -4924,6 +5153,7 @@ components:
       - $campaign
       - $clevertapId
       - $creative
+      - $customerioId
       - $displayName
       - $email
       - $fbAnonId
@@ -4978,6 +5208,7 @@ components:
           description: The date after which the access to the entitlement expires
             in ms since epoch
           type: integer
+          format: int64
           example: 1658399423658
     DeletedObject:
       type: object
@@ -5003,6 +5234,7 @@ components:
         deleted_at:
           nullable: false
           type: integer
+          format: int64
           description: The date when the object was deleted in ms since epoch
           example: 1658399423658
     EligibilityCriteria:
@@ -5059,6 +5291,7 @@ components:
         created_at:
           nullable: false
           type: integer
+          format: int64
           description: The date when the entitlement was created in ms since epoch
           example: 1658399423658
         products:
@@ -5229,11 +5462,13 @@ components:
           description: The date when the invoiced was issued in ms since epoch
           nullable: false
           type: integer
+          format: int64
           example: 1658399423658
         paid_at:
           description: The date when the invoiced was paid in ms since epoch
           nullable: true
           type: integer
+          format: int64
           example: 1658399423658
         invoice_url:
           description: URL to download the invoice pdf
@@ -5322,6 +5557,8 @@ components:
       - object
       - url
       title: CustomerActiveEntitlementList
+      description: List of the entitlements currently active for the customer. This
+        property is only available in the "Get a customer" endpoint.
       properties:
         object:
           description: String representing the object's type. Objects of the same
@@ -5624,6 +5861,37 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects
+    ListPublicApiKeys:
+      type: object
+      required:
+      - items
+      - next_page
+      - object
+      - url
+      title: PublicApiKeyList
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value. Always has the value `list`.
+          enum:
+          - list
+          type: string
+        items:
+          description: Details about each object.
+          items:
+            $ref: '#/components/schemas/PublicApiKey'
+          type: array
+        next_page:
+          description: URL to access the next page of the app's public API keys. If
+            not present / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/projec1a2b3c4d/apps/app1a2b3c4d/public_api_keys?starting_after=pub1a2b3c4d
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/projec1a2b3c4d/apps/app1a2b3c4d/public_api_keys
     ListPurchases:
       type: object
       required:
@@ -5686,6 +5954,37 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/subscriptions
+    ListVirtualCurrenciesBalances:
+      type: object
+      title: VirtualCurrenciesBalancesList
+      required:
+      - items
+      - next_page
+      - object
+      - url
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - list
+          type: string
+        items:
+          description: Details about each object.
+          items:
+            $ref: '#/components/schemas/VirtualCurrencyBalance'
+          type: array
+        next_page:
+          description: URL to access the next page of the customer's balances. If
+            not present / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/virtual_currencies?starting_after=9fjeja8fjed
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/virtual_currencies
     MacAppStoreApp:
       type: object
       properties:
@@ -5803,6 +6102,7 @@ components:
           description: The date the offering was created at in ms since epoch
           nullable: false
           type: integer
+          format: int64
           example: 1658399423658
         project_id:
           description: ID of the project to which the offering belongs
@@ -5924,6 +6224,7 @@ components:
           description: Last time the overview metric was updated in ms since epoch
           nullable: true
           type: integer
+          format: int64
           example: 1658399423658
         last_updated_at_iso8601:
           description: Last time the overview metric was updated datetime in ISO 8601
@@ -6001,6 +6302,7 @@ components:
           description: The date the package was created at in ms since epoch
           nullable: false
           type: integer
+          format: int64
           example: 1658399423658
         products:
           nullable: true
@@ -6138,6 +6440,7 @@ components:
           description: The date when the product was created in ms since epoch
           nullable: false
           type: integer
+          format: int64
           example: 1658399423658
         app_id:
           description: The id of the app
@@ -6257,6 +6560,57 @@ components:
           description: The date when the project was created in ms since epoch
           nullable: false
           type: integer
+          format: int64
+          example: 1658399423658
+    PublicApiKey:
+      type: object
+      required:
+      - id
+      - key
+      - app_id
+      - created_at
+      - environment
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - public_api_key
+          type: string
+        id:
+          description: The ID of the public API key
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: apikey12345
+        key:
+          description: The value of the public API key
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: goog_1ab2c3d4
+        environment:
+          description: The environment the public API key is for
+          nullable: false
+          enum:
+          - production
+          - sandbox
+          type: string
+        app_id:
+          description: The ID of the app the public API key is for
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: app1a2b3c4
+        created_at:
+          description: The date when the public API key was created in ms since epoch
+          nullable: false
+          type: integer
+          format: int64
           example: 1658399423658
     Purchase:
       type: object
@@ -6315,6 +6669,7 @@ components:
           description: The date when the purchase was made in ms since epoch
           nullable: false
           type: integer
+          format: int64
           example: 1658399423658
         revenue_in_usd:
           description: The revenue generated by the purchase in USD
@@ -6640,12 +6995,14 @@ components:
             epoch
           nullable: false
           type: integer
+          format: int64
           example: 1658399423658
         current_period_starts_at:
           description: The date when the subscription billing period started in ms
             since epoch
           nullable: false
           type: integer
+          format: int64
           example: 1658399423658
         current_period_ends_at:
           description: The date when the subscription billing period is expected to
@@ -6653,6 +7010,7 @@ components:
             an indefinite date.
           nullable: true
           type: integer
+          format: int64
           example: 1658399423658
         gives_access:
           description: Determines whether the customer should currently be provided
@@ -6842,6 +7200,26 @@ components:
           description: The duration of the subscription's trial period in ISO-8601
             standard
           example: P1W
+    VirtualCurrencyBalance:
+      type: object
+      title: VirtualCurrencyBalance
+      required:
+      - object
+      - currency_code
+      - balance
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - virtual_currency_balance
+          type: string
+        currency_code:
+          description: The code of the virtual currency.
+          type: string
+        balance:
+          description: The balance of the virtual currency.
+          type: integer
   headers:
     RateLimitCurrentLimit:
       required: true

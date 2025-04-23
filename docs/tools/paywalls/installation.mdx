@@ -14,6 +14,9 @@ RevenueCat Paywalls are included as part of the RevenueCatUI package in the Reve
 | react-native-purchases-ui | 7.15.0 and up                 | 
 | purchases-flutter         | 6.15.0 and up                 |
 | purchases-kmp             | 1.0.0 and up                  |
+| purchases-unity           | Not supported                 |
+| cordova-plugin-purchases  | Not supported                 |
+| purchases-capacitor       | Not supported                 |
 
 :::info
 Within the SDKs, Paywalls are available on the following platforms:
@@ -28,7 +31,7 @@ Support for macOS, tvOS, and other platforms is coming soon!
 
 ## Native iOS Installation
 
-[![Release](https://img.shields.io/github/release/RevenueCat/purchases-ios.svg?style=flat)](https://github.com/RevenueCat/purchases-ios/releases)
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-ios.svg?filter=!*beta*&style=flat)](https://github.com/RevenueCat/purchases-ios/releases)
 
 ### Using SPM:
 
@@ -72,7 +75,7 @@ pod 'RevenueCatUI'
 
 ## Native Android Installation
 
-[![Release](https://img.shields.io/github/release/RevenueCat/purchases-android.svg?style=flat)](https://github.com/RevenueCat/purchases-android/releases)
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-android.svg?filter=!*beta*&style=flat)](https://github.com/RevenueCat/purchases-android/releases)
 
 1. Add `RevenueCatUI`:
 ```groovy build.gradle
@@ -82,7 +85,7 @@ implementation 'com.revenuecat.purchases:purchases-ui:<latest version>'
 
 ## React Native Installation
 
-[![Release](https://img.shields.io/github/release/RevenueCat/react-native-purchases.svg?style=flat)](https://github.com/RevenueCat/react-native-purchases/releases)
+[![Release](https://img.shields.io/github/release/RevenueCat/react-native-purchases.svg?filter=!*beta*&style=flat)](https://github.com/RevenueCat/react-native-purchases/releases)
 
 - Update your `package.json` to include `react-native-purchases-ui`:
 ```json
@@ -96,7 +99,7 @@ implementation 'com.revenuecat.purchases:purchases-ui:<latest version>'
 
 ## Flutter Installation
 
-[![Release](https://img.shields.io/github/release/RevenueCat/purchases-flutter.svg?style=flat)](https://github.com/RevenueCat/purchases-flutter/releases)
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-flutter.svg?filter=!*beta*&style=flat)](https://github.com/RevenueCat/purchases-flutter/releases)
 
 - Add `purchases-ui-flutter` in your `pubspec.yaml`:
 ```yaml
@@ -106,9 +109,21 @@ dependencies:
 ```
 - For Android, you need to change your `MainActivity` to subclass `FlutterFragmentActivity` instead of `FlutterActivity`.
 
+import flutterMainActivity from "!!raw-loader!@site/code_blocks/getting-started/installation/flutter_mainactivity.kt";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "MainActivity.kt",
+      content: flutterMainActivity,
+      name: "MainActivity.kt",
+    },
+  ]}
+/>
+
 ## Kotlin Multiplatform Installation
 
-[![Release](https://img.shields.io/github/release/RevenueCat/purchases-kmp.svg?style=flat)](https://github.com/RevenueCat/purchases-kmp/releases)
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-kmp.svg?filter=!*beta*&style=flat)](https://github.com/RevenueCat/purchases-kmp/releases)
 
 Add the following Maven coordinates to your `libs.versions.toml`:
 ```toml libs.versions.toml

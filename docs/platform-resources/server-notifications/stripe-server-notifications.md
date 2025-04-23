@@ -64,7 +64,17 @@ RevenueCat provides flexible ways to detect the App User ID for purchases coming
 
 1. **Use anonymous App User IDs**: RevenueCat will generate a RevenueCat anonymous App User ID to associate the purchase with.
 2. **Use Stripe Customer ID as App User ID**: RevenueCat will use the [Stripe Customer ID field](https://docs.stripe.com/api/customers/object#customer_object-id) as the RevenueCat App User ID. Only select this option if you plan on using Stripe's Customer ID as your customer's App User ID throughout your system.
-3. **Read App User ID from a Stripe metadata field**: If you are storing your customer's RevenueCat App User ID through [Stripe metadata](https://docs.stripe.com/metadata), you can specify the metadata field name in the `Metadata field key` textbox. RevenueCat will look for this field in the Checkout Session metadata for checkout sessions and in the Subscription metadata for subscriptions. Ensure that the metadata value will exactly match your RevenueCat App User ID.
+3. **Read App User ID from a Stripe metadata field**: If you are storing your customer's RevenueCat App User ID through [Stripe metadata](https://docs.stripe.com/metadata), you can specify the metadata field name in the `Metadata field key` textbox. RevenueCat will look for this field in the Checkout Session metadata for checkout sessions and in the Subscription metadata for subscriptions. If you are attaching subscriptions to checkout sessions, make sure that you add the metadata fields in both the checkout session and the subscription (see example below). Also, ensure that the metadata value will exactly match your RevenueCat App User ID.
+
+#### Example: Setting app_user_id in Stripe Checkout session
+
+import stripeCheckout from "!!raw-loader!@site/code_blocks/web/stripe/stripe_checkout_session.js";
+
+<RCCodeBlock
+tabs={[
+{ type: "Node.js", content: stripeCheckout, name: "Node.js" },
+]}
+/>
 
 :::info Additional information about using Stripe Customer ID as App User ID
 In some cases, a Stripe Checkout Session may have a `NULL` value for the Stripe Customer ID. This can happen when a purchase is made by a "guest customer". In these instances, RevenueCat will associate the purchase with an anonymous App User ID.

@@ -5,10 +5,6 @@ excerpt: Allow customers to purchase products and subscriptions on the web and s
 hidden: false
 ---
 
-:::warning Beta Feature
-Web Billing (formerly RevenueCat Billing) and the RevenueCat Web SDK are currently in beta.
-:::
-
 ## Overview
 
 Redemption Links are one-time-use deep links generated after a customer completes a web purchase. These links allow customers to associate their web purchase with their account in your app. By tapping the link, customers are redirected into the app where the purchase is automatically linked to their App User ID, granting them access to the associated entitlements.
@@ -46,8 +42,8 @@ The SDK versions supporting Redemption Links are:
 | purchases-flutter      | 8.4.0 and above                      |
 | purchases-unity        | 7.4.1 and above                      |
 | react-native-purchases | 8.5.0 and above                      |
-| purchases-kmp          | Coming soon                          |
-| purchases-capacitor    | Coming soon                          |
+| purchases-kmp          | 1.6.0+13.19.0 and above              |
+| purchases-capacitor    | 10.1.0 and above                     |
 
 In order to be able to redeem the redemption links in your mobile apps, follow these steps
 
@@ -170,6 +166,36 @@ import unityRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/rede
 <RCCodeBlock
   tabs={[
     { type: "csharp", title: "Unity Redemption", content: unityRedemption },
+  ]}
+/>
+
+##### Kotlin Multiplatform
+
+In our Kotlin Multiplatform SDK, you will need to obtain the deep link first. There are several ways to do this, using a 3rd party library, or by writing the relevant android/iOS code in your app and passing the url back to the shared kotlin code.
+
+Once you have the deep link, you can use the following snippet to perform the redemption:
+
+import kmpRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_kmp.kt";
+
+<RCCodeBlock
+  tabs={[{ type: "kotlin", title: "KMP Redemption", content: kmpRedemption }]}
+/>
+
+##### Capacitor
+
+In our Capacitor SDK, you will need to obtain the deep link first. Please read the official docs on how to parse deep links: https://capacitorjs.com/docs/guides/deep-links.
+
+Once you have the deep link, you can use the following snippet to perform the redemption:
+
+import capacitorRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_capacitor.ts";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "typescript",
+      title: "Capacitor Redemption",
+      content: capacitorRedemption,
+    },
   ]}
 />
 

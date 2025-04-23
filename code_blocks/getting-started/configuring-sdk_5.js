@@ -3,7 +3,7 @@ import 'dart:io' show Platform;
 //...
 
 Future<void> initPlatformState() async {
-  await Purchases.setDebugLogsEnabled(true);
+  await Purchases.setLogLevel(LogLevel.debug);
   
   PurchasesConfiguration configuration;
   if (Platform.isAndroid) {

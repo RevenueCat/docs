@@ -52,6 +52,7 @@ const projectsCategory = Category({
         Page({ slug: "apple-server-notifications" }),
         Page({ slug: "google-server-notifications" }),
         Page({ slug: "stripe-server-notifications" }),
+        Page({ slug: "paddle-server-notifications" }),
         Page({ slug: "amazon-server-notifications" }),
       ],
     }),
@@ -62,10 +63,7 @@ const projectsCategory = Category({
         Page({ slug: "projects/collaborators" }),
         Page({ slug: "projects/restore-behavior" }),
       ],
-      index: {
-        title: "Project Settings",
-        link: "projects/project-settings",
-      },
+      index: { title: "Project Settings", link: "projects/project-settings" },
     }),
   ],
 });
@@ -143,6 +141,7 @@ const paywallsCategory = Category({
           ],
         }),
         Page({ slug: "displaying-paywalls" }),
+        Page({ slug: "change-log" }),
       ],
     }),
     SubCategory({
@@ -154,9 +153,7 @@ const paywallsCategory = Category({
           label: "Making Purchases",
           slug: "making-purchases",
           items: [
-            Page({
-              slug: "making-purchases/android-with-jetpack-compose",
-            }),
+            Page({ slug: "making-purchases/android-with-jetpack-compose" }),
           ],
         }),
         Page({ slug: "restoring-purchases" }),
@@ -179,7 +176,11 @@ const webSDKCategory = Category({
       label: "Integrate Web Billing",
       slug: "web-billing/overview",
       itemsPathPrefix: "web-billing/",
-      items: [Page({ slug: "web-sdk" }), Page({ slug: "web-paywall-links" })],
+      items: [
+        Page({ slug: "web-sdk" }),
+        Page({ slug: "web-paywall-links" }),
+        Page({ slug: "testing" }),
+      ],
     }),
     SubCategory({
       label: "Configure Web Billing",
@@ -193,6 +194,7 @@ const webSDKCategory = Category({
         Page({ slug: "localization" }),
         Page({ slug: "redemption-links" }),
         Page({ slug: "tax" }),
+        Page({ slug: "custom-metadata" }),
       ],
     }),
     Page({ slug: "web-billing/managing-customer-subscriptions" }),
@@ -203,7 +205,7 @@ const webSDKCategory = Category({
       label: "External Payments Integrations",
       slug: "payment-integrations",
       itemsPathPrefix: "integrations/",
-      items: [Page({ slug: "stripe" })],
+      items: [Page({ slug: "stripe" }), Page({ slug: "paddle" })],
     }),
   ],
 });
@@ -279,6 +281,7 @@ const offeringsCategory = Category({
             Page({ slug: "google-subscriptions-and-backwards-compatibility" }),
             Page({ slug: "amazon-product-setup" }),
             Page({ slug: "stripe-products" }),
+            Page({ slug: "paddle-products" }),
             Link({
               label: "Web Billing Product Setup",
               slug: "/web/web-billing/product-setup",
@@ -292,6 +295,8 @@ const offeringsCategory = Category({
         }),
       ],
     }),
+    Page({ slug: "offerings/virtual-currency" }),
+    Page({ slug: "offerings/troubleshooting" }),
   ],
 });
 
@@ -329,8 +334,26 @@ const customersCategory = Category({
       slug: "tools/customer-center",
       itemsPathPrefix: "tools/customer-center/",
       items: [
-        Page({ slug: "customer-center-integration" }),
-        Page({ slug: "customer-center-configuration" }),
+        Page({ slug: "customer-center-installation" }),
+        SubCategory({
+          label: "Configuration",
+          slug: "customer-center-configuration",
+          items: [
+            Page({ slug: "customer-center-promo-offers-apple" }),
+            Page({ slug: "customer-center-promo-offers-google" }),
+          ],
+        }),
+        SubCategory({
+          label: "Integration",
+          slug: "customer-center-integration",
+          items: [
+            Page({ slug: "customer-center-integration-ios" }),
+            Page({ slug: "customer-center-integration-android" }),
+            Page({ slug: "customer-center-flutter" }),
+            Page({ slug: "customer-center-react-native" }),
+            Page({ slug: "customer-center-kmp" }),
+          ],
+        }),
       ],
     }),
     Page({ slug: "dashboard-and-metrics/customer-lists" }),
@@ -408,18 +431,10 @@ const platformResourcesCategory = Category({
           label: "FAQs",
           itemsPathPrefix: "platform-resources/apple-platform-resources/",
           items: [
-            Page({
-              slug: "app-store-small-business-program",
-            }),
-            Page({
-              slug: "apple-app-privacy",
-            }),
-            Page({
-              slug: "apple-family-sharing",
-            }),
-            Page({
-              slug: "handling-refund-requests",
-            }),
+            Page({ slug: "app-store-small-business-program" }),
+            Page({ slug: "apple-app-privacy" }),
+            Page({ slug: "apple-family-sharing" }),
+            Page({ slug: "handling-refund-requests" }),
           ],
           index: {
             title: "Apple App Store FAQs",
@@ -793,10 +808,7 @@ const chartsDummyCategory = Category({
       label: "Overview Metrics",
       slug: "/dashboard-and-metrics/overview",
     }),
-    Link({
-      label: "Charts",
-      slug: "/dashboard-and-metrics/charts",
-    }),
+    Link({ label: "Charts", slug: "/dashboard-and-metrics/charts" }),
   ],
 });
 
@@ -805,22 +817,13 @@ const integrationsDummyCategory = Category({
   label: "Events & Integrations Reference",
   itemsPathPrefix: "",
   items: [
-    Link({
-      label: "Events",
-      slug: "/integrations/integrations",
-    }),
-    Link({
-      label: "Attribution & MMPs",
-      slug: "/integrations/attribution",
-    }),
+    Link({ label: "Events", slug: "/integrations/integrations" }),
+    Link({ label: "Attribution & MMPs", slug: "/integrations/attribution" }),
     Link({
       label: "Third-Party Integrations",
       slug: "/integrations/third-party-integrations",
     }),
-    Link({
-      label: "Webhooks",
-      slug: "/integrations/webhooks",
-    }),
+    Link({ label: "Webhooks", slug: "/integrations/webhooks" }),
   ],
 });
 
@@ -845,10 +848,7 @@ const webhooksCategory = Category({
         Page({ slug: "event-types-and-fields" }),
         Page({ slug: "sample-events" }),
       ],
-      index: {
-        title: "Resources",
-        link: "integrations/webhooks/resources",
-      },
+      index: { title: "Resources", link: "integrations/webhooks/resources" },
     }),
   ],
 });
@@ -867,7 +867,7 @@ const attributionCategory = Category({
         Page({ slug: "apple-search-ads" }),
         Page({ slug: "appsflyer" }),
         Page({ slug: "branch" }),
-        Page({ slug: "facebook-ads" }),
+        Page({ slug: "meta-ads" }),
         Page({ slug: "kochava" }),
         Page({ slug: "singular" }),
         Page({ slug: "splitmetrics-acquire" }),
@@ -895,6 +895,7 @@ const thirdPartyIntegrationsCategory = Category({
         Page({ slug: "amplitude" }),
         Page({ slug: "braze" }),
         Page({ slug: "clevertap" }),
+        Page({ slug: "customerio" }),
         Page({ slug: "discord" }),
         Page({ slug: "firebase-integration" }),
         Page({ slug: "intercom" }),

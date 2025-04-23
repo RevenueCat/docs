@@ -1,206 +1,248 @@
-import type { CustomerInfo, Package, Product } from "@revenuecat/purchases-js";
-import { ErrorCode, Purchases, PurchasesError } from "@revenuecat/purchases-js";
+import type {CustomerInfo, Package, Product} from "@revenuecat/purchases-js";
+import {ErrorCode, Purchases, PurchasesError} from "@revenuecat/purchases-js";
 
-const authentication = { getAppUserId: () => "test" };
+const authentication = {getAppUserId: () => "test"};
 
 function configuringSDK(WEB_BILLING_PUBLIC_API_KEY: string) {
-  // MARK: Configuring SDK
-  const appUserId = authentication.getAppUserId(); // Replace with your own authentication system
-  const purchases = Purchases.configure(WEB_BILLING_PUBLIC_API_KEY, appUserId);
-  // END
-  return purchases;
+    // MARK: Configuring SDK
+    const appUserId = authentication.getAppUserId(); // Replace with your own authentication system
+    const purchases = Purchases.configure(WEB_BILLING_PUBLIC_API_KEY, appUserId);
+    // END
+    return purchases;
+}
+
+function configuringSDKOutOutOfAutomaticUTMCollection(WEB_BILLING_PUBLIC_API_KEY: string) {
+    // MARK: Configuring SDK without automatic UTM collection
+    const appUserId = authentication.getAppUserId(); // Replace with your own authentication system
+    const httpConfig = {}; // Any setting you want to customize in purchases-js HTTP client.
+    const flagsConfig = {autoCollectUTMAsMetadata: false};
+    const purchases = Purchases.configure(WEB_BILLING_PUBLIC_API_KEY, appUserId, httpConfig, flagsConfig);
+    // END
+    return purchases;
 }
 
 function configuringSDKWithAnonUser(WEB_BILLING_PUBLIC_API_KEY: string) {
-  // MARK: Configuring SDK Anonymous
-  // This function will generate a unique anonymous ID for the user.
-  // Make sure to enable the Redemption Links feature in the RevenueCat dashboard and use the
-  // redemption link to redeem the purchase in your mobile app.
-  const appUserId = Purchases.generateRevenueCatAnonymousAppUserId();
-  const purchases = Purchases.configure(WEB_BILLING_PUBLIC_API_KEY, appUserId);
-  // END
-  return purchases;
+    // MARK: Configuring SDK Anonymous
+    // This function will generate a unique anonymous ID for the user.
+    // Make sure to enable the Redemption Links feature in the RevenueCat dashboard and use the
+    // redemption link to redeem the purchase in your mobile app.
+    const appUserId = Purchases.generateRevenueCatAnonymousAppUserId();
+    const purchases = Purchases.configure(WEB_BILLING_PUBLIC_API_KEY, appUserId);
+    // END
+    return purchases;
 }
 
 async function getCustomerInfo(): Promise<CustomerInfo | null> {
-  let customerInfo: CustomerInfo | null = null;
-  // MARK: Getting customer information
-  try {
-    customerInfo = await Purchases.getSharedInstance().getCustomerInfo();
-    // access latest customerInfo
-  } catch (e) {
-    // Handle errors fetching customer info
-  }
-  // END
-  return customerInfo;
+    let customerInfo: CustomerInfo | null = null;
+    // MARK: Getting customer information
+    try {
+        customerInfo = await Purchases.getSharedInstance().getCustomerInfo();
+        // access latest customerInfo
+    } catch (e) {
+        // Handle errors fetching customer info
+    }
+    // END
+    return customerInfo;
 }
 
 async function checkForSpecificEntitlement(grantEntitlementAccess: () => void) {
-  const customerInfo = await Purchases.getSharedInstance().getCustomerInfo();
-  if (!customerInfo) return;
-  // MARK: Check for specific entitlement
-  if ("gold_entitlement" in customerInfo.entitlements.active) {
-    // Grant user access to the entitlement "gold_entitlement"
-    grantEntitlementAccess();
-  }
-  // END
+    const customerInfo = await Purchases.getSharedInstance().getCustomerInfo();
+    if (!customerInfo) return;
+    // MARK: Check for specific entitlement
+    if ("gold_entitlement" in customerInfo.entitlements.active) {
+        // Grant user access to the entitlement "gold_entitlement"
+        grantEntitlementAccess();
+    }
+    // END
 }
 
 async function checkForAnyEntitlement(grantEntitlementAccess: () => void) {
-  const customerInfo = await Purchases.getSharedInstance().getCustomerInfo();
-  if (!customerInfo) return;
-  // MARK: Check for any entitlement
-  if (Object.keys(customerInfo.entitlements.active).length > 0) {
-    // User has access to some entitlement, grant entitlement access
-    grantEntitlementAccess();
-  }
-  // END
+    const customerInfo = await Purchases.getSharedInstance().getCustomerInfo();
+    if (!customerInfo) return;
+    // MARK: Check for any entitlement
+    if (Object.keys(customerInfo.entitlements.active).length > 0) {
+        // User has access to some entitlement, grant entitlement access
+        grantEntitlementAccess();
+    }
+    // END
 }
 
 async function getCurrentOffering(displayPackages: (pkg: Package[]) => void) {
-  // MARK: Get current offerings
-  try {
-    const offerings = await Purchases.getSharedInstance().getOfferings();
-    if (
-      offerings.current !== null &&
-      offerings.current.availablePackages.length !== 0
-    ) {
-      // Display packages for sale
-      displayPackages(offerings.current.availablePackages);
+    // MARK: Get current offerings
+    try {
+        const offerings = await Purchases.getSharedInstance().getOfferings();
+        if (
+            offerings.current !== null &&
+            offerings.current.availablePackages.length !== 0
+        ) {
+            // Display packages for sale
+            displayPackages(offerings.current.availablePackages);
+        }
+    } catch (e) {
+        // Handle errors
     }
-  } catch (e) {
-    // Handle errors
-  }
-  // END
+    // END
 }
 
 async function getOfferingForEUR(displayPackages: (pkg: Package[]) => void) {
-  // MARK: Get current offerings for EUR
-  try {
-    // Specify the currency to get offerings for
-    const offerings = await Purchases.getSharedInstance().getOfferings({
-      currency: "EUR",
-    });
-    if (
-      offerings.current !== null &&
-      offerings.current.availablePackages.length !== 0
-    ) {
-      // Display packages for sale
-      displayPackages(offerings.current.availablePackages);
+    // MARK: Get current offerings for EUR
+    try {
+        // Specify the currency to get offerings for
+        const offerings = await Purchases.getSharedInstance().getOfferings({
+            currency: "EUR",
+        });
+        if (
+            offerings.current !== null &&
+            offerings.current.availablePackages.length !== 0
+        ) {
+            // Display packages for sale
+            displayPackages(offerings.current.availablePackages);
+        }
+    } catch (e) {
+        // Handle errors
     }
-  } catch (e) {
-    // Handle errors
-  }
-  // END
+    // END
 }
 
 async function getCustomOffering(displayPackages: (pkg: Package[]) => void) {
-  // MARK: Get custom offering
-  try {
-    const offerings = await Purchases.getSharedInstance().getOfferings();
-    if (offerings.all["experiment_group"].availablePackages.length !== 0) {
-      // Display packages for sale
-      displayPackages(offerings.all["experiment_group"].availablePackages);
+    // MARK: Get custom offering
+    try {
+        const offerings = await Purchases.getSharedInstance().getOfferings();
+        if (offerings.all["experiment_group"].availablePackages.length !== 0) {
+            // Display packages for sale
+            displayPackages(offerings.all["experiment_group"].availablePackages);
+        }
+    } catch (e) {
+        // Handle errors
     }
-  } catch (e) {
-    // Handle errors
-  }
-  // END
+    // END
 }
 
 async function displayingPackages(
-  callback: (props: {
-    allPackages: Package[];
-    monthlyPackage: Package | null;
-    customPackage: Package | null;
-  }) => void
+    callback: (props: {
+        allPackages: Package[];
+        monthlyPackage: Package | null;
+        customPackage: Package | null;
+    }) => void
 ) {
-  const offerings = await Purchases.getSharedInstance().getOfferings();
-  // MARK: Displaying packages
-  const allPackages = offerings.all["experiment_group"].availablePackages;
-  // --
-  const monthlyPackage = offerings.all["experiment_group"].monthly;
-  // --
-  const customPackage =
-    offerings.all["experiment_group"].packagesById["<package_id>"];
-  // END
-  callback({ allPackages, monthlyPackage, customPackage });
+    const offerings = await Purchases.getSharedInstance().getOfferings();
+    // MARK: Displaying packages
+    const allPackages = offerings.all["experiment_group"].availablePackages;
+    // --
+    const monthlyPackage = offerings.all["experiment_group"].monthly;
+    // --
+    const customPackage =
+        offerings.all["experiment_group"].packagesById["<package_id>"];
+    // END
+    callback({allPackages, monthlyPackage, customPackage});
 }
 
 async function gettingProduct(displayProduct: (product: Product) => void) {
-  // MARK: Getting product
-  // Accessing / displaying the monthly product
-  try {
-    const offerings = await Purchases.getSharedInstance().getOfferings({
-      currency: "USD",
-    });
-    if (offerings.current && offerings.current.monthly) {
-      const product = offerings.current.monthly.webBillingProduct;
-      // Display the price and currency of the Web Billing Product
-      displayProduct(product);
+    // MARK: Getting product
+    // Accessing / displaying the monthly product
+    try {
+        const offerings = await Purchases.getSharedInstance().getOfferings({
+            currency: "USD",
+        });
+        if (offerings.current && offerings.current.monthly) {
+            const product = offerings.current.monthly.webBillingProduct;
+            // Display the price and currency of the Web Billing Product
+            displayProduct(product);
+        }
+    } catch (e) {
+        // Handle errors
     }
-  } catch (e) {
-    // Handle errors
-  }
-  // END
+    // END
 }
 
 async function purchasingPackage() {
-  // This can't really be tested currently
-  const pkg = (await Purchases.getSharedInstance().getOfferings()).current
-    ?.availablePackages[0];
-  if (!pkg) return;
+    // This can't really be tested currently
+    const pkg = (await Purchases.getSharedInstance().getOfferings()).current
+        ?.availablePackages[0];
+    if (!pkg) return;
 
-  // MARK: Purchasing package
-  try {
-    const { customerInfo } = await Purchases.getSharedInstance().purchase({
-      rcPackage: pkg,
-    });
-    if (Object.keys(customerInfo.entitlements.active).includes("pro")) {
-      // Unlock that great "pro" content
+    // MARK: Purchasing package
+    try {
+        const {customerInfo} = await Purchases.getSharedInstance().purchase({
+            rcPackage: pkg,
+        });
+        if (Object.keys(customerInfo.entitlements.active).includes("pro")) {
+            // Unlock that great "pro" content
+        }
+    } catch (e) {
+        if (
+            e instanceof PurchasesError &&
+            e.errorCode == ErrorCode.UserCancelledError
+        ) {
+            // User cancelled the purchase process, don't do anything
+        } else {
+            // Handle errors
+        }
     }
-  } catch (e) {
-    if (
-      e instanceof PurchasesError &&
-      e.errorCode == ErrorCode.UserCancelledError
-    ) {
-      // User cancelled the purchase process, don't do anything
-    } else {
-      // Handle errors
+    // END
+}
+
+async function metadataWhilePurchasing() {
+    // This can't really be tested currently
+    const pkg = (await Purchases.getSharedInstance().getOfferings()).current
+        ?.availablePackages[0];
+    if (!pkg) return;
+
+    // MARK: Purchasing package with metadata
+    try {
+        const {customerInfo} = await Purchases.getSharedInstance().purchase({
+            rcPackage: pkg,
+            metadata: {
+                a_custom_key: "a custom value",
+            },
+        });
+        if (Object.keys(customerInfo.entitlements.active).includes("pro")) {
+            // Unlock that great "pro" content
+        }
+    } catch (e) {
+        if (
+            e instanceof PurchasesError &&
+            e.errorCode == ErrorCode.UserCancelledError
+        ) {
+            // User cancelled the purchase process, don't do anything
+        } else {
+            // Handle errors
+        }
     }
-  }
-  // END
+    // END
 }
 
 async function configuringLocale() {
-  const pkg = (await Purchases.getSharedInstance().getOfferings()).current
-    ?.availablePackages[0];
-  if (!pkg) return;
+    const pkg = (await Purchases.getSharedInstance().getOfferings()).current
+        ?.availablePackages[0];
+    if (!pkg) return;
 
-  // MARK: Configuring locale
-  try {
-    const { customerInfo, redemptionInfo } =
-      await Purchases.getSharedInstance().purchase({
-        rcPackage: pkg,
-        selectedLocale: "es",
-      });
-  } catch (e) {
-    // Something went wrong while purchasing
-  }
-  // END
+    // MARK: Configuring locale
+    try {
+        const {customerInfo, redemptionInfo} =
+            await Purchases.getSharedInstance().purchase({
+                rcPackage: pkg,
+                selectedLocale: "es",
+            });
+    } catch (e) {
+        // Something went wrong while purchasing
+    }
+    // END
 }
 
 export {
-  configuringSDK,
-  getCustomerInfo,
-  checkForSpecificEntitlement,
-  checkForAnyEntitlement,
-  getCurrentOffering,
-  getOfferingForEUR,
-  getCustomOffering,
-  displayingPackages,
-  gettingProduct,
-  purchasingPackage,
-  configuringLocale,
-  configuringSDKWithAnonUser,
+    configuringSDK,
+    configuringSDKOutOutOfAutomaticUTMCollection,
+    getCustomerInfo,
+    checkForSpecificEntitlement,
+    checkForAnyEntitlement,
+    getCurrentOffering,
+    getOfferingForEUR,
+    getCustomOffering,
+    displayingPackages,
+    gettingProduct,
+    purchasingPackage,
+    configuringLocale,
+    configuringSDKWithAnonUser,
+    metadataWhilePurchasing
 };

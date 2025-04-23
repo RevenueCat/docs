@@ -32,7 +32,7 @@ With webhooks integrated, you can:
 7. Select if the webhook events should be sent only for one app or for all apps of the project
 8. (Optional) Filter the kinds of events that should be sent to the webhook URL.
 
-![](https://github.com/RevenueCat/revenuecat-docs/assets/14286938/6a07a8cf-0696-4a2f-8546-7d9cd735e95d)
+![](/images/6a07a8cf-webhook-integration-7d9cd735e95d.png)
 
 :::info Best Practices: Webhook authorization
 We recommended setting an authorization header value via the RevenueCat dashboard. When set, RevenueCat will send this header in every request. Your server can use this to authenticate the webhooks from RevenueCat.
@@ -54,7 +54,7 @@ For webhook event types and fields, see [here](/integrations/webhooks/event-type
 
 You can test your server side implementation by purchasing [sandbox subscriptions](/test-and-launch/sandbox) or by issuing test webhook events through [RevenueCat's dashboard](http://app.revenuecat.com).
 
-![](https://github.com/RevenueCat/revenuecat-docs/assets/14286938/ad2c8e64-12ba-4ee1-9bf0-c841349f3b7e)
+![](/images/ad2c8e64-webhook-testing-c841349f3b7e.png)
 
 When testing with sandbox purchases, the `environment` value will be `SANDBOX`. RevenueCat itself does not have sandbox and production environments, so this value is only determined by the type of transaction received from the store. The same customer in RevenueCat can have both sandbox and production transactions associated with their account.
 
