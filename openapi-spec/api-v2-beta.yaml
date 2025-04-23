@@ -914,6 +914,60 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read_write</code>.'
+  /projects/{project_id}/apps/{app_id}/store_kit_config:
+    get:
+      summary: Get the StoreKit configuration for an app
+      operationId: get-app-storekit-config
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:apps:read
+      x-release-status: public
+      tags:
+      - App
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: app_id
+        description: ID of the app
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: app1ab2c3d4
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreKitConfigFile'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.'
   /projects/{project_id}/customers:
     get:
       summary: Get a list of customers
@@ -6900,6 +6954,23 @@ components:
               nullable: true
               minLength: 1
               maxLength: 30
+    StoreKitConfigFile:
+      type: object
+      description: Contents of a generated StoreKit config file for an app
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - store_kit_config_file
+          type: string
+        contents:
+          type: object
+          description: Contents of the StoreKit config file
+          additionalProperties: true
+      required:
+      - object
+      - contents
     StripeApp:
       type: object
       properties:
