@@ -62,6 +62,7 @@ const projectsCategory = Category({
         Page({ slug: "projects/authentication" }),
         Page({ slug: "projects/collaborators" }),
         Page({ slug: "projects/restore-behavior" }),
+        Page({ slug: "projects/sandbox-access" }),
       ],
       index: { title: "Project Settings", link: "projects/project-settings" },
     }),
