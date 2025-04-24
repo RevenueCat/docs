@@ -23,6 +23,8 @@ tags:
   description: Operations about subscriptions.
 - name: Invoice
   description: Operations about invoices.
+- name: Paywall
+  description: Operations about paywalls.
 - name: Project
   description: Operations about projects.
 - name: Subscription Data Model
@@ -299,6 +301,78 @@ tags:
     \n\n#### Family shared subscriptions\n\n![](/docs/images/api-v2/1511106-Family_shared_subscriptions.png)\n\
     \n\n#### Family shared subscriptions: regranted\n\n![](/docs/images/api-v2/b3134c1-Family_shared_subscriptions__regranted.png)"
 paths:
+  /projects/{project_id}/paywalls:
+    post:
+      summary: Create a paywall
+      operationId: create-paywall
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:offerings:read_write
+      x-release-status: public
+      tags:
+      - Paywall
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - offering_id
+              properties:
+                offering_id:
+                  description: 'The ID of the offering the paywall will be created
+                    for.
+
+                    '
+                  type: string
+                  minLength: 1
+                  maxLength: 200
+                  example: ofrng123456789a
+              additionalProperties: false
+      responses:
+        '201':
+          description: Success. The paywall was created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paywall'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: "Create a paywall for an offering of the project.\n This endpoint\
+        \ requires the following permission(s): <code>project_configuration:offerings:read_write</code>."
   /projects/{project_id}/apps/{app_id}/public_api_keys:
     get:
       summary: Get a list of the public API keys of an app
@@ -914,6 +988,60 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read_write</code>.'
+  /projects/{project_id}/apps/{app_id}/store_kit_config:
+    get:
+      summary: Get the StoreKit configuration for an app
+      operationId: get-app-storekit-config
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:apps:read
+      x-release-status: public
+      tags:
+      - App
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: app_id
+        description: ID of the app
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: app1ab2c3d4
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreKitConfigFile'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.'
   /projects/{project_id}/customers:
     get:
       summary: Get a list of customers
@@ -6361,6 +6489,55 @@ components:
         eligibility_criteria:
           $ref: '#/components/schemas/EligibilityCriteria'
           nullable: false
+    Paywall:
+      type: object
+      required:
+      - id
+      - name
+      - offering_id
+      - created_at
+      - published_at
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - paywall
+          type: string
+        id:
+          description: The id of the paywall
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: pw123456789abcdef
+        name:
+          description: The name of the paywall
+          nullable: true
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: My Awesome Paywall
+        offering_id:
+          description: The ID of the offering the paywall is for.
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: ofrng123456789a
+        created_at:
+          description: The date the paywall was created at in ms since epoch
+          nullable: false
+          type: integer
+          format: int64
+          example: 1658399423658
+        published_at:
+          description: The date the paywall was published at in ms since epoch
+          nullable: true
+          type: integer
+          format: int64
+          example: 1658399423958
     PlayStoreApp:
       type: object
       properties:
@@ -6900,6 +7077,23 @@ components:
               nullable: true
               minLength: 1
               maxLength: 30
+    StoreKitConfigFile:
+      type: object
+      description: Contents of a generated StoreKit config file for an app
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - store_kit_config_file
+          type: string
+        contents:
+          type: object
+          description: Contents of the StoreKit config file
+          additionalProperties: true
+      required:
+      - object
+      - contents
     StripeApp:
       type: object
       properties:
@@ -7493,5 +7687,6 @@ x-tagGroups:
   - Purchase
   - Subscription
   - Invoice
+  - Paywall
   - Project
 openapi: 3.0.3
