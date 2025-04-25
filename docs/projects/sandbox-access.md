@@ -1,6 +1,6 @@
 ---
-title: Sandbox Access
-sidebar_label: Sandbox Access
+title: Sandbox Testing Access
+sidebar_label: Sandbox Testing Access
 slug: sandbox-access
 ---
 
