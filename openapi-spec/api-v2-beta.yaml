@@ -6643,6 +6643,9 @@ components:
       enum:
       - subscription
       - one_time
+      - consumable
+      - non_consumable
+      - non_renewing_subscription
     ProductsFromEntitlement:
       type: object
       required:
