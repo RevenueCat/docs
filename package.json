@@ -14,7 +14,10 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "process-images": "scripts/move_images.sh",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test-guide-generator-analysis": "node scripts/guide-generator/test-analysis.js",
+    "test-guide-generator-chunking": "node scripts/guide-generator/test/test-chunking.js",
+    "compute-embeddings": "node scripts/guide-generator/scripts/compute-embeddings.js"
   },
   "dependencies": {
     "@docusaurus/core": "^3.7.0",
@@ -23,8 +26,11 @@
     "@docusaurus/preset-classic": "^3.7.0",
     "@docusaurus/theme-common": "^3.7.0",
     "@mdx-js/react": "^3.1.0",
+    "@xenova/transformers": "^2.15.1",
     "clsx": "^2.1.1",
+    "dotenv": "^16.4.5",
     "medium-zoom": "1.1.0",
+    "openai": "^4.28.0",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

@@ -1,0 +1,18 @@
+{
+  "name": "guide-generator",
+  "version": "1.0.0",
+  "description": "Guide generator for RevenueCat documentation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-analysis": "node test/test-analysis-scenarios.js",
+    "test-chunking": "node test/test-chunking-scenarios.js",
+    "compute-embeddings": "node scripts/compute-embeddings.js",
+    "setup-embeddings": "node scripts/setup-data-directory.js"
+  },
+  "dependencies": {
+    "@xenova/transformers": "^2.15.1",
+    "dotenv": "^16.4.5",
+    "openai": "^4.28.4"
+  }
+}
