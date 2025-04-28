@@ -5,6 +5,10 @@ excerpt: How to configure and charge sales tax & VAT to customers purchasing thr
 hidden: false
 ---
 
+:::warning Beta feature
+Sales tax & VAT support in Web Billing is currently a beta feature. Please check the [limitations](#current-limitations) below before enabling it.
+:::
+
 If you're selling subscriptions and purchases through Web Billing, you may need to collect sales tax and VAT in transactions, depending on your business setup and local tax laws.
 
 Unlike the mobile app stores, selling directly to customers on the web means complying with any tax obligations that apply, based on:
@@ -44,6 +48,7 @@ We've designed the RevenueCat Stripe Tax integration to meet the needs of the ma
 
 - **B2C product support only** — the invoicing and tax needs for business customers differ from consumer products. RevenueCat doesn't collect customers' tax IDs, issue reverse charge VAT invoices, or invoices that meet the requirements of business-to-business transactions.
 - **Pre-defined tax behavior** —  transactions for customers in the US and Canada will use **tax-exclusive** pricing (applicable taxes are added to the product price), and the rest of world uses **tax-inclusive** pricing (all taxes are included in the product price).
+- **Existing subscriptions not affected** — enabling tax collection will only apply tax rates to new subscriptions purchased after the feature was enabled. Renewals for existing subscriptions that were active before tax collection was enabled will not have taxes calculated or applied.
 - **Tax reporting in Stripe dashboard only** — The RevenueCat dashboard doesn't provide tax reports or analytics. You should use the reporting tools available in your Stripe dashboard.
 
 ## How to configure Stripe Tax with Web Billing
@@ -72,10 +77,10 @@ Taxes are only applied to a purchase when there's a relevant tax registration ad
 
 You can use Stripe's built-in [threshold monitoring](https://dashboard.stripe.com/tax/thresholds) to understand when you need to register for sales tax in a given location. The process for registering varies depending on the authority you're registering with, and Stripe provides automated registration in certain regions.
 
-As soon as you've added a registration in the Stripe dashboard, Web Billing will start applying taxes for customers in that location.
+As soon as you've added a registration in the Stripe dashboard, Web Billing will start applying taxes for new purchases in that location.
 
-:::warning Adding tax registrations impacts existing subscriptions
-When you add a tax rate for a given location, any relevant taxes will apply for all future transactions in that location, including renewals of existing subscriptions. In the case of US & Canada where tax exclusive pricing is used, this will result in an increase in price for those customers. We recommend communicating this change in advance to any affected customers.
+:::warning Existing subscriptions not impacted
+When you add a tax rate for a given location, any relevant taxes will apply for future purchases in that location, but NOT renewals of existing subscriptions. This limitation applies while the feature is in beta.
 :::
 
 ## Testing tax collection
