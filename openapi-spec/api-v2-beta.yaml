@@ -615,6 +615,13 @@ paths:
                     roku_api_key: <Your Roku Pay API Key goes here>
                     roku_channel_id: 123456
                     roku_channel_name: History Channel
+              Paddle:
+                value:
+                  name: My Paddle App
+                  type: paddle
+                  paddle:
+                    paddle_api_key: <Your Paddle API Key goes here>
+                    paddle_is_sandbox: true
       responses:
         '201':
           description: Success. The app was created
@@ -880,6 +887,24 @@ paths:
                       minLength: 1
                       maxLength: 30
                       nullable: true
+                paddle:
+                  description: Paddle Billing type details. Should only be used when
+                    type is paddle.
+                  type: object
+                  nullable: false
+                  properties:
+                    paddle_api_key:
+                      description: Paddle Server-side API key provided on the Paddle
+                        dashboard.
+                      type: string
+                      nullable: true
+                      minLength: 50
+                      maxLength: 50
+                    paddle_is_sandbox:
+                      description: Whether the app is tied to the sandbox environment.
+                      nullable: false
+                      type: boolean
+                      example: true
               additionalProperties: false
             examples:
               Update App Store App properties:
@@ -4599,6 +4624,7 @@ components:
             - stripe
             - rc_billing
             - roku
+            - paddle
             example: app_store
           project_id:
             description: The id of the project
@@ -4614,6 +4640,7 @@ components:
       - $ref: '#/components/schemas/StripeApp'
       - $ref: '#/components/schemas/RCBillingApp'
       - $ref: '#/components/schemas/RokuApp'
+      - $ref: '#/components/schemas/PaddleApp'
     AppCreate:
       allOf:
       - type: object
@@ -4643,6 +4670,7 @@ components:
             - stripe
             - rc_billing
             - roku
+            - paddle
             nullable: false
       - $ref: '#/components/schemas/AmazonAppCreate'
       - $ref: '#/components/schemas/AppStoreAppCreate'
@@ -4651,6 +4679,7 @@ components:
       - $ref: '#/components/schemas/StripeAppCreate'
       - $ref: '#/components/schemas/RCBillingAppCreate'
       - $ref: '#/components/schemas/RokuAppCreate'
+      - $ref: '#/components/schemas/PaddleAppCreate'
     AppStoreApp:
       type: object
       properties:
@@ -6489,6 +6518,44 @@ components:
         eligibility_criteria:
           $ref: '#/components/schemas/EligibilityCriteria'
           nullable: false
+    PaddleApp:
+      type: object
+      properties:
+        paddle:
+          description: Paddle Billing type details
+          type: object
+          nullable: false
+          properties:
+            paddle_is_sandbox:
+              description: Whether the app is tied to the sandbox environment.
+              nullable: false
+              type: boolean
+              example: true
+            paddle_api_key:
+              description: Paddle Server-side API key provided on the Paddle dashboard.
+              type: string
+              nullable: true
+              minLength: 50
+              maxLength: 50
+    PaddleAppCreate:
+      type: object
+      properties:
+        paddle:
+          description: Paddle Billing details. Should only be used when type is paddle.
+          type: object
+          nullable: true
+          properties:
+            paddle_api_key:
+              description: Paddle Server-side API key provided on the Paddle dashboard.
+              type: string
+              nullable: true
+              minLength: 50
+              maxLength: 50
+            paddle_is_sandbox:
+              description: Whether the app is tied to the sandbox environment.
+              nullable: false
+              type: boolean
+              example: true
     Paywall:
       type: object
       required:
@@ -6643,6 +6710,9 @@ components:
       enum:
       - subscription
       - one_time
+      - consumable
+      - non_consumable
+      - non_renewing_subscription
     ProductsFromEntitlement:
       type: object
       required:
