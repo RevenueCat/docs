@@ -2,6 +2,21 @@
 
 A custom LLM-powered integration guide generator for RevenueCat documentation.
 
+## Project Structure
+
+```
+guide-generator/
+├── interfaces/         # Core interfaces defining contracts
+├── providers/          # Implementation of different providers
+│   ├── local/         # Local embedding provider
+│   └── openai/        # OpenAI embedding provider
+├── services/          # Core business logic services
+├── utils/             # Utility functions
+├── test/              # Test suite
+├── data/              # Data storage
+└── config/            # Configuration files
+```
+
 ## Security
 
 The guide generator handles sensitive information and requires proper security setup:
@@ -20,22 +35,76 @@ The guide generator handles sensitive information and requires proper security s
    - `VERBOSE_LOGS`: Enable detailed logging (true/false)
    - `TEST_MODE`: Enable test mode for development (true/false)
 
-2. **File Structure**
-
-   - All sensitive code is in `/scripts/guide-generator/`
-   - Utils are split between shared and guide-specific
-   - Security utilities handle sensitive data
-
-3. **API Keys**
-
-   - API keys are validated and sanitized in logs
-   - Missing keys result in graceful degradation
-   - Keys are never logged or exposed
-
-4. **File Access**
+2. **File Access**
    - All file paths are validated
    - Directory traversal is prevented
    - Output files are timestamped
+
+## Core Components
+
+1. **Interfaces**
+
+   - `embedding-provider.interface.js`: Contract for embedding providers
+   - `embedding-manager.interface.js`: Contract for embedding management
+   - `chunk.interface.js`: Contract for document chunks
+
+2. **Providers**
+
+   - **OpenAI Provider**: High-quality embeddings using OpenAI API
+   - **Local Provider**: Fast local embeddings using @xenova/transformers
+
+3. **Services**
+   - `embedding-manager.js`: Manages embedding generation and storage
+   - `chunking.js`: Handles document splitting and processing
+   - `analysis.js`: Analyzes content and requirements
+   - `generation.js`: Generates custom guides
+   - `scoring.js`: Handles content scoring and ranking
+   - `pdf-generator.js`: Creates PDF output
+
+## Dependencies
+
+- `openai`: For high-quality embeddings and text generation
+- `@xenova/transformers`: For local text processing and embeddings
+- `dotenv`: For environment variable management
+
+## Usage
+
+```bash
+# Generate a guide
+node cli.js --platform android --type new-user
+
+# Test the analysis component
+yarn test-analysis
+
+# Test the chunking component
+yarn test-chunking
+
+# Test the full pipeline
+yarn test-pipeline
+
+# Verify providers
+yarn verify-providers
+```
+
+## Embeddings Management
+
+The guide generator uses pre-computed embeddings stored in `data/embeddings.json` to efficiently match documentation chunks with user requirements.
+
+### Current Implementation
+
+- **Location**: `data/embeddings.json`
+- **Contents**:
+  - Documentation chunks with their embeddings
+  - Metadata including file paths and timestamps
+- **Generation**: Use `scripts/embed-official-docs.js` to generate/update embeddings
+
+### Future Plans
+
+- Move to a dedicated microservice for:
+  - Better scalability
+  - Proper database storage
+  - Versioning support
+  - Caching and performance optimization
 
 ## Approach
 
@@ -67,52 +136,6 @@ This hybrid approach was inspired by RevenueCat's existing support ticket analys
 - **Local Processing**: Fast, efficient similarity matching
 - **OpenAI**: Complex understanding and generation
 - **Fallback**: Ensures reliability
-
-## Dependencies
-
-- `openai`: For high-quality embeddings and text generation
-- `@xenova/transformers`: For local text processing and embeddings
-- `dotenv`: For environment variable management
-
-## Usage
-
-```bash
-# Test the analysis component
-yarn test-guide-generator-analysis
-
-# Test the chunking component
-yarn test-guide-generator-chunking
-```
-
-## Architecture
-
-1. **Analysis**: Uses OpenAI to understand user requirements
-2. **Chunking**: Finds relevant documentation sections using hybrid approach
-3. **Generation**: Creates custom guides based on analysis and chunks
-
-## Embeddings Management
-
-The guide generator uses pre-computed embeddings stored in `data/embeddings.json` to efficiently match documentation chunks with user requirements.
-
-### Current Implementation (MVP)
-
-- **Location**: `scripts/guide-generator/data/embeddings.json`
-- **Size**: ~80MB (as of initial implementation)
-- **Contents**:
-  - Documentation chunks with their OpenAI and local embeddings
-  - Metadata including file paths and last update timestamps
-- **Generation**: Use `scripts/compute-embeddings.js` to generate/update embeddings
-- **Storage**: Currently stored in the repository for MVP simplicity
-
-### Future Plans
-
-- Move to a dedicated microservice for:
-  - Better scalability
-  - Proper database storage
-  - Versioning support
-  - Caching and performance optimization
-  - Authentication and rate limiting
-- This is tracked as a technical debt item for future implementation
 
 ## CLI Interface
 

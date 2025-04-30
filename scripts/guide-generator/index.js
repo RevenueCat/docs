@@ -7,7 +7,10 @@ const { scoreChunks } = require("./services/scoring");
 const { generateGuide } = require("./services/generation");
 const { validatePath } = require("./utils/security");
 const { execSync } = require("child_process");
-const { loadStoredEmbeddings } = require("./services/embedding-manager");
+const EmbeddingManager = require("./services/embedding-manager");
+
+// Initialize embedding manager
+const embeddingManager = new EmbeddingManager();
 
 /**
  * Ensures embeddings exist and are valid
@@ -16,7 +19,13 @@ const { loadStoredEmbeddings } = require("./services/embedding-manager");
 async function ensureEmbeddings() {
   try {
     log("Checking embeddings...");
-    const embeddings = await loadStoredEmbeddings();
+
+    // Initialize the manager if not already initialized
+    if (!embeddingManager.isInitialized()) {
+      await embeddingManager.initialize();
+    }
+
+    const embeddings = await embeddingManager.loadStoredEmbeddings();
 
     log(`Received embeddings type: ${typeof embeddings}`);
     log(`Is Array: ${Array.isArray(embeddings)}`);
@@ -46,7 +55,7 @@ async function ensureEmbeddings() {
     log(`First item type: ${typeof firstItem}`);
     log(`First item keys: ${Object.keys(firstItem || {}).join(", ")}`);
 
-    if (!firstItem.content || !firstItem.filePath) {
+    if (!firstItem.getContent() || !firstItem.getMetadata().filePath) {
       log("Invalid embeddings format - missing required fields", true);
       return false;
     }
@@ -71,7 +80,7 @@ async function generateCustomGuide(options) {
     const embeddingsValid = await ensureEmbeddings();
     if (!embeddingsValid) {
       log(
-        "Please run 'node scripts/guide-generator/scripts/compute-embeddings.js' first.",
+        "Please run 'node scripts/guide-generator/scripts/embed-official-docs.js' first.",
         true,
       );
       process.exit(1);

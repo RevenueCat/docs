@@ -43,8 +43,19 @@ const fs = require("fs");
 const path = require("path");
 const { pipeline } = require("@xenova/transformers");
 const OpenAI = require("openai");
-const { loadStoredEmbeddings } = require("./embedding-manager");
-const { getEnv } = require("../utils/security");
+const {
+  getEnv,
+  validatePath,
+  safeOperation,
+  initOpenAI,
+} = require("../utils/security");
+const OpenAIEmbeddingProvider = require("../providers/openai/openai-embedding-provider");
+const LocalEmbeddingProvider = require("../providers/local/local-embedding-provider");
+const EmbeddingManager = require("./embedding-manager");
+const IChunk = require("../interfaces/chunk.interface.js");
+
+// Initialize embedding manager
+const embeddingManager = new EmbeddingManager();
 
 // Initialize OpenAI client
 const openai = new OpenAI({
@@ -65,6 +76,10 @@ async function initializeTransformer() {
   return sentenceTransformer;
 }
 
+// Initialize providers
+const openAIProvider = new OpenAIEmbeddingProvider();
+const localProvider = new LocalEmbeddingProvider();
+
 /**
  * Creates embeddings for context using OpenAI
  * @param {string} text - Text to create embedding for
@@ -73,13 +88,12 @@ async function initializeTransformer() {
 async function createContextEmbedding(text) {
   try {
     log("Creating context embedding...");
-    const response = await openai.embeddings.create({
-      model: "text-embedding-3-small",
-      input: text,
-      encoding_format: "float",
-    });
+    if (!openAIProvider.isInitialized()) {
+      await openAIProvider.initialize();
+    }
+    const embedding = await openAIProvider.createEmbedding(text);
     log("Context embedding created successfully");
-    return response.data[0].embedding;
+    return embedding;
   } catch (error) {
     log(`Error creating context embedding: ${error.message}`, true);
     return null;
@@ -94,10 +108,12 @@ async function createContextEmbedding(text) {
 async function createContextLocalEmbedding(text) {
   try {
     log("Creating local context embedding...");
-    const model = await initializeTransformer();
-    const output = await model(text, { pooling: "mean", normalize: true });
+    if (!localProvider.isInitialized()) {
+      await localProvider.initialize();
+    }
+    const embedding = await localProvider.createEmbedding(text);
     log("Local context embedding created successfully");
-    return Array.from(output.data);
+    return embedding;
   } catch (error) {
     log(`Error creating local context embedding: ${error.message}`, true);
     return null;
@@ -224,8 +240,13 @@ async function findRelevantChunks(analyzedContext) {
   try {
     log("\n🔍 Finding relevant documentation chunks...");
 
+    // Initialize the manager if not already initialized
+    if (!embeddingManager.isInitialized()) {
+      await embeddingManager.initialize();
+    }
+
     // Load pre-computed embeddings
-    const chunksWithEmbeddings = await loadStoredEmbeddings();
+    const chunksWithEmbeddings = await embeddingManager.loadStoredEmbeddings();
     if (chunksWithEmbeddings.length === 0) {
       log(
         "\n❌ No pre-computed embeddings found. Please run the embedding computation first.",
@@ -249,6 +270,16 @@ async function findRelevantChunks(analyzedContext) {
     // Score chunks using pre-computed embeddings
     const scoredChunks = chunksWithEmbeddings.map((chunk) => {
       let score = 0;
+
+      // Log chunk structure for debugging
+      log(`\n🔍 Processing chunk:`, {
+        content: chunk.content ? "present" : "missing",
+        filePath: chunk.filePath ? "present" : "missing",
+        header: chunk.header ? "present" : "missing",
+        hasOpenAIEmbedding: chunk.openAIEmbedding ? "present" : "missing",
+        hasLocalEmbedding: chunk.localEmbedding ? "present" : "missing",
+        isIChunk: chunk instanceof IChunk ? "yes" : "no",
+      });
 
       // Calculate embedding-based scores
       if (contextEmbedding && chunk.openAIEmbedding) {
@@ -419,7 +450,22 @@ async function findRelevantChunks(analyzedContext) {
         score -= 2;
       }
 
-      return { ...chunk, score };
+      // Add score to the chunk
+      const metadata = {
+        filePath: chunk.filePath || chunk.path || "unknown",
+        header: chunk.header || "Introduction",
+        lastUpdated: chunk.lastUpdated || new Date().toISOString(),
+      };
+
+      const embeddings = {
+        openAI: chunk.openAIEmbedding || chunk.openAI,
+        local: chunk.localEmbedding || chunk.local,
+      };
+
+      const scoredChunk = new IChunk(chunk.content, metadata, embeddings);
+      scoredChunk.score = score;
+
+      return scoredChunk;
     });
 
     log(`\n✅ Found ${scoredChunks.length} chunks with embeddings`);
@@ -428,10 +474,7 @@ async function findRelevantChunks(analyzedContext) {
       .filter((chunk) => chunk.score >= 1)
       .sort((a, b) => b.score - a.score);
   } catch (error) {
-    log(`\n❌ Error finding chunks: ${error.message}`, true);
-    if (error.stack) {
-      log("Stack trace:", error.stack, true);
-    }
+    log(`Error finding relevant chunks: ${error.message}`, true);
     return [];
   }
 }
@@ -439,7 +482,7 @@ async function findRelevantChunks(analyzedContext) {
 /**
  * Creates chunks from documentation files
  * @param {string} docsPath - Path to documentation directory
- * @returns {Promise<Array>} - Array of document chunks
+ * @returns {Promise<Array<IChunk>>} - Array of document chunks
  */
 async function createChunks(docsPath) {
   try {
@@ -447,7 +490,7 @@ async function createChunks(docsPath) {
 
     // Load stored embeddings
     log("Loading stored embeddings for chunking...");
-    const embeddings = await loadStoredEmbeddings();
+    const embeddings = await embeddingManager.loadStoredEmbeddings();
     if (!embeddings || !Array.isArray(embeddings)) {
       throw new Error(`Invalid embeddings format: ${typeof embeddings}`);
     }
@@ -467,14 +510,18 @@ async function createChunks(docsPath) {
             return null;
           }
 
-          return {
-            content: embedding.content,
-            path: embedding.filePath,
-            platform: embedding.platform || [],
-            tags: embedding.tags || [],
-            openAIEmbedding: embedding.openAIEmbedding,
-            localEmbedding: embedding.localEmbedding,
-          };
+          return new IChunk(
+            embedding.content,
+            {
+              filePath: embedding.filePath,
+              header: embedding.header || "Introduction",
+              lastUpdated: embedding.lastUpdated || new Date().toISOString(),
+            },
+            {
+              openAI: embedding.openAIEmbedding,
+              local: embedding.localEmbedding,
+            },
+          );
         } catch (error) {
           log(`Error processing embedding ${index}: ${error.message}`, true);
           return null;

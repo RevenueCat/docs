@@ -10,14 +10,59 @@ User Input --> LLM Pre-processing Step (reasoning) --> Reformulated Query --> Re
 
 ## Test Files
 
-### 1. `test-analysis-scenarios.js`
+### 1. Core Tests
 
-- Tests the LLM pre-processing step
-- Contains natural language user inputs
-- Verifies the LLM's ability to understand and structure user requirements
-- Outputs analyzed context with platform-specific needs, credentials, etc.
+- `test-analysis.js`: Tests the analysis component
+- `test-chunking.js`: Tests the chunking service
+- `test-pipeline.js`: Tests the full generation pipeline
+- `verify-providers.js`: Verifies embedding providers functionality
 
-Example:
+### 2. Scenario Tests
+
+- `test-analysis-scenarios.js`: Tests analysis with predefined scenarios
+- `test-chunking-scenarios.js`: Tests chunking with predefined scenarios
+- `test-scenarios.js`: Common test scenarios and utilities
+- `mock-analysis.js`: Mock data for testing
+
+## Running Tests
+
+```bash
+# Test Analysis
+yarn test-analysis
+
+# Test Chunking
+yarn test-chunking
+
+# Test Full Pipeline
+yarn test-pipeline
+
+# Verify Providers
+yarn verify-providers
+```
+
+## Test Scenarios
+
+### Analysis Scenarios
+
+- `android_new_user`: New Android integration with backend
+- `ios_existing_user`: Adding iOS to existing React Native app
+- `flutter_setup`: Setting up Flutter with custom backend
+
+### Chunking Scenarios
+
+- `android_new_user`: Technical implementation details for Android
+- `ios_existing_user`: Migration and integration details for iOS
+- `flutter_setup`: Flutter-specific setup and configuration
+
+### Provider Verification
+
+- Tests both OpenAI and local embedding providers
+- Verifies embedding generation and storage
+- Checks provider initialization and error handling
+
+## Example Outputs
+
+### Analysis Output
 
 ```javascript
 {
@@ -29,14 +74,7 @@ Example:
 }
 ```
 
-### 2. `test-chunking-scenarios.js`
-
-- Tests the documentation chunking service
-- Contains detailed technical scenarios with specific goals and constraints
-- Verifies the chunking service's ability to find relevant documentation
-- Used to test scoring and relevance of documentation chunks
-
-Example:
+### Chunking Output
 
 ```javascript
 {
@@ -54,31 +92,3 @@ Example:
   ]
 }
 ```
-
-## Running Tests
-
-1. Test Analysis:
-
-```bash
-yarn test-analysis android_new_user
-```
-
-2. Test Chunking:
-
-```bash
-yarn test-chunking android_new_user
-```
-
-## Test Scenarios
-
-### Analysis Scenarios
-
-- `android_new_user`: New Android integration with backend
-- `ios_existing_user`: Adding iOS to existing React Native app
-- `flutter_setup`: Setting up Flutter with custom backend
-
-### Chunking Scenarios
-
-- `android_new_user`: Technical implementation details for Android
-- `ios_existing_user`: Migration and integration details for iOS
-- `flutter_setup`: Flutter-specific setup and configuration

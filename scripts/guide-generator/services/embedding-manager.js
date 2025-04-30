@@ -1,269 +1,290 @@
-/**
- * Embedding Manager Service
- *
- * This service manages pre-computed embeddings for documentation chunks.
- * It handles:
- * 1. Computing and storing embeddings for all documentation
- * 2. Loading embeddings when needed
- * 3. Updating embeddings when documentation changes
- */
-
-const { log } = require("../utils/env");
 const fs = require("fs");
 const path = require("path");
-const { pipeline } = require("@xenova/transformers");
-const OpenAI = require("openai");
+const { log } = require("../utils/env");
 const {
   getEnv,
+  validateInput,
   validatePath,
   safeOperation,
   initOpenAI,
 } = require("../utils/security");
+const IEmbeddingManager = require("../interfaces/embedding-manager");
+const IChunk = require("../interfaces/chunk.interface");
+const OpenAIEmbeddingProvider = require("../providers/openai/openai-embedding-provider");
+const LocalEmbeddingProvider = require("../providers/local/local-embedding-provider");
 
-// Initialize OpenAI client
-const openai = initOpenAI();
-
-// Initialize sentence transformer
-let sentenceTransformer;
-async function initializeTransformer() {
-  if (!sentenceTransformer) {
-    log("Initializing local sentence transformer model...");
-    sentenceTransformer = await pipeline(
-      "feature-extraction",
-      "Xenova/all-MiniLM-L6-v2",
-    );
-    log("Local model initialized successfully");
-  }
-  return sentenceTransformer;
-}
-
-// Path to store embeddings
+// Path constants - single source of truth
 const EMBEDDINGS_PATH = validatePath(
-  path.resolve(process.cwd(), "scripts/guide-generator/data/embeddings.json"),
+  path.resolve(process.cwd(), "data/embeddings.json"),
 );
-const DATA_DIR = validatePath(
-  path.resolve(process.cwd(), "scripts/guide-generator/data"),
-);
+const DATA_DIR = validatePath(path.resolve(process.cwd(), "data"));
 
-/**
- * Ensures the data directory exists and creates an empty embeddings file if needed
- * @returns {void}
- */
-function setupDataDirectory() {
-  return safeOperation(() => {
-    // Create data directory if it doesn't exist
-    if (!fs.existsSync(DATA_DIR)) {
-      log("Creating data directory...");
-      fs.mkdirSync(DATA_DIR, { recursive: true });
-    }
-
-    // Create empty embeddings file if it doesn't exist
-    if (!fs.existsSync(EMBEDDINGS_PATH)) {
-      log("Creating empty embeddings file...");
-      fs.writeFileSync(EMBEDDINGS_PATH, JSON.stringify([], null, 2));
-    }
-  }, "setupDataDirectory");
-}
-
-/**
- * Creates embeddings for a batch of texts using OpenAI
- * @param {Array<string>} texts - Array of texts to create embeddings for
- * @returns {Promise<Array>} - Array of embedding vectors
- */
-async function createOpenAIEmbeddings(texts) {
-  try {
-    log(`Creating OpenAI embeddings for ${texts.length} texts...`);
-    const response = await openai.embeddings.create({
-      model: "text-embedding-3-small",
-      input: texts,
-      encoding_format: "float",
-    });
-    log("OpenAI embeddings created successfully");
-    return response.data.map((item) => item.embedding);
-  } catch (error) {
-    log(`Error creating OpenAI embeddings: ${error.message}`, true);
-    return null;
+class EmbeddingManager extends IEmbeddingManager {
+  constructor() {
+    super();
+    this.initialized = false;
+    this.openAIProvider = new OpenAIEmbeddingProvider();
+    this.localProvider = new LocalEmbeddingProvider();
   }
-}
 
-/**
- * Creates embeddings for a batch of texts using sentence transformer
- * @param {Array<string>} texts - Array of texts to create embeddings for
- * @returns {Promise<Array>} - Array of embedding vectors
- */
-async function createLocalEmbeddings(texts) {
-  try {
-    log(`Creating local embeddings for ${texts.length} texts...`);
-    const model = await initializeTransformer();
-    const outputs = await Promise.all(
-      texts.map((text) => model(text, { pooling: "mean", normalize: true })),
-    );
-    log("Local embeddings created successfully");
-    return outputs.map((output) => Array.from(output.data));
-  } catch (error) {
-    log(`Error creating local embeddings: ${error.message}`, true);
-    return null;
+  async initialize() {
+    try {
+      log("Initializing embedding manager...");
+
+      // Initialize providers with proper error handling
+      await safeOperation(async () => {
+        await this.openAIProvider.initialize();
+        await this.localProvider.initialize();
+      }, "initializeProviders");
+
+      // Setup data directory with path validation
+      this.setupDataDirectory();
+
+      this.initialized = true;
+      log("Embedding manager initialized successfully");
+    } catch (error) {
+      log(`Error initializing embedding manager: ${error.message}`, true);
+      throw error;
+    }
   }
-}
 
-/**
- * Loads all documentation chunks and their metadata
- * @returns {Array} - Array of documentation chunks with metadata
- */
-function loadDocumentationChunks() {
-  const docsRoot = path.join(process.cwd(), "docs");
-  const chunks = [];
+  isInitialized() {
+    return this.initialized;
+  }
 
-  function processDirectory(dirPath) {
-    const entries = fs.readdirSync(dirPath, { withFileTypes: true });
-
-    for (const entry of entries) {
-      const fullPath = path.join(dirPath, entry.name);
-
-      if (entry.isDirectory()) {
-        processDirectory(fullPath);
-      } else if (
-        entry.isFile() &&
-        (entry.name.endsWith(".md") || entry.name.endsWith(".mdx"))
-      ) {
-        const content = fs.readFileSync(fullPath, "utf8");
-        const fileChunks = splitIntoChunks(content, fullPath);
-        chunks.push(...fileChunks);
+  setupDataDirectory() {
+    return safeOperation(() => {
+      // Create data directory if it doesn't exist
+      if (!fs.existsSync(DATA_DIR)) {
+        log("Creating data directory...");
+        fs.mkdirSync(DATA_DIR, { recursive: true });
       }
-    }
+
+      // Create empty embeddings file if it doesn't exist
+      if (!fs.existsSync(EMBEDDINGS_PATH)) {
+        log("Creating empty embeddings file...");
+        fs.writeFileSync(EMBEDDINGS_PATH, JSON.stringify([], null, 2));
+      }
+    }, "setupDataDirectory");
   }
 
-  processDirectory(docsRoot);
-  return chunks;
-}
+  async loadDocumentationChunks() {
+    return safeOperation(() => {
+      const docsRoot = validatePath(path.join(process.cwd(), "docs"));
+      const chunks = [];
 
-/**
- * Splits markdown content into chunks
- * @param {string} content - Markdown content
- * @param {string} filePath - Path to the file
- * @returns {Array} - Array of content chunks
- */
-function splitIntoChunks(content, filePath) {
-  const headerRegex = /^#{2,3}\s+(.+)$/gm;
-  const chunks = [];
-  let lastIndex = 0;
-  let match;
+      function processDirectory(dirPath) {
+        const entries = fs.readdirSync(dirPath, { withFileTypes: true });
 
-  while ((match = headerRegex.exec(content)) !== null) {
-    const header = match[1];
-    const startIndex = lastIndex;
-    const endIndex = match.index;
+        for (const entry of entries) {
+          const fullPath = validatePath(path.join(dirPath, entry.name));
 
-    if (startIndex < endIndex) {
-      chunks.push({
-        content: content.substring(startIndex, endIndex).trim(),
-        header: header,
-        filePath: filePath,
-      });
-    }
+          if (entry.isDirectory()) {
+            processDirectory(fullPath);
+          } else if (
+            entry.isFile() &&
+            (entry.name.endsWith(".md") || entry.name.endsWith(".mdx"))
+          ) {
+            const content = fs.readFileSync(fullPath, "utf8");
+            validateInput(content, "string", "file content");
+            const fileChunks = this.splitIntoChunks(content, fullPath);
+            chunks.push(...fileChunks);
+          }
+        }
+      }
 
-    lastIndex = endIndex;
+      processDirectory(docsRoot);
+      return chunks;
+    }, "loadDocumentationChunks");
   }
 
-  if (lastIndex < content.length) {
-    chunks.push({
-      content: content.substring(lastIndex).trim(),
+  splitIntoChunks(content, filePath) {
+    validateInput(content, "string", "content");
+    validateInput(filePath, "string", "filePath");
+    validatePath(filePath);
+
+    // Extract frontmatter if present
+    const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
+    let metadata = {
+      filePath,
       header: "Introduction",
-      filePath: filePath,
-    });
-  }
+      lastUpdated: new Date().toISOString(),
+    };
 
-  return chunks;
-}
+    if (frontmatterMatch) {
+      const frontmatter = frontmatterMatch[1];
+      const lines = frontmatter.split("\n");
+      for (const line of lines) {
+        const [key, ...valueParts] = line.split(":");
+        if (key && valueParts.length > 0) {
+          const value = valueParts.join(":").trim();
+          switch (key.trim()) {
+            case "title":
+              metadata.header = value;
+              break;
+            case "lastUpdated":
+              metadata.lastUpdated = value;
+              break;
+          }
+        }
+      }
+      // Remove frontmatter from content
+      content = content.replace(/^---\n[\s\S]*?\n---\n/, "");
+    }
 
-/**
- * Computes and stores embeddings for all documentation chunks
- * @returns {Promise<void>}
- */
-async function computeDocsEmbeddings() {
-  try {
-    // Ensure data directory exists
-    setupDataDirectory();
-
-    log("Loading documentation chunks...");
-    const chunks = loadDocumentationChunks();
-    log(`Found ${chunks.length} chunks to process`);
-
-    // Process chunks in batches
-    const batchSize = 10;
-    const embeddings = [];
-
-    for (let i = 0; i < chunks.length; i += batchSize) {
-      const batch = chunks.slice(i, i + batchSize);
-      const batchTexts = batch.map((chunk) => chunk.content);
-
-      log(
-        `Processing batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(chunks.length / batchSize)}...`,
-      );
-
-      // Get embeddings for the batch
-      const openAIEmbeddings = await createOpenAIEmbeddings(batchTexts);
-      const localEmbeddings = await createLocalEmbeddings(batchTexts);
-
-      // Store embeddings with metadata
-      for (let j = 0; j < batch.length; j++) {
-        embeddings.push({
-          ...batch[j],
-          openAIEmbedding: openAIEmbeddings ? openAIEmbeddings[j] : null,
-          localEmbedding: localEmbeddings ? localEmbeddings[j] : null,
-          lastUpdated: new Date().toISOString(),
-        });
+    // Extract first heading if no title in frontmatter
+    if (metadata.header === "Introduction") {
+      const headingMatch = content.match(/^#+\s+(.+)$/m);
+      if (headingMatch) {
+        metadata.header = headingMatch[1];
       }
     }
 
-    // Save embeddings to file
-    fs.writeFileSync(EMBEDDINGS_PATH, JSON.stringify(embeddings, null, 2));
-    log(`Successfully stored embeddings for ${embeddings.length} chunks`);
-  } catch (error) {
-    log(`Error computing embeddings: ${error.message}`, true);
-    throw error;
+    // Split content into chunks based on headings
+    const chunks = [];
+    const sections = content.split(/(?=^#+\s+)/m);
+
+    for (const section of sections) {
+      if (!section.trim()) continue;
+
+      const sectionHeaderMatch = section.match(/^#+\s+(.+)$/m);
+      const sectionHeader = sectionHeaderMatch
+        ? sectionHeaderMatch[1]
+        : metadata.header;
+
+      chunks.push(
+        new IChunk(section.trim(), {
+          ...metadata,
+          header: sectionHeader,
+        }),
+      );
+    }
+
+    return chunks;
+  }
+
+  async computeDocsEmbeddings() {
+    try {
+      if (!this.isInitialized()) {
+        throw new Error("Embedding manager not initialized");
+      }
+
+      log("Loading documentation chunks...");
+      const chunks = await this.loadDocumentationChunks();
+      validateInput(chunks, "object", "chunks");
+      log(`Found ${chunks.length} chunks to process`);
+
+      // Process chunks in batches
+      const batchSize = 10;
+      const embeddings = [];
+
+      for (let i = 0; i < chunks.length; i += batchSize) {
+        const batch = chunks.slice(i, i + batchSize);
+        const batchTexts = batch.map((chunk) => {
+          const content = chunk.getContent();
+          validateInput(content, "string", "chunk content");
+          return content;
+        });
+
+        log(
+          `Processing batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(chunks.length / batchSize)}...`,
+        );
+
+        // Get embeddings for the batch with error handling
+        const [openAIEmbeddings, localEmbeddings] = await Promise.all([
+          safeOperation(
+            () => this.createOpenAIEmbeddings(batchTexts),
+            "createOpenAIEmbeddings",
+          ),
+          safeOperation(
+            () => this.createLocalEmbeddings(batchTexts),
+            "createLocalEmbeddings",
+          ),
+        ]);
+
+        // Store embeddings with metadata
+        for (let j = 0; j < batch.length; j++) {
+          const chunk = batch[j];
+          chunk.setEmbeddings({
+            openAI: openAIEmbeddings ? openAIEmbeddings[j] : null,
+            local: localEmbeddings ? localEmbeddings[j] : null,
+          });
+          embeddings.push(chunk);
+        }
+      }
+
+      // Save embeddings to file with proper error handling
+      await safeOperation(() => {
+        fs.writeFileSync(
+          EMBEDDINGS_PATH,
+          JSON.stringify(
+            embeddings.map((chunk) => ({
+              content: chunk.getContent(),
+              metadata: chunk.getMetadata(),
+              embeddings: chunk.getEmbeddings(),
+            })),
+            null,
+            2,
+          ),
+        );
+      }, "saveEmbeddings");
+
+      log(`Successfully stored embeddings for ${embeddings.length} chunks`);
+    } catch (error) {
+      log(`Error computing embeddings: ${error.message}`, true);
+      throw error;
+    }
+  }
+
+  async loadStoredEmbeddings() {
+    return safeOperation(() => {
+      log(`Attempting to load embeddings from: ${EMBEDDINGS_PATH}`);
+
+      if (!fs.existsSync(EMBEDDINGS_PATH)) {
+        log("No stored embeddings found at the specified path", true);
+        return [];
+      }
+
+      const data = fs.readFileSync(EMBEDDINGS_PATH, "utf8");
+      const parsed = JSON.parse(data);
+      validateInput(parsed, "object", "parsed embeddings");
+
+      return parsed.map((item) => {
+        validateInput(item.content, "string", "chunk content");
+        validateInput(item.filePath, "string", "chunk filePath");
+
+        // Convert the current format to the expected format
+        const metadata = {
+          filePath: item.filePath,
+          header: item.header,
+          lastUpdated: item.lastUpdated,
+        };
+
+        const embeddings = {
+          openAI: item.openAIEmbedding,
+          local: item.localEmbedding,
+        };
+
+        return new IChunk(item.content, metadata, embeddings);
+      });
+    }, "loadStoredEmbeddings");
+  }
+
+  async createOpenAIEmbeddings(texts) {
+    validateInput(texts, "object", "texts");
+    if (!this.openAIProvider.isInitialized()) {
+      throw new Error("OpenAI provider not initialized");
+    }
+    return this.openAIProvider.createEmbeddings(texts);
+  }
+
+  async createLocalEmbeddings(texts) {
+    validateInput(texts, "object", "texts");
+    if (!this.localProvider.isInitialized()) {
+      throw new Error("Local provider not initialized");
+    }
+    return this.localProvider.createEmbeddings(texts);
   }
 }
 
-/**
- * Loads stored embeddings
- * @returns {Promise<Array>} - Array of chunks with their embeddings
- */
-async function loadStoredEmbeddings() {
-  return safeOperation(() => {
-    log(`Attempting to load embeddings from: ${EMBEDDINGS_PATH}`);
-
-    if (!fs.existsSync(EMBEDDINGS_PATH)) {
-      log("No stored embeddings found at the specified path", true);
-      return [];
-    }
-
-    log("Embeddings file exists, attempting to read...");
-    const data = fs.readFileSync(EMBEDDINGS_PATH, "utf8");
-    log("File read successfully, parsing JSON...");
-
-    const parsed = JSON.parse(data);
-    log(`Raw parsed data type: ${typeof parsed}`);
-    log(`Is Array: ${Array.isArray(parsed)}`);
-    log(`Has length property: ${"length" in parsed}`);
-    log(`Length value: ${parsed.length}`);
-    log(`First item type: ${typeof parsed[0]}`);
-    log(`First item keys: ${Object.keys(parsed[0] || {}).join(", ")}`);
-
-    // Ensure we're returning an array
-    const result = Array.isArray(parsed) ? parsed : [];
-    log(`Returning array with ${result.length} items`);
-    return result;
-  }, "loadStoredEmbeddings").then((result) => {
-    if (result === null) {
-      log("Error in loadStoredEmbeddings operation", true);
-      return [];
-    }
-    return result;
-  });
-}
-
-module.exports = {
-  computeDocsEmbeddings,
-  loadStoredEmbeddings,
-};
+module.exports = EmbeddingManager;

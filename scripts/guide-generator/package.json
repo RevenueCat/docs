@@ -1,21 +1,24 @@
 {
-  "name": "guide-generator",
-  "version": "1.0.0",
-  "description": "Guide generator for RevenueCat documentation",
-  "main": "index.js",
+  "name": "revenuecat-guide-generator",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test-analysis": "node test/test-analysis-scenarios.js",
-    "test-chunking": "node test/test-chunking-scenarios.js",
-    "compute-embeddings": "node scripts/compute-embeddings.js",
-    "setup-embeddings": "node scripts/setup-data-directory.js",
-    "generate-guide": "node scripts/generate-guide.js"
+    "test-analysis": "node test/test-analysis.js",
+    "test-chunking": "node test/test-chunking.js",
+    "test-pipeline": "node test/test-pipeline.js",
+    "embed-official-docs": "node scripts/embed-official-docs.js",
+    "verify-providers": "node test/verify-providers.js",
+    "generate-guide": "node cli.js"
   },
   "dependencies": {
     "@xenova/transformers": "^2.15.1",
     "dotenv": "^16.4.5",
-    "marked": "^12.0.0",
-    "openai": "^4.28.4",
-    "puppeteer": "^22.0.0"
+    "openai": "^4.28.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  },
+  "engines": {
+    "node": ">=22.0"
   }
 }
