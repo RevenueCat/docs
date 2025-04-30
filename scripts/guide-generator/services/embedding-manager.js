@@ -8,16 +8,20 @@
  * 3. Updating embeddings when documentation changes
  */
 
-const { log } = require("../../utils/env");
+const { log } = require("../utils/env");
 const fs = require("fs");
 const path = require("path");
 const { pipeline } = require("@xenova/transformers");
 const OpenAI = require("openai");
+const {
+  getEnv,
+  validatePath,
+  safeOperation,
+  initOpenAI,
+} = require("../utils/security");
 
 // Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const openai = initOpenAI();
 
 // Initialize sentence transformer
 let sentenceTransformer;
@@ -34,18 +38,19 @@ async function initializeTransformer() {
 }
 
 // Path to store embeddings
-const EMBEDDINGS_PATH = path.join(
-  process.cwd(),
-  "scripts/guide-generator/data/embeddings.json",
+const EMBEDDINGS_PATH = validatePath(
+  path.resolve(process.cwd(), "scripts/guide-generator/data/embeddings.json"),
 );
-const DATA_DIR = path.join(process.cwd(), "scripts/guide-generator/data");
+const DATA_DIR = validatePath(
+  path.resolve(process.cwd(), "scripts/guide-generator/data"),
+);
 
 /**
  * Ensures the data directory exists and creates an empty embeddings file if needed
  * @returns {void}
  */
 function setupDataDirectory() {
-  try {
+  return safeOperation(() => {
     // Create data directory if it doesn't exist
     if (!fs.existsSync(DATA_DIR)) {
       log("Creating data directory...");
@@ -57,10 +62,7 @@ function setupDataDirectory() {
       log("Creating empty embeddings file...");
       fs.writeFileSync(EMBEDDINGS_PATH, JSON.stringify([], null, 2));
     }
-  } catch (error) {
-    log(`Error setting up data directory: ${error.message}`, true);
-    throw error;
-  }
+  }, "setupDataDirectory");
 }
 
 /**
@@ -178,7 +180,7 @@ function splitIntoChunks(content, filePath) {
  * Computes and stores embeddings for all documentation chunks
  * @returns {Promise<void>}
  */
-async function computeAndStoreEmbeddings() {
+async function computeDocsEmbeddings() {
   try {
     // Ensure data directory exists
     setupDataDirectory();
@@ -225,24 +227,43 @@ async function computeAndStoreEmbeddings() {
 
 /**
  * Loads stored embeddings
- * @returns {Array} - Array of chunks with their embeddings
+ * @returns {Promise<Array>} - Array of chunks with their embeddings
  */
-function loadStoredEmbeddings() {
-  try {
+async function loadStoredEmbeddings() {
+  return safeOperation(() => {
+    log(`Attempting to load embeddings from: ${EMBEDDINGS_PATH}`);
+
     if (!fs.existsSync(EMBEDDINGS_PATH)) {
-      log("No stored embeddings found");
+      log("No stored embeddings found at the specified path", true);
       return [];
     }
 
+    log("Embeddings file exists, attempting to read...");
     const data = fs.readFileSync(EMBEDDINGS_PATH, "utf8");
-    return JSON.parse(data);
-  } catch (error) {
-    log(`Error loading embeddings: ${error.message}`, true);
-    return [];
-  }
+    log("File read successfully, parsing JSON...");
+
+    const parsed = JSON.parse(data);
+    log(`Raw parsed data type: ${typeof parsed}`);
+    log(`Is Array: ${Array.isArray(parsed)}`);
+    log(`Has length property: ${"length" in parsed}`);
+    log(`Length value: ${parsed.length}`);
+    log(`First item type: ${typeof parsed[0]}`);
+    log(`First item keys: ${Object.keys(parsed[0] || {}).join(", ")}`);
+
+    // Ensure we're returning an array
+    const result = Array.isArray(parsed) ? parsed : [];
+    log(`Returning array with ${result.length} items`);
+    return result;
+  }, "loadStoredEmbeddings").then((result) => {
+    if (result === null) {
+      log("Error in loadStoredEmbeddings operation", true);
+      return [];
+    }
+    return result;
+  });
 }
 
 module.exports = {
-  computeAndStoreEmbeddings,
+  computeDocsEmbeddings,
   loadStoredEmbeddings,
 };

@@ -1,4 +1,4 @@
-const { log } = require("../../utils/env");
+const { log } = require("../utils/env");
 const { findRelevantChunks } = require("../services/chunking");
 const { getMockAnalysis } = require("./mock-analysis");
 

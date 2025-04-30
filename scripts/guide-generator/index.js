@@ -5,6 +5,60 @@ const { analyzeUserContext } = require("./services/analysis");
 const { createChunks } = require("./services/chunking");
 const { scoreChunks } = require("./services/scoring");
 const { generateGuide } = require("./services/generation");
+const { validatePath } = require("./utils/security");
+const { execSync } = require("child_process");
+const { loadStoredEmbeddings } = require("./services/embedding-manager");
+
+/**
+ * Ensures embeddings exist and are valid
+ * @returns {Promise<boolean>} - Whether embeddings are valid
+ */
+async function ensureEmbeddings() {
+  try {
+    log("Checking embeddings...");
+    const embeddings = await loadStoredEmbeddings();
+
+    log(`Received embeddings type: ${typeof embeddings}`);
+    log(`Is Array: ${Array.isArray(embeddings)}`);
+    log(`Has length: ${"length" in embeddings}`);
+    log(`Length: ${embeddings?.length || 0}`);
+
+    if (!embeddings) {
+      log("Failed to load embeddings - returned null/undefined", true);
+      return false;
+    }
+
+    if (!Array.isArray(embeddings)) {
+      log(
+        `Invalid embeddings format - not an array (type: ${typeof embeddings})`,
+        true,
+      );
+      return false;
+    }
+
+    if (embeddings.length === 0) {
+      log("No embeddings found in the file", true);
+      return false;
+    }
+
+    // Check if the first item has the expected structure
+    const firstItem = embeddings[0];
+    log(`First item type: ${typeof firstItem}`);
+    log(`First item keys: ${Object.keys(firstItem || {}).join(", ")}`);
+
+    if (!firstItem.content || !firstItem.filePath) {
+      log("Invalid embeddings format - missing required fields", true);
+      return false;
+    }
+
+    log(`Found ${embeddings.length} valid embeddings, proceeding...`);
+    return true;
+  } catch (error) {
+    log(`Error loading embeddings: ${error.message}`, true);
+    log(`Stack trace: ${error.stack}`, true);
+    return false;
+  }
+}
 
 /**
  * Main orchestrator for guide generation
@@ -13,6 +67,16 @@ const { generateGuide } = require("./services/generation");
  */
 async function generateCustomGuide(options) {
   try {
+    // Check embeddings
+    const embeddingsValid = await ensureEmbeddings();
+    if (!embeddingsValid) {
+      log(
+        "Please run 'node scripts/guide-generator/scripts/compute-embeddings.js' first.",
+        true,
+      );
+      process.exit(1);
+    }
+
     // Load user context
     const userContext = await loadUserContext(options);
     if (!userContext) {
@@ -29,7 +93,7 @@ async function generateCustomGuide(options) {
     log("\nReasoned Context:", JSON.stringify(reasonedContext, null, 2));
 
     // Get the docs directory path
-    const docsPath = path.resolve(__dirname, "../../docs/docs");
+    const docsPath = path.join(process.cwd(), "docs");
     log("\nLoading documentation from:", docsPath);
 
     // Verify the path exists
@@ -78,7 +142,9 @@ async function generateCustomGuide(options) {
     });
 
     // Save chunks to a JSON file for inspection
-    const outputPath = path.resolve(__dirname, "..", options.outputFile);
+    const outputPath = validatePath(
+      path.resolve(__dirname, "..", options.outputFile),
+    );
     await fs.writeFile(
       outputPath,
       JSON.stringify(
@@ -117,7 +183,9 @@ async function loadUserContext(options) {
   if (options.scenario) {
     try {
       // Load from test-context-helper.json
-      const helperPath = path.join(__dirname, "test-context-helper.json");
+      const helperPath = validatePath(
+        path.join(__dirname, "test-context-helper.json"),
+      );
       log(`Loading scenario from: ${helperPath}`, true);
       const helperContent = await fs.readFile(helperPath, "utf-8");
       const scenarios = JSON.parse(helperContent).scenarios;

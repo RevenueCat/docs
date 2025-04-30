@@ -1,5 +1,5 @@
 const { analyzeUserContext } = require("../services/analysis");
-const { log, getOpenAIKey } = require("../../utils/env");
+const { log, getOpenAIKey } = require("../utils/env");
 
 // Test scenarios for LLM pre-processing step
 const ANALYSIS_SCENARIOS = {

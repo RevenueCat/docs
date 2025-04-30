@@ -1,6 +1,11 @@
 const { OpenAI } = require("openai");
-const { getOpenAIKey, log } = require("../../utils/env");
+const { log } = require("../utils/env");
 const { BASE_KNOWLEDGE } = require("./base-knowledge");
+const {
+  validateInput,
+  safeOperation,
+  initOpenAI,
+} = require("../utils/security");
 
 /**
  * Analyzes user context and expands it into detailed technical requirements
@@ -8,6 +13,8 @@ const { BASE_KNOWLEDGE } = require("./base-knowledge");
  * @returns {Promise<Object>} - The reasoned context with detailed requirements
  */
 async function analyzeUserContext(userContext) {
+  validateInput(userContext, "object", "userContext");
+
   log("\n🔄 Initializing OpenAI client...");
   const openai = initOpenAI();
   if (!openai) {
@@ -15,7 +22,7 @@ async function analyzeUserContext(userContext) {
     return null;
   }
 
-  try {
+  return safeOperation(async () => {
     log("\n📝 Preparing analysis prompt...");
     const prompt = `Given this user context for RevenueCat integration:
 ${JSON.stringify(userContext, null, 2)}
@@ -103,27 +110,7 @@ IMPORTANT: Your response must be a valid JSON object with no additional formatti
       log("Raw response:", responseText, true);
       return null;
     }
-  } catch (error) {
-    log(`\n❌ Error in reasoning step: ${error.message}`, true);
-    if (error.stack) {
-      log("Stack trace:", error.stack, true);
-    }
-    return null;
-  }
-}
-
-function initOpenAI() {
-  try {
-    const apiKey = getOpenAIKey();
-    if (!apiKey) {
-      log("❌ Guide generation features are currently unavailable.", true);
-      return null;
-    }
-    return new OpenAI({ apiKey });
-  } catch (error) {
-    log("❌ Guide generation features are currently unavailable.", true);
-    return null;
-  }
+  }, "analyzeUserContext");
 }
 
 module.exports = {

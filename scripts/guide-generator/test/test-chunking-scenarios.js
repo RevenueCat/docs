@@ -1,5 +1,5 @@
 const { findRelevantChunks } = require("../services/chunking");
-const { log } = require("../../utils/env");
+const { log } = require("../utils/env");
 
 // Test scenarios for documentation chunking service
 const CHUNKING_SCENARIOS = {

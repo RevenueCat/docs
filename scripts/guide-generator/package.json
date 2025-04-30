@@ -8,11 +8,14 @@
     "test-analysis": "node test/test-analysis-scenarios.js",
     "test-chunking": "node test/test-chunking-scenarios.js",
     "compute-embeddings": "node scripts/compute-embeddings.js",
-    "setup-embeddings": "node scripts/setup-data-directory.js"
+    "setup-embeddings": "node scripts/setup-data-directory.js",
+    "generate-guide": "node scripts/generate-guide.js"
   },
   "dependencies": {
     "@xenova/transformers": "^2.15.1",
     "dotenv": "^16.4.5",
-    "openai": "^4.28.4"
+    "marked": "^12.0.0",
+    "openai": "^4.28.4",
+    "puppeteer": "^22.0.0"
   }
 }

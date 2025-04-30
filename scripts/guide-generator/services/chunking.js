@@ -38,16 +38,17 @@
  *    - Results are sorted by score (highest first)
  */
 
-const { log } = require("../../utils/env");
+const { log } = require("../utils/env");
 const fs = require("fs");
 const path = require("path");
 const { pipeline } = require("@xenova/transformers");
 const OpenAI = require("openai");
 const { loadStoredEmbeddings } = require("./embedding-manager");
+const { getEnv } = require("../utils/security");
 
 // Initialize OpenAI client
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: getEnv("OPENAI_API_KEY"),
 });
 
 // Initialize sentence transformer
@@ -210,6 +211,7 @@ function calculateSimilarity(text1, text2) {
   const intersection = new Set([...words1].filter((x) => words2.has(x)));
   const union = new Set([...words1, ...words2]);
 
+  // Lower the threshold for similarity matching
   return intersection.size / union.size;
 }
 
@@ -223,7 +225,7 @@ async function findRelevantChunks(analyzedContext) {
     log("\n🔍 Finding relevant documentation chunks...");
 
     // Load pre-computed embeddings
-    const chunksWithEmbeddings = loadStoredEmbeddings();
+    const chunksWithEmbeddings = await loadStoredEmbeddings();
     if (chunksWithEmbeddings.length === 0) {
       log(
         "\n❌ No pre-computed embeddings found. Please run the embedding computation first.",
@@ -273,7 +275,7 @@ async function findRelevantChunks(analyzedContext) {
         if (
           analyzedContext.platformSpecificNeeds.some((need) => {
             const similarity = calculateSimilarity(content, need);
-            return similarity > 0.7;
+            return similarity > 0.3;
           })
         ) {
           score += 5;
@@ -283,7 +285,7 @@ async function findRelevantChunks(analyzedContext) {
         if (
           analyzedContext.requiredCredentials.some((credential) => {
             const similarity = calculateSimilarity(content, credential);
-            return similarity > 0.6;
+            return similarity > 0.3;
           })
         ) {
           score += 4;
@@ -293,7 +295,7 @@ async function findRelevantChunks(analyzedContext) {
         if (
           analyzedContext.integrationSteps.some((step) => {
             const similarity = calculateSimilarity(content, step);
-            return similarity > 0.5;
+            return similarity > 0.3;
           })
         ) {
           score += 3;
@@ -303,7 +305,7 @@ async function findRelevantChunks(analyzedContext) {
         if (
           analyzedContext.testingRequirements.some((req) => {
             const similarity = calculateSimilarity(content, req);
-            return similarity > 0.5;
+            return similarity > 0.3;
           })
         ) {
           score += 2;
@@ -423,7 +425,7 @@ async function findRelevantChunks(analyzedContext) {
     log(`\n✅ Found ${scoredChunks.length} chunks with embeddings`);
 
     return scoredChunks
-      .filter((chunk) => chunk.score >= 3)
+      .filter((chunk) => chunk.score >= 1)
       .sort((a, b) => b.score - a.score);
   } catch (error) {
     log(`\n❌ Error finding chunks: ${error.message}`, true);
@@ -434,6 +436,64 @@ async function findRelevantChunks(analyzedContext) {
   }
 }
 
+/**
+ * Creates chunks from documentation files
+ * @param {string} docsPath - Path to documentation directory
+ * @returns {Promise<Array>} - Array of document chunks
+ */
+async function createChunks(docsPath) {
+  try {
+    log(`Starting chunk creation from: ${docsPath}`);
+
+    // Load stored embeddings
+    log("Loading stored embeddings for chunking...");
+    const embeddings = await loadStoredEmbeddings();
+    if (!embeddings || !Array.isArray(embeddings)) {
+      throw new Error(`Invalid embeddings format: ${typeof embeddings}`);
+    }
+    log(`Loaded ${embeddings.length} embeddings for chunking`);
+
+    // Process each embedding
+    log("Processing embeddings into chunks...");
+    const chunks = embeddings
+      .map((embedding, index) => {
+        try {
+          if (!embedding.content) {
+            log(`Warning: Embedding ${index} missing content`, true);
+            return null;
+          }
+          if (!embedding.filePath) {
+            log(`Warning: Embedding ${index} missing filePath`, true);
+            return null;
+          }
+
+          return {
+            content: embedding.content,
+            path: embedding.filePath,
+            platform: embedding.platform || [],
+            tags: embedding.tags || [],
+            openAIEmbedding: embedding.openAIEmbedding,
+            localEmbedding: embedding.localEmbedding,
+          };
+        } catch (error) {
+          log(`Error processing embedding ${index}: ${error.message}`, true);
+          return null;
+        }
+      })
+      .filter((chunk) => chunk !== null);
+
+    log(
+      `Successfully created ${chunks.length} chunks from ${embeddings.length} embeddings`,
+    );
+    return chunks;
+  } catch (error) {
+    log(`Error in createChunks: ${error.message}`, true);
+    log(`Stack trace: ${error.stack}`, true);
+    throw error;
+  }
+}
+
 module.exports = {
   findRelevantChunks,
+  createChunks,
 };
