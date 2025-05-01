@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { GuideRequest, GeneratedGuide } from "./SetupGuideGenerator/types";
 import "./GuideForm.css";
 
 interface Platform {
@@ -31,6 +32,8 @@ const GuideForm: React.FC<GuideFormProps> = ({
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
   const [hasBackend, setHasBackend] = useState<boolean>(false);
   const [description, setDescription] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   const platforms: Platform[] = [
     { id: "ios", name: "iOS", icon: "🍎" },
@@ -86,14 +89,47 @@ const GuideForm: React.FC<GuideFormProps> = ({
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit({
-      platforms: selectedPlatforms,
-      features: selectedFeatures,
-      hasBackend,
-      description,
-    });
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const request: GuideRequest = {
+        platforms: selectedPlatforms,
+        hasBackend,
+        features: selectedFeatures,
+        description,
+      };
+
+      const response = await fetch("/api/guide", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(request),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to generate guide: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      const guide: GeneratedGuide = data.guide;
+
+      // Handle the generated guide
+      onSubmit?.({
+        ...request,
+        guide,
+      });
+    } catch (error) {
+      console.error("Error generating guide:", error);
+      setError(
+        error instanceof Error ? error.message : "Failed to generate guide",
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -198,13 +234,15 @@ const GuideForm: React.FC<GuideFormProps> = ({
             />
           </div>
 
+          {error && <div className="rc-guide-form-error">{error}</div>}
+
           <div className="rc-guide-form-footer">
             <button
               type="submit"
               className="rc-guide-form-submit-button"
-              disabled={selectedPlatforms.length === 0}
+              disabled={selectedPlatforms.length === 0 || isLoading}
             >
-              Generate Guide
+              {isLoading ? "Generating..." : "Generate Guide"}
             </button>
           </div>
         </form>

@@ -1,11 +1,3 @@
-export interface DocChunk {
-  id: string;
-  content: string;
-  path: string;
-  platform?: string[];
-  tags?: string[];
-}
-
 export interface GuideSection {
   title: string;
   content: string;
@@ -27,9 +19,9 @@ export interface GeneratedGuide {
   };
 }
 
-export interface OpenAIConfig {
-  apiKey: string;
-  model: string;
-  temperature: number;
-  maxTokens: number;
+export interface GuideRequest {
+  platforms: string[];
+  hasBackend: boolean;
+  features?: string[];
+  description?: string;
 }
