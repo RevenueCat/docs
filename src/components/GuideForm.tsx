@@ -1,0 +1,216 @@
+import React, { useState } from "react";
+import "./GuideForm.css";
+
+interface Platform {
+  id: string;
+  name: string;
+  icon?: string;
+}
+
+interface Feature {
+  id: string;
+  name: string;
+  description: string;
+}
+
+interface GuideFormProps {
+  title?: string;
+  subtitle?: string;
+  onSubmit?: (formData: any) => void;
+}
+
+const GuideForm: React.FC<GuideFormProps> = ({
+  title = "Let's get started with RevenueCat",
+  subtitle = "Tell us about your setup and we'll generate a personalized guide",
+  onSubmit = (formData) => {
+    console.log("Form data:", formData);
+  },
+}) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
+  const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
+  const [hasBackend, setHasBackend] = useState<boolean>(false);
+  const [description, setDescription] = useState<string>("");
+
+  const platforms: Platform[] = [
+    { id: "ios", name: "iOS", icon: "🍎" },
+    { id: "android", name: "Android", icon: "🤖" },
+    { id: "react-native", name: "React Native", icon: "⚛️" },
+    { id: "flutter", name: "Flutter", icon: "🎯" },
+    { id: "capacitor", name: "Capacitor", icon: "⚡" },
+    { id: "unity", name: "Unity", icon: "🎮" },
+    { id: "web", name: "Web", icon: "🌐" },
+  ];
+
+  const features: Feature[] = [
+    {
+      id: "paywalls",
+      name: "Paywalls",
+      description: "Dynamic paywalls with A/B testing",
+    },
+    {
+      id: "analytics",
+      name: "Analytics",
+      description: "Charts, metrics, and data exports",
+    },
+    {
+      id: "experiments",
+      name: "Experiments",
+      description: "A/B testing for pricing and paywalls",
+    },
+    {
+      id: "entitlements",
+      name: "Entitlements",
+      description: "Manage access to features and content",
+    },
+    {
+      id: "integrations",
+      name: "Integrations",
+      description: "Connect with other tools and services",
+    },
+  ];
+
+  const handlePlatformToggle = (platformId: string) => {
+    setSelectedPlatforms((prev) =>
+      prev.includes(platformId)
+        ? prev.filter((id) => id !== platformId)
+        : [...prev, platformId],
+    );
+  };
+
+  const handleFeatureToggle = (featureId: string) => {
+    setSelectedFeatures((prev) =>
+      prev.includes(featureId)
+        ? prev.filter((id) => id !== featureId)
+        : [...prev, featureId],
+    );
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSubmit({
+      platforms: selectedPlatforms,
+      features: selectedFeatures,
+      hasBackend,
+      description,
+    });
+  };
+
+  return (
+    <div className={`rc-guide-form ${isExpanded ? "expanded" : ""}`}>
+      <div className="rc-guide-form-header">
+        <h2>{title}</h2>
+        {subtitle && <p className="rc-guide-form-subtitle">{subtitle}</p>}
+        <button
+          className="rc-guide-form-expand-button"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          {isExpanded ? "Collapse" : "Expand"} Form
+        </button>
+      </div>
+
+      {isExpanded && (
+        <form onSubmit={handleSubmit}>
+          <div className="rc-guide-form-section">
+            <h3>What platforms are you using?</h3>
+            <p className="rc-guide-form-section-description">
+              Select all that apply
+            </p>
+            <div className="rc-guide-form-platform-buttons">
+              {platforms.map((platform) => (
+                <button
+                  key={platform.id}
+                  type="button"
+                  className={`rc-guide-form-platform-button ${selectedPlatforms.includes(platform.id) ? "selected" : ""}`}
+                  onClick={() => handlePlatformToggle(platform.id)}
+                >
+                  {platform.icon && (
+                    <span className="rc-guide-form-platform-icon">
+                      {platform.icon}
+                    </span>
+                  )}
+                  {platform.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="rc-guide-form-section">
+            <h3>What features are you interested in?</h3>
+            <p className="rc-guide-form-section-description">
+              Select all that apply
+            </p>
+            <div className="rc-guide-form-feature-buttons">
+              {features.map((feature) => (
+                <button
+                  key={feature.id}
+                  type="button"
+                  className={`rc-guide-form-feature-button ${selectedFeatures.includes(feature.id) ? "selected" : ""}`}
+                  onClick={() => handleFeatureToggle(feature.id)}
+                >
+                  <div className="rc-guide-form-feature-content">
+                    <div className="rc-guide-form-feature-name">
+                      {feature.name}
+                    </div>
+                    <div className="rc-guide-form-feature-description">
+                      {feature.description}
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="rc-guide-form-section">
+            <h3>Do you have a backend?</h3>
+            <p className="rc-guide-form-section-description">
+              This helps us provide the right integration steps
+            </p>
+            <div className="rc-guide-form-backend-toggle">
+              <button
+                type="button"
+                className={`rc-guide-form-toggle-button ${hasBackend ? "selected" : ""}`}
+                onClick={() => setHasBackend(true)}
+              >
+                Yes
+              </button>
+              <button
+                type="button"
+                className={`rc-guide-form-toggle-button ${!hasBackend ? "selected" : ""}`}
+                onClick={() => setHasBackend(false)}
+              >
+                No
+              </button>
+            </div>
+          </div>
+
+          <div className="rc-guide-form-section">
+            <h3>Tell us about your setup</h3>
+            <p className="rc-guide-form-section-description">
+              What are you trying to achieve with RevenueCat?
+            </p>
+            <textarea
+              className="rc-guide-form-description-textarea"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="For example: I have a React Native app with a Node.js backend. I want to implement subscriptions and track user behavior..."
+              rows={4}
+            />
+          </div>
+
+          <div className="rc-guide-form-footer">
+            <button
+              type="submit"
+              className="rc-guide-form-submit-button"
+              disabled={selectedPlatforms.length === 0}
+            >
+              Generate Guide
+            </button>
+          </div>
+        </form>
+      )}
+    </div>
+  );
+};
+
+export default GuideForm;

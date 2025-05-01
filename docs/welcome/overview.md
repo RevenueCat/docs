@@ -72,3 +72,15 @@ Whether you have just one or one million subscribers, you can easily replace you
 Talk to an expert to learn how RevenueCat can help grow your business.
 
 <Button href="https://www.revenuecat.com/talk-to-sales/">Talk to Sales →</Button>
+
+## Need help getting started?
+
+:::warning Beta Feature
+This guide generator is currently in beta. We're actively working on improving it based on your feedback.
+:::
+
+import GuideForm from '../../src/components/GuideForm';
+
+<GuideForm />
+
+## Features

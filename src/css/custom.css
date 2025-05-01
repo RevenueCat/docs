@@ -57,15 +57,17 @@
   --ifm-color-success-contrast-background: #f6fefb;
   --ifm-color-success-contrast-foreground: #000000;
 
-  --ifm-heading-font-family: "Object Sans", "system-ui", "-apple-system",
-    "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", "sans-serif",
-    "BlinkMacSystemFont", "'Segoe UI'", "Helvetica", "Arial", "sans-serif",
-    "'Apple Color Emoji'", "'Segoe UI Emoji'", "'Segoe UI Symbol'";
-
-  --ifm-font-family-base: "system-ui", "-apple-system", "Segoe UI", "Roboto",
-    "Ubuntu", "Cantarell", "Noto Sans", "sans-serif", "BlinkMacSystemFont",
-    "'Segoe UI'", "Helvetica", "Arial", "sans-serif", "'Apple Color Emoji'",
+  --ifm-heading-font-family:
+    "Object Sans", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Ubuntu",
+    "Cantarell", "Noto Sans", "sans-serif", "BlinkMacSystemFont", "'Segoe UI'",
+    "Helvetica", "Arial", "sans-serif", "'Apple Color Emoji'",
     "'Segoe UI Emoji'", "'Segoe UI Symbol'";
+
+  --ifm-font-family-base:
+    "system-ui", "-apple-system", "Segoe UI", "Roboto", "Ubuntu", "Cantarell",
+    "Noto Sans", "sans-serif", "BlinkMacSystemFont", "'Segoe UI'", "Helvetica",
+    "Arial", "sans-serif", "'Apple Color Emoji'", "'Segoe UI Emoji'",
+    "'Segoe UI Symbol'";
 
   --primary-action-color: rgb(87, 108, 219);
 }
@@ -532,6 +534,12 @@ html[data-theme="dark"] .troubleshooting-wizard {
 .platform-button:hover {
   border-color: var(--ifm-color-primary);
   background: var(--ifm-color-emphasis-100);
+}
+
+.platform-button.selected {
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-color-primary);
+  color: white;
 }
 
 .platform-icon {
