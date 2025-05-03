@@ -3550,7 +3550,7 @@ paths:
         \ This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>."
   /projects/{project_id}/subscriptions/{subscription_id}/authenticated_management_url:
     get:
-      summary: Get an URL to access the customer portal associated with a subscription
+      summary: Get an authenticated Web Billing customer portal URL
       operationId: get-authorized-subscription-management-url
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
@@ -3602,7 +3602,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.'
+      description: "Get a secure, single-use URL that allows customers to access their\
+        \ Web Billing customer portal.\n This endpoint requires the following permission(s):\
+        \ <code>customer_information:subscriptions:read</code>."
   /projects/{project_id}/customers/{customer_id}/subscriptions:
     get:
       summary: Get a list of subscriptions associated with a customer
