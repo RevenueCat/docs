@@ -615,6 +615,13 @@ paths:
                     roku_api_key: <Your Roku Pay API Key goes here>
                     roku_channel_id: 123456
                     roku_channel_name: History Channel
+              Paddle:
+                value:
+                  name: My Paddle App
+                  type: paddle
+                  paddle:
+                    paddle_api_key: <Your Paddle API Key goes here>
+                    paddle_is_sandbox: true
       responses:
         '201':
           description: Success. The app was created
@@ -880,6 +887,24 @@ paths:
                       minLength: 1
                       maxLength: 30
                       nullable: true
+                paddle:
+                  description: Paddle Billing type details. Should only be used when
+                    type is paddle.
+                  type: object
+                  nullable: false
+                  properties:
+                    paddle_api_key:
+                      description: Paddle Server-side API key provided on the Paddle
+                        dashboard.
+                      type: string
+                      nullable: true
+                      minLength: 50
+                      maxLength: 50
+                    paddle_is_sandbox:
+                      description: Whether the app is tied to the sandbox environment.
+                      nullable: false
+                      type: boolean
+                      example: true
               additionalProperties: false
             examples:
               Update App Store App properties:
@@ -3523,6 +3548,61 @@ paths:
       description: "Cancel a Web Billing subscription by refunding the most recent\
         \ payment. The customer will immediately lose access to the associated entitlements.\n\
         \ This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>."
+  /projects/{project_id}/subscriptions/{subscription_id}/authenticated_management_url:
+    get:
+      summary: Get an URL to access the customer portal associated with a subscription
+      operationId: get-authorized-subscription-management-url
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:subscriptions:read
+      x-release-status: public
+      tags:
+      - Subscription
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: subscription_id
+        description: ID of the subscription
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: sub1a2b3c4d5e
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatedManagementUrl'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.'
   /projects/{project_id}/customers/{customer_id}/subscriptions:
     get:
       summary: Get a list of subscriptions associated with a customer
@@ -4599,6 +4679,7 @@ components:
             - stripe
             - rc_billing
             - roku
+            - paddle
             example: app_store
           project_id:
             description: The id of the project
@@ -4614,6 +4695,7 @@ components:
       - $ref: '#/components/schemas/StripeApp'
       - $ref: '#/components/schemas/RCBillingApp'
       - $ref: '#/components/schemas/RokuApp'
+      - $ref: '#/components/schemas/PaddleApp'
     AppCreate:
       allOf:
       - type: object
@@ -4643,6 +4725,7 @@ components:
             - stripe
             - rc_billing
             - roku
+            - paddle
             nullable: false
       - $ref: '#/components/schemas/AmazonAppCreate'
       - $ref: '#/components/schemas/AppStoreAppCreate'
@@ -4651,6 +4734,7 @@ components:
       - $ref: '#/components/schemas/StripeAppCreate'
       - $ref: '#/components/schemas/RCBillingAppCreate'
       - $ref: '#/components/schemas/RokuAppCreate'
+      - $ref: '#/components/schemas/PaddleAppCreate'
     AppStoreApp:
       type: object
       properties:
@@ -4711,6 +4795,27 @@ components:
               minLength: 1
               maxLength: 36
               nullable: false
+    AuthenticatedManagementUrl:
+      type: object
+      required:
+      - management_url
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - authenticated_management_url
+          type: string
+        management_url:
+          description: A secure, single-use URL that provides temporary access to
+            the customer portal for a specific customer. This URL can only be used
+            once and expires after use.
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: https://billing.revenuecat.com/app1a2b3c4/sub1ab2c3d4e5?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
     Country:
       type: string
       nullable: true
@@ -6489,6 +6594,44 @@ components:
         eligibility_criteria:
           $ref: '#/components/schemas/EligibilityCriteria'
           nullable: false
+    PaddleApp:
+      type: object
+      properties:
+        paddle:
+          description: Paddle Billing type details
+          type: object
+          nullable: false
+          properties:
+            paddle_is_sandbox:
+              description: Whether the app is tied to the sandbox environment.
+              nullable: false
+              type: boolean
+              example: true
+            paddle_api_key:
+              description: Paddle Server-side API key provided on the Paddle dashboard.
+              type: string
+              nullable: true
+              minLength: 50
+              maxLength: 50
+    PaddleAppCreate:
+      type: object
+      properties:
+        paddle:
+          description: Paddle Billing details. Should only be used when type is paddle.
+          type: object
+          nullable: true
+          properties:
+            paddle_api_key:
+              description: Paddle Server-side API key provided on the Paddle dashboard.
+              type: string
+              nullable: true
+              minLength: 50
+              maxLength: 50
+            paddle_is_sandbox:
+              description: Whether the app is tied to the sandbox environment.
+              nullable: false
+              type: boolean
+              example: true
     Paywall:
       type: object
       required:
@@ -6643,6 +6786,9 @@ components:
       enum:
       - subscription
       - one_time
+      - consumable
+      - non_consumable
+      - non_renewing_subscription
     ProductsFromEntitlement:
       type: object
       required:
