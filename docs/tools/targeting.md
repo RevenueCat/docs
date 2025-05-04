@@ -137,7 +137,7 @@ Arbitrary key/value pairs that you can define and set for individual customers. 
 **Country**:
 
 The storefront a customer is currently using on supported SDK versions\*, or their geolocation otherwise.
-\*Available on iOS SDK Versions >= 4.30.4 with support on other SDKs coming soon
+\*Available on all SDK versions from late 2023 and beyond.
 
 **App**:
 
