@@ -113,16 +113,6 @@ const paywallsCategory = Category({
   itemsPathPrefix: "",
   items: [
     SubCategory({
-      label: "RevenueCat Paywalls (Recommended)",
-      slug: "tools/paywalls",
-      itemsPathPrefix: "tools/paywalls/",
-      items: [
-        Page({ slug: "installation" }),
-        Page({ slug: "creating-paywalls" }),
-        Page({ slug: "displaying-paywalls" }),
-      ],
-    }),
-    SubCategory({
       label: "RevenueCat Paywalls v2 (Beta)",
       slug: "tools/paywalls-v2",
       itemsPathPrefix: "tools/paywalls-v2/",
@@ -135,14 +125,25 @@ const paywallsCategory = Category({
           items: [
             Page({ slug: "components" }),
             Page({ slug: "component-properties" }),
+            Page({ slug: "web-paywall-button" }),
             Page({ slug: "variables" }),
-            Page({ slug: "customer-states" }),
             Page({ slug: "localization" }),
+            Page({ slug: "customer-states" }),
             Page({ slug: "app-review" }),
           ],
         }),
         Page({ slug: "displaying-paywalls" }),
         Page({ slug: "change-log" }),
+      ],
+    }),
+    SubCategory({
+      label: "RevenueCat Paywalls",
+      slug: "tools/paywalls",
+      itemsPathPrefix: "tools/paywalls/",
+      items: [
+        Page({ slug: "installation" }),
+        Page({ slug: "creating-paywalls" }),
+        Page({ slug: "displaying-paywalls" }),
       ],
     }),
     SubCategory({
