@@ -11,11 +11,11 @@
         "platform": "iOS",
         "rc_subscription_status": "trial",
         "subscriber_attributes": {
-          "$customerioId": "800000000123"
+          "$customerioId": "123"
         }
       },
       "identifiers": {
-        "cio_id": "800000000123"
+        "id": "123"
       },
       "type": "person"
     },
@@ -42,13 +42,13 @@
         "revenue": 0.0,
         "store": "APP_STORE",
         "subscriber_attributes": {
-          "$customerioId": "800000000123"
+          "$customerioId": "123"
         },
         "transaction_id": "1123142348431"
       },
       "id": "d1dca188-6a16-4109-b663-778c0dfe9124",
       "identifiers": {
-        "cio_id": "800000000123"
+        "id": "123"
       },
       "name": "rc_trial_started_event",
       "timestamp": 1741884730,
