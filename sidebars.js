@@ -208,6 +208,7 @@ const webSDKCategory = Category({
       itemsPathPrefix: "integrations/",
       items: [Page({ slug: "stripe" }), Page({ slug: "paddle" })],
     }),
+    Page({ slug: "faq" }),
   ],
 });
 
