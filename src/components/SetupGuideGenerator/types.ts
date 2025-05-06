@@ -21,7 +21,7 @@ export interface GeneratedGuide {
 
 export interface GuideRequest {
   platforms: string[];
-  hasBackend: boolean;
   features?: string[];
   description?: string;
+  experience: "beginner" | "intermediate" | "advanced";
 }

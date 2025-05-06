@@ -30,7 +30,9 @@ const GuideForm: React.FC<GuideFormProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
-  const [hasBackend, setHasBackend] = useState<boolean>(false);
+  const [experience, setExperience] = useState<
+    "beginner" | "intermediate" | "advanced"
+  >("beginner");
   const [description, setDescription] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -73,6 +75,15 @@ const GuideForm: React.FC<GuideFormProps> = ({
     },
   ];
 
+  const experienceLevels: {
+    id: "beginner" | "intermediate" | "advanced";
+    name: string;
+  }[] = [
+    { id: "beginner", name: "Beginner" },
+    { id: "intermediate", name: "Intermediate" },
+    { id: "advanced", name: "Advanced" },
+  ];
+
   const handlePlatformToggle = (platformId: string) => {
     setSelectedPlatforms((prev) =>
       prev.includes(platformId)
@@ -97,27 +108,53 @@ const GuideForm: React.FC<GuideFormProps> = ({
     try {
       const request: GuideRequest = {
         platforms: selectedPlatforms,
-        hasBackend,
         features: selectedFeatures,
+        experience,
         description,
       };
 
-      const response = await fetch("/api/guide", {
+      // Step 1: Get required docs
+      const analysisResponse = await fetch("/api/analyze", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(request),
       });
 
-      if (!response.ok) {
-        throw new Error(`Failed to generate guide: ${response.statusText}`);
+      if (!analysisResponse.ok) {
+        throw new Error(
+          `Failed to analyze requirements: ${analysisResponse.statusText}`,
+        );
       }
 
-      const data = await response.json();
+      const analysisData = await analysisResponse.json();
+      const requiredDocs = analysisData.requiredDocs;
+
+      // Step 2: Fetch the required docs from your internal system
+      const docs = await fetchInternalDocs(requiredDocs);
+
+      // Step 3: Generate the guide with the docs
+      const generateResponse = await fetch("/api/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...request,
+          docs: docs.map((doc) => ({
+            path: doc.path,
+            content: doc.content,
+            type: "mdx",
+          })),
+        }),
+      });
+
+      if (!generateResponse.ok) {
+        throw new Error(
+          `Failed to generate guide: ${generateResponse.statusText}`,
+        );
+      }
+
+      const data = await generateResponse.json();
       const guide: GeneratedGuide = data.guide;
 
-      // Handle the generated guide
       onSubmit?.({
         ...request,
         guide,
@@ -198,25 +235,21 @@ const GuideForm: React.FC<GuideFormProps> = ({
           </div>
 
           <div className="rc-guide-form-section">
-            <h3>Do you have a backend?</h3>
+            <h3>What's your experience level?</h3>
             <p className="rc-guide-form-section-description">
-              This helps us provide the right integration steps
+              This helps us provide the right level of detail
             </p>
-            <div className="rc-guide-form-backend-toggle">
-              <button
-                type="button"
-                className={`rc-guide-form-toggle-button ${hasBackend ? "selected" : ""}`}
-                onClick={() => setHasBackend(true)}
-              >
-                Yes
-              </button>
-              <button
-                type="button"
-                className={`rc-guide-form-toggle-button ${!hasBackend ? "selected" : ""}`}
-                onClick={() => setHasBackend(false)}
-              >
-                No
-              </button>
+            <div className="rc-guide-form-experience-selector">
+              {experienceLevels.map((level) => (
+                <button
+                  key={level.id}
+                  type="button"
+                  className={`rc-guide-form-experience-button ${experience === level.id ? "selected" : ""}`}
+                  onClick={() => setExperience(level.id)}
+                >
+                  {level.name}
+                </button>
+              ))}
             </div>
           </div>
 
