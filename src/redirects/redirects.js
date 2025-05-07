@@ -1612,7 +1612,7 @@ const redirects = {
       from: "/web/revenuecat-billing/subscription-lifecycle",
     },
     {
-      to: "/web/web-billing/web-paywall-links",
+      to: "/web/web-billing/web-purchase-links",
       from: "/web/revenuecat-billing/web-paywall-links",
     },
     {
@@ -1622,6 +1622,10 @@ const redirects = {
     {
       to: "/web/web-billing/web-sdk",
       from: "/web/web-billing",
+    },
+    {
+      to: "/web/web-billing/web-purchase-links",
+      from: "/web/web-billing/web-paywall-links"
     },
   ],
 };

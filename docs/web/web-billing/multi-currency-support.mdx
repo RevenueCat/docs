@@ -22,7 +22,7 @@ When creating a new product in the RevenueCat dashboard, you can set the price f
 
 ### Making a purchase
 
-When a customer makes a purchase, RevenueCat will automatically select the price in the currency that best matches the customer's location. This happens regardless of whether the purchase is made through the Web SDK or a Web Paywall Link. If the customer's currency is not supported, RevenueCat will default to the default currency.
+When a customer makes a purchase, RevenueCat will automatically select the price in the currency that best matches the customer's location. This happens regardless of whether the purchase is made through the Web SDK or a Web Purchase Link. If the customer's currency is not supported, RevenueCat will default to the default currency.
 
 ### Specifying a currency manually
 
@@ -43,9 +43,9 @@ import webBillingContent from "!!raw-loader!@site/code_blocks/_projects/web-bill
   ]}
 />
 
-#### Web Paywall Links
+#### Web Purchase Links
 
-When generating a Web Paywall Link, you can specify the currency by appending the `currency` query parameter to the URL. This will override the automatic currency selection.
+When generating a Web Purchase Link, you can specify the currency by appending the `currency` query parameter to the URL. This will override the automatic currency selection.
 
 Example:
 
