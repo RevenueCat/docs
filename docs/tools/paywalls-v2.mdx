@@ -12,25 +12,6 @@ import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 
 <YouTubeEmbed videoId="Mp9EymiJ0F0" title="RevenueCat Paywalls v2 Beta" />
 
-:::warning Beta Limitations
-Paywalls v2 is currently in beta, and has the following limitations:
-
-1. Available only in our iOS, Android, Kotlin Multiplatform, React Native and Flutter SDKs. **You must update your RevenueCat SDK to use paywalls built with the new editor.**
-2. Not supported on watchOS, or visionOS.
-3. Footer mode from our original templates is not supported, [learn more here](/tools/paywalls-v2/displaying-paywalls).
-
-| RevenueCat SDK           | Version required for Paywalls v2 | 
-| :----------------------- | :--------------------------------------------- |
-| purchases-ios             | 5.16.0 and up                 |
-| purchases-android         | 8.12.2 and up                  |
-| react-native-purchases | 8.6.1 and up                 | 
-| purchases-flutter         | 8.5.0 and up                 |
-| purchases-kmp             | 1.5.1+13.18.1 and up                  |
-| purchases-unity           | Not supported                         |
-| cordova-plugin-purchases  | Not supported                         |
-| purchases-capacitor       | Not supported                         |
-   :::
-
 You can think of a Paywall as an optional feature of your Offering. An Offering is the collection of Products which are organized into Packages to be displayed to your customers as a single "offer" across platforms. Now, with Paywalls, you can control the actual view that is used to display that "offer" in addition to controlling the products that are offered.
 
 Therefore, you can create a unique Paywall for each of your Offerings, and can create an unlimited number of Offerings & Paywalls for each variation you want to test with Experiments.
@@ -48,6 +29,23 @@ To use RevenueCat Paywalls v2, simply:
 3. See [displaying paywalls](/tools/paywalls-v2/displaying-paywalls) for how to display it into your app.
 
 ## Limitations
+
+### Required SDK Versions 
+
+:::warning Required SDK Versions
+You must update your RevenueCat SDK to use paywalls built with the new editor.
+:::
+
+| RevenueCat SDK           | Version required for Paywalls v2 | 
+| :----------------------- | :--------------------------------------------- |
+| purchases-ios             | 5.16.0 and up                 |
+| purchases-android         | 8.12.2 and up                  |
+| react-native-purchases | 8.6.1 and up                 | 
+| purchases-flutter         | 8.5.0 and up                 |
+| purchases-kmp             | 1.5.1+13.18.1 and up                  |
+| purchases-unity           | Not supported                         |
+| cordova-plugin-purchases  | Not supported                         |
+| purchases-capacitor       | Not supported                         |
 
 ### Platforms (support for more coming)
 
