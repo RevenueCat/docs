@@ -180,7 +180,7 @@ const webSDKCategory = Category({
       itemsPathPrefix: "web-billing/",
       items: [
         Page({ slug: "web-sdk" }),
-        Page({ slug: "web-paywall-links" }),
+        Page({ slug: "web-purchase-links" }),
         Page({ slug: "testing" }),
       ],
     }),
