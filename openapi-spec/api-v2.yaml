@@ -3683,7 +3683,7 @@ paths:
       description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.'
   /projects/{project_id}/purchases/{purchase_id}:
     get:
-      summary: Get a purchase
+      summary: Get a one-time purchase
       operationId: get-purchase
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
@@ -3870,7 +3870,7 @@ paths:
         \ <code>customer_information:purchases:read_write</code>."
   /projects/{project_id}/customers/{customer_id}/purchases:
     get:
-      summary: Get a list of purchases associated with a customer
+      summary: Get a list of one-time purchases associated with a customer
       operationId: list-purchases
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
