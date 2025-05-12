@@ -23,17 +23,17 @@ Before RevenueCat can integrate with Meta, your app must be running the Meta SDK
 
 ## 2. Send device data to RevenueCat
 
-The Meta integration requires some device-specific data. RevenueCat will only send events into Meta Ads Manager if the below [Attribute](/customers/customer-attributes) keys have been set for the device.
+RevenueCat's Meta integration has different identifier requirements depending on which API you choose to use. The [App Events API](#integrating-with-the-app-events-api) requires device-specific data, while the [Conversions API](#integrating-with-the-conversions-api) makes these identifiers optional.
 
-| Key            | Description                                                                                                                                     | Required          |
-| :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :---------------- |
-| `$idfa`        | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ✅ (iOS only)     |
-| `$gpsAdId`     | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ✅ (Android only) |
-| `$fbAnonId`    |                                                                                                                                                 | ✅ (iOS only)     |
-| `$idfv`        | iOS [vender identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ❌ (optional)     |
-| `$ip`          | The IP address of the device                                                                                                                    | ❌ (optional)     |
-| `$email`       | The email address of the user                                                                                                                   | ❌ (optional)     |
-| `$phoneNumber` | The phone number of the user                                                                                                                    | ❌ (optional)     |
+| Key            | Description                                                                                                                                     | Platform | [App Events API](#integrating-with-the-app-events-api) | [Conversions API](#integrating-with-the-conversions-api) |
+| :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :------- | :----------------------------------------------------- | :------------------------------------------------------- |
+| `$idfa`        | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | iOS      | ✅ (required)                                          | ⚠️ (recommended)                                         |
+| `$gpsAdId`     | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | Android  | ✅ (required)                                          | ✅ (required)                                            |
+| `$fbAnonId`    |                                                                                                                                                 | iOS      | ✅ (required)                                          | ⚠️ (recommended)                                         |
+| `$idfv`        | iOS [vender identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | iOS      | ⚠️ (recommended)                                       | ⚠️ (recommended)                                         |
+| `$ip`          | The IP address of the device                                                                                                                    |          | ⚠️ (recommended)                                       | ⚠️ (recommended)                                         |
+| `$email`       | The email address of the user                                                                                                                   |          | ❌ (optional)                                          | ❌ (optional)                                            |
+| `$phoneNumber` | The phone number of the user                                                                                                                    |          | ❌ (optional)                                          | ❌ (optional)                                            |
 
 :::warning Android ID deprecation
 Due to policy changes from the Play Store, Android ID is no longer collected by RevenueCat's Android SDKs starting on versions 6.9.8+, 7.11.1+, and later major versions.
