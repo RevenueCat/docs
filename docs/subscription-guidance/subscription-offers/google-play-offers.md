@@ -69,7 +69,7 @@ Promo codes only allow subscribing to a backwards compatible base plan. If you w
 
 To create promo codes for your app, go to Google Play’s Console ‘All applications' page and select your app from the list.
 
-In the sidebar select** Promo Codes**.
+In the sidebar select **Promo Codes**.
 
 ![](/images/6ff2522-Screen_Shot_2021-04-22_at_11.55.16_AM_aee7de5f90502d1109fc59ca399277aa.jpeg "Screen Shot 2021-04-22 at 11.55.16 AM.jpeg")
 
@@ -83,9 +83,9 @@ After selecting **Create promo code**, you will provide several pieces of metada
 | 1                                     | Promotion Name  | A name to identify the promotion. This is not shown to the users.                                                                                                                                         |
 | 2                                     | Start date/time | When the promotion begins. This date must be in the future. **This can not be updated once live.**                                                                                                        |
 | 3                                     | End date/time   | When codes can no longer be redeemed.                                                                                                                                                                     |
-| 4                                     | Promotion type  | Select from Paid app, In-app product or Subscription. \nBoth In-app product and Subscription require selecting from a drop-down menu to link an existing product.** This can not be updated once saved.** |
+| 4                                     | Promotion type  | Select from Paid app, In-app product or Subscription. \nBoth In-app product and Subscription require selecting from a drop-down menu to link an existing product. **This can not be updated once saved.** |
 | 5                                     | Code type       | Select One-time or Custom code. **Custom codes are not available if selecting a Paid or an In-app product.**                                                                                              |
-| 6                                     | Number of Codes | The number of codes available on the promotion.** This can not be updated once saved.**                                                                                                                   |
+| 6                                     | Number of Codes | The number of codes available on the promotion. **This can not be updated once saved.**                                                                                                                   |
 
 ![Sample configuration of a 10-day free trial for a current Annual membership.](/images/cd0f6c0-Screen_Shot_2021-04-22_at_11.31.32_AM_46f5f4a3d190bf1c119eae5b6606d7b1.jpeg "Screen Shot 2021-04-22 at 11.31.32 AM.jpeg")
 After selecting **Save** your promotion will be created! 🎉
@@ -116,7 +116,7 @@ Promo code redemption can occur in-app or in the Google play store. All code red
 
 _In-app redemption applies to One-time and Custom codes_.
 
-To redeem a code, a user initiates the purchase at the paywall. At the Google Play purchase screen, a selectable down arrow next to the form of payment allows the user to select** Redeem code**. After selecting** Redeem code** and entering the code into the prompted field, then selecting the **Redeem** button applies the entered code.
+To redeem a code, a user initiates the purchase at the paywall. At the Google Play purchase screen, a selectable down arrow next to the form of payment allows the user to select **Redeem code**. After selecting **Redeem code** and entering the code into the prompted field, then selecting the **Redeem** button applies the entered code.
 
 #### Google Play Store Redemption
 
