@@ -57,22 +57,20 @@ tags:
     \ SDK](/docs/getting-started/installation).\n\nIf you want to start migrating\
     \ your existing users to RevenueCat and you have your user\u2019s receipts stored\
     \ on your own server, or you want to check subscription status of your users from\
-    \ your own server, the REST API is a great solution.\n\n## Base URL\n\nThe base\
-    \ URL for the RevenueCat REST API v2 is `https://api.revenuecat.com/v2`.\n\n##\
-    \ Authentication\n\nAuthentication for the RevenueCat REST API is achieved by\
-    \ setting the `Authorization` header with a valid API key. You'll find two types\
-    \ of API keys in your RevenueCat dashboard: _public_ and _secret_.\n\nCertain\
-    \ endpoints require secret keys, which should be kept out of any publicly accessible\
-    \ areas such as GitHub, client-side code, and so forth. See our [Authentication\
-    \ guide](/docs/welcome/authentication) for more information.\n\n```text title=\"\
-    Authorization Header\"\nAuthorization: Bearer YOUR_REVENUECAT_API_KEY\n```\n\n\
-    <div class=\"theme-admonition theme-admonition-info alert alert--warning\">\n\
-    \  <div class=\"heading\">\n    Authorization type `Bearer` required in header\n\
-    \  </div>\n  <div>\n    he RevenueCat REST API v2 requires stating the authorization\
-    \ type `Bearer` in the `Authorization` header before the API key in accordance\
-    \ with [RFC 7235](https://datatracker.ietf.org/doc/html/rfc7235). This is different\
-    \ to the v1 API which allowed passing just the API key as the `Authorization`\
-    \ header.\n  </div>\n</div>\n\n<div class=\"theme-admonition theme-admonition-info\
+    \ your own server, the REST API is a great solution.\n\n## Authentication\n\n\
+    Authentication for the RevenueCat REST API is achieved by setting the `Authorization`\
+    \ header with a valid API key. You'll find two types of API keys in your RevenueCat\
+    \ dashboard: _public_ and _secret_.\n\nCertain endpoints require secret keys,\
+    \ which should be kept out of any publicly accessible areas such as GitHub, client-side\
+    \ code, and so forth. See our [Authentication guide](/docs/welcome/authentication)\
+    \ for more information.\n\n```text title=\"Authorization Header\"\nAuthorization:\
+    \ Bearer YOUR_REVENUECAT_API_KEY\n```\n\n<div class=\"theme-admonition theme-admonition-info\
+    \ alert alert--warning\">\n  <div class=\"heading\">\n    Authorization type `Bearer`\
+    \ required in header\n  </div>\n  <div>\n    he RevenueCat REST API v2 requires\
+    \ stating the authorization type `Bearer` in the `Authorization` header before\
+    \ the API key in accordance with [RFC 7235](https://datatracker.ietf.org/doc/html/rfc7235).\
+    \ This is different to the v1 API which allowed passing just the API key as the\
+    \ `Authorization` header.\n  </div>\n</div>\n\n<div class=\"theme-admonition theme-admonition-info\
     \ alert alert--warning\">\n  <div class=\"heading\">\n    API v1 keys will not\
     \ work with REST API v2\n  </div>\n  <div>\n    In order to utilize the RevenueCat\
     \ API v2, please create new v2 secret keys and define your permissions.\n  </div>\n\
