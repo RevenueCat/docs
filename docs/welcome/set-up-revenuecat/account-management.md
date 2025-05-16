@@ -69,4 +69,10 @@ You can select a currency to be used across the dashboard. See [Display Currency
 
 To delete your RevenueCat account, you'll first need to delete **all of your [Projects](/projects/overview)**. Please note, deleting any active Projects will prevent users from accessing their purchases via the RevenueCat SDK but **will not** cancel any of your customer's active subscriptions. RevenueCat will not delete your projects for you.
 
-Once your projects have been deleted, reach out to RevenueCat Support via the dashboard [Contact Us](https://app.revenuecat.com/settings/support) form in your account settings and request your account to be deleted.
+Once your projects have been deleted, navigate to your [account settings](https://app.revenuecat.com/settings/account) and click `Delete this Account`:
+
+![delete account button](/images/delete-account-button.png)
+
+You will be asked to enter your password to confirm.
+
+If your account is managed by an SSO organization, reach out to RevenueCat Support via the dashboard [Contact Us](https://app.revenuecat.com/settings/support) form in your account settings and request your account to be deleted.
