@@ -66,6 +66,10 @@ tags:
     The _app-specific Secret API Key_ should be kept out of any publicly accessible areas such as GitHub or client side code.
     Additionally, an _app-specific Public API Key_ is generated so public endpoints like [Offerings](/docs/api-v1#tag/offerings/operation/get-offerings) can be accessed.
 
+    # Base URL
+
+    The base URL for the External Purchases API is `https://api.revenuecat.com/`.
+    
     # Endpoints
 
     The API has two endpoints, `POST/receipts/external` and `POST/receipts/external/bulk`.

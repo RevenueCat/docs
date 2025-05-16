@@ -21,6 +21,10 @@ info:
 
     If you want to start migrating your existing users to RevenueCat and you have your Customers' receipts stored on your own server, or you want to check subscription status of your users from your own server, the REST API is a great solution.
 
+    # Base URL
+
+    The base URL for the RevenueCat REST API is `https://api.revenuecat.com/v1`.
+
     # Authentication
 
     Authentication for the RevenueCat REST API is achieved by setting the `Authorization` header with a valid API key. You'll find two types of API keys in your RevenueCat dashboard: _public_ and _secret_.
