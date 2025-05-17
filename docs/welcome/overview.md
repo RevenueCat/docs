@@ -73,7 +73,7 @@ Talk to an expert to learn how RevenueCat can help grow your business.
 
 <Button href="https://www.revenuecat.com/talk-to-sales/">Talk to Sales →</Button>
 
-## Need help getting started?
+## Get a personalised Guide
 
 :::warning Beta Feature
 This guide generator is currently in beta. We're actively working on improving it based on your feedback.
@@ -82,5 +82,3 @@ This guide generator is currently in beta. We're actively working on improving i
 import GuideForm from '../../src/components/GuideGenerator/GuideForm';
 
 <GuideForm />
-
-## Features
