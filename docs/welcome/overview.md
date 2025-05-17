@@ -79,7 +79,7 @@ Talk to an expert to learn how RevenueCat can help grow your business.
 This guide generator is currently in beta. We're actively working on improving it based on your feedback.
 :::
 
-import GuideForm from '../../src/components/GuideForm';
+import GuideForm from '../../src/components/GuideGenerator/GuideForm';
 
 <GuideForm />
 

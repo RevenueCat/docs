@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { GuideRequest, GeneratedGuide } from "./SetupGuideGenerator/types";
 import "./GuideForm.css";
 
 interface Platform {
@@ -137,36 +136,45 @@ const GuideForm: React.FC<GuideFormProps> = ({
     setIsLoading(true);
     setError(null);
 
+    // Open the preview page in a new tab
+    const newTab = window.open("/docs/guide-preview", "_blank");
+
     try {
-      // Combine platforms and app builders for the payload
       const allPlatforms = [...selectedPlatforms, ...selectedAppBuilders];
-      const response = await fetch("/api/generate-custom-guide", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          query: description,
-          platforms: allPlatforms,
-          features: selectedFeatures,
-          additionalContext: description, // or leave blank if not needed
-        }),
-      });
+      const response = await fetch(
+        "http://localhost:3001/api/generate-custom-guide",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            query: description,
+            platforms: allPlatforms,
+            features: selectedFeatures,
+            additionalContext: description, // or leave blank if not needed
+          }),
+        },
+      );
 
       if (!response.ok) {
         throw new Error("Failed to generate guide");
       }
 
       const data = await response.json();
-      const guide = data.guide;
-
+      if (newTab) {
+        // Send the MDX string to the new tab
+        newTab.postMessage(data.guide, "*");
+      }
       console.log("Custom guide API response:", data);
-
       onSubmit?.({
         platforms: allPlatforms,
         features: selectedFeatures,
         description,
-        guide,
+        guide: data.guide,
       });
     } catch (error) {
+      if (newTab) {
+        newTab.document.body.innerHTML = `<div style='color: red; font-size: 1.2rem; text-align: center;'>${error instanceof Error ? error.message : "Failed to generate guide"}</div>`;
+      }
       console.error("Error generating guide:", error);
       setError(
         error instanceof Error ? error.message : "Failed to generate guide",
