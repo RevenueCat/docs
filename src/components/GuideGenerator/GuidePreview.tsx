@@ -7,13 +7,33 @@ import YouTubeEmbed from "../YouTubeEmbed";
 import Button from "../Button/Button";
 import ContentCardItem from "../ContentCardItem/ContentCardItem";
 import ExternalButton from "../ExternalButton";
+import RCCodeBlock from "../RCCodeBlock";
 
 // Custom link component to open all links in a new tab
-const Link = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
-  <a {...props} target="_blank" rel="noopener noreferrer">
-    {props.children}
-  </a>
-);
+const Link = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (props.href && props.href.startsWith("#")) {
+      e.preventDefault();
+      const id = props.href.slice(1);
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+        window.location.hash = props.href;
+      }
+    }
+    // Otherwise, let the default behavior happen (for external links)
+  };
+  return (
+    <a
+      {...props}
+      target={props.href && props.href.startsWith("#") ? undefined : "_blank"}
+      rel="noopener noreferrer"
+      onClick={handleClick}
+    >
+      {props.children}
+    </a>
+  );
+};
 
 export default function GuidePreview() {
   const [mdx, setMdx] = useState<string | null>(null);
@@ -63,6 +83,7 @@ export default function GuidePreview() {
             Button,
             ContentCardItem,
             ExternalButton,
+            RCCodeBlock,
           }),
         });
         setContent(() => Comp);
