@@ -30,12 +30,20 @@ const GuideForm: React.FC<GuideFormProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
-  const [experience, setExperience] = useState<
-    "beginner" | "intermediate" | "advanced"
-  >("beginner");
   const [description, setDescription] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+
+  // App Builders / No-Code Tools
+  const appBuilders = [
+    { id: "flutterflow", name: "FlutterFlow", icon: "🧩" },
+    { id: "bravo-studios", name: "Bravo Studios", icon: "🎨" },
+    { id: "natively", name: "Natively", icon: "🛠️" },
+    { id: "purchasely", name: "Purchasely", icon: "🛒" },
+    { id: "teta", name: "Teta", icon: "🔧" },
+    { id: "thunkable", name: "Thunkable", icon: "🔲" },
+  ];
+  const [selectedAppBuilders, setSelectedAppBuilders] = useState<string[]>([]);
 
   const platforms: Platform[] = [
     { id: "ios", name: "iOS", icon: "🍎" },
@@ -45,6 +53,7 @@ const GuideForm: React.FC<GuideFormProps> = ({
     { id: "capacitor", name: "Capacitor", icon: "⚡" },
     { id: "unity", name: "Unity", icon: "🎮" },
     { id: "web", name: "Web", icon: "🌐" },
+    { id: "macos", name: "macOS", icon: "🖥️" },
   ];
 
   const features: Feature[] = [
@@ -75,13 +84,28 @@ const GuideForm: React.FC<GuideFormProps> = ({
     },
   ];
 
-  const experienceLevels: {
-    id: "beginner" | "intermediate" | "advanced";
-    name: string;
-  }[] = [
-    { id: "beginner", name: "Beginner" },
-    { id: "intermediate", name: "Intermediate" },
-    { id: "advanced", name: "Advanced" },
+  // Template examples for user input
+  const TEMPLATES = [
+    {
+      label: "New App Setup",
+      text: `I am building a new mobile app for both [iOS] and [Android]. I want to use RevenueCat to manage subscriptions, handle purchases, and validate receipts. I need help with SDK installation, configuring products in App Store Connect and Google Play Console, and implementing a basic purchase flow. I also want to test everything in the sandbox environment before going live. I plan to integrate with [Stripe] for web payments.`,
+    },
+    {
+      label: "Migrating an Existing App",
+      text: `I have an existing [iOS] app with in-app subscriptions managed manually. I want to migrate to RevenueCat for easier subscription management and analytics. I need guidance on planning the migration, mapping existing products, integrating the SDK, and ensuring a smooth transition for current users. Security and proper testing are important to me. I also use [Roku] for TV apps.`,
+    },
+    {
+      label: "I have my own backend",
+      text: `I want to integrate RevenueCat into my [React Native] app and connect it to my backend server. My goals are to track user subscriptions, receive real-time updates via webhooks, and analyze revenue and churn metrics. I also want to implement custom entitlement logic and ensure secure API key management. I plan to use [Stripe] and [Roku] as integrations.`,
+    },
+    {
+      label: "Other Apps Integration (Paddle, Roku, Stripe, etc)",
+      text: `I am working on integrating RevenueCat with other platforms such as [Paddle], [Roku], or [Stripe]. I need help with connecting these third-party or alternative storefronts, configuring products, and ensuring a smooth purchase flow for users outside the traditional app stores. I am also interested in analytics and tracking subscription events across all platforms.`,
+    },
+    {
+      label: "App-to-Web Purchase Flow",
+      text: `I want to enable users to purchase subscriptions on the web and unlock access in my app using RevenueCat. I need guidance on integrating the Web Purchases Button, handling user authentication between app and web, and ensuring a seamless experience for hybrid app/web payment flows. Security and syncing entitlements across platforms is important to me.`,
+    },
   ];
 
   const handlePlatformToggle = (platformId: string) => {
@@ -100,63 +124,46 @@ const GuideForm: React.FC<GuideFormProps> = ({
     );
   };
 
+  const handleAppBuilderToggle = (builderId: string) => {
+    setSelectedAppBuilders((prev) =>
+      prev.includes(builderId)
+        ? prev.filter((id) => id !== builderId)
+        : [...prev, builderId],
+    );
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
 
     try {
-      const request: GuideRequest = {
-        platforms: selectedPlatforms,
-        features: selectedFeatures,
-        experience,
-        description,
-      };
-
-      // Step 1: Get required docs
-      const analysisResponse = await fetch("/api/analyze", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(request),
-      });
-
-      if (!analysisResponse.ok) {
-        throw new Error(
-          `Failed to analyze requirements: ${analysisResponse.statusText}`,
-        );
-      }
-
-      const analysisData = await analysisResponse.json();
-      const requiredDocs = analysisData.requiredDocs;
-
-      // Step 2: Fetch the required docs from your internal system
-      const docs = await fetchInternalDocs(requiredDocs);
-
-      // Step 3: Generate the guide with the docs
-      const generateResponse = await fetch("/api/generate", {
+      // Combine platforms and app builders for the payload
+      const allPlatforms = [...selectedPlatforms, ...selectedAppBuilders];
+      const response = await fetch("/api/generate-custom-guide", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...request,
-          docs: docs.map((doc) => ({
-            path: doc.path,
-            content: doc.content,
-            type: "mdx",
-          })),
+          query: description,
+          platforms: allPlatforms,
+          features: selectedFeatures,
+          additionalContext: description, // or leave blank if not needed
         }),
       });
 
-      if (!generateResponse.ok) {
-        throw new Error(
-          `Failed to generate guide: ${generateResponse.statusText}`,
-        );
+      if (!response.ok) {
+        throw new Error("Failed to generate guide");
       }
 
-      const data = await generateResponse.json();
-      const guide: GeneratedGuide = data.guide;
+      const data = await response.json();
+      const guide = data.guide;
+
+      console.log("Custom guide API response:", data);
 
       onSubmit?.({
-        ...request,
+        platforms: allPlatforms,
+        features: selectedFeatures,
+        description,
         guide,
       });
     } catch (error) {
@@ -208,6 +215,32 @@ const GuideForm: React.FC<GuideFormProps> = ({
             </div>
           </div>
 
+          {/* App Builders / No-Code Tools Section */}
+          <div className="rc-guide-form-section">
+            <h3>Are you using an app builder or no-code tool?</h3>
+            <p className="rc-guide-form-section-description">
+              Select all that apply (optional)
+            </p>
+            <div className="rc-guide-form-platform-buttons">
+              {appBuilders.map((builder) => (
+                <button
+                  key={builder.id}
+                  type="button"
+                  className={`rc-guide-form-platform-button ${selectedAppBuilders.includes(builder.id) ? "selected" : ""}`}
+                  onClick={() => handleAppBuilderToggle(builder.id)}
+                >
+                  {builder.icon && (
+                    <span className="rc-guide-form-platform-icon">
+                      {builder.icon}
+                    </span>
+                  )}
+                  {builder.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Features Section */}
           <div className="rc-guide-form-section">
             <h3>What features are you interested in?</h3>
             <p className="rc-guide-form-section-description">
@@ -234,30 +267,29 @@ const GuideForm: React.FC<GuideFormProps> = ({
             </div>
           </div>
 
-          <div className="rc-guide-form-section">
-            <h3>What's your experience level?</h3>
-            <p className="rc-guide-form-section-description">
-              This helps us provide the right level of detail
-            </p>
-            <div className="rc-guide-form-experience-selector">
-              {experienceLevels.map((level) => (
-                <button
-                  key={level.id}
-                  type="button"
-                  className={`rc-guide-form-experience-button ${experience === level.id ? "selected" : ""}`}
-                  onClick={() => setExperience(level.id)}
-                >
-                  {level.name}
-                </button>
-              ))}
-            </div>
-          </div>
-
+          {/* Description Section with Templates */}
           <div className="rc-guide-form-section">
             <h3>Tell us about your setup</h3>
             <p className="rc-guide-form-section-description">
               What are you trying to achieve with RevenueCat?
             </p>
+            {/* Template selection buttons */}
+            <div
+              className="rc-guide-form-template-buttons"
+              style={{ marginBottom: 8 }}
+            >
+              {TEMPLATES.map((template, idx) => (
+                <button
+                  key={template.label}
+                  type="button"
+                  className="rc-guide-form-template-button"
+                  style={{ marginRight: 8, marginBottom: 4 }}
+                  onClick={() => setDescription(template.text)}
+                >
+                  {template.label}
+                </button>
+              ))}
+            </div>
             <textarea
               className="rc-guide-form-description-textarea"
               value={description}
