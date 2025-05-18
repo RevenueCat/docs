@@ -59,7 +59,7 @@ const GuideForm: React.FC<GuideFormProps> = ({
     {
       id: "paywalls",
       name: "Paywalls",
-      description: "Dynamic paywalls with A/B testing",
+      description: "Dynamic UI for unlocking content",
     },
     {
       id: "analytics",
@@ -80,6 +80,11 @@ const GuideForm: React.FC<GuideFormProps> = ({
       id: "integrations",
       name: "Integrations",
       description: "Connect with other tools and services",
+    },
+    {
+      id: "web-billing",
+      name: "Web Billing",
+      description: "Enable web-based purchases (and sync with entitlements)",
     },
   ];
 

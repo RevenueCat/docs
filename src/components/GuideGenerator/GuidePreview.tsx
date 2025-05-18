@@ -53,6 +53,29 @@ export default function GuidePreview() {
   const [revealed, setRevealed] = useState([loadingMessages[0]]);
 
   useEffect(() => {
+    // Check for testing mode via ?test=1
+    const urlParams = new URLSearchParams(window.location.search);
+    const isTest = urlParams.get("test") === "1";
+    if (isTest) {
+      fetch("/output.json")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data && data.guide) {
+            setMdx(data.guide);
+            console.log(
+              "[GuidePreview] Loaded MDX from output.json:",
+              data.guide,
+            );
+          } else {
+            setMdx("# No guide found in output.json");
+          }
+        })
+        .catch((err) => {
+          setMdx(`# Error loading output.json: ${err}`);
+        });
+      return;
+    }
+
     // Listen for the MDX string sent from the opener
     function handleMessage(event: MessageEvent) {
       if (typeof event.data === "string") {
