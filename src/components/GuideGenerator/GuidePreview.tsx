@@ -8,6 +8,7 @@ import Button from "../Button/Button";
 import ContentCardItem from "../ContentCardItem/ContentCardItem";
 import ExternalButton from "../ExternalButton";
 import RCCodeBlock from "../RCCodeBlock";
+import rehypeSlug from "rehype-slug";
 
 // Custom link component to open all links in a new tab
 const Link = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
@@ -47,7 +48,7 @@ export default function GuidePreview() {
     "3. we chunk the documentation into smaller parts for easier reading",
     "4. we do some extra RevenueCat magic",
     "5. we bring it all together!",
-    "6. This guide will be ready in a few seconds.",
+    "(your guide will be ready in a few seconds)",
   ];
   const [messageIndex, setMessageIndex] = useState(0);
   const [revealed, setRevealed] = useState([loadingMessages[0]]);
@@ -98,6 +99,7 @@ export default function GuidePreview() {
       (async () => {
         const { default: Comp } = await evaluate(mdx, {
           ...runtime,
+          rehypePlugins: [rehypeSlug],
           useMDXComponents: () => ({
             a: Link,
             TroubleshootingWizard,
