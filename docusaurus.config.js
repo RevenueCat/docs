@@ -139,7 +139,7 @@ const config = {
         },
         items: [
           {
-            label: "Documentation",
+            label: "Categories",
             to: "/welcome/overview",
             items: [
               {
