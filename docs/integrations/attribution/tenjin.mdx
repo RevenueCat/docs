@@ -26,7 +26,7 @@ The Tenjin integration requires some device-specific data. RevenueCat will only 
 | `$tenjinId` | The Tenjin Analytics Installation ID, the unique identifier from Tenjin for the device                                                          | ✅ (recommended)  |
 | `$idfa`     | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ✅ (iOS only)     |
 | `$gpsAdId`  | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ✅ (Android only) |
-| `$idfv`     | iOS [vender identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ❌ (optional)     |
+| `$idfv`     | iOS [vendor identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ❌ (optional)     |
 | `$ip`       | The IP address of the device                                                                                                                    | ❌ (optional)     |
 
 :::warning Android ID deprecation
@@ -65,7 +65,7 @@ The AdSupport framework is required to access the IDFA parameter on iOS. Don't f
 
 ### (Optional) Send campaign data to RevenueCat
 
-RevenueCat itself is not an attribution network, and can't determine which specific ad drove an install/conversion. However, if you're able to collect this information from another source, such as Tenjin, it's possible to attach it to a Customer in RevenueCat using [Attributes](/customers/customer-attributes) as well.  
+RevenueCat itself is not an attribution network, and can't determine which specific ad drove an install/conversion. However, if you're able to collect this information from another source, such as Tenjin, it's possible to attach it to a Customer in RevenueCat using [Attributes](/customers/customer-attributes) as well.
 The below reserved key names can be used to optionally attach campaign data to a user. This data will then be sent through to other downstream analytics integrations and accessible via APIs and webhooks.
 
 | Key            |
