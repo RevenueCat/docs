@@ -89,7 +89,7 @@ To test that tax rates are correctly applied to Web Billing purchases:
 
 1. Add tax registrations in Stripe's test mode — you need to configure separate tax registrations in test mode, which are separate from any registrations in live mode.
 1. Make sure tax collection is enabled in the RevenueCat Web Billing config (note: if you have any tax registrations enabled in live mode, they will be applied at this point. we recommend only adding registrations in test mode during testing).
-1. Load a sandbox Web Paywall Link, or initiate a purchase with the Web SDK in sandbox mode
+1. Load a sandbox Web Paywall Link, or initiate a purchase with the Web SDK in sandbox mode.
 1. In the checkout, select a billing address for a location where a tax rate is active in Stripe's test mode
 1. If the tax registration is applicable for your product in the selected location, you should see that taxes are shown on the checkout page and in the purchase receipt.
 
