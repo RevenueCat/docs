@@ -35,7 +35,7 @@
     "@docusaurus/tsconfig": "^3.7.0",
     "@docusaurus/types": "^3.7.0",
     "autoprefixer": "^10.4.21",
-    "lefthook": "^1.11.12",
+    "lefthook": "^1.11.13",
     "postcss": "^8.5.3",
     "postcss-import": "^16.1.0",
     "postcss-preset-env": "^10.1.6",
