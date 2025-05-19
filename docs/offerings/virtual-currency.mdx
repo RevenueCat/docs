@@ -196,6 +196,10 @@ import fetchVCBalancesFlutter from "!!raw-loader!@site/code_blocks/virtual-curre
   ]}
 />
 
+:::warning CustomerInfo does not update automatically when balance changes
+When a customer's balance is updated from your backend, the CustomerInfo object remains cached and is not automatically updated. In order to get the updated balance, you need to call `Purchases/invalidateCustomerInfoCache()` and fetch the CustomerInfo object again.
+:::
+
 ### Depositing or spending
 
 You can deposit or spend currency by calling the virtual currency transactions Developer API endpoint from the backend of your app:
