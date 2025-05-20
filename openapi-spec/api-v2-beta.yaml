@@ -3355,6 +3355,61 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.'
+  /projects/{project_id}/subscriptions/{subscription_id}/transactions:
+    get:
+      summary: Get a Play Store subscription's transactions
+      operationId: get-play-store-subscription-transactions
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:subscriptions:read
+      x-release-status: public
+      tags:
+      - Subscription
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: subscription_id
+        description: ID of the subscription
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: sub1a2b3c4d5e
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSubscriptionTransaction'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.'
   /projects/{project_id}/subscriptions/{subscription_id}/entitlements:
     get:
       summary: Get a list of entitlements associated with a subscription
@@ -6160,6 +6215,37 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/purchases
+    ListSubscriptionTransaction:
+      type: object
+      required:
+      - items
+      - next_page
+      - object
+      - url
+      title: SubscriptionTransactionList
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value. Always has the value `list`.
+          enum:
+          - list
+          type: string
+        items:
+          description: Details about each object.
+          items:
+            $ref: '#/components/schemas/SubscriptionTransaction'
+          type: array
+        next_page:
+          description: URL to access the next page of the projects. If not present
+            / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/proj123/subscriptions/sub123/transactions?starting_after=GPA.0000-0000-0000-00000
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/proj123/subscriptions/sub123/transactions
     ListSubscriptions:
       type: object
       required:
@@ -7544,6 +7630,32 @@ components:
           description: The duration of the subscription's trial period in ISO-8601
             standard
           example: P1W
+    SubscriptionTransaction:
+      type: object
+      required:
+      - id
+      - purchased_at
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - subscription_transaction
+          type: string
+        id:
+          description: The ID of the subscription transaction in the store
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: GPA.0000-0000-0000-00000
+        purchased_at:
+          description: The date of the transaction in ms since epoch
+          nullable: false
+          type: integer
+          format: int64
+          example: 1658399423658
     VirtualCurrencyBalance:
       type: object
       title: VirtualCurrencyBalance
