@@ -1,3 +1,0 @@
-Purchases.getSharedInstance().setAttributes({
-    age: "",
-})
