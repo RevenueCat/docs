@@ -59,6 +59,18 @@ When a user taps a purchase button that directs them to a web browser to complet
 
 Older, unsupported SDK versions will default to the in-app purchase flow when a purchase button is tapped.
 
+### Legacy option on the Button component
+
+When the US court ruling was first announced to allow web purchase flows in-app, we released an option on the Button component to navigate to a `Web purchase` flow. This is still supported, but not recommended for new paywalls, since it does not support navigating directly to the checkout experience for a selected package. However, if you're already using this option, or would like to, you may continue to do so on the following supported SDK versions.
+
+| RevenueCat SDK           | Version required for legacy Web Purchase Button | 
+| :----------------------- | :--------------------------------------------- |
+| purchases-ios             | 5.22.2 and up                 |
+| react-native-purchases | 8.9.6 and up                 | 
+| purchases-flutter         | 8.7.5 and up                 |
+| purchases-kmp             | 1.7.7+13.29.1 and up                  |
+| Other SDKs         | Not supported                  |
+
 ## Considerations
 
 For more information about support for external web purchases, see [FAQs](/web/faqs).
