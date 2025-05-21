@@ -37,6 +37,10 @@ Even if you're only looking to direct customers to a web purchase flow, the pack
 | Web product selection | The purchase button will open web product selection if more than one web product is offered. |
 | Custom purchase | The purchase button will open your custom purchase flow with the Package ID and any enabled properties passed as URL parameters. |
 
+:::info Hardcode web product details instead of using variables
+If you're using a web or custom purchase flow, we recommend hardcoding the web product details such as its price, duration, or introductory offer instead of using variables. This is because variables will always reflect the app product details, which may differ from the web product you're offering. If they don't, you can safely use variables, but as you experiment with prices and offers please keep this in mind.
+:::
+
 ## Custom purchase parameters
 
 When using your own custom purchase flow, you'll have the option of passing the following parameters in the URL:
