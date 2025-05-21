@@ -709,6 +709,22 @@ components:
           - "$ref": "#/components/schemas/AmountInUSD"
           description: Amount of the payment or refund in USD, if available from the
             transaction source.
+        active_offer_type:
+          anyOf:
+          - type: string
+            enum:
+            - free_trial
+            - introductory_offer
+            - offer_code
+            - win_back_offer
+            - promotional_offer
+            - unspecified_offer
+          title: Active Offer Type
+          description: The type of offer that was active when the payment was processed.
+        active_offer: 
+          type: string
+          title: Active Offer Identifier
+          description: The identifier of the offer that was active when the payment was processed.
       additionalProperties: false
       type: object
       required:
@@ -892,6 +908,22 @@ components:
           - "$ref": "#/components/schemas/AmountInUSD"
           description: Amount of the payment or refund in USD, if available from the
             transaction source.
+        active_offer_type:
+          anyOf:
+          - type: string
+            enum:
+            - free_trial
+            - introductory_offer
+            - offer_code
+            - win_back_offer
+            - promotional_offer
+            - unspecified_offer
+          title: Active Offer Type
+          description: The type of offer that was active when the payment was processed.
+        active_offer: 
+          type: string
+          title: Active Offer Identifier
+          description: The identifier of the offer that was active when the payment was processed.
       additionalProperties: false
       type: object
       required:
