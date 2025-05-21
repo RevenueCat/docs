@@ -57,25 +57,25 @@ pod 'RevenueCatUI'
 
 The CustomerCenterView can be integrated in a few different ways depending on how you want to present it within your app. Below are the supported options:
 
- The simplest way to present the CustomerCenterView is using a modal sheet:
+The simplest way to present the CustomerCenterView is using a modal sheet:
 
- import usageViewSheet from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-1-sheet.swift";
+import usageViewSheet from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-1-sheet.swift";
 
- <RCCodeBlock tabs={[{ type: "swift", content: usageViewSheet, name: "SwiftUI" }]} />
+<RCCodeBlock tabs={[{ type: "swift", content: usageViewSheet, name: "SwiftUI" }]} />
 
- If you prefer a more declarative and reusable approach, you can use the provided view modifier:
+If you prefer a more declarative and reusable approach, you can use the provided view modifier:
 
- import usageModifier from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-2.swift";
+import usageModifier from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-2.swift";
 
- <RCCodeBlock
-   tabs={[{ type: "swift", content: usageModifier, name: "SwiftUI" }]}
- />
+<RCCodeBlock
+tabs={[{ type: "swift", content: usageModifier, name: "SwiftUI" }]}
+/>
 
- For apps already using NavigationStack or NavigationView, CustomerCenterView can be pushed onto your stack:
+For apps already using NavigationStack or NavigationView, CustomerCenterView can be pushed onto your stack:
 
- import usageViewStack from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-1-navigationstack.swift";
+import usageViewStack from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-1-navigationstack.swift";
 
- <RCCodeBlock tabs={[{ type: "swift", content: usageViewStack, name: "SwiftUI" }]} />
+<RCCodeBlock tabs={[{ type: "swift", content: usageViewStack, name: "SwiftUI" }]} />
 
 ### Listening to events
 
