@@ -1,6 +1,6 @@
 ---
-title: Integrating Customer Center
-sidebar_label: Customer Center Integration
+title: Integrating Customer Center on iOS
+sidebar_label: iOS Integration
 slug: customer-center-integration
 hidden: false
 ---
@@ -15,11 +15,104 @@ import OverviewPartial from './_customer-center-installation-overview.mdx';
 
 <OverviewPartial />
 
+## Installation
+
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-ios.svg?style=flat)](https://github.com/RevenueCat/purchases-ios/releases)
+
+Before integrating the Customer Center in iOS, you need to add the RevenueCatUI SDK <code>{sdkVersions.ios}</code> or higher to your app.
+
+### Using SPM
+
+#### If you already have `RevenueCat` in your project:
+
+1. Open your project settings and select "Package Dependencies":
+
+![Change version](https://github.com/RevenueCat/purchases-ios/assets/685609/d317fd33-8270-4d9b-9b38-8f5f14342b04)
+
+2. Double-click and make sure version is at least <code>{sdkVersions.ios}</code>:
+
+![Configure version](https://github.com/RevenueCat/purchases-ios/assets/685609/f537a1e1-a1ab-4e6f-986c-05abdcf1dd9f)
+
+3. Open your target settings and find "Frameworks, Libraries, and Embedded Content":
+
+![Find frameworks in your target](https://github.com/RevenueCat/purchases-ios/assets/685609/af078e9a-4b98-42c6-8ca7-6f79aebdf3e0)
+
+4. Add `RevenueCatUI`:
+
+![Add RevenueCatUI dependency](https://github.com/RevenueCat/purchases-ios/assets/685609/c2a3498c-b80d-405c-bdf6-75de927ea58e)
+
+#### First time integrating the RevenueCat SDK:
+
+1. Click File -> Add Packages...
+
+2. Search for `git@github.com:RevenueCat/purchases-ios.git` and make sure version is at least <code>{sdkVersions.ios}</code>:
+
+![Adding purchases-ios dependency](https://github.com/RevenueCat/purchases-ios/assets/685609/18291043-5710-4944-ba12-7d6d83bde240)
+
+3. Add `RevenueCat` and `RevenueCatUI` SPM dependency to your project:
+
+![Add paywall](/images/9140485-Screenshot_2023-08-04_at_12.08.07_78343500e565bc1fd0fceaac72486876.png)
+
+### Using CocoaPods
+
+Add the following to your `Podfile`:
+```ruby
+pod 'RevenueCat'
+pod 'RevenueCatUI'
+```
+
 ## Integration
 
-Follow instructions on how to integrate the SDK in your particular platform:
+The CustomerCenterView can be integrated in a few different ways depending on how you want to present it within your app. Below are the supported options:
 
-- [Native iOS](/tools/customer-center/customer-center-integration-ios#installation)
-- [Native Android](/tools/customer-center/customer-center-integration-android#installation)
-- [Flutter](/tools/customer-center/customer-center-flutter#installation)
-- [React Native](/tools/customer-center/customer-center-react-native#installation)
+The simplest way to present the CustomerCenterView is using a modal sheet:
+
+import usageViewSheet from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-1-sheet.swift";
+
+<RCCodeBlock tabs={[{ type: "swift", content: usageViewSheet, name: "SwiftUI" }]} />
+
+If you prefer a more declarative and reusable approach, you can use the provided view modifier:
+
+import usageModifier from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-2.swift";
+
+<RCCodeBlock
+  tabs={[{ type: "swift", content: usageModifier, name: "SwiftUI" }]}
+/>
+
+
+For apps already using NavigationStack or NavigationView, CustomerCenterView can be pushed onto your stack:
+
+import usageViewStack from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-1-sheet.swift";
+
+<RCCodeBlock tabs={[{ type: "swift", content: usageViewStack, name: "SwiftUI" }]} />
+
+
+#### Listening to events
+
+We've added a way to listen to events that occur within the `CustomerCenterView`. For now, we are not posting any event to our backend (like feedback survey selections). We are going to be adding way more events in the future, but these are what are available for now:
+
+import customerCenterEvents from "!!raw-loader!@site/code_blocks/tools/customer-center-events.swift";
+
+<RCCodeBlock
+  tabs={[{ type: "swift", content: customerCenterEvents, name: "Swift" }]}
+/>
+
+If using the modifier:
+
+import customerCenterEventsModifier from "!!raw-loader!@site/code_blocks/tools/customer-center-events-modifier.swift";
+
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: customerCenterEventsModifier, name: "Swift" },
+  ]}
+/>
+
+## Setup promotional offers
+
+Promotional Offers allow developers to apply custom pricing and trials to new customers and to existing and lapsed subscriptions. Unique promotional offers can be assigned to different paths and survey responses in the Customer Center, but first they must be setup in App Store Connect.
+
+The Customer Center will automatically show offers based on specific user actions. By default we have defined it for cancellations but it can be modified to any of the defined paths. Refer to [configuring App Store Connect promotional offers](/tools/customer-center/customer-center-promo-offers-apple) for detailed instructions.
+
+Learn more about configuring the Customer Center in the [configuration guide](/tools/customer-center/customer-center-configuration).
+
+
