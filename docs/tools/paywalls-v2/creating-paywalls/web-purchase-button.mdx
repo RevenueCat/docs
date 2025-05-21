@@ -8,15 +8,66 @@ sidebar_label: Web Purchase Button
 Read more about the new Web Purchase Button in our [blog post](https://revenuecat.com/blog/growth/introducing-web-paywall-buttons) announcement.
 :::
 
-RevenueCat Paywalls v2 supports the Web Purchase Button as a button destination as an alternative to the default purchase button. The Web Purchase Button opens an external link from your app to a [Web Billing](/web/web-billing/overview) paywall.
+RevenueCat Paywalls v2 allows you to modify Purchase Buttons to start the purchase flow through another store on the web. You can use [Web Billing](/web/web-billing/overview) through RevenueCat to create your own customizable web purchase flow, or add the URL to your own existing web purchase flow.
 
-To add a Web Purchase Button to your paywall, you can use the Button component and select 'Navigate to' -> 'Web Purchase'.
+:::warning
+Web Purchase Buttons are only supported on the App Store, and are only permissible in the US according to the latest App Store Guidelines & US court ruling. On Android, purchase buttons will open the in-app purchase flow. To serve distinct paywalls on iOS and Android, we recommend using [Targeting](https://www.revenuecat.com/docs/tools/targeting).
+:::
 
 <YouTubeEmbed videoId="XF9cbvyiK48" title="Web Purchase Button" />
+
+## Add a web purchase button
+
+Purchase buttons have an `Open` option that allows you to select the type of purchase flow to start.
+
+![Purchase button open options](/images/purchase_button_open_options.png)
+
+Importantly, the `Open` option is only controlling which purchase flow to prioritize if a selected package has both an app product and a web product. If a selected package only has an app product, the purchase button will start the in-app purchase flow regardless of the `Open` option selected.
+
+:::info Packages must include products for the app being used
+Even if you're only looking to direct customers to a web purchase flow, the packages on your paywall must include products for the app that the paywall is being viewed on in order to be displayed properly.
+:::
+
+## Purchase button options
+
+| Option       | Behavior description | 
+| :----------------------- | :--------------------------------------------- |
+| In-app purchase | If the selected package has an app product and a web product, the purchase button will start the in-app purchase flow.               |
+| Web purchase | If the selected package has an app product and a web product, the purchase button will start the web purchase flow.              |
+| Web product selection | The purchase button will open web product selection if more than one web product is offered. |
+| Custom purchase | The purchase button will open your custom purchase flow with the Package ID and any enabled properties passed as URL parameters. |
+
+:::info Hardcode web product details instead of using variables
+If you're using a web or custom purchase flow, we recommend hardcoding the web product details such as its price, duration, or introductory offer instead of using variables. This is because variables will always reflect the app product details, which may differ from the web product you're offering. If they don't, you can safely use variables, but as you experiment with prices and offers please keep this in mind.
+:::
+
+## Custom purchase parameters
+
+When using your own custom purchase flow, you'll have the option of passing the following parameters in the URL:
+1. Package - The selected package ID, appended as `rc_package_id`
+2. App User ID - The RevenueCat app user ID, appended as `rc_app_user_id`
+2. Env - Whether the paywall is being viewed in a sandbox or production environment, appended as `rc_env`
+
+## Paywall Behavior
+
+When a user taps a purchase button that directs them to a web browser to complete the purchase flow, the RevenueCat SDK will automatically invalidate the cached customer info so that new info is fetched from the server when the user returns to the app. You can additionally choose whether to have the app paywall be dismissed when the user returns to the app, or whether to keep the paywall open, using the `Auto dismiss` setting on your paywall.
 
 ## Supported SDK versions
 
 | RevenueCat SDK           | Version required for Web Purchase Button | 
+| :----------------------- | :--------------------------------------------- |
+| purchases-ios             | 5.24.0 and up                 |
+| react-native-purchases | 8.10.1 and up                 | 
+| purchases-flutter         | 8.8.1 and up                 |
+| purchases-kmp             | 1.7.8+13.32.0 and up                  |
+
+Older, unsupported SDK versions will default to the in-app purchase flow when a purchase button is tapped.
+
+### Legacy option on the Button component
+
+When the US court ruling was first announced to allow web purchase flows in-app, we released an option on the Button component to navigate to a `Web purchase` flow. This is still supported, but not recommended for new paywalls, since it does not support navigating directly to the checkout experience for a selected package. However, if you're already using this option, or would like to, you may continue to do so on the following supported SDK versions.
+
+| RevenueCat SDK           | Version required for legacy Web Purchase Button | 
 | :----------------------- | :--------------------------------------------- |
 | purchases-ios             | 5.22.2 and up                 |
 | react-native-purchases | 8.9.6 and up                 | 
