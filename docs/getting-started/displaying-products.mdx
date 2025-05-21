@@ -11,13 +11,6 @@ If you've [configured Offerings](/getting-started/entitlements) in RevenueCat, y
 Before products and offerings can be fetched from RevenueCat, be sure to initialize the Purchases SDK by following our [Quickstart](/getting-started/quickstart) guide.
 :::
 
-:::info For Apple App Store apps
-If you are connecting an iOS or macOS app, make sure you have added both your App Store Connect App-Specific Shared Secret and your In-App Purchase Key in the RevenueCat dashboard. These are required for validating subscriptions and fetching offerings/products.
-
-- [How to find your shared secret →](/service-credentials/itunesconnect-app-specific-shared-secret)
-- [How to find your in-app purchase key →](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration)
-  :::
-
 ## Fetching Offerings
 
 Offerings are fetched through the SDK based on their [configuration](/offerings/overview) in the RevenueCat dashboard.
@@ -71,9 +64,7 @@ This might trigger additional network requests in some situations (like push not
 :::info Offerings, products or available packages empty
 If your offerings, products, or available packages are empty, it's due to some configuration issue in App Store Connect or the Play Console.
 
-The most common reasons for this in App Store Connect are an out-of-date 'Paid Applications Agreement' or products not at least in the 'Ready To Submit' state. For Google Play, this usually occurs when the app is not published on a closed track and a valid test user added.
-
-You can find more info about trouble shooting this issue in our [Help Center](https://support.revenuecat.com/hc/en-us/articles/360041793174).
+You can find more info about trouble shooting this issue in our [Troubleshooting Guide](https://www.revenuecat.com/docs/offerings/troubleshooting-offerings).
 :::
 
 You must choose one Offering that is the "Default Offering" - which can easily be accessed via the `current` property of the returned offerings for a given customer.
