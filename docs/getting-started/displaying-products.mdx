@@ -11,6 +11,13 @@ If you've [configured Offerings](/getting-started/entitlements) in RevenueCat, y
 Before products and offerings can be fetched from RevenueCat, be sure to initialize the Purchases SDK by following our [Quickstart](/getting-started/quickstart) guide.
 :::
 
+:::info For Apple App Store apps
+If you are connecting an iOS or macOS app, make sure you have added both your App Store Connect App-Specific Shared Secret and your In-App Purchase Key in the RevenueCat dashboard. These are required for validating subscriptions and may be necessary for correct product fetching in some configurations.
+
+- [How to find your shared secret →](/service-credentials/itunesconnect-app-specific-shared-secret)
+- [How to find your in-app purchase key →](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration)
+  :::
+
 ## Fetching Offerings
 
 Offerings are fetched through the SDK based on their [configuration](/offerings/overview) in the RevenueCat dashboard.
