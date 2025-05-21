@@ -62,7 +62,7 @@ If the Realized LTV of your Treatment is performing meaningfully worse than your
 ### Initial conversion metric definitions
 
 - **Customers**: All new customers who've been included in each variant of the experiment.
-- **Paywall views**: The count of distinct customers who've reached a paywall in each variant in the experiment. (This metric is only available when using RevenueCat Paywalls)
+- **Paywall viewers**: The count of distinct customers who've reached a paywall in each variant in the experiment. (This metric is only available when using RevenueCat Paywalls)
 - **Initial conversions**: A purchase of any product offered to a customer in the experiment. This includes products with free trials and non-subscription products as well.
 - **Initial conversion rate**: The percent of customers who purchased any product.
 - **Trials started**: The number of trials started.
