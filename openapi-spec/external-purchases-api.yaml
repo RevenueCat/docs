@@ -713,7 +713,6 @@ components:
           anyOf:
           - type: string
             enum:
-            - free_trial
             - introductory_offer
             - offer_code
             - win_back_offer
