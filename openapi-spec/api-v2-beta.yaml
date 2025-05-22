@@ -1101,6 +1101,16 @@ paths:
           type: integer
           example: 10
           default: 20
+      - name: search
+        description: Search term. Currently, only searching by email is supported
+          (searching for exact matches in the $email attribute).
+        required: false
+        in: query
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: example@example.com
       responses:
         '200':
           description: Success
