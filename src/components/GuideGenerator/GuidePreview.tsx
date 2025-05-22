@@ -36,6 +36,35 @@ const Link = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
   );
 };
 
+// Demo section always shown at the top of the guide
+const DemoSection = () => (
+  <div
+    className="theme-admonition theme-admonition-info alert alert--info"
+    style={{ maxWidth: 800, margin: "0 0 2rem 0" }}
+  >
+    <div className="heading" style={{ textAlign: "left", fontWeight: 700 }}>
+      SEE HOW REVENUECAT WORKS IN PRACTICE
+    </div>
+    <div style={{ textAlign: "left" }}>
+      <p style={{ marginBottom: 8 }}>
+        <a
+          href="https://demo.revenuecat.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          demo.revenuecat.com
+        </a>{" "}
+        is a public-facing demo project provided by RevenueCat.
+      </p>
+      <p style={{ marginBottom: 0 }}>
+        It's used primarily for showcasing how RevenueCat works in practice,
+        including functionality like purchasing, subscriptions, entitlements,
+        and offering configuration, without requiring developers to build a full
+        app from scratch.
+      </p>
+    </div>
+  </div>
+);
 export default function GuidePreview() {
   const [mdx, setMdx] = useState<string | null>(null);
   const [Content, setContent] = useState<React.ComponentType | null>(null);
@@ -153,6 +182,17 @@ export default function GuidePreview() {
           paddingTop: "10vh",
         }}
       >
+        <div
+          style={{
+            maxWidth: 800,
+            margin: "2rem auto 0 auto",
+            background: "#fff",
+            padding: 32,
+            borderRadius: 8,
+          }}
+        >
+          <DemoSection />
+        </div>
         <style>
           {`
             .spinner {
@@ -235,16 +275,73 @@ export default function GuidePreview() {
 
   // Render the loaded guide
   return (
-    <div
-      style={{
-        maxWidth: 800,
-        margin: "2rem auto",
-        background: "#fff",
-        padding: 32,
-        borderRadius: 8,
-      }}
-    >
-      <Content />
-    </div>
+    <>
+      {/* Top-right warning box */}
+      <div
+        style={{
+          position: "fixed",
+          top: 24,
+          right: 24,
+          zIndex: 1000,
+          background: "#fff",
+          border: "1.5px solid var(--ifm-color-primary)",
+          borderRadius: 12,
+          boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+          padding: "20px 28px 20px 24px",
+          minWidth: 280,
+          maxWidth: 340,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          gap: 12,
+        }}
+      >
+        <div
+          style={{
+            fontWeight: 600,
+            fontSize: "1.08rem",
+            marginBottom: 4,
+            color: "var(--ifm-color-primary)",
+          }}
+        >
+          Don't lose your guide!
+        </div>
+        <div style={{ fontSize: "0.98rem", color: "#333", marginBottom: 10 }}>
+          If you leave or refresh this page, your personalized guide will
+          disappear.
+          <br />
+          <b>Download it to keep a copy.</b>
+        </div>
+        <button
+          style={{
+            background: "var(--ifm-color-primary)",
+            color: "#fff",
+            border: "none",
+            borderRadius: 6,
+            padding: "10px 18px",
+            fontWeight: 500,
+            fontSize: "1rem",
+            cursor: "pointer",
+            boxShadow: "0 1px 4px rgba(0,0,0,0.04)",
+            marginTop: 2,
+          }}
+          disabled
+        >
+          Download as PDF
+        </button>
+      </div>
+      <div
+        style={{
+          maxWidth: 800,
+          margin: "1rem auto",
+          background: "#fff",
+          padding: 32,
+          borderRadius: 8,
+        }}
+      >
+        <DemoSection />
+        <Content />
+      </div>
+    </>
   );
 }
