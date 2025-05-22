@@ -41,16 +41,16 @@ Customer lists are created on a per-project basis, you must select a project bef
 
 ### Default lists
 
-![app.revenuecat.com_overview.png](/images/81b30f7-app.revenuecat.com_overview_39740967190ab04326c335f8aa308e87.png)
+![Default lists](/images/customers/default-lists.png)
 
 RevenueCat creates some default lists for every project. Default lists should give you insight into every customer that has ever made any purchase.
 
-| Default List     | Description                                                                      |
-| ---------------- | -------------------------------------------------------------------------------- |
-| Active           | Any customer with an active subscription or trial.                               |
-| Sandbox          | Any customer who has any sandbox transaction associated with their App User ID.  |
-| Non-subscription | Any customer with a non-subscription purchase associated with their App User ID. |
-| Expired          | Any customer with an expired subscription or trial.                              |
+| Default List        | Description                                                                      |
+| ------------------- | -------------------------------------------------------------------------------- |
+| Active subscription | Any customer with an active subscription or trial.                               |
+| Sandbox             | Any customer who has any sandbox transaction associated with their App User ID.  |
+| Non-subscription    | Any customer with a non-subscription purchase associated with their App User ID. |
+| Expired             | Any customer with an expired subscription or trial.                              |
 
 :::info Granted Entitlements are not considered 'Active'
 
