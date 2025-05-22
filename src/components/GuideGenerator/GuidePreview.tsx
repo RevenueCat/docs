@@ -54,13 +54,14 @@ const DemoSection = () => (
         >
           demo.revenuecat.com
         </a>{" "}
-        is a public-facing demo project provided by RevenueCat.
+        is a public-facing sandbox project provided by RevenueCat.
       </p>
       <p style={{ marginBottom: 0 }}>
-        It's used primarily for showcasing how RevenueCat works in practice,
-        including functionality like purchasing, subscriptions, entitlements,
-        and offering configuration, without requiring developers to build a full
-        app from scratch.
+        If you want to explore the dashboard on your own, check out our
+        dashboard sandbox. It's a great way to see what a real-life app setup
+        could look like, including features like purchasing, subscriptions,
+        entitlements, and offering configuration, all without requiring you to
+        build a full app from scratch.
       </p>
     </div>
   </div>
@@ -295,6 +296,7 @@ export default function GuidePreview() {
           alignItems: "flex-start",
           gap: 12,
         }}
+        className="guide-warning-box"
       >
         <div
           style={{
@@ -325,11 +327,19 @@ export default function GuidePreview() {
             boxShadow: "0 1px 4px rgba(0,0,0,0.04)",
             marginTop: 2,
           }}
-          disabled
+          onClick={() => window.print()}
         >
           Download as PDF
         </button>
       </div>
+      {/* Print-specific CSS to hide the warning box when printing */}
+      <style>{`
+        @media print {
+          .guide-warning-box {
+            display: none !important;
+          }
+        }
+      `}</style>
       <div
         style={{
           maxWidth: 800,
