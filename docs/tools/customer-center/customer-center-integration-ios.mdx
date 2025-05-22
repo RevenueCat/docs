@@ -55,19 +55,27 @@ pod 'RevenueCatUI'
 
 ## Integration
 
-You can use the `CustomerCenterView` directly:
+The CustomerCenterView can be integrated in a few different ways depending on how you want to present it within your app.
 
-import usageView from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-1.swift";
+The simplest way to present the CustomerCenterView is using a modal sheet:
 
-<RCCodeBlock tabs={[{ type: "swift", content: usageView, name: "SwiftUI" }]} />
+import usageViewSheet from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-1-sheet.swift";
 
-Or via a modifier:
+<RCCodeBlock tabs={[{ type: "swift", content: usageViewSheet, name: "SwiftUI" }]} />
+
+If you prefer a more declarative and reusable approach, you can use the provided view modifier:
 
 import usageModifier from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-2.swift";
 
 <RCCodeBlock
-  tabs={[{ type: "swift", content: usageModifier, name: "SwiftUI" }]}
+tabs={[{ type: "swift", content: usageModifier, name: "SwiftUI" }]}
 />
+
+For apps already using NavigationStack or NavigationView, CustomerCenterView can be pushed onto your stack:
+
+import usageViewStack from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-1-navigationstack.swift";
+
+<RCCodeBlock tabs={[{ type: "swift", content: usageViewStack, name: "SwiftUI" }]} />
 
 ### Listening to events
 
@@ -91,7 +99,7 @@ import customerCenterEventsModifier from "!!raw-loader!@site/code_blocks/tools/c
 
 ## Setup promotional offers
 
-Promotional Offers allow developers to apply custom pricing and trials to new customers and to existing and lapsed subscriptions. Unique promotional offers can be assigned to different paths and survey responses in the Customer Center, but first they must be setup in App Store Connect.
+Promotional Offers allow developers to apply custom pricing and trials to new customers and to existing and lapsed subscriptions. Unique promotional offers can be assigned to different paths and survey responses in the Customer Center, but first they must be set up in App Store Connect.
 
 The Customer Center will automatically show offers based on specific user actions. By default we have defined it for cancellations but it can be modified to any of the defined paths. Refer to [configuring App Store Connect promotional offers](/tools/customer-center/customer-center-promo-offers-apple) for detailed instructions.
 
