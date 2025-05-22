@@ -26,7 +26,7 @@ var body: some View {
         isPresented: isPresented
     ) {
         CustomerCenterView(
-            usesNavigationStack: true,
+            usesNavigationStack: true, // set this to false when using a NavigationView
             usesExistingNavigation: true,
             shouldShowCloseButton: false
         )
