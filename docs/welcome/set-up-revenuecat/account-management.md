@@ -51,7 +51,7 @@ An invoice will be emailed to the owner of a project at the end of the current b
 
 ### Invoice details
 
-You can update how your company name, address, and Tax ID/VAT appear on your invoices in [billing settings](https://app.revenuecat.com/settings/billing) under 'Invoice details'. You can also elect to recieve invoices at a separate email address (Billing Email) from the email address associated with your RevenueCat account.
+You can update how your company name, address, and Tax ID/VAT appear on your invoices in [billing settings](https://app.revenuecat.com/settings/billing) under 'Invoice details'. You can also elect to receive invoices at a separate email address (Billing Email) from the email address associated with your RevenueCat account.
 
 ![update your invoice details in your billing settings](/images/SCR-20250522-orun.png)
 
