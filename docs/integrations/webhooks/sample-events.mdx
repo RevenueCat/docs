@@ -37,6 +37,7 @@ import billingIssueContent from "!!raw-loader!@site/code_blocks/integrations/web
 import expirationContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_13.json";
 import transferContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_8.json";
 import refundContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_9.json";
+import refundReversedContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-event-refund-reversed.json";
 import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_10.json";
 import subscriptionExtendedContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_14.json";
 
@@ -46,6 +47,7 @@ import subscriptionExtendedContent from "!!raw-loader!@site/code_blocks/integrat
     { type: "json", content: expirationContent, name: "Expiration" },
     { type: "json", content: transferContent, name: "Transfer" },
     { type: "json", content: refundContent, name: "Refund" },
+    { type: "json", content: refundReversedContent, name: "Refund Reversed" },
     { type: "json", content: productChangeContent, name: "Product Change" },
     {
       type: "json",
@@ -64,5 +66,29 @@ import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/w
   tabs={[
     { type: "json", content: trialStartedContent, name: "Trial Started" },
     { type: "json", content: trialCancelledContent, name: "Trial Cancelled" },
+  ]}
+/>
+
+When a Web Billing invoices is issued, a INVOICE_ISSUANCE webhook is created:
+
+import invoiceIssuanceContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-event-invoice-issuance.json";
+
+<RCCodeBlock
+  tabs={[
+    { type: "json", content: invoiceIssuanceContent, name: "Invoice Issued" },
+  ]}
+/>
+
+In cases when the stores are down, RevenueCat may grant a [temporary entitlement](/integrations/webhooks/event-types-and-fields#event-types) until the stores are operational.
+
+import temporaryEntitlementGrantContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-event-temporary-entitlement-grant.json";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "json",
+      content: temporaryEntitlementGrantContent,
+      name: "Temporary Entitlement Grant",
+    },
   ]}
 />

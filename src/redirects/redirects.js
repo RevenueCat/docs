@@ -1612,7 +1612,7 @@ const redirects = {
       from: "/web/revenuecat-billing/subscription-lifecycle",
     },
     {
-      to: "/web/web-billing/web-paywall-links",
+      to: "/web/web-billing/web-purchase-links",
       from: "/web/revenuecat-billing/web-paywall-links",
     },
     {
@@ -1623,12 +1623,16 @@ const redirects = {
       to: "/web/web-billing/web-sdk",
       from: "/web/web-billing",
     },
+    {
+      to: "/web/web-billing/web-purchase-links",
+      from: "/web/web-billing/web-paywall-links",
+    },
   ],
 };
 
 // Add redirects with a .html appended to the "from" path for redirecting in S3/Cloudfront
 redirects.redirects.push(
-  ...redirects.redirects.map(({ from, to }) => ({ from: `${from}.html`, to }))
+  ...redirects.redirects.map(({ from, to }) => ({ from: `${from}.html`, to })),
 );
 
 export default redirects;

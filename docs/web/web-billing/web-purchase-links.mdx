@@ -1,39 +1,39 @@
 ---
-title: Web Paywall Links (low code)
-slug: web-paywall-links
+title: Web Purchase Links
+slug: web-purchase-links
 excerpt: Generate a RevenueCat hosted paywall and checkout flow with just a few clicks
 hidden: false
 ---
 
 ## Overview
 
-Use Web Paywall Links to enable customers to purchase a Web Billing subscription directly without writing any code. These links support both identified and anonymous purchases. For identified users, append the customer's App User ID to the provided URL. For anonymous purchases, utilize Redemption Links, which allow customers to buy subscriptions without an App User ID and later associate the purchase with their account in your app.
+Use Web Purchase Links to enable customers to purchase a Web Billing subscription directly without writing any code. These links support both identified and anonymous purchases. For identified users, append the customer's App User ID to the provided URL. For anonymous purchases, utilize Redemption Links, which allow customers to buy subscriptions without an App User ID and later associate the purchase with their account in your app.
 
 ## Get Started
 
 1. Create a [Web Billing App](/web/web-billing/web-sdk#app-configuration)
-2. Add the [Web Billing Products](/web/web-billing/product-setup) you want to serve through your Web Paywall Link
+2. Add the [Web Billing Products](/web/web-billing/product-setup) you want to serve through your Web Purchase Link
 3. Create an [Offering](/tools/offerings-guide) with those Products
-4. Visit that Offering's details page and click on the **Web Paywall Link** tab
-5. Finally, click on the **Create a Web Paywall Link for this Offering** button
+4. Visit that Offering's details page and click on the **Web Purchase Link** tab
+5. Finally, click on the **Create a Web Purchase Link for this Offering** button
 6. To support anonymous purchases, configure [Redemption Links](/web/web-billing/redemption-links) in your Web Billing app settings.
 
-![](/images/web-billing/web-paywall-link-create.png)
+![](/images/web-billing/web-purchase-link-create.png)
 
-## Customise your Web Paywall Link
+## Customise your Web Purchase Link
 
 Choose a Web Billing app from the dropdown if you have more than one
 
-![](/images/web-billing/web-paywall-link-choose-app.png)
+![](/images/web-billing/web-purchase-link-choose-app.png)
 
 ### Package Selection page
 
-The first page your customers will see when accessing your Web Paywall Link is the Package selection page.
+The first page your customers will see when accessing your Web Purchase Link is the Package selection page.
 In this page your customers can select one of the products included in your offering.
 
 Here is an example:
 
-![](/images/web-billing/web-paywall-link-package-example.png)
+![](/images/web-billing/web-purchase-link-package-example.png)
 
 You can customize the:
 
@@ -42,11 +42,11 @@ You can customize the:
 - Choose to show or not the product description (check the [product setup](/web/web-billing/product-setup) step for more info)
 - The terms and conditions URL
 
-![](/images/web-billing/web-paywall-link-package-config.png)
+![](/images/web-billing/web-purchase-link-package-config.png)
 
 ### Success page
 
-After subscribing the Web Paywall Link allows you to congratulate the user in 2 ways:
+After subscribing the Web Purchase Link allows you to congratulate the user in 2 ways:
 
 - Show a download page hosted by RevenueCat
 - Redirect to any URL you like
@@ -55,7 +55,7 @@ After subscribing the Web Paywall Link allows you to congratulate the user in 2 
 
 If you choose to show a download page here's how it will look like:
 
-![](/images/web-billing/web-paywall-link-success-example.png)
+![](/images/web-billing/web-purchase-link-success-example.png)
 
 You can customize the download page:
 
@@ -66,28 +66,28 @@ You can customize the download page:
 - App Store
 - Play Store
 
-![](/images/web-billing/web-paywall-link-success-config.png)
+![](/images/web-billing/web-purchase-link-success-config.png)
 
 #### Redirect to a custom URL
 
 In this case, right after purchasing your product, the customer will be redirected to the URL that you specify in the
-Web Paywall Link configuration.
+Web Purchase Link configuration.
 
-![](/images/web-billing/web-paywall-link-redirect-config.png)
+![](/images/web-billing/web-purchase-link-redirect-config.png)
 
 Once you are ready, click Save and your changes will be applied immediately.
 
 :::warning Immediate apply
-As soon as you click save, any subscriber visiting your Web Paywall Link will see the changes immediately.
+As soon as you click save, any subscriber visiting your Web Purchase Link will see the changes immediately.
 
-You can always run tests by creating a Web Paywall Link for another offering.
+You can always run tests by creating a Web Purchase Link for another offering.
 :::
 
 ## Choose what happens for returning customers
 
 You can choose what happens when a customer already has an entitlement or an active subscription and they return to this page.
 
-![](/images/web-billing/web-paywall-link-choose-returning-customers.png)
+![](/images/web-billing/web-purchase-link-choose-returning-customers.png)
 
 ### Show the success page
 
@@ -101,10 +101,10 @@ Allows the returning customer to purchase another product.
 This configuration is useful for non-consumable products.
 The re-purchase process will fail if the customer tries to purchase the exact same product twice (subscription or non-consumable).
 
-We suggest to create a dedicated offering/web paywall link for non-consumables to make sure all products can be bought as many times as the customer wants.
+We suggest to create a dedicated offering/web purchase link for non-consumables to make sure all products can be bought as many times as the customer wants.
 :::
 
-## Sending your Web Paywall Links
+## Sending your Web Purchase Links
 
 Once your setup is complete, you will receive two links formatted as `https://pay.rev.cat/<someProductionTokenWeGenerate>/<yourAppUserId>` (one for production, the other one for sandbox).
 
@@ -112,9 +112,9 @@ To use these links:
 
 - **For Identified Users:** Append the URL-encoded App User ID of the customer to the link. This ensures the purchase is associated with the specific user.​
 
-- **For Anonymous Users:** Leverage Redemption Links by using the Web Paywall Link URLs without appending an App User ID. This approach generates anonymous user IDs, allowing customers to purchase subscriptions without prior identification. They can later associate these purchases with their accounts within your app. For comprehensive guidance on setting up and using Redemption Links, refer to [the Redemption Links documentation](/web/web-billing/redemption-links).
+- **For Anonymous Users:** Leverage Redemption Links by using the Web Purchase Link URLs without appending an App User ID. This approach generates anonymous user IDs, allowing customers to purchase subscriptions without prior identification. They can later associate these purchases with their accounts within your app. For comprehensive guidance on setting up and using Redemption Links, refer to [the Redemption Links documentation](/web/web-billing/redemption-links).
 
-![](/images/web-billing/web-paywall-link-urls.png)
+![](/images/web-billing/web-purchase-link-urls.png)
 
 :::danger Do not send the sandbox URL to customers
 The Sandbox URL allows you to test purchases using [Stripe test card numbers](https://docs.stripe.com/testing#use-test-cards).

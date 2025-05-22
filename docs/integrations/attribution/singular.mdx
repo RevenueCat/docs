@@ -24,7 +24,7 @@ The Singular integration requires some device-specific data. RevenueCat will onl
 | Key        | Description                                                                                                                                     | Required          |
 | :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :---------------- |
 | `$idfa`    | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ✅ (iOS only)     |
-| `$idfv`    | iOS [vender identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ✅ (iOS only)     |
+| `$idfv`    | iOS [vendor identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ✅ (iOS only)     |
 | `$gpsAdId` | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ✅ (Android only) |
 | `$ip`      | The IP address of the device                                                                                                                    | ❌ (optional)     |
 
@@ -68,7 +68,7 @@ Make sure to remove all client-side tracking of revenue. Since RevenueCat will b
 
 ### (Optional) Send campaign data to RevenueCat
 
-RevenueCat itself is not an attribution network, and can't determine which specific ad drove an install/conversion. However, if you're able to collect this information from another source, such as Singular, it's possible to attach it to a user in RevenueCat using [Customer Attributes](/customers/customer-attributes) as well.  
+RevenueCat itself is not an attribution network, and can't determine which specific ad drove an install/conversion. However, if you're able to collect this information from another source, such as Singular, it's possible to attach it to a user in RevenueCat using [Customer Attributes](/customers/customer-attributes) as well.
 The below reserved key names can be used to optionally attach campaign data to a user. This data will then be sent through to other downstream analytics integrations and accessible via APIs and webhooks.
 
 | Key            |

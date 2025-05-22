@@ -51,3 +51,12 @@ When a customer launches with the first version containing RevenueCat it will tr
 :::warning Do not sync or restore on every app launch
 It's okay to trigger a sync once per subscriber programmatically the first time they open a version of your app containing RevenueCat. You **should not** call this programmatically on every app launch for every user. This can increase latency in your app and can unintentionally alias customers together.
 :::
+
+### Data Processing Time
+
+After importing purchase data into RevenueCat (whether via server-side or client-side methods), please note that there may be a delay before this data is fully reflected across all RevenueCat systems:
+
+- **Customer Lists**: It may take several hours for newly imported customers to appear in your Customer Lists.
+- **Charts and Analytics**: Charts and analytics data typically update within 24 hours, but larger imports may take longer to fully process.
+
+During this processing period, you can still access individual customer information through the Customer Profile View or API even if aggregate data is still being updated.

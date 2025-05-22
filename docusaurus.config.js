@@ -63,7 +63,7 @@ const config = {
           customCss: "./src/css/custom.css",
         },
         googleTagManager: {
-          containerId: 'GTM-NJWQK6DX',
+          containerId: "GTM-NJWQK6DX",
         },
       }),
     ],
@@ -139,7 +139,7 @@ const config = {
         },
         items: [
           {
-            label: "Documentation",
+            label: "Categories",
             to: "/welcome/overview",
             items: [
               {

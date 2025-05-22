@@ -62,6 +62,7 @@ const projectsCategory = Category({
         Page({ slug: "projects/authentication" }),
         Page({ slug: "projects/collaborators" }),
         Page({ slug: "projects/restore-behavior" }),
+        Page({ slug: "projects/sandbox-access" }),
       ],
       index: { title: "Project Settings", link: "projects/project-settings" },
     }),
@@ -112,16 +113,6 @@ const paywallsCategory = Category({
   itemsPathPrefix: "",
   items: [
     SubCategory({
-      label: "RevenueCat Paywalls (Recommended)",
-      slug: "tools/paywalls",
-      itemsPathPrefix: "tools/paywalls/",
-      items: [
-        Page({ slug: "installation" }),
-        Page({ slug: "creating-paywalls" }),
-        Page({ slug: "displaying-paywalls" }),
-      ],
-    }),
-    SubCategory({
       label: "RevenueCat Paywalls v2 (Beta)",
       slug: "tools/paywalls-v2",
       itemsPathPrefix: "tools/paywalls-v2/",
@@ -134,14 +125,25 @@ const paywallsCategory = Category({
           items: [
             Page({ slug: "components" }),
             Page({ slug: "component-properties" }),
+            Page({ slug: "web-purchase-button" }),
             Page({ slug: "variables" }),
-            Page({ slug: "customer-states" }),
             Page({ slug: "localization" }),
+            Page({ slug: "customer-states" }),
             Page({ slug: "app-review" }),
           ],
         }),
         Page({ slug: "displaying-paywalls" }),
         Page({ slug: "change-log" }),
+      ],
+    }),
+    SubCategory({
+      label: "RevenueCat Paywalls",
+      slug: "tools/paywalls",
+      itemsPathPrefix: "tools/paywalls/",
+      items: [
+        Page({ slug: "installation" }),
+        Page({ slug: "creating-paywalls" }),
+        Page({ slug: "displaying-paywalls" }),
       ],
     }),
     SubCategory({
@@ -178,7 +180,7 @@ const webSDKCategory = Category({
       itemsPathPrefix: "web-billing/",
       items: [
         Page({ slug: "web-sdk" }),
-        Page({ slug: "web-paywall-links" }),
+        Page({ slug: "web-purchase-links" }),
         Page({ slug: "testing" }),
       ],
     }),
@@ -193,6 +195,7 @@ const webSDKCategory = Category({
         Page({ slug: "multi-currency-support" }),
         Page({ slug: "localization" }),
         Page({ slug: "redemption-links" }),
+        Page({ slug: "tax" }),
         Page({ slug: "custom-metadata" }),
       ],
     }),
@@ -206,6 +209,7 @@ const webSDKCategory = Category({
       itemsPathPrefix: "integrations/",
       items: [Page({ slug: "stripe" }), Page({ slug: "paddle" })],
     }),
+    Page({ slug: "faq" }),
   ],
 });
 

@@ -23,6 +23,8 @@ tags:
   description: Operations about subscriptions.
 - name: Invoice
   description: Operations about invoices.
+- name: Paywall
+  description: Operations about paywalls.
 - name: Project
   description: Operations about projects.
 - name: Subscription Data Model
@@ -55,20 +57,22 @@ tags:
     \ SDK](/docs/getting-started/installation).\n\nIf you want to start migrating\
     \ your existing users to RevenueCat and you have your user\u2019s receipts stored\
     \ on your own server, or you want to check subscription status of your users from\
-    \ your own server, the REST API is a great solution.\n\n## Authentication\n\n\
-    Authentication for the RevenueCat REST API is achieved by setting the `Authorization`\
-    \ header with a valid API key. You'll find two types of API keys in your RevenueCat\
-    \ dashboard: _public_ and _secret_.\n\nCertain endpoints require secret keys,\
-    \ which should be kept out of any publicly accessible areas such as GitHub, client-side\
-    \ code, and so forth. See our [Authentication guide](/docs/welcome/authentication)\
-    \ for more information.\n\n```text title=\"Authorization Header\"\nAuthorization:\
-    \ Bearer YOUR_REVENUECAT_API_KEY\n```\n\n<div class=\"theme-admonition theme-admonition-info\
-    \ alert alert--warning\">\n  <div class=\"heading\">\n    Authorization type `Bearer`\
-    \ required in header\n  </div>\n  <div>\n    he RevenueCat REST API v2 requires\
-    \ stating the authorization type `Bearer` in the `Authorization` header before\
-    \ the API key in accordance with [RFC 7235](https://datatracker.ietf.org/doc/html/rfc7235).\
-    \ This is different to the v1 API which allowed passing just the API key as the\
-    \ `Authorization` header.\n  </div>\n</div>\n\n<div class=\"theme-admonition theme-admonition-info\
+    \ your own server, the REST API is a great solution.\n\n## Base URL\n\nThe base\
+    \ URL for the RevenueCat REST API v2 is `https://api.revenuecat.com/v2`.\n\n##\
+    \ Authentication\n\nAuthentication for the RevenueCat REST API is achieved by\
+    \ setting the `Authorization` header with a valid API key. You'll find two types\
+    \ of API keys in your RevenueCat dashboard: _public_ and _secret_.\n\nCertain\
+    \ endpoints require secret keys, which should be kept out of any publicly accessible\
+    \ areas such as GitHub, client-side code, and so forth. See our [Authentication\
+    \ guide](/docs/welcome/authentication) for more information.\n\n```text title=\"\
+    Authorization Header\"\nAuthorization: Bearer YOUR_REVENUECAT_API_KEY\n```\n\n\
+    <div class=\"theme-admonition theme-admonition-info alert alert--warning\">\n\
+    \  <div class=\"heading\">\n    Authorization type `Bearer` required in header\n\
+    \  </div>\n  <div>\n    he RevenueCat REST API v2 requires stating the authorization\
+    \ type `Bearer` in the `Authorization` header before the API key in accordance\
+    \ with [RFC 7235](https://datatracker.ietf.org/doc/html/rfc7235). This is different\
+    \ to the v1 API which allowed passing just the API key as the `Authorization`\
+    \ header.\n  </div>\n</div>\n\n<div class=\"theme-admonition theme-admonition-info\
     \ alert alert--warning\">\n  <div class=\"heading\">\n    API v1 keys will not\
     \ work with REST API v2\n  </div>\n  <div>\n    In order to utilize the RevenueCat\
     \ API v2, please create new v2 secret keys and define your permissions.\n  </div>\n\
@@ -299,6 +303,132 @@ tags:
     \n\n#### Family shared subscriptions\n\n![](/docs/images/api-v2/1511106-Family_shared_subscriptions.png)\n\
     \n\n#### Family shared subscriptions: regranted\n\n![](/docs/images/api-v2/b3134c1-Family_shared_subscriptions__regranted.png)"
 paths:
+  /projects/{project_id}/paywalls:
+    post:
+      summary: Create a paywall
+      operationId: create-paywall
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:offerings:read_write
+      x-release-status: public
+      tags:
+      - Paywall
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - offering_id
+              properties:
+                offering_id:
+                  description: 'The ID of the offering the paywall will be created
+                    for.
+
+                    '
+                  type: string
+                  minLength: 1
+                  maxLength: 200
+                  example: ofrng123456789a
+              additionalProperties: false
+      responses:
+        '201':
+          description: Success. The paywall was created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paywall'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: "Create a paywall for an offering of the project.\n This endpoint\
+        \ requires the following permission(s): <code>project_configuration:offerings:read_write</code>."
+  /projects/{project_id}/apps/{app_id}/public_api_keys:
+    get:
+      summary: Get a list of the public API keys of an app
+      operationId: list-app-public-api-keys
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:apps:read
+      x-release-status: public
+      tags:
+      - App
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: app_id
+        description: ID of the app
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: app1ab2c3d4
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPublicApiKeys'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.'
   /projects:
     get:
       summary: Get a list of projects
@@ -487,6 +617,13 @@ paths:
                     roku_api_key: <Your Roku Pay API Key goes here>
                     roku_channel_id: 123456
                     roku_channel_name: History Channel
+              Paddle:
+                value:
+                  name: My Paddle App
+                  type: paddle
+                  paddle:
+                    paddle_api_key: <Your Paddle API Key goes here>
+                    paddle_is_sandbox: true
       responses:
         '201':
           description: Success. The app was created
@@ -752,6 +889,24 @@ paths:
                       minLength: 1
                       maxLength: 30
                       nullable: true
+                paddle:
+                  description: Paddle Billing type details. Should only be used when
+                    type is paddle.
+                  type: object
+                  nullable: false
+                  properties:
+                    paddle_api_key:
+                      description: Paddle Server-side API key provided on the Paddle
+                        dashboard.
+                      type: string
+                      nullable: true
+                      minLength: 50
+                      maxLength: 50
+                    paddle_is_sandbox:
+                      description: Whether the app is tied to the sandbox environment.
+                      nullable: false
+                      type: boolean
+                      example: true
               additionalProperties: false
             examples:
               Update App Store App properties:
@@ -860,6 +1015,60 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read_write</code>.'
+  /projects/{project_id}/apps/{app_id}/store_kit_config:
+    get:
+      summary: Get the StoreKit configuration for an app
+      operationId: get-app-storekit-config
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:apps:read
+      x-release-status: public
+      tags:
+      - App
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: app_id
+        description: ID of the app
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: app1ab2c3d4
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreKitConfigFile'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.'
   /projects/{project_id}/customers:
     get:
       summary: Get a list of customers
@@ -892,6 +1101,16 @@ paths:
           type: integer
           example: 10
           default: 20
+      - name: search
+        description: Search term. Currently, only searching by email is supported
+          (searching for exact matches in the $email attribute).
+        required: false
+        in: query
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: example@example.com
       responses:
         '200':
           description: Success
@@ -3146,6 +3365,133 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.'
+  /projects/{project_id}/subscriptions/{subscription_id}/transactions:
+    get:
+      summary: Get a Play Store subscription's transactions
+      operationId: get-play-store-subscription-transactions
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:subscriptions:read
+      x-release-status: public
+      tags:
+      - Subscription
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: subscription_id
+        description: ID of the subscription
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: sub1a2b3c4d5e
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSubscriptionTransaction'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.'
+  /projects/{project_id}/subscriptions/{subscription_id}/transactions/{transaction_id}/actions/refund:
+    post:
+      summary: Refund a Play Store subscription's transaction
+      operationId: refund-play-store-subscription-transaction
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:subscriptions:read_write
+      x-release-status: public
+      tags:
+      - Subscription
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: subscription_id
+        description: ID of the subscription
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: sub1a2b3c4d5e
+      - name: transaction_id
+        description: Identifier of the transaction in the store
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: GPA.000-000-000-000
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionTransaction'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: "Refund a Play Store subscription's transaction. This endpoint\
+        \ does not cancel the subscription or revoke access to it.\n This endpoint\
+        \ requires the following permission(s): <code>customer_information:subscriptions:read_write</code>."
   /projects/{project_id}/subscriptions/{subscription_id}/entitlements:
     get:
       summary: Get a list of entitlements associated with a subscription
@@ -3341,6 +3687,63 @@ paths:
       description: "Cancel a Web Billing subscription by refunding the most recent\
         \ payment. The customer will immediately lose access to the associated entitlements.\n\
         \ This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>."
+  /projects/{project_id}/subscriptions/{subscription_id}/authenticated_management_url:
+    get:
+      summary: Get an authenticated Web Billing customer portal URL
+      operationId: get-authorized-subscription-management-url
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:subscriptions:read
+      x-release-status: public
+      tags:
+      - Subscription
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: subscription_id
+        description: ID of the subscription
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: sub1a2b3c4d5e
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticatedManagementUrl'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: "Get a secure, single-use URL that allows customers to access their\
+        \ Web Billing customer portal.\n This endpoint requires the following permission(s):\
+        \ <code>customer_information:subscriptions:read</code>."
   /projects/{project_id}/customers/{customer_id}/subscriptions:
     get:
       summary: Get a list of subscriptions associated with a customer
@@ -4417,6 +4820,7 @@ components:
             - stripe
             - rc_billing
             - roku
+            - paddle
             example: app_store
           project_id:
             description: The id of the project
@@ -4432,6 +4836,7 @@ components:
       - $ref: '#/components/schemas/StripeApp'
       - $ref: '#/components/schemas/RCBillingApp'
       - $ref: '#/components/schemas/RokuApp'
+      - $ref: '#/components/schemas/PaddleApp'
     AppCreate:
       allOf:
       - type: object
@@ -4461,6 +4866,7 @@ components:
             - stripe
             - rc_billing
             - roku
+            - paddle
             nullable: false
       - $ref: '#/components/schemas/AmazonAppCreate'
       - $ref: '#/components/schemas/AppStoreAppCreate'
@@ -4469,6 +4875,7 @@ components:
       - $ref: '#/components/schemas/StripeAppCreate'
       - $ref: '#/components/schemas/RCBillingAppCreate'
       - $ref: '#/components/schemas/RokuAppCreate'
+      - $ref: '#/components/schemas/PaddleAppCreate'
     AppStoreApp:
       type: object
       properties:
@@ -4493,9 +4900,6 @@ components:
           type: object
           required:
           - bundle_id
-          - subscription_private_key
-          - subscription_key_id
-          - subscription_key_issuer
           nullable: false
           properties:
             bundle_id:
@@ -4532,6 +4936,27 @@ components:
               minLength: 1
               maxLength: 36
               nullable: false
+    AuthenticatedManagementUrl:
+      type: object
+      required:
+      - management_url
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - authenticated_management_url
+          type: string
+        management_url:
+          description: A secure, single-use URL that provides temporary access to
+            the customer portal for a specific customer. This URL can only be used
+            once and expires after use.
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: https://billing.revenuecat.com/app1a2b3c4/sub1ab2c3d4e5?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
     Country:
       type: string
       nullable: true
@@ -5810,6 +6235,37 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects
+    ListPublicApiKeys:
+      type: object
+      required:
+      - items
+      - next_page
+      - object
+      - url
+      title: PublicApiKeyList
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value. Always has the value `list`.
+          enum:
+          - list
+          type: string
+        items:
+          description: Details about each object.
+          items:
+            $ref: '#/components/schemas/PublicApiKey'
+          type: array
+        next_page:
+          description: URL to access the next page of the app's public API keys. If
+            not present / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/projec1a2b3c4d/apps/app1a2b3c4d/public_api_keys?starting_after=pub1a2b3c4d
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/projec1a2b3c4d/apps/app1a2b3c4d/public_api_keys
     ListPurchases:
       type: object
       required:
@@ -5841,6 +6297,37 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/purchases
+    ListSubscriptionTransaction:
+      type: object
+      required:
+      - items
+      - next_page
+      - object
+      - url
+      title: SubscriptionTransactionList
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value. Always has the value `list`.
+          enum:
+          - list
+          type: string
+        items:
+          description: Details about each object.
+          items:
+            $ref: '#/components/schemas/SubscriptionTransaction'
+          type: array
+        next_page:
+          description: URL to access the next page of the projects. If not present
+            / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/proj123/subscriptions/sub123/transactions?starting_after=GPA.0000-0000-0000-00000
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/proj123/subscriptions/sub123/transactions
     ListSubscriptions:
       type: object
       required:
@@ -6279,6 +6766,93 @@ components:
         eligibility_criteria:
           $ref: '#/components/schemas/EligibilityCriteria'
           nullable: false
+    PaddleApp:
+      type: object
+      properties:
+        paddle:
+          description: Paddle Billing type details
+          type: object
+          nullable: false
+          properties:
+            paddle_is_sandbox:
+              description: Whether the app is tied to the sandbox environment.
+              nullable: false
+              type: boolean
+              example: true
+            paddle_api_key:
+              description: Paddle Server-side API key provided on the Paddle dashboard.
+              type: string
+              nullable: true
+              minLength: 50
+              maxLength: 50
+    PaddleAppCreate:
+      type: object
+      properties:
+        paddle:
+          description: Paddle Billing details. Should only be used when type is paddle.
+          type: object
+          nullable: true
+          properties:
+            paddle_api_key:
+              description: Paddle Server-side API key provided on the Paddle dashboard.
+              type: string
+              nullable: true
+              minLength: 50
+              maxLength: 50
+            paddle_is_sandbox:
+              description: Whether the app is tied to the sandbox environment.
+              nullable: false
+              type: boolean
+              example: true
+    Paywall:
+      type: object
+      required:
+      - id
+      - name
+      - offering_id
+      - created_at
+      - published_at
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - paywall
+          type: string
+        id:
+          description: The id of the paywall
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: pw123456789abcdef
+        name:
+          description: The name of the paywall
+          nullable: true
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: My Awesome Paywall
+        offering_id:
+          description: The ID of the offering the paywall is for.
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: ofrng123456789a
+        created_at:
+          description: The date the paywall was created at in ms since epoch
+          nullable: false
+          type: integer
+          format: int64
+          example: 1658399423658
+        published_at:
+          description: The date the paywall was published at in ms since epoch
+          nullable: true
+          type: integer
+          format: int64
+          example: 1658399423958
     PlayStoreApp:
       type: object
       properties:
@@ -6384,6 +6958,9 @@ components:
       enum:
       - subscription
       - one_time
+      - consumable
+      - non_consumable
+      - non_renewing_subscription
     ProductsFromEntitlement:
       type: object
       required:
@@ -6476,6 +7053,56 @@ components:
           example: MagicWeather
         created_at:
           description: The date when the project was created in ms since epoch
+          nullable: false
+          type: integer
+          format: int64
+          example: 1658399423658
+    PublicApiKey:
+      type: object
+      required:
+      - id
+      - key
+      - app_id
+      - created_at
+      - environment
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - public_api_key
+          type: string
+        id:
+          description: The ID of the public API key
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: apikey12345
+        key:
+          description: The value of the public API key
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: goog_1ab2c3d4
+        environment:
+          description: The environment the public API key is for
+          nullable: false
+          enum:
+          - production
+          - sandbox
+          type: string
+        app_id:
+          description: The ID of the app the public API key is for
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: app1a2b3c4
+        created_at:
+          description: The date when the public API key was created in ms since epoch
           nullable: false
           type: integer
           format: int64
@@ -6768,6 +7395,23 @@ components:
               nullable: true
               minLength: 1
               maxLength: 30
+    StoreKitConfigFile:
+      type: object
+      description: Contents of a generated StoreKit config file for an app
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - store_kit_config_file
+          type: string
+        contents:
+          type: object
+          description: Contents of the StoreKit config file
+          additionalProperties: true
+      required:
+      - object
+      - contents
     StripeApp:
       type: object
       properties:
@@ -7068,6 +7712,32 @@ components:
           description: The duration of the subscription's trial period in ISO-8601
             standard
           example: P1W
+    SubscriptionTransaction:
+      type: object
+      required:
+      - id
+      - purchased_at
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - subscription_transaction
+          type: string
+        id:
+          description: The ID of the subscription transaction in the store
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: GPA.0000-0000-0000-00000
+        purchased_at:
+          description: The date of the transaction in ms since epoch
+          nullable: false
+          type: integer
+          format: int64
+          example: 1658399423658
     VirtualCurrencyBalance:
       type: object
       title: VirtualCurrencyBalance
@@ -7361,5 +8031,6 @@ x-tagGroups:
   - Purchase
   - Subscription
   - Invoice
+  - Paywall
   - Project
 openapi: 3.0.3

@@ -7,7 +7,11 @@ hidden: false
 
 RevenueCat currently supports web payments through Stripe. This allows you to let users subscribe on your own website using Stripe, and automatically unlock access based on the Stripe subscription through the _Purchases SDK_.
 
-Remember that it is against Apple's App Store terms to provide a different system than in-app purchases for digital goods. Make sure you don't promote your web subscriptions from inside your app. Your app may get rejected, or banned.
+:::info April 2025 U.S. District Court Ruling on External Payment Options
+A recent U.S. District Court ruling found Apple in violation of a 2021 injunction meant to allow developers to direct users to external payment options, like Web Billing. As a result, iOS developers are now permitted to guide users to web-based payment flows without additional Apple fees or restrictive design requirements. You can [find more details on the RevenueCat blog](https://revenuecat.com/blog/growth/introducing-web-paywall-buttons).
+:::
+
+For apps available outside the U.S. App Store, Apple still requires that digital goods and subscriptions be purchased through in-app purchases. Promoting or linking to alternative payment methods within the app for non-U.S. users may lead to app review rejection or removal. Always ensure external payment links are shown only to eligible U.S. users.
 
 Before launching your Stripe integration, be sure to read the limitations that apply to [working with web payments](#working-with-web-payments).
 

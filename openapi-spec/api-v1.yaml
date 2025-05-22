@@ -21,6 +21,10 @@ info:
 
     If you want to start migrating your existing users to RevenueCat and you have your Customers' receipts stored on your own server, or you want to check subscription status of your users from your own server, the REST API is a great solution.
 
+    # Base URL
+
+    The base URL for the RevenueCat REST API is `https://api.revenuecat.com/v1`.
+
     # Authentication
 
     Authentication for the RevenueCat REST API is achieved by setting the `Authorization` header with a valid API key. You'll find two types of API keys in your RevenueCat dashboard: _public_ and _secret_.
@@ -195,7 +199,7 @@ paths:
       tags:
         - transactions
       description:
-        Records a purchase for a Customer from iOS, Android, or Stripe and
+        Records a purchase for a Customer from iOS, Android, Stripe, Roku and Paddle
         will create a Customer if they don't already exist.
       operationId: receipts
       parameters:
@@ -203,7 +207,7 @@ paths:
           in: header
           description:
             The platform this purchase is for. Either `ios`, `android`, `amazon`,
-            `macos`, `uikitformac`, or `stripe`
+            `macos`, `uikitformac`, `stripe`, `roku`, or `paddle`
           required: true
           schema:
             type: string
@@ -224,12 +228,13 @@ paths:
                   type: string
                   description:
                     For iOS, the base64 encoded receipt file (or JWSTransaction for StoreKit2), for Android
-                    the receipt token, for Amazon the receipt, and for Stripe the
-                    subscription ID or the Stripe Checkout Session ID.
+                    the receipt token, for Amazon the receipt, for Stripe the
+                    subscription ID or the Stripe Checkout Session ID, for Roku the
+                    transaction ID, and for Paddle the subscription ID or transaction ID.
                 product_id:
                   type: string
                   description:
-                    The Apple, Google, or Amazon product identifier or
+                    The Apple, Google, Amazon, Roku, or Paddle product identifier or
                     SKU. Required for Google.
                   example: com.my.product.iap
                 price:
@@ -748,7 +753,7 @@ paths:
           in: header
           description:
             Set the X-Platform header to fetch that platform's packages.
-            Can be `ios`, `android`, `amazon`, or `stripe`.
+            Can be `ios`, `android`, `amazon`, `stripe`, `roku`, or `paddle`.
 
             This header is required if you use a legacy public API key to determine which store the products should be returned for. It is not required if you use a new, app-specific API key, in which case the products for the app associated with the API key will be returned.
           schema:
@@ -1029,6 +1034,8 @@ components:
                         - `play_store`: The product was purchased through the Google Play Store.
                         - `amazon`: The product was purchased through the Amazon Appstore.
                         - `stripe`: The product was purchased through Stripe.
+                        - `roku`: The product was purchased through Roku.
+                        - `paddle`: The product was purchased through Paddle.
             original_app_user_id:
               type: string
               example: XXX-XXXXX-XXXXX-XX
@@ -1145,6 +1152,8 @@ components:
                       - `amazon`: The product was purchased through the Amazon Appstore.
                       - `stripe`: The product was purchased through Stripe.
                       - `promotional`: The product was [granted via RevenueCat](#tag/entitlements/operation/grant-a-promotional-entitlement).
+                      - `roku`: The product was purchased through Roku.
+                      - `paddle`: The product was purchased through Paddle.
                   store_transaction_id:
                     type: string
                     example: GPA.6801-7988-0152-76034..5

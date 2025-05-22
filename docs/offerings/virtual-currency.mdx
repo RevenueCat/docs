@@ -109,7 +109,7 @@ When installing the purchases SDK in your app, use the latest virtual currencies
 # pubspec.yaml
 
 dependencies:
-  purchases_flutter: '8.7.0-vc-beta.1'
+  purchases_flutter: "8.7.0-vc-beta.1"
 ```
 
 ## Usage
@@ -195,6 +195,10 @@ import fetchVCBalancesFlutter from "!!raw-loader!@site/code_blocks/virtual-curre
     },
   ]}
 />
+
+:::warning CustomerInfo does not update automatically when balance changes
+When a customer's balance is updated from your backend, the CustomerInfo object remains cached and is not automatically updated. In order to get the updated balance, you need to call `Purchases/invalidateCustomerInfoCache()` and fetch the CustomerInfo object again.
+:::
 
 ### Depositing or spending
 

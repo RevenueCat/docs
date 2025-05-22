@@ -130,5 +130,5 @@ If you want to also receive these notifications on your own server for one or bo
 
 :::tip Apple S2S notifications update subscriptions for existing users
 
-If RevenueCat receives a notification for a user that doesn't have any purchases in RevenueCat, a 200 code will be sent and the request will be ignored, so the last received notification timestamp won't be updated. Keep this in mind when forwarding events yourself.
+If RevenueCat receives a notification for a user that doesn't have any purchases in RevenueCat, a 200 status code will be returned and the request will be ignored, meaning the last received notification timestamp won't be updated. Keep this in mind when forwarding events yourself. However, if you've defined an **Apple Server Notification Forwarding URL**, the notification will still be forwarded to that endpoint.
 :::
