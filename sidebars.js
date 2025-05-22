@@ -539,6 +539,7 @@ const supportCategory = Category({
   items: [
     Page({ slug: "general-troubleshooting" }),
     Page({ slug: "support-first-steps" }),
+    Page({ slug: "breaking-changes" }),
   ],
 });
 
