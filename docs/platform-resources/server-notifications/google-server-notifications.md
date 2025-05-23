@@ -24,7 +24,7 @@ You can enable it [here](https://console.cloud.google.com/flows/enableapi?apiid=
 - Where: RevenueCat Dashboard
 - Project Page ➡️ Google Play App Settings
 
-Directly beneath where the Service Credentials JSON object is added, a list of possible Pub/Sub topics to use will be visible. You can either choose an existing one, or let RevenueCat create a new one.
+Directly beneath where the Service Credentials JSON object is added, a list of possible Pub/Sub topics to use will be visible. You can either choose an existing one, or let RevenueCat create a new one. You then want to make sure to add and grant the service account `google-play-developer-notifications@system.gserviceaccount.com` the Pub/Sub Publisher role on that specific topic via Permissions -> Add Principal -> add `google-play-developer-notifications@system.gserviceaccount.com` -> give it the role Pub/Sub Publisher
 
 Click '**Connect to Google**'. You should see a generated Google Cloud Pub/Sub Topic ID, as in the image below. If you don’t, try refreshing the page to get it to populate. Copy this topic ID to your clipboard.
 
