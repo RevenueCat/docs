@@ -802,6 +802,21 @@ const guidesCategory = Category({
   ],
 });
 
+const knownStoreIssuesCategory = Category({
+  emoji: "🚨",
+  label: "Known Store Issues",
+  itemsPathPrefix: "known-store-issues/",
+  items: [
+    Page({ slug: "overview" }),
+    SubCategory({
+      label: "StoreKit",
+      slug: "storekit",
+      itemsPathPrefix: "storekit/",
+      items: [Page({ slug: "ios-18-4-simulator-fails-to-load-products" })],
+    }),
+  ],
+});
+
 const chartsDummyCategory = Category({
   emoji: "📈",
   label: "Charts & Metrics",
@@ -955,6 +970,7 @@ const sidebars = {
     supportCategory,
     migrateToRevenueCatCategory,
     guidesCategory,
+    knownStoreIssuesCategory,
     sdkMigrationCategory,
   ],
   dataSidebar: [metricsCategory, chartsCategory, dataExportCategory],
