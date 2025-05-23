@@ -803,16 +803,18 @@ const guidesCategory = Category({
 });
 
 const knownStoreIssuesCategory = Category({
-  emoji: "🛠️",
+  emoji: "🚨",
   label: "Known Store Issues",
   itemsPathPrefix: "known-store-issues/",
   items: [
-    Page({ slug: "overview" }),
     SubCategory({
       label: "StoreKit",
       slug: "storekit",
       itemsPathPrefix: "storekit/",
-      items: [Page({ slug: "ios-18-4-simulator-fails-to-load-products" })],
+      items: [
+        Page({ slug: "ios-18-4-simulator-fails-to-load-products" }),
+        Page({ slug: "ios-18-4-canceled-state-after-successful-purchase" }),
+      ],
     }),
   ],
 });
