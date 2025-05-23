@@ -803,7 +803,7 @@ const guidesCategory = Category({
 });
 
 const knownStoreIssuesCategory = Category({
-  emoji: "🚨",
+  emoji: "🛠️",
   label: "Known Store Issues",
   itemsPathPrefix: "known-store-issues/",
   items: [
