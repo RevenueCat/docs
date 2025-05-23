@@ -6,8 +6,5 @@ CleverTapAPI clevertapDefaultInstance = CleverTapAPI.getDefaultInstance(this);
 
 String cleverTapId = cleverTapDefaultInstance.getCleverTapId();
 if (cleverTapId != null) {
-  Map<String, String> attributes = new HashMap<String, String>();
-	attributes.put("$cleverTapId", cleverTapId);
-
-	Purchases.getSharedInstance().setAttributes(attributes);
+	Purchases.getSharedInstance().setCleverTapID(cleverTapId);
 }
