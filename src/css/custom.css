@@ -944,3 +944,29 @@ html[data-theme="dark"] .troubleshooting-wizard {
     min-width: 100px; /* Give buttons a minimum width */
   }
 }
+
+/* Google Play Checklist - InteractiveCheckbox styles */
+.interactive-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.interactive-checkbox-input {
+  margin-top: 0.5em;
+  flex-shrink: 0;
+}
+
+.interactive-checkbox-content {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.interactive-checkbox-content ul {
+  margin: 0.4rem 0 0 1.25rem;
+  padding-left: 1rem;
+}
+
+.interactive-checkbox-content li {
+  margin-bottom: 0.2rem;
+}
