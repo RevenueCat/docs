@@ -57,7 +57,7 @@ You can update how your company name, address, and Tax ID/VAT number appear on y
 
 If you have not added a payment method, you will not receive invoices nor will you be able to change your invoice details.
 
-If you need more thanTax ID, or you would like to forward your invoices to a different email address, please reach out to [RevenueCat Support](https://app.revenuecat.com/settings/support) for assistance.
+If you need more than one Tax ID, or you would like to forward your invoices to a different email address, please reach out to [RevenueCat Support](https://app.revenuecat.com/settings/support) for assistance.
 
 ## Display Currency
 
