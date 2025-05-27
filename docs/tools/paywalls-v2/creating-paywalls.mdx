@@ -139,7 +139,7 @@ Paywalls built through the new v2 paywall editor are only supported on RevenueCa
 ### Safe area preview
 
 The paywall preview in the dashboard includes a preview of the device safe area that will impact how your paywall is rendered. RevenueCat Paywalls will automatically handle the device safe area for you when displaying paywalls on device, but there are a few things you should keep in mind:
-1. All components will **not** occupy the safe area at the top of the device **unless they are being used as header images**, which do occupy the space. We automatically detect an image component as a header image if it's the first component taking up vertical space on the paywall (e.g. the first component in the list, or the first component in a stack) whose width is set to fill the entire width of the paywall.
+1. All components will **not** occupy the safe area at the top of the device **unless they are being used as header images**, which do occupy the space. We automatically detect an image component as a header image if it's the first component taking up vertical space on the paywall (e.g. the first component in the list, or the first component in a stack) whose width is set to fill the entire width of the paywall. If the image is being used within a z stack, any other components above it will not occupy the safe area.
 2. The footer component will **not** occupy the bottom safe area, and will automatically add applicable padding to account for it on each platform and device.
 3. Paywalls which do not use a footer component will occupy the bottom safe area if the content extends that far, as any other view would.
 
