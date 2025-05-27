@@ -51,13 +51,13 @@ An invoice will be emailed to the owner of a project at the end of the current b
 
 ### Invoice details
 
-You can update how your company name, address, and Tax ID/VAT number appear on your invoices in [billing settings](https://app.revenuecat.com/settings/billing) under **Invoice details**. You can also elect to receive invoices at a separate billing email address instead of your RevenueCat account's email address.
+You can update how your company name, address, and Tax ID/VAT number appear on your invoices in [billing settings](https://app.revenuecat.com/settings/billing) under **Invoice details**.
 
 ![update your invoice details in your billing settings](/images/SCR-20250522-orun.png)
 
 If you have not added a payment method, you will not receive invoices nor will you be able to change your invoice details.
 
-If you need more than one forwarding email address or Tax ID, please reach out to [RevenueCat Support](https://app.revenuecat.com/settings/support) for assistance.
+If you need more thanTax ID, or you would like to forward your invoices to a different email address, please reach out to [RevenueCat Support](https://app.revenuecat.com/settings/support) for assistance.
 
 ## Display Currency
 
