@@ -1,0 +1,175 @@
+---
+title: Expo
+slug: expo
+excerpt: Instructions for using RevenueCat with Expo
+hidden: false
+---
+
+Expo is a framework for building React Native apps. It's a popular choice for rapidly iterating on your app, while letting Expo take care of all the platform-specific code.
+
+To use and test RevenueCat with Expo, you'll need to create an Expo development build.
+
+## Create an Expo development build
+
+### Getting started
+
+Either create a new project or use an existing project.
+
+### Install dependencies
+
+Start by installing Expo CLI:
+
+```
+npm install expo -g
+```
+
+Install expo-dev-client:
+
+```
+npm install expo-dev-client
+```
+
+Install `react-native-purchases`, `react-native-purchases-ui`:
+
+```
+Either run:
+npm install react-native-purchases react-native-purchases-ui
+
+or update your package.json
+```
+
+### RevenueCat Configuration
+
+#### Configure a new project, add products, and create an offering
+
+TODO: link to relevant docs
+
+#### Configure a paywall
+
+TODO: link to paywalls v2 docs
+
+#### Initialize the SDK
+
+TODO: link to configure docs
+
+```javascript
+export default function App() {
+  useEffect(() => {
+    Purchases.setLogLevel(Purchases.LOG_LEVEL.DEBUG);
+
+    Purchases.configure({ apiKey: <your-api-key> });
+  }, []);
+
+  return <Stack />;
+}
+```
+
+#### Present a paywall
+
+TODO: link to present paywall docs
+
+```javascript
+<Button
+  title="Purchase"
+  onPress={() => {
+    PurchasesUI.presentPaywall();
+  }}
+/>
+```
+
+### Testing your app
+
+To test, we'll use EAS to build the app for the simulator. You'll need to sign up at expo.dev and use the account below.
+
+For more information about EAS, see the [EAS docs](https://docs.expo.dev/tutorial/eas/introduction/).
+
+:::info
+You can also follow these instructions on Expo's docs: https://docs.expo.dev/tutorial/eas/configure-development-build/#initialize-a-development-build
+:::
+
+Get started by installing the EAS-CLI:
+
+```
+npm install -g eas-cli
+```
+
+Then login to EAS:
+
+```
+eas login
+```
+
+After logging in, initialize the EAS configuration:
+
+```
+eas init
+```
+
+The command will ask you to choose the platforms you want to build for.
+
+You can read more about
+
+#### Testing on iOS simulator
+
+Next, you'll need to update `eas.json` with the simulator build profile [as described here](https://docs.expo.dev/tutorial/eas/ios-development-build-for-simulators/).
+
+Your `eas.json` file might look like this:
+
+```json
+{
+  "cli": {
+    "version": ">= 7.3.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {},
+    "ios-simulator": {
+      "extends": "development",
+      "ios": {
+        "simulator": true
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
+```
+
+`eas build --platform ios --profile ios-simulator`
+
+Building creates a container app with your installed dependencies. Once the build completes and you run it on the device, the app will hot reload with your local changes during development
+
+Enter bundle ID, matching RevenueCat config and App Store Connect
+
+Open in simulator
+
+`npx expo start`, choose the server in the iOS simulator
+
+# OLD CONTENT
+
+## I don't know if it's relevant anymore
+
+`react-native-purchases` works with with any Expo project when using a [development build](https://docs.expo.dev/workflow/overview/#development-builds). A development build helps you iterate as quickly as possible and provides a more flexible, reliable, and complete development environment. It also enables you to only write JavaScript/TypeScript while letting Expo tools and services take care of everything else. The Android and iOS apps are built using Expo's build service and generate development and production binaries for testing and releasing.
+
+As of mid 2021, projects created with Expo now support in-app payments and are compatible with `react-native-purchases`. Running `npx expo install react-native-purchases` is all that needs to be done before you can start implementing RevenueCat into your app.
+
+Note: Expo's docs state that in-app purchases will only work on real Android and iOS devices which can make debugging more difficult. You can view the RevenueCat debug logs on Android with LogCat and iOS with Console.app.
+
+For more information, see our blog post [here](https://www.revenuecat.com/blog/in-app-puchase-expo-managed-workflow/).
+
+#### Bare workflow
+
+If you are using [bare workflow](https://docs.expo.dev/bare/overview/) (that is, your project is created using `react-native init`), [install `expo`](https://docs.expo.dev/bare/installing-expo-modules/) into your project and [leverage Expo CLI](https://docs.expo.dev/bare/using-expo-cli/) to use Expo tooling and services.
+
+The bare workflow gives developers complete native control but also allows the use of Expo libraries and services. The bare workflow is similar to a project you would get from `npx react-native init`.
+
+If you're planning on ejecting from Expo to use the bare workflow, upgrade your Expo version first, _then_ eject. It'll save you a whole lot of hassle.
+
+Get started with the bare workflow [here](https://docs.expo.dev/bare/overview/).

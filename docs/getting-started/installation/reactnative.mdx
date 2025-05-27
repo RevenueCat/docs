@@ -15,9 +15,10 @@ RevenueCat provides a backend and a wrapper around StoreKit and Google Play Bill
 
 Make sure that the deployment target for iOS is at least 13.4 and Android is at least 6.0 (API 23) [as defined here](https://github.com/facebook/react-native#-requirements).
 
-### Option 1: React-Native package
+### React Native package
 
-Purchases for React-Native can be installed either via npm or yarn.
+Purchases for React Native can be installed either via npm or yarn.
+
 We recommend using the latest version of React Native, or making sure that the version is at least greater than 0.64.
 
 #### Option 1.1: Using auto-linking
@@ -51,25 +52,11 @@ import reactNativeShellContent from "!!raw-loader!@site/code_blocks/getting-star
   tabs={[{ type: "shell", content: reactNativeShellContent, name: "Shell" }]}
 />
 
-### Option 2: Using Expo
+### Using Expo
 
-`react-native-purchases` works with with any Expo project when using a [development build](https://docs.expo.dev/workflow/overview/#development-builds). A development build helps you iterate as quickly as possible and provides a more flexible, reliable, and complete development environment. It also enables you to only write JavaScript/TypeScript while letting Expo tools and services take care of everything else. The Android and iOS apps are built using Expo's build service and generate development and production binaries for testing and releasing.
+Use Expo to rapidly iterate on your app by using JavaScript/TypeScript exclusively, while letting Expo take care of everything else.
 
-As of mid 2021, projects created with Expo now support in-app payments and are compatible with `react-native-purchases`. Running `npx expo install react-native-purchases` is all that needs to be done before you can start implementing RevenueCat into your app.
-
-Note: Expo's docs state that in-app purchases will only work on real Android and iOS devices which can make debugging more difficult. You can view the RevenueCat debug logs on Android with LogCat and iOS with Console.app.
-
-For more information, see our blog post [here](https://www.revenuecat.com/blog/in-app-puchase-expo-managed-workflow/).
-
-#### Bare workflow
-
-If you are using [bare workflow](https://docs.expo.dev/bare/overview/) (that is, your project is created using `react-native init`), [install `expo`](https://docs.expo.dev/bare/installing-expo-modules/) into your project and [leverage Expo CLI](https://docs.expo.dev/bare/using-expo-cli/) to use Expo tooling and services.
-
-The bare workflow gives developers complete native control but also allows the use of Expo libraries and services. The bare workflow is similar to a project you would get from `npx react-native init`.
-
-If you're planning on ejecting from Expo to use the bare workflow, upgrade your Expo version first, _then_ eject. It'll save you a whole lot of hassle.
-
-Get started with the bare workflow [here](https://docs.expo.dev/bare/overview/).
+See [Using RevenueCat with Expo](/getting-started/installation/expo) to get started.
 
 ### Set the correct launchMode for Android
 
