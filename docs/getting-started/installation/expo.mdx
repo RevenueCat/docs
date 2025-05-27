@@ -26,16 +26,26 @@ npm install expo -g
 Install expo-dev-client:
 
 ```
-npm install expo-dev-client
+npx expo install expo-dev-client
 ```
 
-Install `react-native-purchases`, `react-native-purchases-ui`:
+Install RevenueCat's `react-native-purchases` and `react-native-purchases-ui`:
 
-```
 Either run:
-npm install react-native-purchases react-native-purchases-ui
 
-or update your package.json
+```
+npx expo install react-native-purchases react-native-purchases-ui
+```
+
+or update your package.json with the [latest package versions](https://github.com/RevenueCat/react-native-purchases/releases):
+
+```json
+{
+  "dependencies": {
+    "react-native-purchases": "latest_version",
+    "react-native-purchases-ui": "latest_version"
+  }
+}
 ```
 
 ### RevenueCat Configuration
@@ -50,19 +60,11 @@ TODO: link to paywalls v2 docs
 
 #### Initialize the SDK
 
-TODO: link to configure docs
+Once you've installed the RevenueCat SDK, you'll need to configure it. Add the following code to the entry point of your app. More information about configuring the SDK can be found [here](../configuring-sdk).
 
-```javascript
-export default function App() {
-  useEffect(() => {
-    Purchases.setLogLevel(Purchases.LOG_LEVEL.DEBUG);
+import expoContent from "!!raw-loader!@site/code_blocks/getting-started/getting-started_6.ts";
 
-    Purchases.configure({ apiKey: <your-api-key> });
-  }, []);
-
-  return <Stack />;
-}
-```
+<RCCodeBlock tabs={[{ type: "ts", content: expoContent, name: "Expo" }]} />
 
 #### Present a paywall
 
