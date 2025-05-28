@@ -60,6 +60,21 @@ or update your package.json with the [latest package versions](https://github.co
 }
 ```
 
+:::info
+After installing RevenueCat's SDKs, you **must** run the full build process to ensure all dependencies are installed. Hot reloading without building will result in an error that looks like this:
+
+```
+Invariant Violation: `new NativeEventEmitter()` requires a non-null argument.
+```
+
+To fix this, run the [full build process](https://docs.expo.dev/tutorial/eas/configure-development-build/) for your platform. For example, if you're building for the iOS simulator, run:
+
+```
+eas build --platform ios --profile ios-simulator
+```
+
+:::
+
 ### RevenueCat Dashboard Configuration
 
 #### Configure a new project
