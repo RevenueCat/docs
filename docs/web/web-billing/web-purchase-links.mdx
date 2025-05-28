@@ -7,7 +7,9 @@ hidden: false
 
 ## Overview
 
-Use Web Purchase Links to enable customers to purchase a Web Billing subscription directly without writing any code. These links support both identified and anonymous purchases. For identified users, append the customer's App User ID to the provided URL. For anonymous purchases, utilize Redemption Links, which allow customers to buy subscriptions without an App User ID and later associate the purchase with their account in your app.
+Use Web Purchase Links to enable customers to purchase a web subscription directly **without writing code**, through a RevenueCat-hosted purchase flow.
+
+Web Purchase Links support a range of use cases, with both identified and anonymous purchases. For identified users, append the customer's App User ID to the provided URL. For anonymous purchases, utilize [Redemption Links](/web/web-billing/redemption-links), which allow customers to buy subscriptions without an App User ID and later associate the purchase with their account in your app.
 
 ## Get Started
 
@@ -26,93 +28,103 @@ Choose a Web Billing app from the dropdown if you have more than one
 
 ![](/images/web-billing/web-purchase-link-choose-app.png)
 
-### Package Selection page
+### Product Selection page
 
-The first page your customers will see when accessing your Web Purchase Link is the Package selection page.
+The first page your customers will see when accessing your Web Purchase Link is the product selection page.
 In this page your customers can select one of the products included in your offering.
 
 Here is an example:
 
 ![](/images/web-billing/web-purchase-link-package-example.png)
 
-You can customize the:
+You can customize:
 
-- The header
+- The page header
 - The subheader
 - Choose to show or not the product description (check the [product setup](/web/web-billing/product-setup) step for more info)
-- The terms and conditions URL
+- The terms and conditions URL (footer)
+- Visual look and feel, including colors and shape styling (configured separately in [customization](/web/web-billing/customization))
 
 ![](/images/web-billing/web-purchase-link-package-config.png)
 
-### Success page
+:::info product selection can be skipped
+It's possible to skip this page, and pre-select a package by passing a `package_id` [URL parameter](#package-id).
+:::
 
-After subscribing the Web Purchase Link allows you to congratulate the user in 2 ways:
+### Checkout
 
-- Show a download page hosted by RevenueCat
-- Redirect to any URL you like
+Once a product has been selected, users will be presented with the checkout:
 
-#### Show a download page
+![](/images/web-billing/web-purchase-link-checkout.png)
 
-If you choose to show a download page here's how it will look like:
+#### What affects the checkout experience
+
+- Payment methods change depending on browser, location and configuration (see [payment methods](/web/web-billing/payment-methods))
+- Product information, prices and currencies are configured in the products (see [product setup](/web/web-billing/product-setup))
+- Tax collection is configured in the payment provider settings and Stripe dashboard (see [sales tax & VAT](/web/web-billing/tax))
+- Colors and button styles are configured in customization (see [customization](/web/web-billing/customization))
+- The email address can be pre-populated (see [URL parameters](#email))
+
+### Success behavior
+
+After completing a purchase, there are two configurable options:
+
+**Show the success page**
+
+- Includes optional app download links and purchase redemption (for [Redemption Links](/web/web-billing/redemption-links))
+- Customizable header and subheader
+
+**Redirect to a custom URL**
+
+- Can be used to redirect to a post-purchase experience on your own website
+- The app user id is appended as a URL parameter (`app_user_id`) so you can further customize the post-purchase experience
+- Can also be used to redirect the user back into the mobile app, using a custom URL scheme (requires the url scheme to be registered with the app beforehand)
+
+#### Success page customization
+
+If you choose to show a success page here's how it will look:
 
 ![](/images/web-billing/web-purchase-link-success-example.png)
 
-You can customize the download page:
+You can customize:
 
 - Header
 - Subheader
 - Choose whether to show the app download buttons
-- Configure the links for
-- App Store
-- Play Store
+- Configure the app download links
 
 ![](/images/web-billing/web-purchase-link-success-config.png)
 
-#### Redirect to a custom URL
+:::warning Changes apply immediately
+As soon as you save the above settings, those changes will be reflected immediately in your production purchase links.
 
-In this case, right after purchasing your product, the customer will be redirected to the URL that you specify in the
-Web Purchase Link configuration.
-
-![](/images/web-billing/web-purchase-link-redirect-config.png)
-
-Once you are ready, click Save and your changes will be applied immediately.
-
-:::warning Immediate apply
-As soon as you click save, any subscriber visiting your Web Purchase Link will see the changes immediately.
-
-You can always run tests by creating a Web Purchase Link for another offering.
+You can always run tests by creating a Web Purchase Link for a different offering, and testing in sandbox.
 :::
 
 ## Choose what happens for returning customers
 
-You can choose what happens when a customer already has an entitlement or an active subscription and they return to this page.
+You can choose what happens when a customer already has an entitlement or an active subscription and they return to a web purchase link.
 
 ![](/images/web-billing/web-purchase-link-choose-returning-customers.png)
 
 ### Show the success page
 
-Automatically skips the Package Selection page. It will use the configuration you set up for the success page (show a download page or redirect to a custom URL).
+Automatically skips the package selection and checkout pages. It will use the configuration you set up for the success page (show a download page or redirect to a custom URL).
 
 ### Allow them to make another purchase
 
 Allows the returning customer to purchase another product.
 
-:::warning Might fail when purchasing
-This configuration is useful for non-consumable products.
-The re-purchase process will fail if the customer tries to purchase the exact same product twice (subscription or non-consumable).
+:::warning Repeated purchases might fail
+This configuration is useful for non-consumable products, or when selling multiple products to a single customer.
+The transaction will fail if the customer tries to purchase the exact same product twice (for subscriptions and non-consumables). Consumable products can be purchased multiple times.
 
 We suggest to create a dedicated offering/web purchase link for non-consumables to make sure all products can be bought as many times as the customer wants.
 :::
 
-## Sending your Web Purchase Links
+## Distributing Web Purchase Links
 
-Once your setup is complete, you will receive two links formatted as `https://pay.rev.cat/<someProductionTokenWeGenerate>/<yourAppUserId>` (one for production, the other one for sandbox).
-
-To use these links:
-
-- **For Identified Users:** Append the URL-encoded App User ID of the customer to the link. This ensures the purchase is associated with the specific user.​
-
-- **For Anonymous Users:** Leverage Redemption Links by using the Web Purchase Link URLs without appending an App User ID. This approach generates anonymous user IDs, allowing customers to purchase subscriptions without prior identification. They can later associate these purchases with their accounts within your app. For comprehensive guidance on setting up and using Redemption Links, refer to [the Redemption Links documentation](/web/web-billing/redemption-links).
+Once you've configured a web purchase link, you'll have access to two URLs formatted as `https://pay.rev.cat/<someProductionTokenWeGenerate>` (one for production, the other one for sandbox):
 
 ![](/images/web-billing/web-purchase-link-urls.png)
 
@@ -122,21 +134,47 @@ Do not distribute this link or whoever will use it will be able to subscribe to 
 of the Stripe testing cards.
 :::
 
+### Distributing to identified users (where the App User ID is known)
+
+:::info example use case
+Displaying the purchase link in a web app where users are logged in
+:::
+
+You must append the URL-encoded App User ID of the customer to the link. This ensures the purchase is associated with the specific user immediately. If the ID is not appended, users will see a 404 error page on visiting the URL.
+
 :::warning Use one unique App User ID per customer
 Web Billing works with identified customers. You need to specify a unique app user id for each one of the subscribers you
 want to reach with this link. You can read more about this requirement [here](/web/web-billing/web-sdk#identifying-customers).
 :::
 
-### URL parameters
+### Distributing to anonymous users (where the App User ID is not known)
+
+:::info example use case
+Embedding the purchase link on a public landing page or on social media
+:::
+
+Configure [Redemption Links](<(/web/web-billing/redemption-links)>), which removes the need to append IDs to the URL. This approach generates anonymous user IDs, allowing customers to purchase subscriptions without prior identification. They can later associate these purchases with their accounts within your app. For comprehensive guidance on setting up and using Redemption Links, refer to [the Redemption Links documentation](/web/web-billing/redemption-links).
+
+### Additional URL parameters
+
+:::info URL encoding recommended
+We recommend that all URL parameters are [URL encoded](https://www.urlencoder.org/) to avoid issues.
+:::
+
+Web Purchase Links support appending the following URL parameters to further customize the behavior:
 
 #### Email
 
-If you already have your customer's email address, use `email` to preset an email address on the payment page: `https://pay.rev.cat/<someProductionTokenWeGenerate>/<yourAppUserId>?email=<customerEmail>`
+If you already have your customer's email address, use `email` to preset an email address on the payment page (cannot be overridden by subscribers): `https://pay.rev.cat/<someProductionTokenWeGenerate>/<yourAppUserId>?email=<customerEmail>`
 
 #### Currency
 
 If you want to specify a currency manually, you can do so by appending the `currency` query parameter to the URL. This will override the automatic currency selection.
 
-:::info
-We recommend that all URL parameters are [URL encoded](https://www.urlencoder.org/) to avoid potential issues.
-:::
+#### Package ID
+
+Allows you to pre-select a package by referencing a RevenueCat `package_id` for a package in the offering, and send users directly to the checkout page.
+
+#### Custom metadata
+
+See [custom metadata](/web/web-billing/custom-metadata)
