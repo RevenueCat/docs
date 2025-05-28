@@ -51,7 +51,7 @@ cd <expo-project-directory>
 
 ### Install RevenueCat's SDKs
 
-Install RevenueCat's `react-native-purchases` for core functionality and `react-native-purchases-ui` for UI components like [Paywalls](/docs/tools/paywalls-v2), [Customer Center](/docs/tools/customer-center), and more.
+Install RevenueCat's `react-native-purchases` for core functionality and `react-native-purchases-ui` for UI components like [Paywalls](/tools/paywalls-v2), [Customer Center](/tools/customer-center), and more.
 
 Either run:
 
@@ -95,7 +95,7 @@ For each store you're supporting, you'll need to add the products you plan on of
 
 #### Create an Entitlement
 
-An entitlement represents a level of access, features, or content that a customer is "entitled" to. When customers purchase a product, they're granted an entitlement. Create an entitlement [here](/getting-started/entitlements). Then, [attach your products](/docs/getting-started/entitlements#attaching-products-to-entitlements) to your new entitlement.
+An entitlement represents a level of access, features, or content that a customer is "entitled" to. When customers purchase a product, they're granted an entitlement. Create an entitlement [here](/getting-started/entitlements). Then, [attach your products](/getting-started/entitlements#attaching-products-to-entitlements) to your new entitlement.
 
 #### Create an Offering
 
@@ -109,7 +109,7 @@ A paywall is where your customers can purchase your products. RevenueCat's Paywa
 
 #### Initialize the SDK
 
-Once you've installed the RevenueCat SDK, you'll need to configure it. Add the following code to the entry point of your app and be sure to replace `<revenuecat_project_platform_api_key>` with your [project's API keys](https://www.revenuecat.com/docs/projects/authentication).
+Once you've installed the RevenueCat SDK, you'll need to configure it. Add the following code to the entry point of your app and be sure to replace `<revenuecat_project_platform_api_key>` with your [project's API keys](/projects/authentication).
 
 More information about configuring the SDK can be found [here](/getting-started/configuring-sdk).
 
@@ -119,7 +119,7 @@ import expoContent from "!!raw-loader!@site/code_blocks/getting-started/getting-
 
 #### Identify a user and check subscription status
 
-RevenueCat is the single source of truth for your customer's subscription status across all platforms. Learn more about the different ways to identify your customers to RevenueCat [here](/docs/customers/identifying-customers).
+RevenueCat is the single source of truth for your customer's subscription status across all platforms. Learn more about the different ways to identify your customers to RevenueCat [here](/customers/identifying-customers).
 
 Then, [check the customer's subscription status](/customers/customer-info) by fetching the [CustomerInfo object](/customers/customer-info#:~:text=CustomerInfo%20Reference):
 
@@ -167,7 +167,13 @@ After logging in, initialize the EAS configuration:
 eas init
 ```
 
-The command will ask you to choose the platforms you want to build for.
+The command will ask you to choose the platforms you want to build for. Next, run:
+
+```
+eas build:configure
+```
+
+You'll be prompted to select the platforms you'd like to configure for EAS Build.
 
 #### Testing on iOS simulator
 
@@ -244,4 +250,4 @@ npx expo start
 
 ## Expo Go
 
-[Expo Go](https://expo.dev/go) is a sandbox that allows you to rapidly prototype your app. However, Expo Go does not run native code, so testing in-app purchases is not supported. Once you've added RevenueCat's SDKs to your app, please use a [development build](/docs/getting-started/installation/expo#create-an-expo-development-build) for testing.
+[Expo Go](https://expo.dev/go) is a sandbox that allows you to rapidly prototype your app. However, Expo Go does not run native code, so testing in-app purchases is not supported. Once you've added RevenueCat's SDKs to your app, please use a [development build](/getting-started/installation/expo#create-an-expo-development-build) for testing.
