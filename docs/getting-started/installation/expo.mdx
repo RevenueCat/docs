@@ -7,29 +7,41 @@ hidden: false
 
 Expo is a framework for building React Native apps. It's a popular choice for rapidly iterating on your app, while letting Expo take care of all the platform-specific code.
 
-To use and test RevenueCat with Expo, you'll need to create an Expo development build.
+To use and test RevenueCat with Expo, you'll need to create an Expo development build. Follow the instructions below and learn more about Expo development builds [here](https://docs.expo.dev/develop/development-builds/introduction/).
 
 ## Create an Expo development build
 
-### Getting started
+### Install Expo CLI and development dependencies
 
-Either create a new project or use an existing project.
-
-### Install dependencies
-
-Start by installing Expo CLI:
+Start by installing [Expo CLI](https://docs.expo.dev/more/expo-cli/):
 
 ```
 npm install expo -g
 ```
 
-Install expo-dev-client:
+and then install [Expo DevClient](https://docs.expo.dev/versions/latest/sdk/dev-client/):
 
 ```
 npx expo install expo-dev-client
 ```
 
-Install RevenueCat's `react-native-purchases` and `react-native-purchases-ui`:
+### Get started with an Expo project
+
+Either create a new Expo project with the following command:
+
+```
+npx create-expo-app@latest
+```
+
+or use an existing Expo project. Ensure you're in the project directory for the next steps:
+
+```
+cd <expo-project-directory>
+```
+
+### Install RevenueCat's SDKs
+
+Install RevenueCat's `react-native-purchases` for core functionality and `react-native-purchases-ui` for UI components like [Paywalls](/docs/tools/paywalls-v2), [Customer Center](/docs/tools/customer-center), and more.
 
 Either run:
 
@@ -48,36 +60,65 @@ or update your package.json with the [latest package versions](https://github.co
 }
 ```
 
-### RevenueCat Configuration
+### RevenueCat Dashboard Configuration
 
-#### Configure a new project, add products, and create an offering
+#### Configure a new project
 
-TODO: link to relevant docs
+RevenueCat projects are top-level containers for your apps, products, entitlements, paywalls, and more. If you don't already have a RevenueCat project for your app, [create one here](/docs/projects/overview).
 
-#### Configure a paywall
+#### Connect to a Store (Apple, Google, Web, etc.)
 
-TODO: link to paywalls v2 docs
+Depending on which platform you're building for, you'll need to connect your RevenueCat project to one, or multiple, stores. Set up your project's supported stores [here](/docs/projects/connect-a-store).
+
+#### Add Products
+
+For each store you're supporting, you'll need to add the products you plan on offering to your customers. Set up your products for each store [here](/docs/offerings/products/setup-index).
+
+#### Create an Entitlement
+
+An entitlement represents a level of access, features, or content that a customer is "entitled" to. When customers purchase a product, they're granted an entitlement. Create an entitlement [here](/docs/getting-started/entitlements). Then, [attach your products](/docs/getting-started/entitlements#attaching-products-to-entitlements) to your new entitlement.
+
+#### Create an Offering
+
+An offering is a collection of products that are "offered" to your customers on your paywall. Create an offering for your products [here](/docs/offerings/offerings/overview).
+
+#### Configure a Paywall
+
+A paywall is where your customers can purchase your products. RevenueCat's Paywalls allow you to remotely build and configure your paywall without any code changes or app updates. Create a paywall [here](/docs/tools/paywalls-v2).
+
+### RevenueCat SDK Configuration
 
 #### Initialize the SDK
 
-Once you've installed the RevenueCat SDK, you'll need to configure it. Add the following code to the entry point of your app. More information about configuring the SDK can be found [here](../configuring-sdk).
+Once you've installed the RevenueCat SDK, you'll need to configure it. Add the following code to the entry point of your app and be sure to replace `<revenuecat_project_platform_api_key>` with your [project's API keys](https://www.revenuecat.com/docs/projects/authentication).
+
+More information about configuring the SDK can be found [here](../configuring-sdk).
 
 import expoContent from "!!raw-loader!@site/code_blocks/getting-started/getting-started_6.ts";
 
 <RCCodeBlock tabs={[{ type: "ts", content: expoContent, name: "Expo" }]} />
 
+#### Identify a user and check subscription status
+
+RevenueCat is the single source of truth for your customer's subscription status across all platforms. Learn more about the different ways to identify your customers to RevenueCat [here](/docs/customers/identifying-customers).
+
+Then, [check the customer's subscription status](/docs/customers/customer-info) by fetching the [CustomerInfo object](/docs/customers/customer-info#:~:text=CustomerInfo%20Reference):
+
+import content6 from "!!raw-loader!@site/code_blocks/customers/customer-info_6.js";
+
+<RCCodeBlock tabs={[{ type: "ts", content: content6, name: "Expo" }]} />
+
+and inspecting the `entitlements` object to see if the customer is subscribed to your entitlement:
+
+import content14 from "!!raw-loader!@site/code_blocks/customers/customer-info_14.js";
+
+<RCCodeBlock tabs={[{ type: "ts", content: content14, name: "Expo" }]} />
+
 #### Present a paywall
 
-TODO: link to present paywall docs
+If the customer is not subscribed to your entitlement, you can present a paywall to them where they can purchase your products.
 
-```javascript
-<Button
-  title="Purchase"
-  onPress={() => {
-    PurchasesUI.presentPaywall();
-  }}
-/>
-```
+There are several ways to present a paywall in Expo, each with different use cases, so please review the [React Native Paywalls documentation](/docs/tools/paywalls-v2/displaying-paywalls#react-native).
 
 ### Testing your app
 
