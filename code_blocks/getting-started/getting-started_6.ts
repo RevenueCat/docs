@@ -1,5 +1,6 @@
 import { Platform, useEffect } from 'react-native';
-import Purchases from 'react-native-purchases';
+import { useEffect } from 'react';
+import Purchases, { LOG_LEVEL } from 'react-native-purchases';
 
 //...
 

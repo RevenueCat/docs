@@ -83,6 +83,7 @@ const mobileSDKCategory = Category({
         Page({ slug: "ios" }),
         Page({ slug: "android" }),
         Page({ slug: "reactnative" }),
+        Page({ slug: "expo" }),
         Page({ slug: "flutter" }),
         Page({ slug: "kotlin-multiplatform" }),
         Page({ slug: "capacitor" }),
