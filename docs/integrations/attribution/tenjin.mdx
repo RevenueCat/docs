@@ -52,8 +52,7 @@ import kotlinContent from "!!raw-loader!@site/code_blocks/integrations/attributi
 - iOS version 5.8.0+
 - Android version 8.10.0+
 - React Native version 8.2.7+
-- Flutter version 8.2.2+
-- KMP version 1.3.2+13.9.0+
+- Flutter version 8.9.0+
 
 You should make sure to call `collectDeviceIdentifiers()` after the _Purchases SDK_ is configured, and before the first purchase occurs. It's safe to call this multiple times, as only the new/updated values will be sent to RevenueCat. If the Tenjin ID is not set, events will be sent with only the platform-specific advertising identifier.
 
@@ -100,7 +99,7 @@ After you've set up the _Purchases SDK_ to send attribution data from Tenjin to 
 ![Tenjin configuration screen](/images/f79b026-app.revenuecat.com_projects_85ff18c7_integrations_branch_5_1e725f7679ec21ca22402a8a19cf0b9e.png)
 
 :::info About revenue discrepancies
-RevenueCat must have the IDFA or ADID of the user at the time an event occurs in order to send it to Tenjin. This can result in drastically lower revenue metrics in Tenjin vs. RevenueCat since some users opt-out of ad tracking or don't have IDFA/ADID, which means some of your total revenue won't be tracked by Tenjin. Don't be alarmed! If events are being sent successfully in testing and for some of your users in production, then the integration is working as intended to pair subscription revenue with campaign performance.
+RevenueCat must have the IDFA or ADID attribute of the user set at the time an event occurs in order to send that event to Tenjin. If IDFA access has not been granted, then the attribute should be set to the iOS default provided value of `00000000-0000-0000-0000-000000000000`. If neither of these attributes are set, events won't be delivered, which means some of your total revenue won't be tracked by Tenjin. If events are being sent successfully in testing and for your users in production who have either of those attributes set, then the integration is working as intended to pair subscription revenue with campaign performance.
 :::
 
 :::success You've done it!
