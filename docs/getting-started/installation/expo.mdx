@@ -83,27 +83,27 @@ Invariant Violation: `new NativeEventEmitter()` requires a non-null argument.
 
 #### Configure a new project
 
-RevenueCat projects are top-level containers for your apps, products, entitlements, paywalls, and more. If you don't already have a RevenueCat project for your app, [create one here](/docs/projects/overview).
+RevenueCat projects are top-level containers for your apps, products, entitlements, paywalls, and more. If you don't already have a RevenueCat project for your app, [create one here](/projects/overview).
 
 #### Connect to a Store (Apple, Google, Web, etc.)
 
-Depending on which platform you're building for, you'll need to connect your RevenueCat project to one, or multiple, stores. Set up your project's supported stores [here](/docs/projects/connect-a-store).
+Depending on which platform you're building for, you'll need to connect your RevenueCat project to one, or multiple, stores. Set up your project's supported stores [here](/projects/connect-a-store).
 
 #### Add Products
 
-For each store you're supporting, you'll need to add the products you plan on offering to your customers. Set up your products for each store [here](/docs/offerings/products/setup-index).
+For each store you're supporting, you'll need to add the products you plan on offering to your customers. Set up your products for each store [here](/offerings/products/setup-index).
 
 #### Create an Entitlement
 
-An entitlement represents a level of access, features, or content that a customer is "entitled" to. When customers purchase a product, they're granted an entitlement. Create an entitlement [here](/docs/getting-started/entitlements). Then, [attach your products](/docs/getting-started/entitlements#attaching-products-to-entitlements) to your new entitlement.
+An entitlement represents a level of access, features, or content that a customer is "entitled" to. When customers purchase a product, they're granted an entitlement. Create an entitlement [here](/getting-started/entitlements). Then, [attach your products](/docs/getting-started/entitlements#attaching-products-to-entitlements) to your new entitlement.
 
 #### Create an Offering
 
-An offering is a collection of products that are "offered" to your customers on your paywall. Create an offering for your products [here](/docs/offerings/offerings/overview).
+An offering is a collection of products that are "offered" to your customers on your paywall. Create an offering for your products [here](/offerings/offerings/overview).
 
 #### Configure a Paywall
 
-A paywall is where your customers can purchase your products. RevenueCat's Paywalls allow you to remotely build and configure your paywall without any code changes or app updates. Create a paywall [here](/docs/tools/paywalls-v2).
+A paywall is where your customers can purchase your products. RevenueCat's Paywalls allow you to remotely build and configure your paywall without any code changes or app updates. Create a paywall [here](/tools/paywalls-v2).
 
 ### RevenueCat SDK Configuration
 
@@ -111,7 +111,7 @@ A paywall is where your customers can purchase your products. RevenueCat's Paywa
 
 Once you've installed the RevenueCat SDK, you'll need to configure it. Add the following code to the entry point of your app and be sure to replace `<revenuecat_project_platform_api_key>` with your [project's API keys](https://www.revenuecat.com/docs/projects/authentication).
 
-More information about configuring the SDK can be found [here](../configuring-sdk).
+More information about configuring the SDK can be found [here](/getting-started/configuring-sdk).
 
 import expoContent from "!!raw-loader!@site/code_blocks/getting-started/getting-started_6.ts";
 
@@ -121,7 +121,7 @@ import expoContent from "!!raw-loader!@site/code_blocks/getting-started/getting-
 
 RevenueCat is the single source of truth for your customer's subscription status across all platforms. Learn more about the different ways to identify your customers to RevenueCat [here](/docs/customers/identifying-customers).
 
-Then, [check the customer's subscription status](/docs/customers/customer-info) by fetching the [CustomerInfo object](/docs/customers/customer-info#:~:text=CustomerInfo%20Reference):
+Then, [check the customer's subscription status](/customers/customer-info) by fetching the [CustomerInfo object](/customers/customer-info#:~:text=CustomerInfo%20Reference):
 
 import content6 from "!!raw-loader!@site/code_blocks/customers/customer-info_6.js";
 
@@ -137,7 +137,7 @@ import content14 from "!!raw-loader!@site/code_blocks/customers/customer-info_14
 
 If the customer is not subscribed to your entitlement, you can present a paywall to them where they can purchase your products.
 
-There are several ways to present a paywall in Expo, each with different use cases, so please review the [React Native Paywalls documentation](/docs/tools/paywalls-v2/displaying-paywalls#react-native).
+There are several ways to present a paywall in Expo, each with different use cases, so please review the [React Native Paywalls documentation](/tools/paywalls-v2/displaying-paywalls#react-native).
 
 ### Testing your app
 
