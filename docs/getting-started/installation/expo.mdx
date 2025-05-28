@@ -220,6 +220,28 @@ npx expo start
 
 Finally, choose the local development server in the iOS simulator.
 
+#### Testing on Android device or emulator
+
+To test on an Android device, you'll need to build the app for a physical device or Android emulator as described [here](https://docs.expo.dev/tutorial/eas/android-development-build/).
+
+Please ensure that `developmentClient` in your `eas.json` file is set to true under the `build.development` profile. Then, build the app:
+
+```
+eas build --platform android --profile development
+```
+
+Enter your app's application ID matches your RevenueCat config and Google Play Console. Choose "Yes" when asked if you want to create a new Android Keystore.
+
+Once the build completes, you can run the application on the device or emulator. To run the app on an [Android device](https://docs.expo.dev/tutorial/eas/android-development-build/#android-device), install [Expo Orbit](https://expo.dev/orbit), connect your device to your computer, and [select your device](https://docs.expo.dev/tutorial/eas/android-development-build/#android-device:~:text=and%20Install%20button.-,Expo%20Orbit,-allows%20for%20seamless) from the Orbit menu. Alternatively, use the [provided QR code method](https://docs.expo.dev/tutorial/eas/android-development-build/#android-device:~:text=and%20Install%20button.-,Expo%20Orbit,-allows%20for%20seamless).
+
+To run the app on an [Android emulator](https://docs.expo.dev/tutorial/eas/android-development-build/#android-emulator), choose "Yes" in the terminal after the build completes.
+
+After the app is running, you'll need to start the Expo server:
+
+```
+npx expo start
+```
+
 ## Expo Go
 
 Expo Go is not supported at this time.
