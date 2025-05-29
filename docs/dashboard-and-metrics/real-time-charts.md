@@ -14,13 +14,13 @@ We’re excited to welcome you to the beta of our new real-time Charts. This rel
 
 ### New features
 
-- Charts are now updated in real-time as events occur [Learn more](link)
-- New filters & segments for deeper analysis [Learn more](link)
+- Charts are now updated in real-time as events occur [Learn more](/charts/real-time-charts#real-time-reporting)
+- New filters & segments for deeper analysis [Learn more](/charts/real-time-charts#new-and-updated-dimensions)
 
 ### Improvements
 
-- Charts are now defined from a consistent subscription definition that is universal across stores, and allows us to distinctly measure cases like a Product Change or a Resubscription separately from a standard Renewal. [Learn more](link)
-- Refunded transactions no longer cause metrics like Revenue, Conversion to Paying, etc. to change after the fact. Instead, transactions that are later refunded are included by default in all charts. [Learn more](link)
+- Charts are now defined from a consistent subscription definition that is universal across stores, and allows us to distinctly measure cases like a Product Change or a Resubscription separately from a standard Renewal. [Learn more](/charts/real-time-charts#improved-subscription-definition)
+- Refunded transactions no longer cause metrics like Revenue, Conversion to Paying, etc. to change after the fact. Instead, transactions that are later refunded are included by default in all charts. [Learn more](/charts/real-time-charts#refund-behavior)
 - The **Platform** dimension now reports a customer's first seen platform, not their last seen platform
 - The **Country** dimensions now reports a customer's storefront (if available), or IP-based location if storefron is not available
 - The current Trial Conversion chart included any future payment on an App Store subscription as a conversion to paid, even if that conversion did not come from the trial start. Now, only conversions to paid from the trial start are included in this chart.
@@ -54,7 +54,7 @@ Previously, charts refreshed every 3 to 12 hours depending on the dataset. Now, 
 
 You can now make faster, more informed decisions without waiting for batch updates.
 
-### Improved subscription definitions
+### Improved subscription definition
 
 Previously, our charts were built on top of transactions, which had unique behaviors between stores and resulted in some charts handling the same underlying subscription case differently for each store.
 
@@ -62,7 +62,7 @@ Our new real-time charts are now modeled on our **Subscriptions** entity, which 
 
 You can learn more about the subscription data model [here](https://www.revenuecat.com/docs/api-v2#tag/Subscription-Data-Model).
 
-#### Benefits
+#### Impact
 
 As a result of that change, you'll see some differences in the data our real-time Charts provide.
 
@@ -71,7 +71,11 @@ As a result of that change, you'll see some differences in the data our real-tim
 | Product changes create new subscriptions | When a subscriber changes from one product (A) to another (B), we treat their first subscription to product A as expired, and create a second subscription to product B. | In charts like New Paid Subscriptions and Active Subscriptions Movement, this results in the count of new subscriptions and churned subscriptions increasing by equal amounts. Other charts like Subscription Retention already treated product changes like new subscriptions, and therefore the count of new subscriptions in a given period should more closely align between these charts. |
 | Resubscriptions create new subscriptions | When a subscriber makes a new purchase after \_\_\_, we consider it to be a resubscription, not a renewal on their prior subscription.                                   | In charts like Trial Conversion, payments that would have previously counted as conversions to paid from the original trial start which were actually resubscriptions from a later time are no longer included in the chart.                                                                                                                                                                   |
 
-### New & updated dimensions
+### Refund behavior
+
+To be added
+
+### New and updated dimensions
 
 We've introduced new dimensions for filtering & segmenting, with more coming soon, and have made important updates to existing dimensions to make them more useful.
 
@@ -95,7 +99,7 @@ You can access Real-time Charts from your dashboard by toggling `Real-time` on i
 
 As you explore the beta, and have any questions about the experience, [please let us know here](link),
 
-## Known Differences & Beta Notes
+## Upcoming changes & improvements
 
-- Legacy charts may differ from Charts v2 due to updated subscription classification logic.
-- Real-time reporting is available for most metrics, but a few may still refresh periodically while we finalize coverage.
+- Real-time reporting is available for many charts, but more will be added in the near future. Some charts which do not rely on subscription data, like Customer Center Survey Responses, will be migrated to the real-time system at a later time.
+- Support for custom attributes as a filter & segment is in development.
