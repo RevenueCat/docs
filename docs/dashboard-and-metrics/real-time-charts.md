@@ -23,6 +23,7 @@ We’re excited to welcome you to the beta of our new real-time Charts. This rel
 - Refunded transactions no longer cause metrics like Revenue, Conversion to Paying, etc. to change after the fact. Instead, transactions that are later refunded are included by default in all charts. [Learn more](link)
 - The **Platform** dimension now reports a customer's first seen platform, not their last seen platform
 - The **Country** dimensions now reports a customer's storefront (if available), or IP-based location if storefron is not available
+- The current Trial Conversion chart included any future payment on an App Store subscription as a conversion to paid, even if that conversion did not come from the trial start. Now, only conversions to paid from the trial start are included in this chart.
 
 ### Bug fixes
 
@@ -55,18 +56,20 @@ You can now make faster, more informed decisions without waiting for batch updat
 
 ### Improved subscription definitions
 
-We've significantly enhanced how subscriptions are counted and classified. These updates align more closely with how businesses track meaningful events in a customer’s lifecycle.
+Previously, our charts were built on top of transactions, which had unique behaviors between stores and resulted in some charts handling the same underlying subscription case differently for each store.
 
-**What’s changed:**
+Our new real-time charts are now modeled on our **Subscriptions** entity, which normalizes the various store behaviors down to a common set of facts that can be measured across stores, and have consistent events created for them.
 
-- **Resubscriptions** (when a user churns and later resubscribes) are now **counted as _new_ subscriptions** rather than renewals. This change affects charts such as:
+You can learn more about the subscription data model [here](https://www.revenuecat.com/docs/api-v2#tag/Subscription-Data-Model).
 
-  - **New Paid Subscriptions**: May show an **increase**, as resubscriptions are no longer lumped in with renewals.
-  - **Trial Conversion Rates**: May show a **decrease**, since resubscriptions are not counted as trial-to-paid conversions.
+#### Benefits
 
-- **Product changes** (when a subscriber switches plans) are now treated as **new subscriptions**, since they often change the cadence or value of the billing cycle.
+As a result of that change, you'll see some differences in the data our real-time Charts provide.
 
-> These updates also apply to the **v2 API**, ensuring consistent definitions across both UI and programmatic access.
+| Change                                   | Description                                                                                                                                                              | Impact                                                                                                                                                                                                                                                                                                                                                                                         |
+| :--------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Product changes create new subscriptions | When a subscriber changes from one product (A) to another (B), we treat their first subscription to product A as expired, and create a second subscription to product B. | In charts like New Paid Subscriptions and Active Subscriptions Movement, this results in the count of new subscriptions and churned subscriptions increasing by equal amounts. Other charts like Subscription Retention already treated product changes like new subscriptions, and therefore the count of new subscriptions in a given period should more closely align between these charts. |
+| Resubscriptions create new subscriptions | When a subscriber makes a new purchase after \_\_\_, we consider it to be a resubscription, not a renewal on their prior subscription.                                   | In charts like Trial Conversion, payments that would have previously counted as conversions to paid from the original trial start which were actually resubscriptions from a later time are no longer included in the chart.                                                                                                                                                                   |
 
 ### New & updated dimensions
 
