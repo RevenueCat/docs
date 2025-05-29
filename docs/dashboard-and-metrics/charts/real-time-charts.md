@@ -14,13 +14,13 @@ We’re excited to welcome you to the beta of our new real-time Charts. This rel
 
 ### New features
 
-- Charts are now updated in real-time as events occur [Learn more](/charts/real-time-charts#real-time-reporting)
-- New filters & segments for deeper analysis [Learn more](/charts/real-time-charts#new-and-updated-dimensions)
+- Charts are now updated in real-time as events occur [Learn more](/dashboard-and-metrics/charts/real-time-charts#real-time-reporting)
+- New filters & segments for deeper analysis [Learn more](/dashboard-and-metrics/charts/real-time-charts#new-and-updated-dimensions)
 
 ### Improvements
 
-- Charts are now defined from a consistent subscription definition that is universal across stores, and allows us to distinctly measure cases like a Product Change or a Resubscription separately from a standard Renewal. [Learn more](/charts/real-time-charts#improved-subscription-definition)
-- Refunded transactions no longer cause metrics like Revenue, Conversion to Paying, etc. to change after the fact. Instead, transactions that are later refunded are included by default in all charts. [Learn more](/charts/real-time-charts#refund-behavior)
+- Charts are now defined from a consistent subscription definition that is universal across stores, and allows us to distinctly measure cases like a Product Change or a Resubscription separately from a standard Renewal. [Learn more](/dashboard-and-metrics/charts/real-time-charts#improved-subscription-definition)
+- Refunded transactions no longer cause metrics like Revenue, Conversion to Paying, etc. to change after the fact. Instead, transactions that are later refunded are included by default in all charts. [Learn more](/dashboard-and-metrics/charts/real-time-charts#refund-behavior)
 - The **Platform** dimension now reports a customer's first seen platform, not their last seen platform
 - The **Country** dimensions now reports a customer's storefront (if available), or IP-based location if storefron is not available
 - The current Trial Conversion chart included any future payment on an App Store subscription as a conversion to paid, even if that conversion did not come from the trial start. Now, only conversions to paid from the trial start are included in this chart.
@@ -97,7 +97,7 @@ We'll continue to expand segmentation options during the beta, including adding 
 
 You can access Real-time Charts from your dashboard by toggling `Real-time` on in Charts. Look for the real-time icon next to supported Charts. To see the current version of each chart, simply toggle `Real-time` off.
 
-As you explore the beta, and have any questions about the experience, [please let us know here](link),
+As you explore the beta, and have any questions about the experience, [please let us know here](http://typeform.com/),
 
 ## Upcoming changes & improvements
 
