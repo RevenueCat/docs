@@ -102,4 +102,5 @@ As you explore the beta, and have any questions about the experience, [please le
 ## Upcoming changes & improvements
 
 - Real-time reporting is available for many charts, but more will be added in the near future. Some charts which do not rely on subscription data, like Customer Center Survey Responses, will be migrated to the real-time system at a later time.
+- Real-time charts support App Store, Play Store, and Stripe apps; with additional store support currently in development.
 - Support for custom attributes as a filter & segment is in development.
