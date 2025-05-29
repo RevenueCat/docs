@@ -5,6 +5,8 @@ excerpt: Check your configuration setup step by step.
 hidden: false
 ---
 
+import InteractiveCheckbox from "./InteractiveCheckbox";
+
 The processes for setting up Google Play service credentials and real-time developer notifications to communicate with RevenueCat on your behalf can be complex, and span across multiple consoles and dashboards. Use this handy checklist to go through and make sure you hit each step in your configuration.
 
 Note that while our [credentials guide](/service-credentials/creating-play-service-credentials) and our [developer notifications guide](/platform-resources/server-notifications/google-server-notifications) will move back and forth between the Google Play Console, the Google Cloud Console, and the RevenueCat dashboard, we've combined the steps into categories for ease of use.
@@ -15,129 +17,126 @@ Note that while our [credentials guide](/service-credentials/creating-play-servi
 
 ### In Google Cloud:
 
-<label class="google-checkbox">
-  <input type="checkbox" />I have created, either during this process or
-  previously, a Google Cloud project dedicated to this app
-</label>
+<InteractiveCheckbox id="cloud-project">
+  I have created, either during this process or previously, a Google Cloud
+  project dedicated to this app.
+</InteractiveCheckbox>
 
-<label class="google-checkbox">
-  <input type="checkbox" />I have enabled both the **Google Play Android
-  Developer API** and the **Google Play Developer Reporting API**
-</label>
+<InteractiveCheckbox id="enable-apis">
+  I have enabled both <strong>Google Play Android Developer API</strong> and{" "}
+  <strong>Google Play Developer Reporting API</strong>.
+</InteractiveCheckbox>
 
-<label class="google-checkbox">
-  <input type="checkbox" />I have created a service account under the above
-  Cloud project
-</label>
+<InteractiveCheckbox id="create-service-account">
+  I have created a service account under the above Cloud project.
+</InteractiveCheckbox>
 
-<label class="google-checkbox">
-  <input type="checkbox" />I have given the service account the roles of
-  **Pub/Sub Editor** (or Admin) and **Monitoring Viewer**
-</label>
+<InteractiveCheckbox id="assign-roles">
+  I have given the service account the roles of <strong>Pub/Sub Editor</strong>{" "}
+  (or Admin) and <strong>Monitoring Viewer</strong>.
+</InteractiveCheckbox>
 
-<label class="google-checkbox">
-  <input type="checkbox" />I have created and downloaded a JSON public key under
-  the service account I created
-</label>
+<InteractiveCheckbox id="download-json">
+  I have created and downloaded a JSON public key under the service account I
+  created.
+</InteractiveCheckbox>
 
 ### In Google Play:
 
-{" "}
+<InteractiveCheckbox id="invite-account">
+  I invited the created service account as a user in{" "}
+  <strong>Users and Permissions</strong>, and the status is "Active".
+</InteractiveCheckbox>
 
-<label class="google-checkbox">
-  <input type="checkbox" />I invited the created service account as a user in
-  **'Users and Permissions'** and the status is "Active"
-</label>
+<InteractiveCheckbox id="grant-permissions">
+  Under the service account user's <strong>Account Permissions</strong>, I have
+  added:
+  <ul>
+    <li>View app information and download bulk reports (read-only)</li>
+    <li>View financial data, orders, and cancellation survey response</li>
+    <li>Manage orders and subscriptions</li>
+  </ul>
+</InteractiveCheckbox>
 
-{" "}
+<InteractiveCheckbox id="save-changes">
+  After confirming permissions, I selected <strong>Apply</strong>, then{" "}
+  <strong>Save Changes</strong>.
+</InteractiveCheckbox>
 
-<label class="google-checkbox">
-  <input type="checkbox" />
-  Under the service account user's **'Account Permissions'** I have added these
-  permissions:
-</label>
+<InteractiveCheckbox id="upload-apk">
+  I have uploaded my signed APK or Android App Bundle.
+</InteractiveCheckbox>
 
-<ul>
-  <li> View app information and download bulk reports (read-only)</li>
-  <li> View financial data, orders, and cancellation survey response</li>
-  <li> Manage orders and subscriptions</li>
-</ul>
+<InteractiveCheckbox id="release-approved">
+  I have completed all the steps to approve the release.
+</InteractiveCheckbox>
 
-{" "}
+<InteractiveCheckbox id="add-tester">
+  The app is in a Closed or Open testing track and I've added a tester.
+</InteractiveCheckbox>
 
-<label class="google-checkbox">
-  <input type="checkbox" />
-  After confirming permissions, I selected **'Apply'**, then **'Save Changes'**
-</label>
-<label class="google-checkbox">
-  <input type="checkbox" />I have uploaded my signed APK or Android App Bundle
-</label>
-<label class="google-checkbox">
-  <input type="checkbox" />I have completed all the steps to approve the release
-</label>
-<label class="google-checkbox">
-  <input type="checkbox" />
-  The app is in a Closed or Open testing track and I've added a tester
-</label>
-<label class="google-checkbox">
-  <input type="checkbox" />
-  My Subscriptions are in an 'Active' state
-</label>
+<InteractiveCheckbox id="subscriptions-active">
+  My Subscriptions are in an <strong>Active</strong> state.
+</InteractiveCheckbox>
 
 ### In RevenueCat:
 
-<label class="google-checkbox">
-  <input type="checkbox" />I added the previously downloaded JSON key file to
-  the RevenueCat dashboard and clicked **'Save Changes'**
-</label>
-<label class="google-checkbox">
-  <input type="checkbox" />
-  I've waited at least 36 hours
-</label>
+<InteractiveCheckbox id="json-uploaded">
+  I added the previously downloaded JSON key file to the RevenueCat dashboard
+  and clicked <strong>Save Changes</strong>.
+</InteractiveCheckbox>
+
+<InteractiveCheckbox id="waited-36h">
+  I've waited at least 36 hours.
+</InteractiveCheckbox>
 
 ---
 
 ## Google Real-Time Developer Notifications Checklist
 
-<label class="google-checkbox">
-  <input type="checkbox" />I have waited to ensure that my service credentials
-  are set up correctly and working as expected
-</label>
+<InteractiveCheckbox id="credentials-working">
+  I have waited to ensure that my service credentials are set up correctly and
+  working as expected.
+</InteractiveCheckbox>
 
 ### In Google Cloud:
 
-<label class="google-checkbox">
-  <input type="checkbox" />I have enabled the Pub/Sub API for the same project
-  in which I previously created service credentials
-</label>
+<InteractiveCheckbox id="enable-pubsub-api">
+  I have enabled the <strong>Pub/Sub API</strong> for the same project in which
+  I previously created service credentials.
+</InteractiveCheckbox>
 
 ### In RevenueCat:
 
-<label class="google-checkbox">
-  <input type="checkbox" />I have chosen either an existing Pub/Sub Topic ID or
-  created a new one
-</label>
-<label class="google-checkbox">
-  <input type="checkbox" />I have clicked **'Connect to Google'**
-</label>
-<label class="google-checkbox">
-  <input type="checkbox" />I have copied the topic ID that generated after
-  connecting
-</label>
+<InteractiveCheckbox id="choose-topic-id">
+  I have chosen either an existing Pub/Sub Topic ID or created a new one.
+</InteractiveCheckbox>
+
+<InteractiveCheckbox id="connect-to-google">
+  I have clicked <strong>Connect to Google</strong>.
+</InteractiveCheckbox>
+
+<InteractiveCheckbox id="copied-topic-id">
+  I have copied the topic ID that generated after connecting.
+</InteractiveCheckbox>
 
 ### In Google Play:
 
-<label class="google-checkbox">
-  <input type="checkbox" />
-  Under **'Monetize'**, in **'Monetization Setup'**, I pasted the topic ID
-</label>
-<label class="google-checkbox">
-  <input type="checkbox" />I have saved changes and did not see any errors
-</label>
-<label class="google-checkbox">
-  <input type="checkbox" />I clicked **'Send Test Notification'** and confirmed
-  it was received in the RevenueCat dashboard
-</label>
+<InteractiveCheckbox id="paste-topic-id">
+  Under <strong>Monetize</strong>, in <strong>Monetization Setup</strong>, I
+  pasted the topic ID.
+</InteractiveCheckbox>
+
+<InteractiveCheckbox id="saved-no-errors">
+  I have saved changes and did not see any errors.
+</InteractiveCheckbox>
+
+<InteractiveCheckbox id="sent-test-notification">
+  I clicked <strong>Send Test Notification</strong> and confirmed it was
+  received in the RevenueCat dashboard.
+</InteractiveCheckbox>
+
+---
 
 ## Still having issues?
 
