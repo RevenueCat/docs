@@ -67,6 +67,61 @@
   --primary-action-color: rgb(87, 108, 219);
 
   --ifm-font-weight-base: 400;
+
+  --rc-red-primary: #f2545b;
+  --rc-red-secondary: #f9b8b8;
+  --rc-red-tertiary: #fde7e7;
+  --rc-green-primary: #11d483;
+  --rc-green-secondary: #81e4bb;
+  --rc-green-tertiary: #e1f9ef;
+  --rc-yellow-primary: #f4e971;
+  --rc-yellow-secondary: #f6f0ac;
+  --rc-yellow-tertiary: #fbf8da;
+  --rc-blue-primary: #576cdb;
+  --rc-blue-secondary: #b3bdef;
+  --rc-blue-tertiary: #eaedfb;
+  --rc-orange-primary: #e79462;
+  --rc-orange-secondary: #fbc3a2;
+  --rc-orange-tertiary: #ffebde;
+  --rc-violet-primary: #a987d1;
+  --rc-violet-secondary: #d9b9ff;
+  --rc-violet-tertiary: #e9d7ff;
+  --rc-teal-primary: #51c6e0;
+  --rc-teal-secondary: #92e4f5;
+  --rc-teal-tertiary: #dbf6fc;
+  --rc-froggy-primary: #99bb37;
+  --rc-froggy-secondary: #c5df7a;
+  --rc-froggy-tertiary: #f0fbd1;
+  --action-primary: #576cdb;
+  --action-secondary: #767676;
+  --action-disabled: #f0f0f0;
+  --action-disabled-text: #a5a5a5;
+  --text-primary: #141414;
+  --text-secondary: #767676;
+  --text-disabled: #dfdfdf;
+  --text-contrast: #fff;
+  --surface-root: #f6f6f6;
+  --surface-primary: #fff;
+  --surface-secondary: #e0e0e0;
+  --surface-tertiary: #f6f6f6;
+  --error-primary: #b0171f;
+  --error-secondary: #d2868a;
+  --error-tertiary: #fbeaea;
+  --success-primary: #11d483;
+  --success-secondary: #81e4bb;
+  --success-tertiary: #e1f9ef;
+  --warning-primary: #f4e971;
+  --warning-secondary: #f6f0ac;
+  --warning-tertiary: #fbf8da;
+  --info-primary: #a987d1;
+  --info-secondary: #d9b9ff;
+  --info-tertiary: #e9d7ff;
+  --button-primary-top: #576cdb;
+  --button-primary-bottom: #2840bd;
+  --button-primary-active: #6c7ee0;
+  --button-error-top: #d0242d;
+  --button-error-bottom: #b0171f;
+  --button-error-active: #d0242d;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -940,4 +995,37 @@ html[data-theme="dark"] .troubleshooting-wizard {
     flex: 0 1 auto; /* Don't force buttons to fill width */
     min-width: 100px; /* Give buttons a minimum width */
   }
+}
+
+:root.dark {
+  --action-primary: #7f94ff;
+  --action-secondary: #c1c1c1;
+  --action-disabled: #303030;
+  --action-disabled-text: #767676;
+  --text-primary: #fff;
+  --text-secondary: #c1c1c1;
+  --text-disabled: #030303;
+  --text-contrast: #fff;
+  --surface-root: #121212;
+  --surface-primary: #292929;
+  --surface-secondary: #4e4e4e;
+  --surface-tertiary: #151515;
+  --error-primary: #d83f47;
+  --error-secondary: #8a2e33;
+  --error-tertiary: #502224;
+  --success-primary: #2ff2a1;
+  --success-secondary: #259a69;
+  --success-tertiary: #1d573f;
+  --warning-primary: #ffffa3;
+  --warning-secondary: #a1a16a;
+  --warning-tertiary: #5b5b40;
+  --info-primary: #e5c3ff;
+  --info-secondary: #927da1;
+  --info-tertiary: #53495b;
+  --button-primary-top: #7f94ff;
+  --button-primary-bottom: #576cdb;
+  --button-primary-active: #6c7ee0;
+  --button-error-top: #d83f47;
+  --button-error-bottom: #c42b33;
+  --button-error-active: #e16b71;
 }
