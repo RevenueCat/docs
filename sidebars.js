@@ -432,7 +432,7 @@ const platformResourcesCategory = Category({
           slug: "/platform-resources/server-notifications/apple-server-notifications",
         }),
         SubCategory({
-          label: "FAQs",
+          label: "Apple App Store FAQs",
           itemsPathPrefix: "platform-resources/apple-platform-resources/",
           items: [
             Page({ slug: "app-store-small-business-program" }),
@@ -466,7 +466,7 @@ const platformResourcesCategory = Category({
           slug: "/platform-resources/server-notifications/google-server-notifications",
         }),
         SubCategory({
-          label: "FAQs",
+          label: "Google Play Store FAQs",
           itemsPathPrefix: "platform-resources/google-platform-resources/",
           items: [
             Page({ slug: "google-play-pass" }),
@@ -494,7 +494,7 @@ const platformResourcesCategory = Category({
           slug: "/platform-resources/server-notifications/amazon-server-notifications",
         }),
         SubCategory({
-          label: "FAQs",
+          label: "Amazon Appstore FAQs",
           itemsPathPrefix: "platform-resources/amazon-platform-resources/",
           items: [Page({ slug: "amazon-small-business-accelerator-program" })],
           index: {
