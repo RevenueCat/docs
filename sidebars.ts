@@ -434,7 +434,7 @@ const platformResourcesCategory = Category({
           slug: "/platform-resources/server-notifications/apple-server-notifications",
         }),
         SubCategory({
-          label: "FAQs",
+          label: "Apple App Store FAQs",
           itemsPathPrefix: "platform-resources/apple-platform-resources/",
           items: [
             Page({ slug: "app-store-small-business-program" }),
@@ -468,7 +468,7 @@ const platformResourcesCategory = Category({
           slug: "/platform-resources/server-notifications/google-server-notifications",
         }),
         SubCategory({
-          label: "FAQs",
+          label: "Google Play Store FAQs",
           itemsPathPrefix: "platform-resources/google-platform-resources/",
           items: [
             Page({ slug: "google-play-pass" }),
@@ -496,7 +496,7 @@ const platformResourcesCategory = Category({
           slug: "/platform-resources/server-notifications/amazon-server-notifications",
         }),
         SubCategory({
-          label: "FAQs",
+          label: "Amazon Appstore FAQs",
           itemsPathPrefix: "platform-resources/amazon-platform-resources/",
           items: [Page({ slug: "amazon-small-business-accelerator-program" })],
           index: {
@@ -805,6 +805,23 @@ const guidesCategory = Category({
   ],
 });
 
+const knownStoreIssuesCategory = Category({
+  emoji: "🚨",
+  label: "Known Store Issues",
+  itemsPathPrefix: "known-store-issues/",
+  items: [
+    SubCategory({
+      label: "StoreKit",
+      slug: "storekit",
+      itemsPathPrefix: "storekit/",
+      items: [
+        Page({ slug: "ios-18-4-simulator-fails-to-load-products" }),
+        Page({ slug: "ios-18-4-canceled-state-after-successful-purchase" }),
+      ],
+    }),
+  ],
+});
+
 const chartsDummyCategory = Category({
   emoji: "📈",
   label: "Charts & Metrics",
@@ -958,6 +975,7 @@ const sidebars = {
     supportCategory,
     migrateToRevenueCatCategory,
     guidesCategory,
+    knownStoreIssuesCategory,
     sdkMigrationCategory,
   ],
   dataSidebar: [metricsCategory, chartsCategory, dataExportCategory],
