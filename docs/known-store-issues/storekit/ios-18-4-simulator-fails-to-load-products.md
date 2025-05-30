@@ -38,7 +38,7 @@ In iOS 18.4, 18.4.1, and 18.5 simulators, StoreKit fails to load products and Of
 
 ### Option 3: Use iOS 18.3 Simulator
 
-1. In Xcode, select iOS 18.3 simulator instead
+1. In Xcode, select an iOS 18.3 simulator instead
 2. Test your in-app purchase implementation on the alternative simulator version
 
 ## Impact on App Store Review
