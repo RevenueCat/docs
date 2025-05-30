@@ -2,9 +2,17 @@ import React from "react";
 import ApiDoc from "@theme-original/ApiDoc";
 import Head from "@docusaurus/Head";
 
-export default function ApiDocWrapper(props) {
-  // Adds meta robots directive to any specs that have the top-level field `x-revenuecat-hidden` set to `true`.
+interface ApiDocProps {
+  specProps: {
+    spec: {
+      "x-revenuecat-hidden"?: boolean;
+    };
+  };
+}
+
+export default function ApiDocWrapper(props: ApiDocProps): React.ReactElement {
   const hidden = props.specProps.spec["x-revenuecat-hidden"] === true;
+
   return (
     <>
       {hidden && (

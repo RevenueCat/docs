@@ -1,8 +1,24 @@
+import React from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import isInternalUrl from "@docusaurus/isInternalUrl";
 import IconExternalLink from "@theme/Icon/ExternalLink";
 import { useActiveDocContext } from "@docusaurus/plugin-content-docs/client";
+
+interface DocSidebarItemLinkProps {
+  item: {
+    href: string;
+    label: string;
+    className?: string;
+    autoAddBaseUrl?: boolean;
+    [key: string]: any;
+  };
+  onItemClick?: (item: any) => void;
+  level?: number;
+  index?: number;
+  activePath?: string;
+  [key: string]: any;
+}
 
 export default function DocSidebarItemLink({
   item,
@@ -10,9 +26,9 @@ export default function DocSidebarItemLink({
   level,
   index,
   ...props
-}) {
+}: DocSidebarItemLinkProps): React.ReactElement {
   const { href, label, className, autoAddBaseUrl } = item;
-  const { activeDoc } = useActiveDocContext(); // Get the active document context
+  const { activeDoc } = useActiveDocContext(props.docsPluginId);
   const isActive = activeDoc?.path === href; // Determine if the current link matches the active doc
   const isInternalLink = isInternalUrl(href);
 

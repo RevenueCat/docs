@@ -2,8 +2,24 @@ import React from "react";
 import clsx from "clsx";
 import { ThemeClassNames } from "@docusaurus/theme-common";
 import styles from "./styles.module.css";
-export default function DocSidebarItemHtml({ item, level, index }) {
+
+interface DocSidebarItemHtmlProps {
+  item: {
+    value: string;
+    defaultStyle?: boolean;
+    className?: string;
+  };
+  level: number;
+  index: number;
+}
+
+export default function DocSidebarItemHtml({
+  item,
+  level,
+  index,
+}: DocSidebarItemHtmlProps): React.ReactElement {
   const { value, defaultStyle, className } = item;
+
   return (
     <li
       className={clsx(

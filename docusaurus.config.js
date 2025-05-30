@@ -18,7 +18,6 @@ const GOOGLE_SITE_VERIFICATION =
   process.env.GOOGLE_SITE_VERIFICATION || "SET_BY_CI";
 
 import redirects from "./src/redirects/redirects.js";
-import tailwindPlugin from "./src/plugins/tailwind/tailwind-config.cjs";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -27,10 +26,7 @@ const config = {
     "RevenueCat makes it easy to build, analyze, and grow in-app purchases and subscriptions on iOS, Android, and the web – no server code required. Get started for free.",
   favicon: "img/favicon-32x32.png",
 
-  // Set the production url of your site here
   url: "https://www.revenuecat.com/",
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: DOC_BASE_URL,
 
   onBrokenLinks: "throw",
@@ -54,7 +50,7 @@ const config = {
       ({
         blog: false,
         docs: {
-          sidebarPath: "./sidebars.js",
+          sidebarPath: "./sidebars.ts",
           routeBasePath: "/",
           breadcrumbs: true,
           editUrl: "https://github.com/RevenueCat/docs/tree/main/",
@@ -63,14 +59,13 @@ const config = {
           customCss: "./src/css/custom.css",
         },
         googleTagManager: {
-          containerId: 'GTM-NJWQK6DX',
+          containerId: "GTM-NJWQK6DX",
         },
       }),
     ],
     [
       "redocusaurus",
       {
-        // Plugin Options for loading OpenAPI files
         specs: [
           {
             spec: "openapi-spec/api-v2.yaml",
@@ -89,9 +84,7 @@ const config = {
             route: "/api-v1/",
           },
         ],
-        // Theme Options for modifying how redoc renders them
         theme: {
-          // Change with your site colors
           primaryColor: "#f25a5a",
         },
         config: "redocly.yaml",
@@ -129,7 +122,6 @@ const config = {
       colorMode: {
         respectPrefersColorScheme: true,
       },
-      // Replace with your project's social card
       image: "img/social-preview.jpg",
       navbar: {
         title: "RevenueCat",
@@ -254,33 +246,12 @@ const config = {
         additionalLanguages: ["java", "dart", "scala", "brightscript"],
       },
       algolia: {
-        // The application ID provided by Algolia
         appId: ALGOLIA_APP_ID,
-
-        // Public API key: it is safe to commit it
         apiKey: ALGOLIA_API_KEY,
-
         indexName: ALGOLIA_INDEX_NAME,
-
-        // Optional: see doc section below
         contextualSearch: true,
-
-        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-        // externalUrlRegex: 'external\\.com|domain\\.com',
-
-        // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
-        // replaceSearchResultPathname: {
-        //   from: '/docs/', // or as RegExp: /\/docs\//
-        //   to: '/',
-        // },
-
-        // Optional: Algolia search parameters
         searchParameters: {},
-
-        // Optional: path for search page that enabled by default (`false` to disable it)
         searchPagePath: "search",
-
-        //... other Algolia params
       },
       docs: {
         sidebar: {

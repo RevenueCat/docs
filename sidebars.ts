@@ -15,6 +15,8 @@ import {
   Link,
   Page,
   GeneratedIndex,
+  CategoryConfig,
+  SubCategoryConfig,
 } from "./src/sidebars/sidebar-utils";
 
 // The sidebar is a tree of categories and pages.
