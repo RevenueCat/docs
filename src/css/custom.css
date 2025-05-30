@@ -57,19 +57,16 @@
   --ifm-color-success-contrast-background: #f6fefb;
   --ifm-color-success-contrast-foreground: #000000;
 
-  --ifm-heading-font-family:
-    "Object Sans", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Ubuntu",
-    "Cantarell", "Noto Sans", "sans-serif", "BlinkMacSystemFont", "'Segoe UI'",
-    "Helvetica", "Arial", "sans-serif", "'Apple Color Emoji'",
-    "'Segoe UI Emoji'", "'Segoe UI Symbol'";
+  --ifm-heading-font-family: "Object Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",
+    sans-serif;
 
-  --ifm-font-family-base:
-    "system-ui", "-apple-system", "Segoe UI", "Roboto", "Ubuntu", "Cantarell",
-    "Noto Sans", "sans-serif", "BlinkMacSystemFont", "'Segoe UI'", "Helvetica",
-    "Arial", "sans-serif", "'Apple Color Emoji'", "'Segoe UI Emoji'",
-    "'Segoe UI Symbol'";
+  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
   --primary-action-color: rgb(87, 108, 219);
+
+  --ifm-font-weight-base: 400;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -380,7 +377,7 @@ main .row {
   }
 }
 
-/* See src/theme/Root.js > useEmbedMode */
+/* See src/theme/Root.tsx > useEmbedMode */
 body[data-embed="true"] {
   nav,
   aside.theme-doc-sidebar-container,

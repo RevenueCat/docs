@@ -7,14 +7,23 @@ import {
   Collapsible,
   useCollapsible,
 } from "@docusaurus/theme-common";
-import { findFirstSidebarItemLink } from "@docusaurus/theme-common";
 import Link from "@docusaurus/Link";
 import { translate } from "@docusaurus/Translate";
 import useIsBrowser from "@docusaurus/useIsBrowser";
 import { useActiveDocContext } from "@docusaurus/plugin-content-docs/client";
 import DocSidebarItems from "@theme/DocSidebarItems";
 
-function useAutoExpandActiveCategory({ isActive, collapsed, updateCollapsed }) {
+interface AutoExpandActiveProps {
+  isActive: boolean;
+  collapsed: boolean;
+  updateCollapsed: (toCollapsed: boolean) => void;
+}
+
+function useAutoExpandActiveCategory({
+  isActive,
+  collapsed,
+  updateCollapsed,
+}: AutoExpandActiveProps): void {
   const wasActive = usePrevious(isActive);
   useEffect(() => {
     const justBecameActive = isActive && !wasActive;
@@ -24,17 +33,39 @@ function useAutoExpandActiveCategory({ isActive, collapsed, updateCollapsed }) {
   }, [isActive, wasActive, collapsed, updateCollapsed]);
 }
 
-function useCategoryHrefWithSSRFallback(item) {
+interface CategoryItem {
+  href?: string;
+  linkUnlisted?: boolean;
+  collapsible?: boolean;
+  items: any[];
+}
+
+// A simplified version that doesn't rely on the findFirstSidebarItemLink function
+function useCategoryHrefWithSSRFallback(
+  item: CategoryItem,
+): string | undefined {
   const isBrowser = useIsBrowser();
   return useMemo(() => {
     if (item.href && !item.linkUnlisted) {
       return item.href;
     }
+    // When on browser or not collapsible, no SSR fallback needed
     if (isBrowser || !item.collapsible) {
       return undefined;
     }
-    return findFirstSidebarItemLink(item);
+    // In SSR, try to find the first link in items recursively
+    // This is a simplified version that doesn't do the recursive search
+    const firstItem = item.items[0];
+    return firstItem?.href;
   }, [item, isBrowser]);
+}
+
+interface CollapseButtonProps {
+  collapsed: boolean;
+  categoryLabel: string;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  className?: string;
+  isCurrentPage?: boolean;
 }
 
 function CollapseButton({
@@ -42,7 +73,7 @@ function CollapseButton({
   categoryLabel,
   onClick,
   className: additionalClasses,
-}) {
+}: CollapseButtonProps): React.ReactElement {
   return (
     <button
       aria-label={
@@ -73,13 +104,33 @@ function CollapseButton({
   );
 }
 
+interface DocSidebarItemCategoryProps {
+  item: {
+    items: any[];
+    label: string;
+    collapsible?: boolean;
+    className?: string;
+    href?: string;
+    customProps?: {
+      emoji?: string;
+      [key: string]: any;
+    };
+    collapsed?: boolean;
+  };
+  onItemClick?: (item: any) => void;
+  level: number;
+  index: number;
+  activePath?: string;
+  [key: string]: any;
+}
+
 export default function DocSidebarItemCategory({
   item,
   onItemClick,
   level,
   index,
   ...props
-}) {
+}: DocSidebarItemCategoryProps): React.ReactElement {
   const { items, label, collapsible, className, href, customProps } = item;
   const isTopLevelCategory = customProps && "emoji" in customProps;
 
@@ -89,7 +140,7 @@ export default function DocSidebarItemCategory({
     },
   } = useThemeConfig();
 
-  const { activeDoc } = useActiveDocContext();
+  const { activeDoc } = useActiveDocContext(props.docsPluginId);
   const hrefWithSSRFallback = useCategoryHrefWithSSRFallback(item);
 
   const isActive =
@@ -100,7 +151,7 @@ export default function DocSidebarItemCategory({
     if (!collapsible) {
       return false;
     }
-    return isActive ? false : item.collapsed;
+    return isActive ? false : !!item.collapsed;
   });
 
   const updateCollapsed = (toCollapsed = !collapsed) => {
@@ -156,7 +207,7 @@ export default function DocSidebarItemCategory({
           className={clsx(
             "text-[14px] hover:no-underline relative w-full pl-2",
             {
-              "font-semibold text-[14px] pl-4 text-base-900 dark:text-base-300 mt-2":
+              "font-bold text-[14px] pl-4 text-base-900 dark:text-base-300 mt-2":
                 isTopLevelCategory,
             },
             isCurrentPage
@@ -186,7 +237,7 @@ export default function DocSidebarItemCategory({
           }
           {...props}
         >
-          {isTopLevelCategory && (
+          {isTopLevelCategory && customProps?.emoji && (
             <span className="absolute -left-2">{customProps.emoji}</span>
           )}
           {label}

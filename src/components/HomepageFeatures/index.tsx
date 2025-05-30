@@ -1,8 +1,22 @@
+import React from "react";
 import clsx from "clsx";
 import Heading from "@theme/Heading";
 import styles from "./styles.module.css";
 
-const FeatureList = [
+// SVG import type for TypeScript
+type SvgComponent = React.ComponentType<
+  React.SVGProps<SVGSVGElement> & {
+    title?: string;
+  }
+>;
+
+interface FeatureItem {
+  title: string;
+  Svg: SvgComponent;
+  description: React.ReactNode;
+}
+
+const FeatureList: FeatureItem[] = [
   {
     title: "Subscriptions made easy",
     Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
@@ -16,7 +30,17 @@ const FeatureList = [
   },
 ];
 
-function Feature({ Svg, title, description }) {
+interface FeatureProps {
+  Svg: SvgComponent;
+  title: string;
+  description: React.ReactNode;
+}
+
+function Feature({
+  Svg,
+  title,
+  description,
+}: FeatureProps): React.ReactElement {
   return (
     <div className={clsx("col col--4")}>
       <div className="text--center">
@@ -30,7 +54,7 @@ function Feature({ Svg, title, description }) {
   );
 }
 
-export default function HomepageFeatures() {
+export default function HomepageFeatures(): React.ReactElement {
   return (
     <section className={styles.features}>
       <div className="container">

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, ReactNode } from "react";
 
 /**
  * Hide navigation elements when embedded in the RevenueCat app in an iframe.
@@ -10,7 +10,7 @@ import React, { useEffect } from "react";
  * Session storage is not shared across tabs, so this will not affect anything
  * else.
  */
-const useEmbedMode = () => {
+const useEmbedMode = (): void => {
   useEffect(() => {
     if (typeof window === "undefined") {
       return;
@@ -29,7 +29,11 @@ const useEmbedMode = () => {
   }, []);
 };
 
-export default function Root({ children }) {
+interface RootProps {
+  children: ReactNode;
+}
+
+export default function Root({ children }: RootProps): React.ReactNode {
   useEmbedMode();
 
   return children;

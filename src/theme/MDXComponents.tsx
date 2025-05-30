@@ -8,7 +8,17 @@ import Button from "@site/src/components/Button/Button";
 import FeatureItem from "@site/src/components/FeatureItem/FeatureItem";
 import ContentCardItem from "@site/src/components/ContentCardItem/ContentCardItem";
 
-export default {
+// Define the type for MDX components
+type MDXComponentsType = typeof MDXComponents & {
+  RCCodeBlock: typeof RCCodeBlock;
+  YouTubeEmbed: typeof YouTubeEmbed;
+  SampleApp: typeof SampleApp;
+  Button: typeof Button;
+  FeatureItem: typeof FeatureItem;
+  ContentCardItem: typeof ContentCardItem;
+};
+
+const customMDXComponents: MDXComponentsType = {
   // Re-use the default mapping
   ...MDXComponents,
   RCCodeBlock,
@@ -18,3 +28,5 @@ export default {
   FeatureItem,
   ContentCardItem,
 };
+
+export default customMDXComponents;

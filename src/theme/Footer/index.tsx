@@ -1,14 +1,21 @@
 import React from "react";
 import { useThemeConfig } from "@docusaurus/theme-common";
-import Logo from "@site/static/img/white-logo.png";
-import GithubIcon from "@site/static/img/github.svg";
-import XIcon from "@site/static/img/x.svg";
-import YoutubeIcon from "@site/static/img/youtube.svg";
+
+// Import images as string paths
+const Logo = require("@site/static/img/white-logo.png").default;
+const GithubIcon = require("@site/static/img/github.svg").default;
+const XIcon = require("@site/static/img/x.svg").default;
+const YoutubeIcon = require("@site/static/img/youtube.svg").default;
 
 const date = new Date();
 const year = date.getFullYear();
 
-const Link = ({ href, children, ...rest }) => (
+interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  href: string;
+  children: React.ReactNode;
+}
+
+const Link: React.FC<LinkProps> = ({ href, children, ...rest }) => (
   <a
     href={href}
     {...rest}
@@ -18,7 +25,7 @@ const Link = ({ href, children, ...rest }) => (
   </a>
 );
 
-function Footer() {
+const Footer: React.FC = () => {
   return (
     <footer className="bg-base-900 pt-20 pb-4 px-4 doc-lg:px-16">
       <div className="flex flex-col items-center gap-16 max-w-xl mx-auto doc-lg:flex-row doc-lg:justify-between w-full doc-lg:max-w-7xl">
@@ -116,5 +123,6 @@ function Footer() {
       </div>
     </footer>
   );
-}
+};
+
 export default React.memo(Footer);

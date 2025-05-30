@@ -1,17 +1,32 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import clsx from "clsx";
 import { translate } from "@docusaurus/Translate";
 import { useThemeConfig } from "@docusaurus/theme-common";
 import Link from "@docusaurus/Link";
 import styles from "./styles.module.css";
-export default function Heading({ as: As, id, ...props }) {
+
+interface HeadingProps {
+  as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  id?: string;
+  className?: string;
+  children: ReactNode;
+  [key: string]: any; // For any other props
+}
+
+export default function Heading({
+  as: As,
+  id,
+  ...props
+}: HeadingProps): React.ReactElement {
   const {
     navbar: { hideOnScroll },
   } = useThemeConfig();
+
   // H1 headings do not need an id because they don't appear in the TOC.
   if (As === "h1" || !id) {
     return <As {...props} id={undefined} />;
   }
+
   const anchorTitle = translate(
     {
       id: "theme.common.headingLinkTitle",
