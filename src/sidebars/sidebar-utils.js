@@ -46,7 +46,7 @@ const SubCategory = ({ label, slug, itemsPathPrefix, items, index }) => ({
     link: {
       type: "generated-index",
       title: index.title,
-      slug: index.link,
+      slug: index.link + "-index",
       ...(index.description && { description: index.description }),
     },
   }),
