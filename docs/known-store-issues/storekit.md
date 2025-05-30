@@ -9,7 +9,9 @@ This section covers known issues specifically related to Apple's StoreKit framew
 ## Current Issues
 
 - [iOS 18.4 Simulator Fails to Load Products](storekit/ios-18-4-simulator-fails-to-load-products)
-- [iOS 18.4-18.5 Canceled State After Successful Purchase](storekit/ios-18-4-canceled-state-after-successful-purchase) ✅ **Resolved**
+
+## Resolved Issues
+- [iOS 18.3.1-18.5 Canceled State After Successful Purchase](storekit/ios-18-4-canceled-state-after-successful-purchase)
 
 ## General StoreKit Troubleshooting
 
