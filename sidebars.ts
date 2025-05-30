@@ -532,6 +532,7 @@ const accountCategory = Category({
       slug: "welcome/set-up-revenuecat/security",
       items: [Page({ slug: "dashboard-and-metrics/audit-logs" })],
     }),
+    Page({ slug: "welcome/set-up-revenuecat/hackerone" }),
   ],
 });
 
