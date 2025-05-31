@@ -67,7 +67,7 @@ There are four types of sidebar items:
 
 ```js
 const exampleCategory = Category({
-  emoji: "🙈",
+  iconName: "🙈",
   label: "Example Category",
   slug: "example",
   itemsPathPrefix: "example/", // the path prefix to apply to the items in this category

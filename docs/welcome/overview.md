@@ -36,35 +36,40 @@ Whether you have just one or one million subscribers, you can easily replace you
   title="Entitlements & Subscription Status" 
   subtitle="Ensure customers have correct access even if your entitlement structure is complex." 
   link="/docs/getting-started/entitlements" 
-  emoji="🔑"
+  iconName="key"
+  iconColor="var(--rc-blue-primary)"
 />
 
 <FeatureItem
   title="Paywalls"
   subtitle="Remotely configure your product offering with powerful paywalls."
   link="/docs/tools/paywalls"
-  emoji="💰"
+  iconName="paywall"
+  iconColor="var(--rc-red-primary)"
 />
 
 <FeatureItem
   title="Events & Integrations"
   subtitle="Clean, normalized subscription data at your fingertips and in every system."
   link="/docs/integrations/integrations"
-  emoji="🔌"
+  iconName="integrations"
+  iconColor="var(--rc-blue-primary)"
 />
 
 <FeatureItem
   title="Charts, Metrics, & Data"
   subtitle="Get insights into your business with charts, metrics, and data exports."
   link="/docs/dashboard-and-metrics/overview"
-  emoji="📈"
+  iconName="chart-bar"
+  iconColor="var(--rc-green-primary)"
 />
 
 <FeatureItem
   title="Experiments"
   subtitle="Run A/B tests to find the most effective pricing model."
   link="/docs/tools/experiments-v1"
-  emoji="🧪"
+  iconName="experiment"
+  iconColor="var(--rc-orange-primary)"
 />
 
 ## Not sure where to start?

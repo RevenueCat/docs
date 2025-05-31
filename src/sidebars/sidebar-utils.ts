@@ -1,3 +1,6 @@
+import { ReactNode, ReactSVGElement } from "react";
+import React from "react";
+
 // TypeScript definitions for sidebar items
 export interface SidebarItemBase {
   type: string;
@@ -19,7 +22,8 @@ export interface CategoryItem extends SidebarItemBase {
   label: string;
   collapsible: boolean;
   customProps?: {
-    emoji?: string;
+    iconName?: string;
+    iconColor?: string;
   };
   link?: {
     type: string;
@@ -39,7 +43,8 @@ export interface IndexConfig {
 
 export interface CategoryConfig {
   label: string;
-  emoji: string;
+  iconName?: string;
+  iconColor?: string;
   itemsPathPrefix?: string;
   items: any[];
 }
@@ -93,7 +98,8 @@ const buildItem = (item: any, pagePrefix?: string): any => {
 
 export const Category = ({
   label,
-  emoji,
+  iconName,
+  iconColor,
   itemsPathPrefix,
   items,
 }: CategoryConfig): CategoryItem => {
@@ -101,7 +107,7 @@ export const Category = ({
     type: "category",
     label,
     collapsible: false,
-    customProps: { emoji },
+    customProps: { iconName, iconColor },
     items: items.map((item) => buildItem(item, itemsPathPrefix)),
   };
 };
