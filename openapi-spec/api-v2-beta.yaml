@@ -4297,7 +4297,100 @@ paths:
     post:
       summary: Create a virtual currencies transaction
       operationId: create-virtual-currencies-transaction
-      x-revenuecat-rate-limiting-domain: customer_information
+      x-revenuecat-rate-limiting-domain: virtual_currencies_create_transaction
+      x-scopes:
+      - customer_information:purchases:read_write
+      x-release-status: beta
+      tags:
+      - Customer
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: customer_id
+        in: path
+        description: ID of the customer
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: 19b8de26-77c1-49f1-aa18-019a391603e2
+      - name: Idempotency-Key
+        in: header
+        schema:
+          type: string
+          example: 1234-5678-9101-1121
+        description: This is an optional idempotency key to ensure exactly once execution
+          of the request.
+      - name: include_empty_balances
+        in: query
+        required: false
+        schema:
+          type: boolean
+          example: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - adjustments
+              properties:
+                adjustments:
+                  description: The adjustments to the virtual currencies
+                  type: object
+                  additionalProperties:
+                    type: integer
+                reference:
+                  description: The reference of the transaction
+                  type: string
+                  nullable: true
+              additionalProperties: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListVirtualCurrenciesBalances'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read_write</code>.'
+  /projects/{project_id}/customers/{customer_id}/virtual_currencies/update_balance:
+    post:
+      summary: Update a virtual currencies balance without creating a transaction
+      operationId: update-virtual-currencies-balance
+      x-revenuecat-rate-limiting-domain: virtual_currencies_create_transaction
       x-scopes:
       - customer_information:purchases:read_write
       x-release-status: beta
@@ -6784,7 +6877,7 @@ components:
               type: string
               nullable: true
               minLength: 50
-              maxLength: 50
+              maxLength: 70
     PaddleAppCreate:
       type: object
       properties:
@@ -6798,7 +6891,7 @@ components:
               type: string
               nullable: true
               minLength: 50
-              maxLength: 50
+              maxLength: 70
             paddle_is_sandbox:
               description: Whether the app is tied to the sandbox environment.
               nullable: false

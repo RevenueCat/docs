@@ -6586,7 +6586,7 @@ components:
               type: string
               nullable: true
               minLength: 50
-              maxLength: 50
+              maxLength: 70
     PaddleAppCreate:
       type: object
       properties:
@@ -6600,7 +6600,7 @@ components:
               type: string
               nullable: true
               minLength: 50
-              maxLength: 50
+              maxLength: 70
             paddle_is_sandbox:
               description: Whether the app is tied to the sandbox environment.
               nullable: false
