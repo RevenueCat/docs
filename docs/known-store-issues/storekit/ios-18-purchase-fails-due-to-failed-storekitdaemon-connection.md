@@ -2,8 +2,6 @@
 title: iOS 18-18.3.2 Purchases May Fail Due to StoreKit Daemon Connection Issue
 ---
 
-# iOS 18-18.3.2 Purchases May Fail Due to StoreKit Daemon Connection Issue
-
 ## Resolved
 Apple has resolved this issue, and it is not present in iOS 18.4 and above. The issue is still present in iOS 18.0-18.3.2. We are keeping this page for historical reference.
 
