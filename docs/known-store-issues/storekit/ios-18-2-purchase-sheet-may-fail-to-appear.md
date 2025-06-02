@@ -2,7 +2,6 @@
 title: iOS 18.2.X Purchase Sheet May Fail to Appear
 ---
 
-# iOS 18.2.X Purchase Sheet May Fail to Appear
 
 ## Resolved
 Apple has resolved this issue, and it is not present in iOS 18.3 and above. The issue is still present in iOS 18.2.X. We are keeping this page for historical reference.
