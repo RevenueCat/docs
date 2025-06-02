@@ -33,14 +33,14 @@ import {
 // rendered path: "categories/welcome/projects/collaborators"
 
 const welcomeCategory = Category({
-  emoji: "👋",
+  iconName: "info",
   label: "New to RevenueCat?",
   itemsPathPrefix: "",
   items: [Page({ slug: "welcome/overview" })],
 });
 
 const projectsCategory = Category({
-  emoji: "📱",
+  iconName: "hammer",
   label: "Projects & Apps",
   itemsPathPrefix: "",
   items: [
@@ -72,7 +72,7 @@ const projectsCategory = Category({
 });
 
 const mobileSDKCategory = Category({
-  emoji: "📲",
+  iconName: "mobile",
   label: "RevenueCat SDK",
   itemsPathPrefix: "getting-started/",
   items: [
@@ -111,7 +111,7 @@ const mobileSDKCategory = Category({
 });
 
 const paywallsCategory = Category({
-  emoji: "🧱",
+  iconName: "paywall",
   label: "Paywalls",
   itemsPathPrefix: "",
   items: [
@@ -173,7 +173,7 @@ const paywallsCategory = Category({
 });
 
 const webSDKCategory = Category({
-  emoji: "🌎",
+  iconName: "desktop",
   label: "RevenueCat Web",
   itemsPathPrefix: "web/",
   items: [
@@ -217,7 +217,7 @@ const webSDKCategory = Category({
 });
 
 const offeringsCategory = Category({
-  emoji: "💰",
+  iconName: "tag",
   label: "Offerings & Entitlements",
   itemsPathPrefix: "",
   items: [
@@ -307,7 +307,7 @@ const offeringsCategory = Category({
 });
 
 const customersCategory = Category({
-  emoji: "👥",
+  iconName: "person",
   label: "Customers",
   itemsPathPrefix: "",
   items: [
@@ -368,7 +368,7 @@ const customersCategory = Category({
 });
 
 const testAndLaunchCategory = Category({
-  emoji: "🧰",
+  iconName: "help-prominent",
   label: "Test & Launch",
   itemsPathPrefix: "test-and-launch/",
   items: [
@@ -400,7 +400,7 @@ const testAndLaunchCategory = Category({
 // this section is a mess, but it's a combination of the old platform-resources and service-credentials sections
 // to retain links to the old pages, it took a bit of maneuvering
 const platformResourcesCategory = Category({
-  emoji: "🛠️",
+  iconName: "appstore",
   label: "Store Configuration",
   itemsPathPrefix: "",
   items: [
@@ -522,7 +522,7 @@ const platformResourcesCategory = Category({
 });
 
 const accountCategory = Category({
-  emoji: "🏠",
+  iconName: "key",
   label: "RevenueCat Account",
   itemsPathPrefix: "",
   items: [
@@ -537,7 +537,7 @@ const accountCategory = Category({
 });
 
 const supportCategory = Category({
-  emoji: "🛟",
+  iconName: "help-prominent",
   label: "RevenueCat Support",
   itemsPathPrefix: "revenuecat-support/",
   items: [
@@ -547,7 +547,7 @@ const supportCategory = Category({
 });
 
 const migrateToRevenueCatCategory = Category({
-  emoji: "📘",
+  iconName: "double-arrow-right",
   label: "Migrate to RevenueCat",
   itemsPathPrefix: "migrating-to-revenuecat/",
   items: [
@@ -574,7 +574,7 @@ const migrateToRevenueCatCategory = Category({
 });
 
 const sdkMigrationCategory = Category({
-  emoji: "📘",
+  iconName: "file-document",
   label: "SDK Reference",
   itemsPathPrefix: "",
   items: [
@@ -610,7 +610,7 @@ const sdkMigrationCategory = Category({
 });
 
 const metricsCategory = Category({
-  emoji: "📊",
+  iconName: "chart-pie",
   label: "Metrics",
   itemsPathPrefix: "dashboard-and-metrics/",
   items: [
@@ -624,7 +624,7 @@ const metricsCategory = Category({
 });
 
 const chartsCategory = Category({
-  emoji: "📈",
+  iconName: "chart-bar",
   label: "Charts",
   itemsPathPrefix: "dashboard-and-metrics/",
   items: [
@@ -731,7 +731,7 @@ const chartsCategory = Category({
 });
 
 const dataExportCategory = Category({
-  emoji: "📦",
+  iconName: "file-download",
   label: "Data Exports",
   itemsPathPrefix: "integrations/",
   items: [
@@ -767,7 +767,7 @@ const dataExportCategory = Category({
 });
 
 const experimentsCategory = Category({
-  emoji: "🧪",
+  iconName: "experiment",
   label: "Experiments",
   itemsPathPrefix: "tools/",
   items: [
@@ -787,7 +787,7 @@ const experimentsCategory = Category({
 });
 
 const guidesCategory = Category({
-  emoji: "📚",
+  iconName: "sparkle",
   label: "Guides",
   itemsPathPrefix: "",
   items: [
@@ -807,7 +807,7 @@ const guidesCategory = Category({
 });
 
 const knownStoreIssuesCategory = Category({
-  emoji: "🚨",
+  iconName: "heart-broken",
   label: "Known Store Issues",
   itemsPathPrefix: "known-store-issues/",
   items: [
@@ -824,7 +824,7 @@ const knownStoreIssuesCategory = Category({
 });
 
 const chartsDummyCategory = Category({
-  emoji: "📈",
+  iconName: "chart-bar",
   label: "Charts & Metrics",
   itemsPathPrefix: "",
   items: [
@@ -837,7 +837,7 @@ const chartsDummyCategory = Category({
 });
 
 const integrationsDummyCategory = Category({
-  emoji: "📈",
+  iconName: "integrations",
   label: "Events & Integrations Reference",
   itemsPathPrefix: "",
   items: [
@@ -852,14 +852,14 @@ const integrationsDummyCategory = Category({
 });
 
 const eventsCategory = Category({
-  emoji: "🔔",
+  iconName: "realtime",
   label: "Events",
   itemsPathPrefix: "",
   items: [Page({ slug: "integrations/integrations" })],
 });
 
 const webhooksCategory = Category({
-  emoji: "⚡️",
+  iconName: "notification",
   label: "Webhooks",
   itemsPathPrefix: "",
   items: [
@@ -878,7 +878,7 @@ const webhooksCategory = Category({
 });
 
 const attributionCategory = Category({
-  emoji: "📐",
+  iconName: "integrations",
   label: "Attribution & MMPs",
   itemsPathPrefix: "",
   items: [
@@ -906,7 +906,7 @@ const attributionCategory = Category({
 });
 
 const thirdPartyIntegrationsCategory = Category({
-  emoji: "🔌",
+  iconName: "integrations",
   label: "Integrations",
   itemsPathPrefix: "",
   items: [
@@ -943,7 +943,7 @@ const thirdPartyIntegrationsCategory = Category({
 });
 
 const integrationsMoreCategory = Category({
-  emoji: "➕",
+  iconName: "sparkle",
   label: "More",
   itemsPathPrefix: "",
   items: [

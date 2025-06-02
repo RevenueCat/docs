@@ -29,9 +29,10 @@ a:hover {
   font-size: 20rem;
   color: #f0f0f0;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 10%;
+  right: 15%;
+  transform: translate(50%, -50%);
+  scale: 1;
   z-index: 0;
   opacity: 0.075;
 }
@@ -57,6 +58,10 @@ a:hover {
   background-color: #ffffff05;
 }
 
+.icon {
+  padding-top: 6px;
+}
+
 @media (max-width: 768px) {
   .feature-container {
     padding: 24px;
@@ -70,5 +75,9 @@ a:hover {
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 10px;
+  }
+
+  .icon {
+    padding-top: 10px;
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { FC, useState, useEffect, useMemo } from "react";
 import clsx from "clsx";
 import RightIcon from "@site/static/img/right.svg";
 import {
@@ -12,7 +12,8 @@ import { translate } from "@docusaurus/Translate";
 import useIsBrowser from "@docusaurus/useIsBrowser";
 import { useActiveDocContext } from "@docusaurus/plugin-content-docs/client";
 import DocSidebarItems from "@theme/DocSidebarItems";
-
+import { IconName } from "../../CatIcon/types";
+import { CatIcon } from "../../CatIcon/CatIcon";
 interface AutoExpandActiveProps {
   isActive: boolean;
   collapsed: boolean;
@@ -99,7 +100,7 @@ function CollapseButton({
       className={additionalClasses}
       onClick={onClick}
     >
-      <RightIcon height="12px" width="12px" />
+      <RightIcon height="12px" width="12px" className="fill-red-500" />
     </button>
   );
 }
@@ -112,7 +113,8 @@ interface DocSidebarItemCategoryProps {
     className?: string;
     href?: string;
     customProps?: {
-      emoji?: string;
+      iconName?: string;
+      iconColor?: string;
       [key: string]: any;
     };
     collapsed?: boolean;
@@ -132,7 +134,7 @@ export default function DocSidebarItemCategory({
   ...props
 }: DocSidebarItemCategoryProps): React.ReactElement {
   const { items, label, collapsible, className, href, customProps } = item;
-  const isTopLevelCategory = customProps && "emoji" in customProps;
+  const isTopLevelCategory = customProps && "iconName" in customProps;
 
   const {
     docs: {
@@ -237,8 +239,14 @@ export default function DocSidebarItemCategory({
           }
           {...props}
         >
-          {isTopLevelCategory && customProps?.emoji && (
-            <span className="absolute -left-2">{customProps.emoji}</span>
+          {isTopLevelCategory && customProps?.iconName && (
+            <span className="absolute -left-2 -bottom-1">
+              <CatIcon
+                name={customProps.iconName as IconName}
+                size={16}
+                customColor={customProps.iconColor}
+              />
+            </span>
           )}
           {label}
         </Link>
