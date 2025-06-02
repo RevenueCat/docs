@@ -1002,7 +1002,7 @@ html[data-theme="dark"] .troubleshooting-wizard {
   }
 }
 
-:root.dark {
+html[data-theme=dark] {
   --action-primary: #7f94ff;
   --action-secondary: #c1c1c1;
   --action-disabled: #303030;
