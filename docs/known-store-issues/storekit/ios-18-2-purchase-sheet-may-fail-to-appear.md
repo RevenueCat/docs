@@ -40,4 +40,4 @@ If your app manifests the issue but these workarounds do not apply to your view 
 
 ## Status
 
-✅ **Resolved** - Apple has resolved this issue in iOS 18.3. No further action is required for new app releases. If users enounter this bug, instruct them to upgrade their iOS version and try again.
+✅ **Resolved** - Apple has resolved this issue in iOS 18.3. No further action is required for new app releases. If users encounter this bug, instruct them to upgrade their iOS version and try again.
