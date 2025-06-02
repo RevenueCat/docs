@@ -17,8 +17,6 @@ export const CatIcon: FC<CatIconProps> = ({
   size,
   ...props
 }) => {
-  // Size provides the highest level of specificity. Use it to override the icon
-  // size for the startIcon or endIcon of a button. Otherwise, use fontSize.
   const sizeStyle = size ? { height: size, width: size } : {};
 
   const iconPath = useBaseUrl(`/icons/${name}.svg`);
