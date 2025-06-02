@@ -15,7 +15,6 @@ export const CatIcon: FC<CatIconProps> = ({
   customColor,
   customDetailsColor,
   size,
-  sx,
   ...props
 }) => {
   // Size provides the highest level of specificity. Use it to override the icon
@@ -24,11 +23,7 @@ export const CatIcon: FC<CatIconProps> = ({
 
   const iconPath = useBaseUrl(`/icons/${name}.svg`);
   return (
-    <SvgIcon
-      inheritViewBox
-      sx={[sizeStyle, ...(Array.isArray(sx) ? sx : [sx || {}])]}
-      {...props}
-    >
+    <SvgIcon style={sizeStyle} {...props}>
       <svg
         viewBox="0 0 16 16"
         fill="none"
