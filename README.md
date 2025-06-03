@@ -54,43 +54,155 @@ The `YouTubeEmbed` component is imported globally to `.mdx` files.
 
 ## Sidebars
 
-Each grouping of docs is called a 'sidebar' and is defined in `sidebars.js`. A sidebar is a combination of categories and pages in a tree structure, and requires each category, subcategory, and page to be defined manually.
+The sidebar system is the heart of the documentation navigation, defined in `sidebars.ts`. The system uses TypeScript utilities from `sidebar-utils.ts` to create a structured tree of categories, subcategories, pages, and links.
 
 [Video Explanation](https://www.loom.com/share/68d0f56195034c8d9badf454beb7d899?sid=b312b6f7-8f9e-43c5-9f98-6db5f7548944)
 
-There are four types of sidebar items:
+### Sidebar Structure
 
-1. Category (top-level, non-clickable)
-2. Subcategory (document w/ sub-documents; only 1 level of nested supported)
-3. Page (i.e., document)
-4. Link (link to a document in a different Category)
+There are **four types of sidebar items**:
+
+1. **Category** - Top-level sections with icons and custom styling
+2. **SubCategory** - Collapsible sections that can have their own landing pages
+3. **Page** - Individual documentation pages
+4. **Link** - References to pages in other categories
+
+### Category Configuration
+
+Categories are the main navigation sections and support custom icons and colors:
 
 ```js
 const exampleCategory = Category({
-  iconName: "🙈",
+  iconName: "sparkle", // Icon from /static/icons/ directory
+  iconColor: "var(--rc-blue-primary)", // Optional custom color (defaults to blue)
   label: "Example Category",
-  slug: "example",
-  itemsPathPrefix: "example/", // the path prefix to apply to the items in this category
+  itemsPathPrefix: "example/", // Path prefix for all items in this category
   items: [
+    // ... category items
+  ],
+});
+```
+
+**Available Icons**: The `iconName` should correspond to SVG files in `/static/icons/`. Common icons include:
+
+- `"sparkle"` - For guides and highlights
+- `"hammer"` - For projects and development
+- `"mobile"` - For SDK documentation
+- `"person"` - For customer-related docs
+- `"chart-bar"` - For analytics and metrics
+- `"key"` - For account and security
+
+**Icon Colors**: Use CSS variables for consistent theming:
+
+- `"var(--rc-red-primary)"` - Default red theme
+- `"var(--rc-blue-primary)"` - Blue accent
+- `"var(--rc-green-primary)"` - Success/positive actions
+- Custom colors can be defined in `custom.css`
+
+### SubCategory Configuration
+
+SubCategories create collapsible sections within categories:
+
+```js
+SubCategory({
+  label: "Getting Started",
+  slug: "getting-started", // Optional: creates a landing page
+  itemsPathPrefix: "getting-started/",
+  items: [Page({ slug: "quickstart" }), Page({ slug: "installation" })],
+  index: {
+    // Optional: generated index page
+    title: "Getting Started Guide",
+    link: "getting-started-overview",
+    description: "Learn the basics of RevenueCat",
+  },
+});
+```
+
+### Page Configuration
+
+Pages represent individual documentation files:
+
+```js
+Page({ slug: "installation/ios" });
+// References: /docs/installation/ios.md or ios.mdx
+```
+
+The final path is constructed as: `pathPrefix + itemsPathPrefix + slug`
+
+### Link Configuration
+
+Links reference pages in other categories:
+
+```js
+Link({
+  label: "SDK Reference",
+  slug: "/platform-resources/sdk-reference",
+});
+// Creates a link with arrow indicator (→)
+```
+
+### Complete Example
+
+```js
+const mobileSDKCategory = Category({
+  iconName: "mobile",
+  label: "RevenueCat SDK",
+  itemsPathPrefix: "getting-started/",
+  items: [
+    Page({ slug: "quickstart" }),
     SubCategory({
-      label: "Welcome RevenueCat",
-      slug: "welcome", // refers to the doc at: 'docs/' + 'example/' (parent path prefix) + 'welcome' (page slug)
-      itemsPathPrefix: "welcome/",
+      label: "Install the SDK",
+      slug: "installation",
+      itemsPathPrefix: "installation/",
       items: [
-        Page({ slug: "first-sub-page" }), // /docs/ + example/ + welcome/ + first-sub-page
-        Page({ slug: "second-sub-page" }),
+        Page({ slug: "ios" }), // → /docs/getting-started/installation/ios
+        Page({ slug: "android" }), // → /docs/getting-started/installation/android
+        Page({ slug: "reactnative" }),
       ],
     }),
-    Page({ slug: "stand-alone-page" }), // /docs/ example/ stand-alone-page
     Link({
-      label: "Linked Page",
-      slug: "/path/to/linked-page",
+      label: "Identifying Users",
+      slug: "/customers/user-ids",
     }),
   ],
 });
 ```
 
-The default sidebar is rendered at the bottom of `sidebars.js`.
+### Multiple Sidebars
+
+The system supports multiple sidebar configurations:
+
+```js
+const sidebars = {
+  defaultSidebar: [
+    welcomeCategory,
+    projectsCategory,
+    mobileSDKCategory,
+    // ... more categories
+  ],
+  dataSidebar: [metricsCategory, chartsCategory],
+  integrationsSidebar: [eventsCategory, webhooksCategory],
+};
+```
+
+### Path Resolution
+
+Paths are built hierarchically:
+
+- **Base**: `/docs/`
+- **Category prefix**: `itemsPathPrefix` from Category
+- **SubCategory prefix**: `itemsPathPrefix` from SubCategory
+- **Page slug**: `slug` from Page
+
+Example: `Category({ itemsPathPrefix: "sdk/" })` → `SubCategory({ itemsPathPrefix: "ios/" })` → `Page({ slug: "installation" })` = `/docs/sdk/ios/installation`
+
+### Best Practices
+
+1. **Consistent Iconography**: Use appropriate icons that match the content type
+2. **Logical Grouping**: Group related content in SubCategories
+3. **Clear Labels**: Use descriptive labels that match the content
+4. **Path Prefixes**: Use consistent path prefixes to organize file structure
+5. **Color Coding**: Use custom colors sparingly for important categories
 
 # 🛠️ Development
 
