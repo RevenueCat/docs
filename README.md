@@ -401,23 +401,6 @@ This serves the production build locally on `http://localhost:3000` to test befo
 - **Navigation**: Update `sidebars.ts`
 - **Plugins**: Add/configure plugins in the config file
 
-## 📊 Performance and SEO
-
-### Optimization Features
-
-- **Static Generation**: Pre-rendered HTML for fast loading
-- **Code Splitting**: Automatic bundle optimization
-- **Image Optimization**: Built-in image processing
-- **Search**: Client-side search with Algolia integration
-- **PWA Ready**: Can be configured as a Progressive Web App
-
-### SEO Features
-
-- **Meta Tags**: Automatic generation from frontmatter
-- **Sitemap**: Generated automatically
-- **Structured Data**: Schema.org markup included
-- **Social Cards**: Open Graph and Twitter card support
-
 ## 🤝 Contributing Guidelines
 
 ### Before You Start
