@@ -1,6 +1,6 @@
 # RevenueCat Documentation
 
-This documentation website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator optimized for documentation sites.
+This documentation website is built using [Docusaurus](https://docusaurus.io/).
 
 ## 🚀 Quick Start
 
