@@ -64,7 +64,6 @@ RevenueCat began supporting Braze purchases in February 2025. Purchases and cust
 
 If your Braze integration has **Send as purchase objects** unchecked, then it currently sends revenue-generating events as custom events.
 
-
 :::
 
 ## Setup
@@ -75,9 +74,9 @@ If you're using the Braze SDK, you can set the User Id to match the RevenueCat A
 
 Configure the Braze SDK with the same App User Id as RevenueCat or use the `.changeUser()` method on the Braze SDK.
 
-import swiftContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_1.swift";
-import objectiveCContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_2.m";
-import javaContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_3.java";
+import swiftContent from "@site/code_blocks/integrations/third-party-integrations/braze_1.swift?raw";
+import objectiveCContent from "@site/code_blocks/integrations/third-party-integrations/braze_2.m?raw";
+import javaContent from "@site/code_blocks/integrations/third-party-integrations/braze_3.java?raw";
 
 <RCCodeBlock
   tabs={[
@@ -123,18 +122,18 @@ After you've set up the _Purchases SDK_ and Braze SDK to have the same user iden
 
 Below are sample JSONs that are delivered to Braze for most events.
 
-import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_4.json";
-import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_5.json";
-import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_6.json";
-import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_7.json";
-import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_8.json";
-import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_9.json";
-import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_15.json";
-import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_10.json";
-import subscriptionPausedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_14.json";
-import expirationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_11.json";
-import billingIssuesContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_12.json";
-import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/braze_13.json";
+import initialPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/braze_4.json?raw";
+import trialStartedContent from "@site/code_blocks/integrations/third-party-integrations/braze_5.json?raw";
+import trialConvertedContent from "@site/code_blocks/integrations/third-party-integrations/braze_6.json?raw";
+import trialCancelledContent from "@site/code_blocks/integrations/third-party-integrations/braze_7.json?raw";
+import renewalContent from "@site/code_blocks/integrations/third-party-integrations/braze_8.json?raw";
+import cancellationContent from "@site/code_blocks/integrations/third-party-integrations/braze_9.json?raw";
+import uncancellationContent from "@site/code_blocks/integrations/third-party-integrations/braze_15.json?raw";
+import nonSubscriptionPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/braze_10.json?raw";
+import subscriptionPausedContent from "@site/code_blocks/integrations/third-party-integrations/braze_14.json?raw";
+import expirationContent from "@site/code_blocks/integrations/third-party-integrations/braze_11.json?raw";
+import billingIssuesContent from "@site/code_blocks/integrations/third-party-integrations/braze_12.json?raw";
+import productChangeContent from "@site/code_blocks/integrations/third-party-integrations/braze_13.json?raw";
 
 <RCCodeBlock
   tabs={[

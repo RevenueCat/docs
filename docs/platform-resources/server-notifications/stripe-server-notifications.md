@@ -68,7 +68,7 @@ RevenueCat provides flexible ways to detect the App User ID for purchases coming
 
 #### Example: Setting app_user_id in Stripe Checkout session
 
-import stripeCheckout from "!!raw-loader!@site/code_blocks/web/stripe/stripe_checkout_session.js";
+import stripeCheckout from '@site/code_blocks/web/stripe/stripe_checkout_session.txt?raw';
 
 <RCCodeBlock
 tabs={[

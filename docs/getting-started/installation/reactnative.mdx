@@ -25,8 +25,8 @@ We recommend using the latest version of React Native, or making sure that the v
 
 Recent versions of React Native will automatically link the SDK, so all that's needed is to install the library.
 
-import reactNativeNpmContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_1.shell";
-import reactNativeYarnContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_2.shell";
+import reactNativeNpmContent from "@site/code_blocks/getting-started/installation/reactnative_1.shell?raw";
+import reactNativeYarnContent from "@site/code_blocks/getting-started/installation/reactnative_2.shell?raw";
 
 <RCCodeBlock
   tabs={[
@@ -46,7 +46,7 @@ import reactNativeYarnContent from "!!raw-loader!@site/code_blocks/getting-start
 
 After that, you should link the library to the native projects by doing:
 
-import reactNativeShellContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_5.shell";
+import reactNativeShellContent from "@site/code_blocks/getting-started/installation/reactnative_5.shell?raw";
 
 <RCCodeBlock
   tabs={[{ type: "shell", content: reactNativeShellContent, name: "Shell" }]}
@@ -62,7 +62,7 @@ See [Using RevenueCat with Expo](/getting-started/installation/expo) to get star
 
 Depending on your user's payment method, they may be asked by Google Play to verify their purchase in their (banking) app. This means they will have to background your app and go to another app to verify the purchase. If your Activity's `launchMode` is set to anything other than `standard` or `singleTop`, backgrounding your app can cause the purchase to get cancelled. To avoid this, set the `launchMode` of your Activity to `standard` or `singleTop` in your Android app's `AndroidManifest.xml` file, like so:
 
-import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_launchmode.xml";
+import launchModeContent from "@site/code_blocks/getting-started/installation/android_launchmode.xml?raw";
 
 <RCCodeBlock
   tabs={[
@@ -76,7 +76,7 @@ You can find Android's documentation on the various `launchMode` options [here](
 
 You should now be able to import `Purchases`.
 
-import reactNativeJsContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_7.js";
+import reactNativeJsContent from "@site/code_blocks/getting-started/installation/reactnative_7.txt?raw";
 
 <RCCodeBlock tabs={[{ type: "rn", content: reactNativeJsContent }]} />
 
@@ -84,7 +84,7 @@ import reactNativeJsContent from "!!raw-loader!@site/code_blocks/getting-started
 Don't forget to include the `BILLING` permission in your AndroidManifest.xml file
 :::
 
-import reactNativeXmlContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_8.xml";
+import reactNativeXmlContent from "@site/code_blocks/getting-started/installation/reactnative_8.xml?raw";
 
 <RCCodeBlock
   tabs={[

@@ -47,10 +47,10 @@ These properties can be set manually, like any other [Attribute](/customers/cust
 If you are requesting the App Tracking permission through ATT to access the IDFA, you can call `.collectDeviceIdentifiers()` _again_ if the customer accepts the permission to update the `$idfa` attribute in RevenueCat.
 :::
 
-import swiftContent from "!!raw-loader!@site/code_blocks/integrations/attribution/facebook-ads_1.swift";
-import flutterContent from "!!raw-loader!@site/code_blocks/integrations/attribution/facebook-ads_2.js";
-import kotlinContent from "!!raw-loader!@site/code_blocks/integrations/attribution/facebook-ads_3.kt";
-import reactNativeContent from "!!raw-loader!@site/code_blocks/integrations/attribution/facebook-ads_4.js";
+import swiftContent from "@site/code_blocks/integrations/attribution/facebook-ads_1.swift?raw";
+import flutterContent from "@site/code_blocks/integrations/attribution/facebook-ads_2.txt?raw";
+import kotlinContent from "@site/code_blocks/integrations/attribution/facebook-ads_3.kt?raw";
+import reactNativeContent from "@site/code_blocks/integrations/attribution/facebook-ads_4.txt?raw";
 
 <RCCodeBlock
   tabs={[
@@ -81,7 +81,7 @@ To continue to track install and usage events in Meta, follow the steps in the n
 
 As noted above, you'll need to disable all client side tracking of revenue to prevent double counting of revenue in Meta Ads Manager. To continue tracking install and usage events, you'll need to call Meta's 'activate app' event after configuration:
 
-import swiftContent2 from "!!raw-loader!@site/code_blocks/integrations/attribution/facebook-ads_5.swift";
+import swiftContent2 from "@site/code_blocks/integrations/attribution/facebook-ads_5.swift?raw";
 
 {/* Use the RCCodeBlock component to render the code blocks with tabs */}
 

@@ -59,7 +59,7 @@ Navigate to the IAM Policy dashboard in your AWS console and click **‘Create p
 
 In the policy editor, switch to the JSON view and paste in the following code. Be sure to replace `revenuecat-deliveries` with the name of your bucket.
 
-import jsonContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports/scheduled-data-exports-s3_1.jsonc";
+import jsonContent from "@site/code_blocks/integrations/scheduled-data-exports/scheduled-data-exports-s3_1.jsonc?raw";
 
 <RCCodeBlock
   tabs={[{ type: "json", content: jsonContent, name: "Access Policy" }]}

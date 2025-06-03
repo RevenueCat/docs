@@ -19,28 +19,28 @@ You can find the latest version below, and for more details, visit the [Releases
 
 [![Release](https://img.shields.io/github/v/release/RevenueCat/purchases-android.svg?&style=flat)](https://github.com/RevenueCat/purchases-android/releases)
 
-import buildGradle1 from "!!raw-loader!@site/code_blocks/getting-started/installation/android_4.kts";
-import buildGradle2 from "!!raw-loader!@site/code_blocks/getting-started/installation/android_1.groovy";
+import buildGradle1 from "@site/code_blocks/getting-started/installation/android_4.kts?raw";
+import buildGradle2 from "@site/code_blocks/getting-started/installation/android_1.groovy?raw";
 
 <RCCodeBlock
   tabs={[
-      { type: "kotlin", content: buildGradle1, name: "Kotlin" },
-      { type: "groovy", content: buildGradle2, name: "Groovy" },
-    ]}
+    { type: "kotlin", content: buildGradle1, name: "Kotlin" },
+    { type: "groovy", content: buildGradle2, name: "Groovy" },
+  ]}
 />
 
 ### Import Purchases
 
 You should now be able to import `Purchases`.
 
-import kotlinContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_5.kt";
-import javaContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_2.java";
+import kotlinContent from "@site/code_blocks/getting-started/installation/android_5.kt?raw";
+import javaContent from "@site/code_blocks/getting-started/installation/android_2.java?raw";
 
 <RCCodeBlock
   tabs={[
-      { type: "kotlin", content: kotlinContent, name: "Kotlin" },
-      { type: "java", content: javaContent, name: "Java" },
-    ]}
+    { type: "kotlin", content: kotlinContent, name: "Kotlin" },
+    { type: "java", content: javaContent, name: "Java" },
+  ]}
 />
 
 ### Configure Proguard (Optional)
@@ -50,7 +50,7 @@ We are adding Proguard rules to the library so you don't need to do anything. If
 :::warning
 Purchases uses AndroidX App Startup under the hood. Make sure you have not removed the `androidx.startup.InitializationProvider` completely in your manifest. If you need to remove specific initializers, such as `androidx.work.WorkManagerInitializer`, set `tools:node="merge"` on the provider, and `tools:node="remove"` on the meta-data of the initializer you want to remove.
 
-import xmlContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_workmanager_manifest.xml";
+import xmlContent from "@site/code_blocks/getting-started/installation/android_workmanager_manifest.xml?raw";
 
 <RCCodeBlock
   tabs={[{ type: "xml", content: xmlContent, name: "AndroidManifest.xml" }]}
@@ -61,7 +61,7 @@ import xmlContent from "!!raw-loader!@site/code_blocks/getting-started/installat
 
 Depending on your user's payment method, they may be asked by Google Play to verify their purchase in their (banking) app. This means they will have to background your app and go to another app to verify the purchase. If your Activity's `launchMode` is set to anything other than `standard` or `singleTop`, backgrounding your app can cause the purchase to get cancelled. To avoid this, set the `launchMode` of your Activity to `standard` or `singleTop` in your `AndroidManifest.xml` file, like so:
 
-import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_launchmode.xml";
+import launchModeContent from "@site/code_blocks/getting-started/installation/android_launchmode.xml?raw";
 
 <RCCodeBlock
   tabs={[
@@ -81,14 +81,14 @@ You can find the latest version below, and for more details, visit the [Releases
 
 [![Release](https://img.shields.io/github/v/release/RevenueCat/purchases-android.svg?&style=flat)](https://github.com/RevenueCat/purchases-android/releases)
 
-import amazonGradle1 from "!!raw-loader!@site/code_blocks/getting-started/installation/android_6.kts";
-import amazonGradle2 from "!!raw-loader!@site/code_blocks/getting-started/installation/android_3.groovy";
+import amazonGradle1 from "@site/code_blocks/getting-started/installation/android_6.kts?raw";
+import amazonGradle2 from "@site/code_blocks/getting-started/installation/android_3.groovy?raw";
 
 <RCCodeBlock
   tabs={[
-      { type: "kotlin", content: amazonGradle1, name: "Kotlin" },
-      { type: "groovy", content: amazonGradle2, name: "Groovy" },
-    ]}
+    { type: "kotlin", content: amazonGradle1, name: "Kotlin" },
+    { type: "groovy", content: amazonGradle2, name: "Groovy" },
+  ]}
 />
 
 ### Add Amazon public key

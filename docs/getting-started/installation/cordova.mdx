@@ -17,7 +17,7 @@ The Cordova SDK will receive maintenance updates, but new RevenueCat features an
 
 ## Installation
 
-import content from "!!raw-loader!@site/code_blocks/getting-started/installation/cordova_1.shell";
+import content from "@site/code_blocks/getting-started/installation/cordova_1.shell?raw";
 
 <RCCodeBlock
   tabs={[{ type: "shell", content: content, name: "Installation" }]}
@@ -29,7 +29,7 @@ import content from "!!raw-loader!@site/code_blocks/getting-started/installation
 
 Depending on your user's payment method, they may be asked by Google Play to verify their purchase in their (banking) app. This means they will have to background your app and go to another app to verify the purchase. If your Activity's `launchMode` is set to anything other than `standard` or `singleTop`, backgrounding your app can cause the purchase to get cancelled. To avoid this, set the `launchMode` of your Activity to `standard` or `singleTop` in your Android app's `AndroidManifest.xml` file:
 
-import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_launchmode.xml";
+import launchModeContent from "@site/code_blocks/getting-started/installation/android_launchmode.xml?raw";
 
 <RCCodeBlock
   tabs={[
@@ -79,7 +79,7 @@ In order to set it yourself:
 
 The types are shipped inside the npm package. You can import them like this:
 
-import cordovaTypesContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ionic_typescript_cordova.ts";
+import cordovaTypesContent from "@site/code_blocks/getting-started/installation/ionic_typescript_cordova.txt?raw";
 
 <RCCodeBlock
   tabs={[
@@ -95,7 +95,7 @@ import cordovaTypesContent from "!!raw-loader!@site/code_blocks/getting-started/
 
 Wait for the Platform to be ready, then configure the plugin in your `src/app/app.component.ts`:
 
-import cordovaAngularContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ionic_angular_cordova.ts";
+import cordovaAngularContent from "@site/code_blocks/getting-started/installation/ionic_angular_cordova.txt?raw";
 
 <RCCodeBlock
   tabs={[{ type: "cordova", content: cordovaAngularContent, name: "Cordova" }]}
@@ -105,7 +105,7 @@ import cordovaAngularContent from "!!raw-loader!@site/code_blocks/getting-starte
 
 Import the plugin object then use its static methods:
 
-import cordovaReactContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ionic_react_cordova.ts";
+import cordovaReactContent from "@site/code_blocks/getting-started/installation/ionic_react_cordova.txt?raw";
 
 <RCCodeBlock
   tabs={[{ type: "cordova", content: cordovaReactContent, name: "Cordova" }]}

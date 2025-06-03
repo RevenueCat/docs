@@ -45,6 +45,11 @@ const config = {
     locales: ["en"],
   },
 
+  future: {
+    experimental_faster: true,
+    v4: true,
+  },
+
   presets: [
     [
       "classic",
@@ -117,6 +122,24 @@ const config = {
       },
     ],
     "./src/plugins/tailwind/tailwind-config.cjs",
+    function myRawLoaderPlugin() {
+      // this plugin replaces raw-loader with asset/source (webpack 5)
+      return {
+        name: "my-raw-loader",
+        configureWebpack() {
+          return {
+            module: {
+              rules: [
+                {
+                  resourceQuery: /raw/,
+                  type: "asset/source",
+                },
+              ],
+            },
+          };
+        },
+      };
+    },
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */

@@ -67,7 +67,7 @@ You can see official instructions by Apple [here](https://developer.apple.com/do
 
 In Android, you need to add a deep linking intent filter for the provided scheme. You can do that by adding the following intent filter inside your `AndroidManifest.xml` activity and replacing `<YOUR_CUSTOM_SCHEME>` with the scheme you copied in step 1. Note that it’s fine to have multiple intent filters for the same activity.
 
-import redemptionAndroidManifest from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_androidmanifest.xml";
+import redemptionAndroidManifest from "@site/code_blocks/web/web-billing/redemption_androidmanifest.xml?raw";
 
 <RCCodeBlock
   tabs={[
@@ -89,7 +89,7 @@ Our SDKs provide APIs to perform the redemptions and provide you with the result
 
 If using SwiftUI, you can use the `onWebPurchaseRedemptionAttempt` modifier to automatically perform redemption of Redemption Links once the app is opened with them.
 
-import swiftUIModifier from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_swift_ui_modifier.swift";
+import swiftUIModifier from "@site/code_blocks/web/web-billing/redemption_swift_ui_modifier.swift?raw";
 
 <RCCodeBlock
   tabs={[
@@ -99,7 +99,7 @@ import swiftUIModifier from "!!raw-loader!@site/code_blocks/web/web-billing/rede
 
 Alternatively, if you don’t want to perform the redemption automatically or if you're not using SwiftUI, you can use the provided URL extension `asWebPurchaseRedemption` and then perform the redemption using `Purchases.shared.redeemWebPurchase` as follows:
 
-import alternativeSwift from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_alternative_swift.swift";
+import alternativeSwift from "@site/code_blocks/web/web-billing/redemption_alternative_swift.swift?raw";
 
 <RCCodeBlock
   tabs={[
@@ -111,7 +111,7 @@ import alternativeSwift from "!!raw-loader!@site/code_blocks/web/web-billing/red
 
 In Android, you first need to obtain the link and make sure it’s a Redemption Link, then redeem it using the `redeemWebPurchase` method. You can see an example of this in the following code block:
 
-import androidRedemption1 from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_android.kt";
+import androidRedemption1 from "@site/code_blocks/web/web-billing/redemption_android.kt?raw";
 
 <RCCodeBlock
   tabs={[
@@ -129,7 +129,7 @@ In our Flutter SDK, you will need to obtain the deep link first. Please read the
 
 Once you have the deep link, you can use the following snippet to perform the redemption:
 
-import flutterRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_flutter.dart";
+import flutterRedemption from "@site/code_blocks/web/web-billing/redemption_flutter.dart?raw";
 
 <RCCodeBlock
   tabs={[
@@ -143,7 +143,7 @@ In our React Native SDK, you will need to obtain the deep link first. Please rea
 
 Once you have the deep link, you can use the following snippet to perform the redemption:
 
-import reactNativeRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_react.ts";
+import reactNativeRedemption from "@site/code_blocks/web/web-billing/redemption_react.txt?raw";
 
 <RCCodeBlock
   tabs={[
@@ -161,7 +161,7 @@ In our Unity SDK, you will need to obtain the deep link first. Please read the o
 
 Once you have the deep link, you can use the following snippet to perform the redemption:
 
-import unityRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_unity.cs";
+import unityRedemption from "@site/code_blocks/web/web-billing/redemption_unity.cs?raw";
 
 <RCCodeBlock
   tabs={[
@@ -175,7 +175,7 @@ In our Kotlin Multiplatform SDK, you will need to obtain the deep link first. Th
 
 Once you have the deep link, you can use the following snippet to perform the redemption:
 
-import kmpRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_kmp.kt";
+import kmpRedemption from "@site/code_blocks/web/web-billing/redemption_kmp.kt?raw";
 
 <RCCodeBlock
   tabs={[{ type: "kotlin", title: "KMP Redemption", content: kmpRedemption }]}
@@ -187,7 +187,7 @@ In our Capacitor SDK, you will need to obtain the deep link first. Please read t
 
 Once you have the deep link, you can use the following snippet to perform the redemption:
 
-import capacitorRedemption from "!!raw-loader!@site/code_blocks/web/web-billing/redemption_capacitor.ts";
+import capacitorRedemption from "@site/code_blocks/web/web-billing/redemption_capacitor.txt?raw";
 
 <RCCodeBlock
   tabs={[
