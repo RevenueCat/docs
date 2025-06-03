@@ -4897,7 +4897,11 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.'
+      description: "Search for a subscription by any of its associated `store_subscription_identifier`\
+        \ values, whether from a past or current subscription period.\n\nFor example,\
+        \ this may include the `transactionId` of any transaction in an Apple App\
+        \ Store subscription, or any order ID from a Google Play Store subscription.\n\
+        \ This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>."
 components:
   securitySchemes:
     BearerAuth:
