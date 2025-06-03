@@ -20,9 +20,9 @@ We’re excited to welcome you to the beta of our new real-time Charts. This rel
 ### Improvements
 
 - Charts are now defined from a consistent subscription definition that is universal across stores, and allows us to distinctly measure cases like a Product Change or a Resubscription separately from a standard Renewal. [Learn more](/dashboard-and-metrics/charts/real-time-charts#improved-subscription-definition)
-- Refunded transactions no longer cause metrics like Revenue, Conversion to Paying, etc. to change after the fact. Instead, transactions that are later refunded are included by default in all charts. [Learn more](/dashboard-and-metrics/charts/real-time-charts#refund-behavior)
-- The **Platform** dimension now reports a customer's first seen platform, not their last seen platform
-- The **Country** dimensions now reports a customer's storefront (if available), or IP-based location if storefron is not available
+- Refunded transactions no longer cause metrics like Revenue, Conversion to Paying, etc. to change retroactively. Instead, transactions that are later refunded are included by default in all charts, and their revenue is subtracted on the date the refund actually happened. [Learn more](/dashboard-and-metrics/charts/real-time-charts#refund-behavior)
+- The **Platform** dimension now reports a customer's first seen platform, not their last seen platform, to make analyzing acquisition channels easier and to avoid customer dimensions changing over time.
+- The **Country** dimensions now reports the country associated with a customer's app store account (if available), or IP-based location otherwise.
 - The current Trial Conversion chart included any future payment on an App Store subscription as a conversion to paid, even if that conversion did not come from the trial start. Now, only conversions to paid from the trial start are included in this chart.
 
 ### Bug fixes
@@ -46,7 +46,7 @@ We’re excited to welcome you to the beta of our new real-time Charts. This rel
 
 ### Real-time reporting
 
-Previously, charts refreshed every 3 to 12 hours depending on the dataset. Now, most charts update **in real-time**, providing:
+Previously, charts refreshed every 2 to 12 hours depending on the dataset. Now, most charts update **in real-time**, providing:
 
 - **Immediate insights** into app performance
 - **Improved intra-day monitoring** for launches, experiments, or spikes
@@ -56,9 +56,7 @@ You can now make faster, more informed decisions without waiting for batch updat
 
 ### Improved subscription definition
 
-Previously, our charts were built on top of transactions, which had unique behaviors between stores and resulted in some charts handling the same underlying subscription case differently for each store.
-
-Our new real-time charts are now modeled on our **Subscriptions** entity, which normalizes the various store behaviors down to a common set of facts that can be measured across stores, and have consistent events created for them.
+Our new real-time charts are now modeled on our **Subscriptions** entity, which normalizes the various store-specific behaviors down to a common set of definitions that can be measured across stores, and have consistent events created for them.
 
 You can learn more about the subscription data model [here](https://www.revenuecat.com/docs/api-v2#tag/Subscription-Data-Model).
 
@@ -66,10 +64,10 @@ You can learn more about the subscription data model [here](https://www.revenuec
 
 As a result of that change, you'll see some differences in the data our real-time Charts provide.
 
-| Change                                   | Description                                                                                                                                                              | Impact                                                                                                                                                                                                                                                                                                                                                                                         |
-| :--------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Product changes create new subscriptions | When a subscriber changes from one product (A) to another (B), we treat their first subscription to product A as expired, and create a second subscription to product B. | In charts like New Paid Subscriptions and Active Subscriptions Movement, this results in the count of new subscriptions and churned subscriptions increasing by equal amounts. Other charts like Subscription Retention already treated product changes like new subscriptions, and therefore the count of new subscriptions in a given period should more closely align between these charts. |
-| Resubscriptions create new subscriptions | When a subscriber makes a new purchase after \_\_\_, we consider it to be a resubscription, not a renewal on their prior subscription.                                   | In charts like Trial Conversion, payments that would have previously counted as conversions to paid from the original trial start which were actually resubscriptions from a later time are no longer included in the chart.                                                                                                                                                                   |
+| Change                                   | Description                                                                                                                                                                   | Impact                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| :--------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Product changes create new subscriptions | When a subscriber changes from one product (A) to another (B), we treat their first subscription to product A as expired, and create a second subscription to product B.      | In charts like New Paid Subscriptions and Active Subscriptions Movement, this results in the count of new subscriptions and churned subscriptions increasing by equal amounts. Other charts like Subscription Retention already treated product changes like new subscriptions, and therefore the count of new subscriptions in a given period should more closely align between these charts.                                                                                                                                                                                                                                   |
+| Resubscriptions create new subscriptions | When a subscriber starts a subscription after a previous App Store subscription has lapsed, we consider it to be a resubscription, not a renewal on their prior subscription. | In charts like Trial Conversion, payments that would have previously counted as conversions to paid from the original trial start which were actually resubscriptions from a later time are no longer included in the chart. In addition, charts such as New Paid Subscriptions and Active Subscriptions Movement now have new subscriptions and churned subscriptions increasing by equal amounts to account for resubscriptions. Subscription Retention now has an increase in subscriptions, and a proportional decrease in retention for any resubscriptions that were otherwise counted as renewals of prior subscriptions. |
 
 ### Refund behavior
 
@@ -87,7 +85,7 @@ We've introduced new dimensions for filtering & segmenting, with more coming soo
 **Updated dimensions**
 
 1. Platform: Now refers to the first seen platform of a customer, not their last seen platform, so that metrics like conversion rates and LTV can be segmented by the platform a customer originated on without it changing over time (e.g. if a customer converts on the web and then downloads your iOS app)
-2. Country: Now prioritizes the storefront of a customer or purchase over the customer's IP-based location. In charts which measure purchases, like Active Subscriptions, the storefront that the purchase occurred in will be used as the country; while in charts that measure customer cohorts, like Initial Conversion or Realized LTV per Customer, the first seen storefront of the customer will be used.
+2. Country: Now prioritizes the app store country of a customer or purchase over the customer's IP-based location. In charts which measure purchases, like Active Subscriptions, the app store storefront that the purchase occurred in will be used as the country; while in charts that measure customer cohorts, like Initial Conversion or Realized LTV per Customer, the first seen app store country of the customer will be used.
 
 :::info Custom attributes
 We'll continue to expand segmentation options during the beta, including adding support for filtering & segmenting by custom attributes.
