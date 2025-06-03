@@ -818,7 +818,8 @@ const knownStoreIssuesCategory = Category({
       items: [
         Page({ slug: "ios-18-4-simulator-fails-to-load-products" }),
         Page({ slug: "ios-18-4-canceled-state-after-successful-purchase" }),
-        Page({ slug: "ios-18-2-purchase-sheet-may-fail-to-appear" }),
+        Page({ slug: "ios-18-purchase-fails-due-to-failed-storekitdaemon-connection" }),
+        Page({ slug: "ios-18-2-purchase-sheet-may-fail-to-appear" })
       ],
     }),
   ],
