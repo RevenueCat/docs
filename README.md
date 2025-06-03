@@ -407,15 +407,7 @@ This serves the production build locally on `http://localhost:3000` to test befo
 
 1. **Create a descriptive PR title** and description
 2. **Link related issues** using keywords (fixes #123)
-3. **Test thoroughly** on the dev deployment
-4. **Request review** from appropriate team members
-
-### Code Quality
-
-- **Consistent formatting**: Use Prettier and ESLint configs
-- **Accessible content**: Follow WCAG guidelines
-- **Performance**: Consider impact on build times and bundle size
-- **Documentation**: Update README for any new features or changes
+3. **Request review** from appropriate team members
 
 ---
 
