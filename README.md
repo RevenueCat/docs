@@ -66,7 +66,7 @@ docusaurus/
 
 ### Style Guidelines
 
-- **Headers**: Use clear, descriptive headings with proper hierarchy (H1 → H2 → H3)
+- **Headers**: Use clear, descriptive headings with proper hierarchy (beginning with H2 → H3, etc.)
 - **Code**: Use proper syntax highlighting with language tags
 - **Images**: Optimize images and use descriptive alt text
 - **Links**: Use relative links for internal pages, absolute for external
