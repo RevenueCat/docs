@@ -374,12 +374,6 @@ This serves the production build locally on `http://localhost:3000` to test befo
 - Verify Tailwind classes are properly configured
 - Test in both light and dark modes
 
-**Performance Issues**
-
-- Optimize images (use WebP format when possible)
-- Minimize large code blocks
-- Check for memory leaks in custom components
-
 ### Getting Help
 
 1. **Check the console** for build errors and warnings
