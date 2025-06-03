@@ -195,7 +195,7 @@ Page({ slug: "installation/ios" });
 // References: /docs/installation/ios.md or ios.mdx
 ```
 
-The final path is constructed as: `pathPrefix + itemsPathPrefix + slug`
+The final path is constructed as: `itemsPathPrefix + slug`
 
 ### Link Configuration
 
