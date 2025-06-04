@@ -4533,6 +4533,25 @@ paths:
           type: string
           maxLength: 255
           example: proj1ab2c3d4
+      - name: currency
+        description: ISO 4217 currency code
+        in: query
+        schema:
+          type: string
+          enum:
+          - USD
+          - EUR
+          - GBP
+          - AUD
+          - CAD
+          - JPY
+          - BRL
+          - KRW
+          - CNY
+          - MXN
+          - SEK
+          - PLN
+        example: EUR
       responses:
         '200':
           description: Success
