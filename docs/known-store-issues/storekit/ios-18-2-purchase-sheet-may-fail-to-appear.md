@@ -33,6 +33,9 @@ To work around the issue:
 
 If your app manifests the issue but these workarounds do not apply to your view structure, make sure your root view controller is part of the view hierarchy when initiating a purchase.
 
+## Apple Feedback
+We've filed a Feedback ticket for this issue with Apple. If you create a Feedback ticket for this issue, please consider mentioning our Feedback ticket, FB16114787, to assist Apple's engineers in connecting the tickets.
+
 ## Impact on App Store Review
 
 **This bug should not cause app rejections**, since App Reviewers should no longer be testing on iOS 18.2.X.
