@@ -94,23 +94,25 @@ We've introduced new dimensions for filtering & segmenting, with more coming soo
 
 **New dimensions**
 
+### Available now
+
+1. Experiment: Filter charts by the experiment & variant that a customer was enrolled in
+
+### Coming soon
+
 1. App version: Filter & segment charts by the first seen app version of a customer to understand how metrics like conversion rate are impacted by app version
-2. Experiment: Filter & segment charts by the experiment & variant that a customer was enrolled in
+2. Custom attributes: Filter & segment charts by the latest custom attribute values you've set for a customer, to understand how different segments of your audience behave.
 
 **Updated dimensions**
 
 1. Platform: Now refers to the first seen platform of a customer, not their last seen platform, so that metrics like conversion rates and LTV can be segmented by the platform a customer originated on without it changing over time (e.g. if a customer converts on the web and then downloads your iOS app)
 2. Country: Now prioritizes the app store country of a customer or purchase over the customer's IP-based location. In charts which measure purchases, like Active Subscriptions, the app store storefront that the purchase occurred in will be used as the country; while in charts that measure customer cohorts, like Initial Conversion or Realized LTV per Customer, the first seen app store country of the customer will be used.
 
-:::info Custom attributes
-We'll continue to expand segmentation options during the beta, including adding support for filtering & segmenting by custom attributes.
-:::
-
 ## Getting Started
 
 You can access Real-time Charts from your dashboard by toggling `Real-time` on in Charts. Look for the real-time icon next to supported Charts. To see the current version of each chart, simply toggle `Real-time` off.
 
-As you explore the beta, and have any questions about the experience, [please let us know here](http://typeform.com/),
+As you explore the beta, and have any questions about the experience, [please let us know here](https://form.typeform.com/to/iuAUBGNC).
 
 ## Upcoming changes & improvements
 
