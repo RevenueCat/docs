@@ -1,6 +1,5 @@
 ---
 title: Real-time Charts (Beta)
-sidebar_label: Overview
 slug: real-time-charts
 excerpt: Overview of the key changes & improvements of our new real-time Charts beta
 hidden: true
