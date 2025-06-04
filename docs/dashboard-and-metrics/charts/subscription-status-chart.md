@@ -15,6 +15,10 @@ The Subscription Status chart breaks down Active Subscriptions, Active Trials, M
 - Filters: Yes
 - Segments: Yes
 
+### Change log
+
+- June 2025: Fixed an issue preventing Stripe subscriptions in a grace period from being set to the **Billing issue** status.
+
 ## How to use Subscription Status in your business
 
 The Subscription Status chart is an important way to monitor the portion of your Active Subscriptions, MRR, etc. that are set to renew at the end of their current period; and to break that status down by key business dimensions. For example, you may want to analyze the portion that are set to cancel on Monthly products vs. Yearly products, or use the new [Expiration month](https://app.revenuecat.com/charts/subscription_status?chart_type=Column&conversion_timeframe=7%20days&customer_lifetime=30%20days&range=Last%2090%20days%3A2024-05-25%3A2024-08-22&segment=expiration_month) segment to estimate your MRR that's currently set to renew in each future monthly period.
