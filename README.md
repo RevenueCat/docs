@@ -7,7 +7,7 @@ This documentation website is built using [Docusaurus](https://docusaurus.io/).
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/RevenueCat/docusaurus.git
+   git clone https://github.com/RevenueCat/docs.git
    cd docusaurus
    ```
 
