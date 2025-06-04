@@ -45,6 +45,7 @@ We've designed the RevenueCat Stripe Tax integration to meet the needs of the ma
 - **B2C product support only** — the invoicing and tax needs for business customers differ from consumer products. RevenueCat doesn't collect customers' tax IDs, issue reverse charge VAT invoices, or invoices that meet the requirements of business-to-business transactions.
 - **Pre-defined tax behavior** —  transactions for customers in the US and Canada will use **tax-exclusive** pricing (applicable taxes are added to the product price), and the rest of world uses **tax-inclusive** pricing (all taxes are included in the product price).
 - **Tax reporting in Stripe dashboard only** — The RevenueCat dashboard doesn't provide tax reports or analytics. You should use the reporting tools available in your Stripe dashboard.
+- **Reversal transactions** —  these are created for refunds, but not currently for disputes or chargebacks.
 
 ## How to configure Stripe Tax with Web Billing
 
