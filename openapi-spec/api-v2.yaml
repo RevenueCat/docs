@@ -4533,6 +4533,24 @@ paths:
           type: string
           maxLength: 255
           example: proj1ab2c3d4
+      - name: currency
+        in: query
+        schema:
+          type: string
+          enum:
+          - usd
+          - eur
+          - gbp
+          - aud
+          - cad
+          - jpy
+          - brl
+          - krw
+          - cny
+          - mxn
+          - sek
+          - pln
+        example: eur
       responses:
         '200':
           description: Success
