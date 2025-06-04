@@ -48,6 +48,12 @@ When using your own custom purchase flow, you'll have the option of passing the 
 2. App User ID - The RevenueCat app user ID, appended as `rc_app_user_id`
 2. Env - Whether the paywall is being viewed in a sandbox or production environment, appended as `rc_env`
 
+In addition, custom purchase buttons can be set to open a URL via external browser, or via deep link if your app is setup to do additional processing before opening the URL.
+
+:::info Web purchases must be completed outside the app
+Apple's guideliens require any alternative payment methods to be offered outside the app, so even if your custom purchase button is set to open a URL via deep link, it must ultimately direct a user to a web browser to complete the purchase flow in order to be compliant.
+:::
+
 ## Paywall Behavior
 
 When a user taps a purchase button that directs them to a web browser to complete the purchase flow, the RevenueCat SDK will automatically invalidate the cached customer info so that new info is fetched from the server when the user returns to the app. You can additionally choose whether to have the app paywall be dismissed when the user returns to the app, or whether to keep the paywall open, using the `Auto dismiss` setting on your paywall.
