@@ -48,42 +48,29 @@ We've designed the RevenueCat Stripe Tax integration to meet the needs of the ma
 
 ## How to configure Stripe Tax with Web Billing
 
+:::info Remember: Stripe products and product tax codes not used
+Web Billing uses its own product configuration, so you don't need to add or configure products or product tax codes in Stripe. The same applies to default tax codes — only the product tax code configured in the RevenueCat dashboard is used.
+:::
+
 #### 1: Enable up Stripe Tax in your Stripe dashboard
 
 If you have not already configured Stripe Tax, you should follow the instructions [in your dashboard](https://dashboard.stripe.com/tax/overview) to enable automatic tax calculation (these steps may vary depending on your business location).
 
-:::info Remember: Stripe products not required
-Since Web Billing uses its own product and price configuration, you don't need to add or configure tax settings on any products in Stripe.
-:::
-
 #### 2: Enable tax collection in the RevenueCat dashboard
+
+:::warning Production tax rates applied immediately
+Any tax rates added in your Stripe Tax dashboard in live mode may be applied to web billing transactions after this step. Make sure you haven't added registrations to live mode that are only for testing purposes.
+:::
 
 1. Navigate to the Web Billing payment provider in your RevenueCat account.
 1. In the **payment provider** tab, enable "automatically collect taxes using Stripe Tax" and save the changes.
 1. Still in the payment provider tab, Set the product tax code for your product. The default tax code is **General - Electronically Supplied Services** (`txcd_10000000`) which should be applicable for a lot of app-based businesses. For more guidance on product tax codes, see [Stripe's documentation](https://docs.stripe.com/tax/tax-codes).
 
-:::info Product tax code settings in Stripe dashboard do not apply
-While you can configure default and product-specific tax codes in Stripe's dashboard, these are not used in Web Billing; only the product tax code configured in the RevenueCat dashboard is applied.
-:::
-
-#### 3: Add tax registrations for locations where you'll collect tax
-
-Taxes are only applied to a purchase when there's a relevant tax registration added to the [Registrations page](https://dashboard.stripe.com/tax/registrations) in your Stripe dashboard.
-
-You can use Stripe's built-in [threshold monitoring](https://dashboard.stripe.com/tax/thresholds) to understand when you need to register for sales tax in a given location. The process for registering varies depending on the authority you're registering with, and Stripe provides automated registration in certain regions.
-
-As soon as you've added a registration in the Stripe dashboard, Web Billing will start applying taxes for new purchases in that location.
-
-:::warning Existing subscriptions not impacted
-When you add a tax rate for a given location, any relevant taxes will apply for future purchases in that location, but NOT renewals of existing subscriptions. This limitation applies while the feature is in beta.
-:::
-
-## Testing tax collection
+#### 3: Test tax collection in test mode
 
 To test that tax rates are correctly applied to Web Billing purchases:
 
 1. Add tax registrations in Stripe's test mode — you need to configure separate tax registrations in test mode, which are separate from any registrations in live mode.
-1. Make sure tax collection is enabled in the RevenueCat Web Billing config (note: if you have any tax registrations enabled in live mode, they will be applied at this point. we recommend only adding registrations in test mode during testing).
 1. Load a sandbox Web Paywall Link, or initiate a purchase with the Web SDK in sandbox mode.
 1. In the checkout, select a billing address for a location where a tax rate is active in Stripe's test mode.
 1. If the tax registration is applicable for your product in the selected location, you should see that taxes are shown on the checkout page and in the purchase receipt.
@@ -91,6 +78,14 @@ To test that tax rates are correctly applied to Web Billing purchases:
 Note that not all jurisdictions apply sales tax collection to software products; you might not see a tax rate applied even though you've added a registration.
 
 As a test case, with the product tax category set to **General - Electronically Supplied Services** (`txcd_10000000`), you can check out with a **Texas** billing address, you should see a tax rate applied.
+
+#### 4: Add live mode tax registrations for locations where you'll collect tax
+
+Taxes are only applied to a production purchase when there's a relevant tax registration added to the [Registrations page](https://dashboard.stripe.com/tax/registrations) in your Stripe dashboard's live mode.
+
+You can use Stripe's built-in [threshold monitoring](https://dashboard.stripe.com/tax/thresholds) to understand when you need to register for sales tax in a given location. The process for registering varies depending on the authority you're registering with, and Stripe provides automated registration in certain regions.
+
+As soon as you've added a registration in the Stripe dashboard live mode, Web Billing will start applying relevant taxes for new purchases in that location.
 
 ## FAQ
 
