@@ -5,10 +5,6 @@ excerpt: How to configure and charge sales tax & VAT to customers purchasing thr
 hidden: false
 ---
 
-:::warning Beta feature
-Sales tax & VAT support in Web Billing is currently an invite-only beta feature. If you'd like to get early access, [please open a support request](https://app.revenuecat.com/settings/support).
-:::
-
 If you're selling subscriptions and purchases through Web Billing, you may need to collect sales tax and VAT in transactions, depending on your business setup and local tax laws.
 
 Unlike the mobile app stores, selling directly to customers on the web means complying with any tax obligations that apply, based on:
@@ -36,7 +32,7 @@ Customers will see a tax breakdown in the checkout when a tax rate is applied to
 
 #### Stripe Tax fees
 
-If you enable Stripe Tax in your RevenueCat integration, Stripe will charge you a [per-transaction fee](https://stripe.com/tax/pricing), for transactions where taxes are collected. This is in addition to the base Stripe transaction fee.
+If you enable Stripe Tax in your RevenueCat dashboard, Stripe will charge you a [per-transaction fee](https://stripe.com/tax/pricing), for transactions where taxes are collected. This is in addition to the base Stripe transaction fee.
 
 #### Supported countries
 
@@ -48,7 +44,6 @@ We've designed the RevenueCat Stripe Tax integration to meet the needs of the ma
 
 - **B2C product support only** — the invoicing and tax needs for business customers differ from consumer products. RevenueCat doesn't collect customers' tax IDs, issue reverse charge VAT invoices, or invoices that meet the requirements of business-to-business transactions.
 - **Pre-defined tax behavior** —  transactions for customers in the US and Canada will use **tax-exclusive** pricing (applicable taxes are added to the product price), and the rest of world uses **tax-inclusive** pricing (all taxes are included in the product price).
-- **Existing subscriptions not affected** — enabling tax collection will only apply tax rates to new subscriptions purchased after the feature was enabled. Renewals for existing subscriptions that were active before tax collection was enabled will not have taxes calculated or applied.
 - **Tax reporting in Stripe dashboard only** — The RevenueCat dashboard doesn't provide tax reports or analytics. You should use the reporting tools available in your Stripe dashboard.
 
 ## How to configure Stripe Tax with Web Billing
