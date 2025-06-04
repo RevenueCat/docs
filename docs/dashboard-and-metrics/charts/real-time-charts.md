@@ -10,6 +10,10 @@ hidden: true
 
 We’re excited to welcome you to the beta of our new real-time Charts. This release includes powerful updates to how subscriptions are defined and reported, introduces **real-time data refresh**, and adds **new filters and segmentation options** for deeper analysis.
 
+:::warning Supported stores
+At this time only App Store and Play Store aps are supported in Real-time Charts. Support for Stripe, Roku, and RevenueCat Web Billing is coming soon; with the remaining stores to follow.
+:::
+
 ## Summary of changes
 
 ### New features
@@ -20,20 +24,24 @@ We’re excited to welcome you to the beta of our new real-time Charts. This rel
 ### Improvements
 
 - Charts are now defined from a consistent subscription definition that is universal across stores, and allows us to distinctly measure cases like a Product Change or a Resubscription separately from a standard Renewal. [Learn more](/dashboard-and-metrics/charts/real-time-charts#improved-subscription-definition)
-- Refunded transactions no longer cause metrics like Revenue, Conversion to Paying, etc. to change retroactively. Instead, transactions that are later refunded are included by default in all charts, and their revenue is subtracted on the date the refund actually happened. [Learn more](/dashboard-and-metrics/charts/real-time-charts#refund-behavior)
+- Refunded transactions no longer cause metrics like Revenue, Conversion to Paying, etc. to change retroactively for complete periods. Instead, transactions that are later refunded are included by default in all charts, and their revenue or conversion (if applicable) is subtracted on the date the refund actually happened. [Learn more](/dashboard-and-metrics/charts/real-time-charts#refund-behavior)
 - The **Platform** dimension now reports a customer's first seen platform, not their last seen platform, to make analyzing acquisition channels easier and to avoid customer dimensions changing over time.
 - The **Country** dimensions now reports the country associated with a customer's app store account (if available), or IP-based location otherwise.
 - The current Trial Conversion chart included any future payment on an App Store subscription as a conversion to paid, even if that conversion did not come from the trial start. Now, only conversions to paid from the trial start are included in this chart.
 
-### Bug fixes
-
-- The current Trial Conversion chart was incorrectly including refunded transactions. The new real-time chart now includes them by design, and will soon support the ability to filter them out if desired.
-
 ## Supported charts
+
+### Available now
 
 - Initial conversion
 - Trial conversion
 - Conversion to paying
+- New customers
+- Realized LTV per customer
+- Realized LTV per paying customer
+
+### Coming soon
+
 - Active Subscriptions
 - Active Subscriptions Movement
 - Active Trials
@@ -50,7 +58,7 @@ Previously, charts refreshed every 2 to 12 hours depending on the dataset. Now, 
 
 - **Immediate insights** into app performance
 - **Improved intra-day monitoring** for launches, experiments, or spikes
-- **More consistent data across reports**
+- **More consistent data across charts**
 
 You can now make faster, more informed decisions without waiting for batch updates.
 
@@ -71,7 +79,15 @@ As a result of that change, you'll see some differences in the data our real-tim
 
 ### Refund behavior
 
-To be added
+:::warning In development
+The described refund behaviors for Conversion & LTV charts are in development, and will be supported in the coming days.
+:::
+
+When a payment is refunded, it will be deducted from revenue and conversion (if applicable) on the day the refund occurs. Here's how that will impact various chart types:
+
+- **Revenue**: A purchase will add revenue on the day it occurs. If it's later refunded, it will subtract revenue on the day the refund occurs.
+- **Conversion**: An applicable purchase will be counted as a conversion in each of the timeframes it is applicable to (e.g. a conversion on day 5 of a customer's lifecycle is included in the 7 days timeframe, 14 days, etc). If it's later refunded, the conversion will be removed in each of the timeframes the refund is applicable to (e.g. a refund on day 10 of a customer's lifecycle results in the conversion being removed from the 14 days timeframe, 30 days, etc; but would not effect the 7 days timeframe, since the refund occurred after that timeframe was completed).
+- **Lifetime value (LTV)**: An applicable purchase's revenue will be included in each of the timeframes it is applicable to (e.g. a purchase on day 5 of a customer's lifecycle is included in the 7 days timeframe, 14 days, etc). If it's later refunded, the revenue will be removed in each of the timeframes the refund is applicable to (e.g. a refund on day 10 of a customer's lifecycle results in the revenue being removed from the 14 days timeframe, 30 days, etc; but would not effect the 7 days timeframe, since the refund occurred after that timeframe was completed).
 
 ### New and updated dimensions
 
