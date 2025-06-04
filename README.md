@@ -21,7 +21,7 @@ This documentation website is built using [Docusaurus](https://docusaurus.io/).
    ```bash
    yarn start
    ```
-   This opens `http://localhost:3000` and auto-reloads when you make changes.
+   This opens `http://localhost:3030` and auto-reloads when you make changes.
 
 ## 📝 Contributing
 
