@@ -53,6 +53,13 @@ We've designed the RevenueCat Stripe Tax integration to meet the needs of the ma
 Web Billing uses its own product configuration, so you don't need to add or configure products or product tax codes in Stripe. The same applies to default tax codes — only the product tax code configured in the RevenueCat dashboard is used.
 :::
 
+#### Prerequisites
+
+Before you get started, you should:
+
+1. Make sure you've approved any pending permissions from the [Stripe RevenueCat App](https://marketplace.stripe.com/apps/revenuecat). The Stripe Tax integration requires specific permissions to interact with your account.
+1. If you're using the [Web SDK](/web/web-billing/web-sdk/): Update your SDK version to v1.4.3 or higher.
+
 #### 1: Enable up Stripe Tax in your Stripe dashboard
 
 If you have not already configured Stripe Tax, you should follow the instructions [in your dashboard](https://dashboard.stripe.com/tax/overview) to enable automatic tax calculation (these steps may vary depending on your business location).
