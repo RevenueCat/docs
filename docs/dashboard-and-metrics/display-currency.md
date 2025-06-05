@@ -36,6 +36,8 @@ We currently support the following display currencies:
 8. KRW: South Korean Won
 9. CNY: Chinese Yuan
 10. MXN: Mexican Peso
+11. SEK: Swedish Krona
+12. PLN: Polish Zloty
 
 ## How we convert purchases from one currency to another
 

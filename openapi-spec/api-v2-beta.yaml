@@ -4297,7 +4297,100 @@ paths:
     post:
       summary: Create a virtual currencies transaction
       operationId: create-virtual-currencies-transaction
-      x-revenuecat-rate-limiting-domain: customer_information
+      x-revenuecat-rate-limiting-domain: virtual_currencies_create_transaction
+      x-scopes:
+      - customer_information:purchases:read_write
+      x-release-status: beta
+      tags:
+      - Customer
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: customer_id
+        in: path
+        description: ID of the customer
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: 19b8de26-77c1-49f1-aa18-019a391603e2
+      - name: Idempotency-Key
+        in: header
+        schema:
+          type: string
+          example: 1234-5678-9101-1121
+        description: This is an optional idempotency key to ensure exactly once execution
+          of the request.
+      - name: include_empty_balances
+        in: query
+        required: false
+        schema:
+          type: boolean
+          example: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - adjustments
+              properties:
+                adjustments:
+                  description: The adjustments to the virtual currencies
+                  type: object
+                  additionalProperties:
+                    type: integer
+                reference:
+                  description: The reference of the transaction
+                  type: string
+                  nullable: true
+              additionalProperties: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListVirtualCurrenciesBalances'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read_write</code>.'
+  /projects/{project_id}/customers/{customer_id}/virtual_currencies/update_balance:
+    post:
+      summary: Update a virtual currencies balance without creating a transaction
+      operationId: update-virtual-currencies-balance
+      x-revenuecat-rate-limiting-domain: virtual_currencies_create_transaction
       x-scopes:
       - customer_information:purchases:read_write
       x-release-status: beta
@@ -4700,6 +4793,25 @@ paths:
           type: string
           maxLength: 255
           example: proj1ab2c3d4
+      - name: currency
+        description: ISO 4217 currency code
+        in: query
+        schema:
+          type: string
+          enum:
+          - USD
+          - EUR
+          - GBP
+          - AUD
+          - CAD
+          - JPY
+          - BRL
+          - KRW
+          - CNY
+          - MXN
+          - SEK
+          - PLN
+        example: EUR
       responses:
         '200':
           description: Success
@@ -4727,6 +4839,88 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>charts_metrics:overview:read</code>.'
+  /projects/{project_id}/subscriptions:
+    get:
+      summary: Search subscriptions by store subscription identifier
+      operationId: search-subscriptions
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:subscriptions:read
+      x-release-status: beta
+      tags:
+      - Subscription
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: store_subscription_identifier
+        description: Store ID associated with the subscription for the current or
+          next period.
+        required: true
+        in: query
+        schema:
+          type: string
+          nullable: false
+          minLength: 1
+          maxLength: 255
+        examples:
+          amazon:
+            value: 9aJscueFTxLPZXXo-AlBTkI0OnFXR2qiH14C1aqWnOT=:3:11..8
+            summary: 'Amazon Appstore '
+          app_store:
+            value: '100001234567890'
+            summary: Apple App Store
+          paddle:
+            value: txn_01jss4bz50g1z5yw121npeb3ag
+            summary: Paddle
+          play_store:
+            value: GPA.1234-5678-9012-34567..0
+            summary: Google Play Store
+          rc_billing:
+            value: txRcb553a54d4738816a63f1a05cfcb1723e3..1746748685
+            summary: RevenueCat Web Billing
+          roku:
+            value: 4ab8df12-3003-11f0-9646-8ac68bcdcaed
+            summary: Roku
+          stripe:
+            value: si_Rww1psqupbKxmt
+            summary: Stripe
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSubscriptions'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: "Search for a subscription by any of its associated `store_subscription_identifier`\
+        \ values, whether from a past or current subscription period.\n\nFor example,\
+        \ this may include the `transactionId` of any transaction in an Apple App\
+        \ Store subscription, or any order ID from a Google Play Store subscription.\n\
+        \ This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>."
 components:
   securitySchemes:
     BearerAuth:
@@ -5397,6 +5591,10 @@ components:
       - project_id
       - first_seen_at
       - last_seen_at
+      - last_seen_app_version
+      - last_seen_country
+      - last_seen_platform
+      - last_seen_platform_version
       - object
       properties:
         object:
@@ -5428,6 +5626,26 @@ components:
           type: integer
           format: int64
           example: 1658399423658
+        last_seen_app_version:
+          nullable: true
+          description: The last app version the customer was seen on
+          type: string
+          example: 1.0.0
+        last_seen_country:
+          nullable: true
+          description: The last country the customer was seen in
+          type: string
+          example: US
+        last_seen_platform:
+          nullable: true
+          description: The last platform the customer was seen on
+          type: string
+          example: android
+        last_seen_platform_version:
+          nullable: true
+          description: The last platform version the customer was seen on
+          type: string
+          example: '35'
         active_entitlements:
           allOf:
           - type: object
@@ -6784,7 +7002,7 @@ components:
               type: string
               nullable: true
               minLength: 50
-              maxLength: 50
+              maxLength: 70
     PaddleAppCreate:
       type: object
       properties:
@@ -6798,7 +7016,7 @@ components:
               type: string
               nullable: true
               minLength: 50
-              maxLength: 50
+              maxLength: 70
             paddle_is_sandbox:
               description: Whether the app is tied to the sandbox environment.
               nullable: false

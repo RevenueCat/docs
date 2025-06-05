@@ -6,14 +6,6 @@ hidden: false
 
 Use the brand new Paywall Editor to design a fully customizable paywall.
 
-:::warning Beta Limitations
-Paywalls v2 is currently in beta, and has the following limitations:
-
-1. Only available on our Native iOS SDK, on versions 5.16.0+. **You must update your RevenueCat SDK to use paywalls built with the new editor.**
-2. Not supported on watchOS, or visionOS.
-3. Footer mode from our original templates is not supported, [learn more here](/tools/paywalls-v2/displaying-paywalls).
-   :::
-
 import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 
 <YouTubeEmbed
@@ -134,12 +126,22 @@ To make your paywall available to customers, click **Publish Paywall**. Once a p
 
 You can also set a published paywall to be inactive, or vice versa, at any time.
 
-:::tip Required components
-All paywalls must have a purchase button and at least one package added in order to be publishable.
-:::
-
-:::warning Minimum supported SDK version
-Paywalls built through the new v2 paywall editor are only supported on RevenueCat Native iOS SDK versions 5.16.0+ or later. If you have existing app version serving RevenueCat Paywalls, setup a [Targeting Rule](/tools/targeting) to continue serving them a v1 paywall, so that only customers on supported app versions are served a new v2 paywall.
-:::
-
 [Learn more about displaying paywalls.](/tools/paywalls-v2/displaying-paywalls)
+
+### Safe area preview
+
+The paywall preview in the dashboard includes a preview of the device safe area that will impact how your paywall is rendered. RevenueCat Paywalls will automatically handle the device safe area for you when displaying paywalls on device, but there are a few things you should keep in mind:
+1. All components will **not** occupy the safe area at the top of the device **unless they are being used as header images**, which do occupy the space. We automatically detect an image component as a header image if it's the first component taking up vertical space on the paywall (e.g. the first component in the list, or the first component in a stack) whose width is set to fill the entire width of the paywall. If the image is being used within a z stack, any other components above it will not occupy the safe area.
+2. The footer component will **not** occupy the bottom safe area, and will automatically add applicable padding to account for it on each platform and device.
+3. Paywalls which do not use a footer component will occupy the bottom safe area if the content extends that far, as any other view would.
+
+If your paywall will be displayed in a sheet view instead of a full screen view, you can also preview that view in the paywall editor. Just click on **Preview settings** and select **Sheet view**.
+
+:::info Preview added in May 2025
+The safe area preview was added to the dashboard in May 2025 to more accurately reflect how paywalls will be displayed on device. If your paywall now has more top/bottom margin/padding than desired, you can adjust it to ensure the look more closely matches your intended design.
+
+**The new safe area preview has no effect on how paywalls are displayed on device, as the SDK has always handled rendering around the safe area.**
+:::
+
+![Safe area preview](/images/safe-area-preview.png)
+

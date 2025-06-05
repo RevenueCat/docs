@@ -57,7 +57,7 @@ There is an option in Google Play to send a test notification. This is a great w
 
 Click the '**Send test notification**' button under the topic name in the '**Monetization Setup**' section.
 
-Once that test notification is sent, you can go back to your app config on the RevenueCat dashboard where you connected to Google to enable real-time notifications. If the configuration was successful, you should see a "Last received" label with a recent timestamp.
+Once that test notification is sent, you can go back to your app config on the RevenueCat dashboard where you connected to Google to enable real-time notifications. If the configuration was successful, you should see a "Last received" label with a recent timestamp. If your test notifications fail, you may need to add and grant the service account `google-play-developer-notifications@system.gserviceaccount.com` the Pub/Sub Publisher role on that specific topic via Permissions -> Add Principal -> add `google-play-developer-notifications@system.gserviceaccount.com` -> give it the role Pub/Sub Publisher. See Google's docs on this [here](https://developer.android.com/google/play/billing/getting-ready#grant-rights).
 
 ![Google Play Console / RevenueCat Dashboard](/images/f97e8f5-TestNotif_0bce9b9a2dfb308f559aca6b662b3f63.gif)
 

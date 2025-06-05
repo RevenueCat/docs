@@ -128,7 +128,7 @@ If a test that you've created does not meet the above criteria, we'll alert you 
 **Scenario #3 -- Multiple tests on partially overlapping audiences**
 
 1. Test A is running against 100% of new customers for your App Store app
-2. Test B, targeting 100% of new customers in Brazil, **cannot** be run because there is partial overlap between the audience of Test and the audience of Test B (new customers using your App Store app in Brazil).
+2. Test B, targeting 100% of new customers in Brazil, **cannot** be run because there is partial overlap between the audience of Test A and the audience of Test B (new customers using your App Store app in Brazil).
    1. To run Test B, either Test A will need to be paused, or the audience of Test B will need to be modified to exclude new customers from the App Store app.
 
 **Scenario #4 -- Multiple tests on >100% of an identical audience**

@@ -49,17 +49,15 @@ The abilities that would be restricted are as follows:
 
 An invoice will be emailed to the owner of a project at the end of the current billing period. If you want to have the invoices emailed to additional email addresses, you can reach out to [Developer Support](https://app.revenuecat.com/settings/support) in order to have them added to your profile for future invoices. You can also view a history of invoices on the [Invoices page](https://app.revenuecat.com/settings/billing/invoices) under the billing category of the project owner's account settings. The history will only list invoices with non-zero billed amounts, so you may see gaps between billing periods if you do not meet the $2.5k limit in every billing period.
 
-### Tax & VAT details
+### Invoice details
 
-Please reach out to [RevenueCat Support](https://app.revenuecat.com/settings/support) if you need Tax IDs or VAT information added to your invoices.
+You can update how your company name, address, and Tax ID/VAT number appear on your invoices in [billing settings](https://app.revenuecat.com/settings/billing) under **Invoice details**.
 
-### Address details
+![update your invoice details in your billing settings](/images/SCR-20250522-orun.png)
 
-If needed, you can add additional address information to your invoices by clicking '**Update payment method**' and expanding the '**Invoice Details**' section:
+If you have not added a payment method, you will not receive invoices nor will you be able to change your invoice details.
 
-![update payment method button](/images/79b7b8e5-update-payment-method-button-cb06-438d-91e9-9257c6921211.png)
-
-![invoice details expanded](/images/a49a859b-invoice-details-expanded-65e93ca4f48e.png)
+If you need more than one Tax ID, or you would like to forward your invoices to a different email address, please reach out to [RevenueCat Support](https://app.revenuecat.com/settings/support) for assistance.
 
 ## Display Currency
 
