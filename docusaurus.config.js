@@ -54,7 +54,7 @@ const config = {
       swcHtmlMinimizer: true,
       rspackBundler: true,
       rspackPersistentCache: true,
-      ssgWorkerThreads: false,
+      ssgWorkerThreads: false, // redocusaurus doesn't support this yet, so we'll disable it for now
     },
     v4: true,
   },
