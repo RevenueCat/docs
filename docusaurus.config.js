@@ -46,7 +46,16 @@ const config = {
   },
 
   future: {
-    experimental_faster: true,
+    experimental_faster: {
+      lightningCssMinimizer: true,
+      mdxCrossCompilerCache: true,
+      swcJsLoader: true,
+      swcJsMinimizer: true,
+      swcHtmlMinimizer: true,
+      rspackBundler: true,
+      rspackPersistentCache: true,
+      ssgWorkerThreads: false,
+    },
     v4: true,
   },
 
