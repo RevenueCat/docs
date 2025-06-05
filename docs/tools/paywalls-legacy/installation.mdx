@@ -5,31 +5,33 @@ sidebar_label: Installation
 
 RevenueCat Paywalls are included as part of the RevenueCatUI package in the RevenueCat SDK. You'll need to install the RevenueCatUI package in your project to use Paywalls.
 
-:::info Paywalls v2 Beta
-These docs refer to our beta of Paywalls v2. For installation requirements of original Paywalls, [click here](/tools/paywalls/installation).
-:::
-
 #### Supported SDK versions
 
-| RevenueCat SDK           | Version required for Paywalls v2 | 
+| RevenueCat SDK           | Version required for Paywalls | 
 | :----------------------- | :--------------------------------------------- |
-| purchases-ios             | 5.16.0 and up                 |
-| purchases-android         | 8.12.2 and up                  |
-| react-native-purchases | 8.6.1 and up                 | 
-| purchases-flutter         | 8.5.0 and up                 |
-| purchases-kmp             | 1.5.1+13.18.1 and up                  |
+| purchases-ios             | 4.26.0 and up                 |
+| purchases-android         | 7.1.0 and up                  |
+| react-native-purchases-ui | 7.15.0 and up                 | 
+| purchases-flutter         | 6.15.0 and up                 |
+| purchases-kmp             | 1.0.0 and up                  |
+| purchases-unity           | Not supported                 |
+| cordova-plugin-purchases  | Not supported                 |
+| purchases-capacitor       | Not supported                 |
 
-### Platforms (support for more coming)
+:::info
+Within the SDKs, Paywalls are available on the following platforms:
+- iOS 15.0+
+- visionOS 1.0+
+- Mac Catalyst 15.0+
+- watchOS 8.0+
+- Android 7.0 (API level 24)
 
-- ✅ iOS 15.0 and higher
-- ✅ Android 7.0 (API level 24) and higher
-- ❌ Mac Catalyst
-- ❌ visionOS
-- ❌ watchOS
-- ❌ macOS
-- ❌ tvOS
+Support for macOS, tvOS, and other platforms is coming soon!
+:::
 
 ## Native iOS Installation
+
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-ios.svg?filter=!*beta*&style=flat)](https://github.com/RevenueCat/purchases-ios/releases)
 
 ### Using SPM:
 
@@ -39,9 +41,9 @@ These docs refer to our beta of Paywalls v2. For installation requirements of or
 
 ![Change version](https://github.com/RevenueCat/purchases-ios/assets/685609/d317fd33-8270-4d9b-9b38-8f5f14342b04)
 
-2. Make sure version is at least `5.16.0`:
+2. Double-click and make sure version is at least `4.26.0`:
 
-![Configure version](/images/paywalls-check-version.png)
+![Configure version](https://github.com/RevenueCat/purchases-ios/assets/685609/f537a1e1-a1ab-4e6f-986c-05abdcf1dd9f)
 
 3. Open your target settings and find "Frameworks, Libraries, and Embedded Content":
 
@@ -55,7 +57,7 @@ These docs refer to our beta of Paywalls v2. For installation requirements of or
 
 1. Click File -> Add Packages...
 
-2. Search for `git@github.com:RevenueCat/purchases-ios.git` and make sure version is at least `5.16.0`:
+2. Search for `git@github.com:RevenueCat/purchases-ios.git` and make sure version is at least `4.26.0`:
 
 ![Adding purchases-ios dependency](https://github.com/RevenueCat/purchases-ios/assets/685609/18291043-5710-4944-ba12-7d6d83bde240)
 
@@ -66,7 +68,6 @@ These docs refer to our beta of Paywalls v2. For installation requirements of or
 ### Using CocoaPods:
 
 Add the following to your `Podfile`:
-
 ```ruby
 pod 'RevenueCat'
 pod 'RevenueCatUI'
