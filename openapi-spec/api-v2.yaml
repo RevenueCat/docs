@@ -4533,6 +4533,25 @@ paths:
           type: string
           maxLength: 255
           example: proj1ab2c3d4
+      - name: currency
+        description: ISO 4217 currency code
+        in: query
+        schema:
+          type: string
+          enum:
+          - USD
+          - EUR
+          - GBP
+          - AUD
+          - CAD
+          - JPY
+          - BRL
+          - KRW
+          - CNY
+          - MXN
+          - SEK
+          - PLN
+        example: EUR
       responses:
         '200':
           description: Success
@@ -5230,6 +5249,10 @@ components:
       - project_id
       - first_seen_at
       - last_seen_at
+      - last_seen_app_version
+      - last_seen_country
+      - last_seen_platform
+      - last_seen_platform_version
       - object
       properties:
         object:
@@ -5261,6 +5284,26 @@ components:
           type: integer
           format: int64
           example: 1658399423658
+        last_seen_app_version:
+          nullable: true
+          description: The last app version the customer was seen on
+          type: string
+          example: 1.0.0
+        last_seen_country:
+          nullable: true
+          description: The last country the customer was seen in
+          type: string
+          example: US
+        last_seen_platform:
+          nullable: true
+          description: The last platform the customer was seen on
+          type: string
+          example: android
+        last_seen_platform_version:
+          nullable: true
+          description: The last platform version the customer was seen on
+          type: string
+          example: '35'
         active_entitlements:
           allOf:
           - type: object
