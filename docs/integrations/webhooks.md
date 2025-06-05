@@ -7,7 +7,7 @@ hidden: false
 ---
 
 :::success Pro Integration
-Webhooks are available on our Pro plan. If you are on one of our legacy plans without access to webhooks, migrate to our new [Pro plan](https://www.revenuecat.com/pricing/) to get access.
+Webhooks are available on our Pro plan. If you're on a legacy plan without webhook access, consider upgrading to our Pro plan to enable this feature.
 :::
 
 RevenueCat can send you notifications any time an event happens in your app. This is useful for subscription and purchase events, which will allow you to monitor state changes for your subscribers and react accordingly.
@@ -60,7 +60,11 @@ When testing with sandbox purchases, the `environment` value will be `SANDBOX`. 
 
 ## Syncing Subscription Status
 
-Webhooks are commonly used to sync a customer's subscription status across multiple systems. Because different webhook events contain unique information, we recommend calling the `GET /subscribers` [REST API](https://www.revenuecat.com/docs/api-v1#tag/customers) endpoint after receiving any webhook. That way, the customer's information is always in the same format and is easily synced to your database. This approach is simpler than writing custom logic to handle each webhook event, and has the added benefit of making your system more robust and scalable.
+It's common to use webhooks to synchronize subscription data in your own backend. Since each event might carry different fields, the best practice is to fetch the latest subscriber status using the `GET /subscribers` [REST API](https://www.revenuecat.com/docs/api-v1#tag/customers) after receiving a webhook. This approach is:
+
+- Easier to implement
+- More consistent and less error-prone
+- Scalable for complex logic across multiple systems
 
 ## Security and Best Practices
 
@@ -87,3 +91,12 @@ RevenueCat makes our best effort for “at least one delivery” of webhooks. In
 ## Sample Webhook Events
 
 For sample webhook events, see [here](/integrations/webhooks/sample-events).
+
+## Debugging Webhooks
+
+While setting up your webhook, you may want to inspect the payloads RevenueCat sends. You can create a temporary endpoint and view requests in real-time using the following tools.
+
+| Tool                  | URL                                   | Notes                                 |
+|-----------------------|----------------------------------------|---------------------------------------|
+| Beeceptor             | https://beeceptor.com                 | Great UI and supports custom rules    |
+| httpbin               | https://httpbin.org                   | Simple testing of request/response    |
