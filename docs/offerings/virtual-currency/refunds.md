@@ -7,7 +7,7 @@ hidden: false
 
 # Refunds
 
-This guide explains how RevenueCat handles virtual currency balance adjustments when purchases are refunded, including both subscriptions and one-time purchases (OTPs). When purchases that grant virtual currency are refunded, RevenueCat adjusts the customer’s balance to maintain fairness, while ensuring balances never fall below zero.
+This guide explains how RevenueCat handles virtual currency balance adjustments when purchases are refunded, including both subscriptions and one-time purchases. When purchases that grant virtual currency are refunded, RevenueCat adjusts the customer’s balance to maintain fairness, while ensuring balances never fall below zero.
 
 ## Balance Floor
 
@@ -28,7 +28,7 @@ When a subscription that granted virtual currency is refunded:
 - The amount removed is rounded down to the nearest whole number (fractional balances are not supported).
 - If the removal would drop the balance below zero, the new balance is capped at 0.
 
-## One-Time Purchase (OTP) Refunds
+## One-Time Purchase Refunds
 
 When a one-time purchase is refunded:
 
