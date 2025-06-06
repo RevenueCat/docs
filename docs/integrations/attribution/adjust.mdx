@@ -41,8 +41,8 @@ Therefore, Google's Advertising ID acts as the primary device identifier for And
 
 These properties can be set manually, like any other [Customer Attributes](/customers/customer-attributes), or through the helper methods to `collectDeviceIdentifiers()` and `setAdjustId()`.
 
-import swiftContent from "!!raw-loader!@site/code_blocks/integrations/attribution/adjust_1.swift";
-import javaContent from "!!raw-loader!@site/code_blocks/integrations/attribution/adjust_2.java";
+import swiftContent from "@site/code_blocks/integrations/attribution/adjust_1.swift?raw";
+import javaContent from "@site/code_blocks/integrations/attribution/adjust_2.java?raw";
 
 <RCCodeBlock
   tabs={[
@@ -167,6 +167,6 @@ You should start seeing events from RevenueCat appear in Adjust!
 
 Below is a sample event sent to Adjust. The type of the event (e.g. initial purchase) is defined by the `event_token`. Note that product identifiers, customer attributes, app user IDs, etc. don't get sent to Adjust.
 
-import jsonContent from "!!raw-loader!@site/code_blocks/integrations/attribution/adjust_3.json";
+import jsonContent from "@site/code_blocks/integrations/attribution/adjust_3.json?raw";
 
 <RCCodeBlock tabs={[{ type: "json", content: jsonContent }]} />

@@ -21,7 +21,7 @@ In our current offerings, we add the metadata for the new button color and our d
 
 In our app, we set up our code to modify the appearance of our paywall if these keys are present, or fall back to our defaults if an active offering doesn’t contain these values.
 
-import content1 from "!!raw-loader!@site/code_blocks/tools/color_experiment.kt";
+import content1 from '@site/code_blocks/tools/color_experiment.kt?raw';
 
 <RCCodeBlock tabs={[
     {
@@ -56,7 +56,7 @@ Keep in mind that there is a limit of 500 characters in your metadata block, so 
 
 Within our app, we handle the logic to check the primary language set on the device, and look to see if we find a matching metadata key. Otherwise, we fall back to our default text.
 
-import content2 from "!!raw-loader!@site/code_blocks/tools/language_switch.kt";
+import content2 from '@site/code_blocks/tools/language_switch.kt?raw';
 
 <RCCodeBlock tabs={[
     {
@@ -85,7 +85,7 @@ In this example case, we’re using a coupon code that was present on a deeplink
 
 In the app, we set up the logic to look for any offerings that have a matching coupon code.
 
-import content3 from "!!raw-loader!@site/code_blocks/tools/coupon_case.kt";
+import content3 from '@site/code_blocks/tools/coupon_case.kt?raw';
 
 <RCCodeBlock tabs={[
     {

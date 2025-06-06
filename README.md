@@ -2,31 +2,87 @@
 
 This documentation website is built using [Docusaurus](https://docusaurus.io/).
 
+## 🚀 Quick Start
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/RevenueCat/docs.git
+   cd docusaurus
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   yarn install
+   ```
+
+3. **Start development server**
+   ```bash
+   yarn start
+   ```
+   This opens `http://localhost:3030` and auto-reloads when you make changes.
+
+## 📝 Contributing
+
 **If you aren't comfortable using GitHub to make changes, please contact [RevenueCat Support](https://app.revenuecat.com/settings/support) or open an Issue with your requested change [here](https://github.com/RevenueCat/docusaurus/issues/new).**
 
-# 📘 Instructions
+### Making Changes
 
-Edit raw `.md` and `.mdx` that are stored in `/docs`. Docs that don't require code snippets or other custom components (`/src/components`) can use standard Markdown (`.md`).
+1. **Create a new branch** for your changes
+2. **Edit documentation** in the `/docs` folder using Markdown (`.md`) or MDX (`.mdx`)
+3. **Test locally** using `yarn start`
+4. **Open a Pull Request** - this automatically deploys to the dev environment
+5. **Review and merge** - changes are automatically deployed to production
 
-After making changes, open a pull request (PR). Opening a PR will automatically build and deploy the documentation to the `dev` environment.
+### File Structure
 
-After the changes have been reviewed, and all conversations resolved, the PR can be merged. After merge, it's automatically deployed to production.
+```
+docusaurus/
+├── docs/                    # Documentation content (.md/.mdx files)
+├── src/
+│   ├── components/          # React components
+│   ├── css/                # Global styles
+│   ├── sidebars/           # Sidebar configuration utilities
+│   └── theme/              # Theme customizations
+├── static/
+│   ├── icons/              # SVG icons for sidebar categories
+│   ├── img/                # Images and assets
+│   └── fonts/              # Custom fonts
+├── sidebars.ts             # Sidebar navigation structure
+└── docusaurus.config.js    # Site configuration
+```
 
-# 🧱 How it works
+# 📘 Content Guidelines
 
-## Pages
+## Writing Documentation
 
-Pages are organized into categories within `/docs`. Add a page to one of these subfolders to make it available to use in a sidebar.
+### Markdown Files
 
-If a page uses invalid markdown, or unsupported syntax (readme-flavored, etc.) the project will fail to build. **Only add files that are valid markdown to the `docs` folder.** If docusaurus fails to build, it's likely an invalid markdown file was added to this folder.
+- Use `.md` for simple documentation without React components
+- Use `.mdx` for pages that need custom components or code snippets
+- Store files in appropriate subdirectories within `/docs`
+- Use descriptive filenames that match the content
 
-### Adding code snippets
+### Style Guidelines
 
-There's a custom tabbed code block component called `RCCodeBlock`, imported globally to all `.mdx` files, that renders code snippets. Use `raw-loader` to pass the content to the component.
+- **Headers**: Use clear, descriptive headings with proper hierarchy (beginning with H2 → H3, etc.)
+- **Code**: Use proper syntax highlighting with language tags
+- **Images**: Optimize images and use descriptive alt text
+- **Links**: Use relative links for internal pages, absolute for external
 
-**Pages must be `.mdx`.**
+### Content Organization
 
-Pass a set of values for each tab, reading each code file using `raw-loader` relative to the `@site` root path:
+- **Logical Flow**: Organize content from basic to advanced concepts
+- **Cross-References**: Link to related sections and external resources
+- **Examples**: Include practical examples and use cases
+- **Screenshots**: Keep images up-to-date and annotated when helpful
+
+## Adding Rich Content
+
+### Code Snippets
+
+For tabbed code blocks, use the global `RCCodeBlock` component in `.mdx` files:
 
 ```jsx
 import content from "!!raw-loader!@site/code_blocks/welcome/getting_started.swift";
@@ -36,94 +92,328 @@ import content from "!!raw-loader!@site/code_blocks/welcome/getting_started.swif
     {
       type: RCCodeBlock.languages.swift,
       content: content,
-      title: "Getting Started", //optional
+      title: "iOS Implementation", // optional
+    },
+    {
+      type: RCCodeBlock.languages.kotlin,
+      content: kotlinContent,
+      title: "Android Implementation", // optional
     },
   ]}
 />;
 ```
 
-Supported languages in `RCCodeBlock.languages`.
+**Supported Languages**: Check `RCCodeBlock.languages` for available syntax highlighting.
 
-### Adding YouTube embeds
+### YouTube Embeds
 
-The `YouTubeEmbed` component is imported globally to `.mdx` files.
+Add video content using the global `YouTubeEmbed` component:
 
 ```jsx
-<YouTubeEmbed videoId=<videoId> title=<title> />
+<YouTubeEmbed videoId="dQw4w9WgXcQ" title="Getting Started with RevenueCat" />
 ```
+
+### Images and Media
+
+- Store images in `/static/img/` directory
+- Use WebP format when possible for better performance
+- Include descriptive alt text for accessibility
+- Consider dark mode compatibility
 
 ## Sidebars
 
-Each grouping of docs is called a 'sidebar' and is defined in `sidebars.js`. A sidebar is a combination of categories and pages in a tree structure, and requires each category, subcategory, and page to be defined manually.
+The sidebar system is the heart of the documentation navigation, defined in `sidebars.ts`. The system uses TypeScript utilities from `sidebar-utils.ts` to create a structured tree of categories, subcategories, pages, and links.
 
 [Video Explanation](https://www.loom.com/share/68d0f56195034c8d9badf454beb7d899?sid=b312b6f7-8f9e-43c5-9f98-6db5f7548944)
 
-There are four types of sidebar items:
+### Sidebar Structure
 
-1. Category (top-level, non-clickable)
-2. Subcategory (document w/ sub-documents; only 1 level of nested supported)
-3. Page (i.e., document)
-4. Link (link to a document in a different Category)
+There are **four types of sidebar items**:
+
+1. **Category** - Top-level sections with icons and custom styling
+2. **SubCategory** - Collapsible sections that can have their own landing pages
+3. **Page** - Individual documentation pages
+4. **Link** - References to pages in other categories
+
+### Category Configuration
+
+Categories are the main navigation sections and support custom icons and colors:
 
 ```js
 const exampleCategory = Category({
-  iconName: "🙈",
+  iconName: "sparkle", // Icon from /static/icons/ directory
+  iconColor: "var(--rc-blue-primary)", // Optional custom color (defaults to blue)
   label: "Example Category",
-  slug: "example",
-  itemsPathPrefix: "example/", // the path prefix to apply to the items in this category
+  itemsPathPrefix: "example/", // Path prefix for all items in this category
   items: [
+    // ... category items
+  ],
+});
+```
+
+**Available Icons**: The `iconName` should correspond to SVG files in `/static/icons/`. Common icons include:
+
+- `"sparkle"` - For guides and highlights
+- `"hammer"` - For projects and development
+- `"mobile"` - For SDK documentation
+- `"person"` - For customer-related docs
+- `"chart-bar"` - For analytics and metrics
+- `"key"` - For account and security
+
+**Icon Colors**: Use CSS variables for consistent theming:
+
+- `"var(--rc-red-primary)"` - Default red theme
+- `"var(--rc-blue-primary)"` - Blue accent
+- `"var(--rc-green-primary)"` - Success/positive actions
+- Custom colors can be defined in `custom.css`
+
+### SubCategory Configuration
+
+SubCategories create collapsible sections within categories:
+
+```js
+SubCategory({
+  label: "Getting Started",
+  slug: "getting-started", // Optional: creates a landing page
+  itemsPathPrefix: "getting-started/",
+  items: [Page({ slug: "quickstart" }), Page({ slug: "installation" })],
+  index: {
+    // Optional: generated index page
+    title: "Getting Started Guide",
+    link: "getting-started-overview",
+    description: "Learn the basics of RevenueCat",
+  },
+});
+```
+
+### Page Configuration
+
+Pages represent individual documentation files:
+
+```js
+Page({ slug: "installation/ios" });
+// References: /docs/installation/ios.md or ios.mdx
+```
+
+The final path is constructed as: `itemsPathPrefix + slug`
+
+### Link Configuration
+
+Links reference pages in other categories:
+
+```js
+Link({
+  label: "SDK Reference",
+  slug: "/platform-resources/sdk-reference",
+});
+// Creates a link with arrow indicator (→)
+```
+
+### Complete Example
+
+```js
+const mobileSDKCategory = Category({
+  iconName: "mobile",
+  label: "RevenueCat SDK",
+  itemsPathPrefix: "getting-started/",
+  items: [
+    Page({ slug: "quickstart" }),
     SubCategory({
-      label: "Welcome RevenueCat",
-      slug: "welcome", // refers to the doc at: 'docs/' + 'example/' (parent path prefix) + 'welcome' (page slug)
-      itemsPathPrefix: "welcome/",
+      label: "Install the SDK",
+      slug: "installation",
+      itemsPathPrefix: "installation/",
       items: [
-        Page({ slug: "first-sub-page" }), // /docs/ + example/ + welcome/ + first-sub-page
-        Page({ slug: "second-sub-page" }),
+        Page({ slug: "ios" }), // → /docs/getting-started/installation/ios
+        Page({ slug: "android" }), // → /docs/getting-started/installation/android
+        Page({ slug: "reactnative" }),
       ],
     }),
-    Page({ slug: "stand-alone-page" }), // /docs/ example/ stand-alone-page
     Link({
-      label: "Linked Page",
-      slug: "/path/to/linked-page",
+      label: "Identifying Users",
+      slug: "/customers/user-ids",
     }),
   ],
 });
 ```
 
-The default sidebar is rendered at the bottom of `sidebars.js`.
+### Multiple Sidebars
+
+The system supports multiple sidebar configurations:
+
+```js
+const sidebars = {
+  defaultSidebar: [
+    welcomeCategory,
+    projectsCategory,
+    mobileSDKCategory,
+    // ... more categories
+  ],
+  dataSidebar: [metricsCategory, chartsCategory],
+  integrationsSidebar: [eventsCategory, webhooksCategory],
+};
+```
+
+### Path Resolution
+
+Paths are built hierarchically:
+
+- **Base**: `/docs/`
+- **Category prefix**: `itemsPathPrefix` from Category
+- **SubCategory prefix**: `itemsPathPrefix` from SubCategory
+- **Page slug**: `slug` from Page
+
+Example: `Category({ itemsPathPrefix: "sdk/" })` → `SubCategory({ itemsPathPrefix: "ios/" })` → `Page({ slug: "installation" })` = `/docs/sdk/ios/installation`
+
+### Best Practices
+
+1. **Consistent Iconography**: Use appropriate icons that match the content type
+2. **Logical Grouping**: Group related content in SubCategories
+3. **Clear Labels**: Use descriptive labels that match the content
+4. **Path Prefixes**: Use consistent path prefixes to organize file structure
+5. **Color Coding**: Use custom colors sparingly for important categories
 
 # 🛠️ Development
 
-### Installation
+## Prerequisites
 
-- Install dependencies
+- **Node.js**: Version 18+ recommended
+- **Yarn**: Package manager (or npm)
 
-  ```sh
-  $ yarn install
-  ```
+## Installation
 
-- Optionally install [typos-cli](https://github.com/crate-ci/typos)
+```bash
+# Install dependencies
+yarn install
 
-  ```sh
-  brew install typos-cli
-  ```
-
-  See the link for other options.
-
-  This is optional, but will enable running it via the pre-commit hook. You can also use the recommended [vscode extension](https://marketplace.visualstudio.com/items?itemName=tekumara.typos-vscode) or let it run via GitHub Actions when you create a PR.
-
-### Local Development
-
-```sh
-$ yarn start
+# Optional: Install typos checker for spell checking
+brew install typos-cli
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+The typos checker helps catch spelling errors and can be integrated with:
 
-### Build
+- Pre-commit hooks (automatic when `typos-cli` is installed)
+- [VS Code extension](https://marketplace.visualstudio.com/items?itemName=tekumara.typos-vscode)
+- GitHub Actions (runs on PRs)
 
-```sh
-$ yarn build
+## Development Commands
+
+```bash
+# Start development server (with hot reload)
+yarn start
+
+# Build for production
+yarn build
+
+# Serve production build locally
+yarn serve
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+## Local Development
+
+```bash
+yarn start
+```
+
+This command:
+
+- Starts a local development server on `http://localhost:3000`
+- Opens your browser automatically
+- Enables hot reloading for most changes
+- Shows build errors and warnings in the console
+
+### Development Tips
+
+- **Fast Refresh**: Most changes reflect immediately without full page reload
+- **Search**: Local search is available and indexes content automatically
+- **Dark Mode**: Test both light and dark themes
+- **Mobile**: Test responsive design on different screen sizes
+
+## Building and Deployment
+
+### Production Build
+
+```bash
+yarn build
+```
+
+This generates static content in the `build` directory that can be served by any static hosting service.
+
+### Preview Production Build
+
+```bash
+yarn build && yarn serve
+```
+
+This serves the production build locally on `http://localhost:3000` to test before deployment.
+
+### Deployment Environments
+
+- **Development**: Automatic deployment on PR creation
+- **Production**: Automatic deployment on merge to main branch
+- **Manual**: Can be deployed to any static hosting service
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+**Build Failures**
+
+- Check for invalid Markdown syntax in `/docs` files
+- Ensure all imported components are properly installed
+- Verify all links and images exist
+
+**Missing Content**
+
+- Check `sidebars.ts` configuration
+- Verify file paths match the sidebar structure
+- Ensure files have proper frontmatter
+
+**Styling Issues**
+
+- Check CSS custom properties in `src/css/custom.css`
+- Verify Tailwind classes are properly configured
+- Test in both light and dark modes
+
+### Getting Help
+
+1. **Check the console** for build errors and warnings
+2. **Review the Docusaurus docs** at [docusaurus.io](https://docusaurus.io/)
+3. **Search existing issues** in the repository
+4. **Open a new issue** with detailed information about the problem
+
+## 🎨 Customization
+
+### Theming
+
+- **Colors**: Modify CSS variables in `src/css/custom.css`
+- **Fonts**: Add custom fonts to `/static/fonts/` and update CSS
+- **Components**: Override theme components in `src/theme/`
+
+### Configuration
+
+- **Site settings**: Edit `docusaurus.config.js`
+- **Navigation**: Update `sidebars.ts`
+- **Plugins**: Add/configure plugins in the config file
+
+## 🤝 Contributing Guidelines
+
+### Before You Start
+
+1. **Check existing issues** to avoid duplicate work
+2. **Discuss major changes** in an issue before implementation
+3. **Follow the style guide** for consistency
+
+### Pull Request Process
+
+1. **Create a descriptive PR title** and description
+2. **Link related issues** using keywords (fixes #123)
+3. **Request review** from appropriate team members
+
+---
+
+## 🔗 Links
+
+- **Live Documentation**: [docs.revenuecat.com](https://docs.revenuecat.com)
+- **RevenueCat Dashboard**: [app.revenuecat.com](https://app.revenuecat.com)
+- **Support**: [RevenueCat Support](https://app.revenuecat.com/settings/support)
+- **Community**: [RevenueCat Community](https://community.revenuecat.com)

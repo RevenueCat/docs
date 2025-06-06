@@ -83,7 +83,7 @@ The only required fields when sending your Stripe purchase to the RevenueCat API
 
 Stripe subscriptions are automatically refreshed by RevenueCat the same way as subscriptions from the app stores. This means that **it may take up to two hours for a Stripe cancellation to be reflected in the RevenueCat backend**. Alternatively, you can re-post the same subscription to RevenueCat after a user has cancelled, and it will be updated right away.
 
-import curlContent from "!!raw-loader!@site/code_blocks/getting-started/stripe_1.curl";
+import curlContent from "@site/code_blocks/getting-started/stripe_1.curl?raw";
 
 <RCCodeBlock tabs={[{ type: "curl", content: curlContent }]} />
 

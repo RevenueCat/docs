@@ -58,9 +58,9 @@ It's up to you to decide which users you want to present a Promotional Offer to.
 
 Before you can present a Promotional Offer to a user, you first need to fetch the `PromoOffer`. This is done by passing the `StoreProduct` and a `StoreProductDiscount` to the `.getPromotionalOffer` method, which uses the Subscription Key from above to validate the discount and to provide a valid `PromoOffer`:
 
-import swift1 from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-subscription-offers_1.swift";
-import objc1 from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-subscription-offers_2.m";
-import js1 from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-subscription-offers_3.js";
+import swift1 from "@site/code_blocks/subscription-guidance/subscription-offers/ios-subscription-offers_1.swift?raw";
+import objc1 from "@site/code_blocks/subscription-guidance/subscription-offers/ios-subscription-offers_2.m?raw";
+import js1 from "@site/code_blocks/subscription-guidance/subscription-offers/ios-subscription-offers_3.js.txt?raw";
 
 <RCCodeBlock
   tabs={[
@@ -86,9 +86,9 @@ import js1 from "!!raw-loader!@site/code_blocks/subscription-guidance/subscripti
 
 After successfully fetching the `PromoOffer`, you can now display the Promotional Offer to the user however you'd like. If the user chooses to purchase, pass a `Package` and `PromoOffer` to the `.purchase(package:promotionalOffer:)` method.
 
-import swift2 from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-subscription-offers_4.swift";
-import objc2 from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-subscription-offers_5.m";
-import js2 from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-subscription-offers_6.js";
+import swift2 from "@site/code_blocks/subscription-guidance/subscription-offers/ios-subscription-offers_4.swift?raw";
+import objc2 from "@site/code_blocks/subscription-guidance/subscription-offers/ios-subscription-offers_5.m?raw";
+import js2 from "@site/code_blocks/subscription-guidance/subscription-offers/ios-subscription-offers_6.js.txt?raw";
 
 <RCCodeBlock
   tabs={[
@@ -132,7 +132,7 @@ A workaround may be to instead redirect customers to the App Store app to redeem
 
 To allow your users to redeem Offer Codes, you'll need to present the Offer Code redemption sheet. In _Purchases SDK_ 3.8.0, you can call the `presentCodeRedemptionSheet` method.
 
-import swift3 from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-subscription-offers_7.swift";
+import swift3 from "@site/code_blocks/subscription-guidance/subscription-offers/ios-subscription-offers_7.swift?raw";
 
 <RCCodeBlock
   tabs={[
@@ -202,7 +202,7 @@ Subscribers can redeem a win-back offer in several ways, detailed in the chart b
 | [Through the App Store with Streamlined Purchasing Enabled](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#redeeming-a-win-back-offer-through-the-app-store-with-streamlined-purchasing-enabled)   | Should not be used if you require a subscriber to perform an action before purchasing (e.g. signing in). Requires iOS SDK version 5.0.0+                       |
 | [Through Your App From a StoreKit Message](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#redeeming-a-win-back-offer-in-your-app-from-a-storekit-message)                                          | Requires iOS SDK version 5.6.0+                                                                                                                                |
 | [Through the App Store with Streamlined Purchasing Disabled](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#redeeming-a-win-back-offer-through-the-app-store-with-streamlined-purchasing-disabled) | Requires iOS SDK version 5.9.0+                                                                                                                                |
-| [With a Unique Win-Back Offer URL](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#redeeming-a-win-back-offer-with-a-unique-win-back-offer-url)                                                     | Requires iOS SDK version 5.9.0+                                                                                                                   |
+| [With a Unique Win-Back Offer URL](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#redeeming-a-win-back-offer-with-a-unique-win-back-offer-url)                                                     | Requires iOS SDK version 5.9.0+                                                                                                                                |
 | [Through Your Paywall](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#redeeming-a-win-back-offer-on-your-paywall)                                                                                  | Requires iOS SDK version 5.10.0+                                                                                                                               |
 | [Through a StoreKit StoreView](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#redeeming-a-win-back-offer-in-a-storekit-storeview)                                                                  | Requires iOS SDK version 5.0.0+                                                                                                                                |
 | Through Your App with Your Own IAP Code                                                                                                                                                                                                               | Supported, you can find more info on using your own IAP code [here](https://www.revenuecat.com/docs/migrating-to-revenuecat/sdk-or-not/finishing-transactions) |
@@ -262,7 +262,7 @@ In iOS 18+, StoreKit will send your app a message when a subscriber is eligible 
 
 If you'd like to defer displaying the win-back offer sheet until a later time, you can do so in iOS SDK versions 5.6.0 and above by setting the `showStoreMessagesAutomatically` flag to `false` in the `Purchases.configure` function. When this flag is set to `false`, the win-back offer sheet will not be displayed automatically, and you will need to manually display the offer sheet by calling the `showStoreMessages` function when you'd like it to be displayed:
 
-import showStoreMessagesAutomaticallyFalse from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-subscription-offers_8.swift";
+import showStoreMessagesAutomaticallyFalse from "@site/code_blocks/subscription-guidance/subscription-offers/ios-subscription-offers_8.swift?raw";
 
 <RCCodeBlock
   tabs={[
@@ -320,7 +320,7 @@ You can disable Streamlined Purchasing in App Store Connect under _Apps_ → _Yo
 
 After a user starts a win-back redemption flow on the App Store and opens your app, the RevenueCat SDK will call the `PurchasesDelegate.purchases(readyForPromotedProduct:startPurchase)` delegate function to let your app know that the user has started a redemption flow. Your app should then perform any actions it needs to do before the redemption flow continues. When your app is ready for the user to complete the redemption flow, you should call the `startPurchase` callback provided in the `readyForPromotedProduct` function.
 
-import streamlinedPurchasingDisabled from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offer-redemption-app-store-streamlined-purchasing-disabled.swift";
+import streamlinedPurchasingDisabled from "@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offer-redemption-app-store-streamlined-purchasing-disabled.swift?raw";
 
 <RCCodeBlock
   tabs={[
@@ -334,6 +334,7 @@ In addition to the steps mentioned above to configure your win-back offer, we re
 2. Enable [Apple App Store Notifications](https://www.revenuecat.com/docs/platform-resources/server-notifications/apple-server-notifications) so that RevenueCat can be notified of win-back offers redeemed through the App Store, even if the user does not open your app.
 
 #### Redeeming a Win-Back Offer With a Unique Win-Back Offer URL
+
 Apple generates a unique URL for your win-back offer upon creation, which you can find on the offer's page in App Store Connect. This URL uses the format `https://apps.apple.com/win-back/{win_back_offer_id}`. Eligible subscribers can use this URL to redeem the win-back offer in your app.
 
 ![Win-Back Offer URL in App Store Connect](/images/win-back-offers/win-back-offer-url-app-store-connect.png)
@@ -344,13 +345,13 @@ When a user redeems a win-back offer using a custom URL, the win-back offer will
 
 You can display win-back offers to subscribers on your paywall for users to redeem using iOS SDK versions 5.10+. After configuring your win-back offers, you can use our SDK to fetch the win-back offers that a subscriber is eligible for for a given product:
 
-import fetchEligibleWinbacks from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers.swift";
-import fetchEligibleWinbacksReactNative from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers-react-native.ts";
-import fetchEligibleWinbacksFlutter from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers-flutter.dart";
-import fetchEligibleWinbacksCordova from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers-cordova.js";
-import fetchEligibleWinBacksCapacitor from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers-capacitor.ts";
-import fetchEligibleWinBacksKMP from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers-kmp.kt";
-import fetchEligibleWinBacksUnity from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers-unity.cs";
+import fetchEligibleWinbacks from "@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers.swift?raw";
+import fetchEligibleWinbacksReactNative from "@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers-react-native.ts.txt?raw";
+import fetchEligibleWinbacksFlutter from "@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers-flutter.dart?raw";
+import fetchEligibleWinbacksCordova from "@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers-cordova.js.txt?raw";
+import fetchEligibleWinBacksCapacitor from "@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers-capacitor.ts.txt?raw";
+import fetchEligibleWinBacksKMP from "@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers-kmp.kt?raw";
+import fetchEligibleWinBacksUnity from "@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-fetch-eligible-winback-offers-unity.cs?raw";
 
 <RCCodeBlock
   tabs={[
@@ -398,13 +399,13 @@ Note: The `eligibleWinBackOffers` function only returns the win-back offers that
 
 Once the user has selected a win-back offer that they'd like to redeem, you can purchase it with the SDK:
 
-import purchaseWinbackOffer from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer.swift";
-import purchaseWinbackOfferReactNative from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer-react-native.ts";
-import purchaseWinbackOfferFlutter from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer-flutter.dart";
-import purchaseWinbackOfferCordova from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer-cordova.js";
-import purchaseWinbackOfferCapacitor from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer-capacitor.ts";
-import purchaseWinbackOfferKMP from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer-kmp.kt";
-import purchaseWinbackOfferUnity from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer-unity.cs";
+import purchaseWinbackOffer from "@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer.swift?raw";
+import purchaseWinbackOfferReactNative from "@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer-react-native.ts.txt?raw";
+import purchaseWinbackOfferFlutter from "@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer-flutter.dart?raw";
+import purchaseWinbackOfferCordova from "@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer-cordova.js.txt?raw";
+import purchaseWinbackOfferCapacitor from "@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer-capacitor.ts.txt?raw";
+import purchaseWinbackOfferKMP from "@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer-kmp.kt?raw";
+import purchaseWinbackOfferUnity from "@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offers-purchase-winback-offer-unity.cs?raw";
 
 <RCCodeBlock
   tabs={[
@@ -452,7 +453,7 @@ For more information on displaying and purchasing products on your paywall, chec
 
 You can also redeem win-back offers in a [StoreKit StoreView](https://developer.apple.com/documentation/storekit/storeview) with the following SwiftUI code:
 
-import winbackOfferStoreKitStoreView from "!!raw-loader!@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offer-storekit-storeview.swift";
+import winbackOfferStoreKitStoreView from "@site/code_blocks/subscription-guidance/subscription-offers/ios-winback-offer-storekit-storeview.swift?raw";
 
 <RCCodeBlock
   tabs={[

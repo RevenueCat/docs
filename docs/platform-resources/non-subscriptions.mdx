@@ -22,7 +22,7 @@ Although RevenueCat is primarily used to handle subscription purchases, our SDK 
 |   iOS    |                           Consumables, non-consumables, non-renewing subscriptions                            |
 | Android  |                                    Consumables, non-renewing subscriptions                                    |
 |  Stripe  | One-time purchases supported when using [Stripe Checkout](/web/integrations/stripe#one-time-stripe-purchases) |
-|  Paddle  |                                     One-time purchases supported                                              |
+|  Paddle  |                                         One-time purchases supported                                          |
 
 :::warning Google Play Store IAPs
 
@@ -65,7 +65,7 @@ If you haven't already, you'll need to set up products in the respective app sto
 
 Attach your products to each package, and you're ready to use to Purchases SDK to display your offering. On iOS, you could fetch the offering like this:
 
-import content1 from "!!raw-loader!@site/code_blocks/platform-resources/non-subscriptions_1.swift";
+import content1 from "@site/code_blocks/platform-resources/non-subscriptions_1.swift?raw";
 
 <RCCodeBlock
   tabs={[
@@ -80,7 +80,7 @@ For more information displaying products, check out the [Displaying Products](/g
 
 When you're ready to purchase one of the coin packages, pass the package object to the Purchases SDK, like the following:
 
-import content2 from "!!raw-loader!@site/code_blocks/platform-resources/non-subscriptions_2.swift";
+import content2 from "@site/code_blocks/platform-resources/non-subscriptions_2.swift?raw";
 
 <RCCodeBlock
   tabs={[
