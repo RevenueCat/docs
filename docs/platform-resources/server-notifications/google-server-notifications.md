@@ -24,7 +24,7 @@ You can enable it [here](https://console.cloud.google.com/flows/enableapi?apiid=
 - Where: RevenueCat Dashboard
 - Project Page ➡️ Google Play App Settings
 
-Directly beneath where the Service Credentials JSON object is added, a list of possible Pub/Sub topics to use will be visible. You can either choose an existing one, or let RevenueCat create a new one. 
+Directly beneath where the Service Credentials JSON object is added, a list of possible Pub/Sub topics to use will be visible. You can either choose an existing one, or let RevenueCat create a new one.
 
 Click '**Connect to Google**'. You should see a generated Google Cloud Pub/Sub Topic ID, as in the image below. If you don’t, try refreshing the page to get it to populate. Copy this topic ID to your clipboard.
 

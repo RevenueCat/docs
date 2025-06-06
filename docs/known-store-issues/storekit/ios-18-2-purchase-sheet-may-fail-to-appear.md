@@ -2,8 +2,8 @@
 title: iOS 18.2.X Purchase Sheet May Fail to Appear
 ---
 
-
 ## Resolved
+
 Apple has resolved this issue, and it is not present in iOS 18.3 and above. The issue is still present in iOS 18.2.X. We are keeping this page for historical reference.
 
 ## Issue Description
@@ -16,6 +16,7 @@ iOS 18.2 introduced a bug which prevents the payment sheet from being displayed 
 - iOS 18.2.1
 
 ## Symptoms
+
 - Calling any of RevenueCat's `purchase` functions on iOS 18.2.X will fail to present a purchase sheet.
 - StoreKit prints the following error message in the console when the purchase sheet fails to appear: `Could not get confirmation scene ID for`
 
@@ -34,6 +35,7 @@ To work around the issue:
 If your app manifests the issue but these workarounds do not apply to your view structure, make sure your root view controller is part of the view hierarchy when initiating a purchase.
 
 ## Apple Feedback
+
 We've filed a Feedback ticket for this issue with Apple. If you create a Feedback ticket for this issue, please consider mentioning our Feedback ticket, FB16114787, to assist Apple's engineers in connecting the tickets.
 
 ## Impact on App Store Review
