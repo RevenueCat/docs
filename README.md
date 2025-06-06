@@ -103,6 +103,12 @@ import content from "@site/code_blocks/welcome/getting_started.swift?raw";
 />;
 ```
 
+**Please note:** `.ts` and `.js` files are unsupported. Please add the plain text `.txt` suffix to these snippets, and reference like:
+
+```
+import content from "@site/code_blocks/welcome/getting_started.ts.txt?raw";
+```
+
 **Supported Languages**: Check `RCCodeBlock.languages` for available syntax highlighting.
 
 ### YouTube Embeds
