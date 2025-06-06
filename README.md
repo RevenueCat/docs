@@ -85,7 +85,7 @@ docusaurus/
 For tabbed code blocks, use the global `RCCodeBlock` component in `.mdx` files:
 
 ```jsx
-import content from "!!raw-loader!@site/code_blocks/welcome/getting_started.swift";
+import content from "@site/code_blocks/welcome/getting_started.swift?raw";
 
 <RCCodeBlock
   tabs={[
