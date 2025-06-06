@@ -47,7 +47,7 @@ Click "Add Package". The library should have been added to the Package Dependenc
 
 To always use the latest release, add the following to your Podfile:
 
-import iosPodfileContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_1.ruby";
+import iosPodfileContent from "@site/code_blocks/getting-started/installation/ios_1.ruby?raw";
 
 <RCCodeBlock
   tabs={[{ type: "ruby", content: iosPodfileContent, name: "Podfile" }]}
@@ -55,13 +55,13 @@ import iosPodfileContent from "!!raw-loader!@site/code_blocks/getting-started/in
 
 Alternatively, pin to a specific minor version:
 
-import iosRubyContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_2.ruby";
+import iosRubyContent from "@site/code_blocks/getting-started/installation/ios_2.ruby?raw";
 
 <RCCodeBlock tabs={[{ type: "ruby", content: iosRubyContent, name: "Ruby" }]} />
 
 And then run:
 
-import iosTerminalContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_3.ruby";
+import iosTerminalContent from "@site/code_blocks/getting-started/installation/ios_3.ruby?raw";
 
 <RCCodeBlock
   tabs={[{ type: "ruby", content: iosTerminalContent, name: "Terminal" }]}
@@ -73,7 +73,7 @@ This will add `RevenueCat.framework` to your workspace.
 
 To always use the latest release, add the following to your Cartfile:
 
-import iosCartfileContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_4.txt";
+import iosCartfileContent from "@site/code_blocks/getting-started/installation/ios_4.txt?raw";
 
 <RCCodeBlock
   tabs={[{ type: "text", content: iosCartfileContent, name: "Cartfile" }]}
@@ -81,7 +81,7 @@ import iosCartfileContent from "!!raw-loader!@site/code_blocks/getting-started/i
 
 Alternatively, pin to a specific minor version:
 
-import iosTextContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_5.txt";
+import iosTextContent from "@site/code_blocks/getting-started/installation/ios_5.txt?raw";
 
 <RCCodeBlock tabs={[{ type: "text", content: iosTextContent, name: "Text" }]} />
 
@@ -90,7 +90,7 @@ import iosTextContent from "!!raw-loader!@site/code_blocks/getting-started/insta
 If you're using Carthage version >= 0.37, you can use RevenueCat as an XCFramework instead of a Universal Framework. This makes setup easier, since you don't have to set up build phases at all.
 To use XCFrameworks with Carthage, you need to pass in `--use-xcframeworks`.
 
-import iosShellContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_6.shell";
+import iosShellContent from "@site/code_blocks/getting-started/installation/ios_6.shell?raw";
 
 <RCCodeBlock
   tabs={[{ type: "shell", content: iosShellContent, name: "Terminal" }]}
@@ -106,7 +106,7 @@ Under certain configurations, when debugging your app, using `po` to print objec
 
 Run:
 
-import iosTextContent2 from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_7.txt";
+import iosTextContent2 from "@site/code_blocks/getting-started/installation/ios_7.txt?raw";
 
 <RCCodeBlock
   tabs={[{ type: "text", content: iosTextContent2, name: "Text" }]}
@@ -120,8 +120,8 @@ You may need to add an empty Swift file and a bridging header to your project be
 
 You should now be able to `import RevenueCat`.
 
-import iosSwiftContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_8.swift";
-import iosObjectiveCContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ios_9.m";
+import iosSwiftContent from "@site/code_blocks/getting-started/installation/ios_8.swift?raw";
+import iosObjectiveCContent from "@site/code_blocks/getting-started/installation/ios_9.m?raw";
 
 <RCCodeBlock
   tabs={[

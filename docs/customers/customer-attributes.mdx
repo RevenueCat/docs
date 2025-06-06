@@ -27,14 +27,14 @@ For security reasons, attributes cannot be fetched from the SDK. To read attribu
 
 Attributes for a Customer can be set through the SDK by passing a dictionary of strings to the `setAttributes()` method on the shared Purchases instance.
 
-import content1 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_1.swift";
-import content2 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_2.m";
-import content3 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_3.kt";
-import content4 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_4.java";
-import content5 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_5.js";
-import content6 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_6.js";
-import content7 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_7.cs";
-import content26 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_26.js";
+import content1 from "@site/code_blocks/customers/subscriber-attributes_1.swift?raw";
+import content2 from "@site/code_blocks/customers/subscriber-attributes_2.m?raw";
+import content3 from "@site/code_blocks/customers/subscriber-attributes_3.kt?raw";
+import content4 from "@site/code_blocks/customers/subscriber-attributes_4.java?raw";
+import content5 from "@site/code_blocks/customers/subscriber-attributes_5.js.txt?raw";
+import content6 from "@site/code_blocks/customers/subscriber-attributes_6.js.txt?raw";
+import content7 from "@site/code_blocks/customers/subscriber-attributes_7.cs?raw";
+import content26 from "@site/code_blocks/customers/subscriber-attributes_26.js.txt?raw";
 
 <RCCodeBlock
   tabs={[
@@ -104,7 +104,7 @@ Attribute keys beginning with `$` are reserved for RevenueCat. The current list 
 #### General
 
 | Key                              | Description                                                                                                                                                                                 |
-| :------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------                             |
+| :------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `$displayName`                   | Name that should be used to reference the user                                                                                                                                              |
 | `$apnsTokens`                    | Apple push notification tokens for the user.                                                                                                                                                |
 | `$fcmTokens`                     | Google push notification tokens for the user.                                                                                                                                               |
@@ -228,13 +228,13 @@ Once attribution data is set for a subscriber, it can't be changed. This way att
 
 Reserved attributes can be written directly by setting the key (don't forget the `$` prefix) or with special helper methods:
 
-import content8 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_8.swift";
-import content23 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_23.m";
-import content9 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_9.kt";
-import content10 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_10.js";
-import content11 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_11.js";
-import content12 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_12.cs";
-import content27 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_27.js";
+import content8 from "@site/code_blocks/customers/subscriber-attributes_8.swift?raw";
+import content23 from "@site/code_blocks/customers/subscriber-attributes_23.m?raw";
+import content9 from "@site/code_blocks/customers/subscriber-attributes_9.kt?raw";
+import content10 from "@site/code_blocks/customers/subscriber-attributes_10.js.txt?raw";
+import content11 from "@site/code_blocks/customers/subscriber-attributes_11.js.txt?raw";
+import content12 from "@site/code_blocks/customers/subscriber-attributes_12.cs?raw";
+import content27 from "@site/code_blocks/customers/subscriber-attributes_27.js.txt?raw";
 
 <RCCodeBlock
   tabs={[
@@ -275,12 +275,12 @@ import content27 from "!!raw-loader!@site/code_blocks/customers/subscriber-attri
 
 Push tokens can be used to engage with your users through Apple apns or Google cloud messaging. These can be saved in RevenueCat through system callbacks after the user accepts the push notification permissions in your app.
 
-import content13 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_13.swift";
-import content24 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_24.m";
-import content14 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_14.kt";
-import content15 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_15.js";
-import content16 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_16.js";
-import content17 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_17.cs";
+import content13 from "@site/code_blocks/customers/subscriber-attributes_13.swift?raw";
+import content24 from "@site/code_blocks/customers/subscriber-attributes_24.m?raw";
+import content14 from "@site/code_blocks/customers/subscriber-attributes_14.kt?raw";
+import content15 from "@site/code_blocks/customers/subscriber-attributes_15.js.txt?raw";
+import content16 from "@site/code_blocks/customers/subscriber-attributes_16.js.txt?raw";
+import content17 from "@site/code_blocks/customers/subscriber-attributes_17.cs?raw";
 
 <RCCodeBlock
   tabs={[
@@ -315,13 +315,13 @@ import content17 from "!!raw-loader!@site/code_blocks/customers/subscriber-attri
 
 Any attribute can be cleared by passing `null` or an empty string as the key value. If you plan to set this attribute immediately, we recommend you call syncAttributesAndOfferingsIfNeeded() to push this change to our backend faster. Individual attributes can also be cleared for a specific user in their [customer view](/dashboard-and-metrics/customer-history/basic-information).
 
-import content18 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_18.swift";
-import content25 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_25.m";
-import content19 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_19.kt";
-import content20 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_20.js";
-import content21 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_21.js";
-import content22 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_22.cs";
-import content28 from "!!raw-loader!@site/code_blocks/customers/subscriber-attributes_28.js";
+import content18 from "@site/code_blocks/customers/subscriber-attributes_18.swift?raw";
+import content25 from "@site/code_blocks/customers/subscriber-attributes_25.m?raw";
+import content19 from "@site/code_blocks/customers/subscriber-attributes_19.kt?raw";
+import content20 from "@site/code_blocks/customers/subscriber-attributes_20.js.txt?raw";
+import content21 from "@site/code_blocks/customers/subscriber-attributes_21.js.txt?raw";
+import content22 from "@site/code_blocks/customers/subscriber-attributes_22.cs?raw";
+import content28 from "@site/code_blocks/customers/subscriber-attributes_28.js.txt?raw";
 
 <RCCodeBlock
   tabs={[

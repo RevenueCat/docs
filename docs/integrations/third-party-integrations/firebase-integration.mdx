@@ -49,7 +49,7 @@ When connecting to Firebase, it's possible that you may see an error like:
 
 You should make sure to use the Firebase UID as the RevenueCat app user ID when setting the Firebase user identity in RevenueCat. This step is optional, but highly recommended as a best practice for the Google Analytics portion of this integration. The Firebase Extension portion **requires** this step to be completed.
 
-import swiftContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_1.swift";
+import swiftContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_1.swift?raw";
 
 <RCCodeBlock tabs={[{ type: "swift", content: swiftContent }]} />
 
@@ -61,7 +61,7 @@ In order to send subscriber lifecycle events to Google Analytics, you must set t
 
 Please ensure you're getting the app instance ID from the [Firebase Analytics](https://firebase.google.com/docs/analytics/get-started) package.
 
-import swiftContent2 from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_2.swift";
+import swiftContent2 from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_2.swift?raw";
 
 <RCCodeBlock tabs={[{ type: "swift", content: swiftContent2 }]} />
 
@@ -149,7 +149,7 @@ You will be charged a small amount (typically around $0.01/month) for the Fireba
 
 Set your security rules so that only authenticated users can access customer information, and that each user can only access their own information.
 
-import firebaseRules from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_3.js";
+import firebaseRules from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_3.js.txt?raw";
 
 <RCCodeBlock tabs={[{ type: "js", content: firebaseRules }]} />
 
@@ -313,12 +313,12 @@ Navigate to your Firebase dashboard > Firestore Database to find events sent for
 
 Below are sample JSONs that are delivered to Firestore Database for each event type.
 
-import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_4.json";
-import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_5.json";
-import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_6.json";
-import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_7.json";
-import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_8.json";
-import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_9.json";
+import initialPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_4.json?raw";
+import trialStartedContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_5.json?raw";
+import trialCancelledContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_6.json?raw";
+import trialConvertedContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_7.json?raw";
+import renewalContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_8.json?raw";
+import cancellationContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_9.json?raw";
 
 <RCCodeBlock
   tabs={[
@@ -331,13 +331,13 @@ import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/thi
   ]}
 />
 
-import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_10.json";
-import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_11.json";
-import subscriptionPausedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_12.json";
-import expirationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_13.json";
-import billingIssuesContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_14.json";
-import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_15.json";
-import transferContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_16.json";
+import uncancellationContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_10.json?raw";
+import nonSubscriptionPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_11.json?raw";
+import subscriptionPausedContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_12.json?raw";
+import expirationContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_13.json?raw";
+import billingIssuesContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_14.json?raw";
+import productChangeContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_15.json?raw";
+import transferContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_16.json?raw";
 
 <RCCodeBlock
   tabs={[
@@ -365,7 +365,7 @@ import transferContent from "!!raw-loader!@site/code_blocks/integrations/third-p
 
 To check access to entitlements, you can either [use the RevenueCat SDK](/getting-started/quickstart#10-get-subscription-status) or use Firebase Authentication custom claims. For example, to check whether the current user has access to an entitlement called `premium`, you could use the following Firebase code:
 
-import jsContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_17.js";
+import jsContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_17.js.txt?raw";
 
 <RCCodeBlock tabs={[{ type: "js", content: jsContent }]} />
 
@@ -373,7 +373,7 @@ import jsContent from "!!raw-loader!@site/code_blocks/integrations/third-party-i
 
 To list a user's active subscriptions, you could use the following Firebase code:
 
-import jsContent2 from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/firebase-integration_18.js";
+import jsContent2 from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_18.js.txt?raw";
 
 <RCCodeBlock tabs={[{ type: "js", content: jsContent2 }]} />
 

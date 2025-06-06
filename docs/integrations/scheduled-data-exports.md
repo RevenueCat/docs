@@ -133,13 +133,13 @@ However, handling transaction updates can be tricky, so consider these tips to m
 
 You can use the following sample queries (written in Postgresql) as starting points for reproducing common RevenueCat measures.
 
-import activeTrialsContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_1.pgsql";
-import activeSubscriptionsContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_2.pgsql";
-import revenueContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_3.pgsql";
-import mrrContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_12.pgsql";
-import mrrMovementContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_11.pgsql";
-import activeSubscriptionsMovementContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_10.pgsql";
-import subscriptionRetentionContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_14.pgsql";
+import activeTrialsContent from '@site/code_blocks/integrations/scheduled-data-exports_1.pgsql?raw';
+import activeSubscriptionsContent from '@site/code_blocks/integrations/scheduled-data-exports_2.pgsql?raw';
+import revenueContent from '@site/code_blocks/integrations/scheduled-data-exports_3.pgsql?raw';
+import mrrContent from '@site/code_blocks/integrations/scheduled-data-exports_12.pgsql?raw';
+import mrrMovementContent from '@site/code_blocks/integrations/scheduled-data-exports_11.pgsql?raw';
+import activeSubscriptionsMovementContent from '@site/code_blocks/integrations/scheduled-data-exports_10.pgsql?raw';
+import subscriptionRetentionContent from '@site/code_blocks/integrations/scheduled-data-exports_14.pgsql?raw';
 
 <RCCodeBlock tabs={[
 { type: 'pgsql', content: activeSubscriptionsContent, name: 'Active Subscriptions' },
@@ -155,13 +155,13 @@ import subscriptionRetentionContent from "!!raw-loader!@site/code_blocks/integra
 
 Scheduled Data Exports are a powerful way to add your own customizations on top of the core measures provided by RevenueCat. Check out the following sample queries (written in Postgresql) for some ideas.
 
-import activeSubsByCustomAttributeContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_4.pgsql";
-import activeSubsByAutoRenewStatusContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_9.pgsql";
-import weeklyRevenueContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_5.pgsql";
-import realizedLTVSegmentsContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_6.pgsql";
-import activeTrialsByGracePeriodStatusContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_7.pgsql";
-import realizedLTVPerPayingCustomerByFirstPurchaseDateContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_8.pgsql";
-import trialConversionRatebyTrialEndDate from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports_13.pgsql";
+import activeSubsByCustomAttributeContent from '@site/code_blocks/integrations/scheduled-data-exports_4.pgsql?raw';
+import activeSubsByAutoRenewStatusContent from '@site/code_blocks/integrations/scheduled-data-exports_9.pgsql?raw';
+import weeklyRevenueContent from '@site/code_blocks/integrations/scheduled-data-exports_5.pgsql?raw';
+import realizedLTVSegmentsContent from '@site/code_blocks/integrations/scheduled-data-exports_6.pgsql?raw';
+import activeTrialsByGracePeriodStatusContent from '@site/code_blocks/integrations/scheduled-data-exports_7.pgsql?raw';
+import realizedLTVPerPayingCustomerByFirstPurchaseDateContent from '@site/code_blocks/integrations/scheduled-data-exports_8.pgsql?raw';
+import trialConversionRatebyTrialEndDate from '@site/code_blocks/integrations/scheduled-data-exports_13.pgsql?raw';
 
 <RCCodeBlock tabs={[
 { type: 'pgsql', content: activeSubsByCustomAttributeContent, name: 'Active Subs by Custom Attribute' },
