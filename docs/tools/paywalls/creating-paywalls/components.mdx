@@ -53,12 +53,18 @@ Each text component can be configured to use a different font family of your pre
 
 - System fonts
 - Any of `sans-serif`, `serif`, or `monospace`
-- Custom fonts already included in your app
+- Custom fonts you upload to RevenueCat
 
-[Learn more about setting custom fonts.](/tools/paywalls/displaying-paywalls#custom-fonts)
+To upload a custom font, click the gear icon next to the font family property to open the font modal. From there, you can upload a font file, and then select it as the font family for any text component.
 
-:::info Previewing custom fonts
-The Dashboard does not yet support previewing custom fonts. Instead, you'll see the system font in the dashboard preview for all text components.
+![Font modal](/images/paywalls-font-modal.png)
+
+The available font weights in the paywall editor will be determined by the weights you upload for each font family, so be sure to upload each font weight you wish to use on your paywall.
+
+The fonts you upload to to RevenueCat will be available to use in any text component on any paywall in your Project. When a paywall is displayed in your app for customers that uses a custom font, the font will be displayed directly from the file you've uploaded to RevenueCat.
+
+:::info Improving font loading performance
+You can reduce loading times and improve performance on Android by adding the font to your app's resources. Click the three horizontal dots to the left of the upload button in the font modal to open the modal for specifying each font family's resource name.
 :::
 
 ### Font size
