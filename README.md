@@ -105,7 +105,7 @@ import content from "@site/code_blocks/welcome/getting_started.swift?raw";
 
 **Please note:** `.ts` and `.js` files are unsupported. Please add the plain text `.txt` suffix to these snippets, and reference like:
 
-```
+```jsx
 import content from "@site/code_blocks/welcome/getting_started.ts.txt?raw";
 ```
 
