@@ -301,7 +301,13 @@ const offeringsCategory = Category({
         }),
       ],
     }),
-    Page({ slug: "offerings/virtual-currency" }),
+    SubCategory({
+      label: "Virtual Currency",
+      slug: "offerings/virtual-currency",
+      itemsPathPrefix: "offerings/virtual-currency/",
+      items: [Page({ slug: "subscriptions" }), Page({ slug: "refunds" })],
+    }),
+    //Page({ slug: "offerings/virtual-currency" }),
     Page({ slug: "offerings/troubleshooting" }),
   ],
 });
