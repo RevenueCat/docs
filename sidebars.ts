@@ -116,9 +116,9 @@ const paywallsCategory = Category({
   itemsPathPrefix: "",
   items: [
     SubCategory({
-      label: "RevenueCat Paywalls v2 (Beta)",
-      slug: "tools/paywalls-v2",
-      itemsPathPrefix: "tools/paywalls-v2/",
+      label: "RevenueCat Paywalls",
+      slug: "tools/paywalls",
+      itemsPathPrefix: "tools/paywalls/",
       items: [
         Page({ slug: "installation" }),
         SubCategory({
@@ -140,9 +140,9 @@ const paywallsCategory = Category({
       ],
     }),
     SubCategory({
-      label: "RevenueCat Paywalls",
-      slug: "tools/paywalls",
-      itemsPathPrefix: "tools/paywalls/",
+      label: "RevenueCat Paywalls (Legacy)",
+      slug: "tools/paywalls-legacy",
+      itemsPathPrefix: "tools/paywalls-legacy/",
       items: [
         Page({ slug: "installation" }),
         Page({ slug: "creating-paywalls" }),
@@ -818,8 +818,10 @@ const knownStoreIssuesCategory = Category({
       items: [
         Page({ slug: "ios-18-4-simulator-fails-to-load-products" }),
         Page({ slug: "ios-18-4-canceled-state-after-successful-purchase" }),
-        Page({ slug: "ios-18-purchase-fails-due-to-failed-storekitdaemon-connection" }),
-        Page({ slug: "ios-18-2-purchase-sheet-may-fail-to-appear" })
+        Page({
+          slug: "ios-18-purchase-fails-due-to-failed-storekitdaemon-connection",
+        }),
+        Page({ slug: "ios-18-2-purchase-sheet-may-fail-to-appear" }),
       ],
     }),
   ],
