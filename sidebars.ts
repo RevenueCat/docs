@@ -307,7 +307,6 @@ const offeringsCategory = Category({
       itemsPathPrefix: "offerings/virtual-currency/",
       items: [Page({ slug: "subscriptions" }), Page({ slug: "refunds" })],
     }),
-    //Page({ slug: "offerings/virtual-currency" }),
     Page({ slug: "offerings/troubleshooting" }),
   ],
 });

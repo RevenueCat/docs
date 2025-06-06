@@ -145,7 +145,7 @@ When a subscription that granted virtual currency is refunded, RevenueCat will:
 Partial refunds are not reliably detected for Google Play and may not affect the currency balance. Learn more in our [refunds doc](/offerings/virtual-currency/refunds).
 :::
 
-If you are also using one-time purchases (OTPs), refer to our [refunds documentation](/offerings/virtual-currency/refunds) for more details on how those are treated.
+If you are also using one-time purchases, refer to our [refunds documentation](/offerings/virtual-currency/refunds) for more details on how those are treated.
 
 ## Grace Periods and Billing Recovery
 
