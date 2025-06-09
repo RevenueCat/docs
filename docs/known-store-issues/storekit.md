@@ -8,9 +8,9 @@ This section covers known issues specifically related to Apple's StoreKit framew
 
 ## Current Issues
 
-- [iOS 18.4+ Simulator Fails to Load Products](storekit/ios-18-4-simulator-fails-to-load-products)
 
 ## Resolved Issues
+- [iOS 18.4-26 Simulator Fails to Load Products](storekit/ios-18-4-simulator-fails-to-load-products)
 - [iOS 18.3.1-18.5 Canceled State After Successful Purchase](storekit/ios-18-4-canceled-state-after-successful-purchase)
 - [iOS 18.0-18.3.2 Purchases May Fail Due to StoreKit Daemon Connection Issue](storekit/ios-18-purchase-fails-due-to-failed-storekitdaemon-connection)
 - [iOS 18.2.-18.2.1 Purchase Sheet May Fail to Appear](storekit/ios-18-2-purchase-sheet-may-fail-to-appear)
