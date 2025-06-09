@@ -57,17 +57,19 @@
   --ifm-color-success-contrast-background: #f6fefb;
   --ifm-color-success-contrast-foreground: #000000;
 
-  --ifm-heading-font-family: "Object Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",
-    sans-serif;
-  --ifm-heading-font-family: "Object Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",
-    sans-serif;
+  --ifm-heading-font-family:
+    "Object Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --ifm-heading-font-family:
+    "Object Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
-  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --ifm-font-family-base:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,
+    Cantarell, "Helvetica Neue", sans-serif;
+  --ifm-font-family-base:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,
+    Cantarell, "Helvetica Neue", sans-serif;
 
   --primary-action-color: rgb(87, 108, 219);
 
@@ -1002,7 +1004,7 @@ html[data-theme="dark"] .troubleshooting-wizard {
   }
 }
 
-html[data-theme=dark] {
+html[data-theme="dark"] {
   --action-primary: #7f94ff;
   --action-secondary: #c1c1c1;
   --action-disabled: #303030;
@@ -1033,4 +1035,30 @@ html[data-theme=dark] {
   --button-error-top: #d83f47;
   --button-error-bottom: #c42b33;
   --button-error-active: #e16b71;
+}
+
+/* Google Play Checklist - InteractiveCheckbox styles */
+.interactive-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.interactive-checkbox-input {
+  margin-top: 0.5em;
+  flex-shrink: 0;
+}
+
+.interactive-checkbox-content {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.interactive-checkbox-content ul {
+  margin: 0.4rem 0 0 1.25rem;
+  padding-left: 1rem;
+}
+
+.interactive-checkbox-content li {
+  margin-bottom: 0.2rem;
 }
