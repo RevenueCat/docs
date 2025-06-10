@@ -20,6 +20,7 @@ class ImageUsageAnalyzer:
         
         self.root_dir = Path(root_dir)
         self.docs_dir = self.root_dir / "docs"
+        self.src_dir = self.root_dir / "src"
         self.static_dir = self.root_dir / "static"
         self.icons_dir = self.static_dir / "icons"
         # Create image_analysis folder in the same directory as the script
@@ -35,10 +36,18 @@ class ImageUsageAnalyzer:
             r'<img[^>]+src=["\']([^"\']*?\.(?:png|jpg|jpeg|gif|svg|webp))["\'][^>]*>',
             # Background images in CSS/style attributes
             r'background-image:\s*url\(["\']?([^"\']*?\.(?:png|jpg|jpeg|gif|svg|webp))["\']?\)',
-            # Import statements in MDX files
+            # Import statements in MDX/JS/TS files
             r'import\s+.*?\s+from\s+["\']([^"\']*?\.(?:png|jpg|jpeg|gif|svg|webp))["\']',
             # require() statements
             r'require\(["\']([^"\']*?\.(?:png|jpg|jpeg|gif|svg|webp))["\']\)',
+            # ES6 dynamic imports
+            r'import\(["\']([^"\']*?\.(?:png|jpg|jpeg|gif|svg|webp))["\']\)',
+            # JSX src attributes (with proper boundaries)
+            r'\bsrc=["\']([^"\']*?\.(?:png|jpg|jpeg|gif|svg|webp))["\']',
+            # CSS-in-JS url() patterns
+            r'\burl\(["\']?([^"\']*?\.(?:png|jpg|jpeg|gif|svg|webp))["\']?\)',
+            # String literals in JS/TS that clearly reference images directory
+            r'["\']([^"\']*?/images/[^"\']*?\.(?:png|jpg|jpeg|gif|svg|webp))["\']',
         ]
         
         self.referenced_images = set()
@@ -94,35 +103,66 @@ class ImageUsageAnalyzer:
         return path
 
     def find_referenced_images(self) -> Set[str]:
-        """Find all image references in documentation files."""
-        print("🔍 Scanning docs directory for image references...")
+        """Find all image references in documentation and source files."""
+        print("🔍 Scanning for image references...")
         
         referenced_images = set()
+        total_files = 0
         
-        # Find all markdown and MDX files
-        doc_files = []
-        for pattern in ['**/*.md', '**/*.mdx']:
-            doc_files.extend(glob.glob(str(self.docs_dir / pattern), recursive=True))
-        
-        print(f"📄 Found {len(doc_files)} documentation files to scan")
-        
-        for file_path in doc_files:
-            try:
-                with open(file_path, 'r', encoding='utf-8') as f:
-                    content = f.read()
-                    
-                # Apply all image patterns
-                for pattern in self.image_patterns:
-                    matches = re.findall(pattern, content, re.IGNORECASE | re.MULTILINE)
-                    for match in matches:
-                        normalized_path = self.normalize_image_path(match)
-                        if normalized_path:
-                            referenced_images.add(normalized_path)
+        # Scan documentation files (markdown and MDX)
+        if self.docs_dir.exists():
+            print(f"   📄 Scanning docs directory...")
+            doc_files = []
+            for pattern in ['**/*.md', '**/*.mdx']:
+                doc_files.extend(glob.glob(str(self.docs_dir / pattern), recursive=True))
             
-            except Exception as e:
-                print(f"⚠️  Error reading {file_path}: {e}")
+            print(f"   📄 Found {len(doc_files)} documentation files")
+            total_files += len(doc_files)
+            
+            for file_path in doc_files:
+                try:
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                        
+                    # Apply all image patterns
+                    for pattern in self.image_patterns:
+                        matches = re.findall(pattern, content, re.IGNORECASE | re.MULTILINE)
+                        for match in matches:
+                            normalized_path = self.normalize_image_path(match)
+                            if normalized_path:
+                                referenced_images.add(normalized_path)
+                
+                except Exception as e:
+                    print(f"   ⚠️  Error reading {file_path}: {e}")
         
-        print(f"📊 Found {len(referenced_images)} unique image references in docs")
+        # Scan source files (JS, TS, JSX, TSX, CSS, SCSS)
+        if self.src_dir.exists():
+            print(f"   🔧 Scanning src directory...")
+            src_files = []
+            for pattern in ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx', '**/*.css', '**/*.scss']:
+                src_files.extend(glob.glob(str(self.src_dir / pattern), recursive=True))
+            
+            print(f"   🔧 Found {len(src_files)} source files")
+            total_files += len(src_files)
+            
+            for file_path in src_files:
+                try:
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                        
+                    # Apply all image patterns
+                    for pattern in self.image_patterns:
+                        matches = re.findall(pattern, content, re.IGNORECASE | re.MULTILINE)
+                        for match in matches:
+                            normalized_path = self.normalize_image_path(match)
+                            if normalized_path:
+                                referenced_images.add(normalized_path)
+                
+                except Exception as e:
+                    print(f"   ⚠️  Error reading {file_path}: {e}")
+        
+        print(f"📊 Scanned {total_files} total files")
+        print(f"📊 Found {len(referenced_images)} unique image references")
         return referenced_images
 
     def analyze_usage(self) -> Dict:
@@ -225,6 +265,7 @@ class ImageUsageAnalyzer:
             f.write("This analysis was performed using a corrected script that:\n")
             f.write("- Properly handles markdown image syntax with alt text\n")
             f.write("- Scans all .md and .mdx files in the /docs directory\n")
+            f.write("- Scans all .js, .jsx, .ts, .tsx, .css, .scss files in the /src directory\n")
             f.write("- Excludes images in the /static/icons directory\n")
             f.write("- Separates external images (http/https URLs) from local images\n")
             f.write("- Normalizes various image path formats\n\n")

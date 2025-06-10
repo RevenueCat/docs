@@ -17,7 +17,6 @@ images/974687c-AppsFlyer_Integration_d261e99446139d6cc9540f25f6d5ff30.png
 images/Powering-existing-subscriptions-with-RevenueCat-1_194c1e8056740df4787c4593253f8dc8.png
 images/Powering-existing-subscriptions-with-RevenueCat_c8255486885823df96391210b781734b.png
 images/a49a859b-invoice-details-expanded-65e93ca4f48e.png
-images/a9eeda94-video-placeholder-dark.png
 images/api-v2/1511106-Family_shared_subscriptions.png
 images/api-v2/1a8e689-Product_changes__upgrade_no_trial.png
 images/api-v2/312e3fd-Billing_issue__recovered.png
@@ -32,7 +31,6 @@ images/api-v2/dca8cda-Lapsed_subscription.png
 images/audit-logs/audit-logs-menu.png
 images/audit-logs/audit-logs-search.png
 images/b2b_usecase_screenshot_flow.png
-images/b52b1205-video-placeholder.png
 images/ba143ea-Screen_Shot_2022-11-30_at_3.39.08_PM_c2553527998d0b13518850b6f1652801.png
 images/bd6e034-Screen_Shot_2022-06-23_at_10.03.57_b687bb9058a5091285b2b222d4d616f7.png
 images/c640edd-image.png
@@ -42,7 +40,6 @@ images/customer-center/restore.png
 images/db42095-Screen_Shot_2022-11-16_at_3.28.33_PM_f4098e64180b29109c0aad33ca186bd3.png
 images/e8b40b7-Screenshot_2023-03-27_at_9.36.54_AM_8f73d87a407787e30c8f3cbf62da9f59.png
 images/e99ad62-Screen_Shot_2022-11-16_at_3.30.11_PM_bcabee81a896697ce6508da325bb416b.png
-images/ed3a1112-hero-dark.png
 images/embed_frameworks_after_carthage_1c6a63d57aaa71103d674cd19f383f7f.png
 images/embed_frameworks_before_carthage_87327ac0b343e9090e18fcadf8c05a3c.png
 images/external-purchases-api/0839207-Screenshot_2023-08-08_at_13.00.01.png
@@ -62,7 +59,6 @@ images/external-purchases-api/f3b21e7-Screenshot_2023-08-08_at_12.56.52.png
 images/f439ec3-Screen_Shot_2022-07-07_at_9.25.36_AM_9bff213fd6a598d2d1893bca2daa8568.png
 images/fac6fcb-Screen_Shot_2022-07-07_at_2.17.30_PM_fa3c3dd0da5bfde1e4a20df8fed7873a.png
 images/fb06e40-Screen_Shot_2020-07-01_at_6.12.53_PM_1af060245ecc584ec346645267c86b18.png
-images/fb71f38d-hero.png
 images/fd75ee9-resubscribe_6dcaac933ad21c0905514cd8fbc3d047.png
 images/giphy_0179515c509b9877036de55de496f5aa.gif
 images/giphy_3821cc63561fdb8de9c25b8592167535.gif
@@ -94,23 +90,8 @@ images/web-billing/customer-history-initial-purchase.png
 images/web-billing/download-page-redeem-purchase.png
 images/web-billing/stripe-webhooks.png
 images/web-billing/web-purchase-link-redirect-config.png
-img/beaker.svg
-img/card.svg
-img/charts.svg
-img/customer.svg
-img/dashboard.svg
-img/dollar.svg
 img/favicon-32x32.png
-img/flow-chart.svg
-img/github.svg
 img/logo-rc.svg
-img/right.svg
 img/social-preview.jpg
-img/stack.svg
-img/time.svg
-img/undraw_docusaurus_mountain.svg
 img/undraw_docusaurus_react.svg
 img/undraw_docusaurus_tree.svg
-img/white-logo.png
-img/x.svg
-img/youtube.svg

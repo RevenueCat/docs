@@ -3,9 +3,9 @@
 ## Summary
 
 - **Total images in static directory (excluding icons):** 782
-- **Local images referenced in docs:** 666
+- **Local images referenced in docs:** 685
 - **External images referenced in docs:** 12
-- **Unused images:** 116 (14.8%)
+- **Unused images:** 97 (12.4%)
 - **Missing local images:** 0
 
 ## Analysis Method
@@ -14,6 +14,7 @@ This analysis was performed using a corrected script that:
 
 - Properly handles markdown image syntax with alt text
 - Scans all .md and .mdx files in the /docs directory
+- Scans all .js, .jsx, .ts, .tsx, .css, .scss files in the /src directory
 - Excludes images in the /static/icons directory
 - Separates external images (http/https URLs) from local images
 - Normalizes various image path formats
@@ -41,9 +42,9 @@ These images exist in the static directory but are not referenced in any documen
 - images/Powering-existing-subscriptions-with-RevenueCat-1_194c1e8056740df4787c4593253f8dc8.png
 - images/Powering-existing-subscriptions-with-RevenueCat_c8255486885823df96391210b781734b.png
 - images/a49a859b-invoice-details-expanded-65e93ca4f48e.png
-- images/a9eeda94-video-placeholder-dark.png
+- images/api-v2/1511106-Family_shared_subscriptions.png
 
-... and 96 more (see unused_images.txt for complete list)
+... and 77 more (see unused_images.txt for complete list)
 
 ## External Images
 

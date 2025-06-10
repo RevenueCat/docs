@@ -302,6 +302,7 @@ images/a6c3ffd-app.revenuecat.com_projects_85ff18c7_integrations_intercom_9_8801
 images/a85a3f1-Screen_Shot_2018-12-13_at_4.15.50_PM_6d3a450d421855de0a04972cbc0542d9.png
 images/a8c5e19-Screen_Shot_2022-04-15_at_2.08.18_PM_619e3596f4922cb3f94a3b66553145a6.png
 images/a98c6b9-184212955-3e1a76a5-18fd-448f-9d01-d46f995fe989_5f1191432f5e075d3ee73c30d65b398b.png
+images/a9eeda94-video-placeholder-dark.png
 images/abdf69a-Screen_Shot_2020-12-01_at_11.58.59_AM_3afa4bc9c47bab90219891c9ab5dc05d.png
 images/ad2c8e64-webhook-testing-c841349f3b7e.png
 images/adc36bb-2020-06-17_22.04.49_app.mparticle.com_a4031d73e6bc_7980eed6bb90b8d00c5e36775b157a23.png
@@ -352,6 +353,7 @@ images/b4afeec-app.revenuecat.com_projects_85ff18c7_integrations_branch_8_9c3102
 images/b4cf119-Dev_Step1_b3da8ed237d19e23f6fe1af40fdedd6a.gif
 images/b4dbe03-93bdcaa-drop_APK_c5553a72db294b55ab5af76674117a77.png
 images/b5049b3-RealizedLTVperCustomer_50a08f06059694f52b9a694d8467eeff.png
+images/b52b1205-video-placeholder.png
 images/b540d1a-ed38e3b-start_test_d4d191e180e84dde16a6325bcbe1a2a2.png
 images/b55a6c3-2021-04-21_22.19.23_app.revenuecat.com_ddcdba140b92_d33bc0e1f5146769a8318dc245a90e08.png
 images/b6cf2ea-Screen_Shot_2020-06-26_at_3.15.20_PM_7ae89b0dddf6c7e4dc568f06c66a04ac.png
@@ -478,6 +480,7 @@ images/ebde1e5-2023-04-11_10.34.55_console.cloud.google.com_d098505dfb5c_copy_a6
 images/ec7cf2b-Screen_Shot_2022-07-07_at_9.37.59_AM_7038a18f55148668c83efaf96783b489.png
 images/eccabe0-app.revenuecat.com_projects_572548b2_apps_app75924793e7_0cb2e152f890b97ddd38b015bbed3721.png
 images/ed0cc07-image_e9c274c181538049ce738741df2da56a.png
+images/ed3a1112-hero-dark.png
 images/ed95ba8-app.revenuecat.com_projects_85ff18c7_integrations_intercom_5_c7bdc505d5dedc85fe46600828e310f1.png
 images/ede6b16-Screen_Shot_2023-01-18_at_9.11.44_AM_fe3957ca78143f78c6a7ed0a1f9fcee1.png
 images/entitlement_on_backend_screenshot.png
@@ -511,6 +514,7 @@ images/f97e8f5-TestNotif_0bce9b9a2dfb308f559aca6b662b3f63.gif
 images/f984dad-Screen_Shot_2020-12-01_at_12.00.09_PM_78e0b6a49039b8a856dd4f5325666dd0.png
 images/f999077-Screen_Shot_2021-06-09_at_10.45.44_AM_6bb6d3c3c0ac257f41704d362796cccd.png
 images/fa5ab45-app.revenuecat.com_projects_85ff18c7_collaborators_1_aeaeacd9a03cb5518a7ee0d45a266cc1.png
+images/fb71f38d-hero.png
 images/fba3a35-Screenshot_2023-03-21_at_10.54.52_499e0d4c200876ac2fb91f6174911865.png
 images/fd483c8-Screen_Shot_2019-04-17_at_3.32.04_PM_c4771d21690048eaebef7a2b81e1991d.png
 images/fd4e1ab-Screen_Shot_2021-12-01_at_11.23.21_AM_e62a0d7e6800a0a6bdf2b8e18a00d9ab.png
@@ -664,3 +668,18 @@ images/win-back-offers/select_test_transactions.jpg
 images/win-back-offers/test_transactions.jpg
 images/win-back-offers/win-back-offer-url-app-store-connect.png
 images/win-back-offers/win_back_offer_sk_message.png
+img/beaker.svg
+img/card.svg
+img/charts.svg
+img/customer.svg
+img/dashboard.svg
+img/dollar.svg
+img/flow-chart.svg
+img/github.svg
+img/right.svg
+img/stack.svg
+img/time.svg
+img/undraw_docusaurus_mountain.svg
+img/white-logo.png
+img/x.svg
+img/youtube.svg
