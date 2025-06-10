@@ -1,0 +1,12 @@
+https://files.readme.io/229d551-experiments-learn.webp
+https://files.readme.io/93dfcae-cross-platform-data.webp
+https://img.shields.io/github/release/RevenueCat/purchases-android.svg
+https://img.shields.io/github/release/RevenueCat/purchases-capacitor.svg
+https://img.shields.io/github/release/RevenueCat/purchases-flutter.svg
+https://img.shields.io/github/release/RevenueCat/purchases-ios.svg
+https://img.shields.io/github/release/RevenueCat/purchases-js.svg
+https://img.shields.io/github/release/RevenueCat/purchases-kmp.svg
+https://img.shields.io/github/release/RevenueCat/purchases-roku.svg
+https://img.shields.io/github/release/RevenueCat/purchases-unity.svg
+https://img.shields.io/github/release/RevenueCat/react-native-purchases.svg
+https://img.shields.io/github/v/release/RevenueCat/purchases-android.svg

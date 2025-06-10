@@ -20,7 +20,7 @@ First, navigate to your Project. Then, click on **Experiments** in the **Monetiz
 
 Select **+ New** to create a new experiment.
 
-![Creating a new experiment](../../../static/images/create_new_experiment_latest.png "Creating a new experiment")
+![Creating a new experiment](/images/create_new_experiment_latest.png "Creating a new experiment")
 
 :::info Setting up Offering(s) for your treatment
 
@@ -52,7 +52,7 @@ If you've not setup Placements yet, [start here](https://www.revenuecat.com/docs
 
 With Experiments, you can create A/B tests that serve unique Offerings at each Placement to your Control group and Treatment group.
 
-![Adding Placements to Experiments](../../../static/images/placements.png "Adding Placements to Experiments")
+![Adding Placements to Experiments](/images/placements.png "Adding Placements to Experiments")
 
 With Placements, your customers will be served an array of Offerings depending on the paywall location they visit, and with Experiments you can A/B test that experience by changing any element of that array.
 
