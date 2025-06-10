@@ -26,12 +26,19 @@ class ImageUsageAnalyzer:
         # Create image_analysis folder in the same directory as the script
         self.output_dir = script_dir / "image_analysis"
         
+        # Images to ignore in unused analysis (known to be used but not directly referenced)
+        self.ignored_images = {
+            'img/logo-rc.svg',  # Logo used in templates or other non-trackable ways
+        }
+        
         # FIXED image patterns to match various reference formats
         self.image_patterns = [
             # Standard markdown image syntax - FIXED to handle alt text after image path
             r'!\[.*?\]\(([^"\s)]+\.(?:png|jpg|jpeg|gif|svg|webp))(?:\s+"[^"]*")?\)',
             # Alternative markdown pattern that captures until space or quote
             r'!\[.*?\]\(([^"\s)]+\.(?:png|jpg|jpeg|gif|svg|webp))',
+            # Markdown links that point to image files (for clickable images)
+            r'(?<!!)\[.*?\]\(([^"\s)]+\.(?:png|jpg|jpeg|gif|svg|webp))(?:\s+"[^"]*")?\)',
             # HTML img tags
             r'<img[^>]+src=["\']([^"\']*?\.(?:png|jpg|jpeg|gif|svg|webp))["\'][^>]*>',
             # Background images in CSS/style attributes
@@ -175,9 +182,6 @@ class ImageUsageAnalyzer:
         # Find all referenced images in docs
         self.referenced_images = self.find_referenced_images()
         
-        # Find unused images
-        self.unused_images = self.static_images - self.referenced_images
-        
         # Separate external images from local references
         external_images = set()
         local_references = set()
@@ -188,6 +192,10 @@ class ImageUsageAnalyzer:
             else:
                 local_references.add(img)
         
+        # Find unused images (excluding ignored images)
+        unused_images_raw = self.static_images - local_references
+        self.unused_images = unused_images_raw - self.ignored_images
+        
         # Find missing images (local references that don't exist in static)
         missing_images = local_references - self.static_images
         
@@ -195,6 +203,8 @@ class ImageUsageAnalyzer:
         print(f"🗂️  Total images in static (excluding icons): {len(self.static_images)}")
         print(f"🔗 Local images referenced in docs: {len(local_references)}")
         print(f"🌐 External images referenced in docs: {len(external_images)}")
+        if self.ignored_images:
+            print(f"🙈 Ignored images (excluded from cleanup): {len(self.ignored_images)}")
         print(f"❌ Unused images: {len(self.unused_images)}")
         print(f"🚫 Missing local images: {len(missing_images)}")
         
@@ -203,12 +213,14 @@ class ImageUsageAnalyzer:
             'referenced_images': len(self.referenced_images),
             'local_referenced_images': len(local_references),
             'external_images': len(external_images),
+            'ignored_images': len(self.ignored_images),
             'unused_images': len(self.unused_images),
             'missing_images': len(missing_images),
             'static_images_list': sorted(self.static_images),
             'referenced_images_list': sorted(self.referenced_images),
             'local_referenced_images_list': sorted(local_references),
             'external_images_list': sorted(external_images),
+            'ignored_images_list': sorted(self.ignored_images),
             'unused_images_list': sorted(self.unused_images),
             'missing_images_list': sorted(missing_images)
         }
@@ -258,6 +270,8 @@ class ImageUsageAnalyzer:
             f.write(f"- **Total images in static directory (excluding icons):** {results['total_static_images']}\n")
             f.write(f"- **Local images referenced in docs:** {results['local_referenced_images']}\n")
             f.write(f"- **External images referenced in docs:** {results['external_images']}\n")
+            if results['ignored_images'] > 0:
+                f.write(f"- **Ignored images (excluded from cleanup):** {results['ignored_images']}\n")
             f.write(f"- **Unused images:** {results['unused_images']} ({results['unused_images']/results['total_static_images']*100:.1f}%)\n")
             f.write(f"- **Missing local images:** {results['missing_images']}\n\n")
             
@@ -266,7 +280,9 @@ class ImageUsageAnalyzer:
             f.write("- Properly handles markdown image syntax with alt text\n")
             f.write("- Scans all .md and .mdx files in the /docs directory\n")
             f.write("- Scans all .js, .jsx, .ts, .tsx, .css, .scss files in the /src directory\n")
+            f.write("- Detects both image syntax (![...]) and link syntax ([...]) pointing to images\n")
             f.write("- Excludes images in the /static/icons directory\n")
+            f.write("- Excludes specific ignored images (logos, etc.) from cleanup analysis\n")
             f.write("- Separates external images (http/https URLs) from local images\n")
             f.write("- Normalizes various image path formats\n\n")
             
@@ -285,6 +301,12 @@ class ImageUsageAnalyzer:
                     f.write(f"- {img}\n")
                 if len(results['external_images_list']) > 10:
                     f.write(f"\n... and {len(results['external_images_list']) - 10} more (see external_images.txt for complete list)\n")
+            
+            if results['ignored_images'] > 0:
+                f.write("\n## Ignored Images\n\n")
+                f.write("These images are excluded from cleanup analysis (known to be used):\n\n")
+                for img in results['ignored_images_list']:
+                    f.write(f"- {img}\n")
             
             if results['missing_images_list']:
                 f.write("\n## Missing Local Images\n\n")
