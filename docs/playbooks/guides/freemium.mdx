@@ -4,120 +4,102 @@ sidebar_label: Freemium Paywalls
 slug: freemium
 ---
 
-# Freemium Paywalls
+This guide walks through implementing and optimizing a Freemium strategy using RevenueCat, focusing on how to manage entitlements, display upgrade prompts, and convert free users into paying customers with minimal friction.
 
-This guide walks you through implementing a freemium monetization strategy using RevenueCat. In a freemium model, users can access basic features for free while premium features require a purchase.
+## When to use
 
-## Overview
+A freemium strategy provides value to users before asking them to pay. This model works well when:
 
-A freemium strategy provides value to users before asking them to pay, which can lead to:
+- Offer a clear and compelling upgrade path from free to paid (e.g., feature gating, usage limits)
+- Have low marginal costs per user (minimal server or infrastructure overhead)
+- Leverage freemium users as growth drivers through sharing, referrals, or collaboration
+- Face competitive pressure where users expect to try the core experience before subscribing
 
-- Higher user acquisition
-- Better user engagement
-- More organic growth through word-of-mouth
-- Increased willingness to pay for premium features
+## Before you start
 
-## Implementation Steps
+### 1. Define free features
 
-### 1. Plan Your Feature Tiers
+- Core functionality
+- Basic features that showcase value
+- Features that encourage engagement
 
-1. Define free features:
+### 2. Define premium features
 
-   - Core functionality
-   - Basic features that showcase value
-   - Features that encourage engagement
+- Advanced functionality
+- Enhanced user experience
+- Exclusive content or capabilities
 
-2. Define premium features:
-   - Advanced functionality
-   - Enhanced user experience
-   - Exclusive content or capabilities
+## Subscription Configuration Steps
 
-### 2. Configure Products and Entitlements
+Decide how many access tiers to offer based on your app's functionality and monetization goal.
 
-1. Set up your products in the App Store/Play Store
-2. Configure in RevenueCat:
-   ```swift
-   // Example entitlement mapping
-   "free_tier": [
-     // No products needed
-   ],
-   "premium_tier": [
-     "monthly_premium",
-     "annual_premium"
-   ]
-   ```
+### 1. Entitlements
 
-### 3. Implement Feature Gating
+For more information on how to set this up, please refer to our [entitlement setup documentation](https://www.revenuecat.com/docs/getting-started/entitlements).
 
-```swift
-// iOS Example
-class FeatureGate {
-    static func checkPremiumAccess(completion: @escaping (Bool) -> Void) {
-        Purchases.shared.getCustomerInfo { customerInfo, error in
-            let hasPremiumAccess = customerInfo?.entitlements["premium"]?.isActive == true
-            completion(hasPremiumAccess)
-        }
-    }
+![Screenshot](/images/playbooks/freemium/freemium-entitlements.png)
 
-    static func showUpgradePrompt() {
-        Purchases.shared.getOfferings { offerings, error in
-            if let offering = offerings?.current {
-                // Present your premium upgrade UI
-            }
-        }
-    }
-}
-```
+### 2. Products
 
-```kotlin
-// Android Example
-class FeatureGate {
-    fun checkPremiumAccess(completion: (Boolean) -> Unit) {
-        Purchases.sharedInstance.getCustomerInfo { customerInfo ->
-            val hasPremiumAccess = customerInfo.entitlements["premium"]?.isActive == true
-            completion(hasPremiumAccess)
-        }
-    }
+For more information on how to set this up, please refer to our [product setup documentation](https://www.revenuecat.com/docs/offerings/products-overview).
 
-    fun showUpgradePrompt() {
-        Purchases.sharedInstance.getOfferings { offerings ->
-            offerings.current?.let { offering ->
-                // Present your premium upgrade UI
-            }
-        }
-    }
-}
-```
+![Screenshot](/images/playbooks/freemium/freemium-products.png)
 
-### 4. Implement Premium Feature UI
+### 3. Offering
 
-```swift
-// iOS Example
-func showFeature() {
-    FeatureGate.checkPremiumAccess { isPremium in
-        if isPremium {
-            // Show premium feature
-        } else {
-            // Show feature preview with upgrade prompt
-            FeatureGate.showUpgradePrompt()
-        }
-    }
-}
-```
+For more information on how to set this up, please refer to our [offering setup documentation](https://www.revenuecat.com/docs/offerings/overview).
 
-```kotlin
-// Android Example
-fun showFeature() {
-    checkPremiumAccess { isPremium ->
-        if (isPremium) {
-            // Show premium feature
-        } else {
-            // Show feature preview with upgrade prompt
-            showUpgradePrompt()
-        }
-    }
-}
-```
+![Screenshot](/images/playbooks/freemium/freemium-offerings.png)
+
+![Screenshot](/images/playbooks/freemium/freemium-gold-offering.jpg)
+
+## Building your Paywall
+
+Now that you have everything set up, it's time to build your paywall. Take advantage of [RevenueCat's Paywalls](https://www.revenuecat.com/docs/tools/paywalls-v2) and start creating your own.
+
+![Screenshot](/images/playbooks/freemium/freemium-paywall-editor.png)
+
+## Presenting your Paywall
+
+### Implementation
+
+For Freemium Paywalls, you should not block the user from accessing free content. Instead, use paywalls as contextual prompts that users can dismiss. Below you can find some code snippets on how to accomplish this. Please refer to [this document](https://www.revenuecat.com/docs/tools/paywalls/displaying-paywalls) to get more detailed information on how to present paywalls.
+
+import swiftui from "@site/code_blocks/tools/paywalls_1.swift?raw";
+import kotlin from "@site/code_blocks/tools/paywalls_1.kt?raw";
+import react from "@site/code_blocks/tools/paywalls_rn_1.ts.txt?raw";
+import flutter from "@site/code_blocks/tools/paywalls_flutter_1.dart?raw";
+import kmp from "@site/code_blocks/tools/paywalls_kmp_1.kts?raw";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "swift",
+      title: "SwiftUI",
+      content: swiftui,
+    },
+    {
+      type: "kotlin",
+      title: "Kotlin",
+      content: kotlin,
+    },
+    {
+      type: "rn",
+      title: "React Native",
+      content: react,
+    },
+    {
+      type: "flutter",
+      title: "Flutter",
+      content: flutter,
+    },
+    {
+      type: "kotlin",
+      title: "Kotlin Multiplatform",
+      content: kmp,
+    },
+  ]}
+/>
 
 ## Best Practices
 
@@ -125,77 +107,33 @@ fun showFeature() {
 
    - Provide genuine value in the free tier
    - Make core functionality accessible
-   - Don't cripple the free experience
 
 2. **Premium Feature Selection**
 
    - Choose premium features that offer clear additional value
-   - Focus on features power users want
    - Consider different types of premium value:
      - Enhanced functionality
      - Removed limitations
      - Exclusive content
      - Better user experience
 
-3. **Conversion Strategy**
-
-   - Show premium value through previews
-   - Use contextual upgrade prompts
-   - Implement progressive onboarding
-
-4. **User Experience**
+3. **User Experience**
    - Clear distinction between free and premium features
    - Smooth upgrade flow
    - Easy access to subscription management
 
-## Common Pitfalls to Avoid
+## Test your Paywall
 
-1. **Poor Free Experience**
+- Make sure your implementation works smoothly by testing across different user scenarios:
+- Free features remain accessible at all times
+- A paywall is shown when a premium feature is selected
+- Premium features unlock immediately after purchase
+- Restore purchases and error flows work as expected
 
-   - Don't make the free tier unusable
-   - Avoid excessive limitations
-   - Don't spam users with upgrade prompts
-
-2. **Unclear Premium Value**
-
-   - Don't hide premium features completely
-   - Provide clear feature comparisons
-   - Show premium value through previews
-
-3. **Conversion Barriers**
-
-   - Don't make upgrading difficult
-   - Avoid complex pricing structures
-   - Provide easy restoration of purchases
-
-4. **Technical Implementation**
-   - Don't cache premium status indefinitely
-   - Handle offline scenarios
-   - Implement proper purchase restoration
-
-## Measuring Success
-
-Track these metrics in RevenueCat:
-
-- Free-to-paid conversion rate
-- Time to conversion
-- Premium feature usage
-- User engagement patterns
-- Retention rates by tier
-
-Use RevenueCat's tools to:
-
-- Monitor conversion funnels
-- Track feature usage
-- Analyze user behavior
-- Optimize pricing
+Check on our [Testing Guide](https://www.revenuecat.com/docs/guides/testing-guide/use-cases) to fine-tune your test cases and make sure everything is working as expected.
 
 ## Next Steps
 
-1. Review the [RevenueCat SDK documentation](/getting-started/quickstart)
-2. Set up [analytics](/dashboard-and-metrics/charts) to track conversions
-3. Consider implementing [A/B testing](/tools/experiments-v1) for:
-   - Feature sets
-   - Pricing options
-   - Upgrade prompts
-4. Monitor [customer feedback](/dashboard-and-metrics/supporting-your-customers) to optimize your tiers
+1. Use [Experiments](https://www.revenuecat.com/docs/tools/experiments-v1) to try out different Offerings and Pricing Strategies.
+2. Integrate our [Customer Center](https://www.revenuecat.com/docs/tools/customer-center) feature to help users manage their subscriptions.
+3. Once you're ready to launch, take a look into this [App Subscription Launch Checklist](https://www.revenuecat.com/docs/test-and-launch/launch-checklist)
