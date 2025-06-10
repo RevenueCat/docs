@@ -3,9 +3,10 @@
 ## Summary
 
 - **Total images in static directory (excluding icons):** 782
-- **Images referenced in docs:** 678
+- **Local images referenced in docs:** 666
+- **External images referenced in docs:** 12
 - **Unused images:** 116 (14.8%)
-- **Missing images:** 12
+- **Missing local images:** 0
 
 ## Analysis Method
 
@@ -14,6 +15,7 @@ This analysis was performed using a corrected script that:
 - Properly handles markdown image syntax with alt text
 - Scans all .md and .mdx files in the /docs directory
 - Excludes images in the /static/icons directory
+- Separates external images (http/https URLs) from local images
 - Normalizes various image path formats
 
 ## Unused Images
@@ -43,9 +45,9 @@ These images exist in the static directory but are not referenced in any documen
 
 ... and 96 more (see unused_images.txt for complete list)
 
-## Missing Images
+## External Images
 
-These images are referenced in documentation but don't exist in the static directory:
+These external images are referenced in documentation (hosted externally):
 
 - https://files.readme.io/229d551-experiments-learn.webp
 - https://files.readme.io/93dfcae-cross-platform-data.webp
@@ -57,5 +59,5 @@ These images are referenced in documentation but don't exist in the static direc
 - https://img.shields.io/github/release/RevenueCat/purchases-kmp.svg
 - https://img.shields.io/github/release/RevenueCat/purchases-roku.svg
 - https://img.shields.io/github/release/RevenueCat/purchases-unity.svg
-- https://img.shields.io/github/release/RevenueCat/react-native-purchases.svg
-- https://img.shields.io/github/v/release/RevenueCat/purchases-android.svg
+
+... and 2 more (see external_images.txt for complete list)

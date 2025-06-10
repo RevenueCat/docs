@@ -15,11 +15,15 @@ from typing import Set, List, Dict
 
 class ImageUsageAnalyzer:
     def __init__(self, root_dir: str = "."):
+        # Get the script's directory
+        script_dir = Path(__file__).parent
+        
         self.root_dir = Path(root_dir)
         self.docs_dir = self.root_dir / "docs"
         self.static_dir = self.root_dir / "static"
         self.icons_dir = self.static_dir / "icons"
-        self.output_dir = self.root_dir / "image_analysis"
+        # Create image_analysis folder in the same directory as the script
+        self.output_dir = script_dir / "image_analysis"
         
         # FIXED image patterns to match various reference formats
         self.image_patterns = [
@@ -134,22 +138,37 @@ class ImageUsageAnalyzer:
         # Find unused images
         self.unused_images = self.static_images - self.referenced_images
         
-        # Find missing images (referenced but don't exist)
-        missing_images = self.referenced_images - self.static_images
+        # Separate external images from local references
+        external_images = set()
+        local_references = set()
+        
+        for img in self.referenced_images:
+            if img.startswith(('http://', 'https://')):
+                external_images.add(img)
+            else:
+                local_references.add(img)
+        
+        # Find missing images (local references that don't exist in static)
+        missing_images = local_references - self.static_images
         
         print("\n📈 Analysis Results:")
         print(f"🗂️  Total images in static (excluding icons): {len(self.static_images)}")
-        print(f"🔗 Images referenced in docs: {len(self.referenced_images)}")
+        print(f"🔗 Local images referenced in docs: {len(local_references)}")
+        print(f"🌐 External images referenced in docs: {len(external_images)}")
         print(f"❌ Unused images: {len(self.unused_images)}")
-        print(f"🚫 Missing images (referenced but don't exist): {len(missing_images)}")
+        print(f"🚫 Missing local images: {len(missing_images)}")
         
         return {
             'total_static_images': len(self.static_images),
             'referenced_images': len(self.referenced_images),
+            'local_referenced_images': len(local_references),
+            'external_images': len(external_images),
             'unused_images': len(self.unused_images),
             'missing_images': len(missing_images),
             'static_images_list': sorted(self.static_images),
             'referenced_images_list': sorted(self.referenced_images),
+            'local_referenced_images_list': sorted(local_references),
+            'external_images_list': sorted(external_images),
             'unused_images_list': sorted(self.unused_images),
             'missing_images_list': sorted(missing_images)
         }
@@ -166,9 +185,14 @@ class ImageUsageAnalyzer:
             for img in results['static_images_list']:
                 f.write(f"{img}\n")
         
-        # Save referenced images
+        # Save local referenced images
         with open(self.output_dir / 'referenced_images.txt', 'w') as f:
-            for img in results['referenced_images_list']:
+            for img in results['local_referenced_images_list']:
+                f.write(f"{img}\n")
+        
+        # Save external images
+        with open(self.output_dir / 'external_images.txt', 'w') as f:
+            for img in results['external_images_list']:
                 f.write(f"{img}\n")
         
         # Save unused images
@@ -181,21 +205,28 @@ class ImageUsageAnalyzer:
             with open(self.output_dir / 'missing_images.txt', 'w') as f:
                 for img in results['missing_images_list']:
                     f.write(f"{img}\n")
+        else:
+            # Remove missing_images.txt if it exists but there are no missing images
+            missing_file = self.output_dir / 'missing_images.txt'
+            if missing_file.exists():
+                missing_file.unlink()
         
         # Save detailed report
         with open(self.output_dir / 'report.md', 'w') as f:
             f.write("# Image Usage Analysis Report\n\n")
             f.write("## Summary\n\n")
             f.write(f"- **Total images in static directory (excluding icons):** {results['total_static_images']}\n")
-            f.write(f"- **Images referenced in docs:** {results['referenced_images']}\n")
+            f.write(f"- **Local images referenced in docs:** {results['local_referenced_images']}\n")
+            f.write(f"- **External images referenced in docs:** {results['external_images']}\n")
             f.write(f"- **Unused images:** {results['unused_images']} ({results['unused_images']/results['total_static_images']*100:.1f}%)\n")
-            f.write(f"- **Missing images:** {results['missing_images']}\n\n")
+            f.write(f"- **Missing local images:** {results['missing_images']}\n\n")
             
             f.write("## Analysis Method\n\n")
             f.write("This analysis was performed using a corrected script that:\n")
             f.write("- Properly handles markdown image syntax with alt text\n")
             f.write("- Scans all .md and .mdx files in the /docs directory\n")
             f.write("- Excludes images in the /static/icons directory\n")
+            f.write("- Separates external images (http/https URLs) from local images\n")
             f.write("- Normalizes various image path formats\n\n")
             
             if results['unused_images'] > 0:
@@ -206,18 +237,27 @@ class ImageUsageAnalyzer:
                 if len(results['unused_images_list']) > 20:
                     f.write(f"\n... and {len(results['unused_images_list']) - 20} more (see unused_images.txt for complete list)\n")
             
+            if results['external_images'] > 0:
+                f.write("\n## External Images\n\n")
+                f.write("These external images are referenced in documentation (hosted externally):\n\n")
+                for img in results['external_images_list'][:10]:  # Show first 10
+                    f.write(f"- {img}\n")
+                if len(results['external_images_list']) > 10:
+                    f.write(f"\n... and {len(results['external_images_list']) - 10} more (see external_images.txt for complete list)\n")
+            
             if results['missing_images_list']:
-                f.write("\n## Missing Images\n\n")
-                f.write("These images are referenced in documentation but don't exist in the static directory:\n\n")
+                f.write("\n## Missing Local Images\n\n")
+                f.write("These local images are referenced in documentation but don't exist in the static directory:\n\n")
                 for img in results['missing_images_list']:
                     f.write(f"- {img}\n")
         
         print("✅ Results saved to image_analysis/ folder:")
         print("   📄 all_static_images.txt")
-        print("   📄 referenced_images.txt") 
+        print("   📄 referenced_images.txt (local images only)")
+        print("   📄 external_images.txt") 
         print("   📄 unused_images.txt")
         if results['missing_images_list']:
-            print("   📄 missing_images.txt")
+            print("   📄 missing_images.txt (local images only)")
         print("   📄 report.md")
 
     def show_sample_references(self, limit: int = 10):
@@ -230,12 +270,16 @@ class ImageUsageAnalyzer:
             print(f"   ... and {len(self.referenced_images) - limit} more")
 
 def main():
-    analyzer = ImageUsageAnalyzer()
+    # Get the parent directory of the script (the project root)
+    script_dir = Path(__file__).parent
+    project_root = script_dir.parent
+    
+    analyzer = ImageUsageAnalyzer(str(project_root))
     results = analyzer.analyze_usage()
     analyzer.show_sample_references()
     analyzer.save_results(results)
     
-    print(f"\n🎉 Analysis complete! Check the image_analysis/ folder for results.")
+    print(f"\n🎉 Analysis complete! Check the scripts/image_analysis/ folder for results.")
 
 if __name__ == "__main__":
     main() 
