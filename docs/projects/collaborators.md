@@ -21,9 +21,9 @@ Invited collaborators will receive an email where they can accept your invitatio
 If you have multiple projects that you wish to share, you will need to repeat the invite process for each project that you want to collaborate with them on.
 :::
 
-### Basic Permissions
+### Permissions
 
-Available on all-plans, basic permissions give collaborators full read or write access.
+All roles and permission levels are now available on every plan, giving teams the flexibility to manage access with the right level of control.
 
 #### **Administrator**
 
@@ -40,10 +40,6 @@ Available on all-plans, basic permissions give collaborators full read or write 
 ❌ This role cannot make any changes to your app or project.
 
 ---
-
-### Advanced Permissions
-
-More granular permissions are available for businesses on [Enterprise](https://www.revenuecat.com/pricing/) plans.
 
 #### **Growth**
 
