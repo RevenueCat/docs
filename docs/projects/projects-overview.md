@@ -14,7 +14,7 @@ To create a Project, click the **'+ Create new project'** button in the Projects
 
 You can customize your project by setting a name as well as your global [restore behavior](/getting-started/restoring-purchases) for the apps in your Project.
 
-![Screenshot](/images/0556eed-app.revenuecat.com_projects_85ff18c7_api-keys_4_6fcbbe437a19a892d823893c748925ec.png)
+![Screenshot](/docs_images/projects/project_settings.png)
 
 ## Project Settings
 

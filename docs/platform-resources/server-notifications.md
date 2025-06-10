@@ -5,11 +5,11 @@ excerpt: Informing RevenueCat of updates to user purchases
 hidden: false
 ---
 
-Platform Server Notifications are notifications sent from **supported stores _to_ RevenueCat**, and are configured in the dashboards of each store.
+Platform Server Notifications are notifications sent from **supported platforms _to_ RevenueCat**, and are configured in the dashboards of each store.
 
 Server Notifications not only inform RevenueCat of updates to purchases, but also allow you to track new purchases in RevenueCat immediately, without an SDK implementation.
 
-If you are looking to _consume_ notifications about subscription purchases on your own server, see [Webhooks](/integrations/webhooks).
+If you are looking to be notified about subscription purchases on your own server, see [Webhooks](/integrations/webhooks).
 
 ## Setup Instructions
 

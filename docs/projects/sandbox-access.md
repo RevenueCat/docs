@@ -8,7 +8,7 @@ When testing purchases in a sandbox environment, you may want to control whether
 
 If you're testing with real app user IDs or using test app user IDs that overlap with production ones, it can lead to unexpected behavior or data inconsistencies. This setting gives you control over whether sandbox purchases should grant [entitlements](/getting-started/entitlements) or [virtual currencies](/offerings/virtual-currency).
 
-![](/images/virtual-currency/testing-settings.png)
+![Sandbox Testing Settings](/docs_images/projects/sandbox_testing_settings.png)
 
 You can configure this setting in the **General** tab of your project settings:
 

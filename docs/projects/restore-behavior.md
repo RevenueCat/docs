@@ -2,9 +2,9 @@
 title: Restore Behavior
 ---
 
-If an [App User ID](/customers/user-ids) tries to restore transactions that are already associated with a different identified App User ID in RevenueCat, you can configure how RevenueCat should respond by changing the dropdown in **Project Settings > General** in the dashboard:
+If an [App User ID](/customers/user-ids) tries to restore transactions that are already associated with a different identified App User ID in RevenueCat, you can configure how RevenueCat should respond by changing the dropdown in **Project settings > General** in the dashboard:
 
-![](/images/0fd6ec3-image_5078ab1b5e172296341eca8a385c8e15.png)
+![Transfer Behavior](/docs_images/projects/transfer_behavior.png)
 
 Note that the behavior set here will affect all apps under the project. Also note that **Share between App User IDs (legacy)** will only be available for legacy projects with this behavior already enabled, not new projects.
 
