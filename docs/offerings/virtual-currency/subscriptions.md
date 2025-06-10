@@ -138,7 +138,7 @@ Currency is granted in full based on the configuration amount for the active sub
 When a subscription that granted virtual currency is refunded, RevenueCat will:
 
 - Remove a prorated amount of the originally granted currency, based on the refund amount.
-- Round down to the nearest whole number (fractional balances are not supported).
+- Round up to the nearest whole number (fractional balances are not supported).
 - Cap the balance at zero if the removal would result in a negative balance.
 
 :::warning Partial refunds on Google Play

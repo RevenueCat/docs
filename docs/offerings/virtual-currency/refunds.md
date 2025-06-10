@@ -25,7 +25,7 @@ We do not currently support negative balances. If this is a use case for you, [f
 When a subscription that granted virtual currency is refunded:
 
 - RevenueCat removes a prorated amount of the originally granted currency, based on the refund amount.
-- The amount removed is rounded down to the nearest whole number (fractional balances are not supported).
+- The amount removed is rounded up to the nearest whole number (fractional balances are not supported).
 - If the removal would drop the balance below zero, the new balance is capped at 0.
 
 ## One-Time Purchase Refunds
