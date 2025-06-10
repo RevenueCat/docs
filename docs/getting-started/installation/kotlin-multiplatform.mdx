@@ -123,6 +123,22 @@ import launchModeContent from "@site/code_blocks/getting-started/installation/an
 
 You can find Android's documentation on the various `launchMode` options [here](https://developer.android.com/guide/topics/manifest/activity-element#lmode).
 
+### Build static binaries for iOS targets
+
+In some cases it may be required to configure your iOS targets to build static binaries, in order for your project to compile. Make sure `isStatic` is set to `true` in your iOS targets' binary output settings in your `build.gradle.kts`:
+
+import staticBinariesContent from "@site/code_blocks/getting-started/installation/kmp_9.kts?raw";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "kotlin",
+      content: staticBinariesContent,
+      name: "build.gradle.kts",
+    },
+  ]}
+/>
+
 ## Import Purchases
 
 You should now be able to import `Purchases`.
