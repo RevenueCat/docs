@@ -30,7 +30,21 @@ When using subscriptions to grant virtual currency through RevenueCat, currency 
 
 ## Free Trials
 
-Free trials support is coming soon. At the moment purchasing a free trial will grant 0 currencies.
+When using free trials with virtual currency subscriptions, RevenueCat gives you control over how much currency to grant during the trial period. You can configure a separate currency grant amount specifically for free trials in the RevenueCat dashboard. This allows you to offer a smaller set of currency during the trial to give customers a preview of what they’ll receive as a paying subscriber.
+
+For example, if your monthly subscription grants 100 credits, you could set the trial to grant only 25 credits.
+
+![](/images/virtual-currency/vc-trials.png)
+
+To grant currency when a trial starts, select the "Add on trial start" option and specify the amount. If left unchecked, no currency will be granted for trials by default.
+
+### When currency is granted
+
+Trial credits are granted when the trial begins. This gives customers immediate access to currency during the trial period.
+
+### Trial credits do not expire
+
+Currency granted during a free trial does not expire when the trial ends, even if the customer cancels or chooses not to convert to a paid subscription. Customers will retain access to any virtual currency they received during the trial.
 
 ## Product Changes
 
@@ -127,7 +141,6 @@ Web Billing currently does not support product changes, so customers cannot upgr
 
 RevenueCat will grant virtual currency for the following scenarios:
 
-- Trial starts (if configured to grant currency)
 - Initial purchases
 - Renewals
 
