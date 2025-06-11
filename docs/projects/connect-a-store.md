@@ -9,9 +9,9 @@ Once you've created a [project](/projects/overview), you'll need to connect it t
 
 Add an **app platform** or **web platform** in the _Platforms_ section of your project settings.
 
-![Add App Platform](/docs_images/projects/add_app_platform.png)
+![Add App Platform](/docs_images/projects/add-app-platform.png)
 
-![Add Web Platform](/docs_images/projects/add_web_platform.png)
+![Add Web Platform](/docs_images/projects/add-web-platform.png)
 
 ## Add a Platform
 

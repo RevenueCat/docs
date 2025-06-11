@@ -14,7 +14,7 @@ To create a Project, click the **'+ Create new project'** button in the Projects
 
 You can customize your project by setting a name as well as your global [restore behavior](/getting-started/restoring-purchases) for the apps in your Project.
 
-![Screenshot](/docs_images/projects/project_settings.png)
+![Screenshot](/docs_images/projects/project-settings.png)
 
 ## Project Settings
 

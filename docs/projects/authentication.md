@@ -16,7 +16,7 @@ There are two types of API keys:
 
 You can find the API keys for your project under the **Platforms** section of your Project Settings in the dashboard.
 
-![API Keys](/docs_images/projects/finding_api_keys.png)
+![API Keys](/docs_images/projects/finding-api-keys.png)
 
 Public platform-specific API keys are automatically created when adding an App to your Project and cannot be changed. Secret API keys can be created by selecting the **+ New API key** button and will be listed under the section **Secret API keys**.
 
