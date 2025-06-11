@@ -26,9 +26,9 @@ Although RevenueCat is primarily used to handle subscription purchases, our SDK 
 
 :::warning Google Play Store IAPs
 
-Google Play Store does not provide an option to mark IAPs as consumable or non-consumable. RevenueCat's SDK will consume all Android IAPs upon purchase.
+Non-consumable support is supported in Android SDK version 7.11.0 and up. 
 
-To replicate the behavior of a non-consumable IAP for Android users, you must ensure your user will not be offered the IAP after the initial purchase. Failure to do so will enable the user to re-purchase the IAP.
+In Android SDK version 7.10.1 and below all Android IAPs will be consumed upon purchase. To replicate the behavior of a non-consumable IAP for Android users, you must ensure your user will not be offered the IAP after the initial purchase. Failure to do so will enable the user to re-purchase the IAP.
 :::
 
 ## Entitlements
