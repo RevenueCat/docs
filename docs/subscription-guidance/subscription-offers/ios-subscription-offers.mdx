@@ -175,11 +175,11 @@ Win-Back Offers can only be configured for subscription products that have been 
 
 Navigate to your subscription's page under _Apps_ → _Your App_ → _Subscriptions_ (in the left sidebar) → _Your Subscription Group_ → _Your Subscription Product_ and click the "+" button by "Subscription Prices". If your subscription product has been approved by App Review, you'll see the option "Create Win-Back Offer". Select it.
 
-![configure_winback_offer_1.png](/images/win-back-offers/configure_winback_offer_1.png)
+![configure_winback_offer_1.png](/docs_images/win-back-offers/configure_winback_offer_1.png)
 
 To create the win-back offer there are two fields that you need to specify: Reference Name, which is just used for your reference, and the Offer Identifier, which is a distinct ID for the win-back offer.
 
-![configure_winback_offer_2.png](/images/win-back-offers/configure_winback_offer_2.png)
+![configure_winback_offer_2.png](/docs_images/win-back-offers/configure_winback_offer_2.png)
 
 Next, you’ll be asked to provide the specifics of your win-back offer, including:
 
@@ -191,7 +191,7 @@ Next, you’ll be asked to provide the specifics of your win-back offer, includi
   - _Time Since Last Subscribed_: A time interval describing how long a subscriber must have been lapsed to be eligible for the offer.
   - _Wait Between Offers_: The required time a subscriber must wait after a win-back offer ends before redeeming the same offer again. This does not prevent a subscriber from redeeming a different win-back offer. Optional.
 
-![configure_winback_offer_3.png](/images/win-back-offers/configure_winback_offer_3.png)
+![configure_winback_offer_3.png](/docs_images/win-back-offers/configure_winback_offer_3.png)
 
 ### 2. Redeeming a Win-Back Offer
 
@@ -237,15 +237,15 @@ Testing win-back offers redeemed through the App Store with Streamlined Purchasi
 9. Wait for your subscription to expire.
 10. In your sandbox test account's Account Settings page, turn off the "Display Win-back Offer Sheet" toggle
 
-![disable_winback_offer_sheet.jpg](/images/win-back-offers/disable_winback_offer_sheet.jpg)
+![disable_winback_offer_sheet.jpg](/docs_images/win-back-offers/disable_winback_offer_sheet.jpg)
 
 11. Select "Test Transactions"
 
-![select_test_transactions.jpg](/images/win-back-offers/select_test_transactions.jpg)
+![select_test_transactions.jpg](/docs_images/win-back-offers/select_test_transactions.jpg)
 
 12. Enter the product ID of the product you're testing, your app's bundle ID, and the win-back offer's identifier. These values _must_ be valid IDs entered into App Store Connect.
 
-![test_transactions.jpg](/images/win-back-offers/test_transactions.jpg)
+![test_transactions.jpg](/docs_images/win-back-offers/test_transactions.jpg)
 
 13. Tap the "Test Transactions" button at the bottom of the page.
 14. The system presents the App Store [Sandbox] payment sheet for the sandbox environment. Confirm the purchase.
@@ -258,7 +258,7 @@ Repeat steps 5-16 to test redeeming win-back offers multiple times.
 
 In iOS 18+, StoreKit will send your app a message when a subscriber is eligible to redeem a win-back offer. When this message is received, our SDK will automatically present the associated StoreKit win-back offer sheet to the subscriber, which allows them to redeem the win-back offer:
 
-![win_back_offer_sk_message.png](/images/win-back-offers/win_back_offer_sk_message.png)
+![win_back_offer_sk_message.png](/docs_images/win-back-offers/win_back_offer_sk_message.png)
 
 If you'd like to defer displaying the win-back offer sheet until a later time, you can do so in iOS SDK versions 5.6.0 and above by setting the `showStoreMessagesAutomatically` flag to `false` in the `Purchases.configure` function. When this flag is set to `false`, the win-back offer sheet will not be displayed automatically, and you will need to manually display the offer sheet by calling the `showStoreMessages` function when you'd like it to be displayed:
 
@@ -289,21 +289,21 @@ If you're running other win-back campaigns on non-iOS stores, we recommend defer
 9. Wait for your subscription to expire.
 10. In your sandbox test account's Account Settings page, turn on the "Display Win-back Offer Sheet" toggle:
 
-![enable_winback_offer_sheet.jpg](/images/win-back-offers/enable_winback_offer_sheet.jpg)
+![enable_winback_offer_sheet.jpg](/docs_images/win-back-offers/enable_winback_offer_sheet.jpg)
 
 11. Select "Test Transactions":
 
-![select_test_transactions.jpg](/images/win-back-offers/select_test_transactions.jpg)
+![select_test_transactions.jpg](/docs_images/win-back-offers/select_test_transactions.jpg)
 
 12. Enter the product ID of the product you're testing, your app's bundle ID, and the win-back offer's identifier. These values _must_ be valid IDs entered into App Store Connect.
 
-![test_transactions.jpg](/images/win-back-offers/test_transactions.jpg)
+![test_transactions.jpg](/docs_images/win-back-offers/test_transactions.jpg)
 
 13. **DO NOT** tap the "Test Transactions" button at the bottom of the page. Instead, background the Settings app (do not force close it).
 14. Open your app.
 15. If the Purchases SDK is configured to show StoreKit messages automatically, the win-back offer redemption sheet will be displayed. If not, you can call `showStoreMessages()` to display the offer sheet.
 
-![enable_winback_offer_sheet.jpg](/images/win-back-offers/enable_winback_offer_sheet.jpg)
+![enable_winback_offer_sheet.jpg](/docs_images/win-back-offers/enable_winback_offer_sheet.jpg)
 
 16. Redeem the win-back offer.
 17. Check that your subscriber receives the proper entitlements from RevenueCat, and that the purchase appears in your RevenueCat dashboard with "Sandbox data" enabled.
@@ -316,7 +316,7 @@ Purchasing win-back offers through the App Store uses Streamlined Purchasing by 
 
 You can disable Streamlined Purchasing in App Store Connect under _Apps_ → _Your App_ → _Subscriptions_ → _Streamlined Purchasing_.
 
-![disable_streamlined_purchasing.png](/images/win-back-offers/disable_streamlined_purchasing.png)
+![disable_streamlined_purchasing.png](/docs_images/win-back-offers/disable_streamlined_purchasing.png)
 
 After a user starts a win-back redemption flow on the App Store and opens your app, the RevenueCat SDK will call the `PurchasesDelegate.purchases(readyForPromotedProduct:startPurchase)` delegate function to let your app know that the user has started a redemption flow. Your app should then perform any actions it needs to do before the redemption flow continues. When your app is ready for the user to complete the redemption flow, you should call the `startPurchase` callback provided in the `readyForPromotedProduct` function.
 
@@ -337,7 +337,7 @@ In addition to the steps mentioned above to configure your win-back offer, we re
 
 Apple generates a unique URL for your win-back offer upon creation, which you can find on the offer's page in App Store Connect. This URL uses the format `https://apps.apple.com/win-back/{win_back_offer_id}`. Eligible subscribers can use this URL to redeem the win-back offer in your app.
 
-![Win-Back Offer URL in App Store Connect](/images/win-back-offers/win-back-offer-url-app-store-connect.png)
+![Win-Back Offer URL in App Store Connect](/docs_images/win-back-offers/win-back-offer-url-app-store-connect.png)
 
 When a user redeems a win-back offer using a custom URL, the win-back offer will use the Streamlined Purchase setting used by your app (either enabled or disabled).
 

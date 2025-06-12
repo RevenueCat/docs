@@ -1,21 +1,23 @@
 ---
-title: Connect to a Store
-sidebar_label: Connect to a Store
+title: Connect Platforms
+sidebar_label: Connect Platforms
 slug: connect-a-store
 excerpt: Connect your project to App Store Connect, Google Play Console, and more
 ---
 
 Once you've created a [project](/projects/overview), you'll need to connect it to the stores and platforms you want to support and set up [Server Notifications](/platform-resources/server-notifications). After you've connected your app, you can import your products from the stores to start configuring your offerings.
 
-Click the **+ Add App** button in the top right of your project sidebar to see the list of stores and payment providers you can connect to.
+Add an **app platform** or **web platform** in the _Platforms_ section of your project settings.
 
-![Add App](/images/projects/add-an-app.png)
+![Add App Platform](/docs_images/projects/add-app-platform.png)
 
-## Add an App
+![Add Web Platform](/docs_images/projects/add-web-platform.png)
+
+## Add a Platform
 
 RevenueCat supports a wide range of stores and payment providers.
 
-### App Stores
+### App Platforms
 
 #### Apple App Store
 
@@ -46,7 +48,7 @@ To connect your app to the Roku Store, you'll need to add your **App name**, and
 
 - [Where do I find my Roku Pay API Key?](/service-credentials/roku-credentials)
 
-### Web Stores
+### Web Platforms
 
 #### Web Billing
 
@@ -68,16 +70,16 @@ Paddle is a popular all-in-one payment infrastructure that allows you to accept 
 
 ## Platform Server Notifications
 
-After adding your app, we recommend setting up [Platform Server Notifications](/platform-resources/server-notifications). These notifications will ensure RevenueCat is notified of purchases and subscription events as soon as possible, and will speed up [webhooks](/integrations/webhooks) and integration delivery times.
+After adding your platforms, we recommend setting up [Platform Server Notifications](/platform-resources/server-notifications). These notifications will ensure RevenueCat is notified of purchases and subscription events as soon as possible, and will speed up [webhooks](/integrations/webhooks) and integration delivery times.
 
 ## Import Products
 
-After adding your app, you can import your products from the stores to start configuring your offerings.
+After adding your platforms, you can import your products from the stores to start configuring your offerings.
 
 - [Learn more about importing products](/offerings/products-overview)
 
 ## Next steps
 
-If you've added your app, it's time to install the SDK to start making purchases.
+If you've added your platforms, it's time to install the SDK to start making purchases.
 
 <Button href="/docs/getting-started/installation">Install the SDK →</Button>

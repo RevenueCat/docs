@@ -9,9 +9,9 @@ Collaborators allow you to give team members controlled access to your RevenueCa
 
 ### Invite a Collaborator
 
-To invite a collaborator, send them an invite from the **Project Settings > Collaborators**.
+To invite a collaborator, send them an invite from the **Project settings > Collaborators** tab.
 
-![Collaborators](/images/07e6112-app.revenuecat.com_projects_85ff18c7_collaborators_6d41a8417fd79d295d718be373402887.png)
+![Collaborators](/docs_images/projects/invite-collaborators.png)
 
 Add the collaborator's email, select their permission level, and send the invite.
 
