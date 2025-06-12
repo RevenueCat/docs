@@ -13,19 +13,19 @@ You’ll receive many [Webhooks](/integrations/webhooks) throughout a customer�
 
 This flow occurs each time a customer purchases a product for the first time. A single customer may go through this flow multiple times if they purchase multiple products.
 
-![initial purchase flow](/docs_images/event-flow/initial-purchase.png)
+![initial purchase flow](/docs_images/integrations/event-flows/initial-purchase.png)
 
 ### Cancellation Flow
 
 When a customer cancels their subscription, a `CANCELLATION` webhook is sent. At the end of the billing cycle, an `EXPIRATION` webhook is sent and entitlements are revoked.
 
-![cancellation flow](/docs_images/event-flow/cancellation.png)
+![cancellation flow](/docs_images/integrations/event-flows/cancellation.png)
 
 ### Uncancellation Flow
 
 Uncancellations occur when a customer cancels their subscription and then resubscribes before the subscription’s expiration occurs. In this scenario, the customer never loses entitlements.
 
-![uncancellation flow](/docs_images/event-flow/uncancellation.png)
+![uncancellation flow](/docs_images/integrations/event-flows/uncancellation.png)
 
 ### Resubscribe Flow
 
@@ -38,13 +38,13 @@ This can sometimes cause the customer history to appear out of order because we 
 - `RENEWAL`: If the resubscription occurs during the grace period before expiration.
 - `INITIAL_PURCHASE`: If the resubscription occurs after the previous subscription has expired.
 
-![resubscribe flow](/docs_images/event-flow/resubscribe-flow.png)
+![resubscribe flow](/docs_images/integrations/event-flows/resubscribe-flow.png)
 
 ### Subscription Paused Flow (Android Only)
 
 Android customers can pause their subscription, allowing them to halt subscription billing. Their entitlement is revoked at the end of the subscription term. If the customer unpauses their subscription, they regain entitlements and the subscription’s billing cycle resumes. If you’d like to disable pausing for your subscriptions, you can do so through the [Google Play Store Console.](https://developer.android.com/google/play/billing/subscriptions#pause)
 
-![subscription paused flow](/docs_images/event-flow/subscription-pause-flow.png)
+![subscription paused flow](/docs_images/integrations/event-flows/subscription-pause-flow.png)
 
 ### Billing Issue Flow
 
@@ -56,7 +56,7 @@ If you do have grace periods enabled, the customer will retain entitlements as t
 
 It’s important to note that the `BILLING_ISSUE`, `CANCELLATION`, and `EXPIRATION` (if no grace period is involved) webhooks are dispatched in order at the same time, so it is unlikely but possible to receive these events in a different order than described here due to network irregularities.
 
-![billing issue flow](/docs_images/event-flow/billing-issue.png)
+![billing issue flow](/docs_images/integrations/event-flows/billing-issue.png)
 
 ### Subscription Extended Flow
 
@@ -64,7 +64,7 @@ If a subscription gets extended, when its expiration changes from a future date 
 
 This event is fired when a Apple App Store or Google Play Store subscription is extended through the store's API. On the Google Play Store, this event can also sometimes fire when Google defers charging for a renewal by less than 24 hours (for unknown reasons). In this case, you will receive a `SUBSCRIPTION_EXTENDED` webhook, followed by either a `RENEWAL` or `BILLING_ISSUE` webhook within the next 24 hours.
 
-![subscription extended flow](/docs_images/event-flow/subscription-extended.png)
+![subscription extended flow](/docs_images/integrations/event-flows/subscription-extended.png)
 
 ## Trial Flows
 
@@ -72,7 +72,7 @@ This event is fired when a Apple App Store or Google Play Store subscription is 
 
 When a user initially signs up for a subscription with a trial, an `INITIAL_PURCHASE` webhook is sent with a `period_type` of `TRIAL`. If the trial period for a subscription lapses without the customer canceling the subscription, the trial converts into an active subscription. At this point, a `RENEWAL` event is dispatched and the user is billed for the subscription for the first time.
 
-![successful conversion flow](/docs_images/event-flow/successful-conversion.png)
+![successful conversion flow](/docs_images/integrations/event-flows/successful-conversion.png)
 
 ### Trial Flow (Unsuccessful Conversion)
 
@@ -82,7 +82,7 @@ If a user cancels their subscription and the trial expires, but they sign up for
 
 Note: Apple requires customers to cancel within 24 hours of the trial’s expiration. If a user cancels less than 24 hours before the trial expires, you may unexpectedly receive a `CANCELLATION` event followed by a `RENEWAL` event.
 
-![unsuccessful conversion flow](/docs_images/event-flow/unsuccessful-conversion.png)
+![unsuccessful conversion flow](/docs_images/integrations/event-flows/unsuccessful-conversion.png)
 
 ## Product Changes
 
@@ -97,7 +97,7 @@ Immediate changes occur:
 - On the Google Play Store, for all proration modes except `DEFERRED` (ie. all proration modes starting with `IMMEDIATE`)
 - For immediate product changes in Stripe. Please note: The `RENEWAL` event may show the same `purchased_at_ms` as the original subscription (ie. t₀), because that is how Stripe represents the status of the subscription after the product change.
 
-![immediate product change flow](/docs_images/event-flow/product-change-immediate.png)
+![immediate product change flow](/docs_images/integrations/event-flows/product-change-immediate.png)
 
 ### Product Change at Period End
 
@@ -110,7 +110,7 @@ Changes at period end occur:
 - On the Google Play Store, for the proration mode `DEFERRED`
 - For scheduled product changes in Stripe
 
-![product change at end of period flow](/docs_images/event-flow/product-change-period-end.png)
+![product change at end of period flow](/docs_images/integrations/event-flows/product-change-period-end.png)
 
 ## Other
 
@@ -118,4 +118,4 @@ Changes at period end occur:
 
 If user 1 logs in to your app, makes a purchase and logs out, and then user 2 logs in on the same device with the same underlying App/Play Store account and restores their purchases, you’ll receive a `TRANSFER `event and the entitlements will be removed from user 1 and added to user 2. This behavior only occurs if your project’s restore behavior is set to transfer.
 
-![transfer flow](/docs_images/event-flow/transfer.png)
+![transfer flow](/docs_images/integrations/event-flows/transfer.png)

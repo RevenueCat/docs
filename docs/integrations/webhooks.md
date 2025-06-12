@@ -20,11 +20,11 @@ With webhooks integrated, you can:
 
 ## Registering Your Webhook URL
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Choose **Webhooks**.
 
-![](/images/6b982d2-app.revenuecat.com_projects_85ff18c7_collaborators_1_cc8d6f58c19d73f2024156cbed4bbf95.png)
+![](/docs_images/integrations/webhooks/webhook-integration.png)
 
-2. Choose 'Webhooks' from the Integrations menu
+2. Choose 'Add new configuration'
 3. Name the new Webhook integration. You can set up multiple webhook URLs, the name helps differentiate them.
 4. Enter the HTTPS URL of the endpoint that you want to receive your webhooks
 5. (Optional) Set authorization header that will be sent with each POST request
@@ -32,7 +32,7 @@ With webhooks integrated, you can:
 7. Select if the webhook events should be sent only for one app or for all apps of the project
 8. (Optional) Filter the kinds of events that should be sent to the webhook URL.
 
-![](/images/6a07a8cf-webhook-integration-7d9cd735e95d.png)
+![](/docs_images/integrations/webhooks/webhook-setup.png)
 
 :::info Best Practices: Webhook authorization
 We recommended setting an authorization header value via the RevenueCat dashboard. When set, RevenueCat will send this header in every request. Your server can use this to authenticate the webhooks from RevenueCat.
@@ -54,7 +54,7 @@ For webhook event types and fields, see [here](/integrations/webhooks/event-type
 
 You can test your server side implementation by purchasing [sandbox subscriptions](/test-and-launch/sandbox) or by issuing test webhook events through [RevenueCat's dashboard](http://app.revenuecat.com).
 
-![](/images/ad2c8e64-webhook-testing-c841349f3b7e.png)
+![](/docs_images/integrations/webhooks/webhook-test-event.png)
 
 When testing with sandbox purchases, the `environment` value will be `SANDBOX`. RevenueCat itself does not have sandbox and production environments, so this value is only determined by the type of transaction received from the store. The same customer in RevenueCat can have both sandbox and production transactions associated with their account.
 
