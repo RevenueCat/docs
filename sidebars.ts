@@ -178,7 +178,7 @@ const webSDKCategory = Category({
   itemsPathPrefix: "web/",
   items: [
     SubCategory({
-      label: "Integrate Web Billing",
+      label: "Integrate RevenueCat Web",
       slug: "web-billing/overview",
       itemsPathPrefix: "web-billing/",
       items: [
@@ -207,7 +207,7 @@ const webSDKCategory = Category({
     Page({ slug: "web-billing/customer-portal" }),
     Page({ slug: "web-billing/lifecycle-emails" }),
     SubCategory({
-      label: "External Payments Integrations",
+      label: "External Purchase Integrations",
       slug: "payment-integrations",
       itemsPathPrefix: "integrations/",
       items: [Page({ slug: "stripe" }), Page({ slug: "paddle" })],
