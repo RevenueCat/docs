@@ -42,15 +42,15 @@ Navigate to the **Products** tab in the settings for your project in the Revenue
 
 ### Manually Import Products
 
-Navigate to the **Products** tab in the settings for your project in the RevenueCat dashboard. To add a new product, click the **+ New** button and enter the product identifier **exactly as it appears in the store**, as well as the store that the product belongs to.
+Navigate to the **Products** tab in the **Product catalog** section of your project in the RevenueCat dashboard. To add a new product, click the **+ New product** button and enter the product identifier **exactly as it appears in the store**, as well as the store that the product belongs to.
 
 These product identifiers are the link between RevenueCat, and Apple, Google, Stripe, or Amazon.
 
-![](/images/47e4904-Screenshot_2023-03-20_at_16.04.55_2bf3bf6fb0d0340d8c4cd509e6f7aa43.png "Screenshot 2023-03-20 at 16.04.55.png")
+![](/docs_images/products/new-products.png)
 
 When adding products manually for Google Play apps, you will need to add both the subscription ID and the base plan ID, which you can find in Google Play Console as per the following screenshot:
 
-![](/images/dc9d124-9d0e770-Screen_Shot_2023-01-12_at_5.07.03_PM_a7f6bebfee549b1da0ddafbc10858bd2.png "9d0e770-Screen_Shot_2023-01-12_at_5.07.03_PM.png")
+![](/docs_images/products/google-play-new-products.png)
 
 ## Product Display Names
 

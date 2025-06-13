@@ -1,5 +1,6 @@
 ---
 title: Paddle Server Notifications
+sidebar_label: Paddle
 slug: paddle-server-notifications
 excerpt: Sending Paddle server notifications to RevenueCat
 hidden: false
@@ -9,16 +10,16 @@ RevenueCat does not require server notifications from Paddle, however doing so c
 
 ## Setup Instructions
 
-1. Navigate to your **app settings** in the RevenueCat dashboard by selecting your app from **Project Settings > Apps**.
+1. Navigate to your Paddle configuration in the RevenueCat dashboard by selecting your app from **Project Settings > Platforms**.
 2. Expand the **Webhook Configuration** section and click on **Apply in Paddle**.
 
-![](/images/paddle/apply-in-paddle.png)
+![](/docs_images/web/paddle/apply-in-paddle.png)
 
 ## Tracking new purchases using Paddle Server Notifications
 
 By default, RevenueCat will not process Paddle Server Notifications for any purchases that have not yet been posted to the RevenueCat API from your own backend. For RevenueCat to track new purchases from Paddle Server Notifications, you can enable the **"Track new purchases from server-to-server notifications"** option in our Dashboard. This allows RevenueCat to process new purchases from server-to-server notifications that are not yet in our system. This ensures all purchases are tracked, even in the case of network issues between your server's and RevenueCat's.
 
-![](/images/paddle/no-code-integration.png)
+![](/docs_images/web/paddle/no-code-integration.png)
 
 ### App User ID Detection Methods
 

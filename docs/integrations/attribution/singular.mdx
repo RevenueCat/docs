@@ -60,7 +60,7 @@ If you are requesting the App Tracking permission through ATT to access the IDFA
 The AdSupport framework is required to access the IDFA parameter on iOS. Don't forget to import this into your project.
 :::
 
-![](/images/caf9cda-Screen_Shot_2020-09-14_at_7.09.36_PM_739bc6ccef43416570bf51e527f4e0fc.png "Screen Shot 2020-09-14 at 7.09.36 PM.png")
+![Import AdSupport Framework](/docs_images/integrations/attribution/import-adsupport-framework.png)
 
 :::danger Remove any client-side purchase tracking
 Make sure to remove all client-side tracking of revenue. Since RevenueCat will be sending events for all revenue actions, tracking purchases with the Singular SDK directly can lead to double counting of revenue in Singular.
@@ -88,16 +88,13 @@ After you've set up the _Purchases SDK_ to send device data to RevenueCat, you c
 RevenueCat's events do not include receipts from the stores, since we validate purchases before triggering events. Therefore, do NOT enable the 'Reject IAP without Receipt' setting in Singular's Apps page so these events are accepted in Singular after having been validated by RevenueCat.
 :::
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'Singular' from the Integrations menu
 
-![](/images/0087649-app.revenuecat.com_projects_85ff18c7_collaborators_1_0aee0cbdd9ba395fb3373384d989d38e.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **Singular** from the Integrations menu.
-3. Add your Singular SDK key, and an optional sandbox SDK key. The sandbox SDK key will be used for any sandbox purchases so you don't have to send them to your production Singular instance.
-4. Enter the event names that RevenueCat will send or choose the default event names.
-5. Select whether you want RevenueCat to report proceeds (after app store cut) or revenue (gross sales).
-
-![Screenshot](/images/singular_integration.png)
+2. Add your Singular SDK key, and an optional sandbox SDK key. The sandbox SDK key will be used for any sandbox purchases so you don't have to send them to your production Singular instance.
+3. Enter the event names that RevenueCat will send or choose the default event names.
+4. Select whether you want RevenueCat to report proceeds (after app store cut) or revenue (gross sales).
 
 :::info Report early renewals
 By default, we will send a renewal's event time as the time when its due, but some stores may process their renewals early. Enable this setting in the Dashboard to report an early renewal's occurrence time instead of the time when the new subscription period is due to start to Singular, which may be especially useful when passing events to 3rd party sources from Singular that may not support an event time being in the future.
@@ -123,13 +120,13 @@ Navigate the the [Customer View](/dashboard-and-metrics/customer-history/basic-i
 While we are still sending the Revenue metric for these events, you should not expect to see the event appearing as Revenue in Singular's SDK console. You can verify that the event is processed as a revenue event in the Export logs tool via Singular.
 :::
 
-![](/images/28f4a01-app.revenuecat.com_activity_777004e5_event_1b2e7407-a1bc-416a-84cf-b65688412bbe_2_f846e85a103f26a02097fa962812fc56.png)
+![](/docs_images/integrations/attribution/singular/required-attributes.png)
 
 ### Check that the Singular event delivered successfully
 
 While still on the Customer View, click into the test purchase event in the [Customer History](/dashboard-and-metrics/customer-history) and make sure that the Singular integration event exists and was delivered successfully.
 
-![](/images/2dba434-app.revenuecat.com_activity_40779aaf_event_92499ad6-350b-455a-a2ec-4c28c4ca0b28_3_8b6f53b5dce20750e2284dbe150dd6cc.png)
+![](/docs_images/integrations/attribution/singular/successful-event.png)
 
 :::success You've done it!
 You should start seeing events from RevenueCat appear in Singular.

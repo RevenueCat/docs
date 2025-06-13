@@ -18,7 +18,7 @@ We recommend using Service Account HMAC keys instead of User Account HMAC keys. 
 
 Once you have this information, you can add it to the Google Cloud Storage integration settings for your project in RevenueCat.
 
-![Google Cloud Storage delivery configuration in RevenueCat dashboard](/images/a6c3ffd-app.revenuecat.com_projects_85ff18c7_integrations_intercom_9_88010b22e98099b0848533cc1c6ec248.png)
+![New integration](/docs_images/integrations/scheduled-data-exports/new-integration.png)
 
 :::info Allow 24 hours for initial delivery
 Once you've configured the Google Cloud Storage integration in RevenueCat, allow up to 24 hours before the first file is delivered.

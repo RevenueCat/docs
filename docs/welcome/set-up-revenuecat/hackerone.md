@@ -19,7 +19,7 @@ If you believe you’ve found a security vulnerability in any of our services, s
 
 You will receive an email inviting you to submit the report:
 
-![Submit a vulnerability report](/images/SCR-20250530-ocsv.png)
+![Submit a vulnerability report](/docs_images/account/submit-vulnerability.png)
 
 You will then be directed to HackerOne to confirm your report and submit it to our program.
 

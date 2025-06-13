@@ -29,8 +29,6 @@ If you've had subscription activity in your app but this value is missing or sta
 If a notification is received for a subscription not currently tracked by RevenueCat, we will return a **200** status code indicating we received the event, but this label will not be updated. Once an event is received for a tracked subscription, the label will be updated as expected.
 :::
 
-![](/images/bffdf75-Screen_Shot_2021-12-01_at_11.07.08_AM_c3c82a99fc627ad339c28b95947b6022.png "Screen Shot 2021-12-01 at 11.07.08 AM.png")
-
 ## Billing
 
 Setting up and receiving Platform Server Notifications does not affect RevenueCat billing.

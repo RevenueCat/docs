@@ -21,7 +21,7 @@ const ContentCardItem: React.FC<ContentCardItemProps> = ({
   icon,
   links,
 }) => {
-  let img = useBaseUrl(`/images/${icon}`);
+  let img = useBaseUrl(`/docs_images/${icon}`);
 
   // Determine the href for the root <a> tag
   const rootHref = link || (links && links.length > 0 ? links[0].link : "");

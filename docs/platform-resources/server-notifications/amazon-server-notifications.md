@@ -1,5 +1,6 @@
 ---
 title: Amazon Appstore Real-time Notifications
+sidebar_label: Amazon Appstore
 slug: amazon-server-notifications
 excerpt: Sending Amazon Appstore real-time notifications to RevenueCat
 hidden: false

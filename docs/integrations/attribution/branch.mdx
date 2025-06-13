@@ -90,7 +90,7 @@ If you are requesting the App Tracking permission through ATT to access the IDFA
 The AdSupport framework is required to access the IDFA parameter on iOS. Don't forget to import this into your project.
 :::
 
-![](/images/caf9cda-Screen_Shot_2020-09-14_at_7.09.36_PM_739bc6ccef43416570bf51e527f4e0fc.png "Screen Shot 2020-09-14 at 7.09.36 PM.png")
+![Import AdSupport Framework](/docs_images/integrations/attribution/import-adsupport-framework.png)
 
 :::danger Remove client-side purchase tracking
 Make sure to remove all client-side tracking of revenue. Since RevenueCat will be sending events for all revenue actions, tracking purchases with the Branch SDK directly can lead to double counting of revenue in Branch.
@@ -114,16 +114,13 @@ The below reserved key names can be used to optionally attach campaign data to a
 
 After you've set up the _Purchases SDK_ to send attribution data from Branch to RevenueCat, you can "turn on" the integration and configure the event tokens from the RevenueCat dashboard.
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'Branch' from the Integrations menu
 
-![](/images/c9cac9c-app.revenuecat.com_projects_85ff18c7_collaborators_1_adb02f881e911cd6bbb8e8deee68bc47.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **Branch** from the Integrations menu
-3. Add your test key and live key from Branch
-4. Enter the event names that RevenueCat will send or choose the default event names
-5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
-
-![Branch configuration screen](/images/917c588-app.revenuecat.com_projects_85ff18c7_integrations_branch_1_d07138064c3aca738ff3f70198432c84.png)
+2. Add your test key and live key from Branch
+3. Enter the event names that RevenueCat will send or choose the default event names
+4. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
 :::info Branch Events
 We send both START_TRIAL lifecycle events and the standard trial started events to all active Branch integrations.
@@ -145,13 +142,13 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 Navigate the the [Customer View](/dashboard-and-metrics/customer-history/basic-information) for the test user that just made a purchase. Make sure that all of the required data from step 2 above is listed as attributes for the user.
 
-![](/images/eb3d142-Screenshot_at_Sep_17_11-55-16_56862db3b4c213e796ccb367d38177f0.png "Screenshot at Sep 17 11-55-16.png")
+![](/docs_images/integrations/attribution/branch/required-attributes.png)
 
 ### Check that the Branch event delivered successfully
 
 While still on the Customer View, click into the test purchase event in the [Customer History](/dashboard-and-metrics/customer-history) and make sure that the Branch integration event exists and was delivered successfully.
 
-![](/images/95d0682-app.revenuecat.com_activity_40779aaf_event_92499ad6-350b-455a-a2ec-4c28c4ca0b28_8fb8d5bf893feeb90813c31b67695560.png)
+![](/docs_images/integrations/attribution/branch/successful-event.png)
 
 :::success You've done it!
 You should start seeing events from RevenueCat appear in Branch.
