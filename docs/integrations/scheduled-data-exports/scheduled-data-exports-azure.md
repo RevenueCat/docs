@@ -14,7 +14,7 @@ To start receiving these deliveries, you'll need the following details:
 
 Once you have this information, you can add it to the Azure Blob Storage integration settings for your project in RevenueCat.
 
-![Azure_Blob Storage delivery configuration in RevenueCat dashboard](/images/integrations/scheduled-data-exports/azure/integration-config.png)
+![Azure_Blob Storage delivery configuration in RevenueCat dashboard](/docs_images/integrations/scheduled-data-exports/azure/integration-config.png)
 
 :::info Allow 24 hours for initial delivery
 Once you've configured the Azure storage integration in RevenueCat, allow up to 24 hours before the first file is delivered.
