@@ -5,10 +5,6 @@ excerpt: Integrate in-app subscription events from RevenueCat with Statsig
 hidden: false
 ---
 
-:::success Pro Integration
-The Statsig integration is available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
 Statsig can be a helpful integration for optimizing purchases and revenue, and understanding which features are causing product metrics to move. RevenueCat can automatically send billing, subscription, and revenue metrics to your Statsig project.
 
 With our Statsig integration, you can:
@@ -49,28 +45,23 @@ In order to associate RevenueCat data with Statsig feature gate and/or experimen
 
 On the Statsig [Integration page](https://console.statsig.com/integrations) enable the RevenueCat integration.
 
-![Enable RevenueCat in Statsig integration page](/images/af93af9-enableStatSig_7a1dee0c95104809762d91f4b9940209.png)
+![Enable RevenueCat in Statsig integration page](/docs_images/integrations/third-party-integrations/statsig/enable-statsig-integration.png)
 
 ## 2. Send RevenueCat events into Statsig
 
 After you enabled the RevenueCat integration in Statsig's dashboard, you can "turn on" the integration from the RevenueCat dashboard.
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'Statsig' from the Integrations menu
 
-![](/images/fa5ab45-app.revenuecat.com_projects_85ff18c7_collaborators_1_aeaeacd9a03cb5518a7ee0d45a266cc1.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **Statsig** from the Integrations menu.
-3. Add your ['statsig-server-secret'](https://docs.statsig.com/feature-gates/implement/server#step-1-get-the-statsig-server-secret-key)
-
-Remember to select **Add Integration**
-
-![Statsig configuration page](/images/ceb1a77-app.revenuecat.com_projects_85ff18c7_integrations_intercom_4_096a91e8ec854b5eecd504c6b90b8a51.png)
+2. Add your ['statsig-server-secret'](https://docs.statsig.com/feature-gates/implement/server#step-1-get-the-statsig-server-secret-key)
 
 ## 3. Testing the Statsig integration
 
 Ingesting sandbox events into Statsig can be enabled in the RevenueCat configuration in the Statsig [Integration page](https://console.statsig.com/integrations).
 
-![Include Sandbox Events in Statsig integration page](/images/bbd8c17-enable_sandbox_ca9650a97b639017657c28169cf2b376.png "enable_sandbox.png")
+![Include Sandbox Events in Statsig integration page](/docs_images/integrations/third-party-integrations/statsig/enable-sandbox-events.png)
 
 ### Make a sandbox purchase with a new user
 
@@ -80,13 +71,13 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 While still on the Customer View, select test purchase event in the [Customer History](/dashboard-and-metrics/customer-history) page and make sure that the Statsig integration event exists and was delivered successfully.
 
-![](/images/7632c3b-statsig_customer_history_4f23f8fb56138d43fcdd7430be2079e0.png "statsig_customer_history.png")
+![](/docs_images/integrations/third-party-integrations/statsig/successful-event.png)
 
 ### Check Statsig dashboard for the delivered event
 
 Navigate to your Statsig app > Metrics. You will see events RevenueCat has dispatched to Statsig under 'Log Stream'.
 
-![](/images/8afcbd5-statsig_events_84a26ace3062ea8cc2565dc444d87786.png "statsig_events.png")
+![](/docs_images/integrations/third-party-integrations/statsig/statsig-successful-event.png)
 
 ## Sample Events
 

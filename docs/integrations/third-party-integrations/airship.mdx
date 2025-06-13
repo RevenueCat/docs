@@ -5,10 +5,6 @@ excerpt: Integrate in-app purchase events from RevenueCat with Airship
 hidden: false
 ---
 
-:::success Pro Integration
-The Airship integration is available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
 Airship can be a helpful integration tool in understanding what stage a customer is in and reacting accordingly. You can design and trigger personalized Airship messages to customers based on purchase behavior.
 
 Use your RevenueCat events to send Custom Events to trigger messages with Airship. This means you can design personalized Airship [Journeys](https://docs.airship.com/guides/messaging/user-guide/journeys/about/) and [Automations](https://docs.airship.com/guides/messaging/user-guide/messages/automation/about/) based on purchase behavior.
@@ -93,13 +89,14 @@ import javaContent2 from "@site/code_blocks/integrations/third-party-integration
 
 After you've set up the _Purchase_ SDK and Airship SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
 
-1. Navigate to your app in the RevenueCat dashboard and choose 'Airship' from the integrations menu
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'Airship' from the Integrations menu
+
+![Integration setup](/docs_images/integrations/setup-integrations.png)
+
 2. Add your [Airship app key and token](https://docs.airship.com/guides/admin/security/account-security/)
 3. Select the location of your Airship cloud site
 4. Enter the event names that RevenueCat will send or choose the default event names
 5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
-
-![Airship configuration page](/images/fd69e5f-app.revenuecat.com_projects_85ff18c7_integrations_branch_6_8d4ce309c76ef85954700461d9ab2ffb.png)
 
 ## Sample Events
 

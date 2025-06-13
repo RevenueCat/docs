@@ -5,10 +5,6 @@ excerpt: Send in-app subscription events to Slack
 hidden: false
 ---
 
-:::success Pro Integration
-The Slack integration is available to all users signed up after September '23, the legacy Starter and Pro plans, and Enterprise plans. If you're on a legacy Free plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
 RevenueCat can send you Slack message to a channel any time an event happens in your app. This lets you keep a close pulse on your app and celebrate those money making moments!
 
 ### Integration at a Glance
@@ -41,13 +37,13 @@ Before RevenueCat can post to your Slack channel, you need to authorize a webhoo
 
 - Navigate to [https://api.slack.com/apps](https://api.slack.com/apps?new_app=1) and create a new app. Give it a name like "RevenueCat" and select your workspace.
 
-![](/images/a85a3f1-Screen_Shot_2018-12-13_at_4.15.50_PM_6d3a450d421855de0a04972cbc0542d9.png "Screen Shot 2018-12-13 at 4.15.50 PM.png")
+![](/docs_images/integrations/third-party-integrations/slack/slack-app-creation.png)
 
 - Click **Create App**
 
 ### 2. Enable **Incoming Webhooks** from the settings page
 
-![](/images/SCR-20241024-lpne.png)
+![](/docs_images/integrations/third-party-integrations/slack/slack-enable-webhooks.png)
 
 1. Select **Incoming Webhooks** from the sidebar
 2. Enable the Incoming Webhooks toggle
@@ -55,19 +51,21 @@ Before RevenueCat can post to your Slack channel, you need to authorize a webhoo
 
 ### 3. Pick a channel that the app will post to, then click **Authorize**
 
-![](/images/f5c317c-Screen_Shot_2018-12-13_at_4.23.27_PM_e16cc13b0bd790dad1abbf714092d79e.png "Screen Shot 2018-12-13 at 4.23.27 PM.png")
+![](/docs_images/integrations/third-party-integrations/slack/slack-authorize-channel.png)
 
 ## Configure RevenueCat Integration
 
-Once you've set up a webhook in your Slack workspace. Enter the details into the Slack Integration section of your [dashboard](https://app.revenuecat.com).
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'Slack' from the Integrations menu
 
-![](/images/b1cf4cb-app.revenuecat.com_projects_85ff18c7_integrations_intercom_3_73d88cd7add4ed6e33a667353c293b27.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
+
+2. Enter your configuration details.
 
 :::success
 You're all set! RevenueCat will start sending events into Slack!
 :::
 
-![](/images/f1167d6-unnamed_1d9e664511b09bcec67f6079b8265b91.png "unnamed.png")
+![](/docs_images/integrations/third-party-integrations/slack/slack-successful-event.png)
 
 ## Sample Events
 

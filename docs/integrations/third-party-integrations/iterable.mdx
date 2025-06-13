@@ -5,10 +5,6 @@ excerpt: Integrate in-app purchase events from RevenueCat with Iterable
 hidden: false
 ---
 
-:::success Pro Integration
-The Iterable integration is available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
 Iterable can be a helpful integration tool in understanding what stage a customer is in and reacting accordingly. Iterable is a cross-channel platform that powers unified customer experiences and empowers marketers to create, optimize and measure every interaction taking place throughout the customer journey. With Iterable, brands create individualized marketing touch points that earn engagement, solidify trust and galvanize loyal consumer-brand relationships.
 
 With our Iterable integration, you can:
@@ -79,16 +75,13 @@ import curlContent from "@site/code_blocks/integrations/third-party-integrations
 
 After you've set up the Purchase SDK and Iterable SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
 
-1. Navigate to your app in the RevenueCat and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'Iterable' from the Integrations menu
 
-![](/images/82692c7-app.revenuecat.com_projects_85ff18c7_collaborators_1_73d6dc81e85972dbbc157674b1182fb8.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **Iterable** from the Integrations menu
-3. Add your Iterable [Server-side API key](https://support.iterable.com/hc/en-us/articles/360043464871-API-Keys-#creating-api-keys) to the **API key** field in RevenueCat
-4. Enter the event names that RevenueCat will send or choose the default event names
-5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
-
-![Iterable configuration page](/images/519b30e-app.revenuecat.com_projects_85ff18c7_integrations_intercom_9c3b43cb62a478eb28d22ceb32ac8599.png)
+2. Add your Iterable [Server-side API key](https://support.iterable.com/hc/en-us/articles/360043464871-API-Keys-#creating-api-keys) to the **API key** field in RevenueCat
+3. Enter the event names that RevenueCat will send or choose the default event names
+4. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
 :::info Iterable sandbox environment
 Iterable recommends having a production and sandbox project to separate live and testing environments. You can input both keys in the RevenueCat Iterable settings page.
@@ -104,15 +97,15 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 While still on the Customer View, select the purchase event in the [Customer History](/dashboard-and-metrics/customer-history) page and make sure that the Iterable integration event exists and was delivered successfully.
 
-![](/images/470e07f-Screen_Shot_2022-02-11_at_4.36.22_PM_8c221f4f0c6e086a6ca72b8a32bf5c53.png "Screen Shot 2022-02-11 at 4.36.22 PM.png")
+![](/docs_images/integrations/third-party-integrations/iterable/successful-event.png)
 
 ### Check Iterable dashboard for the delivered event
 
 Navigate to your Iterable dashboard > Insights > Logs. To find Purchase events navigate to 'Purchases' and to find Custom events navigate to 'Events'. You will see events RevenueCat has dispatched to the Iterable under 'Purchase Log' and 'Events log' respectively.
 
-![](/images/2b00ee8-Screen_Shot_2022-02-11_at_4.34.52_PM_e8f4c4b2c9b5e4d6f9bfed9f61102843.png "Screen Shot 2022-02-11 at 4.34.52 PM.png")
+![](/docs_images/integrations/third-party-integrations/iterable/iterable-purchase-log.png)
 
-![](/images/666b2e3-Screen_Shot_2022-02-11_at_4.35.04_PM_9debca5f8c0fba01f1924f224333f94b.png "Screen Shot 2022-02-11 at 4.35.04 PM.png")
+![](/docs_images/integrations/third-party-integrations/iterable/iterable-events-log.png)
 
 ## Sample Events
 
