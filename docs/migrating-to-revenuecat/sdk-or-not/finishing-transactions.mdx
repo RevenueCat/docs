@@ -56,3 +56,25 @@ import om7 from "@site/code_blocks/migrating-to-revenuecat/observer-mode_7.js.tx
     },
   ]}
 />
+
+## Syncing Past Subscriptions
+
+When using RevenueCat with your own IAP code, historical subscriptions won't automatically appear in the dashboard. To sync past subscriptions, you'll need to call `syncPurchases()` after configuring the SDK. This method will:
+
+- read the local App Store receipt (iOS) or query the billing library (Android) for existing transactions
+- process historical transactions and associate them with the current appUserID
+- activate entitlements and display the data in the dashboard
+
+:::info Best Practice
+Call `syncPurchases()` after a user logs in, rather than on every app launch. Calling it too frequently can cause unnecessary delays or disrupt the user experience, especially if your app has a large user base or complex entitlements.
+:::
+
+:::warning
+For Amazon Appstore apps, you'll need to manually sync each purchase using `syncAmazonPurchase()` after making a purchase. See our [Amazon Platform Resources](/platform-resources/amazon-platform-resources#syncing-purchases-when-your-app-is-completing-transactions) for more details.
+:::
+
+### Restore Behavior Considerations
+
+When syncing purchases, RevenueCat will handle existing subscriptions based on your [restore behavior](/projects/restore-behavior) setting. This setting determines what happens when a user's purchases are already associated with a different App User ID.
+
+For more information about restoring purchases and best practices, see our [Restoring Purchases](/getting-started/restoring-purchases) guide.
