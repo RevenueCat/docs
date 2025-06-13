@@ -1,0 +1,148 @@
+---
+title: Hard Paywalls
+sidebar_label: Hard Paywalls
+slug: hard-paywall
+---
+
+This guide illustrates the setup and optimization of your Hard Paywall monetization strategy, focusing on its configuration and display to ensure a simple and effective implementation.
+
+## When to Use
+
+A hard paywall strategy is straightforward: users must purchase to access specific content or features. This model works well when:
+
+- Your app provides high-value content or functionality
+- Your app operates with high unit economics (e.g., AI-driven features with significant per-user costs)
+- You have a clear value proposition
+- Your target audience has a high willingness to pay
+
+## Subscription Configuration Steps
+
+### 1. Entitlement
+
+RevenueCat Entitlements represent a level of access, features, or content that a user is "entitled" to. Entitlements are scoped to a [project](/projects/overview), and are typically unlocked after a user purchases a [product](/offerings/products-overview).
+Entitlements are used to ensure a user has appropriate access to content based on their purchases, without having to manage all of the product identifiers in your app code.
+
+Taking into consideration the fact that hard paywalls block the main feature access of your app, we recommend creating a single-tier access level or [entitlement](https://www.revenuecat.com/docs/getting-started/entitlements) that grants access to all features of the application.
+
+![Screenshot](/images/playbooks/hard-paywalls/hard-paywall-entitlements-detail.png)
+
+### 2. Products
+
+Products are the individual SKUs that users actually purchase from your app. The stores (Apple, Google, Stripe, etc.) process these SKUs and charge the user.
+
+For more information on how to set this up, please refer to our [product setup documentation](/offerings/products-overview).
+
+![Screenshot](/images/playbooks/hard-paywalls/hard-paywall-products.png)
+
+### 3. Offering
+
+Offerings are the selection of [products](/offerings/products-overview) that are "offered" to a user on your paywall. Using RevenueCat Offerings is optional, but enable features like Paywalls, Experiments, and Targeting.
+
+For more information on how to set this up, please refer to our [offering setup documentation](https://www.revenuecat.com/docs/offerings/overview).
+
+![Screenshot](/images/playbooks/hard-paywalls/hard-paywall-offering.png)
+
+## Building your Paywall
+
+Now that you have everything set up, it's time to build your paywall. Take advantage of [RevenueCat's Paywalls](/tools/paywalls) and start creating your own.
+
+Below you can find an example of a Hard Paywall.
+
+![Screenshot](/images/playbooks/hard-paywalls/hard-paywall-paywall-editor.png)
+
+![Screenshot](/images/playbooks/hard-paywalls/hard-paywall-paywall.png)
+
+## Presenting your Paywall
+
+### Implementation
+
+Given that you want to block any user's access to your app features if they have no subscription, your paywall should be presented as full screen, not giving the user the possibility to bypass it. Below you can find some code snippets on how to accomplish this. Please refer to [this document](https://www.revenuecat.com/docs/tools/paywalls/displaying-paywalls) to get more detailed information on how to present paywalls.
+
+import swiftui from "@site/code_blocks/tools/paywalls_9.swift?raw";
+import kotlin from "@site/code_blocks/tools/paywalls_7.kt?raw";
+import react from "@site/code_blocks/tools/paywalls_rn_7.ts.txt?raw";
+import flutter from "@site/code_blocks/tools/paywalls_flutter_2.dart?raw";
+import kmp from "@site/code_blocks/tools/paywalls_kmp_3.kts?raw";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "swift",
+      title: "SwiftUI",
+      content: swiftui,
+    },
+    {
+      type: "kotlin",
+      title: "Kotlin",
+      content: kotlin,
+    },
+    {
+      type: "rn",
+      title: "React Native",
+      content: react,
+    },
+    {
+      type: "flutter",
+      title: "Flutter",
+      content: flutter,
+    },
+    {
+      type: "kotlin",
+      title: "Kotlin Multiplatform",
+      content: kmp,
+    },
+  ]}
+/>
+
+#### Implementation considerations
+
+When implementing a hard paywall, it's essential to ensure that users cannot dismiss or bypass the paywall, as it's designed to restrict access to your app's core features until a subscription or trial is activated.
+
+The implementation varies slightly depending on the type of paywall template you're using:
+
+**Using Legacy Paywall Templates**
+
+- **React Native:**
+  Set `displayCloseButton: false` in your paywall `options` configuration to remove the close button.
+
+**Using New Paywall Templates**
+
+- **All platforms:**
+  Remove the close button directly within the Paywall Editor.
+
+## Best Practices
+
+1. **Clear Value Proposition**
+
+   - Clearly communicate what users get with their purchase and why they need to purchase to use the app. Being transparent can help mitigate these risks:
+     - Avoid store negative reviews.
+     - Prevent Apple Review rejections.
+   - Highlight key features and benefits.
+   - Use compelling visuals and copy.
+
+2. **Pricing Strategy**
+
+   - Test different price points.
+   - Consider offering multiple subscription durations.
+   - Use price localization for different markets.
+
+3. **User Experience**
+   - Make the purchase flow smooth and intuitive.
+   - Provide clear purchase confirmation.
+   - Implement restore purchases functionality.
+
+## Test your Paywall
+
+- Ensure that the user has sufficient context about what your app offers before displaying the paywall.
+- Ensure that the paywall cannot be bypassed by either swiping down or dismissing it.
+  - When Android is one of your targeted platforms, be sure to account for the physical back button by implementing appropriate navigation listeners.
+- Double-check that your paywall displays all the products you configured.
+- Make sure the restore purchase option is provided to the user.
+
+Review our [Testing Guide](/guides/testing-guide/use-cases) to fine-tune your test cases and make sure everything is working as expected.
+
+## Next Steps
+
+1. Use [Experiments](/tools/experiments-v1) to try out different Offerings and Pricing Strategies.
+2. Integrate our [Customer Center](/tools/customer-center) feature to help users manage their subscriptions.
+3. Once you're ready to launch, review this [App Subscription Launch Checklist](/test-and-launch/launch-checklist).

@@ -39,6 +39,22 @@ const welcomeCategory = Category({
   items: [Page({ slug: "welcome/overview" })],
 });
 
+const playbooksCategory = Category({
+  iconName: "sparkle",
+  label: "Playbooks",
+  itemsPathPrefix: "playbooks/",
+  items: [
+    Page({ slug: "overview" }),
+    SubCategory({
+      label: "Guides",
+      slug: "guides",
+      itemsPathPrefix: "guides/",
+      items: [Page({ slug: "hard-paywall" }), Page({ slug: "freemium" })],
+      index: { title: "Guides", link: "playbooks/guides" },
+    }),
+  ],
+});
+
 const projectsCategory = Category({
   iconName: "hammer",
   label: "Projects & Apps",
@@ -991,6 +1007,7 @@ const sidebars = {
     attributionCategory,
     integrationsMoreCategory,
   ],
+  playbookSidebar: [playbooksCategory],
 };
 
 export default sidebars;
