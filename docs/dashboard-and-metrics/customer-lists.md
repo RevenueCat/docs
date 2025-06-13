@@ -158,6 +158,24 @@ See the table below for all filters you can apply to your lists.
 Selecting any date filters will apply to the start of the day. For example, `2021-01-01` will be `2021-01-01T00:00:00` under the hood.
 :::
 
+### Status Filter
+
+The Status filter provides these options to refine your customer list:
+
+- **Active**: The customer has an active subscription.
+- **Free Trial**: The customer currently has an active trial subscription.
+- **Intro Period**: The customer’s subscription is currently in a discounted introductory (non-free) period.
+- **Promotional**: The customer has a [promotional entitlement](/dashboard-and-metrics/customer-history/promotionals).
+- **Billing Issue**: The customer's subscription is experiencing a billing retry period.
+- **Billing Issue Trial**: The customer is in a trial period experiencing billing issues.
+- **Cancelled**: The customer has cancelled their subscription.
+- **Cancelled Trial**: The customer has cancelled their trial subscription.
+- **Expired**: The customer's subscription has ended and is no longer active.
+
+:::info
+Applying any status filter will limit the customer list to customers who have made at least one purchase.
+:::
+
 ## Exporting Data
 
 The complete list of customers in a list can be exported as a .csv file. Exports are processed in the background, and you'll receive an email with a link to download the file. Emails are sent to the logged in account that requested the export. The download links are shareable and available for 30 days.
