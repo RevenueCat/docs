@@ -111,7 +111,7 @@ If you're on an older version of our exports, updating is easy:
 4. Click **UPDATE TEMPLATE**
 5. After confirming that your data pipeline is configured to ingest the described changes, click **UPDATE** in the confirmation modal to complete the update.
 
-![Image](/images/c12c793-v2_e105135c4a91969deb82b77cee912d1f.png)
+![Update template](/docs_images/integrations/scheduled-data-exports/update-template.png)
 
 :::warning Data Format Changes
 Please note that Version 4 and all subsequent templates include data format changes which must be incorporated into your data pipeline before updating. [Learn more here](/integrations/scheduled-data-exports/data-export-version-4).
@@ -121,7 +121,7 @@ Please note that Version 4 and all subsequent templates include data format chan
 
 We strongly recommend keeping the option to "Receive new and updated transactions only" enabled to significantly reduce the amount of data that you need to process in each daily export.
 
-![Image](/images/new-and-updated.png)
+![New and updated](/docs_images/integrations/scheduled-data-exports/new-and-updated.png)
 
 However, handling transaction updates can be tricky, so consider these tips to make it easier:
 
@@ -133,42 +133,97 @@ However, handling transaction updates can be tricky, so consider these tips to m
 
 You can use the following sample queries (written in Postgresql) as starting points for reproducing common RevenueCat measures.
 
-import activeTrialsContent from '@site/code_blocks/integrations/scheduled-data-exports_1.pgsql?raw';
-import activeSubscriptionsContent from '@site/code_blocks/integrations/scheduled-data-exports_2.pgsql?raw';
-import revenueContent from '@site/code_blocks/integrations/scheduled-data-exports_3.pgsql?raw';
-import mrrContent from '@site/code_blocks/integrations/scheduled-data-exports_12.pgsql?raw';
-import mrrMovementContent from '@site/code_blocks/integrations/scheduled-data-exports_11.pgsql?raw';
-import activeSubscriptionsMovementContent from '@site/code_blocks/integrations/scheduled-data-exports_10.pgsql?raw';
-import subscriptionRetentionContent from '@site/code_blocks/integrations/scheduled-data-exports_14.pgsql?raw';
+import activeTrialsContent from "@site/code_blocks/integrations/scheduled-data-exports_1.pgsql?raw";
+import activeSubscriptionsContent from "@site/code_blocks/integrations/scheduled-data-exports_2.pgsql?raw";
+import revenueContent from "@site/code_blocks/integrations/scheduled-data-exports_3.pgsql?raw";
+import mrrContent from "@site/code_blocks/integrations/scheduled-data-exports_12.pgsql?raw";
+import mrrMovementContent from "@site/code_blocks/integrations/scheduled-data-exports_11.pgsql?raw";
+import activeSubscriptionsMovementContent from "@site/code_blocks/integrations/scheduled-data-exports_10.pgsql?raw";
+import subscriptionRetentionContent from "@site/code_blocks/integrations/scheduled-data-exports_14.pgsql?raw";
 
-<RCCodeBlock tabs={[
-{ type: 'pgsql', content: activeSubscriptionsContent, name: 'Active Subscriptions' },
-{ type: 'pgsql', content: activeSubscriptionsMovementContent, name: 'Active Subscriptions Movement' },
-{ type: 'pgsql', content: mrrContent, name: 'MRR' },
-{ type: 'pgsql', content: mrrMovementContent, name: 'MRR Movement' },
-{ type: 'pgsql', content: activeTrialsContent, name: 'Active Trials' },
-{ type: 'pgsql', content: revenueContent, name: 'Revenue' },
-{ type: 'pgsql', content: subscriptionRetentionContent, name: 'Subscription Retention' }
-]} />
+<RCCodeBlock
+  tabs={[
+    {
+      type: "pgsql",
+      content: activeSubscriptionsContent,
+      name: "Active Subscriptions",
+    },
+    {
+      type: "pgsql",
+      content: activeSubscriptionsMovementContent,
+      name: "Active Subscriptions Movement",
+    },
+    {
+      type: "pgsql",
+      content: mrrContent,
+      name: "MRR",
+    },
+    {
+      type: "pgsql",
+      content: mrrMovementContent,
+      name: "MRR Movement",
+    },
+    {
+      type: "pgsql",
+      content: revenueContent,
+      name: "Revenue",
+    },
+    {
+      type: "pgsql",
+      content: subscriptionRetentionContent,
+      name: "Subscription Retention",
+    },
+  ]}
+/>
 
 ## Sample queries for customized measures
 
 Scheduled Data Exports are a powerful way to add your own customizations on top of the core measures provided by RevenueCat. Check out the following sample queries (written in Postgresql) for some ideas.
 
-import activeSubsByCustomAttributeContent from '@site/code_blocks/integrations/scheduled-data-exports_4.pgsql?raw';
-import activeSubsByAutoRenewStatusContent from '@site/code_blocks/integrations/scheduled-data-exports_9.pgsql?raw';
-import weeklyRevenueContent from '@site/code_blocks/integrations/scheduled-data-exports_5.pgsql?raw';
-import realizedLTVSegmentsContent from '@site/code_blocks/integrations/scheduled-data-exports_6.pgsql?raw';
-import activeTrialsByGracePeriodStatusContent from '@site/code_blocks/integrations/scheduled-data-exports_7.pgsql?raw';
-import realizedLTVPerPayingCustomerByFirstPurchaseDateContent from '@site/code_blocks/integrations/scheduled-data-exports_8.pgsql?raw';
-import trialConversionRatebyTrialEndDate from '@site/code_blocks/integrations/scheduled-data-exports_13.pgsql?raw';
+import activeSubsByCustomAttributeContent from "@site/code_blocks/integrations/scheduled-data-exports_4.pgsql?raw";
+import activeSubsByAutoRenewStatusContent from "@site/code_blocks/integrations/scheduled-data-exports_9.pgsql?raw";
+import weeklyRevenueContent from "@site/code_blocks/integrations/scheduled-data-exports_5.pgsql?raw";
+import realizedLTVSegmentsContent from "@site/code_blocks/integrations/scheduled-data-exports_6.pgsql?raw";
+import activeTrialsByGracePeriodStatusContent from "@site/code_blocks/integrations/scheduled-data-exports_7.pgsql?raw";
+import realizedLTVPerPayingCustomerByFirstPurchaseDateContent from "@site/code_blocks/integrations/scheduled-data-exports_8.pgsql?raw";
+import trialConversionRatebyTrialEndDate from "@site/code_blocks/integrations/scheduled-data-exports_13.pgsql?raw";
 
-<RCCodeBlock tabs={[
-{ type: 'pgsql', content: activeSubsByCustomAttributeContent, name: 'Active Subs by Custom Attribute' },
-{ type: 'pgsql', content: activeSubsByAutoRenewStatusContent, name: 'Active Subs by Auto Renew Status' },
-{ type: 'pgsql', content: weeklyRevenueContent, name: 'Weekly Revenue (starting Monday)' },
-{ type: 'pgsql', content: realizedLTVSegmentsContent, name: 'Realized LTV Segments' },
-{ type: 'pgsql', content: activeTrialsByGracePeriodStatusContent, name: 'Active Trials by Grace Period Status' },
-{ type: 'pgsql', content: realizedLTVPerPayingCustomerByFirstPurchaseDateContent, name: 'Realized LTV Per Paying Customer by First Purchase Date' },
-{ type: 'pgsql', content: trialConversionRatebyTrialEndDate, name: 'Trial Conversion Rate by Trial End Date' }
-]} />
+<RCCodeBlock
+  tabs={[
+    {
+      type: "pgsql",
+      content: activeSubsByCustomAttributeContent,
+      name: "Active Subs by Custom Attribute",
+    },
+    {
+      type: "pgsql",
+      content: activeSubsByAutoRenewStatusContent,
+      name: "Active Subs by Auto Renew Status",
+    },
+    {
+      type: "pgsql",
+      content: weeklyRevenueContent,
+      name: "Weekly Revenue (starting Monday)",
+    },
+    {
+      type: "pgsql",
+      content: realizedLTVSegmentsContent,
+      name: "Realized LTV Segments",
+    },
+    {
+      type: "pgsql",
+      content: activeTrialsByGracePeriodStatusContent,
+      name: "Active Trials by Grace Period Status",
+    },
+    {
+      type: "pgsql",
+      content: realizedLTVPerPayingCustomerByFirstPurchaseDateContent,
+      name: "Realized LTV Per Paying Customer by First Purchase Date",
+    },
+    {
+      type: "pgsql",
+      content: trialConversionRatebyTrialEndDate,
+      name: "Trial Conversion Rate by Trial End Date",
+    },
+  ]}
+/>
