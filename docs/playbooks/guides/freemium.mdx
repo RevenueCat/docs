@@ -10,10 +10,10 @@ This guide walks through implementing and optimizing a Freemium strategy using R
 
 A freemium strategy provides value to users before asking them to pay. This model works well when:
 
-- Offer a clear and compelling upgrade path from free to paid (e.g., feature gating, usage limits)
-- Have low marginal costs per user (minimal server or infrastructure overhead)
-- Leverage freemium users as growth drivers through sharing, referrals, or collaboration
-- Face competitive pressure where users expect to try the core experience before subscribing
+- There is a clear and compelling upgrade path from free to paid (e.g., feature gating, usage limits).
+- The app has low marginal costs per user (minimal server or infrastructure overhead).
+- Your strategy is to leverage freemium users as growth drivers through sharing, referrals, or collaboration.
+- The app faces competitive pressure where users expect to try the core experience before subscribing.
 
 ## Before you start
 
@@ -35,27 +35,36 @@ Decide how many access tiers to offer based on your app's functionality and mone
 
 ### 1. Entitlements
 
-For more information on how to set this up, please refer to our [entitlement setup documentation](https://www.revenuecat.com/docs/getting-started/entitlements).
+RevenueCat Entitlements represent a level of access, features, or content that a user is "entitled" to. Entitlements are scoped to a [project](/projects/overview), and are typically unlocked after a user purchases a [product](/offerings/products-overview).
+Entitlements are used to ensure a user has appropriate access to content based on their purchases, without having to manage all of the product identifiers in your app code.
+
+For more information on how to set this up, please refer to our [entitlement setup documentation](/getting-started/entitlements).
 
 ![Screenshot](/images/playbooks/freemium/freemium-entitlements.png)
 
 ### 2. Products
 
-For more information on how to set this up, please refer to our [product setup documentation](https://www.revenuecat.com/docs/offerings/products-overview).
+Products are the individual SKUs that users actually purchase from your app. The stores (Apple, Google, Stripe, etc.) process these SKUs and charge the user.
+
+For more information on how to set this up, please refer to our [product setup documentation](/offerings/products-overview).
 
 ![Screenshot](/images/playbooks/freemium/freemium-products.png)
 
 ### 3. Offering
 
+Offerings are the selection of [products](/offerings/products-overview) that are "offered" to a user on your paywall. Using RevenueCat Offerings is optional, but enable features like Paywalls, Experiments, and Targeting.
+
 For more information on how to set this up, please refer to our [offering setup documentation](https://www.revenuecat.com/docs/offerings/overview).
 
 ![Screenshot](/images/playbooks/freemium/freemium-offerings.png)
 
-![Screenshot](/images/playbooks/freemium/freemium-gold-offering.jpg)
+![Screenshot](/images/playbooks/freemium/freemium-gold-offering.png)
 
 ## Building your Paywall
 
-Now that you have everything set up, it's time to build your paywall. Take advantage of [RevenueCat's Paywalls](https://www.revenuecat.com/docs/tools/paywalls-v2) and start creating your own.
+Now that you have everything set up, it's time to build your paywall. Take advantage of [RevenueCat's Paywalls](/tools/paywalls) and start creating your own.
+
+Below you can find an example of a Freemium Paywall.
 
 ![Screenshot](/images/playbooks/freemium/freemium-paywall-editor.png)
 
@@ -124,16 +133,17 @@ import kmp from "@site/code_blocks/tools/paywalls_kmp_1.kts?raw";
 
 ## Test your Paywall
 
-- Make sure your implementation works smoothly by testing across different user scenarios:
+Ensure your implementation works smoothly by testing across different user scenarios:
+
 - Free features remain accessible at all times
 - A paywall is shown when a premium feature is selected
 - Premium features unlock immediately after purchase
 - Restore purchases and error flows work as expected
 
-Check on our [Testing Guide](https://www.revenuecat.com/docs/guides/testing-guide/use-cases) to fine-tune your test cases and make sure everything is working as expected.
+Review our [Testing Guide](/guides/testing-guide/use-cases) to fine-tune your test cases and make sure everything is working as expected.
 
 ## Next Steps
 
-1. Use [Experiments](https://www.revenuecat.com/docs/tools/experiments-v1) to try out different Offerings and Pricing Strategies.
-2. Integrate our [Customer Center](https://www.revenuecat.com/docs/tools/customer-center) feature to help users manage their subscriptions.
-3. Once you're ready to launch, take a look into this [App Subscription Launch Checklist](https://www.revenuecat.com/docs/test-and-launch/launch-checklist)
+1. Use [Experiments](/tools/experiments-v1) to test different offerings, pricing strategies, placements, and user targeting approaches.
+2. Integrate our [Customer Center](/tools/customer-center) feature to help users manage their subscriptions.
+3. Once you're ready to launch, review this [App Subscription Launch Checklist](/test-and-launch/launch-checklist).

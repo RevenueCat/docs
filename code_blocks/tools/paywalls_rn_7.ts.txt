@@ -1,39 +1,33 @@
-import RevenueCatUI, { PAYWALL_RESULT } from "react-native-purchases-ui";
+import React from 'react';
+import { View } from 'react-native';
 
-async function presentPaywall(): Promise<boolean> {
-    // Present paywall for current offering without dismiss button:
-    const paywallResult: PAYWALL_RESULT = await RevenueCatUI.presentPaywall({
-        displayCloseButton: false
-    });
-    // or if you need to present a specific offering:
-    const paywallResult: PAYWALL_RESULT = await RevenueCatUI.presentPaywall({
-        offering: offering, // Optional Offering object obtained through getOfferings
-        displayCloseButton: false
-    });
+import RevenueCatUI from 'react-native-purchases-ui';
 
-    switch (paywallResult) {
-        case PAYWALL_RESULT.NOT_PRESENTED:
-        case PAYWALL_RESULT.ERROR:
-        case PAYWALL_RESULT.CANCELLED:
-            return false;
-        case PAYWALL_RESULT.PURCHASED:
-        case PAYWALL_RESULT.RESTORED:
-            return true;
-        default:
-            return false;
-    }
-}
+// Display current offering
+return (
+    <View style={{ flex: 1 }}>
+        <RevenueCatUI.Paywall 
+            options={{ displayCloseButton: false }} // setting this property to `false` will remove the close button from Legacy Paywalls only
+        />
+    </View>
+);
 
-async function presentPaywallIfNeeded() {
-    // Present paywall for current offering:
-    const paywallResult: PAYWALL_RESULT = await RevenueCatUI.presentPaywallIfNeeded({
-        requiredEntitlementIdentifier: "pro",
-        displayCloseButton: false
-    });
-    // If you need to present a specific offering:
-    const paywallResult: PAYWALL_RESULT = await RevenueCatUI.presentPaywallIfNeeded({
-        offering: offering, // Optional Offering object obtained through getOfferings
-        requiredEntitlementIdentifier: "pro",
-        displayCloseButton: false
-    });
-}
+// If you need to display a specific offering:
+return (
+    <View style={{ flex: 1 }}>
+        <RevenueCatUI.Paywall
+          options={{
+            offering: offering, // Optional Offering object obtained through getOfferings
+            displayCloseButton: false // setting this property to `false` will remove the close button from Legacy Paywalls only
+          }}
+          onRestoreCompleted={({customerInfo}: { customerInfo: CustomerInfo }) => {
+            // Optional listener. Called when a restore has been completed.
+            // This may be called even if no entitlements have been granted.
+          }
+          onDismiss={() => {
+            // Dismiss the paywall, i.e. remove the view, navigate to another screen, etc.
+            // Will be called when a purchase succeeds.
+          }}
+        />
+    </View>
+);

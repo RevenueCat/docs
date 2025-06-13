@@ -981,7 +981,6 @@ const integrationsMoreCategory = Category({
 const sidebars = {
   defaultSidebar: [
     welcomeCategory,
-    playbooksCategory,
     projectsCategory,
     mobileSDKCategory,
     webSDKCategory,
@@ -1008,6 +1007,7 @@ const sidebars = {
     attributionCategory,
     integrationsMoreCategory,
   ],
+  playbookSidebar: [playbooksCategory],
 };
 
 export default sidebars;
