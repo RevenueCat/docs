@@ -8,6 +8,7 @@ struct App: View {
         ContentView()
             .presentPaywallIfNeeded(
                 requiredEntitlementIdentifier: Constants.ENTITLEMENT_ID,
+                presentationMode: .fullScreen,
                 purchaseCompleted: { customerInfo in
                     print("Purchase completed: \(customerInfo.entitlements)")
                 },
