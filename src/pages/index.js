@@ -96,7 +96,7 @@ function LandingPage() {
             <h2 className="font-normal mb-0 lg:mb-8 text-2xl lg:text-3xl">
               For Developers
             </h2>
-            <Link href="/docs/getting-started/quickstart/">SDK Quickstart</Link>
+            <Link href="/docs/getting-started/quickstart">SDK Quickstart</Link>
             <Link href="/docs/api-v1">REST API</Link>
             <Link href="/docs/getting-started/installation">
               Installing the SDK
