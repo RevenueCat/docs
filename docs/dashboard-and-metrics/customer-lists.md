@@ -176,6 +176,12 @@ The Status filter provides these options to refine your customer list:
 Applying any status filter will limit the customer list to customers who have made at least one purchase.
 :::
 
+:::info
+If a customer has more than one subscription, the status filter applies only to the customer's latest transaction.
+
+Additionally, promotional status is ranked lower than other statuses, regardless of whether the promotional purchase is the latest transaction.
+:::
+
 ## Exporting Data
 
 The complete list of customers in a list can be exported as a .csv file. Exports are processed in the background, and you'll receive an email with a link to download the file. Emails are sent to the logged in account that requested the export. The download links are shareable and available for 30 days.
