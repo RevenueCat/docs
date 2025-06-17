@@ -183,6 +183,11 @@ const config = {
                 sidebarId: "dataSidebar",
                 label: "Charts, Metrics, & Data Reference",
               },
+              {
+                type: "docSidebar",
+                sidebarId: "playbookSidebar",
+                label: "Playbooks",
+              },
             ],
           },
           {

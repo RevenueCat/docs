@@ -5,10 +5,6 @@ excerpt: Integrate RevenueCat subscription status with OneSignal
 hidden: false
 ---
 
-:::success Pro Integration
-The OneSignal integration is available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
 OneSignal can be a useful integration tool for understanding what stage a customer is in to react accordingly. RevenueCat can automatically update user tags in OneSignal with their latest subscription status.
 
 With our OneSignal integration, you can:
@@ -108,15 +104,12 @@ import onesignalV9Content from "@site/code_blocks/integrations/third-party-integ
 
 After you've set up the _Purchases SDK_ to send device data to RevenueCat, you can "turn on" the integration and configure the tag names from the RevenueCat dashboard.
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'OneSignal' from the Integrations menu
 
-![](/images/c37e1b7-app.revenuecat.com_projects_85ff18c7_collaborators_1_81da43086e00b58d8d9c6aa904b9932f.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **OneSignal** from the Integrations menu.
-3. Add your **OneSignal App Id** and **OneSignal API key**.
-4. Enter the tag names that RevenueCat should use, or choose the default tag names.
-
-![OneSignal configuration screen](/images/319d5b4-app.revenuecat.com_projects_85ff18c7_integrations_intercom_2_25b92799d8f7800e40ff8604f064c94a.png)
+2. Add your **OneSignal App Id** and **OneSignal API key**.
+3. Enter the tag names that RevenueCat should use, or choose the default tag names.
 
 ## 3. Testing the OneSignal integration
 
@@ -134,7 +127,7 @@ Navigate the the [Customer View](/dashboard-and-metrics/customer-history/basic-i
 
 While still on the Customer View, click into the test purchase event in the [Customer History](/dashboard-and-metrics/customer-history) and make sure that the OneSignal integration event exists and was delivered successfully.
 
-![](/images/f052d26-app.revenuecat.com_activity_40779aaf_event_92499ad6-350b-455a-a2ec-4c28c4ca0b28_5_05a0f6d2b9da1a6046edf2efb43f8832.png)
+![](/docs_images/integrations/third-party-integrations/onesignal/event-delivered.png)
 
 ## Sample Events
 

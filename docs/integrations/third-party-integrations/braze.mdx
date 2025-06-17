@@ -5,10 +5,6 @@ excerpt: Integrate in-app subscription events from RevenueCat with Braze
 hidden: false
 ---
 
-:::success Pro Integration
-The Braze integration is available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
 Braze can be a helpful integration tool in understanding what stage a customer is in and reacting accordingly. Using Braze can help you to create content that understands the context of your customers and their actions.
 
 With our Braze integration, you can:
@@ -57,7 +53,7 @@ In order to have these events recognized as `purchases` in Braze, be sure to kee
 
 You can identify the RevenueCat event name using the `rc_event_name` field attached to the purchase.
 
-![Braze purchases](/images/braze-purchases.png)
+![Braze purchases](/docs_images/integrations/third-party-integrations/braze/braze-purchases.png)
 
 :::warning Updating existing integrations to send purchases
 RevenueCat began supporting Braze purchases in February 2025. Purchases and custom events are treated as entirely different events in Braze, so if your existing Braze integration sends custom events and you enable sending purchase objects instead, future purchases will be treated as brand new events in Braze.
@@ -107,16 +103,13 @@ Make sure to remove all client-side tracking of revenue. Since RevenueCat will b
 
 After you've set up the _Purchases SDK_ and Braze SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'Braze' from the Integrations menu
 
-![](/images/cf5de31-app.revenuecat.com_projects_85ff18c7_collaborators_1_d5a1333b7859c25e533248051d631b22.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **Braze** from the Integrations menu
-3. Add your Braze instance and API key
-4. Enter the event names that RevenueCat will send or choose the default event names
-5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
-
-![Braze configuration page](/images/b4afeec-app.revenuecat.com_projects_85ff18c7_integrations_branch_8_9c31024939e75b07c263028608860692.png)
+2. Add your Braze instance and API key
+3. Enter the event names that RevenueCat will send or choose the default event names
+4. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
 ## Sample events
 

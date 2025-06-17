@@ -9,12 +9,6 @@ RevenueCat Customer Lists allow you to cohort and export groups of customers bas
 
 Lists are a segment of your customers inside RevenueCat, this can include both paying and non-paying users. Some lists are created automatically for every project (see Default lists below) and you can also create custom lists with your own defined filter logic.
 
-:::tip
-If you're on a legacy Free plan and want to access custom lists or export lists, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
-![](/images/b7ceead-app.revenuecat.com_projects_85ff18c7_api-keys_8_442a6580f487e317c456268abf080199.png "app.revenuecat.com_projects_85ff18c7_api-keys (8).png")
-
 :::info Sandbox Customers
 The Customers dashboard tab doesn't support toggling the 'View sandbox data' switch as there is no concept of a sandbox customer in RevenueCat, only sandbox transactions.
 

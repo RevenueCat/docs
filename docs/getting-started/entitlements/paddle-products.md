@@ -15,18 +15,18 @@ On the top right corner of the page, click **New Product**.
 
 Enter the product name and any other optional details like a description then click **Save**.
 
-![](/images/paddle/create-product.png)
+![](/docs_images/web/paddle/create-product.png)
 
 Then on the prices section, click **New Price**.
 Enter details like the base price, the type of pricing (recurring or one-time), the billing period, and any trial periods you are offering and click **Save**.
 
-![](/images/paddle/create-price.png)
+![](/docs_images/web/paddle/create-price.png)
 
 :::info Product Mapping between RevenueCat and Paddle
 A Price in Paddle maps to a Product in the RevenueCat system. So for example, if you create two prices under the same Paddle product, when you import or manually create the products in the RevenueCat dashboard, you'll notice two separate products.
 
-![](/images/paddle/paddle_dashboard_prices.png)
-![](/images/paddle/revenuecat_paddle_product_mapping.png)
+![](/docs_images/web/paddle/paddle_dashboard_prices.png)
+![](/docs_images/web/paddle/revenuecat_paddle_product_mapping.png)
 
 :::
 

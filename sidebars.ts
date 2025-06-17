@@ -39,6 +39,22 @@ const welcomeCategory = Category({
   items: [Page({ slug: "welcome/overview" })],
 });
 
+const playbooksCategory = Category({
+  iconName: "sparkle",
+  label: "Playbooks",
+  itemsPathPrefix: "playbooks/",
+  items: [
+    Page({ slug: "overview" }),
+    SubCategory({
+      label: "Guides",
+      slug: "guides",
+      itemsPathPrefix: "guides/",
+      items: [Page({ slug: "hard-paywall" }), Page({ slug: "freemium" })],
+      index: { title: "Guides", link: "playbooks/guides" },
+    }),
+  ],
+});
+
 const projectsCategory = Category({
   iconName: "hammer",
   label: "Projects & Apps",
@@ -895,8 +911,8 @@ const attributionCategory = Category({
         Page({ slug: "apple-search-ads" }),
         Page({ slug: "appsflyer" }),
         Page({ slug: "branch" }),
-        Page({ slug: "meta-ads" }),
         Page({ slug: "kochava" }),
+        Page({ slug: "meta-ads" }),
         Page({ slug: "singular" }),
         Page({ slug: "splitmetrics-acquire" }),
         Page({ slug: "tenjin" }),
@@ -934,9 +950,9 @@ const thirdPartyIntegrationsCategory = Category({
         Page({ slug: "posthog" }),
         Page({ slug: "segment" }),
         Page({ slug: "slack" }),
-        Page({ slug: "telemetrydeck" }),
         Page({ slug: "statsig" }),
         Page({ slug: "superwall" }),
+        Page({ slug: "telemetrydeck" }),
       ],
       index: {
         title: "Supported Integrations",
@@ -991,6 +1007,7 @@ const sidebars = {
     attributionCategory,
     integrationsMoreCategory,
   ],
+  playbookSidebar: [playbooksCategory],
 };
 
 export default sidebars;
