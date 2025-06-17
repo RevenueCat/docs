@@ -25,6 +25,16 @@ Here's how a purchase and redemption flow looks, once you've configured and enab
 1. The app handles associating the purchase with the customer, either by aliasing or transferring the purchase.
 1. The customer has access to their entitlements associated with the web purchase.
 
+:::info Redemption URL in Custom Success Pages
+When using a custom success page (redirect URL), the redemption URL is automatically included as a query parameter named `redeem_url`. For example, if your success page URL is `https://your-app.com/success`, the user will be redirected to:
+
+```
+https://your-app.com/success?redeem_url=rc-abc123://redeem_web_purchase?redemption_token=xyz789
+```
+
+You can use this `redeem_url` parameter in your success page to provide the redemption functionality to your users.
+:::
+
 ## How to configure Redemption Links to redeem web purchases on mobile
 
 ### Update your mobile app(s) to register custom URL schemes from RevenueCat
@@ -49,7 +59,7 @@ In order to be able to redeem the redemption links in your mobile apps, follow t
 
 #### 1. Copy the custom URL scheme from the RevenueCat Dashboard
 
-You can find this in the RevenueCat dashboard inside your Web Billing app’s settings, under “Redemption Links”. It is unique to your Web Billing app:
+You can find this in the RevenueCat dashboard inside your Web Billing app's settings, under "Redemption Links". It is unique to your Web Billing app:
 
 ![](/docs_images/web/web-billing/redemption-links-dashboard-disabled.png)
 
@@ -57,7 +67,7 @@ You can find this in the RevenueCat dashboard inside your Web Billing app’s se
 
 ##### iOS
 
-In iOS, you need to define a custom URL schema. You can do this in Xcode, from your xcodeproj file, Info tab, URL Types section. Then add your custom scheme from Step 1 in the “URL Schemes” field. You can see a screenshot here, but remember to replace `<YOUR_CUSTOM_SCHEME>` with the one you obtained in step 1.
+In iOS, you need to define a custom URL schema. You can do this in Xcode, from your xcodeproj file, Info tab, URL Types section. Then add your custom scheme from Step 1 in the "URL Schemes" field. You can see a screenshot here, but remember to replace `<YOUR_CUSTOM_SCHEME>` with the one you obtained in step 1.
 
 ![](/docs_images/web/web-billing/redemption-links-xcode-1.png)
 
@@ -65,7 +75,7 @@ You can see official instructions by Apple [here](https://developer.apple.com/do
 
 ##### Android
 
-In Android, you need to add a deep linking intent filter for the provided scheme. You can do that by adding the following intent filter inside your `AndroidManifest.xml` activity and replacing `<YOUR_CUSTOM_SCHEME>` with the scheme you copied in step 1. Note that it’s fine to have multiple intent filters for the same activity.
+In Android, you need to add a deep linking intent filter for the provided scheme. You can do that by adding the following intent filter inside your `AndroidManifest.xml` activity and replacing `<YOUR_CUSTOM_SCHEME>` with the scheme you copied in step 1. Note that it's fine to have multiple intent filters for the same activity.
 
 import redemptionAndroidManifest from "@site/code_blocks/web/web-billing/redemption_androidmanifest.xml?raw";
 
@@ -97,7 +107,7 @@ import swiftUIModifier from "@site/code_blocks/web/web-billing/redemption_swift_
   ]}
 />
 
-Alternatively, if you don’t want to perform the redemption automatically or if you're not using SwiftUI, you can use the provided URL extension `asWebPurchaseRedemption` and then perform the redemption using `Purchases.shared.redeemWebPurchase` as follows:
+Alternatively, if you don't want to perform the redemption automatically or if you're not using SwiftUI, you can use the provided URL extension `asWebPurchaseRedemption` and then perform the redemption using `Purchases.shared.redeemWebPurchase` as follows:
 
 import alternativeSwift from "@site/code_blocks/web/web-billing/redemption_alternative_swift.swift?raw";
 
@@ -109,7 +119,7 @@ import alternativeSwift from "@site/code_blocks/web/web-billing/redemption_alter
 
 ##### Android
 
-In Android, you first need to obtain the link and make sure it’s a Redemption Link, then redeem it using the `redeemWebPurchase` method. You can see an example of this in the following code block:
+In Android, you first need to obtain the link and make sure it's a Redemption Link, then redeem it using the `redeemWebPurchase` method. You can see an example of this in the following code block:
 
 import androidRedemption1 from "@site/code_blocks/web/web-billing/redemption_android.kt?raw";
 
@@ -201,11 +211,11 @@ import capacitorRedemption from "@site/code_blocks/web/web-billing/redemption_ca
 
 #### 4. Verify your setup
 
-Once you’ve followed the steps above, in order to verify that your integration worked correctly you can open your app using a deep link in the format: `<YOUR_CUSTOM_SCHEME>://redeem_web_purchase?redemption_token=<ANY_TOKEN>`
+Once you've followed the steps above, in order to verify that your integration worked correctly you can open your app using a deep link in the format: `<YOUR_CUSTOM_SCHEME>://redeem_web_purchase?redemption_token=<ANY_TOKEN>`
 
 For example, `rc-d458f1e3a2://redeem_web_purchase?redemption_token=invalid_token`.
 
-You can use a deep link test app or write the deep link in a notes app and click on it. Alternatively, if you’re using an iOS simulator you can run this command in your mac terminal: `xcrun simctl openurl booted "<YOUR_CUSTOM_SCHEME>://redeem_web_purchase?redemption_token=<ANY_TOKEN>"`, and on android you can follow the instructions [here](https://developer.android.com/training/app-links/deep-linking#testing-filters).
+You can use a deep link test app or write the deep link in a notes app and click on it. Alternatively, if you're using an iOS simulator you can run this command in your mac terminal: `xcrun simctl openurl booted "<YOUR_CUSTOM_SCHEME>://redeem_web_purchase?redemption_token=<ANY_TOKEN>"`, and on android you can follow the instructions [here](https://developer.android.com/training/app-links/deep-linking#testing-filters).
 
 Then, you need to make sure that you display the appropriate UI in your app. In this case, an invalid link error.
 
@@ -251,8 +261,8 @@ After successful redemption, the customer will immediately have access to their 
 
 #### How can I make sure that customers can't share redemption links with other people and allow anyone to access premium entitlements in my app?
 
-A redemption link is only valid for one single redemption of a purchase — once redeemed, it's no longer valid.
+A redemption link is only valid for one single redemption of a purchase — once redeemed, it's no longer valid.
 
 #### Can my customers redeem their purchases on multiple devices?
 
-Customers can redeem a single purchase multiple times (i.e. on a different devices) — on each occasion they'll be sent a new redemption link to their billing email address, valid for one new redemption.
+Customers can redeem a single purchase multiple times (i.e. on a different devices) — on each occasion they'll be sent a new redemption link to their billing email address, valid for one new redemption.
