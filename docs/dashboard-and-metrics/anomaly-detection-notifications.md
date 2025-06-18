@@ -16,10 +16,15 @@ With **Anomaly Detection Notifications**, you can receive email alerts about pot
 1. Click on [**Account**](https://app.revenuecat.com/settings/account) from the RevenueCat Dashboard.
 2. Open the **Notifications** section where you'll see the **Anomaly Detection Notifications** option.
 3. Select the Projects you want to monitor and choose your preferred alert type:
-   - **Custom Threshold Alerts**: Define a percentage change threshold. For example, set 20% to be notified via email if revenue changes by more than 20% in the last 24 hours.
-     ![Screenshot](/images/threshold.png)
-   - **Auto Detection Alerts**: Use our machine learning algorithm, which incorporates time series forecasting with weekly and yearly seasonalities, to automatically detect revenue outliers without needing to set a threshold. Alerts will be sent to your email.
-     ![Screenshot](/images/autodetect.png)
+
+- **Custom Threshold Alerts**: Define a percentage change threshold. For example, set 20% to be notified via email if revenue changes by more than 20% in the last 24 hours.
+
+![Screenshot](/docs_images/dashboard-and-metrics/anomaly-detection/threshold.png)
+
+- **Auto Detection Alerts**: Use our machine learning algorithm, which incorporates time series forecasting with weekly and yearly seasonalities, to automatically detect revenue outliers without needing to set a threshold. Alerts will be sent to your email.
+
+![Screenshot](/docs_images/dashboard-and-metrics/anomaly-detection/autodetect.png)
+
 4. Click **Update** to save your changes.
 
 :::info
