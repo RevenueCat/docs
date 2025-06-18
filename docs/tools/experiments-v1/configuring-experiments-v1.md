@@ -14,21 +14,17 @@ You should also [test the Offerings you've chosen](https://www.revenuecat.com/do
 
 ## Setting up a new experiment
 
-First, navigate to your Project. Then, click on **Experiments** in the **Monetization tools** section.
+First, navigate to your Project. Then, click on **Experiments** in the project sidebar.
 
-![Navigate](/images/c7867f1-Screenshot_2024-01-29_at_10.45.53_AM_17e0a4c0a6bcff7244ee397897c06ca4.png "Navigate")
+Select **+ New experiment** to create a new experiment.
 
-Select **+ New** to create a new experiment.
+![Create new experiment](/docs_images/experiments/v1/create-new-experiment.png)
 
-![Creating a new experiment](/images/create_new_experiment_latest.png "Creating a new experiment")
+:::info Set up offering(s) for your experiment
 
-:::info Setting up Offering(s) for your treatment
+If you've not setup multiple offerings yet, you'll be prompted to do so now, since you'll need at least 2 available offerings to run an experiment.
 
-If you've not setup multiple Offerings before, you'll be prompted to do so now, since you'll need at least 2 available Offerings to run an experiment.
-
-The treatment Offering(s) represents the hypothesis you're looking to test with your experiment (e.g. higher or lower priced products, products with trials, etc).
-
-For App Store apps, we recommend setting up new products to test as a new Subscription Group so that customers who are offered those products through Experiments will see only that same set of products to select from their subscription settings.
+For **App Store** apps, we recommend setting up new products to test as a new **Subscription Group** in App Store Connect so that customers who are offered those products through Experiments will see only that same set of products to select from their subscription settings.
 :::
 
 ## Required fields
@@ -52,7 +48,7 @@ If you've not setup Placements yet, [start here](https://www.revenuecat.com/docs
 
 With Experiments, you can create A/B tests that serve unique Offerings at each Placement to your Control group and Treatment group.
 
-![Adding Placements to Experiments](/images/placements.png "Adding Placements to Experiments")
+![Adding Placements to Experiments](/docs_images/experiments/v1/experiments-placements.png)
 
 With Placements, your customers will be served an array of Offerings depending on the paywall location they visit, and with Experiments you can A/B test that experience by changing any element of that array.
 
@@ -87,8 +83,6 @@ Once done, select **CREATE EXPERIMENT** to complete the process.
 
 When viewing a new experiment, you can start, edit, or delete the experiment.
 
-![](/images/3e6f895-Screen_Shot_2022-10-20_at_10.30.15_AM_5e45668dae6b1feb452b9cbc844b8c00.png "Screen Shot 2022-10-20 at 10.30.15 AM.png")
-
 - **Start**: Starts the experiment. Customer enrollment and data collection begins immediately, but results will take up to 24 hours to begin populating.
 - **Edit**: Change the name, enrollment criteria, or Offerings in an experiment before it's been started. After it's been started, only the percent of new customers to enroll can be edited.
 - **Delete**: Deletes the experiment.
@@ -109,7 +103,7 @@ You can use Experiments to run multiple test simultaneously as long as:
 
 If a test that you've created does not meet the above criteria, we'll alert you to that in the Dashboard and you'll be prevented from starting the test, as seen below.
 
-![](/images/6e94d93-Screenshot_2024-01-29_at_11.22.45_AM_ad9a92d744ff985c3e425fa0ab1c46a6.png "Screen Shot 2022-10-20 at 10.30.15 AM.png")
+![Experiments conflict](/docs_images/experiments/v1/experiments-conflict.png)
 
 ### Examples of valid tests to run simultaneously
 
