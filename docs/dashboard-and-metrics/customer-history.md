@@ -12,7 +12,7 @@ The timeline events are generated from changes to the user's purchase receipt. T
 If the Customer History is empty, it means we haven't received a purchase receipt for the user. If you think this may be a mistake, check out our [community article](https://community.revenuecat.com/dashboard-tools-52/when-a-purchase-isn-t-showing-up-in-revenuecat-105) on re-syncing a user's purchases.
 :::
 
-![](/images/30a3f7f-Screen_Shot_2020-06-01_at_7.32.36_AM_c58611562abe588d7510c22e716fce52.png "Screen Shot 2020-06-01 at 7.32.36 AM.png")
+![Customer history](/docs_images/customers/customer-history.png)
 
 ## Event Types
 
@@ -45,7 +45,7 @@ It is possible for prices to be missing or incorrect, especially for apps that h
 
 You can click into events in the Customer History to view additional details about the event, including any integrations that may have been triggered as a result of the event.
 
-![](/images/703caac-Screen_Shot_2020-06-01_at_7.46.05_AM_9cceb290cf0bb6b81a2df7c8ea9dbb29.png "Screen Shot 2020-06-01 at 7.46.05 AM.png")
+![Event details](/docs_images/customers/customer-event-details.png)
 
 ### Event Timestamps and Ordering
 

@@ -26,9 +26,9 @@ Although RevenueCat is primarily used to handle subscription purchases, our SDK 
 
 :::warning Google Play Store IAPs
 
-Google Play Store does not provide an option to mark IAPs as consumable or non-consumable. RevenueCat's SDK will consume all Android IAPs upon purchase.
+Non-consumable support is supported in Android SDK version 7.11.0 and up. 
 
-To replicate the behavior of a non-consumable IAP for Android users, you must ensure your user will not be offered the IAP after the initial purchase. Failure to do so will enable the user to re-purchase the IAP.
+In Android SDK version 7.10.1 and below all Android IAPs will be consumed upon purchase. To replicate the behavior of a non-consumable IAP for Android users, you must ensure your user will not be offered the IAP after the initial purchase. Failure to do so will enable the user to re-purchase the IAP.
 :::
 
 ## Entitlements
@@ -49,17 +49,15 @@ Offerings are typically associated with different subscription options, but they
 
 ### Example
 
-Let's say we are building a game where we can offer multiple coin packages. First, we need to create a new offering called "coins." Go to your project settings in the RevenueCat dashboard, select the **Offerings** tab under **Product Setup**, and select the **+ New** button to add a new offering.
+Let's say we are building a game where we can offer multiple coin packages. First, we need to create a new offering called "coins." Go to your project settings in the RevenueCat dashboard, select the **Offerings** tab under **Product catalog**, and select the **+ New** button to add a new offering.
 
-![](/images/e7cd1c4-app.revenuecat.com_projects_85ff18c7_apps_app71b4cc0fea_1_f34fb380d07f0a0a38041d469963d8f5.png)
+![](/docs_images/offerings/offerings-create-new.png)
 
 Great! Select **Add**, and we're on to setting up packages.
 
-Each package should contain a different quantity of coins. For our example, let's assume we'll offer the following options: 100 coins, 250 coins, 600 coins, and 1400 coins. Go ahead and add those packages, and your offering page should now look like the following:
+Each package should contain a different quantity of coins. For our example, let's assume we'll offer the following options: 100 coins, 250 coins, 600 coins, and 1400 coins.
 
-![](/images/0f1a9b6-app.revenuecat.com_projects_85ff18c7_apps_app71b4cc0fea_2_54e481fc14f9ba136c0ec58a9e2c5a0c.png)
-
-:::info
+:::info Set up products first
 If you haven't already, you'll need to set up products in the respective app stores on which you intend to ship your app. For more information on setting up products and adding them to RevenueCat, check out the [Configuring Products](/getting-started/entitlements#configuration) guide.
 :::
 

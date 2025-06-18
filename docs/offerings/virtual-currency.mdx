@@ -17,20 +17,20 @@ In RevenueCat, virtual currencies are defined at the project level. You can conf
 
 1. Click the **“Virtual Currencies”** option in the **“Product catalog”** of your project sidebar in RevenueCat
 
-![](/images/virtual-currency/vc-sidebar.png)
+![](/docs_images/virtual-currency/vc-sidebar.png)
 
-2. Select **“+ New” button** in the top right corner. The **“New Currency”** form will appear. Enter a code and a name for your currency.
+2. Select **“+ New virtual currency”** button in the top right corner. Enter a code and a name for your currency.
 
 - **Code**: This is used across various APIs to identify the virtual currency (e.g: GLD)
 - **Icon** (_optional_): Choose an icon to visually represent this currency in the dashboard
 - **Name**: This should be a readable name for the currency that you're creating (e.g: GOLD)
 - **Description** (_optional_): A description of what this currency represents or how it is used (e.g: Can be used to purchase in-app items)
 
-![](/images/virtual-currency/vc-setup.png)
+![](/docs_images/virtual-currency/vc-setup.png)
 
-3. You can optionally associate products with your new currency. Every time customers purchase one of these products, the defined amount of virtual currency will be added to their balance. Click **"NEW ASSOCIATED PRODUCT"**, pick a product and fill in the amount.
+3. You can optionally associate products with your new currency. Every time customers purchase one of these products, the defined amount of virtual currency will be added to their balance. Click **Add associated product**, pick a product and fill in the amount.
 
-![](/images/virtual-currency/vc-products.png)
+![](/docs_images/virtual-currency/vc-products.png)
 
 You can associate as many products as you want with your virtual currency and you can also associate a product with more than one virtual currency, meaning once it's purchased, multiple types of virtual currencies are added to the customer's balance. If you have not yet configured any products, see our [documentation](/offerings/products/setup-index) for further instructions.
 
@@ -40,8 +40,6 @@ You can associate as many products as you want with your virtual currency and yo
 
 Once your customer purchase the associated products they will get the defined amount of your virtual currency. You can inspect the virtual currency balances of your customer in the right side-panel of the customer page.
 
-![](/images/virtual-currency/vc-balance.png)
-
 ## SDK Beta Installation
 
 SDK support for virtual currencies is currently in beta, and as such requires the usage of a beta build. Please note that the virtual currency APIs in these betas are subject to change without warning in future releases. The beta virtual currency features are currently available in the native iOS and Android SDKs.
@@ -50,7 +48,7 @@ SDK support for virtual currencies is currently in beta, and as such requires th
 
 Use the `virtual-currency-beta` branch of the purchases-ios SDK to access the virtual currency beta features. If you’re using Swift Package Manager, you can do this in Xcode like so:
 
-![](/images/virtual-currency/ios-spm-virtual-currency-beta-branch-configuration.png)
+![](/docs_images/virtual-currency/ios-spm-virtual-currency-beta-branch-configuration.png)
 
 If you're using CocoaPods, set your `purchases-ios` version to the most recent `vc-beta` version in your Podfile:
 
@@ -114,7 +112,7 @@ dependencies:
 
 The endpoints available for virtual currency are supported through our Developer API (2.0.0). You will need a secret key to access it. Make sure that your key at least has Read & Write permissions for Customer Purchases Configuration. See our [documentation](<https://www.revenuecat.com/docs/api-v2#tag/Overview-(v2)/Authentication>) for more details on how you can access RevenueCat’s Developer API.
 
-![](/images/virtual-currency/api-secret-key.png)
+![](/docs_images/virtual-currency/api-secret-key.png)
 
 #### Rate limits
 

@@ -14,13 +14,13 @@ There are two types of API keys:
 
 ## Finding API Keys
 
-You can find the API keys for your project under the **API Keys** section of your Project Settings in the dashboard.
+You can find the API keys for your project under the **Platforms** section of your Project Settings in the dashboard.
 
-![API Keys](/images/4bd2a9d-app.revenuecat.com_projects_85ff18c7_api-keys_3d87623aacc4187dc0f71130302c338a.png)
+![API Keys](/docs_images/projects/finding-api-keys.png)
 
-Public app-specific API keys are automatically created when adding an App to your Project and cannot be changed. Secret API keys can be created by selecting the **+ New** button in the top right, and will be listed under the section **Private API keys**.
+Public platform-specific API keys are automatically created when adding an App to your Project and cannot be changed. Secret API keys can be created by selecting the **+ New API key** button and will be listed under the section **Secret API keys**.
 
-You can also find the public API key in your app settings by selecting your app from **Project Settings > Apps**.
+You can also find the public API key in your app settings by selecting your app from **Project Settings > Platforms**.
 
 If you cannot see your API keys anywhere in the dashboard, it may mean you do not have access to them. Contact the project's owner and make sure you are added as an **Admin**.
 

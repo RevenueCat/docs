@@ -53,7 +53,7 @@ An invoice will be emailed to the owner of a project at the end of the current b
 
 You can update how your company name, address, and Tax ID/VAT number appear on your invoices in [billing settings](https://app.revenuecat.com/settings/billing) under **Invoice details**.
 
-![update your invoice details in your billing settings](/images/SCR-20250522-orun.png)
+![update your invoice details in your billing settings](/docs_images/account/invoice-details.png)
 
 If you have not added a payment method, you will not receive invoices nor will you be able to change your invoice details.
 
@@ -69,7 +69,7 @@ To delete your RevenueCat account, you'll first need to delete **all of your [Pr
 
 Once your projects have been deleted, navigate to your [account settings](https://app.revenuecat.com/settings/account) and click `Delete this Account`:
 
-![delete account button](/images/delete-account-button.png)
+![delete account button](/docs_images/account/delete-account.png)
 
 You will be asked to enter your password to confirm.
 

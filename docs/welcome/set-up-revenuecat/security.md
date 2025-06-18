@@ -15,7 +15,7 @@ Once you do, you'll need a code generated on your mobile device any time you log
 
 Navigate to your [**Account > Security**](https://app.revenuecat.com/settings/security) settings in the RevenueCat dashboard and click **Set up** under Two-factor Authentication to begin the setup process.
 
-![](/images/0d617f4-app.revenuecat.com_projects_85ff18c7_integrations_intercom_10_34fd8bf3ca2a5b55e3cd7a077bd50a18.png)
+![](/docs_images/account/security.png)
 
 #### 2. Scan barcode
 
@@ -25,7 +25,7 @@ You'll be prompted to re-enter your password. Once re-authenticated, you'll be p
 
 Enter the two-factor code from the authenticator app then click **Enable**.
 
-![](/images/0d2579e-small-2d04a42-app.revenuecat.com_overview_1_d839a99b7a445f45e13f1666ffda4c75.png)
+![](/docs_images/account/setup-2fa.png)
 
 #### 4. Save recovery codes
 
@@ -43,7 +43,7 @@ If you have invited collaborators to your app, you can check see if they've enab
 
 Project Owners and Administrators also have the ability to enforce two-factor authentication for any new collaborators. With this setting enabled, invited collaborators will not be able to join your project until they've set up two-factor authentication for their account.
 
-![](/images/Screenshot_2024-03-08_at_3.27.18_PM.png)
+![](/docs_images/projects/invite-collaborators.png)
 
 :::warning Everyone must already have two-factor before enforcing
 Before you can enforce two-factor authentication for your project, all existing collaborators must already have two-factor authentication enabled. You can remove current collaborators and re-invite them if you need to enforce two-factor immediately.
@@ -53,7 +53,7 @@ Before you can enforce two-factor authentication for your project, all existing 
 
 To disable two-factor authentication vavigate to your [**Account > Security**](https://app.revenuecat.com/settings/security) settings in the RevenueCat dashboard and click **Disable** under Two-factor Authentication.
 
-![](/images/bd6c526-app.revenuecat.com_projects_85ff18c7_integrations_intercom_10_copy_ffd239c8d178e0af12e52a8af2c0a5d6.png)
+![](/docs_images/account/disable-2fa.png)
 
 :::warning Leave projects that require two-factor before disabling
 If you are a collaborator on a Project that requires two-factor authentication, you must leave that project before disabling.

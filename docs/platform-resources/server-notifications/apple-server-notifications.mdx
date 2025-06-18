@@ -1,5 +1,6 @@
 ---
 title: Apple App Store Server Notifications
+sidebar_label: Apple App Store
 slug: apple-server-notifications
 excerpt: Sending App Store server notifications to RevenueCat
 hidden: false
@@ -11,9 +12,9 @@ RevenueCat does not require server notifications from the App Store, however doi
 
 [Apple server-to-server notifications](https://developer.apple.com/documentation/appstoreservernotifications/enabling-app-store-server-notifications) should be set up in App Store Connect with the URL provided in the RevenueCat dashboard.
 
-1. Navigate to your iOS app under **Project settings > Apps** in the RevenueCat dashboard.
+1. Navigate to your iOS app under **Project settings > Platforms** in the RevenueCat dashboard.
 2. Scroll to the **Apple Server to Server notification settings** section, and copy the entire URL provided under **Apple Server Notification URL**.
-   ![Screen Shot 2021-12-01 at 11.34.04 AM](/images/61b718f-Screen_Shot_2021-12-01_at_11.34.04_AM_712c97073b4a62c850626c0f5062c1bd.png)
+   ![Server to Server Notification URL](/docs_images/platform-resources/apple/apple-server-to-server-url.png)
 3. Log in to **[App Store Connect](https://appstoreconnect.apple.com/)** and select your app.
 4. Under the **App Information > App Store Server Notifications** section, paste the entire URL from RevenueCat in both the **Production Server URL** field and the **Sandbox Server URL** field. You can use either _Version 1_ or _Version 2_ notifications, but _Version 2_ notifications are recommended to use features such as [auto-detecting price changes](/subscription-guidance/price-changes).
    ![Screen Shot 2021-11-03 at 10.03.27 AM](/images/f870a23-Screen_Shot_2021-11-03_at_10.03.27_AM_7645d7e77d55b6ab44b5c7085c7c3775.png)

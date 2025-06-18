@@ -8,7 +8,7 @@ hidden: false
 :::success Welcome Bolt Hackathon participants!
 Integrating RevenueCat's in-app purchase capabilities into your app requires you to [download your project](https://support.bolt.new/building/using-bolt/projects-files#download-projects) from Bolt. Then, open your project in an IDE of your choice (like [VSCode](https://code.visualstudio.com/) or [Cursor](https://www.cursor.com/)) and follow the instructions below.
 
-Best of luck with your [hackathon](https://hackathon.dev/) project!
+Best of luck with your [hackathon](https://hackathon.dev/) project, and [read more about adding subscriptions to a Bolt-generated Expo app here](https://www.revenuecat.com/blog/engineering/how-to-add-in-app-purchases-to-your-bolt-generated-expo-app/).
 :::
 
 ## What is RevenueCat?
@@ -254,4 +254,10 @@ npx expo start
 
 ## Expo Go
 
-[Expo Go](https://expo.dev/go) is a sandbox that allows you to rapidly prototype your app. However, Expo Go does not run native code, so testing in-app purchases is not supported. Once you've added RevenueCat's SDKs to your app, please use a [development build](/getting-started/installation/expo#create-an-expo-development-build) for testing.
+[Expo Go](https://expo.dev/go) is a sandbox that allows you to rapidly prototype your app. While it doesn’t support running custom native code—such as the native modules required for in-app purchases—`react-native-purchases` includes a built-in **Preview API Mode** specifically for Expo Go.
+
+When your app runs inside Expo Go, `react-native-purchases` automatically detects the environment and replaces native calls with JavaScript-level mock APIs. This allows your app to load and execute all subscription-related logic without errors, even though real purchases will not function in this mode.
+
+This means you can still preview subscription UIs, test integration flows, and continue development without needing to build a custom development client immediately.
+
+However, to fully test in-app purchases and access real RevenueCat functionality, you must use a [development build](/getting-started/installation/expo#create-an-expo-development-build).
