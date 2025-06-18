@@ -33,7 +33,18 @@ https://your-app.com/success?redeem_url=rc-abc123://redeem_web_purchase?redempti
 ```
 
 You can use this `redeem_url` parameter in your success page to provide the redemption functionality to your users.
-:::
+
+:::warning Redemption Link Limitations
+The redemption link can only be opened from the mobile app where it was configured. It will fail if:
+
+- The app is not installed on the device
+- The link is opened on a desktop browser
+
+Make sure your success page handles these cases appropriately by:
+
+- Showing a QR code for desktop users to scan with their mobile device
+- Clearly instructing users to open the link on their mobile device after installing the app
+  :::
 
 ## How to configure Redemption Links to redeem web purchases on mobile
 
