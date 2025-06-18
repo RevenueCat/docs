@@ -74,7 +74,7 @@ Once you've entered all of the required fields for your rule, click "Save" and i
 
 You may also choose to setup unique Placements in your app for each paywall location so that a given customer can be served distinct Offerings at each Placement using Targeting.
 
-![Targeting by Placement Illustration](/images/targeting-by-placement-illustration.png)
+![Targeting by Placement Illustration](/docs_images/targeting/targeting-by-placement-illustration.png)
 
 [Get started with Placements.](/tools/targeting/placements)
 
