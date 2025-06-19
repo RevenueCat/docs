@@ -3,14 +3,14 @@ title: iOS 18.3.1-18.5 Canceled State After Successful Purchase
 ---
 
 import RCCodeBlock from "@site/src/components/RCCodeBlock";
-import content25 from "!!raw-loader!@site/code_blocks/customers/customer-info_25.swift";
-import content27 from "!!raw-loader!@site/code_blocks/customers/customer-info_27.kt";
-import content28 from "!!raw-loader!@site/code_blocks/customers/customer-info_28.java";
-import content29 from "!!raw-loader!@site/code_blocks/customers/customer-info_29.js";
-import content30 from "!!raw-loader!@site/code_blocks/customers/customer-info_30.js";
-import content31 from "!!raw-loader!@site/code_blocks/customers/customer-info_31.js";
-import content32 from "!!raw-loader!@site/code_blocks/customers/customer-info_32.cs";
-import contentCapacitor from "!!raw-loader!@site/code_blocks/customers/customer-info_add_listener_capacitor.ts";
+import content25 from "@site/code_blocks/customers/customer-info_25.swift?raw";
+import content27 from "@site/code_blocks/customers/customer-info_27.kt?raw";
+import content28 from "@site/code_blocks/customers/customer-info_28.java?raw";
+import content29 from "@site/code_blocks/customers/customer-info_29.js.txt?raw";
+import content30 from "@site/code_blocks/customers/customer-info_30.js.txt?raw";
+import content31 from "@site/code_blocks/customers/customer-info_31.js.txt?raw";
+import content32 from "@site/code_blocks/customers/customer-info_32.cs?raw";
+import contentCapacitor from "@site/code_blocks/customers/customer-info_add_listener_capacitor.ts.txt?raw";
 
 # iOS 18.4-18.5 Canceled State After Successful Purchase
 
@@ -22,7 +22,7 @@ Apple has rolled out a fix for this issue, and it should no longer be present in
 
 In iOS 18.4 through 18.5, StoreKit (and consequently the RevenueCat SDK) can incorrectly return a canceled state after a successful purchase. This occurs when the user receives a prompt to enable Receipt Renewal emails, which comes directly from StoreKit itself.
 
-![iOS Renewal Email Prompt](/images/known-store-issues/ios-renewal-email-prompt.png)
+![iOS Renewal Email Prompt](/docs_images/known-store-issues/ios-renewal-email-prompt.png)
 
 ## Affected Versions
 

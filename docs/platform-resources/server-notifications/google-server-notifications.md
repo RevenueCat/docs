@@ -1,5 +1,6 @@
 ---
 title: Google Real-Time Developer Notifications
+sidebar_label: Google RTDN
 slug: google-server-notifications
 excerpt: Sending Google Play server notifications to RevenueCat
 hidden: false

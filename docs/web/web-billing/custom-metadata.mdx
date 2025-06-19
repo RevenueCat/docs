@@ -33,7 +33,7 @@ Here's an example Web Purchase Link URL, including all UTM parameters: `https://
 
 When invoking `purchase()`, you can provide a `metadata` object using the `PurchaseParams` interface:
 
-import webBillingContent from "!!raw-loader!@site/code_blocks/_projects/web-billing/web-billing-doc-snippets.ts";
+import webBillingContent from "@site/code_blocks/_projects/web-billing/web-billing-doc-snippets.ts.txt?raw";
 
 <RCCodeBlock
   tabs={[
@@ -53,11 +53,11 @@ The accepted values are `string`, `number`, `boolean` and `null`.
 
 ## How to use the collected metadata
 
-After receiving purchases with metadata included, it can be accessed in the `INITIAL_PURCHASE` [webhook event](../../integrations/webhooks/event-types-and-fields). The same values are also sent to the [Stripe Customer object metadata](https://docs.stripe.com/api/customers/object#customer_object-metadata).
+After receiving purchases with metadata included, it can be accessed in the `INITIAL_PURCHASE` [webhook event](/integrations/webhooks/event-types-and-fields). The same values are also sent to the [Stripe Customer object metadata](https://docs.stripe.com/api/customers/object#customer_object-metadata).
 
-You can see how to use the webhook integration to trigger automations and workflows [here](../../integrations/webhooks).
+You can see how to use the webhook integration to trigger automations and workflows [here](/integrations/webhooks).
 
-![](/images/web-billing/metadata-in-initial-purchase-event.png)
+![](/docs_images/web/web-billing/metadata-in-initial-purchase-event.png)
 
 ## Opt out of the automatic collection of UTM parameters
 

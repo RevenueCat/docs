@@ -4,3 +4,5 @@ package-lock.json
 .DS_Store
 build
 .idea
+
+scripts/image_analysis/

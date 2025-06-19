@@ -45,6 +45,20 @@ const config = {
     locales: ["en"],
   },
 
+  future: {
+    experimental_faster: {
+      lightningCssMinimizer: true,
+      mdxCrossCompilerCache: true,
+      swcJsLoader: true,
+      swcJsMinimizer: true,
+      swcHtmlMinimizer: true,
+      rspackBundler: true,
+      rspackPersistentCache: true,
+      ssgWorkerThreads: false, // redocusaurus doesn't support this yet, so we'll disable it for now
+    },
+    v4: true,
+  },
+
   presets: [
     [
       "classic",
@@ -117,6 +131,24 @@ const config = {
       },
     ],
     "./src/plugins/tailwind/tailwind-config.cjs",
+    function myRawLoaderPlugin() {
+      // this plugin replaces raw-loader with asset/source (webpack 5)
+      return {
+        name: "my-raw-loader",
+        configureWebpack() {
+          return {
+            module: {
+              rules: [
+                {
+                  resourceQuery: /\?raw$/,
+                  type: "asset/source",
+                },
+              ],
+            },
+          };
+        },
+      };
+    },
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -150,6 +182,11 @@ const config = {
                 type: "docSidebar",
                 sidebarId: "dataSidebar",
                 label: "Charts, Metrics, & Data Reference",
+              },
+              {
+                type: "docSidebar",
+                sidebarId: "playbookSidebar",
+                label: "Playbooks",
               },
             ],
           },

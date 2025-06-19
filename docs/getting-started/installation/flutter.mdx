@@ -20,7 +20,7 @@ Minimum target: iOS 11.0+
 
 To use this plugin, add `purchases_flutter` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/) (and run an implicit dart pub get):
 
-import content from "!!raw-loader!@site/code_blocks/getting-started/installation/flutter_1.yaml";
+import content from "@site/code_blocks/getting-started/installation/flutter_1.yaml?raw";
 
 <RCCodeBlock tabs={[{ type: "yaml", content: content, name: "YAML" }]} />
 
@@ -48,7 +48,7 @@ RevenueCat requires Swift >= 5.0 to work. If the `Podfile` in your project's `io
 
 Depending on your user's payment method, they may be asked by Google Play to verify their purchase in their (banking) app. This means they will have to background your app and go to another app to verify the purchase. If your Activity's `launchMode` is set to anything other than `standard` or `singleTop`, backgrounding your app can cause the purchase to get cancelled. To avoid this, set the `launchMode` of your Activity to `standard` or `singleTop` in your Android app's `android/app/src/main/AndroidManifest.xml` file:
 
-import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_launchmode.xml";
+import launchModeContent from "@site/code_blocks/getting-started/installation/android_launchmode.xml?raw";
 
 <RCCodeBlock
   tabs={[
@@ -60,9 +60,9 @@ You can find Android's documentation on the various `launchMode` options [here](
 
 ### Optional: Change MainActivity subclass
 
-If you plan to use [RevenueCat Paywalls](/tools/paywalls-v2), your `MainActivity` needs to subclass `FlutterFragmentActivity` instead of `FlutterActivity`.
+If you plan to use [RevenueCat Paywalls](/tools/paywalls), your `MainActivity` needs to subclass `FlutterFragmentActivity` instead of `FlutterActivity`.
 
-import flutterMainActivity from "!!raw-loader!@site/code_blocks/getting-started/installation/flutter_mainactivity.kt";
+import flutterMainActivity from "@site/code_blocks/getting-started/installation/flutter_mainactivity.kt?raw";
 
 <RCCodeBlock
   tabs={[
@@ -78,7 +78,7 @@ import flutterMainActivity from "!!raw-loader!@site/code_blocks/getting-started/
 
 You should now be able to import `purchases_flutter`.
 
-import content2 from "!!raw-loader!@site/code_blocks/getting-started/installation/flutter_2.kt";
+import content2 from "@site/code_blocks/getting-started/installation/flutter_2.kt?raw";
 
 <RCCodeBlock tabs={[{ type: "flutter", content: content2, name: "Dart" }]} />
 
@@ -86,15 +86,11 @@ import content2 from "!!raw-loader!@site/code_blocks/getting-started/installatio
 Don't forget to enable the In-App Purchase capability for your iOS project under `Project Target -> Capabilities -> In-App Purchase`
 :::
 
-![](/images/08d0721-Screen_Shot_2021-05-28_at_12.32.08_PM_097ad33b9e3dfce316b36d8c95b633dd.png "Screen Shot 2021-05-28 at 12.32.08 PM.png")
-
-![](/images/66c301a-65db383-Screen_Shot_2018-12-18_at_9.15.09_AM_51ae7051850be013d83c1e9a8f107b61.png "65db383-Screen_Shot_2018-12-18_at_9.15.09_AM.png")
-
 :::info Include BILLING permission for Android projects
 Don't forget to include the `BILLING` permission in your AndroidManifest.xml file
 :::
 
-import reactNativeXmlContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_8.xml";
+import reactNativeXmlContent from "@site/code_blocks/getting-started/installation/reactnative_8.xml?raw";
 
 <RCCodeBlock
   tabs={[

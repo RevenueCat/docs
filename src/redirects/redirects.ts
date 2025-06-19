@@ -737,12 +737,56 @@ const redirects = {
       from: "/paywalls",
     },
     {
-      to: "/tools/paywalls-v2",
+      to: "/tools/paywalls/creating-paywalls",
       from: "/tools/paywalls/creating-paywalls-v2",
     },
     {
-      to: "/tools/paywalls-v2",
-      from: "/paywalls-v2",
+      to: "/tools/paywalls",
+      from: "/tools/paywalls-v2",
+    },
+    {
+      to: "/tools/paywalls/installation",
+      from: "/tools/paywalls-v2/installation",
+    },
+    {
+      to: "/tools/paywalls/creating-paywalls",
+      from: "/tools/paywalls-v2/creating-paywalls",
+    },
+    {
+      to: "/tools/paywalls/creating-paywalls/components",
+      from: "/tools/paywalls-v2/creating-paywalls/components",
+    },
+    {
+      to: "/tools/paywalls/creating-paywalls/component-properties",
+      from: "/tools/paywalls-v2/creating-paywalls/component-properties",
+    },
+    {
+      to: "/tools/paywalls/creating-paywalls/web-purchase-button",
+      from: "/tools/paywalls-v2/creating-paywalls/web-purchase-button",
+    },
+    {
+      to: "/tools/paywalls/creating-paywalls/variables",
+      from: "/tools/paywalls-v2/creating-paywalls/variables",
+    },
+    {
+      to: "/tools/paywalls/creating-paywalls/localization",
+      from: "/tools/paywalls-v2/creating-paywalls/localization",
+    },
+    {
+      to: "/tools/paywalls/creating-paywalls/customer-states",
+      from: "/tools/paywalls-v2/creating-paywalls/customer-states",
+    },
+    {
+      to: "/tools/paywalls/creating-paywalls/app-review",
+      from: "/tools/paywalls-v2/creating-paywalls/app-review",
+    },
+    {
+      to: "/tools/paywalls/displaying-paywalls",
+      from: "/tools/paywalls-v2/displaying-paywalls",
+    },
+    {
+      to: "/tools/paywalls/change-log",
+      from: "/tools/paywalls-v2/change-log",
     },
     {
       to: "/tools/targeting",

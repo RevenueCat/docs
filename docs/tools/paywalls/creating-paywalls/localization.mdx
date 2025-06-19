@@ -1,0 +1,96 @@
+---
+title: Localization
+slug: localization
+hidden: false
+---
+
+# Localization
+
+Paywall localization can be managed through the Paywall Localization page, or inline through the Paywall Editor directly.
+
+## Editing via the Paywall Localization page
+
+To access the Paywall Localization page:
+
+1. Click `English (United States)` in the control panel (or whichever locale is present if you've already configured another locale)
+2. Then click `Manage localization...`
+
+From here, you'll see a table with each locale you've setup for your paywall. To add a new locale, click `+ Add locale`.
+
+After adding your new locale, you'll have a few options for how to fill in values for it.
+
+First, you can click `Paste default value` to take the value for that field from the default locale and paste it in the new locale.
+
+![Paste default value](/images/paywalls-paste-default-value.png)
+
+Or, alternatively, if you're editing many locales at once, you can click `Push value to all locales` from a field that has already been configured to have that value set for the field in all other locales at once.
+
+![Paste push value](/images/paywalls-push-value.png)
+
+These options are especially useful if you're using variables in the field being modified, since they can remain consistent across all localizations.
+
+In addition, if you want to change the default locale that's used in the Paywall Editor, and that your paywall will fall back to if a customer's desired locale is unavailable, you can do so by clicking on the settings icon in the header row of the locale you'd like to make default, and then clicking `Set as default`.
+
+![Paste set as default](/images/paywalls-set-as-default.png)
+
+Be sure to enter values for all fields in each locale you create in order to be able to publish the changes to your Paywall.
+
+### Exporting and importing localizations
+
+You can export a CSV of your paywall's current localizatons in each language, add new localizations to the CSV, and then import the CSV back into your paywall to update your localizations as well.
+
+![Exporting and importing](/images/paywalls-import-export-localizations.png)
+
+## Editing inline
+
+Once a localization has been created, it can also be edited inline through the Paywall Editor. Simply click on the currently selected localization in the control panel, select the other localization that you want to edit, and you'll then be previewing & editing that localization through the Paywall Editor.
+
+![Localization selection](/images/paywalls-localization-selection.png)
+
+## Supported locales
+
+We support all 39 locales that are supported on [App Store Connect](https://www.apple.com/ios/feature-availability/#system-language-system-language).
+
+- Arabic (Saudi Arabia) - `ar`
+- Catalan - `ca`
+- Chinese (Simplified) - `zh`
+- Chinese (Traditional) - `zh`
+- Croatian - `hr`
+- Czech - `cs`
+- Danish - `da`
+- Dutch (Netherlands) - `nl`
+- English (Australia) - `en`
+- English (Canada) - `en`
+- English (United Kingdom) - `en`
+- English (United States) - `en`
+- Finnish - `fi`
+- French (Canada) - `fr`
+- French (France) - `fr`
+- German (Germany) - `de`
+- Greek - `el`
+- Hebrew - `he`
+- Hindi - `hi`
+- Hungarian - `hu`
+- Indonesian - `id`
+- Italian - `it`
+- Japanese - `ja`
+- Korean - `ko`
+- Malay - `ms`
+- Norwegian - `no`
+- Polish - `pl`
+- Portuguese (Brazil) - `pt`
+- Portuguese (Portugal) - `pt`
+- Romanian - `ro`
+- Russian - `ru`
+- Slovak - `sk`
+- Spanish (Mexico) - `es`
+- Spanish (Spain) - `es`
+- Swedish - `sv`
+- Thai - `th`
+- Turkish - `tr`
+- Ukrainian - `uk`
+- Vietnamese - `vi`
+
+:::info Testing localization in Xcode
+If a particular translation is not applied to your Paywall during testing, you may need to change the default localization in Xcode to that language.
+:::

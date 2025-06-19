@@ -39,6 +39,22 @@ const welcomeCategory = Category({
   items: [Page({ slug: "welcome/overview" })],
 });
 
+const playbooksCategory = Category({
+  iconName: "sparkle",
+  label: "Playbooks",
+  itemsPathPrefix: "playbooks/",
+  items: [
+    Page({ slug: "overview" }),
+    SubCategory({
+      label: "Guides",
+      slug: "guides",
+      itemsPathPrefix: "guides/",
+      items: [Page({ slug: "hard-paywall" }), Page({ slug: "freemium" })],
+      index: { title: "Guides", link: "playbooks/guides" },
+    }),
+  ],
+});
+
 const projectsCategory = Category({
   iconName: "hammer",
   label: "Projects & Apps",
@@ -116,9 +132,9 @@ const paywallsCategory = Category({
   itemsPathPrefix: "",
   items: [
     SubCategory({
-      label: "RevenueCat Paywalls v2 (Beta)",
-      slug: "tools/paywalls-v2",
-      itemsPathPrefix: "tools/paywalls-v2/",
+      label: "RevenueCat Paywalls",
+      slug: "tools/paywalls",
+      itemsPathPrefix: "tools/paywalls/",
       items: [
         Page({ slug: "installation" }),
         SubCategory({
@@ -140,9 +156,9 @@ const paywallsCategory = Category({
       ],
     }),
     SubCategory({
-      label: "RevenueCat Paywalls",
-      slug: "tools/paywalls",
-      itemsPathPrefix: "tools/paywalls/",
+      label: "RevenueCat Paywalls (Legacy)",
+      slug: "tools/paywalls-legacy",
+      itemsPathPrefix: "tools/paywalls-legacy/",
       items: [
         Page({ slug: "installation" }),
         Page({ slug: "creating-paywalls" }),
@@ -178,7 +194,7 @@ const webSDKCategory = Category({
   itemsPathPrefix: "web/",
   items: [
     SubCategory({
-      label: "Integrate Web Billing",
+      label: "Integrate RevenueCat Web",
       slug: "web-billing/overview",
       itemsPathPrefix: "web-billing/",
       items: [
@@ -207,7 +223,7 @@ const webSDKCategory = Category({
     Page({ slug: "web-billing/customer-portal" }),
     Page({ slug: "web-billing/lifecycle-emails" }),
     SubCategory({
-      label: "External Payments Integrations",
+      label: "External Purchase Integrations",
       slug: "payment-integrations",
       itemsPathPrefix: "integrations/",
       items: [Page({ slug: "stripe" }), Page({ slug: "paddle" })],
@@ -301,7 +317,12 @@ const offeringsCategory = Category({
         }),
       ],
     }),
-    Page({ slug: "offerings/virtual-currency" }),
+    SubCategory({
+      label: "Virtual Currency",
+      slug: "offerings/virtual-currency",
+      itemsPathPrefix: "offerings/virtual-currency/",
+      items: [Page({ slug: "subscriptions" }), Page({ slug: "refunds" })],
+    }),
     Page({ slug: "offerings/troubleshooting" }),
   ],
 });
@@ -895,8 +916,8 @@ const attributionCategory = Category({
         Page({ slug: "apple-search-ads" }),
         Page({ slug: "appsflyer" }),
         Page({ slug: "branch" }),
-        Page({ slug: "meta-ads" }),
         Page({ slug: "kochava" }),
+        Page({ slug: "meta-ads" }),
         Page({ slug: "singular" }),
         Page({ slug: "splitmetrics-acquire" }),
         Page({ slug: "tenjin" }),
@@ -934,9 +955,9 @@ const thirdPartyIntegrationsCategory = Category({
         Page({ slug: "posthog" }),
         Page({ slug: "segment" }),
         Page({ slug: "slack" }),
-        Page({ slug: "telemetrydeck" }),
         Page({ slug: "statsig" }),
         Page({ slug: "superwall" }),
+        Page({ slug: "telemetrydeck" }),
       ],
       index: {
         title: "Supported Integrations",
@@ -991,6 +1012,7 @@ const sidebars = {
     attributionCategory,
     integrationsMoreCategory,
   ],
+  playbookSidebar: [playbooksCategory],
 };
 
 export default sidebars;

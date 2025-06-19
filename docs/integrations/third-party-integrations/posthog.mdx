@@ -5,10 +5,6 @@ excerpt: Integrate in-app subscription events from RevenueCat with PostHog
 hidden: false
 ---
 
-:::success Pro Integration
-The PostHog integration is to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
 PostHog can be a useful integration tool for seeing all events and revenue that occur for your app even if it’s not active for a period of time. You can use PostHog's product analytics to find patterns in customer behavior and inform marketing strategies.
 
 With our PostHog integration, you can:
@@ -55,16 +51,13 @@ In order to associate RevenueCat data with a PostHog User, the RevenueCat `$post
 
 After you've set up the Purchase SDK and PostHog SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
 
-1. Navigate to your app in the RevenueCat and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'PostHog' from the Integrations menu
 
-![](/images/82692c7-app.revenuecat.com_projects_85ff18c7_collaborators_1_73d6dc81e85972dbbc157674b1182fb8.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **PostHog** from the Integrations menu
-3. Add your PostHog [Project API key](https://posthog.com/docs/api) to the **API key** field in RevenueCat. The integration uses only public endpoints, so there is no need to set up personal API keys.
-4. Enter the event names that RevenueCat will send or choose the default event names
-5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
-
-![PostHog configuration page](/images/posthog_integration_setup_2.png "PostHog configuration page")
+2. Add your PostHog [Project API key](https://posthog.com/docs/api) to the **API key** field in RevenueCat. The integration uses only public endpoints, so there is no need to set up personal API keys.
+3. Enter the event names that RevenueCat will send or choose the default event names
+4. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
 :::info PostHog sandbox environment
 PostHog recommends having a production and sandbox project to separate live and testing environments. You can input both keys in the RevenueCat PostHog settings page.
@@ -80,29 +73,29 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 While still on the Customer View, select the purchase event in the [Customer History](/dashboard-and-metrics/customer-history) page and make sure that the PostHog integration event exists and was delivered successfully.
 
-![Check that the PostHog event was delivered](/images/posthog_event_details.png "Check that the PostHog event was delivered")
+![Check that the PostHog event was delivered](/docs_images/integrations/third-party-integrations/posthog/posthog-event-details.png)
 
 ### Check the PostHog dashboard for the delivered event
 
 Navigate to your PostHog dashboard > People and groups. In the 'People &amp; groups' tab, you will see the event's user created as a Person.
 
-![Check that a PostHog Person has been created](/images/posthog_people_and_groups.png "Check that a PostHog Person has been created")
+![Check that a PostHog Person has been created](/docs_images/integrations/third-party-integrations/posthog/posthog-people-and-groups.png)
 
 Navigate to your PostHog dashboard > Data management. In the 'Events' tab, you will see events RevenueCat has dispatched to PostHog.
 
-![Check that a PostHog Event has been created](/images/posthog_events_list.png "Check that a PostHog Event has been created")
+![Check that a PostHog Event has been created](/docs_images/integrations/third-party-integrations/posthog/posthog-events-list.png)
 
 ## Sample Events
 
 Below are sample JSONs that are delivered to PostHog for events.
 
-import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/posthog_1.json";
-import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/posthog_2.json";
-import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/posthog_3.json";
-import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/posthog_4.json";
-import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/posthog_5.json";
-import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/posthog_6.json";
-import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/posthog_7.json";
+import initialPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/posthog_1.json?raw";
+import trialStartedContent from "@site/code_blocks/integrations/third-party-integrations/posthog_2.json?raw";
+import trialConvertedContent from "@site/code_blocks/integrations/third-party-integrations/posthog_3.json?raw";
+import trialCancelledContent from "@site/code_blocks/integrations/third-party-integrations/posthog_4.json?raw";
+import renewalContent from "@site/code_blocks/integrations/third-party-integrations/posthog_5.json?raw";
+import cancellationContent from "@site/code_blocks/integrations/third-party-integrations/posthog_6.json?raw";
+import uncancellationContent from "@site/code_blocks/integrations/third-party-integrations/posthog_7.json?raw";
 
 <RCCodeBlock
   tabs={[

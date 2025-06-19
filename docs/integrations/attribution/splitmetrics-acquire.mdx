@@ -23,11 +23,11 @@ The SplitMetrics Acquire integration requires that Apple Search Ads attribution 
 
 The simplest way to collect this information is by calling `enableAdServicesAttributionTokenCollection` **after** configuring the _Purchases SDK_.
 
-import swiftContent from "!!raw-loader!@site/code_blocks/integrations/attribution/apple-search-ads_1.swift";
-import objectiveCContent from "!!raw-loader!@site/code_blocks/integrations/attribution/apple-search-ads_2.m";
-import flutterContent from "!!raw-loader!@site/code_blocks/integrations/attribution/apple-search-ads_3.dart";
-import reactNativeContent from "!!raw-loader!@site/code_blocks/integrations/attribution/apple-search-ads_4.js";
-import cordovaContent from "!!raw-loader!@site/code_blocks/integrations/attribution/apple-search-ads_5.js";
+import swiftContent from "@site/code_blocks/integrations/attribution/apple-search-ads_1.swift?raw";
+import objectiveCContent from "@site/code_blocks/integrations/attribution/apple-search-ads_2.m?raw";
+import flutterContent from "@site/code_blocks/integrations/attribution/apple-search-ads_3.dart?raw";
+import reactNativeContent from "@site/code_blocks/integrations/attribution/apple-search-ads_4.js.txt?raw";
+import cordovaContent from "@site/code_blocks/integrations/attribution/apple-search-ads_5.js.txt?raw";
 
 <RCCodeBlock
   tabs={[
@@ -49,16 +49,13 @@ Please ensure you've enabled the [Basic](/integrations/attribution/apple-search-
 
 After you've set up the _Purchases SDK_ to send device data to RevenueCat, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'SplitMetrics Acquire' from the Integrations menu
 
-![](/images/10c29a4-app.revenuecat.com_projects_85ff18c7_collaborators_1_34bfd454a36a9c0617029d310e5dd9bb.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **SplitMetrics Acquire** from the Integrations menu.
-3. Add your SplitMetrics Acquire Client ID.
-4. Enter the event names that RevenueCat will send or choose the default event names.
-5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
-
-![SplitMetrics Acquire | Formerly SearchAdsHQ configuration screen](/images/4059e03-app.revenuecat.com_projects_85ff18c7_integrations_branch_3_e3687bc4ee62d694ebe1664628e0975e.png)
+2. Add your SplitMetrics Acquire Client ID.
+3. Enter the event names that RevenueCat will send or choose the default event names.
+4. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
 :::danger Remove any client-side purchase tracking
 Make sure to remove all client-side tracking of revenue. Since RevenueCat will be sending events for all revenue actions, tracking purchases yourself directly into SplitMetrics Acquire | Formerly SearchAdsHQ can lead to double counting of revenue.
@@ -80,7 +77,7 @@ Navigate the the [Customer View](/dashboard-and-metrics/customer-history/basic-i
 
 While still on the Customer View, click into the test purchase event in the [Customer History](/dashboard-and-metrics/customer-history) and make sure that the SplitMetrics Acquire integration event exists and was delivered successfully.
 
-![](/images/5469d6b-app.revenuecat.com_activity_40779aaf_event_92499ad6-350b-455a-a2ec-4c28c4ca0b28_2_1e172ac101b3733cf5ddc736ad88c777.png)
+![](/docs_images/integrations/attribution/splitmetrics-acquire/successful-event.png)
 
 :::success You've done it!
 You should start seeing events from RevenueCat appear in SplitMetrics Acquire.

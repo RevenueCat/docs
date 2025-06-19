@@ -31,28 +31,26 @@ Once you have your developer account created, head to the [dashboard](https://de
 1. Make sure your project has been enabled to create Roku apps. If you're not sure, talk to your RevenueCat contact.
 2. Open the RevenueCat dashboard, select your project, and click on "Add app" > "Roku Channel Store".
 
-![](/images/roku/add-roku-app.png)
-
-![](/images/roku/roku-app.png)
+![](/docs_images/projects/add-app-platform.png)
 
 3. Navigate to the [Roku Pay Web Services page](https://developer.roku.com/rpay-web-services) to copy your Roku Pay API key and paste this to the RevenueCat dashboard under 'Roku Pay API Key'. The Roku Pay API key must be set before being able to select 'SAVE CHANGES'.
 
-![](/images/roku/roku-api-key.png)
+![](/docs_images/platform-resources/roku/roku-api-key.png)
 
-![](/images/roku/roku-name-key.png)
+![](/docs_images/platform-resources/roku/roku-configuration.png)
 
 4. Once the app is created, click on the "Roku Server to Server notifications settings", copy the "Roku Push Notification URL" which starts with `https://api.revenuecat.com/v1/incoming-webhooks/roku-pay-jwt-notification`. Navigate back to your [Roku Pay Web Services page](https://developer.roku.com/rpay-web-services) (where you found the Roku API key) and scroll down until you see a section called 'Push Notifications' and paste RevenueCat's Push notifications URL in the text box.
 
-![](/images/roku/roku-notification-url.png)
+![](/docs_images/platform-resources/roku/roku-notification-url.png)
 
 <figure>
-  ![](/images/roku/roku-notifications.png)
+  ![](/docs_images/platform-resources/roku/roku-notifications.png)
   <figcaption>Remember to select 'SAVE CHANGES'</figcaption>
 </figure>
 
 5. Back to the RevenueCat dashboard, click on "Public API Key" and copy over the value which should start with "roku_XXXXXX". You will need it to configure the SDK later.
 
-![](/images/roku/revenuecat-api-key.png)
+![](/docs_images/platform-resources/roku/revenuecat-api-key.png)
 
 ### Multi-channel support
 
@@ -62,14 +60,14 @@ The Roku channel ID is required for supporting multiple channels on a single Rok
 2. On the left-hand side of the Developer Dashboard, you'll see the main navigation panel. Under 'Channel', navigate to where your channel is located (e.g: public or beta channels) and select the channel.
 3. Find your Roku Channel ID and copy this value.
 
-![](/images/roku/roku-channel-id.png)
+![](/docs_images/platform-resources/roku/roku-channel-id.png)
 
 4. Back in the RevenueCat app settings page, enter your Roku Channel ID the 'Multi-channel support' expanded section.
 
-![](/images/roku/roku-multi-channel.png)
+![](/docs_images/platform-resources/roku/roku-multi-channel.png)
 
 <figure>
-  [](/images/roku/roku-multi-channel.png)
+  [](/docs_images/platform-resources/roku/roku-multi-channel.png)
   <figcaption>Remember to select 'SAVE CHANGES'</figcaption>
 </figure>
 
@@ -83,7 +81,7 @@ After you have configured the Roku Store app on RevenueCat, you should [create y
 
 1. Clone the repository:
 
-import rokuClone from "!!raw-loader!@site/code_blocks/getting-started/installation/configuring-roku_1.shell";
+import rokuClone from "@site/code_blocks/getting-started/installation/configuring-roku_1.shell?raw";
 
 <RCCodeBlock tabs={[{ type: "shell", content: rokuClone, name: "Terminal" }]} />
 
@@ -91,7 +89,7 @@ import rokuClone from "!!raw-loader!@site/code_blocks/getting-started/installati
 3. Copy the `source/Purchases.brs` file into your app's `source` folder.
 4. Import the SDK in the .xml file of the component where you want to use it:
 
-import rokuXML from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-import-sdk.xml";
+import rokuXML from "@site/code_blocks/getting-started/installation/roku-import-sdk.xml?raw";
 
 <RCCodeBlock tabs={[{ type: "xml", content: rokuXML, name: "XML" }]} />
 
@@ -101,7 +99,7 @@ import rokuXML from "!!raw-loader!@site/code_blocks/getting-started/installation
 
 Initialize the SDK with your api key. You typically do this inside the `init()` method of your main scene.
 
-import rokuConfigure from "!!raw-loader!@site/code_blocks/getting-started/installation/configuring-roku_2.brs";
+import rokuConfigure from "@site/code_blocks/getting-started/installation/configuring-roku_2.brs?raw";
 
 <RCCodeBlock
   tabs={[
@@ -118,7 +116,7 @@ In methods of the SDK which perform async operations, you can get the result by 
 
 **Example:**
 
-import rokuCallbacksErrorHandling from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-callbacks-error-handling.brs";
+import rokuCallbacksErrorHandling from "@site/code_blocks/getting-started/installation/roku-callbacks-error-handling.brs?raw";
 
 <RCCodeBlock
   tabs={[
@@ -134,10 +132,10 @@ import rokuCallbacksErrorHandling from "!!raw-loader!@site/code_blocks/getting-s
 
 ### Subscriber
 
-import rokuSubscriber from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-subscriber.brs";
-import rokuLoginLogout from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-login-logout.brs";
-import rokuSubscriberInfo from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-subscriber-info.brs";
-import rokuSubscriberAttributes from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-subscriber-attributes.brs";
+import rokuSubscriber from "@site/code_blocks/getting-started/installation/roku-subscriber.brs?raw";
+import rokuLoginLogout from "@site/code_blocks/getting-started/installation/roku-login-logout.brs?raw";
+import rokuSubscriberInfo from "@site/code_blocks/getting-started/installation/roku-subscriber-info.brs?raw";
+import rokuSubscriberAttributes from "@site/code_blocks/getting-started/installation/roku-subscriber-attributes.brs?raw";
 
 <RCCodeBlock
   tabs={[
@@ -162,9 +160,9 @@ import rokuSubscriberAttributes from "!!raw-loader!@site/code_blocks/getting-sta
 
 ### Offerings
 
-import rokuGetOfferings from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-get-offerings.brs";
-import rokuOffersObject from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-offerings-object.txt";
-import rokuPlacements from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-placements.brs";
+import rokuGetOfferings from "@site/code_blocks/getting-started/installation/roku-get-offerings.brs?raw";
+import rokuOffersObject from "@site/code_blocks/getting-started/installation/roku-offerings-object.txt?raw";
+import rokuPlacements from "@site/code_blocks/getting-started/installation/roku-placements.brs?raw";
 
 <RCCodeBlock
   tabs={[
@@ -200,9 +198,9 @@ Additionally,you can pass the following optional parameters:
 
 This method will post all purchases associated with the current Roku account to RevenueCat and become associated with the current User ID. It should only be used if you're migrating from using your own Roku Pay implementation and want to track previous purchases in RevenueCat.
 
-import rokuPurchaseObject from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-purchase-object.txt";
-import rokuMakePurchase from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-make-purchase.brs";
-import rokuSyncPurchases from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-sync-purchases.brs";
+import rokuPurchaseObject from "@site/code_blocks/getting-started/installation/roku-purchase-object.txt?raw";
+import rokuMakePurchase from "@site/code_blocks/getting-started/installation/roku-make-purchase.brs?raw";
+import rokuSyncPurchases from "@site/code_blocks/getting-started/installation/roku-sync-purchases.brs?raw";
 
 <RCCodeBlock
   tabs={[
@@ -224,7 +222,7 @@ import rokuSyncPurchases from "!!raw-loader!@site/code_blocks/getting-started/in
 
 The error model contains two fields: `code` and `message`
 
-import rokuError from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-error.txt";
+import rokuError from "@site/code_blocks/getting-started/installation/roku-error.txt?raw";
 
 <RCCodeBlock
   tabs={[{ type: "brightscript", content: rokuError, name: "Error" }]}
@@ -240,7 +238,7 @@ For most apps, the usage of the SDK would look like this:
 4. Fetch offerings and show your paywall UI
 5. Make a purchase
 
-import rokuTyingTogether from "!!raw-loader!@site/code_blocks/getting-started/installation/roku-tying-together.brs";
+import rokuTyingTogether from "@site/code_blocks/getting-started/installation/roku-tying-together.brs?raw";
 
 <RCCodeBlock tabs={[{ type: "brightscript", content: rokuTyingTogether }]} />
 

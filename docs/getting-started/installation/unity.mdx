@@ -66,7 +66,7 @@ The Purchases package will include a MonoBehavior called Purchases. This will be
 
 Depending on your user's payment method, they may be asked by Google Play to verify their purchase in their (banking) app. This means they will have to background your app and go to another app to verify the purchase. If your Activity's `launchMode` is set to anything other than `standard` or `singleTop`, backgrounding your app can cause the purchase to get cancelled. To avoid this, set the `launchMode` of your Activity to `standard` or `singleTop` in your Android project's `AndroidManifest.xml` file:
 
-import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_launchmode.xml";
+import launchModeContent from "@site/code_blocks/getting-started/installation/android_launchmode.xml?raw";
 
 <RCCodeBlock
   tabs={[
@@ -80,7 +80,7 @@ You can find Android's documentation on the various `launchMode` options [here](
 
 The Purchases behavior takes one additional parameter, a GameObject with a Purchases.Listener component. This will be where you handle purchase events, and updated subscriber information from RevenueCat. Here is a simple example:
 
-import unityCSharpContent from "!!raw-loader!@site/code_blocks/getting-started/installation/unity_1.cs";
+import unityCSharpContent from "@site/code_blocks/getting-started/installation/unity_1.cs?raw";
 
 <RCCodeBlock
   tabs={[{ type: "unity", content: unityCSharpContent, name: "Unity" }]}
@@ -124,7 +124,7 @@ In order to do that, make sure you have `Custom Main Gradle Template` selected i
 
 Modify the `mainTemplate.gradle` to include the following at the end of the dependencies block:
 
-import unityGroovyContent from "!!raw-loader!@site/code_blocks/getting-started/installation/unity_2.groovy";
+import unityGroovyContent from "@site/code_blocks/getting-started/installation/unity_2.groovy?raw";
 
 <RCCodeBlock
   tabs={[{ type: "groovy", content: unityGroovyContent, name: "Groovy" }]}

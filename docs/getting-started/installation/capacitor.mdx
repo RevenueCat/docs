@@ -13,7 +13,7 @@ RevenueCat provides a backend and a wrapper around StoreKit and Google Play Bill
 
 [![Release](https://img.shields.io/github/release/RevenueCat/purchases-capacitor.svg?filter=!*beta*&style=flat)](https://github.com/RevenueCat/purchases-capacitor/releases)
 
-import content from "!!raw-loader!@site/code_blocks/getting-started/installation/capacitor_add_plugin.shell";
+import content from "@site/code_blocks/getting-started/installation/capacitor_add_plugin.shell?raw";
 
 <RCCodeBlock
   tabs={[{ type: "shell", content: content, name: "Installation" }]}
@@ -25,7 +25,7 @@ import content from "!!raw-loader!@site/code_blocks/getting-started/installation
 
 Depending on your user's payment method, they may be asked by Google Play to verify their purchase in their (banking) app. This means they will have to background your app and go to another app to verify the purchase. If your Activity's `launchMode` is set to anything other than `standard` or `singleTop`, backgrounding your app can cause the purchase to get cancelled. To avoid this, set the `launchMode` of your Activity to `standard` or `singleTop` in your Android app's `AndroidManifest.xml` file:
 
-import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_launchmode.xml";
+import launchModeContent from "@site/code_blocks/getting-started/installation/android_launchmode.xml?raw";
 
 <RCCodeBlock
   tabs={[
@@ -37,15 +37,9 @@ You can find Android's documentation on the various `launchMode` options [here](
 
 ## Additional iOS Setup
 
-### Add In-app Purchase Capability to Project
-
-The In-app Purchase capability isn't required to install the SDK, but it is required to make purchases.
-
-1. In Xcode, in project manager, select your app target.
-2. Open the `Signing and Capabilities` tab.
-3. Click the `+ Capability` button and double-click on In-App Purchase.
-
-![](/images/75574fc-Screen_Shot_2020-02-19_at_4.43.13_PM_eebd70add07dffea591603870ded41c3.png "Screen Shot 2020-02-19 at 4.43.13 PM.png")
+:::info Enable In-App Purchase capability for iOS projects in Xcode
+Don't forget to enable the In-App Purchase capability for your iOS project under `Project Target -> Capabilities -> In-App Purchase`
+:::
 
 ### Set Swift Language Version
 
@@ -64,7 +58,7 @@ You can either set it in the project yourself, or use an external plugin. In ord
 
 The types are shipped inside the npm package. You can import them like this:
 
-import capacitorTypesContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ionic_typescript_capacitor.ts";
+import capacitorTypesContent from "@site/code_blocks/getting-started/installation/ionic_typescript_capacitor.ts.txt?raw";
 
 <RCCodeBlock
   tabs={[{ type: "ts", content: capacitorTypesContent, name: "TypeScript" }]}
@@ -74,7 +68,7 @@ import capacitorTypesContent from "!!raw-loader!@site/code_blocks/getting-starte
 
 Wait for the Platform to be ready, then configure the plugin in your `src/app/app.component.ts`:
 
-import capacitorAngularContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ionic_angular_capacitor.ts";
+import capacitorAngularContent from "@site/code_blocks/getting-started/installation/ionic_angular_capacitor.ts.txt?raw";
 
 <RCCodeBlock
   tabs={[
@@ -86,7 +80,7 @@ import capacitorAngularContent from "!!raw-loader!@site/code_blocks/getting-star
 
 Import the plugin object then use its static methods:
 
-import capacitorReactContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ionic_react_capacitor.ts";
+import capacitorReactContent from "@site/code_blocks/getting-started/installation/ionic_react_capacitor.ts.txt?raw";
 
 <RCCodeBlock
   tabs={[{ type: "capacitor", content: capacitorReactContent, name: "React" }]}
@@ -100,7 +94,7 @@ If using Vue.js and its Reactivity API wrappers like [reactive](https://vuejs.or
 
 Import the plugin object then use its static methods:
 
-import capacitorVuejsContent from "!!raw-loader!@site/code_blocks/getting-started/installation/ionic_vuejs_capacitor.ts";
+import capacitorVuejsContent from "@site/code_blocks/getting-started/installation/ionic_vuejs_capacitor.ts.txt?raw";
 
 <RCCodeBlock
   tabs={[{ type: "capacitor", content: capacitorVuejsContent, name: "Vue.js" }]}

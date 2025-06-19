@@ -13,16 +13,16 @@ The CustomerInfo object contains all of the purchase and subscription data avail
 
 This object is updated whenever a purchase or restore occurs and periodically throughout the lifecycle of your app. The latest information can always be retrieved by calling `getCustomerInfo()`:
 
-import content1 from "!!raw-loader!@site/code_blocks/customers/customer-info_1.swift";
-import content2 from "!!raw-loader!@site/code_blocks/customers/customer-info_2.m";
-import content3 from "!!raw-loader!@site/code_blocks/customers/customer-info_3.kt";
-import content4 from "!!raw-loader!@site/code_blocks/customers/customer-info_4.java";
-import content5 from "!!raw-loader!@site/code_blocks/customers/customer-info_5.js";
-import content6 from "!!raw-loader!@site/code_blocks/customers/customer-info_6.js";
-import content7 from "!!raw-loader!@site/code_blocks/customers/customer-info_7.js";
-import contentCapacitor from "!!raw-loader!@site/code_blocks/customers/customer-info_add_listener_capacitor.ts";
-import content8 from "!!raw-loader!@site/code_blocks/customers/customer-info_8.cs";
-import webBillingContent from "!!raw-loader!@site/code_blocks/_projects/web-billing/web-billing-doc-snippets.ts";
+import content1 from "@site/code_blocks/customers/customer-info_1.swift?raw";
+import content2 from "@site/code_blocks/customers/customer-info_2.m?raw";
+import content3 from "@site/code_blocks/customers/customer-info_3.kt?raw";
+import content4 from "@site/code_blocks/customers/customer-info_4.java?raw";
+import content5 from "@site/code_blocks/customers/customer-info_5.js.txt?raw";
+import content6 from "@site/code_blocks/customers/customer-info_6.js.txt?raw";
+import content7 from "@site/code_blocks/customers/customer-info_7.js.txt?raw";
+import contentCapacitor from "@site/code_blocks/customers/customer-info_add_listener_capacitor.ts.txt?raw";
+import content8 from "@site/code_blocks/customers/customer-info_8.cs?raw";
+import webBillingContent from "@site/code_blocks/_projects/web-billing/web-billing-doc-snippets.ts.txt?raw";
 
 <RCCodeBlock tabs={[
     {
@@ -73,14 +73,14 @@ The subscription status for a user can easily be determined with the `CustomerIn
 
 For most apps that only have one entitlement, the `isActive` status can be quickly checked for your entitlement ID.
 
-import content9 from "!!raw-loader!@site/code_blocks/customers/customer-info_9.swift";
-import content10 from "!!raw-loader!@site/code_blocks/customers/customer-info_10.m";
-import content11 from "!!raw-loader!@site/code_blocks/customers/customer-info_11.kt";
-import content12 from "!!raw-loader!@site/code_blocks/customers/customer-info_12.java";
-import content13 from "!!raw-loader!@site/code_blocks/customers/customer-info_13.js";
-import content14 from "!!raw-loader!@site/code_blocks/customers/customer-info_14.js";
-import content15 from "!!raw-loader!@site/code_blocks/customers/customer-info_15.js";
-import content16 from "!!raw-loader!@site/code_blocks/customers/customer-info_16.cs";
+import content9 from "@site/code_blocks/customers/customer-info_9.swift?raw";
+import content10 from "@site/code_blocks/customers/customer-info_10.m?raw";
+import content11 from "@site/code_blocks/customers/customer-info_11.kt?raw";
+import content12 from "@site/code_blocks/customers/customer-info_12.java?raw";
+import content13 from "@site/code_blocks/customers/customer-info_13.js.txt?raw";
+import content14 from "@site/code_blocks/customers/customer-info_14.js.txt?raw";
+import content15 from "@site/code_blocks/customers/customer-info_15.js.txt?raw";
+import content16 from "@site/code_blocks/customers/customer-info_16.cs?raw";
 
 <RCCodeBlock
   tabs={[
@@ -127,14 +127,14 @@ import content16 from "!!raw-loader!@site/code_blocks/customers/customer-info_16
 
 If your app has multiple entitlements, you might also want to check if the customer has any active entitlements:
 
-import content17 from "!!raw-loader!@site/code_blocks/customers/customer-info_17.swift";
-import content18 from "!!raw-loader!@site/code_blocks/customers/customer-info_18.m";
-import content19 from "!!raw-loader!@site/code_blocks/customers/customer-info_19.kt";
-import content20 from "!!raw-loader!@site/code_blocks/customers/customer-info_20.java";
-import content21 from "!!raw-loader!@site/code_blocks/customers/customer-info_21.js";
-import content22 from "!!raw-loader!@site/code_blocks/customers/customer-info_22.js";
-import content23 from "!!raw-loader!@site/code_blocks/customers/customer-info_23.js";
-import content24 from "!!raw-loader!@site/code_blocks/customers/customer-info_24.cs";
+import content17 from "@site/code_blocks/customers/customer-info_17.swift?raw";
+import content18 from "@site/code_blocks/customers/customer-info_18.m?raw";
+import content19 from "@site/code_blocks/customers/customer-info_19.kt?raw";
+import content20 from "@site/code_blocks/customers/customer-info_20.java?raw";
+import content21 from "@site/code_blocks/customers/customer-info_21.js.txt?raw";
+import content22 from "@site/code_blocks/customers/customer-info_22.js.txt?raw";
+import content23 from "@site/code_blocks/customers/customer-info_23.js.txt?raw";
+import content24 from "@site/code_blocks/customers/customer-info_24.cs?raw";
 
 <RCCodeBlock
   tabs={[
@@ -203,16 +203,16 @@ CustomerInfo updates are not pushed to your app from the RevenueCat backend, upd
 
 Depending on your app, it may be sufficient to ignore the delegate and simply handle changes to customer information the next time your app is launched. Or throughout your app as you request new `CustomerInfo` objects.
 
-import content25 from "!!raw-loader!@site/code_blocks/customers/customer-info_25.swift";
-import content26 from "!!raw-loader!@site/code_blocks/customers/customer-info_26.m";
-import content27 from "!!raw-loader!@site/code_blocks/customers/customer-info_27.kt";
-import content28 from "!!raw-loader!@site/code_blocks/customers/customer-info_28.java";
-import content29 from "!!raw-loader!@site/code_blocks/customers/customer-info_29.js";
-import content30 from "!!raw-loader!@site/code_blocks/customers/customer-info_30.js";
-import content31 from "!!raw-loader!@site/code_blocks/customers/customer-info_31.js";
-import contentCapacitor2 from "!!raw-loader!@site/code_blocks/customers/customer-info_add_listener_capacitor.ts";
-import content32 from "!!raw-loader!@site/code_blocks/customers/customer-info_32.cs";
-import contentKmp from "!!raw-loader!@site/code_blocks/customers/customer-info_kmp_1.kts";
+import content25 from "@site/code_blocks/customers/customer-info_25.swift?raw";
+import content26 from "@site/code_blocks/customers/customer-info_26.m?raw";
+import content27 from "@site/code_blocks/customers/customer-info_27.kt?raw";
+import content28 from "@site/code_blocks/customers/customer-info_28.java?raw";
+import content29 from "@site/code_blocks/customers/customer-info_29.js.txt?raw";
+import content30 from "@site/code_blocks/customers/customer-info_30.js.txt?raw";
+import content31 from "@site/code_blocks/customers/customer-info_31.js.txt?raw";
+import contentCapacitor2 from "@site/code_blocks/customers/customer-info_add_listener_capacitor.ts.txt?raw";
+import content32 from "@site/code_blocks/customers/customer-info_32.cs?raw";
+import contentKmp from "@site/code_blocks/customers/customer-info_kmp_1.kts?raw";
 
 <RCCodeBlock
   tabs={[
@@ -313,7 +313,7 @@ The `EntitlementInfo` object gives you access to all of the information about th
 
 If you need to get a user's subscription status from outside of the _Purchases SDK_, for example, from your own backend, you should use the REST API. You can read the full API reference [here](https://docs.revenuecat.com/reference).
 
-import content33 from "!!raw-loader!@site/code_blocks/customers/customer-info_33.curl";
+import content33 from "@site/code_blocks/customers/customer-info_33.curl?raw";
 
 <RCCodeBlock
   tabs={[

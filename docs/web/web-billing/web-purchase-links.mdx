@@ -20,13 +20,13 @@ Web Purchase Links support a range of use cases, with both identified and anonym
 5. Finally, click on the **Create a Web Purchase Link for this Offering** button
 6. To support anonymous purchases, configure [Redemption Links](/web/web-billing/redemption-links) in your Web Billing app settings.
 
-![](/images/web-billing/web-purchase-link-create.png)
+![](/docs_images/web/web-billing/web-purchase-link-create.png)
 
 ## Customise your Web Purchase Link
 
 Choose a Web Billing app from the dropdown if you have more than one
 
-![](/images/web-billing/web-purchase-link-choose-app.png)
+![](/docs_images/web/web-billing/web-purchase-link-choose-app.png)
 
 ### Product Selection page
 
@@ -35,7 +35,7 @@ In this page your customers can select one of the products included in your offe
 
 Here is an example:
 
-![](/images/web-billing/web-purchase-link-package-example.png)
+![](/docs_images/web/web-billing/web-purchase-link-package-example.png)
 
 You can customize:
 
@@ -45,7 +45,7 @@ You can customize:
 - The terms and conditions URL (footer)
 - Visual look and feel, including colors and shape styling (configured separately in [customization](/web/web-billing/customization))
 
-![](/images/web-billing/web-purchase-link-package-config.png)
+![](/docs_images/web/web-billing/web-purchase-link-package-config.png)
 
 :::info product selection can be skipped
 It's possible to skip this page, and pre-select a package by passing a `package_id` [URL parameter](#package-id).
@@ -55,7 +55,7 @@ It's possible to skip this page, and pre-select a package by passing a `package_
 
 Once a product has been selected, users will be presented with the checkout:
 
-![](/images/web-billing/web-purchase-link-checkout.png)
+![](/docs_images/web/web-billing/web-purchase-link-checkout.png)
 
 #### What affects the checkout experience
 
@@ -79,12 +79,13 @@ After completing a purchase, there are two configurable options:
 - Can be used to redirect to a post-purchase experience on your own website
 - The app user id is appended as a URL parameter (`app_user_id`) so you can further customize the post-purchase experience
 - Can also be used to redirect the user back into the mobile app, using a custom URL scheme (requires the url scheme to be registered with the app beforehand)
+- When [Redemption Links](/web/web-billing/redemption-links) are enabled, the redemption URL is automatically included as a query parameter named `redeem_url`
 
 #### Success page customization
 
 If you choose to show a success page here's how it will look:
 
-![](/images/web-billing/web-purchase-link-success-example.png)
+![](/docs_images/web/web-billing/web-purchase-link-success-example.png)
 
 You can customize:
 
@@ -93,7 +94,7 @@ You can customize:
 - Choose whether to show the app download buttons
 - Configure the app download links
 
-![](/images/web-billing/web-purchase-link-success-config.png)
+![](/docs_images/web/web-billing/web-purchase-link-success-config.png)
 
 :::warning Changes apply immediately
 As soon as you save the above settings, those changes will be reflected immediately in your production purchase links.
@@ -105,7 +106,7 @@ You can always run tests by creating a Web Purchase Link for a different offerin
 
 You can choose what happens when a customer already has an entitlement or an active subscription and they return to a web purchase link.
 
-![](/images/web-billing/web-purchase-link-choose-returning-customers.png)
+![](/docs_images/web/web-billing/web-purchase-link-choose-returning-customers.png)
 
 ### Show the success page
 
@@ -126,7 +127,7 @@ We suggest to create a dedicated offering/web purchase link for non-consumables 
 
 Once you've configured a web purchase link, you'll have access to two URLs formatted as `https://pay.rev.cat/<someProductionTokenWeGenerate>` (one for production, the other one for sandbox):
 
-![](/images/web-billing/web-purchase-link-urls.png)
+![](/docs_images/web/web-billing/web-purchase-link-urls.png)
 
 :::danger Do not send the sandbox URL to customers
 The Sandbox URL allows you to test purchases using [Stripe test card numbers](https://docs.stripe.com/testing#use-test-cards).

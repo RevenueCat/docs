@@ -5,10 +5,6 @@ excerpt: Integrate in-app subscription events from RevenueCat with CleverTap
 hidden: false
 ---
 
-:::success Pro Integration
-The CleverTap integration is available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
 CleverTap can be a useful integration tool for seeing all events and revenue that occur for your app even if it’s not active for a period of time. You can use CleverTap’s analytics and marketing tools to reach your goal of increasing user engagement and retention.
 
 With our CleverTap integration, you can:
@@ -56,10 +52,10 @@ The CleverTap integration can send the CleverTap ID to CleverTap as the user ide
 
 This property can be set manually, like any other [Attribute](/customers/customer-attributes). If you do not set this property, the [App User ID](/customers/user-ids) will be sent as the user identity to CleverTap.
 
-import swiftContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_1.swift";
-import objectiveCContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_2.m";
-import kotlinContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_3.kt";
-import javaContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_4.java";
+import swiftContent from "@site/code_blocks/integrations/third-party-integrations/clevertap_1.swift?raw";
+import objectiveCContent from "@site/code_blocks/integrations/third-party-integrations/clevertap_2.m?raw";
+import kotlinContent from "@site/code_blocks/integrations/third-party-integrations/clevertap_3.kt?raw";
+import javaContent from "@site/code_blocks/integrations/third-party-integrations/clevertap_4.java?raw";
 
 <RCCodeBlock
   tabs={[
@@ -74,17 +70,15 @@ import javaContent from "!!raw-loader!@site/code_blocks/integrations/third-party
 
 After you've set up the _Purchases SDK_ and CleverTap SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'CleverTap' from the Integrations menu
 
-![](/images/61990eb-app.revenuecat.com_projects_85ff18c7_collaborators_1_121ad4f0b8fb61d01c6d495d268eef9d.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **CleverTap** from the Integrations menu
-3. Add your [CleverTap Account ID and Passcode](https://developer.clevertap.com/docs/api-quickstart-guide).
-4. If you want to test in sandbox, also add your Sandbox Account ID and Passcode from your testing account.
-5. Enter the event names that RevenueCat will send or choose the default event names
-6. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
-
-![CleverTap configuration page](/images/444dd1c-clevertap_screesnshot_02064fd74f99184fe136a7b7fe3cb462.png)
+2. Add your [CleverTap Account ID and Passcode](https://developer.clevertap.com/docs/api-quickstart-guide).
+3. If you want to test in sandbox, also add your Sandbox Account ID and Passcode from your testing account.
+4. Enter the event names that RevenueCat will send or choose the default event names
+5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
+6. Choose your CleverTap region.
 
 :::info
 By default, RevenueCat sends data through CleverTap's EU data center. For CleverTap customers who have a regional data center configured, you can change your region in the dropdown selector under 'CleverTap Region'.
@@ -94,12 +88,12 @@ By default, RevenueCat sends data through CleverTap's EU data center. For Clever
 
 Below are sample JSONs that are delivered to CleverTap for most event types.
 
-import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_5.json";
-import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_6.json";
-import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_7.json";
-import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_8.json";
-import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_9.json";
-import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_10.json";
+import initialPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/clevertap_5.json?raw";
+import trialStartedContent from "@site/code_blocks/integrations/third-party-integrations/clevertap_6.json?raw";
+import trialConvertedContent from "@site/code_blocks/integrations/third-party-integrations/clevertap_7.json?raw";
+import trialCancelledContent from "@site/code_blocks/integrations/third-party-integrations/clevertap_8.json?raw";
+import renewalContent from "@site/code_blocks/integrations/third-party-integrations/clevertap_9.json?raw";
+import cancellationContent from "@site/code_blocks/integrations/third-party-integrations/clevertap_10.json?raw";
 
 <RCCodeBlock
   tabs={[
@@ -112,11 +106,11 @@ import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/thi
   ]}
 />
 
-import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_11.json";
-import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_12.json";
-import expirationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_13.json";
-import billingIssueContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_14.json";
-import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/clevertap_15.json";
+import uncancellationContent from "@site/code_blocks/integrations/third-party-integrations/clevertap_11.json?raw";
+import nonSubscriptionPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/clevertap_12.json?raw";
+import expirationContent from "@site/code_blocks/integrations/third-party-integrations/clevertap_13.json?raw";
+import billingIssueContent from "@site/code_blocks/integrations/third-party-integrations/clevertap_14.json?raw";
+import productChangeContent from "@site/code_blocks/integrations/third-party-integrations/clevertap_15.json?raw";
 
 <RCCodeBlock
   tabs={[

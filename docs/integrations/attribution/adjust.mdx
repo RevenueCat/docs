@@ -41,8 +41,8 @@ Therefore, Google's Advertising ID acts as the primary device identifier for And
 
 These properties can be set manually, like any other [Customer Attributes](/customers/customer-attributes), or through the helper methods to `collectDeviceIdentifiers()` and `setAdjustId()`.
 
-import swiftContent from "!!raw-loader!@site/code_blocks/integrations/attribution/adjust_1.swift";
-import javaContent from "!!raw-loader!@site/code_blocks/integrations/attribution/adjust_2.java";
+import swiftContent from "@site/code_blocks/integrations/attribution/adjust_1.swift?raw";
+import javaContent from "@site/code_blocks/integrations/attribution/adjust_2.java?raw";
 
 <RCCodeBlock
   tabs={[
@@ -67,7 +67,7 @@ If you are requesting the App Tracking permission through ATT to access the IDFA
 The AdSupport framework is required to access the IDFA parameter on iOS. Don't forget to import this into your project.
 :::
 
-![](/images/caf9cda-Screen_Shot_2020-09-14_at_7.09.36_PM_739bc6ccef43416570bf51e527f4e0fc.png "Screen Shot 2020-09-14 at 7.09.36 PM.png")
+![Import AdSupport Framework](/docs_images/integrations/attribution/import-adsupport-framework.png)
 
 :::danger Remove any client-side purchase tracking
 Make sure to remove all client-side tracking of revenue. Since RevenueCat will be sending events for all revenue actions, tracking purchases with the Adjust SDK directly can lead to double counting of revenue in Adjust.
@@ -91,31 +91,28 @@ The below reserved key names can be used to optionally attach campaign data to a
 
 After you've set up the _Purchase_ SDK to send attribution data from Adjust to RevenueCat, you can "turn on" the integration and configure the event tokens from the RevenueCat dashboard.
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'Adjust' from the Integrations menu
 
-![](/images/5cea364-app.revenuecat.com_projects_85ff18c7_collaborators_1_474f6d590f4f85d4e8e85a8b7daa1594.png "app.revenuecat.com_projects_85ff18c7_collaborators (1).png")
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **Adjust** from the integrations menu
-3. Add your app tokens and event tokens for your iOS app and/or Android app
-4. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
-
-![](/images/adjust-integration.png)
+2. Add your app tokens and event tokens for your iOS app and/or Android app
+3. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
 ### (Optional) S2S Adjust Authentication
 
 If you've enabled [S2S authentication on Adjust](https://help.adjust.com/en/article/server-to-server-s2s-security), fill out the OAuth token field in the RevenueCat Adjust settings page.
 
-![](/images/adjust-global-oauth-token.png)
+![](/docs_images/integrations/attribution/adjust/adjust-global-oauth-token.png)
 
 If you have a specific token per platform, you can override it on each platform section.
 
 #### iOS
 
-![](/images/adjust-ios-oauth-token.png)
+![](/docs_images/integrations/attribution/adjust/adjust-ios-oauth-token.png)
 
 #### Android
 
-![](/images/adjust-android-oauth-token.png)
+![](/docs_images/integrations/attribution/adjust/adjust-android-oauth-token.png)
 
 :::danger Missing Authentication Token Error (401)
 If you're getting an error that looks like this:
@@ -149,7 +146,7 @@ Adjust provides a testing console to verify attribution data for sandbox users b
 
 RevenueCat will send Sandbox subscription events to Adjust's in sandbox mode. You can see Adjust sandbox events using the following filter in Adjust:
 
-![Use the "SANDBOX MODE" filter in Adjust to see sandbox events from RevenueCat](/images/00dd960-dccd96f-Screen_Shot_2018-12-14_at_8.03.54_PM_1e031c65d4a919afc4ce52cb9f493d21.png)
+![Use the "SANDBOX MODE" filter in Adjust to see sandbox events from RevenueCat](/docs_images/integrations/attribution/adjust/adjust-sandbox-mode.png)
 
 :::danger Error codes
 If you notice failed in events in your Adjust settings in the RevenueCat dashboard, take a look at [Adjust's docs](https://help.adjust.com/en/article/s2s-api-reference?src=search#event-submission-responses) on what the error codes might mean.
@@ -167,6 +164,6 @@ You should start seeing events from RevenueCat appear in Adjust!
 
 Below is a sample event sent to Adjust. The type of the event (e.g. initial purchase) is defined by the `event_token`. Note that product identifiers, customer attributes, app user IDs, etc. don't get sent to Adjust.
 
-import jsonContent from "!!raw-loader!@site/code_blocks/integrations/attribution/adjust_3.json";
+import jsonContent from "@site/code_blocks/integrations/attribution/adjust_3.json?raw";
 
 <RCCodeBlock tabs={[{ type: "json", content: jsonContent }]} />

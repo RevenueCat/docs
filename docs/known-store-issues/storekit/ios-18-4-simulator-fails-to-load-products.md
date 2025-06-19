@@ -4,6 +4,10 @@ title: iOS 18.4 Simulator Fails to Load Products
 
 # iOS 18.4 Simulator Fails to Load Products
 
+## Resolved
+
+Apple has resolved this issue, and it is not present in iOS 26 and above. The issue is still present in the iOS 18.4-18.5 simulators. We are keeping this page for historical reference.
+
 ## Issue Description
 
 In iOS 18.4, 18.4.1, and 18.5 simulators, StoreKit fails to load products and Offerings when using the sandbox environment. This affects RevenueCat SDK's ability to retrieve product information and display Offerings.
@@ -24,19 +28,23 @@ In iOS 18.4, 18.4.1, and 18.5 simulators, StoreKit fails to load products and Of
 
 ## Workarounds
 
-### Option 1: Test on Physical Device (Recommended)
+### Option 1: Test in iOS 26+
+
+Apple has resolved this issue, and it is not present in iOS 26 and above.
+
+### Option 2: Test on Physical Device
 
 1. Use a physical iOS device for testing instead of the simulator
 2. Ensure you're using sandbox Apple ID accounts for testing
 3. This is the recommended approach as it represents the real user experience
 
-### Option 2: Use StoreKit Configuration Files
+### Option 3: Use StoreKit Configuration Files
 
 1. Create a StoreKit Configuration file in Xcode
 2. Use local testing instead of App Store Connect sandbox
 3. Configure your products directly in the configuration file
 
-### Option 3: Use iOS 18.3 Simulator
+### Option 4: Use iOS 18.3 Simulator
 
 1. In Xcode, select an iOS 18.3 simulator instead
 2. Test your in-app purchase implementation on the alternative simulator version
@@ -56,6 +64,10 @@ Physical devices should always be considered the ultimate source of truth for in
 - App Store Review team uses physical devices
 - End users use physical devices
 - Simulators may have limitations or bugs that don't affect real devices
+
+## Status
+
+✅ **Resolved** - Apple has fixed this issue and the fix has been deployed in iOS 26. To resolve the issue, please use a simulator with iOS 26+ and Xcode 26+.
 
 ## Status
 

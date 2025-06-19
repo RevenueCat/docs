@@ -11,6 +11,8 @@ interface ApiDocProps {
 }
 
 export default function ApiDocWrapper(props: ApiDocProps): React.ReactElement {
+  if (typeof window === "undefined" || !props.specProps?.spec) return null;
+
   const hidden = props.specProps.spec["x-revenuecat-hidden"] === true;
 
   return (

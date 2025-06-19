@@ -5,10 +5,6 @@ excerpt: Integrate RevenueCat subscription status with OneSignal
 hidden: false
 ---
 
-:::success Pro Integration
-The OneSignal integration is available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
 OneSignal can be a useful integration tool for understanding what stage a customer is in to react accordingly. RevenueCat can automatically update user tags in OneSignal with their latest subscription status.
 
 With our OneSignal integration, you can:
@@ -78,8 +74,8 @@ This property can be set manually, like any other [Subscriber Attributes](doc:su
 
 You can listen for changes to the OneSignal Id through their SDK, and send the value to RevenueCat. If you already have OneSignal set up, you should make sure that you're also sending the OneSignal Id for users that are updating to the latest version of your app.
 
-import onesignalV11Content from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_14.swift";
-import onesignalV11ContentSwiftUi from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_15.swift";
+import onesignalV11Content from "@site/code_blocks/integrations/third-party-integrations/onesignal_14.swift?raw";
+import onesignalV11ContentSwiftUi from "@site/code_blocks/integrations/third-party-integrations/onesignal_15.swift?raw";
 
 <RCCodeBlock
   tabs={[
@@ -100,7 +96,7 @@ This property can be set manually, like any other [Attribute](/customers/custome
 
 You can listen for changes to the OneSignal Id through their SDK, and send the value to RevenueCat. If you already have OneSignal set up, you should make sure that you're also sending the OneSignal Id for users that are updating to the latest version of your app.
 
-import onesignalV9Content from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_1.swift";
+import onesignalV9Content from "@site/code_blocks/integrations/third-party-integrations/onesignal_1.swift?raw";
 
 <RCCodeBlock tabs={[{ type: "swift", content: onesignalV9Content }]} />
 
@@ -108,15 +104,12 @@ import onesignalV9Content from "!!raw-loader!@site/code_blocks/integrations/thir
 
 After you've set up the _Purchases SDK_ to send device data to RevenueCat, you can "turn on" the integration and configure the tag names from the RevenueCat dashboard.
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'OneSignal' from the Integrations menu
 
-![](/images/c37e1b7-app.revenuecat.com_projects_85ff18c7_collaborators_1_81da43086e00b58d8d9c6aa904b9932f.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **OneSignal** from the Integrations menu.
-3. Add your **OneSignal App Id** and **OneSignal API key**.
-4. Enter the tag names that RevenueCat should use, or choose the default tag names.
-
-![OneSignal configuration screen](/images/319d5b4-app.revenuecat.com_projects_85ff18c7_integrations_intercom_2_25b92799d8f7800e40ff8604f064c94a.png)
+2. Add your **OneSignal App Id** and **OneSignal API key**.
+3. Enter the tag names that RevenueCat should use, or choose the default tag names.
 
 ## 3. Testing the OneSignal integration
 
@@ -134,24 +127,24 @@ Navigate the the [Customer View](/dashboard-and-metrics/customer-history/basic-i
 
 While still on the Customer View, click into the test purchase event in the [Customer History](/dashboard-and-metrics/customer-history) and make sure that the OneSignal integration event exists and was delivered successfully.
 
-![](/images/f052d26-app.revenuecat.com_activity_40779aaf_event_92499ad6-350b-455a-a2ec-4c28c4ca0b28_5_05a0f6d2b9da1a6046edf2efb43f8832.png)
+![](/docs_images/integrations/third-party-integrations/onesignal/event-delivered.png)
 
 ## Sample Events
 
 Below are sample JSONs that are delivered to OneSignal for events.
 
-import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_2.json";
-import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_3.json";
-import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_4.json";
-import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_5.json";
-import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_6.json";
-import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_7.json";
-import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_8.json";
-import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_12.json";
-import subscriptionPausedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_13.json";
-import expirationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_9.json";
-import billingIssueContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_10.json";
-import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/onesignal_11.json";
+import initialPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/onesignal_2.json?raw";
+import trialStartedContent from "@site/code_blocks/integrations/third-party-integrations/onesignal_3.json?raw";
+import trialConvertedContent from "@site/code_blocks/integrations/third-party-integrations/onesignal_4.json?raw";
+import trialCancelledContent from "@site/code_blocks/integrations/third-party-integrations/onesignal_5.json?raw";
+import renewalContent from "@site/code_blocks/integrations/third-party-integrations/onesignal_6.json?raw";
+import cancellationContent from "@site/code_blocks/integrations/third-party-integrations/onesignal_7.json?raw";
+import uncancellationContent from "@site/code_blocks/integrations/third-party-integrations/onesignal_8.json?raw";
+import nonSubscriptionPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/onesignal_12.json?raw";
+import subscriptionPausedContent from "@site/code_blocks/integrations/third-party-integrations/onesignal_13.json?raw";
+import expirationContent from "@site/code_blocks/integrations/third-party-integrations/onesignal_9.json?raw";
+import billingIssueContent from "@site/code_blocks/integrations/third-party-integrations/onesignal_10.json?raw";
+import productChangeContent from "@site/code_blocks/integrations/third-party-integrations/onesignal_11.json?raw";
 
 <RCCodeBlock
   tabs={[

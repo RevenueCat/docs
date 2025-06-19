@@ -5,10 +5,6 @@ excerpt: Integrate in-app subscription events from RevenueCat with Amplitude
 hidden: false
 ---
 
-:::success Pro Integration
-The Amplitude integration is to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
 Amplitude can be a useful integration tool for seeing all events and revenue that occur for your app even if it’s not active for a period of time. You can use Amplitude’s product analytics to find patterns in customer behavior and inform marketing strategies.
 
 With our Amplitude integration, you can:
@@ -53,9 +49,9 @@ If you're using the Amplitude SDK, you can set the User Id to match the RevenueC
 
 Configure the Amplitude SDK with the same App User Id as RevenueCat or use the `.setUserId()` method on the Amplitude SDK.
 
-import swiftContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/amplitude_1.swift";
-import objectiveCContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/amplitude_2.m";
-import javaContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/amplitude_3.java";
+import swiftContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_1.swift?raw";
+import objectiveCContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_2.m?raw";
+import javaContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_3.java?raw";
 
 <RCCodeBlock
   tabs={[
@@ -80,16 +76,13 @@ If both keys are present, RevenueCat will send both the User ID and Device ID to
 
 After you've set up the _Purchases SDK_ and Amplitude SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'Amplitude' from the Integrations menu
 
-![](/images/0c37a59-app.revenuecat.com_projects_85ff18c7_collaborators_1_25dceedfa16cd1f509f0f596955530fa.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **Amplitude** from the Integrations menu
-3. Add your Amplitude API key
-4. Enter the event names that RevenueCat will send or choose the default event names
-5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
-
-![Amplitude configuration page](/images/bb2663f-app.revenuecat.com_projects_85ff18c7_integrations_branch_7_d75336a6f81cf75614269c934a71fa18.png)
+2. Add your Amplitude API key
+3. Enter the event names that RevenueCat will send or choose the default event names
+4. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
 ### Set Amplitude Region (Optional)
 
@@ -99,13 +92,13 @@ If your Amplitude account is hosted on EU servers, toggle the Amplitude Region f
 
 Below are sample JSONs that are delivered to Amplitude for each event type.
 
-import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/amplitude_4.json";
-import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/amplitude_5.json";
-import trialConversionContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/amplitude_6.json";
-import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/amplitude_7.json";
-import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/amplitude_8.json";
-import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/amplitude_9.json";
-import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/amplitude_10.json";
+import initialPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_4.json?raw";
+import trialStartedContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_5.json?raw";
+import trialConversionContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_6.json?raw";
+import trialCancelledContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_7.json?raw";
+import renewalContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_8.json?raw";
+import cancellationContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_9.json?raw";
+import uncancellationContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_10.json?raw";
 
 <RCCodeBlock
   tabs={[
@@ -119,11 +112,11 @@ import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/t
   ]}
 />
 
-import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/amplitude_11.json";
-import subscriptionPausedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/amplitude_12.json";
-import expirationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/amplitude_13.json";
-import billingIssuesContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/amplitude_14.json";
-import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/amplitude_15.json";
+import nonSubscriptionPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_11.json?raw";
+import subscriptionPausedContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_12.json?raw";
+import expirationContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_13.json?raw";
+import billingIssuesContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_14.json?raw";
+import productChangeContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_15.json?raw";
 
 <RCCodeBlock
   tabs={[

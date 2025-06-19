@@ -5,10 +5,6 @@ excerpt: Integrate in-app subscription events from RevenueCat with mParticle
 hidden: false
 ---
 
-:::success Pro Integration
-The mParticle integration is available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
 mParticle can be a useful integration tool for seeing all events and revenue that occur for your app even if it’s not active for a period of time. You can use mParticle to clean up your data infrastructure and collect new customer data, which can then be connected with other tools through mParticle’s powerful API.
 
 With our mParticle integration, you can:
@@ -73,9 +69,9 @@ These properties can be set manually, like any other [Attribute](/customers/cust
 
 Create an `identityRequest` and add it to the `MParticleOptions` that you pass to the `start()` method on the mParticle SDK to set the same App User Id that is set in RevenueCat.
 
-import swiftContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_1.swift";
-import objectiveCContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_2.m";
-import javaContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_3.java";
+import swiftContent from "@site/code_blocks/integrations/third-party-integrations/mparticle_1.swift?raw";
+import objectiveCContent from "@site/code_blocks/integrations/third-party-integrations/mparticle_2.m?raw";
+import javaContent from "@site/code_blocks/integrations/third-party-integrations/mparticle_3.java?raw";
 
 <RCCodeBlock
   tabs={[
@@ -87,9 +83,9 @@ import javaContent from "!!raw-loader!@site/code_blocks/integrations/third-party
 
 mParticle also allows you to log a user in after starting the SDK and log a user out; you should handle both of these cases:
 
-import swiftContent2 from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_4.swift";
-import objectiveCContent2 from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_5.m";
-import javaContent2 from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_6.java";
+import swiftContent2 from "@site/code_blocks/integrations/third-party-integrations/mparticle_4.swift?raw";
+import objectiveCContent2 from "@site/code_blocks/integrations/third-party-integrations/mparticle_5.m?raw";
+import javaContent2 from "@site/code_blocks/integrations/third-party-integrations/mparticle_6.java?raw";
 
 <RCCodeBlock
   tabs={[
@@ -99,9 +95,9 @@ import javaContent2 from "!!raw-loader!@site/code_blocks/integrations/third-part
   ]}
 />
 
-import swiftContent3 from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_7.swift";
-import objectiveCContent3 from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_8.m";
-import javaContent3 from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_9.java";
+import swiftContent3 from "@site/code_blocks/integrations/third-party-integrations/mparticle_7.swift?raw";
+import objectiveCContent3 from "@site/code_blocks/integrations/third-party-integrations/mparticle_8.m?raw";
+import javaContent3 from "@site/code_blocks/integrations/third-party-integrations/mparticle_9.java?raw";
 
 <RCCodeBlock
   tabs={[
@@ -131,14 +127,13 @@ RevenueCat requires [Create & Update Profile](https://docs.mparticle.com/guides/
 
 After you've set up the _Purchases SDK_ and mParticle SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'mParticle' from the Integrations menu
 
-![](/images/61bd652-app.revenuecat.com_projects_85ff18c7_collaborators_1_8f30de8164ae9d98caf56c5c9c59be0f.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **mParticle** from the Integrations menu
-3. Add your **Server to Server Keys** and **Server to Server Secrets** for each platform from step 2
-4. Enter the event names that RevenueCat will send or choose the default event names
-5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
+2. Add your **Server to Server Keys** and **Server to Server Secrets** for each platform from step 2
+3. Enter the event names that RevenueCat will send or choose the default event names
+4. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
 ### 4. Testing the mParticle integration
 
@@ -152,13 +147,13 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 Navigate the the [Customer View](/dashboard-and-metrics/customer-history/basic-information) for the test user that just made a purchase. Make sure that all of the required data from step 1 above is listed as attributes for the user.
 
-![](/images/f7066d9-app.revenuecat.com_activity_777004e5_event_1b2e7407-a1bc-416a-84cf-b65688412bbe_2_3544d49edbae03a750bb06a718215da5.png)
+![](/docs_images/integrations/third-party-integrations/mparticle/mparticle-device-data.png)
 
 #### Check that the mParticle event delivered successfully
 
 While still on the Customer View, click into the test purchase event in the [Customer History](/dashboard-and-metrics/customer-history) and make sure that the mParticle integration event exists and was delivered successfully.
 
-![](/images/b7eef58-app.revenuecat.com_activity_40779aaf_event_92499ad6-350b-455a-a2ec-4c28c4ca0b28_4_a8c003c4c14fa51faee61bb417c8545e.png)
+![](/docs_images/integrations/third-party-integrations/mparticle/event-delivered.png)
 
 :::success
 You should start seeing events from RevenueCat appear in mParticle
@@ -168,13 +163,13 @@ You should start seeing events from RevenueCat appear in mParticle
 
 Below are sample JSONs that are delivered to mParticle for the different event types.
 
-import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_10.json";
-import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_11.json";
-import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_12.json";
-import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_13.json";
-import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_14.json";
-import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_15.json";
-import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_16.json";
+import initialPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/mparticle_10.json?raw";
+import trialStartedContent from "@site/code_blocks/integrations/third-party-integrations/mparticle_11.json?raw";
+import trialConvertedContent from "@site/code_blocks/integrations/third-party-integrations/mparticle_12.json?raw";
+import trialCancelledContent from "@site/code_blocks/integrations/third-party-integrations/mparticle_13.json?raw";
+import renewalContent from "@site/code_blocks/integrations/third-party-integrations/mparticle_14.json?raw";
+import cancellationContent from "@site/code_blocks/integrations/third-party-integrations/mparticle_15.json?raw";
+import uncancellationContent from "@site/code_blocks/integrations/third-party-integrations/mparticle_16.json?raw";
 
 <RCCodeBlock
   tabs={[
@@ -188,9 +183,9 @@ import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/t
   ]}
 />
 
-import expirationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_17.json";
-import billingIssueContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_18.json";
-import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mparticle_19.json";
+import expirationContent from "@site/code_blocks/integrations/third-party-integrations/mparticle_17.json?raw";
+import billingIssueContent from "@site/code_blocks/integrations/third-party-integrations/mparticle_18.json?raw";
+import productChangeContent from "@site/code_blocks/integrations/third-party-integrations/mparticle_19.json?raw";
 
 <RCCodeBlock
   tabs={[

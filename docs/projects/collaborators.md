@@ -9,9 +9,9 @@ Collaborators allow you to give team members controlled access to your RevenueCa
 
 ### Invite a Collaborator
 
-To invite a collaborator, send them an invite from the **Project Settings > Collaborators**.
+To invite a collaborator, send them an invite from the **Project settings > Collaborators** tab.
 
-![Collaborators](/images/07e6112-app.revenuecat.com_projects_85ff18c7_collaborators_6d41a8417fd79d295d718be373402887.png)
+![Collaborators](/docs_images/projects/invite-collaborators.png)
 
 Add the collaborator's email, select their permission level, and send the invite.
 
@@ -21,9 +21,9 @@ Invited collaborators will receive an email where they can accept your invitatio
 If you have multiple projects that you wish to share, you will need to repeat the invite process for each project that you want to collaborate with them on.
 :::
 
-### Basic Permissions
+### Permissions
 
-Available on all-plans, basic permissions give collaborators full read or write access.
+All roles and permission levels are now available on every plan, giving teams the flexibility to manage access with the right level of control.
 
 #### **Administrator**
 
@@ -40,10 +40,6 @@ Available on all-plans, basic permissions give collaborators full read or write 
 ❌ This role cannot make any changes to your app or project.
 
 ---
-
-### Advanced Permissions
-
-More granular permissions are available for businesses on [Enterprise](https://www.revenuecat.com/pricing/) plans.
 
 #### **Growth**
 

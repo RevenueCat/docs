@@ -26,7 +26,7 @@ The SDK will automatically use StoreKit 1 in the following versions where StoreK
 
 If for any reason you need to always use StoreKit 1, it is possible to switch back using the following configuration API:
 
-import content1 from "!!raw-loader!@site/code_blocks/sdk-guides/ios-native-4x-to-5x-migration_1.swift";
+import content1 from "@site/code_blocks/sdk-guides/ios-native-4x-to-5x-migration_1.swift?raw";
 
 <RCCodeBlock
   tabs={[
@@ -54,8 +54,8 @@ If you're using RevenueCat only to track purchases, and you have your own implem
 
 Add this configuration only if you previously had `observerMode: true` in your SDK initialization or your app has its own implementation of StoreKit to make purchases.
 
-import content2 from "!!raw-loader!@site/code_blocks/sdk-guides/ios-native-4x-to-5x-migration_2.swift";
-import content3 from "!!raw-loader!@site/code_blocks/sdk-guides/ios-native-4x-to-5x-migration_3.swift";
+import content2 from "@site/code_blocks/sdk-guides/ios-native-4x-to-5x-migration_2.swift?raw";
+import content3 from "@site/code_blocks/sdk-guides/ios-native-4x-to-5x-migration_3.swift?raw";
 
 | Version 4                                                   | Version 5                                                   |
 | ----------------------------------------------------------- | ----------------------------------------------------------- |
@@ -65,7 +65,7 @@ import content3 from "!!raw-loader!@site/code_blocks/sdk-guides/ios-native-4x-to
 
 By default, when purchases are completed by your app using StoreKit 2 on macOS, the SDK does not detect a user's purchase until after the user foregrounds the app after the purchase has been made. If you'd like RevenueCat to immediately detect the user's purchase, call `Purchases.shared.recordPurchase(purchaseResult)` for any new purchases, like so:
 
-import content4 from "!!raw-loader!@site/code_blocks/sdk-guides/ios-native-4x-to-5x-migration_4.swift";
+import content4 from "@site/code_blocks/sdk-guides/ios-native-4x-to-5x-migration_4.swift?raw";
 
 <RCCodeBlock
   tabs={[
