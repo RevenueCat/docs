@@ -43,14 +43,14 @@ The 'New Customers' card displays the number of App User IDs created in the past
 You should expect the New Customer count in RevenueCat to be different than the download numbers provided by the respective store. However, if things seem drastically off, make sure you're [identifying users](/customers/user-ids) correctly in RevenueCat.
 :::
 
-### Active Users
+### Active Customers
 
 ![](/images/adc3dbb-Screen_Shot_2022-09-02_at_11.27.19_AM_56f6958cc4d5a66fbfb78db317af99af.png "Screen Shot 2022-09-02 at 11.27.19 AM.png")
 
-The 'Active Users' card displays the number of App User IDs that have communicated with RevenueCat in the past 28 days. Active users should be higher than 'New Customers' if your app is retaining users and they keep coming back after 28 days. Multiple App User IDs aliased together will be counted as 1 active user.
+The 'Active Customers' card counts unique App User IDs that initiated at least one client‑side SDK call to RevenueCat in the last 28 days. *Store‑initiated subscription events (renewals, cancellations, refunds) received only through App Store / Play Store server‑to‑server notifications do not update this metric.* Active customers should be higher than 'New Customers' if your app is retaining users and they keep coming back after 28 days. Multiple App User IDs aliased together will be counted as 1 active user.
 
 :::info
-For performance reasons, currently you can expect this number to be updated as quickly as once per hour
+Platform S2S notifications update entitlement status and trigger webhooks, but they do not change the customer’s Last Seen timestamp and therefore do not make the customer appear in the Active Customers metric
 :::
 
 ## Interacting with cards
