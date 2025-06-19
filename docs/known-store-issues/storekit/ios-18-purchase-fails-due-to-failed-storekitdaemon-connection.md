@@ -3,6 +3,7 @@ title: iOS 18-18.3.2 Purchases May Fail Due to StoreKit Daemon Connection Issue
 ---
 
 ## Resolved
+
 Apple has resolved this issue, and it is not present in iOS 18.4 and above. The issue is still present in iOS 18.0-18.3.2. We are keeping this page for historical reference.
 
 ## Issue Description
@@ -10,6 +11,7 @@ Apple has resolved this issue, and it is not present in iOS 18.4 and above. The 
 iOS 18.0 introduced a bug which sometimes causes purchases to fail on-device, impacting the RevenueCat SDK's ability to display the purchase sheet to end users. When this bug occurs, no money is moved and the RevenueCat SDK's `purchase` functions throw a [STORE_PROBLEM](https://www.revenuecat.com/docs/test-and-launch/errors#---store_problem) error.
 
 ## Affected Versions
+
 - iOS 18.0
 - iOS 18.0.1
 - iOS 18.1
@@ -21,8 +23,10 @@ iOS 18.0 introduced a bug which sometimes causes purchases to fail on-device, im
 - iOS 18.3.2
 
 ## Symptoms
+
 - Calling any of RevenueCat's `purchase` functions to make a purchase on iOS 18.0-18.3.2 may fail.
 - StoreKit will log an error message in the following format to the console. The NSCocoaErrorDomain Code will always be 4097.
+
 ```
 Product purchase for '${PRODUCT_ID}' failed with error:
 systemError(Error Domain=NSCocoaErrorDomain Code=4097
