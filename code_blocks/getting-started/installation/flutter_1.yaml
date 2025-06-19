@@ -1,2 +1,2 @@
 dependencies:
-  purchases_flutter: <latest version>
+  purchases_flutter: <latest version> // or 9.0.0-beta.3 for Flutter Web
