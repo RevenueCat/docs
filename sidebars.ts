@@ -829,7 +829,7 @@ const guidesCategory = Category({
 
 const knownStoreIssuesCategory = Category({
   iconName: "heart-broken",
-  label: "Known Store Issues",
+  label: "Known Issues",
   itemsPathPrefix: "known-store-issues/",
   items: [
     SubCategory({
@@ -844,6 +844,12 @@ const knownStoreIssuesCategory = Category({
         }),
         Page({ slug: "ios-18-2-purchase-sheet-may-fail-to-appear" }),
       ],
+    }),
+    SubCategory({
+      label: "Xcode 26 beta",
+      slug: "xcode-26",
+      itemsPathPrefix: "xcode-26/",
+      items: [Page({ slug: "app-crash-urlsessionconfiguration" })],
     }),
   ],
 });
