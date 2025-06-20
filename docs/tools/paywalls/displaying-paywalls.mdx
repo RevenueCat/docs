@@ -207,6 +207,25 @@ Available listeners at this time are:
 - onRestoreCompleted
 - onRestoreError
 
+### Capacitor
+
+There are several ways to present paywalls:
+
+- Using `RevenueCatUI.presentPaywall`: this will display a paywall when invoked.
+- Using `RevenueCatUI.presentPaywallIfNeeded`: this will present a paywall only if the customer does not have an unlocked entitlement.
+
+import cap1 from '@site/code_blocks/tools/paywalls_cap_1.ts.txt?raw';
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "capacitor",
+      title: "RevenueCatUI.presentPaywall",
+      content: cap1,
+    },
+  ]}
+/>
+
 ## Handling paywall navigation
 
 When creating a paywall, consider whether it will be presented in a sheet, or as a full screen view. Sheets won't require a dedicated close button. Full screen views should have either a close button (if presented modally) or a back button (if part of a navigation stack or host) unless you intend to provide a hard paywall to your customers that cannot be bypassed.
