@@ -6,6 +6,7 @@ export const sdkVersions = {
   reactNative: "8.7.0",
   flutter: "8.6.0",
   kmp: "1.7.0",
+  capacitor: "10.3.1",
 };
 
 export const CustomerCenterSDKTable: React.FC = () => {
@@ -39,6 +40,12 @@ export const CustomerCenterSDKTable: React.FC = () => {
       sdk: "com.revenuecat.purchases:purchases-kmp-ui",
       link: "https://github.com/RevenueCat/purchases-kmp",
       version: `${sdkVersions.kmp} and higher`,
+    },
+    {
+      name: "Capacitor",
+      sdk: "@revenuecat/purchases-capacitor-ui",
+      link: "https://github.com/RevenueCat/purchases-capacitor",
+      version: `${sdkVersions.capacitor} and higher`,
     },
   ];
 
