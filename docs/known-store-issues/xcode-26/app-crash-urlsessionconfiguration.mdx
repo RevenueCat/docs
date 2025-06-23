@@ -1,0 +1,44 @@
+---
+title: URLSessionConfiguration Crash
+sidebar_label: URLSessionConfiguration Crash
+---
+
+## Issue Description
+
+Xcode 26 beta introduces a bug that may cause your app to crash when integrating multiple libraries—such as RevenueCat's SDK—that utilize `URLSessionConfiguration`. This issue occurs when running the app on iOS 26 simulators.
+
+You can find more information in the following [Apple Developer Forum thread](https://developer.apple.com/forums/thread/787365).
+
+## Affected Versions
+
+- Xcode 26 beta
+- iOS 26 simulators
+
+## Symptoms
+
+- Your project includes libraries in addition to RevenueCat.
+- The app crashes immediately upon launch when using Xcode 26 beta with iOS 26 simulators.
+
+## Workarounds
+
+While awaiting a fix from Apple, a temporary workaround is to initiate a networking call early during app initialization. This appears to prevent the crash.
+
+import crash from "@site/code_blocks/known-issues/xcode-26-crash.swift?raw";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "swift",
+      title: "Networking call workaround",
+      content: crash,
+    },
+  ]}
+/>
+
+## Apple Feedback
+
+For ongoing updates, refer to [this Apple Developer Forum thread](https://developer.apple.com/forums/thread/787365). If the workaround above does not resolve the issue, please consider filing a bug report within that thread.
+
+## Status
+
+🕰️ Waiting on Apple's resolution.
