@@ -75,15 +75,15 @@ If you run into issues with the SDK, see [Troubleshooting the SDKs](/test-and-la
 
 ### Initialize and Configure the SDK
 
-:::info Only use your public SDK key to configure Purchases
-You can get your public SDK key from the **API keys** tab under **Project settings** in the dashboard.
+:::info Only use your public API key to configure Purchases
+You can get your public API key from the **Platforms** section of your Project Settings in the dashboard.
 :::
 
 You should only configure the shared instance of _Purchases_ once, usually on app launch. After that, the same instance is shared throughout your app by accessing the `.shared` instance in the SDK.
 
 See our guide on [Configuring SDK](/getting-started/configuring-sdk) for more information and best practices.
 
-Make sure you configure _Purchases_ with your public SDK key only. This API key can be found in the API Keys Project settings page. You can read more about the different API keys available in our [Authentication guide](/projects/authentication).
+Make sure you configure _Purchases_ with your public API key only. You can find this API key in your app settings by selecting your app from Project Settings > Platforms. You can read more about the different API keys available in our [Authentication guide](/projects/authentication).
 
 import swiftContent from "@site/code_blocks/getting-started/getting-started_1.swift?raw";
 import objectiveCContent from "@site/code_blocks/getting-started/getting-started_2.m?raw";
