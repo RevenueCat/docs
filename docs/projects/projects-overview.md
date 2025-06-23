@@ -29,14 +29,14 @@ You can customize your project by setting a name as well as your global [restore
 :::note Requirements
 
 1. Only the project owner can transfer the project
-2. Only a collaborator with the [administrator role](/docs/projects/collaborators#administrator) can receive a project
-3. If the project has a Stripe app, the recipient must have their [Stripe account connected](/docs/web/connect-stripe-account) to the project before the transfer
-4. If the project uses the [Apple Search Ads integration](/docs/integrations/attribution/apple-search-ads#1-configure-integration), it will need to be reconfigured after the transfer
+2. Only a collaborator with the [administrator role](/projects/collaborators#administrator) can receive a project
+3. If the project has a Stripe app, the recipient must have their [Stripe account connected](/web/connect-stripe-account) to the project before the transfer
+4. If the project uses the [Apple Search Ads integration](/integrations/attribution/apple-search-ads#1-configure-integration), it will need to be reconfigured after the transfer
    :::
 
 #### Sending a transfer request
 
-Because a [project's owner is responsible for billing](/docs/welcome/set-up-revenuecat/account-management#where-to-find-invoices), a project transfer must be accepted by the recipient.
+Because a [project's owner is responsible for billing](/welcome/set-up-revenuecat/account-management#where-to-find-invoices), a project transfer must be accepted by the recipient.
 
 To send a transfer request to a collaborator, navigate to your project's settings page, then click the `Collaborators` tab. Find the collaborator you want to transfer the project to, click the `Actions` icon, and click `Transfer Ownership`:
 
