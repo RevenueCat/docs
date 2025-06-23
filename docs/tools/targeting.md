@@ -55,9 +55,9 @@ When determining which (if any) Targeting Rule a customer matches, we'll assess 
 
 ## Creating Targeting Rules
 
-First, navigate to "Targeting" in the "Monetization tools" section of your Project Settings. Then click on "Create a New Rule" to begin.
+First, navigate to "Targeting" in the "Monetization tools" section of your Project Settings. Then click on "Create a new rule" to begin.
 
-![Create a new rule](/images/d499c34-Empty_State_15456d587aaa0eba0dddeb003842e704.png)
+![Create a new rule](/docs_images/offerings/targeting/targeting-welcome.png)
 
 Then, create your rule by:
 
@@ -66,7 +66,7 @@ Then, create your rule by:
 3. Selecting an Offering to display when those conditions are met
 4. Selecting your desired State for the rule
 
-![Ready to save](/images/create-a-new-rule.png)
+![Ready to save](/docs_images/offerings/targeting/create-a-new-rule.png)
 
 Once you've entered all of the required fields for your rule, click "Save" and it will be added to the list of rules in the State you've selected.
 
@@ -74,7 +74,7 @@ Once you've entered all of the required fields for your rule, click "Save" and i
 
 You may also choose to setup unique Placements in your app for each paywall location so that a given customer can be served distinct Offerings at each Placement using Targeting.
 
-![Targeting by Placement Illustration](/docs_images/targeting/targeting-by-placement-illustration.png)
+![Targeting by Placement Illustration](/docs_images/offerings/targeting/targeting-by-placement-illustration.png)
 
 [Get started with Placements.](/tools/targeting/placements)
 
@@ -82,7 +82,7 @@ You may also choose to setup unique Placements in your app for each paywall loca
 
 When creating a new Rule or editing an Inactive Rule, you can choose to schedule a Start Time and End Time for that Rule to become Live in the future. This is especially useful for running promotions, holiday offers, or other sales that have a time-limited component to them.
 
-![Screenshot](/images/4b11583-Screenshot_2023-12-22_at_10.30.34_AM_a13311e22dea2db1aa234400d73abb20.png)
+![Screenshot](/docs_images/offerings/targeting/scheduling-targeting-rules.png)
 
 To Schedule a Rule, just:
 
@@ -110,7 +110,7 @@ Live & Scheduled rules can be reordered at any time.
 2. Drag the rules you wish to reorder to their correct location in the list
 3. Click "Save order" when you've set them in the order you'd like them to be evaluated in
 
-![Ordering](/images/403f610-Ordering_Rules_8817b46019f93fedd99f148b7b51b51f.png)
+![Ordering](/docs_images/offerings/targeting/ordering-live-and-scheduled-rules.png)
 
 :::info
 Ordering only applies to cases where 1 customer may match multiple Live rules. If your Live rules are mutually exclusive, their order will have no impact on how customers are assigned to them.
@@ -122,7 +122,7 @@ Scheduled rules have no impact on what Offerings are served until they become Li
 
 Rules can also be edited, deleted, or made inactive at any time if you need to modify how Offerings are being served to your customers.
 
-![Rule actions](/images/292656b-Editing_Rules_064dced88e1fc6e1cf12d864ab86c9fc.png)
+![Rule actions](/docs_images/offerings/targeting/targeting-editing.png)
 
 In addition, if you're looking to add a new rule that's similar to an existing one, you can start by duplicating that rule and then making the desired modifications to the rule conditions.
 
@@ -164,7 +164,7 @@ The platform that your customer is currently using (e.g. iOS, watchOS, Android).
   - App version is less than 1.2.0
 - App Version and RevenueCat SDK Version must always have a specified App or SDK (respectively), since the intended version to target may be different between the App or RevenueCat SDK flavor you're targeting.
 
-![When filtering by App version, select the App that the filter applies to first.](/images/bb9ce00-App_version_filter_55349032fe4ebd446375b98f5871f74b.png)
+![When filtering by App version, select the App that the filter applies to first.](/docs_images/offerings/targeting/filters.png)
 
 ## FAQs
 
