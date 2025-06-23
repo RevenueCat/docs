@@ -26,6 +26,15 @@ Select **+ New** to create a new experiment from scratch.
 
 ![Creating a new experiment](/images/create_new_experiment_latest.png "Creating a new experiment")
 
+:::info Setting up Offering(s) for your treatment
+
+If you've not setup multiple Offerings before, you'll be prompted to do so now, since you'll need at least 2 available Offerings to run an experiment.
+
+The treatment Offering(s) represents the hypothesis you're looking to test with your experiment (e.g. higher or lower priced products, products with trials, etc).
+
+For App Store apps, we recommend setting up new products to test as a new Subscription Group so that customers who are offered those products through Experiments will see only that same set of products to select from their subscription settings.
+:::
+
 ### Duplicating an existing experiment
 
 You can also create a new experiment by duplicating the configuration of a previous experiment. This is useful when you want to run a similar test with slight modifications or test the same configuration on a different audience.
@@ -46,15 +55,6 @@ Duplicating is particularly useful when you want to:
 :::
 
 Regardless of which method you choose, you'll need to configure the experiment settings as described below.
-
-:::info Setting up Offering(s) for your treatment
-
-If you've not setup multiple Offerings before, you'll be prompted to do so now, since you'll need at least 2 available Offerings to run an experiment.
-
-The treatment Offering(s) represents the hypothesis you're looking to test with your experiment (e.g. higher or lower priced products, products with trials, etc).
-
-For App Store apps, we recommend setting up new products to test as a new Subscription Group so that customers who are offered those products through Experiments will see only that same set of products to select from their subscription settings.
-:::
 
 ## Required fields
 
