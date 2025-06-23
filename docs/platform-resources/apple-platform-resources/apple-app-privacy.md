@@ -34,13 +34,13 @@ Starting December 8, 2020, Apple requires a privacy disclosure for all new apps 
 
 If you are using RevenueCat, you must disclose that your app collects ‘Purchases’ information from the App Privacy tab in App Store Connect.
 
-![Screen Shot 2020-11-10 at 1.18.06 PM.png](/docs_images/platform-resources/apple/2232c73-Screen_Shot_2020-11-10_at_1.18.06_PM_b358ca0644f6c521ffff666d8d3f7206.png)
+![Screen Shot 2020-11-10 at 1.18.06 PM.png](/docs_images/platform-resources/apple/privacy-type-purchases.png)
 
 #### 1. Purchase History Usage
 
 At the **bare minimum**, you must select the following options for 'Purchase History':
 
-![Screen Shot 2020-11-11 at 9.48.00 AM.png](/docs_images/platform-resources/apple/2330c00-Screen_Shot_2020-11-11_at_9.48.00_AM_24c170525027cbac4606aebb0d1aeca8.png)
+![Screen Shot 2020-11-11 at 9.48.00 AM.png](/docs_images/platform-resources/apple/privacy-type-purchase-history.png)
 
 **All RevenueCat users must select these two options.**
 
@@ -59,7 +59,7 @@ Apple will now ask if you are linking purchase history to a user’s identity. I
 
 If you are using an app user ID that can be tied to a user’s email address or other contact information via your own server or other third-parties, you should select ‘Yes’.
 
-![Screen Shot 2020-11-10 at 1.23.21 PM.png](/docs_images/platform-resources/apple/1520bb4-Screen_Shot_2020-11-10_at_1.23.21_PM_f3e428ea3afe309e1694d915f409e7fc.png)
+![Screen Shot 2020-11-10 at 1.23.21 PM.png](/docs_images/platform-resources/apple/privacy-type-purchase-history-linked-to-identity.png)
 
 #### 3. Purchase History User Tracking
 
@@ -67,13 +67,13 @@ Finally, to indicate if purchase history data will be used for tracking purposes
 
 RevenueCat, as a third-party, does not inherently use purchase history to track users across different apps for advertising. If you are using integrations or other SDK’s that do this, you may need to disclose that here.
 
-![Screen Shot 2020-11-10 at 1.40.53 PM.png](/docs_images/platform-resources/apple/e9c42f6-Screen_Shot_2020-11-10_at_1.40.53_PM_c0950e0272874f05f955bd80e868518d.png)
+![Screen Shot 2020-11-10 at 1.40.53 PM.png](/docs_images/platform-resources/apple/privacy-type-purchase-history-user-tracking.png)
 
 ### Type: Identifiers
 
 If you selected 'Yes' to linking purchase history to a user's identity, you will likely need to disclose which user identifiers you use in your app.
 
-![Screen Shot 2020-11-10 at 2.01.59 PM.png](/docs_images/platform-resources/apple/191ea58-Screen_Shot_2020-11-10_at_2.01.59_PM_f5cabe0552bb9055fd9ba9f0afdac68f.png)
+![Screen Shot 2020-11-10 at 2.01.59 PM.png](/docs_images/platform-resources/apple/privacy-type-identifiers.png)
 
 If you are [identifying users](/customers/user-ids) with a custom app user ID, you will need to select 'User ID'.
 
@@ -85,6 +85,6 @@ After making your selections, you'll need to indicate how the data is used simil
 
 After making your privacy selections, Apple will show a preview of your app's privacy section. If you have chosen Purchases and Identifiers as described above, your privacy details should look something like this:
 
-![Screen Shot 2020-11-11 at 11.30.35 AM.png](/docs_images/platform-resources/apple/8906e83-Screen_Shot_2020-11-11_at_11.30.35_AM_029440ef978daef4e98c0c0c22991b8b.png)
+![Screen Shot 2020-11-11 at 11.30.35 AM.png](/docs_images/platform-resources/apple/privacy-type-identifiers-and-purchases.png)
 
 If you're ready to submit your app to App Review, head over to our [Launch Checklist](/test-and-launch/launch-checklist) doc for more information about preparing your app for submission.

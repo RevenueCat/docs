@@ -17,7 +17,6 @@ RevenueCat does not require server notifications from the App Store, however doi
    ![Server to Server Notification URL](/docs_images/platform-resources/apple/apple-server-to-server-url.png)
 3. Log in to **[App Store Connect](https://appstoreconnect.apple.com/)** and select your app.
 4. Under the **App Information > App Store Server Notifications** section, paste the entire URL from RevenueCat in both the **Production Server URL** field and the **Sandbox Server URL** field. You can use either _Version 1_ or _Version 2_ notifications, but _Version 2_ notifications are recommended to use features such as [auto-detecting price changes](/subscription-guidance/price-changes).
-   ![Screen Shot 2021-11-03 at 10.03.27 AM](/images/f870a23-Screen_Shot_2021-11-03_at_10.03.27_AM_7645d7e77d55b6ab44b5c7085c7c3775.png)
 
 ## Tracking new purchases using Apple App Store Server Notifications
 
@@ -25,7 +24,7 @@ By default, RevenueCat ignores any Apple App Store Server Notifications for purc
 
 Enabling this option ensures that all purchases are tracked, even in the case of network issues between your app and RevenueCat’s backend or if your customer was using a version of the app without the RevenueCat SDK.
 
-![](/images/no_code_toggle.png)
+![](/docs_images/platform-resources/no-code-toggle.png)
 
 ### User identity
 
@@ -54,10 +53,9 @@ Most customers won't need to receive Apple's notifications to their server direc
 
 If you still want to receive Apple's notifications to your server, you can configure RevenueCat to forward them to a URL that you specify.
 
-1. Navigate to your iOS app under **Project settings > Apps** in the RevenueCat dashboard.
+1. Navigate to your iOS app under **Project settings > Platforms** in the RevenueCat dashboard.
 2. Scroll to the **Apple Server to Server notification settings** section, and enter your server's URL in **Apple Server Notification Forwarding URL**.
 3. Click **Save Changes** in the top right corner.
-   ![This will forward any Apple's server to server notifications that RevenueCat receives to "my-server.com".](/images/43c4fb7-2023-02-06_16.40.29_app-development.revenuecat.com_012d0490f18d_e261a95ad3a057c27599f6fe51722d0b.png)
 
 :::info
 If your server needs to have specific hostnames or IP addresses on its allowlist to receive App Store Server Notifications, you can add the hostname `dps.iso.aple.com` and IP addresses `17.58.0.0/18` and `17.58.192.0/18`. These IP addresses are same for sandbox and production.
