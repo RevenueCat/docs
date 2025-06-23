@@ -18,7 +18,7 @@ Offerings are created and configured in the RevenueCat dashboard. When using [Re
 
 Within each Offering, there must be one or more **Packages**. Packages are simply a group of equivalent products across iOS, Android, and web. If your app is available on multiple platforms, then a Package would contain all of the equivalent product identifiers from each platform.
 
-![](/images/c4f0b08-Screen_Shot_2020-07-01_at_6.35.06_PM_bebc522b7112c8d3fe6a4549256ba588.png "Screen Shot 2020-07-01 at 6.35.06 PM.png")
+![](/docs_images/offerings/package-overview.png)
 
 ### Default Offering
 
