@@ -316,28 +316,19 @@ class ImageContextRenamer:
         updates_made = 0
         
         for old_path, new_path in renamed_mapping.items():
-            # Update various path formats
-            path_variants = [
-                old_path,
-                f"/{old_path}",
-                f"static/{old_path}",
-                f"/static/{old_path}",
+            # Try different path formats that might be used in the markdown
+            path_replacements = [
+                (f"/{old_path}", f"/{new_path}"),           # /docs_images/... -> /docs_images/...
+                (f"static/{old_path}", f"static/{new_path}"), # static/docs_images/... -> static/docs_images/...
+                (f"/static/{old_path}", f"/static/{new_path}"), # /static/docs_images/... -> /static/docs_images/...
+                (old_path, new_path),                       # docs_images/... -> docs_images/...
             ]
             
-            for variant in path_variants:
-                if variant in updated_content:
-                    # Determine the correct replacement format
-                    if f"/{old_path}" in updated_content:
-                        replacement = f"/{new_path}"
-                    elif f"static/{old_path}" in updated_content:
-                        replacement = f"static/{new_path}"
-                    elif f"/static/{old_path}" in updated_content:
-                        replacement = f"/static/{new_path}"
-                    else:
-                        replacement = new_path
-                        
-                    updated_content = updated_content.replace(variant, replacement)
+            for old_format, new_format in path_replacements:
+                if old_format in updated_content:
+                    updated_content = updated_content.replace(old_format, new_format)
                     updates_made += 1
+                    break  # Only do the first match to avoid double replacements
                     
         if updates_made > 0:
             if not self.dry_run:
