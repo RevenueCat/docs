@@ -73,11 +73,11 @@ Due to the permission levels of [secret keys](/projects/authentication) they cur
 
 To add collaborators when using SSO, configure how the SSO Groups map to the RevenueCat roles defined above from **Project Settings > Collaborators**.
 
-![Collaborators](/images/0b9s821-revenuecat-collaborators-sso.png)
+![Collaborators](/docs_images/projects/sso-collaborators.png)
 
 Add the SSO Group name, select the role you want to grant.
 
-![Collaborators](/images/0csdf21-revenuecat-collaborators-configuration.png)
+![Collaborators](/docs_images/projects/sso-configure.png)
 
 Once you save these mappings the collaborators will automatically be synchronized. This may take up to a few minutes.
 

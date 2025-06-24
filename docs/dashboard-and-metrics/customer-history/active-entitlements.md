@@ -50,7 +50,7 @@ Web Billing subscriptions and Google Play subscriptions in the trial period can 
 
 The entry point for refunding and cancelling purchases is the "..." menu on the subscription in the "Entitlements" card of the customer profile.
 
-![](/images/refunding-and-cancelling.png)
+![](/docs_images/web/web-billing/refunding-payments.png)
 
 Apple doesn’t allow developers to grant refunds themselves, only through Apple customer support. However, Apple refunds are tracked with RevenueCat and accounted for in all charts and integrations.
 

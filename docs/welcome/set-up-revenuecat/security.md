@@ -67,7 +67,7 @@ At this time, Single Sign-On is only available for customers on an [Enterprise p
 
 To enable Single Sign-On for your organization navigate to your [**Account > Security > SSO**](https://app.revenuecat.com/settings/security/sso) and click **Activate SSO**.
 
-![Collaborators](/images/0c8723-revenuecat-sso-activate.png)
+![Collaborators](/docs_images/projects/sso-activate.png)
 
 :::warning Members of the domain will only be able to use SSO
 When the SSO of your organizations is active users with the domain of your organization will be required to sign in using SSO.
