@@ -59,6 +59,10 @@ You can see how to use the webhook integration to trigger automations and workfl
 
 ![](/docs_images/web/web-billing/metadata-in-initial-purchase-event.png)
 
+## Limitations
+
+Currently, metadata is only supported for subscription purchases (`INITIAL_PURCHASE` webhook events). Metadata is **not supported** for one-time purchases (`NON_RENEWING_PURCHASE` webhook events). This means that custom metadata and UTM parameters sent with one-time purchases will not be propagated to webhook events or the Stripe customer object.
+
 ## Opt out of the automatic collection of UTM parameters
 
 You can opt-out of the automatic collection of UTM parameters in the Web SDK by setting the `autoCollectUTMAsMetadata` flag to `false` in the `configure` method.
