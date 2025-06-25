@@ -13,7 +13,7 @@ Google introduced a lot of new concepts in their new subscription model. Here ar
 - **Base plan**: represents an auto-renewing or prepaid period subscription. You can have multiple base plans in a single subscription to support different subscription periods.
 - **Offer**: represents an offer on a base plan. Google’s billing client returns the offers that a user is eligible for. There are 3 eligibility criteria:
 
-![Screen Shot 2023-01-12 at 11.44.20 AM.png](/images/3aede2a-Screen_Shot_2023-01-12_at_11.44.20_AM_c3b0011010a68f46e17301664e3f8fec.png)
+![Screen Shot 2023-01-12 at 11.44.20 AM.png](/docs_images/sdk/guides/android-5x-to-6x/product-setup.png)
 
 - **Phase**: Allows to specify the pricing of the offer. You can add up to 2 “phases” to an offer. There are 3 types of offer:
   - Free trial: It provides access for free for a specific period of time
@@ -23,7 +23,7 @@ Google introduced a lot of new concepts in their new subscription model. Here ar
 
 This is a more visual representation of the relationship between these concepts:
 
-![](/images/8fa740d-Screen_Shot_2023-01-12_at_5.06.28_PM_743f6cff865ce69d877747bc57933311.png "Screen Shot 2023-01-12 at 5.06.28 PM.png")
+![](/docs_images/sdk/guides/android-5x-to-6x/flow.png)
 
 Our recommendation is to:
 
@@ -45,15 +45,13 @@ There are two ways to add products via the RevenueCat dashboard.
 
 ### 1. Automatic Import
 
-Currently, this functionality is limited to importing subscriptions, but one-time purchases are in the works.
-
-![Screen Shot 2023-01-12 at 5.06.34 PM.png](/images/fe78bbb-Screen_Shot_2023-01-12_at_5.06.34_PM_046f3fc460ae78f5d3229a68c4a36bfa.png)
+Read more about [automatic import](/getting-started/entitlements/android-products).
 
 ### 2. Manual Import
 
 For manual import, you need to add both your subscription ID and your base plan ID when adding a new product.
 
-![Screen Shot 2023-01-12 at 5.10.18 PM.png](/images/c8b5476-Screen_Shot_2023-01-12_at_5.10.18_PM_c7be2f058954e8d6b7c8ffb08c06e3a2.png)
+![Screen Shot 2023-01-12 at 5.10.18 PM.png](/docs_images/sdk/guides/android-5x-to-6x/manual-import.png)
 
 You can find this information in Google Play Console here:
 
