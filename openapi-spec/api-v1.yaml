@@ -1163,6 +1163,29 @@ components:
                     type: string
                     description: Date when RevenueCat detected that auto-renewal was turned off for this subsription (in ISO 8601 format). Note the subscription may still be active, check the `expires_date` attribute.
                     example: "2019-07-17T22:48:38Z"
+            virtual_currencies:
+              type: object
+              description: Dictionary of virtual currencies owned by the Customer, keyed by the virtual currency code.
+              additionalProperties:
+                type: object
+                description: Details of a virtual currency owned by the Customer.
+                properties:
+                  balance:
+                    type: number
+                    description: The current balance of the virtual currency.
+                    example: 150
+                  code:
+                    type: string
+                    description: The code identifier of the virtual currency.
+                    example: "CRD"
+                  description:
+                    type: string
+                    description: Optional description of the virtual currency.
+                    example: ""
+                  name:
+                    type: string
+                    description: The display name of the virtual currency.
+                    example: "Credit"
       example:
         "$ref": "#/components/examples/Subscriber"
   examples:
@@ -1232,6 +1255,12 @@ components:
               store: promotional
               store_transaction_id: a42db3af39530cb82b17eaf9c6576393
               unsubscribe_detected_at: null
+          virtual_currencies:
+            CRD:
+              balance: 150
+              code: "CRD"
+              description: ""
+              name: "Credit"
     Offerings:
       value:
         {
