@@ -26,14 +26,37 @@ You can customize your project by setting a name as well as your global [restore
 
 ### Transferring Ownership
 
-<details>
-<summary>Transferring between RevenueCat accounts</summary>
+:::note Requirements
 
-To transfer specific projects from one account to another, [contact RevenueCat support](https://app.revenuecat.com/settings/support) for assistance. At this time only entire projects can be transferred, this cannot be done on an app-level.
+1. Only the project's owner can transfer ownership
+2. Only a collaborator with the [administrator role](/projects/collaborators#administrator) can receive project ownership
+3. If the project has a Stripe app, the recipient must have their [Stripe account connected](/web/connect-stripe-account) to the project before the transfer
+4. If the project uses the [Apple Search Ads integration](/integrations/attribution/apple-search-ads#1-configure-integration), it will need to be reconfigured after the transfer
+   :::
 
-- If the project in question has a Stripe app, you will need to make sure that the receiver has their [Stripe account connected](https://www.revenuecat.com/docs/web/connect-stripe-account) to this project before transfer.
-- If the project uses [Apple Search Ads](https://www.revenuecat.com/docs/integrations/attribution/apple-search-ads#1-configure-integration) then this will need to be reconfigured after the transfer.
-</details>
+#### Sending a transfer request
+
+Because a [project's owner is responsible for billing](/welcome/set-up-revenuecat/account-management#where-to-find-invoices), a project transfer request must be accepted by the recipient.
+
+To send a transfer request to a collaborator, navigate to your project's Settings page, then click the `Collaborators` tab. Find the collaborator you want to transfer the project to, click the `Actions` icon, and click `Transfer project ownership`:
+
+![transfer project action button](/docs_images/projects/transfer-project-button.png)
+
+Click `Transfer project ownership` in the confirmation modal:
+
+![confirm project transfer request](/docs_images/projects/transfer-project-confirmation-modal.png)
+
+The recipient will receive an email notification to accept ownership of the project.
+
+#### Accepting a transfer request
+
+Navigate to your project's Settings page, then click the `Collaborators` tab. Find your email address in the table and click the `Accept project ownership` link in the Status column:
+
+![accept a project transfer request link](/docs_images/projects/accept-transfer-link.png)
+
+Both the project owner and the recipient will see the Status as `Transfer pending` until the project transfer is complete.
+
+_If you run into any issues, or the project transfer takes more than 1-2 business days, please [contact RevenueCat support](https://app.revenuecat.com/settings/support)._
 
 <details>
 <summary>Transferring apps between App Store Connect and Google Developer accounts</summary>

@@ -5,6 +5,7 @@ title: iOS 18.4 Simulator Fails to Load Products
 # iOS 18.4 Simulator Fails to Load Products
 
 ## Resolved
+
 Apple has resolved this issue, and it is not present in iOS 26 and above. The issue is still present in the iOS 18.4-18.5 simulators. We are keeping this page for historical reference.
 
 ## Issue Description
@@ -28,6 +29,7 @@ In iOS 18.4, 18.4.1, and 18.5 simulators, StoreKit fails to load products and Of
 ## Workarounds
 
 ### Option 1: Test in iOS 26+
+
 Apple has resolved this issue, and it is not present in iOS 26 and above.
 
 ### Option 2: Test on Physical Device
@@ -48,6 +50,7 @@ Apple has resolved this issue, and it is not present in iOS 26 and above.
 2. Test your in-app purchase implementation on the alternative simulator version
 
 ## Apple Feedback
+
 We've filed a Feedback ticket for this issue with Apple. If you create a Feedback ticket for this issue, please consider mentioning our Feedback ticket, FB17105187, to assist Apple's engineers in connecting the tickets.
 
 ## Impact on App Store Review

@@ -7,7 +7,12 @@ hidden: true
 
 # Real-time Charts (Beta)
 
-We’re excited to welcome you to the beta of our new real-time Charts. This release includes powerful updates to how subscriptions are defined and reported, introduces **real-time data refresh**, and adds **new filters and segmentation options** for deeper analysis.
+We’re excited to welcome you to the beta of our new real-time Charts. We've rebuilt charts to give you faster, more flexible insights, including:
+
+- Real-time reporting on many metrics like conversion and LTV (with more coming soon)
+- New and unified subscription model for consistent reporting across stores
+- Improved definitions for existing dimensions like Platform and Country
+- New dimensions to filter and segment by, including custom attributes in the near future
 
 :::warning Supported stores
 At this time only App Store and Play Store aps are supported in Real-time Charts. Support for Stripe, Roku, and RevenueCat Web Billing is coming soon; with the remaining stores to follow.
@@ -48,6 +53,7 @@ At this time only App Store and Play Store aps are supported in Real-time Charts
 - ARR
 - MRR
 - MRR Movement
+- Cohort Explorer
 
 ## Detailed changes
 
@@ -92,18 +98,18 @@ When a payment is refunded, it will be deducted from revenue and conversion (if 
 
 We've introduced new dimensions for filtering & segmenting, with more coming soon, and have made important updates to existing dimensions to make them more useful.
 
-**New dimensions**
+#### New dimensions
 
-### Available now
+**Available now**
 
 1. Experiment: Filter charts by the experiment & variant that a customer was enrolled in
 
-### Coming soon
+**Coming soon**
 
 1. App version: Filter & segment charts by the first seen app version of a customer to understand how metrics like conversion rate are impacted by app version
 2. Custom attributes: Filter & segment charts by the latest custom attribute values you've set for a customer, to understand how different segments of your audience behave.
 
-**Updated dimensions**
+#### Updated dimensions
 
 1. Platform: Now refers to the first seen platform of a customer, not their last seen platform, so that metrics like conversion rates and LTV can be segmented by the platform a customer originated on without it changing over time (e.g. if a customer converts on the web and then downloads your iOS app)
 2. Country: Now prioritizes the app store country of a customer or purchase over the customer's IP-based location. In charts which measure purchases, like Active Subscriptions, the app store storefront that the purchase occurred in will be used as the country; while in charts that measure customer cohorts, like Initial Conversion or Realized LTV per Customer, the first seen app store country of the customer will be used.

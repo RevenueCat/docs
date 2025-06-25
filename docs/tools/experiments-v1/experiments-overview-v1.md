@@ -55,7 +55,7 @@ Programmatically displaying the `current` Offering in your app when you fetch Of
 :::
 
 1. Create the Offerings that you want to test (make sure your app displays the `current` Offering.) You can skip this step if you already have the Offerings you want to test.
-2. Create an Experiment and choose the Offerings to test. By default you can choose one Offering per variant, but by creating Placements your Experiment can instead have a unique Offering displayed for each paywall location in your app. [Learn more here](https://www.revenuecat.com/docs/tools/experiments-v1/configuring-experiments-v1#using-placements-in-experiments).
+2. Create an Experiment and choose the Offerings to test. You can create a new experiment from scratch or duplicate an existing experiment to save time when testing similar configurations. By default you can choose one Offering per variant, but by creating Placements your Experiment can instead have a unique Offering displayed for each paywall location in your app. [Learn more here](https://www.revenuecat.com/docs/tools/experiments-v1/configuring-experiments-v1#using-placements-in-experiments).
 3. Run your experiment and monitor the results. There is no time limit on experiments, so stop it when you feel confident choosing an outcome. (Learn more about interpreting your results [here](/tools/experiments-v1/experiments-results-v1))
 4. Once you’re satisfied with the results you can set the winning Offering(s), if any, as default manually.
 5. Then, you're ready to run a new experiment.
@@ -99,3 +99,5 @@ Sometimes you want to compare a different Offering to the one that is already th
 **Run follow-up tests after completing one test**
 
 After you run a test and find that one Offering won over the other, try running another test comparing the winning Offering against another similar Offering. This way, you can continually optimize for lifetime value (LTV). For example, if you were running a price test between a $5 product and a $7 product and the $7 Offering won, try running another test between a $8 product and the $7 winner to find the optimal price for the product that results in the highest LTV.
+
+You can use the **duplicate experiment** feature to quickly set up follow-up tests with similar configurations, making it easy to iterate and optimize your results over time.
