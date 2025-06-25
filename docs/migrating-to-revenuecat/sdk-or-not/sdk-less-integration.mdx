@@ -29,8 +29,8 @@ If you are planning on using RevenueCat integrations with third party tools, ple
 
 [Read more about identifying customers →](/customers/user-ids)
 
-### Subscription and Entitlement Status
+### Subscription, Entitlement, and Virtual Currency Status
 
-Even if you don't use the SDK, you can use RevenueCat as your source of the truth for subscription and entitlement status. To do so, start by setting up [products and entitlements in RevenueCat](/getting-started/entitlements), and then use the `GET /subscribers/{app_user_id}` [REST API endpoint](/api-v1#tag/customers) to access information about a customer's subscriptions, purchases, and entitlements.
+Even if you don't use the SDK, you can use RevenueCat as your source of the truth for subscription, entitlement, and virtual currency status. To do so, start by setting up [products and entitlements in RevenueCat](/getting-started/entitlements), and then use the `GET /subscribers/{app_user_id}` [REST API endpoint](/api-v1#tag/customers) to access information about a customer's subscriptions, purchases, entitlements, and virtual currency balances.
 
-Alternatively, if you prefer to keep a copy of a customer's purchase and entitlement status in your own database, you can also listen to RevenueCat's [webhooks](/integrations/webhooks) to update your database whenever there is a new or updated purchase.
+Alternatively, if you prefer to keep a copy of a customer's purchase, entitlement, and virtual currency status in your own database, you can also listen to RevenueCat's [webhooks](/integrations/webhooks) to update your database whenever there is a new or updated purchase.
