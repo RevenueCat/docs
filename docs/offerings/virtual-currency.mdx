@@ -46,11 +46,7 @@ SDK support for virtual currencies is currently in beta, and as such requires th
 
 ### iOS
 
-Use the `virtual-currency-beta` branch of the purchases-ios SDK to access the virtual currency beta features. If you’re using Swift Package Manager, you can do this in Xcode like so:
-
-![](/docs_images/virtual-currency/ios-spm-virtual-currency-beta-branch-configuration.png)
-
-If you're using CocoaPods, set your `purchases-ios` version to the most recent `vc-beta` version in your Podfile:
+Set your `purchases-ios` version to the most recent `vc-beta` version where your dependency is declared:
 
 [![Latest Virtual Currency iOS Beta Release](https://img.shields.io/github/release/RevenueCat/purchases-ios.svg?filter=*vc-beta*&style=flat)](https://github.com/RevenueCat/purchases-ios/releases)
 
@@ -158,12 +154,8 @@ import content5 from "@site/code_blocks/virtual-currency/balance-response.json?r
 
 #### From the SDK
 
-If you're using the virtual currency SDK betas, you can fetch the virtual currency balances from the [CustomerInfo](https://www.revenuecat.com/docs/customers/customer-info) object in the SDK:
-
+##### iOS
 import fetchVCBalancesSwift from "@site/code_blocks/virtual-currency/vc-balance-sdk-ios.swift?raw";
-import fetchVCBalancesKotlin from "@site/code_blocks/virtual-currency/vc-balance-sdk-android.kt?raw";
-import fetchVCBalancesReactNative from "@site/code_blocks/virtual-currency/vc-balance-sdk-react-native.ts.txt?raw";
-import fetchVCBalancesFlutter from "@site/code_blocks/virtual-currency/vc-balance-sdk-flutter.dart?raw";
 
 <RCCodeBlock
   tabs={[
@@ -172,6 +164,23 @@ import fetchVCBalancesFlutter from "@site/code_blocks/virtual-currency/vc-balanc
       content: fetchVCBalancesSwift,
       name: "Swift",
     },
+  ]}
+/>
+
+:::warning VirtualCurrencies does not update automatically when balance changes
+When a customer's balance is updated from your backend, the VirtualCurrencies object remains cached and is not automatically updated. In order to get the updated balance, you need to call `Purchases/invalidateVirtualCurrenciesCache()` and fetch the VirtualCurrencies object again.
+:::
+
+##### Android, React Native, and Flutter
+
+If you're using the virtual currency SDK betas for Android, React Native, and Flutter, you can fetch the virtual currency balances from the [CustomerInfo](https://www.revenuecat.com/docs/customers/customer-info) object in the SDK:
+
+import fetchVCBalancesKotlin from "@site/code_blocks/virtual-currency/vc-balance-sdk-android.kt?raw";
+import fetchVCBalancesReactNative from "@site/code_blocks/virtual-currency/vc-balance-sdk-react-native.ts.txt?raw";
+import fetchVCBalancesFlutter from "@site/code_blocks/virtual-currency/vc-balance-sdk-flutter.dart?raw";
+
+<RCCodeBlock
+  tabs={[
     {
       type: "kotlin",
       content: fetchVCBalancesKotlin,
