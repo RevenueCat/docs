@@ -23,15 +23,15 @@ To request a quota increase, visit the Google Play Developer API quota request f
 
 Your Developer Account account ID can be found in your [Play Console Account details page](https://play.google.com/console/developers/contact-details:):
 
-![Image](/images/5d05d59-2023-04-11_10.50.20_play.google.com_4891e818ca0d_60e7c128b150c1e968c8f69c600f64ce.png)
+![Image](/docs_images/platform-resources/google/google-play-quota-increase-request-account-id.png)
 
 Your Google Cloud project ID can be found in your [Google API Console](https://console.developers.google.com/) by clicking on the Project name in the top navigation bar:
 
-![](/images/ebde1e5-2023-04-11_10.34.55_console.cloud.google.com_d098505dfb5c_copy_a6c0675b8b207c62ba1e8ce8e31f84e5.png)
+![](/docs_images/platform-resources/google/google-play-quota-increase-request-project-id.png)
 
 Enter your account details, and choose the `Subscription & Products Purchase` option.
 
-![Image](/images/a24a182-Screenshot_2023-04-11_at_10.48.56_AM_6dcb3ce43f3a55d42e68c460952a3120.png)
+![Image](/docs_images/platform-resources/google/google-play-quota-increase-request-form.png)
 
 ### Justification
 
@@ -43,7 +43,7 @@ The form then requires additional information depending on your use-case, includ
 
 As described above, RTDN reduce the number of API requests that RevenueCat needs to use to refresh your purchases. If you have RTDN configured, choose `Yes` for both options.
 
-![Image](/images/79b672c-Screenshot_2023-04-11_at_10.57.38_AM_bfe01c7c58ee2163beee28b3dfa2b964.png)
+![Image](/docs_images/platform-resources/google/google-play-quota-increase-request-rtdn.png)
 
 ### Products API
 

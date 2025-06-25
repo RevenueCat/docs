@@ -18,7 +18,7 @@ RevenueCat does not require anything other than service credentials to communica
 
 You can enable it [here](https://console.cloud.google.com/flows/enableapi?apiid=pubsub). Make sure that you're in the correct project, the same one that you set up your [service account and credentials](/service-credentials/creating-play-service-credentials) in.
 
-![Google Cloud Console](/images/b4cf119-Dev_Step1_b3da8ed237d19e23f6fe1af40fdedd6a.gif)
+![Google Cloud Console](/docs_images/platform-resources/google/rtdn-1.gif)
 
 ### 2. Choose a Pub/Sub Topic ID
 
@@ -29,7 +29,7 @@ Directly beneath where the Service Credentials JSON object is added, a list of p
 
 Click '**Connect to Google**'. You should see a generated Google Cloud Pub/Sub Topic ID, as in the image below. If you don’t, try refreshing the page to get it to populate. Copy this topic ID to your clipboard.
 
-![RevenueCat Dashboard](/images/8d0e5d0-Dev_Step2_fc39cfd1d9ab37940d3a02cc8054aa4d.gif)
+![RevenueCat Dashboard](/docs_images/platform-resources/google/rtdn-2.gif)
 
 :::warning Internal Server Error
 If you see a server error when clicking "Connect to Google", or see the error `One or more users named in the policy do not belong to a permitted customer` in the logs in Google Cloud Console, "Domain Restricted Sharing" may be on for your Cloud project. This constraint is on by default for organizations created on or after May 3rd, 2024. You can check on this in Google Cloud Console -> "IAM & Admin" -> "Organization Policies" -> "Domain Restricted Sharing". You can choose to turn off this constraint, or make allowances for certain domains, including the service account created to communicate with RevenueCat.
@@ -42,11 +42,11 @@ If you see a server error when clicking "Connect to Google", or see the error `O
 
 In Google Play console, head to the dashboard for your app and find the '**Monetize**' section of the sidebar. Choose '**Monetization Setup**'. In the Real-time developer notifications section, paste your copied topic ID next to '**Topic name**' and select 'Subscriptions, voided purchases, and all one-time products' next to **Notification content**. Be sure to Save Changes at the very bottom right.
 
-![Google Play Console Notification Content](/images/google-play-real-time-notifications-type-choice.png)
+![Google Play Console Notification Content](/docs_images/platform-resources/google/google-play-real-time-notifications-type-choice.png)
 
 If you don't see any errors, your real-time developer notifications should be ready to go!
 
-![Google Play Console](/images/f875306-Dev_Step3_f9c1d3bc6e48e001f4b1d7b6d5a92b6e.gif)
+![Google Play Console](/docs_images/platform-resources/google/rtdn-3.gif)
 
 ### Send Test Notification
 
@@ -60,13 +60,13 @@ Click the '**Send test notification**' button under the topic name in the '**Mon
 
 Once that test notification is sent, you can go back to your app config on the RevenueCat dashboard where you connected to Google to enable real-time notifications. If the configuration was successful, you should see a "Last received" label with a recent timestamp. If your test notifications fail, you may need to add and grant the service account `google-play-developer-notifications@system.gserviceaccount.com` the Pub/Sub Publisher role on that specific topic via Permissions -> Add Principal -> add `google-play-developer-notifications@system.gserviceaccount.com` -> give it the role Pub/Sub Publisher. See Google's docs on this [here](https://developer.android.com/google/play/billing/getting-ready#grant-rights).
 
-![Google Play Console / RevenueCat Dashboard](/images/f97e8f5-TestNotif_0bce9b9a2dfb308f559aca6b662b3f63.gif)
+![Google Play Console / RevenueCat Dashboard](/docs_images/platform-resources/google/rtdn-4.gif)
 
 ## Tracking new purchases using Google Cloud Pub/Sub
 
 By default, RevenueCat ignores any Google Cloud Pub/Sub notifications for purchases that have not yet been posted to the RevenueCat API by one of our SDKs or from your own backend. For RevenueCat to track new purchases from Google Cloud Pub/Sub, you can enable the **"Track new purchases from server-to-server notifications"** option in our Dashboard. This allows RevenueCat to process new purchases from server-to-server notifications that are not yet in our system. This ensures all purchases are tracked, even in the case of network issues between your app and RevenueCat’s backend or if your customer was using a version of the app without the RevenueCat SDK.
 
-![](/images/no_code_toggle.png)
+![](/docs_images/platform-resources/no-code-toggle.png)
 
 ### App User ID Detection Methods
 
@@ -77,7 +77,7 @@ RevenueCat provides different ways to detect the App User ID for purchases comin
 
 The diagram below will help you determine which App User ID detection method to select based on your setup.
 
-![](/images/google_no_code_app_user_id.png)
+![](/docs_images/platform-resources/google/google_no_code_app_user_id.png)
 
 ### Considerations
 

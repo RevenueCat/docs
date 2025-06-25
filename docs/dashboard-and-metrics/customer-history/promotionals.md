@@ -30,7 +30,7 @@ Granted entitlements will be prefixed with `rc_promo` in the customer dashboard 
 
 Granted entitlements will automatically be removed after expiration. To remove access to an entitlement early, use the menu next to the granted entitlement in the Entitlements card on the Customer Profile.
 
-![](/images/customer-history-remove-granted-entitlement.png)
+![](/docs_images/customers/customer-history-remove-granted-entitlement.png)
 
 :::info
 Please note that the "Sandbox data" toggle should be unchecked to remove entitlements for both production and sandbox users.

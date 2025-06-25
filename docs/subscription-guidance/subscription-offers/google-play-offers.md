@@ -15,7 +15,7 @@ Google allows adding multiple offers to each base plan. Each offer can have up t
 
 To create an offer, navigate to the subscription product in Google Play, click "Add offer", and then select the base plan that the offer should apply for.
 
-![](/docs_images/products/google-play/new-products.png)
+![](/docs_images/products/google-play/offers/new-products.png)
 
 On the following page, you can set up a unique offer ID, eligibility criteria, tags, and pricing phases. Tags can be used to [identify offers in the RevenueCat SDK](/subscription-guidance/subscription-offers#more-control-over-offer-selection).
 
@@ -29,7 +29,7 @@ Google Play has three eligibility criteria:
 
 **Developer determined**: Offers with this eligibility criterion will always show up in the `subscriptionOptions` of the `StoreProduct` in the SDK and you are responsible for determining whether or not to apply the offer to a customer or not. If you are relying on the RevenueCat SDK automatically applying free trials and introductory periods and you do not want a developer determined offer to be automatically selected, apply the tag `rc-ignore-offer` to the offer.
 
-![](/docs_images/products/google-play/ignore-offer.png)
+![](/docs_images/products/google-play/offers/ignore-offer.png)
 
 ### Pricing phases
 
@@ -72,11 +72,11 @@ To create promo codes for your app, go to Google Play’s Console ‘All applica
 
 In the sidebar select **Promo Codes**.
 
-![](/docs_images/products/google-play/promo-codes.jpeg)
+![](/docs_images/products/google-play/offers/promo-codes.jpeg)
 
 #### Creating a Promotion
 
-![](/docs_images/products/google-play/promo-codes-2.jpeg)
+![](/docs_images/products/google-play/offers/promo-codes-2.jpeg)
 
 After selecting **Create promo code**, you will provide several pieces of metadata to provide to create your promotion:
 
@@ -89,7 +89,7 @@ After selecting **Create promo code**, you will provide several pieces of metada
 | 5                                     | Code type       | Select One-time or Custom code. **Custom codes are not available if selecting a Paid or an In-app product.**                                                                                              |
 | 6                                     | Number of Codes | The number of codes available on the promotion. **This can not be updated once saved.**                                                                                                                   |
 
-![Sample configuration of a 10-day free trial for a current Annual membership.](/docs_images/products/google-play/promo-codes-3.jpeg)
+![Sample configuration of a 10-day free trial for a current Annual membership.](/docs_images/products/google-play/offers/promo-codes-3.jpeg)
 
 After selecting **Save** your promotion will be created! 🎉
 
@@ -97,13 +97,13 @@ After selecting **Save** your promotion will be created! 🎉
 
 Google automatically generates one-time codes. A link titled, "Download codes" provides access to the automatically generated codes.
 
-![](/docs_images/products/google-play/promo-codes-4.jpeg)
+![](/docs_images/products/google-play/offers/promo-codes-4.jpeg)
 
 #### Live Promotions
 
 Promo codes become active once the status reads Live.
 
-![](/docs_images/products/google-play/promo-codes-5.jpeg)
+![](/docs_images/products/google-play/offers/promo-codes-5.jpeg)
 
 :::info Promo Code Limits and Availability
 Promo codes are limited by Google, on a per quarter basis. The amount of promo codes that Google limits varies by promo code type (one-time versus custom promo codes). Any unused codes will expire at the end of the quarter. Any codes that have been redeemed in the Google Play Store, but not redeemed in the app will stay active until the promotion ends.

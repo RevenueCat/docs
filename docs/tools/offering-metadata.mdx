@@ -26,25 +26,39 @@ Using Offering metadata has several advantages:
 - You can use offering metadata together with [Offering Override](/dashboard-and-metrics/customer-history/offering-override) to display messaging for special offers and discounts. For example, you could create a key `discount_message` that, if present, shows a special message about the applied discount on the paywall, and set that on a discounted Offering that you apply as an override to customers who are eligible for the specific discount.
 - You can use [Experiments](/tools/experiments-v1) in conjunction with Offering metadata to not only A/B test different products and prices, but also to test changes to the paywall. To do that, you would create a second Offering with the same products as your default offering, but have different values for the metadata keys in the second Offering.
 
-![Example response where metadata is used to control additional paywall variables](/images/febdc0b-Screen_Shot_2023-05-19_at_4.35.53_PM_06b85f9ec30299a571ecba3e435038de.png)
+```json
+{
+    "current_offering_id":"default",
+    "offerings": [{
+        "description": "Standard monthly and annual plans",
+        "identifier": "default",
+        "metadata": {
+            "paywall_cta_copy": "Subscribe",
+            "paywall_title_copy": "Unlock all benefits"
+        },
+        "packages" : [
+            {
+                "identifier":"$rc_annual",
+                "platform_product_identifier":"ios_annual_9999"
+            },
+            {
+                "identifier": "$rc_monthly",
+                "platform_product_identifier":"ios_monthly_999"
+            }
+        ]
+    }]
+}
+```
 
 ## How to add metadata to your Offering
 
-First, navigate to the Offering you'd like to add metadata to and click **Edit**.
+Navigate to the offering you'd like to add metadata in Project Settings > Product catalog > Offerings and click either **Edit** or **Configure metadata** (if you haven't configured metadata yet).
 
-![No Metadata](/images/129070e-No_Metadata_a86cefc3a196c6040ae914914bb3552b.png)
+![No Metadata](/docs_images/offerings/offering-metadata-configure.png)
 
-Then begin adding valid JSON in the **Metadata** field for your Offering.
-
-![Editing](/images/09d62d4-Editing_Final_93a4c5857c2ab08c8e7eb6c0d0f21a22.png)
-
-Once you've entered your desired JSON object, click **Save** to save your changes.
-
-![Saving](/images/3aec146-175995e-Saving_Final_12ca272df24dc12fa237138803272f97.png)
+Add valid JSON in the **Metadata** field for your Offering, then click **Save** to save your changes.
 
 After saving your changes, you'll be navigated back to the summary page for your Offering, where the new metadata JSON object you've created will be displayed. (NOTE: Objects will be alphabetically ordered)
-
-![Saved](/images/e434090-Saved_Final_acb416c7084413cab5e9860bc5a81e4d.png)
 
 :::info
 When creating a new Offering, you'll be able to define a JSON object directly from the creation form.

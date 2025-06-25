@@ -59,7 +59,7 @@ Refunds granted through Amazon customer service **will not** be detected as a re
 
 Apple doesn’t allow developers to grant refunds themselves, only through Apple customer support. However, Apple refunds are tracked with RevenueCat and accounted for in all charts and integrations.
 
-![](/images/refunding-and-cancelling.png)
+![](/docs_images/web/web-billing/refunding-payments.png)
 
 ## Troubleshooting
 

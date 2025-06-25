@@ -46,4 +46,3 @@ With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can
 | What is considered a resubscription?                                    | A resubscription is a subsequent purchase on an existing subscription that was not active in the last period. The most common case for a resubscription is a renewal occurring during a billing retry period after their subscription has already expired, but may occur in other cases as well. |
 
 For more information on what’s considered an active paid subscription, [click here](/dashboard-and-metrics/charts/active-subscriptions-chart).
-![](/images/2f1fec5-ActiveSubsriptionsMvmt_ba5268493b1dced736ddd6e9574d0e0c.png "ActiveSubsriptionsMvmt.png")

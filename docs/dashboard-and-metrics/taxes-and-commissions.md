@@ -82,7 +82,7 @@ Our Revenue chart offers the following measures to understand your net revenue:
 
 For integrations which report revenue you’ll see the option to select a **Sales reporting** mode for the integration. Selecting either “Revenue after store commission” or “Revenue after store commission and taxes” will apply the respective calculations to your data so that your sales are reported in a format that is most appropriate for your use case.
 
-![](/images/f2cba58-Screen_Shot_2022-07-28_at_11.00.05_AM_eb65360ca78d1af8b652552d73b45417.png "Screen Shot 2022-07-28 at 11.00.05 AM.png")
+![](/docs_images/charts/sales-reporting.png)
 
 To learn more about using integrations through RevenueCat, [click here](/integrations/integrations).
 

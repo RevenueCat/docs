@@ -25,7 +25,7 @@ Although App Store Connect separates "In-App Purchases" and "Subscriptions" in i
 
 In-app purchase keys are generated App Store Connect under _Users and Access → Integrations → [In-App Purchase](https://appstoreconnect.apple.com/access/integrations/api/subs)_. You can use the same in-app purchase key for all App Store apps belonging to the same App Store Connect account.
 
-![](/images/SCR-20240327-jvrs.png)
+![](/docs_images/credentials/apple/generate-iap-key.png)
 
 Select _Generate In-App Purchase Key_, or—if you've generated an In-App Purchase Key in the past—click on the "+" symbol next to the _Active_ header. You'll be prompted to enter a name for the key.
 
@@ -33,7 +33,7 @@ Once your key is generated, it will appear in _Active Keys_ and you get one shot
 
 Select _Download API Key_ and store the file in a safe place, you'll need to upload this to RevenueCat in the next step.
 
-![](/images/55a58f1-Screenshot_at_Feb_01_11-51-45_84b8441cc70b005e4d68ade246fcc386.png)
+![](/docs_images/credentials/apple/download-api-key.png)
 
 ### 2. Uploading the In-App Purchase Key to RevenueCat
 
@@ -43,7 +43,7 @@ In the RevenueCat dashboard, select your App Store app from the **Apps** tab in 
 
 Within your app settings, under the tab **In-app purchase key configuration**, you'll see an area to upload your In-App Purchase Key .p8 file that you downloaded from App Store Connect.
 
-![](/images/inapppurchase-settings.png)
+![](/docs_images/credentials/apple/iapkey-config.png)
 
 ### 3. Providing the Issuer ID to RevenueCat
 
@@ -61,9 +61,9 @@ Once this is generated, the Issuer ID will show at the top of the page. (The Iss
 
 Copy the Issuer ID and paste into the RevenueCat 'Issuer ID' field.
 
-![](/images/SCR-20240327-jygo.png)
+![](/docs_images/credentials/apple/inapppurchase-issuerid-1.png)
 
-![](/images/inapppurchase-issuerid.png)
+![](/docs_images/credentials/apple/iapkey-config.png)
 
 Remember to select 'Save changes'.
 
@@ -73,7 +73,7 @@ With our App Store credential validation, we will validate every time Apple cred
 
 Once your credentials are valid, you will see a "Valid credentials" message under your uploaded P8 key file with all permissions checked.
 
-![In-app purchase credential validator](/images/inapppurchase-credential-validator.png)
+![In-app purchase credential validator](/docs_images/credentials/apple/valid-credentials.png)
 
 ### Troubleshooting the credential validation
 
@@ -91,10 +91,10 @@ If your permissions are invalid, you should double check the following:
 - The in-app purchase key is active
 
 Your in-app purchase key should be under 'Active'
-![Active in-app purchase key](/images/inapppurchase-active.png)
+![Active in-app purchase key](/docs_images/credentials/apple/inapppurchase-active.png)
 
 If it is not, it's most likely that your in-app purchase key has been revoked and you will need to follow the setup instructions in this documentation.
-![Revoked in-app purchase key](/images/inapppurchase-revoked.png)
+![Revoked in-app purchase key](/docs_images/credentials/apple/inapppurchase-revoked.png)
 
 #### Unable to select 'SAVE CHANGES'
 

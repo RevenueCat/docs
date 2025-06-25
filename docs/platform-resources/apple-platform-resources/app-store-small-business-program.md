@@ -25,7 +25,7 @@ Since a developer could have multiple apps from different companies represented 
 
 Visit your app settings in the RevenueCat dashboard (**Project Settings > Apps**) and expand the **Apple Small Business Program** dropdown.
 
-![](/images/f7a4192-app.revenuecat.com_projects_85ff18c7_apps_app71b4cc0fea_09bb65dc0b8fa6967eb3e2ef2b8999d5.png)
+![](/docs_images/platform-resources/apple/small-business-program.png)
 
 #### Entry Date
 

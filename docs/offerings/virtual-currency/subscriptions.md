@@ -34,7 +34,7 @@ When using free trials with virtual currency subscriptions, RevenueCat gives you
 
 For example, if your monthly subscription grants 100 credits, you could set the trial to grant only 25 credits.
 
-![](/images/virtual-currency/vc-trials.png)
+![](/docs_images/virtual-currency/vc-trials.png)
 
 To grant currency when a trial starts, select the "Add on trial start" option and specify the amount. If left unchecked, no currency will be granted for trials by default.
 

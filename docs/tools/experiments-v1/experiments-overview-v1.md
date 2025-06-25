@@ -25,7 +25,7 @@ If you need help making your paywall more dynamic, see [Displaying Products](/ge
 To learn more about creating a new Offering to test, and some tips to keep in mind when creating new Products on the stores, [check out our guide here](/tools/experiments-v1/creating-offerings-to-test).
 :::
 
-![](https://files.readme.io/229d551-experiments-learn.webp "ab-test.png")
+![Experiments](/docs_images/experiments/v1/experiments-learn.webp)
 
 As soon as a customer is enrolled in an experiment, they'll be included in the "Customers" count on the Experiment Results page, and you'll see any trial starts, paid conversions, status changes, etc. represented in the corresponding metrics. (Learn more [here](/tools/experiments-v1/experiments-results-v1))
 
