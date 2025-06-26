@@ -69,14 +69,12 @@ tags:
     # Base URL
 
     The base URL for the External Purchases API is `https://api.revenuecat.com/`.
-    
+
     # Endpoints
 
-    The API has two endpoints, `POST/receipts/external` and `POST/receipts/external/bulk`.
+    The API has one endpoint, `POST/receipts/external`.
 
     `POST/receipts/external` is used for requests with a single purchase and/or payment, and processes them right away. Calling [Get Customer](/docs/api-v1#tag/customers/operation/subscribers) right after will return the updated entitlements.
-
-    `POST/receipts/external/bulk` is used only for bulk updates/imports. These updates will happen in the background and could take some time to process.
 
     For more details check the [API reference](#operation/track-external-purchases).
 
@@ -388,10 +386,9 @@ tags:
         1. In the scenario when the third party payment service provider retains commissions in case of a refund, Revenuecat does not track negative revenues. Meaning, that in such cases, you will see data discrepancies with the equivalent of the commission retained by the payment service provider.
     5. Entitlement identifier:
         1. We support only new entitlement identifiers ([not the legacy version](/docs/integrations/webhooks/event-types-and-fields#subscription-lifecycle-events-fields)).
-    6. [Backfill logic](#tag/Backfill-Logic), on import transactions (using the /bulk endpoint) are not supported.
-    7. [Backfills](#tag/Backfill-Logic) that modify `current_period_ends_at` date, do not alter existing Events, which means that the Customer history won't reflect accurately the most up to date `expiration_at_ms`.
-    8. If a different `source_subscription_identifier` gets provided, doesn’t matter if it’s the same product, we can end up with concurrent transactions
-    9. `EXPIRATION` Events are not fired automatically. The developer needs to explicitly send a request to the External Purchases API endpoint when `status` changed to `expired`.
+    6. [Backfills](#tag/Backfill-Logic) that modify `current_period_ends_at` date, do not alter existing Events, which means that the Customer history won't reflect accurately the most up to date `expiration_at_ms`.
+    7. If a different `source_subscription_identifier` gets provided, doesn’t matter if it’s the same product, we can end up with concurrent transactions
+    8. `EXPIRATION` Events are not fired automatically. The developer needs to explicitly send a request to the External Purchases API endpoint when `status` changed to `expired`.
 - name: External Purchases
   description: Operations to track external subscriptions and purchases.
 paths:
@@ -432,40 +429,6 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/ExceededQuotaError"
-      security:
-      - api_key: []
-  "/v1/receipts/external/bulk":
-    tag: External Purchases
-    post:
-      tags:
-      - External Purchases
-      summary: Tracks the status of multiple external purchases
-      operationId: track-external-purchases-bulk
-      requestBody:
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/ExternalPurchaseBulkRequest"
-        required: true
-      responses:
-        '202':
-          description: Successful Response
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/ExternalPurchaseBulkResponse"
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/BadRequestError"
-        '409':
-          description: Conflict
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/ConflictError"
       security:
       - api_key: []
 components:
@@ -639,34 +602,7 @@ components:
       - source_product_identifier
       - updated_at
       title: ExternalPurchase
-    ExternalPurchaseBulkRequest:
-      properties:
-        purchases:
-          anyOf:
-          - items:
-              anyOf:
-              - "$ref": "#/components/schemas/ExternalPurchase"
-              - "$ref": "#/components/schemas/ExternalSubscription"
-            type: array
-          title: Purchases
-          description: A list of external purchases to track
-        payments:
-          anyOf:
-          - "$ref": "#/components/schemas/ExternalSubscriptionPayment"
-          - "$ref": "#/components/schemas/ExternalPurchasePayment"
-          title: Payments
-          description: A list of external payments to track
-      additionalProperties: false
-      type: object
-      title: ExternalPurchaseBulkRequest
-    ExternalPurchaseBulkResponse:
-      properties:
-        status_url:
-          anyOf:
-          - type: string
-          title: Status Url
-      type: object
-      title: ExternalPurchaseBulkResponse
+
     ExternalPurchasePayment:
       properties:
         object:
@@ -720,7 +656,7 @@ components:
             - unspecified_offer
           title: Active Offer Type
           description: The type of offer that was active when the payment was processed.
-        active_offer: 
+        active_offer:
           type: string
           title: Active Offer Identifier
           description: The identifier of the offer that was active when the payment was processed.
@@ -919,7 +855,7 @@ components:
             - unspecified_offer
           title: Active Offer Type
           description: The type of offer that was active when the payment was processed.
-        active_offer: 
+        active_offer:
           type: string
           title: Active Offer Identifier
           description: The identifier of the offer that was active when the payment was processed.
