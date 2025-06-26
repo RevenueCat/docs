@@ -33,8 +33,8 @@ Whether you have just one or one million subscribers, you can easily replace you
 ## Browse features
 
 <FeatureItem 
-  title="Entitlements & Subscription Status" 
-  subtitle="Ensure customers have correct access even if your entitlement structure is complex." 
+  title="Entitlements, Subscriptions, & Virtual Currency" 
+  subtitle="Manage subscriptions, entitlements, and virtual currencies to ensure customers have correct access." 
   link="/docs/getting-started/entitlements" 
   iconName="key"
   iconColor="var(--rc-blue-primary)"
