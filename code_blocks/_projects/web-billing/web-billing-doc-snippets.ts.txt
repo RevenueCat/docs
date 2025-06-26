@@ -6,7 +6,10 @@ const authentication = {getAppUserId: () => "test"};
 function configuringSDK(WEB_BILLING_PUBLIC_API_KEY: string) {
     // MARK: Configuring SDK
     const appUserId = authentication.getAppUserId(); // Replace with your own authentication system
-    const purchases = Purchases.configure(WEB_BILLING_PUBLIC_API_KEY, appUserId);
+    const purchases = Purchases.configure({
+        apiKey: WEB_BILLING_PUBLIC_API_KEY,
+        appUserId: appUserId,
+    });
     // END
     return purchases;
 }
@@ -16,7 +19,12 @@ function configuringSDKOutOutOfAutomaticUTMCollection(WEB_BILLING_PUBLIC_API_KEY
     const appUserId = authentication.getAppUserId(); // Replace with your own authentication system
     const httpConfig = {}; // Any setting you want to customize in purchases-js HTTP client.
     const flagsConfig = {autoCollectUTMAsMetadata: false};
-    const purchases = Purchases.configure(WEB_BILLING_PUBLIC_API_KEY, appUserId, httpConfig, flagsConfig);
+    const purchases = Purchases.configure({
+        apiKey: WEB_BILLING_PUBLIC_API_KEY,
+        appUserId: appUserId,
+        httpConfig: httpConfig,
+        flags: flagsConfig,
+    });
     // END
     return purchases;
 }
@@ -27,7 +35,10 @@ function configuringSDKWithAnonUser(WEB_BILLING_PUBLIC_API_KEY: string) {
     // Make sure to enable the Redemption Links feature in the RevenueCat dashboard and use the
     // redemption link to redeem the purchase in your mobile app.
     const appUserId = Purchases.generateRevenueCatAnonymousAppUserId();
-    const purchases = Purchases.configure(WEB_BILLING_PUBLIC_API_KEY, appUserId);
+    const purchases = Purchases.configure({
+        apiKey: WEB_BILLING_PUBLIC_API_KEY,
+        appUserId: appUserId,
+    });
     // END
     return purchases;
 }

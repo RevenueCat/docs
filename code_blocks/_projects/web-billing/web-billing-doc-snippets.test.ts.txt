@@ -31,8 +31,10 @@ test('Snippet "Configuring SDK Anonymous" works', () => {
 
 test('Snippet "Get customer info" works', async () => {
   Purchases.configure(
-    WEB_BILLING_PUBLIC_API_KEY,
-    "customer_with_gold_entitlement"
+    {
+      apiKey: WEB_BILLING_PUBLIC_API_KEY,
+      appUserId: "customer_with_gold_entitlement",
+    }
   );
   expect(await getCustomerInfo()).toBeDefined();
   Purchases.getSharedInstance().close();
@@ -40,8 +42,10 @@ test('Snippet "Get customer info" works', async () => {
 
 test('Snippet "Check for specific entitlement" works for customer with entitlement', async () => {
   Purchases.configure(
-    WEB_BILLING_PUBLIC_API_KEY,
-    "customer_with_gold_entitlement"
+    {
+      apiKey: WEB_BILLING_PUBLIC_API_KEY,
+      appUserId: "customer_with_gold_entitlement",
+    }
   );
   const callback = vi.fn();
   await checkForSpecificEntitlement(callback);
@@ -51,8 +55,10 @@ test('Snippet "Check for specific entitlement" works for customer with entitleme
 
 test('Snippet "Check for specific entitlement" works for customer without any entitlement', async () => {
   Purchases.configure(
-    WEB_BILLING_PUBLIC_API_KEY,
-    "customer_without_entitlement"
+    {
+      apiKey: WEB_BILLING_PUBLIC_API_KEY,
+      appUserId: "customer_without_entitlement",
+    }
   );
   const callback = vi.fn();
   await checkForSpecificEntitlement(callback);
@@ -62,8 +68,10 @@ test('Snippet "Check for specific entitlement" works for customer without any en
 
 test('Snippet "Check for specific entitlement" works for customer with different entitlement', async () => {
   Purchases.configure(
-    WEB_BILLING_PUBLIC_API_KEY,
-    "customer_with_silver_entitlement"
+    {
+      apiKey: WEB_BILLING_PUBLIC_API_KEY,
+      appUserId: "customer_with_silver_entitlement",
+    }
   );
   const callback = vi.fn();
   await checkForSpecificEntitlement(callback);
@@ -74,14 +82,18 @@ test('Snippet "Check for specific entitlement" works for customer with different
 test('Snippet "Check for any entitlement" works for both customers with entitlement', async () => {
   const callback = vi.fn();
   Purchases.configure(
-    WEB_BILLING_PUBLIC_API_KEY,
-    "customer_with_gold_entitlement"
+    {
+      apiKey: WEB_BILLING_PUBLIC_API_KEY,
+      appUserId: "customer_with_gold_entitlement",
+    }
   );
   await checkForAnyEntitlement(callback);
   Purchases.getSharedInstance().close();
   Purchases.configure(
-    WEB_BILLING_PUBLIC_API_KEY,
-    "customer_with_silver_entitlement"
+    {
+      apiKey: WEB_BILLING_PUBLIC_API_KEY,
+      appUserId: "customer_with_silver_entitlement",
+    }
   );
   await checkForAnyEntitlement(callback);
   Purchases.getSharedInstance().close();
@@ -90,8 +102,10 @@ test('Snippet "Check for any entitlement" works for both customers with entitlem
 
 test('Snippet "Check for any entitlement" works for customer without any entitlement', async () => {
   Purchases.configure(
-    WEB_BILLING_PUBLIC_API_KEY,
-    "customer_without_entitlement"
+    {
+      apiKey: WEB_BILLING_PUBLIC_API_KEY,
+      appUserId: "customer_without_entitlement",
+    }
   );
   const callback = vi.fn();
   await checkForAnyEntitlement(callback);
@@ -101,8 +115,10 @@ test('Snippet "Check for any entitlement" works for customer without any entitle
 
 test('Snippet "Get current offering" works', async () => {
   Purchases.configure(
-    WEB_BILLING_PUBLIC_API_KEY,
-    "customer_without_entitlement"
+    {
+      apiKey: WEB_BILLING_PUBLIC_API_KEY,
+      appUserId: "customer_without_entitlement",
+    }
   );
   let pkgs: Package[] | undefined;
   const callback = vi
@@ -120,8 +136,10 @@ test('Snippet "Get current offering" works', async () => {
 
 test('Snippet "Get current offering for EUR" works', async () => {
   Purchases.configure(
-    WEB_BILLING_PUBLIC_API_KEY,
-    "customer_without_entitlement"
+    {
+      apiKey: WEB_BILLING_PUBLIC_API_KEY,
+      appUserId: "customer_without_entitlement",
+    }
   );
   let pkgs: Package[] | undefined;
   const callback = vi
@@ -142,8 +160,10 @@ test('Snippet "Get current offering for EUR" works', async () => {
 
 test('Snippet "Get custom offering" works', async () => {
   Purchases.configure(
-    WEB_BILLING_PUBLIC_API_KEY,
-    "customer_without_entitlement"
+    {
+      apiKey: WEB_BILLING_PUBLIC_API_KEY,
+      appUserId: "customer_without_entitlement",
+    }
   );
   let pkgs: Package[] | null = null;
   const callback = vi
@@ -165,8 +185,10 @@ test('Snippet "Get custom offering" works', async () => {
 
 test('Snippet "Displaying packages" works', async () => {
   Purchases.configure(
-    WEB_BILLING_PUBLIC_API_KEY,
-    "customer_without_entitlement"
+    {
+      apiKey: WEB_BILLING_PUBLIC_API_KEY,
+      appUserId: "customer_without_entitlement",
+    }
   );
   let allPackages: Package[] = [];
   let monthlyPackage: Package | undefined;
@@ -198,8 +220,10 @@ test('Snippet "Displaying packages" works', async () => {
 
 test('Snippet "Getting product" works', async () => {
   Purchases.configure(
-    WEB_BILLING_PUBLIC_API_KEY,
-    "customer_without_entitlement"
+    {
+      apiKey: WEB_BILLING_PUBLIC_API_KEY,
+      appUserId: "customer_without_entitlement",
+    }
   );
   let product: Product | undefined;
   const callback = vi.fn().mockImplementation((theProduct: Product) => {
@@ -215,8 +239,10 @@ test('Snippet "Getting product" works', async () => {
 
 test('Snippet "Purchasing package" works', async () => {
   Purchases.configure(
-    WEB_BILLING_PUBLIC_API_KEY,
-    "customer_without_entitlement"
+    {
+      apiKey: WEB_BILLING_PUBLIC_API_KEY,
+      appUserId: "customer_without_entitlement",
+    }
   );
 
   await purchasingPackage();
