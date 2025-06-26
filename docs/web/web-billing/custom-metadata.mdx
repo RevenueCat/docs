@@ -4,7 +4,7 @@ slug: custom-metadata
 hidden: false
 ---
 
-Web Billing supports custom metadata that you can send when initializing a purchase. The metadata will be propagated to webhook events and the Stripe customer object to enable its use in other systems, such as marketing or attribution tools.
+Web Billing supports custom metadata that you can include when making purchases. The metadata will be propagated to webhook events and the Stripe customer object to enable its use in other systems, such as marketing or attribution tools.
 
 ## Metadata support
 
@@ -53,7 +53,7 @@ The accepted values are `string`, `number`, `boolean` and `null`.
 
 ## How to use the collected metadata
 
-After receiving purchases with metadata included, it can be accessed in the `INITIAL_PURCHASE` [webhook event](/integrations/webhooks/event-types-and-fields). The same values are also sent to the [Stripe Customer object metadata](https://docs.stripe.com/api/customers/object#customer_object-metadata).
+After receiving purchases with metadata included, it can be accessed in the `INITIAL_PURCHASE` and `NON_RENEWING_PURCHASE` [webhook events](/integrations/webhooks/event-types-and-fields). The same values are also sent to the [Stripe Customer object metadata](https://docs.stripe.com/api/customers/object#customer_object-metadata).
 
 You can see how to use the webhook integration to trigger automations and workflows [here](/integrations/webhooks).
 
