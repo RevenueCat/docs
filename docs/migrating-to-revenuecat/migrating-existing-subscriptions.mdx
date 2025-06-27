@@ -52,6 +52,11 @@ When a customer launches with the first version containing RevenueCat it will tr
 It's okay to trigger a sync once per subscriber programmatically the first time they open a version of your app containing RevenueCat. You **should not** call this programmatically on every app launch for every user. This can increase latency in your app and can unintentionally alias customers together.
 :::
 
+:::warning Google Play Billing can receive purchases from other apps
+When syncyng purchases, Google Play has shown to display strange behaviors. If you have an app with package name being prefix of another, trying to fetch historic purchases from the Billing Client could cause some errors. For example if you have apps with package names `com.mydomain.myapp` and `com.mydomain.myapp.test`, the Billing Client will receive purchases from `com.mydomain.myapp.test` even when querying historical purchases from the `com.mydomain.myapp` app.
+This won't cause any lose of data since all purchases are still synced, however, purchases in this scenario will fail to sync when validating them in our servers, causing the syncPurchases call to fail. This should be safe to ignore.
+:::
+
 ### Data Processing Time
 
 After importing purchase data into RevenueCat (whether via server-side or client-side methods), please note that there may be a delay before this data is fully reflected across all RevenueCat systems:
