@@ -16,7 +16,7 @@ Regardless of if you're on V1 or V2 of Apple App Store Server Notifications, Rev
 
 ## Handling of Refund Requests
 
-To allow RevenueCat to send additional data of your customer's purchases to Apple, navigate to your RevenueCat app settings page and expand the **"Handling of refund requests"** section.
+To allow RevenueCat to send additional data of your customer's purchases to Apple, navigate to your RevenueCat project, choose your iOS platform under **Platforms** in the project sidebar, and expand the **"Handling of refund requests"** section:
 
 ![](/docs_images/platform-resources/apple/apple-handling-refunds.png)
 
