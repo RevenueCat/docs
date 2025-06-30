@@ -169,7 +169,7 @@ import fetchVCBalancesSwift from "@site/code_blocks/virtual-currency/vc-balance-
 When a customer's balance is updated from your backend, the VirtualCurrencies object remains cached and is not automatically updated. In order to get the updated balance, you need to call `Purchases/invalidateVirtualCurrenciesCache()` and fetch the VirtualCurrencies object again.
 :::
 
-You may directly access the cached virtual currencies using the `cachedVirtualCurrenices` property. This is helpful for rendering UI immediately, or for supporting showing virtual currencies when there is no network connection. Keep in mind that this value is cached and isn't guaranteed to be up to date.
+You may directly access the cached virtual currencies using the `cachedVirtualCurrencies` property. This is helpful for rendering UI immediately, or for supporting showing virtual currencies when there is no network connection. Keep in mind that this value is cached and isn't guaranteed to be up to date.
 
 import cachedVirtualCurrenciesSwift from "@site/code_blocks/virtual-currency/cached-virtual-currencies.swift?raw";
 
