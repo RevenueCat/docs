@@ -45,6 +45,10 @@ Virtual currency webhook events are triggered in the following scenarios:
 - **Subscription lifecycle**: For subscriptions that grant virtual currency, events are sent for the entire subscription lifecycle (initial purchase, renewals, refunds, etc.) whenever there is an adjustment to be made to the currency balance
 - **Manual adjustments via dashboard**: When virtual currency is manually adjusted through the dashboard
 
+:::info Adjustments via API are view-only
+Virtual currency adjustments made through the [API](/offerings/virtual-currency#depositing-or-spending) will appear in the customer timeline, but cannot be clicked for additional details. These adjustments are displayed for reference only and do not generate webhook events.
+:::
+
 ### Event Structure
 
 Virtual currency webhook events include standard webhook fields plus virtual currency-specific fields. Here's an example of a virtual currency transaction event:

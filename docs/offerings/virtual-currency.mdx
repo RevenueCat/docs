@@ -260,6 +260,10 @@ RevenueCat provides comprehensive event tracking for virtual currency transactio
 
 Virtual currency transactions appear in the [Customer History](/dashboard-and-metrics/customer-history) timeline and trigger `VIRTUAL_CURRENCY_TRANSACTION` webhook events for the entire subscription lifecycle whenever there are currency balance adjustments.
 
+:::info Adjustments via API are view-only
+Virtual currency adjustments made through the [API](/offerings/virtual-currency#depositing-or-spending) will appear in the customer timeline, but cannot be clicked for additional details. These adjustments are displayed for reference only and do not generate webhook events.
+:::
+
 For comprehensive information about virtual currency events, including timeline events and webhook events, see our [Virtual Currency Events](/offerings/virtual-currency/events) documentation.
 
 ### RevenueCat's Firebase Extension integration
