@@ -9,13 +9,17 @@ hidden: true
 
 We’re excited to welcome you to the beta of our new real-time Charts. We've rebuilt charts to give you faster, more flexible insights, including:
 
-- Real-time reporting on many metrics like conversion and LTV (with more coming soon)
-- New and unified subscription model for consistent reporting across stores
+- Real-time reporting on almost all charts
+- A new unified subscription model for consistent reporting across stores
 - Improved definitions for existing dimensions like Platform and Country
 - New dimensions to filter and segment by, including custom attributes in the near future
 
 :::warning Supported stores
 At this time only App Store and Play Store aps are supported in Real-time Charts. Support for Stripe, Roku, and RevenueCat Web Billing is coming soon; with the remaining stores to follow.
+:::
+
+:::info Feedback
+As you explore the beta and have feedback or questions about the experience, [please let us know here](https://form.typeform.com/to/iuAUBGNC).
 :::
 
 ## Summary of changes
@@ -35,17 +39,12 @@ At this time only App Store and Play Store aps are supported in Real-time Charts
 
 ## Supported charts
 
-### Available now
-
 - Initial conversion
 - Trial conversion
 - Conversion to paying
 - New customers
 - Realized LTV per customer
 - Realized LTV per paying customer
-
-### Coming soon
-
 - Active Subscriptions
 - Active Subscriptions Movement
 - Active Trials
@@ -118,10 +117,9 @@ We've introduced new dimensions for filtering & segmenting, with more coming soo
 
 You can access Real-time Charts from your dashboard by toggling `Real-time` on in Charts. Look for the real-time icon next to supported Charts. To see the current version of each chart, simply toggle `Real-time` off.
 
-As you explore the beta, and have any questions about the experience, [please let us know here](https://form.typeform.com/to/iuAUBGNC).
+As you explore the beta and have feedback or questions about the experience, [please let us know here](https://form.typeform.com/to/iuAUBGNC).
 
 ## Upcoming changes & improvements
 
-- Real-time reporting is available for many charts, but more will be added in the near future. Some charts which do not rely on subscription data, like Customer Center Survey Responses, will be migrated to the real-time system at a later time.
 - Real-time charts support App Store & Play Store apps, with additional store support currently in development.
 - Support for custom attributes as a filter & segment is in development, along with app version.
