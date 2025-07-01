@@ -70,5 +70,5 @@ To enable Single Sign-On for your organization navigate to your [**Account > Sec
 ![Collaborators](/docs_images/projects/sso-activate.png)
 
 :::warning Members of the domain will only be able to use SSO
-When the SSO of your organizations is active users with the domain of your organization will be required to sign in using SSO.
+When SSO is enabled for your organization, users with your organization’s email domain will be required to sign in through SSO.
 :::
