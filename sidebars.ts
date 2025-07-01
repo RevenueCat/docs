@@ -84,6 +84,7 @@ const projectsCategory = Category({
       ],
       index: { title: "Project Settings", link: "projects/project-settings" },
     }),
+    Page({ slug: "tools/mcp" }),
   ],
 });
 
