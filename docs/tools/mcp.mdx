@@ -175,57 +175,62 @@ Retrieves RevenueCat project details.
 
 Lists all apps in a project with pagination support.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `limit` (number, optional): Maximum number of apps to return
-  - `starting_after` (string, optional): Cursor for pagination
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `limit` | number | No | Maximum number of apps to return |
+| `starting_after` | string | No | Cursor for pagination |
 
 #### `mcp_RC_get_app`
 
 Retrieves details for a specific app.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `app_id` (string, required): ID of the app
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `app_id` | string | Yes | ID of the app |
 
 #### `mcp_RC_create_app`
 
 Creates a new app in the project.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `name` (string, required): Name of the app
-  - `type` (enum, required): Platform type - one of:
-    - `amazon`, `app_store`, `mac_app_store`, `play_store`, `stripe`, `rc_billing`, `roku`
-  - `bundle_id` (string, optional): Bundle ID for App Store apps
-  - `package_name` (string, optional): Package name for Android/Amazon apps
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `name` | string | Yes | Name of the app |
+| `type` | enum | Yes | Platform type: `amazon`, `app_store`, `mac_app_store`, `play_store`, `stripe`, `rc_billing`, `roku` |
+| `bundle_id` | string | No | Bundle ID for App Store apps |
+| `package_name` | string | No | Package name for Android/Amazon apps |
 
 #### `mcp_RC_update_app`
 
 Updates an existing app's details.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `app_id` (string, required): ID of the app
-  - `name` (string, optional): New name for the app
-  - `bundle_id` (string, optional): New bundle ID
-  - `package_name` (string, optional): New package name
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `app_id` | string | Yes | ID of the app |
+| `name` | string | No | New name for the app |
+| `bundle_id` | string | No | New bundle ID |
+| `package_name` | string | No | New package name |
 
 #### `mcp_RC_delete_app`
 
 Deletes an app from the project.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `app_id` (string, required): ID of the app
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `app_id` | string | Yes | ID of the app |
 
 #### `mcp_RC_list_public_api_keys`
 
 Lists public API keys for an app.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `app_id` (string, required): ID of the app
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `app_id` | string | Yes | ID of the app |
 
 ### Product Management Tools
 
@@ -233,22 +238,23 @@ Lists public API keys for an app.
 
 Lists all products in a project.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `limit` (number, optional): Maximum number of products to return
-  - `starting_after` (string, optional): Cursor for pagination
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `limit` | number | No | Maximum number of products to return |
+| `starting_after` | string | No | Cursor for pagination |
 
 #### `mcp_RC_create_product`
 
 Creates a new product.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `store_identifier` (string, required): Store identifier for the product
-  - `type` (enum, required): Type of product - one of:
-    - `consumable`, `non_consumable`, `subscription`, `non_renewing_subscription`, `one_time`
-  - `app_id` (string, required): ID of the app this product belongs to
-  - `display_name` (string, optional): Display name of the product
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `store_identifier` | string | Yes | Store identifier for the product |
+| `type` | enum | Yes | Product type: `consumable`, `non_consumable`, `subscription`, `non_renewing_subscription`, `one_time` |
+| `app_id` | string | Yes | ID of the app this product belongs to |
+| `display_name` | string | No | Display name of the product |
 
 ### Entitlement Management Tools
 
@@ -256,70 +262,78 @@ Creates a new product.
 
 Lists all entitlements in a project.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `limit` (number, optional): Maximum number of entitlements to return
-  - `starting_after` (string, optional): Cursor for pagination
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `limit` | number | No | Maximum number of entitlements to return |
+| `starting_after` | string | No | Cursor for pagination |
 
 #### `mcp_RC_get_entitlement`
 
 Retrieves details for a specific entitlement.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `entitlement_id` (string, required): ID of the entitlement
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `entitlement_id` | string | Yes | ID of the entitlement |
 
 #### `mcp_RC_create_entitlement`
 
 Creates a new entitlement.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `lookup_key` (string, required): Unique identifier for the entitlement
-  - `display_name` (string, required): Display name of the entitlement
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `lookup_key` | string | Yes | Unique identifier for the entitlement |
+| `display_name` | string | Yes | Display name of the entitlement |
 
 #### `mcp_RC_update_entitlement`
 
 Updates an existing entitlement.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `entitlement_id` (string, required): ID of the entitlement
-  - `display_name` (string, required): New display name of the entitlement
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `entitlement_id` | string | Yes | ID of the entitlement |
+| `display_name` | string | Yes | New display name of the entitlement |
 
 #### `mcp_RC_delete_entitlement`
 
 Deletes an entitlement.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `entitlement_id` (string, required): ID of the entitlement
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `entitlement_id` | string | Yes | ID of the entitlement |
 
 #### `mcp_RC_get_products_from_entitlement`
 
 Lists products attached to an entitlement.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `entitlement_id` (string, required): ID of the entitlement
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `entitlement_id` | string | Yes | ID of the entitlement |
 
 #### `mcp_RC_attach_products_to_entitlement`
 
 Attaches products to an entitlement.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `entitlement_id` (string, required): ID of the entitlement
-  - `product_ids` (array of strings, required): Array of product IDs to attach
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `entitlement_id` | string | Yes | ID of the entitlement |
+| `product_ids` | array of strings | Yes | Array of product IDs to attach |
 
 #### `mcp_RC_detach_products_from_entitlement`
 
 Detaches products from an entitlement.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `entitlement_id` (string, required): ID of the entitlement
-  - `product_ids` (array of strings, required): Array of product IDs to detach
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `entitlement_id` | string | Yes | ID of the entitlement |
+| `product_ids` | array of strings | Yes | Array of product IDs to detach |
 
 ### Offering Management Tools
 
@@ -327,31 +341,34 @@ Detaches products from an entitlement.
 
 Lists all offerings in a project.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `limit` (number, optional): Maximum number of offerings to return
-  - `starting_after` (string, optional): Cursor for pagination
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `limit` | number | No | Maximum number of offerings to return |
+| `starting_after` | string | No | Cursor for pagination |
 
 #### `mcp_RC_create_offering`
 
 Creates a new offering.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `lookup_key` (string, required): Unique identifier for the offering
-  - `display_name` (string, required): Display name for the offering
-  - `metadata` (object, optional): Metadata for the offering in JSON format
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `lookup_key` | string | Yes | Unique identifier for the offering |
+| `display_name` | string | Yes | Display name for the offering |
+| `metadata` | object | No | Metadata for the offering in JSON format |
 
 #### `mcp_RC_update_offering`
 
 Updates an existing offering.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `offering_id` (string, required): ID of the offering
-  - `display_name` (string, required): Display name for the offering
-  - `is_current` (boolean, optional): Whether this is the current offering
-  - `metadata` (object, optional): Metadata for the offering in JSON format
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `offering_id` | string | Yes | ID of the offering |
+| `display_name` | string | Yes | Display name for the offering |
+| `is_current` | boolean | No | Whether this is the current offering |
+| `metadata` | object | No | Metadata for the offering in JSON format |
 
 ### Package Management Tools
 
@@ -359,22 +376,24 @@ Updates an existing offering.
 
 Lists packages for an offering.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `offering_id` (string, required): ID of the offering
-  - `limit` (number, optional): Maximum number of packages to return
-  - `starting_after` (string, optional): Cursor for pagination
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `offering_id` | string | Yes | ID of the offering |
+| `limit` | number | No | Maximum number of packages to return |
+| `starting_after` | string | No | Cursor for pagination |
 
 #### `mcp_RC_create_package`
 
 Creates a new package for an offering.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `offering_id` (string, required): ID of the offering
-  - `lookup_key` (string, required): Lookup key of the package
-  - `display_name` (string, required): Display name of the package
-  - `position` (number, optional): Position of the package in the offering
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `offering_id` | string | Yes | ID of the offering |
+| `lookup_key` | string | Yes | Lookup key of the package |
+| `display_name` | string | Yes | Display name of the package |
+| `position` | number | No | Position of the package in the offering |
 
 **Package Naming Convention:**
 
@@ -385,21 +404,21 @@ Creates a new package for an offering.
 
 Attaches products to a package with eligibility criteria.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `package_id` (string, required): ID of the package
-  - `products` (array, required): Array of products to attach, each containing:
-    - `product_id` (string): ID of the product
-    - `eligibility_criteria` (enum): One of `all`, `google_sdk_lt_6`, `google_sdk_ge_6`
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `package_id` | string | Yes | ID of the package |
+| `products` | array | Yes | Array of products to attach, each containing: `product_id` (string) and `eligibility_criteria` (enum: `all`, `google_sdk_lt_6`, `google_sdk_ge_6`) |
 
 #### `mcp_RC_detach_products_from_package`
 
 Detaches products from a package.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `package_id` (string, required): ID of the package
-  - `product_ids` (array of strings, required): Array of product IDs to detach
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `package_id` | string | Yes | ID of the package |
+| `product_ids` | array of strings | Yes | Array of product IDs to detach |
 
 ### Additional Tools
 
@@ -407,17 +426,19 @@ Detaches products from a package.
 
 Creates a paywall for an offering.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `offering_id` (string, required): ID of the offering
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `offering_id` | string | Yes | ID of the offering |
 
 #### `mcp_RC_get_app_store_config`
 
 Retrieves App Store configuration for an app.
 
-- **Parameters:**
-  - `project_id` (string, required): ID of the project
-  - `app_id` (string, required): ID of the app
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `project_id` | string | Yes | ID of the project |
+| `app_id` | string | Yes | ID of the app |
 
 ## Usage Examples
 
