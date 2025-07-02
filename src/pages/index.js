@@ -218,10 +218,10 @@ function LandingPage() {
                 Targeting
               </span>
             </Link>
-            <Link href="/docs/web/web-billing">
+            <Link href="/docs/web/web-billing/overview">
               <span className="flex items-center gap-3">
                 <BillingIcon width="16" />
-                Web Billing
+                RevenueCat Web
               </span>
             </Link>
             <Link href="/docs/dashboard-and-metrics/overview">
