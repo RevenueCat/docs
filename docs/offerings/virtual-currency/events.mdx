@@ -9,9 +9,13 @@ hidden: false
 
 RevenueCat provides event tracking for virtual currency transactions, allowing you to monitor and respond to balance changes in real-time through webhooks.
 
+:::info Adjustments via API are view-only
+Virtual currency adjustments made through the [API](/offerings/virtual-currency#depositing-or-spending) will appear in the customer timeline, but cannot be clicked for additional details. These adjustments are displayed for reference only and do not generate webhook events.
+:::
+
 ## Timeline Events
 
-Virtual currency transactions appear in the [Customer History](/dashboard-and-metrics/customer-history) timeline, providing visibility into when currency was granted or removed from a customer's balance. These events help with debugging, customer support, and understanding customer behavior.
+Virtual currency transactions appear in the [Customer History](/dashboard-and-metrics/customer-history) timeline, providing visibility into when currency was granted or spent from a customer's balance. These events help with debugging, customer support, and understanding customer behavior.
 
 ![](/docs_images/virtual-currency/vc-customer-history-timeline.png)
 
@@ -19,10 +23,10 @@ Virtual currency transactions appear in the [Customer History](/dashboard-and-me
 
 The following virtual currency events can appear in the customer timeline:
 
-| Event Name             | Description                                                                     | Webhook Event                  |
-| ---------------------- | ------------------------------------------------------------------------------- | ------------------------------ |
-| Granted ... [Currency] | Currency was added to the customer's balance through a purchase or subscription | `VIRTUAL_CURRENCY_TRANSACTION` |
-| Spent ... [Currency]   | Currency was removed from the customer's balance due to a refund                | `VIRTUAL_CURRENCY_TRANSACTION` |
+| Event Name             | Description                                                      | Webhook Event                  |
+| ---------------------- | ---------------------------------------------------------------- | ------------------------------ |
+| Granted ... [Currency] | Currency was added to the customer's balance                     | `VIRTUAL_CURRENCY_TRANSACTION` |
+| Spent ... [Currency]   | Currency was removed from the customer's balance due to a refund | `VIRTUAL_CURRENCY_TRANSACTION` |
 
 ### Event Details
 
@@ -44,10 +48,6 @@ Virtual currency webhook events are triggered in the following scenarios:
 - **In-app purchases**: When a customer purchases a product associated with virtual currency
 - **Subscription lifecycle**: For subscriptions that grant virtual currency, events are sent for the entire subscription lifecycle (initial purchase, renewals, refunds, etc.) whenever there is an adjustment to be made to the currency balance
 - **Manual adjustments via dashboard**: When virtual currency is manually adjusted through the dashboard
-
-:::info Adjustments via API are view-only
-Virtual currency adjustments made through the [API](/offerings/virtual-currency#depositing-or-spending) will appear in the customer timeline, but cannot be clicked for additional details. These adjustments are displayed for reference only and do not generate webhook events.
-:::
 
 ### Event Structure
 
