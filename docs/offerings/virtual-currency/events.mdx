@@ -7,7 +7,7 @@ hidden: false
 
 # Virtual Currency Events
 
-RevenueCat provides comprehensive event tracking for virtual currency transactions, allowing you to monitor and respond to balance changes in real-time through webhooks.
+RevenueCat provides event tracking for virtual currency transactions, allowing you to monitor and respond to balance changes in real-time through webhooks.
 
 ## Timeline Events
 
@@ -22,16 +22,16 @@ The following virtual currency events can appear in the customer timeline:
 | Event Name             | Description                                                                     | Webhook Event                  |
 | ---------------------- | ------------------------------------------------------------------------------- | ------------------------------ |
 | Granted ... [Currency] | Currency was added to the customer's balance through a purchase or subscription | `VIRTUAL_CURRENCY_TRANSACTION` |
-| Removed ... [Currency] | Currency was removed from the customer's balance due to a refund                | `VIRTUAL_CURRENCY_TRANSACTION` |
+| Spent ... [Currency]   | Currency was removed from the customer's balance due to a refund                | `VIRTUAL_CURRENCY_TRANSACTION` |
 
 ### Event Details
 
 When you click on a virtual currency event in the Customer History, you can view additional details including:
 
-- The amount of currency granted or removed
+- The amount of currency granted or spent
 - The currency type and description
 - The product that triggered the transaction
-- The source of the transaction (in_app_purchase, admin_api)
+- The source of the transaction (`in_app_purchase`, `admin_api`)
 
 ## Webhook Events
 
@@ -66,18 +66,18 @@ import virtualCurrencyEvent from "@site/code_blocks/integrations/webhooks/sample
 
 ### Virtual Currency Specific Fields
 
-| Field                                | Type    | Description                                                                                                               |
-| ------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `adjustments`                        | Array   | Array of virtual currency adjustments made in this transaction. Each adjustment contains the amount and currency details. |
-| `adjustments[].amount`               | Integer | The amount of virtual currency added (positive) or removed (negative) from the customer's balance.                        |
-| `adjustments[].currency`             | Object  | Details about the virtual currency type involved in the transaction.                                                      |
-| `adjustments[].currency.code`        | String  | The unique identifier for the virtual currency.                                                                           |
-| `adjustments[].currency.name`        | String  | The display name of the virtual currency.                                                                                 |
-| `adjustments[].currency.description` | String  | A description of the virtual currency.                                                                                    |
-| `product_display_name`               | String  | The display name of the product that triggered the virtual currency transaction.                                          |
-| `purchase_environment`               | String  | The environment where the product purchase was made.                                                                      |
-| `source`                             | String  | The source of the virtual currency transaction.                                                                           |
-| `virtual_currency_transaction_id`    | String  | Unique identifier for this virtual currency transaction.                                                                  |
+| Field                                | Type    | Description                                                                                                               | Possible Values                |
+| ------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| `adjustments`                        | Array   | Array of virtual currency adjustments made in this transaction. Each adjustment contains the amount and currency details. |                                |
+| `adjustments[].amount`               | Integer | The amount of virtual currency added (positive) or removed (negative) from the customer's balance.                        |                                |
+| `adjustments[].currency`             | Object  | Details about the virtual currency involved in the transaction.                                                           |                                |
+| `adjustments[].currency.code`        | String  | The unique identifier for the virtual currency.                                                                           |                                |
+| `adjustments[].currency.name`        | String  | The display name of the virtual currency.                                                                                 |                                |
+| `adjustments[].currency.description` | String  | The description of the virtual currency.                                                                                  |                                |
+| `product_display_name`               | String  | The display name of the product that triggered the virtual currency transaction.                                          |                                |
+| `purchase_environment`               | String  | The environment where the product purchase was made.                                                                      | `SANDBOX`, `PRODUCTION`.       |
+| `source`                             | String  | The source of the virtual currency transaction.                                                                           | `in_app_purchase`, `admin_api` |
+| `virtual_currency_transaction_id`    | String  | Unique identifier for this virtual currency transaction.                                                                  |                                |
 
 ### Source Values
 
