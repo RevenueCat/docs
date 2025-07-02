@@ -84,7 +84,6 @@ const projectsCategory = Category({
       ],
       index: { title: "Project Settings", link: "projects/project-settings" },
     }),
-    Page({ slug: "tools/mcp" }),
   ],
 });
 
@@ -855,6 +854,32 @@ const knownStoreIssuesCategory = Category({
   ],
 });
 
+const aiToolsCategory = Category({
+  iconName: "experiment",
+  label: "AI Tools",
+  itemsPathPrefix: "tools/",
+  items: [
+    SubCategory({
+      label: "RevenueCat MCP Server",
+      slug: "mcp",
+      itemsPathPrefix: "mcp/",
+      items: [
+        Page({ slug: "overview" }),
+        Page({ slug: "setup" }),
+        Page({ slug: "tools-reference" }),
+        Page({ slug: "usage-examples" }),
+        Page({ slug: "best-practices-and-troubleshooting" }),
+      ],
+      index: {
+        title: "RevenueCat MCP Server",
+        link: "tools/mcp",
+        description:
+          "AI-powered subscription management through natural language interactions",
+      },
+    }),
+  ],
+});
+
 const chartsDummyCategory = Category({
   iconName: "chart-bar",
   label: "Charts & Metrics",
@@ -1001,6 +1026,7 @@ const sidebars = {
     customersCategory,
     chartsDummyCategory,
     experimentsCategory,
+    aiToolsCategory,
     testAndLaunchCategory,
     integrationsDummyCategory,
     platformResourcesCategory,
