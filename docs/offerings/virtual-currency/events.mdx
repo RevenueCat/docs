@@ -23,19 +23,19 @@ Virtual currency transactions appear in the [Customer History](/dashboard-and-me
 
 The following virtual currency events can appear in the customer timeline:
 
-| Event Name             | Description                                                      | Webhook Event                  |
-| ---------------------- | ---------------------------------------------------------------- | ------------------------------ |
-| Granted ... [Currency] | Currency was added to the customer's balance                     | `VIRTUAL_CURRENCY_TRANSACTION` |
-| Spent ... [Currency]   | Currency was removed from the customer's balance due to a refund | `VIRTUAL_CURRENCY_TRANSACTION` |
+| Event Name             | Description                                      | Webhook Event                  |
+| ---------------------- | ------------------------------------------------ | ------------------------------ |
+| Granted ... [Currency] | Currency was added to the customer's balance     | `VIRTUAL_CURRENCY_TRANSACTION` |
+| Spent ... [Currency]   | Currency was removed from the customer's balance | `VIRTUAL_CURRENCY_TRANSACTION` |
 
 ### Event Details
 
 When you click on a virtual currency event in the Customer History, you can view additional details including:
 
 - The amount of currency granted or spent
-- The currency type and description
+- The currency type and metadata
 - The product that triggered the transaction
-- The source of the transaction (`in_app_purchase`, `admin_api`)
+- The [source](/offerings/virtual-currency/events#source-values) of the transaction (`in_app_purchase`, `admin_api`)
 
 ## Webhook Events
 
