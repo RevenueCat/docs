@@ -186,7 +186,7 @@ const config = {
               {
                 type: "docSidebar",
                 sidebarId: "playbookSidebar",
-                label: "Playbooks",
+                label: "Playbooks & Guides",
               },
             ],
           },

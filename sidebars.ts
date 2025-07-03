@@ -39,22 +39,6 @@ const welcomeCategory = Category({
   items: [Page({ slug: "welcome/overview" })],
 });
 
-const playbooksCategory = Category({
-  iconName: "sparkle",
-  label: "Playbooks",
-  itemsPathPrefix: "playbooks/",
-  items: [
-    Page({ slug: "overview" }),
-    SubCategory({
-      label: "Guides",
-      slug: "guides",
-      itemsPathPrefix: "guides/",
-      items: [Page({ slug: "hard-paywall" }), Page({ slug: "freemium" })],
-      index: { title: "Guides", link: "playbooks/guides" },
-    }),
-  ],
-});
-
 const projectsCategory = Category({
   iconName: "hammer",
   label: "Projects & Apps",
@@ -1017,6 +1001,43 @@ const integrationsMoreCategory = Category({
   ],
 });
 
+const playbooksOverviewCategory = Category({
+  iconName: "sparkle",
+  label: "Playbooks",
+  itemsPathPrefix: "playbooks/",
+  items: [Page({ slug: "overview" })],
+});
+
+const playbooksMonetizationCategory = Category({
+  iconName: "currency-usd",
+  iconColor: "var(--ifm-color-success)",
+  label: "Monetization Models",
+  itemsPathPrefix: "playbooks/guides/",
+  items: [
+    Page({ slug: "hard-paywall" }),
+    Page({ slug: "freemium" }),
+    SubCategory({
+      label: "Other resources",
+      items: [
+        Link({
+          label: "Implementing virtual currencies and credits",
+          slug: "/offerings/virtual-currency",
+        }),
+        Link({
+          label: "Converting a paid app to subscriptions",
+          slug: "https://www.revenuecat.com/blog/engineering/converting-a-paid-ios-app-to-subscriptions/",
+        }),
+      ],
+      index: {
+        title: "Other resources",
+        description:
+          "Other resources for implementing different monetization models.",
+        link: "playbooks/guides/other-monetization-resources",
+      },
+    }),
+  ],
+});
+
 // Add the top level categories to the defaultSidebar object
 // The defaultSidebar is referenced in docusaurus.config.js
 const sidebars = {
@@ -1049,7 +1070,7 @@ const sidebars = {
     attributionCategory,
     integrationsMoreCategory,
   ],
-  playbookSidebar: [playbooksCategory],
+  playbookSidebar: [playbooksOverviewCategory, playbooksMonetizationCategory],
 };
 
 export default sidebars;
