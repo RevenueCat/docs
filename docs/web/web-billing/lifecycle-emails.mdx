@@ -6,10 +6,11 @@ hidden: false
 ---
 
 :::info California requirements for auto-renewing subscriptions
-Beginning July 1, 2025, new rules apply for customers in California related to auto-renewing subscriptions, including wording changes at the time of purchase and renewal notification emails for subscriptions. RevenueCat has implemented new lifecycle emails to comply with the updated rules: [see below](#optional-lifecycle-emails-for-auto-renewing-subscriptions).
-:::
+Beginning July 1, 2025, new rules apply for customers in California related to auto-renewing subscriptions, including wording changes at the time of purchase and renewal notification emails for subscriptions. RevenueCat is implementing changes that will automatically apply in this state, to comply with the updated rules. If you're using RevenueCat Web Billing, you do not need to take any action.
 
-# Lifecycle emails
+Read more:
+[Legal ruling](https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=7.&title=&part=3.&chapter=1.&article=9.) | [Explanation](https://www.arnoldporter.com/en/perspectives/advisories/2025/01/new-california-requirements-for-subscriptions-in-2025)
+:::
 
 Customers purchasing through Web Billing (formerly RevenueCat Billing) will receive emails related to their subscriptions and other purchases on the web.
 
@@ -27,31 +28,20 @@ Only the `Page background` and `Primary button` colors are used to brand emails.
 
 ![](/docs_images/web/web-billing/customization_in_emails.png)
 
-## \[optional\] Lifecycle emails for auto-renewing subscriptions
-
-Two lifecycle emails can be enabled to comply with the latest (as of July 1st, 2025) California requirements for auto-renewing subscriptions. These emails can be enabled in: the **Payment provider** tab of your Web Billing configuration:
-
-1. Upcoming renewal notifications for yearly subscriptions
-1. Upcoming free trial expiry notifications for trials longer than 1 month
-
-Read more: [Legal ruling](https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=BPC&division=7.&title=&part=3.&chapter=1.&article=9.), [explanation](https://www.arnoldporter.com/en/perspectives/advisories/2025/01/new-california-requirements-for-subscriptions-in-2025)
-
 ## All emails, triggers, and calls to action
 
 You can find a complete list of customer emails below, in addition to the triggers that are used to send them.
 
-| Email                                             | Trigger                                                                                                                                                      | Call to action                                                                       |
-| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| Free trial start                                  | The customer started a free trial                                                                                                                            | n/a                                                                                  |
-| Initial purchase                                  | The customer made a successful purchase (either a subscription or one-time purchase)                                                                         | Redeem purchase (when [Redemption Links](/web/web-billing/redemption-links) enabled) |
-| Redemption link refresh                           | The customer attempted to use an expired redemption link, so a new one was sent to them                                                                      | Redeem purchase (when [Redemption Links](/web/web-billing/redemption-links) enabled) |
-| Customer portal login                             | The customer initiated access to the [customer portal](/web/web-billing/customer-portal)                                                                     | Manage subscription in [customer portal](/web/web-billing/customer-portal)           |
-| Subscription renewal                              | The customer's subscription automatically renewed at the end of their billing period                                                                         | n/a                                                                                  |
-| Failed payment                                    | A renewal payment failed (after several retries)                                                                                                             | Manage subscription in [customer portal](/web/web-billing/customer-portal)           |
-| Subscription cancelation                          | The customer canceled their subscription                                                                                                                     | Renew subscription in [customer portal](/web/web-billing/customer-portal)            |
-| Subscription renewed (after cancelation)          | The customer renewed their subscription after previously canceling, before it expired                                                                        | n/a                                                                                  |
-| Subscription expiry                               | The customer's subscription expired and will not be renewed                                                                                                  | n/a                                                                                  |
-| Chargeback detected                               | RevenueCat detected a chargeback from the customer, and the subscription was immediately canceled as a result                                                | n/a                                                                                  |
-| Refund issued                                     | A refund was issued to the customer                                                                                                                          | n/a                                                                                  |
-| \[optional\] Upcoming yearly subscription renewal | A yearly subscription is soon to renew (must be enabled in dashboard, see [above](#optional-lifecycle-emails-for-auto-renewing-subscriptions))               | Manage subscription in [customer portal](/web/web-billing/customer-portal)           |
-| \[optional\] Upcoming free trial expiry           | A free trial (longer than 1 month) is soon to expire (must be enabled in dashboard, see [above](#optional-lifecycle-emails-for-auto-renewing-subscriptions)) | Manage subscription in [customer portal](/web/web-billing/customer-portal)           |
+| Email                                    | Trigger                                                                                                       | Call to action                                                                       |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Free trial start                         | The customer started a free trial                                                                             | n/a                                                                                  |
+| Initial purchase                         | The customer made a successful purchase (either a subscription or one-time purchase)                          | Redeem purchase (when [Redemption Links](/web/web-billing/redemption-links) enabled) |
+| Redemption link refresh                  | The customer attempted to use an expired redemption link, so a new one was sent to them                       | Redeem purchase (when [Redemption Links](/web/web-billing/redemption-links) enabled) |
+| Customer portal login                    | The customer initiated access to the [customer portal](/web/web-billing/customer-portal)                      | Manage subscription in [customer portal](/web/web-billing/customer-portal)           |
+| Subscription renewal                     | The customer's subscription automatically renewed at the end of their billing period                          | n/a                                                                                  |
+| Failed payment                           | A renewal payment failed (after several retries)                                                              | Manage subscription in [customer portal](/web/web-billing/customer-portal)           |
+| Subscription cancelation                 | The customer canceled their subscription                                                                      | Renew subscription in [customer portal](/web/web-billing/customer-portal)            |
+| Subscription renewed (after cancelation) | The customer renewed their subscription after previously canceling, before it expired                         | n/a                                                                                  |
+| Subscription expiry                      | The customer's subscription expired and will not be renewed                                                   | n/a                                                                                  |
+| Chargeback detected                      | RevenueCat detected a chargeback from the customer, and the subscription was immediately canceled as a result | n/a                                                                                  |
+| Refund issued                            | A refund was issued to the customer                                                                           | n/a                                                                                  |
