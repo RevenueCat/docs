@@ -22,6 +22,10 @@ target="\_blank">Create an account →</Button>
 
 ## Start implementing
 
+:::info New!
+Check out our new [Playbooks](/playbooks/overview) section for guides and best practices for implementing different monetization models.
+:::
+
 Get started by creating a new project and connecting to a store.
 
 <Button href="/docs/projects/overview">Create a project →</Button>

@@ -141,7 +141,7 @@ export const Page = ({ slug }: PageConfig): DocItem => ({
 
 export const Link = ({ label, slug }: LinkConfig): LinkItem => ({
   type: "link",
-  label: `${label} →`,
+  label: `${label}${slug.includes("https://") ? " " : " →"}`,
   href: slug,
 });
 
