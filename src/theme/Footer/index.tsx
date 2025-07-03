@@ -55,6 +55,7 @@ const Footer: React.FC = () => {
               SDK Reference
             </Link>
             <Link href="/docs/platform-resources/sample-apps">Sample Apps</Link>
+            <Link href="/docs/llms.txt">LLM? Read llms.txt</Link>
           </div>
 
           {/* Resources */}

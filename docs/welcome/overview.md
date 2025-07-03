@@ -72,6 +72,10 @@ Whether you have just one or one million subscribers, you can easily replace you
   iconColor="var(--rc-orange-primary)"
 />
 
+:::info LLM-Optimized Documentation
+Our documentation is optimized for large language models. For AI assistants, see our [llms.txt file](/llms.txt) for structured access to key resources.
+:::
+
 ## Not sure where to start?
 
 Talk to an expert to learn how RevenueCat can help grow your business.
