@@ -629,7 +629,6 @@ paths:
                   type: paddle
                   paddle:
                     paddle_api_key: <Your Paddle API Key goes here>
-                    paddle_is_sandbox: true
       responses:
         '201':
           description: Success. The app was created
@@ -7257,8 +7256,14 @@ components:
               minLength: 50
               maxLength: 70
             paddle_is_sandbox:
-              description: Whether the app is tied to the sandbox environment.
-              nullable: false
+              description: '[Deprecated] Whether the app is tied to the sandbox environment.
+
+                This field is deprecated and will be removed in the future.
+
+                The environment is determined by the `paddle_api_key` format.
+
+                '
+              nullable: true
               type: boolean
               example: true
     Paywall:
