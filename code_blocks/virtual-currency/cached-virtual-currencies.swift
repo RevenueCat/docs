@@ -1,0 +1,1 @@
+let cachedVirtualCurrencies: VirtualCurrencies? = Purchases.shared.cachedVirtualCurrencies
