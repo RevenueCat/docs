@@ -5001,7 +5001,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:subscriptions:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Subscription
       parameters:
@@ -5085,7 +5085,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:purchases:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Purchase
       parameters:
