@@ -23,7 +23,7 @@ It may be especially useful to analyze your refund requests by the refund reason
 Apple provides the refund reasons through their V2 notifications. If your chart is showing only "UNKNOWN" when segmenting by "Refund request reason", your app is most likely utilizing Apple's V1 notifications.
 :::
 
-If you're looking to influence Apple's refund decision, RevenueCat's [Handling Request Requests](/platform-resources/apple-platform-resources/handling-refund-requests) feature can help by sending additional data to Apple, which may reduce the number of refunds granted.
+If you're looking to influence Apple's refund decision, RevenueCat's [Handling Refund Requests](/platform-resources/apple-platform-resources/handling-refund-requests) feature can help by sending additional data to Apple, which may reduce the number of refunds granted.
 
 ## Calculation
 
