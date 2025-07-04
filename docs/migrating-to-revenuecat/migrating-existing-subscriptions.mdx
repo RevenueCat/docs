@@ -57,7 +57,7 @@ Starting with Android SDK v9, only active subscriptions and non-consumed one-tim
 :::
 
 :::warning Google Play Billing can receive purchases from other apps
-When syncyng purchases, Google Play has shown to display strange behaviors. If you have an app with package name being prefix of another, trying to fetch historic purchases from the Billing Client could cause some errors. For example if you have apps with package names `com.mydomain.myapp` and `com.mydomain.myapp.test`, the Billing Client will receive purchases from `com.mydomain.myapp.test` even when querying historical purchases from the `com.mydomain.myapp` app.
+In versions prior to Android SDK v9, when syncing purchases, Google Play has shown to display strange behaviors. If you have an app with package name being prefix of another, trying to fetch historic purchases from the Billing Client could cause some errors. For example if you have apps with package names `com.mydomain.myapp` and `com.mydomain.myapp.test`, the Billing Client will receive purchases from `com.mydomain.myapp.test` even when querying historical purchases from the `com.mydomain.myapp` app.
 This won't cause any lose of data since all purchases are still synced, however, purchases in this scenario will fail to sync when validating them in our servers, causing the syncPurchases call to fail. This should be safe to ignore.
 :::
 
