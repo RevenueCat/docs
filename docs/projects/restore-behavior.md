@@ -40,7 +40,7 @@ Returns an [error](/test-and-launch/errors#-receipt_already_in_use) if the App U
 
 **Legacy ✅**
 
-The legacy behavior is to merge (alias) any App User IDs that restore the same underlying subscription and treat them as the same subscriber moving forward. This applies to both anonymous and identified App user IDs. You can continue to use this legacy behavior as long as you'd like, **but you cannot re-enable the alias behavior if you switch to Transfer Purchases or Block Restores**. Note that this behavior is applied only during restore requests. New purchases will raise an error if the receipt exists already under a different customer.
+The legacy behavior is to merge (alias) any App User IDs that restore the same underlying subscription and treat them as the same subscriber moving forward. This applies to both anonymous and identified App user IDs. You can continue to use this legacy behavior as long as you'd like, **but you cannot re-enable the alias behavior if you switch to Transfer Purchases or Block Restores**. Note that this behavior is applied only during restore requests. New purchases will result in an error if the receipt already exists under a different customer.
 
 ### Example usage
 
