@@ -9,7 +9,7 @@ If an [App User ID](/customers/user-ids) tries to restore transactions that are 
 Note that the behavior set here will affect all apps under the project. Also note that **Share between App User IDs (legacy)** will only be available for legacy projects with this behavior already enabled, not new projects.
 
 :::info Transfer behavior also applies to making purchases
-The configured behavior will also apply if an identified App User ID [makes a new purchase](/getting-started/making-purchases) and the device receipt is already associated with a different identified App User ID in RevenueCat.
+The configured behavior will also apply if an identified App User ID [makes a new purchase](/getting-started/making-purchases) and the device receipt is already associated with a different identified App User ID in RevenueCat. An exception to this is the legacy restore behavior (sharing between App User IDs), which is only applied during restore requests.
 :::
 
 :::info Transfer behavior only applies to purchases associated with an identified App User ID
@@ -40,7 +40,7 @@ Returns an [error](/test-and-launch/errors#-receipt_already_in_use) if the App U
 
 **Legacy ✅**
 
-The legacy behavior is to merge (alias) any App User IDs that restore the same underlying subscription and treat them as the same subscriber moving forward. This applies to both anonymous and identified App user IDs. You can continue to use this legacy behavior as long as you'd like, **but you cannot re-enable the alias behavior if you switch to Transfer Purchases or Block Restores**.
+The legacy behavior is to merge (alias) any App User IDs that restore the same underlying subscription and treat them as the same subscriber moving forward. This applies to both anonymous and identified App user IDs. You can continue to use this legacy behavior as long as you'd like, **but you cannot re-enable the alias behavior if you switch to Transfer Purchases or Block Restores**. Note that this behavior is applied only during restore requests. New purchases will result in an error if the receipt already exists under a different customer.
 
 ### Example usage
 
