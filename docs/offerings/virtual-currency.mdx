@@ -46,9 +46,7 @@ SDK support for virtual currencies is currently in beta, and as such requires th
 
 ### iOS
 
-Set your `purchases-ios` version to the most recent `vc-beta` version where your dependency is declared:
-
-[![Latest Virtual Currency iOS Beta Release](https://img.shields.io/github/release/RevenueCat/purchases-ios.svg?filter=*vc-beta*&style=flat)](https://github.com/RevenueCat/purchases-ios/releases)
+Virtual currency functionality is available in the native iOS SDK in versions 5.32.0 and above.
 
 ### Android
 
@@ -158,6 +156,8 @@ import content5 from "@site/code_blocks/virtual-currency/balance-response.json?r
 
 import fetchVCBalancesSwift from "@site/code_blocks/virtual-currency/vc-balance-sdk-ios.swift?raw";
 
+You can use the `virtualCurrencies()` function to retrieve a customer's balance. The function returns a `VirtualCurrencies` object, which includes the customer's balances along with each virtual currency's metadata.
+
 <RCCodeBlock
   tabs={[
     {
@@ -169,8 +169,22 @@ import fetchVCBalancesSwift from "@site/code_blocks/virtual-currency/vc-balance-
 />
 
 :::warning VirtualCurrencies does not update automatically when balance changes
-When a customer's balance is updated from your backend, the VirtualCurrencies object remains cached and is not automatically updated. In order to get the updated balance, you need to call `Purchases/invalidateVirtualCurrenciesCache()` and fetch the VirtualCurrencies object again.
+When a customer's balance is updated from your backend, the `VirtualCurrencies` object remains cached and is not automatically updated. To get the updated balance, you need to call `Purchases.shared.invalidateVirtualCurrenciesCache()` and fetch the `VirtualCurrencies` object again.
 :::
+
+You may directly access the cached virtual currencies using the `cachedVirtualCurrencies` property. This is helpful for rendering UI immediately, or for displaying virtual currencies when there is no network connection. Keep in mind that this value is cached and isn't guaranteed to be up to date.
+
+import cachedVirtualCurrenciesSwift from "@site/code_blocks/virtual-currency/cached-virtual-currencies.swift?raw";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "swift",
+      content: cachedVirtualCurrenciesSwift,
+      name: "Swift",
+    },
+  ]}
+/>
 
 ##### Android, React Native, and Flutter
 
