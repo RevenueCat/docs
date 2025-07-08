@@ -107,14 +107,9 @@ When running experiments, it's challenging to know whether performance differenc
 Chance to Win helps you make informed decisions about when to end your experiment. Many developers consider 95% Chance to Win sufficient to declare a winner, but the right threshold depends on what you're testing and your risk tolerance. For example, you may opt for a higher Chance to Win when deciding on a high-stakes price increase than a lower-stakes paywall copy change. 
 
 Chance to Win is currently available for the following metrics: 
-* Initial conversions
 * Initial conversion rate
-* Trials started
-* Trials converted
 * Trial conversion rate
-* Paid customers
 * Conversion to paying
-* Active subscribers
 
 These calculations will appear in the Results section once you've collected enough data to produce reliable results. Use these statistical indicators to make confident decisions about when to end your experiment and decide on a winner.
 
