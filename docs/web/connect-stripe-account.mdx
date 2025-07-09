@@ -6,41 +6,72 @@ excerpt: Instructions to connect your apps to one or more Stripe accounts
 hidden: false
 ---
 
-In order to configure [Web Billing](/web/web-billing/overview) or [Stripe](/web/integrations/stripe) apps, you will need to connect to your Stripe account first.
+In order to configure [RevenueCat Web Billing](/web/web-billing/overview) or the [Stripe Billing integration](/web/integrations/stripe), you will need to connect to your Stripe account first.
 
-Log into [RevenueCat](https://app.revenuecat.com/settings/account) and click the _Connect Stripe account_ button in your account settings.
+:::info Project owner must connect with Stripe
+Only the owner of the RevenueCat project can connect a Stripe account. [Collaborator](/projects/collaborators) roles aren't able to add or remove a Stripe connection.
+:::
 
-Install the RevenueCat Stripe App either by creating a new account with Stripe or sign in with your existing one. Make sure that the correct account is selected at the top right corner of the screen.
+### Install the RevenueCat Stripe App from the Stripe App Marketplace
+
+Log into the RevenueCat dashboard and click the _Connect Stripe account_ button in your [account settings](https://app.revenuecat.com/settings/account).
+
+Install the RevenueCat App, either by creating a new account with Stripe or sign in with your existing one. Make sure that the correct account is selected at the top right corner of the screen.
 
 ![](/docs_images/web/connect-stripe-account/stripe-account-selection.png)
 
 ![](/docs_images/web/connect-stripe-account/stripe-app-install.png)
 
-Finalize setting up the connection between Stripe and RevenueCat in the RevenueCat Stripe App.
+### Connect your RevenueCat account to the RevenueCat Stripe app
+
+Click on _View Stripe app settings_ and sign in with RevenueCat, from within the Stripe App:
 
 ![](/docs_images/web/connect-stripe-account/stripe-app-settings.png)
 
 ![](/docs_images/web/connect-stripe-account/stripe-app-sign-in-to-rc.png)
 
-After this you should be able to see the connected account listed in your RevenueCat account page (you may need to refresh the page).
+After this, the connected Stripe account should be listed in your RevenueCat account settings page (you may need to refresh the page):
 
 ![](/docs_images/web/connect-stripe-account/stripe-account-connected.png)
 
 :::info Stripe app permissions
-RevenueCat only requests the permissions from Stripe found [here](https://marketplace.stripe.com/apps/revenuecat). These permissions are necessary for RevenueCat to interact with Stripe and track the purchases of your app. If the RevenueCat Stripe App is uninstalled, all the permissions are revoked and RevenueCat will not be able to track your app's purchases any more.
+RevenueCat only requests the permissions from Stripe found [here](https://marketplace.stripe.com/apps/revenuecat). These permissions are necessary for RevenueCat to interact with Stripe and track the purchases of your app. If the RevenueCat Stripe App is uninstalled, all permissions are revoked and RevenueCat will no longer be able to track your app's purchases or interact with your Stripe account.
 :::
 
-:::info Project owner must connect with Stripe
-Only the owner of the RevenueCat project can connect a Stripe account for their apps - no [collaborators](/projects/collaborators) will be able to add or remove a Stripe connection.
-:::
-
-After you connect to your Stripe account, make sure that you select the account in your app configuration page:
+After you connect your Stripe account, make sure that you select the correct account in your the platform configuration page:
 
 ![](/docs_images/web/connect-stripe-account/configure-stripe-account-in-app-config.png)
 
 :::info Connect to more than one Stripe Account
 You can connect to multiple Stripe Accounts by repeating the steps described above. Make sure that you are signed in to the correct account in Stripe dashboard every time you follow the steps. Then you can assign different accounts to each of your Stripe or Web Billing apps in the apps' configuration pages.
 :::
+
+## Working with Stripe Test Mode & Sandboxes
+
+Stripe currently has two options for testing in a sandbox environment:
+
+1. Test mode
+2. [Sandboxes](https://docs.stripe.com/sandboxes)
+
+Sandboxes are newer and generally more flexible, and work as completely isolated test environments. You can see comparisons between the two [here](https://docs.stripe.com/testing-use-cases).
+
+:::info access to test mode limited
+If your Stripe account is new and you have not yet completed your account verification, you may not have access to test mode. We anticipate that test mode will eventually be deprecated, with sandboxes being the only test environments in the future.
+:::
+
+### Stripe test mode in RevenueCat
+
+If you're connecting Stripe to use with RevenueCat Web Billing, and you have access to test mode in your Stripe account:
+
+- RevenueCat will automatically use Stripe's test mode for sandbox web purchase links and web SDK purchases
+- You only need to create a single Web Billing platform in the RevenueCat dashboard
+- You should use Stripe's [test cards](https://docs.stripe.com/testing) in any RevenueCat sandbox purchase
+
+### Stripe sandboxes in RevenueCat
+
+To use Stripe sandboxes with RevenueCat Web Billing:
+
+- You should create two Web Billing platforms in the RevenueCat dashboard — one for production, and one for a sandbox connection
 
 ## Next steps
 
