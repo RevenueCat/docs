@@ -67,11 +67,21 @@ If you're connecting Stripe to use with RevenueCat Web Billing, and you have acc
 - You only need to create a single Web Billing platform in the RevenueCat dashboard
 - You should use Stripe's [test cards](https://docs.stripe.com/testing) in any RevenueCat sandbox purchase
 
+:::info Accounts without live mode access
+If your connected Stripe account doesn't have access to live mode, only RevenueCat sandbox purchases can be made (only sandbox API keys and web purchase links will be available)
+:::
+
 ### Stripe sandboxes in RevenueCat
 
-To use Stripe sandboxes with RevenueCat Web Billing:
+You can connect Stripe sandbox accounts to RevenueCat and use them to test purchases. Since sandboxes function as standalone accounts, you'll need to install the RevenueCat Stripe app in each sandbox you wish to use.
 
-- You should create two Web Billing platforms in the RevenueCat dashboard — one for production, and one for a sandbox connection
+To use a Stripe sandbox for testing in RevenueCat Web Billing:
+
+1. Switch to the sandbox you wish to connect to RevenueCat
+1. Install the [RevenueCat app](https://marketplace.stripe.com/apps/revenuecat) from the Stripe Marketplace
+1. After installation, go to the app settings and connect your RevenueCat account
+1. You will need to **create two Web Billing platforms** in the RevenueCat dashboard — one for production, and one for the sandbox connection (we recommend naming them accordingly)
+1. In the billing settings for each platform, make sure the correct Stripe account connection is selected for each one
 
 ## Next steps
 
