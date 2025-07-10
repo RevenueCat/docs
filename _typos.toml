@@ -11,10 +11,12 @@ extend-ignore-identifiers-re = [
 [default.extend-identifiers]
 
 [default.extend-words]
+JOD = "JOD"
 
 [files]
 extend-exclude = [
   "static/images/*",
+  "static/docs_images/*",
   "openapi-spec/*",
   "code_blocks/tools/customer-center-localization.json"
 ]

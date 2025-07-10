@@ -36,5 +36,3 @@ For each period, we measure:
 | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Is a trial that has been cancelled still considered active? | Yes, as long as the trial has not yet expired, it is considered active.                                                                                                                                                                           |
 | At what point is a trial considered expired?                | A trial for a subscription without a grace period is considered expired once its next renewal date has passed without a successful renewal. If a grace period is offered, the end of that grace period is considered the trial’s expiration date. |
-
-![](/images/e5be9bd-ActiveTrialsMvmt_70c2b81757b335bd535c6f65717d6d53.png "ActiveTrialsMvmt.png")

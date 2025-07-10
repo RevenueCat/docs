@@ -7,7 +7,7 @@ hidden: false
 
 Subscribe to a weekly recap of your key experiment success metrics delivered right to your inbox every Monday for each experiment you've had running in the last week.
 
-![Screenshot](/images/experiment_results_summary_example.png)
+![Screenshot](/docs_images/experiments/v1/experiment_results_summary_example.png)
 
 ## How can I subscribe to Experiment Results Summaries?
 
@@ -15,11 +15,11 @@ Subscribe to a weekly recap of your key experiment success metrics delivered rig
 2. Open the **Notifications** option where you'll see the **Experiment Results Summaries** section
 3. Select the Project's you want to receive Experiment Results Summaries for, and click **Update** to save your changes
 
-:::info
+:::info Verify your email address
 You must first verify your email address with us in order to receive Experiment Results Summaries.
 :::
 
-![Screenshot](/images/Experiment-Results-Account-Settings.png)
+![Screenshot](/docs_images/experiments/v1/experiment-results-summary.png)
 
 ## What will be included in my Experiment Results Summaries?
 

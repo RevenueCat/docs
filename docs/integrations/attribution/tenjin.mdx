@@ -37,8 +37,8 @@ Therefore, Google's Advertising ID acts as the primary device identifier for And
 
 These properties can be set manually, like any other [Customer Attributes](/customers/customer-attributes), or through the helper method `collectDeviceIdentifiers()` and `setTenjinAnalyticsInstallationID()`.
 
-import swiftContent from "!!raw-loader!@site/code_blocks/integrations/attribution/tenjin_1.swift";
-import kotlinContent from "!!raw-loader!@site/code_blocks/integrations/attribution/tenjin_2.kt";
+import swiftContent from "@site/code_blocks/integrations/attribution/tenjin_1.swift?raw";
+import kotlinContent from "@site/code_blocks/integrations/attribution/tenjin_2.kt?raw";
 
 <RCCodeBlock
   tabs={[
@@ -52,8 +52,7 @@ import kotlinContent from "!!raw-loader!@site/code_blocks/integrations/attributi
 - iOS version 5.8.0+
 - Android version 8.10.0+
 - React Native version 8.2.7+
-- Flutter version 8.2.2+
-- KMP version 1.3.2+13.9.0+
+- Flutter version 8.9.0+
 
 You should make sure to call `collectDeviceIdentifiers()` after the _Purchases SDK_ is configured, and before the first purchase occurs. It's safe to call this multiple times, as only the new/updated values will be sent to RevenueCat. If the Tenjin ID is not set, events will be sent with only the platform-specific advertising identifier.
 
@@ -65,7 +64,7 @@ If you are requesting the App Tracking permission through ATT to access the IDFA
 The AdSupport framework is required to access the IDFA parameter on iOS. Don't forget to import this into your project.
 :::
 
-![](/images/caf9cda-Screen_Shot_2020-09-14_at_7.09.36_PM_739bc6ccef43416570bf51e527f4e0fc.png "Screen Shot 2020-09-14 at 7.09.36 PM.png")
+![Import AdSupport Framework](/docs_images/integrations/attribution/import-adsupport-framework.png)
 
 ### (Optional) Send campaign data to RevenueCat
 
@@ -89,18 +88,15 @@ Make sure to remove all client side tracking of revenue. Since RevenueCat will b
 
 After you've set up the _Purchases SDK_ to send attribution data from Tenjin to RevenueCat, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'Tenjin' from the Integrations menu
 
-![](/images/869369c-app.revenuecat.com_projects_85ff18c7_collaborators_1_dfeb33eb91f8f01e9d571475bf17dab2.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **Tenjin** from the integrations menu
-3. Add the Tenjin SDK key(s) for your iOS app and/or Android app if available, which can be accessed in the applicable app's settings; or add your universal SDK key if app-specific keys are not available (only applicable for legacy Tenjin customers).
-4. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
-
-![Tenjin configuration screen](/images/f79b026-app.revenuecat.com_projects_85ff18c7_integrations_branch_5_1e725f7679ec21ca22402a8a19cf0b9e.png)
+2. Add the Tenjin SDK key(s) for your iOS app and/or Android app if available, which can be accessed in the applicable app's settings; or add your universal SDK key if app-specific keys are not available (only applicable for legacy Tenjin customers).
+3. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
 :::info About revenue discrepancies
-RevenueCat must have the IDFA or ADID of the user at the time an event occurs in order to send it to Tenjin. This can result in drastically lower revenue metrics in Tenjin vs. RevenueCat since some users opt-out of ad tracking or don't have IDFA/ADID, which means some of your total revenue won't be tracked by Tenjin. Don't be alarmed! If events are being sent successfully in testing and for some of your users in production, then the integration is working as intended to pair subscription revenue with campaign performance.
+RevenueCat must have the IDFA or ADID attribute of the user set at the time an event occurs in order to send that event to Tenjin. If IDFA access has not been granted, then the attribute should be set to the iOS default provided value of `00000000-0000-0000-0000-000000000000`. If neither of these attributes are set, events won't be delivered, which means some of your total revenue won't be tracked by Tenjin. If events are being sent successfully in testing and for your users in production who have either of those attributes set, then the integration is working as intended to pair subscription revenue with campaign performance.
 :::
 
 :::success You've done it!

@@ -9,13 +9,15 @@ Promotional Offers allow developers to apply custom pricing and trials to new cu
 
 The Customer Center will automatically show offers based on specific user actions. By default we have defined it for cancellations but it can be modified to any of the defined paths. Here's how it works:
 
-![Promotional Offers Configuration](/images/customer-center-promo-offers-config.png)
+![Promotional Offers Configuration](/docs_images/customer-center/customer-center-promo-offers-config.png)
 
 - **Cancellation Retention Discount**: By default, for responses in the cancellation survey, RevenueCat will use a promotional offer that you can customize in the Offers tab of the Customer Center settings.
 
 This setup enables RevenueCat to automatically match the right offer based on a user's actions, providing a seamless experience when user tries to cancel their active subscription.
 
 The SDK will automatically match the right offer based on a user's actions and its active subscription. If the SDK cannot locate a matching promotional offer id for the currently active user's subscription, it will bypass the survey and proceed with the user's requested action—either canceling or refunding the subscription.
+
+Google Play promotional offers can be applied to the same base plan the user is currently subscribed to, or to a different base plan within the same subscription. For example, you can offer a discounted annual plan to a user who is currently subscribed to a monthly plan.
 
 **These promotional offers must be created in App Store Connect and Google Play Store in order to be shown to customers**
 
@@ -37,7 +39,7 @@ Don't forget to add both tags:
 - `rc-ignore-offer`: Prevents the offer from being shown to users with older SDK versions that don't support the Customer Center
 :::
 
-![Play Store Offer Setup](/images/customer-center/play-store-offer.png)
+![Play Store Offer Setup](/docs_images/customer-center/play-store-offer.png)
 
 [For more information about how to setup promotional offers in Google Play Console here.](/subscription-guidance/subscription-offers/google-play-offers)
 
@@ -47,7 +49,7 @@ After creating a promotional offer for a product in Google Play Console, it need
 
 For example, if you just created an offer with id `monthly_subscription_cancel_offer` in Google Play Console for your monthly subscription product, edit the `Cancellation Retention Discount` offer in the Offers tab of the Customer Center settings, and assign the id of the promotional offer id to that monthly subscription product.
 
-![Assigning a Google promotional offer](/images/customer-center-assign-promo-offer.png)
+![Assigning a Google promotional offer](/docs_images/customer-center/customer-center-assign-promo-offer.png)
 
 You may also customize your configuration to provide other offers, or provide them when the user performs other actions. [Learn more about configuring the Customer Center.](/tools/customer-center/customer-center-configuration)
 

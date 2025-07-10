@@ -17,26 +17,22 @@ In RevenueCat, virtual currencies are defined at the project level. You can conf
 
 1. Click the **“Virtual Currencies”** option in the **“Product catalog”** of your project sidebar in RevenueCat
 
-![](/images/virtual-currency/vc-sidebar.png)
+![](/docs_images/virtual-currency/vc-sidebar.png)
 
-2. Select **“+ New” button** in the top right corner. The **“New Currency”** form will appear. Enter a code and a name for your currency.
+2. Select **“+ New virtual currency”** button in the top right corner. Enter a code and a name for your currency.
 
 - **Code**: This is used across various APIs to identify the virtual currency (e.g: GLD)
 - **Icon** (_optional_): Choose an icon to visually represent this currency in the dashboard
 - **Name**: This should be a readable name for the currency that you're creating (e.g: GOLD)
 - **Description** (_optional_): A description of what this currency represents or how it is used (e.g: Can be used to purchase in-app items)
 
-![](/images/virtual-currency/vc-setup.png)
+![](/docs_images/virtual-currency/vc-setup.png)
 
-3. You can optionally associate products with your new currency. Every time customers purchase one of these products, the defined amount of virtual currency will be added to their balance. Click **"NEW ASSOCIATED PRODUCT"**, pick a product and fill in the amount.
+3. You can optionally associate products with your new currency. Every time customers purchase one of these products, the defined amount of virtual currency will be added to their balance. Click **Add associated product**, pick a product and fill in the amount.
 
-![](/images/virtual-currency/vc-products.png)
+![](/docs_images/virtual-currency/vc-products.png)
 
 You can associate as many products as you want with your virtual currency and you can also associate a product with more than one virtual currency, meaning once it's purchased, multiple types of virtual currencies are added to the customer's balance. If you have not yet configured any products, see our [documentation](/offerings/products/setup-index) for further instructions.
-
-:::warning Only non-subscription products are supported
-Currently, only [non-subscription products](/platform-resources/non-subscriptions), such as consumables, are supported for currency grants. When a customer purchases a non-subscription product linked to a virtual currency, we will automatically grant the corresponding currency amount to their balance. Subscription-based products are not yet supported for this functionality.
-:::
 
 4. Remember to select "SAVE" in the upper right-hand corner. Repeat this process if to create more than one currency.
 
@@ -44,21 +40,13 @@ Currently, only [non-subscription products](/platform-resources/non-subscription
 
 Once your customer purchase the associated products they will get the defined amount of your virtual currency. You can inspect the virtual currency balances of your customer in the right side-panel of the customer page.
 
-![](/images/virtual-currency/vc-balance.png)
-
 ## SDK Beta Installation
 
 SDK support for virtual currencies is currently in beta, and as such requires the usage of a beta build. Please note that the virtual currency APIs in these betas are subject to change without warning in future releases. The beta virtual currency features are currently available in the native iOS and Android SDKs.
 
 ### iOS
 
-Use the `virtual-currency-beta` branch of the purchases-ios SDK to access the virtual currency beta features. If you’re using Swift Package Manager, you can do this in Xcode like so:
-
-![](/images/virtual-currency/ios-spm-virtual-currency-beta-branch-configuration.png)
-
-If you're using CocoaPods, set your `purchases-ios` version to the most recent `vc-beta` version in your Podfile:
-
-[![Latest Virtual Currency iOS Beta Release](https://img.shields.io/github/release/RevenueCat/purchases-ios.svg?filter=*vc-beta*&style=flat)](https://github.com/RevenueCat/purchases-ios/releases)
+Virtual currency functionality is available in the native iOS SDK in versions 5.32.0 and above.
 
 ### Android
 
@@ -74,7 +62,7 @@ implementation 'com.revenuecat.purchases:purchases:8.14.2-vc-beta.1'
 
 When you use the beta virtual currency features, you’ll need to annotate your function/class with the `@OptIn(ExperimentalPreviewRevenueCatPurchasesAPI::class)` annotation:
 
-import androidExperimentalAPIAnnotationExample from "!!raw-loader!@site/code_blocks/virtual-currency/vc-android-experimental-api-annotation-example.kt";
+import androidExperimentalAPIAnnotationExample from "@site/code_blocks/virtual-currency/vc-android-experimental-api-annotation-example.kt?raw";
 
 <RCCodeBlock
   tabs={[
@@ -109,7 +97,7 @@ When installing the purchases SDK in your app, use the latest virtual currencies
 # pubspec.yaml
 
 dependencies:
-  purchases_flutter: '8.7.0-vc-beta.1'
+  purchases_flutter: "8.7.0-vc-beta.1"
 ```
 
 ## Usage
@@ -118,7 +106,7 @@ dependencies:
 
 The endpoints available for virtual currency are supported through our Developer API (2.0.0). You will need a secret key to access it. Make sure that your key at least has Read & Write permissions for Customer Purchases Configuration. See our [documentation](<https://www.revenuecat.com/docs/api-v2#tag/Overview-(v2)/Authentication>) for more details on how you can access RevenueCat’s Developer API.
 
-![](/images/virtual-currency/api-secret-key.png)
+![](/docs_images/virtual-currency/api-secret-key.png)
 
 #### Rate limits
 
@@ -138,7 +126,7 @@ The maximum amount of a single virtual currency that a customer can own must be 
 
 The following endpoint allows you to retrieve a customer's current balance from your backend:
 
-import content4 from "!!raw-loader!@site/code_blocks/virtual-currency/balance.curl";
+import content4 from "@site/code_blocks/virtual-currency/balance.curl?raw";
 
 <RCCodeBlock
   tabs={[
@@ -151,7 +139,7 @@ import content4 from "!!raw-loader!@site/code_blocks/virtual-currency/balance.cu
 
 The response will include the balances for all the virtual currencies that the customer has.
 
-import content5 from "!!raw-loader!@site/code_blocks/virtual-currency/balance-response.json";
+import content5 from "@site/code_blocks/virtual-currency/balance-response.json?raw";
 
 <RCCodeBlock
   tabs={[
@@ -164,12 +152,11 @@ import content5 from "!!raw-loader!@site/code_blocks/virtual-currency/balance-re
 
 #### From the SDK
 
-If you're using the virtual currency SDK betas, you can fetch the virtual currency balances from the [CustomerInfo](https://www.revenuecat.com/docs/customers/customer-info) object in the SDK:
+##### iOS
 
-import fetchVCBalancesSwift from "!!raw-loader!@site/code_blocks/virtual-currency/vc-balance-sdk-ios.swift";
-import fetchVCBalancesKotlin from "!!raw-loader!@site/code_blocks/virtual-currency/vc-balance-sdk-android.kt";
-import fetchVCBalancesReactNative from "!!raw-loader!@site/code_blocks/virtual-currency/vc-balance-sdk-react-native.ts";
-import fetchVCBalancesFlutter from "!!raw-loader!@site/code_blocks/virtual-currency/vc-balance-sdk-flutter.dart";
+import fetchVCBalancesSwift from "@site/code_blocks/virtual-currency/vc-balance-sdk-ios.swift?raw";
+
+You can use the `virtualCurrencies()` function to retrieve a customer's balance. The function returns a `VirtualCurrencies` object, which includes the customer's balances along with each virtual currency's metadata.
 
 <RCCodeBlock
   tabs={[
@@ -178,6 +165,37 @@ import fetchVCBalancesFlutter from "!!raw-loader!@site/code_blocks/virtual-curre
       content: fetchVCBalancesSwift,
       name: "Swift",
     },
+  ]}
+/>
+
+:::warning VirtualCurrencies does not update automatically when balance changes
+When a customer's balance is updated from your backend, the `VirtualCurrencies` object remains cached and is not automatically updated. To get the updated balance, you need to call `Purchases.shared.invalidateVirtualCurrenciesCache()` and fetch the `VirtualCurrencies` object again.
+:::
+
+You may directly access the cached virtual currencies using the `cachedVirtualCurrencies` property. This is helpful for rendering UI immediately, or for displaying virtual currencies when there is no network connection. Keep in mind that this value is cached and isn't guaranteed to be up to date.
+
+import cachedVirtualCurrenciesSwift from "@site/code_blocks/virtual-currency/cached-virtual-currencies.swift?raw";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "swift",
+      content: cachedVirtualCurrenciesSwift,
+      name: "Swift",
+    },
+  ]}
+/>
+
+##### Android, React Native, and Flutter
+
+If you're using the virtual currency SDK betas for Android, React Native, and Flutter, you can fetch the virtual currency balances from the [CustomerInfo](https://www.revenuecat.com/docs/customers/customer-info) object in the SDK:
+
+import fetchVCBalancesKotlin from "@site/code_blocks/virtual-currency/vc-balance-sdk-android.kt?raw";
+import fetchVCBalancesReactNative from "@site/code_blocks/virtual-currency/vc-balance-sdk-react-native.ts.txt?raw";
+import fetchVCBalancesFlutter from "@site/code_blocks/virtual-currency/vc-balance-sdk-flutter.dart?raw";
+
+<RCCodeBlock
+  tabs={[
     {
       type: "kotlin",
       content: fetchVCBalancesKotlin,
@@ -204,7 +222,7 @@ When a customer's balance is updated from your backend, the CustomerInfo object 
 
 You can deposit or spend currency by calling the virtual currency transactions Developer API endpoint from the backend of your app:
 
-import content1 from "!!raw-loader!@site/code_blocks/virtual-currency/transactions.curl";
+import content1 from "@site/code_blocks/virtual-currency/transactions.curl?raw";
 
 <RCCodeBlock
   tabs={[
@@ -219,8 +237,8 @@ The example request will deduct 20 GLD and 10 SLV from the customer's balance. U
 
 Note that sufficient balances of both currency types are required for the transaction to succeed. If not, the transaction will fail with HTTP 422 error and no virtual currency will be deducted.
 
-import content2 from "!!raw-loader!@site/code_blocks/virtual-currency/transaction-response.json";
-import failed_adjustment from "!!raw-loader!@site/code_blocks/virtual-currency/transaction-adjustment-failed.json";
+import content2 from "@site/code_blocks/virtual-currency/transaction-response.json?raw";
+import failed_adjustment from "@site/code_blocks/virtual-currency/transaction-adjustment-failed.json?raw";
 
 <RCCodeBlock
   tabs={[
@@ -239,7 +257,7 @@ import failed_adjustment from "!!raw-loader!@site/code_blocks/virtual-currency/t
 
 Multiple virtual currency types can be adjusted in a single transaction. Deductions and additions can also be combined. For example, you can execute the conversion of 50 GLD to 200 SLV with the following transaction:
 
-import content3 from "!!raw-loader!@site/code_blocks/virtual-currency/transaction-adjustment.json";
+import content3 from "@site/code_blocks/virtual-currency/transaction-adjustment.json?raw";
 
 <RCCodeBlock
   tabs={[
@@ -250,13 +268,25 @@ import content3 from "!!raw-loader!@site/code_blocks/virtual-currency/transactio
   ]}
 />
 
-## RevenueCat's Firebase Extension integration
+## Events
+
+RevenueCat provides event tracking for virtual currency transactions, allowing you to monitor and respond to balance changes in real-time through webhooks.
+
+Virtual currency transactions appear in the [Customer History](/dashboard-and-metrics/customer-history) timeline and trigger `VIRTUAL_CURRENCY_TRANSACTION` webhook events for the entire subscription lifecycle whenever there are currency balance adjustments.
+
+:::info Adjustments via API are view-only
+Virtual currency adjustments made through the [API](/offerings/virtual-currency#depositing-or-spending) will appear in the customer timeline, but cannot be clicked for additional details. These adjustments are displayed for reference only and do not generate webhook events.
+:::
+
+For more information about virtual currency events, including customer timeline events and webhook events, see our [Virtual Currency Events](/offerings/virtual-currency/events) documentation.
+
+### RevenueCat's Firebase Extension integration
 
 If you have the [Firebase Extension integration](/integrations/third-party-integrations/firebase-integration#4-send-customer-information-to-firestore) enabled, RevenueCat will include the customer's virtual currency balance in the dispatched events' payload. Balance changes due to other reasons, such as manual adjustments through our Developer API endpoints **will not** trigger an event.
 
 When an event is dispatched, the Firebase Extension event payload will include a `virtual_currencies` object containing the customer's **total balance** for each currency after the purchase. The below example shows the customer's total balance for "GLD" is 80, while "SLV" is 40.
 
-import firebaseExtensionPayload from "!!raw-loader!@site/code_blocks/virtual-currency/firebase-balance.json";
+import firebaseExtensionPayload from "@site/code_blocks/virtual-currency/firebase-balance.json?raw";
 
 <RCCodeBlock
   tabs={[
@@ -279,10 +309,10 @@ It’s fine if your backend provides APIs for your app to initiate virtual curre
 
 See some examples of secure and unsecure backend APIs:
 
-import content9 from "!!raw-loader!@site/code_blocks/virtual-currency/do-1.txt";
-import content10 from "!!raw-loader!@site/code_blocks/virtual-currency/do-not-1.txt";
-import content11 from "!!raw-loader!@site/code_blocks/virtual-currency/do-2.txt";
-import content12 from "!!raw-loader!@site/code_blocks/virtual-currency/do-not-2.txt";
+import content9 from "@site/code_blocks/virtual-currency/do-1.txt?raw";
+import content10 from "@site/code_blocks/virtual-currency/do-not-1.txt?raw";
+import content11 from "@site/code_blocks/virtual-currency/do-2.txt?raw";
+import content12 from "@site/code_blocks/virtual-currency/do-not-2.txt?raw";
 
 | Do ✅                                                                                                                                                                                                             | Do not! ❌                                                                                                                                                                   |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -311,7 +341,7 @@ With this you will ensure that requests that could trigger virtual currency tran
 
 As a common practice, you may implement retries to handle network or other errors when submitting a Virtual Currency transaction. If you want to ensure that your transaction will only be executed once, even if your request reaches our server more than one times, you can make use of our `Idempotency-Key` HTTP header. Make sure that you pass an identifier that uniquely identifies your transaction (e.g. a UUID) and it will be guaranteed that your transaction will be executed at most one time.
 
-import idempotencyKeyExample from "!!raw-loader!@site/code_blocks/virtual-currency/idempotency-key.curl";
+import idempotencyKeyExample from "@site/code_blocks/virtual-currency/idempotency-key.curl?raw";
 
 <RCCodeBlock
   tabs={[

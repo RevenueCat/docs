@@ -7,12 +7,12 @@ hidden: false
 
 These are some representative samples of webhooks you might receive from RevenueCat. Keep in mind that webhooks can include additional fields to what's shown here.
 
-import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_1.json";
-import renewalContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_2.json";
-import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_3.json";
-import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_4.json";
-import nonRenewingPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_5.json";
-import subscriptionPausedContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_6.json";
+import initialPurchaseContent from "@site/code_blocks/integrations/webhooks/sample-events_1.json?raw";
+import renewalContent from "@site/code_blocks/integrations/webhooks/sample-events_2.json?raw";
+import cancellationContent from "@site/code_blocks/integrations/webhooks/sample-events_3.json?raw";
+import uncancellationContent from "@site/code_blocks/integrations/webhooks/sample-events_4.json?raw";
+import nonRenewingPurchaseContent from "@site/code_blocks/integrations/webhooks/sample-events_5.json?raw";
+import subscriptionPausedContent from "@site/code_blocks/integrations/webhooks/sample-events_6.json?raw";
 
 <RCCodeBlock
   tabs={[
@@ -33,13 +33,13 @@ import subscriptionPausedContent from "!!raw-loader!@site/code_blocks/integratio
   ]}
 />
 
-import billingIssueContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_7.json";
-import expirationContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_13.json";
-import transferContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_8.json";
-import refundContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_9.json";
-import refundReversedContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-event-refund-reversed.json";
-import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_10.json";
-import subscriptionExtendedContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_14.json";
+import billingIssueContent from "@site/code_blocks/integrations/webhooks/sample-events_7.json?raw";
+import expirationContent from "@site/code_blocks/integrations/webhooks/sample-events_13.json?raw";
+import transferContent from "@site/code_blocks/integrations/webhooks/sample-events_8.json?raw";
+import refundContent from "@site/code_blocks/integrations/webhooks/sample-events_9.json?raw";
+import refundReversedContent from "@site/code_blocks/integrations/webhooks/sample-event-refund-reversed.json?raw";
+import productChangeContent from "@site/code_blocks/integrations/webhooks/sample-events_10.json?raw";
+import subscriptionExtendedContent from "@site/code_blocks/integrations/webhooks/sample-events_14.json?raw";
 
 <RCCodeBlock
   tabs={[
@@ -59,8 +59,8 @@ import subscriptionExtendedContent from "!!raw-loader!@site/code_blocks/integrat
 
 Here are some events you will see regarding trials:
 
-import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_11.json";
-import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-events_12.json";
+import trialStartedContent from "@site/code_blocks/integrations/webhooks/sample-events_11.json?raw";
+import trialCancelledContent from "@site/code_blocks/integrations/webhooks/sample-events_12.json?raw";
 
 <RCCodeBlock
   tabs={[
@@ -71,20 +71,38 @@ import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/w
 
 When a Web Billing invoices is issued, a INVOICE_ISSUANCE webhook is created:
 
-import invoiceIssuanceContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-event-invoice-issuance.json";
+import invoiceIssuanceContent from "@site/code_blocks/integrations/webhooks/sample-event-invoice-issuance.json?raw";
 
 <RCCodeBlock
   tabs={[
-    { type: "json", content: invoiceIssuanceContent, name: "Invoice Issued" }
+    { type: "json", content: invoiceIssuanceContent, name: "Invoice Issued" },
   ]}
 />
 
 In cases when the stores are down, RevenueCat may grant a [temporary entitlement](/integrations/webhooks/event-types-and-fields#event-types) until the stores are operational.
 
-import temporaryEntitlementGrantContent from "!!raw-loader!@site/code_blocks/integrations/webhooks/sample-event-temporary-entitlement-grant.json";
+import temporaryEntitlementGrantContent from "@site/code_blocks/integrations/webhooks/sample-event-temporary-entitlement-grant.json?raw";
 
 <RCCodeBlock
   tabs={[
-    { type: "json", content: temporaryEntitlementGrantContent, name: "Temporary Entitlement Grant" }
+    {
+      type: "json",
+      content: temporaryEntitlementGrantContent,
+      name: "Temporary Entitlement Grant",
+    },
+  ]}
+/>
+
+When a virtual currency transaction occurs, a VIRTUAL_CURRENCY_TRANSACTION webhook is created:
+
+import virtualCurrencyTransactionContent from "@site/code_blocks/integrations/webhooks/sample-events_15.json?raw";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "json",
+      content: virtualCurrencyTransactionContent,
+      name: "Virtual Currency Transaction",
+    },
   ]}
 />

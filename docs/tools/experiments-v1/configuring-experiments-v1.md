@@ -14,22 +14,41 @@ You should also [test the Offerings you've chosen](https://www.revenuecat.com/do
 
 ## Setting up a new experiment
 
-First, navigate to your Project. Then, click on **Experiments** in the **Monetization tools** section.
+First, navigate to your Project. Then, click on **Experiments** in the project sidebar.
 
-![Navigate](/images/c7867f1-Screenshot_2024-01-29_at_10.45.53_AM_17e0a4c0a6bcff7244ee397897c06ca4.png "Navigate")
+You have two options for creating a new experiment:
 
-Select **+ New** to create a new experiment.
+### Creating a new experiment from scratch
 
-![Creating a new experiment](../../../static/images/create_new_experiment_latest.png "Creating a new experiment")
+Select **+ New** to create a new experiment from scratch.
 
-:::info Setting up Offering(s) for your treatment
+:::info Set up offering(s) for your experiment
 
-If you've not setup multiple Offerings before, you'll be prompted to do so now, since you'll need at least 2 available Offerings to run an experiment.
+If you've not setup multiple offerings yet, you'll be prompted to do so now, since you'll need at least 2 available offerings to run an experiment.
 
-The treatment Offering(s) represents the hypothesis you're looking to test with your experiment (e.g. higher or lower priced products, products with trials, etc).
-
-For App Store apps, we recommend setting up new products to test as a new Subscription Group so that customers who are offered those products through Experiments will see only that same set of products to select from their subscription settings.
+For **App Store** apps, we recommend setting up new products to test as a new **Subscription Group** in App Store Connect so that customers who are offered those products through Experiments will see only that same set of products to select from their subscription settings.
 :::
+
+### Duplicating an existing experiment
+
+You can also create a new experiment by duplicating the configuration of a previous experiment. This is useful when you want to run a similar test with slight modifications or test the same configuration on a different audience.
+
+To duplicate an experiment:
+
+1. Find the experiment you want to duplicate in your experiments list
+2. Click on the **context menu** (three dots) next to the experiment
+3. Select **Duplicate** from the menu
+4. A new experiment will be created with the same configuration as the original
+5. You can then modify any settings as needed before starting the duplicated experiment
+
+:::tip When to use duplicate
+Duplicating is particularly useful when you want to:
+- Re-run a successful experiment on a different audience or time period
+- Test slight variations of a previous experiment configuration
+- Quickly set up similar experiments without manually configuring all settings again
+:::
+
+Regardless of which method you choose, you'll need to configure the experiment settings as described below.
 
 ## Required fields
 
@@ -52,7 +71,7 @@ If you've not setup Placements yet, [start here](https://www.revenuecat.com/docs
 
 With Experiments, you can create A/B tests that serve unique Offerings at each Placement to your Control group and Treatment group.
 
-![Adding Placements to Experiments](../../../static/images/placements.png "Adding Placements to Experiments")
+![Adding Placements to Experiments](/docs_images/experiments/v1/experiments-placements.png)
 
 With Placements, your customers will be served an array of Offerings depending on the paywall location they visit, and with Experiments you can A/B test that experience by changing any element of that array.
 
@@ -87,8 +106,6 @@ Once done, select **CREATE EXPERIMENT** to complete the process.
 
 When viewing a new experiment, you can start, edit, or delete the experiment.
 
-![](/images/3e6f895-Screen_Shot_2022-10-20_at_10.30.15_AM_5e45668dae6b1feb452b9cbc844b8c00.png "Screen Shot 2022-10-20 at 10.30.15 AM.png")
-
 - **Start**: Starts the experiment. Customer enrollment and data collection begins immediately, but results will take up to 24 hours to begin populating.
 - **Edit**: Change the name, enrollment criteria, or Offerings in an experiment before it's been started. After it's been started, only the percent of new customers to enroll can be edited.
 - **Delete**: Deletes the experiment.
@@ -109,7 +126,7 @@ You can use Experiments to run multiple test simultaneously as long as:
 
 If a test that you've created does not meet the above criteria, we'll alert you to that in the Dashboard and you'll be prevented from starting the test, as seen below.
 
-![](/images/6e94d93-Screenshot_2024-01-29_at_11.22.45_AM_ad9a92d744ff985c3e425fa0ab1c46a6.png "Screen Shot 2022-10-20 at 10.30.15 AM.png")
+![Experiments conflict](/docs_images/experiments/v1/experiments-conflict.png)
 
 ### Examples of valid tests to run simultaneously
 
@@ -128,7 +145,7 @@ If a test that you've created does not meet the above criteria, we'll alert you 
 **Scenario #3 -- Multiple tests on partially overlapping audiences**
 
 1. Test A is running against 100% of new customers for your App Store app
-2. Test B, targeting 100% of new customers in Brazil, **cannot** be run because there is partial overlap between the audience of Test and the audience of Test B (new customers using your App Store app in Brazil).
+2. Test B, targeting 100% of new customers in Brazil, **cannot** be run because there is partial overlap between the audience of Test A and the audience of Test B (new customers using your App Store app in Brazil).
    1. To run Test B, either Test A will need to be paused, or the audience of Test B will need to be modified to exclude new customers from the App Store app.
 
 **Scenario #4 -- Multiple tests on >100% of an identical audience**
@@ -151,6 +168,7 @@ When an experiment is running, only the percent of new customers to enroll can b
 | Can I run an experiment targeting different app versions for each app in my project? | No, at this time we don't support setting up an experiment in this way. However, you can certainly create unique experiments for each app, and target them by app version to achieve the same result in independent test. |
 | Can I add multiple Treatment groups to a single test? | No, you cannot add multiple Treatment groups to a single test. However, by running multiple tests on the same audience to capture each desired variant you can achieve the same result. |
 | Can I edit the enrollment criteria of a started experiment? | Before an experiment has been started, all aspects of enrollment criteria can be edited. However, once an experiment has been started, only new customers to enroll can be edited; since editing the audience that an experiment is exposed to would alter the nature of the test. |
-| Can I restart an experiment after it's been stopped? | After you choose to stop an experiment, new customers will no longer be enrolled in it, and it cannot be restarted. If you want to continue a test, create a new experiment and choose the same Offerings as the stopped experiment. _(NOTE: Results for stopped experiments will continue to refresh for 400 days after the experiment has ended)_ |
+| Can I restart an experiment after it's been stopped? | After you choose to stop an experiment, new customers will no longer be enrolled in it, and it cannot be restarted. If you want to continue a test, create a new experiment and choose the same Offerings as the stopped experiment. You can use the **duplicate** feature to quickly recreate the same experiment configuration. _(NOTE: Results for stopped experiments will continue to refresh for 400 days after the experiment has ended)_ |
+| Can I duplicate an experiment? | Yes, you can duplicate any existing experiment from the experiments list using the context menu. This creates a new experiment with the same configuration as the original, which you can then modify as needed before starting. This is useful for running similar tests or follow-up experiments. |
 | What happens to customers that were enrolled in an experiment after it's been stopped? | New customers will no longer be enrolled in an experiment after it's been stopped, and customers who were already enrolled in the experiment will begin receiving the Default Offering if they reach a paywall again. Since we continually refresh results for 400 days after an experiment has been ended, you may see renewals from these customers in your results, since they were enrolled as part of the test while it was running; but new subscriptions started by these customers after the experiment ended and one-time purchases made after the experiment ended will not be included in the results. |
 

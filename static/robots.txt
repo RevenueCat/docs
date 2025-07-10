@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# LLM-specific directives
+# Reference to structured documentation for LLMs
+Sitemap: https://www.revenuecat.com/docs/sitemap.xml
+
+# LLMs.txt file for AI model consumption
+# See: https://www.revenuecat.com/docs/llms.txt 

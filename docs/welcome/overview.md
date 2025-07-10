@@ -22,6 +22,10 @@ target="\_blank">Create an account →</Button>
 
 ## Start implementing
 
+:::info New!
+Check out our new [Playbooks](/playbooks/overview) section for guides and best practices for implementing different monetization models.
+:::
+
 Get started by creating a new project and connecting to a store.
 
 <Button href="/docs/projects/overview">Create a project →</Button>
@@ -36,36 +40,45 @@ Whether you have just one or one million subscribers, you can easily replace you
   title="Entitlements & Subscription Status" 
   subtitle="Ensure customers have correct access even if your entitlement structure is complex." 
   link="/docs/getting-started/entitlements" 
-  emoji="🔑"
+  iconName="key"
+  iconColor="var(--rc-blue-primary)"
 />
 
 <FeatureItem
   title="Paywalls"
   subtitle="Remotely configure your product offering with powerful paywalls."
   link="/docs/tools/paywalls"
-  emoji="💰"
+  iconName="paywall"
+  iconColor="var(--rc-red-primary)"
 />
 
 <FeatureItem
   title="Events & Integrations"
   subtitle="Clean, normalized subscription data at your fingertips and in every system."
   link="/docs/integrations/integrations"
-  emoji="🔌"
+  iconName="integrations"
+  iconColor="var(--rc-blue-primary)"
 />
 
 <FeatureItem
   title="Charts, Metrics, & Data"
   subtitle="Get insights into your business with charts, metrics, and data exports."
   link="/docs/dashboard-and-metrics/overview"
-  emoji="📈"
+  iconName="chart-bar"
+  iconColor="var(--rc-green-primary)"
 />
 
 <FeatureItem
   title="Experiments"
   subtitle="Run A/B tests to find the most effective pricing model."
   link="/docs/tools/experiments-v1"
-  emoji="🧪"
+  iconName="experiment"
+  iconColor="var(--rc-orange-primary)"
 />
+
+:::info LLM-Optimized Documentation
+Our documentation is optimized for large language models. For AI assistants, see our [llms.txt file](/llms.txt) for structured access to key resources.
+:::
 
 ## Not sure where to start?
 

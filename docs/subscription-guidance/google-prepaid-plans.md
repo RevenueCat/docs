@@ -29,11 +29,11 @@ When topping up, customers can purchase any prepaid base plan available from the
 
 This is very similar to how you would create an auto-renewing subscription base plan. You can follow the steps [here](/getting-started/entitlements/android-products) on how to create a subscription in Google Play Console. Once you have that, you will need to add a base plan.
 
-![](/images/19cad72-image_01c0ca9c57914a5a2f233dc310be5c4f.png)
+![](/docs_images/products/google-play/offers/prepaid/new-plan.png)
 
 The plan could be either auto-renewing or prepaid. For the purposes of this guide, we'll walk through the prepaid setup. You will need to set a duration for your plan which varies from 1 day to 1 year, and choose whether or not to allow customers to extend their plan through the Play Store subscription screen.
 
-![](/images/ed0cc07-image_e9c274c181538049ce738741df2da56a.png)
+![](/docs_images/products/google-play/offers/prepaid/new-plan-2.png)
 
 Once you set the pricing for your base plan, click save and then activate.
 
@@ -60,8 +60,8 @@ Since a top-up means that the existing order gets canceled, and a new one is iss
 
 In the example below of a sandbox purchase, a customer bought a prepaid base plan "six-months" under the subscription "josh.prepaid" at 11:27 PM. The original expiration date is 11:42 PM. However, at 11:29, the customer purchased a top-up which resulted in the expiration of the first order, and the creation of a new one with a start time of 11:29 and an expiration time of 11:57 PM (11:42 PM + 15 minutes)
 
-![](/images/775ea5a-image_323e9728322da446f7efcbec6dd5bf54.png)
+![](/docs_images/products/google-play/offers/prepaid/prepaid-events-1.png)
 
-![](/images/5abd4a4-image_66a1ce9a2ebec29dc67816037a3bc436.png)
+![](/docs_images/products/google-play/offers/prepaid/prepaid-events-2.png)
 
-![](/images/5cc4e9d-image_f6e7eeedae9eefc87d449e025b1e4261.png)
+![](/docs_images/products/google-play/offers/prepaid/prepaid-events-3.png)

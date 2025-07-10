@@ -43,7 +43,7 @@ Before integrating the Customer Center in iOS, you need to add the RevenueCatUI 
 
 3. Add `RevenueCat` and `RevenueCatUI` SPM dependency to your project:
 
-![Add paywall](/images/9140485-Screenshot_2023-08-04_at_12.08.07_78343500e565bc1fd0fceaac72486876.png)
+![Add paywall](/docs_images/customer-center/9140485-Screenshot_2023-08-04_at_12.08.07_78343500e565bc1fd0fceaac72486876.png)
 
 ### Using CocoaPods
 
@@ -59,13 +59,13 @@ The CustomerCenterView can be integrated in a few different ways depending on ho
 
 The simplest way to present the CustomerCenterView is using a modal sheet:
 
-import usageViewSheet from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-1-sheet.swift";
+import usageViewSheet from '@site/code_blocks/tools/customer-center-usage-1-sheet.swift?raw';
 
 <RCCodeBlock tabs={[{ type: "swift", content: usageViewSheet, name: "SwiftUI" }]} />
 
 If you prefer a more declarative and reusable approach, you can use the provided view modifier:
 
-import usageModifier from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-2.swift";
+import usageModifier from '@site/code_blocks/tools/customer-center-usage-2.swift?raw';
 
 <RCCodeBlock
 tabs={[{ type: "swift", content: usageModifier, name: "SwiftUI" }]}
@@ -73,7 +73,7 @@ tabs={[{ type: "swift", content: usageModifier, name: "SwiftUI" }]}
 
 For apps already using NavigationStack or NavigationView, CustomerCenterView can be pushed onto your stack:
 
-import usageViewStack from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-1-navigationstack.swift";
+import usageViewStack from '@site/code_blocks/tools/customer-center-usage-1-navigationstack.swift?raw';
 
 <RCCodeBlock tabs={[{ type: "swift", content: usageViewStack, name: "SwiftUI" }]} />
 
@@ -81,7 +81,7 @@ import usageViewStack from "!!raw-loader!@site/code_blocks/tools/customer-center
 
 We've added a way to listen to events that occur within the `CustomerCenterView`:
 
-import customerCenterEvents from "!!raw-loader!@site/code_blocks/tools/customer-center-events.swift";
+import customerCenterEvents from '@site/code_blocks/tools/customer-center-events.swift?raw';
 
 <RCCodeBlock
   tabs={[{ type: "swift", content: customerCenterEvents, name: "Swift" }]}
@@ -89,7 +89,7 @@ import customerCenterEvents from "!!raw-loader!@site/code_blocks/tools/customer-
 
 If using the modifier:
 
-import customerCenterEventsModifier from "!!raw-loader!@site/code_blocks/tools/customer-center-events-modifier.swift";
+import customerCenterEventsModifier from '@site/code_blocks/tools/customer-center-events-modifier.swift?raw';
 
 <RCCodeBlock
   tabs={[

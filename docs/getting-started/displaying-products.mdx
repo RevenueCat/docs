@@ -11,30 +11,23 @@ If you've [configured Offerings](/getting-started/entitlements) in RevenueCat, y
 Before products and offerings can be fetched from RevenueCat, be sure to initialize the Purchases SDK by following our [Quickstart](/getting-started/quickstart) guide.
 :::
 
-:::info For Apple App Store apps
-If you are connecting an iOS or macOS app, make sure you have added both your App Store Connect App-Specific Shared Secret and your In-App Purchase Key in the RevenueCat dashboard. These are required for validating subscriptions and fetching offerings/products.
-
-- [How to find your shared secret →](/service-credentials/itunesconnect-app-specific-shared-secret)
-- [How to find your in-app purchase key →](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration)
-  :::
-
 ## Fetching Offerings
 
 Offerings are fetched through the SDK based on their [configuration](/offerings/overview) in the RevenueCat dashboard.
 
 The `getOfferings` method will fetch the Offerings from RevenueCat. These are pre-fetched in most cases on app launch, so the completion block to get offerings won't need to make a network request in most cases.
 
-import docsTesterSwift from "!!raw-loader!@site/code_blocks/_projects/iOS/DocsTester/Sources/DocsTester/DocsTester.swift";
-import objectiveCContent2 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_2.m";
-import kotlinContent3 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_3.kt";
-import javaContent4 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_4.java";
-import flutterContent5 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_5.js";
-import reactNativeContent6 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_6.js";
-import cordovaContent7 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_7.js";
-import capacitorContent8 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_get_offerings_capacitor.ts";
-import unityContent9 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_8.cs";
-import webBillingContent from "!!raw-loader!@site/code_blocks/_projects/web-billing/web-billing-doc-snippets.ts";
-import kmpContent1 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_kmp_1.kts";
+import docsTesterSwift from "@site/code_blocks/_projects/iOS/DocsTester/Sources/DocsTester/DocsTester.swift?raw";
+import objectiveCContent2 from "@site/code_blocks/getting-started/displaying-products_2.m?raw";
+import kotlinContent3 from "@site/code_blocks/getting-started/displaying-products_3.kt?raw";
+import javaContent4 from "@site/code_blocks/getting-started/displaying-products_4.java?raw";
+import flutterContent5 from "@site/code_blocks/getting-started/displaying-products_5.js.txt?raw";
+import reactNativeContent6 from "@site/code_blocks/getting-started/displaying-products_6.js.txt?raw";
+import cordovaContent7 from "@site/code_blocks/getting-started/displaying-products_7.js.txt?raw";
+import capacitorContent8 from "@site/code_blocks/getting-started/displaying-products_get_offerings_capacitor.ts.txt?raw";
+import unityContent9 from "@site/code_blocks/getting-started/displaying-products_8.cs?raw";
+import webBillingContent from "@site/code_blocks/_projects/web-billing/web-billing-doc-snippets.ts.txt?raw";
+import kmpContent1 from "@site/code_blocks/getting-started/displaying-products_kmp_1.kts?raw";
 
 <RCCodeBlock
   tabs={[
@@ -71,9 +64,7 @@ This might trigger additional network requests in some situations (like push not
 :::info Offerings, products or available packages empty
 If your offerings, products, or available packages are empty, it's due to some configuration issue in App Store Connect or the Play Console.
 
-The most common reasons for this in App Store Connect are an out-of-date 'Paid Applications Agreement' or products not at least in the 'Ready To Submit' state. For Google Play, this usually occurs when the app is not published on a closed track and a valid test user added.
-
-You can find more info about trouble shooting this issue in our [Help Center](https://support.revenuecat.com/hc/en-us/articles/360041793174).
+You can find more information about troubleshooting this issue in our [Troubleshooting Guide](https://www.revenuecat.com/docs/offerings/troubleshooting-offerings).
 :::
 
 You must choose one Offering that is the "Default Offering" - which can easily be accessed via the `current` property of the returned offerings for a given customer.
@@ -84,7 +75,7 @@ The current Offering for a given customer may change based on the experiment the
 
 To change the default Offering of your Project, navigate to the Offerings tab for that Project in the RevenueCat dashboard, and find the Offering you'd like to make default. Then, click on the icon in the Actions column of that Offering to reveal the available options, and click **Make Default** to make the change.
 
-![Screenshot](/images/7508f4b-Screenshot_2023-12-05_at_10.17.25_PM_4a7403e5b880248ab9c00c129c89edd6.png)
+![Make default offering](/docs_images/offerings/make-default.png)
 
 If you'd like to customize the Offering that's served based on an audience, or their location in your app, check out [Targeting](/tools/targeting).
 
@@ -94,9 +85,9 @@ Offerings can be updated at any time, and the changes will go into effect for al
 
 Alternatively, if your app has multiple paywall locations and you want to control each location uniquely, you can do that with Placements and the `getCurrentOffering(forPlacement: "string")` method.
 
-import swiftContent1 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_1.swift";
-import kotlinContent2 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_2.kt";
-import javaContent3 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_3.java";
+import swiftContent1 from "@site/code_blocks/tools/targeting_by_placement_1.swift?raw";
+import kotlinContent2 from "@site/code_blocks/tools/targeting_by_placement_2.kt?raw";
+import javaContent3 from "@site/code_blocks/tools/targeting_by_placement_3.java?raw";
 
 <RCCodeBlock
   tabs={[
@@ -112,15 +103,15 @@ To learn more about creating Placements and serving unique Offerings through the
 
 It's also possible to access other Offerings besides the Current Offering directly by its identifier.
 
-import objectiveCContent11 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_10.m";
-import kotlinContent12 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_11.kt";
-import javaContent13 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_12.java";
-import flutterContent14 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_13.js";
-import reactNativeContent15 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_14.js";
-import cordovaContent16 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_15.js";
-import capacitorContent17 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_get_offerings_custom_id_capacitor.ts";
-import unityContent18 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_16.cs";
-import kmpContent2 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_kmp_2.kts";
+import objectiveCContent11 from "@site/code_blocks/getting-started/displaying-products_10.m?raw";
+import kotlinContent12 from "@site/code_blocks/getting-started/displaying-products_11.kt?raw";
+import javaContent13 from "@site/code_blocks/getting-started/displaying-products_12.java?raw";
+import flutterContent14 from "@site/code_blocks/getting-started/displaying-products_13.js.txt?raw";
+import reactNativeContent15 from "@site/code_blocks/getting-started/displaying-products_14.js.txt?raw";
+import cordovaContent16 from "@site/code_blocks/getting-started/displaying-products_15.js.txt?raw";
+import capacitorContent17 from "@site/code_blocks/getting-started/displaying-products_get_offerings_custom_id_capacitor.ts.txt?raw";
+import unityContent18 from "@site/code_blocks/getting-started/displaying-products_16.cs?raw";
+import kmpContent2 from "@site/code_blocks/getting-started/displaying-products_kmp_2.kts?raw";
 
 <RCCodeBlock
   tabs={[
@@ -164,12 +155,12 @@ Packages can be access in a few different ways:
 2. via the duration convenience property on an Offering
 3. via the package identifier directly
 
-import objectiveCContent25 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_18.m";
-import kotlinContent26 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_19.kt";
-import flutterContent27 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_20.js";
-import reactNativeContent28 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_21.js";
-import capacitorCordovaContent29 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_22.js";
-import unityContent30 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_23.cs";
+import objectiveCContent25 from "@site/code_blocks/getting-started/displaying-products_18.m?raw";
+import kotlinContent26 from "@site/code_blocks/getting-started/displaying-products_19.kt?raw";
+import flutterContent27 from "@site/code_blocks/getting-started/displaying-products_20.js.txt?raw";
+import reactNativeContent28 from "@site/code_blocks/getting-started/displaying-products_21.js.txt?raw";
+import capacitorCordovaContent29 from "@site/code_blocks/getting-started/displaying-products_22.js.txt?raw";
+import unityContent30 from "@site/code_blocks/getting-started/displaying-products_23.cs?raw";
 
 <RCCodeBlock
   tabs={[
@@ -202,15 +193,15 @@ import unityContent30 from "!!raw-loader!@site/code_blocks/getting-started/displ
 
 Each Package includes an underlying product that includes more information about the price, duration, and other metadata. You can access the product via the `storeProduct` property (or `webBillingProduct` property for [Web Billing](/web/web-billing/web-sdk)):
 
-import objectiveCContent33 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_25.m";
-import kotlinContent34 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_26.kt";
-import javaContent35 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_27.java";
-import flutterContent36 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_28.js";
-import reactNativeContent37 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_29.js";
-import cordovaContent38 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_30.js";
-import capacitorContent39 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_get_offerings_product_capacitor.ts";
-import unityContent40 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_31.cs";
-import kmpContent3 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_kmp_3.kts";
+import objectiveCContent33 from "@site/code_blocks/getting-started/displaying-products_25.m?raw";
+import kotlinContent34 from "@site/code_blocks/getting-started/displaying-products_26.kt?raw";
+import javaContent35 from "@site/code_blocks/getting-started/displaying-products_27.java?raw";
+import flutterContent36 from "@site/code_blocks/getting-started/displaying-products_28.js.txt?raw";
+import reactNativeContent37 from "@site/code_blocks/getting-started/displaying-products_29.js.txt?raw";
+import cordovaContent38 from "@site/code_blocks/getting-started/displaying-products_30.js.txt?raw";
+import capacitorContent39 from "@site/code_blocks/getting-started/displaying-products_get_offerings_product_capacitor.ts.txt?raw";
+import unityContent40 from "@site/code_blocks/getting-started/displaying-products_31.cs?raw";
+import kmpContent3 from "@site/code_blocks/getting-started/displaying-products_kmp_3.kts?raw";
 
 <RCCodeBlock
   tabs={[
@@ -248,15 +239,15 @@ This can be accomplished through Targeting, which supports a handful of predefin
 
 Or, alternatively, you could write your own logic locally in your app to serve custom Offering identifiers for each cohort you have in mind.
 
-import objectiveCContent42 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_33.m";
-import kotlinContent43 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_34.kt";
-import javaContent44 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_35.java";
-import flutterContent45 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_36.js";
-import reactNativeContent46 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_37.js";
-import cordovaContent47 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_38.js";
-import capacitorContent48 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_38.js";
-import unityContent49 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_39.cs";
-import kmpContent4 from "!!raw-loader!@site/code_blocks/getting-started/displaying-products_kmp_4.kts";
+import objectiveCContent42 from "@site/code_blocks/getting-started/displaying-products_33.m?raw";
+import kotlinContent43 from "@site/code_blocks/getting-started/displaying-products_34.kt?raw";
+import javaContent44 from "@site/code_blocks/getting-started/displaying-products_35.java?raw";
+import flutterContent45 from "@site/code_blocks/getting-started/displaying-products_36.js.txt?raw";
+import reactNativeContent46 from "@site/code_blocks/getting-started/displaying-products_37.js.txt?raw";
+import cordovaContent47 from "@site/code_blocks/getting-started/displaying-products_38.js.txt?raw";
+import capacitorContent48 from "@site/code_blocks/getting-started/displaying-products_38.js.txt?raw";
+import unityContent49 from "@site/code_blocks/getting-started/displaying-products_39.cs?raw";
+import kmpContent4 from "@site/code_blocks/getting-started/displaying-products_kmp_4.kts?raw";
 
 <RCCodeBlock
   tabs={[

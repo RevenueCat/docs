@@ -13,7 +13,7 @@ To start receiving these deliveries, you'll need the following details:
 
 Once you have this information, you can add it to the S3 integration settings for your project in RevenueCat.
 
-![S3 delivery configuration in RevenueCat dashboard](/images/c509b62-app.revenuecat.com_projects_85ff18c7_integrations_intercom_8_02d63e70259200bd3f2b0355467cc0c0.png)
+![New integration](/docs_images/integrations/scheduled-data-exports/new-integration.png)
 
 :::info Allow 24 hours for initial delivery
 Once you've configured the S3 integration in RevenueCat, allow up to 24 hours before the first file is delivered.
@@ -29,7 +29,7 @@ If you don't already have an S3 bucket, you can create one in the AWS console.
 
 Navigate to the S3 dashboard in your AWS console and click **Create bucket**: https://s3.console.aws.amazon.com/s3/home
 
-![](/images/aws_create_bucket.png "aws_create_bucket.png")
+![](/docs_images/integrations/scheduled-data-exports/aws/aws-create-bucket.png)
 
 Enter a name for your bucket.
 
@@ -37,13 +37,13 @@ Enter a name for your bucket.
 revenuecat-s3-bucket-appname
 ```
 
-![](/images/aws_bucket_name.png "aws_bucket_name.png")
+![](/docs_images/integrations/scheduled-data-exports/aws/aws-bucket-name.png)
 
 Scroll down to choose the encryption options for your bucket. The default option is fine for most use cases.
 
 If you choose SSE-KMS, you'll need to add the `kms:GenerateDataKey` permission to the IAM policy you create in the next step.
 
-![](/images/aws_bucket_encryption.png "aws_bucket_encryption.png")
+![](/docs_images/integrations/scheduled-data-exports/aws/aws-bucket-encryption.png)
 
 ## Creating Amazon S3 Credentials
 
@@ -55,11 +55,11 @@ You should only give RevenueCat access to the minimum resources necessary. To do
 
 Navigate to the IAM Policy dashboard in your AWS console and click **‘Create policy’**: https://console.aws.amazon.com/iam/home#/policies
 
-![](/images/aws_create_policy.png "aws_create_policy.png")
+![](/docs_images/integrations/scheduled-data-exports/aws/aws-create-policy.png)
 
 In the policy editor, switch to the JSON view and paste in the following code. Be sure to replace `revenuecat-deliveries` with the name of your bucket.
 
-import jsonContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-data-exports/scheduled-data-exports-s3_1.jsonc";
+import jsonContent from "@site/code_blocks/integrations/scheduled-data-exports/scheduled-data-exports-s3_1.jsonc?raw";
 
 <RCCodeBlock
   tabs={[{ type: "json", content: jsonContent, name: "Access Policy" }]}
@@ -67,7 +67,7 @@ import jsonContent from "!!raw-loader!@site/code_blocks/integrations/scheduled-d
 
 This policy will allow RevenueCat to list the contents of your bucket, as well as read, write, delete files to it. When you've pasted in the code, click **Review policy\***.
 
-![](/images/aws_specify_permissions.png "e107a25-Screen_Shot_2019-07-17_at_2.19.37_PM.png")
+![](/docs_images/integrations/scheduled-data-exports/aws/aws-specify-permissions.png)
 
 Finally, give the policy a name and description. Example:
 
@@ -85,7 +85,7 @@ You'll next need to create an individual user that only has access to the policy
 
 Navigate to the IAM User dashboard in your AWS console and click **Add user**: https://console.aws.amazon.com/iam/home#/users
 
-![](/images/aws_create_user.png "aws_create_user.png")
+![](/docs_images/integrations/scheduled-data-exports/aws/aws-create-user.png)
 
 Enter a **User name** and click Next.
 
@@ -93,11 +93,11 @@ Enter a **User name** and click Next.
 RevenueCatS3User_<AppName>
 ```
 
-![](/images/aws_create_user_username.png "aws_create_user_username.png")
+![](/docs_images/integrations/scheduled-data-exports/aws/aws-create-user-username.png)
 
 Choose the option to **Add user to a group**, and click **Create group**.
 
-![](/images/aws_add_user_to_group.png "aws_add_user_to_group.png")
+![](/docs_images/integrations/scheduled-data-exports/aws/aws-add-user-to-group.png)
 
 **Select the Policy name you created from Step 1**, and enter a name for the group, then click **Create group**.
 
@@ -105,29 +105,29 @@ Choose the option to **Add user to a group**, and click **Create group**.
 RevenueCatS3UserGroup_<AppName>
 ```
 
-![](/images/aws_create_user_group_name.png "aws_create_user_group_name.png")
+![](/docs_images/integrations/scheduled-data-exports/aws/aws-create-user-group-name.png)
 
 Once the group is created, select it and click **Next**, optionally add any tags to the group.
 
-![](/images/aws_select_group.png "aws_select_group.png")
+![](/docs_images/integrations/scheduled-data-exports/aws/aws-select-group.png)
 
 Review and click **Create user**.
 
-![](/images/aws_review_create_user.png "aws_review_create_user.png")
+![](/docs_images/integrations/scheduled-data-exports/aws/aws-review-create-user.png)
 
 ### 3. Download Access Credentials
 
 After creating the user, select it from the list of users in the IAM dashboard and click 'Create access key'.
 
-![](/images/aws_view_user.png "aws_view_user.png")
+![](/docs_images/integrations/scheduled-data-exports/aws/aws-view-user.png)
 
 Select 'Other' and click Next.
 
-![](/images/aws_credentials_select_other.png "aws_credentials_select_other.png")
+![](/docs_images/integrations/scheduled-data-exports/aws/aws-credentials-select-other.png)
 
 Download the CSV or enter your access key and secret access key into RevenueCat.
 
-![](/images/aws_download_keys.png "aws_download_keys.png")
+![](/docs_images/integrations/scheduled-data-exports/aws/aws-download-keys.png)
 
 ## Debugging
 

@@ -60,6 +60,10 @@ For each period, we measure:
 
 1. [Realized LTV] / [New Customers] = Realized LTV per Customer
 
+### How lifetime periods are calculated
+
+RevenueCat calculates lifetime periods starting from day 0, which represents the earliest date that a customer was first seen (first opened your app) or made their first purchase (for purchases made outside of your app, like promoted purchases in the App Store). Because we start counting at zero rather than one, each lifetime period contains one more unique day than its name suggests. For example, a 7-day lifetime actually encompasses 8 unique days (day 0 through day 7). If a customer starts a 7-day trial on Tuesday, they typically convert to paid on the following Tuesday, which is the 8th unique day but day 7 when counting from day 0. The same logic applies to the 14-day and 30-day lifetime periods: a 14-day lifetime includes 15 unique days and a 30-day lifetime includes 31 unique days. This calculation method aligns with standard subscription billing cycles and ensures accurate revenue attribution for each customer cohort.
+
 ## FAQs
 
 | Question                                                                                                        | Answer                                                                                                                                                                                                                                                                                                                                                                     |
@@ -69,5 +73,3 @@ For each period, we measure:
 | Why does the count of New Customers not change when filtering by Product, Product Duration, Store, or Offering? | These filters are only applicable to subscribers because a customer does not have a designated “product” unless they make a purchase. Because of this, when using filters that only apply to subscribers, only the Realized LTV measure will be filtered.                                                                                                                  |
 | Can I change the default Customer Lifetime selection?                                                           | Unfortunately we don’t support changing the default at this time, but you can save a custom version of this chart with your preferred Customer Lifetime for easy access to that configuration. [Learn more about Saving Charts here](/dashboard-and-metrics/charts).                                                                                                       |
 | How can I use Realized LTV to measure my CAC payback time?                                                      | By setting the Customer Lifetime selector to the length of time you’re expecting to payback your customer acquisition costs (CAC) within, you can see whether your Realized LTV at that length of time is greater or less than your CAC for the same period.                                                                                                               |
-
-![](/images/b5049b3-RealizedLTVperCustomer_50a08f06059694f52b9a694d8467eeff.png "RealizedLTVperCustomer.png")

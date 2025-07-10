@@ -5,10 +5,6 @@ excerpt: Integrate in-app subscription events from RevenueCat with Segment
 hidden: false
 ---
 
-:::success Pro Integration
-The Segment integration is available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
 Segment can be a useful integration tool for seeing all events and revenue that occur for your app even if it’s not active for a period of time. You can use Segment to collect data on customer events to create a single view customer portfolio using an API.
 
 With our Segment integration, you can:
@@ -53,9 +49,9 @@ If you're using the Segment SDK, you can set the User ID to match the RevenueCat
 
 Use the `.identify()` method on the Segment SDK to set the same App User Id that is set in RevenueCat.
 
-import swiftContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_1.swift";
-import objectiveCContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_2.m";
-import javaContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_3.java";
+import swiftContent from "@site/code_blocks/integrations/third-party-integrations/segment_1.swift?raw";
+import objectiveCContent from "@site/code_blocks/integrations/third-party-integrations/segment_2.m?raw";
+import javaContent from "@site/code_blocks/integrations/third-party-integrations/segment_3.java?raw";
 
 <RCCodeBlock
   tabs={[
@@ -69,36 +65,33 @@ import javaContent from "!!raw-loader!@site/code_blocks/integrations/third-party
 
 In Segment, add a HTTP API as a source and copy the Write Key.
 
-![](/images/4ae883d-Screen_Shot_2019-04-19_at_12.22.24_PM_565f7bc72634936eebfe172ed82fd9c7.png "Screen Shot 2019-04-19 at 12.22.24 PM.png")
+![](/docs_images/integrations/third-party-integrations/segment/segment-write-key.png)
 
 ### 3. Send RevenueCat events to Segment
 
 After you've set up the _Purchases SDK_ and Segment SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'Segment' from the Integrations menu
 
-![](/images/e8335b8-app.revenuecat.com_projects_85ff18c7_collaborators_1_bbda265d00b29ed549364e80f118a0d3.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **Segment** from the integrations menu.
-3. Choose your Segment region.
-4. Add your **Segment Write Key** from step 2.
-5. Enter the event names that RevenueCat will send or choose the default event names.
-6. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
-7. Select whether you want RevenueCat to send sandbox events into Segment or not. You can check the `environment` key in the `context` property of the event to determine if it was triggered in a sandbox or production environment.
-
-![Segment configuration screen](/images/6e3d114-2023-01-19_22.21.34_app-development.revenuecat.com_b1071b5197f4_8b615a3508620c3e627480d69a3bad2d.png)
+2. Choose your Segment region.
+3. Add your **Segment Write Key** from step 2.
+4. Enter the event names that RevenueCat will send or choose the default event names.
+5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
+6. Select whether you want RevenueCat to send sandbox events into Segment or not. You can check the `environment` key in the `context` property of the event to determine if it was triggered in a sandbox or production environment.
 
 ## Sample Events
 
 Below are sample JSONs that are delivered to Segment for each event type.
 
-import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_4.json";
-import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_5.json";
-import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_6.json";
-import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_7.json";
-import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_8.json";
-import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_9.json";
-import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_10.json";
+import initialPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/segment_4.json?raw";
+import trialStartedContent from "@site/code_blocks/integrations/third-party-integrations/segment_5.json?raw";
+import trialConvertedContent from "@site/code_blocks/integrations/third-party-integrations/segment_6.json?raw";
+import trialCancelledContent from "@site/code_blocks/integrations/third-party-integrations/segment_7.json?raw";
+import renewalContent from "@site/code_blocks/integrations/third-party-integrations/segment_8.json?raw";
+import cancellationContent from "@site/code_blocks/integrations/third-party-integrations/segment_9.json?raw";
+import uncancellationContent from "@site/code_blocks/integrations/third-party-integrations/segment_10.json?raw";
 
 <RCCodeBlock
   tabs={[
@@ -112,11 +105,11 @@ import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/t
   ]}
 />
 
-import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_11.json";
-import subscriptionPausedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_12.json";
-import expirationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_13.json";
-import billingIssueContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_14.json";
-import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/segment_15.json";
+import nonSubscriptionPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/segment_11.json?raw";
+import subscriptionPausedContent from "@site/code_blocks/integrations/third-party-integrations/segment_12.json?raw";
+import expirationContent from "@site/code_blocks/integrations/third-party-integrations/segment_13.json?raw";
+import billingIssueContent from "@site/code_blocks/integrations/third-party-integrations/segment_14.json?raw";
+import productChangeContent from "@site/code_blocks/integrations/third-party-integrations/segment_15.json?raw";
 
 <RCCodeBlock
   tabs={[

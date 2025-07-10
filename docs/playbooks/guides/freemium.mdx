@@ -1,0 +1,149 @@
+---
+title: Freemium Paywalls
+sidebar_label: Freemium Paywalls
+slug: freemium
+---
+
+This guide walks through implementing and optimizing a Freemium strategy using RevenueCat, focusing on how to manage entitlements, display upgrade prompts, and convert free users into paying customers with minimal friction.
+
+## When to use
+
+A freemium strategy provides value to users before asking them to pay. This model works well when:
+
+- There is a clear and compelling upgrade path from free to paid (e.g., feature gating, usage limits).
+- The app has low marginal costs per user (minimal server or infrastructure overhead).
+- Your strategy is to leverage freemium users as growth drivers through sharing, referrals, or collaboration.
+- The app faces competitive pressure where users expect to try the core experience before subscribing.
+
+## Before you start
+
+### 1. Define free features
+
+- Core functionality
+- Basic features that showcase value
+- Features that encourage engagement
+
+### 2. Define premium features
+
+- Advanced functionality
+- Enhanced user experience
+- Exclusive content or capabilities
+
+## Subscription Configuration Steps
+
+Decide how many access tiers to offer based on your app's functionality and monetization goal.
+
+### 1. Entitlements
+
+RevenueCat Entitlements represent a level of access, features, or content that a user is "entitled" to. Entitlements are scoped to a [project](/projects/overview), and are typically unlocked after a user purchases a [product](/offerings/products-overview).
+Entitlements are used to ensure a user has appropriate access to content based on their purchases, without having to manage all of the product identifiers in your app code.
+
+For more information on how to set this up, please refer to our [entitlement setup documentation](/getting-started/entitlements).
+
+![Screenshot](/docs_images/playbooks/freemium/freemium-entitlements.png)
+
+### 2. Products
+
+Products are the individual SKUs that users actually purchase from your app. The stores (Apple, Google, Stripe, etc.) process these SKUs and charge the user.
+
+For more information on how to set this up, please refer to our [product setup documentation](/offerings/products-overview).
+
+![Screenshot](/docs_images/playbooks/freemium/freemium-products.png)
+
+### 3. Offering
+
+Offerings are the selection of [products](/offerings/products-overview) that are "offered" to a user on your paywall. Using RevenueCat Offerings is optional, but enable features like Paywalls, Experiments, and Targeting.
+
+For more information on how to set this up, please refer to our [offering setup documentation](https://www.revenuecat.com/docs/offerings/overview).
+
+![Screenshot](/docs_images/playbooks/freemium/freemium-offerings.png)
+
+![Screenshot](/docs_images/playbooks/freemium/freemium-gold-offering.png)
+
+## Building your Paywall
+
+Now that you have everything set up, it's time to build your paywall. Take advantage of [RevenueCat's Paywalls](/tools/paywalls) and start creating your own.
+
+Below you can find an example of a Freemium Paywall.
+
+![Screenshot](/docs_images/playbooks/freemium/freemium-paywall-editor.png)
+
+## Presenting your Paywall
+
+### Implementation
+
+For Freemium Paywalls, you should not block the user from accessing free content. Instead, use paywalls as contextual prompts that users can dismiss. Below you can find some code snippets on how to accomplish this. Please refer to [this document](https://www.revenuecat.com/docs/tools/paywalls/displaying-paywalls) to get more detailed information on how to present paywalls.
+
+import swiftui from "@site/code_blocks/tools/paywalls_1.swift?raw";
+import kotlin from "@site/code_blocks/tools/paywalls_1.kt?raw";
+import react from "@site/code_blocks/tools/paywalls_rn_1.ts.txt?raw";
+import flutter from "@site/code_blocks/tools/paywalls_flutter_1.dart?raw";
+import kmp from "@site/code_blocks/tools/paywalls_kmp_1.kts?raw";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "swift",
+      title: "SwiftUI",
+      content: swiftui,
+    },
+    {
+      type: "kotlin",
+      title: "Kotlin",
+      content: kotlin,
+    },
+    {
+      type: "rn",
+      title: "React Native",
+      content: react,
+    },
+    {
+      type: "flutter",
+      title: "Flutter",
+      content: flutter,
+    },
+    {
+      type: "kotlin",
+      title: "Kotlin Multiplatform",
+      content: kmp,
+    },
+  ]}
+/>
+
+## Best Practices
+
+1. **Free Tier Value**
+
+   - Provide genuine value in the free tier
+   - Make core functionality accessible
+
+2. **Premium Feature Selection**
+
+   - Choose premium features that offer clear additional value
+   - Consider different types of premium value:
+     - Enhanced functionality
+     - Removed limitations
+     - Exclusive content
+     - Better user experience
+
+3. **User Experience**
+   - Clear distinction between free and premium features
+   - Smooth upgrade flow
+   - Easy access to subscription management
+
+## Test your Paywall
+
+Ensure your implementation works smoothly by testing across different user scenarios:
+
+- Free features remain accessible at all times
+- A paywall is shown when a premium feature is selected
+- Premium features unlock immediately after purchase
+- Restore purchases and error flows work as expected
+
+Review our [Testing Guide](/guides/testing-guide/use-cases) to fine-tune your test cases and make sure everything is working as expected.
+
+## Next Steps
+
+1. Use [Experiments](/tools/experiments-v1) to test different offerings, pricing strategies, placements, and user targeting approaches.
+2. Integrate our [Customer Center](/tools/customer-center) feature to help users manage their subscriptions.
+3. Once you're ready to launch, review this [App Subscription Launch Checklist](/test-and-launch/launch-checklist).

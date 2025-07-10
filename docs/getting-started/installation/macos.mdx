@@ -28,7 +28,7 @@ Once Carthage is updated to support Catalyst, installing with Carthage will be r
 
 To always use the latest release, add the following to your Podfile:
 
-import macosPodfileContent from "!!raw-loader!@site/code_blocks/getting-started/installation/macos_1.ruby";
+import macosPodfileContent from "@site/code_blocks/getting-started/installation/macos_1.ruby?raw";
 
 <RCCodeBlock
   tabs={[{ type: "ruby", content: macosPodfileContent, name: "Podfile" }]}
@@ -36,7 +36,7 @@ import macosPodfileContent from "!!raw-loader!@site/code_blocks/getting-started/
 
 Alternatively, pin to a specific minor version (e.g. 3.10):
 
-import macosRubyContent from "!!raw-loader!@site/code_blocks/getting-started/installation/macos_2.ruby";
+import macosRubyContent from "@site/code_blocks/getting-started/installation/macos_2.ruby?raw";
 
 <RCCodeBlock
   tabs={[{ type: "ruby", content: macosRubyContent, name: "Ruby" }]}
@@ -44,7 +44,7 @@ import macosRubyContent from "!!raw-loader!@site/code_blocks/getting-started/ins
 
 And then run:
 
-import macosTerminalContent from "!!raw-loader!@site/code_blocks/getting-started/installation/macos_3.ruby";
+import macosTerminalContent from "@site/code_blocks/getting-started/installation/macos_3.ruby?raw";
 
 <RCCodeBlock
   tabs={[{ type: "ruby", content: macosTerminalContent, name: "Terminal" }]}
@@ -60,8 +60,8 @@ You can use Swift Package Manager to add Purchases to your Xcode project. Select
 
 You should now be able to `import RevenueCat`.
 
-import macosSwiftContent from "!!raw-loader!@site/code_blocks/getting-started/installation/macos_4.swift";
-import macosObjectiveCContent from "!!raw-loader!@site/code_blocks/getting-started/installation/macos_5.m";
+import macosSwiftContent from "@site/code_blocks/getting-started/installation/macos_4.swift?raw";
+import macosObjectiveCContent from "@site/code_blocks/getting-started/installation/macos_5.m?raw";
 
 <RCCodeBlock
   tabs={[
@@ -77,8 +77,6 @@ import macosObjectiveCContent from "!!raw-loader!@site/code_blocks/getting-start
 :::info Enable In-App Purchase capability for your project
 Don't forget to enable the In-App Purchase capability for your project under `Project Target -> Capabilities -> In-App Purchase`
 :::
-
-![](/images/65db383-Screen_Shot_2018-12-18_at_9.15.09_AM_7e473b83b672c36b1757c3b0b0a4f1d7.png "Screen Shot 2018-12-18 at 9.15.09 AM.png")
 
 ## Next Steps
 

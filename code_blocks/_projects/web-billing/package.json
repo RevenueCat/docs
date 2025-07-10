@@ -9,7 +9,7 @@
   "type": "module",
   "author": "RevenueCat",
   "dependencies": {
-    "@revenuecat/purchases-js": "^1.4.1"
+    "@revenuecat/purchases-js": "^1.7.0"
   },
   "devDependencies": {
     "eslint": "^8.56.0",

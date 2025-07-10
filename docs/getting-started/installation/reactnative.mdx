@@ -15,17 +15,18 @@ RevenueCat provides a backend and a wrapper around StoreKit and Google Play Bill
 
 Make sure that the deployment target for iOS is at least 13.4 and Android is at least 6.0 (API 23) [as defined here](https://github.com/facebook/react-native#-requirements).
 
-### Option 1: React-Native package
+### React Native package
 
-Purchases for React-Native can be installed either via npm or yarn.
+Purchases for React Native can be installed either via npm or yarn.
+
 We recommend using the latest version of React Native, or making sure that the version is at least greater than 0.64.
 
 #### Option 1.1: Using auto-linking
 
 Recent versions of React Native will automatically link the SDK, so all that's needed is to install the library.
 
-import reactNativeNpmContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_1.shell";
-import reactNativeYarnContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_2.shell";
+import reactNativeNpmContent from "@site/code_blocks/getting-started/installation/reactnative_1.shell?raw";
+import reactNativeYarnContent from "@site/code_blocks/getting-started/installation/reactnative_2.shell?raw";
 
 <RCCodeBlock
   tabs={[
@@ -45,37 +46,23 @@ import reactNativeYarnContent from "!!raw-loader!@site/code_blocks/getting-start
 
 After that, you should link the library to the native projects by doing:
 
-import reactNativeShellContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_5.shell";
+import reactNativeShellContent from "@site/code_blocks/getting-started/installation/reactnative_5.shell?raw";
 
 <RCCodeBlock
   tabs={[{ type: "shell", content: reactNativeShellContent, name: "Shell" }]}
 />
 
-### Option 2: Using Expo
+### Using Expo
 
-`react-native-purchases` works with with any Expo project when using a [development build](https://docs.expo.dev/workflow/overview/#development-builds). A development build helps you iterate as quickly as possible and provides a more flexible, reliable, and complete development environment. It also enables you to only write JavaScript/TypeScript while letting Expo tools and services take care of everything else. The Android and iOS apps are built using Expo's build service and generate development and production binaries for testing and releasing.
+Use Expo to rapidly iterate on your app by using JavaScript/TypeScript exclusively, while letting Expo take care of everything else.
 
-As of mid 2021, projects created with Expo now support in-app payments and are compatible with `react-native-purchases`. Running `npx expo install react-native-purchases` is all that needs to be done before you can start implementing RevenueCat into your app.
-
-Note: Expo's docs state that in-app purchases will only work on real Android and iOS devices which can make debugging more difficult. You can view the RevenueCat debug logs on Android with LogCat and iOS with Console.app.
-
-For more information, see our blog post [here](https://www.revenuecat.com/blog/in-app-puchase-expo-managed-workflow/).
-
-#### Bare workflow
-
-If you are using [bare workflow](https://docs.expo.dev/bare/overview/) (that is, your project is created using `react-native init`), [install `expo`](https://docs.expo.dev/bare/installing-expo-modules/) into your project and [leverage Expo CLI](https://docs.expo.dev/bare/using-expo-cli/) to use Expo tooling and services.
-
-The bare workflow gives developers complete native control but also allows the use of Expo libraries and services. The bare workflow is similar to a project you would get from `npx react-native init`.
-
-If you're planning on ejecting from Expo to use the bare workflow, upgrade your Expo version first, _then_ eject. It'll save you a whole lot of hassle.
-
-Get started with the bare workflow [here](https://docs.expo.dev/bare/overview/).
+See [Using RevenueCat with Expo](/getting-started/installation/expo) to get started.
 
 ### Set the correct launchMode for Android
 
 Depending on your user's payment method, they may be asked by Google Play to verify their purchase in their (banking) app. This means they will have to background your app and go to another app to verify the purchase. If your Activity's `launchMode` is set to anything other than `standard` or `singleTop`, backgrounding your app can cause the purchase to get cancelled. To avoid this, set the `launchMode` of your Activity to `standard` or `singleTop` in your Android app's `AndroidManifest.xml` file, like so:
 
-import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_launchmode.xml";
+import launchModeContent from "@site/code_blocks/getting-started/installation/android_launchmode.xml?raw";
 
 <RCCodeBlock
   tabs={[
@@ -89,7 +76,7 @@ You can find Android's documentation on the various `launchMode` options [here](
 
 You should now be able to import `Purchases`.
 
-import reactNativeJsContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_7.js";
+import reactNativeJsContent from "@site/code_blocks/getting-started/installation/reactnative_7.js.txt?raw";
 
 <RCCodeBlock tabs={[{ type: "rn", content: reactNativeJsContent }]} />
 
@@ -97,7 +84,7 @@ import reactNativeJsContent from "!!raw-loader!@site/code_blocks/getting-started
 Don't forget to include the `BILLING` permission in your AndroidManifest.xml file
 :::
 
-import reactNativeXmlContent from "!!raw-loader!@site/code_blocks/getting-started/installation/reactnative_8.xml";
+import reactNativeXmlContent from "@site/code_blocks/getting-started/installation/reactnative_8.xml?raw";
 
 <RCCodeBlock
   tabs={[
@@ -112,8 +99,6 @@ import reactNativeXmlContent from "!!raw-loader!@site/code_blocks/getting-starte
 :::info Enable In-App Purchase capability for your iOS project
 Don't forget to enable the In-App Purchase capability for your project under `Project Target -> Capabilities -> In-App Purchase`
 :::
-
-![](/images/91edf94-65db383-Screen_Shot_2018-12-18_at_9.15.09_AM_1a93ba93eced214cccdd641501b0272d.png "65db383-Screen_Shot_2018-12-18_at_9.15.09_AM.png")
 
 ## Next Steps
 

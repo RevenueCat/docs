@@ -16,9 +16,9 @@ Regardless of if you're on V1 or V2 of Apple App Store Server Notifications, Rev
 
 ## Handling of Refund Requests
 
-To allow RevenueCat to send additional data of your customer's purchases to Apple, navigate to your RevenueCat app settings page and expand the **"Handling of refund requests"** section.
+To allow RevenueCat to send additional data of your customer's purchases to Apple, navigate to your RevenueCat project, choose your iOS platform under **Platforms** in the project sidebar, and expand the **"Handling of refund requests"** section:
 
-![](/images/apple-handling-refunds.png)
+![](/docs_images/platform-resources/apple/apple-handling-refunds.png)
 
 The dropdown selector under **"Refund requests handling preference"** allows you to choose your preferred outcome for the refund request. Note that your refund preference is one of the several factors that Apple will use to inform its refund decisions.
 
@@ -44,7 +44,7 @@ To do so, you can use RevenueCat's [customer attributes](/customers/customer-att
 
 You can configure this attribute programmatically through our [SDK](/customers/customer-attributes#setting-attributes) and [REST API](/customers/customer-attributes#setting-attributes-via-the-rest-api), or manually through our custom setter in the customer page.
 
-![](/images/apple-handling-refunds-attribute-setter.png)
+![](/docs_images/platform-resources/apple/apple-handling-refunds-attribute-setter.png)
 
 :::info Overriding only applies when feature is enabled
 Overriding the customer's refund preference will only apply if you have enabled handling refund requests from the dashboard. If you selected the "Do not handle" option, we will not send additional data over to Apple, regardless of what value the customer's `$appleRefundHandlingPreference` has.

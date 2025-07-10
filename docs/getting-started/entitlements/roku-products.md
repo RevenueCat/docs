@@ -19,13 +19,13 @@ This process is going to configure a subscription product, but the steps are sim
 
 To create a new in-channel product, click on products in the sidebar of the Roku Developer Dashboard, then click **Add a new product**.
 
-![](/images/roku/roku-products.png)
+![](/docs_images/platform-resources/roku/roku-products.png)
 
-![](/images/roku/roku-add-product.png)
+![](/docs_images/platform-resources/roku/roku-add-product.png)
 
 ### Product basics
 
-![](/images/roku/roku-product-basics.png)
+![](/docs_images/platform-resources/roku/roku-product-basics.png)
 
 - **Channels**: From the channels list, select one or more channels where this product will be available for sale. The channels listed in this selection show the channels belonging to the root account.
 - **Product category**: Select a product category for the product you are creating.
@@ -44,7 +44,7 @@ The product name must clearly identify the service being offered. Product names 
 
 ### Product pricing
 
-![](/images/roku/roku-product-pricing.png)
+![](/docs_images/platform-resources/roku/roku-product-pricing.png)
 
 - **Purchase type**: The purchase type list will allow you to select the following types for the product being created:
   - _Monthly subscription_: A product that will auto-renew monthly.
@@ -72,13 +72,13 @@ Roku subscription products support free trials and discounted offers. Note that 
 
 Under **Base offer**, select one of the following:
 
-![](/images/roku/roku-discounted-offer.png)
+![](/docs_images/platform-resources/roku/roku-discounted-offer.png)
 
 - **Discounted price**: This will provide new customers a discounted introductory price.
   - _Discounted price range_: This is the discounted price you'd like to offer. The discounted price range must be lower than the base price.
   - _Discount duration_: Enter the number of months the discount will be until the customer renews at full price.
 
-![](/images/roku/roku-free-trial.png)
+![](/docs_images/platform-resources/roku/roku-free-trial.png)
 
 - **Free trial**: This will provide new customers with a free trial of your product.
   - _Free trial duration_: Enter the number of days or months for the trial
@@ -89,7 +89,7 @@ Under **Base offer**, select one of the following:
 Once the product is ready to be made available to customers for purchase, select the _"Cleared for sale"_ checkbox. After selecting this checkbox, you will be able to [schedule limited-time free trials and discount offers](/getting-started/entitlements/roku-products#scheduling-offers) for the product.
 
 <figure>
-![](/images/roku/roku-product-save.png)
+![](/docs_images/platform-resources/roku/roku-product-save.png)
 <figcaption>Remember to select 'Save'</figcaption>
 </figure>
 
@@ -99,7 +99,7 @@ Once your product is cleared for sale, you can schedule limited-time free trials
 
 Within your product details, you can select 'Schedule offer' > 'Create new offer'.
 
-![](/images/roku/roku-schedule-offer.png)
+![](/docs_images/platform-resources/roku/roku-schedule-offer.png)
 
 Please refer to the [Trials and offers](/getting-started/entitlements/roku-products#trials-and-offers) section of this documentation for additional instructions on creating an offer. When scheduling an offer, you must input a **Start date** and **End date**.
 
@@ -134,9 +134,9 @@ Product groups are used for upgrade/downgrade functionality and to prevent doubl
 
 To set up a product group, navigate to your _'Manage In-Channel Products' > 'All product groups' > 'Add a new group'_
 
-![](/images/roku/roku-product-group.png)
+![](/docs_images/platform-resources/roku/roku-product-group.png)
 
-![](/images/roku/roku-create-product-group.png)
+![](/docs_images/platform-resources/roku/roku-create-product-group.png)
 
 - **Group name**: Enter a descriptive name for your group. For example, if you are creating a product group containing monthly and annual plans that will unlock the highest tier subscription, it could be named "High tier subscriptions"
 - **Channel list**: Select the channel that will use this product group
@@ -144,7 +144,7 @@ To set up a product group, navigate to your _'Manage In-Channel Products' > 'All
 Once you have selected your channel, your in-channel products will appear on the right-hand side. Select which products you'd like to include in your product group, then click **+ Add to group** on the right-hand side to add the product names to your group. To remove a product from your group, select the product name under **Remove from group** on the left-hand side and select **Remove from group**
 
 <figure>
-![](/images/roku/roku-add-product-to-group.png)
+![](/docs_images/platform-resources/roku/roku-add-product-to-group.png)
 <figcaption>Remember to select 'Save'</figcaption>
 </figure>
 

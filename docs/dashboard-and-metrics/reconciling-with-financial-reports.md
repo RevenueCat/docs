@@ -28,7 +28,7 @@ For example, if you sold a product for $99.99 that was not refunded:
 
 When considering how to compare the Revenue chart with the App Store's financial reports, you should focus on **Proceeds**, since that measure represents the closest proxy we have to how you will be paid by Apple for a given transaction.
 
-![Revenue chart](/images/revenue-chart.png)
+![Revenue chart proceeds](/docs_images/dashboard-and-metrics/reconciliation/revenue-chart-proceeds.png)
 
 ## How the App Store's financial reports work
 

@@ -27,11 +27,11 @@ You should make sure you have the following before proceeding with the setup:
 
 Open Google Play Console and navigate to ‘Download reports’ > ‘Financial’
 
-![Navigate to Financial tab](/images/bucket-id-1.png)
+![Navigate to Financial tab](/docs_images/migration/bucket-id-1.png)
 
 Select ‘Copy Cloud Storage URI’ next to the ‘Estimated sales reports’ header
 
-![Navigate to Estimated sales report](/images/bucket-id-2.png)
+![Navigate to Estimated sales report](/docs_images/migration/bucket-id-2.png)
 
 This will copy the entire URI string. For example: `gs://{bucket_id}/sales`. We will just need the `{bucket_id}` portion, which will look something like: `pubsite_prod_rev_01234567890987654321`.
 
@@ -39,7 +39,7 @@ This will copy the entire URI string. For example: `gs://{bucket_id}/sales`. We 
 
 Navigate to ‘Play Store Financial Reports Bucket ID’ in your RevenueCat Play Store app setting and paste the bucket ID.
 
-![Upload bucket ID](/images/bucket-id-3.png)
+![Upload bucket ID](/docs_images/migration/bucket-id-3.png)
 
 Remember to select 'Save Changes'.
 

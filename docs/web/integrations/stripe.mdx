@@ -23,7 +23,7 @@ To get started, you first need to connect your Stripe account with RevenueCat, i
 
 Create and manage your Stripe product(s) directly in [the Stripe dashboard](https://dashboard.stripe.com/subscriptions/products). In Stripe, a _product_ can have multiple _prices_. These are useful if you want to offer different price points for the same product and work similar to _offerings_ and _products_ in RevenueCat.
 
-![](/images/8154aeb-Screen_Shot_2018-12-06_at_14.26.56_38ccc6af46e3d44f82ade1c883522a12.png "Screen Shot 2018-12-06 at 14.26.56.png")
+![Create products and plans](/docs_images/web/stripe/create-products-and-plans.png)
 
 You can read more about **products and plans** in [Stripe's official documentation](https://stripe.com/docs/billing/quickstart).
 
@@ -39,7 +39,7 @@ On the server-side, you can use [Stripe's REST API](https://stripe.com/docs/api/
 
 Alternatively, you can also use the Stripe dashboard for manually creating the subscriptions for testing.
 
-:::info
+:::info Stripe session configuration
 [Ensure your session creates a Stripe Customer](https://stripe.com/docs/api/checkout/sessions/create#create_checkout_session-customer_creation) by setting `customer_creation` to `always`.
 :::
 
@@ -47,9 +47,9 @@ Alternatively, you can also use the Stripe dashboard for manually creating the s
 
 Add your Stripe products to your project's [entitlements](/getting-started/entitlements) to easily group the products for your app. RevenueCat will send Stripe subscriptions to your app the same way we do for the other app stores.
 
-![](/images/fd4e1ab-Screen_Shot_2021-12-01_at_11.23.21_AM_e62a0d7e6800a0a6bdf2b8e18a00d9ab.png "Screen Shot 2021-12-01 at 11.23.21 AM.png")
+![](/docs_images/web/stripe/attach-entitlement.png)
 
-:::info
+:::info Stripe product identifier
 In order for Stripe subscriptions to unlock [entitlements](/getting-started/entitlements), you must set a Product Identifier in the desired Offering to match a Stripe **product ID** exactly.
 :::
 
@@ -83,7 +83,7 @@ The only required fields when sending your Stripe purchase to the RevenueCat API
 
 Stripe subscriptions are automatically refreshed by RevenueCat the same way as subscriptions from the app stores. This means that **it may take up to two hours for a Stripe cancellation to be reflected in the RevenueCat backend**. Alternatively, you can re-post the same subscription to RevenueCat after a user has cancelled, and it will be updated right away.
 
-import curlContent from "!!raw-loader!@site/code_blocks/getting-started/stripe_1.curl";
+import curlContent from "@site/code_blocks/getting-started/stripe_1.curl?raw";
 
 <RCCodeBlock tabs={[{ type: "curl", content: curlContent }]} />
 
@@ -110,7 +110,7 @@ You can test your implementation for Stripe and RevenueCat by using [Stripe's te
 
 The subscriptions you create using this environment will be considered _sandbox transactions_ in RevenueCat.
 
-![](/images/bd33089-Screen_Shot_2018-12-06_at_15.43.52_6ee9aa6171a8c51c7f6a3f728e8fd434.png "Screen Shot 2018-12-06 at 15.43.52.png")
+![](/docs_images/web/stripe/test-data.png)
 
 :::danger Stripe Test Clocks not fully supported
 Stripe allows using [test clocks](https://stripe.com/docs/billing/testing/test-clocks) to manipulate how subscriptions move through time. Since using test clocks lead to time divergences between Stripe and RevenueCat, data may not be accurately reflected in RevenueCat when using Stripe test clocks.

@@ -5,10 +5,6 @@ excerpt: Integrate in-app subscription events from RevenueCat with Mixpanel
 hidden: false
 ---
 
-:::success Pro Integration
-The Mixpanel integration is available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
 Mixpanel can be a useful integration tool for seeing all events and revenue that occur for your app even if it’s not active for a period of time. You can use Mixpanel’s array of product analytical tools to help get new customers, and engage and retain old customers.
 
 With our Mixpanel integration, you can:
@@ -59,9 +55,9 @@ We recommend keeping the Mixpanel SDK identifier the same as RevenueCat's App Us
 
 If a user has that attribute set it will be used instead of the RevenueCat App User ID in the Mixpanel events.
 
-import swiftContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mixpanel_1.swift";
-import objectiveCContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mixpanel_2.m";
-import javaContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mixpanel_3.java";
+import swiftContent from "@site/code_blocks/integrations/third-party-integrations/mixpanel_1.swift?raw";
+import objectiveCContent from "@site/code_blocks/integrations/third-party-integrations/mixpanel_2.m?raw";
+import javaContent from "@site/code_blocks/integrations/third-party-integrations/mixpanel_3.java?raw";
 
 <RCCodeBlock
   tabs={[
@@ -75,28 +71,25 @@ import javaContent from "!!raw-loader!@site/code_blocks/integrations/third-party
 
 After you've set up the _Purchases SDK_ and Mixpanel SDK, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'Mixpanel' from the Integrations menu
 
-![](/images/d237692-app.revenuecat.com_projects_85ff18c7_collaborators_1_6c16ada824d1b68fee54481206fc64b4.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose _Mixpanel_ from the Integrations menu
-3. Add your Mixpanel Project token
-4. Enter the event names that RevenueCat will send or choose the default event names
-5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
-
-![Mixpanel configuration screen](/images/caa6e26-app.revenuecat.com_projects_85ff18c7_integrations_intercom_1_e2955a9c9c559acfc49d9d25009338a8.png)
+2. Add your Mixpanel Project token
+3. Enter the event names that RevenueCat will send or choose the default event names
+4. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
 ## Sample Events
 
 Below are sample JSONs that are delivered to Mixpanel for events.
 
-import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mixpanel_4.json";
-import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mixpanel_5.json";
-import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mixpanel_6.json";
-import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mixpanel_7.json";
-import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mixpanel_8.json";
-import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mixpanel_9.json";
-import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/mixpanel_10.json";
+import initialPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/mixpanel_4.json?raw";
+import trialStartedContent from "@site/code_blocks/integrations/third-party-integrations/mixpanel_5.json?raw";
+import trialConvertedContent from "@site/code_blocks/integrations/third-party-integrations/mixpanel_6.json?raw";
+import trialCancelledContent from "@site/code_blocks/integrations/third-party-integrations/mixpanel_7.json?raw";
+import renewalContent from "@site/code_blocks/integrations/third-party-integrations/mixpanel_8.json?raw";
+import cancellationContent from "@site/code_blocks/integrations/third-party-integrations/mixpanel_9.json?raw";
+import nonSubscriptionPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/mixpanel_10.json?raw";
 
 <RCCodeBlock
   tabs={[

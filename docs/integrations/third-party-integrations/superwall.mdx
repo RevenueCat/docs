@@ -5,10 +5,6 @@ excerpt: Integrate in-app purchase events from RevenueCat with Superwall
 hidden: false
 ---
 
-:::success Pro Integration
-The Superwall integration is available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
 Superwall can be a helpful integration for optimizing pricing and understanding which paywalls are producing customers with the highest LTV. RevenueCat can automatically send billing, subscription, and revenue metrics to Superwall, a paywall SDK that lets you remotely update every aspect of your paywall.
 
 With our Superwall integration, you can:
@@ -50,16 +46,11 @@ In order to associate RevenueCat subscription data with Superwall paywall events
 
 After you've set up the Purchases SDK and Superwall SDK to have the same user identity, you can "turn on" the integration from the RevenueCat dashboard.
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'Superwall' from the Integrations menu
 
-![](/images/db31ce4-app.revenuecat.com_projects_85ff18c7_collaborators_1_430a80ab9934b4ff5f96caa2ad08bddb.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **Superwall** from the Integrations menu
-3. Add your Superwall Token (Superwall settings > Integrations)
-
-Remember to select _Add Integration_
-
-![](/images/ed95ba8-app.revenuecat.com_projects_85ff18c7_integrations_intercom_5_c7bdc505d5dedc85fe46600828e310f1.png)
+2. Add your Superwall Token (Superwall settings > Integrations)
 
 ## Testing the Superwall integration
 
@@ -71,24 +62,24 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 While still on the Customer View, select the purchase event in the [Customer History](/dashboard-and-metrics/customer-history) page and make sure that the Superwall integration event exists and was delivered successfully.
 
-![](/images/1643a7c-Screenshot_at_Feb_07_16-35-24_c783f670dff8ffec1a11984618151ec9.png "Screenshot at Feb 07 16-35-24.png")
+![](/docs_images/integrations/third-party-integrations/superwall/successful-event.png)
 
 ### Check Superwall dashboard for the delivered event
 
 Navigate to your Superwall dashboard > Users and search for the created app user ID. You will see events RevenueCat has dispatched to the Superwall under 'Recent Events'.
 
-![](/images/71fe3aa-Screenshot_at_Feb_07_16-36-50_c46a97ba9c5663269a061d707947d38a.png "Screenshot at Feb 07 16-36-50.png")
+![](/docs_images/integrations/third-party-integrations/superwall/superwall-recent-events.png)
 
 ## Sample Events
 
 Below are sample JSONs that are delivered to Superwall for each event type.
 
-import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/superwall_1.json";
-import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/superwall_2.json";
-import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/superwall_3.json";
-import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/superwall_4.json";
-import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/superwall_5.json";
-import subscriptionPausedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/superwall_6.json";
+import initialPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/superwall_1.json?raw";
+import renewalContent from "@site/code_blocks/integrations/third-party-integrations/superwall_2.json?raw";
+import cancellationContent from "@site/code_blocks/integrations/third-party-integrations/superwall_3.json?raw";
+import uncancellationContent from "@site/code_blocks/integrations/third-party-integrations/superwall_4.json?raw";
+import nonSubscriptionPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/superwall_5.json?raw";
+import subscriptionPausedContent from "@site/code_blocks/integrations/third-party-integrations/superwall_6.json?raw";
 
 <RCCodeBlock
   tabs={[
@@ -109,9 +100,9 @@ import subscriptionPausedContent from "!!raw-loader!@site/code_blocks/integratio
   ]}
 />
 
-import expirationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/superwall_7.json";
-import billingIssueContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/superwall_8.json";
-import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/superwall_9.json";
+import expirationContent from "@site/code_blocks/integrations/third-party-integrations/superwall_7.json?raw";
+import billingIssueContent from "@site/code_blocks/integrations/third-party-integrations/superwall_8.json?raw";
+import productChangeContent from "@site/code_blocks/integrations/third-party-integrations/superwall_9.json?raw";
 
 <RCCodeBlock
   tabs={[
