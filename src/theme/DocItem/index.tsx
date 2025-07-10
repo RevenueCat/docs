@@ -8,11 +8,19 @@ type Props = WrapperProps<typeof DocItemType>;
 
 export default function DocItemWrapper(props: Props): ReactNode {
   const hidden = (props.content.frontMatter as any).hidden;
+  const prioritize = (props.content.frontMatter as any).prioritize;
+
   return (
     <>
       {hidden && (
         <Head>
-          <meta name="algolia-ignore" content="true" />
+          <meta name="robots" content="noindex" />
+          <meta name="search-hidden" content="true" />
+        </Head>
+      )}
+      {prioritize && (
+        <Head>
+          <meta name="x-prioritize" content="true" />
         </Head>
       )}
       <DocItem {...props} />
