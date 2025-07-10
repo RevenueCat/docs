@@ -104,7 +104,7 @@ To keep your A and B cohorts on equal footing, only new users are added to exper
 
 When running experiments, it's challenging to know whether performance differences between variants are real improvements or just random noise. The Chance to Win metric solves this by calculating the probability that a variant performed better than the control given the observed data. For example, if your Treatment (Variant B) shows a 6.1% initial conversion rate vs 5.2% for your Control (Variant A) with a 98% Chance to Win, you can be confident this improvement is meaningful, not just random variation.
 
-Chance to Win helps you make informed decisions about when to end your experiment. Many developers consider 95% Chance to Win sufficient to declare a winner, but the right threshold depends on what you're testing and your risk tolerance. For example, you may opt for a higher Chance to Win when deciding on a high-stakes price increase than a lower-stakes paywall copy change. 
+Chance to Win helps you make informed decisions about when to end your experiment. Many developers consider 95% Chance to Win sufficient to declare a winner, but the right threshold depends on what you're testing and your risk tolerance. For example, you may opt for a higher Chance to Win when deciding on a high-stakes change, such as whether to use in-app vs web purchases, than when deciding on a paywall copy change.
 
 Chance to Win is currently available for the following metrics: 
 * Initial conversion rate
