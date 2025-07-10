@@ -639,100 +639,83 @@ const chartsCategory = Category({
   items: [
     Page({ slug: "charts" }),
     SubCategory({
-      label: "Actives Charts",
+     label: "Revenue",
+     items: [
+       Page({ slug: "charts/revenue-chart" }),
+       Page({ slug: "charts/annual-recurring-revenue-arr-chart" }),
+       Page({ slug: "charts/monthly-recurring-revenue-mrr-chart" }),
+       Page({ slug: "charts/monthly-recurring-revenue-movement-chart" }),
+       Page({ slug: "charts/non-subscription-purchases-chart" }),
+      ],
+      index: {
+        title: "Revenue",
+        link: "dashboard-and-metrics/charts/revenue",
+      },
+    }),
+    SubCategory({
+     label: "Subscriptions",
+     items: [
+       Page({ slug: "charts/active-subscriptions-chart" }),
+       Page({ slug: "charts/active-subscriptions-movement-chart" }),
+       Page({ slug: "charts/new-paid-subscriptions-chart" }),
+       Page({ slug: "charts/subscription-retention-chart" }),
+       Page({ slug: "charts/subscription-status-chart" }),
+     ],
+     index: {
+       title: "Subscriptions",
+       link: "dashboard-and-metrics/charts/subscriptions",
+      },
+    }),
+    SubCategory({
+     label: "Cohorts and LTV",
+     items: [
+       Page({ slug: "charts/cohort-explorer" }),
+       Page({ slug: "charts/realized-ltv-per-customer-chart" }),
+       Page({ slug: "charts/realized-ltv-per-paying-customer-chart" }),
+       Page({ slug: "charts/prediction-explorer" }),
+     ],
+     index: {
+       title: "Cohorts and LTV",
+       link: "dashboard-and-metrics/charts/cohorts-and-ltv",
+      },
+    }),
+    SubCategory({
+     label: "Conversion Funnel",
+     items: [
+       Page({ slug: "charts/new-customers-chart" }),
+       Page({ slug: "charts/initial-conversion-chart" }),
+       Page({ slug: "charts/trial-conversion-chart" }),
+       Page({ slug: "charts/conversion-to-paying-chart" }),
+     ],
+     index: {
+       title: "Conversion Funnel",
+       link: "dashboard-and-metrics/charts/conversion-funnel",
+      },
+    }),
+    SubCategory({
+      label: "Trials",
       items: [
-        Page({ slug: "charts/active-subscriptions-chart" }),
-        Page({ slug: "charts/active-subscriptions-movement-chart" }),
         Page({ slug: "charts/active-trials-chart" }),
         Page({ slug: "charts/active-trials-movement-chart" }),
+        Page({ slug: "charts/new-trials-chart" }),
       ],
       index: {
-        title: "Active Charts",
-        link: "dashboard-and-metrics/charts/active-charts",
+        title: "Trials",
+        link: "dashboard-and-metrics/charts/trials",
       },
     }),
     SubCategory({
-      label: "Conversion Charts",
+      label: "Churns and Refunds",
       items: [
-        Page({ slug: "charts/trial-conversion-chart" }),
-        Page({ slug: "charts/initial-conversion-chart" }),
-
-        Page({ slug: "charts/conversion-to-paying-chart" }),
-      ],
-      index: {
-        title: "Conversion Charts",
-        link: "dashboard-and-metrics/charts/conversion-charts",
-      },
-    }),
-    SubCategory({
-      label: "Customer Charts",
-      items: [
-        Page({ slug: "charts/subscription-status-chart" }),
-        Page({ slug: "charts/new-customers-chart" }),
-        Page({ slug: "charts/customer-center-survey-responses-chart" }),
+        Page({ slug: "charts/churn-chart" }),
+        Page({ slug: "charts/refund-rate-chart" }),
         Page({ slug: "charts/app-store-refund-requests-chart" }),
         Page({ slug: "charts/play-store-cancel-reasons-chart" }),
+        Page({ slug: "charts/customer-center-survey-responses-chart" }),
       ],
       index: {
-        title: "Customer Charts",
-        link: "dashboard-and-metrics/charts/customer-charts",
-      },
-    }),
-    SubCategory({
-      label: "Explorer Charts",
-      items: [
-        Page({ slug: "charts/cohort-explorer" }),
-        Page({ slug: "charts/prediction-explorer" }),
-      ],
-      index: {
-        title: "Explorer Charts",
-        link: "dashboard-and-metrics/charts/explorer-charts",
-      },
-    }),
-    SubCategory({
-      label: "LTV Charts",
-      items: [
-        Page({ slug: "charts/realized-ltv-per-customer-chart" }),
-        Page({ slug: "charts/realized-ltv-per-paying-customer-chart" }),
-        Page({ slug: "charts/churn-chart" }),
-      ],
-      index: {
-        title: "LTV Charts",
-        link: "dashboard-and-metrics/charts/ltv-charts",
-      },
-    }),
-    SubCategory({
-      label: "Purchase Charts",
-      items: [
-        Page({ slug: "charts/new-paid-subscriptions-chart" }),
-        Page({ slug: "charts/new-trials-chart" }),
-        Page({ slug: "charts/non-subscription-purchases-chart" }),
-        Page({ slug: "charts/refund-rate-chart" }),
-      ],
-      index: {
-        title: "Purchase Charts",
-        link: "dashboard-and-metrics/charts/purchase-charts",
-      },
-    }),
-    SubCategory({
-      label: "Retention Charts",
-      items: [Page({ slug: "charts/subscription-retention-chart" })],
-      index: {
-        title: "Retention Charts",
-        link: "dashboard-and-metrics/charts/retention-charts",
-      },
-    }),
-    SubCategory({
-      label: "Revenue Charts",
-      items: [
-        Page({ slug: "charts/revenue-chart" }),
-        Page({ slug: "charts/annual-recurring-revenue-arr-chart" }),
-        Page({ slug: "charts/monthly-recurring-revenue-mrr-chart" }),
-        Page({ slug: "charts/monthly-recurring-revenue-movement-chart" }),
-      ],
-      index: {
-        title: "Revenue Charts",
-        link: "dashboard-and-metrics/charts/revenue-charts",
+        title: "Churns and Refunds",
+        link: "dashboard-and-metrics/charts/churns-and-refunds",
       },
     }),
     Page({ slug: "charts/charts-feature-incomplete-periods" }),
