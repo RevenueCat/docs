@@ -10,7 +10,7 @@ The Trial Conversion chart gives you insight into the conversion of customers st
 
 - Filters: Yes
 - Segments: No
-- Conversion Timeframe: No (coming soon)
+- Conversion Timeframe: No
 - Absolute/Relative Selector: Yes
 
 ### Customer cohorts
