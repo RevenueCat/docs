@@ -4,15 +4,16 @@ name: Create Docs PR from Webhook Prompt
 permissions:
   contents: write
   id-token: write
-  
+
 on:
   repository_dispatch:
     types: [doc_update]
 
 jobs:
   generate-docs:
+    if: github.event_name == 'repository_dispatch'
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
@@ -36,6 +37,6 @@ jobs:
           git push origin "$branch"
 
       - name: Create Pull Request
-        run: gh pr create --base main --head "doc-update-${{ github.run_id }}" --title "Automated Doc Update" --body "Prompt:${{github.event.client_payload.prompt}}"
+        run: gh pr create --base main --head "doc-update-${{ github.run_id }}" --title "Automated Doc Update" --body "Prompt: ${{ github.event.client_payload.prompt }}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
