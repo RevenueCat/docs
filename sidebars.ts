@@ -135,6 +135,7 @@ const paywallsCategory = Category({
             Page({ slug: "app-review" }),
           ],
         }),
+        Page({ slug: "testing-paywalls" }),
         Page({ slug: "displaying-paywalls" }),
         Page({ slug: "change-log" }),
       ],
@@ -639,13 +640,13 @@ const chartsCategory = Category({
   items: [
     Page({ slug: "charts" }),
     SubCategory({
-     label: "Revenue",
-     items: [
-       Page({ slug: "charts/revenue-chart" }),
-       Page({ slug: "charts/annual-recurring-revenue-arr-chart" }),
-       Page({ slug: "charts/monthly-recurring-revenue-mrr-chart" }),
-       Page({ slug: "charts/monthly-recurring-revenue-movement-chart" }),
-       Page({ slug: "charts/non-subscription-purchases-chart" }),
+      label: "Revenue",
+      items: [
+        Page({ slug: "charts/revenue-chart" }),
+        Page({ slug: "charts/annual-recurring-revenue-arr-chart" }),
+        Page({ slug: "charts/monthly-recurring-revenue-mrr-chart" }),
+        Page({ slug: "charts/monthly-recurring-revenue-movement-chart" }),
+        Page({ slug: "charts/non-subscription-purchases-chart" }),
       ],
       index: {
         title: "Revenue",
@@ -653,43 +654,43 @@ const chartsCategory = Category({
       },
     }),
     SubCategory({
-     label: "Subscriptions",
-     items: [
-       Page({ slug: "charts/active-subscriptions-chart" }),
-       Page({ slug: "charts/active-subscriptions-movement-chart" }),
-       Page({ slug: "charts/new-paid-subscriptions-chart" }),
-       Page({ slug: "charts/subscription-retention-chart" }),
-       Page({ slug: "charts/subscription-status-chart" }),
-     ],
-     index: {
-       title: "Subscriptions",
-       link: "dashboard-and-metrics/charts/subscriptions",
+      label: "Subscriptions",
+      items: [
+        Page({ slug: "charts/active-subscriptions-chart" }),
+        Page({ slug: "charts/active-subscriptions-movement-chart" }),
+        Page({ slug: "charts/new-paid-subscriptions-chart" }),
+        Page({ slug: "charts/subscription-retention-chart" }),
+        Page({ slug: "charts/subscription-status-chart" }),
+      ],
+      index: {
+        title: "Subscriptions",
+        link: "dashboard-and-metrics/charts/subscriptions",
       },
     }),
     SubCategory({
-     label: "Cohorts and LTV",
-     items: [
-       Page({ slug: "charts/cohort-explorer" }),
-       Page({ slug: "charts/realized-ltv-per-customer-chart" }),
-       Page({ slug: "charts/realized-ltv-per-paying-customer-chart" }),
-       Page({ slug: "charts/prediction-explorer" }),
-     ],
-     index: {
-       title: "Cohorts and LTV",
-       link: "dashboard-and-metrics/charts/cohorts-and-ltv",
+      label: "Cohorts and LTV",
+      items: [
+        Page({ slug: "charts/cohort-explorer" }),
+        Page({ slug: "charts/realized-ltv-per-customer-chart" }),
+        Page({ slug: "charts/realized-ltv-per-paying-customer-chart" }),
+        Page({ slug: "charts/prediction-explorer" }),
+      ],
+      index: {
+        title: "Cohorts and LTV",
+        link: "dashboard-and-metrics/charts/cohorts-and-ltv",
       },
     }),
     SubCategory({
-     label: "Conversion Funnel",
-     items: [
-       Page({ slug: "charts/new-customers-chart" }),
-       Page({ slug: "charts/initial-conversion-chart" }),
-       Page({ slug: "charts/trial-conversion-chart" }),
-       Page({ slug: "charts/conversion-to-paying-chart" }),
-     ],
-     index: {
-       title: "Conversion Funnel",
-       link: "dashboard-and-metrics/charts/conversion-funnel",
+      label: "Conversion Funnel",
+      items: [
+        Page({ slug: "charts/new-customers-chart" }),
+        Page({ slug: "charts/initial-conversion-chart" }),
+        Page({ slug: "charts/trial-conversion-chart" }),
+        Page({ slug: "charts/conversion-to-paying-chart" }),
+      ],
+      index: {
+        title: "Conversion Funnel",
+        link: "dashboard-and-metrics/charts/conversion-funnel",
       },
     }),
     SubCategory({
