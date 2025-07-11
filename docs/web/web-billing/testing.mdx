@@ -11,9 +11,11 @@ In contrast to mobile app stores, there is no intermediary between you and the c
 
 ## Testing a Web SDK integration
 
-You can use Stripe's [Test Mode](https://stripe.com/docs/test-mode) to test your Web Billing integration.
+You can use Stripe's [Test Mode](https://stripe.com/docs/test-mode) or [Sandboxes](https://docs.stripe.com/sandboxes) to test your Web Billing integration.
 
-If you use the Web Billing sandbox API key, Stripe's test mode will be used automatically, and you can use one of Stripe's [test cards](https://docs.stripe.com/testing) to make purchases.
+:::warning Stripe's test mode and sandboxes behave differently
+See how to use a sandbox to RevenueCat Web Billing [here](../connect-stripe-account#working-with-stripe-test-mode--sandboxes).
+:::
 
 ## Testing Web Purchase Links
 
@@ -26,6 +28,8 @@ The sandbox URL is automatically configured to use Stripe's test mode, and shoul
 ## Testing Wallet Payment Methods
 
 For both **Apple Pay** & **Google Pay**, you can use real payment cards in sandbox. Stripe configures both payment methods in a test mode, no real transactions are made.
+
+You can use one of Stripe's [test cards](https://docs.stripe.com/testing) to make credit card purchases.
 
 ## Subscription Schedules in Sandbox
 
