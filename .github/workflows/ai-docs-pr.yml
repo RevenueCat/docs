@@ -1,6 +1,10 @@
 # .github/workflows/doc-pr-from-webhook.yml
 name: Create Docs PR from Webhook Prompt
 
+permissions:
+  contents: write
+  id-token: write
+  
 on:
   repository_dispatch:
     types: [doc_update]
