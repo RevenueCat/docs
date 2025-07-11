@@ -1,0 +1,83 @@
+---
+title: Testing Paywalls
+slug: testing-paywalls
+hidden: false
+---
+
+:::info A/B Testing
+This page refers to testing paywalls to ensure they're working as expected before releasing them to production. If you're looking to learn about A/B testing paywalls, see [Experiments](/tools/experiments-v1).
+:::
+
+There are several ways to test your paywalls before releasing them to production. Here are a few options to consider:
+
+## 1. Preview in the RevenueCat app
+
+You can preview paywalls directly on device using the RevenueCat iOS app version 1.2 and above. This provides a quick way to see how your paywall will look, without building your app.
+
+Just tap on "Projects" in the bottom menu, navigate to your project, then tap on "Paywalls" to see a list of all your paywalls.
+
+:::info Draft paywalls
+The RevenueCat app also supports previewing draft paywalls, which you'll see as unique options in the list to select and preview.
+:::
+
+![Paywalls in the RevenueCat app](/docs_images/paywalls/paywalls-rc-app.jpeg)
+
+You can also modify how the paywall view is built (e.g. Full Screen vs. a Modal Sheet view), and whether dark or light mode is used.
+
+![Paywalls settings in the RevenueCat app](/docs_images/paywalls/paywalls-rc-app-settings.jpeg)
+
+:::warning Variable preview values
+Please note that the RevenueCat app uses preview values for any variables your paywall uses, so the prices displayed will not reflect the actual prices of your products. They're only intended to reflect how your paywall will look when real values are inserted in your app.
+:::
+
+## 2. Override a Customer's Default Offering
+
+The simplest way to test a paywall is by overriding an individual customer's offering through their Customer Profile in the RevenueCat dashboard:
+
+1. Navigate to the Customer Profile for your test device
+2. In the current offering section, click "Edit"
+3. Select the offering containing your test paywall
+4. Launch your app and navigate to the paywall to see the paywall of your overridden offering
+
+![Override current offering](/docs_images/paywalls/paywalls-override-current-offering.png)
+
+## 3. Create a Targeting Rule for an internal app version
+
+You can create a Targeting Rule to show specific paywalls to internal builds of your app:
+
+1. Create a new Targeting Rule
+2. Set the condition to "App Version equals X.Y.Z" using your internal build version
+3. Set the offering to the one containing your test paywall
+4. Install the internal build on your test device
+
+This approach is useful for testing paywalls across your team before releasing to production.
+
+![Targeting rule](/docs_images/paywalls/paywalls-targeting-rule.png)
+
+## 4. Testing through Xcode and Android Studio
+
+### Xcode
+
+When testing through Xcode, you can:
+
+1. Use the iOS Simulator to test different device sizes and orientations
+2. Test different locales to verify translations
+3. Test different subscription states using StoreKit Configuration files
+
+### Android Studio
+
+When testing through Android Studio, you can:
+
+1. Use the Android Emulator to test different device sizes and screen densities
+2. Test different locales and languages to verify translations
+3. Test different subscription states using Google Play's license testing
+4. Preview layouts directly in Android Studio's Layout Editor
+
+## Best Practices
+
+- Test your paywall across different device sizes to ensure proper layout
+- Verify all purchase flows work as expected (in-app purchases, web purchases, etc.)
+- Test localization if your app supports multiple languages
+- Verify that variables are properly populated with product information
+- Test both light and dark mode if your paywall supports them
+
