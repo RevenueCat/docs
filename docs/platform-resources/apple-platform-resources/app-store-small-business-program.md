@@ -23,7 +23,7 @@ Once you enroll you should receive a confirmation email that your enrollment is 
 
 Since a developer could have multiple apps from different companies represented in their RevenueCat account, the Small Business Program membership status is set on a **per-app basis** in the RevenueCat dashboard.
 
-Visit your app settings in the RevenueCat dashboard (**Project Settings > Apps**) and expand the **Apple Small Business Program** dropdown.
+Visit your app settings in the RevenueCat dashboard, by opening **Platforms** in the bottom of the left hand drawer menu. Select your App Store app, scroll down and expand the **Apple Small Business Program** dropdown.
 
 ![](/docs_images/platform-resources/apple/small-business-program.png)
 
