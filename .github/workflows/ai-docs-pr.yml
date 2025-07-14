@@ -37,6 +37,6 @@ jobs:
           git push origin "$branch"
 
       - name: Create Pull Request
-        run: gh pr create --base main --head "doc-update-${{ github.run_id }}" --title "Automated Doc Update" --body "Prompt: ${{ github.event.client_payload.prompt }}"
+        run: gh pr create --base main --head "doc-update-${{ github.run_id }}" --title "Automated Doc Update" --body "Prompt:${{github.event.client_payload.prompt}}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
