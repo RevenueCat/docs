@@ -1,23 +1,23 @@
 ---
-title: Connect Platforms
-sidebar_label: Connect Platforms
+title: Connect Apps & Web Providers
+sidebar_label: Connect Apps & Web Providers
 slug: connect-a-store
 excerpt: Connect your project to App Store Connect, Google Play Console, and more
 ---
 
-Once you've created a [project](/projects/overview), you'll need to connect it to the stores and platforms you want to support and set up [Server Notifications](/platform-resources/server-notifications). After you've connected your app, you can import your products from the stores to start configuring your offerings.
+Once you've created a [project](/projects/overview), you'll need to connect it to the stores and payment providers you want to support and set up [Server Notifications](/platform-resources/server-notifications). After you've connected your app, you can import your products from the stores to start configuring your offerings.
 
-Add an **app platform** or **web platform** in the _Platforms_ section of your project settings.
+Add an **app config** or **web config** in the _Apps & providers_ section of your app settings.
 
-![Add App Platform](/docs_images/projects/add-app-platform.png)
+![Add App Configuration](/docs_images/projects/add-app-platform.png)
 
-![Add Web Platform](/docs_images/projects/add-web-platform.png)
+![Add Web Configuration](/docs_images/projects/add-web-platform.png)
 
-## Add a Platform
+## Add a Configuration
 
 RevenueCat supports a wide range of stores and payment providers.
 
-### App Platforms
+### App Configuration
 
 #### Apple App Store
 
@@ -48,7 +48,7 @@ To connect your app to the Roku Store, you'll need to add your **App name**, and
 
 - [Where do I find my Roku Pay API Key?](/service-credentials/roku-credentials)
 
-### Web Platforms
+### Web Configuration
 
 #### Web Billing
 
@@ -70,16 +70,16 @@ Paddle is a popular all-in-one payment infrastructure that allows you to accept 
 
 ## Platform Server Notifications
 
-After adding your platforms, we recommend setting up [Platform Server Notifications](/platform-resources/server-notifications). These notifications will ensure RevenueCat is notified of purchases and subscription events as soon as possible, and will speed up [webhooks](/integrations/webhooks) and integration delivery times.
+After adding your configurations, we recommend setting up [Platform Server Notifications](/platform-resources/server-notifications). These notifications will ensure RevenueCat is notified of purchases and subscription events as soon as possible, and will speed up [webhooks](/integrations/webhooks) and integration delivery times.
 
 ## Import Products
 
-After adding your platforms, you can import your products from the stores to start configuring your offerings.
+After adding your configurations, you can import your products from the stores to start configuring your offerings.
 
 - [Learn more about importing products](/offerings/products-overview)
 
 ## Next steps
 
-If you've added your platforms, it's time to install the SDK to start making purchases.
+If you've added your configurations, it's time to install the SDK to start making purchases.
 
 <Button href="/docs/getting-started/installation">Install the SDK →</Button>
