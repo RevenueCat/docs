@@ -11,19 +11,27 @@ on:
 
 jobs:
   generate-docs:
-    if: github.event_name == 'repository_dispatch'
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Claude Code
-        uses: anthropics/claude-code-action@beta
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          prompt: "Review the /docs folder structure and file content, and propose changes (if applicable and not already addressed in documentation) based on this prompt: ${{ github.event.client_payload.prompt }}"
-          anthropic_api_key: "${{ secrets.CLAUDE_API_KEY }}"
-          output-dir: "output"
+          node-version: 18
+          
+      - name: Install Claude CLI
+        run: npm install -g @anthropic-ai/claude-code
+      
+      - name: Run Claude
+        run: |
+          echo "Review the /docs folder structure and file content, and propose changes (if applicable and not already addressed in documentation) based on this prompt: ${{ github.event.client_payload.prompt }}" > prompt.txt
+          mkdir -p output
+          claude-code --input prompt.txt --output output
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
 
       - name: Create Branch and Commit
         run: |
