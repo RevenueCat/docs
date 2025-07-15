@@ -9,18 +9,18 @@ RevenueCat authenticates requests from the RevenueCat SDK and the [REST API](/ap
 
 There are two types of API keys:
 
-- **Public** API keys (also known as **App specific keys** in the dashboard) are meant to make non-potent changes to subscribers, and must be used to [configure the SDK](/getting-started/configuring-sdk). Each app under a project is automatically provided with a public API key.
+- **Public** API keys (also known as **SDK API keys** in the dashboard) are meant to make non-potent changes to subscribers, and must be used to [configure the SDK](/getting-started/configuring-sdk). Each app under a project is automatically provided with a public API key.
 - **Secret** API keys, prefixed `sk_`, should be kept confidential and only stored on your own servers. Your secret API keys can perform restricted API requests such as deleting subscribers and granting entitlements. Secret API keys are project-wide and can be created and revoked by project [Admins](/projects/collaborators).
 
 ## Finding API Keys
 
-You can find the API keys for your project under the **Platforms** section of your Project Settings in the dashboard.
+You can find the API keys for your project under **API keys** in the dashboard.
 
 ![API Keys](/docs_images/projects/finding-api-keys.png)
 
-Public platform-specific API keys are automatically created when adding an App to your Project and cannot be changed. Secret API keys can be created by selecting the **+ New API key** button and will be listed under the section **Secret API keys**.
+Public platform-specific API keys are automatically created when adding an App to your Project and cannot be changed. Secret API keys can be created by selecting the **+ New secret API key** button and will be listed under the section **Secret API keys**.
 
-You can also find the public API key in your app settings by selecting your app from **Project Settings > Platforms**.
+You can also find the public API key in your app settings by selecting your app from **Apps & providers**.
 
 If you cannot see your API keys anywhere in the dashboard, it may mean you do not have access to them. Contact the project's owner and make sure you are added as an **Admin**.
 

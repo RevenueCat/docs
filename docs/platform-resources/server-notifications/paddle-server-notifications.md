@@ -10,7 +10,7 @@ RevenueCat does not require server notifications from Paddle, however doing so c
 
 ## Setup Instructions
 
-1. Navigate to your Paddle configuration in the RevenueCat dashboard by selecting your app from **Project Settings > Platforms**.
+1. Navigate to your Paddle configuration in the RevenueCat dashboard by selecting your app from **Apps & providers**.
 2. Expand the **Webhook Configuration** section and click on **Apply in Paddle**.
 
 ![](/docs_images/web/paddle/apply-in-paddle.png)
