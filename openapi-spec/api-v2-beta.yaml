@@ -629,7 +629,6 @@ paths:
                   type: paddle
                   paddle:
                     paddle_api_key: <Your Paddle API Key goes here>
-                    paddle_is_sandbox: true
       responses:
         '201':
           description: Success. The app was created
@@ -1606,6 +1605,107 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>project_configuration:products:read_write</code>.'
+  /projects/{project_id}/products/{product_id}/create_in_store:
+    post:
+      summary: Push a product to the store
+      description: "Push a product to the App Store. \n\n**For subscription products**:\
+        \ You must provide store information including duration and subscription group\
+        \ details.\n\n**For in-app purchase products** (consumable, non-consumable,\
+        \ non-renewing subscription): No request body is required.\n This endpoint\
+        \ requires the following permission(s): <code>project_configuration:products:read_write</code>."
+      operationId: create-product-in-store
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:products:read_write
+      x-release-status: public
+      tags:
+      - Product
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: product_id
+        description: ID of the product
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: prod1a2b3c4d5
+      requestBody:
+        required: false
+        description: 'Store-specific information. Only required for subscription products.
+
+          For in-app purchase products, send an empty body or omit the request body
+          entirely.
+
+          '
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                store_information:
+                  description: Store-specific information for creating the product
+                    in the store
+                  oneOf:
+                  - $ref: '#/components/schemas/CreateAppStoreConnectSubscriptionInput'
+                  - $ref: '#/components/schemas/CreateAppStoreConnectInAppPurchaseInput'
+              additionalProperties: false
+            examples:
+              App Store Subscription:
+                summary: Creating a subscription product
+                value:
+                  store_information:
+                    duration: ONE_MONTH
+                    subscription_group_name: Premium Subscriptions
+                    subscription_group_id: sub_group_123
+              App Store In-App Purchase:
+                summary: Creating an in-app purchase product (no body needed)
+                value: {}
+      responses:
+        '201':
+          description: Success. The product was pushed to the store
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - created_product
+                properties:
+                  created_product:
+                    $ref: '#/components/schemas/StoreProduct'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
   /projects/{project_id}/products:
     get:
       summary: Get a list of products
@@ -5647,6 +5747,39 @@ components:
       - ZM
       - ZW
       - AX
+    CreateAppStoreConnectInAppPurchaseInput:
+      type: object
+      properties: {}
+      additionalProperties: false
+      description: In-app purchase products do not require any additional information
+    CreateAppStoreConnectSubscriptionInput:
+      type: object
+      required:
+      - duration
+      - subscription_group_name
+      properties:
+        duration:
+          type: string
+          enum:
+          - ONE_WEEK
+          - ONE_MONTH
+          - TWO_MONTHS
+          - THREE_MONTHS
+          - SIX_MONTHS
+          - ONE_YEAR
+          description: The subscription duration period
+        subscription_group_name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: The name of the subscription group
+        subscription_group_id:
+          type: string
+          nullable: true
+          minLength: 1
+          maxLength: 255
+          description: The ID of the subscription group (optional)
+      additionalProperties: false
     Currency:
       type: string
       description: ISO 4217 currency code
@@ -7257,8 +7390,14 @@ components:
               minLength: 50
               maxLength: 70
             paddle_is_sandbox:
-              description: Whether the app is tied to the sandbox environment.
-              nullable: false
+              description: '[Deprecated] Whether the app is tied to the sandbox environment.
+
+                This field is deprecated and will be removed in the future.
+
+                The environment is determined by the `paddle_api_key` format.
+
+                '
+              nullable: true
               type: boolean
               example: true
     Paywall:
@@ -7869,6 +8008,41 @@ components:
       required:
       - object
       - contents
+    StoreProduct:
+      type: object
+      required:
+      - id
+      - product_identifier
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - store_product
+          type: string
+        id:
+          description: The unique identifier of the product in the store (e.g., App
+            Store Connect product ID)
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 1234567890
+        name:
+          description: The name of the store product
+          nullable: true
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: Premium Monthly Subscription
+        product_identifier:
+          description: The product identifier used in the store
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: com.example.premium_monthly
     StripeApp:
       type: object
       properties:
