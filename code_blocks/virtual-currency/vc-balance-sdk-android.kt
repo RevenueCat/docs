@@ -1,13 +1,14 @@
 // Fetch virtual currencies
 // With coroutines
 try {
-    val getVirtualCurrenciesResult: VirtualCurrencies = purchases.awaitGetVirtualCurrencies()
+    val getVirtualCurrenciesResult: VirtualCurrencies = Purchases.sharedInstance.awaitGetVirtualCurrencies()
+    // TODO: Handle virtual currencies
 } catch(error: PurchasesException) {
     // TODO: Handle error
 }
 
 // With callbacks
-purchases.getVirtualCurrenciesWith(
+Purchases.sharedInstance.getVirtualCurrenciesWith(
     onError = { error: PurchasesError -> 
         // TODO: Handle error
     },
