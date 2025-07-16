@@ -66,16 +66,20 @@ Add to your Claude Desktop configuration:
 
 ```json
 {
-  "mcpServers": {
-    "revenuecat": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-fetch"],
-      "env": {
-        "FETCH_BASE_URL": "https://mcp.revenuecat.ai/mcp",
-        "FETCH_HEADERS": "{\"Authorization\": \"Bearer YOUR_API_V2_SECRET_KEY\"}"
-      }
+    "mcpServers": {
+        "revenuecat": {
+            "command": "npx",
+            "args": [
+                "mcp-remote",
+                "https://mcp.revenuecat.ai/mcp",
+                "--header",
+                "Authorization: Bearer ${AUTH_TOKEN}"
+            ],
+            "env": {
+                "AUTH_TOKEN": "YOUR_API_V2_SECRET_KEY"
+            }
+        }
     }
-  }
 }
 ```
 
