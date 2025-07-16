@@ -24,6 +24,6 @@ String code = virtualCurrency.getCode();
 String serverDescription = virtualCurrency.getServerDescription();
 
 // Iterate through all virtual currency balances
-virtualCurrencies.getAll().forEach((virtualCurrencyCode, virtualCurrency) -> {
-    // TODO: Handle virtual currency
+virtualCurrencies.getAll().forEach((key, virtualCurrency) -> {
+    System.out.println(virtualCurrency.getCode() + ": " + virtualCurrency.getBalance());
 });
