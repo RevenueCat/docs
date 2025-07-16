@@ -100,6 +100,33 @@ import reactNativeXmlContent from "@site/code_blocks/getting-started/installatio
 Don't forget to enable the In-App Purchase capability for your project under `Project Target -> Capabilities -> In-App Purchase`
 :::
 
+## Android Build Issues
+
+### R8 Dependencies Conflict
+
+If you encounter build failures related to R8 (Android's code shrinker) when using `react-native-purchases-ui`, you may see errors like:
+
+```
+Execution failed for task ':app:mergeExtDexDevDebug'.
+> Could not resolve all files for configuration ':app:devDebugRuntimeClasspath'.
+```
+
+This issue occurs due to a bug in earlier versions of Android Gradle Plugin (AGP) that affects R8 dependency resolution. To fix this, add the following to your project-level `build.gradle` file (not `app/build.gradle`):
+
+import androidBuildFixContent from "@site/code_blocks/getting-started/installation/reactnative_android_build_fix.gradle?raw";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "gradle",
+      content: androidBuildFixContent,
+      name: "build.gradle (project level)",
+    },
+  ]}
+/>
+
+This solution forces the use of a specific R8 version that resolves the dependency conflicts. For more details, see the [Google Issue Tracker](https://issuetracker.google.com/issues/342522142#comment8).
+
 ## Next Steps
 
 - Now that you've installed the Purchases SDK in your React Native app, get started by [initializing an instance of Purchases →](/getting-started/quickstart#4-using-revenuecats-purchases-sdk)
