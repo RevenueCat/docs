@@ -25,6 +25,6 @@ val code = virtualCurrency?.code
 val description = virtualCurrency?.serverDescription
 
 // Iterate through all virtual currency balances
-for ((virtualCurrencyCode, virtualCurrencyInfo) in virtualCurrencies.all) {
-    println("$virtualCurrencyCode: ${virtualCurrencyInfo.balance}")
+for ((virtualCurrencyCode, virtualCurrency) in virtualCurrencies.all) {
+    println("$virtualCurrencyCode: ${virtualCurrency.balance}")
 }
