@@ -50,28 +50,7 @@ Virtual currency functionality is available in the native iOS SDK in versions 5.
 
 ### Android
 
-When adding the purchases-android SDK to your app, use the most recent `vc-beta` version when adding `purchases-android` to your `build.gradle`:
-
-[![Latest Virtual Currency Android Beta Release](https://img.shields.io/github/release/RevenueCat/purchases-android.svg?filter=*vc-beta*&style=flat)](https://github.com/RevenueCat/purchases-android/releases)
-
-```kotlin
-// build.gradle
-
-implementation 'com.revenuecat.purchases:purchases:8.14.2-vc-beta.1'
-```
-
-When you use the beta virtual currency features, you’ll need to annotate your function/class with the `@OptIn(ExperimentalPreviewRevenueCatPurchasesAPI::class)` annotation:
-
-import androidExperimentalAPIAnnotationExample from "@site/code_blocks/virtual-currency/vc-android-experimental-api-annotation-example.kt?raw";
-
-<RCCodeBlock
-  tabs={[
-    {
-      type: "kotlin",
-      content: androidExperimentalAPIAnnotationExample,
-    },
-  ]}
-/>
+Virtual currency functionality is available in the native Android SDK in versions 9.1.0 and above.
 
 ### React Native
 
@@ -152,9 +131,10 @@ import content5 from "@site/code_blocks/virtual-currency/balance-response.json?r
 
 #### From the SDK
 
-##### iOS
+##### iOS and Android
 
 import fetchVCBalancesSwift from "@site/code_blocks/virtual-currency/vc-balance-sdk-ios.swift?raw";
+import fetchVCBalancesKotlin from "@site/code_blocks/virtual-currency/vc-balance-sdk-android.kt?raw";
 
 You can use the `virtualCurrencies()` function to retrieve a customer's balance. The function returns a `VirtualCurrencies` object, which includes the customer's balances along with each virtual currency's metadata.
 
@@ -164,6 +144,11 @@ You can use the `virtualCurrencies()` function to retrieve a customer's balance.
       type: "swift",
       content: fetchVCBalancesSwift,
       name: "Swift",
+    },
+    {
+      type: "kotlin",
+      content: fetchVCBalancesKotlin,
+      name: "Kotlin",
     },
   ]}
 />
@@ -186,21 +171,15 @@ import cachedVirtualCurrenciesSwift from "@site/code_blocks/virtual-currency/cac
   ]}
 />
 
-##### Android, React Native, and Flutter
+##### React Native and Flutter
 
-If you're using the virtual currency SDK betas for Android, React Native, and Flutter, you can fetch the virtual currency balances from the [CustomerInfo](https://www.revenuecat.com/docs/customers/customer-info) object in the SDK:
+If you're using the virtual currency SDK betas for React Native or Flutter, you can fetch the virtual currency balances from the [CustomerInfo](https://www.revenuecat.com/docs/customers/customer-info) object in the SDK:
 
-import fetchVCBalancesKotlin from "@site/code_blocks/virtual-currency/vc-balance-sdk-android.kt?raw";
 import fetchVCBalancesReactNative from "@site/code_blocks/virtual-currency/vc-balance-sdk-react-native.ts.txt?raw";
 import fetchVCBalancesFlutter from "@site/code_blocks/virtual-currency/vc-balance-sdk-flutter.dart?raw";
 
 <RCCodeBlock
   tabs={[
-    {
-      type: "kotlin",
-      content: fetchVCBalancesKotlin,
-      name: "Kotlin",
-    },
     {
       type: "rn",
       content: fetchVCBalancesReactNative,
