@@ -5,10 +5,6 @@ excerpt: Setting up your in-app purchases in Roku
 hidden: false
 ---
 
-:::warning Beta Feature
-RevenueCat's Roku support is currently in beta.
-:::
-
 To set up in-channel products for Roku, start by logging into the [Roku dashboard](https://developer.roku.com/dev/landing).
 
 **This guide assumes basic knowledge of Roku and the Roku dashboard, as well as having a Roku channel set up and ready for products.** For more information, visit Roku's [documentation](https://developer.roku.com/docs/developer-program/getting-started/roku-dev-prog.md).
