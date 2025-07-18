@@ -17,15 +17,21 @@ To view customers who have made sandbox transactions you can use the default San
 
 ## Find an Individual Customer
 
-You can look up an individual customer by an exact match of their App User ID, Transaction ID, Email Attribute, or Order ID (iOS only). To find a customer via Order ID, you can follow our guide on setting up [In-App Purchase Keys](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration) to unlock this feature. The transaction must show as completed in the [Apple Purchase History](https://support.apple.com/en-gb/HT204088) to be considered a valid Order ID. Note that Transaction ID refers to the identifier in Google Play console and order emails of GPA.1234.1223–, and for Stripe si_abcefg, whereas Order ID refers to the identifier from Apple's order emails.
+To find an individual customer, use the search bar or the hotkey (⌘K on Mac and iPad, Ctrl+K on other devices) to search by an exact match of their App User ID, Transaction ID, Email Attribute, or Order ID (iOS only).
+
+Looking up customers is real-time. They will be searchable here as soon as a customer exists in RevenueCat.
+
+![Find a customer using the global search](/docs_images/customers/find-customer.png)
+
+![Find a customer results in the global search dialog](/docs_images/customers/find-customer-dialog.png)
+
+### iOS Order ID
+
+To find a customer via Order ID, you can follow our guide on setting up [In-App Purchase Keys](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration) to unlock this feature. The transaction must show as completed in the [Apple Purchase History](https://support.apple.com/en-gb/HT204088) to be considered a valid Order ID. Note that Transaction ID refers to the identifier in Google Play console and order emails of GPA.1234.1223–, and for Stripe si_abcefg, whereas Order ID refers to the identifier from Apple's order emails.
 
 :::warning Sandbox transaction search
 Customer lookup by Transaction ID and Order ID works for production purchases only.
 :::
-
-Looking up customers in RevenueCat is real-time, as soon as a customer exists in RevenueCat they will be searchable here.
-
-![Find a customer](/docs_images/customers/find-customer.png)
 
 ## Viewing a List
 
