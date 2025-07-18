@@ -1,2 +1,2 @@
-debugImplementation "com.revenuecat.purchases:purchases-debug-view:6.9.2"
-releaseImplementation "com.revenuecat.purchases:purchases-debug-view-noop:6.9.2"
+debugImplementation "com.revenuecat.purchases:purchases-debug-view:9.1.0"
+releaseImplementation "com.revenuecat.purchases:purchases-debug-view-noop:9.1.0"
