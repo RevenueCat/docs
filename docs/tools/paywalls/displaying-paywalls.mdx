@@ -4,6 +4,21 @@ slug: displaying-paywalls
 hidden: false
 ---
 
+import modalSheetSwiftUI from '@site/code_blocks/tools/paywalls/modal_sheet_swiftui.swift?raw';
+import modalSheetAndroid from '@site/code_blocks/tools/paywalls/modal_sheet_android.kt?raw';
+import fullscreenSwiftUI from '@site/code_blocks/tools/paywalls/fullscreen_swiftui.swift?raw';
+import fullscreenUIKit from '@site/code_blocks/tools/paywalls/fullscreen_uikit.swift?raw';
+import fullscreenAndroid from '@site/code_blocks/tools/paywalls/fullscreen_android.kt?raw';
+import hardPaywallSwiftUI from '@site/code_blocks/tools/paywalls/hard_paywall_swiftui.swift?raw';
+import embeddedReactNative from '@site/code_blocks/tools/paywalls/embedded_react_native.tsx?raw';
+import embeddedFlutter from '@site/code_blocks/tools/paywalls/embedded_flutter.dart?raw';
+import embeddedKMP from '@site/code_blocks/tools/paywalls/embedded_kmp.kt?raw';
+import automaticDismissal from '@site/code_blocks/tools/paywalls/automatic_dismissal.swift?raw';
+import manualDismissal from '@site/code_blocks/tools/paywalls/manual_dismissal.swift?raw';
+import prefetchOfferings from '@site/code_blocks/tools/paywalls/prefetch_offerings.swift?raw';
+import errorHandling from '@site/code_blocks/tools/paywalls/error_handling.js?raw';
+import callbacksSwiftUI from '@site/code_blocks/tools/paywalls/callbacks_swiftui.swift?raw';
+
 Use RevenueCat Paywalls to easily manage, display, and handle your paywall experiences across platforms.
 
 ## Key concepts
@@ -23,41 +38,40 @@ RevenueCat Paywalls can be displayed in several ways to fit your application's U
 
 Modal sheets present the paywall in an overlay that can typically be swiped away by the user unless configured otherwise.
 
-- **iOS (SwiftUI):**
-
-```swift
-.presentPaywallIfNeeded(requiredEntitlementIdentifier: "premium")
-```
-
-- **Android (Jetpack Compose):**
-
-```kotlin
-PaywallDialog.showIfNeeded(requiredEntitlementIdentifier = "premium")
-```
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        title: "iOS (SwiftUI)",
+        content: modalSheetSwiftUI,
+    },
+    {
+        type: 'kotlin',
+        title: "Android (Jetpack Compose)",
+        content: modalSheetAndroid,
+    },
+]}/>
 
 ### Full-screen view
 
 Full-screen views offer an immersive experience by covering the entire screen.
 
-- **iOS (SwiftUI):**
-
-```swift
-.presentPaywallIfNeeded(requiredEntitlementIdentifier: "premium")
-    .presentationMode(.fullScreenCover)
-```
-
-- **iOS (UIKit):**
-
-```swift
-let paywallViewController = PaywallViewController(offeringIdentifier: "your_offering")
-present(paywallViewController, animated: true)
-```
-
-- **Android (Compose):**
-
-```kotlin
-PaywallActivityLauncher.launch(context, offeringIdentifier = "your_offering")
-```
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        title: "iOS (SwiftUI)",
+        content: fullscreenSwiftUI,
+    },
+    {
+        type: 'swift',
+        title: "iOS (UIKit)",
+        content: fullscreenUIKit,
+    },
+    {
+        type: 'kotlin',
+        title: "Android (Compose)",
+        content: fullscreenAndroid,
+    },
+]}/>
 
 ### Hard paywall
 
@@ -68,32 +82,35 @@ Hard paywalls prevent dismissal unless the user makes a purchase or restores acc
 
 For example, in SwiftUI:
 
-```swift
-.presentPaywallIfNeeded(requiredEntitlementIdentifier: "premium")
-    .presentationMode(.fullScreenCover)
-```
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        title: "SwiftUI",
+        content: hardPaywallSwiftUI,
+    },
+]}/>
 
 ### Embedded component
 
 Embed paywalls within an existing screen or navigation stack for more integrated experiences.
 
-- **React Native:**
-
-```jsx
-<RevenueCatUI.Paywall offeringIdentifier="your_offering" />
-```
-
-- **Flutter:**
-
-```dart
-PaywallView(offeringIdentifier: "your_offering")
-```
-
-- **Kotlin Multiplatform (Compose):**
-
-```kotlin
-Paywall(offeringIdentifier = "your_offering")
-```
+<RCCodeBlock tabs={[
+    {
+        type: 'jsx',
+        title: "React Native",
+        content: embeddedReactNative,
+    },
+    {
+        type: 'dart',
+        title: "Flutter",
+        content: embeddedFlutter,
+    },
+    {
+        type: 'kotlin',
+        title: "Kotlin Multiplatform (Compose)",
+        content: embeddedKMP,
+    },
+]}/>
 
 ## Handling restore behavior
 
@@ -105,16 +122,13 @@ Restores automatically trigger callbacks (`onRestoreStarted`, `onRestoreComplete
 
 The `presentPaywallIfNeeded` method supports passing an entitlement to achieve automatic dismissal behavior upon successful restoration. If the restored entitlement satisfies the paywall requirement, the paywall will automatically dismiss.
 
-```swift
-.presentPaywallIfNeeded(requiredEntitlementIdentifier: "premium") { result in
-    switch result {
-    case .restored(let customerInfo):
-        print("Restored: \(customerInfo)")
-    default:
-        break
-    }
-}
-```
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        title: "SwiftUI",
+        content: automaticDismissal,
+    },
+]}/>
 
 ### Manual dismissal
 
@@ -122,13 +136,13 @@ For other SDK methods of displaying paywalls, automatic dismissal upon entitleme
 
 Example manual dismissal handling:
 
-```swift
-Purchases.shared.customerInfoStream.sink { customerInfo in
-    if customerInfo.entitlements["premium"]?.isActive == true {
-        dismissPaywall()
-    }
-}
-```
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        title: "SwiftUI",
+        content: manualDismissal,
+    },
+]}/>
 
 ## Paywall loading
 
@@ -136,13 +150,13 @@ Ensuring your paywalls load quickly provides a better user experience and reduce
 
 - **Pre-fetch Offerings:** Load your offerings early in your app lifecycle to ensure that paywall data is readily available when needed.
 
-```swift
-Purchases.shared.getOfferings { offerings, error in
-    if let offerings = offerings {
-        print("Offerings loaded: \(offerings)")
-    }
-}
-```
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        title: "SwiftUI",
+        content: prefetchOfferings,
+    },
+]}/>
 
 - **Reduce Asset Sizes:** Optimize and minimize asset sizes (images, fonts) used in your paywall design to ensure faster loading times.
 
@@ -160,16 +174,13 @@ Manage paywall errors gracefully to ensure smooth user experience:
 
 Example error handling in React Native:
 
-```javascript
-try {
-  const result = await RevenueCatUI.presentPaywall();
-  if (result === 'ERROR') {
-    Alert.alert("Error loading paywall", "Please check your connection and try again.");
-  }
-} catch (error) {
-  console.error(error);
-}
-```
+<RCCodeBlock tabs={[
+    {
+        type: 'javascript',
+        title: "React Native",
+        content: errorHandling,
+    },
+]}/>
 
 ## Listening to callbacks
 
@@ -188,18 +199,12 @@ RevenueCat provides extensive callbacks for user interactions:
 
 Example SwiftUI callback implementation:
 
-```swift
-RevenueCatUI.presentPaywallIfNeeded(requiredEntitlementIdentifier: "premium") {
-    purchaseCompleted: { customerInfo in
-        unlockPremiumFeatures()
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        title: "SwiftUI",
+        content: callbacksSwiftUI,
     },
-    restoreCompleted: { customerInfo in
-        updateUIForRestoredPurchases()
-    },
-    dismiss: {
-        handlePaywallDismissal()
-    }
-}
-```
+]}/>
 
 [Learn more about creating Paywalls.](/tools/paywalls/creating-paywalls)
