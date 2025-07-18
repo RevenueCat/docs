@@ -1,7 +1,7 @@
 Purchases purchases = GetComponent<Purchases>();
-purchases.PurchasePackage(package, (productIdentifier, customerInfo, userCancelled, error) =>
+purchases.PurchasePackage(package, (purchaseResult) =>
 {
-  if (customerInfo.Entitlements.Active.ContainsKey("my_entitlement_identifier")) {
+  if (purchaseResult.CustomerInfo.Entitlements.Active.ContainsKey("my_entitlement_identifier")) {
     // Unlock that great "pro" content
   }
 });

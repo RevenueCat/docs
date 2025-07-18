@@ -1,1 +1,1 @@
-implementation 'com.revenuecat.purchases:purchases:8.17.1'
+implementation 'com.revenuecat.purchases:purchases:9.1.0'

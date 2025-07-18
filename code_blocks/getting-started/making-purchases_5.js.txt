@@ -1,7 +1,7 @@
 // Using Offerings/Packages
 try {
-  CustomerInfo customerInfo = await Purchases.purchasePackage(package);
-  if (customerInfo.entitlements.all["my_entitlement_identifier"].isActive) {
+  PurchaseResult purchaseResult = await Purchases.purchasePackage(package);
+  if (purchaseResult.customerInfo.entitlements.all["my_entitlement_identifier"].isActive) {
     // Unlock that great "pro" content
   }
 } on PlatformException catch (e) {
@@ -14,8 +14,8 @@ try {
 // Note: if you are not using offerings/packages to purchase In-app products, you can use purchaseStoreProduct and getProducts
 
 try {
-  CustomerInfo customerInfo = await Purchases.purchaseStoreProduct(productToBuy);
-  if (customerInfo.entitlements.all["my_entitlement_identifier"].isActive) {
+  PurchaseResult purchaseResult = await Purchases.purchaseStoreProduct(productToBuy);
+  if (purchaseResult.customerInfo.entitlements.all["my_entitlement_identifier"].isActive) {
     // Unlock that great "pro" content
   }
 } on PlatformException catch (e) {
