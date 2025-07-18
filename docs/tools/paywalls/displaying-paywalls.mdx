@@ -51,6 +51,12 @@ Modal sheets present the paywall in an overlay that can typically be swiped away
     },
 ]}/>
 
+#### Paywalls on iPad
+
+When using `presentPaywallIfNeeded` to display a paywall on iPad, we'll automatically show a paywall in a modal that is roughly iPhone sized. If instead you prefer to show a paywall that is full screen on iPad, you can use the methods described below.
+
+![Paywalls on iPad](/docs_images/paywalls/paywalls-on-ipad.jpeg)
+
 ### Full-screen view
 
 Full-screen views offer an immersive experience by covering the entire screen.
@@ -206,5 +212,52 @@ Example SwiftUI callback implementation:
         content: callbacksSwiftUI,
     },
 ]}/>
+
+## Custom fonts
+
+Using custom fonts in your paywall can now be done by uploading font files directly to RevenueCat. See the [Custom fonts](/tools/paywalls/creating-paywalls/components#custom-fonts) section for more information.
+
+### Including custom fonts in your app
+
+To improve the performance and reduce loading times of your paywall using custom fonts, you can also add the font to your app's resources using the instructions below.
+
+#### Android
+
+To add a custom font to your Android app, place the font file in the `res/font` folder. Make sure that the filename (without the extension) corresponds to the font name in the paywall editor. See [the official Android documentation](https://developer.android.com/develop/ui/views/text-and-emoji/fonts-in-xml) for more information.
+
+#### iOS
+
+To add a custom font to your iOS app, go to _File_ and then _Add Files to "Your Project Name"_. The font file should be a target member of your app, and be registered with iOS by adding the "Fonts provided by the application" key to your _Info.plist_ file. Make sure that the filename (without the extension) corresponds to the font name in the paywall editor. See [the official iOS documentation](https://developer.apple.com/documentation/uikit/adding-a-custom-font-to-your-app) for more information.
+
+#### Kotlin Multiplatform, React Native, and Flutter
+
+Adding custom fonts to a hybrid app involves adding the font files to the underlying Android and iOS projects following the instructions above.
+
+## Changes from legacy Paywalls
+
+#### Footer Paywalls
+
+Our current Paywalls no longer support footer Paywalls. If your app requests the Paywall for an Offering to display that has a current Paywall, it will display a default version of that paywall instead (see below). Footer mode can still be used on legacy Paywalls templates using the existing method, or the new `.originalTemplatePaywallFooter()` method on SDK versions that support our current Paywalls.
+
+#### Close buttons
+
+Our current Paywalls do not require the `displayCloseButton` parameter (or equivalent for other platforms), and it will have no effect if used, since close buttons can be optionally added directly to your paywall as a component if desired.
+
+#### Font provider
+
+Our current Paywalls do not support passing in a custom font provider as legacy Paywalls did. Instead, you can now configure Paywalls to use the fonts you've already installed in your app directly from the Dashboard. Using the original handler will have no effect on current Paywalls. For more information, [click here](/tools/paywalls/creating-paywalls/components#custom-fonts)
+
+## Default Paywall
+
+If you attempt to display a Paywall for an Offering that doesn't have one configured, or that has a Paywall configured which is not supported on the installed SDK version, the RevenueCatUI SDK will display a default Paywall.
+
+The default paywall displays all packages in the Offering.
+
+On iOS it uses the app's `accentColor` for styling.
+On Android, it uses the app's `Material3`'s `ColorScheme`.
+
+:::tip Targeting
+If your app supports our legacy Paywall templates, consider using Targeting to create an audience that only receives your new Paywall if they're using an SDK version that does not support our current Paywalls. This will ensure that older app versions continue to receive the Offering and Paywall that they support, while any app versions running a supported RC SDK version receive your new Paywall. [Learn more about Targeting.](/tools/targeting)
+:::
 
 [Learn more about creating Paywalls.](/tools/paywalls/creating-paywalls)
