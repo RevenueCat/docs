@@ -27,7 +27,7 @@ val code = virtualCurrency?.code
 // in the RevenueCat dashboard
 val description = virtualCurrency?.serverDescription
 
-// Iterate through all virtual currency balances
+// Iterate through all virtual currencies
 for ((virtualCurrencyCode, virtualCurrency) in virtualCurrencies.all) {
     println("$virtualCurrencyCode: ${virtualCurrency.balance}")
 }

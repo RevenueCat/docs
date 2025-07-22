@@ -23,7 +23,7 @@ String code = virtualCurrency.getCode();
 // in the RevenueCat dashboard
 String serverDescription = virtualCurrency.getServerDescription();
 
-// Iterate through all virtual currency balances
+// Iterate through all virtual currencies
 virtualCurrencies.getAll().forEach((key, virtualCurrency) -> {
     System.out.println(virtualCurrency.getCode() + ": " + virtualCurrency.getBalance());
 });

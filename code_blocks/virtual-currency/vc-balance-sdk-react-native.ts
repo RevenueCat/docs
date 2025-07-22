@@ -16,7 +16,7 @@ const code = virtualCurrency.code;
 // in the RevenueCat dashboard
 const serverDescription = virtualCurrency.serverDescription;
 
-// Iterate through all virtual currency balances
+// Iterate through all virtual currencies
 for (const [virtualCurrencyCode, virtualCurrency] of Object.entries(virtualCurrencies.all)) {
     console.log(`${virtualCurrency.code}: ${virtualCurrency.balance}`);
 }
