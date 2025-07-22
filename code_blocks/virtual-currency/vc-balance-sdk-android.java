@@ -14,7 +14,7 @@ Purchases.sharedInstance.getVirtualCurrencies(
 );
 
 // Get the details of a specific virtual currency
-VirtualCurrency virtualCurrency = virtualCurrencies.getAll().get("");
+VirtualCurrency virtualCurrency = virtualCurrencies.getAll().get(<virtual_currency_code>);
 int balance = virtualCurrency.getBalance();
 String name = virtualCurrency.getName();
 String code = virtualCurrency.getCode();

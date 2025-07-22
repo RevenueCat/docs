@@ -7,7 +7,7 @@ try {
 }
 
 // Get the details of a specific virtual currency
-const virtualCurrency = virtualCurrencies.all[<virtual_currency_code>];
+const virtualCurrency = virtualCurrencies.all['<virtual_currency_code>'];
 const balance = virtualCurrency.balance;
 const name = virtualCurrency.name;
 const code = virtualCurrency.code;
