@@ -4,7 +4,7 @@ let virtualCurrencies = try? await Purchases.shared.virtualCurrencies()
 
 // With Completion Handlers
 Purchases.shared.virtualCurrencies { virtualCurrencies, error in
-
+   // TODO: Handle virtual currencies & error
 }
 
 // Get the details of a specific virtual currency
