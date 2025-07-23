@@ -52,9 +52,16 @@ function extractStructuredContent(element: Element): string {
         // Skip navigation, TOC, and other non-content elements
         if (node.nodeType === Node.ELEMENT_NODE) {
           const el = node as Element;
-          if (el.matches('nav, .table-of-contents, .navbar, .pagination-nav, .theme-doc-toc, .hash-link')) {
+          if (el.matches('nav, .table-of-contents, .navbar, .pagination-nav, .theme-doc-toc, .hash-link, .buttonWrapper, [aria-label*="Copy"]') || 
+              el.closest('.buttonWrapper') || 
+              el.textContent?.trim() === 'Copy for LLM' ||
+              el.textContent?.trim() === 'On this page') {
             return NodeFilter.FILTER_REJECT;
           }
+        }
+        // Skip text nodes that are inside anchor tags (we'll handle them when processing the anchor)
+        if (node.nodeType === Node.TEXT_NODE && node.parentElement?.tagName === 'A') {
+          return NodeFilter.FILTER_REJECT;
         }
         return NodeFilter.FILTER_ACCEPT;
       }
@@ -114,6 +121,14 @@ function extractStructuredContent(element: Element): string {
         content += '\n';
       } else if (el.matches('li')) {
         content += '\n- ';
+      } else if (el.matches('a')) {
+        const linkText = el.textContent?.trim();
+        const href = el.getAttribute('href');
+        if (linkText && href) {
+          // Convert relative URLs to absolute URLs
+          const absoluteUrl = href.startsWith('http') ? href : new URL(href, window.location.origin).href;
+          content += `[${linkText}](${absoluteUrl})`;
+        }
       }
     }
   }
