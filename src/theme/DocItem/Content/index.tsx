@@ -9,7 +9,7 @@ type Props = WrapperProps<typeof ContentType>;
 export default function ContentWrapper(props: Props): JSX.Element {
   return (
     <div style={{ position: 'relative' }}>
-      <div className="theme-doc-markdown" style={{ marginTop: '1rem' }}>
+      <div className="theme-doc-markdown" style={{ marginTop: '2rem' }}>
         <CopyForLLMButton />
       </div>
       <Content {...props} />
