@@ -26,3 +26,86 @@ See https://twitter.com/JoshWComeau/status/1332015868725891076
 :global(*:hover > .hash-link) {
   opacity: 1;
 }
+
+.copyButton {
+  opacity: 0;
+  margin-left: 0.5rem;
+  padding: 0.25rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: all var(--ifm-transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  user-select: none;
+}
+
+.copyButton svg {
+  width: 1rem;
+  height: 1rem;
+  fill: var(--ifm-color-emphasis-600);
+}
+
+.copyButton:hover {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+.copyButton:hover svg {
+  fill: var(--ifm-color-emphasis-800);
+}
+
+:global(.group:hover) .copyButton {
+  opacity: 1;
+}
+
+.copyFeedback {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--ifm-color-emphasis-800);
+  color: var(--ifm-color-emphasis-100);
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.copyButtonBelow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-color);
+  cursor: pointer;
+  border-radius: 0.375rem;
+  transition: all var(--ifm-transition-fast);
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-700);
+  user-select: none;
+}
+
+.copyButtonBelow svg {
+  width: 1rem;
+  height: 1rem;
+  fill: var(--ifm-color-emphasis-600);
+}
+
+.copyButtonBelow:hover {
+  background-color: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-emphasis-400);
+  color: var(--ifm-color-emphasis-800);
+}
+
+.copyButtonBelow:hover svg {
+  fill: var(--ifm-color-emphasis-800);
+}

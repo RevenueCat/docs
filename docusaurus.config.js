@@ -45,18 +45,20 @@ const config = {
     locales: ["en"],
   },
 
-  future: {
-    experimental_faster: {
-      lightningCssMinimizer: true,
-      mdxCrossCompilerCache: true,
-      swcJsLoader: true,
-      swcJsMinimizer: true,
-      swcHtmlMinimizer: true,
-      rspackBundler: true,
-      rspackPersistentCache: true,
-      ssgWorkerThreads: false, // redocusaurus doesn't support this yet, so we'll disable it for now
+  customFields: {
+    future: {
+      experimental_faster: {
+        lightningCssMinimizer: true,
+        mdxCrossCompilerCache: true,
+        swcJsLoader: true,
+        swcJsMinimizer: true,
+        swcHtmlMinimizer: true,
+        rspackBundler: true,
+        rspackPersistentCache: true,
+        ssgWorkerThreads: false, // redocusaurus doesn't support this yet, so we'll disable it for now
+      },
+      v4: true,
     },
-    v4: true,
   },
 
   presets: [

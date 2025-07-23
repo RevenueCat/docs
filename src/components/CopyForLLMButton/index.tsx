@@ -1,0 +1,43 @@
+import React, { useState } from 'react';
+import { usePageCopyContent } from '@site/src/utils/copyPageContent';
+import styles from './styles.module.css';
+
+export default function CopyForLLMButton() {
+  const { copyToClipboard } = usePageCopyContent();
+  const [copyFeedback, setCopyFeedback] = useState<string>('');
+
+  const handleCopyPage = async () => {
+    const success = await copyToClipboard();
+    if (success) {
+      setCopyFeedback('Copied!');
+      setTimeout(() => setCopyFeedback(''), 2000);
+    } else {
+      setCopyFeedback('Failed to copy');
+      setTimeout(() => setCopyFeedback(''), 2000);
+    }
+  };
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.buttonWrapper}>
+        <button
+          className={styles.copyButton}
+          onClick={handleCopyPage}
+          aria-label="Copy page content for LLM"
+          title="Copy for LLM"
+        >
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fillRule="evenodd" clipRule="evenodd" d="M5.78649 5.11832C5.50001 5.51262 5.50001 6.07508 5.50001 7.19999L5.5 10.6C5.5 12.8498 5.5 13.9748 5.97331 14.7634C6.12616 15.018 6.31118 15.242 6.52158 15.427C7.17303 16 8.10231 16 9.96087 16H10.5391C12.3977 16 13.327 16 13.9784 15.427C14.1888 15.242 14.3738 15.018 14.5267 14.7634C15 13.9748 15 12.8498 15 10.6V8.42482C15 7.99635 15 7.78212 14.9427 7.58081C14.9237 7.51412 14.9001 7.44882 14.8721 7.38538C14.7876 7.19393 14.6507 7.02913 14.3769 6.69955L13.3594 5.47473C13.0062 5.0495 12.8296 4.83689 12.5996 4.70319C12.5237 4.65906 12.444 4.62168 12.3616 4.59148C12.1118 4.5 11.8354 4.5 11.2825 4.5L8.2 4.5C7.07509 4.5 6.51263 4.5 6.11833 4.78648C5.99099 4.879 5.87901 4.99098 5.78649 5.11832ZM11.1864 5.24869C11.0851 5.24869 11.0031 5.33077 11.0031 5.43202V6.33202C11.0031 7.52864 11.9731 8.49869 13.1697 8.49869H13.5631C13.9442 8.49869 14.2663 8.15242 14.0124 7.86833L11.9941 5.6101C11.7886 5.38014 11.4948 5.24869 11.1864 5.24869Z" />
+            <path opacity="0.4" fillRule="evenodd" clipRule="evenodd" d="M2.5 0C1.67157 0 1 0.671573 1 1.5V7.5C1 8.32843 1.67157 9 2.5 9H4.5V5C4.5 4.17157 5.17157 3.5 6 3.5H9V1.5C9 0.671573 8.32843 0 7.5 0H2.5Z" />
+          </svg>
+          <span>Copy for LLM</span>
+        </button>
+        {copyFeedback && (
+          <span className={styles.copyFeedback}>
+            {copyFeedback}
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
