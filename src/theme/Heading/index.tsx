@@ -24,11 +24,6 @@ export default function Heading({
 
   // H1 headings do not need an id because they don't appear in the TOC.
   if (As === "h1" || !id) {
-    if (As === "h1") {
-      return <As {...props} id={undefined} className={props.className}>
-        {props.children}
-      </As>;
-    }
     return <As {...props} id={undefined} />;
   }
 
