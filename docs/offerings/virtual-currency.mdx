@@ -95,13 +95,15 @@ import content5 from "@site/code_blocks/virtual-currency/balance-response.json?r
 import fetchVCBalancesSwift from "@site/code_blocks/virtual-currency/vc-balance-sdk-ios.swift?raw";
 import fetchVCBalancesKotlin from "@site/code_blocks/virtual-currency/vc-balance-sdk-android.kt?raw";
 import fetchVCBalancesJava from "@site/code_blocks/virtual-currency/vc-balance-sdk-android.java?raw";
+import fetchVCBalancesReactNative from "@site/code_blocks/virtual-currency/vc-balance-sdk-react-native.ts?raw";
 
 Fetching virtual currency balances is supported in the following SDK versions:
 
-| SDK         | Supported Versions |
-|-------------|--------------------|
-| iOS SDK     | 5.32.0+            |
-| Android SDK | 9.1.0+             |
+| SDK              | Supported Versions |
+|------------------|--------------------|
+| iOS SDK          | 5.32.0+            |
+| Android SDK      | 9.1.0+             |
+| React Native SDK | 9.1.0+             |
 
 You can use the `virtualCurrencies()` function to retrieve a customer's balance. The function returns a `VirtualCurrencies` object, which includes the customer's balances along with each virtual currency's metadata.
 
@@ -122,11 +124,18 @@ You can use the `virtualCurrencies()` function to retrieve a customer's balance.
       content: fetchVCBalancesJava,
       name: "Java",
     },
+    {
+      type: "ts",
+      title: "React Native",
+      content: fetchVCBalancesReactNative,
+    },
   ]}
 />
 
 :::warning VirtualCurrencies does not update automatically when balance changes
 When a customer's balance is updated from your backend, the `VirtualCurrencies` object remains cached and is not automatically updated. To get the updated balance, you need to call `Purchases.shared.invalidateVirtualCurrenciesCache()` and fetch the `VirtualCurrencies` object again.
+
+We also recommend calling `invalidateVirtualCurrenciesCache()` after a purchase has completed successfully to ensure that the balances are up to date the next time you fetch them.
 :::
 
 You may directly access the cached virtual currencies using the `cachedVirtualCurrencies` property. This is helpful for rendering UI immediately, or for displaying virtual currencies when there is no network connection. Keep in mind that this value is cached and isn't guaranteed to be up to date.

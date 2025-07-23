@@ -14,7 +14,7 @@ Purchases.sharedInstance.getVirtualCurrencies(
 );
 
 // Get the details of a specific virtual currency
-VirtualCurrency virtualCurrency = virtualCurrencies.getAll().get("");
+VirtualCurrency virtualCurrency = virtualCurrencies.getAll().get(<virtual_currency_code>);
 int balance = virtualCurrency.getBalance();
 String name = virtualCurrency.getName();
 String code = virtualCurrency.getCode();
@@ -23,7 +23,7 @@ String code = virtualCurrency.getCode();
 // in the RevenueCat dashboard
 String serverDescription = virtualCurrency.getServerDescription();
 
-// Iterate through all virtual currency balances
+// Iterate through all virtual currencies
 virtualCurrencies.getAll().forEach((key, virtualCurrency) -> {
     System.out.println(virtualCurrency.getCode() + ": " + virtualCurrency.getBalance());
 });
