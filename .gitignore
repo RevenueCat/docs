@@ -6,3 +6,5 @@ build
 .idea
 
 scripts/image_analysis/
+
+.claude/settings.local.json

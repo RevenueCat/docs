@@ -1,0 +1,54 @@
+.container {
+  margin-bottom: 1.5rem;
+}
+
+.buttonWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.copyButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-color);
+  cursor: pointer;
+  border-radius: 0.375rem;
+  transition: all var(--ifm-transition-fast);
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-700);
+  user-select: none;
+}
+
+.copyButton svg {
+  width: 1rem;
+  height: 1rem;
+  fill: var(--ifm-color-emphasis-600);
+}
+
+.copyButton:hover {
+  background-color: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-emphasis-400);
+  color: var(--ifm-color-emphasis-800);
+}
+
+.copyButton:hover svg {
+  fill: var(--ifm-color-emphasis-800);
+}
+
+.copyFeedback {
+  position: absolute;
+  left: calc(100% + 0.5rem);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.25rem 0.5rem;
+  background-color: var(--ifm-color-emphasis-800);
+  color: var(--ifm-color-emphasis-100);
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+}
