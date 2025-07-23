@@ -143,7 +143,7 @@ See the table below for all filters you can apply to your lists.
 | Latest Offer                       | String       | The identifier of the latest offer that the customer used to make a purchase (if applicable).                              |
 | Latest Offer Type                  | String       | The type of the latest offer that the customer used to make a purchase (if applicable).                                    |
 | Latest Ownership Type              | String       | The ownership type of the customer's latest purchase, used to distinguish family sharing purchases.                        |
-| Latest Purchased Offering          | String       | The offering that the customer's latest purchased was made from.                                                           |
+| Latest Purchased Offering          | String       | The offering that the customer's latest purchase was made from.                                                            |
 | Latest Product                     | String       | The customer's latest purchased product identifier.                                                                        |
 | Latest Purchase Date               | Date         | The customer's latest transaction date.                                                                                    |
 | Latest Renewal Date                | Date         | The customer's latest renewal date. This could be the same as the Latest Purchase Date.                                    |
@@ -232,7 +232,7 @@ Below is a description of the .csv format for the exported data.
 | most_recent_billing_issues_at | Epoch timestamp in milliseconds when a subscription billing issue was detected by RevenueCat.                                                |
 | latest_offer                  | The identifier of the latest offer that the customer used to make a purchase (if applicable).                                                |
 | latest_offer_type             | The type of the latest offer that the customer used to make a purchase (if applicable).                                                      |
-| latest_purchased_offering     | The offering that the customer's latest purchased was made from.                                                                             |
+| latest_purchased_offering     | The offering that the customer's latest purchase was made from.                                                                              |
 | latest_ownership_type         | The ownership type of the customer's latest purchase, used to distinguish family sharing purchases.                                          |
 | email                         | The `$email` [Attribute](/customers/customer-attributes) for the customer, if set.                                                           |
 | phone_number                  | The `$phoneNumber` [Attribute](/customers/customer-attributes) for the customer, if set.                                                     |
