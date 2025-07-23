@@ -79,35 +79,13 @@ function extractStructuredContent(element: Element): string {
       const el = node as Element;
       
       // Add markdown-style formatting for headings
-      if (el.matches('h1')) {
+      const headingMatch = el.tagName.match(/^H([1-6])$/);
+      if (headingMatch) {
+        const headingLevel = parseInt(headingMatch[1]);
         const headingText = el.textContent?.trim();
         if (headingText) {
-          content += `\n# ${headingText}\n\n`;
-        }
-      } else if (el.matches('h2')) {
-        const headingText = el.textContent?.trim();
-        if (headingText) {
-          content += `\n## ${headingText}\n\n`;
-        }
-      } else if (el.matches('h3')) {
-        const headingText = el.textContent?.trim();
-        if (headingText) {
-          content += `\n### ${headingText}\n\n`;
-        }
-      } else if (el.matches('h4')) {
-        const headingText = el.textContent?.trim();
-        if (headingText) {
-          content += `\n#### ${headingText}\n\n`;
-        }
-      } else if (el.matches('h5')) {
-        const headingText = el.textContent?.trim();
-        if (headingText) {
-          content += `\n##### ${headingText}\n\n`;
-        }
-      } else if (el.matches('h6')) {
-        const headingText = el.textContent?.trim();
-        if (headingText) {
-          content += `\n###### ${headingText}\n\n`;
+          const markdownPrefix = '#'.repeat(headingLevel);
+          content += `\n${markdownPrefix} ${headingText}\n\n`;
         }
       } else if (el.matches('p')) {
         content += '\n\n';
