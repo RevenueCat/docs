@@ -4471,7 +4471,7 @@ paths:
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:purchases:read
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Customer
       parameters:
@@ -4547,7 +4547,7 @@ paths:
       x-revenuecat-rate-limiting-domain: virtual_currencies_create_transaction
       x-scopes:
       - customer_information:purchases:read_write
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Customer
       parameters:
@@ -4640,7 +4640,7 @@ paths:
       x-revenuecat-rate-limiting-domain: virtual_currencies_create_transaction
       x-scopes:
       - customer_information:purchases:read_write
-      x-release-status: beta
+      x-release-status: public
       tags:
       - Customer
       parameters:
