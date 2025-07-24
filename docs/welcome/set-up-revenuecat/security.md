@@ -9,6 +9,10 @@ It's a dangerous world out there! But you can make things much safer by enabling
 
 Once you do, you'll need a code generated on your mobile device any time you log in to your RevenueCat account.
 
+:::info Password Security
+RevenueCat protects your account by securely checking if your password has been exposed in public data breaches. If we detect that a password has been compromised, we won't allow using an unsafe password from the start.
+:::
+
 ### Enabling Two-Factor Authentication
 
 #### 1. Set up
