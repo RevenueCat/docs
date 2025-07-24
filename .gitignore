@@ -6,3 +6,4 @@ build
 .idea
 
 scripts/image_analysis/
+__pycache__/

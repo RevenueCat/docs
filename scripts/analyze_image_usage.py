@@ -21,6 +21,7 @@ class ImageUsageAnalyzer:
         self.root_dir = Path(root_dir)
         self.docs_dir = self.root_dir / "docs"
         self.src_dir = self.root_dir / "src"
+        self.openapi_dir = self.root_dir / "openapi-spec"
         self.static_dir = self.root_dir / "static"
         self.icons_dir = self.static_dir / "icons"
         # Create image_analysis folder in the same directory as the script
@@ -57,9 +58,9 @@ class ImageUsageAnalyzer:
             r'["\']([^"\']*?/images/[^"\']*?\.(?:png|jpg|jpeg|gif|svg|webp))["\']',
         ]
         
-        self.referenced_images = set()
-        self.static_images = set()
-        self.unused_images = set()
+        self.referenced_images: Set[str] = set()
+        self.static_images: Set[str] = set()
+        self.unused_images: Set[str] = set()
 
     def find_all_static_images(self) -> Set[str]:
         """Find all images in the static directory (excluding icons)."""
@@ -95,6 +96,10 @@ class ImageUsageAnalyzer:
             path = path[8:]   # Remove '/static/'
         elif path.startswith('static/'):
             path = path[7:]   # Remove 'static/'
+        elif path.startswith('/docs/'):
+            path = path[6:]   # Remove '/docs/' (this maps to static directory)
+        elif path.startswith('docs/'):
+            path = path[5:]   # Remove 'docs/' (this maps to static directory)
         elif path.startswith('../../../static/'):
             path = path[16:]  # Remove '../../../static/' (16 characters)
         elif path.startswith('../../static/'):
@@ -153,6 +158,32 @@ class ImageUsageAnalyzer:
             total_files += len(src_files)
             
             for file_path in src_files:
+                try:
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                        
+                    # Apply all image patterns
+                    for pattern in self.image_patterns:
+                        matches = re.findall(pattern, content, re.IGNORECASE | re.MULTILINE)
+                        for match in matches:
+                            normalized_path = self.normalize_image_path(match)
+                            if normalized_path:
+                                referenced_images.add(normalized_path)
+                
+                except Exception as e:
+                    print(f"   ⚠️  Error reading {file_path}: {e}")
+        
+        # Scan OpenAPI spec files (YAML)
+        if self.openapi_dir.exists():
+            print(f"   📋 Scanning openapi-spec directory...")
+            yaml_files = []
+            for pattern in ['**/*.yaml', '**/*.yml']:
+                yaml_files.extend(glob.glob(str(self.openapi_dir / pattern), recursive=True))
+            
+            print(f"   📋 Found {len(yaml_files)} YAML files")
+            total_files += len(yaml_files)
+            
+            for file_path in yaml_files:
                 try:
                     with open(file_path, 'r', encoding='utf-8') as f:
                         content = f.read()
@@ -280,6 +311,7 @@ class ImageUsageAnalyzer:
             f.write("- Properly handles markdown image syntax with alt text\n")
             f.write("- Scans all .md and .mdx files in the /docs directory\n")
             f.write("- Scans all .js, .jsx, .ts, .tsx, .css, .scss files in the /src directory\n")
+            f.write("- Scans all .yaml and .yml files in the /openapi-spec directory\n")
             f.write("- Detects both image syntax (![...]) and link syntax ([...]) pointing to images\n")
             f.write("- Excludes images in the /static/icons directory\n")
             f.write("- Excludes specific ignored images (logos, etc.) from cleanup analysis\n")
