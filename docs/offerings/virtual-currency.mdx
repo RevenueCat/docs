@@ -99,6 +99,7 @@ import fetchVCBalancesKotlin from "@site/code_blocks/virtual-currency/vc-balance
 import fetchVCBalancesJava from "@site/code_blocks/virtual-currency/vc-balance-sdk-android.java?raw";
 import fetchVCBalancesReactNative from "@site/code_blocks/virtual-currency/vc-balance-sdk-react-native.ts?raw";
 import fetchVCBalancesFlutter from "@site/code_blocks/virtual-currency/vc-balance-sdk-flutter.dart?raw";
+import fetchVCBalancesCapacitor from "@site/code_blocks/virtual-currency/virtual-currency-balance-capacitor.ts?raw";
 
 Fetching virtual currency balances is supported in the following SDK versions:
 
@@ -108,6 +109,7 @@ Fetching virtual currency balances is supported in the following SDK versions:
 | Android SDK      | 9.1.0+             |
 | React Native SDK | 9.1.0+             |
 | Flutter SDK      | 9.1.0+             |
+| Capacitor SDK    | 11.1.0+            |
 
 You can use the `virtualCurrencies()` function to retrieve a customer's balance. The function returns a `VirtualCurrencies` object, which includes the customer's balances along with each virtual currency's metadata.
 
@@ -137,6 +139,11 @@ You can use the `virtualCurrencies()` function to retrieve a customer's balance.
       type: "flutter",
       title: "Flutter",
       content: fetchVCBalancesFlutter,
+    },
+    {
+      type: "capacitor",
+      title: "Capacitor",
+      content: fetchVCBalancesCapacitor,
     },
   ]}
 />
