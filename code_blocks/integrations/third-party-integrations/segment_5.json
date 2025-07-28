@@ -3,7 +3,8 @@
         "user_id": "$RCAnonymousID:87c6049c58069238dce29853916d624c",
         "event": "rc_trial_started_event",
         "properties": {
-            "price": 0.0,
+            "revenue": 0.0,
+            "currency": "USD",
             "store": "APP_STORE",
             "expires_at": 1556693063,
             "entitlement": "premium",
