@@ -1,0 +1,40 @@
+---
+title: Configuring Change Plans for Customer Center (iOS)
+sidebar_label: Change Plans (iOS)
+slug: customer-center-change-plans-ios
+hidden: false
+---
+
+:::info REQUIREMENTS
+Customization requires iOS SDK version 5.33.0 or later. Earlier versions of the SDK support change plans but without customization options - all products in the subscription group will be shown.
+:::
+
+![Customer Center Change Plans Configuration](/docs_images/customer-center/customer-center-change-plans.png)
+
+Change Plans allows iOS customers to switch between different subscription products directly within the Customer Center. This feature provides a seamless experience for users who want to upgrade, downgrade, or modify their current subscription.
+
+This setup enables RevenueCat to automatically present the appropriate product change options based on a user's current subscription, providing a streamlined experience for product modifications.
+
+The SDK will automatically display available product options based on the user's active subscription and the products configured in your subscription group.
+
+You can configure which products will be offered as a product change, instead of showing all the products within the subscription group. Rather than showing all available products, you can choose a specific subset of subscriptions to offer as change options for each product.
+
+**This feature works for products within the same subscription group.**
+
+## Technical Implementation
+
+Under the hood, the RevenueCat SDK uses Apple's [SubscriptionStoreView](https://developer.apple.com/documentation/storekit/subscriptionstoreview) from StoreKit to present the product change interface. This ensures a native, Apple-approved experience for subscription management that follows iOS design guidelines and handles the subscription change process securely through the App Store.
+
+## Configuration
+
+After setting up your subscription group in App Store Connect, you need to configure which specific products should be available for changes in the Customer Center settings.
+
+For each subscription group, you can select a subset of products to offer as change options rather than displaying all products in the group. You must select at least 2 subscriptions per group to enable product changes.
+
+**Important**: If your subscription group has 2 or fewer products, the configuration is automatic and all available products in the group will be shown as change options. Manual configuration is only available for subscription groups with 3 or more products.
+
+In the Customer Center configuration, you can specify exactly which products from your subscription group should be presented as change options for each of your current subscription products.
+
+[Learn more about configuring the Customer Center.](/tools/customer-center/customer-center-configuration)
+
+

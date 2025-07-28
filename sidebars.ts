@@ -357,6 +357,7 @@ const customersCategory = Category({
           items: [
             Page({ slug: "customer-center-promo-offers-apple" }),
             Page({ slug: "customer-center-promo-offers-google" }),
+            Page({ slug: "customer-center-change-plans-ios" }),
           ],
         }),
         SubCategory({
