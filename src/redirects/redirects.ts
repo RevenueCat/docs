@@ -721,10 +721,6 @@ const redirects = {
       from: "/offering-metadata",
     },
     {
-      to: "/tools/offerings-guide",
-      from: "/offerings-guide",
-    },
-    {
       to: "/tools/paywalls/creating-paywalls",
       from: "/creating-paywalls",
     },
@@ -1502,10 +1498,6 @@ const redirects = {
     {
       to: "/tools/offering-metadata",
       from: "/offering-metadata.html",
-    },
-    {
-      to: "/tools/offerings-guide",
-      from: "/offerings-guide.html",
     },
     {
       to: "/tools/paywalls/creating-paywalls",
