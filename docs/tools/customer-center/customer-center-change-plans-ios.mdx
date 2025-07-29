@@ -21,10 +21,6 @@ You can configure which products will be offered as a product change, instead of
 
 **This feature works for products within the same subscription group.**
 
-## Technical Implementation
-
-Under the hood, the RevenueCat SDK uses Apple's [SubscriptionStoreView](https://developer.apple.com/documentation/storekit/subscriptionstoreview) from StoreKit to present the product change interface. This ensures a native, Apple-approved experience for subscription management that follows iOS design guidelines and handles the subscription change process securely through the App Store.
-
 ## Configuration
 
 After setting up your subscription group in App Store Connect, you need to configure which specific products should be available for changes in the Customer Center settings.
@@ -33,7 +29,7 @@ For each subscription group, you can select a subset of products to offer as cha
 
 **Important**: If your subscription group has 2 or fewer products, the configuration is automatic and all available products in the group will be shown as change options. Manual configuration is only available for subscription groups with 3 or more products.
 
-In the Customer Center configuration, you can specify exactly which products from your subscription group should be presented as change options for each of your current subscription products.
+In the Customer Center Configuration, when selecting the **Change Plans** path, you can specify exactly which products should be presented as change options for each subscription group.
 
 [Learn more about configuring the Customer Center.](/tools/customer-center/customer-center-configuration)
 
