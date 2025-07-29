@@ -24,7 +24,7 @@ const config = {
   title: "In-App Subscriptions Made Easy – RevenueCat",
   tagline:
     "RevenueCat makes it easy to build, analyze, and grow in-app purchases and subscriptions on iOS, Android, and the web – no server code required. Get started for free.",
-  favicon: "images/favicon-32x32.png",
+  favicon: "img/favicon-32x32.png",
 
   url: "https://www.revenuecat.com/",
   baseUrl: DOC_BASE_URL,
