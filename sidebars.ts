@@ -796,7 +796,6 @@ const guidesCategory = Category({
     }),
     Page({ slug: "guides/environment-strategies" }),
     Page({ slug: "guides/common-architecture" }),
-    Page({ slug: "tools/paywall-orchestration-with-offerings" }),
   ],
 });
 

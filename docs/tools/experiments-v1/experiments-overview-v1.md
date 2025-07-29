@@ -9,7 +9,7 @@ Experiments allow you to answer questions about your users' behaviors and app's 
 
 While price testing is one of the most common forms of A/B testing in mobile apps, Experiments are based on RevenueCat Offerings, which means you can A/B test more than just prices, including: trial length, subscription length, different groupings of products, etc.
 
-You can even use our Paywalls or Offering Metadata to remotely control and A/B test any aspect of your paywall. [Learn more](https://www.revenuecat.com/docs/offerings-guide#remotely-control-all-aspects-of-your-paywall).
+You can even use our Paywalls or Offering Metadata to remotely control and A/B test any aspect of your paywall. [Learn more](/tools/paywalls).
 
 :::tip
 Experiments is available to Pro & Enterprise customers. [Learn more about pricing here](https://www.revenuecat.com/pricing/).

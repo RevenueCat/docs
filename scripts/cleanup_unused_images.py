@@ -34,12 +34,23 @@ class ImageCleanup:
         
         unused_images = set(results['unused_images_list'])
         
+        # Filter out favicon images
+        filtered_unused_images = {
+            img for img in unused_images 
+            if "favicon" not in img.lower()
+        }
+        
+        skipped_favicons = len(unused_images) - len(filtered_unused_images)
+        
         print(f"\n📊 Analysis complete:")
         print(f"   🗂️  Total images in static: {results['total_static_images']}")
         print(f"   🔗 Local images referenced: {results['local_referenced_images']}")
         print(f"   ❌ Unused images found: {len(unused_images)}")
+        if skipped_favicons > 0:
+            print(f"   🚫 Favicon images skipped: {skipped_favicons}")
+        print(f"   🎯 Images to be processed: {len(filtered_unused_images)}")
         
-        return unused_images
+        return filtered_unused_images
     
     def get_file_paths(self, unused_images: Set[str]) -> List[Path]:
         """Convert relative image paths to full file paths."""
