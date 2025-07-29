@@ -15,7 +15,7 @@ An Offering may include:
 - **Metadata**: The configurable JSON object that can contain other information you want to pass with your Offering, such as the copy that should be used for the CTA, which package should be preselected, or which pre-existing paywall layout should be used to display this Offering.
 - **Paywall UI**: The actual UI of your paywall, designed from our templates that are configurable right from our Dashboard without any app updates or code changes. This may be served through a Full Screen View where we are serving the entire paywall, or a Footer View where we are serving only the footer (e.g. the CTA, package selector, etc.) and you retain full control and flexibility of the remaining UI.
 
-![Image](/images/3b5660c-Untitled_11_3a8fa0ccc689ef1d025b378608842839.png)
+![Image](/docs_images/paywalls/paywall-orchestration-offerings-overview.png)
 
 You can set a Default Offering on the RevenueCat Dashboard to be served to all customers by default, but you can also create additional Offerings for a variety of other powerful use cases to optimize your paywall and grow your customer lifetime value.
 
@@ -39,7 +39,7 @@ Changing the Packages in an Offering is easy, but Offerings also make it easy to
 
 There are three main ways that you can use Offerings to remotely control the nature of your paywall:
 
-![](/images/d4971fc-image_2cbb407b156f01519afc69289cd15699.png)
+![](/docs_images/paywalls/paywall-orchestration-offerings-methods.png)
 
 Each method has unique benefits and things to consider with it.
 
