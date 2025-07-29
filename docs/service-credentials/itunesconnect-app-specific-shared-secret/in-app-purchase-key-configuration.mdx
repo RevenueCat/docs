@@ -4,20 +4,11 @@ sidebar_label: In-App Purchase Key
 slug: in-app-purchase-key-configuration
 excerpt: Guide on how to set up iOS in-app purchase keys.
 hidden: false
-parentDoc: 649983b4c31b2e000a3c1859
 ---
 
-When setting up a new App Store App on RevenueCat, you will need to add an in-app purchase key. **This is a required configuration step. When using Purchases v5.x+ (i.e., StoreKit 2), transactions will fail to be recorded without this key being set**. This can result in users not accessing the purchases they are entitled to.
+When setting up a new App Store app on RevenueCat, you will need to add an in-app purchase key. **This is a required configuration step. When using Purchases v5.x+ (i.e., StoreKit 2), transactions will fail to be recorded without this key being set**. This can result in users not accessing the purchases they are entitled to.
 
-Previously, adding an in-app purchase key was not required; the requirement was added because the in-app purchase key allows RevenueCat to validate purchases, provide accurate information about the country, currency, and pricing for purchases, which previously had to be estimated in some cases. In addition, the in-app purchase key is required for features like [Subscription offers](/subscription-guidance/subscription-offers/ios-subscription-offers#in-app-purchase-keys) or looking up customers by [Order ID](/dashboard-and-metrics/customer-lists#find-an-individual-customer).
-
-:::warning Adding an in-app purchase key may change historic data
-Adding an in-app purchase key to an app with existing transactions may change historic data as we update previously estimated data with corrected data from Apple. As a result, you may see an increased number of updated transactions reported in your [Scheduled Data Exports](/integrations/scheduled-data-exports) and your historical [Charts](/dashboard-and-metrics/charts) data may also gradually update.
-:::
-
-:::info
-Although App Store Connect separates "In-App Purchases" and "Subscriptions" in its interface, it's important to note that subscriptions are actually a type of In-App Purchase. The In-App Purchase Key is **required for all In-App Purchases**, whether your app offers consumables, non-consumables, subscriptions, or any combination of these.
-:::
+The key is required for all Apple App Store app configurations.
 
 ## Setup
 
@@ -99,3 +90,13 @@ If it is not, it's most likely that your in-app purchase key has been revoked an
 #### Unable to select 'SAVE CHANGES'
 
 If the 'SAVE CHANGES' button is grayed out when trying to add your in-app purchase key, double check that you've filled out all the required fields in the RevenueCat app settings page. You can check this by expanding each section.
+
+## Existing apps without an in-app purchase key
+
+Previously, adding an in-app purchase key was _not_ required; the requirement was added because the in-app purchase key allows RevenueCat to validate purchases, provide accurate information about the country, currency, and pricing for purchases, which previously had to be estimated in some cases.
+
+In addition, the in-app purchase key is required for features like [Subscription offers](/subscription-guidance/subscription-offers/ios-subscription-offers#in-app-purchase-keys) or looking up customers by [Order ID](/dashboard-and-metrics/customer-lists#find-an-individual-customer).
+
+### Historical data update
+
+Please note, adding an in-app purchase key to an app with existing transactions may change historic data as we update previously estimated data with corrected data from Apple. As a result, you may see an increased number of updated transactions reported in your [Scheduled Data Exports](/integrations/scheduled-data-exports) and your historical [Charts](/dashboard-and-metrics/charts) data may also gradually update.
