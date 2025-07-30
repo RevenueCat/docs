@@ -21,12 +21,13 @@ Components are the individual building blocks of your paywall that can be arrang
 | Carousel        | ✅ | Used to add a carousel of pages that a customer can swipe through                         |
 | Timeline        | ✅ | Used to add a timeline of connected items                     |
 | Tabs | ✅ | Used to display different package groups in different tabs when offering multiple tiers of service, product types, etc. |
+| Switch | ✅ | Used to add a toggle to your paywall that can be used to let customers choose between two different sets of options. |
 | Social proof | ✅ | Styled components that can be used as a starting point to display social proof, testimonials, etc. |
 | Feature list | ✅ | Styled components that can be used as a starting point to display a list of features or benefits |
 | Awards | ✅ | Styled components that can be used as a starting point to callout awards your app has received |
 
 :::info Parent components
-Parent components all fundamentally act as containers thatcan contain other components within them.
+Parent components all fundamentally act as containers that can contain other components within them.
 :::
 
 ## Common component properties
@@ -269,6 +270,22 @@ Each tab acts as a parent component which can contain any other components withi
 :::info Package selected by default
 Each tab can have its own package selected by default. This is the package which will be selected when the user first navigates to that tab.
 :::
+
+## Switch component
+
+The switch component allows you to add a toggle to your paywall that can be used to let customers choose between two different sets of options. Switches are frequently used to offer a set of packages that do/don't offer a free trial, do/don't offer family sharing, etc.
+
+To modify the appearance of all content within a switch, and have those appearance changes apply to both the OFF and ON state, you can use the `Switch` component in the components panel.
+
+To modify the content within the OFF or ON state, use the `OFF content` and `ON content` components respectively.
+
+After configuring one of the switch states to your liking, you can duplicate any of the components within the switch to the alternate state so that you have an easier starting point when modifying that other state.
+
+:::info Switch component visualiation on device
+The switch component will be displayed as a native switch element on both iOS and Android. The dashboard preview uses the iOS styling to illustrate the appearance, so expect the on device appearance to be different on Android in line with the native platform component.
+:::
+
+![Switch properties](/docs_images/paywalls/paywalls-switch.png)
 
 ## Social proof, feature list, and awards
 
