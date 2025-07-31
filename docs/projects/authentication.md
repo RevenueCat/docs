@@ -5,12 +5,46 @@ slug: authentication
 excerpt: Manage your API keys to authenticate with RevenueCat
 ---
 
-RevenueCat authenticates requests from the RevenueCat SDK and the [REST API](/api-v2) using API keys.
+RevenueCat authenticates requests from the RevenueCat SDK and the [REST API](/api-v2) using API keys or OAuth tokens.
+
+## Authentication Methods
+
+### API Keys
 
 There are two types of API keys:
 
 - **Public** API keys (also known as **SDK API keys** in the dashboard) are meant to make non-potent changes to subscribers, and must be used to [configure the SDK](/getting-started/configuring-sdk). Each app under a project is automatically provided with a public API key.
 - **Secret** API keys, prefixed `sk_`, should be kept confidential and only stored on your own servers. Your secret API keys can perform restricted API requests such as deleting subscribers and granting entitlements. Secret API keys are project-wide and can be created and revoked by project [Admins](/projects/collaborators).
+
+### OAuth Tokens
+
+For third-party integrations and tools, RevenueCat also supports OAuth 2.0 authentication using access tokens. OAuth tokens provide developer-level access (not tied to a specific project) and enable secure authorization for external applications.
+
+- **Access tokens**, prefixed `atk_`, are obtained through the OAuth 2.0 flow and can be used to authenticate REST API v2 requests
+- OAuth tokens have scopes that determine what actions they can perform, and developers must grant explicit consent for each scope
+- See our [OAuth documentation](/projects/oauth-overview) for complete setup instructions
+
+:::info OAuth vs API Keys
+OAuth tokens are developer-level credentials that can access all projects a developer owns or collaborates with, while API keys are project-specific. Use OAuth for third-party integrations and API keys for direct server-to-server communication.
+:::
+
+## REST API v2 Authentication
+
+Both API keys and OAuth tokens can be used to authenticate with the [REST API v2](/api-v2):
+
+### Using API Keys
+
+```text
+Authorization: Bearer sk_1234567890abcdef
+```
+
+### Using OAuth Tokens
+
+```text
+Authorization: Bearer atk_1234567890abcdef
+```
+
+Both authentication methods use the same `Bearer` token format in the `Authorization` header, following [RFC 7235](https://datatracker.ietf.org/doc/html/rfc7235) standards.
 
 ## Finding API Keys
 
