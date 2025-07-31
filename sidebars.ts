@@ -59,6 +59,11 @@ const projectsCategory = Category({
       ],
     }),
     SubCategory({
+      label: "OAuth",
+      slug: "projects/oauth-overview",
+      items: [Page({ slug: "projects/oauth-setup" })],
+    }),
+    SubCategory({
       label: "Project Settings",
       items: [
         Page({ slug: "projects/authentication" }),

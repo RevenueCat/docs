@@ -1,0 +1,237 @@
+---
+title: OAuth 2.0 Implementation Guide
+sidebar_label: OAuth Setup
+slug: oauth-setup
+excerpt: Complete guide to implementing OAuth 2.0 with RevenueCat's authorization server
+---
+
+This guide walks you through implementing OAuth 2.0 authorization with RevenueCat's API.
+
+## Client Registration
+
+To integrate with RevenueCat's OAuth server, you'll need to register your application as an OAuth client. Contact our [support team](mailto:support@revenuecat.com) to register your client with the following information:
+
+- **Client Name**: Display name for your application
+- **Client URI**: Your application's homepage URL
+- **Redirect URIs**: Valid callback URLs for your application
+- **Client Type**: Public (for native/desktop apps) or Confidential (for server-side apps)
+
+## Authorization Flow
+
+### Step 1: Initiate Authorization
+
+Direct users to the authorization endpoint:
+
+```
+GET https://api.revenuecat.com/oauth2/authorize
+```
+
+**Required Parameters:**
+
+- `client_id`: Your client identifier
+- `response_type`: Must be `code`
+- `redirect_uri`: Must match a registered redirect URI
+- `scope`: Space-separated list of requested permissions
+- `code_challenge`: PKCE code challenge (required for public clients)
+- `code_challenge_method`: Must be `S256` (required for public clients)
+
+**Optional Parameters:**
+
+- `state`: Random string to prevent CSRF attacks (recommended)
+
+**Example Authorization URL:**
+
+```url
+https://api.revenuecat.com/oauth2/authorize?
+  client_id=your_client_id&
+  response_type=code&
+  redirect_uri=https://yourapp.com/callback&
+  scope=project_configuration:apps:read&
+  state=random_state_string&
+  code_challenge=your_code_challenge&
+  code_challenge_method=S256
+```
+
+### Step 2: Handle Authorization Response
+
+After the user grants permission, they'll be redirected to your `redirect_uri`.
+
+**Success Response:**
+
+```
+https://yourapp.com/callback?code=authorization_code&state=random_state_string
+```
+
+**Error Response:**
+
+```
+https://yourapp.com/callback?error=access_denied&error_description=description&state=random_state_string
+```
+
+### Step 3: Exchange Code for Tokens
+
+Exchange the authorization code for access and refresh tokens:
+
+```bash
+curl -X POST https://api.revenuecat.com/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=authorization_code&code=your_auth_code&redirect_uri=https://yourapp.com/callback&client_id=your_client_id&client_secret=your_client_secret"
+```
+
+**Parameters:**
+
+- `grant_type`: Must be `authorization_code`
+- `code`: The authorization code from Step 2
+- `redirect_uri`: Must match the redirect URI from Step 1
+- `client_id`: Your client identifier
+- `client_secret`: Your client secret (required for confidential clients)
+- `code_verifier`: PKCE code verifier (required for public clients)
+
+**Success Response:**
+
+```json
+{
+  "access_token": "atk_...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "refresh_token": "rtk_...",
+  "scope": "project_configuration:apps:read"
+}
+```
+
+## Token Management
+
+### Access Tokens
+
+- **Lifetime**: 1 hour
+- **Usage**: Include in API requests via `Authorization: Bearer {access_token}` header
+- **Prefix**: `atk_`
+
+### Refresh Tokens
+
+- **Lifetime**: 1 month
+- **Usage**: Exchange for new access tokens when they expire
+- **Prefix**: `rtk_`
+
+### Refreshing Tokens
+
+When your access token expires, use the refresh token to get a new pair:
+
+```bash
+curl -X POST https://api.revenuecat.com/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=refresh_token&refresh_token=your_refresh_token&client_id=your_client_id&client_secret=your_client_secret"
+```
+
+**Parameters:**
+
+- `grant_type`: Must be `refresh_token`
+- `refresh_token`: Your current refresh token
+- `client_id`: Your client identifier
+- `client_secret`: Your client secret (required for confidential clients)
+
+:::warning Token Rotation
+When tokens are refreshed, both the old access and refresh tokens are revoked, and new ones are issued. Make sure to update your stored tokens.
+:::
+
+## Available Scopes
+
+Request only the scopes your application needs:
+
+### Project Configuration
+
+- `project_configuration:projects:read` - List projects
+- `project_configuration:apps:read` - Read app information
+- `project_configuration:apps:read_write` - Create, update, delete apps
+- `project_configuration:entitlements:read` - Read entitlements
+- `project_configuration:entitlements:read_write` - Manage entitlements
+- `project_configuration:offerings:read` - Read offerings
+- `project_configuration:offerings:read_write` - Manage offerings
+- `project_configuration:packages:read` - Read packages
+- `project_configuration:packages:read_write` - Manage packages
+- `project_configuration:products:read` - Read products
+- `project_configuration:products:read_write` - Manage products
+
+## Making API Requests
+
+Include the access token in the `Authorization` header:
+
+```bash
+curl -H "Authorization: Bearer atk_your_access_token" \
+  https://api.revenuecat.com/v2/projects
+```
+
+## PKCE Implementation
+
+For public clients, implement PKCE (Proof Key for Code Exchange) to enhance security:
+
+### 1. Generate Code Verifier and Challenge
+
+```javascript
+// Generate a random code verifier (43-128 characters)
+function generateCodeVerifier() {
+  const array = new Uint8Array(32);
+  crypto.getRandomValues(array);
+  return base64URLEncode(array);
+}
+
+// Create code challenge from verifier
+async function generateCodeChallenge(verifier) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(verifier);
+  const digest = await crypto.subtle.digest("SHA-256", data);
+  return base64URLEncode(new Uint8Array(digest));
+}
+
+// Base64 URL encoding helper
+function base64URLEncode(str) {
+  return btoa(String.fromCharCode.apply(null, str))
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=/g, "");
+}
+```
+
+### 2. Use in Authorization Request
+
+Include `code_challenge` and `code_challenge_method=S256` in your authorization URL.
+
+### 3. Include in Token Exchange
+
+Send the original `code_verifier` when exchanging the authorization code for tokens.
+
+## Error Handling
+
+### Authorization Errors
+
+- `invalid_request` - Missing or invalid parameters
+- `unauthorized_client` - Client not authorized for this grant type
+- `access_denied` - User denied authorization
+- `unsupported_response_type` - Invalid response type
+- `invalid_scope` - Requested scope is invalid or unknown
+- `server_error` - Internal server error
+
+### Token Errors
+
+- `invalid_request` - Missing or invalid parameters
+- `invalid_client` - Client authentication failed
+- `invalid_grant` - Authorization code/refresh token is invalid or expired
+- `unauthorized_client` - Client not authorized for this grant type
+- `unsupported_grant_type` - Grant type not supported
+
+## Best Practices
+
+1. **Store tokens securely** - Never expose tokens in client-side code
+2. **Implement proper error handling** - Handle token expiration gracefully
+3. **Use HTTPS only** - All OAuth flows must use secure connections
+4. **Validate state parameter** - Prevent CSRF attacks
+5. **Request minimal scopes** - Only request permissions you actually need
+6. **Implement token refresh** - Handle access token expiration automatically
+
+## Rate Limits
+
+OAuth tokens are subject to the same rate limits as API keys. Monitor your usage and implement appropriate backoff strategies.
+
+## Support
+
+For questions about OAuth integration or to register your client, contact our support team at [support@revenuecat.com](mailto:support@revenuecat.com).
