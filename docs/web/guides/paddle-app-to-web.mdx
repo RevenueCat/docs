@@ -11,28 +11,34 @@ A recent U.S. District Court ruling found Apple in violation of a 2021 injunctio
 
 ## Overview
 
-This guide walks you through the setup for adding web purchases to your mobile app with RevenueCat Web and Paddle Billing. The flow consists of the following steps:
+This guide walks you through the setup for adding web purchases to your iOS app with RevenueCat Web and Paddle Billing. The flow consists of the following steps:
 
 1. User views RevenueCat paywall (in-app)
-1. User clicks web purchase button and lands on a web purchase link in the device browser
+1. User clicks a web purchase button on the pwayall, and lands on a web purchase link in the device browser
 1. User completes their purchase in the Paddle Billing checkout (presented within the web purchase link)
 1. User is redirected back into the mobile app, using a custom URL scheme
 1. User is granted access to the premium entitlements associated with the product they purchased
 
-## Current Limitations
+## Current limitations
 
-1. TBD
+1. **Free trials** will not be displayed in the package selection page, or summarized in the checkout
+1. **Product quantity:** Products purchased with a quantity of more than one (via the quantity adjustment in the Paddle checkout) will be reflected as a single product purchase in RevenueCat.
+1. **Customization:** The Paddle overlay checkout only supports a single accent color customization.
+1. **Product descriptions:** The "show product descriptions" setting in web purchase links currently has no effect with Paddle purchases.
 
-## Prerequisites
+## Before you begin (prerequisites)
 
 Before you start to configure this flow, you'll need the following:
 
 - A RevenueCat account (sign up [here](https://www.revenuecat.com/))
-- A iOS or Android mobile app with the RevenueCat SDK configured (see [getting started](../welcome/overview))
+- A iOS mobile app with the RevenueCat SDK configured (see [getting started](../welcome/overview))
+- iOS products configured in RevenueCat (see [product configuration](../../getting-started/quickstart#2-product-configuration))
 - A Paddle Sandbox account (sign up [here](https://sandbox-login.paddle.com/signup))
-- A Paddle Production account (in order to ship a production version, sign up [here](https://login.paddle.com/signup))
+- (Optional) A Paddle Production account (in order to ship a production version, sign up [here](https://login.paddle.com/signup))
 
-## 1. Configure your Paddle Sandbox account
+## 1. Configure your Paddle account
+
+Applies to: `sandbox`, `production`
 
 ### Add a registered payment domain
 
@@ -71,20 +77,25 @@ If you close the modal showing the full API key, you will no longer be able to c
 
 The minimum required [permissions](https://developer.paddle.com/api-reference/about/permissions) for the created API key are:
 
-- `product.read`
-- `price.read`
-- `discount.read` -`customer.read`
-- `address.read`
-- `business.read`
-- `payment_method.read`
-- `transaction.read`
-- `subscription.read`
-- `adjustment.read`
-- `notification.read`
-- `notification_setting.read`
-- `notification_setting.write`
-- `client_token.read`
-- `client_token.write`
+| Permission                     | Read | Write |
+| ------------------------------ | :--: | :---: |
+| Addresses                      |  ☑  |   ☐   |
+| Adjustments                    |  ☑  |   ☐   |
+| Businesses                     |  ☑  |   ☐   |
+| Client-side tokens             |  ☑  |  ☑   |
+| Customer portal sessions       |  ☐   |   ☐   |
+| Customer authentication tokens |  ☐   |   ☐   |
+| Customers                      |  ☑  |   ☐   |
+| Discounts                      |  ☑  |   ☐   |
+| Notification settings          |  ☑  |  ☑   |
+| Notifications                  |  ☑  |   ☐   |
+| Notification simulations       |  ☐   |   ☐   |
+| Payment methods                |  ☑  |   ☐   |
+| Prices                         |  ☑  |   ☐   |
+| Products                       |  ☑  |   ☐   |
+| Reports                        |  ☐   |   ☐   |
+| Subscriptions                  |  ☑  |   ☐   |
+| Transactions                   |  ☑  |   ☐   |
 
 ## 2. Create Paddle config in RevenueCat dashboard
 
@@ -152,12 +163,12 @@ Most apps only have one entitlement, unlocking all premium features. However, if
 1. Click **+ New entitlement**
 1. Enter an identifier and description for the entitlement, and click **Add**
 
-### Attaching a premium product to your entitlement
+### Attaching a product to your entitlement
 
 1. Go to your previously created entitlenment and click **Attach** under associated products
 1. In the table, check the product from your Paddle provider, and click **Attach**
 
-## 6. Create offerings & packages in RevenueCat
+## 6. Create an offering & packages in RevenueCat
 
 1. Go to the **Product catalog** in your RevenueCat dashboard, and select the **Offerings** tab
 1. Click **New offering** to create a new offering
@@ -168,7 +179,7 @@ Most apps only have one entitlement, unlocking all premium features. However, if
 1. In the products list, find your previously-created Paddle provider and select the corresponding Paddle product (this should correspond with the billing cycle you chose in the identifier)
 1. Click **Save**
 
-## 7. Create an configure a web purchase link to enable web purchases
+## 7. Create and configure a web purchase link to enable web purchases
 
 ### Web Purchase Link basics
 
@@ -190,28 +201,13 @@ To redirect the subscriber back into to your app after the purchase, you can use
 1. In Xcode, find your xcodeproj file — Info tab — **URL Types** section.
 1. Then add your custom scheme in the **URL Schemes** field.
 
-**To add a custom URL scheme in Android:**
-
-1. You need to add a deep linking intent filter for the provided scheme.
-1. Add the following intent filter inside your `AndroidManifest.xml` activity and replace `<YOUR_CUSTOM_SCHEME>` with your own scheme.
-
-(Note that it's fine to have multiple intent filters for the same activity):
-
-import redemptionAndroidManifest from "@site/code_blocks/web/web-billing/redemption_androidmanifest.xml?raw";
-
-<RCCodeBlock
-  tabs={[
-    {
-      type: "xml",
-      content: redemptionAndroidManifest,
-      name: "AndroidManifest.xml",
-    },
-  ]}
-/>
-
-**Adding your custom URL scheme in the web purchase link redirect**
+**Adding your custom URL scheme in the web purchase link redirect:**
 
 Select the **Redirect to a custom success page** option, and enter your URL scheme in the format `YOUR_CUSTOM_SCHEME://`.
+
+:::warning Important: URL schemes on production can require app updates
+In order to use a URL scheme on production, your users must be using a version of your app that has the URL scheme configured. Distribute app updates before enabling this feature.
+:::
 
 ### Choose the repeat purchase behavior
 
@@ -243,4 +239,6 @@ Once you've added a suitable web purchase button to your paywall:
 1. Set the **Open** behavior to **Web purchase**
 1. Publish the changes
 
-## 9. Test the Sandbox purchase flow
+## 9. Test the purchase flow in sandbox
+
+If you've completed this flow for a sandbox setup, you have several options for testing it:
