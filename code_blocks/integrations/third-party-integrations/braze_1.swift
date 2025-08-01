@@ -1,21 +1,9 @@
-import SwiftUI
-import RevenueCat
-import Appboy_iOS_SDK
+// Configure Purchases SDK
+Purchases.configure(withAPIKey: "public_sdk_key", appUserID: "my_app_user_id")
 
-@main
-struct MyApp: App {
-    init() {
-        Purchases.configure(withAPIKey: "public_sdk_key", appUserID: "my_app_user_id")
-        Appboy.sharedInstance()?.changeUser("my_app_user_id")
-        Purchases.shared.attribution.setAttributes([
-            "$brazeAliasName": "name",
-            "$brazeAliasLabel": "label"
-        ])
-    }
+// Change user in Braze SDK
+Appboy.sharedInstance()?.changeUser("my_app_user_id")
 
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
-}
+// Optional User Alias Object attributes
+Purchases.shared.attribution.setAttributes(["$brazeAliasName": "name",
+                             "$brazeAliasLabel": "label"])
