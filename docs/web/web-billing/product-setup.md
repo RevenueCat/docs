@@ -78,6 +78,10 @@ The available billing cycles for introductory periods depend on the length of th
 
 :::
 
+:::info Accelerated introductory periods in sandbox
+In sandbox mode, introductory periods are set at 5 mins, regardless of configured length, to enable easier testing. See [Sandbox testing](/web/web-billing/testing#subscription-schedules-in-sandbox) for more information.
+:::
+
 #### Trial / introductory period eligibility
 
 Defines which customers have access to the free trial or introductory period:
