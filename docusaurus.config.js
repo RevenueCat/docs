@@ -101,7 +101,7 @@ const config = {
           },
         ],
         theme: {
-          primaryColor: "#f25a5a",
+          primaryColor: "#576cdb",
         },
         config: "redocly.yaml",
       },
