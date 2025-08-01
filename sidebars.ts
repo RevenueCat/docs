@@ -897,16 +897,9 @@ const webhooksCategory = Category({
   itemsPathPrefix: "",
   items: [
     Page({ slug: "integrations/webhooks" }),
-    SubCategory({
-      label: "Resources",
-      itemsPathPrefix: "integrations/webhooks/",
-      items: [
-        Page({ slug: "event-flows" }),
-        Page({ slug: "event-types-and-fields" }),
-        Page({ slug: "sample-events" }),
-      ],
-      index: { title: "Resources", link: "integrations/webhooks/resources" },
-    }),
+    Page({ slug: "integrations/webhooks/event-flows" }),
+    Page({ slug: "integrations/webhooks/event-types-and-fields" }),
+    Page({ slug: "integrations/webhooks/sample-events" }),
   ],
 });
 
