@@ -35,7 +35,7 @@ The following diagrams walk through the flow of a check balance, purchase, and s
 
 1. The customer opens the app
 2. The app calls `.virtualCurrencies()` to fetch the customer's balance. For code samples see our [docs](/offerings/virtual-currency#from-the-sdk)
-3. RevenueCat responds with the cached balance
+3. RevenueCat responds with the balance
 4. The app displays the balance
 
 :::warning
@@ -61,10 +61,10 @@ RevenueCat tracks the balance and grants coins directly. No backend logic is nee
 #### 🔹 Spend Flow (Use Coins)
 
 1. The customer tries to spend 10 coins
-2. The app notifies your backend to spend the coins, which would call RevenueCat via a [`POST /virtual_currencies/transactions`](https://www.revenuecat.com/docs/api-v2#tag/Customer/operation/create-virtual-currencies-transaction)
+2. The app notifies your backend to spend the coins, which would call RevenueCat via a [`POST /virtual_currencies/transactions`](https://www.revenuecat.com/docs/api-v2#tag/Customer/operation/create-virtual-currencies-transaction) request
 3. RevenueCat checks if the customer has sufficient balance and, if so, subtracts the amount
 4. RevenueCat will notify your backend the request was successful
-5. The app fetches the new balance (again, remember to invalidate cache)
+5. The app fetches the new balance (remember to invalidate cache)
 6. The app grants what the coins unlocked
 
 :::info

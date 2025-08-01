@@ -313,10 +313,7 @@ const offeringsCategory = Category({
         SubCategory({
           label: "Virtual Currency FAQs",
           itemsPathPrefix: "faq/",
-          items: [
-            Page({ slug: "balance-source-of-truth" }),
-            Page({ slug: "virtual-items" }),
-          ],
+          items: [Page({ slug: "balance-source-of-truth" })],
           index: {
             title: "Virtual Currency FAQs",
             link: "/faq",

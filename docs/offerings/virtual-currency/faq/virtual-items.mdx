@@ -2,7 +2,7 @@
 title: Virtual Items
 sidebar_label: Virtual Items
 slug: virtual-items
-hidden: false
+hidden: true
 ---
 
 RevenueCat’s Virtual Currency feature is designed to help you track and manage balances of in-app currencies, such as coins, tokens, or minutes granted via purchases. While we don’t natively support managing "virtual items" (e.g., consumable items like tickets, skins, or passes that are bought using virtual currency), it’s possible to work around this limitation using a creative implementation of multiple virtual currencies.
@@ -11,7 +11,11 @@ This guide walks you through how to implement this pattern.
 
 ## Treat Items as Virtual Currencies
 
-If your app has a small and fixed set of virtual items, you can represent each item as its own virtual currency. Note that RevenueCat has a limit of 100 virtual currencies per project that can be configured.
+If your app has a **small and fixed set of virtual items**, you can represent each item as its own virtual currency.
+
+:::warning 100 virtual currency limit
+RevenueCat has a limit of 100 virtual currencies per project that can be configured.
+:::
 
 Example scenario:
 You want to sell:
