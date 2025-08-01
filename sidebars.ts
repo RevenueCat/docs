@@ -844,21 +844,14 @@ const aiToolsCategory = Category({
   items: [
     SubCategory({
       label: "RevenueCat MCP Server",
-      slug: "mcp",
+      slug: "mcp/overview",
       itemsPathPrefix: "mcp/",
       items: [
-        Page({ slug: "overview" }),
         Page({ slug: "setup" }),
         Page({ slug: "tools-reference" }),
         Page({ slug: "usage-examples" }),
         Page({ slug: "best-practices-and-troubleshooting" }),
       ],
-      index: {
-        title: "RevenueCat MCP Server",
-        link: "tools/mcp",
-        description:
-          "AI-powered subscription management through natural language interactions",
-      },
     }),
   ],
 });
