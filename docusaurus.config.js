@@ -183,12 +183,13 @@ const config = {
                 sidebarId: "dataSidebar",
                 label: "Charts, Metrics, & Data Reference",
               },
-              {
-                type: "docSidebar",
-                sidebarId: "playbookSidebar",
-                label: "Playbooks & Guides",
-              },
             ],
+          },
+          {
+            label: "Guides",
+            type: "docSidebar",
+            sidebarId: "playbookSidebar",
+            position: "left",
           },
           {
             label: "REST API",
@@ -205,13 +206,9 @@ const config = {
             ],
           },
           {
-            label: "Blog",
-            to: "https://www.revenuecat.com/blog/",
-            position: "left",
-          },
-          {
-            label: "Get Help",
-            to: "/revenuecat-support/support-first-steps",
+            label: "Support",
+            type: "docSidebar",
+            sidebarId: "supportSidebar",
             position: "left",
           },
           {
