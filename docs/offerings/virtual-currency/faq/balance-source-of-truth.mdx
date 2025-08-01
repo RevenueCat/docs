@@ -1,0 +1,123 @@
+---
+title: Balance Source of Truth
+sidebar_label: Balance Source of Truth
+slug: balance-source-of-truth
+hidden: false
+---
+
+When implementing virtual currencies in your app, an important architectural decision is choosing where the source of truth for the customer's balance should be maintained.
+
+There are two common approaches:
+
+- RevenueCat as the source of truth
+- Your backend as the source of truth
+
+Which path you choose depends on your starting point and existing infrastructure.
+
+## Approach 1: RevenueCat as Source of Truth (Recommended for New Setups)
+
+RevenueCat is designed to be the **single source of truth** for virtual currency balances and transaction history. If you're implementing virtual currencies for the first time (no existing balance logic or storage), we recommend using RevenueCat as the system of record.
+
+With this approach:
+
+- RevenueCat tracks balances
+- Currencies are granted automatically after successful purchases
+- RevenueCat validates and deducts currencies during spend operations
+- Your app can fetch the current balance via the SDK
+
+### How It Works
+
+The following diagrams walk through the flow of a check balance, purchase, and spend where RevenueCat manages the balance.
+
+![](/docs_images/virtual-currency/VC_RC_FLOW_CHECK_BALANCE.png)
+
+#### 🔹 Balance Check Flow
+
+1. The customer opens the app
+2. The app calls `.virtualCurrencies()` to fetch the customer's balance. For code samples see our [docs](/offerings/virtual-currency#from-the-sdk)
+3. RevenueCat responds with the balance
+4. The app displays the balance
+
+:::warning
+The balance is cached. You should call `invalidateVirtualCurrenciesCache()` before fetching again if you want fresh data (e.g. after a purchase or spend).
+:::
+
+![](/docs_images/virtual-currency/VC_RC_FLOW_PURCHASE.png)
+
+#### 🔹 Purchase Flow (Buy Coins)
+
+1. The customer taps “Buy 100 Coins”
+2. The app calls purchase(product) via RevenueCat
+3. RevenueCat validates the transaction with the Store
+4. RevenueCat grants the coins automatically and updates the balance server-side
+5. The app can re-fetch the balance and display the new amount
+
+:::success
+RevenueCat tracks the balance and grants coins directly. No backend logic is needed for purchases.
+:::
+
+![](/docs_images/virtual-currency/VC_RC_FLOW_SPEND.png)
+
+#### 🔹 Spend Flow (Use Coins)
+
+1. The customer tries to spend 10 coins
+2. The app notifies your backend to spend the coins, which would call RevenueCat via a [`POST /virtual_currencies/transactions`](https://www.revenuecat.com/docs/api-v2#tag/Customer/operation/create-virtual-currencies-transaction) request
+3. RevenueCat checks if the customer has sufficient balance and, if so, subtracts the amount
+4. RevenueCat will notify your backend the request was successful
+5. The app fetches the new balance (remember to invalidate cache)
+6. The app grants what the coins unlocked
+
+:::info
+Your backend is only responsible for interpreting what the 10 coins should unlock. RevenueCat handles validation and deduction.
+:::
+
+## Approach 2: Your Backend as Source of Truth
+
+If you've already implemented a virtual currency system on your backend (e.g: for web), it likely makes sense to continue treating your backend as the source of truth and rely on RevenueCat webhooks to update balances when purchases are made or when subscription lifecycle changes.
+
+In this model:
+
+- RevenueCat handles purchase validation and emits `VIRTUAL_CURRENCY_TRANSACTION` webhooks
+- Your backend listens for these webhooks and updates the customer's balance
+- Your app fetches balances directly from your backend
+- Spending is initiated from the app → your backend, which performs balance validation and deducts currency accordingly
+
+This approach allows you to keep centralized control of balances, while leveraging RevenueCat’s virtual currency logic to determine the correct amount of currency to grant for each purchase.
+
+### How It Works
+
+This diagrams illustrate how your backend listens to RevenueCat webhooks and handles balance management.
+
+![](/docs_images/virtual-currency/VC_BACKEND_FLOW_CHECK_BALANCE.png)
+
+#### 🔹 Balance Check Flow
+
+1. The customer wants to see their balance
+2. The app requests the balance from your backend
+3. The backend responds with the current balance
+4. The app displays the balance to the customer
+
+![](/docs_images/virtual-currency/VC_BACKEND_FLOW_PURCHASE.png)
+
+#### 🔹 Purchase Flow (Buy Coins)
+
+1. The customer initiates a purchase in the app
+2. The app uses the RevenueCat SDK to call purchase(product)
+3. RevenueCat validates the transaction with the Store
+4. Once verified, RevenueCat emits a [`VIRTUAL_CURRENCY_TRANSACTION` webhook](/offerings/virtual-currency/events#webhook-events)
+5. Your backend receives this webhook and updates the customer's balance accordingly
+6. The app can then fetch and display the updated balance
+
+:::info
+RevenueCat tracks the amount of virtual currency granted from purchases and subscriptions. As a result, the balance shown in RevenueCat may get out of sync with your system if spending occurs outside of RevenueCat.
+:::
+
+![](/docs_images/virtual-currency/VC_BACKEND_FLOW_SPEND.png)
+
+#### 🔹 Spend Flow (Use Coins)
+
+1. The customer chooses to spend 10 coins in the app
+2. The app sends a message to your backend: “Spend 10 coins”
+3. Your backend contains the business logic to determine what the coins unlock (e.g., an item or feature)
+4. Your backend checks if the customer has enough balance, and if so, deducts the amount and returns a success response
+5. The app updates the UI and shows what was unlocked
