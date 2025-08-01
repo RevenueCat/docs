@@ -10,8 +10,8 @@ We’re excited to welcome you to the beta of our new real-time Charts. We've re
 - Real-time reporting on almost all charts
 - A new unified subscription model for consistent reporting across stores
 - Improved definitions for existing dimensions like Platform and Country
-- New dimensions to filter and segment by, including Custom Attributes
-- Brand new charts for Trial Conversion Rate, with more for Paywall metrics coming soon
+- New dimensions to filter and segment by, including Custom Attributes & Ad Attribution
+- Brand new charts for Trial Conversion Rate and Active Customers, with more for Paywall metrics coming soon
 
 :::warning Supported stores
 At this time only App Store and Play Store aps are supported in Real-time Charts. Support for Stripe, Roku, and RevenueCat Web Billing is coming soon; with the remaining stores to follow.
@@ -98,6 +98,7 @@ We've introduced new dimensions for filtering & segmenting, with more coming soo
 #### Available now
 
 1. Trial Conversion Rate: A new chart to measure the number of trials that started in a given period, and the portion of them that converted to paying customers, so that you can understand how likelihood to pay changes over time and by various dimensions. This differs from the Trial Conversion Funnel in that (1) it is cohorted by trial start date, and (2) focuses just on the conversion from trial to paid, and is therefore segmentable by other dimensions the way our other conversion charts are as well.
+2. Active Customers: A new chart to measure the number of unique customers who were active each day in your app. A "customer" is any user of your app, regardless of whether they've made a purchase, and includes both new customers and existing customers.
 
 #### Coming soon
 
