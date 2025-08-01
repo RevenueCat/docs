@@ -318,7 +318,7 @@ const offeringsCategory = Category({
             title: "Virtual Currency FAQs",
             link: "/faq",
             description:
-              "Additional guidance for the Virtual Currency, including balance source of truth, purchase validation, and virtual items",
+              "Additional guidance for the Virtual Currency feature.",
           },
         }),
       ],
