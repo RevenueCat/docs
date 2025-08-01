@@ -195,9 +195,10 @@ const webSDKCategory = Category({
     }),
     SubCategory({
       label: "Configure Web Billing",
-      slug: "web-billing/product-setup",
+      slug: "web-billing/configuring-overview",
       itemsPathPrefix: "web-billing/",
       items: [
+        Page({ slug: "product-setup" }),
         Page({ slug: "customization" }),
         Page({ slug: "subscription-lifecycle" }),
         Page({ slug: "payment-methods" }),
