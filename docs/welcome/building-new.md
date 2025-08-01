@@ -24,6 +24,7 @@ If you're launching a new app or adding subscriptions to your app for the first 
 Making purchases is just the beginning. Explore the docs to learn about how you can:
 
 - Gate features in your app and design more complex access models. [Learn about Entitlements →](/getting-started/entitlements)
+- Set up virtual currencies for consumable digital goods and in-game economies. [Learn about Virtual Currency →](/offerings/virtual-currency)
 - Dynamically change out the products on your paywall and run price experiments. [Set up your paywall Offerings →](/getting-started/displaying-products)
 - Set up winback campaigns to reduce churn. [See the free trial and discount options →](/subscription-guidance/subscription-offers)
 - Integrate subscription data from RevenueCat into all your other tools. [Check out integrations →](/integrations/integrations)

@@ -52,7 +52,7 @@ For Google Play store products, if you select a non backwards-compatible product
 </details>
 
 :::info
-Any product can be added to an Offering, even if it's not part of any Entitlement. This can come in handy if your app's paywall contains a combination of subscription products that unlock Entitlements, and consumable products that do not.
+Any product can be added to an Offering, even if it's not part of any Entitlement. This can come in handy if your app's paywall contains a combination of subscription products that unlock Entitlements, products that grant Virtual Currency, and other consumable products.
 :::
 
 Continue this process until all of the packages are created for your Offering, and all Offerings are created.
