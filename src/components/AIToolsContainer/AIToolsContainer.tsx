@@ -25,7 +25,7 @@ const AIToolsContainer = ({}: AIToolsContainerProps) => {
   const aiProviders = [
     {
       name: "AI",
-      baseUrl: "https://app.revenuecat.com/support?q=",
+      baseUrl: "https://app.revenuecat.com/settings/support?tab=help&q=",
       image: "/docs_images/integrations/icons/rc.png",
       displayTitle: true,
     },
