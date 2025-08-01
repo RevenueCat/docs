@@ -42,21 +42,17 @@ Configure the inspector with:
 
 ### Using with VS Code Copilot
 
-Add to your VS Code settings:
+Add to your Visual Studio Code `mcp.json`:
 
 ```json
 {
-  "mcp": {
-    "servers": {
-      "revenuecat": {
-        "type": "http",
-        "url": "https://mcp.revenuecat.ai/mcp",
-        "headers": {
-          "Authorization": "Bearer YOUR_API_V2_SECRET_KEY"
-        }
-      }
-    }
-  }
+	"servers": {
+		"revenuecat-mcp": {
+			"url": "https://mcp.revenuecat.ai/mcp",
+			"type": "http"
+		}
+	},
+	"inputs": []
 }
 ```
 
@@ -82,6 +78,16 @@ Add to your Claude Desktop configuration:
     }
 }
 ```
+
+### OAuth Authentication Support
+
+RevenueCat MCP Server also supports OAuth authentication for supported clients. Currently supported:
+
+- **Visual Studio Code** - Automatic OAuth flow for seamless authentication
+
+> **🔧 Third-Party Integration**:
+>
+If you'd like to integrate your services with RevenueCat MCP Server, please contact us at [RevenueCat Support](mailto:support@revenuecat.com) so we can set up OAuth clients for your application.
 
 ## Local MCP Extension Setup
 

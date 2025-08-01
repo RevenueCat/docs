@@ -59,6 +59,11 @@ const projectsCategory = Category({
       ],
     }),
     SubCategory({
+      label: "OAuth",
+      slug: "projects/oauth-overview",
+      items: [Page({ slug: "projects/oauth-setup" })],
+    }),
+    SubCategory({
       label: "Project Settings",
       items: [
         Page({ slug: "projects/authentication" }),
@@ -212,6 +217,12 @@ const webSDKCategory = Category({
       slug: "payment-integrations",
       itemsPathPrefix: "integrations/",
       items: [Page({ slug: "stripe" }), Page({ slug: "paddle" })],
+    }),
+    SubCategory({
+      label: "Guides",
+      slug: "guides",
+      itemsPathPrefix: "guides/",
+      items: [Page({ slug: "paddle-app-to-web" })],
     }),
     Page({ slug: "faq" }),
   ],

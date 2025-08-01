@@ -1,0 +1,36 @@
+.button-primary {
+  color: var(--text-contrast);
+  background:
+    linear-gradient(
+      180deg,
+      var(--action-primary),
+      var(--button-primary-bottom) 100%
+    ),
+    var(--action-primary);
+  box-shadow:
+    rgba(27, 40, 111, 0.2) 0px 2px 4px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0.5px,
+    light-dark(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)) 0px 0.75px
+      1.5px 0.5px inset;
+
+  &:hover {
+    color: var(--text-contrast);
+    background: var(--action-primary);
+    box-shadow:
+      rgba(0, 0, 0, 0.1) 0px 0.5px 1px 0px,
+      rgba(0, 0, 0, 0.1) 0px 0px 1px 0.5px,
+      light-dark(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1)) 0px 0.75px
+        1.5px 0.5px inset;
+  }
+}
+
+.button-secondary {
+  color: var(--action-primary);
+  background: rgb(from currentcolor r g b / 0.1);
+
+  &:hover {
+    color: var(--text-primary);
+    background: rgb(from currentcolor r g b / 0.15);
+  }
+}
