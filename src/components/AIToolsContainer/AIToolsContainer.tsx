@@ -32,7 +32,7 @@ const AIToolsContainer = ({}: AIToolsContainerProps) => {
     },
     {
       name: "Claude",
-      baseUrl: "https://claude.ai/chat?q=",
+      baseUrl: "https://claude.ai/new?q=",
       image: "/docs_images/integrations/icons/claude.png",
       displayTitle: false,
     },
