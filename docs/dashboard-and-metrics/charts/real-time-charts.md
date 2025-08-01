@@ -10,7 +10,7 @@ We’re excited to welcome you to the beta of our new real-time Charts. We've re
 - Real-time reporting on almost all charts
 - A new unified subscription model for consistent reporting across stores
 - Improved definitions for existing dimensions like Platform and Country
-- New dimensions to filter and segment by, including custom attributes in the near future
+- New dimensions to filter and segment by, including Custom Attributes
 
 :::warning Supported stores
 At this time only App Store and Play Store aps are supported in Real-time Charts. Support for Stripe, Roku, and RevenueCat Web Billing is coming soon; with the remaining stores to follow.
@@ -37,26 +37,20 @@ As you explore the beta and have feedback or questions about the experience, [pl
 
 ## Supported charts
 
-- Initial conversion
-- Trial conversion
-- Conversion to paying
-- New customers
-- Realized LTV per customer
-- Realized LTV per paying customer
-- Active Subscriptions
-- Active Subscriptions Movement
-- Active Trials
-- Active Trials Movement
-- ARR
-- MRR
-- MRR Movement
-- Cohort Explorer
+Nearly all charts support the real-time system, with the exception of:
+
+- Prediction Explorer
+- App Store Refund Requests
+- Play Store Cancel Reasons
+- Customer Center Survey Responses
+
+We'll look to migrate these charts to support real-time reporting in the future as well.
 
 ## Detailed changes
 
 ### Real-time reporting
 
-Previously, charts refreshed every 2 to 12 hours depending on the dataset. Now, most charts update **in real-time**, providing:
+Previously, charts refreshed every 2 to 12 hours depending on the dataset. Now, almost all charts update **in real-time**, providing:
 
 - **Immediate insights** into app performance
 - **Improved intra-day monitoring** for launches, experiments, or spikes
@@ -81,10 +75,6 @@ As a result of that change, you'll see some differences in the data our real-tim
 
 ### Refund behavior
 
-:::warning In development
-The described refund behaviors for Conversion & LTV charts are in development, and will be supported in the coming days.
-:::
-
 When a payment is refunded, it will be deducted from revenue and conversion (if applicable) on the day the refund occurs. Here's how that will impact various chart types:
 
 - **Revenue**: A purchase will add revenue on the day it occurs. If it's later refunded, it will subtract revenue on the day the refund occurs.
@@ -97,14 +87,11 @@ We've introduced new dimensions for filtering & segmenting, with more coming soo
 
 #### New dimensions
 
-**Available now**
-
-1. Experiment: Filter charts by the experiment & variant that a customer was enrolled in
-
-**Coming soon**
-
-1. App version: Filter & segment charts by the first seen app version of a customer to understand how metrics like conversion rate are impacted by app version
-2. Custom attributes: Filter & segment charts by the latest custom attribute values you've set for a customer, to understand how different segments of your audience behave.
+1. Experiment: Filter & segment charts by the experiment & variant that a customer was enrolled in
+2. App version: Filter & segment charts by the first seen app version of a customer to understand how metrics like conversion rate are impacted by app version
+3. Custom attributes: Filter & segment charts by the latest custom attribute values you've set for a customer, to understand how different segments of your audience behave.
+4. Attribution: Filter & segment charts by the attribution data you send to RevenueCat such as Source, Campaign, Keyword, etc. Some ad attribution integrations such as Apple Search Ads automatically send this data to RevenueCat once enabled, and all ad attribution integrations support optionally sending it through the reserved attributes for ad attribution. [Learn more here.](https://www.revenuecat.com/docs/customers/customer-attributes#attribution-data)
+5. Paywall: Filter & segment charts by the RevenueCat Paywall that a purchase was made from.
 
 #### Updated dimensions
 
@@ -120,4 +107,3 @@ As you explore the beta and have feedback or questions about the experience, [pl
 ## Upcoming changes & improvements
 
 - Real-time charts support App Store & Play Store apps, with additional store support currently in development.
-- Support for custom attributes as a filter & segment is in development, along with app version.
