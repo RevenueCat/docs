@@ -1,7 +1,18 @@
-Purchases.configure(withAPIKey: "public_sdk_key", appUserID: "my_app_user_id")
+import SwiftUI
+import RevenueCat
+import Mixpanel
 
-// Option 1: Match Mixpanel's SDK identity to RevenueCat's App User ID
-Mixpanel.mainInstance().identify(distinctId: "my_app_user_id")
+@main
+struct MyApp: App {
+    init() {
+        Purchases.configure(withAPIKey: "public_sdk_key", appUserID: "my_app_user_id")
+        Mixpanel.mainInstance().identify(distinctId: "my_app_user_id")
+        Purchases.shared.attribution.setMixpanelDistinctID(Mixpanel.mainInstance().distinctId)
+    }
 
-// Option 2: Set different Mixpanel identifier in RevenueCat
-Purchases.shared.attribution.setMixpanelDistinctID(Mixpanel.mainInstance().distinctId)
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}

@@ -50,8 +50,18 @@ When connecting to Firebase, it's possible that you may see an error like:
 You should make sure to use the Firebase UID as the RevenueCat app user ID when setting the Firebase user identity in RevenueCat. This step is optional, but highly recommended as a best practice for the Google Analytics portion of this integration. The Firebase Extension portion **requires** this step to be completed.
 
 import swiftContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_1.swift?raw";
+import kotlinContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_1.kt?raw";
+import reactContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_1.ts?raw";
+import flutterContent from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_1.dart?raw";
 
-<RCCodeBlock tabs={[{ type: "swift", content: swiftContent }]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", title: "SwiftUI", content: swiftContent },
+    { type: "kotlin", content: kotlinContent },
+    { type: "ts", title: "React Native", content: reactContent },
+    { type: "dart", title: "Flutter", content: flutterContent },
+  ]}
+/>
 
 ## 3. Send analytics events to Google Analytics
 
@@ -62,8 +72,18 @@ In order to send subscriber lifecycle events to Google Analytics, you must set t
 Please ensure you're getting the app instance ID from the [Firebase Analytics](https://firebase.google.com/docs/analytics/get-started) package.
 
 import swiftContent2 from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_2.swift?raw";
+import kotlinContent2 from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_2.kt?raw";
+import reactContent2 from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_2.ts?raw";
+import flutterContent2 from "@site/code_blocks/integrations/third-party-integrations/firebase-integration_2.dart?raw";
 
-<RCCodeBlock tabs={[{ type: "swift", content: swiftContent2 }]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", title: "SwiftUI", content: swiftContent2 },
+    { type: "kotlin", content: kotlinContent2 },
+    { type: "ts", title: "React Native", content: reactContent2 },
+    { type: "dart", title: "Flutter", content: flutterContent2 },
+  ]}
+/>
 
 :::warning
 Setting an incorrect app instance ID will prevent events from displaying in Google Analytics.

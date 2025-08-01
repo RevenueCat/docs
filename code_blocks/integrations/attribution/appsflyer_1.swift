@@ -1,10 +1,19 @@
-import AdSupport
-// ...
-Purchases.configure(withAPIKey: "public_sdk_key")
-// ...
+import SwiftUI
+import RevenueCat
+import AppsFlyerLib
 
-// Automatically collect the $idfa, $idfv, and $ip values
-Purchases.shared.attribution.collectDeviceIdentifiers()
+@main
+struct MyApp: App {
+    init() {
+        Purchases.configure(withAPIKey: "public_sdk_key")
+        Purchases.shared.attribution.collectDeviceIdentifiers()
+        let appsflyerId = AppsFlyerLib.shared().getAppsFlyerUID()
+        Purchases.shared.attribution.setAppsflyerID(appsflyerId)
+    }
 
-// Set the Appsflyer Id
-Purchases.shared.attribution.setAppsflyerID(AppsFlyerLib.shared().getAppsFlyerUID())
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}

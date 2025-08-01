@@ -1,9 +1,21 @@
-// Configure Purchases SDK
-Purchases.configure(withAPIKey: "public_sdk_key", appUserID: "my_app_user_id")
+import SwiftUI
+import RevenueCat
+import Appboy_iOS_SDK
 
-// Change user in Braze SDK
-Appboy.sharedInstance()?.changeUser("my_app_user_id")
+@main
+struct MyApp: App {
+    init() {
+        Purchases.configure(withAPIKey: "public_sdk_key", appUserID: "my_app_user_id")
+        Appboy.sharedInstance()?.changeUser("my_app_user_id")
+        Purchases.shared.attribution.setAttributes([
+            "$brazeAliasName": "name",
+            "$brazeAliasLabel": "label"
+        ])
+    }
 
-// Optional User Alias Object attributes
-Purchases.shared.attribution.setAttributes(["$brazeAliasName": "name",
-                             "$brazeAliasLabel": "label"])
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}

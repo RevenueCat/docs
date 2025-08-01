@@ -1,9 +1,13 @@
-//..
-Purchases.configure(this, "public_sdk_key")
-//..
-  
-// Automatically collect the $gpsAdId and $ip values
-Purchases.sharedInstance.collectDeviceIdentifiers()
-  
-// Set the Appsflyer Id
-Purchases.sharedInstance.setAppsflyerID(AppsFlyerLib.getInstance().getAppsFlyerUID(this));
+import android.app.Application
+import com.appsflyer.AppsFlyerLib
+import com.revenuecat.purchases.Purchases
+
+class MyApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        Purchases.configure(this, "public_sdk_key")
+        Purchases.sharedInstance.collectDeviceIdentifiers()
+        val appsflyerId = AppsFlyerLib.getInstance().getAppsFlyerUID(this)
+        Purchases.sharedInstance.setAppsflyerID(appsflyerId)
+    }
+}
