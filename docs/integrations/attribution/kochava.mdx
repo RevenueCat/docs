@@ -40,11 +40,21 @@ $kochavaDeviceId and $deviceVersion are supported on versions 5.4.0+ of the iOS 
 
 When calling the `setKochavaDeviceId()` helper, all of the required customer attributes will be automatically set. Alternatively, these properties can be set manually, like any other [Attributes](/customers/customer-attributes).
 
+import swiftContent from "@site/code_blocks/integrations/attribution/kochava_1.swift?raw";
 import kotlinContent from "@site/code_blocks/integrations/attribution/kochava_2.kt?raw";
+import reactContent from "@site/code_blocks/integrations/attribution/kochava_3.ts?raw";
+import flutterContent from "@site/code_blocks/integrations/attribution/kochava_4.dart?raw";
 
 {/* Use the RCCodeBlock component to render the code blocks with tabs */}
 
-<RCCodeBlock tabs={[{ type: "kotlin", content: kotlinContent }]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent },
+    { type: "kotlin", content: kotlinContent },
+    { type: "ts", title: "React Native", content: reactContent },
+    { type: "dart", title: "Flutter", content: flutterContent },
+  ]}
+/>
 
 You should make sure to set attributes after the _Purchases SDK_ is configured, and before the first purchase occurs. It's safe to set attributes multiple times, as only the new/updated values will be sent to RevenueCat.
 
