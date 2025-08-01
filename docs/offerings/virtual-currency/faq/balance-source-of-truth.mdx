@@ -5,8 +5,6 @@ slug: balance-source-of-truth
 hidden: false
 ---
 
-# Balance Source of Truth
-
 When implementing virtual currencies in your app, an important architectural decision is choosing where the source of truth for the customer's balance should be maintained.
 
 There are two common approaches:
@@ -41,7 +39,7 @@ The following diagrams walk through the flow of a check balance, purchase, and s
 4. The app displays the balance
 
 :::warning
-The balance is cached. You should call invalidateVirtualCurrenciesCache() before fetching again if you want fresh data (e.g., after a purchase or spend).
+The balance is cached. You should call `invalidateVirtualCurrenciesCache()` before fetching again if you want fresh data (e.g. after a purchase or spend).
 :::
 
 ![](/docs_images/virtual-currency/VC_RC_FLOW_PURCHASE.png)
@@ -111,7 +109,7 @@ This diagrams illustrate how your backend listens to RevenueCat webhooks and han
 6. The app can then fetch and display the updated balance
 
 :::info
-RevenueCat does not track the actual balance in this model. Instead, it notifies your backend of balances that were granted from purchases / subscription lifecycles.
+RevenueCat tracks the amount of virtual currency granted from purchases and subscriptions. As a result, the balance shown in RevenueCat may get out of sync with your system if spending occurs outside of RevenueCat.
 :::
 
 ![](/docs_images/virtual-currency/VC_BACKEND_FLOW_SPEND.png)
