@@ -41,17 +41,6 @@ You can access Real-time Charts from your dashboard by toggling `Real-time` on i
 - The **Country** dimensions now reports the country associated with a customer's app store account (if available), or IP-based location otherwise.
 - The current Trial Conversion chart (renamed to the Trial Conversion Funnel) included any future payment on an App Store subscription as a conversion to paid, even if that conversion did not come from the trial start. Now, only conversions to paid from the trial start are included in this chart.
 
-## Supported charts
-
-Nearly all charts support the real-time system, with the exception of:
-
-- Prediction Explorer
-- App Store Refund Requests
-- Play Store Cancel Reasons
-- Customer Center Survey Responses
-
-We'll look to migrate these charts to support real-time reporting in the future as well.
-
 ## Detailed changes
 
 ### Real-time reporting
@@ -118,3 +107,14 @@ Paywall conversion, LTV, and abandonment charts for measuring performance of eac
 
 - Real-time charts support App Store & Play Store apps, with additional store support currently in development.
 - Paywall conversion, LTV, and abandonment charts for RevenueCat Paywalls
+
+## Unsupported charts
+
+Nearly all charts support the real-time system, with the exception of:
+
+- Prediction Explorer
+- App Store Refund Requests
+- Play Store Cancel Reasons
+- Customer Center Survey Responses
+
+We'll look to migrate these charts to support real-time reporting in the future as well.
