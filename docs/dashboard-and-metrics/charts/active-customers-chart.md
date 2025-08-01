@@ -1,12 +1,12 @@
 ---
 title: Active Customers Chart
 slug: active-customers-chart
-hidden: false
+hidden: true
 ---
 
 The Active Customers chart measures the number of customers seen in a given period. In RevenueCat, the term "customer" refers to the person using an app, regardless of whether they have yet made a purchase. You can use our conversion charts to measure the portion of these customers that then start trials, convert to paid, etc. Any customers who are aliased to another customer will be excluded from this chart.
 
-This chart provides a view of your total active customer base over time, including both new and returning customers.You can use our conversion charts to measure the portion of these customers that then start trials, convert to paid, etc. 
+This chart provides a view of your total active customer base over time, including both new and returning customers. You can use our conversion charts to measure the portion of these customers that then start trials, convert to paid, etc. 
 
 Any customers who are aliased to another customer will be excluded from this chart. Aliasing occurs when multiple App User IDs are merged together as the same person (for example, when a customer logs in after initially using the app anonymously), ensuring each individual is counted only once.
 
