@@ -302,6 +302,7 @@ const offeringsCategory = Category({
         }),
       ],
     }),
+    Page({ slug: "offerings/troubleshooting" }),
     SubCategory({
       label: "Virtual Currency",
       slug: "offerings/virtual-currency",
@@ -310,9 +311,22 @@ const offeringsCategory = Category({
         Page({ slug: "subscriptions" }),
         Page({ slug: "refunds" }),
         Page({ slug: "events" }),
+        SubCategory({
+          label: "Virtual Currency FAQs",
+          itemsPathPrefix: "faq/",
+          items: [
+            Page({ slug: "balance-source-of-truth" }),
+            Page({ slug: "virtual-items" }),
+          ],
+          index: {
+            title: "Virtual Currency FAQs",
+            link: "/faq",
+            description:
+              "Additional guidance for the Virtual Currency, including balance source of truth, purchase validation, and virtual items",
+          },
+        }),
       ],
     }),
-    Page({ slug: "offerings/troubleshooting" }),
   ],
 });
 

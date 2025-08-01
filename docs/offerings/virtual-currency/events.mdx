@@ -123,6 +123,23 @@ Example of a multi-currency transaction:
 - **Fraud Detection**: Monitor for unusual patterns in virtual currency transactions
 - **Customer Support**: Use timeline events to help customers understand their transaction history
 
+## RevenueCat's Firebase Extension integration
+
+If you have the [Firebase Extension integration](/integrations/third-party-integrations/firebase-integration#4-send-customer-information-to-firestore) enabled, RevenueCat will include the customer's virtual currency balance in the dispatched events' payload. Balance changes due to other reasons, such as manual adjustments through our Developer API endpoints **will not** trigger an event.
+
+When an event is dispatched, the Firebase Extension event payload will include a `virtual_currencies` object containing the customer's **total balance** for each currency after the purchase. The below example shows the customer's total balance for "GLD" is 80, while "SLV" is 40.
+
+import firebaseExtensionPayload from "@site/code_blocks/virtual-currency/firebase-balance.json?raw";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "json",
+      content: firebaseExtensionPayload,
+    },
+  ]}
+/>
+
 ## Next Steps
 
 - [Webhook Event Types and Fields](/integrations/webhooks/event-types-and-fields#virtual-currency-transaction-fields)
