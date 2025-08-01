@@ -1,19 +1,24 @@
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import useIsBrowser from "@docusaurus/useIsBrowser";
+import { useState, useEffect } from "react";
 
 type AIToolsContainerProps = {};
 
 const AIToolsContainer = ({}: AIToolsContainerProps) => {
-  const getCurrentUrl = () => {
-    if (typeof window !== "undefined") {
-      return window.location.href;
+  const isBrowser = useIsBrowser();
+  const [currentUrl, setCurrentUrl] = useState(
+    "https://www.revenuecat.com/docs",
+  );
+
+  useEffect(() => {
+    if (isBrowser) {
+      setCurrentUrl(window.location.href);
     }
-    return "";
-  };
+  }, [isBrowser]);
 
   const createAIProviderUrl = (baseUrl: string, prompt: string) => {
-    const currentUrl = getCurrentUrl();
-    const message = `Use ${currentUrl} as context.\n\n`;
+    const message = currentUrl ? `Use ${currentUrl} as context.\n\n` : "";
     return `${baseUrl}${encodeURIComponent(message + prompt)}`;
   };
 
