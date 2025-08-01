@@ -390,9 +390,9 @@ const customersCategory = Category({
 });
 
 const testCategory = Category({
-  iconName: "help-prominent",
+  iconName: "help",
   iconColor: "var(--rc-red-primary)",
-  label: "SDK Testing",
+  label: "Testing",
   itemsPathPrefix: "",
   items: [
     SubCategory({
@@ -434,6 +434,7 @@ const launchCategory = Category({
 // to retain links to the old pages, it took a bit of maneuvering
 const platformResourcesCategory = Category({
   iconName: "appstore",
+  iconColor: "#0066CC", // app store blue
   label: "Store Configuration",
   itemsPathPrefix: "",
   items: [
