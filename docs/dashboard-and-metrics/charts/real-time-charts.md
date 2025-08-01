@@ -5,8 +5,6 @@ excerpt: Overview of the key changes & improvements of our new real-time Charts 
 hidden: true
 ---
 
-# Real-time Charts (Beta)
-
 We’re excited to welcome you to the beta of our new real-time Charts. We've rebuilt charts to give you faster, more flexible insights, including:
 
 - Real-time reporting on almost all charts

@@ -39,7 +39,9 @@ a:hover {
 
 .content {
   z-index: 1;
-  text-align: center;
+  text-align: left;
+  display: flex;
+  width: 100%;
 }
 
 .title {
@@ -51,6 +53,14 @@ a:hover {
 .subtitle {
   margin-bottom: 0px;
   font-weight: 500;
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline;
 }
 
 [data-theme="dark"] .feature-container {

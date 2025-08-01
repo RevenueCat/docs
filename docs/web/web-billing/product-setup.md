@@ -1,11 +1,9 @@
 ---
-title: Product Setup
+title: Configure Web Billing
 slug: product-setup
 excerpt: Setting up your web purchases using Web Billing
 hidden: false
 ---
-
-# Configuring Web Billing
 
 To create a new Web Billing (formerly RevenueCat Billing) product, open the RevenueCat dashboard, go to your project's settings, and under "Products" click on "New", and then select your Web Billing App:
 

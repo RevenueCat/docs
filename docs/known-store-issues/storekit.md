@@ -2,8 +2,6 @@
 title: StoreKit Issues
 ---
 
-# StoreKit Known Issues
-
 This section covers known issues specifically related to Apple's StoreKit framework that may affect your RevenueCat integration.
 
 ## Current Issues
