@@ -11,6 +11,7 @@ We’re excited to welcome you to the beta of our new real-time Charts. We've re
 - A new unified subscription model for consistent reporting across stores
 - Improved definitions for existing dimensions like Platform and Country
 - New dimensions to filter and segment by, including Custom Attributes
+- Brand new charts for Trial Conversion Rate, with more for Paywall metrics coming soon
 
 :::warning Supported stores
 At this time only App Store and Play Store aps are supported in Real-time Charts. Support for Stripe, Roku, and RevenueCat Web Billing is coming soon; with the remaining stores to follow.
@@ -20,12 +21,17 @@ At this time only App Store and Play Store aps are supported in Real-time Charts
 As you explore the beta and have feedback or questions about the experience, [please let us know here](https://form.typeform.com/to/iuAUBGNC).
 :::
 
+## Getting Started
+
+You can access Real-time Charts from your dashboard by toggling `Real-time` on in Charts. Look for the real-time icon next to supported Charts. To see the current version of each chart, simply toggle `Real-time` off.
+
 ## Summary of changes
 
 ### New features
 
 - Charts are now updated in real-time as events occur [Learn more](/dashboard-and-metrics/charts/real-time-charts#real-time-reporting)
 - New filters & segments for deeper analysis [Learn more](/dashboard-and-metrics/charts/real-time-charts#new-and-updated-dimensions)
+- A new Trial Conversion Rate chart for measuring that rate by trial start date cohorts, and segmenting it for more granular analysis [Learn more](/dashboard-and-metrics/charts/trial-conversion-rate-chart)
 
 ### Improvements
 
@@ -33,7 +39,7 @@ As you explore the beta and have feedback or questions about the experience, [pl
 - Refunded transactions no longer cause metrics like Revenue, Conversion to Paying, etc. to change retroactively for complete periods. Instead, transactions that are later refunded are included by default in all charts, and their revenue or conversion (if applicable) is subtracted on the date the refund actually happened. [Learn more](/dashboard-and-metrics/charts/real-time-charts#refund-behavior)
 - The **Platform** dimension now reports a customer's first seen platform, not their last seen platform, to make analyzing acquisition channels easier and to avoid customer dimensions changing over time.
 - The **Country** dimensions now reports the country associated with a customer's app store account (if available), or IP-based location otherwise.
-- The current Trial Conversion chart included any future payment on an App Store subscription as a conversion to paid, even if that conversion did not come from the trial start. Now, only conversions to paid from the trial start are included in this chart.
+- The current Trial Conversion chart (renamed to the Trial Conversion Funnel) included any future payment on an App Store subscription as a conversion to paid, even if that conversion did not come from the trial start. Now, only conversions to paid from the trial start are included in this chart.
 
 ## Supported charts
 
@@ -98,12 +104,17 @@ We've introduced new dimensions for filtering & segmenting, with more coming soo
 1. Platform: Now refers to the first seen platform of a customer, not their last seen platform, so that metrics like conversion rates and LTV can be segmented by the platform a customer originated on without it changing over time (e.g. if a customer converts on the web and then downloads your iOS app)
 2. Country: Now prioritizes the app store country of a customer or purchase over the customer's IP-based location. In charts which measure purchases, like Active Subscriptions, the app store storefront that the purchase occurred in will be used as the country; while in charts that measure customer cohorts, like Initial Conversion or Realized LTV per Customer, the first seen app store country of the customer will be used.
 
-## Getting Started
+### New charts
 
-You can access Real-time Charts from your dashboard by toggling `Real-time` on in Charts. Look for the real-time icon next to supported Charts. To see the current version of each chart, simply toggle `Real-time` off.
+#### Available now
 
-As you explore the beta and have feedback or questions about the experience, [please let us know here](https://form.typeform.com/to/iuAUBGNC).
+1. Trial Conversion Rate: A new chart to measure the number of trials that started in a given period, and the portion of them that converted to paying customers, so that you can understand how likelihood to pay changes over time and by various dimensions. This differs from the Trial Conversion Funnel in that (1) it is cohorted by trial start date, and (2) focuses just on the conversion from trial to paid, and is therefore segmentable by other dimensions the way our other conversion charts are as well.
+
+#### Coming soon
+
+Paywall conversion, LTV, and abandonment charts for measuring performance of each of your RevenueCat Paywalls.
 
 ## Upcoming changes & improvements
 
 - Real-time charts support App Store & Play Store apps, with additional store support currently in development.
+- Paywall conversion, LTV, and abandonment charts for RevenueCat Paywalls
