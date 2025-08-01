@@ -106,5 +106,5 @@ Only one base price can be set per currency. [Read more about multi-currency sup
 ![Pricing table](/docs_images/web/web-billing/pricing-table.png)
 
 :::warning Changing prices not currently possible
-Once you've saved the product, it's only possible to add prices for new currences, and not edit existing ones. If you need to change pricing, we recommend you create a new product with the desired pricing, and replace the existing product in your offering. We're working on fully supporting pricing changes and migrations in the future.
+Once you've saved the product, it's only possible to add prices for new currencies, and not edit existing ones. If you need to change pricing, we recommend you create a new product with the desired pricing, and replace the existing product in your offering. We're working on fully supporting pricing changes and migrations in the future.
 :::
