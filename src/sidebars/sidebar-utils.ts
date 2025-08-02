@@ -1,5 +1,6 @@
 import { ReactNode, ReactSVGElement } from "react";
 import React from "react";
+import { IconName } from "../theme/CatIcon/types";
 
 // TypeScript definitions for sidebar items
 export interface SidebarItemBase {
@@ -43,7 +44,7 @@ export interface IndexConfig {
 
 export interface CategoryConfig {
   label: string;
-  iconName?: string;
+  iconName?: IconName;
   iconColor?: string;
   itemsPathPrefix?: string;
   items: any[];
