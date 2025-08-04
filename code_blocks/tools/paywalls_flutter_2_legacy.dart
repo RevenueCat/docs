@@ -9,6 +9,7 @@ Widget build(BuildContext context) {
       child: Center(
         child: PaywallView(
           offering: offering, // Optional Offering object obtained through getOfferings
+          displayCloseButton: true,
           onRestoreCompleted: (CustomerInfo customerInfo) {
             // Optional listener. Called when a restore has been completed.
             // This may be called even if no entitlements have been granted.
@@ -21,4 +22,4 @@ Widget build(BuildContext context) {
       ),
     ),
   );
-}
+} 

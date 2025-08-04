@@ -4,4 +4,4 @@ val options = remember {
     }
 }
 
-Paywall(options)
+Paywall(options) 
