@@ -302,12 +302,12 @@ The switch component will be displayed as a native switch element on both iOS an
 The packages that you want to include on your paywall must all be included in the offering being used by the paywall. Instead of using RevenueCat's standard package identifiers (e.g. `$rc_annual`) when creating these packages, you may instead want to use custom package identifiers since (1) each package identifier must be unique and (2) you can then easily differentiate what's being offered by the identifier.
 
 For example, your package structure may look like this for a paywall using the switch component to offer a free trial toggle:
-- `$rc_monthly`
-- `$rc_annual`
+- `monthly_no_trial`
+- `annual_no_trial`
 - `monthly_with_trial`
 - `annual_with_trial`
 
-The standard RevenueCat package identifiers would represent the packages without a free trial, and the custom package identifiers would represent the packages with a free trial; so that you could place the first set in the switch's OFF content and the second set in the switch's ON content.
+The `_no_trial` packages would represent the packages without a free trial, and the `_with_trial` packages would represent the packages with a free trial; so that you could place the first set in the switch's OFF content and the second set in the switch's ON content.
 
 ## Social proof, feature list, and awards
 
