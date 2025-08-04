@@ -647,6 +647,7 @@ const sdkMigrationCategory = Category({
 
 const metricsCategory = Category({
   iconName: "chart-pie",
+  iconColor: "var(--rc-froggy-primary)",
   label: "Metrics",
   itemsPathPrefix: "dashboard-and-metrics/",
   items: [
@@ -661,6 +662,7 @@ const metricsCategory = Category({
 
 const chartsCategory = Category({
   iconName: "chart-bar",
+  iconColor: "var(--rc-froggy-primary)",
   label: "Charts",
   itemsPathPrefix: "dashboard-and-metrics/",
   items: [
@@ -751,6 +753,7 @@ const chartsCategory = Category({
 
 const dataExportCategory = Category({
   iconName: "file-download",
+  iconColor: "var(--rc-froggy-primary)",
   label: "Data Exports",
   itemsPathPrefix: "integrations/",
   items: [
@@ -855,7 +858,7 @@ const aiToolsCategory = Category({
 
 const chartsDummyCategory = Category({
   iconName: "chart-bar",
-  iconColor: "var(--rc-green-primary)",
+  iconColor: "var(--rc-froggy-primary)",
   label: "Charts & Metrics",
   itemsPathPrefix: "",
   items: [
