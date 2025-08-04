@@ -2,7 +2,7 @@
 title: Connect Apps & Web Providers
 sidebar_label: Connect Apps & Web Providers
 slug: connect-a-store
-excerpt: Connect your project to App Store Connect, Google Play Console, and more
+excerpt: Connect supported apps and web providers to your project
 ---
 
 Once you've created a [project](/projects/overview), you'll need to connect it to the stores and payment providers you want to support and set up [Server Notifications](/platform-resources/server-notifications). After you've connected your app, you can import your products from the stores to start configuring your offerings.

@@ -34,7 +34,8 @@ import {
 
 const welcomeCategory = Category({
   iconName: "info",
-  label: "New to RevenueCat?",
+  iconColor: "var(--rc-blue-primary)",
+  label: "RevenueCat Documentation",
   itemsPathPrefix: "",
   items: [Page({ slug: "welcome/overview" })],
 });
@@ -59,14 +60,14 @@ const projectsCategory = Category({
       ],
     }),
     SubCategory({
-      label: "OAuth",
-      slug: "projects/oauth-overview",
-      items: [Page({ slug: "projects/oauth-setup" })],
-    }),
-    SubCategory({
       label: "Project Settings",
       items: [
         Page({ slug: "projects/authentication" }),
+        SubCategory({
+          label: "OAuth",
+          slug: "projects/oauth-overview",
+          items: [Page({ slug: "projects/oauth-setup" })],
+        }),
         Page({ slug: "projects/collaborators" }),
         Page({ slug: "projects/restore-behavior" }),
         Page({ slug: "projects/sandbox-access" }),
@@ -117,6 +118,7 @@ const mobileSDKCategory = Category({
 
 const paywallsCategory = Category({
   iconName: "paywall",
+  iconColor: "var(--rc-red-primary)",
   label: "Paywalls",
   itemsPathPrefix: "",
   items: [
@@ -184,7 +186,7 @@ const webSDKCategory = Category({
   itemsPathPrefix: "web/",
   items: [
     SubCategory({
-      label: "Integrate RevenueCat Web",
+      label: "RevenueCat Web Overview",
       slug: "web-billing/overview",
       itemsPathPrefix: "web-billing/",
       items: [
@@ -219,11 +221,9 @@ const webSDKCategory = Category({
       itemsPathPrefix: "integrations/",
       items: [Page({ slug: "stripe" }), Page({ slug: "paddle" })],
     }),
-    SubCategory({
+    Link({
       label: "Guides",
-      slug: "guides",
-      itemsPathPrefix: "guides/",
-      items: [Page({ slug: "paddle-app-to-web" })],
+      slug: "/web/guides/paddle-app-to-web",
     }),
     Page({ slug: "faq" }),
   ],
@@ -401,33 +401,44 @@ const customersCategory = Category({
   ],
 });
 
-const testAndLaunchCategory = Category({
-  iconName: "help-prominent",
-  label: "Test & Launch",
-  itemsPathPrefix: "test-and-launch/",
+const testCategory = Category({
+  iconName: "help",
+  iconColor: "var(--rc-red-primary)",
+  label: "Testing",
+  itemsPathPrefix: "",
   items: [
     SubCategory({
-      label: "Debugging",
-      slug: "debugging",
-      itemsPathPrefix: "debugging/",
+      label: "Debugging the SDK",
+      slug: "test-and-launch/debugging",
+      itemsPathPrefix: "test-and-launch/debugging/",
       items: [
         Page({ slug: "caching" }),
         Page({ slug: "troubleshooting-the-sdks" }),
       ],
     }),
-    Page({ slug: "errors" }),
+    Page({ slug: "test-and-launch/errors" }),
     SubCategory({
       label: "Sandbox Testing",
-      slug: "sandbox",
-      itemsPathPrefix: "sandbox/",
+      slug: "test-and-launch/sandbox",
+      itemsPathPrefix: "test-and-launch/sandbox/",
       items: [
         Page({ slug: "apple-app-store" }),
         Page({ slug: "google-play-store" }),
         Page({ slug: "amazon-store-sandbox-testing" }),
       ],
     }),
-    Page({ slug: "launch-checklist" }),
-    Page({ slug: "app-store-rejections" }),
+  ],
+});
+
+const launchCategory = Category({
+  iconName: "open-external",
+  iconColor: "var(--rc-violet-primary)",
+  label: "App Launch",
+  itemsPathPrefix: "",
+  items: [
+    Page({ slug: "test-and-launch/launch-checklist" }),
+    Page({ slug: "test-and-launch/app-store-rejections" }),
+    Page({ slug: "platform-resources/developer-store-payments" }),
   ],
 });
 
@@ -435,6 +446,7 @@ const testAndLaunchCategory = Category({
 // to retain links to the old pages, it took a bit of maneuvering
 const platformResourcesCategory = Category({
   iconName: "appstore",
+  iconColor: "#0066CC", // app store blue
   label: "Store Configuration",
   itemsPathPrefix: "",
   items: [
@@ -582,6 +594,7 @@ const supportCategory = Category({
 
 const migrateToRevenueCatCategory = Category({
   iconName: "double-arrow-right",
+  iconColor: "var(--rc-teal-primary)",
   label: "Migrate to RevenueCat",
   itemsPathPrefix: "migrating-to-revenuecat/",
   items: [
@@ -609,6 +622,7 @@ const migrateToRevenueCatCategory = Category({
 
 const sdkMigrationCategory = Category({
   iconName: "file-document",
+  iconColor: "black",
   label: "SDK Reference",
   itemsPathPrefix: "",
   items: [
@@ -645,6 +659,7 @@ const sdkMigrationCategory = Category({
 
 const metricsCategory = Category({
   iconName: "chart-pie",
+  iconColor: "var(--rc-froggy-primary)",
   label: "Metrics",
   itemsPathPrefix: "dashboard-and-metrics/",
   items: [
@@ -659,6 +674,7 @@ const metricsCategory = Category({
 
 const chartsCategory = Category({
   iconName: "chart-bar",
+  iconColor: "var(--rc-froggy-primary)",
   label: "Charts",
   itemsPathPrefix: "dashboard-and-metrics/",
   items: [
@@ -749,6 +765,7 @@ const chartsCategory = Category({
 
 const dataExportCategory = Category({
   iconName: "file-download",
+  iconColor: "var(--rc-froggy-primary)",
   label: "Data Exports",
   itemsPathPrefix: "integrations/",
   items: [
@@ -785,6 +802,7 @@ const dataExportCategory = Category({
 
 const experimentsCategory = Category({
   iconName: "experiment",
+  iconColor: "var(--rc-orange-primary)",
   label: "Experiments",
   itemsPathPrefix: "tools/",
   items: [
@@ -803,27 +821,9 @@ const experimentsCategory = Category({
   ],
 });
 
-const guidesCategory = Category({
-  iconName: "sparkle",
-  label: "Guides",
-  itemsPathPrefix: "",
-  items: [
-    Page({ slug: "platform-resources/implementation-responsibilities" }),
-    Page({ slug: "platform-resources/developer-store-payments" }),
-    Page({ slug: "migrating-to-revenuecat/swiftystorekit" }),
-    SubCategory({
-      label: "Testing Guide",
-      slug: "guides/testing-guide",
-      itemsPathPrefix: "guides/testing-guide/",
-      items: [Page({ slug: "use-cases" }), Page({ slug: "export-examples" })],
-    }),
-    Page({ slug: "guides/environment-strategies" }),
-    Page({ slug: "guides/common-architecture" }),
-  ],
-});
-
 const knownStoreIssuesCategory = Category({
   iconName: "heart-broken",
+  iconColor: "var(--rc-red-primary)",
   label: "Known Issues",
   itemsPathPrefix: "known-store-issues/",
   items: [
@@ -850,33 +850,27 @@ const knownStoreIssuesCategory = Category({
 });
 
 const aiToolsCategory = Category({
-  iconName: "experiment",
+  iconName: "sparkle",
   label: "AI Tools",
   itemsPathPrefix: "tools/",
   items: [
     SubCategory({
       label: "RevenueCat MCP Server",
-      slug: "mcp",
+      slug: "mcp/overview",
       itemsPathPrefix: "mcp/",
       items: [
-        Page({ slug: "overview" }),
         Page({ slug: "setup" }),
         Page({ slug: "tools-reference" }),
         Page({ slug: "usage-examples" }),
         Page({ slug: "best-practices-and-troubleshooting" }),
       ],
-      index: {
-        title: "RevenueCat MCP Server",
-        link: "tools/mcp",
-        description:
-          "AI-powered subscription management through natural language interactions",
-      },
     }),
   ],
 });
 
 const chartsDummyCategory = Category({
   iconName: "chart-bar",
+  iconColor: "var(--rc-froggy-primary)",
   label: "Charts & Metrics",
   itemsPathPrefix: "",
   items: [
@@ -916,16 +910,9 @@ const webhooksCategory = Category({
   itemsPathPrefix: "",
   items: [
     Page({ slug: "integrations/webhooks" }),
-    SubCategory({
-      label: "Resources",
-      itemsPathPrefix: "integrations/webhooks/",
-      items: [
-        Page({ slug: "event-flows" }),
-        Page({ slug: "event-types-and-fields" }),
-        Page({ slug: "sample-events" }),
-      ],
-      index: { title: "Resources", link: "integrations/webhooks/resources" },
-    }),
+    Page({ slug: "integrations/webhooks/event-flows" }),
+    Page({ slug: "integrations/webhooks/event-types-and-fields" }),
+    Page({ slug: "integrations/webhooks/sample-events" }),
   ],
 });
 
@@ -1009,38 +996,61 @@ const integrationsMoreCategory = Category({
 });
 
 const playbooksOverviewCategory = Category({
-  iconName: "sparkle",
+  iconName: "bookmark",
+  iconColor: "var(--rc-teal-primary)",
   label: "Playbooks",
   itemsPathPrefix: "playbooks/",
-  items: [Page({ slug: "overview" })],
-});
-
-const playbooksMonetizationCategory = Category({
-  iconName: "currency-usd",
-  iconColor: "var(--ifm-color-success)",
-  label: "Monetization Models",
-  itemsPathPrefix: "playbooks/guides/",
   items: [
-    Page({ slug: "hard-paywall" }),
-    Page({ slug: "freemium" }),
+    Page({ slug: "overview" }),
     SubCategory({
-      label: "Other resources",
+      label: "Monetization Models",
+      itemsPathPrefix: "guides/",
       items: [
-        Link({
-          label: "Implementing virtual currencies and credits",
-          slug: "/offerings/virtual-currency",
-        }),
+        Page({ slug: "hard-paywall" }),
+        Page({ slug: "freemium" }),
         Link({
           label: "Converting a paid app to subscriptions",
           slug: "https://www.revenuecat.com/blog/engineering/converting-a-paid-ios-app-to-subscriptions/",
         }),
       ],
       index: {
-        title: "Other resources",
-        description:
-          "Other resources for implementing different monetization models.",
-        link: "playbooks/guides/other-monetization-resources",
+        title: "Monetization Models",
+        link: "playbooks/guides/monetization-models",
       },
+    }),
+  ],
+});
+
+const webGuidesCategory = Category({
+  iconName: "desktop",
+  iconColor: "var(--rc-teal-primary)",
+  label: "Web Guides",
+  itemsPathPrefix: "web/",
+  items: [Page({ slug: "guides/paddle-app-to-web" })],
+});
+
+const playbooksArchitectureCategory = Category({
+  iconName: "file-document",
+  iconColor: "var(--rc-teal-primary)",
+  label: "Architecture Guides",
+  itemsPathPrefix: "",
+  items: [Page({ slug: "guides/environment-strategies" })],
+});
+
+const playbooksOtherResourcesCategory = Category({
+  iconName: "info",
+  iconColor: "black",
+  label: "Other Resources",
+  itemsPathPrefix: "",
+  items: [
+    Page({ slug: "migrating-to-revenuecat/swiftystorekit" }),
+    Link({
+      label: "Implementing virtual currencies and credits",
+      slug: "/offerings/virtual-currency",
+    }),
+    Link({
+      label: "Converting a paid app to subscriptions",
+      slug: "https://www.revenuecat.com/blog/engineering/converting-a-paid-ios-app-to-subscriptions/",
     }),
   ],
 });
@@ -1058,14 +1068,12 @@ const sidebars = {
     customersCategory,
     chartsDummyCategory,
     experimentsCategory,
-    aiToolsCategory,
-    testAndLaunchCategory,
+    testCategory,
+    launchCategory,
     integrationsDummyCategory,
     platformResourcesCategory,
     accountCategory,
-    supportCategory,
-    migrateToRevenueCatCategory,
-    guidesCategory,
+    aiToolsCategory,
     knownStoreIssuesCategory,
     sdkMigrationCategory,
   ],
@@ -1077,7 +1085,31 @@ const sidebars = {
     attributionCategory,
     integrationsMoreCategory,
   ],
-  playbookSidebar: [playbooksOverviewCategory, playbooksMonetizationCategory],
+  playbookSidebar: [
+    playbooksOverviewCategory,
+    webGuidesCategory,
+    migrateToRevenueCatCategory,
+    playbooksArchitectureCategory,
+    playbooksOtherResourcesCategory,
+  ],
+  supportSidebar: [
+    supportCategory,
+    Category({
+      iconName: "info",
+      label: "Links",
+      itemsPathPrefix: "",
+      items: [
+        Link({
+          label: "RevenueCat Blog",
+          slug: "https://www.revenuecat.com/blog",
+        }),
+        Link({
+          label: "RevenueCat Community",
+          slug: "https://community.revenuecat.com",
+        }),
+      ],
+    }),
+  ],
 };
 
 export default sidebars;

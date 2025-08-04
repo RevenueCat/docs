@@ -1,15 +1,13 @@
 ---
 title: Payments from Stores and Country Availability
 slug: developer-store-payments
-excerpt: How and when do developers receive their payouts?
+excerpt: How and when developers receive their payouts
 hidden: false
 ---
 
-## How do you receive your revenue from purchases?
-
 As RevenueCat is not the payment processor when your customers make a purchase, you will receive the revenue generated from the purchases from the stores themselves. Apple, Google, Amazon, and Stripe will take a percentage of the revenue as payment for their services before sending the remaining portion to your account. Depending on the store and the country where you are based, different rules may be applied to your revenue.
 
-## Instructions on Setting up Your Payment Information
+## Instructions on setting up your payment information
 
 In order to receive these payments from the stores, you will need to provide them with your banking information through their developer portals.
 
