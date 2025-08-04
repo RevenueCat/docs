@@ -636,6 +636,7 @@ const sdkMigrationCategory = Category({
         Page({ slug: "android-native-5x-to-6x-migration" }),
         Page({ slug: "android-native-6x-to-7x-migration" }),
         Page({ slug: "android-native-7x-to-8x-migration" }),
+        Page({ slug: "android-native-8x-to-9x-migration" }),
       ],
       index: {
         title: "Android Migration Guides",
