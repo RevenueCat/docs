@@ -47,6 +47,12 @@ function LandingPage() {
           </div>
 
           <div className="size-full text-center lg:text-left flex flex-col">
+            <h2
+              className="text-xl mb-0"
+              style={{ color: "var(--rc-red-primary)" }}
+            >
+              RevenueCat
+            </h2>
             <h1 className="text-3xl">Documentation</h1>
             <p className="text-lg md:text-xl max-w-[520px] mx-auto lg:mx-0 font-body">
               Everything you need to implement and manage in-app purchases and
