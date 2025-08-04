@@ -9,12 +9,13 @@ If a customer is unable to complete their purchase due to an invalid or expired 
 
 Grace Periods are optional and customizable on certain platforms.
 
-| Store       | Required?        | Duration                                                                                                                                             |
-| :---------- | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
-| App Store   | Optional         | [Customizable](https://developer.apple.com/help/app-store-connect/manage-subscriptions/enable-billing-grace-period-for-auto-renewable-subscriptions) |
-| Google Play | Optional         | [Customizable](https://developer.android.com/google/play/billing/subscriptions)                                                                      |
-| Stripe      | Optional         | Customizable                                                                                                                                         |
-| Amazon      | ❌ Not supported | N/A                                                                                                                                                  |
+| Store                  | Required?        | Duration                                                                                                                                             |
+| :--------------------- | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
+| App Store              | Optional         | [Customizable](https://developer.apple.com/help/app-store-connect/manage-subscriptions/enable-billing-grace-period-for-auto-renewable-subscriptions) |
+| Google Play            | Optional         | [Customizable](https://developer.android.com/google/play/billing/subscriptions)                                                                      |
+| RevenueCat Web Billing | Optional         | Customizable                                                                                                                                         |
+| Stripe                 | Optional         | Customizable                                                                                                                                         |
+| Amazon                 | ❌ Not supported | N/A                                                                                                                                                  |
 
 ## Encountering Billing Issues
 

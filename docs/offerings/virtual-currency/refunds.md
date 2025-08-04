@@ -5,8 +5,6 @@ slug: refunds
 hidden: false
 ---
 
-# Refunds
-
 This guide explains how RevenueCat handles virtual currency balance adjustments when purchases are refunded, including both subscriptions and one-time purchases. When purchases that grant virtual currency are refunded, RevenueCat adjusts the customer’s balance to maintain fairness, while ensuring balances never fall below zero.
 
 ## Balance Floor

@@ -5,8 +5,6 @@ slug: subscriptions
 hidden: false
 ---
 
-# Subscriptions
-
 In addition to one-time products, subscriptions can be used to grant virtual currency on a recurring basis, such as a monthly coin pack or weekly credit refill. This model helps drive predictable revenue while encouraging long-term engagement and retention.
 
 With RevenueCat’s virtual currency feature, you can configure subscriptions to automatically deliver currency to customers at regular intervals. These currencies, like tokens, gems, or credits, can then be spent on virtual goods or in-app experiences.

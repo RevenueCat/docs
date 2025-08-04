@@ -2,8 +2,6 @@
 title: iOS 18.4 Simulator Fails to Load Products
 ---
 
-# iOS 18.4 Simulator Fails to Load Products
-
 ## Resolved
 
 Apple has resolved this issue, and it is not present in iOS 26 and above. The issue is still present in the iOS 18.4-18.5 simulators. We are keeping this page for historical reference.

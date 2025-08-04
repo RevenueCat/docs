@@ -5,8 +5,11 @@ excerpt: Configure a web purchase flow linked from an iOS paywall, using web pur
 hidden: false
 ---
 
-:::info April 2025 U.S. District Court Ruling on External Payment Options
-A recent U.S. District Court ruling found Apple in violation of a 2021 injunction meant to allow developers to direct users to external payment options, like Paddle. As a result, iOS developers are now permitted to guide users to web-based payment flows without additional Apple fees or restrictive design requirements. You can [find more details on the RevenueCat blog](https://revenuecat.com/blog/growth/introducing-web-paywall-buttons).
+:::warning Temporary limitation: Sandbox environments only
+Due to a limitation with payment domain registration in production Paddle accounts, it's currently not possible to enable production purchases with this flow. We're working with Paddle to resolve this quickly.
+
+**Note:** This doesn't affect sandbox environments, where Paddle doesn't require payment domains to be approved.
+
 :::
 
 ## Overview
@@ -52,12 +55,19 @@ Some steps only need to be configured once, and are marked accordingly. Others r
 
 ### Add a registered payment domain
 
+:::warning Temporary limitation: Sandbox environments only
+It's currently not possible to register the `pay.rev.cat` domain in production environments. We're working with Paddle to resolve this issue.
+
+**Note:** This doesn't affect sandbox environments, where Paddle doesn't require payment domains to be approved.
+
+:::
+
 1. Go to the **Website approval** page under Checkout
 1. Click **Add a new domain**
 1. Enter `pay.rev.cat`
 1. Click **Submit for Approval**
 
-The `pay.rev.cat` domain has been pre-approved by Paddle, should display as approved in your account within a short period of time.
+Wait for approval on Paddle side before proceeding.
 
 ### Set a default payment link
 

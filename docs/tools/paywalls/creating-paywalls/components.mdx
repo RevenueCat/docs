@@ -4,8 +4,6 @@ slug: components
 hidden: false
 ---
 
-# Components
-
 Components are the individual building blocks of your paywall that can be arranged and configured to create your own custom layout.
 
 | Component       | Parent | Description                                                                                |
@@ -271,6 +269,18 @@ Each tab acts as a parent component which can contain any other components withi
 Each tab can have its own package selected by default. This is the package which will be selected when the user first navigates to that tab.
 :::
 
+### Adding packages for each tab
+
+The packages that you want to include on your paywall must all be included in the offering being used by the paywall. Instead of using RevenueCat's standard package identifiers (e.g. `$rc_annual`) when creating these packages, you may instead want to use custom package identifiers since (1) each package identifier must be unique and (2) you can then easily differentiate what's being offered by the identifier.
+
+For example, your package structure may look like this:
+- `basic_monthly`
+- `basic_annual`
+- `pro_monthly`
+- `pro_annual`
+
+Then, you can create tabs either for each entitlement (Basic and Pro), or for each period (monthly and annual), depending on how you want to present the options to your customers.
+
 ## Switch component
 
 The switch component allows you to add a toggle to your paywall that can be used to let customers choose between two different sets of options. Switches are frequently used to offer a set of packages that do/don't offer a free trial, do/don't offer family sharing, etc.
@@ -286,6 +296,18 @@ The switch component will be displayed as a native switch element on both iOS an
 :::
 
 ![Switch properties](/docs_images/paywalls/paywalls-switch.png)
+
+### Adding packages for switch state
+
+The packages that you want to include on your paywall must all be included in the offering being used by the paywall. Instead of using RevenueCat's standard package identifiers (e.g. `$rc_annual`) when creating these packages, you may instead want to use custom package identifiers since (1) each package identifier must be unique and (2) you can then easily differentiate what's being offered by the identifier.
+
+For example, your package structure may look like this for a paywall using the switch component to offer a free trial toggle:
+- `monthly_no_trial`
+- `annual_no_trial`
+- `monthly_with_trial`
+- `annual_with_trial`
+
+The `_no_trial` packages would represent the packages without a free trial, and the `_with_trial` packages would represent the packages with a free trial; so that you could place the first set in the switch's OFF content and the second set in the switch's ON content.
 
 ## Social proof, feature list, and awards
 

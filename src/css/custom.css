@@ -11,6 +11,8 @@
 @tailwind utilities;
 
 :root {
+  --ifm-link-color: var(--rc-blue-primary);
+
   --ifm-color-primary: rgb(242, 90, 90);
   --ifm-color-primary-dark: rgb(227, 67, 67);
   --ifm-color-primary-darker: rgb(212, 44, 44);
@@ -275,8 +277,29 @@ h4 {
 }
 
 .markdown > h2 {
-  border-top: 1px solid #ddd;
-  padding-top: 3rem;
+  @apply border-top-divider;
+  padding-top: 2rem;
+}
+
+.border-top-divider {
+  border-top: 1px solid #00000025;
+}
+
+[data-theme="dark"] .border-top-divider {
+  border-top: 1px solid #ffffff25;
+}
+
+.border-bottom-divider {
+  border-bottom: 1px solid #00000025;
+}
+
+[data-theme="dark"] .border-bottom-divider {
+  border-bottom: 1px solid #ffffff25;
+}
+
+.markdown header {
+  @apply border-bottom-divider;
+  margin-bottom: 32px !important;
 }
 
 .markdown > p > img {
