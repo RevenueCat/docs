@@ -34,8 +34,8 @@ import {
 
 const welcomeCategory = Category({
   iconName: "info",
-  iconColor: "var(--rc-red-primary)",
-  label: "Welcome to RevenueCat",
+  iconColor: "var(--rc-blue-primary)",
+  label: "RevenueCat Documentation",
   itemsPathPrefix: "",
   items: [Page({ slug: "welcome/overview" })],
 });
