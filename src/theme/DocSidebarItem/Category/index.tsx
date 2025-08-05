@@ -180,10 +180,8 @@ export default function DocSidebarItemCategory({
     >
       <div
         className={clsx(
-          "flex items-center gap-2 px-3 py-1 rounded-md group/category relative w-[90%]",
-          {
-            "bg-primary/15": isCurrentPage,
-          },
+          "flex items-center gap-2 px-3 py-1 rounded-md group/category relative w-[90%] ",
+          isCurrentPage && `sidebar-${activeDoc?.sidebar} background`,
           { "hover:!bg-transparent": isTopLevelCategory },
         )}
       >
@@ -200,7 +198,7 @@ export default function DocSidebarItemCategory({
               "w-fit p-0 bg-transparent border-none pt-1 transition-transform duration-300 absolute left-0",
               { "rotate-90": !collapsed },
               isCurrentPage
-                ? "text-primary"
+                ? ` sidebar-${activeDoc?.sidebar}`
                 : "text-base-700 group-hover/category:text-base-400 dark:text-base-300 dark:group-hover/category:text-base-600",
             )}
           />
@@ -213,7 +211,7 @@ export default function DocSidebarItemCategory({
                 isTopLevelCategory,
             },
             isCurrentPage
-              ? "text-primary"
+              ? `sidebar-${activeDoc?.sidebar}`
               : !isTopLevelCategory &&
                   "text-base-700 hover:text-base-400 dark:text-base-300 dark:group-hover/category:text-base-600",
           )}

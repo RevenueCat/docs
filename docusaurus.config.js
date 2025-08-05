@@ -161,29 +161,23 @@ const config = {
         title: "RevenueCat",
         logo: {
           alt: "RevenueCat Logo",
-          src: "img/logo-rc.svg",
+          src: "img/logo-rc-small.svg",
         },
         items: [
           {
-            label: "Categories",
-            to: "/welcome/overview",
-            items: [
-              {
-                type: "docSidebar",
-                sidebarId: "defaultSidebar",
-                label: "Implementation Reference",
-              },
-              {
-                type: "docSidebar",
-                sidebarId: "integrationsSidebar",
-                label: "Events & Integrations Reference",
-              },
-              {
-                type: "docSidebar",
-                sidebarId: "dataSidebar",
-                label: "Charts, Metrics, & Data Reference",
-              },
-            ],
+            type: "docSidebar",
+            sidebarId: "defaultSidebar",
+            label: "Get Started",
+          },
+          {
+            type: "docSidebar",
+            sidebarId: "dataSidebar",
+            label: "Charts & Data",
+          },
+          {
+            type: "docSidebar",
+            sidebarId: "integrationsSidebar",
+            label: "Integrations",
           },
           {
             label: "Guides",
@@ -204,6 +198,7 @@ const config = {
                 to: "/api-v2/",
               },
             ],
+            position: "right",
           },
           {
             label: "Support",
@@ -212,18 +207,9 @@ const config = {
             position: "left",
           },
           {
-            label: "Account",
+            label: "Dashboard",
             position: "right",
-            items: [
-              {
-                label: "Sign Up",
-                to: "https://app.revenuecat.com/signup",
-              },
-              {
-                label: "Sign In",
-                to: "https://app.revenuecat.com/login",
-              },
-            ],
+            to: "https://app.revenuecat.com",
           },
         ],
       },

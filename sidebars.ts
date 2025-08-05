@@ -584,6 +584,7 @@ const accountCategory = Category({
 
 const supportCategory = Category({
   iconName: "help-prominent",
+  iconColor: "var(--rc-red-primary)",
   label: "RevenueCat Support",
   itemsPathPrefix: "revenuecat-support/",
   items: [
@@ -1056,6 +1057,40 @@ const playbooksOtherResourcesCategory = Category({
   ],
 });
 
+const supportResourcesCategory = Category({
+  iconName: "info",
+  iconColor: "var(--rc-red-primary)",
+  label: "App Launch",
+  itemsPathPrefix: "",
+  items: [
+    Link({
+      label: "App Launch Checklist",
+      slug: "/test-and-launch/launch-checklist",
+    }),
+    Link({
+      label: "App Store Rejections",
+      slug: "/test-and-launch/app-store-rejections",
+    }),
+  ],
+});
+
+const supportLinksCategory = Category({
+  iconName: "info",
+  iconColor: "var(--rc-red-primary)",
+  label: "Links",
+  itemsPathPrefix: "",
+  items: [
+    Link({
+      label: "RevenueCat Blog",
+      slug: "https://www.revenuecat.com/blog",
+    }),
+    Link({
+      label: "RevenueCat Community",
+      slug: "https://community.revenuecat.com",
+    }),
+  ],
+});
+
 // Add the top level categories to the defaultSidebar object
 // The defaultSidebar is referenced in docusaurus.config.js
 const sidebars = {
@@ -1095,21 +1130,8 @@ const sidebars = {
   ],
   supportSidebar: [
     supportCategory,
-    Category({
-      iconName: "info",
-      label: "Links",
-      itemsPathPrefix: "",
-      items: [
-        Link({
-          label: "RevenueCat Blog",
-          slug: "https://www.revenuecat.com/blog",
-        }),
-        Link({
-          label: "RevenueCat Community",
-          slug: "https://community.revenuecat.com",
-        }),
-      ],
-    }),
+    supportResourcesCategory,
+    supportLinksCategory,
   ],
 };
 
