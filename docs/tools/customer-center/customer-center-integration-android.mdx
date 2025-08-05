@@ -5,6 +5,7 @@ slug: customer-center-integration-android
 hidden: false
 ---
 import { sdkVersions } from '@site/src/components/CustomerCenter/CustomerCenterSDKTable';
+import customActionsAndroid from '@site/code_blocks/tools/customer-center-custom-actions-android.kt?raw';
 
 ## Installation
 
@@ -108,29 +109,7 @@ Custom Actions allow you to add your own custom management options to the Custom
 
 To handle custom actions, create a CustomerCenterListener with the `onCustomActionSelected` callback:
 
-```kotlin
-// Create a listener to handle custom actions
-val customerCenterListener = object : CustomerCenterListener {
-    override fun onCustomActionSelected(actionIdentifier: String, purchaseIdentifier: String?) {
-        when (actionIdentifier) {
-            "contact_support" -> openSupportChat(purchaseIdentifier)
-            "delete_account" -> showAccountDeletionDialog()
-            "rate_app" -> openAppStoreRating()
-        }
-    }
-}
-
-// Display Customer Center with custom action handling
-CustomerCenter(
-    modifier = Modifier.fillMaxSize(),
-    options = CustomerCenterOptions.Builder()
-        .setListener(customerCenterListener)
-        .build(),
-) {
-    // Handle dismissal
-    isCustomerCenterVisible = false
-}
-```
+<RCCodeBlock tabs={[{ type: "kotlin", content: customActionsAndroid, name: "Kotlin" }]} />
 
 Custom actions are configured in the RevenueCat dashboard under Customer Center settings, where you can:
 - Set a custom identifier for the action

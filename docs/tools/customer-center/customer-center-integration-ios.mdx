@@ -6,6 +6,7 @@ hidden: false
 ---
 
 import { sdkVersions } from '@site/src/components/CustomerCenter/CustomerCenterSDKTable';
+import customActionsIOS from '@site/code_blocks/tools/customer-center-custom-actions-ios.swift?raw';
 
 ## Installation
 
@@ -107,13 +108,7 @@ Custom Actions allow you to add your own custom management options to the Custom
 
 To handle custom actions, use the `.onCustomerCenterCustomActionSelected` modifier:
 
-```swift
-CustomerCenterView()
-.onCustomerCenterCustomActionSelected { actionIdentifier, purchaseIdentifier in
-    // Handle your custom action
-    // Execute your custom logic here
-}
-```
+<RCCodeBlock tabs={[{ type: "swift", content: customActionsIOS, name: "SwiftUI" }]} />
 
 Custom actions are configured in the RevenueCat dashboard under Customer Center settings, where you can:
 - Set a custom identifier for the action
