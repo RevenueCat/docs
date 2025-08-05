@@ -97,6 +97,31 @@ import customerCenterEventsModifier from '@site/code_blocks/tools/customer-cente
   ]}
 />
 
+### Custom Actions
+
+Custom Actions allow you to add your own custom management options to the Customer Center. When a customer taps on a custom action, your app receives a callback with the custom action identifier, allowing you to execute your own code.
+
+To handle custom actions, use the `.onCustomerCenterCustomActionSelected` modifier:
+
+```swift
+CustomerCenterView(
+    navigationOptions: .init(
+        usesNavigationStack: true,
+        usesExistingNavigation: true,
+        shouldShowCloseButton: false
+    )
+)
+.onCustomerCenterCustomActionSelected { actionIdentifier, purchaseIdentifier in
+    // Handle your custom action
+    // Execute your custom logic here
+}
+```
+
+Custom actions are configured in the RevenueCat dashboard under Customer Center settings, where you can:
+- Set a custom identifier for the action
+- Configure the display text and localization
+- Position the action within the management options
+
 ## Setup promotional offers
 
 Promotional Offers allow developers to apply custom pricing and trials to new customers and to existing and lapsed subscriptions. Unique promotional offers can be assigned to different paths and survey responses in the Customer Center, but first they must be set up in App Store Connect.
