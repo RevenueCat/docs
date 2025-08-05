@@ -4,7 +4,7 @@ slug: general-troubleshooting
 hidden: false
 ---
 
-If you are having any issues in RevenueCat, below is a list of some common questions that we see and some quick ways to troubleshoot them. If you are still having issues after checking this document, please feel free to reach out to [support](https://app.revenuecat.com/settings/support) or check out our [community](https://community.revenuecat.com/)!
+This guide covers common issues and their solutions.
 
 ## General Issues
 
@@ -93,7 +93,7 @@ If your app is being rejected from the respective store it can be for many diffe
 
 ### Seeing crashes like `NoCoreLibraryDesugaringException` or `NoClassDefFoundError: com.android.billingclient.api.zzce` in your Android app?
 
-If you're seeing a crash similar to: 
+If you're seeing a crash similar to:
 
 ```
 com.revenuecat.purchases.NoCoreLibraryDesugaringException: Error building BillingFlowParams which is required to perform purchases in the Play store. This is due to an issue in Google's Billing Client library.
@@ -111,7 +111,7 @@ This issue was introduced by Google in the Billing client library in version 7.1
 
 The Play Billing Library started using certain Java 8 types, which not all devices can handle. Concretely this issue may happen in specific older Android models.
 
-Until Google fixes this, the current workaround is to enable Core Library Desugaring in your Android app. To do so, you can follow the instructions [here](https://developer.android.com/studio/write/java8-support#library-desugaring). 
+Until Google fixes this, the current workaround is to enable Core Library Desugaring in your Android app. To do so, you can follow the instructions [here](https://developer.android.com/studio/write/java8-support#library-desugaring).
 
 Please let us know if you are still having issues!
 
