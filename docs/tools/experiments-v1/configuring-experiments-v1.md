@@ -93,7 +93,6 @@ Select from any of the available dimensions to filter which new customers are en
 | App                    | Which of your RevenueCat apps the experiment will be made available to.                                                                                                                                                                                                 |
 | App version            | Which app version(s) of the specified apps must a new customer be on to be enrolled in the experiment.                                                                                                                                                                  |
 | RevenueCat SDK version | Which RevenueCat SDK version(s) of the specified SDK flavor must a new customer be on to be enrolled in the experiment. _(NOTE: This is most likely to be used in conjunction with features like RevenueCat Paywalls which are only available in certain SDK versions)_ |
-
 | Platform | Which platform(s) that were first used by the customer are eligible for the experiment (e.g. iOS, watchOS, etc). |
 
 **New customers to enroll**
