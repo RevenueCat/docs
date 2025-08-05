@@ -426,7 +426,7 @@ html[data-theme="dark"]
 }
 
 .sidebar-dataSidebar {
-  --sidebar-color-primary: var(--rc-froggy-primary);
+  --sidebar-color-primary: var(--rc-green-primary);
 }
 
 .sidebar-playbookSidebar {
