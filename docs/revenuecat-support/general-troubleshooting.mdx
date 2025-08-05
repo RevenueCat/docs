@@ -4,7 +4,7 @@ slug: general-troubleshooting
 hidden: false
 ---
 
-If you are having any issues in RevenueCat, below is a list of some common questions that we see and some quick ways to troubleshoot them. If you are still having issues after checking this document, please feel free to reach out to [support](https://app.revenuecat.com/settings/support) or check out our [community](https://community.revenuecat.com/)!
+This guide covers common issues and their solutions.
 
 ## General Issues
 
@@ -17,17 +17,7 @@ If you are having any issues in RevenueCat, below is a list of some common quest
 
 <br />
 
-If you can't fetch products, or your offerings are empty, this is nearly always a configuration issue. We have a guide detailing the next steps [in our community here](https://community.revenuecat.com/sdks-51/why-are-offerings-or-products-empty-124). For Google Play Store issues, please refer to our [Google Play Checklists](/service-credentials/creating-play-service-credentials/google-play-checklists).
-
-Here's how it works under the hood:
-
-1. Products are configured in each store
-2. Product identifiers are added to your Offering configuration in the RevenueCat dashboard
-3. The RevenueCat SDK fetches the configuration from the RevenueCat API
-4. The SDK requests the products in the configuration from the stores directly
-5. The stores return the valid products from that request
-
-If the stores are unable to return valid products, it means that somewhere in that cycle there is a configuration issue. If there is a typo in your product identifier, the request will fail. If the bundle ID doesn't match the configuration in App Store Connect (or package name for Google Play, etc.), the request will fail. The guide linked above details the potential configuration issues.
+If you can't fetch products, or your offerings are empty, this is nearly always a configuration issue. Our [troubleshooting guide](/offerings/troubleshooting-offerings) covers the most common issues and how to fix them.
 
 ### Customer can't access their entitlements?
 
@@ -40,9 +30,9 @@ If a user has active purchases that are no longer synced to their user ID or the
 
 Restoring purchases will re-sync the user's purchase with the currently identified user ID and re-unlock any entitlements that have been lost due to a changed user ID. If this does not work, it might have to do with you're identifying users or how you are checking for entitlements. We recommend checking the respective docs linked below.
 
-- [Restore behavior](https://www.revenuecat.com/docs/getting-started/restoring-purchases).
-- [Identifying users](https://www.revenuecat.com/docs/customers/user-ids).
-- [Checking subscription status](https://www.revenuecat.com/docs/customers/customer-info).
+- [Restore behavior](/getting-started/restoring-purchases)
+- [Identifying users](/customers/user-ids)
+- [Checking subscription status](/customers/customer-info)
 
 ### A user's purchases were mistakenly transferred.
 
@@ -53,7 +43,7 @@ While this may seem unexpected at times, this is **extremely common**, and is a 
 1. The user is logged into the underlying store account, indicating ownership of those purchases.
 2. The user is attempting to restore those purchases from a different app user ID than the one that already owns the purchases.
 
-We recommend also looking more into your transfer settings as this can chang the behavior in your app when a transfer is made. More information on this can be found [here](https://www.revenuecat.com/docs/getting-started/restoring-purchases#transferring-purchases-seen-on-multiple-app-user-ids).
+We recommend also looking more into your transfer settings as this can chang the behavior in your app when a transfer is made. More information on this can be found [here](/getting-started/restoring-purchases#transferring-purchases-seen-on-multiple-app-user-ids).
 
 ### I accidentally logged in all of my app users with the same app user ID.
 
@@ -75,25 +65,21 @@ While you can't directly reset customer attributes, you can delete your current 
 
 ### Help, I am having issues with the SDK.
 
-We have gone ahead and created a document to troubleshoot SDK problems which we recommend checking out [here](https://www.revenuecat.com/docs/test-and-launch/debugging/troubleshooting-the-sdks)!
+We have gone ahead and created a document to troubleshoot SDK problems which we recommend checking out [here](/test-and-launch/debugging/troubleshooting-the-sdks)!
 
 ### What countries are supported?
 
 Since RevenueCat works as a wrapper for purchases made by the respective store, we will support purchases from countries that each of the respective stores support.
 
-- [App Store supported countries](https://support.apple.com/en-us/118205)
-- [Google Play Store supported countries](https://support.google.com/googleplay/answer/143779?hl=en-GB&sjid=12085401994901043904-NC)
-- [Amazon App Store supported countries](https://www.amazon.com/gp/help/customer/display.html?nodeId=GG6HESXQN45DZQ8N)
-- [Stripe supported countries](https://stripe.com/global)
-- [Web Billing](https://www.revenuecat.com/docs/web/web-billing) - Since Web Billing (formerly RevenueCat Billing) only supports using Stripe as the payment gateway, we currently will use the same supported countries as Stripe does as seen in the link above.
+See [here](/platform-resources/developer-store-payments) for a list of supported countries.
 
 ### Why does my app keep getting rejected?
 
-If your app is being rejected from the respective store it can be for many different reasons. We have a useful document [here](https://www.revenuecat.com/docs/test-and-launch/app-store-rejections) that goes over common reasons for rejection and how to help get your app approved!
+If your app is being rejected from the respective store it can be for many different reasons. We have a useful document [here](/test-and-launch/app-store-rejections) that goes over common reasons for rejection and how to help get your app approved!
 
 ### Seeing crashes like `NoCoreLibraryDesugaringException` or `NoClassDefFoundError: com.android.billingclient.api.zzce` in your Android app?
 
-If you're seeing a crash similar to: 
+If you're seeing a crash similar to:
 
 ```
 com.revenuecat.purchases.NoCoreLibraryDesugaringException: Error building BillingFlowParams which is required to perform purchases in the Play store. This is due to an issue in Google's Billing Client library.
@@ -111,7 +97,7 @@ This issue was introduced by Google in the Billing client library in version 7.1
 
 The Play Billing Library started using certain Java 8 types, which not all devices can handle. Concretely this issue may happen in specific older Android models.
 
-Until Google fixes this, the current workaround is to enable Core Library Desugaring in your Android app. To do so, you can follow the instructions [here](https://developer.android.com/studio/write/java8-support#library-desugaring). 
+Until Google fixes this, the current workaround is to enable Core Library Desugaring in your Android app. To do so, you can follow the instructions [here](https://developer.android.com/studio/write/java8-support#library-desugaring).
 
 Please let us know if you are still having issues!
 
@@ -121,7 +107,7 @@ Service credentials issues can be tricky and can occur for multiple reasons but 
 
 ### Google Play Service credentials Troubleshooting.
 
-We have a great document [here](https://www.revenuecat.com/docs/service-credentials/creating-play-service-credentials/google-play-checklists) that goes over how to check which part of your credentials is failing and if it is failing how to fix the issue at hand. We recommend checking that out if you are experiencing any issues in relation to this!
+Having trouble with Google Play credentials? Check out our troubleshooting guide [here](/service-credentials/creating-play-service-credentials/google-play-checklists) to identify and fix any credential issues.
 
 ### App Store Connect API Key.
 

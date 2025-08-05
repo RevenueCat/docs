@@ -68,7 +68,7 @@ const config = {
         docs: {
           sidebarPath: "./sidebars.ts",
           routeBasePath: "/",
-          breadcrumbs: true,
+          breadcrumbs: false,
           editUrl: "https://github.com/RevenueCat/docs/tree/main/",
         },
         theme: {
@@ -161,34 +161,34 @@ const config = {
         title: "RevenueCat",
         logo: {
           alt: "RevenueCat Logo",
-          src: "img/logo-rc.svg",
+          src: "img/logo-rc-small.svg",
         },
         items: [
           {
-            label: "Categories",
-            to: "/welcome/overview",
-            items: [
-              {
-                type: "docSidebar",
-                sidebarId: "defaultSidebar",
-                label: "Implementation Reference",
-              },
-              {
-                type: "docSidebar",
-                sidebarId: "integrationsSidebar",
-                label: "Events & Integrations Reference",
-              },
-              {
-                type: "docSidebar",
-                sidebarId: "dataSidebar",
-                label: "Charts, Metrics, & Data Reference",
-              },
-            ],
+            type: "docSidebar",
+            sidebarId: "defaultSidebar",
+            label: "Implementation",
+          },
+          {
+            type: "docSidebar",
+            sidebarId: "dataSidebar",
+            label: "Charts & Data",
+          },
+          {
+            type: "docSidebar",
+            sidebarId: "integrationsSidebar",
+            label: "Integrations",
           },
           {
             label: "Guides",
             type: "docSidebar",
             sidebarId: "playbookSidebar",
+            position: "left",
+          },
+          {
+            label: "Support",
+            type: "docSidebar",
+            sidebarId: "supportSidebar",
             position: "left",
           },
           {
@@ -204,26 +204,12 @@ const config = {
                 to: "/api-v2/",
               },
             ],
-          },
-          {
-            label: "Support",
-            type: "docSidebar",
-            sidebarId: "supportSidebar",
             position: "left",
           },
           {
-            label: "Account",
+            label: "Dashboard",
             position: "right",
-            items: [
-              {
-                label: "Sign Up",
-                to: "https://app.revenuecat.com/signup",
-              },
-              {
-                label: "Sign In",
-                to: "https://app.revenuecat.com/login",
-              },
-            ],
+            to: "https://app.revenuecat.com",
           },
         ],
       },

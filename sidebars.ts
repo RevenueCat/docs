@@ -584,6 +584,7 @@ const accountCategory = Category({
 
 const supportCategory = Category({
   iconName: "help-prominent",
+  iconColor: "var(--rc-red-primary)",
   label: "RevenueCat Support",
   itemsPathPrefix: "revenuecat-support/",
   items: [
@@ -622,7 +623,7 @@ const migrateToRevenueCatCategory = Category({
 
 const sdkMigrationCategory = Category({
   iconName: "file-document",
-  iconColor: "black",
+  iconColor: "var(--text-primary)",
   label: "SDK Reference",
   itemsPathPrefix: "",
   items: [
@@ -660,7 +661,7 @@ const sdkMigrationCategory = Category({
 
 const metricsCategory = Category({
   iconName: "chart-pie",
-  iconColor: "var(--rc-froggy-primary)",
+  iconColor: "var(--rc-green-primary)",
   label: "Metrics",
   itemsPathPrefix: "dashboard-and-metrics/",
   items: [
@@ -675,7 +676,7 @@ const metricsCategory = Category({
 
 const chartsCategory = Category({
   iconName: "chart-bar",
-  iconColor: "var(--rc-froggy-primary)",
+  iconColor: "var(--rc-green-primary)",
   label: "Charts",
   itemsPathPrefix: "dashboard-and-metrics/",
   items: [
@@ -766,7 +767,7 @@ const chartsCategory = Category({
 
 const dataExportCategory = Category({
   iconName: "file-download",
-  iconColor: "var(--rc-froggy-primary)",
+  iconColor: "var(--rc-green-primary)",
   label: "Data Exports",
   itemsPathPrefix: "integrations/",
   items: [
@@ -871,7 +872,7 @@ const aiToolsCategory = Category({
 
 const chartsDummyCategory = Category({
   iconName: "chart-bar",
-  iconColor: "var(--rc-froggy-primary)",
+  iconColor: "var(--rc-green-primary)",
   label: "Charts & Metrics",
   itemsPathPrefix: "",
   items: [
@@ -1056,6 +1057,40 @@ const playbooksOtherResourcesCategory = Category({
   ],
 });
 
+const supportResourcesCategory = Category({
+  iconName: "info",
+  iconColor: "var(--rc-violet-primary)",
+  label: "App Launch",
+  itemsPathPrefix: "",
+  items: [
+    Link({
+      label: "App Launch Checklist",
+      slug: "/test-and-launch/launch-checklist",
+    }),
+    Link({
+      label: "App Store Rejections",
+      slug: "/test-and-launch/app-store-rejections",
+    }),
+  ],
+});
+
+const supportLinksCategory = Category({
+  iconName: "info",
+  iconColor: "var(--text-primary)",
+  label: "Links",
+  itemsPathPrefix: "",
+  items: [
+    Link({
+      label: "RevenueCat Blog",
+      slug: "https://www.revenuecat.com/blog",
+    }),
+    Link({
+      label: "RevenueCat Community",
+      slug: "https://community.revenuecat.com",
+    }),
+  ],
+});
+
 // Add the top level categories to the defaultSidebar object
 // The defaultSidebar is referenced in docusaurus.config.js
 const sidebars = {
@@ -1095,21 +1130,8 @@ const sidebars = {
   ],
   supportSidebar: [
     supportCategory,
-    Category({
-      iconName: "info",
-      label: "Links",
-      itemsPathPrefix: "",
-      items: [
-        Link({
-          label: "RevenueCat Blog",
-          slug: "https://www.revenuecat.com/blog",
-        }),
-        Link({
-          label: "RevenueCat Community",
-          slug: "https://community.revenuecat.com",
-        }),
-      ],
-    }),
+    supportResourcesCategory,
+    supportLinksCategory,
   ],
 };
 
