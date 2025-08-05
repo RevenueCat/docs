@@ -33,5 +33,3 @@ With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Are trials that have disabled their auto-renewal still considered active? | Yes, a trial is considered active as long as it has not expired, even if auto-renewal has been disabled, since that subscriber still retains access to your entitlement and has the opportunity to enable auto-renewal and ultimately convert.    |
 | At what point is a trial considered expired?                              | A trial for a subscription without a grace period is considered expired once its next renewal date has passed without a successful renewal. If a grace period is offered, the end of that grace period is considered the trial’s expiration date. |
-
-![](/images/f34fb0a-ActiveTrials_154a51847857ac54ffe0a970e5bf46be.png "ActiveTrials.png")

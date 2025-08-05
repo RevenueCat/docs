@@ -5,11 +5,9 @@ excerpt: Web Billing subscription lifecycle
 hidden: false
 ---
 
-## Overview
+This document explains the lifecycle of a Web Billing subscription, including the different states a subscription can be in and the events triggered during state transitions. The sections below provide more detailed information about each state and transition.
 
-Here is an overview of the various states that a Web Billing subscription can take on, as well as the events that are being sent as a subscription transitions from one state to the other. For more details, read the following sections.
-
-![](/images/web-billing/subscription-lifecycle.png)
+![](/docs_images/web/web-billing/subscription-lifecycle.png)
 
 ## Starting a subscription
 
@@ -71,7 +69,7 @@ As an example, consider a monthly subscription started on 1 January, for which t
 
 The following image illustrates the timelines and events sent for a successful billing recovery under different circumstances. If the billing retry period ends without being able to recover the payment, no further events get sent, and the subscription remains expired.
 
-![](/images/web-billing/billing-retry-and-grace-period.png)
+![](/docs_images/web/web-billing/billing-retry-and-grace-period.png)
 
 In all three cases, a monthly subscription is shown that started on January 1st. The first renewal payment on February 1st failed.
 

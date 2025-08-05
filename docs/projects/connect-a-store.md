@@ -1,21 +1,23 @@
 ---
-title: Connect to a Store
-sidebar_label: Connect to a Store
+title: Connect Apps & Web Providers
+sidebar_label: Connect Apps & Web Providers
 slug: connect-a-store
-excerpt: Connect your project to App Store Connect, Google Play Console, and more
+excerpt: Connect supported apps and web providers to your project
 ---
 
-Once you've created a [project](/projects/overview), you'll need to connect it to the stores and platforms you want to support and set up [Server Notifications](/platform-resources/server-notifications). After you've connected your app, you can import your products from the stores to start configuring your offerings.
+Once you've created a [project](/projects/overview), you'll need to connect it to the stores and payment providers you want to support and set up [Server Notifications](/platform-resources/server-notifications). After you've connected your app, you can import your products from the stores to start configuring your offerings.
 
-Click the **+ Add App** button in the top right of your project sidebar to see the list of stores and payment providers you can connect to.
+Add an **app config** or **web config** in the _Apps & providers_ section of your app settings.
 
-![Add App](/images/projects/add-an-app.png)
+![Add App Configuration](/docs_images/projects/add-app-platform.png)
 
-## Add an App
+![Add Web Configuration](/docs_images/projects/add-web-platform.png)
+
+## Add a Configuration
 
 RevenueCat supports a wide range of stores and payment providers.
 
-### App Stores
+### App Configuration
 
 #### Apple App Store
 
@@ -46,7 +48,7 @@ To connect your app to the Roku Store, you'll need to add your **App name**, and
 
 - [Where do I find my Roku Pay API Key?](/service-credentials/roku-credentials)
 
-### Web Stores
+### Web Configuration
 
 #### Web Billing
 
@@ -60,18 +62,24 @@ Stripe is a popular payment processor that allows you to accept payments from cu
 
 - [Learn more about Stripe](/web/integrations/stripe)
 
+#### Paddle
+
+Paddle is a popular all-in-one payment infrastructure that allows you to accept payments from customers and acts as a merchant of record. RevenueCat integrates with Paddle to allow you to easily offer subscriptions and manage your customers.
+
+- [Learn more about Paddle](/web/integrations/paddle)
+
 ## Platform Server Notifications
 
-After adding your app, we recommend setting up [Platform Server Notifications](/platform-resources/server-notifications). These notifications will ensure RevenueCat is notified of purchases and subscription events as soon as possible, and will speed up [webhooks](/integrations/webhooks) and integration delivery times.
+After adding your configurations, we recommend setting up [Platform Server Notifications](/platform-resources/server-notifications). These notifications will ensure RevenueCat is notified of purchases and subscription events as soon as possible, and will speed up [webhooks](/integrations/webhooks) and integration delivery times.
 
 ## Import Products
 
-After adding your app, you can import your products from the stores to start configuring your offerings.
+After adding your configurations, you can import your products from the stores to start configuring your offerings.
 
 - [Learn more about importing products](/offerings/products-overview)
 
 ## Next steps
 
-If you've added your app, it's time to install the SDK to start making purchases.
+If you've added your configurations, it's time to install the SDK to start making purchases.
 
 <Button href="/docs/getting-started/installation">Install the SDK →</Button>

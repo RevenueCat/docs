@@ -1,0 +1,122 @@
+---
+title: Sales Tax & VAT
+slug: tax
+excerpt: How to configure and charge sales tax & VAT to customers purchasing through Web Billing
+hidden: false
+---
+
+If you're selling subscriptions and purchases through Web Billing, you may need to collect sales tax and VAT in transactions, depending on your business setup and local tax laws.
+
+Unlike the mobile app stores, selling directly to customers on the web means complying with any tax obligations that apply, based on:
+
+- The location of your business
+- The tax jurisdiction of your customers (including country, state/province and county)
+- The category of product you're selling (e.g. software services, digital content etc.)
+- The amount of revenue you have in a given region
+
+:::info Tax advice
+While RevenueCat and Stripe provide tools to monitor and charge sales tax and VAT for your business, you should seek tax advice from a qualified tax accountant if you're uncertain about your tax obligations, or how specific regional tax laws apply to you.
+:::
+
+## Overview: Stripe Tax support in Web Billing
+
+RevenueCat integrates with [Stripe Tax](https://stripe.com/tax), which helps you:
+
+- Understand when you need to register for tax collection in a specific location (threshold monitoring)
+- Manage and report on registered tax rates and collected taxes
+- Calculate and collect any relevant taxes directly in the Web Billing checkout
+
+Customers will see a tax breakdown in the checkout when a tax rate is applied to their purchase:
+
+![](/docs_images/web/web-billing/tax-inclusive-checkout.png)
+
+#### Stripe Tax fees
+
+If you enable Stripe Tax in your RevenueCat dashboard, Stripe will charge you a [per-transaction fee](https://stripe.com/tax/pricing), for transactions where taxes are collected. This is in addition to the base Stripe transaction fee.
+
+#### Supported countries
+
+A full list of countries where Stripe Tax allows you to calculate and collect taxes are available in [Stripe's documentation](https://docs.stripe.com/tax/supported-countries?locale=en-GB#supported-countries).
+
+#### Current limitations
+
+We've designed the RevenueCat Stripe Tax integration to meet the needs of the majority of our customers. The following limitations currently apply:
+
+- **B2C product support only** — the invoicing and tax needs for business customers differ from consumer products. RevenueCat doesn't collect customers' tax IDs, issue reverse charge VAT invoices, or invoices that meet the requirements of business-to-business transactions.
+- **Pre-defined tax behavior** —  transactions for customers in the US and Canada will use **tax-exclusive** pricing (applicable taxes are added to the product price), and the rest of world uses **tax-inclusive** pricing (all taxes are included in the product price).
+- **Tax reporting in Stripe dashboard only** — The RevenueCat dashboard doesn't provide tax reports or analytics. You should use the reporting tools available in your Stripe dashboard.
+- **Reversal transactions** —  these are created for refunds, but not currently for disputes or chargebacks.
+
+## How to configure Stripe Tax with Web Billing
+
+:::info Remember: Stripe products and product tax codes not used
+Web Billing uses its own product configuration, so you don't need to add or configure products or product tax codes in Stripe. The same applies to default tax codes — only the product tax code configured in the RevenueCat dashboard is used.
+:::
+
+#### Prerequisites
+
+Before you get started, you should:
+
+1. Make sure you've approved any pending permissions from the [Stripe RevenueCat App](https://marketplace.stripe.com/apps/revenuecat). The Stripe Tax integration requires specific permissions to interact with your account.
+1. If you're using the [Web SDK](/web/web-billing/web-sdk/): Update your SDK version to v1.4.3 or higher.
+
+#### 1: Enable up Stripe Tax in your Stripe dashboard
+
+If you have not already configured Stripe Tax, you should follow the instructions [in your dashboard](https://dashboard.stripe.com/tax/overview) to enable automatic tax calculation (these steps may vary depending on your business location).
+
+#### 2: Enable tax collection in the RevenueCat dashboard
+
+:::warning Production tax rates applied immediately
+Any tax rates added in your Stripe Tax dashboard in live mode may be applied to web billing transactions after this step. Make sure you haven't added registrations to live mode that are only for testing purposes.
+:::
+
+1. Navigate to the Web Billing configuration in your RevenueCat account.
+1. In the **Billing** tab, enable "Automatically detect and charge tax rates from Stripe Tax" and save the changes.
+1. Still in the **Billing** tab, Set the product tax code for your product. The default tax code is **General - Electronically Supplied Services** (`txcd_10000000`) which should be applicable for a lot of app-based businesses. For more guidance on product tax codes, see [Stripe's documentation](https://docs.stripe.com/tax/tax-codes).
+
+#### 3: Test tax collection in test mode
+
+To test that tax rates are correctly applied to Web Billing purchases:
+
+1. Add tax registrations in Stripe's test mode — you need to configure separate tax registrations in test mode, which are separate from any registrations in live mode.
+1. Load a sandbox Web Paywall Link, or initiate a purchase with the Web SDK in sandbox mode.
+1. In the checkout, select a billing address for a location where a tax rate is active in Stripe's test mode.
+1. If the tax registration is applicable for your product in the selected location, you should see that taxes are shown on the checkout page and in the purchase receipt.
+
+Note that not all jurisdictions apply sales tax collection to software products; you might not see a tax rate applied even though you've added a registration.
+
+As a test case, with the product tax category set to **General - Electronically Supplied Services** (`txcd_10000000`), you can check out with a **Texas** billing address, you should see a tax rate applied.
+
+#### 4: Add live mode tax registrations for locations where you'll collect tax
+
+Taxes are only applied to a production purchase when there's a relevant tax registration added to the [Registrations page](https://dashboard.stripe.com/tax/registrations) in your Stripe dashboard's live mode.
+
+You can use Stripe's built-in [threshold monitoring](https://dashboard.stripe.com/tax/thresholds) to understand when you need to register for sales tax in a given location. The process for registering varies depending on the authority you're registering with, and Stripe provides automated registration in certain regions.
+
+As soon as you've added a registration in the Stripe dashboard live mode, Web Billing will start applying relevant taxes for new purchases in that location.
+
+## FAQ
+
+#### How is a customer's tax location determined?
+
+When a customer begins a purchase through a Web Paywall Link or Web SDK purchase flow, their tax location will be determined based on the billing address they enter, using country, state and postcode/zipcode information. The `country` field is pre-filled based on the customer's IP address location.
+
+#### How does Sales Tax and VAT affect the price of my products?
+
+For customers with a billing address in the USA & Canada, tax-exclusive mode is used (tax is added to the product price). For all other locations, tax-inclusive mode is used (tax is already included in the product price).
+
+#### Where can customers see tax information?
+
+Any applicable taxes are broken down in the checkout, in email receipts and PDF invoices and receipts available in the customer portal.
+
+#### How can I add additional tax information (such as my company's VAT ID or legal information) to my invoices?
+
+You can add custom information in the **invoice footer**, which can be configured in the Settings tab for your Web Billing configuration, under the App Information section. Custom invoice footers are included in all invoice and receipt PDFs.
+
+#### How can I report on collected taxes?
+
+You can use [Stripe Tax reports](https://dashboard.stripe.com/tax/reporting) in the Stripe dashboard to report on transactions and collected taxes for accounting purposes.
+
+#### How does tax collection work with wallet payment methods?
+
+If you have enabled Apple Pay or Google Pay, the billing address in the wallet payment method is used to determine the customer's tax location.

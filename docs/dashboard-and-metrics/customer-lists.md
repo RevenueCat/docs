@@ -9,12 +9,6 @@ RevenueCat Customer Lists allow you to cohort and export groups of customers bas
 
 Lists are a segment of your customers inside RevenueCat, this can include both paying and non-paying users. Some lists are created automatically for every project (see Default lists below) and you can also create custom lists with your own defined filter logic.
 
-:::tip
-If you're on a legacy Free plan and want to access custom lists or export lists, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
-![](/images/b7ceead-app.revenuecat.com_projects_85ff18c7_api-keys_8_442a6580f487e317c456268abf080199.png "app.revenuecat.com_projects_85ff18c7_api-keys (8).png")
-
 :::info Sandbox Customers
 The Customers dashboard tab doesn't support toggling the 'View sandbox data' switch as there is no concept of a sandbox customer in RevenueCat, only sandbox transactions.
 
@@ -23,34 +17,42 @@ To view customers who have made sandbox transactions you can use the default San
 
 ## Find an Individual Customer
 
-You can look up an individual customer by an exact match of their App User ID, Transaction ID, Email Attribute, or Order ID (iOS only). To find a customer via Order ID, you can follow our guide on setting up [In-App Purchase Keys](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration) to unlock this feature. The transaction must show as completed in the [Apple Purchase History](https://support.apple.com/en-gb/HT204088) to be considered a valid Order ID. Note that Transaction ID refers to the identifier in Google Play console and order emails of GPA.1234.1223–, and for Stripe si_abcefg, whereas Order ID refers to the identifier from Apple's order emails.
+To find an individual customer, use the search bar or the hotkey (⌘K on Mac and iPad, Ctrl+K on other devices) to search by an exact match of their App User ID, Transaction ID, Email Attribute, or Order ID (iOS only).
+
+Looking up customers is real-time. They will be searchable here as soon as a customer exists in RevenueCat.
+
+![Find a customer using the global search](/docs_images/customers/find-customer.png)
+
+![Find a customer results in the global search dialog](/docs_images/customers/find-customer-dialog.png)
+
+### iOS Order ID
+
+To find a customer via Order ID, you can follow our guide on setting up [In-App Purchase Keys](/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration) to unlock this feature. The transaction must show as completed in the [Apple Purchase History](https://support.apple.com/en-gb/HT204088) to be considered a valid Order ID. Note that Transaction ID refers to the identifier in Google Play console and order emails of GPA.1234.1223–, and for Stripe si_abcefg, whereas Order ID refers to the identifier from Apple's order emails.
 
 :::warning Sandbox transaction search
 Customer lookup by Transaction ID and Order ID works for production purchases only.
 :::
 
-Looking up customers in RevenueCat is real-time, as soon as a customer exists in RevenueCat they will be searchable here.
-![](/images/b9c0217-app.revenuecat.com_projects_85ff18c7_api-keys_9_38e1e4c9e5cabd690deaebb722d3f58e.png "app.revenuecat.com_projects_85ff18c7_api-keys (9).png")
-
 ## Viewing a List
 
 ### Choose a project
 
-Customer lists are created on a per-project basis, you must select a project before viewing a list. Lists cannot be combined across projects inside of RevenueCat.
-![Screenshot 2023-03-27 at 1.00.35 PM.png](/images/d0db86e-Screenshot_2023-03-27_at_1.00.35_PM_1fcb9c6e24fe6a9a6841a6611b26e875.png)
+Customer lists are available in each project. Select your project from the project dropdown to view lists.
+
+![Choose a project](/docs_images/customers/choose-project.png)
 
 ### Default lists
 
-![app.revenuecat.com_overview.png](/images/81b30f7-app.revenuecat.com_overview_39740967190ab04326c335f8aa308e87.png)
+![Default lists](/docs_images/customers/default-lists.png)
 
 RevenueCat creates some default lists for every project. Default lists should give you insight into every customer that has ever made any purchase.
 
-| Default List     | Description                                                                      |
-| ---------------- | -------------------------------------------------------------------------------- |
-| Active           | Any customer with an active subscription or trial.                               |
-| Sandbox          | Any customer who has any sandbox transaction associated with their App User ID.  |
-| Non-subscription | Any customer with a non-subscription purchase associated with their App User ID. |
-| Expired          | Any customer with an expired subscription or trial.                              |
+| Default List        | Description                                                                      |
+| ------------------- | -------------------------------------------------------------------------------- |
+| Active subscription | Any customer with an active subscription or trial.                               |
+| Sandbox             | Any customer who has any sandbox transaction associated with their App User ID.  |
+| Non-subscription    | Any customer with a non-subscription purchase associated with their App User ID. |
+| Expired             | Any customer with an expired subscription or trial.                              |
 
 :::info Granted Entitlements are not considered 'Active'
 
@@ -62,7 +64,7 @@ If a customer has a [Granted Entitlement](/dashboard-and-metrics/customer-histor
 
 In addition to Default Lists, you can create new Custom Lists with any combination of `AND` filters. See the section below on 'Filters' for a full description of available filters.
 
-![app.revenuecat.com_lists_list0332b22d97 (1).png](/images/94bb634-app.revenuecat.com_lists_list0332b22d97_1_358c4b9df7bdf4dfe92ff11fef6b0c37.png)
+![Custom lists](/docs_images/customers/custom-lists.png)
 
 :::info Custom lists are shared across collaborators
 Any custom lists you create will also be visible to any project collaborators with Read or Admin privileges.
@@ -71,7 +73,8 @@ Any custom lists you create will also be visible to any project collaborators wi
 ## Overview Metrics
 
 For each list, RevenueCat computes overview metrics for the cohort of customers.
-![](/images/8070e60-app.revenuecat.com_lists_list0332b22d97_2_205e85c31975ad3a86dd1b2b4dce75a5.png "app.revenuecat.com_lists_list0332b22d97 (2).png")
+
+![Aggregate metrics](/docs_images/customers/aggregate-metrics.png)
 
 | Metric               | Description                                                                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -87,7 +90,9 @@ Active "subscribers" may be lower than your count of all active "subscriptions" 
 ## List Data
 
 For each list, RevenueCat displays the 100 most recently seen customers in the dashboard.
-![](/images/f030395-app.revenuecat.com_projects_85ff18c7_api-keys_8_copy_abbeade267bb429bc8888ba6c2441fcb.png "app.revenuecat.com_projects_85ff18c7_api-keys (8) copy.png")
+
+![Customers table](/docs_images/customers/customers-table.png)
+
 The dashboard shows the App User ID, purchase status, total spent (USD) and the latest product identifier purchased. Additional columns are available when exporting data.
 
 :::info Data freshness
@@ -97,7 +102,8 @@ Customer lists are refreshed every 2 hours automatically
 ## Filters
 
 Filters allow you to choose which customers appear in your list. You can create custom lists with any combination of filters. **All filters are applied as AND filters**.
-![](/images/customer_list_filters.png "Customer List Filters")
+
+![Customer list filters](/docs_images/customers/customer_list_filters.png)
 
 :::info Duplicating a Customer List
 If you would like to create another version of a List with further filters, you can open the filters menu and click the "Create New List" button, which will become clickable after adding the additional filters that you would like to be applied to the new version. Once you click the button, it will show a prompt to name this new Customer List, which will be created after you name it. The original Customer List will remain the same without the newly-added filters.
@@ -137,7 +143,7 @@ See the table below for all filters you can apply to your lists.
 | Latest Offer                       | String       | The identifier of the latest offer that the customer used to make a purchase (if applicable).                              |
 | Latest Offer Type                  | String       | The type of the latest offer that the customer used to make a purchase (if applicable).                                    |
 | Latest Ownership Type              | String       | The ownership type of the customer's latest purchase, used to distinguish family sharing purchases.                        |
-| Latest Purchased Offering          | String       | The offering that the customer's latest purchased was made from.                                                           |
+| Latest Purchased Offering          | String       | The offering that the customer's latest purchase was made from.                                                            |
 | Latest Product                     | String       | The customer's latest purchased product identifier.                                                                        |
 | Latest Purchase Date               | Date         | The customer's latest transaction date.                                                                                    |
 | Latest Renewal Date                | Date         | The customer's latest renewal date. This could be the same as the Latest Purchase Date.                                    |
@@ -156,6 +162,30 @@ See the table below for all filters you can apply to your lists.
 
 :::info Date filters are start of day
 Selecting any date filters will apply to the start of the day. For example, `2021-01-01` will be `2021-01-01T00:00:00` under the hood.
+:::
+
+### Status Filter
+
+The Status filter provides these options to refine your customer list:
+
+- **Active**: The customer has an active subscription.
+- **Free Trial**: The customer currently has an active trial subscription.
+- **Intro Period**: The customer’s subscription is currently in a discounted introductory (non-free) period.
+- **Promotional**: The customer has a [promotional entitlement](/dashboard-and-metrics/customer-history/promotionals).
+- **Billing Issue**: The customer's subscription is experiencing a billing retry period.
+- **Billing Issue Trial**: The customer is in a trial period experiencing billing issues.
+- **Cancelled**: The customer has cancelled their subscription.
+- **Cancelled Trial**: The customer has cancelled their trial subscription.
+- **Expired**: The customer's subscription has ended and is no longer active.
+
+:::info
+Applying any status filter will limit the customer list to customers who have made at least one purchase.
+:::
+
+:::info
+If a customer has more than one subscription, the status filter applies only to the customer's latest transaction.
+
+Additionally, promotional status is ranked lower than other statuses, regardless of whether the promotional purchase is the latest transaction.
 :::
 
 ## Exporting Data
@@ -202,7 +232,7 @@ Below is a description of the .csv format for the exported data.
 | most_recent_billing_issues_at | Epoch timestamp in milliseconds when a subscription billing issue was detected by RevenueCat.                                                |
 | latest_offer                  | The identifier of the latest offer that the customer used to make a purchase (if applicable).                                                |
 | latest_offer_type             | The type of the latest offer that the customer used to make a purchase (if applicable).                                                      |
-| latest_purchased_offering     | The offering that the customer's latest purchased was made from.                                                                             |
+| latest_purchased_offering     | The offering that the customer's latest purchase was made from.                                                                              |
 | latest_ownership_type         | The ownership type of the customer's latest purchase, used to distinguish family sharing purchases.                                          |
 | email                         | The `$email` [Attribute](/customers/customer-attributes) for the customer, if set.                                                           |
 | phone_number                  | The `$phoneNumber` [Attribute](/customers/customer-attributes) for the customer, if set.                                                     |

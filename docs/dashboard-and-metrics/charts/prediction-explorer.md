@@ -53,11 +53,11 @@ RevenueCat predicts the lifetime value (LTV) of paid subscriptions based on the 
 
 We predict up to 24 month LTV for all paid subscriptions that are not cancelled or expired. Whenever a data point contains predicted revenue, it will be styled with light green or yellow on the right side of the diagonal divider in the table.
 
-![](/images/prediction_explorer.png)
+![](/docs_images/charts/prediction-explorer/prediction-explorer.png)
 
 You can use the period selector to look at daily, weekly, monthly, or yearly periods and the LTV we predict will be added in each one (for up to 24 months after the start of each paid subscription in the cohort being measured)
 
-![](/images/prediction_explorer_period_selector.png)
+![](/docs_images/charts/prediction-explorer/period-selector.png)
 
 #### Other notes
 
@@ -118,11 +118,11 @@ In the Prediction Explorer we'll distinguish between two types of predictions:
 
 When a cohort is too small, and therefore its predictions should be taken with extreme caution, we'll indicate that with a tooltip and yellow cell shading to distinguish these as our lowest confidence predictions:
 
-![](/images/prediction_explorer_low_confidence.png)
+![](/docs_images/charts/prediction-explorer/low-confidence.png)
 
 When a cohort has a sufficient sample size of customers and subscriptions for us to provide a more reliable prediction for it, we'll indicate that with a light green cell shading to distinguish these as predicted values vs. other darker green cells which only contain Realized LTV:
 
-![](/images/prediction_explorer_certain_and_standard_confidence.png)
+![](/docs_images/charts/prediction-explorer/certain-and-standard-confidence.png)
 
 :::warning
 All future lifetime value predictions contain some degree of risk and uncertainty, and should therefore be used with caution in analysis when comparing with certain values like Realized LTV.

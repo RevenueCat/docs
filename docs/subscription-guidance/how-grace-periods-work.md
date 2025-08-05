@@ -9,12 +9,13 @@ If a customer is unable to complete their purchase due to an invalid or expired 
 
 Grace Periods are optional and customizable on certain platforms.
 
-| Store       | Required?        | Duration                                                                                                                                             |
-| :---------- | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
-| App Store   | Optional         | [Customizable](https://developer.apple.com/help/app-store-connect/manage-subscriptions/enable-billing-grace-period-for-auto-renewable-subscriptions) |
-| Google Play | Optional         | [Customizable](https://developer.android.com/google/play/billing/subscriptions)                                                                      |
-| Stripe      | Optional         | Customizable                                                                                                                                         |
-| Amazon      | ❌ Not supported | N/A                                                                                                                                                  |
+| Store                  | Required?        | Duration                                                                                                                                             |
+| :--------------------- | :--------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
+| App Store              | Optional         | [Customizable](https://developer.apple.com/help/app-store-connect/manage-subscriptions/enable-billing-grace-period-for-auto-renewable-subscriptions) |
+| Google Play            | Optional         | [Customizable](https://developer.android.com/google/play/billing/subscriptions)                                                                      |
+| RevenueCat Web Billing | Optional         | Customizable                                                                                                                                         |
+| Stripe                 | Optional         | Customizable                                                                                                                                         |
+| Amazon                 | ❌ Not supported | N/A                                                                                                                                                  |
 
 ## Encountering Billing Issues
 
@@ -64,6 +65,6 @@ The property `grace_period_expires_date` will always be null for Stripe subscrip
 
 Customers who enter into a grace period will have events added to their [Customer History](/dashboard-and-metrics/customer-history/basic-information).
 
-![Screen Shot 2022-09-15 at 2.46.12 PM.png](/images/4265860-Screen_Shot_2022-09-15_at_2.46.12_PM_217f2fce51cb21a5d7e6a308da39c425.png)
+![Grace Period](/docs_images/products/subscriptions/grace-periods.png)
 
 Additionally, subscriptions that are currently in a grace period will still be considered "active," since the customer retains access to their entitlement throughout their grace period. Distinct customers who are currently in a grace period can be counted through Customer Lists using the "Billing Issue Trial" and "Billing Issue" statuses.

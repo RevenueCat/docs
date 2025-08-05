@@ -69,5 +69,3 @@ With our [Scheduled Data Exports](/integrations/scheduled-data-exports), you can
 :::info
 If a Stripe subscription is canceled with immediate effect, this may cause temporary unusual behavior in your MRR, since RevenueCat will estimate the length of a subscription based on the purchase & expiration dates if the product duration is unknown.
 :::
-
-![](/images/c963014-MRR_8de46b9cf154b138be9e281e9df64616.png "MRR.png")

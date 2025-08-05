@@ -1,0 +1,359 @@
+---
+title: Paddle app-to-web purchases
+slug: paddle-app-to-web
+excerpt: Configure a web purchase flow linked from an iOS paywall, using web purchase links and Paddle Billing
+hidden: false
+---
+
+:::warning Temporary limitation: Sandbox environments only
+Due to a limitation with payment domain registration in production Paddle accounts, it's currently not possible to enable production purchases with this flow. We're working with Paddle to resolve this quickly.
+
+**Note:** This doesn't affect sandbox environments, where Paddle doesn't require payment domains to be approved.
+
+:::
+
+## Overview
+
+![](/docs_images/web/web-billing/rc_web_paddle_flow.png)
+
+This guide walks you through the setup for adding web purchases to your iOS app with RevenueCat Web and Paddle Billing. The flow consists of the following steps:
+
+1. User views RevenueCat paywall (in-app)
+1. User clicks a web purchase button on the pwayall, and lands on a web purchase link in the device browser
+1. User completes their purchase in the Paddle Billing checkout (presented within the web purchase link)
+1. User is redirected back into the mobile app, using a custom URL scheme
+1. User is granted access to the premium entitlements associated with the product they purchased
+
+## Current limitations
+
+1. **Free trials** will not be displayed in the package selection page, or summarized in the checkout
+1. **Product quantity:** Products purchased with a quantity of more than one (via the quantity adjustment in the Paddle checkout) will be reflected as a single product purchase in RevenueCat.
+1. **Customization:** The Paddle overlay checkout only supports a single accent color customization.
+1. **Product descriptions:** The "show product descriptions" setting in web purchase links currently has no effect with Paddle purchases.
+
+## Before you begin (prerequisites)
+
+Before you start to configure this flow, you'll need the following:
+
+- A RevenueCat account (sign up [here](https://www.revenuecat.com/))
+- A iOS mobile app with the RevenueCat SDK configured (see [getting started](../../welcome/overview))
+- iOS products configured in RevenueCat (see [product configuration](../../getting-started/quickstart#2-product-configuration))
+- A Paddle Sandbox account (sign up [here](https://sandbox-login.paddle.com/signup))
+- (Optional) A Paddle Production account (in order to ship a production version, sign up [here](https://login.paddle.com/signup))
+
+:::info This guide can be followed for both sandbox & production setup
+Some steps only need to be configured once, and are marked accordingly. Others require dedicated setup in both sandbox and production environments.
+:::
+
+## 1. Configure your Paddle account
+
+:::info Do this in Paddle, for:
+
+- Sandbox ([https://sandbox-vendors.paddle.com/](https://sandbox-vendors.paddle.com/))
+- Production ([https://login.paddle.com/](https://login.paddle.com/))
+  :::
+
+### Add a registered payment domain
+
+:::warning Temporary limitation: Sandbox environments only
+It's currently not possible to register the `pay.rev.cat` domain in production environments. We're working with Paddle to resolve this issue.
+
+**Note:** This doesn't affect sandbox environments, where Paddle doesn't require payment domains to be approved.
+
+:::
+
+1. Go to the **Website approval** page under Checkout
+1. Click **Add a new domain**
+1. Enter `pay.rev.cat`
+1. Click **Submit for Approval**
+
+Wait for approval on Paddle side before proceeding.
+
+### Set a default payment link
+
+Go to the [Checkout settings](https://sandbox-vendors.paddle.com/checkout-settings) page under Checkout.
+
+If your Paddle account does not already have a default payment link set, enter `https://pay.rev.cat`.
+
+If a default payment link is already configured (because you're using the account for other purposes) you can leave this unchanged. It will not affect your app-to-web purchases.
+
+### Disable abandoned cart emails
+
+The RevenueCat Paddle Billing integration doesn't currently support Paddle's abandoned cart emails. You should disable them [here](https://developer.paddle.com/build/checkout/checkout-recovery#configure-checkout-recovery)
+
+### Add a new API key and define permissions
+
+1. Navigate to the [Authentication](https://sandbox-vendors.paddle.com/authentication-v2) page under Developer Tools
+1. Click the **+ New API key** button
+1. Give the new key a suitable name and description
+1. **Important:** Set the key to NOT expire (differs from default)
+1. Set the permissions according to the list below
+1. Save the new key
+1. Copy the key to your clipboard
+
+<details>
+<summary> <b>Minimum required API key permissions</b></summary>
+
+| Permission                     | Read | Write |
+| ------------------------------ | :--: | :---: |
+| Addresses                      |  ☑  |   ☐   |
+| Adjustments                    |  ☑  |   ☐   |
+| Businesses                     |  ☑  |   ☐   |
+| Client-side tokens             |  ☑  |  ☑   |
+| Customer portal sessions       |  ☐   |   ☐   |
+| Customer authentication tokens |  ☐   |   ☐   |
+| Customers                      |  ☑  |   ☐   |
+| Discounts                      |  ☑  |   ☐   |
+| Notification settings          |  ☑  |  ☑   |
+| Notifications                  |  ☑  |   ☐   |
+| Notification simulations       |  ☐   |   ☐   |
+| Payment methods                |  ☑  |   ☐   |
+| Prices                         |  ☑  |   ☐   |
+| Products                       |  ☑  |   ☐   |
+| Reports                        |  ☐   |   ☐   |
+| Subscriptions                  |  ☑  |   ☐   |
+| Transactions                   |  ☑  |   ☐   |
+
+</details>
+
+:::warning leave key window open
+If you close the modal showing the full API key, you will no longer be able to copy it — we recommend you leave this window open until you've saved the key in the RevenueCat config.
+:::
+
+## 2. Create Paddle config in RevenueCat dashboard
+
+:::info Do this in RevenueCat, for:
+
+- Sandbox
+- Production (separate config required)
+
+:::
+
+1. Log in to your RevenueCat account
+1. Go to your project
+1. Go to **Apps & providers**
+1. Add a new web configuration
+1. Select the Paddle provider
+1. Click **Set secret**, paste your Paddle API key and click **Set**
+
+For this use case, we recommend selecting:
+
+**Automatic purchase tracking** — this tracks all purchases from the Paddle account using webhooks, with no additional setup required.
+**Autogenerated user IDs** — because we're sending users directly from the mobile app, an app user ID will already be provided and associated to the purchase.
+
+Finally, click **Connect to Paddle** to initiate and test the connection.
+
+## 3. Create products and prices in Paddle
+
+:::info Do this in Paddle, for:
+
+- Sandbox ([https://sandbox-vendors.paddle.com/](https://sandbox-vendors.paddle.com/))
+- Production ([https://login.paddle.com/](https://login.paddle.com/))
+  :::
+
+:::info Product Mapping between RevenueCat and Paddle
+A Price in Paddle maps to a Product in the RevenueCat system. So for example, if you create two prices under the same Paddle product, when you import or manually create the products in the RevenueCat dashboard, you'll notice two separate products.
+
+![](/docs_images/web/paddle/paddle_dashboard_prices.png)
+![](/docs_images/web/paddle/revenuecat_paddle_product_mapping.png)
+
+:::
+
+1. Log in to the Paddle Dashboard
+1. To create a new product, expand the **Catalog** section in the sidebar and click **Products**.
+1. On the top right corner of the page, click **New Product**.
+1. Enter the product name and any other optional details like a description then click **Save**.
+
+![](/docs_images/web/paddle/create-product.png)
+
+Then on the prices section, click **New Price**.
+Enter details like the base price, the type of pricing (recurring or one-time), the billing period, and any trial periods you are offering and click **Save**.
+
+:::info "price name" is customer-facing label
+The "price name" field defines to what is shown to users in the checkout, as a representation of what they're purchasing.
+:::
+
+![](/docs_images/web/paddle/create-price.png)
+
+You can read more about **products and prices** in [Paddle's official documentation](https://developer.paddle.com/build/products/create-products-prices).
+
+## 4. Import products to RevenueCat
+
+:::info Do this in RevenueCat, for:
+
+- Sandbox
+- Production
+  :::
+
+1. Go to the **Product catalog** in your RevenueCat dashboard, and select the **Products** tab
+1. Find your previously added Paddle provider, and click **Import**
+1. Check the products you want to use for your web purchases, and click **Import**
+
+The imported products should now be displayed under your Paddle provider on the Products page.
+
+## 5. Create entitlements in RevenueCat
+
+:::info Do this in RevenueCat, for:
+
+- Sandbox
+- Production
+  :::
+
+### What is an entitlement?
+
+RevenueCat Entitlements represent a level of access, features, or content that a user is "entitled" to, and are typically unlocked after a user purchases a product.
+
+Entitlements are used to ensure a user has appropriate access to content based on their purchases, without having to manage all of the product identifiers in your app code. For example, you can use entitlements to unlock "pro" features after a user purchases a subscription.
+
+Most apps only have one entitlement, unlocking all premium features. However, if you had two tiers of content such as Gold and Platinum, you would have 2 entitlements.
+
+[Read more about entitlements](../../getting-started/entitlements)
+
+### Adding an entitlement
+
+1. Go to the **Product catalog** in your RevenueCat dashboard, and select the **Entitlements** tab
+1. Click **+ New entitlement**
+1. Enter an identifier and description for the entitlement, and click **Add**
+
+### Attaching a product to your entitlement
+
+1. Go to your previously created entitlenment and click **Attach** under associated products
+1. In the table, check the product from your Paddle provider, and click **Attach**
+
+## 6. Create an offering & packages in RevenueCat
+
+:::info Do this in RevenueCat, for:
+
+- Sandbox
+- Production
+  :::
+
+1. Go to the **Product catalog** in your RevenueCat dashboard, and select the **Offerings** tab
+1. Click **New offering** to create a new offering
+1. Enter a suitable identifier and display name
+1. Under **Packages**, click **+ New Package**
+1. Select an identifier that corresponds to the billing cycle of your subscription
+1. Enter a description
+1. In the products list, find your previously-created Paddle provider and select the corresponding Paddle product (this should correspond with the billing cycle you chose in the identifier)
+1. Click **Save**
+
+## 7. Create and configure a web purchase link to enable web purchases
+
+:::info Do this in RevenueCat, for:
+
+- Sandbox
+- Production
+  :::
+
+### Web Purchase Link basics
+
+1. Go to the **Product catalog** in your RevenueCat dashboard, and select your previously created offering in the **Offerings** tab
+1. Go to the **Web Purchase Link** tab and select **Create a Web Purchase Link for this offering**
+1. For the **Web config**, choose the Paddle config you created earlier
+1. Enter a suitable header and subheader for the package selection page, along with a link to terms & conditions
+
+:::info Package selection skipped by default for web-to-app purchases
+When linking to a web purchase from a RevenueCat paywall, by default the package selection page will be skipped and subscribers will land directly on the checkout with the package selected.
+:::
+
+### Configure the success redirect
+
+To redirect the subscriber back into to your app after the purchase, you can use a custom URL scheme (see instructions below). You could alternatively redirect the subscriber to a [Universal Link](https://developer.apple.com/documentation/xcode/supporting-universal-links-in-your-app), or your own custom page.
+
+**To add a custom URL scheme in iOS:**
+
+1. In Xcode, find your xcodeproj file — Info tab — **URL Types** section.
+1. Then add your custom scheme in the **URL Schemes** field.
+
+**Adding your custom URL scheme in the web purchase link redirect:**
+
+Select the **Redirect to a custom success page** option, and enter your URL scheme in the format `YOUR_CUSTOM_SCHEME://`.
+
+:::warning Important: URL schemes on production can require app updates
+In order to use a URL scheme on production, your users must be using a version of your app that has the URL scheme configured. Distribute app updates before enabling this feature.
+:::
+
+### Choose the repeat purchase behavior
+
+Define what happens when customers to purchase a product while they already have an active subscription or entitlement. For the app-to-web use case, it's recommended to choose **Show the success page**.
+
+:::info Re-purchasing same product not possible
+Note that customers can't have more than one active subscription to the same product, or re-purchase a non-consumable product.
+:::
+
+## 8. Create a mobile paywall
+
+:::info Do this in RevenueCat, for:
+
+- Sandbox
+- Production
+  :::
+
+**If you have an existing mobile paywall configured:**
+
+1. Make sure your existing paywall is attached to the same offering you've configured for web purchases
+1. Add a web purchase button to your paywall ([Read more](https://www.revenuecat.com/docs/tools/paywalls/creating-paywalls/web-purchase-button))
+
+**If you don't have a mobile paywall configured:**
+
+1. Go to **Paywalls** in the RevenueCat dashboard
+1. Select **+ New paywall**
+1. Choose the offering you created earlier in this guide and click **Add**
+1. [follow this detailed guide](../../tools/paywalls/creating-paywalls) on creating a paywall, and add the mobile packages you want to present.
+1. Add a web purchase button to your paywall ([Read more](https://www.revenuecat.com/docs/tools/paywalls/creating-paywalls/web-purchase-button))
+
+### Configure the web purchase button
+
+Once you've added a suitable web purchase button to your paywall:
+
+1. Set the **Open** behavior to **Web purchase**
+1. Publish the changes
+
+## 9. Test the purchase flow in sandbox
+
+:::info Do this in RevenueCat, for:
+
+- Sandbox only
+  :::
+
+### Testing the paywall
+
+If you've completed this flow for a sandbox setup, you have several options for testing it:
+
+- Use the RevenueCat iOS app to preview ([see how](../../tools/paywalls/testing-paywalls#1-preview-in-the-revenuecat-app))
+- Override a customer's default offering ([see how](../../tools/paywalls/testing-paywalls#2-override-a-customers-default-offering))
+- Create a Targeting Rule for an internal app version ([see how](../../tools/paywalls/testing-paywalls#3-create-a-targeting-rule-for-an-internal-app-version))
+- Test through Xcode ([see how](../../tools/paywalls/testing-paywalls#4-testing-through-xcode-and-android-studio))
+
+### Testing web purchases
+
+To test the web checkout in sandbox mode, make sure that you:
+
+- Have a paddle config created connected to a Paddle sandbox account
+- Have products and entitlements from that sandbox account
+- Have configured an offering and web purchase link to present those products/packages
+
+You can find the sandbox purchase URL by
+
+1. Going to **Product catalog - Offerings** and selecting the offering you created earlier.
+1. Selecting the **Web Purchase Link** tab
+1. Copying the Sandbox URL template and appending an app user ID to it
+
+:::warning App user ID must be appended to URL template
+
+The sandbox URL template will only function if you append an app user ID to it (can be a random ID for testing purposes).
+
+:::
+
+To test web purchases on sandbox, you can use [Paddle's test cards](https://developer.paddle.com/v1/concepts/payment-methods/credit-debit-card#test-payment-method) to simulate a real transaction.
+
+## 10. Repeat this walkthrough to configure production purchases
+
+If you've successfully configured and tested a purchase flow using sandbox environments, you can now restart this guide to do the same for a production environment.
+
+In production, you'll need:
+
+- A different Paddle account, from the production domain ([https://login.paddle.com/](https://login.paddle.com/))
+- A new Paddle config in RevenueCat, connected to the production Paddle account
+- Newly imported products from the production paddle account
+- A new offering in RevenueCat, connected to a paywall to present those products

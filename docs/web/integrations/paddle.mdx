@@ -1,0 +1,96 @@
+---
+title: Paddle Billing
+slug: paddle
+excerpt: Allow your users to subscribe to your app via Paddle
+hidden: false
+---
+
+RevenueCat currently supports web payments through Paddle. This allows you to let subscribers subscribe on your own website using Paddle, and automatically unlock access based on the Paddle subscription through the _Purchases SDK_.
+
+:::info April 2025 U.S. District Court Ruling on External Payment Options
+A recent U.S. District Court ruling found Apple in violation of a 2021 injunction meant to allow developers to direct users to external payment options, like Paddle. As a result, iOS developers are now permitted to guide users to web-based payment flows without additional Apple fees or restrictive design requirements. You can [find more details on the RevenueCat blog](https://revenuecat.com/blog/growth/introducing-web-paywall-buttons).
+:::
+
+For apps available outside the U.S. App Store, Apple still requires that digital goods and subscriptions be purchased through in-app purchases. Promoting or linking to alternative payment methods within the app for non-U.S. users may lead to app review rejection or removal. Always ensure external payment links are shown only to eligible U.S. users.
+
+## 1. Create a new Paddle app
+
+Paddle has a different environment for sandbox and production. As environments are independent, you will need to create a new Paddle app for each environment and mark it as sandbox if it's connected to sandbox, otherwise it will be marked as production.
+
+![](/docs_images/web/paddle/new-app.png)
+
+### 1.1. Defining Paddle API Key permissions
+
+The minimum list of required [permissions](https://developer.paddle.com/api-reference/about/permissions) for the created API key are:
+
+<details>
+  <summary>Show list</summary>
+- `product.read`  
+- `price.read`  
+- `discount.read`  
+- `customer.read`  
+- `address.read`  
+- `business.read`  
+- `payment_method.read`  
+- `transaction.read`  
+- `subscription.read`  
+- `adjustment.read`	  
+- `notification.read`  
+- `notification_setting.read`  
+- `notification_setting.write`  
+- `client_token.read`  
+- `client_token.write`  
+</details>
+
+## 2. Create products and prices on Paddle
+
+You can create products and prices following the [Paddle Product Setup](/getting-started/entitlements/paddle-products) guide.
+
+## 3. Create subscriptions on Paddle
+
+The typical setup consists of a website that uses [Paddle checkout](https://developer.paddle.com/concepts/sell/self-serve-checkout) to tokenize the customer payment information, and send this information to your server. After that, your server will be able to subscribe your customer to a product.
+
+On the server-side, you can use [Paddle's REST API](https://developer.paddle.com/api-reference/overview) or their library for your favorite programming language.
+
+Alternatively, you can also use the Paddle dashboard for manually creating the subscriptions for testing.
+
+## 4. Add your Paddle products to your project's entitlements
+
+Add your Paddle products to your project's [entitlements](/getting-started/entitlements) to easily group the products for your app. RevenueCat will send Paddle subscriptions to your app the same way we do for the other app stores.
+
+## 5. Send Paddle tokens to RevenueCat
+
+:::danger Crucial step
+Failure to complete this step will result in untracked Paddle subscriptions in RevenueCat.
+:::
+
+The following sections provide step-by-step instructions for two methods of sending Paddle tokens to RevenueCat. Whether you prefer a manual integration through the API or automated processing using the "Track new purchases from server-to-sever notifications" feature, this section will guide you in setting up your configuration to ensure all purchases are tracked.
+
+### Manually through our API
+
+You can send your Paddle subscriptions to RevenueCat through the [POST receipt endpoint](/migrating-to-revenuecat/migrating-existing-subscriptions/receipt-imports).
+
+The only required fields when sending your Paddle purchase to the RevenueCat API are the following:
+
+- `fetch_token`: Your Paddle subscription ID (`sub_...`) OR your Paddle transaction ID (`txn_...`)
+- `app_user_id`: The App User ID that the subscription should be applied to
+
+**Headers**
+
+- `X-Platform`: Should be set to `paddle`.
+- `Authorization`: It should be `Bearer YOUR_REVENUECAT_PADDLE_APP_PUBLIC_API_KEY`
+
+import curlContent from "@site/code_blocks/getting-started/paddle_1.curl?raw";
+
+<RCCodeBlock tabs={[{ type: "curl", content: curlContent }]} />
+
+### Track new purchases from server-to-server-notifications
+
+RevenueCat can automatically process Paddle tokens sent through server-to-server notifications. To enable automatic processing of Paddle purchases, ensure the following features are enabled:
+
+- [Paddle Server Notifications](/platform-resources/server-notifications/paddle-server-notifications)
+- [Track new purchases from server-to-server notifications](/platform-resources/server-notifications/paddle-server-notifications#tracking-new-purchases-using-paddle-server-notifications)
+
+## Limitations of the Paddle integration
+
+- We support purchases that contain only one product. Multiple products on a single purchase are not supported.

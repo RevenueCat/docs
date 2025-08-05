@@ -2,19 +2,17 @@
 title: Experiments
 sidebar_label: Introduction
 slug: experiments-v1
-excerpt: A/B testing two offerings in your app
+excerpt: Take the guesswork out of pricing & paywalls
 hidden: false
 ---
 
-# Take the guesswork out of pricing & paywalls
-
 RevenueCat Experiments allow you to optimize your subscription pricing and paywall design with easy-to-deploy A/B tests backed by comprehensive cross-platform results. With Experiments, you can A/B test two different Offerings for any paywall location in your app and analyzing the full subscription lifecycle to understand which variant is producing more value for your business.
 
-:::tip
+:::success
 Experiments is available to Pro & Enterprise customers. [Learn more about pricing here](https://www.revenuecat.com/pricing/).
 :::
 
-![Experiments](https://files.readme.io/93dfcae-cross-platform-data.webp "Experiments")
+![Experiments](/docs_images/experiments/v1/experiments-leading-image.webp)
 
 With Experiments, you can remotely A/B test:
 

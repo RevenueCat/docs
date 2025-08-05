@@ -106,11 +106,11 @@ Here’s a quick look at the different offer types, showing how each is mapped f
 
 Below are the definitions for App Store offer types:
 
-![](/images/app_store_offer_types.png)
+![](/docs_images/charts/app-store-offer-types.png)
 
 Below are the definitions for Play Store offer types:
 
-![](/images/play_store_offer_types.png)
+![](/docs_images/charts/play-store-offer-types.png)
 
 For more details, check out the chart below.
 
@@ -169,11 +169,16 @@ We offer three conversion rate charts to measure different aspects of your conve
 It's important to understand the relationships between these three charts, since depending on the nature of your product offerings, you may use these charts for different purposes.
 
 **If all of your products offer a free trial, then Initial Conversion = Trial Start Rate.**
-![](/images/1386416-image-20230224-130028_3ebe43d2f74d332988fa5cc86056ad41.png "image-20230224-130028.png")
+
+![](/docs_images/charts/conversion-funnel.png)
+
 **If all of your products begin with a paid subscription, then Initial Conversion = Conversion to Paying, and Trial Conversion is not applicable to your business.**
-![](/images/611728c-image-20230224-155039_3cd4ae218ce1ee001a43382672e0e89a.png "image-20230224-155039.png")
+
+![](/docs_images/charts/conversion-funnel-1.png)
+
 **If your products contain a mix of subscriptions with and without trials, then these charts will measure distinct conversion rates. Initial Conversion will equal ([Trial Starts] + [Paying Customers]) / [New Customers], while Conversion to Paying will equal ([Trial Conversions] + [Paying Customers]) / [New Customers].**
-![](/images/179324e-image-20230224-155057_9d198e0f4279cf5ab4d1de8487dbbf23.png "image-20230224-155057.png")
+
+![](/docs_images/charts/conversion-funnel-2.png)
 
 ### Conversion Timeframes
 
@@ -202,21 +207,22 @@ Conversion Timeframes are not yet supported on the Trial Conversion chart, but w
 ## Exporting Data
 
 The underlying chart data can be exported in .csv format by clicking the _Export CSV_ button.
-![](/images/90cf474-demo.revenuecat.com__a403889fd60cfe4971459f241850f4e8.png "demo.revenuecat.com_.png")
+
+![](/docs_images/charts/export-data.png)
 
 ## Saving Charts
 
 Your most frequently used chart configurations can be saved by clicking on the _Save_ button. This will save all settings such as segments, filters, time / period settings, and bar / line view.
 
-![](/images/bbfca79-Screenshot_2023-03-27_at_2.35.10_PM_b90317c45fb2b111673dd43ed89652f3.png "Screenshot 2023-03-27 at 2.35.10 PM.png")
+![](/docs_images/charts/saving-charts.png)
 
 Time settings are saved relatively. Meaning if you select "last 7 days", the chart will always show the last 7 days prior to the current day (not the 7 days prior to the date the chart was saved). This does not apply to custom timeframes.
 
 Give it a name and select _Save_, your chart will be saved on the left-hand side.
 
-![](/images/e1ba744-Screenshot_2023-03-27_at_2.36.33_PM_7f239f46e30c51d62b4a1040a1fbca12.png "Screenshot 2023-03-27 at 2.36.33 PM.png")
+![](/docs_images/charts/save-this-chart.png)
 
-![](/images/878cc0f-demo.revenuecat.com__1_5704f56b46d8a9c7e420ec327a608ca2.png "demo.revenuecat.com_ (1).png")
+![](/docs_images/charts/saved-charts.png)
 
 ## Displaying revenue data in other currencies
 
@@ -228,13 +234,13 @@ By default the RevenueCat Dashboard is set to use USD as the display currency, b
 
 Choose the the date range for the x-axis of the charts.
 
-![](/images/60cba96-Screenshot_2023-03-27_at_2.44.10_PM_dfb13d7069873848b7418a679089562a.png "Screenshot 2023-03-27 at 2.44.10 PM.png")
+![](/docs_images/charts/date-range.png)
 
 ### Resolution
 
 Choose the time scale for the x-axis of the charts. Use a _day_ timescale to see the most granular level of data and lower resolutions like _month_ to spot longer term trends.
 
-![](/images/15462d2-Screenshot_2023-03-27_at_2.46.13_PM_7f966ba5038c8ba6eafd5bbc9e9b851b.png "Screenshot 2023-03-27 at 2.46.13 PM.png")
+![](/docs_images/charts/resolution.png)
 
 ## Timezones
 

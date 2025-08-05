@@ -1,0 +1,263 @@
+---
+title: Expo
+slug: expo
+excerpt: Instructions for using RevenueCat with Expo
+hidden: false
+---
+
+:::success Welcome Bolt Hackathon participants!
+Integrating RevenueCat's in-app purchase capabilities into your app requires you to [download your project](https://support.bolt.new/building/using-bolt/projects-files#download-projects) from Bolt. Then, open your project in an IDE of your choice (like [VSCode](https://code.visualstudio.com/) or [Cursor](https://www.cursor.com/)) and follow the instructions below.
+
+Best of luck with your [hackathon](https://hackathon.dev/) project, and [read more about adding subscriptions to a Bolt-generated Expo app here](https://www.revenuecat.com/blog/engineering/how-to-add-in-app-purchases-to-your-bolt-generated-expo-app/).
+:::
+
+## What is RevenueCat?
+
+RevenueCat provides a backend and a wrapper around StoreKit and Google Play Billing to make implementing in-app purchases and subscriptions easy. With our SDK, you can build and manage your app business on any platform without having to maintain IAP infrastructure. You can read more about [how RevenueCat fits into your app](https://www.revenuecat.com/blog/where-does-revenuecat-fit-in-your-app) or you can [sign up free](https://app.revenuecat.com/signup) to start building.
+
+## Introduction
+
+Expo is a framework for building React Native apps. It's a popular choice for rapidly iterating on your app, while letting Expo take care of all the platform-specific code.
+
+To use and test RevenueCat with Expo, you'll need to create an Expo development build. Follow the instructions below and learn more about Expo development builds [here](https://docs.expo.dev/develop/development-builds/introduction/).
+
+:::info
+This guide is specific to Expo, but you may also find our [React Native guide](/getting-started/installation/reactnative) useful.
+:::
+
+## Create an Expo development build
+
+### Install Expo CLI and development dependencies
+
+Start by installing [Expo CLI](https://docs.expo.dev/more/expo-cli/):
+
+```
+npm install expo -g
+```
+
+and then install [Expo DevClient](https://docs.expo.dev/versions/latest/sdk/dev-client/):
+
+```
+npx expo install expo-dev-client
+```
+
+### Get started with an Expo project
+
+Either create a new Expo project with the following command:
+
+```
+npx create-expo-app@latest
+```
+
+or use an existing Expo project. Ensure you're in the project directory for the next steps:
+
+```
+cd <expo-project-directory>
+```
+
+### Install RevenueCat's SDKs
+
+Install RevenueCat's `react-native-purchases` for core functionality and `react-native-purchases-ui` for UI components like [Paywalls](/tools/paywalls), [Customer Center](/tools/customer-center), and more.
+
+Either run:
+
+```
+npx expo install react-native-purchases react-native-purchases-ui
+```
+
+or update your package.json with the [latest package versions](https://github.com/RevenueCat/react-native-purchases/releases):
+
+```json
+{
+  "dependencies": {
+    "react-native-purchases": "latest_version",
+    "react-native-purchases-ui": "latest_version"
+  }
+}
+```
+
+:::info
+After installing RevenueCat's SDKs, you **must** run the full build process as described below in the `Testing your app` section to ensure all dependencies are installed. Hot reloading without building will result in errors, such as:
+
+```
+Invariant Violation: `new NativeEventEmitter()` requires a non-null argument.
+```
+
+:::
+
+### RevenueCat Dashboard Configuration
+
+#### Configure a new project
+
+RevenueCat projects are top-level containers for your apps, products, entitlements, paywalls, and more. If you don't already have a RevenueCat project for your app, [create one here](/projects/overview).
+
+#### Connect to a Store (Apple, Google, Web, etc.)
+
+Depending on which platform you're building for, you'll need to connect your RevenueCat project to one, or multiple, stores. Set up your project's supported stores [here](/projects/connect-a-store).
+
+#### Add Products
+
+For each store you're supporting, you'll need to add the products you plan on offering to your customers. Set up your products for each store [here](/offerings/products/setup-index).
+
+#### Create an Entitlement
+
+An entitlement represents a level of access, features, or content that a customer is "entitled" to. When customers purchase a product, they're granted an entitlement. Create an entitlement [here](/getting-started/entitlements). Then, [attach your products](/getting-started/entitlements#attaching-products-to-entitlements) to your new entitlement.
+
+#### Create an Offering
+
+An offering is a collection of products that are "offered" to your customers on your paywall. Create an offering for your products [here](/offerings/overview).
+
+#### Configure a Paywall
+
+A paywall is where your customers can purchase your products. RevenueCat's Paywalls allow you to remotely build and configure your paywall without any code changes or app updates. Create a paywall [here](/tools/paywalls).
+
+### RevenueCat SDK Configuration
+
+#### Initialize the SDK
+
+Once you've installed the RevenueCat SDK, you'll need to configure it. Add the following code to the entry point of your app and be sure to replace `<revenuecat_project_platform_api_key>` with your [project's API keys](/projects/authentication).
+
+More information about configuring the SDK can be found [here](/getting-started/configuring-sdk).
+
+import expoContent from "@site/code_blocks/getting-started/getting-started_6.ts.txt?raw";
+
+<RCCodeBlock tabs={[{ type: "ts", content: expoContent, name: "Expo" }]} />
+
+#### Identify a user and check subscription status
+
+RevenueCat is the single source of truth for your customer's subscription status across all platforms. Learn more about the different ways to identify your customers to RevenueCat [here](/customers/identifying-customers).
+
+Then, [check the customer's subscription status](/customers/customer-info) by fetching the [CustomerInfo object](/customers/customer-info#reference):
+
+import content6 from "@site/code_blocks/customers/customer-info_6.js.txt?raw";
+
+<RCCodeBlock tabs={[{ type: "ts", content: content6, name: "Expo" }]} />
+
+and inspecting the `entitlements` object to see if the customer is subscribed to your entitlement:
+
+import content14 from "@site/code_blocks/customers/customer-info_14.js.txt?raw";
+
+<RCCodeBlock tabs={[{ type: "ts", content: content14, name: "Expo" }]} />
+
+#### Present a paywall
+
+If the customer is not subscribed to your entitlement, you can present a paywall to them where they can purchase your products.
+
+There are several ways to present a paywall in Expo, each with different use cases, so please review the [React Native Paywalls documentation](/tools/paywalls/displaying-paywalls#react-native).
+
+### Testing your app
+
+To test, we'll use EAS to build the app for the simulator. You'll need to sign up at [expo.dev](https://expo.dev) and use the account below.
+
+For more information about EAS, see the [EAS docs](https://docs.expo.dev/tutorial/eas/introduction/).
+
+:::info
+You can also follow these instructions on Expo's docs: https://docs.expo.dev/tutorial/eas/configure-development-build/#initialize-a-development-build
+:::
+
+Get started by installing the EAS-CLI:
+
+```
+npm install -g eas-cli
+```
+
+Then login to EAS:
+
+```
+eas login
+```
+
+After logging in, initialize the EAS configuration:
+
+```
+eas init
+```
+
+Then run the following command, which will prompt you to select the platforms you'd like to configure for EAS Build.
+
+```
+eas build:configure
+```
+
+#### Testing on iOS simulator
+
+Next, you'll need to update `eas.json` with the simulator build profile [as described here](https://docs.expo.dev/tutorial/eas/ios-development-build-for-simulators/).
+
+Your `eas.json` file might look like this:
+
+```json
+{
+  "cli": {
+    "version": ">= 7.3.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {},
+    "ios-simulator": {
+      "extends": "development",
+      "ios": {
+        "simulator": true
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
+```
+
+Next, build the app for the simulator:
+
+```
+eas build --platform ios --profile ios-simulator
+```
+
+Building creates a container app with your installed dependencies. Once the build completes and you run it on the device (or simulator, in this case), the app will hot reload with your local changes during development.
+
+Enter your app's bundle ID, matching your RevenueCat config and App Store Connect. Once the build completes, Expo will ask if you want to open the app in the simulator. Choose yes, and it'll launch the simulator with your app.
+
+After your app is running, you'll need to start the Expo server:
+
+```
+npx expo start
+```
+
+Finally, choose the local development server in the iOS simulator.
+
+#### Testing on Android device or emulator
+
+To test on an Android device, you'll need to build the app for a physical device or Android emulator as described [here](https://docs.expo.dev/tutorial/eas/android-development-build/).
+
+Please ensure that `developmentClient` in your `eas.json` file is set to true under the `build.development` profile. Then, build the app:
+
+```
+eas build --platform android --profile development
+```
+
+Enter your app's application ID matches your RevenueCat config and Google Play Console. Choose "Yes" when asked if you want to create a new Android Keystore.
+
+Once the build completes, you can run the application on the device or emulator. To run the app on an [Android device](https://docs.expo.dev/tutorial/eas/android-development-build/#android-device), install [Expo Orbit](https://expo.dev/orbit), connect your device to your computer, and [select your device](https://docs.expo.dev/tutorial/eas/android-development-build/#android-device:~:text=and%20Install%20button.-,Expo%20Orbit,-allows%20for%20seamless) from the Orbit menu. Alternatively, use the [provided QR code method](https://docs.expo.dev/tutorial/eas/android-development-build/#android-device:~:text=and%20Install%20button.-,Expo%20Orbit,-allows%20for%20seamless).
+
+To run the app on an [Android emulator](https://docs.expo.dev/tutorial/eas/android-development-build/#android-emulator), choose "Yes" in the terminal after the build completes.
+
+After the app is running, you'll need to start the Expo server:
+
+```
+npx expo start
+```
+
+## Expo Go
+
+[Expo Go](https://expo.dev/go) is a sandbox that allows you to rapidly prototype your app. While it doesn’t support running custom native code—such as the native modules required for in-app purchases—`react-native-purchases` includes a built-in **Preview API Mode** specifically for Expo Go.
+
+When your app runs inside Expo Go, `react-native-purchases` automatically detects the environment and replaces native calls with JavaScript-level mock APIs. This allows your app to load and execute all subscription-related logic without errors, even though real purchases will not function in this mode.
+
+This means you can still preview subscription UIs, test integration flows, and continue development without needing to build a custom development client immediately.
+
+However, to fully test in-app purchases and access real RevenueCat functionality, you must use a [development build](/getting-started/installation/expo#create-an-expo-development-build).

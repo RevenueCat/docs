@@ -1,10 +1,10 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import Button from "../components/Button/Button.tsx";
-import heroImage from "@site/static/images/fb71f38d-hero.png";
-import heroImageDark from "@site/static/images/ed3a1112-hero-dark.png";
-import videoPlaceholder from "@site/static/images/b52b1205-video-placeholder.png";
-import videoPlaceholderDark from "@site/static/images/a9eeda94-video-placeholder-dark.png";
+import heroImage from "@site/static/docs_images/docusaurus/hero.png";
+import heroImageDark from "@site/static/docs_images/docusaurus/hero-dark.png";
+import videoPlaceholder from "@site/static/docs_images/docusaurus/video-placeholder.png";
+import videoPlaceholderDark from "@site/static/docs_images/docusaurus/video-placeholder-dark.png";
 import ChartIcon from "@site/static/img/charts.svg";
 import CustomerIcon from "@site/static/img/customer.svg";
 import ExportsIcon from "@site/static/img/time.svg";
@@ -47,10 +47,16 @@ function LandingPage() {
           </div>
 
           <div className="size-full text-center lg:text-left flex flex-col">
-            <h1 className="text-3xl lg:text-4xl">RevenueCat Developer Hub</h1>
+            <h2
+              className="text-xl mb-0"
+              style={{ color: "var(--rc-red-primary)" }}
+            >
+              RevenueCat
+            </h2>
+            <h1 className="text-3xl">Documentation</h1>
             <p className="text-lg md:text-xl max-w-[520px] mx-auto lg:mx-0 font-body">
               Everything you need to implement and manage in-app purchases and
-              subscriptions.
+              subscriptions with RevenueCat.
             </p>
             <div
               className="flex flex-wrap gap-4 lg:gap-6 items-center justify-center lg:justify-start
@@ -72,14 +78,12 @@ function LandingPage() {
       <section className="py-20 max-w-none bg-gray size-full dark:bg-base-900">
         <div className="tw-container max-w-7xl flex flex-col mx-auto gap-y-12 lg:flex-row w-fit lg:w-full md:justify-between gap-x-12">
           {/* Quick Links */}
-          <div className="flex flex-col gap-4 w-fit">
-            <h2 className="font-normal mb-0 lg:mb-8 text-2xl lg:text-3xl">
-              Quick Links
-            </h2>
-            <Link href="/docs/welcome/building-new">
+          <div className="flex flex-col gap-2 w-fit">
+            <h2 className="mb-0 lg:mb-2 text-2xl lg:text-xl">Quick Links</h2>
+            <Link href="/docs/welcome/overview">
               Adding subscriptions to your app
             </Link>
-            <Link href="/docs/welcome/existing-apps">
+            <Link href="/docs/migrating-to-revenuecat/migration-paths">
               Using RevenueCat in existing apps
             </Link>
             <Link
@@ -92,24 +96,22 @@ function LandingPage() {
           </div>
 
           {/* For Developers */}
-          <div className="flex flex-col gap-4 w-fit">
-            <h2 className="font-normal mb-0 lg:mb-8 text-2xl lg:text-3xl">
-              For Developers
-            </h2>
-            <Link href="/docs/getting-started/quickstart/">SDK Quickstart</Link>
+          <div className="flex flex-col gap-2 w-fit">
+            <h2 className="mb-0 lg:mb-2 text-2xl lg:text-xl">For Developers</h2>
+            <Link href="/docs/getting-started/quickstart">SDK Quickstart</Link>
             <Link href="/docs/api-v1">REST API</Link>
-            <Link href="/docs/getting-started/installation">
-              Installing the SDK
+            <Link href="/docs/getting-started/entitlements">
+              Understanding entitlements
             </Link>
           </div>
 
           {/* Popular Articles */}
-          <div className="flex flex-col gap-4 w-fit">
-            <h2 className="font-normal mb-0 lg:mb-8 text-2xl lg:text-3xl">
+          <div className="flex flex-col gap-2 w-fit">
+            <h2 className="mb-0 lg:mb-2 text-2xl lg:text-xl">
               Popular Articles
             </h2>
             <Link href="/docs/projects/overview">Setting up RevenueCat</Link>
-            <Link href="/docs/getting-started/entitlements">
+            <Link href="/docs/offerings/products-overview">
               Configuring Products
             </Link>
             <Link href="/docs/getting-started/configuring-sdk">
@@ -162,7 +164,7 @@ function LandingPage() {
 
       {/* Browse by Feature */}
       <section className="py-20 max-w-7xl mx-auto size-full tw-container">
-        <h2 className="text-3xl lg:text-4xl mb-8 w-fit mx-auto lg:ml-0 lg:w-full font-normal">
+        <h2 className="text-xl lg:text-2xl mb-8 w-fit mx-auto lg:ml-0 lg:w-full">
           Browse By Feature
         </h2>
         <div className="max-w-7xl px-4 flex flex-col mx-auto gap-y-12 lg:flex-row w-fit lg:w-full lg:justify-between gap-x-12">
@@ -218,10 +220,10 @@ function LandingPage() {
                 Targeting
               </span>
             </Link>
-            <Link href="/docs/web/web-billing">
+            <Link href="/docs/web/web-billing/overview">
               <span className="flex items-center gap-3">
                 <BillingIcon width="16" />
-                Web Billing
+                RevenueCat Web
               </span>
             </Link>
             <Link href="/docs/dashboard-and-metrics/overview">

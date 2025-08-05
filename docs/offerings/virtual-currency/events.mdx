@@ -1,0 +1,146 @@
+---
+title: Virtual Currency Events
+sidebar_label: Events
+slug: events
+hidden: false
+---
+
+RevenueCat provides event tracking for virtual currency transactions, allowing you to monitor and respond to balance changes in real-time through webhooks.
+
+:::info Adjustments via API are view-only
+Virtual currency adjustments made through the [API](/offerings/virtual-currency#depositing-or-spending) will appear in the customer timeline, but cannot be clicked for additional details. These adjustments are displayed for reference only and do not generate webhook events.
+:::
+
+## Timeline Events
+
+Virtual currency transactions appear in the [Customer History](/dashboard-and-metrics/customer-history) timeline, providing visibility into when currency was granted or spent from a customer's balance. These events help with debugging, customer support, and understanding customer behavior.
+
+![](/docs_images/virtual-currency/vc-customer-history-timeline.png)
+
+### Event Types
+
+The following virtual currency events can appear in the customer timeline:
+
+| Event Name             | Description                                      | Webhook Event                  |
+| ---------------------- | ------------------------------------------------ | ------------------------------ |
+| Granted ... [Currency] | Currency was added to the customer's balance     | `VIRTUAL_CURRENCY_TRANSACTION` |
+| Spent ... [Currency]   | Currency was removed from the customer's balance | `VIRTUAL_CURRENCY_TRANSACTION` |
+
+### Event Details
+
+When you click on a virtual currency event in the Customer History, you can view additional details including:
+
+- The amount of currency granted or spent
+- The currency type and metadata
+- The product that triggered the transaction
+- The [source](/offerings/virtual-currency/events#source-values) of the transaction (`in_app_purchase`, `admin_api`)
+
+## Webhook Events
+
+RevenueCat sends `VIRTUAL_CURRENCY_TRANSACTION` webhook events whenever a virtual currency transaction occurs. These events provide detailed information about the transaction, including the amount, currency type, and source of the transaction.
+
+### When Events Are Sent
+
+Virtual currency webhook events are triggered in the following scenarios:
+
+- **In-app purchases**: When a customer purchases a product associated with virtual currency
+- **Subscription lifecycle**: For subscriptions that grant virtual currency, events are sent for the entire subscription lifecycle (initial purchase, renewals, refunds, etc.) whenever there is an adjustment to be made to the currency balance
+- **Manual adjustments via dashboard**: When virtual currency is manually adjusted through the dashboard
+
+### Event Structure
+
+Virtual currency webhook events include standard webhook fields plus virtual currency-specific fields. Here's an example of a virtual currency transaction event:
+
+import virtualCurrencyEvent from "@site/code_blocks/integrations/webhooks/sample-events_15.json?raw";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "json",
+      content: virtualCurrencyEvent,
+    },
+  ]}
+/>
+
+### Virtual Currency Specific Fields
+
+| Field                                | Type    | Description                                                                                                               | Possible Values                |
+| ------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| `adjustments`                        | Array   | Array of virtual currency adjustments made in this transaction. Each adjustment contains the amount and currency details. |                                |
+| `adjustments[].amount`               | Integer | The amount of virtual currency added (positive) or removed (negative) from the customer's balance.                        |                                |
+| `adjustments[].currency`             | Object  | Details about the virtual currency involved in the transaction.                                                           |                                |
+| `adjustments[].currency.code`        | String  | The unique identifier for the virtual currency.                                                                           |                                |
+| `adjustments[].currency.name`        | String  | The display name of the virtual currency.                                                                                 |                                |
+| `adjustments[].currency.description` | String  | The description of the virtual currency.                                                                                  |                                |
+| `product_display_name`               | String  | The display name of the product that triggered the virtual currency transaction.                                          |                                |
+| `purchase_environment`               | String  | The environment where the product purchase was made.                                                                      | `SANDBOX`, `PRODUCTION`.       |
+| `source`                             | String  | The source of the virtual currency transaction.                                                                           | `in_app_purchase`, `admin_api` |
+| `virtual_currency_transaction_id`    | String  | Unique identifier for this virtual currency transaction.                                                                  |                                |
+
+### Source Values
+
+The `source` field indicates what triggered the virtual currency balance adjustment:
+
+- `in_app_purchase`: Currency granted from a one-time or subscription purchase. This also includes the subscription lifecycle (initial purchase, renewals, refunds, etc.) whenever there is an adjustment to be made to the currency balance
+- `admin_api`: Currency was manually adjusted through the dashboard
+
+### Multiple Currency Adjustments
+
+A single webhook event can include adjustments for multiple virtual currency types. This is useful for scenarios like currency conversion or when a single purchase grants multiple types of currency.
+
+Example of a multi-currency transaction:
+
+```json
+{
+  "adjustments": [
+    {
+      "amount": 1000,
+      "currency": {
+        "code": "GLD",
+        "name": "Gold",
+        "description": "Premium currency"
+      }
+    },
+    {
+      "amount": 50,
+      "currency": {
+        "code": "SLV",
+        "name": "Silver",
+        "description": "Standard currency"
+      }
+    }
+  ]
+}
+```
+
+## Best Practices
+
+### Monitoring
+
+- **Balance Reconciliation**: Use webhook events to reconcile virtual currency balances with your internal systems
+- **Fraud Detection**: Monitor for unusual patterns in virtual currency transactions
+- **Customer Support**: Use timeline events to help customers understand their transaction history
+
+## RevenueCat's Firebase Extension integration
+
+If you have the [Firebase Extension integration](/integrations/third-party-integrations/firebase-integration#4-send-customer-information-to-firestore) enabled, RevenueCat will include the customer's virtual currency balance in the dispatched events' payload. Balance changes due to other reasons, such as manual adjustments through our Developer API endpoints **will not** trigger an event.
+
+When an event is dispatched, the Firebase Extension event payload will include a `virtual_currencies` object containing the customer's **total balance** for each currency after the purchase. The below example shows the customer's total balance for "GLD" is 80, while "SLV" is 40.
+
+import firebaseExtensionPayload from "@site/code_blocks/virtual-currency/firebase-balance.json?raw";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "json",
+      content: firebaseExtensionPayload,
+    },
+  ]}
+/>
+
+## Next Steps
+
+- [Webhook Event Types and Fields](/integrations/webhooks/event-types-and-fields#virtual-currency-transaction-fields)
+- [Customer History](/dashboard-and-metrics/customer-history)
+- [Virtual Currency Subscriptions](/offerings/virtual-currency/subscriptions)
+- [Virtual Currency Refunds](/offerings/virtual-currency/refunds)

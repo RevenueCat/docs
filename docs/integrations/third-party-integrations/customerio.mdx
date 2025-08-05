@@ -5,10 +5,6 @@ excerpt: Integrate in-app subscription events from RevenueCat with Customer.io
 hidden: false
 ---
 
-:::success Pro Integration
-The Customer.io integration is to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
 Customer.io can be a powerful integration tool for automating targeted messaging based on real-time customer behavior. With Customer.io's flexible automation platform, you can design personalized journeys that adapt to each user's subscription lifecycle.
 
 With our Customer.io integration, you can:
@@ -49,22 +45,19 @@ For events that have revenue, such as trial conversions and renewals, RevenueCat
 
 ### 1. Set Customer.io User Identity
 
-In order to associate RevenueCat data with a Customer.io Person, the RevenueCat `$customerioId` [Attribute](/customers/customer-attributes) should be set in RevenueCat to the Person's `cio_id`. If this field does not exist, RevenueCat will fallback to using the RevenueCat app user ID as the `id`. You can read more about how the association works in Customer.io's [Identifying people](https://docs.customer.io/journeys/identifying-people/#identifiers) documentation.
+In order to associate RevenueCat data with a Customer.io Person, the RevenueCat `$customerioId` [Attribute](/customers/customer-attributes) should be set in RevenueCat to the Person's `id`. If this field does not exist, RevenueCat will fallback to using the RevenueCat app user ID as the `id`. If there is no matching Person, it will be created automatically. You can read more about how the association works in Customer.io's [Identifying people](https://docs.customer.io/journeys/identifying-people/#identifiers) documentation.
 
 ### 2. Send RevenueCat Events to Customer.io
 
 After you've set up the Purchase SDK and Customer.io SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
 
-1. Navigate to your app in the RevenueCat and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'Customer.io' from the Integrations menu
 
-![](/images/82692c7-app.revenuecat.com_projects_85ff18c7_collaborators_1_73d6dc81e85972dbbc157674b1182fb8.png)
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **Customer.io** from the Integrations menu
-3. Add your Site ID and API key
-4. Enter the event names that RevenueCat will send or choose the default event names
-5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
-
-![Customer.io configuration page](/images/customerio_integration_setup.png "Customer.io configuration page")
+2. Add your Site ID and API key
+3. Enter the event names that RevenueCat will send or choose the default event names
+4. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
 ## Testing the Customer.io integration
 
@@ -76,25 +69,25 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 While still on the Customer View, select the purchase event in the [Customer History](/dashboard-and-metrics/customer-history) page and make sure that the Customer.io integration event exists and was delivered successfully.
 
-![Check that the Customer.io event was delivered](/images/customerio_event_details.png "Check that the Customer.io event was delivered")
+![Check that the Customer.io event was delivered](/docs_images/integrations/third-party-integrations/customerio/customerio_event_details.png "Check that the Customer.io event was delivered")
 
 ### Check the Customer.io dashboard for the delivered event
 
 Navigate to your Customer.io dashboard > Activity Logs. In the 'Identified' tab, you will see that an event was delivered and a Person was created.
 
-![Check Customer.io Activity Logs](/images/customerio_activity_logs.png "Check Customer.io Activity Logs")
+![Check Customer.io Activity Logs](/docs_images/integrations/third-party-integrations/customerio/customerio_activity_logs.png "Check Customer.io Activity Logs")
 
 ## Sample Events
 
 Below are sample JSONs that are delivered to Customer.io for events.
 
-import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/customerio_1.json";
-import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/customerio_2.json";
-import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/customerio_3.json";
-import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/customerio_4.json";
-import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/customerio_5.json";
-import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/customerio_6.json";
-import expirationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/customerio_7.json";
+import initialPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/customerio_1.json?raw";
+import trialStartedContent from "@site/code_blocks/integrations/third-party-integrations/customerio_2.json?raw";
+import trialConvertedContent from "@site/code_blocks/integrations/third-party-integrations/customerio_3.json?raw";
+import trialCancelledContent from "@site/code_blocks/integrations/third-party-integrations/customerio_4.json?raw";
+import renewalContent from "@site/code_blocks/integrations/third-party-integrations/customerio_5.json?raw";
+import cancellationContent from "@site/code_blocks/integrations/third-party-integrations/customerio_6.json?raw";
+import expirationContent from "@site/code_blocks/integrations/third-party-integrations/customerio_7.json?raw";
 
 <RCCodeBlock
   tabs={[

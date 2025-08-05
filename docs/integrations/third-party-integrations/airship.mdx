@@ -5,10 +5,6 @@ excerpt: Integrate in-app purchase events from RevenueCat with Airship
 hidden: false
 ---
 
-:::success Pro Integration
-The Airship integration is available to all users signed up after September '23, the legacy Grow and Pro plans, and Enterprise plans. If you're on a legacy Free or Starter plan and want to access this integration, migrate to our new pricing via your [billing settings](https://app.revenuecat.com/settings/billing).
-:::
-
 Airship can be a helpful integration tool in understanding what stage a customer is in and reacting accordingly. You can design and trigger personalized Airship messages to customers based on purchase behavior.
 
 Use your RevenueCat events to send Custom Events to trigger messages with Airship. This means you can design personalized Airship [Journeys](https://docs.airship.com/guides/messaging/user-guide/journeys/about/) and [Automations](https://docs.airship.com/guides/messaging/user-guide/messages/automation/about/) based on purchase behavior.
@@ -57,10 +53,10 @@ If you're using the Airship SDK, you can either send the channel ID to RevenueCa
 
 Setting the Airship channel ID in RevenueCat is the preferred way for identifying users in Airship. Call `setAirshipChannelID` on the Purchases SDK to have RevenueCat use the channel ID to send events to Airship.
 
-import swiftContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_1.swift";
-import objectiveCContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_2.m";
-import kotlinContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_3.kt";
-import javaContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_4.java";
+import swiftContent from "@site/code_blocks/integrations/third-party-integrations/airship_1.swift?raw";
+import objectiveCContent from "@site/code_blocks/integrations/third-party-integrations/airship_2.m?raw";
+import kotlinContent from "@site/code_blocks/integrations/third-party-integrations/airship_3.kt?raw";
+import javaContent from "@site/code_blocks/integrations/third-party-integrations/airship_4.java?raw";
 
 <RCCodeBlock
   tabs={[
@@ -75,10 +71,10 @@ import javaContent from "!!raw-loader!@site/code_blocks/integrations/third-party
 
 **Setting the Airship channel ID in RevenueCat is preferred over using Named Users, even if you have a user authentication system.** However, if you're already using Named Users in your Airship integration, you have the option to set the Named User in the Airship SDK as the same app user ID as RevenueCat. Ensure [Named Users is enabled in your Airship dashboard](https://docs.airship.com/guides/messaging/user-guide/project/enable-features/#named-users).
 
-import swiftContent2 from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_5.swift";
-import objectiveCContent2 from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_6.m";
-import kotlinContent2 from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_7.kt";
-import javaContent2 from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_8.java";
+import swiftContent2 from "@site/code_blocks/integrations/third-party-integrations/airship_5.swift?raw";
+import objectiveCContent2 from "@site/code_blocks/integrations/third-party-integrations/airship_6.m?raw";
+import kotlinContent2 from "@site/code_blocks/integrations/third-party-integrations/airship_7.kt?raw";
+import javaContent2 from "@site/code_blocks/integrations/third-party-integrations/airship_8.java?raw";
 
 <RCCodeBlock
   tabs={[
@@ -93,25 +89,26 @@ import javaContent2 from "!!raw-loader!@site/code_blocks/integrations/third-part
 
 After you've set up the _Purchase_ SDK and Airship SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
 
-1. Navigate to your app in the RevenueCat dashboard and choose 'Airship' from the integrations menu
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'Airship' from the Integrations menu
+
+![Integration setup](/docs_images/integrations/setup-integrations.png)
+
 2. Add your [Airship app key and token](https://docs.airship.com/guides/admin/security/account-security/)
 3. Select the location of your Airship cloud site
 4. Enter the event names that RevenueCat will send or choose the default event names
 5. Select whether you want sales reported as gross revenue (before app store commission), or after store commission and/or estimated taxes.
 
-![Airship configuration page](/images/fd69e5f-app.revenuecat.com_projects_85ff18c7_integrations_branch_6_8d4ce309c76ef85954700461d9ab2ffb.png)
-
 ## Sample Events
 
 Below are sample JSONs that are delivered to Airship for each event type.
 
-import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_9.json";
-import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_10.json";
-import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_11.json";
-import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_12.json";
-import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_13.json";
-import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_14.json";
-import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_15.json";
+import initialPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/airship_9.json?raw";
+import trialStartedContent from "@site/code_blocks/integrations/third-party-integrations/airship_10.json?raw";
+import trialConvertedContent from "@site/code_blocks/integrations/third-party-integrations/airship_11.json?raw";
+import trialCancelledContent from "@site/code_blocks/integrations/third-party-integrations/airship_12.json?raw";
+import renewalContent from "@site/code_blocks/integrations/third-party-integrations/airship_13.json?raw";
+import cancellationContent from "@site/code_blocks/integrations/third-party-integrations/airship_14.json?raw";
+import uncancellationContent from "@site/code_blocks/integrations/third-party-integrations/airship_15.json?raw";
 
 <RCCodeBlock
   tabs={[
@@ -125,10 +122,10 @@ import uncancellationContent from "!!raw-loader!@site/code_blocks/integrations/t
   ]}
 />
 
-import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_16.json";
-import expirationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_17.json";
-import billingIssueContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_18.json";
-import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/airship_19.json";
+import nonSubscriptionPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/airship_16.json?raw";
+import expirationContent from "@site/code_blocks/integrations/third-party-integrations/airship_17.json?raw";
+import billingIssueContent from "@site/code_blocks/integrations/third-party-integrations/airship_18.json?raw";
+import productChangeContent from "@site/code_blocks/integrations/third-party-integrations/airship_19.json?raw";
 
 <RCCodeBlock
   tabs={[

@@ -9,7 +9,7 @@ hidden: false
 
 ## Data collection and security
 
-![](/images/53e2217-Screen_Shot_2021-11-24_at_11.57.26_AM_7a050056e360fd48c5339178896e8976.png "Screen Shot 2021-11-24 at 11.57.26 AM.png")
+![](/docs_images/platform-resources/google/google-plays-data-safety-1.png)
 
 ### Does your app collect or share any of the required user data types?
 
@@ -50,29 +50,37 @@ If selecting 'Yes', ensure your customers have a way to contact your support tea
 ### Type: Financial Info
 
 If you are using RevenueCat, you must disclose that your app collects 'Purchase history' information from the Data types section in Google Play Console.
-![](/images/6652cde-Screen_Shot_2021-11-24_at_11.51.40_AM_e702757cb2e33482f476f48de3cb8f29.png "Screen Shot 2021-11-24 at 11.51.40 AM.png")
+
+![](/docs_images/platform-resources/google/google-plays-data-safety-2.png)
 
 #### 1. Is this data collected, shared, or both?
 
 This data is collected by RevenueCat. If you are using integrations set up between RevenueCat and third parties that are not considered service providers, you may need to disclose "Shared" here as well.
-![](/images/0951b20-Screen_Shot_2021-11-30_at_2.00.25_PM_11f51f7708826ef1e5574253c11f610f.png "Screen Shot 2021-11-30 at 2.00.25 PM.png")
+
+![](/docs_images/platform-resources/google/google-plays-data-safety-3.png)
 
 #### 2. Is this data processed ephemerally?
 
 Select 'No'.
 
-![](/images/ca221b7-Screen_Shot_2021-11-24_at_11.22.03_AM_01614f8191905a64914da0ad1ae2785e.png "Screen Shot 2021-11-24 at 11.22.03 AM.png")
+![](/docs_images/platform-resources/google/google-plays-data-safety-4.png)
 
 #### Is this data required for your app, or can users choose whether it's collected?
 
 This data collection is required and cannot be turned off.
-![](/images/7fc7ea1-Screen_Shot_2021-11-24_at_11.23.20_AM_5db18537c4f97772884d54bebbed377f.png "Screen Shot 2021-11-24 at 11.23.20 AM.png")
-###Why is this user data collected? / Why is this user data shared?
+
+![](/docs_images/platform-resources/google/google-plays-data-safety-5.png)
+
+### Why is this user data collected? / Why is this user data shared?
+
 Select the 'App functionality' and 'Analytics' checkboxes.
-![](/images/a45624a-Screen_Shot_2021-11-24_at_11.09.13_AM_2f88716549d4dbcbbf6228d9d80d81f6.png "Screen Shot 2021-11-24 at 11.09.13 AM.png")
+
+![](/docs_images/platform-resources/google/google-plays-data-safety-6.png)
 
 ## What's Next
 
 After making your data safety selections, Google will show a preview of your app's privacy section. If you have chosen Financial Info as described above, your privacy details should look something like this:
-![](/images/46848c5-Screen_Shot_2021-11-30_at_2.11.47_PM_2780f9e5eccbfd135e25af856f37b88d.png "Screen Shot 2021-11-30 at 2.11.47 PM.png")
+
+![](/docs_images/platform-resources/google/google-plays-data-safety-7.png)
+
 If you're ready to submit your app to App Review, head over to our [Launch Checklist](/test-and-launch/launch-checklist) doc for more information about preparing your app for submission.

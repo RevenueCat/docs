@@ -16,11 +16,11 @@ There are four main management options available in Customer Center. These optio
 - Cancellation
 - Missing Purchases
 - Refund Request (iOS only)
-- Plan Changes (iOS only)
+- [Plan Changes](/tools/customer-center/customer-center-change-plans-ios) (iOS only)
 
 When a customer initially opens the Customer Center, these are the main options they'll see to select from.
 
-![Customer Center Paths](/images/customer-center/paths.png)
+![Customer Center Paths](/docs_images/customer-center/paths.png)
 
 #### Feedback prompts
 
@@ -32,7 +32,7 @@ The cancellation option is configured with a feedback survey with the following 
 2. "Don't use the app"
 3. "Bought by mistake"
 
-![Customer Center Cancellation](/images/customer-center/cancel-subscription.png)
+![Customer Center Cancellation](/docs_images/customer-center/cancel-subscription.png)
 
 You can check the responses of feedback surveys in the [Customer Center Survey Responses chart](https://app.revenuecat.com/charts/customer_center_surveys).
 
@@ -40,7 +40,7 @@ You can check the responses of feedback surveys in the [Customer Center Survey R
 
 Promotional offers are attachable to particular feedback survey options and to paths. We think you might be able to reduce churn if you capture customers who are looking for a way to make changes to their subscription if you offer them a discount at that exact time.
 
-![Customer Center Promotional Offer](/images/customer-center-promo-offer.png)
+![Customer Center Promotional Offer](/docs_images/customer-center/customer-center-promo-offer.png)
 
 By default, if your customer selects "Too expensive" or "Don't use the app", they'll receive the promotional offer `Cancellation Retention Discount`. And of course, you can customize these responses and what (if anything) is offered to your liking.
 
@@ -54,7 +54,7 @@ You need to add the store specific promotional offer ids you want to use for eac
 
 The Customer Center will automatically show offers based on specific user actions. By default we have defined it for refunds and cancellations but it can be modified to any of the defined paths. Here’s how it works:
 
-![Promotional Offers Configuration](/images/customer-center-promo-offers-config.png)
+![Promotional Offers Configuration](/docs_images/customer-center/customer-center-promo-offers-config.png)
 
 - **Cancellation Retention Discount**: By default, for responses in the cancellation survey, RevenueCat will use a promotional offer that you can customize in the Offers tab of the Customer Center settings.
 
@@ -73,7 +73,7 @@ After creating the promotional offers for the cancellation and refund offers in 
 
 For example, if you just created an offer with id `monthly_subscription_refund_offer` in App Store Connect for your monthly subscription product, edit the `Refund Retention Discount` offer in the Offers tab of the Customer Center settings, and assign the id of the promotional offer id to that monthly subscription product.
 
-![Assigning an Apple promotional offer](/images/customer-center-assign-promo-offer.png)
+![Assigning an Apple promotional offer](/docs_images/customer-center/customer-center-assign-promo-offer.png)
 
 You may also customize your configuration to provide other offers, or provide them when the user performs other actions. [Learn more about advanced configuration of the Customer Center.](/tools/customer-center/customer-center-configuration#promotional-offers-1)
 
@@ -81,7 +81,7 @@ You may also customize your configuration to provide other offers, or provide th
 
 The Customer Center is composed of different screens that customers can navigate through. The main screens are defined in the Configuration tab of the Customer Center settings.
 
-![Customer Center Configuration](/images/customer-center-configuration.png)
+![Customer Center Configuration](/docs_images/customer-center/customer-center-configuration.png)
 
 This configuration defines two main screens:
 
@@ -115,6 +115,8 @@ Let's break down the configuration for each management option:
 4. **Cancel**: Provides an option for customers to cancel their subscription.
 
 5. **Custom URL**: Allows you to specify a custom URL that customers will be redirected to when they select this management option. This can also be used to link to other sections of your app using deeplinks.
+
+6. **Custom Action**: Allows to attach a custom identifier to a button, and execute your own code whenever the button is tapped.
 
 Key points about management options:
 
@@ -202,7 +204,7 @@ The user will only be prompted to contact you if you have configured a support e
 Displaying a warning to users not on the latest version of your app is not supported on Android and it requires version 5.14.0 or later of the RevenueCatUI iOS SDK.
 :::
 
-![Update warning](/images/customer-center/update-warning.png)
+![Update warning](/docs_images/customer-center/update-warning.png)
 
 It is possible to show a warning to users not on the latest version of your app. This can be useful to ensure users are using the latest version of your app to manage their subscriptions.
 
@@ -214,7 +216,7 @@ To enable this, you can enable the "Show a warning to users not on the latest ve
 Displaying a link to display purchase history is not supported on Android and it requires version 5.15.1 or later of the RevenueCatUI iOS SDK.
 :::
 
-![Purchase history](/images/customer-center/purchase-history.png)
+![Purchase history](/docs_images/customer-center/purchase-history.png)
 
 The customer center tries to primarily show the details that are most meaningful to the user. But it is possible to show more details on the purchase history to users.
 

@@ -10,10 +10,6 @@ You can override the current offering that displays in your app on a per-user ba
 - Testing your dynamic paywall in sandbox without affecting your production app by changing the current offering for your own sandbox user. This is especially important for testing your offerings for [Experiments](/tools/experiments-v1).
 - Overriding the current offering for a customer in order to give them access to a specific in-app purchase that isn't otherwise available to the rest of your user base, as in the case of offering discounts in a customer support setting.
 
-In the card, you'll see the current offering for the user:
+Choose a new current offering in the customer details sidebar:
 
-![Let's give this user access to the sale offering.](/images/7082b16-Screen_Shot_2020-07-30_at_12.56.07_PM_725fbc6ff24eb1b1525ee04d473ffa4b.png)
-
-Click on edit to choose a new offering:
-
-![Let's give this user access to the sale offering.](/images/7082b16-Screen_Shot_2020-07-30_at_12.56.07_PM_725fbc6ff24eb1b1525ee04d473ffa4b.png)
+![Override current offering](/docs_images/customers/offering-override.png)

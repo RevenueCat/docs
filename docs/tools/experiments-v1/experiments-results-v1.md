@@ -10,7 +10,7 @@ Within 24 hours of your experiment's launch you'll start seeing data on the Resu
 
 The Results chart should be your primary source for understanding how a specific metric has performed for each variant over the lifetime of your experiment.
 
-![](/images/12ac18a-Screen_Shot_2022-10-13_at_2.47.13_PM_1efde91830213baea395aeb7c6bf9be0.png "Screen Shot 2022-10-13 at 2.47.13 PM.png")
+![Results chart](/docs_images/experiments/v1/results-chart.png)
 
 By default you'll see your \*_Realized LTV per customer_ for all platforms plotted daily for the lifetime of your experiment, but you can select any other experiment metric to visualize, or narrow down to a specific platform.
 
@@ -45,11 +45,11 @@ To help parse your results, we've broken up experiment results into three tables
 1. **Initial conversion:** For understanding how these key early conversion rates have been influenced by your test. These metrics are frequently the strongest predictors of LTV changes in an experiment.
 2. **Paid customers:** For understanding how your initial conversion trends are translating into new paying customers.
 3. **Revenue:** For understanding how those two sets of changes interact with each other to yield overall impact to your business.
-   ![](/images/24e17e5-Screen_Shot_2022-10-18_at_1.20.47_PM_36f27467c3b3e0e2db3667405e13ac2a.png "Screen Shot 2022-10-18 at 1.20.47 PM.png")
+   ![Customer journey tables](/docs_images/experiments/v1/customer-journey-tables.png)
 
 In addition to the results per variant that are illustrated above, you can also analyze most metrics by product as well. Click on the caret next to "All" within metrics that offer it to see the metric broken down by the individual products in your experiment. This is especially helpful when trying to understand what's driving changes in performance, and how it might impact LTV. (A more prominent yearly subscription, for example, may decrease initial conversion rate relative to a more prominent monthly option; but those fewer conversions may produce more Realized LTV per paying customer)
 
-![Untitled (1).png](/images/2326dd9-Untitled_1_59b7cf292335cfa89f66d35a91de9af5.png)
+![Product level breakdown](/docs_images/experiments/v1/product-level-breakdown.png)
 
 The results from your experiment can also be exported in this table format using the **Export data CSV** button. This will included aggregate results per variant, and per product results, for flexible analysis.
 
@@ -62,6 +62,7 @@ If the Realized LTV of your Treatment is performing meaningfully worse than your
 ### Initial conversion metric definitions
 
 - **Customers**: All new customers who've been included in each variant of the experiment.
+- **Paywall viewers**: The count of distinct customers who've reached a paywall in each variant in the experiment. (This metric is only available when using RevenueCat Paywalls)
 - **Initial conversions**: A purchase of any product offered to a customer in the experiment. This includes products with free trials and non-subscription products as well.
 - **Initial conversion rate**: The percent of customers who purchased any product.
 - **Trials started**: The number of trials started.
@@ -98,6 +99,19 @@ If the Realized LTV of your Treatment is performing meaningfully worse than your
 
 To keep your A and B cohorts on equal footing, only new users are added to experiments. Here's an example to illustrate what can happen if existing users are added to an experiment: an existing user who is placed in a cohort might make a purchase they wouldn't otherwise make because the variant they were shown had a lower price than the default offering they previously saw. This might mean that the user made a purchase out of fear that they were missing out on a sale and wanted to lock in the price in anticipation of it going back up.
 :::
+
+## Statistical Confidence
+
+When running experiments, it's challenging to know whether performance differences between variants are real improvements or just random noise. The Chance to Win metric solves this by calculating the probability that a variant performed better than the control given the observed data. For example, if your Treatment (Variant B) shows a 6.1% initial conversion rate vs 5.2% for your Control (Variant A) with a 98% Chance to Win, you can be confident this improvement is meaningful, not just random variation.
+
+Chance to Win helps you make informed decisions about when to end your experiment. Many developers consider 95% Chance to Win sufficient to declare a winner, but the right threshold depends on what you're testing and your risk tolerance. For example, you may opt for a higher Chance to Win when deciding on a high-stakes change, such as whether to use in-app vs web purchases, than when deciding on a paywall copy change.
+
+Chance to Win is currently available for the following metrics: 
+* Initial conversion rate
+* Trial conversion rate
+* Conversion to paying
+
+These calculations will appear in the Results section once you've collected enough data to produce reliable results. Use these statistical indicators to make confident decisions about when to end your experiment and decide on a winner.
 
 | Question                                                                                                  | Answer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

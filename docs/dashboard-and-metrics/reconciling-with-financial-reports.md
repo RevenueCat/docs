@@ -4,8 +4,6 @@ slug: reconciling-with-financial-reports
 hidden: false
 ---
 
-# RevenueCat and the App Store's financial reports
-
 When managing your app's revenue and overall financial performance, you might frequently need to use both our [Revenue chart](https://app.revenuecat.com/charts/revenue) and the [App Store’s financial reports](https://developer.apple.com/help/app-store-connect/getting-paid/download-financial-reports/) for different purposes. While they both report on the financial performance of your app, there are meaningful differences in the recommended use cases and available data between those sources. Understanding these differences can help you better interpret the data and make more informed decisions.
 
 ## How the Revenue chart works
@@ -28,7 +26,7 @@ For example, if you sold a product for $99.99 that was not refunded:
 
 When considering how to compare the Revenue chart with the App Store's financial reports, you should focus on **Proceeds**, since that measure represents the closest proxy we have to how you will be paid by Apple for a given transaction.
 
-![Revenue chart](/images/revenue-chart.png)
+![Revenue chart proceeds](/docs_images/dashboard-and-metrics/reconciliation/revenue-chart-proceeds.png)
 
 ## How the App Store's financial reports work
 

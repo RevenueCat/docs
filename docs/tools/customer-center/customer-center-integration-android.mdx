@@ -5,6 +5,7 @@ slug: customer-center-integration-android
 hidden: false
 ---
 import { sdkVersions } from '@site/src/components/CustomerCenter/CustomerCenterSDKTable';
+import customActionsAndroid from '@site/code_blocks/tools/customer-center-custom-actions-android.kt?raw';
 
 ## Installation
 
@@ -20,7 +21,7 @@ implementation 'com.revenuecat.purchases:purchases-ui:<latest version>'
 ## Integration
 There's a `CustomerCenter` composable that can be used to display the Customer Center. It's intended to be used as a full screen composable so make sure to use it with a `fillMaxSize` modifier:
 
-import usageViewKotlin from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-1.kt";
+import usageViewKotlin from '@site/code_blocks/tools/customer-center-usage-1.kt?raw';
 
 <RCCodeBlock
   tabs={[
@@ -28,9 +29,9 @@ import usageViewKotlin from "!!raw-loader!@site/code_blocks/tools/customer-cente
   ]}
 />
 
-Alternatively, you can instantiate the Customer Center as an Activity:
+Alternatively, you can instantiate the Customer Center as an Activity in `com.revenuecat.purchases:purchases-ui` SDK <code>8.13.0</code> or higher:
 
-import usageActivityKotlin from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-2.kt";
+import usageActivityKotlin from '@site/code_blocks/tools/customer-center-usage-2.kt?raw';
 
 <RCCodeBlock
   tabs={[
@@ -45,7 +46,7 @@ This allows it to dynamically adapt to dark and light mode while applying the co
 If your app already uses Material 3's `MaterialTheme` with appropriate color schemes for dark and light mode, no additional changes are needed.
 However, if CustomerCenter is the only composable in your hierarchy, if you're using Material 2, or if you're using another theming system, you may need to explicitly wrap it in Material 3's `MaterialTheme` to ensure proper theming.
 
-import usageThemeKotlin from "!!raw-loader!@site/code_blocks/tools/customer-center-usage-3.kt";
+import usageThemeKotlin from '@site/code_blocks/tools/customer-center-usage-3.kt?raw';
 
 <RCCodeBlock
   tabs={[
@@ -59,7 +60,7 @@ You can listen to Customer Center events in two ways: using a global listener, o
 
 First, create a CustomerCenterListener implementation:
 
-import eventsBaseKotlin from "!!raw-loader!@site/code_blocks/tools/customer-center-events-android-base.kt";
+import eventsBaseKotlin from '@site/code_blocks/tools/customer-center-events-android-base.kt?raw';
 
 <RCCodeBlock
   tabs={[
@@ -71,7 +72,7 @@ Then, you can use it in one of two ways:
 
 1. As a global listener that will be called for all Customer Center instances:
 
-import eventsGlobalKotlin from "!!raw-loader!@site/code_blocks/tools/customer-center-events-android-global.kt";
+import eventsGlobalKotlin from '@site/code_blocks/tools/customer-center-events-android-global.kt?raw';
 
 <RCCodeBlock
   tabs={[
@@ -81,7 +82,7 @@ import eventsGlobalKotlin from "!!raw-loader!@site/code_blocks/tools/customer-ce
 
 2. As a local listener through the CustomerCenter composable options:
 
-import eventsLocalKotlin from "!!raw-loader!@site/code_blocks/tools/customer-center-events-android-local.kt";
+import eventsLocalKotlin from '@site/code_blocks/tools/customer-center-events-android-local.kt?raw';
 
 <RCCodeBlock
   tabs={[
@@ -97,6 +98,23 @@ The following events are available:
 - `onRestoreFailed`: Called when the restore process fails
 - `onShowingManageSubscriptions`: Called when the manage subscriptions screen is shown
 - `onFeedbackSurveyCompleted`: Called when a user completes a feedback survey
+
+### Custom Actions
+
+:::info Custom Actions support
+The minimum supported version is Android SDK version 9.2.0.
+:::
+
+Custom Actions allow you to add your own custom management options to the Customer Center. When a customer taps on a custom action, your app receives a callback with the custom action identifier, allowing you to execute your own code.
+
+To handle custom actions, create a CustomerCenterListener with the `onCustomActionSelected` callback:
+
+<RCCodeBlock tabs={[{ type: "kotlin", content: customActionsAndroid, name: "Kotlin" }]} />
+
+Custom actions are configured in the RevenueCat dashboard under Customer Center settings, where you can:
+- Set a custom identifier for the action
+- Configure the display text and localization
+- Position the action within the management options
 
 ## Setup promotional offers
 

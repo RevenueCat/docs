@@ -4,8 +4,6 @@ slug: payment-methods
 hidden: false
 ---
 
-## Overview
-
 Web Billing (formerly RevenueCat Billing) currently supports the following payment methods for charging subscription and one-time purchases:
 
 - **Credit card:** Enabled by default, supports for all major card networks, and 3D Secure authentication (via Stripe)
@@ -22,17 +20,11 @@ There is nothing you need to do to configure to accept credit card payments, whi
 
 ## Configuring Apple Pay & Google Pay
 
-**Beta limitation: Purchase confirmation view not displaying final purchase amount**
-
-Currently, customers checking out with Apple Pay or Google Pay won't see the final amount of the purchase in the native mobile confirmation screen, despite seeing it in the RevenueCat checkout. Customers who proceed with the purchase are still charged the correct amount for both subscriptions and one-time purchases. This shows as "amount pending" in the Apple Pay confirmation view:
-
-![Apple Pay in checkout](/images/web-billing/apple-pay-amount-pending.png)
-
 ### How to configure Apple Pay & Google Pay
 
 To use Apple Pay and Google Pay, you need to register the domain where the payment takes place in the Stripe dashboard:
 
-- If you're taking payments through [Web Paywall Links](/web/web-billing/web-paywall-links/), you should add the `pay.rev.cat` domain.
+- If you're taking payments through [Web Purchase Links](/web/web-billing/web-purchase-links/), you should add the `pay.rev.cat` domain.
 - If you're initiating purchases with the [Web SDK](/web/web-billing/overview), you should add your own domain where payments take place.
 
 ### How to add payment domains
@@ -49,4 +41,4 @@ You should see the added domains in the list next to a green "Enabled" tag.
 
 Once enabled, Apple Pay and Google Pay will be displayed next to the credit card payment method in the checkout form, when available to the customer. There are no further steps required to handle payments with these methods.
 
-![Apple Pay in checkout](/images/web-billing/web-billing-apple-pay.png)
+![Apple Pay in checkout](/docs_images/web/web-billing/web-billing-apple-pay.png)

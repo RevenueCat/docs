@@ -4,263 +4,149 @@ slug: creating-paywalls
 hidden: false
 ---
 
+Use the Paywall Editor to design a fully customizable paywall.
+
 import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 
-<YouTubeEmbed videoId="PNiVCdExtkw" title="How to use RevenueCat Paywalls" />
+<YouTubeEmbed
+  videoId="vE17MFOv6Qc"
+  title="RevenueCat Paywalls Walkthrough"
+/>
 
-:::info Paywalls v2 Beta
-These docs refer to our original Paywalls. We've recently released our beta of Paywalls v2, a brand new paywall builder for designing custom layouts. If you're interested in exploring that beta, [click here](/tools/paywalls-v2/creating-paywalls).
+## Key concepts
+
+| Concept              | Description                                                                                                                       |
+| :------------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
+| Components           | RevenueCat's predefined UI elements that can be added to a paywall. (e.g. text, an image, a purchase button, etc.)                |
+| Component properties | The properties of each component that can be configured to modify it's style and behavior. (e.g. its width, height, border, etc.) |
+| Templates            | The paywalls that RevenueCat has already created that you can use as a starting point to build your own paywall from.             |
+
+## Components
+
+Components are the individual building blocks of your paywall that can be arranged and configured to create your own custom layout.
+
+| Component       | Parent | Description                                                                                |
+| :-------------- | :----- | :----------------------------------------------------------------------------------------- |
+| Text            | ❌ | Used to add customizable text strings                                                      |
+| Image           | ❌ | Used to add an uploaded image                                                              |
+| Icon            | ❌ | Used to add a customizable icon from our provided list                                     |
+| Stack           | ✅ | Used as a parent component to jointly configure its child components                       |
+| Footer          | ✅ | A configurable portion of your paywall whose position can be fixed and uniquely styled.    |
+| Package         | ✅ | Used to add a selectable package with custom styling, text, etc.                           |
+| Purchase button | ✅ | The call to action that invokes a purchase attempt of the selected package.                |
+| Button          | ✅ | Used to add other interactions; such as a link to your Privacy Policy, a back button, etc. |
+| Carousel        | ✅ | Used to add a carousel of pages that a customer can swipe through                         |
+| Timeline        | ✅ | Used to add a timeline of connected items                     |
+| Tabs | ✅ | Used to display different package groups in different tabs when offering multiple tiers of service, product types, etc. |
+| Switch | ✅ | Used to add a toggle to your paywall that can be used to let customers choose between two different sets of options. |
+| Social proof | ✅ | Styled components that can be used as a starting point to display social proof, testimonials, etc. |
+| Feature list | ✅ | Styled components that can be used as a starting point to display a list of features or benefits |
+| Awards | ✅ | Styled components that can be used as a starting point to callout awards your app has received |
+
+:::info Parent components
+Parent components all fundamentally act as containers that can contain other components within them.
 :::
 
-## How to create a new Paywall
+[Learn more about each component.](/tools/paywalls/creating-paywalls/components)
 
-Paywalls are currently supported for apps distributed in the Apple, Google and Amazon app stores. To create a new Paywall, follow these steps:
+## Building paywalls
 
-### Select an Offering
+To get started building paywalls with our new editor, click on **+ New Paywall** in the callout on the Paywalls page for your Project:
 
-First, click on **Paywalls** in the **Products and pricing** section of the Project you’re working on.
+![Create new paywall](/docs_images/paywalls/paywalls-create-new-paywall.png)
 
-![Products and pricing](/images/73e1721-Products_and_pricing_e853d92577c72b890c668779495683b9.png)
+Next, you'll need to select the Offering you want to add a Paywall to. Or, if you don't have any Offerings without Paywalls, you'll have the option to duplicate an existing one or create a new one.
 
-Then, click **+ Add paywall** next to the Offering that you want to create a Paywall for.
+From there, you can start building by either:
 
-![Add paywall](/images/5dba69c-Add_pricing_d358c38b060b7c314974edeaed75a21e.png)
+1. Choosing a template, or
+2. Starting from scratch
 
-:::tip
-If you’re looking to experiment with a new paywall, consider duplicating your default Offering and attaching your new paywall to the duplicated Offering. Duplicating an Offering with a paywall attached will also duplicate the paywall.
+Unless you have a very specific, custom design in mind that you're looking to create; **we recommend starting with a template.** You can customize any aspect of your paywall once you select a template, it's simply a starting point to explore from.
+
+![Select a template](/docs_images/paywalls/paywalls-select-template.png)
+
+### Using the editor
+
+Once you've selected a template or picked starting from scratch, you'll land on our Paywall Editor, which has the following sections:
+
+1. **Components**: The list of components on your paywall, their hierarchy, and their options (rename, duplicate, etc).
+2. **Component properties**: The list of configurable properties of the component you've selected.
+3. **Preview**: The preview of your paywall.
+4. **Control panel**: The options to change the locale, light/dark mode, and other preview settings to see how your paywall looks in various scenarios. The control panel is also where you can manage localizations through one page instead of modifying them component-by-component.
+
+![Paywalls editor](/docs_images/paywalls/paywalls-editor.png)
+
+### Adding components
+
+Components can be added to a paywall in two ways:
+
+1. Directly to the main paywall with the **+ Add Component** button
+2. Directly within a parent component, such as a stack, with the **+** button in that component's row in the components panel.
+
+Once a component has been added to a paywall, you can determine its order on your paywall by dragging it vertically in the stack, or determine its parent component by dragging it underneath the desired parent and indenting it horizontally.
+
+![Arrange components](/docs_images/paywalls/paywalls-arrange-components.gif)
+
+:::tip Parent & child components
+A child component will be subject to the axis, alignment, distribution, and child spacing properties of the parent component; and will be impacted by other properties such as margin & padding.
 :::
 
-### Select a template
+### Modifying components
 
-The first thing to do when creating a new Paywall is to select the template you’ll use as the starting point. Templates may support different package setups, content layouts, image sizes, and much more; so we recommend browsing each template to pick the one that’s best suited for what you’re looking to accomplish with your paywall.
+When you click on a component in the components panel, you'll see it displayed in the component properties panel on the right side of your screen. These properties represent the configurable elements of each component that can be used to give it a unique look and feel.
 
-For example, if you’re trying to draw contrast between a few different packages you’re offering, try the **#2 - Sphynx** template. Or, if you want to try your own version of the [Blinkist Free Trial Paywall](https://uxplanet.org/how-solving-our-biggest-customer-complaint-at-blinkist-led-to-a-23-increase-in-conversion-b60ad514134b) start with the **#3 - Leopard** template.
+Many properties for controlling layout, size, and appearance are similar between components; but each one has their own unique properties that are specific to the use cases of that component.
 
-If you need to showcase multiple packages, consider using the following templates:
+[Learn more about component properties.](/tools/paywalls/creating-paywalls/component-properties)
 
-- Template 2 - Sphynx Content
-- Template 4 - Persian Content
-- Template 5 - Bengal Content
+![Stack properties](/docs_images/paywalls/paywalls-stack-properties.png)
 
-If you are using the **#7 - Siamese** template, the minimum supported SDK versions of this Paywall are:
+In addition, by clicking on the **...** option in a component's row in the components panel, you can rename, duplicate, or delete any component.
 
-- iOS 5.2.0
-- Android 8.3.0
-- React Native 8.0.0
-- Flutter 7.0.0
+![Stack options](/docs_images/paywalls/paywalls-stack-options.png)
 
-If you attempt to serve this Paywall on a lower SDK version we'll provide a fallback Paywall. [Learn more](https://www.revenuecat.com/docs/tools/paywalls/displaying-paywalls#default-paywall).
+:::info Editor shortcuts
+You can use common keyboard shortcuts to undo, redo, and save your changes in the editor.
 
-## How to configure your Paywall
-
-Once you’ve selected a template, you can configure any of its properties on the right side of the screen and see the change previewed immediately.
-
-### Packages
-
-Packages represent the individual products you want to serve a customer on your Paywall. You don’t necessarily need to display every package that’s available in your Offering, and some templates may only support displaying one or a limited number of packages, so be sure to choose a template that reflects the options you want to offer your customers.
-
-The templates above that support multiple packages allow you to select a package name which will be displayed when this package is being shown. Below is a small explanation of each option that you can choose from:
-
-- Subscription duration in months - The duration in months of the package selected (I.E. 12 months for Annual, 6 months, 1 month, etc...)
-- Offer Period (Monthly, Annual, Etc...) - The name of the period selected when configuring the package in RevenueCat. So in this case, if you selected "Monthly" as your option when creating the package and putting the products into the package, then Monthly would be displayed as the package name in your paywall. If you choose Custom when configuring the package, the product identifier will show instead.
-- Product Name - The name of the product configured in RevenueCat.
-
-For templates that support multiple packages, you should select packages in the order that you’d like them to display. Then, you can separately choose which package should be preselected for your customers by default.
-
-:::info
-To test the impact of that choice, you can duplicate your Offering, preselect a different package, and run an Experiment between the two Offerings to see how it influences customer behavior on your Paywall.
+- Undo: `⌘ + z` on Mac, or `Ctrl + z` on Windows
+- Redo: `⌘ + y` on Mac, or `Ctrl + y` on Windows  
+- Save: `⌘ + s` on Mac, or `Ctrl + s` on Windows
 :::
 
-:::warning
-Paywalls are only compatible with packages associated with subscription or non-consumable products like "lifetime" purchases.
+### Saving a paywall
+
+When saving a paywall, there are two different states it can be saved in depending on what you're ready to do with it.
+
+| Paywall State | Description                                                                                                                                                                                                                                                                               |
+| :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Inactive      | Paywalls that you do not wish to serve to customers. You can think of these as drafts, or works in progress. Inactive Paywalls will not be available through the SDK.                                                                                                                     |
+| Published     | Paywalls that you may wish to serve to customers. These will always be returned on supported SDK versions. Whether they will be served to customers depends on whether you've configured the associated Offering as the Default Offering, or are serving it via Targeting or Experiments. |
+
+When creating a new paywall, you can save your changes at any time by clicking the **Save to draft** button at the top right of the page.
+
+This will save your paywall in an inactive state so that you can continue editing it, but it will not yet be sent to your app and made available to customers.
+
+To make your paywall available to customers, click **Publish Paywall**. Once a paywall is published, it will be available via the RevenueCat SDK and therefore can be seen by your customers depending on how you're serving Offerings to them.
+
+You can also set a published paywall to be inactive, or vice versa, at any time.
+
+[Learn more about displaying paywalls.](/tools/paywalls/displaying-paywalls)
+
+### Safe area preview
+
+The paywall preview in the dashboard includes a preview of the device safe area that will impact how your paywall is rendered. RevenueCat Paywalls will automatically handle the device safe area for you when displaying paywalls on device, but there are a few things you should keep in mind:
+1. All components will **not** occupy the safe area at the top of the device **unless they are being used as header images**, which do occupy the space. We automatically detect an image component as a header image if it's the first component taking up vertical space on the paywall (e.g. the first component in the list, or the first component in a stack) whose width is set to fill the entire width of the paywall. If the image is being used within a z stack, any other components above it will not occupy the safe area.
+2. The footer component will **not** occupy the bottom safe area, and will automatically add applicable padding to account for it on each platform and device.
+3. Paywalls which do not use a footer component will occupy the bottom safe area if the content extends that far, as any other view would.
+
+If your paywall will be displayed in a sheet view instead of a full screen view, you can also preview that view in the paywall editor. Just click on **Preview settings** and select **Sheet view**.
+
+:::info Preview added in May 2025
+The safe area preview was added to the dashboard in May 2025 to more accurately reflect how paywalls will be displayed on device. If your paywall now has more top/bottom margin/padding than desired, you can adjust it to ensure the look more closely matches your intended design.
+
+**The new safe area preview has no effect on how paywalls are displayed on device, as the SDK has always handled rendering around the safe area.**
 :::
 
-### Strings
+![Safe area preview](/docs_images/paywalls/safe-area-preview.png)
 
-How you describe your product has a huge impact on how likely a customer is to subscribe to it. Every descriptive string on our Paywall templates is fully configurable so you have control over exactly how you pitch your product.
-
-:::info
-Try using markdown formatting in any string property to add custom styling to your Paywall.
-
-- Bold with `**this**`
-- Italic with `*this*` or `_this_`
-- Strikethrough with `~this~`
-- Monospace with <code>&#96;this&#96;</code>
-- Link with `[click here](https://revenuecat.com)`
-  :::
-
-### Variables
-
-For some Paywall strings you may want to set values based on the package that’s being displayed instead of hardcoding a single value, such as when quoting a price, or describing the duration of an Introductory Offer.
-
-To make this easier and ensure accuracy, we recommend using **Variables** for these values that are package-specific.
-
-For example, to show a CTA like “Try 7 Days Free & Subscribe”, you should instead use the `{{ sub_offer_duration }}` variable, and enter “Try `{{ sub_offer_duration }}` Free & Subscribe” to ensure the string is accurate for any product you use, even if you make changes to the nature of the offer in the future.
-
-We support the following variables:
-
-| Variable                       | Description                                                                                             | Example Value             | iOS SDK | Android SDK |
-| :----------------------------- | :------------------------------------------------------------------------------------------------------ | :------------------------ | :------ | :---------- |
-| product_name                   | The name of the product from the store (e.g. product localized title from StoreKit) for a given package | CatGPT                    | \*      | \*          |
-| price                          | The localized price of a given package                                                                  | $39.99                    | \*      | \*          |
-| price_per_period               | The localized price of a given package with its period length if applicable                             | $39.99/yr                 | \*      | \*          |
-| price_per_period_full          | The localized price of a given package with its period length unabbreviated if applicable               | $39.99/year               | 4.35.0  | 7.5.0       |
-| total_price_and_per_month      | The localized price of a given package with its monthly equivalent price if it has one                  | $39.99/yr ($3.33/mo)      | \*      | \*          |
-| total_price_and_per_month_full | The localized price of a given package with its monthly equivalent price if it has one                  | $39.99/year ($3.33/month) | 4.35.0  | 7.5.0       |
-| sub_price_per_month            | The localized price of a given package converted to a monthly equivalent price                          | $3.33                     | \*      | \*          |
-| sub_price_per_week             | The localized price of a given package converted to a weekly equivalent price                           | $3.33                     | 4.30.0  | 7.2.0       |
-| sub_duration                   | The duration of the subscription; '1 month', '3 months', '1 year', etc.                                 | 1 year                    | \*      | \*          |
-| sub_duration_in_months         | The duration of the subscription in months; '3 months', '12 months', etc.                               | 12 months                 | \*      | \*          |
-| sub_period                     | The length of each period of the standard offer on a given package                                      | Monthly                   | \*      | \*          |
-| sub_period_length              | The unabbreviated length of each period of the standard offer on a given package                        | month                     | 4.35.0  | 7.5.0       |
-| sub_period_abbreviated         | The abbreviated length of each period of the standard offer on a given package                          | mo                        | 4.35.0  | 7.5.0       |
-| sub_offer_duration             | The period of the introductory offer on a given package                                                 | 7 days                    | \*      | \*          |
-| sub_offer_duration_2           | The period of the second introductory offer on a given package (Google Play only)                       | 7 days                    | \*      | \*          |
-| sub_offer_price                | The localized price of the introductory offer of a given package                                        | $4.99                     | \*      | \*          |
-| sub_offer_price_2              | The localized price of the second introductory offer of a given package (Google Play only)              | $4.99                     | \*      | \*          |
-| sub_relative_discount          | The localized discount percentage compared to the most expensive package per period                     | 19% off                   | 4.26.0  | 7.2.0       |
-
-Some variables are not available on all version of the SDK. If an unavailable variable is found on an older version of the SDK, RevenueCatUI will automatically display a [default paywall](/tools/paywalls/displaying-paywalls#default-paywall) to avoid showing a broken paywall.
-To prevent this, you may use [Targeting](/tools/targeting) to control who can see a paywall with a newer variable.
-
-### Previewing Paywalls
-
-Click the **Show preview values** checkbox to see your Paywall with example preview values instead of the raw variables.
-
-:::warning
-The paywall preview is generated using our example data. Please note that you may observe placeholder values from the example values in the table above, such as product names or prices in the preview of your newly created paywall. To obtain a more accurate preview, we recommend running your application on your physical device or in the simulator, as this will present details more closely aligned with your actual product information.
-:::
-
-### Intro offer eligibility
-
-RevenueCat Paywalls automatically check for Introductory Offer eligibility, and therefore for applicable fields like the **Call to action** and **Offer details** you can enter distinct strings based on the nature of the offer. For example, you may want to highlight the length of your free trial for a customer who is eligible for that Introductory Offer.
-
-### Uploading images
-
-Use the **Select a file** button for the applicable image to upload your own to use for your Paywall. We support .jpg, jpeg, and .png files up to 5MB. We’ll center and scale the image to fit regardless of their size, but we recommend using images of the following aspect ratios on each template:
-
-| Template                   | Recommended aspect ratio |
-| :------------------------- | :----------------------- |
-| Template 1 - Jaguar        | 6:5                      |
-| Template 2 - Sphynx (Icon) | 1:1                      |
-| Template 2 - Sphynx (Bg)   | 19.5:9                   |
-| Template 3 - Leopard       | 1:1                      |
-| Template 4 - Persian       | 19.5:9                   |
-| Template 5 - Bengal        | 2:1                      |
-| Template 7 - Siamese       | 2:1                      |
-
-### Colors
-
-Use your own hex codes, select a custom color, or use our color picker to select background and text colors for each element that reflect your app’s branding.
-
-:::info
-The color picker can be used outside of your browser window as well if you need to grab colors from assets in other applications.
-:::
-
-### Localization
-
-RevenueCat Paywalls come with built-in support for localization. This will allow you to customize your paywall content for all the languages that your app supports.
-
-Locales can be added to your paywall through the 'Localization' dropdown.
-
-![Screenshot](/images/c53fb56-Screenshot_2023-08-31_at_3.51.13_PM_5bb628d03b7df77126dd5ba3e881339b.png)
-
-Each paywall template may differ in the localized values that you will need to provide. The options that most templates have are:
-
-- Title
-- Subtitle
-- Package details
-- Package details for an introductory offer
-- Call to action
-- Call to action for an introductory offer
-
-Since RevenueCatUI allows for dynamic text with [Variables](#variables), all the output of variables will automatically localized. This includes period lengths like "Annual", "Monthly" and "Weekly" being localized to "Annual", "Mensual", and "Semanalmente". Price per period like "$6.99/mo" and "$53.99/yr" will also be localized to "$6.99/m." and "$53.99/año".
-
-Other paywall components like "Restore purchases", "Terms of Service", and "Privacy Policy" will also automatically be localized.
-
-#### Supported locales
-
-We currently support all 39 locales that are supported on [App Store Connect](https://www.apple.com/ios/feature-availability/#system-language-system-language).
-
-- Arabic (Saudi Arabia) - `ar`
-- Catalan - `ca`
-- Chinese (Simplified) - `zh`
-- Chinese (Traditional) - `zh`
-- Croatian - `hr`
-- Czech - `cs`
-- Danish - `da`
-- Dutch (Netherlands) - `nl`
-- English (Australia) - `en`
-- English (Canada) - `en`
-- English (United Kingdom) - `en`
-- English (United States) - `en`
-- Finnish - `fi`
-- French (Canada) - `fr`
-- French (France) - `fr`
-- German (Germany) - `de`
-- Greek - `el`
-- Hebrew - `he`
-- Hindi - `hi`
-- Hungarian - `hu`
-- Indonesian - `id`
-- Italian - `it`
-- Japanese - `ja`
-- Korean - `ko`
-- Malay - `ms`
-- Norwegian - `no`
-- Polish - `pl`
-- Portuguese (Brazil) - `pt`
-- Portuguese (Portugal) - `pt`
-- Romanian - `ro`
-- Russian - `ru`
-- Slovak - `sk`
-- Spanish (Mexico) - `es`
-- Spanish (Spain) - `es`
-- Swedish - `sv`
-- Thai - `th`
-- Turkish - `tr`
-- Ukrainian - `uk`
-- Vietnamese - `vi`
-
-:::info Testing localization in Xcode
-If a particular translation is not applied to your Paywall during testing, you may need to change the default localization in Xcode to that language.
-:::
-
-### Default Localization
-
-As of the following SDK versions, we support setting a Default Localization when creating or editing a Paywall. The Default Localization will be served to your customers when their preferred localization is not available.
-
-| RevenueCat SDK            | Version required for Default Localization setting |
-| :------------------------ | :------------------------------------------------ |
-| purchases-ios             | 5.3.0 and up                                      |
-| purchases-android         | 8.6.0 and up                                      |
-| react-native-purchases-ui | 8.1.0 and up                                      |
-| purchases-flutter         | 8.1.0 and up                                      |
-
-## Getting your paywall approved by the stores
-
-Paywalls are frequently one of the most scrutinized areas of your app in App Store and Play Store review, since the stores want to ensure apps are setting clear expectations about what’s being offered to customers. Below are some of the most common rejection reasons, and how you can best position yourself to avoid them with RevenueCat Paywalls:
-
-**Full billed amount is not clearly shown**
-Though it can be useful to show the relative value of one option over another by comparing the two with a common duration (e.g. normalizing your $49.99/yr subscription to the equivalent of $4.16/mo), it’s important that the full billed amount ($49.99/yr) is clearly provided on your paywall.
-
-You can provide this using variables like `price_per_period` / `price_per_period_full` depending on your preferred format, or `total_price_and_per_month` / `total_price_and_per_month_full` if you still want to show the monthly equivalent price of your package if applicable.
-
-However, other variables like `sub_price_per_month` or `price` on their own may not satisfy this requirement unless your paywall clearly states the full billed amount in some other way.
-
-**Introductory offer is not clearly shown**
-Similar to the full billed amount, if the nature of the introductory offer is not clear enough on your paywall, your app may also get rejected for that reason, since this is what the customer is about to receive (and potentially pay for) immediately upon converting.
-
-To address this with RevenueCat Paywalls, consider using `sub_offer_price` and `sub_offer_duration` in either your package details or your CTA to ensure that the introductory offer is clearly disclosed.
-
-:::info
-India has particularly strict rules regarding the disclosure of offer terms, and you may find that your paywall is more likely to get rejected for that reason if its offered in India.
-:::
-
-**The opportunity to cancel is not clearly disclosed**
-In addition, in some cases the store will look for explicit language around the fact that customers can cancel their subscription, as well as how they might do that; so considering adding these notes if you want to be sure to avoid a rejection for that reason. (e.g. "Try free for x days, then $y/mo. Cancel anytime.")
-
-**Missing terms & conditions or missing privacy policy**
-Though the App Store in particular no longer requires these policies to be accessible directly from your paywall, they do still require that they are accessible _somewhere_ in your app, and the paywall is a common place for them to be.
-
-If either the terms & conditions or the privacy policy of your app is missing, or just too difficult to find in the reviewer's opinion, your app may be rejected for that. To prevent this, try providing the terms & privacy policy on your paywall through RevenueCat Paywalls so they'll be easy for your customers and for app reviewers to find.

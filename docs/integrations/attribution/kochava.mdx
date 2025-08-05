@@ -36,11 +36,11 @@ $kochavaDeviceId and $deviceVersion are supported on versions 5.4.0+ of the iOS 
 | `$deviceVersion`   | Device, platform and version information. This is gathered server-side when `$deviceVersion` is set to `true`.                                  | ✅ (required)    |
 | `$idfa`            | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ✅ (recommended) |
 | `$gpsAdId`         | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ✅ (recommended) |
-| `$idfv`            | iOS [vender identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ✅ (recommended) |
+| `$idfv`            | iOS [vendor identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ✅ (recommended) |
 
 When calling the `setKochavaDeviceId()` helper, all of the required customer attributes will be automatically set. Alternatively, these properties can be set manually, like any other [Attributes](/customers/customer-attributes).
 
-import kotlinContent from "!!raw-loader!@site/code_blocks/integrations/attribution/kochava_2.kt";
+import kotlinContent from "@site/code_blocks/integrations/attribution/kochava_2.kt?raw";
 
 {/* Use the RCCodeBlock component to render the code blocks with tabs */}
 
@@ -56,7 +56,7 @@ If you are requesting the App Tracking permission through ATT to access the IDFA
 The AdSupport framework is required to access the IDFA parameter on iOS. Don't forget to import this into your project.
 :::
 
-![](/images/caf9cda-Screen_Shot_2020-09-14_at_7.09.36_PM_739bc6ccef43416570bf51e527f4e0fc.png "Screen Shot 2020-09-14 at 7.09.36 PM.png")
+![Import AdSupport Framework](/docs_images/integrations/attribution/import-adsupport-framework.png)
 
 :::danger Remove any client-side purchase tracking
 Make sure to remove all client-side tracking of revenue. Since RevenueCat will be sending events for all revenue actions, tracking purchases with the Kochava SDK directly can lead to double counting of revenue in Kochava.
@@ -80,18 +80,15 @@ The below reserved key names can be used to optionally attach campaign data to a
 
 After you've set up the _Purchases SDK_ to send attribution data from Kochava to RevenueCat, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
 
-1. Navigate to your project in the RevenueCat dashboard and find the _Integrations_ card in the left menu. Select **+ New**
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'Kochava' from the Integrations menu
 
-![](/images/f43c7d1-app.revenuecat.com_projects_85ff18c7_collaborators_1_102e08e408ab8c9a966834182c81cbbc.png "app.revenuecat.com_projects_85ff18c7_collaborators (1).png")
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-2. Choose **Kochava** from the Integrations menu.
 3. Add your API key, which can be generated in Kochava. For more information on how to access your API key, see the following [documentation](https://support.kochava.com/analytics-reports-api/create-and-manage-application-programming-interface-key/).
 4. If strict authentication rules are enabled in the integration, you can add a Secret API Key. Kochava does not enable this by default. There is currently no place in the UI to access your API Secret, so you need to request it from the Kochava support team.
 5. At least one App GUID or Test App GUID must be added. This is called `APP GUID` in the Kochava backend. If you perform [Sandbox Testing](https://www.revenuecat.com/docs/test-and-launch/sandbox), we automatically send events to the corresponding Test App GUID. For example, if you are testing on Android, we will automatically send events linked to the Android Test App GUID.
 6. Enter the event names that RevenueCat will send. The default names are our best attempt at mapping to Kochava event names. **NOTE:** You may lose some functionality if you do not use the default names. See this [Full List of Standard Events](https://support.kochava.com/reference-information/post-install-event-examples/) that Kochava supports.
 7. Select whether you want sales reported as gross revenue (before app store commission) or after store commission and/or estimated taxes.
-
-![Kochava Integration](/images/kochava_form.png)
 
 ## 4. Testing the Kochava integration
 
@@ -109,13 +106,13 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 Navigate the the [Customer View](/dashboard-and-metrics/customer-history/basic-information) for the test user that just made a purchase. Make sure that all of the required data from step 1 above is listed as attributes for the user.
 
-![](/images/kochava-attributes.png)
+![](/docs_images/integrations/attribution/kochava/kochava-attributes.png)
 
 ### Check that the Kochava event delivered successfully
 
 While still on the Customer View, click into the test purchase event in the [Customer History](/dashboard-and-metrics/customer-history) and make sure that the Kochava integration event exists and was delivered successfully.
 
-![](/images/kochava_event_sent.png)
+![](/docs_images/integrations/attribution/kochava/kochava-event-sent.png)
 
 :::success You've done it!
 You should start seeing events from RevenueCat appear in Kochava.

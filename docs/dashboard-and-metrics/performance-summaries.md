@@ -7,19 +7,17 @@ hidden: false
 
 With Performance Summaries, you can subscribe to a weekly recap of your key subscriptions metrics (including how they changed vs. the prior week) delivered right to your inbox every Monday morning.
 
-![Screenshot](/images/2fc49ac-Screenshot_2023-12-14_at_4.02.35_PM_b91239309d0ae78797b7f5977b536a21.png)
+![Screenshot](/docs_images/dashboard-and-metrics/performance-summaries/sample.png)
 
 ## How can I subscribe to a weekly Performance Summary?
 
 1. Click on [**Account**](https://app.revenuecat.com/settings/account) from the RevenueCat Dashboard
-2. Open the **Notifications** option where you'll see the **Weekly Performance Summaries** section
-3. Select the Project's you want to include in your weekly Performance Summary, and click **Update** to save your changes
+2. Open the **Notifications** option where you'll see the **Performance Summaries** section
+3. Select the projects you want to include in your weekly Performance Summary, and click **Update** to save your changes
 
-:::info
+:::info Verify your email address
 You must first verify your email address with us in order to receive Performance Summaries.
 :::
-
-![Screenshot](/images/6dbeb98-Screenshot_2023-12-15_at_12.08.29_PM_c1fb4e4608b84a1a0354f4045d05d3fa.png)
 
 ## What will be included in my Performance Summary?
 

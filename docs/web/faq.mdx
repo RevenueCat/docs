@@ -1,0 +1,56 @@
+---
+title: Web Purchase FAQs
+slug: faqs
+sidebar_label: FAQs
+---
+
+Notable updates to external web payments and RevenueCat Web Billing.
+
+## RevenueCat Web Billing
+
+RevenueCat's existing Web Billing solution allows you to easily start selling subscriptions and one-time purchases on the web, and connect them with the same subscriptions and entitlements on mobile. Web Billing is also compatible with [Paywalls v2](https://www.revenuecat.com/blog/growth/introducing-web-paywall-buttons/).
+
+Get started with Web Billing by following the [setup guide](/web/web-billing/overview).
+
+## Recent Updates
+
+| Date           | Description                                                                                                                                                                                                                                                                                                                                              |
+| :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| May 7, 2025    | Improved the Web Purchase Button experience with email autofill, redirection back to the app after purchase, and a simplified checkout experience.                                                                                                                                                                                                       |
+| May 1, 2025    | Added support for Web Purchases as a [button destination](/tools/paywalls/creating-paywalls/web-purchase-button) in iOS 5.22.2, React Native 8.9.6, Flutter: 8.7.5, KMP: 1.7.7+13.29.1 in [Paywalls v2](/tools/paywalls). Read more in our [blog post](https://www.revenuecat.com/blog/growth/introducing-web-paywall-buttons/) on Web Purchase Buttons. |
+| April 30, 2025 | U.S. District Court ruling found Apple in violation of a 2021 injunction meant to allow developers to direct users to external payment options, like Web Billing. Read more in our [blog post](https://www.revenuecat.com/blog/growth/apple-anti-steering-ruling-monetization-strategy/) on the ruling.                                                  |
+
+## 2025 Ruling on External Payment Options
+
+In late April 2025, a U.S. District Court ruling found Apple in violation of a 2021 injunction meant to allow developers to direct users to external payment options, like [Web Billing](/web/web-billing/overview).
+
+As a result, iOS developers are now permitted to guide users to web-based payment flows without additional Apple fees or restrictive design requirements.
+
+### Resources
+
+- [Our blog post on the ruling](https://www.revenuecat.com/blog/growth/apple-anti-steering-ruling-monetization-strategy/)
+- [Our blog post introducing the Web Purchase Button](https://www.revenuecat.com/blog/growth/introducing-web-paywall-buttons/)
+
+## FAQs
+
+### How do I add web payments to my iOS app?
+
+Add a new app in your RevenueCat project and select **Web Billing** as the payment provider. RevenueCat also supports the web payment flow using Web Billing directly in RevenueCat [Paywalls v2](/tools/paywalls).
+
+Read more in [Configuring Web Billing](/web/web-billing/product-setup).
+
+### What does the recent ruling mean for web payments outside of the United States?
+
+This ruling only affects web payments in the United States. The App Store has existing restrictions on web payments outside of the United States.
+
+### Can I remove in-app purchases and exclusively use web payments in my app?
+
+No. As of now, we understand the recent ruling to still require in-app purchases to be available alongside any web payment offers.
+
+### Can I use my existing web checkout with Paywalls v2?
+
+Not yet, we are working on adding support for existing web checkouts with Paywalls v2.
+
+### Can I send a customer directly to the checkout flow for a given product?
+
+Yes, but only if your offering has a single product. We are working on adding support for linking to a specific product in an offering.

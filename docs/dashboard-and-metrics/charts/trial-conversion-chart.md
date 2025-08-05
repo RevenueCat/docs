@@ -10,7 +10,7 @@ The Trial Conversion chart gives you insight into the conversion of customers st
 
 - Filters: Yes
 - Segments: No
-- Conversion Timeframe: No (coming soon)
+- Conversion Timeframe: No
 - Absolute/Relative Selector: Yes
 
 ### Customer cohorts
@@ -76,5 +76,3 @@ The sum of Converted, Pending, and Abandoned will always equal the count of Tria
 | Why does the count of New Customers not change when filtering by Product, Product Duration, Store, or Offering? | These filters are only applicable to subscribers because a customer does not have a designated “product” unless they make a purchase. Because of this, when using filters that only apply to subscribers, only the conversion measure will be filtered.                                                                                                                                                                                                                                                                                                                                                                                                         |
 | Why does the count of Trials or Conversions in this chart differ from other sources outside of RevenueCat?      | Though there are many reasons why different data sources may have different definitions, the most common difference between our conversion charts and other sources is our cohorting definition. Because this chart is cohorted by a customer’s first seen date, the count of Trials or Conversions in each period is likely to differ from other sources that either cohort based on event date, or have a different definition of a comparable customer cohort.                                                                                                                                                                                               |
 | Does the Trial Conversion chart support Conversion Timeframe selection?                                         | Not at this time, though support for Conversion Timeframe selection in this chart will come in the future.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-
-![](/images/bdf3068-TrialConversion_da5d9a8f0243a975544f59512def95aa.png "TrialConversion.png")

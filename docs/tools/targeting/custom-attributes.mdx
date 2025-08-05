@@ -4,8 +4,6 @@ slug: custom-attributes
 hidden: true
 ---
 
-# Targeting by Custom Attributes
-
 With custom attributes, you can create audiences to target with unique Offerings based on any dimension that's relevant to your business.
 
 import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
@@ -30,11 +28,9 @@ After setting a display name, click on **+ Add condition** to begin defining you
 
 First, you'll need to select the key of the custom attribute you want to use. If you've set any custom attributes for customers in this Project already, you'll see them in this list. Otherwise, feel free to add a new key that you intend to begin setting for your customers.
 
-![Custom Attribute Key](/images/custom_attribute_key.png)
+![Custom Attribute Key](/docs_images/offerings/targeting/by-custom-attribute.png)
 
 After selecting or adding the key you want to use, select whether you want to build an inclusion ("is any of") or exclusion ("is not any of") condition. Last, you'll need to select the set of values to include/exclude in your condition. Just like with keys, you can add values to this list that are not present, just keep in mind that they need to be set for customers in order to impact what Targeting Rule that customer will qualify for.
-
-![Custom Attribute Values](/images/custom_attribute_values.png)
 
 :::info Only 50 sample values will be listed
 For keys which have more than 50 unique values that have been set for them, we'll only show 50 in this list. This is just a display limitation -- any other set values can still be entered and used.
@@ -58,9 +54,9 @@ For example, if during your onboarding you set two attributes which may both be 
 Calls to this method have a rate limit of 5 per minute to prevent abuse.
 :::
 
-import swiftContent1 from "!!raw-loader!@site/code_blocks/tools/targeting_by_custom_attributes_1.swift";
-import kotlinContent2 from "!!raw-loader!@site/code_blocks/tools/targeting_by_custom_attributes_2.kt";
-import javaContent3 from "!!raw-loader!@site/code_blocks/tools/targeting_by_custom_attributes_3.java";
+import swiftContent1 from '@site/code_blocks/tools/targeting_by_custom_attributes_1.swift?raw';
+import kotlinContent2 from '@site/code_blocks/tools/targeting_by_custom_attributes_2.kt?raw';
+import javaContent3 from '@site/code_blocks/tools/targeting_by_custom_attributes_3.java?raw';
 
 <RCCodeBlock
   tabs={[

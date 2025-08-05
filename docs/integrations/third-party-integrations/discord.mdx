@@ -33,26 +33,26 @@ You need to configure your Discord server to authorize a webhook to post to your
 
 ## Configure RevenueCat Integration
 
-Once you've set up a webhook in your Discord server. Enter the details into the Discord Integration section of your [dashboard](https://app.revenuecat.com).
+1. Navigate to your project settings in the RevenueCat dashboard and choose 'Discord' from the Integrations menu
 
-![](/images/7764e4de-discord-integration-setup-af0c959bebb0.png "Discord integration setup")
+![Integration setup](/docs_images/integrations/setup-integrations.png)
 
-:::success
-You're all set! RevenueCat will start sending events into Discord!
+2. Enter the details into the Discord Integration section of your [dashboard](https://app.revenuecat.com).
+
+:::success You're all set!
+RevenueCat will start sending events into Discord!
 :::
-
-![](/images/07cde5bd-discord-message-example-aceaac4fd516.png "Discord message example")
 
 ## Sample Events
 
 Below are sample JSONs that are delivered to Discord for each event type.
 
-import initialPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_1.json";
-import trialStartedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_2.json";
-import trialConvertedContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_3.json";
-import trialCancelledContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_4.json";
-import renewalContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_5.json";
-import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_6.json";
+import initialPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/discord_1.json?raw";
+import trialStartedContent from "@site/code_blocks/integrations/third-party-integrations/discord_2.json?raw";
+import trialConvertedContent from "@site/code_blocks/integrations/third-party-integrations/discord_3.json?raw";
+import trialCancelledContent from "@site/code_blocks/integrations/third-party-integrations/discord_4.json?raw";
+import renewalContent from "@site/code_blocks/integrations/third-party-integrations/discord_5.json?raw";
+import cancellationContent from "@site/code_blocks/integrations/third-party-integrations/discord_6.json?raw";
 
 <RCCodeBlock
   tabs={[
@@ -65,9 +65,9 @@ import cancellationContent from "!!raw-loader!@site/code_blocks/integrations/thi
   ]}
 />
 
-import nonSubscriptionPurchaseContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_7.json";
-import billingIssueContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_8.json";
-import productChangeContent from "!!raw-loader!@site/code_blocks/integrations/third-party-integrations/discord_9.json";
+import nonSubscriptionPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/discord_7.json?raw";
+import billingIssueContent from "@site/code_blocks/integrations/third-party-integrations/discord_8.json?raw";
+import productChangeContent from "@site/code_blocks/integrations/third-party-integrations/discord_9.json?raw";
 
 <RCCodeBlock
   tabs={[

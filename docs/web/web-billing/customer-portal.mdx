@@ -11,15 +11,19 @@ Web Billing (formerly RevenueCat Billing) comes with a no-code customer portal f
 
 Each email (subscription confirmation, renewal, billing issue) that Web Billing sends to customers contains a link for the customer to access their customer portal:
 
-![](/images/web-billing/email-link-customer-portal.png)
+![](/docs_images/web/web-billing/email-link-customer-portal.png)
 
 {/* In addition, you can access the customer's unique URL for their subscription portal through the `managementURL` of the `CustomerInfo` object in our SDKs and the [REST API](/api-v1-spec#tag/customers/operation/subscribers). */}
 
 ## Managing subscriptions through the customer portal
 
-In the customer portal, customers can make the following changes to their subscription:
+In the customer portal, customers can do the following:
 
-- Cancel the subscription
-- Update the payment method for the subscription
+- See information about an upcoming payment
+- Cancel a subscription
+- Re-subscribe between cancellation and expiration
+- Update the payment method for their subscription
+- View a list of past payments
+- Download PDF receipts and invoices for past payments
 
-![](/images/web-billing/customer-portal.png)
+![](/docs_images/web/web-billing/customer-portal.png)

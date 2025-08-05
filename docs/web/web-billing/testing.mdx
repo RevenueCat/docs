@@ -1,0 +1,61 @@
+---
+title: Testing Web Purchases
+slug: testing
+excerpt: How to test your Web Billing integration
+hidden: false
+---
+
+You can use Stripe's [Test Mode](https://stripe.com/docs/test-mode) or [Sandboxes](https://docs.stripe.com/sandboxes) to test your Web Billing integration.
+
+:::warning Stripe's test mode and sandboxes behave differently
+See how to use a sandbox to RevenueCat Web Billing [here](../connect-stripe-account#working-with-stripe-test-mode--sandboxes).
+:::
+
+:::warning Ensure proper sandbox testing
+In contrast to mobile app stores, there is no intermediary between you and the customer, and no App Review before you start charging customers money. Therefore, you should make sure that you have properly tested your implementation in sandbox mode before shipping your web subscriptions.
+:::
+
+## Testing Web Purchase Links
+
+RevenueCat provides a separate sandbox link for testing, which should not be shared with customers.
+
+![](/docs_images/web/web-billing/wpl-production-sandbox.png)
+
+The sandbox URL is automatically configured to use Stripe's test mode, and should be used with Stripe [test cards](https://docs.stripe.com/testing).
+
+## Testing Wallet Payment Methods
+
+For both **Apple Pay** & **Google Pay**, you can use real payment cards in sandbox. Stripe configures both payment methods in a test mode, no real transactions are made.
+
+You can use one of Stripe's [test cards](https://docs.stripe.com/testing) to make credit card purchases.
+
+## Subscription Schedules in Sandbox
+
+Sandbox subscriptions renew faster than actual subscriptions to facilitate testing. They can renew a maximum of six times. At that point, the subscription will be automatically cancelled.
+
+The following table lists the sandbox renewal periods for subscriptions of various durations. These times are approximate, and you may see small variations. To ensure accuracy, check the current status after each subscription expiration.
+
+### Subscription Renewal Periods
+
+| Production Subscription Period | Sandbox Subscription Period |
+| ------------------------------ | --------------------------- |
+| 1 day (P1D)                    | 5 minutes                   |
+| 3 days (P3D)                   | 5 minutes                   |
+| 1 week (P1W)                   | 5 minutes                   |
+| 2 weeks (P2W)                  | 5 minutes                   |
+| 1 month (P1M)                  | 5 minutes                   |
+| 2 months (P2M)                 | 10 minutes                  |
+| 3 months (P3M)                 | 15 minutes                  |
+| 6 months (P6M)                 | 30 minutes                  |
+| 1 year (P1Y)                   | 60 minutes                  |
+
+### Time-based Subscription Features
+
+Time-based subscription features such as free trials are also shortened for sandbox testing. The following table identifies the sandbox time periods associated with these features:
+
+| Feature                      | Sandbox Period                       |
+| ---------------------------- | ------------------------------------ |
+| Trial duration               | 5 minutes                            |
+| Introductory period duration | 5 minutes                            |
+| Grace period duration        | 3 minutes                            |
+| Billing retries              | Every 3 minutes and up to 5 attempts |

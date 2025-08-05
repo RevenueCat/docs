@@ -1,10 +1,9 @@
 ---
 title: By Placement
 slug: placements
+sidebar_label: Targeting by Placement
 hidden: false
 ---
-
-# Targeting By Placement
 
 Use Targeting by Placement to define paywall locations in your app so that you can serve unique Offerings at each paywall location to each customer.
 
@@ -12,7 +11,7 @@ import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 
 <YouTubeEmbed videoId="k7_SEjGccgI" title="Targeting by Placement" />
 
-![Targeting by Placement Illustration](/images/targeting-by-placement-illustration.png)
+![Targeting by Placement Illustration](/docs_images/offerings/targeting/targeting-by-placement-illustration.png)
 
 ## Supported in the following SDK versions:
 
@@ -46,7 +45,7 @@ When your app fetches Offerings by Placement, we'll return the Offering to be di
 
 To define which Offerings should be served for an audience at each Placement, click **+ Add Placement** when creating a new rule or editing an existing one.
 
-![Add Placement](/images/add-placement.png)
+![Add Placement](/docs_images/offerings/targeting/add-placement.png)
 
 :::tip Targeting "Any audience"
 If you want to use Placements to serve unique Offerings at different paywall locations for all customers, you can do so by creating a Targeting Rule that targets "Any audience" as its condition. Then, order that rule at the bottom of your list of Live rules if you want other audience-specific Targeting Rules to supersede it.
@@ -54,7 +53,7 @@ If you want to use Placements to serve unique Offerings at different paywall loc
 
 Then, select the Offering you want to display, and enter the identifier of the Placement you want to serve that Offering on. If this is your first time using that Placement, you'll need to click **Add** to add its identifier to your list. Once you've saved this rule, that Placement will be available to select in other Targeting Rules.
 
-![Create a Placement](/images/create-a-placement.png)
+![Create a Placement](/docs_images/offerings/targeting/create-a-placement.png)
 
 :::warning Placement Identifiers
 Double check that the Placement strings you've defined in your app and through your Targeting Rules exactly match so that your Targeting Rules are applied correctly.
@@ -66,7 +65,7 @@ When using Placements, you'll always need to select an Offering to serve "for al
 - For any new Placements added in the future
 - Or when getting the 'current' offering in any SDK version (e.g. the `getOfferings()` method), such as in older versions of your app, or areas of your app that are not fetching Offerings by Placement
 
-![Set a Placement for all other cases](/images/for-all-other-cases.png)
+![Set a Placement for all other cases](/docs_images/offerings/targeting/for-all-other-cases.png)
 
 ### Serving no Offering at a given Placement
 
@@ -90,7 +89,7 @@ The method will return the Offering for that customer at that Placement.
 let placementOffering = offerings.getCurrentOffering(forPlacement: "onboarding_end")
 ```
 
-![onboarding_end Placement](/images/create-a-placement-highlighted.png)
+![onboarding_end Placement](/docs_images/offerings/targeting/create-a-placement-highlighted.png)
 
 The Offering returned will correspond to one of these three cases:
 
@@ -106,14 +105,14 @@ This will occur if the customer matches a Targeting Rule, and the Placement is n
 
 This will occur if the customer does not match a Targeting Rule.
 
-import swiftContent1 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_1.swift";
-import kotlinContent2 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_2.kt";
-import javaContent3 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_3.java";
-import reactNativeContent4 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_4.js";
-import flutterContent5 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_5.dart";
-import capacitorContent6 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_6.ts";
-import unityContent7 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_7.cs";
-import webContent8 from "!!raw-loader!@site/code_blocks/tools/targeting_by_placement_8.ts";
+import swiftContent1 from '@site/code_blocks/tools/targeting_by_placement_1.swift?raw';
+import kotlinContent2 from '@site/code_blocks/tools/targeting_by_placement_2.kt?raw';
+import javaContent3 from '@site/code_blocks/tools/targeting_by_placement_3.java?raw';
+import reactNativeContent4 from '@site/code_blocks/tools/targeting_by_placement_4.js.txt?raw';
+import flutterContent5 from '@site/code_blocks/tools/targeting_by_placement_5.dart?raw';
+import capacitorContent6 from '@site/code_blocks/tools/targeting_by_placement_6.ts.txt?raw';
+import unityContent7 from '@site/code_blocks/tools/targeting_by_placement_7.cs?raw';
+import webContent8 from '@site/code_blocks/tools/targeting_by_placement_8.ts.txt?raw';
 
 <RCCodeBlock
   tabs={[

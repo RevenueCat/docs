@@ -11,15 +11,15 @@ This section assumes you've followed our [Quickstart](/getting-started/quickstar
 
 RevenueCat's SDK will log important information and errors to help you understand what is going on behind the scenes. You can enable more detailed debug logs with the `logLevel` property. You can set this immediately in your app while testing, **before you configure Purchases**.
 
-import db1 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_1.swift";
-import db2 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_2.m";
-import db3 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_3.kt";
-import db4 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_4.java";
-import db5 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_5.js";
-import db6 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_6.js";
-import db7 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_7.js";
-import db8 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_8.js";
-import db9 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_9.js";
+import db1 from "@site/code_blocks/test-and-launch/debugging_1.swift?raw";
+import db2 from "@site/code_blocks/test-and-launch/debugging_2.m?raw";
+import db3 from "@site/code_blocks/test-and-launch/debugging_3.kt?raw";
+import db4 from "@site/code_blocks/test-and-launch/debugging_4.java?raw";
+import db5 from "@site/code_blocks/test-and-launch/debugging_5.js.txt?raw";
+import db6 from "@site/code_blocks/test-and-launch/debugging_6.js.txt?raw";
+import db7 from "@site/code_blocks/test-and-launch/debugging_7.js.txt?raw";
+import db8 from "@site/code_blocks/test-and-launch/debugging_8.js.txt?raw";
+import db9 from "@site/code_blocks/test-and-launch/debugging_9.js.txt?raw";
 
 <RCCodeBlock
   tabs={[
@@ -73,10 +73,10 @@ RevenueCat's iOS 4.22.0+ and Android 6.9.2+ SDKs provide an overlay for your app
 
 ### iOS / macOS / visionOS
 
-![RevenueCat iOS Debug UI](/images/03f4de1-simulator_screenshot_0e51e44b-dd33-41f6-9c26-ca3bed754b34_0235da821e92e90749f4f8dc0a20e68d.png)
+![RevenueCat iOS Debug UI](/docs_images/test/rc-debug-ui.png)
 
-import db10 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_9.swift";
-import db11 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_10.swift";
+import db10 from "@site/code_blocks/test-and-launch/debugging_9.swift?raw";
+import db11 from "@site/code_blocks/test-and-launch/debugging_10.swift?raw";
 
 <RCCodeBlock
   tabs={[
@@ -99,14 +99,14 @@ Note: The debug UI won't compile for release builds, so you'll need to disable t
 
 ### Android
 
-![RevenueCat Android Debug UI](/images/108f3d64-revenuecat-android-debug-ui-96d1-4bd7-b926-70c6676931be.png)
+![RevenueCat Android Debug UI](/docs_images/test/rc-debug-ui-android.png)
 
 In order to use the overlay, you need to include the debug view library which is available on Maven and can be included via Gradle. Currently, this is only available as a Jetpack Compose Composable.
 
 [![Release](https://img.shields.io/github/release/RevenueCat/purchases-android.svg?filter=!*beta*&style=flat)](https://github.com/RevenueCat/purchases-android/releases)
 
-import db12 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_13.groovy";
-import db13 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_14.kt";
+import db12 from "@site/code_blocks/test-and-launch/debugging_13.groovy?raw";
+import db13 from "@site/code_blocks/test-and-launch/debugging_14.kt?raw";
 
 <RCCodeBlock
   tabs={[
@@ -167,8 +167,8 @@ Messages that have the double red exclamation marks prefix (‼️) attached pro
 
 Below are sample logs generated when setting `debugLogsEnabled = true`. Keep an eye out for any `ERROR` level logs, status codes other than `200`, or any `Invalid Product Identifiers`.
 
-import db14 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_11.txt";
-import db15 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_12.txt";
+import db14 from "@site/code_blocks/test-and-launch/debugging_11.txt?raw";
+import db15 from "@site/code_blocks/test-and-launch/debugging_12.txt?raw";
 
 <RCCodeBlock
   tabs={[
@@ -187,15 +187,15 @@ import db15 from "!!raw-loader!@site/code_blocks/test-and-launch/debugging_12.tx
 
 You can set a custom log handler for redirecting debug logs to your own logging system. By default, this sends info, warning, and error messages. You can enable this by setting the `logHandler` property. You should set this immediately in your app while testing, **before** you configure Purchases.
 
-import lh1 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_1.swift";
-import lh2 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_2.m";
-import lh3 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_3.kt";
-import lh4 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_4.java";
-import lh5 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_5.js";
-import lh6 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_6.js";
-import lh7 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_7.js";
-import lh8 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_8.js";
-import lh9 from "!!raw-loader!@site/code_blocks/test-and-launch/logHandler_9.js";
+import lh1 from "@site/code_blocks/test-and-launch/logHandler_1.swift?raw";
+import lh2 from "@site/code_blocks/test-and-launch/logHandler_2.m?raw";
+import lh3 from "@site/code_blocks/test-and-launch/logHandler_3.kt?raw";
+import lh4 from "@site/code_blocks/test-and-launch/logHandler_4.java?raw";
+import lh5 from "@site/code_blocks/test-and-launch/logHandler_5.js.txt?raw";
+import lh6 from "@site/code_blocks/test-and-launch/logHandler_6.js.txt?raw";
+import lh7 from "@site/code_blocks/test-and-launch/logHandler_7.js.txt?raw";
+import lh8 from "@site/code_blocks/test-and-launch/logHandler_8.js.txt?raw";
+import lh9 from "@site/code_blocks/test-and-launch/logHandler_9.js.txt?raw";
 
 <RCCodeBlock
   tabs={[

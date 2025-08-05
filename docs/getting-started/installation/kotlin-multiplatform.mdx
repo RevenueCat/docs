@@ -24,7 +24,7 @@ Purchases for Kotlin Multiplatform (Google Play and iOS App Store) is available 
 
 Add the following coordinates to your `libs.versions.toml`.
 
-import versionsContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_1.toml";
+import versionsContent from "@site/code_blocks/getting-started/installation/kmp_1.toml?raw";
 
 <RCCodeBlock
   tabs={[{ content: versionsContent, name: "libs.versions.toml" }]}
@@ -32,7 +32,7 @@ import versionsContent from "!!raw-loader!@site/code_blocks/getting-started/inst
 
 You can now add the dependency to your `commonMain` source set in your module's `build.gradle.kts`.
 
-import buildGradle1 from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_2.kts";
+import buildGradle1 from "@site/code_blocks/getting-started/installation/kmp_2.kts?raw";
 
 <RCCodeBlock
   tabs={[{ type: "kotlin", content: buildGradle1, name: "build.gradle.kts" }]}
@@ -42,7 +42,7 @@ import buildGradle1 from "!!raw-loader!@site/code_blocks/getting-started/install
 
 Since the SDK uses generated Kotlin bindings for native code on iOS, you will need to opt in to `ExperimentalForeignApi` in your iOS source sets. To do so, add the following to your module's `build.gradle.kts`.
 
-import efaContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_3.kts";
+import efaContent from "@site/code_blocks/getting-started/installation/kmp_3.kts?raw";
 
 <RCCodeBlock
   tabs={[{ type: "kotlin", content: efaContent, name: "build.gradle.kts" }]}
@@ -73,7 +73,7 @@ Follow these instructions if your Kotlin Multiplatform module is integrated dire
 
 In this scenario, you need to specify the transitive dependency on `PurchasesHybridCommon` in your `Podfile`. Add the following:
 
-import podfileContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_6.ruby";
+import podfileContent from "@site/code_blocks/getting-started/installation/kmp_6.ruby?raw";
 
 <RCCodeBlock
   tabs={[{ type: "ruby", content: podfileContent, name: "Podfile" }]}
@@ -85,13 +85,13 @@ Follow these instructions if your Kotlin Multiplatform module is integrated with
 
 In this scenario, you can specify the transitive dependency on `PurchasesHybridCommon` using Gradle. To do so, add the following to your `libs.versions.toml`:
 
-import commonVersion from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_4.toml";
+import commonVersion from "@site/code_blocks/getting-started/installation/kmp_4.toml?raw";
 
 <RCCodeBlock tabs={[{ content: commonVersion, name: "libs.versions.toml" }]} />
 
 Now you can add the following to your module's `build.gradle.kts`:
 
-import cocoapodsGradle from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_5.kts";
+import cocoapodsGradle from "@site/code_blocks/getting-started/installation/kmp_5.kts?raw";
 
 <RCCodeBlock
   tabs={[
@@ -101,7 +101,7 @@ import cocoapodsGradle from "!!raw-loader!@site/code_blocks/getting-started/inst
 
 Finally, add the following `post_install` script to your iOS app target in your `Podfile`. For instance, if your Kotlin Multiplatform module is named `shared`, it should look something like this:
 
-import podfilePostInstallContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_8.ruby";
+import podfilePostInstallContent from "@site/code_blocks/getting-started/installation/kmp_8.ruby?raw";
 
 <RCCodeBlock
   tabs={[{ type: "ruby", content: podfilePostInstallContent, name: "Podfile" }]}
@@ -113,7 +113,7 @@ This avoids the compiler looking for an app icon in your Kotlin Multiplatform mo
 
 Depending on your user's payment method, they may be asked by Google Play to verify their purchase in their (banking) app. This means they will have to background your app and go to another app to verify the purchase. If your Activity's `launchMode` is set to anything other than `standard` or `singleTop`, backgrounding your app can cause the purchase to get cancelled. To avoid this, set the `launchMode` of your Activity to `standard` or `singleTop` in your Android app's `AndroidManifest.xml` file:
 
-import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_launchmode.xml";
+import launchModeContent from "@site/code_blocks/getting-started/installation/android_launchmode.xml?raw";
 
 <RCCodeBlock
   tabs={[
@@ -123,11 +123,27 @@ import launchModeContent from "!!raw-loader!@site/code_blocks/getting-started/in
 
 You can find Android's documentation on the various `launchMode` options [here](https://developer.android.com/guide/topics/manifest/activity-element#lmode).
 
+### Build static binaries for iOS targets
+
+In some cases it may be required to configure your iOS targets to build static binaries, in order for your project to compile. Make sure `isStatic` is set to `true` in your iOS targets' binary output settings in your `build.gradle.kts`:
+
+import staticBinariesContent from "@site/code_blocks/getting-started/installation/kmp_9.kts?raw";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "kotlin",
+      content: staticBinariesContent,
+      name: "build.gradle.kts",
+    },
+  ]}
+/>
+
 ## Import Purchases
 
 You should now be able to import `Purchases`.
 
-import importContent from "!!raw-loader!@site/code_blocks/getting-started/installation/kmp_7.kts";
+import importContent from "@site/code_blocks/getting-started/installation/kmp_7.kts?raw";
 
 <RCCodeBlock
   tabs={[{ type: "kotlin", content: importContent, name: "commonMain" }]}
@@ -136,7 +152,7 @@ import importContent from "!!raw-loader!@site/code_blocks/getting-started/instal
 :::warning
 On Android, Purchases uses AndroidX App Startup under the hood. Make sure you have not removed the `androidx.startup.InitializationProvider` completely in your manifest. If you need to remove specific initializers, such as `androidx.work.WorkManagerInitializer`, set `tools:node="merge"` on the provider, and `tools:node="remove"` on the meta-data of the initializer you want to remove.
 
-import xmlContent from "!!raw-loader!@site/code_blocks/getting-started/installation/android_workmanager_manifest.xml";
+import xmlContent from "@site/code_blocks/getting-started/installation/android_workmanager_manifest.xml?raw";
 
 <RCCodeBlock
   tabs={[{ type: "xml", content: xmlContent, name: "AndroidManifest.xml" }]}

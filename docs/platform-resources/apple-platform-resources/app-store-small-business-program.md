@@ -5,7 +5,7 @@ excerpt: How to have the reduced commission rate reflected in RevenueCat
 hidden: false
 ---
 
-Apple recently announced the new App Store Small Business Program, aiming to reduce Apple's commission of App Store sales for small businesses from 30% to 15%.
+Apple has a program in place, aimed at reducing their commission of App Store sales for small businesses from 30% to 15%: the App Store Small Business Program.
 
 While there are specific terms that Apple requires to be eligible for the program, generally most developers who earn under $1 million in App Store revenue per year can apply. You can read more about the App Store Small Business Program [here](https://developer.apple.com/app-store/small-business-program/).
 
@@ -23,9 +23,9 @@ Once you enroll you should receive a confirmation email that your enrollment is 
 
 Since a developer could have multiple apps from different companies represented in their RevenueCat account, the Small Business Program membership status is set on a **per-app basis** in the RevenueCat dashboard.
 
-Visit your app settings in the RevenueCat dashboard (**Project Settings > Apps**) and expand the **Apple Small Business Program** dropdown.
+Visit your app settings in the RevenueCat dashboard by selecting **Apps & providers** at the bottom of the navigation sidebar on the left. Select your App Store app, scroll down, and expand the **Apple Small Business Program** dropdown.
 
-![](/images/f7a4192-app.revenuecat.com_projects_85ff18c7_apps_app71b4cc0fea_09bb65dc0b8fa6967eb3e2ef2b8999d5.png)
+![](/docs_images/platform-resources/apple/small-business-program.png)
 
 #### Entry Date
 

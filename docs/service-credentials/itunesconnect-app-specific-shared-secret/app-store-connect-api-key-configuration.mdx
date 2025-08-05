@@ -12,35 +12,35 @@ You may upload an App Store Connect API key for RevenueCat to import products an
 
 On App Store Connect, [create a new App Store Connect API key](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api) under _Users and Access → Integrations → App Store Connect API_:
 
-![](/images/SCR-20240327-jzhm.png)
+![](/docs_images/credentials/apple/ascapi-1.png)
 
 The newly created key needs to have at least the access level **App Manager**:
 
-![](/images/2153907-generate_api_key_14292ba4f98a1605112ec92c3e634795.png "Screenshot 2023-01-03 at 22.00.26.png")
+![](/docs_images/credentials/apple/ascapi-access.png)
 
 Download the generated key. You will receive a .p8 key file. Also take note of the **Issuer ID** (shown above the "Active" table).
 
 _This key can only be downloaded once_, so make sure you store it in a safe location.
 
-![](/images/SCR-20240327-jzum.png)
+![](/docs_images/credentials/apple/ascapi-download.png)
 
 ## 2. Upload the App Store Connect API key to RevenueCat
 
 Once everything is set up in App Store Connect, you need to upload the App Store Connect API key from the previous step to RevenueCat.
 
-In the RevenueCat dashboard, select your iOS app from the Apps tab in your project settings.
+In the RevenueCat dashboard, select your iOS app from the Apps & providers page in the navigation.
 
 Within your app settings, under the tab App Store Connect API, you'll see an area to upload your App Store Connect .p8 file that you downloaded from App Store Connect.
 
-![](/images/SCR-20240327-kakv.png)
+![](/docs_images/credentials/apple/ascapi-config.png)
 
 After uploading the App Store Connect API .p8 file, you will be prompted to input the **Issuer ID** you saved in Step 1.
 
-![](/images/SCR-20240327-kcdv.png)
+![](/docs_images/credentials/apple/ascapi-config-issuerid.png)
 
 You will also be prompted to input the **Vendor number**. This can be found in App Store Connect under _Payments and Financial Reports_, in the top left corner of the page.
 
-![](/images/SCR-20240327-kdtw.png)
+![](/docs_images/credentials/apple/ascapi-vendor.png)
 
 :::tip
 Remember to select 'Save Changes' in the RevenueCat Dashboard.

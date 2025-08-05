@@ -29,16 +29,19 @@ a:hover {
   font-size: 20rem;
   color: #f0f0f0;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 10%;
+  right: 15%;
+  transform: translate(50%, -50%);
+  scale: 1;
   z-index: 0;
   opacity: 0.075;
 }
 
 .content {
   z-index: 1;
-  text-align: center;
+  text-align: left;
+  display: flex;
+  width: 100%;
 }
 
 .title {
@@ -52,9 +55,21 @@ a:hover {
   font-weight: 500;
 }
 
+.badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline;
+}
+
 [data-theme="dark"] .feature-container {
   border: 1px solid #ffffff25;
   background-color: #ffffff05;
+}
+
+.icon {
+  padding-top: 6px;
 }
 
 @media (max-width: 768px) {
@@ -70,5 +85,9 @@ a:hover {
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 10px;
+  }
+
+  .icon {
+    padding-top: 10px;
   }
 }

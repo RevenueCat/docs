@@ -23,7 +23,7 @@ In order to test your purchases, you'll need a sandbox test account. You can cre
 
 If you need help, you can refer to Apple's guide on creating sandbox testers [here](https://help.apple.com/app-store-connect/#/dev8b997bee1).
 
-![sandbox tester account](/images/bcc016b-download_2858c6d31596219cdd164fd663cd5204.png)
+![sandbox tester account](/docs_images/test/ios/sandbox-testers.png)
 
 :::info Valid email required for sandbox accounts
 Keep in mind you'll need to create sandbox accounts with valid emails that you can verify you own.
@@ -33,7 +33,7 @@ Keep in mind you'll need to create sandbox accounts with valid emails that you c
 
 To test purchases in different regions, you should set your sandbox user's **App Store Country or Region** property to the territory you'd like to test.
 
-![Image](/images/7a32b3e-984a1f91-3d0c-4f36-b020-b48275dfbcf4_dc4d4396175671d3152f5f49aeb82cb0.png)
+![Image](/docs_images/test/ios/sandbox-country.png)
 
 ## Testing on Device
 
@@ -53,7 +53,7 @@ On macOS 11.5.2 or greater, navigate to `App Store > Preferences > Sandbox Accou
 
 Add the sandbox account credentials that you previously created. (The sandbox account credentials won't appear until you've made a purchase using a sandbox account in a development build.)
 
-![Add your sandbox account under iOS settings to streamline testing](/images/527a407-IMG_3EC533BFA443-1_5d338789a513d4207dd5fc8ef2683d5f.jpeg)
+![Add your sandbox account under iOS settings to streamline testing](/docs_images/test/ios/sandbox-account.jpeg)
 
 :::info
 If you do not see the option to add a sandbox account under iOS settings, make a sandbox purchase in your app. Apple will show a popup to enter login details, then you will see your account in iOS settings.
@@ -106,23 +106,23 @@ You can enable the "Sync this file with an app in App Store Connect" checkbox to
 
 Save the file in the top-level folder of your project and add it to your targets.
 
-![Search for "storekit" to find the configuration file template quicker.](/images/37ff24b-Screen_Shot_2020-12-01_at_11.56.19_AM_f5e2ace7aeb154ca3ce0b147c36d45c1.png)
+![Search for "storekit" to find the configuration file template quicker.](/docs_images/test/ios/storekit-configuration-file.png)
 
-![Add the configuration file to your targets and save.](/images/abdf69a-Screen_Shot_2020-12-01_at_11.58.59_AM_3afa4bc9c47bab90219891c9ab5dc05d.png)
+![Add the configuration file to your targets and save.](/docs_images/test/ios/storekit-configuration-file-targets.png)
 
 ### Step 2: Create a New Scheme for StoreKit Testing
 
 Click the scheme in the scheme menu and click **Manage Schemes...**
 
-![](/images/f984dad-Screen_Shot_2020-12-01_at_12.00.09_PM_78e0b6a49039b8a856dd4f5325666dd0.png "Screen Shot 2020-12-01 at 12.00.09 PM.png")
+![](/docs_images/test/ios/storekit-scheme-manage.png)
 
 Select your current scheme and click **Duplicate**.
 
-![](/images/2adb3ea-Screen_Shot_2020-12-01_at_12.00.27_PM_f5369253e4c0c96ab53277e4f70d87ac.png "Screen Shot 2020-12-01 at 12.00.27 PM.png")
+![](/docs_images/test/ios/storekit-scheme-duplicate.png)
 
-In the scheme editor, add the StoreKit Configuration file you created in [Step 1](/test-and-launch/sandbox/apple-app-store#step-1-add-a-storekit-configuration-file) and click **Close**.
+In the scheme editor, add the StoreKit Configuration file you created in [Step 1](/test-and-launch/sandbox/apple-app-store#ste p-1-add-a-storekit-configuration-file) and click **Close**.
 
-![](/images/f4582cb-Screen_Shot_2020-12-01_at_7.46.50_PM_d3320dd430f4aeefa0850ef1f219ce3b.png "Screen Shot 2020-12-01 at 7.46.50 PM.png")
+![](/docs_images/test/ios/storekit-scheme-editor.png)
 
 ### Step 3: Setting up the StoreKit Configuration File
 
@@ -130,7 +130,7 @@ In the editor, click the "+" button at the bottom and create a new product. In t
 
 Enter a name for a new subscription group and click **Done**. The subscription group name should match one that is set up for your app in App Store Connect, but it's not a requirement. That means you can test your subscription groups and products in the simulator and then create the products in App Store Connect later.
 
-![](/images/a04c726-Screen_Shot_2020-12-01_at_7.54.48_PM_2f86efb47d9af33df8abe78f49239e86.png "Screen Shot 2020-12-01 at 7.54.48 PM.png")
+![](/docs_images/test/ios/storekit-scheme-editor-add-product.png)
 
 :::info Products in the configuration file must be set up in RevenueCat
 Even though products don't have to be set up in App Store Connect, they have to be set up in RevenueCat so that RevenueCat can validate the sandbox receipt. Refer to the [Configuring Products](/getting-started/entitlements) guide for more information.
@@ -138,7 +138,7 @@ Even though products don't have to be set up in App Store Connect, they have to 
 
 Configure the subscription as needed by filling in the **Reference Name**, **Product ID**, **Price**, **Subscription Duration**, and optionally an **Introductory Offer**. Again, this product doesn't have to exist in App Store Connect for you to test purchasing in the simulator. Here is a sample configuration:
 
-![](/images/a00f530-Screen_Shot_2020-12-01_at_7.56.32_PM_dc8883cd503486a24e0f2174d18087c8.png "Screen Shot 2020-12-01 at 7.56.32 PM.png")
+![](/docs_images/test/ios/storekit-scheme-editor-product.png)
 
 Repeat this for as many products as you want.
 
@@ -146,11 +146,11 @@ Repeat this for as many products as you want.
 
 Go to **Editor** > **Save Public Certificate** and save the public certificate to your project.
 
-![](/images/b36d09c-Screen_Shot_2020-12-01_at_8.01.01_PM_6ac68cb0965354f5d6add8d6a245f7f6.png "Screen Shot 2020-12-01 at 8.01.01 PM.png")
+![](/docs_images/test/ios/storekit-scheme-editor-save-public-certificate.png)
 
 Go to your app's configuration page in your RevenueCat project settings (**Project Settings > Apps > [Your App]**). Expand the dropdown **StoreKit testing framework** and upload the certificate to your app. If successful, you should see **Certificate added**.
 
-![](/images/eccabe0-app.revenuecat.com_projects_572548b2_apps_app75924793e7_0cb2e152f890b97ddd38b015bbed3721.png)
+![](/docs_images/test/ios/storekit-scheme-editor-save-public-certificate-revenuecat.png)
 
 :::success You did it!
 You're ready to make purchases locally in the simulator!
@@ -164,11 +164,11 @@ For sandbox and production [subscription offers](/subscription-guidance/subscrip
 
 Open the `.storekit` file where the subscriptions offers are configured, and go to Editor → Subscription Offers Key.
 
-![Find Subscription Offers Key](/images/finding_subscriptions_offer_key_image_1.png)
+![Find Subscription Offers Key](/docs_images/test/ios/finding_subscriptions_offer_key_image_1.png)
 
 After selecting 'Subscription Offers Key', you will see your key ID and private key.
 
-![Key ID and private key](/images/finding_subscriptions_offer_key_image_2.png)
+![Key ID and private key](/docs_images/test/ios/finding_subscriptions_offer_key_image_2.png)
 
 Note that the private key stored in the “.storekit” file is unique per file and Xcode allows you to re-generate the key for a given file. If you re-generate your key, be sure to follow these steps again to upload your new key to RevenueCat.
 
@@ -182,7 +182,7 @@ We only accept files smaller than 512B. We recommend utilizing an editor such as
 
 This file can now be uploaded to the RevenueCat dashboard under your iOS app settings page → Storekit Subscription Offer Key. Be sure to copy and paste over your key ID from Xcode to the `Key ID` box.
 
-![Add key ID](/images/upload_your_file_to_revenuecat_image.png)
+![Add key ID](/docs_images/test/ios/upload_your_file_to_revenuecat_image.png)
 
 Don't forget to click 'Save Changes' in the upper right.
 
@@ -205,8 +205,6 @@ Apple's App Store Sandbox is notoriously unperformant. A sandbox purchase experi
 ## Verify the Transaction Appears in the Dashboard
 
 After a purchase is successful, you should be able to view the transaction immediately in the RevenueCat dashboard. If the purchase does not appear in the dashboard, it's **not** being tracked by RevenueCat.
-
-![](/images/9f944ee-Screen_Shot_2021-12-05_at_7.41.15_PM_9e31430be217653943ee990d446fe287.png "Screen Shot 2021-12-05 at 7.41.15 PM.png")
 
 :::info Make sure Sandbox Data is enabled
 Make sure the the _View Sandbox Data_ toggle is enabled in the navigation bar.
