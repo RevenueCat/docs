@@ -108,13 +108,7 @@ Custom Actions allow you to add your own custom management options to the Custom
 To handle custom actions, use the `.onCustomerCenterCustomActionSelected` modifier:
 
 ```swift
-CustomerCenterView(
-    navigationOptions: .init(
-        usesNavigationStack: true,
-        usesExistingNavigation: true,
-        shouldShowCloseButton: false
-    )
-)
+CustomerCenterView()
 .onCustomerCenterCustomActionSelected { actionIdentifier, purchaseIdentifier in
     // Handle your custom action
     // Execute your custom logic here
