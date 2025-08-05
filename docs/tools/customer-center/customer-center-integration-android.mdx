@@ -98,6 +98,45 @@ The following events are available:
 - `onShowingManageSubscriptions`: Called when the manage subscriptions screen is shown
 - `onFeedbackSurveyCompleted`: Called when a user completes a feedback survey
 
+### Custom Actions
+
+:::info Custom Actions support
+Custom Actions require iOS SDK version 5.34.0 or later, and Android SDK version 9.2.0 or later.
+:::
+
+Custom Actions allow you to add your own custom management options to the Customer Center. When a customer taps on a custom action, your app receives a callback with the custom action identifier, allowing you to execute your own code.
+
+To handle custom actions, create a CustomerCenterListener with the `onCustomActionSelected` callback:
+
+```kotlin
+// Create a listener to handle custom actions
+val customerCenterListener = object : CustomerCenterListener {
+    override fun onCustomActionSelected(actionIdentifier: String, purchaseIdentifier: String?) {
+        when (actionIdentifier) {
+            "contact_support" -> openSupportChat(purchaseIdentifier)
+            "delete_account" -> showAccountDeletionDialog()
+            "rate_app" -> openAppStoreRating()
+        }
+    }
+}
+
+// Display Customer Center with custom action handling
+CustomerCenter(
+    modifier = Modifier.fillMaxSize(),
+    options = CustomerCenterOptions.Builder()
+        .setListener(customerCenterListener)
+        .build(),
+) {
+    // Handle dismissal
+    isCustomerCenterVisible = false
+}
+```
+
+Custom actions are configured in the RevenueCat dashboard under Customer Center settings, where you can:
+- Set a custom identifier for the action
+- Configure the display text and localization
+- Position the action within the management options
+
 ## Setup promotional offers
 
 Promotional Offers allow developers to apply custom pricing and trials to new customers and to existing and lapsed subscriptions. Unique promotional offers can be assigned to different paths and survey responses in the Customer Center, but first they must be setup in Google Play Console.
