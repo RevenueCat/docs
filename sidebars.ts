@@ -623,7 +623,7 @@ const migrateToRevenueCatCategory = Category({
 
 const sdkMigrationCategory = Category({
   iconName: "file-document",
-  iconColor: "black",
+  iconColor: "var(--text-primary)",
   label: "SDK Reference",
   itemsPathPrefix: "",
   items: [
@@ -1059,7 +1059,7 @@ const playbooksOtherResourcesCategory = Category({
 
 const supportResourcesCategory = Category({
   iconName: "info",
-  iconColor: "var(--rc-red-primary)",
+  iconColor: "var(--rc-violet-primary)",
   label: "App Launch",
   itemsPathPrefix: "",
   items: [
@@ -1076,7 +1076,7 @@ const supportResourcesCategory = Category({
 
 const supportLinksCategory = Category({
   iconName: "info",
-  iconColor: "var(--rc-red-primary)",
+  iconColor: "var(--text-primary)",
   label: "Links",
   itemsPathPrefix: "",
   items: [

@@ -291,9 +291,10 @@ h4 {
   border-bottom: 1px solid #ffffff25;
 }
 
-.markdown header {
+header {
   @apply border-bottom-divider;
   margin-bottom: 32px !important;
+  margin-top: 0.5rem;
 }
 
 .markdown > p > img {

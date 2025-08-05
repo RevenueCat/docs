@@ -68,7 +68,7 @@ const config = {
         docs: {
           sidebarPath: "./sidebars.ts",
           routeBasePath: "/",
-          breadcrumbs: true,
+          breadcrumbs: false,
           editUrl: "https://github.com/RevenueCat/docs/tree/main/",
         },
         theme: {
@@ -167,7 +167,7 @@ const config = {
           {
             type: "docSidebar",
             sidebarId: "defaultSidebar",
-            label: "Get Started",
+            label: "Implementation",
           },
           {
             type: "docSidebar",
@@ -186,6 +186,12 @@ const config = {
             position: "left",
           },
           {
+            label: "Support",
+            type: "docSidebar",
+            sidebarId: "supportSidebar",
+            position: "left",
+          },
+          {
             label: "REST API",
             to: "/api-v1/",
             items: [
@@ -198,12 +204,6 @@ const config = {
                 to: "/api-v2/",
               },
             ],
-            position: "right",
-          },
-          {
-            label: "Support",
-            type: "docSidebar",
-            sidebarId: "supportSidebar",
             position: "left",
           },
           {
