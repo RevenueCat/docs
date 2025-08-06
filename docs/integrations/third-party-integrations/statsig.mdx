@@ -41,6 +41,22 @@ The Statsig integration tracks the following events:
 
 In order to associate RevenueCat data with Statsig feature gate and/or experiment, the RevenueCat app user ID must match the Statsig User ID. You can read more about Statsig user IDs in their documentation [here](https://docs.statsig.com/server/pythonSDK#statsiguser). You can set up a custom app user ID in RevenueCat by following the instructions in our [Identifying Users](/customers/user-ids#provided-app-user-id) documentation.
 
+If you're using Statsig's client-side SDK, forward the Statsig stable ID to RevenueCat so we can associate experiments with purchases.
+
+import statsigSwift from "@site/code_blocks/integrations/third-party-integrations/statsig_10.swift?raw";
+import statsigKotlin from "@site/code_blocks/integrations/third-party-integrations/statsig_10.kt?raw";
+import statsigReact from "@site/code_blocks/integrations/third-party-integrations/statsig_10.ts?raw";
+import statsigFlutter from "@site/code_blocks/integrations/third-party-integrations/statsig_10.dart?raw";
+
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: statsigSwift },
+    { type: "kotlin", content: statsigKotlin },
+    { type: "ts", title: "React Native", content: statsigReact },
+    { type: "dart", title: "Flutter", content: statsigFlutter },
+  ]}
+/>
+
 ## 1. Enable RevenueCat integration with Statsig
 
 On the Statsig [Integration page](https://console.statsig.com/integrations) enable the RevenueCat integration.
