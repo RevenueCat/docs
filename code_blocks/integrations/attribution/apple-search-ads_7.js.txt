@@ -1,0 +1,10 @@
+import Purchases from 'react-native-purchases';
+import { requestTrackingPermission } from 'react-native-tracking-transparency';
+
+async function setupAppleSearchAds() {
+  await Purchases.configure({ apiKey: 'public_sdk_key' });
+  const status = await requestTrackingPermission();
+  if (status === 'authorized') {
+    await Purchases.enableAdServicesAttributionTokenCollection();
+  }
+}

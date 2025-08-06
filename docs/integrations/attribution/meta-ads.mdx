@@ -82,10 +82,18 @@ To continue to track install and usage events in Meta, follow the steps in the n
 As noted above, you'll need to disable all client side tracking of revenue to prevent double counting of revenue in Meta Ads Manager. To continue tracking install and usage events, you'll need to call Meta's 'activate app' event after configuration:
 
 import swiftContent2 from "@site/code_blocks/integrations/attribution/facebook-ads_5.swift?raw";
+import kotlinContent2 from "@site/code_blocks/integrations/attribution/facebook-ads_5.kt?raw";
+import reactNativeContent2 from "@site/code_blocks/integrations/attribution/facebook-ads_5.js.txt?raw";
+import flutterContent2 from "@site/code_blocks/integrations/attribution/facebook-ads_5.dart?raw";
 
-{/* Use the RCCodeBlock component to render the code blocks with tabs */}
-
-<RCCodeBlock tabs={[{ type: "swift", content: swiftContent2 }]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent2 },
+    { type: "kotlin", content: kotlinContent2 },
+    { type: "rn", content: reactNativeContent2 },
+    { type: "flutter", content: flutterContent2 },
+  ]}
+/>
 
 You can see Meta's App Events Reference [here](https://developers.facebook.com/docs/app-events/reference).
 

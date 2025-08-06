@@ -47,6 +47,20 @@ For events that have revenue, such as trial conversions and renewals, RevenueCat
 
 In order to associate RevenueCat data with a PostHog User, the RevenueCat `$posthogUserId` [Attribute](/customers/customer-attributes) should be set in RevenueCat. If this field does not exist, RevenueCat will fallback to the RevenueCat app user ID. You can read more about PostHog user profiles in PostHog's [Identifying users](https://posthog.com/docs/product-analytics/identify) documentation.
 
+import swiftContent from "@site/code_blocks/integrations/third-party-integrations/posthog_8.swift?raw";
+import kotlinContent from "@site/code_blocks/integrations/third-party-integrations/posthog_8.kt?raw";
+import reactContent from "@site/code_blocks/integrations/third-party-integrations/posthog_8.ts?raw";
+import flutterContent from "@site/code_blocks/integrations/third-party-integrations/posthog_8.dart?raw";
+
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent },
+    { type: "kotlin", content: kotlinContent },
+    { type: "ts", title: "React Native", content: reactContent },
+    { type: "dart", title: "Flutter", content: flutterContent },
+  ]}
+/>
+
 ### 2. Send RevenueCat Events to PostHog
 
 After you've set up the Purchase SDK and PostHog SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.

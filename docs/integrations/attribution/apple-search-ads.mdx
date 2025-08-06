@@ -118,8 +118,16 @@ If the user rejects tracking, the Standard attribution data can still be collect
 To request consent from a user, implement the `requestTrackingAuthorization` method before enabling automatic collection:
 
 import swiftContent2 from "@site/code_blocks/integrations/attribution/apple-search-ads_6.swift?raw";
+import reactNativeContent2 from "@site/code_blocks/integrations/attribution/apple-search-ads_7.js.txt?raw";
+import flutterContent2 from "@site/code_blocks/integrations/attribution/apple-search-ads_8.dart?raw";
 
-<RCCodeBlock tabs={[{ type: "swift", content: swiftContent2 }]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent2 },
+    { type: "rn", content: reactNativeContent2 },
+    { type: "flutter", content: flutterContent2 },
+  ]}
+/>
 
 After automatic collection is enabled, Purchases will sync the attribution token with the RevenueCat backend. Please note that if you enable automatic collection _before_ requesting authorization, the attribution token will only be valid for Standard and not Detailed attribution data.
 

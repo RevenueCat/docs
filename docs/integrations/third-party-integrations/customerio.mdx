@@ -47,6 +47,20 @@ For events that have revenue, such as trial conversions and renewals, RevenueCat
 
 In order to associate RevenueCat data with a Customer.io Person, the RevenueCat `$customerioId` [Attribute](/customers/customer-attributes) should be set in RevenueCat to the Person's `id`. If this field does not exist, RevenueCat will fallback to using the RevenueCat app user ID as the `id`. If there is no matching Person, it will be created automatically. You can read more about how the association works in Customer.io's [Identifying people](https://docs.customer.io/journeys/identifying-people/#identifiers) documentation.
 
+import swiftContent from "@site/code_blocks/integrations/third-party-integrations/customerio_8.swift?raw";
+import kotlinContent from "@site/code_blocks/integrations/third-party-integrations/customerio_8.kt?raw";
+import reactContent from "@site/code_blocks/integrations/third-party-integrations/customerio_8.ts?raw";
+import flutterContent from "@site/code_blocks/integrations/third-party-integrations/customerio_8.dart?raw";
+
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent },
+    { type: "kotlin", content: kotlinContent },
+    { type: "ts", title: "React Native", content: reactContent },
+    { type: "dart", title: "Flutter", content: flutterContent },
+  ]}
+/>
+
 ### 2. Send RevenueCat Events to Customer.io
 
 After you've set up the Purchase SDK and Customer.io SDK to have the same user identity, you can "turn on" the integration and configure the event names from the RevenueCat dashboard.
