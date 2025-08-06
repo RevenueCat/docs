@@ -1,0 +1,69 @@
+---
+title: Supporting offers
+slug: supporting-offers
+hidden: false
+---
+
+If you're providing offers to your customers such as introductory offers, offer codes, or promotional offers; you can configure your paywall to support them.
+
+## Introductory offers
+
+When a product on the App Store or Play Store has an introductory offer attached to it, it'll be automatically offered to customers who are eligible for it when they attempt a purchase. To ensure the content of your paywall also correctly reflects that offer and highlghits its benefits, all text fields can be configured to have unique strings based on their eligibility for the introductory offer on the selected package.
+
+To configure a custom string for a text component based on intro offer eligibility:
+
+1. Click on the text component in the Layers panel you'd like to configure
+2. Click the `+` icon next to `Text field for an introductory offer` to expand that property and enter a custom string
+
+:::tip Play Store Offers
+On the Play Store, customers may be presented multiple offers to begin their subscription. If that's the case for your app, use the `Play Store only: Text field for multiple introductory offers` property to configure a custom string for those customers, and consider using the secondary offer variables to reference the correct price and duration of the second offer if needed.
+:::
+
+## Offer codes (App Store only)
+
+If you're providing offer codes to your customers, you can configure your paywall to support them by adding a button component to your paywall that is set to navigate to the offer code redemption sheet.
+
+ ![Offer code](/docs_images/paywalls/paywalls-offer-code.png)
+
+When a customer taps on an offer code redemption button, iOS's native offer code redemption sheet will be presented for them to enter and accept the offer. To learn more about how to configure offer codes, [click here](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#offer-codes).
+
+## Promotional offers (App Store only)
+
+### Adding a promotional offer
+
+If you're providing promotional offers to your customers on the App Store, you can configure your paywall to support them by adding the promotional offer identifier to each package component.
+
+On each package component, there is an `App Store only: Promotional offer identifier` property that can be set to the identifier of the promotional offer you'd like to support. This maps to the **Promotional Offer Identifier** field in App Store Connect when you create a promtional offer.
+
+ ![Promotional offer](/docs_images/paywalls/paywalls-promotional-offer.png)
+
+ To learn more about how to create promotional offers, [click here](https://www.revenuecat.com/docs/subscription-guidance/subscription-offers/ios-subscription-offers#promotional-offers).
+
+ :::warning Play Store offers
+ Play Store offers are not yet supported on Paywalls, but are on our roadmap for future support.
+ :::
+
+### How eligibility is determined
+
+Any customer you display a paywall with a promotional offer to will be eligible for that offer if they've made a prior purchase before. This eligibility is determined by Apple's promotional offer system.
+
+:::tip Use Targeting to customize paywall delivery
+To control which customers see that offer, then, consider using Targeting; where you can modify which paywall is shown to different customer audiences by Custom Attributes, different paywall Placements, and more. [Learn more](/docs/tools/targeting).
+:::
+
+### Customizing content based on promotional offer eligibility
+
+When the promotional offer identifier is set on a package, we'll check if the customer seeing that paywall is eligible for the promotional offer. If they are, we'll show the promotional offer text fields for each text component where they're configured, so that you can use a unique string to describe the price & offer.
+
+:::tip Offer variables
+When a customer is eligible for a promotional offer, the variables prefixed with `offer_` will represent the details of that offer, and should be used in the promotional offer text fields to describe the offer. Those same variables should be used in the introductory offer text field as well.
+
+If the customer is eligible for a promotional offer, that offer will take precedence over the introductory offer.
+:::
+
+
+
+
+
+
+
