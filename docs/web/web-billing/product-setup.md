@@ -1,9 +1,18 @@
 ---
-title: Configure Web Billing
+title: Configure products & prices
 slug: product-setup
-excerpt: Setting up your web products and pricing structure
+excerpt: Setting up your web products, pricing structure and upgrade paths
 hidden: false
 ---
+
+# Configure Web Billing products & prices
+
+Web Billing products are created and managed within the RevenueCat Dashboard.
+
+On this page, you can learn how to:
+
+- [Create a product and configure its pricing](#creating-a-new-web-billing-product)
+- [Configuring upgrade & downgrade paths between products](#)
 
 ## Creating a new web billing product
 
@@ -15,7 +24,7 @@ To create a new Web Billing product, log in to the RevenueCat dashboard.
 
 ![New product button in the products screen](/docs_images/web/web-billing/new-product.png)
 
-## Configuring the product
+### Configuring the product & pricing
 
 In the "new product" screen, you can set up the following aspects of the product:
 
@@ -118,3 +127,57 @@ Only one base price can be set per currency. [Read more about multi-currency sup
 :::warning Changing prices not currently possible
 Once you've saved the product, it's only possible to add prices for new currencies, and not edit existing ones. If you need to change pricing, we recommend you create a new product with the desired pricing, and replace the existing product in your offering. We're working on fully supporting pricing changes and migrations in the future.
 :::
+
+## Configure subscription changes
+
+:::info Upgrades support only
+
+Currently, it's only possible to enable upgrades between products. We're planning to release support for downgrades very soon.
+
+:::
+
+You can allow customers to change their subscription from the Customer Portal, and upgrade or downgrade to a different product.
+
+To enable this, you first need to create upgrade or downgrade paths between your web billing products. Customers can only move between products when an explicit path is defined between them.
+
+![Upgrades in Customer Portal](/docs_images/web/web-billing/customer-portal-subscription-changes.png)
+
+### Upgrade behavior
+
+When a customer chooses to upgrade their subscription:
+
+- Access to their new product is granted immediately
+- Access to their existing product is revoked immediately
+- Existing free trials are ended immediately, and are not carried over to the new product
+- The customer is charged the full amount for the new product's price immediately
+- A partial refund is issued for any unused time on the existing subscription
+
+:::info Upgrades must use same currency
+
+Customers are only able to upgrade to a product that has a price in their existing currency. Products without a price in their currency will not be presented as possible upgrades.
+
+:::
+
+### Defining upgrade paths
+
+1. Log in to the RevenueCat dashboard and select your project
+1. Go to the **Product catalog** and select the **Products** tab
+1. Scroll to your web billing provider, and click the **Subscription changes** button in the table header
+1. Click **Edit**
+1. In the first dropdown list, select the product you want customers to be able to upgrade from (source product)
+1. In the "can be upgraded to" list, select one or more products you want customers to be able to upgrade to (destination products)
+1. (Optional) add more rules for different products
+1. Click **Save rules**
+
+### Testing subscription upgrades
+
+Customers subscribed to a product that has upgrade paths defined will see a **Change subscription** option in the customer portal (see [Customer Portal](customer-portal)).
+
+To test this:
+
+1. Complete a sandbox purchase for a product that has upgrade paths defined
+1. Open the sandbox purchase receipt email
+1. Click the link to "update or manage your subscription" in the footer
+1. In the customer portal, select **Change subscription**
+1. Verify that the products shown are intended as upgrades
+1. Repeat the steps to test upgrades from any other products
