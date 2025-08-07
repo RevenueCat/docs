@@ -1161,8 +1161,6 @@ const sidebars = {
     supportCategory,
     supportResourcesCategory,
     supportLinksCategory,
-    supportResourcesCategory,
-    supportLinksCategory,
   ],
 };
 
