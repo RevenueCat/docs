@@ -325,7 +325,13 @@ const offeringsCategory = Category({
         SubCategory({
           label: "Virtual Currency FAQs",
           itemsPathPrefix: "faq/",
-          items: [Page({ slug: "balance-source-of-truth" })],
+          items: [
+            Page({ slug: "balance-source-of-truth" }),
+            Link({
+              label: "How to monetize your AI app with virtual currencies",
+              slug: "https://www.revenuecat.com/blog/engineering/how-to-monetize-your-ai-app-with-virtual-currencies/",
+            }),
+          ],
           index: {
             title: "Virtual Currency FAQs",
             link: "/faq",
