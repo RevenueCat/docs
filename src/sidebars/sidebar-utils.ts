@@ -22,6 +22,7 @@ export interface CategoryItem extends SidebarItemBase {
   type: "category";
   label: string;
   collapsible: boolean;
+  collapsed: boolean;
   customProps?: {
     iconName?: string;
     iconColor?: string;
@@ -48,6 +49,7 @@ export interface CategoryConfig {
   iconColor?: string;
   itemsPathPrefix?: string;
   items: any[];
+  collapsed?: boolean;
 }
 
 export interface SubCategoryConfig {
@@ -103,11 +105,13 @@ export const Category = ({
   iconColor,
   itemsPathPrefix,
   items,
+  collapsed,
 }: CategoryConfig): CategoryItem => {
   return {
     type: "category",
     label,
-    collapsible: false,
+    collapsible: true,
+    collapsed: collapsed ?? true,
     customProps: { iconName, iconColor },
     items: items.map((item) => buildItem(item, itemsPathPrefix)),
   };
@@ -123,6 +127,7 @@ export const SubCategory = ({
   type: "category",
   label,
   collapsible: true,
+  collapsed: true,
   ...(slug && { link: { type: "doc", id: slug } }),
   ...(index && {
     link: {
