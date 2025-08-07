@@ -1091,6 +1091,7 @@ const supportResourcesCategory = Category({
   iconName: "info",
   iconColor: "var(--rc-violet-primary)",
   label: "App Launch",
+  collapsed: false,
   itemsPathPrefix: "",
   items: [
     Link({
@@ -1108,6 +1109,7 @@ const supportLinksCategory = Category({
   iconName: "info",
   iconColor: "var(--text-primary)",
   label: "Links",
+  collapsed: false,
   itemsPathPrefix: "",
   items: [
     Link({
