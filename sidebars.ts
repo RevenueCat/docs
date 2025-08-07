@@ -239,16 +239,21 @@ const webSDKCategory = Category({
   ],
 });
 
-const offeringsCategory = Category({
-  iconName: "tag",
-  label: "Offerings & Entitlements",
+const entitlementsCategory = Category({
+  iconName: "locked",
+  label: "Entitlements",
   itemsPathPrefix: "",
   items: [
-    SubCategory({
-      label: "Entitlements",
-      slug: "getting-started/entitlements",
-      items: [Page({ slug: "customers/trusted-entitlements" })],
-    }),
+    Page({ slug: "getting-started/entitlements" }),
+    Page({ slug: "customers/trusted-entitlements" }),
+  ],
+});
+
+const offeringsCategory = Category({
+  iconName: "tag",
+  label: "Product Catalog",
+  itemsPathPrefix: "",
+  items: [
     SubCategory({
       label: "Offerings",
       slug: "offerings/offerings",
@@ -258,6 +263,27 @@ const offeringsCategory = Category({
           slug: "tools/offering-metadata",
           itemsPathPrefix: "tools/offering-metadata/",
           items: [Page({ slug: "offering-metadata-examples" })],
+        }),
+      ],
+    }),
+    SubCategory({
+      label: "Virtual Currencies",
+      slug: "offerings/virtual-currency",
+      itemsPathPrefix: "offerings/virtual-currency/",
+      items: [
+        Page({ slug: "subscriptions" }),
+        Page({ slug: "refunds" }),
+        Page({ slug: "events" }),
+        SubCategory({
+          label: "Virtual Currency FAQs",
+          itemsPathPrefix: "faq/",
+          items: [Page({ slug: "balance-source-of-truth" })],
+          index: {
+            title: "Virtual Currency FAQs",
+            link: "/faq",
+            description:
+              "Additional guidance for the Virtual Currency feature.",
+          },
         }),
       ],
     }),
@@ -320,27 +346,6 @@ const offeringsCategory = Category({
           index: {
             title: "Store Product Setup",
             link: "offerings/products/setup",
-          },
-        }),
-      ],
-    }),
-    SubCategory({
-      label: "Virtual Currency",
-      slug: "offerings/virtual-currency",
-      itemsPathPrefix: "offerings/virtual-currency/",
-      items: [
-        Page({ slug: "subscriptions" }),
-        Page({ slug: "refunds" }),
-        Page({ slug: "events" }),
-        SubCategory({
-          label: "Virtual Currency FAQs",
-          itemsPathPrefix: "faq/",
-          items: [Page({ slug: "balance-source-of-truth" })],
-          index: {
-            title: "Virtual Currency FAQs",
-            link: "/faq",
-            description:
-              "Additional guidance for the Virtual Currency feature.",
           },
         }),
       ],
@@ -579,6 +584,7 @@ const platformResourcesCategory = Category({
 
 const accountCategory = Category({
   iconName: "key",
+  iconColor: "var(--rc-red-primary)",
   label: "RevenueCat Account",
   itemsPathPrefix: "",
   items: [
@@ -1123,6 +1129,7 @@ const sidebars = {
     projectsCategory,
     mobileSDKCategory,
     webSDKCategory,
+    entitlementsCategory,
     offeringsCategory,
     customersCategory,
     paywallsCategory,
