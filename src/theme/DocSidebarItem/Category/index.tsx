@@ -162,30 +162,16 @@ export default function DocSidebarItemCategory({
 
   useAutoExpandActiveCategory({ isActive, collapsed, updateCollapsed });
 
-  useEffect(() => {
-    if (collapsible && autoCollapseCategories) {
-      setCollapsed(true);
-    }
-  }, [collapsible, autoCollapseCategories]);
-
   return (
-    <li
-      className={clsx(
-        "w-full",
-        {
-          "mb-2": isTopLevelCategory,
-        },
-        className,
-      )}
-    >
+    <li className={clsx("w-full", isTopLevelCategory && "mb-2", className)}>
       <div
         className={clsx(
           "flex items-center gap-2 px-3 py-1 rounded-md group/category relative w-[90%] ",
           isCurrentPage && `sidebar-${activeDoc?.sidebar} background`,
-          { "hover:!bg-transparent": isTopLevelCategory },
+          // { "hover:!bg-transparent": isTopLevelCategory }
         )}
       >
-        {href && collapsible && (
+        {collapsible && (
           <CollapseButton
             isCurrentPage={isCurrentPage}
             collapsed={collapsed}
@@ -206,10 +192,8 @@ export default function DocSidebarItemCategory({
         <Link
           className={clsx(
             "text-[14px] hover:no-underline relative w-full pl-2",
-            {
-              "font-bold text-[14px] pl-4 text-base-900 dark:text-base-300 mt-2":
-                isTopLevelCategory,
-            },
+            isTopLevelCategory &&
+              "font-bold text-[14px] text-base-900 dark:text-base-300",
             isCurrentPage
               ? `sidebar-${activeDoc?.sidebar}`
               : !isTopLevelCategory &&
@@ -238,7 +222,7 @@ export default function DocSidebarItemCategory({
           {...props}
         >
           {isTopLevelCategory && customProps?.iconName && (
-            <span className="absolute -left-2 -bottom-1">
+            <span className="absolute mt-1 -ml-1">
               <CatIcon
                 name={customProps.iconName as IconName}
                 size={16}
@@ -246,7 +230,7 @@ export default function DocSidebarItemCategory({
               />
             </span>
           )}
-          {label}
+          <span className={isTopLevelCategory ? "pl-5" : ""}>{label}</span>
         </Link>
       </div>
 
@@ -259,6 +243,9 @@ export default function DocSidebarItemCategory({
           level={level + 1}
         />
       </Collapsible>
+      {isTopLevelCategory && (
+        <div className="w-full h-px bg-base-200 dark:bg-base-800 mt-2" />
+      )}
     </li>
   );
 }
