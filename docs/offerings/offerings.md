@@ -1,5 +1,6 @@
 ---
 title: Offerings
+description: Group products together to display to users in a paywall
 sidebar_label: Offerings
 slug: overview
 ---
