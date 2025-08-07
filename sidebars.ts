@@ -604,8 +604,8 @@ const supportCategory = Category({
   label: "RevenueCat Support",
   itemsPathPrefix: "revenuecat-support/",
   items: [
-    Page({ slug: "general-troubleshooting" }),
     Page({ slug: "support-first-steps" }),
+    Page({ slug: "general-troubleshooting" }),
   ],
 });
 
