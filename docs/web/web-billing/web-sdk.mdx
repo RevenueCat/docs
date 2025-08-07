@@ -5,12 +5,20 @@ excerpt: Offer web subscriptions with Web Billing
 hidden: false
 ---
 
+:::warning Web SDK billing engine support
+
+- RevenueCat Web Billing: supported ✅
+- Stripe Billing: not supported ❌
+- Paddle Billing: not supported ❌
+
+:::
+
 RevenueCat's Web SDK allow you to easily sell subscriptions and other purchases in your web app. It utilizes Stripe as the payment gateway, so you'll need a Stripe account to connect with your RevenueCat account.
 
 Web Billing differs from external payment integrations in that it takes care of the purchase UI, the subscription management portal, and the recurring billing logic.
 
 :::info Stripe fees with Web Billing
-When using Web Billing, Stripe will still charge a [payment processing fee](https://stripe.com/pricing) for transactions, but you will not have to pay [Stripe Billing fees](https://stripe.com/billing/pricing).
+When using Web Billing, Stripe will still charge a [payment processing fee](https://stripe.com/pricing) for transactions, but you will not have to pay [Stripe Billing fees](https://stripe.com/billing/pricing). See [fee comparison](overview#fee-comparison)
 :::
 
 ## Installation
