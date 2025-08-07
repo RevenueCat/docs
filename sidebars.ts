@@ -37,7 +37,13 @@ const welcomeCategory = Category({
   iconColor: "var(--rc-blue-primary)",
   label: "Welcome",
   itemsPathPrefix: "",
-  items: [Page({ slug: "welcome/overview" })],
+  items: [
+    Page({ slug: "welcome/overview" }),
+    Link({
+      label: "SDK Quickstart",
+      slug: "/getting-started/quickstart",
+    }),
+  ],
   collapsed: false,
 });
 
