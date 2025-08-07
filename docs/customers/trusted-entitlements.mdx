@@ -7,7 +7,7 @@ hidden: false
 
 RevenueCat uses strong SSL to secure communications against interception. But the user is in control of the client device, and, while not an easy process, they can configure it to allow and execute [MiTM](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) attacks to grant themselves entitlements without actually paying you.
 
-To prevent this, in addition to SSL for secure communications, our native (iOS/Android) SDKs, together with our backend, will verify responses integrity by checking a cryptographic signature.
+**Trusted Entitlements** helps you detect and respond to such attacks. When enabled, our native (iOS/Android) SDKs work together with our backend to verify response integrity by checking a cryptographic signature on entitlement data. This verification result is then provided to your app, allowing _you_ to decide how to handle potentially compromised entitlements.
 
 :::info
 Trusted Entitlements is supported in iOS SDK version 4.25.0 and up, and Android SDK version 6.6.0 and up.
@@ -15,13 +15,26 @@ Trusted Entitlements is supported in iOS SDK version 4.25.0 and up, and Android 
 
 ## Setup
 
+### Default Behavior
+
+**For newer SDK versions (iOS 5.15.0+, Android 8.11.0+):**
+
+- Trusted Entitlements is **enabled by default** - the SDK will provide verification data
+- **However, verification results are informational only** - your app must check the verification result and decide how to handle unverified entitlements
+- No automatic blocking or rejection of unverified entitlements occurs
+
+**For older SDK versions (iOS 4.25.0-5.14.x, Android 6.6.0-8.10.x):**
+
+- Trusted Entitlements is **disabled by default** - no verification data is provided
+- You must explicitly enable it to get verification information
+
+:::warning Important
+**Enabling Trusted Entitlements does not automatically protect your app.** The SDK provides verification data, but it's your responsibility to check the verification result in your code and decide whether to grant access based on unverified entitlements.
+:::
+
 ### Configuration
 
-Trusted Entitlements is enabled by default and it doesn't have any impact on performance or behavior by default. You can disable it by doing the following:
-
-:::info
-Trusted Entitlements are disabled by default for versions under 5.15.0 in iOS and 8.11.0 in Android.
-:::
+**To disable Trusted Entitlements** (when it's enabled by default):
 
 import content1 from "@site/code_blocks/customers/trusted-entitlements.swift?raw";
 import content2 from "@site/code_blocks/customers/trusted-entitlements.m?raw";
@@ -63,6 +76,14 @@ import content7 from "@site/code_blocks/customers/trusted-entitlements.cs?raw";
     },
   ]}
 />
+
+**To enable Trusted Entitlements** (for older SDK versions where it's disabled by default):
+
+Use the same configuration as above, but set the mode to `EntitlementVerificationMode.informational` instead of `EntitlementVerificationMode.disabled`.
+
+:::info
+Trusted Entitlements has no impact on performance or behavior when enabled.
+:::
 
 ### Verification
 
