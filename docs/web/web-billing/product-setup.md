@@ -1,5 +1,5 @@
 ---
-title: Configure Web Billing
+title: Configure Products & Prices
 slug: product-setup
 excerpt: Setting up your web products and pricing structure
 hidden: false
