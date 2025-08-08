@@ -769,6 +769,18 @@ const chartsCategory = Category({
       },
     }),
     SubCategory({
+      label: "Paywalls",
+      items: [
+        Page({ slug: "charts/paywall-conversion-chart" }),
+        Page({ slug: "charts/paywall-ltv-chart" }),
+        Page({ slug: "charts/paywall-abandonment-chart" }),
+      ],
+      index: {
+        title: "Paywalls",
+        link: "dashboard-and-metrics/charts/paywalls",
+      },
+    }),
+    SubCategory({
       label: "Trials",
       items: [
         Page({ slug: "charts/active-trials-chart" }),
