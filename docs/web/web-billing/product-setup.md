@@ -171,7 +171,7 @@ Customers are only able to upgrade to a product that has a price in their existi
 
 ### Testing subscription upgrades
 
-Customers subscribed to a product that has upgrade paths defined will see a **Change subscription** option in the customer portal (see [Customer Portal](customer-portal)).
+Customers subscribed to a product that has upgrade paths defined will see a **Change subscription** option in the [customer portal](customer-portal).
 
 To test this:
 
