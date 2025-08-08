@@ -16,5 +16,5 @@ The guides in this section walk you through the following:
 - [Configuring multiple currencies for customers globally](multi-currency-support)
 - [Localizing the experience for customers with different languages](localization)
 - [Setting up anonymous purchases with mobile redemption, using Redemption Links](redemption-links)
-- [Collecting sales taax & VAT in your purchases with Stripe Tax support](tax)
+- [Collecting sales tax & VAT in your purchases with Stripe Tax support](tax)
 - [Passing custom metadata to tag and attribute purchases](custom-metadata)
