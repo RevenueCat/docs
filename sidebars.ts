@@ -881,6 +881,12 @@ const knownStoreIssuesCategory = Category({
       itemsPathPrefix: "xcode-26/",
       items: [Page({ slug: "app-crash-urlsessionconfiguration" })],
     }),
+    SubCategory({
+      label: "Play Billing Library",
+      slug: "play-billing-library",
+      itemsPathPrefix: "play-billing-library/",
+      items: [Page({ slug: "proxy-billing-activity-crash" })],
+    }),
   ],
 });
 
