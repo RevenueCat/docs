@@ -12,7 +12,7 @@ Web Billing products are created and managed within the RevenueCat Dashboard.
 On this page, you can learn how to:
 
 - [Create a product and configure its pricing](#creating-a-new-web-billing-product)
-- [Configuring upgrade & downgrade paths between products](#)
+- [Configure subscription changes](#configure-subscription-changes)
 
 ## Creating a new web billing product
 
