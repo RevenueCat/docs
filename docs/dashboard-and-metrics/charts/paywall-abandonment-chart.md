@@ -19,8 +19,8 @@ This chart is cohorted by the first paywall impression date for each customer–
 
 ### Definitions
 
-- Bounce: No initial conversion within 3 days and no purchase initiation (cancel event) within 3 days.
-- Purchase Cancellation: The customer initiated the purchase flow (cancel event) but did not complete payment within 3 days.
+- Bounce: The customer neither purchased nor initiated a purchase within 3 days.
+- Purchase Cancellation: The customer initiated the purchase flow but did not complete payment within 3 days.
 - Abandonment: Either a bounce or a purchase cancellation within 3 days.
 
 ### Cohorting and timeframe
