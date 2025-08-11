@@ -130,7 +130,9 @@ Once you've saved the product, it's only possible to add prices for new currenci
 
 ## Configure subscription changes
 
-:::info Upgrades support only
+:::warning Beta feature
+
+This feature is currently available as an invite-only beta. If you're interested in getting early access, [let us know](https://form.typeform.com/to/GWopiGbe)!
 
 Currently, it's only possible to enable upgrades between products. We're planning to release support for downgrades very soon.
 
