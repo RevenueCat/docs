@@ -20,6 +20,7 @@ enum Languages {
   svelte = "svelte",
   brightscript = "brightscript",
   json = "json",
+  kmp = "kmp",
 }
 
 // Define types for tab items
@@ -93,6 +94,8 @@ function getTabTitle(type: Languages): string {
       return "Java";
     case Languages.kotlin:
       return "Kotlin";
+    case Languages.kmp:
+      return "Kotlin MP";
     case Languages.javascript:
       return "JavaScript";
     case Languages.reactNative:
@@ -123,6 +126,8 @@ function getLanguageType(type: Languages): string {
     case Languages.java:
       return "java";
     case Languages.kotlin:
+      return "kotlin";
+    case Languages.kmp:
       return "kotlin";
     case Languages.javascript:
       return "jsx";
