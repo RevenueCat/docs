@@ -346,10 +346,8 @@ html[data-theme="dark"]
 }
 
 .tabs .tabs__item--active {
-  /* border-bottom: 0px solid var(--rc-blue-primary) !important; */
   background-color: var(--rc-blue-primary);
   color: white;
-  font-weight: 500;
   border-radius: 8px;
   border-bottom-width: 0px !important;
 }
