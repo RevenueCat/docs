@@ -35,15 +35,23 @@ import {
 const welcomeCategory = Category({
   iconName: "info",
   iconColor: "var(--rc-blue-primary)",
-  label: "RevenueCat Documentation",
+  label: "Welcome",
   itemsPathPrefix: "",
-  items: [Page({ slug: "welcome/overview" })],
+  items: [
+    Page({ slug: "welcome/overview" }),
+    Link({
+      label: "SDK Quickstart",
+      slug: "/getting-started/quickstart",
+    }),
+  ],
+  collapsed: false,
 });
 
 const projectsCategory = Category({
   iconName: "hammer",
   label: "Projects & Apps",
   itemsPathPrefix: "",
+  collapsed: false,
   items: [
     Page({ slug: "projects/projects-overview" }),
     Page({ slug: "projects/connect-a-store" }),
@@ -79,7 +87,8 @@ const projectsCategory = Category({
 
 const mobileSDKCategory = Category({
   iconName: "mobile",
-  label: "RevenueCat SDK",
+  iconColor: "var(--text-primary)",
+  label: "Mobile SDKs",
   itemsPathPrefix: "getting-started/",
   items: [
     Page({ slug: "quickstart" }),
@@ -119,7 +128,7 @@ const mobileSDKCategory = Category({
 const paywallsCategory = Category({
   iconName: "paywall",
   iconColor: "var(--rc-red-primary)",
-  label: "Paywalls",
+  label: "Build a Paywall",
   itemsPathPrefix: "",
   items: [
     SubCategory({
@@ -182,6 +191,7 @@ const paywallsCategory = Category({
 
 const webSDKCategory = Category({
   iconName: "desktop",
+  iconColor: "var(--text-primary)",
   label: "RevenueCat Web",
   itemsPathPrefix: "web/",
   items: [
@@ -229,16 +239,21 @@ const webSDKCategory = Category({
   ],
 });
 
-const offeringsCategory = Category({
-  iconName: "tag",
-  label: "Offerings & Entitlements",
+const entitlementsCategory = Category({
+  iconName: "locked",
+  label: "Entitlements",
   itemsPathPrefix: "",
   items: [
-    SubCategory({
-      label: "Entitlements",
-      slug: "getting-started/entitlements",
-      items: [Page({ slug: "customers/trusted-entitlements" })],
-    }),
+    Page({ slug: "getting-started/entitlements" }),
+    Page({ slug: "customers/trusted-entitlements" }),
+  ],
+});
+
+const offeringsCategory = Category({
+  iconName: "tag",
+  label: "Product Catalog",
+  itemsPathPrefix: "",
+  items: [
     SubCategory({
       label: "Offerings",
       slug: "offerings/offerings",
@@ -248,6 +263,33 @@ const offeringsCategory = Category({
           slug: "tools/offering-metadata",
           itemsPathPrefix: "tools/offering-metadata/",
           items: [Page({ slug: "offering-metadata-examples" })],
+        }),
+      ],
+    }),
+    SubCategory({
+      label: "Virtual Currencies",
+      slug: "offerings/virtual-currency",
+      itemsPathPrefix: "offerings/virtual-currency/",
+      items: [
+        Page({ slug: "subscriptions" }),
+        Page({ slug: "refunds" }),
+        Page({ slug: "events" }),
+        SubCategory({
+          label: "Virtual Currency FAQs",
+          itemsPathPrefix: "faq/",
+          items: [
+            Page({ slug: "balance-source-of-truth" }),
+            Link({
+              label: "How to monetize your AI app with virtual currencies",
+              slug: "https://www.revenuecat.com/blog/engineering/how-to-monetize-your-ai-app-with-virtual-currencies/",
+            }),
+          ],
+          index: {
+            title: "Virtual Currency FAQs",
+            link: "/faq",
+            description:
+              "Additional guidance for the Virtual Currency feature.",
+          },
         }),
       ],
     }),
@@ -314,34 +356,13 @@ const offeringsCategory = Category({
         }),
       ],
     }),
-    SubCategory({
-      label: "Virtual Currency",
-      slug: "offerings/virtual-currency",
-      itemsPathPrefix: "offerings/virtual-currency/",
-      items: [
-        Page({ slug: "subscriptions" }),
-        Page({ slug: "refunds" }),
-        Page({ slug: "events" }),
-        SubCategory({
-          label: "Virtual Currency FAQs",
-          itemsPathPrefix: "faq/",
-          items: [Page({ slug: "balance-source-of-truth" })],
-          index: {
-            title: "Virtual Currency FAQs",
-            link: "/faq",
-            description:
-              "Additional guidance for the Virtual Currency feature.",
-          },
-        }),
-      ],
-    }),
     Page({ slug: "offerings/troubleshooting" }),
   ],
 });
 
 const customersCategory = Category({
   iconName: "person",
-  label: "Customers",
+  label: "Manage Customers",
   itemsPathPrefix: "",
   items: [
     SubCategory({
@@ -403,8 +424,8 @@ const customersCategory = Category({
 
 const testCategory = Category({
   iconName: "help",
-  iconColor: "var(--rc-red-primary)",
-  label: "Testing",
+  iconColor: "var(--text-primary)",
+  label: "Test Your App",
   itemsPathPrefix: "",
   items: [
     SubCategory({
@@ -433,7 +454,7 @@ const testCategory = Category({
 const launchCategory = Category({
   iconName: "open-external",
   iconColor: "var(--rc-violet-primary)",
-  label: "App Launch",
+  label: "Launch Your App",
   itemsPathPrefix: "",
   items: [
     Page({ slug: "test-and-launch/launch-checklist" }),
@@ -569,6 +590,7 @@ const platformResourcesCategory = Category({
 
 const accountCategory = Category({
   iconName: "key",
+  iconColor: "var(--rc-red-primary)",
   label: "RevenueCat Account",
   itemsPathPrefix: "",
   items: [
@@ -588,8 +610,8 @@ const supportCategory = Category({
   label: "RevenueCat Support",
   itemsPathPrefix: "revenuecat-support/",
   items: [
-    Page({ slug: "general-troubleshooting" }),
     Page({ slug: "support-first-steps" }),
+    Page({ slug: "general-troubleshooting" }),
   ],
 });
 
@@ -664,13 +686,23 @@ const metricsCategory = Category({
   iconColor: "var(--rc-green-primary)",
   label: "Metrics",
   itemsPathPrefix: "dashboard-and-metrics/",
+  collapsed: false,
   items: [
     Page({ slug: "overview" }),
     Page({ slug: "taxes-and-commissions" }),
-    Page({ slug: "performance-summaries" }),
-    Page({ slug: "anomaly-detection-notifications" }),
     Page({ slug: "display-currency" }),
     Page({ slug: "reconciling-with-financial-reports" }),
+  ],
+});
+
+const metricsAlertsCategory = Category({
+  iconName: "alert-prominent",
+  iconColor: "var(--rc-yellow-primary)",
+  label: "Emails & Alerts",
+  itemsPathPrefix: "dashboard-and-metrics/",
+  items: [
+    Page({ slug: "performance-summaries" }),
+    Page({ slug: "anomaly-detection-notifications" }),
   ],
 });
 
@@ -679,6 +711,7 @@ const chartsCategory = Category({
   iconColor: "var(--rc-green-primary)",
   label: "Charts",
   itemsPathPrefix: "dashboard-and-metrics/",
+  collapsed: false,
   items: [
     Page({ slug: "charts" }),
     SubCategory({
@@ -805,7 +838,7 @@ const dataExportCategory = Category({
 const experimentsCategory = Category({
   iconName: "experiment",
   iconColor: "var(--rc-orange-primary)",
-  label: "Experiments",
+  label: "Run an Experiment",
   itemsPathPrefix: "tools/",
   items: [
     Page({ slug: "experiments-v1" }),
@@ -848,6 +881,12 @@ const knownStoreIssuesCategory = Category({
       itemsPathPrefix: "xcode-26/",
       items: [Page({ slug: "app-crash-urlsessionconfiguration" })],
     }),
+    SubCategory({
+      label: "Play Billing Library",
+      slug: "play-billing-library",
+      itemsPathPrefix: "play-billing-library/",
+      items: [Page({ slug: "proxy-billing-activity-crash" })],
+    }),
   ],
 });
 
@@ -873,7 +912,7 @@ const aiToolsCategory = Category({
 const chartsDummyCategory = Category({
   iconName: "chart-bar",
   iconColor: "var(--rc-green-primary)",
-  label: "Charts & Metrics",
+  label: "View Charts & Metrics",
   itemsPathPrefix: "",
   items: [
     Link({
@@ -886,7 +925,7 @@ const chartsDummyCategory = Category({
 
 const integrationsDummyCategory = Category({
   iconName: "integrations",
-  label: "Events & Integrations Reference",
+  label: "Configure Integrations",
   itemsPathPrefix: "",
   items: [
     Link({ label: "Events", slug: "/integrations/integrations" }),
@@ -910,6 +949,7 @@ const webhooksCategory = Category({
   iconName: "notification",
   label: "Webhooks",
   itemsPathPrefix: "",
+  collapsed: false,
   items: [
     Page({ slug: "integrations/webhooks" }),
     Page({ slug: "integrations/webhooks/event-flows" }),
@@ -987,6 +1027,7 @@ const integrationsMoreCategory = Category({
   iconName: "sparkle",
   label: "More",
   itemsPathPrefix: "",
+  collapsed: false,
   items: [
     Link({
       label: "Scheduled Data Exports",
@@ -1044,6 +1085,7 @@ const playbooksOtherResourcesCategory = Category({
   iconColor: "black",
   label: "Other Resources",
   itemsPathPrefix: "",
+  collapsed: false,
   items: [
     Page({ slug: "migrating-to-revenuecat/swiftystorekit" }),
     Link({
@@ -1061,6 +1103,7 @@ const supportResourcesCategory = Category({
   iconName: "info",
   iconColor: "var(--rc-violet-primary)",
   label: "App Launch",
+  collapsed: false,
   itemsPathPrefix: "",
   items: [
     Link({
@@ -1078,6 +1121,7 @@ const supportLinksCategory = Category({
   iconName: "info",
   iconColor: "var(--text-primary)",
   label: "Links",
+  collapsed: false,
   itemsPathPrefix: "",
   items: [
     Link({
@@ -1099,21 +1143,27 @@ const sidebars = {
     projectsCategory,
     mobileSDKCategory,
     webSDKCategory,
+    entitlementsCategory,
     offeringsCategory,
-    paywallsCategory,
     customersCategory,
-    chartsDummyCategory,
-    experimentsCategory,
+    paywallsCategory,
     testCategory,
     launchCategory,
+    experimentsCategory,
+    chartsDummyCategory,
     integrationsDummyCategory,
     platformResourcesCategory,
-    accountCategory,
     aiToolsCategory,
     knownStoreIssuesCategory,
     sdkMigrationCategory,
+    accountCategory,
   ],
-  dataSidebar: [metricsCategory, chartsCategory, dataExportCategory],
+  dataSidebar: [
+    metricsCategory,
+    chartsCategory,
+    metricsAlertsCategory,
+    dataExportCategory,
+  ],
   integrationsSidebar: [
     eventsCategory,
     webhooksCategory,

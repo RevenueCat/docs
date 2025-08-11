@@ -1,0 +1,29 @@
+---
+title: ProxyBillingActivity Crash
+sidebar_label: ProxyBillingActivity Crash
+---
+
+## Issue Description
+
+You may see a `NullPointerException` in your crash reporting tool (e.g. Crashlytics, Sentry) originating from `com.android.billingclient.api.ProxyBillingActivity`, with a message saying:
+
+> Attempt to invoke virtual method 'android.content.IntentSender android.app.PendingIntent.getIntentSender()' on a null object reference
+
+The `ProxyBillingActivity` is added to your app by the Google Play Billing Library, which is needed by RevenueCat to facilitate subscriptions and in-app purchases on Google Play. The Play Billing Library starts this Activity when the purchase flow is launched.
+
+The crash is caused by the `ProxyBillingActivity` being started without the right arguments. However, the Play Billing Library will always provide the correct arguments. Therefore, there is reason to believe this crash is caused by some form of automated testing, possibly including the Play Store's [pre-launch report](https://support.google.com/googleplay/android-developer/answer/9842757?hl=en). Other signals pointing to automated testing are the fact that this crash has been seen on app builds that were not released to production yet, and the devices this crash is observed on (see below).
+
+## Affected Versions
+
+All versions. Typically seen on specific devices, such as:
+
+- LG Nexus 5X running Android 13 (officially never received updates past Android 8.1)
+- OnePlus 8 Pro (rooted)
+
+## Symptoms
+
+None, other than a crash report in your crash reporting tool. There's no evidence that this crash occurs for real users in production.
+
+## Workarounds
+
+None, other than silencing / ignoring the crash report in your crash reporting tool.

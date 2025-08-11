@@ -1,5 +1,6 @@
 ---
-title: Configure products & prices
+title: Configure Products & Prices
+
 slug: product-setup
 excerpt: Setting up your web products, pricing structure and upgrade paths
 hidden: false
