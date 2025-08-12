@@ -61,12 +61,6 @@ In sandbox mode, free trial periods are accelerated to enable easier testing. Se
 
 #### Introductory period
 
-:::warning Beta feature
-
-This feature is currently available as an invite-only beta. If you're interested in getting early access, [let us know](https://form.typeform.com/to/Z7x5tQ5N)!
-
-:::
-
 Applies a discounted price for a limited time at the beginning of a subscription (AKA introductory offer). Introductory periods are presented to customers in the product selection page (for web purchase links) and the checkout. They automatically renew to the base subscription price at the end of the period.
 
 Introductory periods are always scheduled after a free trial, when both are enabled.
@@ -84,8 +78,8 @@ The available billing cycles for introductory periods depend on the length of th
 
 :::
 
-:::info Accelerated introductory periods in sandbox
-In sandbox mode, introductory periods are set at 5 mins, regardless of configured length, to enable easier testing. See [Sandbox testing](/web/web-billing/testing#subscription-schedules-in-sandbox) for more information.
+:::info Accelerated introductory billing cycles in sandbox
+In sandbox mode, introductory billing cycles are set at 5 mins, regardless of configured length, to enable easier testing. See [Sandbox testing](/web/web-billing/testing#subscription-schedules-in-sandbox) for more information.
 :::
 
 #### Trial / introductory period eligibility
