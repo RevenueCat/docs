@@ -1,6 +1,8 @@
 ---
-title: Offering Targeting
+title: Targeting
+description: Create rules to serve distinct audiences their own Offerings.
 slug: targeting
+sidebar_label: Overview
 hidden: false
 ---
 
