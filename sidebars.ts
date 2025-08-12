@@ -294,15 +294,6 @@ const offeringsCategory = Category({
       ],
     }),
     SubCategory({
-      label: "Targeting",
-      slug: "tools/targeting",
-      itemsPathPrefix: "tools/targeting/",
-      items: [
-        Page({ slug: "placements" }),
-        Page({ slug: "custom-attributes" }),
-      ],
-    }),
-    SubCategory({
       label: "Product Configuration",
       slug: "offerings/products-overview",
       itemsPathPrefix: "",
@@ -357,6 +348,17 @@ const offeringsCategory = Category({
       ],
     }),
     Page({ slug: "offerings/troubleshooting" }),
+  ],
+});
+
+const targetingCategory = Category({
+  iconName: "target",
+  label: "Targeting",
+  itemsPathPrefix: "",
+  items: [
+    Page({ slug: "tools/targeting" }),
+    Page({ slug: "tools/targeting/placements" }),
+    Page({ slug: "tools/targeting/custom-attributes" }),
   ],
 });
 
@@ -1149,6 +1151,7 @@ const sidebars = {
     paywallsCategory,
     testCategory,
     launchCategory,
+    targetingCategory,
     experimentsCategory,
     chartsDummyCategory,
     integrationsDummyCategory,
