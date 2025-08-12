@@ -14,4 +14,4 @@ struct App: View {
                 PaywallView() 
             }
     }
-}   
+} 
