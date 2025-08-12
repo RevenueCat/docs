@@ -1,12 +1,12 @@
 ---
 title: Paywall LTV Chart
 slug: paywall-ltv-chart
-hidden: false
+hidden: true
 ---
 
-The Paywall LTV chart measures the realized lifetime value generated from customers who had an initial conversion within 3 days of their first paywall impression. It lets you view total revenue, revenue net of taxes, or proceeds, and also average LTV per viewer.
+The Paywall LTV chart measures the realized lifetime value generated from purchases that derived from an initial conversion within 3 days of a customer's first impression on a given paywall. It lets you view total revenue, revenue net of taxes, or proceeds, and also average LTV per viewer.
 
-This chart is cohorted by the first paywall impression date for each customer–paywall pair. It tracks revenue from initial conversions that occurred within 3 days following the first paywall impression and then continues to attribute all subsequent revenue from those conversions indefinitely.
+This chart is cohorted by the first paywall impression date for each paywall that a customer sees, and is segmented by paywall by default. It tracks revenue from initial conversions that occurred within 3 days following the first paywall impression and then continues to attribute all subsequent revenue from those conversions indefinitely.
 
 ### Available settings
 

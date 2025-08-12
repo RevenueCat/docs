@@ -1,12 +1,12 @@
 ---
 title: Paywall Conversion Chart
 slug: paywall-conversion-chart
-hidden: false
+hidden: true
 ---
 
-The Paywall Conversion chart measures how effectively your paywalls convert viewers into customers. It supports multiple conversion types so you can analyze initial conversion, paid conversion, trial starts, and trial conversions.
+The Paywall Conversion chart measures how effectively your paywalls convert viewers into conversions. It supports multiple conversion types so you can analyze initial conversion, paid conversion, trial starts, and trial conversions.
 
-This chart is cohorted by the first paywall impression date for each customer–paywall pair. It evaluates initial conversions that occur within 3 days of a customer's first paywall impression. For customers who do convert within that 3‑day window, the chart then attributes downstream outcomes like paid conversion and trial conversion even if those happen later.
+This chart is cohorted by the first paywall impression date for each paywall that a customer sees, and is segmented by paywall by default. It evaluates initial conversions that occur within 3 days of a customer's first paywall impression. For customers who do convert within that 3‑day window, the chart then attributes downstream outcomes like paid conversion and trial conversion even if those happen later.
 
 ### Available settings
 

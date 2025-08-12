@@ -1,12 +1,12 @@
 ---
 title: Paywall Abandonment Chart
 slug: paywall-abandonment-chart
-hidden: false
+hidden: true
 ---
 
 The Paywall Abandonment chart measures the proportion of paywall impressions that did not lead to an initial conversion within 3 days of the first paywall impression. It provides both an overall abandonment rate and a breakdown into bounces and purchase cancellations.
 
-This chart is cohorted by the first paywall impression date for each customer–paywall pair.
+This chart is cohorted by the first paywall impression date for each paywall that a customer sees, and is segmented by paywall by default.
 
 ### Available settings
 
@@ -21,11 +21,11 @@ This chart is cohorted by the first paywall impression date for each customer–
 
 - Bounce: The customer neither purchased nor initiated a purchase within 3 days.
 - Purchase Cancellation: The customer initiated the purchase flow but did not complete payment within 3 days.
-- Abandonment: Either a bounce or a purchase cancellation within 3 days.
+- Abandonment: The sum of all bounces and purchase cancellations.
 
 ### Cohorting and timeframe
 
-Customers are grouped by the date of their first paywall impression for a given paywall. We evaluate outcomes that occur within the first 3 complete days after that impression to determine bounce, cancellation, or initial conversion. Customers who have an initial conversion within 3 days are not considered abandoned, even if their paid conversion occurs later (e.g., trial converts to paid on day 9).
+Customers are grouped by the date of their first paywall impression for a given paywall. We evaluate outcomes that occur within the first 3 complete days after that impression to determine bounce, cancellation, or initial conversion. Customers who have an initial conversion within 3 days are not considered abandoned, even if their paid conversion occurs later (e.g., trial converts to paid on day 9), or does not occur at all (e.g., trial does not convert to paid).
 
 ## Calculation
 
