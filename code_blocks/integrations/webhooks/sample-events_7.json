@@ -34,8 +34,8 @@
     },
     "store" : "APP_STORE",
     "takehome_percentage" : 0.7,
-    "tax_percentage": null,
-    "commission_percentage": null,
+    "tax_percentage": 0.0,
+    "commission_percentage": 0.3,
     "type" : "BILLING_ISSUE",
     "id" : "12345678-1234-1234-1234-12345678912"
   },
