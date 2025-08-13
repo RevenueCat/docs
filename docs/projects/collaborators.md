@@ -57,8 +57,6 @@ All roles and permission levels are now available on every plan, giving teams th
 
 ❌ This role cannot generate Secret API keys. See [secret key permission levels](/projects/authentication) for details.
 
-❌ This role cannot add App or Web configurations.
-
 ---
 
 #### **Support**
