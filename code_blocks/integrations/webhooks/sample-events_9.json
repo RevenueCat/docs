@@ -37,7 +37,7 @@
     "store" : "APP_STORE",
     "takehome_percentage" : 0.7,
     "tax_percentage": 0.1109,
-    "commission_percentage": 0.15,
+    "commission_percentage": 0.3,
     "type" : "CANCELLATION",
     "id" : "12345678-1234-1234-1234-12345678912"
   },
