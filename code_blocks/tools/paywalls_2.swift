@@ -11,7 +11,7 @@ struct App: View {
                 return customerInfo.entitlements.active.keys.contains("pro")
             } purchaseCompleted: { customerInfo in
                 print("Purchase completed: \(customerInfo.entitlements)")
-            } restoreCompleted: {
+            } restoreCompleted: { customerInfo in
                 // Paywall will be dismissed automatically if "pro" is now active.
                 print("Purchases restored: \(customerInfo.entitlements)")
             }

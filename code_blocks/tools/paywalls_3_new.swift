@@ -10,7 +10,8 @@ struct App: View {
     var body: some View {
         ContentView()
             .sheet(isPresented: self.$displayPaywall) {
-                PaywallView()
+                // We handle scroll views for you, no need to wrap this in a ScrollView
+                PaywallView() 
             }
     }
 } 
