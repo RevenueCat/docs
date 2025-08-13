@@ -13,11 +13,19 @@ RevenueCat does not require server notifications from the App Store, however doi
 [Apple server-to-server notifications](https://developer.apple.com/documentation/appstoreservernotifications/enabling-app-store-server-notifications) should be set up in App Store Connect with the URL provided in the RevenueCat dashboard.
 
 1. Navigate to your iOS app under **Apps & providers** in the RevenueCat dashboard.
-2. Scroll to the **Apple Server to Server notification settings** section, and copy the entire URL provided under **Apple Server Notification URL**.
-   ![Server to Server Notification URL](/docs_images/platform-resources/apple/apple-server-to-server-url.png)
-3. Log in to **[App Store Connect](https://appstoreconnect.apple.com/)** and select your app.
-4. Under the **App Information > App Store Server Notifications** section, paste the entire URL from RevenueCat in both the **Production Server URL** field and the **Sandbox Server URL** field.
-5. When integrating your server with Apple's server to server notifications, you can use either _Version 1_ or _Version 2_, but _Version 2_ notifications are recommended to use features such as [auto-detecting price changes](/subscription-guidance/price-changes).
+2. Scroll to the **Apple Server to Server notification settings** section, and click the **Apply in App Store Connect** button:
+
+![Server to Server Notification URL](/docs_images/platform-resources/apple/apple-server-to-server-url.png)
+
+This will automatically apply the URL in App Store Connect to both the Production and Sandbox environments.
+
+### Manual setup
+
+Alternatively, you can manually copy the entire URL provided under **Apple Server Notification URL**.
+
+1. Log in to **[App Store Connect](https://appstoreconnect.apple.com/)** and select your app.
+2. Under the **App Information > App Store Server Notifications** section, paste the entire URL from RevenueCat in both the **Production Server URL** field and the **Sandbox Server URL** field.
+3. When integrating your server with Apple's server to server notifications, you can use either _Version 1_ or _Version 2_, but _Version 2_ notifications are recommended to use features such as [auto-detecting price changes](/subscription-guidance/price-changes).
 
 ## Tracking new purchases using Apple App Store Server Notifications
 
