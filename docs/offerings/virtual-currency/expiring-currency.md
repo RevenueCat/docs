@@ -58,4 +58,4 @@ If a product change is set to occur immediately, all remaining currency for that
 
 ### Clear Communication
 
-Always let customers know when their currency will expire by providing clear expiration dates and times. Communicate this information early and often, and reinforce it with multiple reminders leading up to the expiration to ensure customers have every opportunity to use their balance.
+Always let customers know when their currency will expire by providing clear expiration dates and times. Communicate this information early and often, and reinforce it with multiple reminders leading up to the expiration to ensure customers have every opportunity to use their balance. Additionally, consider informing the customer when the currency has expired so they know when their currency has expired.
