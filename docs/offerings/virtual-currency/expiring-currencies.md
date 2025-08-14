@@ -1,7 +1,7 @@
 ---
-title: Expiring Currency
-sidebar_label: Expiring Currency
-slug: expiring-currency
+title: Expiring Currencies
+sidebar_label: Expiring Currencies
+slug: expiring-currencies
 hidden: true
 ---
 
@@ -11,28 +11,28 @@ RevenueCat provides a built-in expiration functionality for virtual currencies. 
 
 Once configured, RevenueCat automatically handles currency expiration:
 
-1. **Automatic Tracking**: RevenueCat tracks when each currency grant was made and calculates expiration times
-2. **Scheduled Processing**: Expired currency is automatically removed from customer balances
-3. **Audit Trail**: All expiration events are logged in the customer history
+- **Automatic Tracking**: RevenueCat tracks when each currency grant was made and calculates expiration times
+- **Scheduled Processing**: Expired currency is automatically removed from customer balances
+- **Audit Trail**: All expiration events are logged in the customer history
 
 ## Configuration
 
-1. **Navigate to Virtual Currencies**: Go to your project's "Product catalog" → "Virtual currencies" section in the RevenueCat dashboard.
+1. **Navigate to Virtual currencies**: Go to your project's "Product catalog" → "Virtual currencies" section in the RevenueCat dashboard.
 
-2. **Create or Edit Currency**: Either create a new virtual currency or edit an existing one.
+2. **Create or edit currency**: Either create a new virtual currency or edit an existing one.
 
-3. **Configure Expiration**: In the currency settings, you'll find an "Auto-expire at the end of billing cycle" toggle where you can enable the granted currency to expire at the end of the billing period.
+3. **Configure expiration**: In the currency settings, you'll find an "Auto-expire at the end of billing cycle" toggle where you can enable the granted currency to expire at the end of the billing period.
 
 ![](/docs_images/virtual-currency/expire-currency.png)
 
 Expiration is currently linked to a product’s billing period and can only be configured in the following ways:
 
 - **Trials**: Currency expires when the trial period ends
-- **Normal Billing Periods**: Currency expires when the subscription billing cycle ends
+- **Normal billing periods**: Currency expires when the subscription billing cycle ends
 
 If the toggle is enabled, it applies to both trials and normal billing periods.
 
-4. **Save Configuration**: Select "Save" to apply the expiration rule.
+4. **Save configuration**: Select "Save" to apply the expiration rule.
 
 ## Customer History
 
@@ -44,13 +44,13 @@ All expiration events appear in the customer timeline so you can:
 - Track how much currency was deducted by the expiration
 - Understand expiration in relation to other activities
 
-## Product change behavior
+## Product Change Behavior
 
-### Deferred downgrades
+### Deferred Downgrades
 
 Deferred downgrades occur when a subscription change is scheduled to take effect at the end of the current billing period. For expiring currencies, this means the original expiration date remains in effect, and no immediate changes occur. The currency will continue to follow the schedule tied to the current subscription until the downgrade takes effect, ensuring a seamless transition without altering existing balances.
 
-### Immediate upgrades
+### Immediate Upgrades
 
 If a product change is set to occur immediately, all remaining currency for that product will expire at once. When a product change triggers a new expiration date, such as during an immediate upgrade, the expiration date for any existing currency tied to the old product is adjusted accordingly. In this case, the old currency’s expiration date is moved up to match the new schedule, which may result in it expiring right away. This ensures that currency expirations remain consistent with the active product’s settings and prevents overlaps between old and new product currencies.
 
