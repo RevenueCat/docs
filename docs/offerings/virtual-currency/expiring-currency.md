@@ -41,7 +41,7 @@ If the toggle is enabled, it applies to both trials and normal billing periods.
 All expiration events appear in the customer timeline so you can:
 
 - See exactly when currency expired
-- Track how much currency was lost
+- Track how much currency was deducted by the expiration
 - Understand expiration in relation to other activities
 
 ## Product change behavior
