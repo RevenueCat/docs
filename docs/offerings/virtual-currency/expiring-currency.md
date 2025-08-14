@@ -5,7 +5,7 @@ slug: expiring-currency
 hidden: true
 ---
 
-Expiring currencies are unused virtual currencies that are removed from a customer's balance after a period of time. They're ideal for creating urgency, running seasonal campaigns, and encouraging timely engagement. They can also support business logic where unused currencies don’t roll over, similar to a reset.
+Expiring currencies are portions of a customer's balance that are removed after a period of time. They're ideal for creating urgency, running seasonal campaigns, and encouraging timely engagement. They can also support business logic where unused currencies don’t roll over, similar to a reset.
 
 RevenueCat provides a built-in expiration functionality for virtual currencies. You can configure this directly in the dashboard and RevenueCat will automatically handle currency expiration without requiring a custom backend implementation.
 
