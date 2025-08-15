@@ -78,11 +78,17 @@ You can [listen for changes to the OneSignal Id through their SDK](https://docum
 
 import onesignalV11Content from "@site/code_blocks/integrations/third-party-integrations/onesignal_14.swift?raw";
 import onesignalV11ContentSwiftUi from "@site/code_blocks/integrations/third-party-integrations/onesignal_15.swift?raw";
+import onesignalV11ContentKotlin from "@site/code_blocks/integrations/third-party-integrations/onesignal_14.kt?raw";
+import onesignalV11ContentReact from "@site/code_blocks/integrations/third-party-integrations/onesignal_14.ts?raw";
+import onesignalV11ContentFlutter from "@site/code_blocks/integrations/third-party-integrations/onesignal_14.dart?raw";
 
 <RCCodeBlock
   tabs={[
     { type: "swift", content: onesignalV11Content, name: "UIKit" },
     { type: "swift", content: onesignalV11ContentSwiftUi, name: "SwiftUI" },
+    { type: "kotlin", content: onesignalV11ContentKotlin },
+    { type: "ts", title: "React Native", content: onesignalV11ContentReact },
+    { type: "dart", title: "Flutter", content: onesignalV11ContentFlutter },
   ]}
 />
 
@@ -99,8 +105,18 @@ This property can be set manually, like any other [Attribute](/customers/custome
 You can listen for changes to the OneSignal Id through their SDK, and send the value to RevenueCat. If you already have OneSignal set up, you should make sure that you're also sending the OneSignal Id for users that are updating to the latest version of your app.
 
 import onesignalV9Content from "@site/code_blocks/integrations/third-party-integrations/onesignal_1.swift?raw";
+import onesignalV9ContentKotlin from "@site/code_blocks/integrations/third-party-integrations/onesignal_1.kt?raw";
+import onesignalV9ContentReact from "@site/code_blocks/integrations/third-party-integrations/onesignal_1.ts?raw";
+import onesignalV9ContentFlutter from "@site/code_blocks/integrations/third-party-integrations/onesignal_1.dart?raw";
 
-<RCCodeBlock tabs={[{ type: "swift", content: onesignalV9Content }]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: onesignalV9Content },
+    { type: "kotlin", content: onesignalV9ContentKotlin },
+    { type: "ts", title: "React Native", content: onesignalV9ContentReact },
+    { type: "dart", title: "Flutter", content: onesignalV9ContentFlutter },
+  ]}
+/>
 
 ## 2. Send RevenueCat events into OneSignal
 
