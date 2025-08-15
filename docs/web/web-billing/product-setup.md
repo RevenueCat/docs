@@ -157,6 +157,8 @@ Customers are only able to upgrade to a product that has a price in their existi
 
 ### Defining upgrade paths
 
+![Subscription changes link](/docs_images/web/web-billing/subscription-changes-link.png)
+
 1. Log in to the RevenueCat dashboard and select your project
 1. Go to the **Product catalog** and select the **Products** tab
 1. Scroll to your web billing provider, and click the **Subscription changes** button in the table header
