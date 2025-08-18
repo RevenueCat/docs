@@ -44,6 +44,20 @@ You can add the MCP server to Cursor by clicking the button below:
   config={{url: "https://mcp.revenuecat.ai/mcp"}} 
 />
 
+Or you can also add it manually by adding the following to your `mcp.json` file:
+
+```json
+{ 
+    "servers": {
+        "revenuecat": {
+            "url": "https://mcp.revenuecat.ai/mcp",
+            "headers": {
+                "Authorization": "Bearer {your API v2 token}"
+            }
+        }
+    }
+}
+```
 
 ### Using with VS Code Copilot
 
