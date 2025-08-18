@@ -6,6 +6,8 @@ excerpt: Configure RevenueCat MCP Server for cloud or local deployment
 hidden: false
 ---
 
+import AddToCursor from '@site/src/components/AddToCursor';
+
 ## Prerequisites
 
 - RevenueCat project with API v2 access
@@ -26,19 +28,22 @@ hidden: false
 
 ## Cloud MCP Server Setup
 
-### Using with MCP Inspector
+### Using with Claude Code
 
-For testing and development:
-
-```bash
-npx @modelcontextprotocol/inspector@latest
+Add the server via the `claude` CLI command:
+```
+claude mcp add --transport http revenuecat https://mcp.revenuecat.ai/mcp --header "Authorization: Bearer YOUR_API_V2_SECRET_KEY"
 ```
 
-Configure the inspector with:
+### Using with Cursor
 
-- **Transport Type**: Streamable HTTP
-- **URL**: `https://mcp.revenuecat.ai/mcp`
-- **Authentication**: Bearer Token with your RevenueCat API v2 secret key
+You can add the MCP server to Cursor by clicking the button below:
+
+<AddToCursor 
+  name="revenuecat" 
+  config={{url: "https://mcp.revenuecat.ai/mcp"}} 
+/>
+
 
 ### Using with VS Code Copilot
 
@@ -54,13 +59,6 @@ Add to your Visual Studio Code `mcp.json`:
 	},
 	"inputs": []
 }
-```
-
-### Using with Claude Code
-
-Add the server via the `claude` CLI command:
-```
-claude mcp add --transport http revenuecat https://mcp.revenuecat.ai/mcp --header "Authorization: Bearer YOUR_API_V2_SECRET_KEY"
 ```
 
 ### Using with Claude Desktop
@@ -85,6 +83,21 @@ Add to your Claude Desktop configuration:
     }
 }
 ```
+
+### Using with MCP Inspector
+
+For testing and development:
+
+```bash
+npx @modelcontextprotocol/inspector@latest
+```
+
+Configure the inspector with:
+
+- **Transport Type**: Streamable HTTP
+- **URL**: `https://mcp.revenuecat.ai/mcp`
+- **Authentication**: Bearer Token with your RevenueCat API v2 secret key
+
 
 ### OAuth Authentication Support
 
