@@ -196,7 +196,7 @@ const webSDKCategory = Category({
   itemsPathPrefix: "web/",
   items: [
     SubCategory({
-      label: "RevenueCat Web Overview",
+      label: "Integrate RevenueCat Web",
       slug: "web-billing/overview",
       itemsPathPrefix: "web-billing/",
       items: [
