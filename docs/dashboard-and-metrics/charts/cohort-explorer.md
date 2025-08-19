@@ -16,7 +16,7 @@ The Cohort Explorer supports three different cohort definitions:
 
 1. **New Customers**: The count of new customers first seen by RevenueCat in a given period, cohorted by their First Seen Date.
 2. **Initial Conversions**: The count of customers first converting to any product (including paid or unpaid, and subscription or one-time purchase) in a given period, cohorted by their Initial Conversion Date.
-3. **New Paying Customers**: The count of customers making their first payment in a given period, cohorted by their First Purchase Date.
+3. **New Paying Customers**: The count of customers making their first payment in a given period, cohorted by their First Purchase Date (not including free trials or transactions later refunded).
 
 :::info Comparing New Paying Customers with Subscriptions
 Please keep in mind that a the count of New Paying Customers and Subscriptions started in a given period will likely differ, since one customer may have multiple subscriptions over their lifetime, or may convert to paid through a one-time purchase instead of a subscription.

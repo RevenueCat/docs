@@ -123,7 +123,7 @@ See the table below for all filters you can apply to your lists.
 | Email                              | String       | The `$email` [Attribute](/customers/customer-attributes) for the customer.                                                 |
 | Experiment Id                      | String       | The unique ID of the experiment that the customer was enrolled in (if applicable).                                         |
 | Experiment Variant                 | String       | The variant in the experiment that the customer was enrolled in (if applicable).                                           |
-| First Purchase Date                | Date         | The date of the customer's first transaction.                                                                              |
+| First Purchase Date                | Date         | The date of the customer's first transaction (including free trials).                                                      |
 | First Seen Date                    | Date         | The date the customer was first seen by RevenueCat.                                                                        |
 | GPS Ad Id                          | String       | The `$gpsAdId` [](/customers/customer-attributes#device-identifiers) for the customer.                                     |
 | Granted Entitlement via RevenueCat | Bool         | Whether the customer has been [granted an Entitlement](/dashboard-and-metrics/customer-history/promotionals) or not.       |
