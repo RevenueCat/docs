@@ -1471,6 +1471,119 @@ paths:
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>,
         <code>customer_information:subscriptions:read_write</code>, <code>customer_information:purchases:read_write</code>.'
+  /projects/{project_id}/customers/blocked_customers/{customer_id}:
+    post:
+      summary: Add a customer to the block list
+      operationId: block-customer
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:customers:read_write
+      x-release-status: beta
+      tags:
+      - Customer
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: customer_id
+        in: path
+        description: ID of the customer
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: 19b8de26-77c1-49f1-aa18-019a391603e2
+      responses:
+        '200':
+          description: Success
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.'
+    delete:
+      summary: Remove a customer from the block list
+      operationId: unblock-customer
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:customers:read_write
+      x-release-status: beta
+      tags:
+      - Customer
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: customer_id
+        in: path
+        description: ID of the customer
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: 19b8de26-77c1-49f1-aa18-019a391603e2
+      responses:
+        '204':
+          description: Success
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.'
   /projects/{project_id}/products/{product_id}:
     get:
       summary: Get a product
