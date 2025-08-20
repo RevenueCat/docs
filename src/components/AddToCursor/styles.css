@@ -1,0 +1,25 @@
+.add-to-cursor {
+  display: inline-block;
+  margin: 1rem 0;
+}
+
+.add-to-cursor a {
+  display: inline-block;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.add-to-cursor a:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+.add-to-cursor img {
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.add-to-cursor a:hover img {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}

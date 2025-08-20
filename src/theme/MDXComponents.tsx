@@ -3,6 +3,7 @@ import React from "react";
 import MDXComponents from "@theme-original/MDXComponents";
 import RCCodeBlock from "@site/src/components/RCCodeBlock";
 import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
+import AddToCursor from "@site/src/components/AddToCursor";
 import SampleApp from "../components/SampleApp/SampleApp";
 import Button from "@site/src/components/Button/Button";
 import FeatureItem from "@site/src/components/FeatureItem/FeatureItem";
@@ -12,6 +13,7 @@ import ContentCardItem from "@site/src/components/ContentCardItem/ContentCardIte
 type MDXComponentsType = typeof MDXComponents & {
   RCCodeBlock: typeof RCCodeBlock;
   YouTubeEmbed: typeof YouTubeEmbed;
+  AddToCursor: typeof AddToCursor;
   SampleApp: typeof SampleApp;
   Button: typeof Button;
   FeatureItem: typeof FeatureItem;
@@ -23,6 +25,7 @@ const customMDXComponents: MDXComponentsType = {
   ...MDXComponents,
   RCCodeBlock,
   YouTubeEmbed,
+  AddToCursor,
   SampleApp,
   Button,
   FeatureItem,
