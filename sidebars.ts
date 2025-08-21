@@ -147,6 +147,7 @@ const paywallsCategory = Category({
             Page({ slug: "web-purchase-button" }),
             Page({ slug: "variables" }),
             Page({ slug: "localization" }),
+            Page({ slug: "supporting-offers" }),
             Page({ slug: "customer-states" }),
             Page({ slug: "app-review" }),
           ],
