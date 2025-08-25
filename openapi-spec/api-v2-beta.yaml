@@ -1471,6 +1471,57 @@ paths:
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>,
         <code>customer_information:subscriptions:read_write</code>, <code>customer_information:purchases:read_write</code>.'
+  /projects/{project_id}/customers/blocked_customers:
+    get:
+      summary: List blocked customers
+      operationId: list-blocked-customers
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:customers:read
+      x-release-status: beta
+      tags:
+      - Customer
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  example: 19b8de26-77c1-49f1-aa18-019a391603e2
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.'
   /projects/{project_id}/customers/blocked_customers/{customer_id}:
     post:
       summary: Add a customer to the block list
