@@ -56,7 +56,7 @@ Recent cohorts that haven't had enough time to complete the full encounter timef
 
 - **Optimize paywall placement**: Low encounter rates may indicate that your paywall is too deep in the user flow or triggered by actions that few users take.
 - **Balance user experience**: Very high early encounter rates (e.g., 90%+ on day 1) might indicate an overly aggressive monetization strategy that could impact retention.
-- **Segment analysis**: Use segmentation to understand encounter rates across different user groups, platforms, or acquisition channels to identify opportunities for improvement.
+- **Segment analysis**: Use segmentation to understand encounter rates across different user groups, platforms, or acquisition channels. Filter by specific paywalls to analyze their individual performance.
 - **A/B testing validation**: Compare encounter rates between test variants to ensure your experiments are reaching enough users for statistical significance.
 - **Funnel optimization**: Combine with conversion charts to understand the full funnel from app install → paywall encounter → conversion.
 
@@ -69,4 +69,4 @@ Recent cohorts that haven't had enough time to complete the full encounter timef
 | What counts as an "encounter"? | An encounter is recorded when a customer sees a paywall impression for the first time. Multiple impressions by the same customer are not counted separately. |
 | How does this differ from paywall conversion charts? | This chart measures exposure (how many users see a paywall), while conversion charts measure effectiveness (how many users who see a paywall convert). Together, they provide a complete picture of paywall performance. |
 | Why might a cohort show 0% encounter rate? | This could happen if you recently implemented RevenueCat Paywalls, if there's an issue with paywall implementation, or if the paywall conditions are never met by users in that cohort. |
-| Can I see which specific paywalls were encountered? | When segmented by paywall, you can see encounter rates for individual paywalls. The default view shows the aggregate encounter rate across all paywalls. |
+| Can I see which specific paywalls were encountered? | You can filter by specific paywalls to see their individual encounter rates. The default view (without filters) shows the aggregate encounter rate across all paywalls. |
