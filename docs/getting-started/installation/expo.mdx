@@ -27,32 +27,26 @@ This guide is specific to Expo, but you may also find our [React Native guide](/
 
 ## Create an Expo development build
 
-### Install Expo CLI and development dependencies
+### Set up the Expo project
 
-Start by installing [Expo CLI](https://docs.expo.dev/more/expo-cli/):
+You can use an existing Expo project, or [create a new one](https://docs.expo.dev/get-started/create-a-project/).
 
-```
-npm install expo -g
-```
+This command will create a default project with example code, and install the Expo CLI as a dependency:
 
-and then install [Expo DevClient](https://docs.expo.dev/versions/latest/sdk/dev-client/):
-
-```
-npx expo install expo-dev-client
-```
-
-### Get started with an Expo project
-
-Either create a new Expo project with the following command:
-
-```
+```sh
 npx create-expo-app@latest
 ```
 
-or use an existing Expo project. Ensure you're in the project directory for the next steps:
+Change to the project directory:
 
-```
+```sh
 cd <expo-project-directory>
+```
+
+Install the [expo-dev-client](https://docs.expo.dev/versions/latest/sdk/dev-client/):
+
+```sh
+npx expo install expo-dev-client
 ```
 
 ### Install RevenueCat's SDKs
@@ -61,7 +55,7 @@ Install RevenueCat's `react-native-purchases` for core functionality and `react-
 
 Either run:
 
-```
+```sh
 npx expo install react-native-purchases react-native-purchases-ui
 ```
 
@@ -157,19 +151,19 @@ You can also follow these instructions on Expo's docs: https://docs.expo.dev/tut
 
 Get started by installing the EAS-CLI:
 
-```
+```sh
 npm install -g eas-cli
 ```
 
 Then login to EAS:
 
-```
+```sh
 eas login
 ```
 
 After logging in, initialize the EAS configuration:
 
-```
+```sh
 eas init
 ```
 
@@ -224,7 +218,7 @@ Enter your app's bundle ID, matching your RevenueCat config and App Store Connec
 
 After your app is running, you'll need to start the Expo server:
 
-```
+```sh
 npx expo start
 ```
 
@@ -236,7 +230,7 @@ To test on an Android device, you'll need to build the app for a physical device
 
 Please ensure that `developmentClient` in your `eas.json` file is set to true under the `build.development` profile. Then, build the app:
 
-```
+```sh
 eas build --platform android --profile development
 ```
 
@@ -248,7 +242,7 @@ To run the app on an [Android emulator](https://docs.expo.dev/tutorial/eas/andro
 
 After the app is running, you'll need to start the Expo server:
 
-```
+```sh
 npx expo start
 ```
 
