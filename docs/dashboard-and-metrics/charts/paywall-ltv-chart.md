@@ -8,6 +8,10 @@ The Paywall LTV chart measures the realized lifetime value generated from purcha
 
 This chart is cohorted by the first paywall impression date for each paywall that a customer sees, and is segmented by paywall by default. It tracks revenue from initial conversions that occurred within 3 days following the first paywall impression and then continues to attribute all subsequent revenue from those conversions indefinitely.
 
+:::info RevenueCat Paywalls only
+This chart currently only tracks paywall encounters for apps using [RevenueCat Paywalls](/tools/paywalls). Paywalls implemented with custom code are not tracked in this chart.
+:::
+
 ### Available settings
 
 - Filters: Yes
