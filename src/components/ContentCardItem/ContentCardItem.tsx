@@ -24,7 +24,14 @@ const ContentCardItem: React.FC<ContentCardItemProps> = ({
   let img = useBaseUrl(`/docs_images/${icon}`);
 
   // Determine the href for the root <a> tag
-  const rootHref = link || (links && links.length > 0 ? links[0].link : "");
+  let rootHref = link || (links && links.length > 0 ? links[0].link : "");
+
+  // if link starts with /docs/, remove it and change links to link using useBaseUrl
+  if (rootHref.startsWith("/docs/")) {
+    //remove the docs/ prefix
+    rootHref = rootHref.replace("/docs/", "");
+    rootHref = useBaseUrl(rootHref);
+  }
 
   return (
     <a href={rootHref} className={styles["feature-container"]}>
