@@ -9,7 +9,7 @@ The Paywall Abandonment chart measures the proportion of paywall impressions tha
 This chart is cohorted by the first paywall impression date for each paywall that a customer sees, and is segmented by paywall by default.
 
 :::info RevenueCat Paywalls only
-This chart currently only tracks paywall encounters for apps using [RevenueCat Paywalls](/tools/paywalls). Paywalls implemented with custom code are not tracked in this chart.
+This chart only tracks impressions on [RevenueCat Paywalls](/tools/paywalls). Impressions on paywalls implemented with custom code are not tracked in this chart.
 :::
 
 ### Available settings
