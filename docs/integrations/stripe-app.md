@@ -1,5 +1,6 @@
 ---
 title: Stripe Dashboard App
+sidebar_label: Stripe
 slug: stripe-app
 excerpt: Install and use the RevenueCat App in Stripe App Marketplace
 hidden: false

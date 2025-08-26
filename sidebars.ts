@@ -981,17 +981,13 @@ const attributionCategory = Category({
         Page({ slug: "splitmetrics-acquire" }),
         Page({ slug: "tenjin" }),
       ],
-      index: {
-        title: "Supported Providers",
-        link: "integrations/attribution/supported-providers",
-      },
     }),
   ],
 });
 
 const thirdPartyIntegrationsCategory = Category({
   iconName: "integrations",
-  label: "Integrations",
+  label: "Event-based Integrations",
   itemsPathPrefix: "",
   items: [
     Page({ slug: "integrations/third-party-integrations" }),
@@ -1018,23 +1014,30 @@ const thirdPartyIntegrationsCategory = Category({
         Page({ slug: "superwall" }),
         Page({ slug: "telemetrydeck" }),
       ],
-      index: {
-        title: "Supported Integrations",
-        link: "integrations/third-party-integrations/supported-integrations",
-      },
     }),
   ],
 });
 
 const customerSupportCategory = Category({
   iconName: "help",
-  label: "Customer Support",
+  label: "Customer Support Tools",
   itemsPathPrefix: "",
-  items: [Page({ slug: "integrations/third-party-integrations/zendesk" })],
+  items: [
+    Page({ slug: "integrations/customer-support" }),
+    SubCategory({
+      label: "Supported Integrations",
+      itemsPathPrefix: "integrations/",
+      items: [
+        Page({ slug: "customer-support/zendesk" }),
+        Page({ slug: "stripe-app" }),
+      ],
+    }),
+  ],
 });
 
 const integrationsMoreCategory = Category({
-  iconName: "sparkle",
+  iconName: "open-external",
+  iconColor: "var(--text-primary)",
   label: "More",
   itemsPathPrefix: "",
   collapsed: false,
@@ -1044,7 +1047,6 @@ const integrationsMoreCategory = Category({
       slug: "/integrations/scheduled-data-exports",
     }),
     Page({ slug: "integrations/partner-built-integrations" }),
-    Page({ slug: "integrations/stripe-app" }),
   ],
 });
 
@@ -1179,8 +1181,8 @@ const sidebars = {
     eventsCategory,
     webhooksCategory,
     attributionCategory,
-    customerSupportCategory,
     thirdPartyIntegrationsCategory,
+    customerSupportCategory,
     integrationsMoreCategory,
   ],
   playbookSidebar: [
