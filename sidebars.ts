@@ -1026,6 +1026,13 @@ const thirdPartyIntegrationsCategory = Category({
   ],
 });
 
+const customerSupportCategory = Category({
+  iconName: "help",
+  label: "Customer Support",
+  itemsPathPrefix: "",
+  items: [Page({ slug: "integrations/third-party-integrations/zendesk" })],
+});
+
 const integrationsMoreCategory = Category({
   iconName: "sparkle",
   label: "More",
@@ -1171,8 +1178,9 @@ const sidebars = {
   integrationsSidebar: [
     eventsCategory,
     webhooksCategory,
-    thirdPartyIntegrationsCategory,
     attributionCategory,
+    customerSupportCategory,
+    thirdPartyIntegrationsCategory,
     integrationsMoreCategory,
   ],
   playbookSidebar: [
