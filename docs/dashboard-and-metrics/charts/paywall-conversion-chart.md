@@ -8,6 +8,10 @@ The Paywall Conversion chart measures how effectively your paywalls convert view
 
 This chart is cohorted by the first paywall impression date for each paywall that a customer sees, and is segmented by paywall by default. It evaluates initial conversions that occur within 3 days of a customer's first paywall impression. For customers who do convert within that 3‑day window, the chart then attributes downstream outcomes like paid conversion and trial conversion even if those happen later.
 
+:::info RevenueCat Paywalls only
+This chart only tracks impressions and conversions from [RevenueCat Paywalls](/tools/paywalls). Impressions and conversions from paywalls implemented with custom code are not tracked in this chart.
+:::
+
 ### Available settings
 
 - Filters: Yes
