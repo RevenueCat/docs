@@ -127,7 +127,7 @@ Once you've saved the product, it's only possible to add prices for new currenci
 
 :::warning Beta feature
 
-Currently, it's only possible to enable upgrades between products. We're planning to release support for downgrades very soon.
+It is currently only possible to enable upgrades between products. We're planning to release support for downgrades very soon.
 
 :::
 
