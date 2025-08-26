@@ -5024,7 +5024,14 @@ paths:
                         type: string
                         maxLength: 500
                         nullable: true
-                    example: cat@revenuecat.com
+              example:
+                attributes:
+                - name: $email
+                  value: support@revenuecat.com
+                - name: $displayName
+                  value: John Appleseed
+                - name: my_custom_attr
+                  value: custom value
       responses:
         '200':
           description: Success. The customer attributes were set
