@@ -61,6 +61,19 @@ function useCategoryHrefWithSSRFallback(
   }, [item, isBrowser]);
 }
 
+// Recursively check if any item in the tree matches the active path
+function isItemActive(items: any[], activePath: string): boolean {
+  return items.some((item) => {
+    if (item.href === activePath) {
+      return true;
+    }
+    if (item.items && item.items.length > 0) {
+      return isItemActive(item.items, activePath);
+    }
+    return false;
+  });
+}
+
 interface CollapseButtonProps {
   collapsed: boolean;
   categoryLabel: string;
@@ -145,8 +158,7 @@ export default function DocSidebarItemCategory({
   const { activeDoc } = useActiveDocContext(props.docsPluginId);
   const hrefWithSSRFallback = useCategoryHrefWithSSRFallback(item);
 
-  const isActive =
-    activeDoc && items.some((subItem) => activeDoc.path === subItem.href);
+  const isActive = activeDoc && isItemActive(items, activeDoc.path);
   const isCurrentPage = activeDoc?.path === href;
 
   const [collapsed, setCollapsed] = useState(() => {
