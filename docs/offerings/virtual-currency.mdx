@@ -273,6 +273,30 @@ Virtual currency adjustments made through the [API](/offerings/virtual-currency#
 
 For more information about virtual currency events, including customer timeline events and webhook events, see our [Virtual Currency Events](/offerings/virtual-currency/events) documentation.
 
+## Sandbox Testing
+
+When testing virtual currency functionality in sandbox environments, you have control over how sandbox purchases affect virtual currency balances. This is particularly important when testing with real app user IDs or test accounts that might overlap with production data.
+
+### Sandbox Access Control
+
+You can configure sandbox testing behavior in the **General** tab of your project settings:
+
+- **Anybody** _(default)_: All sandbox purchases will add virtual currency as configured. This is recommended for early development and internal QA testing.
+- **Allowed App User IDs only**: Only specific app user IDs will receive virtual currency from sandbox purchases. Useful for restricted testing scenarios like Google Play closed testing.
+- **Nobody**: No sandbox purchases will grant virtual currency. Use this to prevent testing from affecting virtual currency balances.
+
+![Sandbox Testing Settings](/docs_images/projects/sandbox-testing-settings.png)
+
+### What Happens When You Restrict Access
+
+If you update your sandbox access settings to be more restrictive:
+
+- ✅ Sandbox purchases continue to be recorded in RevenueCat
+- ✅ Only qualifying customers receive virtual currency going forward
+- 💰 Previously granted virtual currency remains in customer balances (even if they no longer qualify)
+
+For more detailed information about sandbox testing configuration, see our [Sandbox Testing Access](/projects/sandbox-access) documentation.
+
 ## Best practices and security considerations
 
 Virtual currencies is a very powerful feature that RevenueCat provides, however it needs to be used correctly to ensure high standards of security. Here are some necessary requirements in order to make sure that bad actors cannot exploit your system for their benefit or to harm other users of your app.
