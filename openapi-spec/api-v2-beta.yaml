@@ -1496,10 +1496,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: string
-                  example: 19b8de26-77c1-49f1-aa18-019a391603e2
+                $ref: '#/components/schemas/ListBlockedCustomers'
           headers:
             RevenueCat-Rate-Limit-Current-Usage:
               $ref: '#/components/headers/RateLimitCurrentUsage'
@@ -6684,6 +6681,25 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/projec1a2b3c4d/apps
+    ListBlockedCustomers:
+      type: object
+      required:
+      - object
+      title: BlockedCustomerList
+      description: Details about each blocked customer.
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - blocked_customer
+          type: string
+        additionalProperties:
+          type: object
+          properties:
+            updated_at_ms:
+              type: integer
+              example: 1735689600000
     ListCustomerActiveEntitlements:
       type: object
       required:
