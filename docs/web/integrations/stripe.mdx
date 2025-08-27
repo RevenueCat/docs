@@ -159,6 +159,16 @@ If you are expecting a billing issue event, it may take a few hours for the Reve
 You can now allow users to subscribe from the web or within your app, and let them access their subscription anywhere.
 :::
 
+### Managing subscriptions with Stripe's customer portal
+
+When using Stripe Billing, you'll need to direct customers to the Stripe customer portal if they want to make changes to their subscription, download receipts etc. The RevenueCat Web Billing Customer Portal does not work with Stripe Billing purchases.
+
+You can configure the Stripe customer portal in your Stripe dashboard [settings](https://dashboard.stripe.com/settings/billing/portal).
+
+Once configured, you can save your **customer portal URL** in the RevenueCat dashboard Stripe provider settings. It will be returned in the `managementUrl` property in the SDK's `CustomerInfo` object, and anywhere else the customer should be redirected to manage their purchases:
+
+![stripe customer portal URL](/docs_images/web/stripe/stripe-customer-portal-url.png)
+
 ## Troubleshooting
 
 **A Stripe purchase is missing/not found in RevenueCat**
