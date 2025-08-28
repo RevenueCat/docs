@@ -1,0 +1,48 @@
+---
+title: Blocking Customers
+slug: blocking-customers
+excerpt: How to block RevenueCat customers
+hidden: false
+---
+
+You can block fraudulent customers, or those that violate your app's Terms of Service, in the RevenueCat dashboard.
+
+This action is also useful if you accidentally hardcoded an [App User ID](/customers/identifying-customers) into a released version of your app.
+
+:::warning High-risk action
+Blocking a customer will delete them in RevenueCat, preventing the customer from accessing your app's paid features. If the customer is a legitimate paying user, this action may violate app store policies and result in complaints, chargebacks, or enforcement against your app.
+:::
+
+## Blocking a Customer
+
+To block a customer, go your project's Settings page in the dashboard and click on the **Blocked customers** tab.
+
+![blocked customers tab](/docs_images/customers/blocked-customers.png)
+
+Then, click the **Block a new customer** button.
+
+In the confirmation modal, enter the customer's [App User ID](/customers/identifying-customers) and consent to the terms.
+
+![blocked customers modal](/docs_images/customers/blocked-customers-modal.png)
+
+:::info App User ID Format
+App User IDs cannot have spaces or forward slashes (`/`).
+:::
+
+Click the **Block customer** button to confirm the action.
+
+The customer will be blocked and will no longer be able to access your app's paid features.
+
+:::info Blocked customers limit
+You can block up to 100 customers from your project.
+:::
+
+## Unblocking a Customer
+
+To unblock a customer, simply click the **Unblock** button in the blocked customer's row.
+
+![unblock customer button](/docs_images/customers/unblock-customer-button.png)
+
+The customer will be unblocked and recreated in RevenueCat.
+
+Customer metadata, such as [Customer Attributes](/customers/customer-attributes), will be reset to their default values. If the customer has active purchases, they can [Restore Purchases](/getting-started/restoring-purchases) to regain access.
