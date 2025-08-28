@@ -375,6 +375,7 @@ const customersCategory = Category({
         Page({ slug: "customers/user-ids" }),
         Page({ slug: "customers/customer-info" }),
         Page({ slug: "customers/customer-attributes" }),
+        Page({ slug: "customers/blocking-customers" }),
       ],
     }),
     SubCategory({

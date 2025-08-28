@@ -1,0 +1,62 @@
+---
+title: Blocking Customers
+slug: blocking-customers
+excerpt: How to block RevenueCat customers
+hidden: false
+---
+
+Fraudulent customers, or those that violate your app's Terms of Service, can be blocked in the RevenueCat dashboard.
+
+This action is also useful if you accidentally hardcode an [App User ID](/customers/identifying-customers) into a released version of your app.
+
+:::warning High-risk action
+Blocking a customer will delete them in RevenueCat, preventing the customer from accessing your app's paid features. If the customer is a legitimate paying user, this action may violate app store policies and result in complaints, chargebacks, or enforcement against your app.
+
+You may want to [delete a customer](/dashboard-and-metrics/customer-history/manage-users) instead.
+:::
+
+## Blocking a Customer
+
+To block a customer, go your project's Settings page in the dashboard and click on the **Blocked customers** tab.
+
+![blocked customers tab](/docs_images/customers/blocked-customers.png)
+
+Then, click the **Block a new customer** button.
+
+In the confirmation modal, enter the customer's [App User ID](/customers/identifying-customers) and consent to the terms.
+
+:::info App User ID Format
+App User IDs cannot have spaces or forward slashes (`/`).
+:::
+
+![blocked customers modal](/docs_images/customers/blocked-customers-modal.png)
+
+Click the **Block customer** button to confirm the action.
+
+:::info Blocked customers limit
+You can block up to 100 customers from your project.
+:::
+
+### What blocking does
+
+Blocking a customer deletes them in RevenueCat and prevents their App User ID from being used again. As a consequence, the customer will not be able to access your app's paid features.
+
+Moreover, the customer's metadata, such as [Customer Attributes](/customers/customer-attributes), will be permanently lost.
+
+Blocking a customer is a highly sensitive action and should only be done if you have verified the customer has a fraudulent subscription or has violated your app's Terms of Service. Failure to do so may result in complaints or enforcement against your app by the app stores.
+
+To mitigate the risk of blocking a customer from their purchase, you should [refund their purchase](/subscription-guidance/refunds) before blocking them.
+
+:::info App Store purchases
+You cannot manage Apple's App Store purchases in RevenueCat.
+:::
+
+## Unblocking a Customer
+
+To unblock a customer, simply click the **Unblock** button in the blocked customer's row.
+
+![unblock customer button](/docs_images/customers/unblock-customer-button.png)
+
+The customer will be unblocked and recreated in RevenueCat.
+
+Customer metadata, such as [Customer Attributes](/customers/customer-attributes), will be reset to their default values. If the customer has active purchases, they can [Restore Purchases](/getting-started/restoring-purchases) to regain access.

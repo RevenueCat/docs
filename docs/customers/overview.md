@@ -35,3 +35,9 @@ Attributes are useful for storing additional, structured information on a custom
 You can find a customer in the RevenueCat Dashboard by searching for their App User ID.
 
 <Button href="/docs/dashboard-and-metrics/customer-lists">How to find a customer →</Button>
+
+## Blocking a Customer
+
+You can block fraudulent customers, or those that violate your app's Terms of Service, in the RevenueCat Dashboard.
+
+<Button href="/docs/customers/blocking-customers">How to block customers →</Button>
