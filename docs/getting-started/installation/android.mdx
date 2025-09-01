@@ -71,7 +71,7 @@ This will help minimize the effects of Google removing the capability of queryin
 :::
 
 There are 2 recommended approaches you can take to perform backups, [Auto Backup](https://developer.android.com/identity/data/autobackup) and [Key-value backups](https://developer.android.com/identity/data/keyvaluebackup). 
-In either case, we recommend you make sure to include your app's default SharedPreferences file and RevenueCat's SharedPreferences file (You can find the name of this SharedPreferences file by doing `RevenueCatBackupAgent.REVENUECAT_PREFS_FILE_NAME`) in the files you backup. 
+In either case, we recommend you make sure to include your app's default SharedPreferences file and RevenueCat's SharedPreferences file (You can find the name of this SharedPreferences file by doing `RevenueCatBackupAgent.REVENUECAT_PREFS_FILE_NAME`) in the files you back up. 
 
 #### Auto Backup
 Auto Backup is enabled by default in your apps. This backs up most of your app content, including the RevenueCat relevant SharedPreferences files up to a 25MB limit, at which point, it stops doing backups. You can configure what you want to backup following [the official documentation](https://developer.android.com/identity/data/autobackup#IncludingFiles). 
