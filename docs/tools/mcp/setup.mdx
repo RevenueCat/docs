@@ -68,7 +68,10 @@ Add to your Visual Studio Code `mcp.json`:
 	"servers": {
 		"revenuecat-mcp": {
 			"url": "https://mcp.revenuecat.ai/mcp",
-			"type": "http"
+			"type": "http",
+			"headers": {
+                "Authorization": "Bearer {your API v2 token}"
+			}
 		}
 	},
 	"inputs": []
