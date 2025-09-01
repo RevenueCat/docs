@@ -65,6 +65,11 @@ When a user uninstalls and reinstalls or changes devices, unless you are using y
 Making sure your backup setup is correctly configured is highly recommended for developers that don't use an account system that allow users to sign up/sign in to recover their data.
 :::
 
+:::warning
+We highly recommend developers that have/had non-consumable products configured as consumables in the RevenueCat dashboard to configure this correctly.
+This will help minimize the effects of Google removing the capability of querying for consumed one time products through the Billing library, which could cause issues of losing these purchases forever.
+:::
+
 There are 2 recommended approaches you can take to perform backups, [Auto Backup](https://developer.android.com/identity/data/autobackup) and [Key-value backups](https://developer.android.com/identity/data/keyvaluebackup). 
 In either case, we recommend you make sure to include your app's default SharedPreferences file and RevenueCat's SharedPreferences file (You can find the name of this SharedPreferences file by doing `RevenueCatBackupAgent.REVENUECAT_PREFS_FILE_NAME`) in the files you backup. 
 
