@@ -74,7 +74,7 @@ There are 2 recommended approaches you can take to perform backups, [Auto Backup
 In either case, we recommend you make sure to include your app's default SharedPreferences file and RevenueCat's SharedPreferences file (You can find the name of this SharedPreferences file by doing `RevenueCatBackupAgent.REVENUECAT_PREFS_FILE_NAME`) in the files you backup. 
 
 #### Auto Backup
-Auto Backup is enabled by default in your apps. This backs up most of your app content, including the RevenueCat relevant SharedPreferences files up to a 25MB limit, at which point, it stops doing backups. You can configure what you want to backup following [the official documentatio](https://developer.android.com/identity/data/autobackup#IncludingFiles). 
+Auto Backup is enabled by default in your apps. This backs up most of your app content, including the RevenueCat relevant SharedPreferences files up to a 25MB limit, at which point, it stops doing backups. You can configure what you want to backup following [the official documentation](https://developer.android.com/identity/data/autobackup#IncludingFiles). 
 
 We recommend adjusting the files you want to backup to make sure you don't go over the limit and making sure the SharedPreferences files are included.
 
