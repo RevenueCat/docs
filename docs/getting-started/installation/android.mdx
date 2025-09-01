@@ -57,6 +57,38 @@ import xmlContent from "@site/code_blocks/getting-started/installation/android_w
 />
 :::
 
+### Backup RevenueCat data / Proactive restores (Experimental/Optional)
+
+When a user uninstalls and reinstalls or changes devices, unless you are using your own account system, you must provide a restore purchases button somewhere in your app so users can recover any previously performed purchases. RevenueCat provides an easy to use `restorePurchases` method in our SDKs to do this. However, some customers might run into difficulties with this process. In these cases, Google provides some mechanisms to perform backups of your app's contents so they are available when your users move to new devices, or uninstall and reinstall within the same device. This might require some setup to make sure the backup include RevenueCat information correctly.
+
+:::note
+Making sure your backup setup is correctly configured is highly recommended for developers that don't use an account system that allow users to sign up/sign in to recover their data.
+:::
+
+There are 2 recommended approaches you can take to perform backups, [Auto Backup](https://developer.android.com/identity/data/autobackup) and [Key-value backups](https://developer.android.com/identity/data/keyvaluebackup). 
+In either case, we recommend you make sure to include your app's default SharedPreferences file and RevenueCat's SharedPreferences file (You can find the name of this SharedPreferences file by doing `RevenueCatBackupAgent.REVENUECAT_PREFS_FILE_NAME`) in the files you backup. 
+
+#### Auto Backup
+Auto Backup is enabled by default in your apps. This backs up most of your app content, including the RevenueCat relevant SharedPreferences files up to a 25MB limit, at which point, it stops doing backups. You can configure what you want to backup following [the official documentatio](https://developer.android.com/identity/data/autobackup#IncludingFiles). 
+
+We recommend adjusting the files you want to backup to make sure you don't go over the limit and making sure the SharedPreferences files are included.
+
+#### Key-Value backups
+Please note that doing this will disable Auto backup and will just backup RevenueCat files!
+
+If you prefer to disable auto-backup and just copy the RevenueCat SharedPreferences file, you may optionally use our provided `RevenueCatBackupAgent` to perform a backup of the relevant files. To do this, you need to add to your app's `AndroidManifest.xml` `<application>` node a property like this:
+
+```
+android:backupAgent="com.revenuecat.purchases.backup.RevenueCatBackupAgent"
+```
+
+That's it!
+
+#### How to test backups
+Whether you're using Auto Backup or Key-Value backups, Google provides some documentation on how to test backups and restores [in their documentation](https://developer.android.com/identity/data/testingbackup).
+
+One thing to note, however, is that these backups are not guaranteed to work accross all devices and might require factory resets in the target device to use the backup.
+
 ### Set the correct launchMode
 
 Depending on your user's payment method, they may be asked by Google Play to verify their purchase in their (banking) app. This means they will have to background your app and go to another app to verify the purchase. If your Activity's `launchMode` is set to anything other than `standard` or `singleTop`, backgrounding your app can cause the purchase to get cancelled. To avoid this, set the `launchMode` of your Activity to `standard` or `singleTop` in your `AndroidManifest.xml` file, like so:
