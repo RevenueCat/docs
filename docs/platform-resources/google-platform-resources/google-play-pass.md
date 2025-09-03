@@ -16,7 +16,9 @@ RevenueCat will accurately track entitlement access for users who gain access to
 
 ## Revenue Tracking
 
-Revenue tracking from Play Pass in RevenueCat may not be accurate since developers earn money based on a royalty. This is calculated by Google's internal algorithmic methods that determine the value of all types of content and not solely based on engagement.
+Revenue from Play Pass is not tracked in RevenueCat, all Play Pass transactions will have price 0.
+
+Developers earn money based on a royalty, and this is calculated by Google's internal algorithmic methods that determine the value of all types of content and not solely based on engagement.
 
 In addition, a Play Pass subscription allows customers to unlock in-app purchases that would normally be an additional cost. Since there is not an accurate way to distinguish Play Pass transactions from regular transactions, RevenueCat will count the 'revenue' generated from in-app purchases unlocked by Play Pass.
 
