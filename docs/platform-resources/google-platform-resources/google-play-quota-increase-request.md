@@ -11,7 +11,7 @@ As RevenueCat uses the Google Play Developer API to refresh your customer's purc
 
 ## Default quota
 
-The default quota for each Google Play Developer API is 200k queries per day.
+The default quota for each Google Play Developer API is 3,000 queries per minute per bucket.
 
 ## Prerequisites
 
@@ -25,11 +25,17 @@ Your Developer Account account ID can be found in your [Play Console Account det
 
 ![Image](/docs_images/platform-resources/google/google-play-quota-increase-request-account-id.png)
 
+Your App package name can be found in the [Developer Console](https://play.google.com/apps/publish/) or in your app's build.gradle.
+
+![](/docs_images/platform-resources/google/app_package_name.png)
+
 Your Google Cloud project ID can be found in your [Google API Console](https://console.developers.google.com/) by clicking on the Project name in the top navigation bar:
 
 ![](/docs_images/platform-resources/google/google-play-quota-increase-request-project-id.png)
 
 Enter your account details, and choose the `Subscription & Products Purchase` option.
+
+**!!! THIS HAS TO BE UPDATED!!**
 
 ![Image](/docs_images/platform-resources/google/google-play-quota-increase-request-form.png)
 
