@@ -63,20 +63,47 @@ Or you can also add it manually by adding the following to your `mcp.json` file:
 
 Add to your Visual Studio Code `mcp.json`:
 
+#### Option 1: Hardcoded
+
 ```json
 {
-	"servers": {
-		"revenuecat-mcp": {
-			"url": "https://mcp.revenuecat.ai/mcp",
-			"type": "http",
-			"headers": {
-                "Authorization": "Bearer {your API v2 token}"
-			}
-		}
-	},
-	"inputs": []
+  "servers": {
+    "revenuecat-mcp": {
+      "url": "https://mcp.revenuecat.ai/mcp",
+      "type": "http",
+      "headers": {
+        "Authorization": "Bearer {your API v2 token}"
+      }
+    }
+  },
+  "inputs": []
 }
 ```
+
+#### Option 2: Input Parameter (Recommended)
+
+```json
+{
+  "servers": {
+    "revenuecat-mcp": {
+      "url": "https://mcp.revenuecat.ai/mcp",
+      "type": "http",
+      "headers": {
+        "Authorization": "Bearer ${input:revenuecat-bearer-token}"
+      }
+    }
+  },
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "revenuecat-bearer-token",
+      "description": "RevenueCat Bearer Access Token",
+      "password": true
+    }
+  ]
+}
+```
+
 
 ### Using with Claude Desktop
 
