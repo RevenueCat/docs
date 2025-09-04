@@ -88,7 +88,7 @@ Note: Apple requires customers to cancel within 24 hours of the trial’s expira
 
 ### Immediate Product Change
 
-In the case of an immediate product change, a `PRODUCT_CHANGE` will be dispatched alongside a `RENEWAL` event (for App Store subscriptions) or an `INITIAL_PURCHASE` event (for Google Play subscriptions), and the customer will immediately have access to the new entitlements. Depending on the store and the proration setting, the customer might be charged the full or prorated amount for the new product, and/or be refunded a prorated amount for the remainder of the lower tier subscription’s term, and/or the period for the new product might have a prorated duration.
+In the case of an immediate product change, a `PRODUCT_CHANGE` event will be dispatched alongside a `RENEWAL` event (for App Store subscriptions) or an `INITIAL_PURCHASE` event (for Google Play subscriptions), and the customer will immediately have access to the new entitlements. Depending on the store and the proration setting, the customer might be charged the full or prorated amount for the new product, and/or be refunded a prorated amount for the remainder of the lower tier subscription’s term, and/or the period for the new product might have a prorated duration.
 
 Immediate changes occur:
 
