@@ -8,23 +8,14 @@ hidden: false
 
 import AddToCursor from '@site/src/components/AddToCursor';
 
-## Prerequisites
+## Authentication Overview
 
-- RevenueCat project with API v2 access
-- RevenueCat API v2 secret key
+RevenueCat MCP Server offers two authentication methods depending on your client:
 
-## Getting Your API Key
+- **OAuth Authentication**: Available for VSCode and Cursor - provides seamless authentication without managing API keys
+- **API v2 Secret Key**: Supported by all MCP clients - requires a RevenueCat API v2 secret key
 
-1. Open your [RevenueCat dashboard](https://app.revenuecat.com/)
-2. Navigate to your project's **API Keys** page
-3. **Create a new API v2 secret key** and copy it
-
-> **💡 Tip**: Create a dedicated API key for the MCP server to keep your credentials organized.
-
-> **⚠️ Permissions**:
->
-> - Use a **write-enabled key** if you plan to create/modify resources
-> - A **read-only key** works if you only need to view data
+Choose the method that works best for your client setup.
 
 ## Cloud MCP Server Setup
 
@@ -113,11 +104,35 @@ Configure the inspector with:
 - **Authentication**: Bearer Token with your RevenueCat API v2 secret key
 
 
-### OAuth Authentication Support
+## Authentication Methods
 
-RevenueCat MCP Server also supports OAuth authentication for supported clients. Currently supported:
+RevenueCat Cloud MCP Server supports two authentication methods:
+
+### OAuth Authentication (Recommended)
+
+OAuth provides a seamless authentication experience without needing to manage API keys manually. Currently supported clients:
 
 - **Visual Studio Code** - Automatic OAuth flow for seamless authentication
+- **Cursor** - Automatic OAuth flow for seamless authentication
+
+We'll extend this list as more clients add OAuth support.
+
+### API v2 Secret Key Authentication
+
+All MCP clients support API v2 secret key authentication. This method requires manually providing your RevenueCat API v2 secret key in the client configuration.
+
+#### Getting Your API Key
+
+1. Open your [RevenueCat dashboard](https://app.revenuecat.com/)
+2. Navigate to your project's **API Keys** page  
+3. **Create a new API v2 secret key** and copy it
+
+> **💡 Tip**: Create a dedicated API key for the MCP server to keep your credentials organized.
+
+> **⚠️ Permissions**:
+>
+> - Use a **write-enabled key** if you plan to create/modify resources
+> - A **read-only key** works if you only need to view data
 
 > **🔧 Third-Party Integration**:
 >
