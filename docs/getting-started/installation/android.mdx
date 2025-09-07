@@ -99,6 +99,8 @@ For the majority of apps, Auto Backup is enabled by default and should handle ba
 
 If you are in one of those positions, we recommend you make sure your backup configuration includes the RevenueCat SharedPreferences file without going over the 25MB limit, or, in case you have backups disabled, you may enable auto backup only for this file or just add the `RevenueCatBackupAgent` to your AndroidManifest.xml application, as mentioned above.
 
+Both options are powered by similar Google backup mechanisms and either should work pretty similarly, so we recommend using Auto Backup unless there is a reason you prefer to use a Backup Agent.
+
 #### How to test backups
 Whether you're using Auto Backup or Key-Value backups, Google provides some documentation on how to test backups and restores [in their documentation](https://developer.android.com/identity/data/testingbackup).
 
