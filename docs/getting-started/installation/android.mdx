@@ -57,37 +57,47 @@ import xmlContent from "@site/code_blocks/getting-started/installation/android_w
 />
 :::
 
-### Backup RevenueCat data / Proactive restores (Experimental/Optional)
-
-When a user uninstalls and reinstalls or changes devices, unless you are using your own account system, you must provide a restore purchases button somewhere in your app so users can recover any previously performed purchases. RevenueCat provides an easy to use `restorePurchases` method in our SDKs to do this. However, some customers might run into difficulties with this process. In these cases, Google provides some mechanisms to perform backups of your app's contents so they are available when your users move to new devices, or uninstall and reinstall within the same device. This might require some setup to make sure the backup include RevenueCat information correctly.
-
-:::note
-Making sure your backup setup is correctly configured is highly recommended for developers that don't use an account system that allow users to sign up/sign in to recover their data.
-:::
+### Enhanced Restores with Billing Client 8 (Optional)
 
 :::warning
-We highly recommend developers that do not have an account system and that have/had non-consumable products configured as consumables in the RevenueCat dashboard to configure this correctly.
-This will help minimize the effects of Google removing the capability of querying for consumed one time products in the Google Play Billing Library 8, which could cause issues of losing these purchases forever.
+We highly recommend developers that do NOT have an account system and that use or have used One time products to configure this correctly.
 :::
 
-There are 2 recommended approaches you can take to perform backups, [Auto Backup](https://developer.android.com/identity/data/autobackup) and [Key-value backups](https://developer.android.com/identity/data/keyvaluebackup). 
-In either case, we recommend you make sure to include your app's default SharedPreferences file and RevenueCat's SharedPreferences file (You can find the name of this SharedPreferences file by doing `RevenueCatBackupAgent.REVENUECAT_PREFS_FILE_NAME`) in the files you back up. 
+Starting on Billing Client 8, Google removed the ability to query consumed one time purchases through Google's Billing Client library. This means that our SDK won't be able to restore these purchases.
+
+This can be problematic if both:
+- Your app DOESN'T offer an account system (so users can't log in to recover their purchases) and you rely on RevenueCat's anonymous users AND
+- Your app has or had at any point in time, one time products configured as consumables in the RevenueCat dashboard that you would like to be able to restore. In this case, RevenueCat would have consumed those purchases, making them not available to find them through the Billing Client.
+
+In this scenario, these users will have anonymous user ids that won't be easily recoverable and won't be able to recover their purchases through the Billing Client, potentially increasing support requests.
+
+One way to reduce the impact of this issue is by making sure RevenueCat's data is safely backed up in the user's Google account, so it is automatically restored when the user reinstalls the app and/or changes devices. RevenueCat stores data in its own SharedPreferences file. The exact name of that file is available as the constant `RevenueCatBackupAgent.REVENUECAT_PREFS_FILE_NAME`, which you can reference when setting up backups. We recommend you also include your app's default SharedPreferences file. 
+
+There are 2 recommended approaches Google offers to perform backups:
+- [Auto Backup](https://developer.android.com/identity/data/autobackup)
+- [Key-value backups](https://developer.android.com/identity/data/keyvaluebackup). 
 
 #### Auto Backup
-Auto Backup is enabled by default in your apps. This backs up most of your app content, including the RevenueCat relevant SharedPreferences files up to a 25MB limit, at which point, it stops doing backups. You can configure what you want to back up following [the official documentation](https://developer.android.com/identity/data/autobackup#IncludingFiles). 
+Auto Backup is enabled by default in your app. This backs up most of your app content, including the RevenueCat SharedPreferences files up to a 25MB limit, at which point, it stops doing backups. You can configure what you want to backup following [the official documentation](https://developer.android.com/identity/data/autobackup#IncludingFiles).
 
-We recommend adjusting the files you want to back up to make sure you don't go over the limit and making sure the SharedPreferences files are included.
+We recommend adjusting the files you want to back up to make sure you don't go over the limit and making sure the RevenueCat SharedPreferences file is included.
 
 #### Key-Value backups
-Please note that doing this will disable Auto backup and will just back up RevenueCat files!
+Please note that enabling this will disable Auto backup and will just back up RevenueCat files!
 
-If you prefer to disable auto-backup and just copy the RevenueCat SharedPreferences file, you may optionally use our provided `RevenueCatBackupAgent` to perform a backup of the relevant files. To do this, you need to add to your app's `AndroidManifest.xml` `<application>` node a property like this:
+If you prefer to disable auto-backup and just back up the RevenueCat SharedPreferences file, you may optionally use our provided `RevenueCatBackupAgent` to perform a backup of the relevant files. To do this, you need to add to your app's `AndroidManifest.xml` `<application>` node a property like this:
 
 ```xml
 android:backupAgent="com.revenuecat.purchases.backup.RevenueCatBackupAgent"
 ```
 
-That's it!
+#### What should you do?
+For the majority of apps, Auto Backup is enabled by default and should handle backups for you without doing anything. However, there are some situations where it won't:
+- If your app has the potential of having more than 25MB of data over the files that Auto Backup automatically backs up (See [docs](https://developer.android.com/identity/data/autobackup#Files))
+- If you have modified the files you would like to backup using Auto Backup and have not included RevenueCat's SharedPreferences file.
+- If you have disabled backups
+
+If you are in one of those positions, we recommend you make sure your backup configuration includes the RevenueCat SharedPreferences file without going over the 25MB limit, or, in case you have backups disabled, you may enable auto backup only for this file or just add the `RevenueCatBackupAgent` to your AndroidManifest.xml application, as mentioned above.
 
 #### How to test backups
 Whether you're using Auto Backup or Key-Value backups, Google provides some documentation on how to test backups and restores [in their documentation](https://developer.android.com/identity/data/testingbackup).
