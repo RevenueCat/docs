@@ -1,0 +1,24 @@
+# https://github.com/actions/stale?tab=readme-ov-file#list-of-input-options
+
+name: "Close stale issues and PRs"
+on:
+  schedule:
+    # every day, midnight UTC
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          stale-pr-message: >
+            This PR has been automatically marked as stale because it has been inactive for a while.
+            Remove the tag, comment, or update the PR (e.g. by pushing a new commit) to keep it active.
+          delete-branch: true
