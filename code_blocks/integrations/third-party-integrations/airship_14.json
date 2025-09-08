@@ -27,17 +27,9 @@
         "purchased_at_ms": 1660405106000,
         "store": "APP_STORE",
         "subscriber_attributes": {
-          "$appsflyerId": {
-            "updated_at_ms": 1647104232082,
-            "value": "1234567890123-1234567890123456789"
-          },
           "$email": {
-            "updated_at_ms": 1649936423436,
+            "updated_at_ms": 1662955084635,
             "value": "firstlast@gmail.com"
-          },
-          "$ip": {
-            "updated_at_ms": 1649936467544,
-            "value": "123.45.67.89"
           }
         },
         "takehome_percentage": 0.7,

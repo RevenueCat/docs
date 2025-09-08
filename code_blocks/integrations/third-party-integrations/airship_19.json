@@ -32,17 +32,9 @@
         "currency": "USD",
         "price_in_purchased_currency": 0.0,
         "subscriber_attributes": {
-          "$ip": {
-            "value": "123.45.67.89",
-            "updated_at_ms": 1650694978412
-          },
           "$email": {
             "value": "firstlast@gmail.com",
             "updated_at_ms": 1650017723043
-          },
-          "$appsflyerId": {
-            "value": "1234567890123-1234567890123456789",
-            "updated_at_ms": 1650694978424
           }
         },
         "store": "APP_STORE",

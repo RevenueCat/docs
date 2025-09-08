@@ -30,21 +30,9 @@
         "currency": "BRL",
         "price_in_purchased_currency": 25.99,
         "subscriber_attributes": {
-          "$ip": {
-            "value": "123.45.67.89",
-            "updated_at_ms": 1660764263545
-          },
-          "$gpsAdId": {
-            "value": "12345678-9012-3456-7890-123456789012",
-            "updated_at_ms": 1660760899175
-          },
-          "$fbAnonId": {
-            "value": "1234567890-1234-5678-9012-345678901234",
-            "updated_at_ms": 1660760899262
-          },
-          "$appsflyerId": {
-            "value": "1234567890123-1234567890123456789",
-            "updated_at_ms": 1660760899175
+          "$email": {
+            "updated_at_ms": 1662955084635,
+            "value": "firstlast@gmail.com"
           }
         },
         "store": "PLAY_STORE",
