@@ -1,16 +1,16 @@
 ---
-title: Apple Search Ads & RevenueCat Integration
+title: Apple Ads & RevenueCat Integration
 slug: apple-search-ads
 excerpt: Collect and view Apple Search Ads attribution in RevenueCat using AdServices
 hidden: false
 ---
 
-With our Apple Search Ads integration you can:
+With our Apple Ads integration you can:
 
 - Continue to follow your campaign's install base for months to understand the long-tail revenue generated from subscriptions, even without an app open.
-- Filter and segment RevenueCat charts by Apple Search Ads campaigns or ad groups.
+- Filter and segment RevenueCat charts by Apple Ads campaigns or ad groups.
 
-Collecting Apple Search Ads data is a two part process:
+Collecting Apple Ads data is a two part process:
 
 1. You must collect the user's attribution token and send it to RevenueCat
 2. With this token, RevenueCat will request attribution data from Apple directly within a 24 hour period
@@ -20,30 +20,30 @@ Once attribution data is collected from Apple, it will be available via Charts a
 ## 1. Configure Integration
 
 :::danger Basic vs. Advanced
-Apple Search Ads offer two products, **Search Ads Basic** and **Search Ads Advanced**. The RevenueCat Apple Search Ads integrations supports both Basic and Advanced. However, Advanced will require more configuration than Basic.
+Apple Ads offer two products, **Search Ads Basic** and **Search Ads Advanced**. The RevenueCat Apple Ads integrations supports both Basic and Advanced. However, Advanced will require more configuration than Basic.
 :::
 
 ### Basic
 
 - Navigate to your project in the RevenueCat dashboard and choose 'Apple Ads Services' from the Integrations menu.
-- Click on **Add Apple Search Ads integration** to add the integration.
+- Click on **Add Apple Ads integration** to add the integration.
 
 :::warning Basic integration is not yet complete
-Please advance to [step 2](/integrations/attribution/apple-search-ads#2-send-attribution-token-to-revenuecat) to **send the attribution token to RevenueCat**. Without this step, RevenueCat will not be able to collect Apple Search Ads data.
+Please advance to [step 2](/integrations/attribution/apple-search-ads#2-send-attribution-token-to-revenuecat) to **send the attribution token to RevenueCat**. Without this step, RevenueCat will not be able to collect Apple Ads data.
 :::
 
 ### Advanced
 
 - Navigate to your project in the RevenueCat dashboard and choose 'Apple Ads Services' from the Integrations menu.
-- Click on **Add Apple Search Ads integration** to add the integration.
+- Click on **Add Apple Ads integration** to add the integration.
 - Go to **Account Settings** > **API** in your Search Ads dashboard, and paste your public key in the **Client Credentials** section in settings of your **API User**.
 
 :::warning Saving your public key may require Safari
-Apple Search Ads may reject the public key with an 'invalid' error message if you're using a browser other than Safari. If you get this error, try switching to Safari to save the key.
+Apple Ads may reject the public key with an 'invalid' error message if you're using a browser other than Safari. If you get this error, try switching to Safari to save the key.
 :::
 
-:::info Apple Search Ads API User
-RevenueCat uses the Campaign Management API to access the campaign data from Apple Search Ads. This API requires access through a separate Apple Account that with one of the following roles: **API Account Manager**, **API Account Read Only**, or **Limited Access API Read** & **Write or API Read Only**.
+:::info Apple Ads API User
+RevenueCat uses the Campaign Management API to access the campaign data from Apple Ads. This API requires access through a separate Apple Account that with one of the following roles: **API Account Manager**, **API Account Read Only**, or **Limited Access API Read** & **Write or API Read Only**.
 
 More info about creating these users can be found [here](https://searchads.apple.com/help/campaigns/0022-use-the-campaign-management-api).
 
@@ -64,10 +64,10 @@ If you're having trouble finding the screen where you can add upload your public
 ## 2. Send attribution token to RevenueCat
 
 :::info Compatibility
-Using AdServices to collect Apple Search Ads data requires iOS 14.3+, and is not supported on earlier versions of iOS. If you need to continue collecting Apple Search Ads data for older versions of iOS, follow our legacy Apple Search Ads instructions.
+Using AdServices to collect Apple Ads data requires iOS 14.3+, and is not supported on earlier versions of iOS. If you need to continue collecting Apple Ads data for older versions of iOS, follow our legacy Apple Ads instructions.
 :::
 
-Apple Search Ads provides two different types of attribution data, one a Standard view and one a Detailed view. Attribution fields vary between the two types of data, which may affect downstream integrations, and will require a different client-side implementation.
+Apple Ads provides two different types of attribution data, one a Standard view and one a Detailed view. Attribution fields vary between the two types of data, which may affect downstream integrations, and will require a different client-side implementation.
 
 |                               | Standard | Detailed |
 | :---------------------------- | :------- | :------- |
@@ -84,7 +84,7 @@ Apple Search Ads provides two different types of attribution data, one a Standar
 | `impressionDate`              | ❌       | ✅       |
 
 :::info
-Note that this is the same data that is sent to other downstream integrations that receive Apple Search Ads data (like SplitMetrics Acquire). If you need fields that are unavailable in the Standard data, use Detailed instead.
+Note that this is the same data that is sent to other downstream integrations that receive Apple Ads data (like SplitMetrics Acquire). If you need fields that are unavailable in the Standard data, use Detailed instead.
 :::
 
 ### Standard
@@ -125,13 +125,13 @@ After automatic collection is enabled, Purchases will sync the attribution token
 
 ## 3. View attribution data in RevenueCat
 
-After the _Purchases SDK_ has collected attribution for some users, you'll be able to use Charts to analyze your Apple Search Ads data.
+After the _Purchases SDK_ has collected attribution for some users, you'll be able to use Charts to analyze your Apple Ads data.
 
 ### View charts
 
 Apple Search Ad attribution is available as segments and filters in the vast majority of applicable charts that measure subscription, trial, revenue, lifetime value, and conversion data.
 
-The charts without support for Apple Search Ads attribution are:
+The charts without support for Apple Ads attribution are:
 
 - Subscription Retention
 - Customer Center Survey Responses
@@ -142,7 +142,7 @@ The charts without support for Apple Search Ads attribution are:
 
 ### Available filters/segments
 
-We support the following filters and segments for Apple Search Ads:
+We support the following filters and segments for Apple Ads:
 
 1. `Attribution source`: Breakdown your measures by `Apple Search Ads` or `Organic`.
 2. `Apple search ads campaign`: Breakdown your measures by the campaign they derived from.
@@ -159,13 +159,13 @@ Select and deselect rows to compare individual campaigns, ad sets, or keywords
 ![](/docs_images/integrations/attribution/apple-search-ads/asa-rows.png)
 
 :::info
-The value of `Unspecified` is used to group transactions that are attributed to an Apple Search Ads ad, but do not have a specified Campaign Name, Ad Group Name, or Keyword. This is almost always because the ad has been delivered through an Apple Search Ads Basic account, where these names are not specified.
+The value of `Unspecified` is used to group transactions that are attributed to an Apple Ads ad, but do not have a specified Campaign Name, Ad Group Name, or Keyword. This is almost always because the ad has been delivered through an Apple Ads Basic account, where these names are not specified.
 :::
 
 :::info
-The value of `Organic` is used to group transactions that are not attributed to an Apple Search Ads campaign. This means it was an organic install or users with limit ad tracking enabled. To exclude organic installs from your charts, you can filter by `Attribution source` and select `Apple Search Ads`.
+The value of `Organic` is used to group transactions that are not attributed to an Apple Ads campaign. This means it was an organic install or users with limit ad tracking enabled. To exclude organic installs from your charts, you can filter by `Attribution source` and select `Apple Search Ads`.
 :::
 
 :::warning Allow up to 7 days to gather attribution data
-If your campaigns are new or you recently set up the Apple Search Ads integration, allow some time for RevenueCat to collect attribution and purchase data.
+If your campaigns are new or you recently set up the Apple Ads integration, allow some time for RevenueCat to collect attribution and purchase data.
 :::
