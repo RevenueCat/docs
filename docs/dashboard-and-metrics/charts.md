@@ -252,4 +252,4 @@ Whenever a subscription is refunded, that subscription is counted as active betw
 
 ## Next Steps
 
-- Learn how to view the purchase history of a specific user and grant them entitlement access via the [Customer View ](/dashboard-and-metrics/customer-history/basic-information)
+- Learn how to view the purchase history of a specific user and grant them entitlement access via the [Customer View ](/dashboard-and-metrics/customer-profile#customer-details)

@@ -56,7 +56,7 @@ RevenueCat creates some default lists for every project. Default lists should gi
 
 :::info Granted Entitlements are not considered 'Active'
 
-If a customer has a [Granted Entitlement](/dashboard-and-metrics/customer-history/promotionals) transaction, they are not considered as 'Active'. Note that if a customer has an active subscription + Granted Entitlement, they will not be counted in the Active Customer List.
+If a customer has a [Granted Entitlement](/dashboard-and-metrics/customer-profile#entitlements) transaction, they are not considered as 'Active'. Note that if a customer has an active subscription + Granted Entitlement, they will not be counted in the Active Customer List.
 
 :::
 
@@ -126,7 +126,7 @@ See the table below for all filters you can apply to your lists.
 | First Purchase Date                | Date         | The date of the customer's first transaction (including free trials).                                                      |
 | First Seen Date                    | Date         | The date the customer was first seen by RevenueCat.                                                                        |
 | GPS Ad Id                          | String       | The `$gpsAdId` [](/customers/customer-attributes#device-identifiers) for the customer.                                     |
-| Granted Entitlement via RevenueCat | Bool         | Whether the customer has been [granted an Entitlement](/dashboard-and-metrics/customer-history/promotionals) or not.       |
+| Granted Entitlement via RevenueCat | Bool         | Whether the customer has been [granted an Entitlement](/dashboard-and-metrics/customer-profile#entitlements) or not.       |
 | IDFA                               | String       | The `$idfa` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                               |
 | IDFV                               | String       | The `$idfv` [Attribute](/customers/customer-attributes#device-identifiers) for the customer.                               |
 | Keyword                            | String       | The `$keyword` [Attribute](/customers/customer-attributes#attribution-data) for the customer.                              |
@@ -171,7 +171,7 @@ The Status filter provides these options to refine your customer list:
 - **Active**: The customer has an active subscription.
 - **Free Trial**: The customer currently has an active trial subscription.
 - **Intro Period**: The customer’s subscription is currently in a discounted introductory (non-free) period.
-- **Promotional**: The customer has a [promotional entitlement](/dashboard-and-metrics/customer-history/promotionals).
+- **Promotional**: The customer has a [promotional entitlement](/dashboard-and-metrics/customer-profile#entitlements).
 - **Billing Issue**: The customer's subscription is experiencing a billing retry period.
 - **Billing Issue Trial**: The customer is in a trial period experiencing billing issues.
 - **Cancelled**: The customer has cancelled their subscription.
@@ -270,4 +270,4 @@ If you're having trouble opening the exported/uncompressed file, you may need to
 
 ## Next Steps
 
-- Learn how to view the purchase history of a specific user and grant them promotional access via the [Customer View →](/dashboard-and-metrics/customer-history/basic-information)
+- Learn how to view the purchase history of a specific user and grant them promotional access via the [Customer View →](/dashboard-and-metrics/customer-profile#customer-details)

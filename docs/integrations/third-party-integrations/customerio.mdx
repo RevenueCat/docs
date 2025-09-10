@@ -67,7 +67,7 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 ### Check that the Customer.io event delivered successfully
 
-While still on the Customer View, select the purchase event in the [Customer History](/dashboard-and-metrics/customer-history) page and make sure that the Customer.io integration event exists and was delivered successfully.
+While still on the Customer View, select the purchase event in the [Customer History](/dashboard-and-metrics/customer-profile) page and make sure that the Customer.io integration event exists and was delivered successfully.
 
 ![Check that the Customer.io event was delivered](/docs_images/integrations/third-party-integrations/customerio/customerio_event_details.png "Check that the Customer.io event was delivered")
 
@@ -115,7 +115,7 @@ Whenever RevenueCat sends an event to Customer.io, we'll update the `rc_subscrip
 | cancelled_trial     | The customer is in a trial period which is set to expire at the end of their trial period.                                                 |
 | grace_period_trial  | The customer was in a trial period and has now entered a grace period after failing to renew successfully.                                 |
 | expired             | The customer's subscription has expired.                                                                                                   |
-| promotional         | The customer has access to an entitlement through a RevenueCat [Granted Entitlement](/dashboard-and-metrics/customer-history/promotionals) |
+| promotional         | The customer has access to an entitlement through a RevenueCat [Granted Entitlement](/dashboard-and-metrics/customer-profile#entitlements) |
 | expired_promotional | The customer previously had access to an entitlement through a RevenueCat Granted Entitlement that has since expired.                      |
 | paused              | The customer has a paid subscription which has been paused and is set to resume at some future date.                                       |
 

@@ -87,10 +87,10 @@ The prefix for the URL paths is: https://www.revenuecat.com/docs
 - /dashboard-and-metrics/overview - Revenue analytics and business metrics overview
 - /dashboard-and-metrics/charts - Chart types and metrics visualization
 - /dashboard-and-metrics/charts/app-store-refund-requests-chart - Apple refund request analytics
-- /dashboard-and-metrics/customer-history - Individual customer purchase tracking
+- /dashboard-and-metrics/customer-profile - Individual customer purchase tracking
 - /dashboard-and-metrics/customer-lists - Customer segmentation and analysis tools
-- /dashboard-and-metrics/customer-history/active-entitlements - Managing active subscriptions
-- /dashboard-and-metrics/customer-history/manage-users - Customer account management
+- /dashboard-and-metrics/customer-profile#entitlements - Managing active subscriptions
+- /dashboard-and-metrics/customer-profile#delete-customer - Customer account management
 
 ## Integrations and Webhooks
 

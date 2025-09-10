@@ -41,7 +41,7 @@ For more information about the Dashboard and Charts, check out our docs [here](/
 | Unlocking purchases initiated from the App Store / Google Play / Stripe           | ✅        |            |           |             |
 | Syncing, parsing and verifying receipts                                           |           | ✅         |           |             |
 | [Tracking entitlement status](/customers/customer-info)                           |           | ✅         |           |             |
-| [Tracking purchase history](/dashboard-and-metrics/customer-history)              |           | ✅         |           |             |
+| [Tracking purchase history](/dashboard-and-metrics/customer-profile)              |           | ✅         |           |             |
 | Downloading purchased content                                                     | ✅        |            |           |             |
 | [Identifying users](/customers/user-ids)                                          | ✅        |            |           |             |
 | [Getting attribution data for attribution providers](/integrations/attribution)   | ✅        |            |           |             |

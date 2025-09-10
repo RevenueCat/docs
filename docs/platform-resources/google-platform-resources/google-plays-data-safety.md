@@ -21,7 +21,7 @@ Select 'Yes'. RevenueCat encrypts data in transit.
 
 ### Do you provide a way for users to request that their data is deleted?
 
-If selecting 'Yes', ensure your customers have a way to contact your support team to request a data deletion. You will be able to [delete the customer](/dashboard-and-metrics/customer-history/manage-users) directly from the RevenueCat dashboard or via [REST API](ref:subscribersapp_user_id).
+If selecting 'Yes', ensure your customers have a way to contact your support team to request a data deletion. You will be able to [delete the customer](/dashboard-and-metrics/customer-profile#delete-customer) directly from the RevenueCat dashboard or via [REST API](ref:subscribersapp_user_id).
 
 ## Data Types
 

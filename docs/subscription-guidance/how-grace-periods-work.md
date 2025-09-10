@@ -63,7 +63,7 @@ The property `grace_period_expires_date` will always be null for Stripe subscrip
 
 ### Dashboard
 
-Customers who enter into a grace period will have events added to their [Customer History](/dashboard-and-metrics/customer-history/basic-information).
+Customers who enter into a grace period will have events added to their [Customer History](/dashboard-and-metrics/customer-profile#customer-details).
 
 ![Grace Period](/docs_images/products/subscriptions/grace-periods.png)
 
