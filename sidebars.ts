@@ -392,6 +392,8 @@ const customersCategory = Category({
         Page({ slug: "manage-users" }),
       ],
     }),
+    Page({ slug: "dashboard-and-metrics/customer-profile" }),
+    Page({ slug: "dashboard-and-metrics/customer-profile-2" }),
     SubCategory({
       label: "Customer Center",
       slug: "tools/customer-center",
