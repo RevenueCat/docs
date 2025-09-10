@@ -60,6 +60,61 @@ Consumables and non-renewing subscriptions can only be restored by using an acco
 
 By logging in your users with a custom App User ID, RevenueCat can continue to provide transaction details in a user's [CustomerInfo](/customers/customer-info) for their previous consumable and non-renewing subscription purchases.
 
+## Issues restoring one-time purchases with Google's Billing Client 8 when using anonymous users
+
+Starting on Billing Client 8, Google removed the ability to query consumed one-time purchases through Google's Billing Client library. This means that our SDKs using that version of Billing Client won't be able to restore these purchases. This affects the following versions:
+
+| RevenueCat SDK           | Version using Billing Client 8+                | 
+| :----------------------- | :--------------------------------------------- |
+| purchases-android        | 9.0.0 and up                                   |
+| react-native-purchases   | 9.0.0 and up                                   | 
+| purchases-flutter        | 9.0.0 and up                                   | 
+| cordova-plugin-purchases | 7.0.0 and up                                   |
+| purchases-unity          | 8.0.0 and up                                   |
+| purchases-capacitor      | 11.0.0 and up                                  |
+| purchases-kmp            | 2.0.0 and up                                   |
+
+This can be problematic if both:
+- Your app DOESN'T offer an account system (so users can't log in to recover their purchases) and you rely on RevenueCat's anonymous users AND
+- Your app has or had at any point in time used one-time products that were consumed. RevenueCat automatically consumes purchases for products that are configured as consumables in the RevenueCat dashboard.
+
+In this scenario, these users will have anonymous user ids that won't be easily recoverable and won't be able to recover their purchases through the Billing Client, so those purchases can not be recovered.
+
+One way to reduce the impact of this issue is by making sure RevenueCat's data is safely backed up in the user's Google account, so it is automatically restored when the user reinstalls the app and/or changes devices. RevenueCat stores data in its own SharedPreferences file. The exact name of that file is available as the constant `RevenueCatBackupAgent.REVENUECAT_PREFS_FILE_NAME`, which you can reference when setting up backups. We recommend you also include your app's default SharedPreferences file. 
+
+There are 2 recommended approaches Google offers to perform backups:
+- [Auto Backup](https://developer.android.com/identity/data/autobackup)
+- [Key-value backups](https://developer.android.com/identity/data/keyvaluebackup). 
+
+#### Auto Backup
+Auto Backup is enabled by default in your app. This backs up most of your app content, including the RevenueCat SharedPreferences file, up to a 25MB limit, at which point, it stops doing backups. You can configure what you want to backup following [the official documentation](https://developer.android.com/identity/data/autobackup#IncludingFiles).
+
+We recommend adjusting the files you want to back up to make sure you don't go over the limit and making sure the RevenueCat SharedPreferences file is included.
+
+#### Key-Value backups
+Please note that enabling this will disable Auto backup and will just back up RevenueCat files!
+
+If you prefer to disable auto-backup and just back up the RevenueCat SharedPreferences file, you may optionally use our provided `RevenueCatBackupAgent` to perform a backup of the relevant files. To do this, you need to add to your app's `AndroidManifest.xml` `<application>` node a property like this:
+
+```xml
+android:backupAgent="com.revenuecat.purchases.backup.RevenueCatBackupAgent"
+```
+
+### What should you do?
+For the majority of apps, Auto Backup is enabled by default and should handle backups for you without doing anything. However, there are some situations where it won't:
+- If your app has the potential of having more than 25MB of data over the files that Auto Backup automatically backs up (See [docs](https://developer.android.com/identity/data/autobackup#Files))
+- If you have modified the files you would like to backup using Auto Backup and have not included RevenueCat's SharedPreferences file.
+- If you have disabled backups
+
+If you are in one of those positions, we recommend you make sure your backup configuration includes the RevenueCat SharedPreferences file without going over the 25MB limit, or, in case you have backups disabled, you may enable auto backup only for this file or just add the `RevenueCatBackupAgent` to your AndroidManifest.xml application, as mentioned above.
+
+Both options are powered by similar Google backup mechanisms and either should work pretty similarly, so we recommend using Auto Backup unless there is a reason you prefer to use a Backup Agent.
+
+### How to test backups
+Whether you're using Auto Backup or Key-Value backups, Google provides some documentation on how to test backups and restores [in their documentation](https://developer.android.com/identity/data/testingbackup).
+
+One thing to note, however, is that these backups are not guaranteed to work across all devices and might require factory resets in the target device to use the backup.
+
 ## Next Steps
 
 - Make sure all purchases are being [linked to the correct App User ID](/customers/user-ids)
