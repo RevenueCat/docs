@@ -1663,6 +1663,42 @@ const redirects = {
       to: "/web/web-billing/web-purchase-links",
       from: "/web/web-billing/web-paywall-links",
     },
+    {
+      to: "/dashboard-and-metrics/customer-profile",
+      from: "/dashboard-and-metrics/customer-history",
+    },
+    {
+      to: "/dashboard-and-metrics/customer-profile",
+      from: "/dashboard-and-metrics/customers-history/active-entitlements",
+    },
+    {
+      to: "/dashboard-and-metrics/customer-profile",
+      from: "/dashboard-and-metrics/customers-history/aliases-card",
+    },
+    {
+      to: "/dashboard-and-metrics/customer-profile",
+      from: "/dashboard-and-metrics/customers-history/attributes",
+    },
+    {
+      to: "/dashboard-and-metrics/customer-profile",
+      from: "/dashboard-and-metrics/customers-history/attribution-card",
+    },
+    {
+      to: "/dashboard-and-metrics/customer-profile",
+      from: "/dashboard-and-metrics/customers-history/basic-information",
+    },
+    {
+      to: "/dashboard-and-metrics/customer-profile",
+      from: "/dashboard-and-metrics/customers-history/offering-override",
+    },
+    {
+      to: "/dashboard-and-metrics/customer-profile",
+      from: "/dashboard-and-metrics/customers-history/promotionals",
+    },
+    {
+      to: "/dashboard-and-metrics/customer-profile",
+      from: "/dashboard-and-metrics/customers-history/manage-users",
+    },
   ],
 };
 

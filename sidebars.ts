@@ -378,21 +378,7 @@ const customersCategory = Category({
         Page({ slug: "customers/blocking-customers" }),
       ],
     }),
-    SubCategory({
-      label: "Customer History",
-      slug: "dashboard-and-metrics/customer-history",
-      itemsPathPrefix: "dashboard-and-metrics/customer-history/",
-      items: [
-        Page({ slug: "active-entitlements" }),
-        Page({ slug: "aliases-card" }),
-        Page({ slug: "attributes" }),
-        Page({ slug: "attribution-card" }),
-        Page({ slug: "basic-information" }),
-        Page({ slug: "offering-override" }),
-        Page({ slug: "promotionals" }),
-        Page({ slug: "manage-users" }),
-      ],
-    }),
+    Page({ slug: "dashboard-and-metrics/customer-profile" }),
     SubCategory({
       label: "Customer Center",
       slug: "tools/customer-center",
