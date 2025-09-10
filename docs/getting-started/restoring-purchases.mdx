@@ -60,13 +60,23 @@ Consumables and non-renewing subscriptions can only be restored by using an acco
 
 By logging in your users with a custom App User ID, RevenueCat can continue to provide transaction details in a user's [CustomerInfo](/customers/customer-info) for their previous consumable and non-renewing subscription purchases.
 
-## Issues restoring One time purchases with Google's Billing Client 8 when using anonymous users
+## Issues restoring one-time purchases with Google's Billing Client 8 when using anonymous users
 
-Starting on Billing Client 8, Google removed the ability to query consumed one time purchases through Google's Billing Client library. This means that our SDK won't be able to restore these purchases.
+Starting on Billing Client 8, Google removed the ability to query consumed one-time purchases through Google's Billing Client library. This means that our SDKs using that version of Billing Client won't be able to restore these purchases. This affects the following versions:
+
+| RevenueCat SDK           | Version using Billing Client 8+                | 
+| :----------------------- | :--------------------------------------------- |
+| purchases-android        | 9.0.0 and up                                   |
+| react-native-purchases   | 9.0.0 and up                                   | 
+| purchases-flutter        | 9.0.0 and up                                   | 
+| cordova-plugin-purchases | 7.0.0 and up                                   |
+| purchases-unity          | 8.0.0 and up                                   |
+| purchases-capacitor      | 11.0.0 and up                                  |
+| purchases-kmp            | 2.0.0 and up                                   |
 
 This can be problematic if both:
 - Your app DOESN'T offer an account system (so users can't log in to recover their purchases) and you rely on RevenueCat's anonymous users AND
-- Your app has or had at any point in time used one time products that were consumed. RevenueCat automatically consumes purchases for products that are configured as consumables in the RevenueCat dashboard.
+- Your app has or had at any point in time used one-time products that were consumed. RevenueCat automatically consumes purchases for products that are configured as consumables in the RevenueCat dashboard.
 
 In this scenario, these users will have anonymous user ids that won't be easily recoverable and won't be able to recover their purchases through the Billing Client, so those purchases can not be recovered.
 
