@@ -6,8 +6,6 @@ hidden: false
 
 Use the Customer Profile to discover customer information (identifying information, recent purchases, entitlements, etc.) and perform actions such as granting refunds and adding Customer Attributes.
 
-![Customer details](/docs_images/customers/customer-profile-page.png)
-
 ## Customer Details
 
 Basic customer information, including their total amount spent in your app, is presented at the top of the page.
@@ -25,17 +23,13 @@ Customer Notes allow you to store helpful details and reminders about the custom
 
 To create a note, click the `+ Add note` button and enter your note in the modal.
 
-![Add customer note](/docs_images/customers/add-customer-note.png)
+![Customer notes](/docs_images/customers/customer-notes.png)
 
 :::tip Writing a Customer Note
-You can use Markdown formatting in a customer note. There is a limit of 255 characters
-
-![Write customer note](/docs_images/customers/write-customer-note.png)
+You can use Markdown formatting in a customer note. There is a limit of 255 characters.
 :::
 
 At any time you can edit or delete a customer note by clicking on the action icon next to the note.
-
-![customer note actions](/docs_images/customers/customer-note-actions.png)
 
 :::info Limitations
 There is a limit of 10 notes per customer.
@@ -186,8 +180,6 @@ Web Billing subscriptions and Google Play subscriptions in the trial period can 
 
 The entry point for refunding and cancelling purchases is the "..." menu on the subscription in the "Entitlements" card of the customer profile.
 
-![](/docs_images/web/web-billing/refunding-payments.png)
-
 Apple doesn’t allow developers to grant refunds themselves, only through Apple customer support. However, Apple refunds are tracked with RevenueCat and accounted for in all charts and integrations.
 
 ## Next Steps
@@ -240,7 +232,6 @@ The 'Attributes' card displays any [Attributes](/customers/customer-attributes) 
 To add a new attribute, tap the **+ New** button and enter the key name and value in the popup modal.
 
 Attribute keys must follow certain restrictions, and some key names are reserved for RevenueCat. For a full list of key name requirements refer to the [Customer Attributes](/customers/customer-attributes) guide.
-![](/docs_images/customers/add-attribute.png)
 
 :::info All attributes are strings
 Remember that all attributes are saved as strings, even if you enter a number. Read more about the restrictions on [Attributes](/customers/customer-attributes#section-restrictions).
@@ -249,8 +240,6 @@ Remember that all attributes are saved as strings, even if you enter a number. R
 ### Attribution
 
 If you're sending attribution information to RevenueCat through the Purchases SDK, we will display the latest information from the network in the **Attribution** card for the customer.
-
-![](/docs_images/customers/customer-attributes.png)
 
 Below are the possible attribution fields that can be displayed. Keep in mind that RevenueCat itself is not an attribution network, and will only display the information that available from the network you're using (e.g. Appsflyer, Adjust, etc.).
 
@@ -267,8 +256,6 @@ See our [attribution integrations](/integrations/attribution) to start sending t
 ## Delete Customer
 
 You can delete a customer under the 'Manage' card at the bottom of the page. Deleting a customer will also remove all their purchase history for sandbox and production data which could change how charts and reports appear. Deleting customers should only be used to remove accounts you may have set up for testing or if the customer requests their data to be deleted.
-
-![Delete customer](/docs_images/customers/manage-customer.png)
 
 Deleting customers through the RevenueCat dashboard or API clears out all of their data and is sufficient for GDPR erasure requests.
 

@@ -377,23 +377,7 @@ const customersCategory = Category({
         Page({ slug: "customers/customer-attributes" }),
       ],
     }),
-    SubCategory({
-      label: "Customer History",
-      slug: "dashboard-and-metrics/customer-history",
-      itemsPathPrefix: "dashboard-and-metrics/customer-history/",
-      items: [
-        Page({ slug: "active-entitlements" }),
-        Page({ slug: "aliases-card" }),
-        Page({ slug: "attributes" }),
-        Page({ slug: "attribution-card" }),
-        Page({ slug: "basic-information" }),
-        Page({ slug: "offering-override" }),
-        Page({ slug: "promotionals" }),
-        Page({ slug: "manage-users" }),
-      ],
-    }),
     Page({ slug: "dashboard-and-metrics/customer-profile" }),
-    Page({ slug: "dashboard-and-metrics/customer-profile-2" }),
     SubCategory({
       label: "Customer Center",
       slug: "tools/customer-center",
