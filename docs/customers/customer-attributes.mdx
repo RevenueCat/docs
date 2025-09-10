@@ -312,7 +312,7 @@ import content17 from "@site/code_blocks/customers/subscriber-attributes_17.cs?r
 
 ## Deleting Attributes
 
-Any attribute can be cleared by passing `null` or an empty string as the key value. If you plan to set this attribute immediately, we recommend you call syncAttributesAndOfferingsIfNeeded() to push this change to our backend faster. Individual attributes can also be cleared for a specific user in their [customer view](/dashboard-and-metrics/customer-history/basic-information).
+Any attribute can be cleared by passing `null` or an empty string as the key value. If you plan to set this attribute immediately, we recommend you call syncAttributesAndOfferingsIfNeeded() to push this change to our backend faster. Individual attributes can also be cleared for a specific user in their [customer view](/dashboard-and-metrics/customer-profile#customer-details).
 
 import content18 from "@site/code_blocks/customers/subscriber-attributes_18.swift?raw";
 import content25 from "@site/code_blocks/customers/subscriber-attributes_25.m?raw";
@@ -366,7 +366,7 @@ If you want to set, update, or delete attributes through the REST API from your 
 
 ## Reading Attributes
 
-You can access attributes through the [REST API](https://docs.revenuecat.com/reference) using a secret key, in [webhooks](/integrations/webhooks), and through analytics integrations ([Amplitude](/integrations/third-party-integrations/amplitude), [Mixpanel](/integrations/third-party-integrations/mixpanel), [Segment](/integrations/third-party-integrations/segment)). The [customer view dashboard](/dashboard-and-metrics/customer-history/basic-information) will also show a list of attributes for the individual user that you can edit.
+You can access attributes through the [REST API](https://docs.revenuecat.com/reference) using a secret key, in [webhooks](/integrations/webhooks), and through analytics integrations ([Amplitude](/integrations/third-party-integrations/amplitude), [Mixpanel](/integrations/third-party-integrations/mixpanel), [Segment](/integrations/third-party-integrations/segment)). The [customer view dashboard](/dashboard-and-metrics/customer-profile#customer-details) will also show a list of attributes for the individual user that you can edit.
 
 ![Customer attributes](/docs_images/customers/customer-attributes.png)
 

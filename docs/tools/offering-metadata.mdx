@@ -23,7 +23,7 @@ Metadata allows you to attach a custom JSON object to your Offering (the paywall
 Using Offering metadata has several advantages: 
 
 - You can remotely configure aspects of your paywall and upsell messaging and make changes without deploying any code, creating a new app build, or going through app review.
-- You can use offering metadata together with [Offering Override](/dashboard-and-metrics/customer-history/offering-override) to display messaging for special offers and discounts. For example, you could create a key `discount_message` that, if present, shows a special message about the applied discount on the paywall, and set that on a discounted Offering that you apply as an override to customers who are eligible for the specific discount.
+- You can use offering metadata together with [Offering Override](/dashboard-and-metrics/customer-profile#current-offering) to display messaging for special offers and discounts. For example, you could create a key `discount_message` that, if present, shows a special message about the applied discount on the paywall, and set that on a discounted Offering that you apply as an override to customers who are eligible for the specific discount.
 - You can use [Experiments](/tools/experiments-v1) in conjunction with Offering metadata to not only A/B test different products and prices, but also to test changes to the paywall. To do that, you would create a second Offering with the same products as your default offering, but have different values for the metadata keys in the second Offering.
 
 ```json

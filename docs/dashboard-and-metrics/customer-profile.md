@@ -184,7 +184,7 @@ Apple doesn’t allow developers to grant refunds themselves, only through Apple
 
 ## Next Steps
 
-- [Granted entitlements](/dashboard-and-metrics/customer-history/promotionals)
+- [Granted entitlements](/dashboard-and-metrics/customer-profile#entitlements)
 
 ## Current Offering
 

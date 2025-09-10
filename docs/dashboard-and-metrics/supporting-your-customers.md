@@ -31,7 +31,7 @@ To learn more about finding individual customers visit [Find an Individual Custo
 
 RevenueCat knows a lot about your customers from when they were first seen using the app, to when they made their first purchase, and even to when their subscription most recently renewed.
 
-All of these events can be found in the Customer History on the Customer’s profile. Learn more about the specific event types and the additional details they contain from our [Customer History](/dashboard-and-metrics/customer-history) documentation.
+All of these events can be found in the Customer History on the Customer’s profile. Learn more about the specific event types and the additional details they contain from our [Customer History](/dashboard-and-metrics/customer-profile) documentation.
 
 ## Managing customer subscriptions
 
@@ -41,13 +41,13 @@ Here are some of the ways you can make changes to a customer’s subscription fr
 
 - _Issue a refund_ - Google Play purchases and purchases made through Web Billing (formerly RevenueCat Billing) can be refunded directly through the RevenueCat dashboard. To refund a purchase, find the transaction event in the customer history and click “Refund” in the upper right corner. To learn more about how refunds work for Apple, Amazon, and Stripe, visit [Handling Refunds](/subscription-guidance/refunds).
 - _Cancel a subscription_ - If a subscription was purchased through Web Billing, you can also cancel that purchase from the RevenueCat dashboard. To cancel a subscription, click on the "..." menu on the subscription in the "Entitlements" card of the customer profile and then select "Cancel subscription". Learn more about managing subscriptions with Web Billing [here](/web/web-billing/managing-customer-subscriptions).
-- _Transfer a subscription_ - In some cases you may want to manually transfer a subscription to a different user. The “Transfer” functionality can be found in the upper right corner of the customer profile page in the Entitlements section (details [here](/dashboard-and-metrics/customer-history/active-entitlements#transferring-entitlements) ). Please note that when you transfer a subscription you are not changing the underlying App Store account (for instance, the Apple Account) that owns the subscription. Because of this, the subscription may automatically be transferred again when the user restores purchases. The exact behavior will depend on your RevenueCat Project’s settings for [restoring purchases](/getting-started/restoring-purchases#transferring-purchases-seen-on-multiple-app-user-ids).
-- _Grant a promotional entitlement_ - With promotional entitlements you can also use RevenueCat to give users access to your products without involving any third party platform. For example, if you want to give a VIP user or a fellow employee free access to your app, you could grant them a promotional entitlement. Keep in mind this is purely a RevenueCat concept and therefore doesn’t change anything about a subscription they may have through the store. Learn more at our [Granted Entitlements](/dashboard-and-metrics/customer-history/promotionals) documentation.
+- _Transfer a subscription_ - In some cases you may want to manually transfer a subscription to a different user. The “Transfer” functionality can be found in the upper right corner of the customer profile page in the Entitlements section (details [here](/dashboard-and-metrics/customer-profile#entitlements#transferring-entitlements) ). Please note that when you transfer a subscription you are not changing the underlying App Store account (for instance, the Apple Account) that owns the subscription. Because of this, the subscription may automatically be transferred again when the user restores purchases. The exact behavior will depend on your RevenueCat Project’s settings for [restoring purchases](/getting-started/restoring-purchases#transferring-purchases-seen-on-multiple-app-user-ids).
+- _Grant a promotional entitlement_ - With promotional entitlements you can also use RevenueCat to give users access to your products without involving any third party platform. For example, if you want to give a VIP user or a fellow employee free access to your app, you could grant them a promotional entitlement. Keep in mind this is purely a RevenueCat concept and therefore doesn’t change anything about a subscription they may have through the store. Learn more at our [Granted Entitlements](/dashboard-and-metrics/customer-profile#entitlements) documentation.
 
 ### More Popular Features & FAQs
 
-1. [Customer History](/dashboard-and-metrics/customer-history)
-2. [Promotionals](/dashboard-and-metrics/customer-history/promotionals)
+1. [Customer History](/dashboard-and-metrics/customer-profile)
+2. [Promotionals](/dashboard-and-metrics/customer-profile#entitlements)
 3. [Customer Lists](/dashboard-and-metrics/customer-lists)
-4. [Deleting Users](/dashboard-and-metrics/customer-history/manage-users)
-5. [Active Entitlements](/dashboard-and-metrics/customer-history/active-entitlements)
+4. [Deleting Users](/dashboard-and-metrics/customer-profile#delete-customer)
+5. [Active Entitlements](/dashboard-and-metrics/customer-profile#entitlements)

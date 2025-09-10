@@ -29,7 +29,7 @@ If you configure an [In-App Purchase Key](/service-credentials/itunesconnect-app
 
 **Subscriptions**
 
-✅ Active Google Play subscriptions may be refunded directly through the RevenueCat dashboard. Click on the "..." menu on the subscription in the "Entitlements" card of the customer profile and then select \"Refund\". [Documentation](/dashboard-and-metrics/customer-history/active-entitlements#refunding-and-cancelling-purchases) for reference.
+✅ Active Google Play subscriptions may be refunded directly through the RevenueCat dashboard. Click on the "..." menu on the subscription in the "Entitlements" card of the customer profile and then select \"Refund\". [Documentation](/dashboard-and-metrics/customer-profile#entitlements#refunding-and-cancelling-purchases) for reference.
 
 Refunds can also be granted programmatically through the RevenueCat [REST API](https://docs.revenuecat.com/reference#revoke-a-google-subscription). This will immediately revoke access to the Google subscription and issue a refund for the last purchase.
 

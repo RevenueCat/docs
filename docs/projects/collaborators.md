@@ -51,7 +51,7 @@ All roles and permission levels are now available on every plan, giving teams th
 
 #### **Developer**
 
-✅ This role is for anyone who needs control over your app configuration and integrations, but not view any financial data. They _can_ view and manage customer data available on [Customer Timelines](/dashboard-and-metrics/customer-history/basic-information).
+✅ This role is for anyone who needs control over your app configuration and integrations, but not view any financial data. They _can_ view and manage customer data available on [Customer Timelines](/dashboard-and-metrics/customer-profile#customer-details).
 
 ❌ This role cannot access aggregated financial data through Charts, Overview, Experiments, or Customer Lists - but can view individual customer transactions, including the price that was paid.
 
@@ -61,7 +61,7 @@ All roles and permission levels are now available on every plan, giving teams th
 
 #### **Support**
 
-✅ This role is for anyone who needs to manage individual customers, but not view any financial or most app settings. They can see [Customer Timelines](/dashboard-and-metrics/customer-history/basic-information), [grant Entitlements](/dashboard-and-metrics/customer-history/promotionals), [issue refunds](/dashboard-and-metrics/customer-history#section-refunding-subscriptions), and [delete customers](/dashboard-and-metrics/customer-history/manage-users).
+✅ This role is for anyone who needs to manage individual customers, but not view any financial or most app settings. They can see [Customer Timelines](/dashboard-and-metrics/customer-profile#customer-details), [grant Entitlements](/dashboard-and-metrics/customer-profile#entitlements), [issue refunds](/dashboard-and-metrics/customer-profile#section-refunding-subscriptions), and [delete customers](/dashboard-and-metrics/customer-profile#delete-customer).
 
 ❌ This role cannot access any financial data through Charts, Overview, Experiments, or Customer Lists - but can view individual customer transactions. They also cannot view most app configuration settings.
 

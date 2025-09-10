@@ -67,7 +67,7 @@ The Customer details section displays metadata about your customer such as:
 
 These fields will not populate in the app if they are null in the RevenueCat Customer Page.
 
-An external link is provided in this section to bring you to the RevenueCat [Customer History](/dashboard-and-metrics/customer-history) page.
+An external link is provided in this section to bring you to the RevenueCat [Customer History](/dashboard-and-metrics/customer-profile) page.
 
 ### Attributes
 
