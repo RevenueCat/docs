@@ -21,11 +21,25 @@ Basic customer information, including their total amount spent in your app, is p
 
 ## Customer Notes
 
-Customer Notes allow you to add details about the customer, including past support interactions.
+Customer Notes allow you to store helpful details and reminders about the customer, including past support interactions.
 
-To create a note, click the `+ New note` button. Enter the note in the dialog box. Markdown styling is supported.
+To create a note, click the `+ Add note` button and enter your note in the modal.
 
-[In progress...]
+![Add customer note](/docs_images/customers/add-customer-note.png)
+
+:::tip Writing a Customer Note
+You can use Markdown formatting in a customer note. There is a limit of 255 characters
+
+![Write customer note](/docs_images/customers/write-customer-note.png)
+:::
+
+At any time you can edit or delete a customer note by clicking on the action icon next to the note.
+
+![customer note actions](/docs_images/customers/customer-note-actions.png)
+
+:::info Limitations
+There is a limit of 10 notes per customer.
+:::
 
 ## Customer History
 
