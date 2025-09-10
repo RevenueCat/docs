@@ -11,7 +11,7 @@ As RevenueCat uses the Google Play Developer API to refresh your customer's purc
 
 ## Default quota
 
-The default quota for each Google Play Developer API is 200k queries per day.
+The default quota for each Google Play Developer API is 3,000 queries per minute per bucket, where each bucket's quota is independent of the others. For more information on quota bucket names and corresponding APIs in each bucket, refer to [Google Play Developer API's quota guide](https://developers.google.com/android-publisher/quotas).
 
 ## Prerequisites
 
@@ -25,11 +25,17 @@ Your Developer Account account ID can be found in your [Play Console Account det
 
 ![Image](/docs_images/platform-resources/google/google-play-quota-increase-request-account-id.png)
 
+Your App package name can be found in the [Developer Console](https://play.google.com/apps/publish/) or in your app's build.gradle.
+
+![Image](/docs_images/platform-resources/google/app_package_name.png)
+
 Your Google Cloud project ID can be found in your [Google API Console](https://console.developers.google.com/) by clicking on the Project name in the top navigation bar:
 
 ![](/docs_images/platform-resources/google/google-play-quota-increase-request-project-id.png)
 
-Enter your account details, and choose the `Subscription & Products Purchase` option.
+Enter your account details, then select the API you'd like to request an increase for. If you received an automated email from RevenueCat, please refer to it to determine which quota bucket needs increasing.
+
+You can check your current quota usage in the [Quotas](https://console.cloud.google.com/iam-admin/quotas?service=androidpublisher.googleapis.com) section of the Google Cloud Console.
 
 ![Image](/docs_images/platform-resources/google/google-play-quota-increase-request-form.png)
 
@@ -39,21 +45,15 @@ The form then requires additional information depending on your use-case, includ
 
 - 'We are using RevenueCat to manage our subscriptions and we have an increase in subscriptions that is causing us to exceed the API quota.'
 
-### RTDN
+### Subscription & one-time purchases
 
-As described above, RTDN reduce the number of API requests that RevenueCat needs to use to refresh your purchases. If you have RTDN configured, choose `Yes` for both options.
-
-![Image](/docs_images/platform-resources/google/google-play-quota-increase-request-rtdn.png)
-
-### Products API
-
-RevenueCat uses the Products API endpoints to consume purchases and once to validate the purchase.
+RevenueCat uses the Subscription and One-Time Purchases API endpoints to consume purchases and once to validate the purchase.
 
 ### Quota
 
 The specific quota value and time length you request may depend on your situation, including:
 
-- Whether you are using the Subscription & Products API from your own backend.
+- Whether you are using the requested increased API from your own backend.
 - Whether you can anticipate predictable marketing efforts or seasonal surges in purchases.
 
-Generally, we find requesting **500k** to be suitable for most apps meeting the threshold, but you can view your exact usage in the [Google Cloud Quotas dashboard](https://cloud.google.com/docs/quota#viewing_all_quota_console).
+Generally, we find requesting **7,500** to be suitable for most apps meeting the threshold, but you can view your exact usage in the [Google Cloud Quotas dashboard](https://cloud.google.com/docs/quota#viewing_all_quota_console).
