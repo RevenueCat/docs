@@ -45,9 +45,9 @@ The form then requires additional information depending on your use-case, includ
 
 - 'We are using RevenueCat to manage our subscriptions and we have an increase in subscriptions that is causing us to exceed the API quota.'
 
-### Subscription updates & one-time purchases
+### Subscription & one-time purchases
 
-RevenueCat uses the Subscription Updates and One-Time Purchases API endpoints to consume purchases and once to validate the purchase.
+RevenueCat uses the Subscription and One-Time Purchases API endpoints to consume purchases and once to validate the purchase.
 
 ### Quota
 
