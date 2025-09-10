@@ -638,7 +638,7 @@ paths:
           in: path
           description:
             The identifier of the product belonging to the subscription that
-            is being deferred. This can be found in RevenueCat's Product catalog -> <product> -> Subscription Id.
+            is being deferred. This can be found in RevenueCat's Product catalog -> {Product} -> Subscription Id.
           schema:
             type: string
           required: true
