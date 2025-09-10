@@ -1,4 +1,4 @@
 Purchases.getSharedInstance().setAttributes({
-    [ReservedCustomerAttributes.Email]: "test@example.com",
-    [ReservedCustomerAttributes.PhoneNumber]: "+16505551234",
+    [ReservedCustomerAttribute.Email]: "test@example.com",
+    [ReservedCustomerAttribute.PhoneNumber]: "+16505551234",
 })
