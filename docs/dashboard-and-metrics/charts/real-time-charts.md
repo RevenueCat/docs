@@ -14,7 +14,7 @@ We’re excited to welcome you to the beta of our new real-time Charts. We've re
 - Brand new charts for Trial Conversion Rate and Active Customers, with more for Paywall metrics coming soon
 
 :::warning Supported stores
-At this time we support App Store, Play Store, Stripe and RevenueCat Web Billing apps are supported in Real-time Charts. Support for Amazon, Roku, and Paddle is coming soon.
+At this time we support App Store, Play Store, Stripe and RevenueCat Web Billing apps in Real-time Charts. Support for Amazon, Roku, and Paddle is coming soon.
 :::
 
 :::info Feedback
