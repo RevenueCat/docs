@@ -185,3 +185,8 @@ See [custom metadata](/web/web-billing/custom-metadata)
 #### Skip purchase success
 
 Add `skip_purchase_success=true` to bypass the final "Purchase Complete" step and immediately trigger your configured success behavior (success page or custom redirect).
+
+#### Redirect when using WPL in iframes
+
+Add `use_top_target_when_redirecting=true` if you are using WPLs in an iframe and want the parent page to redirect to your `redirect_url`.
+If not specified the WPL will redirect using `target="_self"` causing only the iframe to redirect to your `redirect_url`.
