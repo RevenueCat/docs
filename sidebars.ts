@@ -875,7 +875,10 @@ const knownStoreIssuesCategory = Category({
       label: "Play Billing Library",
       slug: "play-billing-library",
       itemsPathPrefix: "play-billing-library/",
-      items: [Page({ slug: "proxy-billing-activity-crash" })],
+      items: [
+        Page({ slug: "proxy-billing-activity-crash" }),
+        Page({ slug: "restore-consumable-purchases-bc8" }),
+      ],
     }),
   ],
 });
