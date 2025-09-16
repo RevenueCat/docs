@@ -17,9 +17,13 @@ Starting on Billing Client 8, Google removed the ability to query consumed one-t
 | purchases-capacitor      | 11.0.0 and up                                  |
 | purchases-kmp            | 2.0.0 and up                                   |
 
-This can be problematic if both:
-- Your app DOESN'T offer an account system (so users can't log in to recover their purchases) and you rely on RevenueCat's anonymous users AND
-- Your app has or had at any point in time used one-time products that were consumed. RevenueCat automatically consumes purchases for products that are configured as consumables in the RevenueCat dashboard.
+This situation can cause problems if **both** of the following are true:
+
+1. **Your app DOESN'T have an account system**
+   Your app relies on RevenueCat’s anonymous user system, so users can't log in to recover their purchases.
+
+2. **Your app uses (or has ever used) one-time products that were consumed**  
+   RevenueCat automatically consumes purchases for products that are configured as consumables in the RevenueCat dashboard.
 
 In this scenario, these users will have anonymous user ids that won't be easily recoverable and won't be able to recover their purchases through the Billing Client, so those purchases can not be recovered.
 
