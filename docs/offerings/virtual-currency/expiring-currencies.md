@@ -2,7 +2,7 @@
 title: Expiring Currencies
 sidebar_label: Expiring Currencies
 slug: expiring-currencies
-hidden: true
+hidden: false
 ---
 
 Expiring currencies are portions of a customer's balance that are removed after a period of time. They're ideal for creating urgency, running seasonal campaigns, and encouraging timely engagement. They can also support business logic where unused currencies don’t roll over, similar to a reset.
@@ -46,13 +46,81 @@ All expiration events appear in the customer timeline so you can:
 
 ## Product Change Behavior
 
-### Deferred Downgrades
+When customers change their subscription products (upgrades, downgrades, or crossgrades), the behavior of expiring currencies depends on the platform and the specific proration mode used. RevenueCat automatically handles these transitions to ensure currency expiration remains consistent with billing changes.
 
-Deferred downgrades occur when a subscription change is scheduled to take effect at the end of the current billing period. For expiring currencies, this means the original expiration date remains in effect, and no immediate changes occur. The currency will continue to follow the schedule tied to the current subscription until the downgrade takes effect, ensuring a seamless transition without altering existing balances.
+### Google Play Store
 
-### Immediate Upgrades
+Google supports both client-side and server-side proration modes that affect how expiring currencies behave during product changes.
 
-If a product change is set to occur immediately, all remaining currency for that product will expire at once. When a product change triggers a new expiration date, such as during an immediate upgrade, the expiration date for any existing currency tied to the old product is adjusted accordingly. In this case, the old currency’s expiration date is moved up to match the new schedule, which may result in it expiring right away. This ensures that currency expirations remain consistent with the active product’s settings and prevents overlaps between old and new product currencies.
+#### Client-Side Proration (SDK)
+
+When using the SDK to handle product changes, the following replacement modes determine expiring currency behavior:
+
+| Replacement Mode        | Expected Behavior if A expires                                             |
+| ----------------------- | -------------------------------------------------------------------------- |
+| `WITH_TIME_PRORATION`   | • Immediately expire A<br/>• Grant a prorated amount of B                  |
+| `CHARGE_PRORATED_PRICE` | • Immediately expire A<br/>• Grant a prorated amount of B                  |
+| `CHARGE_FULL_PRICE`     | • Immediately expire A<br/>• Grant a full amount of B                      |
+| `WITHOUT_PRORATION`     | • Immediately expire A<br/>• Grant a full amount of B                      |
+| `DEFERRED`              | • At the end of the billing cycle: Expire A<br/>• Grant a full amount of B |
+
+:::info Replacement Mode Behavior with Expiring Currencies
+`WITH_TIME_PRORATION` and `WITHOUT_PRORATION` behave differently when using expiring currencies compared to non-expiring currencies:
+
+- **Without expiring currencies**: New currency grants are deferred until the customer is actually charged for the new subscription
+- **With expiring currencies**: Currency is granted immediately when the product change takes effect, even before the customer is charged
+
+This difference exists because expiring all old currency without granting any new currency would not be a great customer experience. However, this means customers receive currency before being charged, which may not align with your business logic.
+
+**Recommendation**: If you're using expiring currencies, we recommend using `CHARGE_FULL_PRICE` or `CHARGE_PRORATED_PRICE` replacement modes instead, as these ensure customers are charged before receiving new currency grants.
+:::
+
+#### Server-Side Proration (Play Console)
+
+For base plan or offer changes configured in the Play Console:
+
+| Change Type                  | VC Expiration Expected Behavior |
+| ---------------------------- | ------------------------------- |
+| Charge at next billing cycle | Same as "DEFERRED"              |
+| Charge immediately           | Same as "CHARGE_FULL_PRICE"     |
+
+### Apple App Store
+
+Apple handles product changes differently based on the type of change:
+
+| Type of Product Change        | VC Expiration Expected Behavior                                                                       |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Upgrade                       | • Immediately expire A<br/>• Grant full amount of B                                                   |
+| Downgrade                     | • Expire A at the end of the billing cycle<br/>• Grant full amount of B at renewal                    |
+| Crossgrade same duration      | • Same as upgrade: Immediately expire A<br/>• Grant full amount of B                                  |
+| Crossgrade different duration | • Same as downgrade: Expire A at the end of the billing cycle<br/>• Grant full amount of B at renewal |
+
+:::warning Crossgrades with Expiring Currencies
+Crossgrades of the **same duration** can create unexpected behavior when using expiring currencies. Apple refunds a portion of the old subscription and charges the full price for the new subscription, which can lead to unintended currency grant patterns.
+
+**Recommendation**: Avoid using crossgrades of the same duration if you have expiring currencies enabled. Crossgrades of different durations are safe to use, as are upgrades and downgrades.
+:::
+
+### Stripe
+
+Stripe supports various proration modes combined with billing cycle resets:
+
+| Proration                       | Reset of Billing Cycle Anchor | VC Expiration Expected Behavior                                                        |
+| ------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------- |
+| No proration                    | Yes                           | • Immediately expire A<br/>• Grant full amount of B                                    |
+| No proration                    | No                            | • Expire A at the end of the billing cycle<br/>• Grant full amount of B at renewal     |
+| Immediate proration             | Yes                           | • Immediately expire A<br/>• Grant full amount of B                                    |
+| Immediate proration             | No                            | • Immediately expire A<br/>• Grant prorated amount of B                                |
+| Proration in next billing cycle | Yes                           | • Immediately expire A<br/>• Grant full amount of B                                    |
+| Proration in next billing cycle | No                            | • Expire A at the end of the billing cycle<br/>• Grant prorated amount of B at renewal |
+
+### Considerations
+
+- **Immediate Changes**: When a product change occurs immediately, any existing expiring currency from the old product (A) is immediately expired, and new currency from the new product (B) is granted based on the proration mode
+- **Deferred Changes**: When changes are deferred to the next billing cycle, the old currency (A) continues to follow its original expiration schedule until the change takes effect
+- **Platform Differences**: Each platform handles these scenarios slightly differently, so it's important to test your specific use cases
+
+For more detailed information about product changes and virtual currency grants, see the [Virtual Currency Subscriptions documentation](/offerings/virtual-currency/subscriptions#product-changes).
 
 ## Best Practices
 
