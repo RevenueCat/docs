@@ -58,7 +58,7 @@ Google supports both client-side and server-side proration modes that affect how
 
 When using the SDK to handle product changes, the following replacement modes determine expiring currency behavior:
 
-| Replacement Mode        | Expected Behavior if A expires                                             |
+| Replacement mode        | Expected behavior if A expires                                             |
 | ----------------------- | -------------------------------------------------------------------------- |
 | `WITH_TIME_PRORATION`   | • Immediately expire A<br/>• Grant a prorated amount of B                  |
 | `CHARGE_PRORATED_PRICE` | • Immediately expire A<br/>• Grant a prorated amount of B                  |
@@ -81,16 +81,16 @@ This difference exists because expiring all old currency without granting any ne
 
 For base plan or offer changes configured in the Play Console:
 
-| Change Type                  | VC Expiration Expected Behavior |
-| ---------------------------- | ------------------------------- |
-| Charge at next billing cycle | Same as "DEFERRED"              |
-| Charge immediately           | Same as "CHARGE_FULL_PRICE"     |
+| Change type                  | Expected behavior if A expires |
+| ---------------------------- | ------------------------------ |
+| Charge at next billing cycle | Same as "DEFERRED"             |
+| Charge immediately           | Same as "CHARGE_FULL_PRICE"    |
 
 ### Apple App Store
 
 Apple handles product changes differently based on the type of change:
 
-| Type of Product Change        | VC Expiration Expected Behavior                                                                       |
+| Product change                | Expected behavior if A expires                                                                        |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------- |
 | Upgrade                       | • Immediately expire A<br/>• Grant full amount of B                                                   |
 | Downgrade                     | • Expire A at the end of the billing cycle<br/>• Grant full amount of B at renewal                    |
@@ -107,14 +107,14 @@ Crossgrades of the **same duration** can create unexpected behavior when using e
 
 Stripe supports various proration modes combined with billing cycle resets:
 
-| Proration                       | Reset of Billing Cycle Anchor | VC Expiration Expected Behavior                                                        |
-| ------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------- |
-| No proration                    | Yes                           | • Immediately expire A<br/>• Grant full amount of B                                    |
-| No proration                    | No                            | • Expire A at the end of the billing cycle<br/>• Grant full amount of B at renewal     |
-| Immediate proration             | Yes                           | • Immediately expire A<br/>• Grant full amount of B                                    |
-| Immediate proration             | No                            | • Immediately expire A<br/>• Grant prorated amount of B                                |
-| Proration in next billing cycle | Yes                           | • Immediately expire A<br/>• Grant full amount of B                                    |
-| Proration in next billing cycle | No                            | • Expire A at the end of the billing cycle<br/>• Grant prorated amount of B at renewal |
+| Proration                       | Billing cycle reset | Expected behavior if A expires                                                         |
+| ------------------------------- | ------------------- | -------------------------------------------------------------------------------------- |
+| No proration                    | Yes                 | • Immediately expire A<br/>• Grant full amount of B                                    |
+| No proration                    | No                  | • Expire A at the end of the billing cycle<br/>• Grant full amount of B at renewal     |
+| Immediate proration             | Yes                 | • Immediately expire A<br/>• Grant full amount of B                                    |
+| Immediate proration             | No                  | • Immediately expire A<br/>• Grant prorated amount of B                                |
+| Proration in next billing cycle | Yes                 | • Immediately expire A<br/>• Grant full amount of B                                    |
+| Proration in next billing cycle | No                  | • Expire A at the end of the billing cycle<br/>• Grant prorated amount of B at renewal |
 
 ### Considerations
 
