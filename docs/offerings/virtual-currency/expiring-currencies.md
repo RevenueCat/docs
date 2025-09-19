@@ -48,6 +48,8 @@ All expiration events appear in the customer timeline so you can:
 
 When customers change their subscription products (upgrades, downgrades, or crossgrades), the behavior of expiring currencies depends on the platform and the specific proration mode used. RevenueCat automatically handles these transitions to ensure currency expiration remains consistent with billing changes.
 
+Consider a product change from subscription A to subscription B, where both products grant virtual currency (and at least A has expiring currency). Refer to the platform-specific tables below for detailed product change behavior.
+
 ### Google Play Store
 
 Google supports both client-side and server-side proration modes that affect how expiring currencies behave during product changes.
