@@ -100,7 +100,7 @@ Apple handles product changes differently based on the type of change:
 :::warning Crossgrades with Expiring Currencies
 Crossgrades of the **same duration** can create unexpected behavior when using expiring currencies. Apple refunds a portion of the old subscription and charges the full price for the new subscription, which can lead to unintended currency grant patterns.
 
-**Recommendation**: Avoid using crossgrades of the same duration if you have expiring currencies enabled. Crossgrades of different durations are safe to use, as are upgrades and downgrades.
+**Recommendation**: Avoid using crossgrades of the same duration if you have expiring currencies enabled. Crossgrades of different durations are safe to use, as are regular upgrades and downgrades.
 :::
 
 ### Stripe
