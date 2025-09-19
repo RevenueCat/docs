@@ -148,7 +148,7 @@ Granted entitlements don't stack on top of store subscriptions, and are applied 
 
 To grant a customer access to an entitlement, start by clicking the "Grant" button in the "Entitlements" card in the right hand column of the Customer profile.
 
-![Image](/docs_images/customers/grant-entitlement.png)
+![Image](/docs_images/customers/granted-entitlement-modal.png)
 
 First choose the [entitlement name](/getting-started/entitlements). Next select a preset duration or **Until date** to choose a custom end date. Finally, click **Grant**. You can grant multiple entitlements if you have different levels of access.
 
