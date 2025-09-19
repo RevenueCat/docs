@@ -72,7 +72,7 @@ retention AS (
             WHEN calculated_product_duration = 'P2M' THEN CAST(ROUND(DATE_DIFF('day', subs.first_start_time, start_time) / CAST(60 AS NUMERIC)) AS INTEGER)
             WHEN calculated_product_duration = 'P3M' THEN CAST(ROUND(DATE_DIFF('day', subs.first_start_time, start_time) / CAST(90 AS NUMERIC)) AS INTEGER)
             WHEN calculated_product_duration = 'P6M' THEN CAST(ROUND(DATE_DIFF('day', subs.first_start_time, start_time) / CAST(180 AS NUMERIC)) AS INTEGER)
-            WHEN calculated_product_duration = 'P1Y' THEN CAST(ROUND(DATE_DIFF('month,' subs.first_start_time, start_time) / CAST(12 AS NUMERIC)) AS INTEGER)
+            WHEN calculated_product_duration = 'P1Y' THEN CAST(ROUND(DATE_DIFF('month', subs.first_start_time, start_time) / CAST(12 AS NUMERIC)) AS INTEGER)
         END AS period_number,
         count(1) AS subscriptions
     FROM filtered_transactions ft
