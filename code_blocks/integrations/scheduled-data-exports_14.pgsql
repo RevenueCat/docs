@@ -80,7 +80,7 @@ retention AS (
         subs.rc_original_app_user_id = ft.rc_original_app_user_id AND
         subs.product_identifier = ft.product_identifier
     INNER JOIN calculated_product_duration cpd ON 
-        cpd.rc_original_app_user_id = ft.rc_original_app_user_id
+        cpd.rc_original_app_user_id = ft.rc_original_app_user_id AND
         cpd.product_identifier = ft.product_identifier
     WHERE period_number IS NOT NULL
     GROUP BY 1, 2, 3, 4
@@ -106,7 +106,7 @@ pending_retention AS (
         subs.rc_original_app_user_id = ft.rc_original_app_user_id AND
         subs.product_identifier = ft.product_identifier
     INNER JOIN calculated_product_duration cpd ON 
-        cpd.rc_original_app_user_id = ft.rc_original_app_user_id
+        cpd.rc_original_app_user_id = ft.rc_original_app_user_id AND
         cpd.product_identifier = ft.product_identifier
     WHERE unsubscribe_detected_at IS NOT NULL /* count only subscriptions that are set to renew */
         AND
