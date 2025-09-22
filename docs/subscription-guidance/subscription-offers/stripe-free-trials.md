@@ -20,11 +20,3 @@ Free trials can be added to a Subscription through Stripe's API. See Stripe's [p
 
 Stripe's full trial documentation can be found [here](https://stripe.com/docs/billing/subscriptions/trials).
 :::
-
-## Products
-
-Stripe presently allows for free trials to be set per price in **Products...Add product**
-
-RevenueCat will correctly detect these trials, but Stripe recommends against this approach. Trials configured on Products will not be compatible with Stripe Checkout or quotes.
-
-![Screenshot](/docs_images/products/stripe/default-trial-period.png)
