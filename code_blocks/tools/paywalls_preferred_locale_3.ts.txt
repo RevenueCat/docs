@@ -1,0 +1,9 @@
+// In configure
+Purchases.configure({
+  apiKey: '<YOUR_API_KEY>',
+  // other configuration options...
+  preferredUILocaleOverride: 'es-ES'
+});
+
+// Or during runtime
+await Purchases.overridePreferredLocale('de-DE');

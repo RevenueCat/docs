@@ -230,6 +230,23 @@ import cap1 from '@site/code_blocks/tools/paywalls_cap_1.ts.txt?raw';
 
 When creating a paywall, consider whether it will be presented in a sheet, or as a full screen view. Sheets won't require a dedicated close button. Full screen views should have either a close button (if presented modally) or a back button (if part of a navigation stack or host) unless you intend to provide a hard paywall to your customers that cannot be bypassed.
 
+## Setting preferred locale
+
+You can set a preferred locale for your paywalls to display in a specific language. This is useful when you want to override the device's default language for paywall content.
+
+import preferredLocaleSwift from '@site/code_blocks/tools/paywalls_preferred_locale_1.swift?raw';
+import preferredLocaleKotlin from '@site/code_blocks/tools/paywalls_preferred_locale_2.kt?raw';
+import preferredLocaleReactNative from '@site/code_blocks/tools/paywalls_preferred_locale_3.ts.txt?raw';
+
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: preferredLocaleSwift, name: "iOS" },
+    { type: "kotlin", content: preferredLocaleKotlin, name: "Android" },
+    { type: "rn", content: preferredLocaleReactNative, name: "React Native" }
+  ]}
+/>
+
+
 ## Custom fonts
  
 Using custom fonts in your paywall can now be done by uploading font files directly to RevenueCat. See the [Custom fonts](/tools/paywalls/creating-paywalls/components#custom-fonts) section for more information.
