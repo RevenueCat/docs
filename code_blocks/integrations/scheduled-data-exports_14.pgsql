@@ -4,8 +4,7 @@ WITH filtered_transactions AS (
     SELECT
         *
     FROM [revenuecat_data_table] rc
-    WHERE start_time >= /* desired date range */
-        AND end_time IS NOT NULL /* only include subscriptions */
+    WHERE end_time IS NOT NULL /* only include subscriptions */
         AND NOT (billing_issues_detected_at IS NOT NULL
             AND (store = 'play_store' OR store = 'stripe'))
         AND is_sandbox <> 'true'
@@ -144,4 +143,5 @@ FULL OUTER JOIN pending_retention ON
     pending_retention.calculated_product_duration = retention.calculated_product_duration AND
     pending_retention.product_identifier = retention.product_identifier AND
     pending_retention.period_number = retention.period_number
+WHERE first_start_date >= /* desired start date */
 ORDER BY product_identifier, first_start_date, period_number
