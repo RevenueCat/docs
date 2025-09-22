@@ -143,5 +143,5 @@ FULL OUTER JOIN pending_retention ON
     pending_retention.calculated_product_duration = retention.calculated_product_duration AND
     pending_retention.product_identifier = retention.product_identifier AND
     pending_retention.period_number = retention.period_number
-WHERE first_start_date >= /* desired start date */
+WHERE first_start_date >= /* desired date range */
 ORDER BY product_identifier, first_start_date, period_number
