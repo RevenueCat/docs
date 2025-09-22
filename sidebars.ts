@@ -275,6 +275,7 @@ const offeringsCategory = Category({
         Page({ slug: "subscriptions" }),
         Page({ slug: "refunds" }),
         Page({ slug: "events" }),
+        Page({ slug: "expiring-currencies" }),
         SubCategory({
           label: "Virtual Currency FAQs",
           itemsPathPrefix: "faq/",
