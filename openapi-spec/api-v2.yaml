@@ -5377,6 +5377,7 @@ components:
       - $ref: '#/components/schemas/RCBillingApp'
       - $ref: '#/components/schemas/RokuApp'
       - $ref: '#/components/schemas/PaddleApp'
+      additionalProperties: true
     AppCreate:
       allOf:
       - type: object
@@ -5497,6 +5498,7 @@ components:
           minLength: 1
           maxLength: 255
           example: https://billing.revenuecat.com/app1a2b3c4/sub1ab2c3d4e5?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+      additionalProperties: false
     Country:
       type: string
       nullable: true
@@ -5754,6 +5756,7 @@ components:
       - ZM
       - ZW
       - AX
+      additionalProperties: false
     CreateAppStoreConnectInAppPurchaseInput:
       type: object
       properties: {}
@@ -5963,6 +5966,7 @@ components:
       - ZAR
       - ZMW
       - ZWL
+      additionalProperties: false
     Customer:
       type: object
       required:
@@ -6043,6 +6047,7 @@ components:
               property, only available in the "Get a customer" endpoint.
             nullable: true
           - $ref: '#/components/schemas/ListCustomerAttributes'
+      additionalProperties: false
     CustomerAlias:
       type: object
       required:
@@ -6066,6 +6071,7 @@ components:
           type: integer
           format: int64
           example: 1658399423658
+      additionalProperties: false
     CustomerAttribute:
       type: object
       required:
@@ -6098,11 +6104,13 @@ components:
           type: integer
           format: int64
           example: 1658399423658
+      additionalProperties: false
     CustomerAttributeCustomName:
       type: string
       maxLength: 40
       pattern: ^[a-zA-Z][a-zA-Z0-9_-]*$
       example: opt_into_marketing
+      additionalProperties: false
     CustomerAttributeReservedName:
       type: string
       enum:
@@ -6154,6 +6162,7 @@ components:
       - $tenjinId
       - $deviceVersion
       example: $email
+      additionalProperties: false
     CustomerEntitlement:
       type: object
       required:
@@ -6181,6 +6190,7 @@ components:
           type: integer
           format: int64
           example: 1658399423658
+      additionalProperties: false
     DeletedObject:
       type: object
       required:
@@ -6208,6 +6218,7 @@ components:
           format: int64
           description: The date when the object was deleted in ms since epoch
           example: 1658399423658
+      additionalProperties: false
     EligibilityCriteria:
       type: string
       nullable: false
@@ -6298,6 +6309,7 @@ components:
               maxLength: 5000
               type: string
               example: /v2/projects/proj1ab2c3d4/entitlements/entle1a2b3c4d5/products
+      additionalProperties: false
     Environment:
       type: string
       description: The store environment
@@ -6306,6 +6318,7 @@ components:
       enum:
       - production
       - sandbox
+      additionalProperties: false
     Error:
       type: object
       required:
@@ -6366,6 +6379,7 @@ components:
           type: integer
           nullable: true
           example: null
+      additionalProperties: false
     ExperimentEnrollment:
       type: object
       required:
@@ -6395,6 +6409,7 @@ components:
           maxLength: 1
           type: string
           example: a
+      additionalProperties: false
     Invoice:
       type: object
       required:
@@ -6446,6 +6461,7 @@ components:
           nullable: true
           type: string
           example: https://api.revenuecat.com/v2/projects/proj1ab2c3d4/customers/cust1ab2c3d4/invoices/inv1ab2c3d4/file
+      additionalProperties: false
     InvoiceLineItem:
       type: object
       required:
@@ -6489,6 +6505,7 @@ components:
           example: 1
         unit_amount:
           $ref: '#/components/schemas/MonetaryAmount'
+      additionalProperties: false
     ListApps:
       type: object
       required:
@@ -6520,6 +6537,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/projec1a2b3c4d/apps
+      additionalProperties: false
     ListCustomerActiveEntitlements:
       type: object
       required:
@@ -6553,6 +6571,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/active_entitlements
+      additionalProperties: false
     ListCustomerAliases:
       type: object
       required:
@@ -6584,6 +6603,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/aliases
+      additionalProperties: false
     ListCustomerAttributes:
       type: object
       required:
@@ -6615,6 +6635,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/attributes
+      additionalProperties: false
     ListCustomerInvoices:
       type: object
       required:
@@ -6646,6 +6667,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/invoices
+      additionalProperties: false
     ListCustomers:
       type: object
       required:
@@ -6677,6 +6699,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/projec1a2b3c4d/customers
+      additionalProperties: false
     ListEntitlements:
       type: object
       required:
@@ -6708,6 +6731,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/entitlements
+      additionalProperties: false
     ListOfferings:
       type: object
       required:
@@ -6739,6 +6763,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/offerings
+      additionalProperties: false
     ListPackages:
       type: object
       required:
@@ -6770,6 +6795,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/offerings/ofrnge1a2b3c4d5/packages
+      additionalProperties: false
     ListProducts:
       type: object
       required:
@@ -6801,6 +6827,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/products
+      additionalProperties: false
     ListProjects:
       type: object
       required:
@@ -6832,6 +6859,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects
+      additionalProperties: false
     ListPublicApiKeys:
       type: object
       required:
@@ -6863,6 +6891,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/projec1a2b3c4d/apps/app1a2b3c4d/public_api_keys
+      additionalProperties: false
     ListPurchases:
       type: object
       required:
@@ -6894,6 +6923,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/purchases
+      additionalProperties: false
     ListSubscriptionTransaction:
       type: object
       required:
@@ -6925,6 +6955,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj123/subscriptions/sub123/transactions
+      additionalProperties: false
     ListSubscriptions:
       type: object
       required:
@@ -6956,6 +6987,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/subscriptions
+      additionalProperties: false
     ListVirtualCurrenciesBalances:
       type: object
       title: VirtualCurrenciesBalancesList
@@ -6987,6 +7019,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/virtual_currencies
+      additionalProperties: false
     MacAppStoreApp:
       type: object
       properties:
@@ -7149,6 +7182,7 @@ components:
               maxLength: 5000
               type: string
               example: /v2/projects/proj1ab2c3d4/offerings/ofrnge1a2b3c4d5/packages
+      additionalProperties: false
     OfferingMetadata:
       description: Custom metadata of the offering
       type: object
@@ -7235,6 +7269,7 @@ components:
           type: string
           format: date-time
           example: 2022-10-13 09:45:00.123000+00:00
+      additionalProperties: false
     OverviewMetrics:
       type: object
       required:
@@ -7252,12 +7287,14 @@ components:
           items:
             $ref: '#/components/schemas/OverviewMetric'
           type: array
+      additionalProperties: false
     Ownership:
       type: string
       example: purchased
       enum:
       - purchased
       - family_shared
+      additionalProperties: false
     Package:
       type: object
       required:
@@ -7337,6 +7374,7 @@ components:
               maxLength: 5000
               type: string
               example: /v2/projects/proj1ab2c3d4/offerings/ofrnge1a2b3c4d5/packages/pkge1a2b3c4d5/products
+      additionalProperties: false
     PackageProductAssociation:
       type: object
       required:
@@ -7456,6 +7494,7 @@ components:
           type: integer
           format: int64
           example: 1658399423958
+      additionalProperties: false
     PlayStoreApp:
       type: object
       properties:
@@ -7555,6 +7594,7 @@ components:
           minLength: 1
           maxLength: 1500
           example: Premium Monthly 2023
+      additionalProperties: false
     ProductType:
       type: string
       nullable: false
@@ -7564,6 +7604,7 @@ components:
       - consumable
       - non_consumable
       - non_renewing_subscription
+      additionalProperties: false
     ProductsFromEntitlement:
       type: object
       required:
@@ -7595,6 +7636,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/entitlements/entla1b2c3d4e5/products
+      additionalProperties: false
     ProductsFromPackage:
       type: object
       required:
@@ -7626,6 +7668,7 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/packages/pkge1a2b3c4d5/products
+      additionalProperties: false
     Project:
       type: object
       required:
@@ -7660,6 +7703,7 @@ components:
           type: integer
           format: int64
           example: 1658399423658
+      additionalProperties: false
     PublicApiKey:
       type: object
       required:
@@ -7710,6 +7754,7 @@ components:
           type: integer
           format: int64
           example: 1658399423658
+      additionalProperties: false
     Purchase:
       type: object
       required:
@@ -7855,6 +7900,7 @@ components:
           description: Billing country in ISO alpha 2 code
           nullable: true
           $ref: '#/components/schemas/Country'
+      additionalProperties: false
     RCBillingApp:
       type: object
       properties:
@@ -7950,6 +7996,7 @@ components:
       - GBP
       - JPY
       - USD
+      additionalProperties: false
     RokuApp:
       type: object
       properties:
@@ -8015,6 +8062,7 @@ components:
       required:
       - object
       - contents
+      additionalProperties: false
     StoreProduct:
       type: object
       required:
@@ -8050,6 +8098,7 @@ components:
           minLength: 1
           maxLength: 255
           example: com.example.premium_monthly
+      additionalProperties: false
     StripeApp:
       type: object
       properties:
@@ -8090,6 +8139,7 @@ components:
       - starts_at
       - current_period_starts_at
       - current_period_ends_at
+      - ends_at
       - gives_access
       - pending_payment
       - auto_renewal_status
@@ -8158,6 +8208,16 @@ components:
           description: The date when the subscription billing period is expected to
             end in ms since epoch. Can be null if the subscription is paused until
             an indefinite date.
+          nullable: true
+          type: integer
+          format: int64
+          example: 1658399423658
+        ends_at:
+          description: The date when the latest subscription billing period is expected
+            to end in ms since epoch. It will only be different from `current_period_ends_at`
+            if `auto_renewal_status` is `has_already_renewed`, in which case it indicates
+            the end of the next billing period. Can be null if the subscription is
+            paused until an indefinite date.
           nullable: true
           type: integer
           format: int64
@@ -8322,6 +8382,7 @@ components:
           nullable: true
           type: string
           example: https://apps.apple.com/account/subscriptions
+      additionalProperties: false
     SubscriptionProduct:
       type: object
       required:
@@ -8376,6 +8437,7 @@ components:
           type: integer
           format: int64
           example: 1658399423658
+      additionalProperties: false
     Transfer:
       type: object
       title: TransferResult
@@ -8409,6 +8471,13 @@ components:
         balance:
           description: The balance of the virtual currency.
           type: integer
+        description:
+          description: The description of the virtual currency.
+          type: string
+        name:
+          description: The name of the virtual currency.
+          type: string
+      additionalProperties: false
   headers:
     RateLimitCurrentLimit:
       required: true
