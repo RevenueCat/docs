@@ -40,7 +40,7 @@ You can access Real-time Charts from your dashboard by toggling `Real-time` on i
 - The **Platform** dimension now reports a customer's first seen platform, not their last seen platform, to make analyzing acquisition channels easier and to avoid customer dimensions changing over time.
 - The **Country** dimensions now reports the country associated with a customer's app store account (if available), or IP-based location otherwise.
 - The current Trial Conversion chart (renamed to the Trial Conversion Funnel) included any future payment on an App Store subscription as a conversion to paid, even if that conversion did not come from the trial start. Now, only conversions to paid from the trial start are included in this chart.
-- The cohorting methodology for the Cohort Explorer and Prediction Explorer has been updated to calculate each daily cohort's periods, and then sum them for cohorts larger than daily, whereas previously larger cohort's (weekly, monthly, etc.) had their periods defined by the first and last day of the cohort, regardless of when an individual customer was first seen within that timeframe.
+- The cohorting methodology for the Cohort Explorer and Prediction Explorer has been updated to calculate each **daily** cohort's periods, and then sum them for cohorts larger than daily, whereas previously larger cohorts (weekly, monthly, etc.) had their periods defined by the first and last day of the cohort (e.g. Day 1 and Day 30 of a given month), regardless of when an individual customer was first seen within that timeframe, resulting in some customers who were first seen later in a period having their revenue pushed out to the next period.
 
 ## Detailed changes
 
