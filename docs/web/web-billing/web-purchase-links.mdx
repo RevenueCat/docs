@@ -13,22 +13,26 @@ Web Purchase Links support a range of use cases, with both identified and anonym
 
 Before getting started, you first need to [connect your Stripe account with RevenueCat](/web/connect-stripe-account), if you haven't already done so.
 
+Alternatively, to configure a Web Purchase Link with Paddle Billing, see [Paddle app-to-web purchases](/web/guides/paddle-app-to-web).
+
 ## Get Started
 
 1. Create a [Web Billing App](/web/web-billing/web-sdk#app-configuration)
 2. Add the [Web Billing Products](/web/web-billing/product-setup) you want to serve through your Web Purchase Link
 3. Create an [Offering](/offerings/overview) with those Products
-4. Visit that Offering's details page and click on the **Web Purchase Link** tab
-5. Finally, click on the **Create a Web Purchase Link for this Offering** button
+4. Click **Web** in the left menu of the **Project** dashboard
+5. Finally, click on the **Create web purchase link** button
 6. To support anonymous purchases, configure [Redemption Links](/web/web-billing/redemption-links) in your Web Billing app settings.
 
 ![](/docs_images/web/web-billing/web-purchase-link-create.png)
 
 ## Customise your Web Purchase Link
 
-Choose a Web Billing app from the dropdown if you have more than one
+Choose an internal name for your Web Purchase Link, this will only be used within the RevenueCat dashboard.
 
-![](/docs_images/web/web-billing/web-purchase-link-choose-app.png)
+Select an offering to determine which products users will be able to choose between.
+
+![](/docs_images/web/web-billing/web-purchase-link-choose-offering.png)
 
 ### Product Selection page
 
@@ -76,7 +80,7 @@ After completing a purchase, there are two configurable options:
 - Includes optional app download links and purchase redemption (for [Redemption Links](/web/web-billing/redemption-links))
 - Customizable header and subheader
 
-**Redirect to a custom URL**
+**Redirect to a custom success page**
 
 - Can be used to redirect to a post-purchase experience on your own website
 - The app user id is appended as a URL parameter (`app_user_id`) so you can further customize the post-purchase experience
@@ -127,7 +131,9 @@ We suggest to create a dedicated offering/web purchase link for non-consumables 
 
 ## Distributing Web Purchase Links
 
-Once you've configured a web purchase link, you'll have access to two URLs formatted as `https://pay.rev.cat/<someProductionTokenWeGenerate>` (one for production, the other one for sandbox):
+Once you've configured a web purchase link, you'll have access to two URLs formatted as `https://pay.rev.cat/<someProductionTokenWeGenerate>` (one for production, the other one for sandbox).
+
+To access these click **Web** in the left menu of the **Project** dashboard, then select your Web Purchase Link from the table. Now click **Share URL**:
 
 ![](/docs_images/web/web-billing/web-purchase-link-urls.png)
 
