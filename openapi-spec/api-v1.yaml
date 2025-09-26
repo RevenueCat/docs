@@ -1036,6 +1036,10 @@ components:
                         - `stripe`: The product was purchased through Stripe.
                         - `roku`: The product was purchased through Roku.
                         - `paddle`: The product was purchased through Paddle.
+                    store_transaction_id:
+                      type: string
+                      description: The identifier associated with the purchase in the underlying store.
+                      example: "1000000819074923"
             original_app_user_id:
               type: string
               example: XXX-XXXXX-XXXXX-XX
