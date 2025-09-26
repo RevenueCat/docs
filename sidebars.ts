@@ -1020,6 +1020,7 @@ const customerSupportCategory = Category({
       itemsPathPrefix: "integrations/",
       items: [
         Page({ slug: "customer-support/zendesk" }),
+        Page({ slug: "customer-support/intercom" }),
         Page({ slug: "stripe-app" }),
       ],
     }),
