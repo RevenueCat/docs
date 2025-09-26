@@ -9,49 +9,40 @@ Use Web Purchase Links to enable customers to purchase a web subscription direct
 
 Web Purchase Links support a range of use cases, with both identified and anonymous purchases. For identified users, append the customer's App User ID to the provided URL. For anonymous purchases, utilize [Redemption Links](/web/web-billing/redemption-links), which allow customers to buy subscriptions without an App User ID and later associate the purchase with their account in your app.
 
-## Prerequisites
+## Getting started
 
-Before getting started, you first need to [connect your Stripe account with RevenueCat](/web/connect-stripe-account), if you haven't already done so.
+You can set up Web Purchase Links with **Web Billing** as well as **Paddle Billing**.
 
-Alternatively, to configure a Web Purchase Link with Paddle Billing, see [Paddle app-to-web purchases](/web/guides/paddle-app-to-web).
+### Web Billing
 
-## Get Started
+1. Connect payment provider: To set up a Web Purchase Link with **Web Billing**, make sure to [connect your Stripe account with RevenueCat](/web/connect-stripe-account), if you haven't already done so. This can only be done by the the project owner.
+2. In the **Apps & providers** section, add a [Web Billing config](/web/web-billing/web-sdk#app-configuration).
+3. Create the [Web Billing products](/web/web-billing/product-setup) you want to serve through your Web Purchase Link
+4. Create an [offering](/offerings/overview) with those products
+5. In the **Web** section in the main menu, click on the **Create web purchase link** button to open the form.
 
-1. Create a [Web Billing App](/web/web-billing/web-sdk#app-configuration)
-2. Add the [Web Billing Products](/web/web-billing/product-setup) you want to serve through your Web Purchase Link
-3. Create an [Offering](/offerings/overview) with those Products
-4. Click **Web** in the left menu of the **Project** dashboard
-5. Finally, click on the **Create web purchase link** button
-6. To support anonymous purchases, configure [Redemption Links](/web/web-billing/redemption-links) in your Web Billing app settings.
+:::info Anonymous purchases
+To support anonymous purchases, configure [Redemption Links](/web/web-billing/redemption-links) in your Web Billing config settings.
+:::
 
-![](/docs_images/web/web-billing/web-purchase-link-create.png)
+### Paddle Billing
 
-## Customise your Web Purchase Link
+To configure a Web Purchase Link with **Paddle Billing**, see the first steps in [Paddle app-to-web purchases](/web/guides/paddle-app-to-web) to create a Paddle config, products and an offering containing the products.
 
-Choose an internal name for your Web Purchase Link, this will only be used within the RevenueCat dashboard.
+## Customize the Web Purchase Link
 
-Select an offering to determine which products users will be able to choose between.
+### Landing page - product selection
 
-![](/docs_images/web/web-billing/web-purchase-link-choose-offering.png)
-
-### Product Selection page
-
-The first page your customers will see when accessing your Web Purchase Link is the product selection page.
-In this page your customers can select one of the products included in your offering.
-
-Here is an example:
+When customers open your Web Purchase Link, they land on a product selection page. The products shown there come from the offering you’ve linked, and customers can choose from those products.
 
 ![](/docs_images/web/web-billing/web-purchase-link-package-example.png)
 
 You can customize:
 
-- The page header
-- The subheader
-- Choose to show or not the product description (check the [product setup](/web/web-billing/product-setup) step for more info)
-- The terms and conditions URL (footer)
-- Visual look and feel, including colors and shape styling (configured separately in [customization](/web/web-billing/customization))
-
-![](/docs_images/web/web-billing/web-purchase-link-package-config.png)
+- Page header and subheader
+- Whether product descriptions show above product names (check the [product setup](/web/web-billing/product-setup) step for more info)
+- Terms and conditions URL (footer)
+- Look and feel, including colors and shape styling (configured separately in [ the web config's customization](/web/web-billing/customization))
 
 :::info product selection can be skipped
 It's possible to skip this page, and pre-select a package by passing a `package_id` [URL parameter](#package-id).
@@ -59,7 +50,7 @@ It's possible to skip this page, and pre-select a package by passing a `package_
 
 ### Checkout
 
-Once a product has been selected, users will be presented with the checkout:
+Once a product has been selected, in Web Purchase Links using Web Billing, customers will be presented with the checkout:
 
 ![](/docs_images/web/web-billing/web-purchase-link-checkout.png)
 
@@ -69,16 +60,16 @@ Once a product has been selected, users will be presented with the checkout:
 - Product information, prices and currencies are configured in the products (see [product setup](/web/web-billing/product-setup))
 - Tax collection is configured in the payment provider settings and Stripe dashboard (see [sales tax & VAT](/web/web-billing/tax))
 - Colors and button styles are configured in customization (see [customization](/web/web-billing/customization))
-- The email address can be pre-populated (see [URL parameters](#email))
+- Email address can be pre-populated (see [URL parameters](#email))
 
 ### Success behavior
 
 After completing a purchase, there are two configurable options:
 
-**Show the success page**
+**Show the default success page**
 
-- Includes optional app download links and purchase redemption (for [Redemption Links](/web/web-billing/redemption-links))
-- Customizable header and subheader
+- Customizable header and subheader.
+- Optional app download links and purchase redemption instructions (for [Redemption Links](/web/web-billing/redemption-links))
 
 **Redirect to a custom success page**
 
@@ -95,10 +86,9 @@ If you choose to show a success page here's how it will look:
 
 You can customize:
 
-- The page header
-- The subheader
-- Choose whether to show the app download buttons
-- Configure the app download links
+- Page header and subheader
+- Whether to show app download badges
+- App download links (overrides only for this Web Purchase Link; defaults to app config if left empty)
 
 ![](/docs_images/web/web-billing/web-purchase-link-success-config.png)
 
@@ -131,11 +121,10 @@ We suggest to create a dedicated offering/web purchase link for non-consumables 
 
 ## Distributing Web Purchase Links
 
-Once you've configured a web purchase link, you'll have access to two URLs formatted as `https://pay.rev.cat/<someProductionTokenWeGenerate>` (one for production, the other one for sandbox).
+When you configure a Web Purchase Link, you’ll get two URLs: one for Production and one for Sandbox.
+Example format: `https://pay.rev.cat/<ProductionTokenWeGenerate>`.
 
-To access these click **Web** in the left menu of the **Project** dashboard, then select your Web Purchase Link from the table. Now click **Share URL**:
-
-![](/docs_images/web/web-billing/web-purchase-link-urls.png)
+To access these click **Web** in the main menu, then select your Web Purchase Link from the table. Now click **Share URL** to copy the URL template.
 
 :::danger Do not send the sandbox URL to customers
 The Sandbox URL allows you to test purchases using [Stripe test card numbers](https://docs.stripe.com/testing#use-test-cards).
