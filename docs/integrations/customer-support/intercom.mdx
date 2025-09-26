@@ -1,0 +1,220 @@
+---
+title: Intercom
+slug: intercom
+excerpt: Display RevenueCat customer subscription data directly in your Intercom Support inbox
+hidden: false
+---
+
+The RevenueCat Intercom integration brings your subscription data directly into your Intercom Support workflow. This app displays comprehensive customer subscription information in the conversation sidebar, enabling your support team to provide more informed and efficient customer service without switching between platforms.
+
+## Key Features
+
+- **Real-time Customer Data**: View customer subscription status, purchase history, and account details instantly
+- **Automatic Customer Matching**: Automatically links Intercom conversation contacts to RevenueCat customers
+- **Comprehensive Subscription Details**: See active subscriptions, revenue data, and product information
+- **Manual Search Capability**: Search for customers by email or customer ID when automatic matching isn't possible
+- **Profile Syncing**: Maintain persistent associations between Intercom contacts and RevenueCat customers
+- **Revenue Analytics**: View total customer lifetime value and detailed purchase breakdowns
+- **Multi-Platform Support**: Works with App Store, Play Store, Stripe, and other supported stores
+
+### Integration at a Glance
+
+|     Type      |       Data Flow        | Real-time Updates | Search Capability | Profile Syncing |
+| :-----------: | :--------------------: | :---------------: | :---------------: | :-------------: |
+| Intercom App  | RevenueCat → Intercom  |        ✅         |        ✅         |       ✅        |
+
+## Prerequisites
+
+### RevenueCat Requirements
+
+- Active RevenueCat account with subscription data
+- Admin access to your RevenueCat project
+- Customer data with email addresses that match your Intercom conversation contacts, or the ability to include customer IDs in conversation messages (see [Automatic Customer ID Extraction](#automatic-customer-id-extraction))
+
+### Intercom Requirements
+
+- Intercom Support workspace
+- Admin permissions to install and configure apps
+
+## Installation & Configuration
+
+### 1. Intercom App Installation
+
+1. Visit the [RevenueCat Customer Profiles app](https://www.intercom.com/app-store/) in the Intercom App Store
+2. Click **Install** and log into your RevenueCat account if prompted
+3. Follow the installation prompts to add the app to your Intercom workspace
+
+### 2. App Configuration
+
+**Configure the Integration:**
+
+1. In your Intercom workspace, go to your Inbox and select a conversation
+2. In the sidebar (Conversation Details), look for the Edit Apps button
+2. Find "RevenueCat Customer Profiles" in your installed apps, and pin it
+
+![RevenueCat Customer Profiles app in Intercom sidebar](/docs_images/integrations/customer-support/intercom-sidebar.png)
+
+**Verify Installation:**
+
+1. Open any conversation in Intercom
+2. Look for the RevenueCat app in the right sidebar under **Apps**
+3. The app should show customer data or search options
+
+
+## How the Integration Works
+
+### Customer Matching
+
+The integration automatically attempts to match Intercom conversation contacts to RevenueCat customers using several methods:
+
+1. **Profile-Based Matching**: If a contact has been previously linked to a RevenueCat customer, the app will automatically display their information
+2. **Message Content Parsing**: The app automatically extracts customer IDs from conversation messages (see details below)
+3. **Email Matching**: The app searches your RevenueCat project for customers with the same email address as the conversation contact
+4. **Manual Search**: When automatic matching doesn't find a customer, support agents can manually search by email or customer ID
+
+### Automatic Customer ID Extraction
+
+The integration can automatically extract RevenueCat customer IDs from conversation messages when they follow specific formats. This is particularly useful for automated emails sent from your app or when customers include their customer ID in support requests.
+
+**How It Works:**
+
+The integration looks for text in conversation messages that:
+
+- Start at the beginning of a line
+- Optionally begin with "RC" followed by a space
+- Contain one of these keywords: "customer", "user", or "install"
+- Optionally have "id" after the keyword (with optional spaces, underscores, or dashes)
+- Are followed by a colon ":" with optional spaces around it
+- Have a customer ID value (1-100 characters, no line breaks or slashes)
+- End at the end of the line
+
+The matching is case-insensitive, so "Customer ID", "customer id", and "CUSTOMER ID" all work.
+
+**Implementation Examples:**
+
+When sending support emails from your app, include the customer ID in one of these formats. You can put this at the bottom of the email with some other debug information you might already be sending:
+
+```
+// Example 1: Basic format
+Customer ID: 12345abc-def6-7890-ghij-klmnopqrstuv
+
+// Example 2: With RC prefix
+RC Customer ID: 12345abc-def6-7890-ghij-klmnopqrstuv
+
+// Example 3: Alternative formats
+User ID: 12345abc-def6-7890-ghij-klmnopqrstuv
+Install ID: 12345abc-def6-7890-ghij-klmnopqrstuv
+```
+
+### What You'll See
+
+When the integration successfully finds a customer, you'll see:
+
+**Customer Overview:**
+
+- Customer ID and project information
+- Total lifetime value across all purchases
+- Country, app version, and platform details
+- Last activity and account creation dates
+
+**Subscription Details:**
+
+- Active and past subscriptions
+- Product names and subscription status
+- Revenue data and renewal dates
+- Store information (App Store, Play Store, etc.)
+
+**Purchase History:**
+
+- One-time purchases and consumables
+- Purchase dates and quantities
+- Revenue breakdown by transaction
+
+**Custom Attributes:**
+
+- Any custom attributes you've set in RevenueCat
+- Expandable view for easy access
+
+## Using the Integration Effectively
+
+### Quick Actions
+
+**View in RevenueCat Dashboard:**
+
+- Click the **View in RevenueCat** button to open the customer's full profile in a new tab
+- Perfect for detailed analysis or making subscription changes
+
+**Copy Customer Information:**
+
+- Click the copy icon next to customer IDs and other data
+- Easily share information with team members or other tools
+
+**Sync Customers to Profiles:**
+
+- Use the **Match customer with Intercom profile** button to create persistent associations
+- Future conversations with the same contact will automatically show customer data
+
+### Manual Search Tips
+
+When automatic matching doesn't work:
+
+1. **Search by Email**: Use the exact email address from the customer's account
+2. **Search by Customer ID**: Use the RevenueCat customer ID if you have it
+3. **Multiple Results**: If multiple customers share an email, you'll see a list to choose from
+4. **No Results**: The integration will clearly indicate when no customer is found
+
+### Profile Syncing (Advanced)
+
+Profile syncing provides:
+
+- **Persistent Associations**: Once synced, future conversations automatically show customer data
+- **Team Efficiency**: All agents see the same customer information
+- **Reduced Lookups**: Eliminates repeated manual searches for the same customers
+
+## Data Privacy & Security
+
+### Your Customer Data
+
+- All customer data is retrieved in real-time from RevenueCat
+- No customer information is stored by the Intercom integration
+- Data transmission uses industry-standard TLS encryption
+
+### Access Control
+
+- Only authorized Intercom admins can configure the integration
+- Access is limited to your specific RevenueCat project data
+
+### Compliance
+
+- Integration maintains RevenueCat's SOC2 and ISO 27001 compliance standards
+- Fully GDPR compliant through RevenueCat's data processing agreements
+- Customer data handling follows all applicable privacy regulations
+
+## Troubleshooting
+
+### Common Issues
+
+**Customer Data Not Found:**
+
+- Verify customer data exists in your RevenueCat project dashboard
+- Check that your API key is active and has the necessary permissions
+- Confirm your project ID matches what's configured in Intercom
+
+**Email Matching Issues:**
+
+- Ensure the customer's email in RevenueCat matches the Intercom contact email exactly
+- Check for typos or different email domains
+
+### Getting Help
+
+If you continue experiencing issues:
+
+- Reach out to RevenueCat support
+- Include your Intercom workspace domain and RevenueCat project ID for faster assistance
+- Provide specific error messages or screenshots when possible
+
+---
+
+:::info Next Steps
+Once your Intercom integration is set up, your support team will have instant access to customer subscription data. Consider training your team on the features available and establishing workflows for handling subscription-related support requests.
+:::
