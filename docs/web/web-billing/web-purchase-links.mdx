@@ -190,3 +190,32 @@ Add `skip_purchase_success=true` to bypass the final "Purchase Complete" step an
 
 Add `use_top_target_when_redirecting=true` if you are using WPLs in an iframe and want the parent page to redirect to your `redirect_url`.
 If not specified the WPL will redirect using `target="_self"` causing only the iframe to redirect to your `redirect_url`.
+
+### Purchase success event (postMessage)
+
+When a purchase is completed successfully, Web Purchase Links notifies the top window using `window.top.postMessage`. This happens whether you show the hosted success page or you redirect to a custom URL.
+
+The posted message contains:
+
+- `type`: `rc_checkout_purchase_success`
+- One property for each query string parameter that would be appended to the success page URL or your `redirect_url`. For example: `app_user_id`, and when [Redemption Links](/web/web-billing/redemption-links) are enabled, `redeem_url`.
+
+Example: listen for the event from a parent page (useful when embedding a WPL inside an iframe):
+
+```js
+window.addEventListener("message", (event) => {
+  // Always verify the origin
+  if (event.origin !== "https://pay.rev.cat") return;
+
+  const data = event.data;
+  if (data && data.type === "rc_checkout_purchase_success") {
+    // Handle purchase success
+    // All query parameters that would be on the success page/redirect URL
+    // are included as fields on the message payload
+    // e.g., data.app_user_id, data.redeem_url
+    console.log("Purchase success:", data);
+
+    // Your logic here (e.g., close modal/iframe, update UI, navigate, etc.)
+  }
+});
+```
