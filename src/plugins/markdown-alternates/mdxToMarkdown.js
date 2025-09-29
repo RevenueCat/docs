@@ -81,7 +81,7 @@ function createVideoParagraph({ url, videoText }) {
       type: "link",
       url,
       title: null,
-      children: [{ type: "text", value: videoText }],
+      children: [{ type: "text", value: url }],
     });
   } else {
     children.push({ type: "text", value: videoText });
