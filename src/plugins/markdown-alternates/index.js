@@ -236,23 +236,15 @@ function permalinkToOutputPaths(
   const trimmedRelative = trimmed.replace(/^\/+/, "");
   const markdownPublicPath = (() => {
     if (hasTrailingSlash) {
-      if (!trimmedRelative) {
-        return `/index${markdownExtension}`;
-      }
-      return `/${trimmedRelative}/index${markdownExtension}`;
+      return `${permalink}index${markdownExtension}`;
     }
 
-    if (!trimmedRelative) {
+    if (!permalink || permalink === "/") {
       return `/index${markdownExtension}`;
     }
 
-    return `/${trimmedRelative}${markdownExtension}`;
+    return `${permalink}${markdownExtension}`;
   })();
-
-  const markdownPath = path.join(
-    outDir,
-    markdownPublicPath.replace(/^\/+/, ""),
-  );
 
   const normalizedBase = (baseUrl || "/")
     .replace(/^\/+/, "")
@@ -265,19 +257,34 @@ function permalinkToOutputPaths(
     routePath = "";
   }
 
-  let htmlPath;
-  if (!routePath) {
-    htmlPath = path.join(outDir, "index.html");
-  } else if (trailingSlash) {
-    htmlPath = path.join(outDir, routePath, "index.html");
-  } else {
-    htmlPath = path.join(outDir, `${routePath}.html`);
-  }
+  const htmlRelativePath = (() => {
+    if (!routePath) {
+      return "index.html";
+    }
+
+    if (trailingSlash) {
+      return path.join(routePath, "index.html");
+    }
+
+    return `${routePath}.html`;
+  })();
+
+  const markdownRelativePath = (() => {
+    if (!routePath) {
+      return `index${markdownExtension}`;
+    }
+
+    if (hasTrailingSlash || trailingSlash) {
+      return path.join(routePath, `index${markdownExtension}`);
+    }
+
+    return `${routePath}${markdownExtension}`;
+  })();
 
   return {
-    markdownPath,
+    markdownPath: path.join(outDir, markdownRelativePath),
     markdownPublicPath,
-    htmlPath,
+    htmlPath: path.join(outDir, htmlRelativePath),
   };
 }
 
