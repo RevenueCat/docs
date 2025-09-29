@@ -4,6 +4,10 @@ This file provides an organized guide to RevenueCat's documentation for large la
 
 The prefix for the URL paths is: https://www.revenuecat.com/docs
 
+### Markdown Mirrors
+- Append `.md` to any listed path to fetch the LLM-optimized markdown version, for example `/projects/overview.md` or `/subscription-guidance/subscription-offers/ios-subscription-offers.md`.
+- Markdown mirrors include descriptive fallbacks for interactive content and link back to embedded media.
+
 ## Overview and Getting Started
 
 - /welcome/overview - Platform introduction and core concepts of RevenueCat
