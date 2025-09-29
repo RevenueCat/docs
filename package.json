@@ -29,7 +29,11 @@
     "prism-react-renderer": "^2.4.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "redocusaurus": "^2.5.0"
+    "redocusaurus": "^2.5.0",
+    "unified": "^11.0.4",
+    "remark-parse": "^11.0.0",
+    "remark-mdx": "^3.0.1",
+    "remark-stringify": "^11.0.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.8.1",
