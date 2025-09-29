@@ -130,6 +130,7 @@ const config = {
         anonymizeIP: true,
       },
     ],
+    "./src/plugins/markdown-alternates/index.js",
     "./src/plugins/tailwind/tailwind-config.cjs",
     function myRawLoaderPlugin() {
       // this plugin replaces raw-loader with asset/source (webpack 5)
