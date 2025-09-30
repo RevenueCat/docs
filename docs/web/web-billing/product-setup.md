@@ -155,7 +155,7 @@ Customers are only able to change to a product that has a price in their existin
 
 :::
 
-### Defining upgrade and downgrade paths
+### Defining subscription change paths
 
 ![Subscription changes link](/docs_images/web/web-billing/subscription-changes-link.png)
 
