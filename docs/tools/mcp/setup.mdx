@@ -93,6 +93,19 @@ Add to your Claude Desktop configuration:
 
 Add to your Codex CLI configuration file (`~/.codex/config.toml`):
 
+**macOS/Linux:**
+
+```toml
+[mcp_servers.revenuecat]
+command = "npx"
+args = ["mcp-remote", "https://mcp.revenuecat.ai/mcp", "--header", "Authorization: Bearer ${AUTH_TOKEN}"]
+env = { AUTH_TOKEN = "YOUR_API_V2_SECRET_KEY" }
+type = "stdio"
+startup_timeout_ms = 20_000
+```
+
+**Windows:**
+
 ```toml
 [mcp_servers.revenuecat]
 command = 'C:\Program Files\nodejs\npx.cmd'
@@ -108,7 +121,7 @@ type = "stdio"
 startup_timeout_ms = 20_000
 ```
 
-> **💡 Note**: Replace `USERNAME` with your actual Windows username. On Unix/Linux/macOS, you can use `command = "npx"` instead of the full Windows path.
+> **💡 Note**: On Windows, replace `USERNAME` with your actual Windows username.
 
 ### Using with MCP Inspector
 
