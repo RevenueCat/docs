@@ -89,6 +89,40 @@ Add to your Claude Desktop configuration:
 }
 ```
 
+### Using with OpenAI Codex CLI
+
+Add to your Codex CLI configuration file (`~/.codex/config.toml`):
+
+**macOS/Linux:**
+
+```toml
+[mcp_servers.revenuecat]
+command = "npx"
+args = ["mcp-remote", "https://mcp.revenuecat.ai/mcp", "--header", "Authorization: Bearer ${AUTH_TOKEN}"]
+env = { AUTH_TOKEN = "YOUR_API_V2_SECRET_KEY" }
+type = "stdio"
+startup_timeout_ms = 20_000
+```
+
+**Windows:**
+
+```toml
+[mcp_servers.revenuecat]
+command = 'C:\Program Files\nodejs\npx.cmd'
+args = ["mcp-remote", "https://mcp.revenuecat.ai/mcp", "--header", "Authorization: Bearer ${AUTH_TOKEN}"]
+env = {
+    APPDATA = 'C:\Users\USERNAME\AppData\Roaming',
+    LOCALAPPDATA = 'C:\Users\USERNAME\AppData\Local',
+    HOME = 'C:\Users\USERNAME',
+    SystemRoot = 'C:\Windows',
+    AUTH_TOKEN = "YOUR_API_V2_SECRET_KEY"
+}
+type = "stdio"
+startup_timeout_ms = 20_000
+```
+
+> **💡 Note**: On Windows, replace `USERNAME` with your actual Windows username.
+
 ### Using with MCP Inspector
 
 For testing and development:
