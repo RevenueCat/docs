@@ -166,7 +166,7 @@ Customers are only able to change to a product that has a price in their existin
 1. Scroll to your web billing provider, and click the **Subscription changes** button in the table header
 1. Click **Edit**
 1. In the first dropdown list, select the product you want customers to be able to upgrade from (source product)
-1. In the "can be upgraded to" list, select one or more products you want customers to be able to upgrade to (destination products)
+1. (Optional) In the "can be upgraded to" list, select one or more products you want customers to be able to upgrade to (destination products)
 1. (Optional) do the same to add rules for downgrades
 1. (Optional) add more rules for different products
 1. Click **Save rules**
