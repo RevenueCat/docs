@@ -141,6 +141,8 @@ When a customer chooses to **upgrade** their subscription:
 - The customer is charged the full amount for the new product's price immediately
 - A partial refund is issued for any unused time on the existing subscription
 
+### Downgrade behavior
+
 When a customer chooses to **downgrade** their subscription:
 
 - Access to their new product is granted at the end of the current subscription cycle
