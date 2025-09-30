@@ -5,7 +5,9 @@ slug: connect-a-store
 excerpt: Connect supported apps and web providers to your project
 ---
 
-Once you've created a [project](/projects/overview), you'll need to connect it to the stores and payment providers you want to support and set up [Server Notifications](/platform-resources/server-notifications). After you've connected your app, you can import your products from the stores to start configuring your offerings.
+Each [project](/projects/overview) comes with a Test Store, where you can test your Products, Paywalls and Entitlements.
+
+Before you can submit your app to an app store, you'll need to connect it to the stores and payment providers you want to support and set up [Server Notifications](/platform-resources/server-notifications). After you've connected your app, you can import your products from the stores to start configuring your offerings.
 
 Add an **app config** or **web config** in the _Apps & providers_ section of your app settings.
 
