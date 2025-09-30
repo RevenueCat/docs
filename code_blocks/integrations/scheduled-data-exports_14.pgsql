@@ -107,7 +107,7 @@ pending_retention AS (
     INNER JOIN calculated_product_duration cpd ON 
         cpd.rc_original_app_user_id = ft.rc_original_app_user_id AND
         cpd.product_identifier = ft.product_identifier
-    WHERE unsubscribe_detected_at IS NOT NULL /* count only subscriptions that are set to renew */
+    WHERE unsubscribe_detected_at IS NULL /* count only subscriptions that are set to renew */
         AND
             ((calculated_product_duration = 'P1D' AND DATE_ADD(start_time, '1 day') > CURRENT_DATE)
             OR (calculated_product_duration = 'P1W' AND DATE_ADD(start_time, '1 week') > CURRENT_DATE)
