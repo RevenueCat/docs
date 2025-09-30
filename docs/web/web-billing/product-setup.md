@@ -129,7 +129,7 @@ You can allow customers to change their subscription from the Customer Portal, a
 
 To enable this, you first need to create upgrade or downgrade paths between your web billing products. Subscribers can only move between products when an explicit path is defined between them.
 
-![Upgrades in Customer Portal](/docs_images/web/web-billing/customer-portal-subscription-changes.png)
+![Subscription Changes in Customer Portal](/docs_images/web/web-billing/customer-portal-subscription-changes.png)
 
 ### Upgrade behavior
 
