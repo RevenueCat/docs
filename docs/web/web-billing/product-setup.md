@@ -131,6 +131,12 @@ To enable this, you first need to create upgrade or downgrade paths between your
 
 ![Subscription Changes in Customer Portal](/docs_images/web/web-billing/customer-portal-subscription-changes.png)
 
+:::info Subscription changes must use same currency
+
+Customers are only able to change to a product that has a price in their existing currency. Products without a price in their currency will not be presented as possible changes.
+
+:::
+
 ### Upgrade behavior
 
 When a customer chooses to **upgrade** their subscription:
@@ -151,11 +157,9 @@ When a customer chooses to **downgrade** their subscription:
 - The customer is charged the full amount for the new product's price at the end of the current subscription cycle
 - No refunds are issued
 
-:::info Subscription changes must use same currency
+#### Canceling a pending downgrade
 
-Customers are only able to change to a product that has a price in their existing currency. Products without a price in their currency will not be presented as possible changes.
-
-:::
+It's also possible for the customer to cancel a pending downgrade any time before the schedulded renewal date, by accessing the customer portal and choosing "change subscription" after a downgrade has been scheduled.
 
 ### Defining subscription change paths
 
