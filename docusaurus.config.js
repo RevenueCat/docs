@@ -51,7 +51,7 @@ const config = {
       mdxCrossCompilerCache: true,
       swcJsLoader: true,
       swcJsMinimizer: true,
-      swcHtmlMinimizer: true,
+      swcHtmlMinimizer: false, // this breaks html layouts if enabled
       rspackBundler: true,
       rspackPersistentCache: true,
       ssgWorkerThreads: false, // redocusaurus doesn't support this yet, so we'll disable it for now
