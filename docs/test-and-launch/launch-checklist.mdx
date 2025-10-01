@@ -8,6 +8,19 @@ hidden: false
 
 This document contains a checklist of things to consider before launching subscriptions in your app to production.
 
+:::danger 🚨 CRITICAL: Replace Test Store API Key Before Submission
+**You MUST replace your Test Store API key with the correct platform-specific API key (iOS, Android, etc.) before submitting your app for review.**
+
+If you've been testing with the Test Store during development:
+
+1. Go to **Project Settings > API keys** in the RevenueCat dashboard
+2. Copy the correct platform-specific API key (iOS for App Store, Android for Google Play)
+3. Update your app configuration to use the platform-specific API key for release builds
+4. **Never submit an app configured with a Test Store API key to app review**
+
+Using a Test Store API key in production will prevent real purchases from working. See [Configuring SDK](/getting-started/configuring-sdk#switching-between-test-store-and-real-stores) for details on managing API keys across environments.
+:::
+
 ## 1. Know your plan limits
 
 | Plan Limits                                                                                                                                                                                                                                                                                                                        | iOS | Android |
@@ -33,6 +46,10 @@ This document contains a checklist of things to consider before launching subscr
 | Sign agreements, tax forms, and enter banking info efficiently                                                                                                                                                                                                                                                                               | iOS | Android |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------- |
 | Before releasing, make sure that all agreements and tax forms have been signed and that banking information has been added as this is required to fetch products correctly. Regularly monitor these for updates in agreements and tax forms from the respective stores in order to ensure acceptance and the seamless retrieval of products. | ✅  | ✅      |
+
+| **Test with real store sandbox (not Test Store)**                                                                                                                                                                                                                                                                                                                                                                                                                                                | iOS | Android |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | ------- |
+| Before launch, test purchases using your platform-specific API key with real store products in the platform's sandbox environment (Apple Sandbox/Google testing). This verifies your complete integration works end-to-end with real stores, not just Test Store. See [Sandbox Testing](/test-and-launch/sandbox) for platform-specific instructions. If you only tested with Test Store during development, this step is critical to catch any real store integration issues before submission. | ✅  | ✅      |
 
 | All products are available                                                                                                                                                                                                             | iOS | Android |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------- |
@@ -62,23 +79,27 @@ This document contains a checklist of things to consider before launching subscr
 
 ## 5. Prepare release
 
-| Store description                                                                                                                              | iOS | Android |
+| **Replace Test Store API key with platform-specific API key**                                                                                                                                                                                                                              | iOS | Android |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- | ------- |
+| **CRITICAL:** If you used Test Store during development, you MUST switch to your platform-specific API key (iOS/Android) for release builds. Find your production API keys in **Project Settings > API keys**. Never submit an app with a Test Store API key—real purchases will not work. | ✅  | ✅      |
+
+| **Store description**                                                                                                                          | iOS | Android |
 | ---------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------- |
 | Include [disclosure of auto-renewing subscription details](https://www.revenuecat.com/blog/schedule-2-section-3-8-b/) in your app description. | ✅  | ❌      |
 
-| App Privacy                                                                                                                                                                                                                                                                                                                                        | iOS | Android |
+| **App Privacy**                                                                                                                                                                                                                                                                                                                                    | iOS | Android |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------- |
 | As of December 8, 2020, Apple requires thorough [App Privacy](/platform-resources/apple-platform-resources/apple-app-privacy) disclosures for third-parties, including RevenueCat. By April 2022, Google requires a [Data Safety](/platform-resources/google-platform-resources/google-plays-data-safety) disclosure for all apps on the platform. | ✅  | ✅      |
 
-| Phased rollout                                                                                                         | iOS | Android |
+| **Phased rollout**                                                                                                     | iOS | Android |
 | ---------------------------------------------------------------------------------------------------------------------- | --- | ------- |
 | Choose a staged release option so you can monitor, and halt, a rollout on a fraction of users if there's any problems. | ✅  | ✅      |
 
-| Choose to manually release app                                                                                                                                                                                                                                  | iOS | Android |
+| **Choose to manually release app**                                                                                                                                                                                                                              | iOS | Android |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ------- |
 | On iOS, if your app contains new products, choose to manually release the version and wait ~24 hours after your app is "Cleared for Sale" to release publicly. This is because it sometimes takes new products ~24 hours to propagate throughout the App Store. | ✅  | ❌      |
 
-| IDFA guidelines                                                                                                                | iOS | Android |
+| **IDFA guidelines**                                                                                                            | iOS | Android |
 | ------------------------------------------------------------------------------------------------------------------------------ | --- | ------- |
 | If you're using an attribution integration, ensure your app complies with IDFA usage guidelines by disclosing the use of IDFA. | ✅  | ❌      |
 
