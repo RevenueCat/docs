@@ -19,34 +19,13 @@ Now that your account is set up, you can start configuring your in-app purchase 
 
 ### 2.1 Test Store (Recommended Starting Point)
 
-Each new RevenueCat project includes a Test Store provisioned automatically. This allows you to create products, configure entitlements and offerings, and test the complete purchase flow—all without connecting to the App Store or Google Play.
+Every new RevenueCat project includes a Test Store provisioned automatically. This lets you create products, configure offerings, and test the complete purchase flow—all without connecting to the App Store or Google Play.
 
-**Why start with Test Store:**
-
-- ✅ **No platform accounts needed** - Skip Apple/Google setup during initial development
-- ✅ **Instant setup** - Create products and test purchases in minutes
-- ✅ **Full purchase flow testing** - Test paywalls, purchases, and subscription status in your app
-- ✅ **Perfect for Expo and web** - Works in environments without native store APIs
-- ✅ **Faster iteration** - Make changes and test without platform approval delays
-
-<details>
-  <summary>How Test Store works</summary>
-
-The Test Store operates entirely within RevenueCat, letting you:
-
-1. **Create test products** directly in the RevenueCat dashboard (no App Store Connect or Play Console needed)
-2. **Configure entitlements and offerings** using these test products, just like real store products
-3. **Design and test paywalls** with your test products
-4. **Make test purchases** in your app that behave like real subscriptions
-5. **Verify subscription status** and entitlement checks work correctly
-
-Test Store purchases don't charge real money and don't interact with Apple or Google services. When you're ready for production, you'll connect your real store and swap in real products.
+Test Store is perfect for early development: no platform accounts needed, instant setup, and works in environments like Expo where native APIs aren't available.
 
 :::tip
-Use Test Store during your development phase. Only connect to real stores when you're preparing for App Store/Play Store submission or need to test platform-specific features.
+See [Sandbox Testing](/test-and-launch/sandbox) for a complete comparison of Test Store vs platform sandboxes and recommended testing workflows.
 :::
-
-</details>
 
 ### 2.2 Connecting Real Stores (For Production)
 

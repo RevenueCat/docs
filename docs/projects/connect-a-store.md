@@ -5,15 +5,19 @@ slug: connect-a-store
 excerpt: Connect supported apps and web providers to your project
 ---
 
-Each [project](/projects/overview) comes with a Test Store, where you can test your Products, Paywalls and Entitlements.
+Each [project](/projects/overview) comes with a Test Store where you can create products, configure offerings, and test the complete purchase flow—without connecting to any app store or payment provider.
 
-Before you can submit your app to an app store, you'll need to connect it to the stores and payment providers you want to support and set up [Server Notifications](/platform-resources/server-notifications). After you've connected your app, you can import your products from the stores to start configuring your offerings.
+When you're ready to submit your app for review, you'll need to connect it to the real stores and payment providers you want to support and set up [Server Notifications](/platform-resources/server-notifications). After you've connected your app, you can import your products from the stores to start configuring your offerings.
 
 Add an **app config** or **web config** in the _Apps & providers_ section of your app settings.
 
 ![Add App Configuration](/docs_images/projects/add-app-platform.png)
 
 ![Add Web Configuration](/docs_images/projects/add-web-platform.png)
+
+:::warning Switching from Test Store to Production
+If you've been using Test Store during development, remember to switch from your Test Store API key to your platform-specific API key before submitting to app review. See [Launch Checklist](/test-and-launch/launch-checklist).
+:::
 
 ## Add a Configuration
 

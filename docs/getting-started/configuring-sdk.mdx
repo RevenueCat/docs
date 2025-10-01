@@ -75,16 +75,9 @@ Debug logs will provide detailed log output in Xcode or LogCat for what is going
 
 ## Testing with Test Store
 
-After configuring the SDK, you're ready to start testing with your Test Store products. **No additional configuration is required**—the SDK automatically works with Test Store.
+After configuring the SDK, you can immediately start testing with your Test Store products—no additional SDK configuration required. Simply use your Test Store API key when initializing the SDK, and test purchases will work automatically.
 
-**Benefits of testing with Test Store:**
-
-- ✅ **Immediate testing** - Start making test purchases right after SDK initialization
-- ✅ **No platform dependencies** - Works without App Store Connect or Google Play Console setup
-- ✅ **Perfect for early development** - Test your complete purchase flow before platform configuration
-- ✅ **Works everywhere** - Ideal for Expo, web apps, and other environments without native store APIs
-
-The SDK automatically fetches Test Store products through your configured offerings. Test purchases behave just like real subscriptions in your app—they update `CustomerInfo`, trigger entitlement checks, and appear in your RevenueCat dashboard.
+See [Sandbox Testing](/test-and-launch/sandbox) for details on testing with Test Store vs platform sandboxes.
 
 ### Switching between Test Store and Real Stores
 
