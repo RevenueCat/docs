@@ -73,6 +73,21 @@ As detailed in the sample code above, debug logs can be enabled or disabled by s
 
 Debug logs will provide detailed log output in Xcode or LogCat for what is going on behind the scenes and should be the first thing you check if your app is behaving unexpectedly, and also to confirm there aren't any unhandled warnings or errors.
 
+## Testing with Test Store
+
+After configuring the SDK, you're ready to start testing with your Test Store products. **No additional configuration is required**—the SDK automatically works with Test Store.
+
+**Benefits of testing with Test Store:**
+
+- ✅ **Immediate testing** - Start making test purchases right after SDK initialization
+- ✅ **No platform dependencies** - Works without App Store Connect or Google Play Console setup
+- ✅ **Perfect for early development** - Test your complete purchase flow before platform configuration
+- ✅ **Works everywhere** - Ideal for Expo, web apps, and other environments without native store APIs
+
+The SDK automatically fetches Test Store products through your configured offerings. Test purchases behave just like real subscriptions in your app—they update `CustomerInfo`, trigger entitlement checks, and appear in your RevenueCat dashboard.
+
+When you're ready to connect real stores for production, the SDK seamlessly transitions to fetching products from the App Store, Google Play, or other platforms based on your configuration. No code changes needed.
+
 ## Additional Configuration
 
 The SDK allows additional configuration on first setup:
@@ -155,6 +170,9 @@ Called whenever _Purchases_ receives an updated `CustomerInfo` object. This may 
 
 ## Next steps
 
-Once you've configured the SDK, it's time to add your products in the dashboard.
+Once you've configured the SDK, you're ready to set up your products:
 
-<Button href="/docs/offerings/products-overview">Add your products →</Button>
+- **Start with Test Store** (recommended): Your project already has a Test Store provisioned. [Create test products](/docs/offerings/products-overview) and start testing immediately.
+- **Connect real stores**: When you're ready for production, [configure your products](/docs/offerings/products-overview) in App Store Connect, Google Play Console, or other platforms.
+
+<Button href="/docs/offerings/products-overview">Set up your products →</Button>
