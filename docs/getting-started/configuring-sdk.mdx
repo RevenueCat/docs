@@ -86,7 +86,23 @@ After configuring the SDK, you're ready to start testing with your Test Store pr
 
 The SDK automatically fetches Test Store products through your configured offerings. Test purchases behave just like real subscriptions in your app—they update `CustomerInfo`, trigger entitlement checks, and appear in your RevenueCat dashboard.
 
-When you're ready to connect real stores for production, the SDK seamlessly transitions to fetching products from the App Store, Google Play, or other platforms based on your configuration. No code changes needed.
+### Switching between Test Store and Real Stores
+
+Test Store uses a **separate API key** from your real store API keys. This allows you to control which store your app communicates with:
+
+- **Test Store API Key**: Use during development and testing
+- **Platform Store API Keys** (iOS, Android, etc.): Use for production builds
+
+You can find both types of keys in **Project Settings > API keys** in the RevenueCat dashboard. Switch between them by changing which key you pass to the SDK configuration.
+
+:::danger CRITICAL: Never submit apps with Test Store API key
+**You must NEVER submit an app to the App Store or Google Play that is configured with a Test Store API key.** Always use the correct platform-specific API key (iOS, Android, etc.) for release builds.
+
+We recommend using build configurations or environment variables to automatically use the correct API key for each build type:
+
+- **Development/Debug builds**: Test Store API key
+- **Production/Release builds**: Platform-specific API key (iOS, Android, etc.)
+  :::
 
 ## Additional Configuration
 
