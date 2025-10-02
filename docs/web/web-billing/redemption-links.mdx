@@ -5,7 +5,7 @@ excerpt: Allow customers to purchase products and subscriptions on the web and s
 hidden: false
 ---
 
-Redemption Links are one-time-use deep links generated after a customer completes a web purchase. These links allow customers to associate their web purchase with their account in your app. By tapping the link, customers are redirected into the app where the purchase is automatically linked to their App User ID, granting them access to the associated entitlements.
+Redemption Links are one-time-use deep links with a 60-minute expiration, generated after a customer completes a web purchase. These links allow customers to associate their web purchase with their account in your app. By tapping the link, customers are redirected into the app where the purchase is automatically linked to their App User ID, granting them access to the associated entitlements.
 Redemption Links can increase conversion and be incredibly useful for projects like marketing campaigns.
 
 :::info App User IDs no longer required for web purchases
@@ -23,6 +23,10 @@ Here's how a purchase and redemption flow looks, once you've configured and enab
 1. The app handles associating the purchase with the customer, either by aliasing or transferring the purchase.
 1. The customer has access to their entitlements associated with the web purchase.
 
+:::warning Redemption links expire after 60 minutes
+If a customer tries to use an expired link, they'll automatically get a new link sent to their email. Make sure your app handles the expired case so you can show customers a helpful message.
+:::
+
 :::info Redemption URL in Custom Success Pages
 When using a custom success page (redirect URL), the redemption URL is automatically included as a query parameter named `redeem_url`. For example, if your success page URL is `https://your-app.com/success`, the user will be redirected to:
 
@@ -38,6 +42,7 @@ The redemption link can only be opened from the mobile app where it was configur
 
 - The app is not installed on the device
 - The link is opened on a desktop browser
+- The link is older than 60 minutes (a new link will be emailed automatically)
 
 Make sure your success page handles these cases appropriately by:
 
@@ -276,3 +281,7 @@ A redemption link is only valid for one single redemption of a purchase — once
 #### Can my customers redeem their purchases on multiple devices?
 
 Customers can redeem a single purchase multiple times (i.e. on a different devices) — on each occasion they'll be sent a new redemption link to their billing email address, valid for one new redemption.
+
+#### What happens if a redemption link expires?
+
+Redemption links expire 60 minutes after they're created. If a customer tries to use an expired link, your app will get an `expired` result, and we'll automatically send them a new link to their billing email. Show customers a message letting them know to check their email for the new link.
