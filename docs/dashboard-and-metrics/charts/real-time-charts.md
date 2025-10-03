@@ -92,7 +92,9 @@ Old behavior:
 
 - Day 0-30 revenue: Only $10 (Customer A's purchase on calendar day 31 of January)
 - Day 31-60 revenue: $10 (Customer B's purchase, even though it was only their day 7)
-  New behavior:
+
+New behavior:
+
 - Day 0-30 revenue: $20 (both purchases within 30 days of each customer's start)
 - Day 31-60 revenue: $0 (no purchases in this timeframe for either customer)
 
