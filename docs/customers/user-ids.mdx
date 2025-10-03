@@ -218,12 +218,12 @@ import contentKmpLogin from "@site/code_blocks/customers/user-ids_kmp_login.kts?
 
 When logging in from an Anonymous ID to a provided custom App User ID, RevenueCat will decide whether the identities should be merged (aliased) into the same CustomerInfo object or not. This is decided depending on whether the provided custom App User ID already exists, and if it does exist whether it has an anonymous alias already.
 
-| Current App User ID | Provided Custom App User ID already exists? | Provided Custom App User ID already has an anonymous alias? | Result                                                     |
-| :------------------ | :------------------------------------------ | :---------------------------------------------------------- | :--------------------------------------------------------- |
-| Anonymous           | No                                          | N/A                                                         | Anonymous ID and Provided ID have CustomerInfo merged.     |
-| Anonymous           | Yes                                         | No                                                          | Anonymous ID and Provided ID have CustomerInfo merged.     |
-| Anonymous           | Yes                                         | Yes                                                         | CustomerInfo transfers to Provided ID, no aliases created. |
-| Non-anonymous       | Any                                         | Any                                                         | CustomerInfo transfers to Provided ID, no aliases created. |
+| Current App User ID | Provided Custom App User ID already exists? | Provided Custom App User ID already has an anonymous alias? | Result                                                                                              |
+| :------------------ | :------------------------------------------ | :---------------------------------------------------------- | :-------------------------------------------------------------------------------------------------- |
+| Anonymous           | No                                          | N/A                                                         | Anonymous ID and Provided ID have CustomerInfo merged.                                              |
+| Anonymous           | Yes                                         | No                                                          | Anonymous ID and Provided ID have CustomerInfo merged.                                              |
+| Anonymous           | Yes                                         | Yes                                                         | Current User ID is logged out, Provided User ID is logged in. No merge or purchase transfer occurs. |
+| Non-anonymous       | Any                                         | Any                                                         | Current User ID is logged out, Provided User ID is logged in. No merge or purchase transfer occurs. |
 
 </details>
 
