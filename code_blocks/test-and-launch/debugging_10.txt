@@ -4,11 +4,11 @@
 [Purchases] - DEBUG: ℹ️ PurchaserInfo cache is stale, updating caches
 [Purchases] - DEBUG: ℹ️ Offerings cache is stale, updating caches
 [Purchases] - DEBUG: ℹ️ Vending PurchaserInfo from cache.
-[Purchases] - DEBUG: ℹ️ There are no requests currently running, starting request GET /subscribers/<APP_UESR_ID>
-[Purchases] - DEBUG: ℹ️ API request started: GET /v1/subscribers/<APP_UESR_ID>
-[Purchases] - DEBUG: ℹ️ API request started: GET /v1/subscribers/<APP_UESR_ID>/offerings
+[Purchases] - DEBUG: ℹ️ There are no requests currently running, starting request GET /subscribers/<APP_USER_ID>
+[Purchases] - DEBUG: ℹ️ API request started: GET /v1/subscribers/<APP_USER_ID>
+[Purchases] - DEBUG: ℹ️ API request started: GET /v1/subscribers/<APP_USER_ID>/offerings
 [Purchases] - DEBUG: ℹ️ No cached Offerings, fetching from network
-[Purchases] - DEBUG: ℹ️ API request completed with status: GET /v1/subscribers/<APP_UESR_ID>/offerings 200
+[Purchases] - DEBUG: ℹ️ API request completed with status: GET /v1/subscribers/<APP_USER_ID>/offerings 200
 [Purchases] - DEBUG: ℹ️ Requesting products from the store with identifiers: {(
     onetime,
     annual,
