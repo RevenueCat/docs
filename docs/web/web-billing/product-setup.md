@@ -102,7 +102,7 @@ Defines which customers have access to the free trial or introductory period:
 - _Didn't have this subscription yet_: Only customers that have never subscribed to this product are eligible for a trial.
 
 :::info Eligibility for anonymous purchases
-If you're using [Redemption Links](redemption-links) to enable anonymous purchases, it's not possible to assess the eligibility of a customer when they land on your purchase flow, because they're anonymous. If strict eligibility is important to you, we recommend passing App User IDs to the purchase flow so that eligbility can be checked.
+If you're using [Redemption Links](redemption-links) to enable anonymous purchases, it's not possible to assess the eligibility of a customer when they land on your purchase flow, because they're anonymous. If strict eligibility is important to you, we recommend passing App User IDs to the purchase flow so that eligibility can be checked.
 :::
 
 #### Grace period for billing issues
