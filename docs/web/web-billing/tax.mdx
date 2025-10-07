@@ -79,7 +79,7 @@ Any tax rates added in your Stripe Tax dashboard in live mode may be applied to 
 To test that tax rates are correctly applied to Web Billing purchases:
 
 1. Add tax registrations in Stripe's test mode — you need to configure separate tax registrations in test mode, which are separate from any registrations in live mode.
-1. Load a sandbox Web Paywall Link, or initiate a purchase with the Web SDK in sandbox mode.
+1. Load a sandbox Web Purchase Link, or initiate a purchase with the Web SDK in sandbox mode.
 1. In the checkout, select a billing address for a location where a tax rate is active in Stripe's test mode.
 1. If the tax registration is applicable for your product in the selected location, you should see that taxes are shown on the checkout page and in the purchase receipt.
 
@@ -99,7 +99,7 @@ As soon as you've added a registration in the Stripe dashboard live mode, Web Bi
 
 #### How is a customer's tax location determined?
 
-When a customer begins a purchase through a Web Paywall Link or Web SDK purchase flow, their tax location will be determined based on the billing address they enter, using country, state and postcode/zipcode information. The `country` field is pre-filled based on the customer's IP address location.
+When a customer begins a purchase through a Web Purchase Link or Web SDK purchase flow, their tax location will be determined based on the billing address they enter, using country, state and postcode/zipcode information. The `country` field is pre-filled based on the customer's IP address location.
 
 #### How does Sales Tax and VAT affect the price of my products?
 
