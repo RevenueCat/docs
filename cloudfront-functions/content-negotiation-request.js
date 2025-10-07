@@ -25,9 +25,10 @@ function handler(event) {
 
   // Check Accept header for markdown/plain text preference
   var acceptHeader = headers.accept ? headers.accept.value : "";
+  var acceptHeaderLower = acceptHeader.toLowerCase();
   var wantsMarkdown =
-    acceptHeader.includes("text/markdown") ||
-    acceptHeader.includes("text/plain");
+    acceptHeaderLower.includes("text/markdown") ||
+    acceptHeaderLower.includes("text/plain");
 
   // Check User-Agent for known LLM crawlers/agents
   var userAgent = headers["user-agent"] ? headers["user-agent"].value : "";
