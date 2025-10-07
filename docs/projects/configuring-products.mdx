@@ -1,0 +1,106 @@
+---
+title: Configuring Products
+slug: configuring-products
+excerpt: Set up products, entitlements, and offerings to start testing purchases
+hidden: false
+---
+
+After creating your RevenueCat project, you need to configure what users can purchase and what access they receive. This takes about 5-10 minutes.
+
+## Overview
+
+RevenueCat uses three concepts to manage purchases:
+
+1. **Products** - The individual items users purchase (e.g., "Monthly Premium")
+2. **Entitlements** - The access level users receive (e.g., "premium")
+3. **Offerings** - How you group and display products in your app (optional but recommended)
+
+**The flow:** User purchases a **Product** → Unlocks an **Entitlement** → You check the entitlement to grant access.
+
+## 1. Choose Your Product Type
+
+Your project comes with a **Test Store** automatically configured. This lets you create products and test purchases immediately—no App Store or Google Play account required.
+
+### For Development: Use Test Store
+
+- Create products directly in RevenueCat
+- Test purchases work instantly
+- No real money charged
+- Perfect for building and testing your integration
+
+### For Production: Configure Real Stores
+
+Before submitting to app stores, you must configure products in:
+
+- [Apple App Store Connect](/getting-started/entitlements/ios-products)
+- [Google Play Console](/getting-started/entitlements/android-products)
+- [Amazon Appstore](/getting-started/entitlements/amazon-product-setup)
+- [Stripe](/getting-started/entitlements/stripe-products) or [Paddle](/getting-started/entitlements/paddle-products) for web
+
+Then import those products into RevenueCat.
+
+## 2. Create Products
+
+### With Test Store (Quickest Start)
+
+1. Go to your project dashboard
+2. Navigate to **Product catalog → Products**
+3. Select the **Test Store** tab
+4. Click **+ New** to create a product
+5. Configure the product details (name, identifier, price, duration)
+
+### With Real Stores
+
+1. Create products in your store (Apple, Google, Amazon, Stripe, Paddle)
+2. In RevenueCat, go to **Product catalog → Products**
+3. Select your store's tab
+4. Import or manually add the product using the store's product identifier
+
+[Learn more about products →](/offerings/products-overview)
+
+## 3. Create Entitlements
+
+Entitlements represent the access levels in your app (like "premium", "pro", or "gold").
+
+1. Navigate to **Product catalog → Entitlements**
+2. Click **+ New**
+3. Enter an identifier (e.g., "premium") - you'll use this in your code
+4. Add a description
+
+Most apps need just one entitlement. Create multiple only if you have different tiers (e.g., "gold" vs "platinum").
+
+[Learn more about entitlements →](/getting-started/entitlements)
+
+## 4. Attach Products to Entitlements
+
+Link your products to entitlements to define what purchases unlock.
+
+1. In the Entitlements page, click on your entitlement
+2. Click **Attach** in the Products section
+3. Select the product(s) that should unlock this entitlement
+4. Save
+
+Now when a user purchases that product, they'll automatically have access to the entitlement.
+
+## 5. Create Offerings (Recommended)
+
+Offerings let you group products and change what's displayed without app updates. Required if you want to use RevenueCat Paywalls, Experiments, or Targeting.
+
+1. Navigate to **Product catalog → Offerings**
+2. Click **+ New**
+3. Give it an identifier (e.g., "default")
+4. Add Packages—these group equivalent products across platforms (e.g., monthly subscriptions from iOS and Android)
+
+The offering marked as "default" is automatically returned as `currentOffering` in the SDK.
+
+[Learn more about offerings →](/offerings/offerings)
+
+## What's Next
+
+With your products configured, you're ready to:
+
+1. **[Install the SDK](/getting-started/installation)** - Add RevenueCat to your app
+2. **[Create a Paywall](/tools/paywalls)** - Design how users see your products
+3. **[Make your first test purchase](/getting-started/quickstart#make-a-purchase)** - Verify everything works
+
+Or jump straight to the [SDK Quickstart →](/getting-started/quickstart)

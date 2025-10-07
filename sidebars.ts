@@ -54,6 +54,7 @@ const projectsCategory = Category({
   collapsed: false,
   items: [
     Page({ slug: "projects/projects-overview" }),
+    Page({ slug: "projects/configuring-products" }),
     Page({ slug: "projects/connect-a-store" }),
     SubCategory({
       label: "Connect Server Notifications",
