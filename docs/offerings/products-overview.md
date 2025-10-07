@@ -6,13 +6,32 @@ excerpt: Use Entitlements and Offerings to organize and display products
 hidden: false
 ---
 
-Products are the individual SKUs that users actually purchase from your app. The stores (Apple, Google, Stripe, etc.) process these SKUs and charge the user.
+Products are the individual SKUs that users actually purchase from your app. You can create products in two ways:
+
+- **Test Store products** - Create directly in RevenueCat for testing (no store setup required)
+- **Real store products** - Products from Apple, Google, Stripe, etc. that process real payments
 
 RevenueCat Offerings are a way to organize and display products to users. You can read more about Offerings [here](/offerings/overview).
 
-## Store Configuration
+## Test Store Products
 
-No matter how you choose to use RevenueCat, you'll need to first have products set up in the stores. This is done outside of RevenueCat, and where you set things like price, duration, and free trials. If you've never set up products before or need a refresher (or tips and tricks) check out these guides:
+Create Test Store products directly in RevenueCat for development and testing—no app store setup required.
+
+To create a Test Store product:
+
+1. Go to **Products** in the **Product catalog** section
+2. Click **+ New product**
+3. Select **Test Store** as the store
+4. Enter a product identifier and configure pricing
+5. Click **Save**
+
+:::tip
+Use Test Store during development. When ready for production, create real store products. See [Sandbox Testing](/test-and-launch/sandbox).
+:::
+
+## Real Store Products
+
+For production, set up products in the real stores (Apple, Google, Stripe, etc.). This is where you configure price, duration, and free trials:
 
 - **[iOS / App Store Connect ](/getting-started/entitlements/ios-products)**
 - **[Android / Google Play Console ](/getting-started/entitlements/android-products)**
@@ -26,9 +45,9 @@ RevenueCat supports free trials, promotional offers, and other product configura
 
 You can read more about these product configuration options [here](/subscription-guidance/subscription-offers).
 
-## Add Products to RevenueCat
+## Import Products to RevenueCat
 
-After your products are set up in the stores, you'll need to set up a 1-to-1 mapping of the products in RevenueCat as well.
+After setting up products in the real stores, import them into RevenueCat to create a 1-to-1 mapping.
 
 :::info Automatic Tracking
 If a user purchases a product that has not been set up in RevenueCat, the transaction will still be tracked in RevenueCat, and the product will be automatically created in RevenueCat.
@@ -67,6 +86,6 @@ Product display names must be unique within an app. It's a good practice to incl
 
 ## Next steps
 
-If you've added your products in the dashboard, it's time to create an Entitlement.
+After adding products (Test Store or real store), organize them with Entitlements and Offerings.
 
 <Button href="/docs/getting-started/entitlements">Create an Entitlement →</Button>
