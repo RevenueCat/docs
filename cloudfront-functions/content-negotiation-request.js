@@ -42,9 +42,17 @@ function handler(event) {
     } else if (uri.endsWith(".html")) {
       // /docs/path.html → /docs/path.md
       request.uri = uri.replace(/\.html$/, ".md");
-    } else if (!uri.includes(".")) {
-      // /docs/path → /docs/path.md
-      request.uri = uri + ".md";
+    } else {
+      // Check if URI has a file extension
+      // Look for dot after last slash to avoid false positives like /docs/v1.0/guide
+      var lastSlash = uri.lastIndexOf("/");
+      var lastDot = uri.lastIndexOf(".");
+      var hasExtension = lastDot !== -1 && lastDot > lastSlash;
+
+      if (!hasExtension) {
+        // /docs/path → /docs/path.md
+        request.uri = uri + ".md";
+      }
     }
   }
 

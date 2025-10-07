@@ -1,29 +1,25 @@
-# CloudFront Functions for Content Negotiation
+# CloudFront Function for Content Negotiation
 
 Automatically serves Markdown to LLM agents and clients that request it.
 
-## Files
+## How it works
 
-- `content-negotiation-request.js` - Rewrites URLs to `.md` based on Accept header or LLM User-Agent
-- `content-negotiation-response.js` - Adds `Link:` headers pointing to markdown alternates
+`content-negotiation-request.js` - Rewrites URLs to `.md` based on Accept header or LLM User-Agent detection.
 
 ## Deploy
 
-Functions auto-deploy via Azure pipeline on merge to `main`.
+Auto-deploys via Azure pipeline on merge to `main`.
 
 Manual association required (one-time):
 
-1. CloudFront Console → Distribution → Behaviors → Edit `/docs/*`
-2. Function associations:
-   - `viewer-request` → `docs-content-negotiation-request`
-   - `viewer-response` → `docs-content-negotiation-response`
+- CloudFront Console → Distribution → Behaviors → Edit `/docs/*`
+- Function association: `viewer-request` → `docs-content-negotiation-request`
 
 ## Test
 
 ```bash
 curl -H "Accept: text/markdown" https://www.revenuecat.com/docs/getting-started/
 curl -A "ClaudeBot/1.0" https://www.revenuecat.com/docs/getting-started/
-curl -I https://www.revenuecat.com/docs/getting-started/ | grep -i link
 ```
 
 ## Detected LLM Agents
