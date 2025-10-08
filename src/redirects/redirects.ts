@@ -1669,35 +1669,35 @@ const redirects = {
     },
     {
       to: "/dashboard-and-metrics/customer-profile",
-      from: "/dashboard-and-metrics/customers-history/active-entitlements",
+      from: "/dashboard-and-metrics/customer-history/active-entitlements",
     },
     {
       to: "/dashboard-and-metrics/customer-profile",
-      from: "/dashboard-and-metrics/customers-history/aliases-card",
+      from: "/dashboard-and-metrics/customer-history/aliases-card",
     },
     {
       to: "/dashboard-and-metrics/customer-profile",
-      from: "/dashboard-and-metrics/customers-history/attributes",
+      from: "/dashboard-and-metrics/customer-history/attributes",
     },
     {
       to: "/dashboard-and-metrics/customer-profile",
-      from: "/dashboard-and-metrics/customers-history/attribution-card",
+      from: "/dashboard-and-metrics/customer-history/attribution-card",
     },
     {
       to: "/dashboard-and-metrics/customer-profile",
-      from: "/dashboard-and-metrics/customers-history/basic-information",
+      from: "/dashboard-and-metrics/customer-history/basic-information",
     },
     {
       to: "/dashboard-and-metrics/customer-profile",
-      from: "/dashboard-and-metrics/customers-history/offering-override",
+      from: "/dashboard-and-metrics/customer-history/offering-override",
     },
     {
       to: "/dashboard-and-metrics/customer-profile",
-      from: "/dashboard-and-metrics/customers-history/promotionals",
+      from: "/dashboard-and-metrics/customer-history/promotionals",
     },
     {
       to: "/dashboard-and-metrics/customer-profile",
-      from: "/dashboard-and-metrics/customers-history/manage-users",
+      from: "/dashboard-and-metrics/customer-history/manage-users",
     },
   ],
 };
