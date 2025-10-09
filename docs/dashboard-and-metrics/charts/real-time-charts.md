@@ -40,6 +40,7 @@ You can access Real-time Charts from your dashboard by toggling `Real-time` on i
 - The **Platform** dimension now reports a customer's first seen platform, not their last seen platform, to make analyzing acquisition channels easier and to avoid customer dimensions changing over time.
 - The **Country** dimensions now reports the country associated with a customer's app store account (if available), or IP-based location otherwise.
 - The current Trial Conversion chart (renamed to the Trial Conversion Funnel) included any future payment on an App Store subscription as a conversion to paid, even if that conversion did not come from the trial start. Now, only conversions to paid from the trial start are included in this chart.
+- The cohorting methodology for the Cohort Explorer and Prediction Explorer has been updated to ensure all customers in larger cohorts are given equal time to mature when reporting performance in each period. [Learn more](/dashboard-and-metrics/charts/real-time-charts#cohorting-methodology-of-cohort-explorer-and-prediction-explorer)
 
 ## Detailed changes
 
@@ -75,6 +76,27 @@ When a payment is refunded, it will be deducted from revenue and conversion (if 
 - **Revenue**: A purchase will add revenue on the day it occurs. If it's later refunded, it will subtract revenue on the day the refund occurs.
 - **Conversion**: An applicable purchase will be counted as a conversion in each of the timeframes it is applicable to (e.g. a conversion on day 5 of a customer's lifecycle is included in the 7 days timeframe, 14 days, etc). If it's later refunded, the conversion will be removed in each of the timeframes the refund is applicable to (e.g. a refund on day 10 of a customer's lifecycle results in the conversion being removed from the 14 days timeframe, 30 days, etc; but would not effect the 7 days timeframe, since the refund occurred after that timeframe was completed).
 - **Lifetime value (LTV)**: An applicable purchase's revenue will be included in each of the timeframes it is applicable to (e.g. a purchase on day 5 of a customer's lifecycle is included in the 7 days timeframe, 14 days, etc). If it's later refunded, the revenue will be removed in each of the timeframes the refund is applicable to (e.g. a refund on day 10 of a customer's lifecycle results in the revenue being removed from the 14 days timeframe, 30 days, etc; but would not effect the 7 days timeframe, since the refund occurred after that timeframe was completed).
+
+### Cohorting methodology of Cohort Explorer and Prediction Explorer
+
+The cohorting methodology for the Cohort Explorer and Prediction Explorer has been updated to calculate each **daily** cohort's periods, and then sum them for cohorts larger than daily, whereas previously larger cohorts (weekly, monthly, etc.) had their periods defined by the first and last day of the cohort (e.g. Day 1 and Day 30 of a given month), regardless of when an individual customer was first seen within that timeframe, resulting in some customers who were first seen later in a period having their revenue pushed out to the next period.
+
+**Example Scenario**
+
+January monthly cohort with two customers:
+
+- Customer A joins January 2nd, makes $10 purchase on January 31st (their day 29)
+- Customer B joins January 28th, makes $10 purchase on February 4th (their day 7)
+
+Old behavior:
+
+- Day 0-30 revenue: Only $10 (Customer A's purchase on calendar day 31 of January)
+- Day 31-60 revenue: $10 (Customer B's purchase, even though it was only their day 7)
+
+New behavior:
+
+- Day 0-30 revenue: $20 (both purchases within 30 days of each customer's start)
+- Day 31-60 revenue: $0 (no purchases in this timeframe for either customer)
 
 ### New and updated dimensions
 
