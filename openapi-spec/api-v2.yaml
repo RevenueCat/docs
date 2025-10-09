@@ -7990,12 +7990,53 @@ components:
       nullable: false
       example: USD
       enum:
+      - USD
+      - EUR
+      - JPY
+      - GBP
       - AUD
       - CAD
-      - EUR
-      - GBP
-      - JPY
-      - USD
+      - BRL
+      - KRW
+      - CNY
+      - MXN
+      - SEK
+      - PLN
+      - MYR
+      - PHP
+      - CHF
+      - SAR
+      - TWD
+      - NOK
+      - DKK
+      - THB
+      - NZD
+      - SGD
+      - HKD
+      - CZK
+      - AED
+      - BGN
+      - CLP
+      - COP
+      - CRC
+      - GEL
+      - HUF
+      - IDR
+      - ILS
+      - IQD
+      - JOD
+      - KES
+      - KZT
+      - MAD
+      - PEN
+      - QAR
+      - RON
+      - RSD
+      - TZS
+      - VND
+      - ZAR
+      - TRY
+      - UAH
       additionalProperties: false
     RokuApp:
       type: object
