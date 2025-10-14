@@ -1,26 +1,28 @@
 // Using Offerings/Packages
 try {
-  PurchaseResult purchaseResult = await Purchases.purchasePackage(package);
-  if (purchaseResult.customerInfo.entitlements.all["my_entitlement_identifier"].isActive) {
+  final purchaseParams = PurchaseParams.package(package);
+  PurchaseResult result = await Purchases.purchase(purchaseParams);
+  if (result.customerInfo.entitlements.all["my_entitlement_identifier"]?.isActive ?? false) {
     // Unlock that great "pro" content
   }
 } on PlatformException catch (e) {
   var errorCode = PurchasesErrorHelper.getErrorCode(e);
   if (errorCode != PurchasesErrorCode.purchaseCancelledError) {
-    showError(e);  	          
+    showError(e);
   }
 }
 
-// Note: if you are not using offerings/packages to purchase In-app products, you can use purchaseStoreProduct and getProducts
+// Note: if you are not using offerings/packages to purchase in-app products, you can use products directly
 
 try {
-  PurchaseResult purchaseResult = await Purchases.purchaseStoreProduct(productToBuy);
-  if (purchaseResult.customerInfo.entitlements.all["my_entitlement_identifier"].isActive) {
+  final purchaseParams = PurchaseParams.storeProduct(productToBuy);
+  PurchaseResult result = await Purchases.purchase(purchaseParams);
+  if (result.customerInfo.entitlements.all["my_entitlement_identifier"]?.isActive ?? false) {
     // Unlock that great "pro" content
   }
 } on PlatformException catch (e) {
   var errorCode = PurchasesErrorHelper.getErrorCode(e);
   if (errorCode != PurchasesErrorCode.purchaseCancelledError) {
-    showError(e);  	          
+    showError(e);
   }
 }
