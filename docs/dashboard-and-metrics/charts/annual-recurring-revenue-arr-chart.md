@@ -6,10 +6,23 @@ hidden: false
 
 The Annual Recurring Revenue (ARR) chart is an annualized estimation of your recurring revenue. To compute it, we simply multiply MRR by 12. Learn more about how MRR is measured [here](/dashboard-and-metrics/charts/monthly-recurring-revenue-mrr-chart).
 
+### Revenue type
+
+The ARR chart allows you to select and visualize three different revenue definitions:
+
+1. Revenue: The total revenue generated in a given period, minus refunds from transactions that occurred in that period.
+2. Revenue (net of taxes): Revenue generated in a given period (as defined above), minus our estimate of revenue deducted from the stores for taxes (e.g. VAT, DST, etc).
+3. Proceeds: Revenue generated in a given period (as defined above), minus our estimate of revenue deducted from the stores for taxes and commission.
+
+Proceeds reflect RevenueCat's estimate of what you will earn from the stores for the revenue you generated, but keep in mind that the App Store's payment schedule is based on Apple's Fiscal Calendar, which does not align with calendar months. [Learn more here.](https://www.revenuecat.com/blog/growth/apple-fiscal-calendar-year-payment-dates/)
+
+In addition, to learn more about how RevenueCat estimates taxes and commissions deducted from the stores, [click here](/dashboard-and-metrics/taxes-and-commissions).
+
 ### Available settings
 
 - Filters: Yes
 - Segments: Yes
+- Revenue Type: Yes
 
 ## How to use Active Subscriptions Movement in your business
 
