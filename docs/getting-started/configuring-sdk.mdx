@@ -6,6 +6,12 @@ hidden: false
 
 If this is your first time integrating RevenueCat into your app, we recommend following our [Quickstart](/getting-started/quickstart) guide.
 
+:::success Test Store works out of the box
+Once configured, the SDK automatically works with your Test Store products—no additional setup required. You can start testing purchases immediately without connecting to the App Store or Google Play.
+
+**SDK Version Requirements:** Test Store requires minimum SDK versions (iOS 5.43.0, Android 9.9.0, Flutter 9.8.0, React Native 9.5.4, Capacitor 11.2.6, Cordova 7.2.0, Unity 8.3.0, KMP 2.2.2, Web 1.15.0). [See all versions](/test-and-launch/sandbox#testing-with-revenuecat-test-store).
+:::
+
 :::info Using an older SDK (v3.x)
 View our migration guide to v4.x [here](/sdk-guides/ios-native-3x-to-4x-migration).
 :::
@@ -72,6 +78,30 @@ Be sure to enable and view debug logs while implementing the SDK and testing you
 As detailed in the sample code above, debug logs can be enabled or disabled by setting the `Purchases.logLevel` property before configuring _Purchases_.
 
 Debug logs will provide detailed log output in Xcode or LogCat for what is going on behind the scenes and should be the first thing you check if your app is behaving unexpectedly, and also to confirm there aren't any unhandled warnings or errors.
+
+## Testing with Test Store
+
+After configuring the SDK, you can immediately start testing with your Test Store products—no additional SDK configuration required. Simply use your Test Store API key when initializing the SDK, and test purchases will work automatically.
+
+See [Sandbox Testing](/test-and-launch/sandbox) for details on testing with Test Store vs platform sandboxes.
+
+### Switching between Test Store and Real Stores
+
+Test Store uses a **separate API key** from your real store API keys. This allows you to control which store your app communicates with:
+
+- **Test Store API Key**: Use during development and testing
+- **Platform Store API Keys** (iOS, Android, etc.): Use for production builds
+
+You can find both types of keys in **Project Settings > API keys** in the RevenueCat dashboard. Switch between them by changing which key you pass to the SDK configuration.
+
+:::danger CRITICAL: Never submit apps with Test Store API key
+**You must NEVER submit an app to the App Store or Google Play that is configured with a Test Store API key.** Always use the correct platform-specific API key (iOS, Android, etc.) for release builds.
+
+We recommend using build configurations or environment variables to automatically use the correct API key for each build type:
+
+- **Development/Debug builds**: Test Store API key
+- **Production/Release builds**: Platform-specific API key (iOS, Android, etc.)
+  :::
 
 ## Additional Configuration
 
@@ -155,6 +185,9 @@ Called whenever _Purchases_ receives an updated `CustomerInfo` object. This may 
 
 ## Next steps
 
-Once you've configured the SDK, it's time to add your products in the dashboard.
+Once you've configured the SDK, you're ready to set up your products:
 
-<Button href="/docs/offerings/products-overview">Add your products →</Button>
+- **Start with Test Store** (recommended): Your project already has a Test Store provisioned. [Create test products](/offerings/products-overview) and start testing immediately.
+- **Connect real stores**: When you're ready for production, [configure your products](/offerings/products-overview) in App Store Connect, Google Play Console, or other platforms.
+
+<Button href="/offerings/products-overview">Set up your products →</Button>

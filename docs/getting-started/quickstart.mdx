@@ -15,49 +15,17 @@ Before continuing with this guide, follow our [Setting up RevenueCat](/welcome/o
 
 ## 2. Product Configuration
 
-### Store Setup
+Before using the SDK, you need to configure your products, entitlements, and offerings in the RevenueCat dashboard. Every new project comes with a **Test Store** automatically configured, so you can start immediately without connecting to Apple or Google.
 
-Before you can start using RevenueCat to fetch products, you must configure your products in the respective stores. See the following guides for [App Store Connect](/getting-started/entitlements/ios-products), [Google Play Console](/getting-started/entitlements/android-products), [Amazon Appstore](/getting-started/entitlements/amazon-product-setup), [Stripe](/getting-started/entitlements/stripe-products), and [Paddle](/getting-started/entitlements/paddle-products) for help navigating through this process.
+<Button href="/docs/projects/configuring-products">Configure Products →</Button>
 
-If you are selling iOS products, be sure to sign your 'Paid Applications Agreement' and fill out your bank and tax information in **App Store Connect > Agreements, Tax, and Banking**. **This needs to be completed before you can test any purchases**.
-
-:::info Want to skip the store setup while testing?
-On iOS, you can delay configuring products in App Store Connect by testing with StoreKit Configuration files instead. These config files require minimal setup and are configurable via Xcode directly.
-
-Read more about setting up StoreKit Configuration files in our [Sandbox Testing](/test-and-launch/sandbox/apple-app-store#ios-14-only-testing-on-the-simulator) guide.
+:::info Already configured your products?
+Continue to SDK installation below.
 :::
 
-### Configure Products and Entitlements in RevenueCat
-
-<YouTubeEmbed
-  videoId="QxHeZiW4KCA"
-  title="RevenueCat Products, Offerings, and Entitlements Explained"
-/>
-
-Once your in-app products have been configured in [App Store Connect](/getting-started/entitlements/ios-products), [Google Play Console](/getting-started/entitlements/android-products), [Amazon Appstore](/getting-started/entitlements/amazon-product-setup), [Stripe](/getting-started/entitlements/stripe-products), or [Paddle](/getting-started/entitlements/paddle-products) you'll need to copy that configuration into the RevenueCat dashboard. RevenueCat uses an Entitlements system to control access to premium features, and Offerings to manage the set of products you offer to customers.
-
-Entitlements are the level of access that a customer is "entitled" to after purchasing a specific product, and Offerings is a simple way for you to organize the in-app products you wish to "offer" on your paywall and configure them remotely. We **recommend** utilizing these features to simplify your code and enable you to change products without releasing an app update.
-
-See [Configuring Products](/getting-started/entitlements) to set up your products and then organize them into Offerings or Entitlements.
-
-![Offerings Diagram](/docs_images/offerings/offerings-visual.png)
-
-### Build and Design Your Paywall
-
-<YouTubeEmbed videoId="PNiVCdExtkw" title="How to use RevenueCat Paywalls" />
-
-After configuring your offerings, you can jump right into designing a paywall (even before installing the SDK!) by choosing Paywalls in the sidebar of your project dashboard.
-
-RevenueCat provides several pre-built, customizable paywall templates that you can use to rapidly create a paywall.
-
-If you'd prefer to install the SDK before designing your paywall, you can always come back to this step later.
-
-{<Button href="/docs/tools/paywalls/creating-paywalls">Create a Paywall →</Button>}
-
-<br />
-<br />
-
-_Want to build your own custom paywall? See [Displaying Products](/getting-started/displaying-products), [Making Purchases](/getting-started/making-purchases), and [Restoring Purchases](/getting-started/restoring-purchases) for more information on manual implementation._
+:::tip SDK Version Requirements
+Test Store requires minimum SDK versions (iOS 5.43.0+, Android 9.9.0+, etc.). See [Sandbox Testing](/test-and-launch/sandbox#testing-with-revenuecat-test-store) for complete version requirements.
+:::
 
 ## 3. Using RevenueCat's Purchases SDK
 
@@ -123,18 +91,17 @@ If you have a user authentication system in your app, you can provide a user ide
 
 ### Present a Paywall
 
-At this point, you're ready to present a paywall to your users. If you skipped the paywall setup earlier, that's okay! The SDK will display a default, non-customized paywall. If you want to customize a paywall first, head back up to the [Build and Design Your Paywall](#build-and-design-your-paywall) section.
+The SDK will automatically fetch your configured Offerings and retrieve product information from your Test Store or connected stores (Apple, Google, Amazon). You can present a paywall using RevenueCat's pre-built UI or build your own.
 
-The SDK will automatically fetch the [configured Offerings](/getting-started/entitlements#offerings) and retrieve the product information from Apple, Google, or Amazon. Thus, available products will already be loaded when customers launch your paywall.
+**Option A: Use RevenueCat Paywalls** (Recommended)
 
-Presenting a paywall varies depending on your platform. See [Displaying Paywalls](/tools/paywalls/displaying-paywalls) to see in-depth examples for each platform.
+RevenueCat provides customizable paywall templates that you can configure remotely. See [Creating Paywalls](/tools/paywalls/creating-paywalls) to design your paywall, then [Displaying Paywalls](/tools/paywalls/displaying-paywalls) for platform-specific implementation.
 
 {<Button href="/docs/tools/paywalls/displaying-paywalls">Present a Paywall →</Button>}
 
-<br />
-<br />
+**Option B: Build Your Own**
 
-_Want to display your products manually? See [Displaying Products](/getting-started/displaying-products)._
+If you prefer full control, manually display products and handle purchases. See [Displaying Products](/getting-started/displaying-products) and [Making Purchases](/getting-started/making-purchases).
 
 #### SDK not fetching products or offerings?
 
@@ -144,13 +111,24 @@ If you're running into this error, please see our [community post](https://commu
 
 ### Make a Purchase
 
-Once your paywall is presented, select one of your products to make a purchase. The SDK will handle the purchase flow automatically and send the purchase information to RevenueCat. The RevenueCat SDK will automatically handle sandbox vs. production environments.
+Once your paywall is presented, select one of your products to make a purchase. The SDK will handle the purchase flow automatically and send the purchase information to RevenueCat.
 
-Each platform requires slightly different configuration steps to test in sandbox. See [Sandbox Testing](/test-and-launch/sandbox) for more information.
+**Testing with Test Store:**
+
+- Test Store purchases work immediately without any additional setup
+- They behave just like real subscriptions in your app
+- No real money is charged
+- Perfect for development and testing your integration
+
+**Testing with real stores:**
+
+- The RevenueCat SDK automatically handles sandbox vs. production environments
+- Each platform requires slightly different configuration steps to test in sandbox
+- See [Sandbox Testing](/test-and-launch/sandbox) for platform-specific instructions
 
 When the purchase is complete, you can find the purchase associated to the customer in the [RevenueCat dashboard](/dashboard-and-metrics/customer-profile). You can [search for the customer](/dashboard-and-metrics/customer-lists#find-an-individual-customer) by their App User ID that you configured, or by the automatically assigned `$RCAnonymousID` that you'll find in your logs.
 
-**Note:** RevenueCat **_always_** validates transactions with the respective store. The dashboard will only reflect purchases that have been successfully validated by the store.
+**Note:** RevenueCat **_always_** validates transactions. Test Store purchases are validated by RevenueCat; real store purchases are validated by the respective platform (Apple, Google, etc.).
 
 Additionally, the SDK will automatically update the customer's `CustomerInfo` object with the new purchase information. This object contains all the information about the customer's purchases and subscriptions.
 
@@ -280,8 +258,7 @@ To download more complete examples of integrating the SDK, head over to our samp
 
 ## Next Steps
 
-- If you haven't already, make sure your products are configured correctly by checking out our [guide on entitlements ](/getting-started/entitlements).
-- If you want to use your own user identifiers, read about [setting app user IDs ](/customers/user-ids).
-- If you're moving to RevenueCat from another system, see our guide on [migrating your existing subscriptions ](/migrating-to-revenuecat/migrating-existing-subscriptions).
-- Once you're ready to test your integration, you can follow our guides on [testing and debugging ](/test-and-launch/debugging).
-- If you qualify for the App Store Small Business Program, check out our guide on [how to apply and inform RevenueCat ](/platform-resources/apple-platform-resources/app-store-small-business-program)
+- If you want to use your own user identifiers, read about [setting app user IDs](/customers/user-ids).
+- Once you're ready to test your integration, follow our guides on [testing and debugging](/test-and-launch/debugging).
+- If you're moving to RevenueCat from another system, see our [migration guide](/migrating-to-revenuecat/migrating-existing-subscriptions).
+- If you qualify for the App Store Small Business Program, check out our [guide on how to apply](/platform-resources/apple-platform-resources/app-store-small-business-program).
