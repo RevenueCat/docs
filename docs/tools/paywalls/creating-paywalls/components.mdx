@@ -194,6 +194,23 @@ You can choose from the following actions:
 
 **Navigate to** additionally supports navigating to your Privacy Policy, Terms of Service, or any other custom URL of your choosing. URLs can be opened via In-App Browser, External Browser, or Deep Link.
 
+### Delayed visibility
+
+For close/back buttons, you can optionally configure a delay before the button becomes visible to users. This can be useful when you want to ensure users view your paywall content for a minimum duration before allowing them to dismiss it.
+
+![Button delayed visibility properties](/docs_images/paywalls/paywalls-button-delayed-visibility.png)
+
+:::warning SDK compatibility
+The delayed close button feature requires the following minimum SDK versions:
+- iOS: 5.37.0+
+- Android: 9.4.0+ (or 8.24.0+ for backwards compatibility with Google Play Billing Library 8)
+- React Native: 9.4.0+
+- Flutter: 9.5.0+
+- KMP: 2.1.3+17.6.0
+
+On older SDK versions, the delay configuration will be ignored and the button will be immediately visible.
+:::
+
 ## Carousel
 
 The carousel component allows you to create a carousel of pages that a customer can swipe through. These pages are their own stacks, and therefore can contain almost any other components that are supported in Paywalls.
