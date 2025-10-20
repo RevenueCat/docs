@@ -2,7 +2,7 @@
 class MainApplication: Application() {
     override fun onCreate() {
         super.onCreate()
-        Purchases.debugLogsEnabled = true
+        Purchases.logLevel = LogLevel.DEBUG
         Purchases.configure(PurchasesConfiguration.Builder(this, "public_google_sdk_key").build())
     }
 }
@@ -25,7 +25,7 @@ productFlavors {
 class MainApplication: Application() {
     override fun onCreate() {
         super.onCreate()
-        Purchases.debugLogsEnabled = true
+        Purchases.logLevel = LogLevel.DEBUG
           
         if (BuildConfig.STORE.equals("amazon")) {
             Purchases.configure(AmazonConfiguration.Builder(this, "public_amazon_sdk_key").build())

@@ -1,6 +1,6 @@
 override fun onCreate() {
         super.onCreate()
-        Purchases.debugLogsEnabled = true
+        Purchases.logLevel = LogLevel.DEBUG
 
         if (BuildConfig.STORE == "amazon") {
             Purchases.configure(AmazonConfiguration.Builder(this, "public_amazon_sdk_key").build())
