@@ -110,7 +110,7 @@ To isolate the impact of price, make sure your test products match your control 
 - **Introductory offers**: If your current products have free trials or intro pricing, add identical offers to your test products
   - Navigate to the **Introductory Offers** tab and click the **+** icon
   - Match the type (Free, Pay Up Front, or Pay As You Go), duration, and any regional restrictions
-  - Learn more about [iOS introductory prices](https://medium.com/revenuecat-blog/ios-introductory-prices-f1efb4f1a6a2)
+  - Learn more about [iOS introductory prices](https://www.revenuecat.com/blog/engineering/ios-introductory-prices/)
 - **Promotional offers**: You can add these later if needed
 - **Subscription group hierarchy**: Use the same ranking logic you use in your control group
 :::
