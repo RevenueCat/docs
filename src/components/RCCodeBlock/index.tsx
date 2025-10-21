@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
@@ -21,6 +21,7 @@ enum Languages {
   brightscript = "brightscript",
   json = "json",
   kmp = "kmp",
+  bash = "bash",
 }
 
 // Define types for tab items
@@ -35,11 +36,153 @@ interface CodeTab {
 // Define props interface
 interface RCCodeBlockProps {
   tabs: CodeTab[];
+  collapsible?: boolean; // Enable/disable collapse (default: true)
+  maxHeight?: number; // Height threshold in pixels (default: 300)
+  maxLines?: number; // Line count threshold (default: 10)
+  defaultCollapsed?: boolean; // Force initial state
 }
+
+// Props for the CollapsibleCodeBlock component
+interface CollapsibleCodeBlockProps {
+  children: React.ReactNode;
+  content: string;
+  collapsible: boolean;
+  maxHeight: number;
+  maxLines: number;
+  defaultCollapsed?: boolean;
+}
+
+// CollapsibleCodeBlock component that wraps individual code blocks
+const CollapsibleCodeBlock: React.FC<CollapsibleCodeBlockProps> = ({
+  children,
+  content,
+  collapsible,
+  maxHeight,
+  maxLines,
+  defaultCollapsed,
+}) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [shouldShowCollapse, setShouldShowCollapse] = useState(false);
+
+  useEffect(() => {
+    if (!collapsible) return;
+
+    // Check if content should be collapsible based on line count
+    const lineCount = content.split("\n").length;
+    const shouldCollapse = lineCount > maxLines;
+
+    setShouldShowCollapse(shouldCollapse);
+
+    // Set initial state
+    if (shouldCollapse) {
+      setIsCollapsed(defaultCollapsed ?? true);
+    }
+  }, [content, collapsible, maxLines, defaultCollapsed]);
+
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
+  if (!collapsible || !shouldShowCollapse) {
+    return <>{children}</>;
+  }
+
+  return (
+    <div className="rc-collapsible-codeblock">
+      <div
+        ref={containerRef}
+        className={`rc-codeblock-container ${isCollapsed ? "collapsed" : "expanded"}`}
+        style={{
+          maxHeight: isCollapsed ? `${maxHeight}px` : "none",
+          overflow: "hidden",
+          position: "relative",
+          transition: "max-height 0.3s ease-in-out",
+        }}
+      >
+        <style>{`
+          .rc-codeblock-container .prism-code,
+          .rc-codeblock-container pre,
+          .rc-codeblock-container > div {
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+          }
+        `}</style>
+        {children}
+        {isCollapsed && (
+          <div
+            className="rc-codeblock-fade"
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: "60px",
+              background:
+                "linear-gradient(transparent, var(--ifm-background-color))",
+              pointerEvents: "none",
+            }}
+          />
+        )}
+      </div>
+      <button
+        onClick={toggleCollapse}
+        className="rc-codeblock-toggle"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "8px",
+          width: "100%",
+          padding: "8px",
+          margin: 0,
+          backgroundColor: "var(--ifm-color-emphasis-200)",
+          border: "1px solid var(--ifm-color-emphasis-300)",
+          borderRadius: "4px",
+          cursor: "pointer",
+          fontSize: "14px",
+          color: "var(--ifm-color-content)",
+          transition: "background-color 0.2s ease",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor =
+            "var(--ifm-color-emphasis-300)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor =
+            "var(--ifm-color-emphasis-200)";
+        }}
+        aria-expanded={!isCollapsed}
+        aria-label={isCollapsed ? "Expand code block" : "Collapse code block"}
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          style={{
+            transform: isCollapsed ? "rotate(0deg)" : "rotate(180deg)",
+            transition: "transform 0.2s ease",
+          }}
+        >
+          <path fill="currentColor" d="M8 12l-4-4h8l-4 4z" />
+        </svg>
+        {isCollapsed ? "Show more" : "Show less"}
+      </button>
+    </div>
+  );
+};
 
 const RCCodeBlock: React.FC<RCCodeBlockProps> & {
   languages: typeof Languages;
 } = (props) => {
+  // Set default values for collapsible props
+  const {
+    collapsible = true,
+    maxHeight = 300,
+    maxLines = 10,
+    defaultCollapsed,
+  } = props;
+
   return (
     <Tabs
       groupId="language"
@@ -68,12 +211,20 @@ const RCCodeBlock: React.FC<RCCodeBlockProps> & {
 
         return (
           <TabItem value={tab.title || tab.name || tab.type} key={tab.type}>
-            <CodeBlock
-              showLineNumbers={true}
-              language={getLanguageType(tab.type)}
+            <CollapsibleCodeBlock
+              content={content}
+              collapsible={collapsible}
+              maxHeight={maxHeight}
+              maxLines={maxLines}
+              defaultCollapsed={defaultCollapsed}
             >
-              {content}
-            </CodeBlock>
+              <CodeBlock
+                showLineNumbers={true}
+                language={getLanguageType(tab.type)}
+              >
+                {content}
+              </CodeBlock>
+            </CollapsibleCodeBlock>
           </TabItem>
         );
       })}
@@ -112,6 +263,8 @@ function getTabTitle(type: Languages): string {
       return "TypeScript";
     case Languages.brightscript:
       return "BrightScript";
+    case Languages.bash:
+      return "Bash";
     default:
       return "Code";
   }
@@ -151,6 +304,8 @@ function getLanguageType(type: Languages): string {
       return "html";
     case Languages.brightscript:
       return "brightscript";
+    case Languages.bash:
+      return "bash";
     default:
       return "Code";
   }
