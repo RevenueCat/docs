@@ -8,7 +8,7 @@ Testing price changes is one of the most impactful experiments you can run to op
 
 :::tip Quick overview
 Running a price increase experiment requires:
-1. Creating new products at the increased price in App Store Connect and Google Play Console
+1. Creating new products at the increased price in App Store Connect and/or Google Play Console
 2. Importing those products into RevenueCat and attaching them to your entitlement
 3. Creating a new Offering with the higher-priced products
 4. Configuring and launching an Experiment to compare the two Offerings
