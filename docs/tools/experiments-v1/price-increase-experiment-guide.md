@@ -396,7 +396,7 @@ Control who gets enrolled in your experiment:
 
 ### What to expect
 
-- **Customers**: As soon as a new customer reaches an offering, they'll be randomly assigned to Control or Treatment and counted in the experiment
+- **Customers**: As soon as a new customer starts using the app for the first time, they'll be randomly assigned to Control or Treatment and counted in the experiment
 - **Data collection**: Metrics will begin appearing within 24 hours of starting your experiment
 - **Results refresh**: Your results will continue updating as new data comes in
 
