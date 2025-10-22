@@ -1,0 +1,46 @@
+{
+    "app_id": "app1a2b3c4d5e",
+    "app_user_id": "abc123",
+    "country_code": "ES",
+    "currency": "EUR",
+    "entitlement_ids": [
+      "A",
+      "B"
+    ],
+    "environment": "SANDBOX",
+    "event_timestamp_ms": 1760535239189,
+    "expiration_at_ms": 1760535532992,
+    "is_family_share": false,
+    "items": [
+      {
+        "currency": "EUR",
+        "expiration_at_ms": 1760535532992,
+        "price": 12.76,
+        "price_in_purchased_currency": 10.99,
+        "product_id": "premium_music:monthly",
+        "type": "base"
+      },
+      {
+        "currency": "EUR",
+        "expiration_at_ms": 1760535532992,
+        "price": 1.27,
+        "price_in_purchased_currency": 1.09,
+        "product_id": "hifi_audio:monthly",
+        "type": "addon"
+      }
+    ],
+    "offer_code": null,
+    "period_type": "NORMAL",
+    "presented_offering_context": {},
+    "presented_offering_id": "default",
+    "price": 14.02,
+    "price_in_purchased_currency": 12.08,
+    "product_display_name": null,
+    "product_id": "premium_music:monthly",
+    "purchased_at_ms": 1760535233697,
+    "renewal_number": 1,
+    "store": "PLAY_STORE",
+    "takehome_percentage": 0.85,
+    "transaction_id": "GPA.3312-6386-1703-32297"
+   }
+   

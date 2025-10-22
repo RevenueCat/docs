@@ -320,6 +320,7 @@ const offeringsCategory = Category({
             Page({ slug: "price-changes" }),
             Page({ slug: "refunds" }),
             Page({ slug: "google-prepaid-plans" }),
+            // Page({ slug: "google-subscription-with-addons"}),
           ],
           index: {
             title: "Subscription Products",
