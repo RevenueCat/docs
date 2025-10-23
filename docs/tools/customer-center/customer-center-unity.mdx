@@ -25,7 +25,7 @@ We provide 2 ways to install RevenueCatUI: via Unity Package Manager (UPM) in th
 
 1. First, install the core RevenueCat Unity SDK (if not already installed) following the [Unity installation guide](/getting-started/installation/unity).
 
-2. Add the OpenUPM scoped registry (if not already added). Go to your project's settings → Package Manager, and add a new scoped registry with URL `https://package.openupm.com` and scopes: `com.openupm` and `com.revenuecat.purchases-unity`.
+2. Add the OpenUPM scoped registry (if not already added). Go to your project's settings → Package Manager, and add a new scoped registry with URL `https://package.openupm.com` and scopes: `com.openupm` and `com.revenuecat.purchases-unity-ui`.
 
 3. Go to the Package Manager and from "My Registries", select the RevenueCat UI package and click Install.
 
@@ -37,9 +37,9 @@ If you prefer, you can also use OpenUPM-CLI to add the package through the comma
 
 1. First, install the core RevenueCat Unity SDK (if not already installed) following the [Unity installation guide](/getting-started/installation/unity).
 
-2. Download the latest version of [**RevenueCatUI.unitypackage**](https://github.com/RevenueCat/purchases-unity/releases/latest/download/RevenueCatUI.unitypackage).
+2. Download the latest version of [**PurchasesUI.unitypackage**](https://github.com/RevenueCat/purchases-unity/releases/latest/download/PurchasesUI.unitypackage).
 
-3. In Unity, import the downloaded `RevenueCatUI.unitypackage` to your project.
+3. In Unity, import the downloaded `PurchasesUI.unitypackage` to your project.
 
 ## Integration
 
@@ -57,6 +57,34 @@ import RCCodeBlock from '@site/src/components/RCCodeBlock';
     },
   ]}
 />
+
+### Listening to Customer Center Events
+
+You can listen to Customer Center events by passing a callbacks object to the `CustomerCenterPresenter.Present()` method.
+
+import eventsLocalUnity from '@site/code_blocks/tools/customer-center-events-unity-local.cs?raw';
+
+<RCCodeBlock
+  tabs={[
+    { type: "unity", content: eventsLocalUnity, name: "Unity" },
+  ]}
+/>
+
+The following events are available:
+
+- `OnManagementOptionSelected`: Called when a user selects a management option (for example, missing purchase, cancel, or custom URL)
+- `OnRestoreStarted`: Called when the restore process begins
+- `OnRestoreCompleted`: Called when the restore process completes successfully (with the new `CustomerInfo` object)
+- `OnRestoreFailed`: Called when the restore process fails (with the error object)
+- `OnShowingManageSubscriptions`: Called when someone starts the manage subscriptions flow
+- `OnFeedbackSurveyCompleted`: Called when a user completes a feedback survey
+- `OnRefundRequestStarted`: Called when a refund request starts (iOS only)
+- `OnRefundRequestCompleted`: Called when a refund request completes with status information (iOS only)
+- `OnCustomActionSelected`: Called when a custom action is selected in the customer center
+
+:::warning Threading Note
+All callbacks execute on a background thread, not Unity's main thread.
+:::
 
 ## Setup promotional offers
 
