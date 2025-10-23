@@ -35,12 +35,12 @@ For example:
 Make sure these products are imported into RevenueCat and correctly configured to entitlements.
 
 ## SDK
-
-!!!! info here about minimum SDK version / the experimental flag !!!!
+Subscriptions that include add-ons can be purchased using the native Android SDK (version 9.12.0 or later). The add-on purchasing APIs are currently marked as experimental, meaning they may change in future releases. To use them, you’ll need to explicitly opt in by annotating any functions that call these APIs with the
+`@OptIn(ExperimentalPreviewRevenueCatPurchasesAPI::class)` annotation. Support for add-on purchases in the hybrid SDKs is coming soon.
 
 ### Purchasing A Subscription with Add-Ons
 
-When purchasing a mult-line subscription with RevenueCat, the package passed into the PurchaseParams’ constructor will be used as the base item of the multi-line subscription, and the packages passed in to the .addOnPackages() function will be treated as add-on items. You can purchase a multi-line subscription with the SDK like so:
+When purchasing a multi-line subscription with RevenueCat, the package passed into the PurchaseParams’ constructor will be used as the base item of the multi-line subscription, and the packages passed in to the .addOnPackages() function will be treated as add-on items. You can purchase a multi-line subscription with the SDK like so:
 
 import kt1 from "@site/code_blocks/subscription-guidance//subscription-with-addons_1.kt?raw";
 
