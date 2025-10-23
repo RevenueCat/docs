@@ -50,7 +50,7 @@ export const CustomerCenterSDKTable: React.FC = () => {
     },
     {
       name: "Unity",
-      sdk: "RevenueCatUI.unitypackage",
+      sdk: "com.revenuecat.purchases-ui-unity",
       link: "https://github.com/RevenueCat/purchases-unity",
       version: `${sdkVersions.unity} and higher`,
     },
