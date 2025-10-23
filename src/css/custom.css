@@ -373,8 +373,19 @@ html[data-theme="dark"]
   flex-wrap: wrap;
 }
 
+/* Add 12px inset to tab content sides and bottom (not the tab headers) */
 .tabs-container .margin-top--md {
   margin-top: 0.5rem !important;
+  padding: 0 12px 12px 12px;
+}
+
+/* Global tab content inset for all Docusaurus tabs */
+.tabs .margin-top--md {
+  padding: 0 12px 12px 12px;
+}
+
+.tabs-container h4 {
+  margin-top: 2rem !important;
 }
 
 /* Mobile TOC */
