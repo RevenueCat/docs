@@ -12,19 +12,19 @@ public class ConditionalPaywallExample : MonoBehaviour
         switch (result.Result)
         {
             case PaywallResultType.Purchased:
-                Debug.Log("User made a purchase");
+                // User made a purchase
                 break;
             case PaywallResultType.Restored:
-                Debug.Log("User restored purchases");
+                // User restored purchases
                 break;
             case PaywallResultType.NotPresented:
-                Debug.Log("User already has the entitlement");
+                // User already has the entitlement
                 break;
             case PaywallResultType.Cancelled:
-                Debug.Log("User cancelled the paywall");
+                // User cancelled the paywall
                 break;
             case PaywallResultType.Error:
-                Debug.Log("An error occurred");
+                // An error occurred
                 break;
         }
     }

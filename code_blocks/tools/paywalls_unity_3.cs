@@ -3,20 +3,35 @@ using RevenueCatUI;
 
 public class PaywallOptionsExample : MonoBehaviour
 {
-    public async Task ShowPaywallWithOptions()
+    // Present the current offering
+    public async Task ShowCurrentOffering()
     {
-        // Present the current offering
-        var result1 = await PaywallsPresenter.Present(new PaywallOptions());
+        var result = await PaywallsPresenter.Present(new PaywallOptions());
+        // Handle result...
+    }
 
-        // Present a specific offering by identifier
-        var result2 = await PaywallsPresenter.Present(new PaywallOptions("my_offering_id"));
+    // Present from an Offering object
+    public void ShowOfferingFromObject()
+    {
+        var purchases = GetComponent<Purchases>();
+        purchases.GetOfferings(async (offerings, error) =>
+        {
+            if (error != null)
+            {
+                // Handle error
+                return;
+            }
+            
+            var offering = offerings.Current;
+            var result = await PaywallsPresenter.Present(new PaywallOptions(offering));
+            // Handle result...
+        });
+    }
 
-        // Present from an Offering object
-        var offerings = await Purchases.GetOfferings();
-        var offering = offerings.Current;
-        var result3 = await PaywallsPresenter.Present(new PaywallOptions(offering));
-
-        // Display close button (for original template paywalls only)
-        var result4 = await PaywallsPresenter.Present(new PaywallOptions(displayCloseButton: true));
+    // Display close button (for original template paywalls only)
+    public async Task ShowPaywallWithCloseButton()
+    {
+        var result = await PaywallsPresenter.Present(new PaywallOptions(displayCloseButton: true));
+        // Handle result...
     }
 }
