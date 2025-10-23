@@ -14,9 +14,9 @@ Purchases.sharedInstance.purchase(
     purchaseParams = purchaseParams,
     callback = object : PurchaseCallback {
         override fun onCompleted(
-storeTransaction: StoreTransaction, 
-customerInfo: CustomerInfo
-  ) {
+            storeTransaction: StoreTransaction, 
+            customerInfo: CustomerInfo
+        ) {
             // Purchase Completed Successfully
         }
 
