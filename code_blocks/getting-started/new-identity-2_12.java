@@ -1,1 +1,0 @@
-Purchases.configure(this, "my_api_key", "my_app_user_id");
