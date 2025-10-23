@@ -15,6 +15,7 @@ RevenueCat Paywalls are included as part of the RevenueCatUI package in the Reve
 | purchases-flutter         | 8.5.0 and up                 |
 | purchases-kmp             | 1.5.1+13.18.1 and up                  |
 | purchases-capacitor       | 10.3.1 and up                         |
+| purchases-unity-ui           | 8.4.0 and up          |
 
 ### Platforms (support for more coming)
 
@@ -159,3 +160,39 @@ Lastly, you'll need to make sure you link the `PurchasesHybridCommonUI` native i
   }
 }
 ```
+
+## Unity Installation
+
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-unity.svg?style=flat)](https://github.com/RevenueCat/purchases-unity/releases)
+
+RevenueCat UI for Unity is included as a separate package that works alongside the core RevenueCat Unity SDK.
+
+### Requirements
+
+- RevenueCat Unity SDK installed in your project
+- Unity Editor is not supported for displaying the paywall UI
+
+### Installation Steps
+
+We provide 2 ways to install RevenueCatUI: via Unity Package Manager (UPM) in the OpenUPM registry (recommended), or as a `.unitypackage`.
+
+#### Option 1 (recommended): Install using OpenUPM
+
+1. First, install the core RevenueCat Unity SDK (if not already installed) following the [Unity installation guide](/getting-started/installation/unity).
+
+2. Add the OpenUPM scoped registry (if not already added). Go to your project's settings → Package Manager, and add a new scoped registry with URL `https://package.openupm.com` and scopes: `com.openupm` and `com.revenuecat.purchases-unity-ui`.
+
+3. Go to the Package Manager and from "My Registries", select the RevenueCat UI package and click Install.
+
+:::info Using OpenUPM-CLI
+If you prefer, you can also use OpenUPM-CLI to add the package through the command line. Install the [OpenUPM-CLI](https://openupm.com/docs/getting-started.html) if you haven't already, then run `openupm add com.revenuecat.purchases-unity-ui`.
+:::
+
+#### Option 2: Import the RevenueCatUI Unity package
+
+1. First, install the core RevenueCat Unity SDK (if not already installed) following the [Unity installation guide](/getting-started/installation/unity).
+
+2. Download the latest version of [**PurchasesUI.unitypackage**](https://github.com/RevenueCat/purchases-unity/releases/latest/download/PurchasesUI.unitypackage).
+
+3. In Unity, import the downloaded `PurchasesUI.unitypackage` to your project.
+
