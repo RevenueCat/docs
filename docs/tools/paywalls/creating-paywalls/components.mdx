@@ -150,6 +150,10 @@ In addition to the standard properties that are common to other components, vide
 
 We recommend keeping the default video settings of autoplay, loop, and mute audio; as these will result in the most natural user experience on a paywall the vast majority of the time. In addition, keep in mind that some settings combinations like no autoplay and no playback controls will not be supported, as they would prevent a customer from being able to play the video at all.
 
+:::warning macOS and watchOS behaviors
+When displaying a video on macOS and watchOS, there may be a black border outside of the video component if you set it to the "fit" fit mode and design the component to take up more space than the video's aspect ratio naturally will.
+:::
+
 ## Icon component
 
 The icon component allows you to add an icon to your paywall from our predefined list. Each icon has a filled and outlined version, and can have its color, size, border, etc. custom configured just like other components.
