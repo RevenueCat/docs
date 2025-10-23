@@ -226,6 +226,59 @@ import cap1 from '@site/code_blocks/tools/paywalls_cap_1.ts.txt?raw';
   ]}
 />
 
+### Unity
+
+RevenueCat Paywalls for Unity provide native paywall presentation on iOS and Android with simple C# APIs.
+
+There are several ways to present paywalls:
+
+- Using `PaywallsPresenter.Present()`: this will display a paywall when invoked.
+- Using `PaywallsPresenter.PresentIfNeeded()`: this will present a paywall only if the customer does not have an unlocked entitlement.
+- Using `PaywallsBehaviour` component: configure paywalls through Unity's Inspector for Editor workflows.
+
+import unity1 from '@site/code_blocks/tools/paywalls_unity_1.cs?raw';
+import unity2 from '@site/code_blocks/tools/paywalls_unity_2.cs?raw';
+import unity3 from '@site/code_blocks/tools/paywalls_unity_3.cs?raw';
+import RCCodeBlock from '@site/src/components/RCCodeBlock';
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "unity",
+      title: "PaywallsPresenter.Present",
+      content: unity1,
+    },
+    {
+      type: "unity",
+      title: "PaywallsPresenter.PresentIfNeeded",
+      content: unity2,
+    },
+    {
+      type: "unity",
+      title: "PaywallOptions",
+      content: unity3,
+    },
+  ]}
+/>
+
+#### Using PaywallsBehaviour Component
+
+For developers who prefer configuring paywalls through Unity's Inspector, you can use the `PaywallsBehaviour` MonoBehaviour component:
+
+1. Add a `PaywallsBehaviour` component to any GameObject
+2. Configure the options in the Inspector:
+   - **Offering Identifier**: Leave empty to use current offering, or specify an offering ID
+   - **Display Close Button**: Whether to show a close button (original templates only)
+   - **Required Entitlement Identifier**: Optional - paywall will only show if user lacks this entitlement
+3. Wire up UnityEvent callbacks: `OnPurchased`, `OnRestored`, `OnCancelled`, `OnNotPresented`, `OnError`
+4. Call `PresentPaywall()` method (e.g., from a UI Button's OnClick event)
+
+#### Platform Notes
+
+- The paywall UI is only available on iOS and Android device builds.
+- Unity Editor is not supported for displaying the paywall UI.
+- Build to device when testing the paywall UI.
+
 ## Handling paywall navigation
 
 When creating a paywall, consider whether it will be presented in a sheet, or as a full screen view. Sheets won't require a dedicated close button. Full screen views should have either a close button (if presented modally) or a back button (if part of a navigation stack or host) unless you intend to provide a hard paywall to your customers that cannot be bypassed.

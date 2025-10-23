@@ -1,0 +1,75 @@
+---
+title: Integrating Customer Center on Unity
+sidebar_label: Unity Integration
+slug: customer-center-unity
+hidden: false
+---
+
+## Installation
+
+[![Release](https://img.shields.io/github/release/RevenueCat/purchases-unity.svg?style=flat)](https://github.com/RevenueCat/purchases-unity/releases)
+
+Before integrating the Customer Center in Unity, you need to add the RevenueCatUI package to your project.
+
+### Requirements
+
+- RevenueCat Unity SDK installed in your project
+- RevenueCatUI package installed (includes Customer Center functionality)
+- Unity Editor is not supported for displaying the Customer Center UI
+
+### Installation Steps
+
+We provide 2 ways to install RevenueCatUI: via Unity Package Manager (UPM) in the OpenUPM registry (recommended), or as a `.unitypackage`.
+
+#### Option 1 (recommended): Install using OpenUPM
+
+1. First, install the core RevenueCat Unity SDK (if not already installed) following the [Unity installation guide](/getting-started/installation/unity).
+
+2. Add the OpenUPM scoped registry (if not already added). Go to your project's settings → Package Manager, and add a new scoped registry with URL `https://package.openupm.com` and scopes: `com.openupm` and `com.revenuecat.purchases-unity`.
+
+3. Go to the Package Manager and from "My Registries", select the RevenueCat UI package and click Install.
+
+:::info Using OpenUPM-CLI
+If you prefer, you can also use OpenUPM-CLI to add the package through the command line. Install the [OpenUPM-CLI](https://openupm.com/docs/getting-started.html) if you haven't already, then run `openupm add com.revenuecat.purchases-unity-ui`.
+:::
+
+#### Option 2: Import the RevenueCatUI Unity package
+
+1. First, install the core RevenueCat Unity SDK (if not already installed) following the [Unity installation guide](/getting-started/installation/unity).
+
+2. Download the latest version of [**RevenueCatUI.unitypackage**](https://github.com/RevenueCat/purchases-unity/releases/latest/download/RevenueCatUI.unitypackage).
+
+3. In Unity, import the downloaded `RevenueCatUI.unitypackage` to your project.
+
+## Integration
+
+Opening the customer center is as simple as:
+
+import unity1 from '@site/code_blocks/tools/customer-center-unity-1.cs?raw';
+import RCCodeBlock from '@site/src/components/RCCodeBlock';
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "unity",
+      title: "Present Customer Center",
+      content: unity1,
+    },
+  ]}
+/>
+
+## Setup promotional offers
+
+Promotional Offers allow developers to apply custom pricing and trials to new customers and to existing and lapsed subscriptions. Unique promotional offers can be assigned to different paths and survey responses in the Customer Center, but first they must be setup in App Store Connect and Google Play Store.
+
+The Customer Center will automatically show offers based on specific user actions. By default we have defined it for cancellations but it can be modified to any of the defined paths. For Unity you are going to have to configure these promotional offers in both Google Play Console and App Store Connect.
+
+Refer to [configuring Google Play Store promotional offers](/tools/customer-center/customer-center-promo-offers-google) and [configuring App Store Connect promotional offers](/tools/customer-center/customer-center-promo-offers-apple) for detailed instructions.
+
+## Platform Notes
+
+- The Customer Center UI is only available on iOS and Android device builds.
+- Unity Editor is not supported for displaying the Customer Center UI.
+- Build to device when testing the Customer Center UI.
+
+Learn more about configuring the Customer Center in the [configuration guide](/tools/customer-center/customer-center-configuration).
