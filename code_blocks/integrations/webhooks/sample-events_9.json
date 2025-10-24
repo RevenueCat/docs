@@ -39,7 +39,13 @@
     "tax_percentage": 0.1109,
     "commission_percentage": 0.3,
     "type" : "CANCELLATION",
-    "id" : "12345678-1234-1234-1234-12345678912"
+    "id" : "12345678-1234-1234-1234-12345678912",
+    "price_experiments": [
+      {
+        "price_experiment_id": "prexp123",
+        "price_experiment_variant": "b"
+      }
+    ]
   },
   "api_version" : "1.0"
 }
