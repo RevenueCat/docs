@@ -31,7 +31,13 @@
         "commission_percentage": 0.3,
         "type": "UNCANCELLATION",
         "id": "12345678-1234-1234-1234-123456789012",
-        "app_id": "1234567890"
+        "app_id": "1234567890",
+        "price_experiments": [
+            {
+                "price_experiment_id": "prexp123",
+                "price_experiment_variant": "b"
+            }
+        ]
     },
     "api_version": "1.0"
 }
