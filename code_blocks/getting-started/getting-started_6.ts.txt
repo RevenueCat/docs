@@ -1,4 +1,4 @@
-import { Platform, useEffect } from 'react-native';
+import { Platform } from 'react-native';
 import { useEffect } from 'react';
 import Purchases, { LOG_LEVEL } from 'react-native-purchases';
 
