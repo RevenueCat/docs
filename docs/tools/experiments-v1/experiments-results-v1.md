@@ -4,58 +4,94 @@ slug: experiments-results-v1
 hidden: false
 ---
 
-Within 24 hours of your experiment's launch you'll start seeing data on the Results page. RevenueCat offers experiment results through each step of the subscription journey to give you a comprehensive view of the impact of your test. You can dig into these results in a few different ways, which we'll cover below.
+You'll start seeing experiment results within 24 hours of launch. The Results page gives you a high-level overview of performance and lets you explore key metrics in detail. Results are organized across three tabs.
 
-## Results chart
+## Enrollment and notes
+At the top of the Results page, you'll see the experiment's enrollment criteria and any notes you've added. This keeps context visible as you review the data. You can update your notes directly on the page as you analyze results.
 
-The Results chart should be your primary source for understanding how a specific metric has performed for each variant over the lifetime of your experiment.
+![Enrollment criteria and experiment notes](/docs_images/experiments/v1/results-enrollment-notes.png)
 
-![Results chart](/docs_images/experiments/v1/results-chart.png)
+## Results summary
+The **Results summary** tab shows your primary and secondary metrics, the ones selected when setting up the experiment. This is the best place to start analyzing performance across variants.
 
-By default you'll see your \*_Realized LTV per customer_ for all platforms plotted daily for the lifetime of your experiment, but you can select any other experiment metric to visualize, or narrow down to a specific platform.
+### Chart and table views
+You will first see the primary metric results, with a chart showing the accumulated results for the lifetime of your experiment and a table with the total values. Following this, your secondary metrics will be presented in their respective sections. For each of these metrics you can also display a chart.
 
-:::info Why Realized LTV per customer?
-Lifetime value (LTV) is the standard success measure you should be using for pricing experiments because it captures the full revenue impact on your business. Realized LTV per customer measures the revenue you've accrued so far divided by the total customers in each variant so you understand which variant is on track to produce higher value for your business.
+![Primary and secondary metric sections in Results summary](/docs_images/experiments/v1/results-primary-metric-viz.png)
 
-Keep in mind that your LTV over a longer time horizon might be impacted by the renewal behavior of your customers, the mix of product durations they're on, etc.
-:::
+### Product breakdown and filters
+You can analyze most metrics by product as well. Click on the caret next to the variant name to see the metric broken down by the individual products in your experiment.
 
-You can also click **Export chart CSV** to receive an export of all metrics by day for deeper analysis.
+![Product level breakdown](/docs_images/experiments/v1/results-product-breakdown.png)
+
+This is helpful when trying to understand what's driving changes in performance, and how it might impact LTV. (A more prominent yearly subscription, for example, may decrease initial conversion rate relative to a more prominent monthly option; but those fewer conversions may produce more Realized LTV per paying customer).
+To analyze results of a specific country or platform, use the filters to display only your selected segment.
 
 :::info Data takes 24 hours to appear
 
 The results refresher runs once every 24 hours.
 
-If you're not seeing any data or are seeing unexpected results, try:
+If you're not seeing any data or are seeing unexpected results:
 
-- **Ensuring each product that is a part of the experiment has been purchased at least once**
-- **Waiting another 24 hours until the model can process more data**
+- **Ensure each product that is a part of the experiment has been purchased at least once**
+- **Wait another 24 hours until the model can process more data**
 
 When you stop an experiment, the results will continue to be updated for the next 400 days to capture any additional subscription events, and allow you to see how your Realized LTV matures for each variant over time.
 :::
 
-## Customer journey tables
+### Statistical Confidence
 
-The customer journey tables can be used to dig into and compare your results across variants.
+The **Chance to win** metric helps you understand if differences between variants are meaningful real improvements or due to chance. It's calculated based on the observed data and reflects the probability that a treatment variant is performing better than the control.
+
+Example: 
+If your Treatment (Variant B) shows a 6.1% initial conversion rate vs 5.2% for your Control (Variant A) with a 98% Chance to Win, you can be confident this improvement is meaningful, not just random variation.
+
+Chance to win helps you make informed decisions about when to end your experiment. Many developers consider 95% Chance to Win sufficient to declare a winner, but the right threshold depends on what you're testing and your risk tolerance. For example, you may opt for a higher Chance to Win when deciding on a high-stakes change, such as whether to use in-app vs web purchases, than when deciding on a paywall copy change.
+
+It's currently available for the following metrics: 
+* Initial conversion rate
+* Trial conversion rate
+* Conversion to paying
+
+These calculations will appear in the Results summary once you've collected enough data to produce reliable results. Use these statistical indicators to make confident decisions about when to end your experiment and decide on a winner.
+
+:::tip Automatic emails for underperforming variants
+If the Realized LTV of your Treatment is performing meaningfully worse than your Control, we'll automatically email you to let you know about it so that you can run your test with confidence.
+:::
+
+## Full report
+
+The **Full report** tab gives you a detailed view of all experiment metrics. Use it to compare variant performance beyond your primary and secondary metrics.
+
+All experiment metrics are available in tables that show the performance of Variant A (the control) versus the results and change over control of each treatment variant in your experiment.
 
 The customer journey for a subscription product can be complex: a "conversion" may only be the start of a trial, a single payment is only a portion of the total revenue that subscription may eventually generate, and other events like refunds and cancellations are critical to understanding how a cohort is likely to monetize over time.
 
-To help parse your results, we've broken up experiment results into three tables:
+To help parse your results, we've broken up metrics into three tables:
 
 1. **Initial conversion:** For understanding how these key early conversion rates have been influenced by your test. These metrics are frequently the strongest predictors of LTV changes in an experiment.
+ ![Initial conversion table](/docs_images/experiments/v1/results-initial-conversion-table.png)
+
 2. **Paid customers:** For understanding how your initial conversion trends are translating into new paying customers.
+ ![Paid customers table](/docs_images/experiments/v1/results-paid-customers-table.png)
+
 3. **Revenue:** For understanding how those two sets of changes interact with each other to yield overall impact to your business.
-   ![Customer journey tables](/docs_images/experiments/v1/customer-journey-tables.png)
+ ![Revenue table](/docs_images/experiments/v1/results-revenue-table.png)
+  
+Similar to the Results summary, you can also see a breakdown of the products performance for each metric by clicking on the caret next to the metric name.
 
-In addition to the results per variant that are illustrated above, you can also analyze most metrics by product as well. Click on the caret next to "All" within metrics that offer it to see the metric broken down by the individual products in your experiment. This is especially helpful when trying to understand what's driving changes in performance, and how it might impact LTV. (A more prominent yearly subscription, for example, may decrease initial conversion rate relative to a more prominent monthly option; but those fewer conversions may produce more Realized LTV per paying customer)
+There is also an option to visualize the cumulative results of a selected metric in a daily chart. To display the chart, click **Show chart** at the top of the tab section. You can then click **Export chart CSV** to receive an export of all metrics by day for deeper analysis.
 
-![Product level breakdown](/docs_images/experiments/v1/product-level-breakdown.png)
+![Optional chart in Full report tab](/docs_images/experiments/v1/results-full-report-chart.png)
 
 The results from your experiment can also be exported in this table format using the **Export data CSV** button. This will included aggregate results per variant, and per product results, for flexible analysis.
 
-:::tip Automatic emails for poor performing tests
-If the Realized LTV of your Treatment is performing meaningfully worse than your Control, we'll automatically email you to let you know about it so that you can run your test with confidence.
-:::
+## Variants setup
+The **Variants setup** tab gives you an overview of the Offering linked to each variant. You can quickly access each Offering’s paywall, products, and metadata.
+
+![Variant details](/docs_images/experiments/v1/results-variants-setup.png)
+
+If your experiment uses placements, select the Offering name to view its full details.
 
 ## Metric definitions
 
@@ -97,21 +133,9 @@ If the Realized LTV of your Treatment is performing meaningfully worse than your
 
 :::tip Only new users are included in the results
 
-To keep your A and B cohorts on equal footing, only new users are added to experiments. Here's an example to illustrate what can happen if existing users are added to an experiment: an existing user who is placed in a cohort might make a purchase they wouldn't otherwise make because the variant they were shown had a lower price than the default offering they previously saw. This might mean that the user made a purchase out of fear that they were missing out on a sale and wanted to lock in the price in anticipation of it going back up.
+To keep variants balanced, only new users are enrolled in experiments. Existing users may behave differently based on previous experiences or pricing, which can skew results.
 :::
 
-## Statistical Confidence
-
-When running experiments, it's challenging to know whether performance differences between variants are real improvements or just random noise. The Chance to Win metric solves this by calculating the probability that a variant performed better than the control given the observed data. For example, if your Treatment (Variant B) shows a 6.1% initial conversion rate vs 5.2% for your Control (Variant A) with a 98% Chance to Win, you can be confident this improvement is meaningful, not just random variation.
-
-Chance to Win helps you make informed decisions about when to end your experiment. Many developers consider 95% Chance to Win sufficient to declare a winner, but the right threshold depends on what you're testing and your risk tolerance. For example, you may opt for a higher Chance to Win when deciding on a high-stakes change, such as whether to use in-app vs web purchases, than when deciding on a paywall copy change.
-
-Chance to Win is currently available for the following metrics: 
-* Initial conversion rate
-* Trial conversion rate
-* Conversion to paying
-
-These calculations will appear in the Results section once you've collected enough data to produce reliable results. Use these statistical indicators to make confident decisions about when to end your experiment and decide on a winner.
 
 | Question                                                                                                  | Answer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -119,4 +143,4 @@ These calculations will appear in the Results section once you've collected enou
 | Why do the results for one variant contain purchases of products not included in that variant's Offering? | There are many potential reasons for this, but the two most common occur when (1) there are areas of your app that serve products outside of the Current Offering returned by RevenueCat for a given customer, or (2) the offered Subscription Group on the App Store contains additional products outside of that variant's Offering. For the first case, please check and confirm that all places where you serve Products in your app are relying on the Current Offering from RevenueCat to determiner what to display. For the second case, we recommend creating new Subscription Groups on the App Store for each Offering so that a customer who purchases from that Offering will only have that same set of options to select from one when considering changing or canceling their subscription from Subscription Settings on iOS. |
 | What happens to customers that were enrolled in an experiment after it's been stopped?                    | New customers will no longer be enrolled in an experiment after it's been stopped, and customers who were already enrolled in the experiment will begin receiving the Default Offering if they reach a paywall again. Since we continually refresh results for 400 days after an experiment has been ended, you may see renewals from these customers in your results, since they were enrolled as part of the test while it was running; but new subscriptions started by these customers after the experiment ended and one-time purchases made after the experiment ended will not be included in the results.                                                                                                                                                                                                                             |
 | How can I review the individual customers who were enrolled in my experiment?                             | When using the Get or Create Subscriber endpoint you'll be able to see if an individual subscriber was enrolled in an experiment, and which variant they were assigned to, and can then pass that fact to other destinations like an analytics provider like Amplitude & Mixpanel, or your own internal database.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| How can I filter my results by other dimensions like Country in the Dashboard?                            | Our Dashboard only supports filtering by Platform today, but if there are specific countries you're looking to distinctly measure results for you can instead run simultaneous tests targeting each set of countries. Then, each tests results will tell you how the experiment performed in that country set so you can determine where the change was and was not successful.                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| What filters are supported in experiments?                            | Our Dashboard currently supports filtering experiments results by Platform and Country. This allows you to determine if the change was successful in a specific regional market, for example. You can also create experiments targeting only specific countries.                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
