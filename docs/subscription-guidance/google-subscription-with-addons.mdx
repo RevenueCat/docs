@@ -35,12 +35,13 @@ For example:
 Make sure these products are imported into RevenueCat and correctly configured to entitlements.
 
 ## SDK
+
 Subscriptions that include add-ons can be purchased using the native Android SDK (version 9.12.0 or later). The add-on purchasing APIs are currently marked as experimental, meaning they may change in future releases. To use them, you’ll need to explicitly opt in by annotating any functions that call these APIs with the
 `@OptIn(ExperimentalPreviewRevenueCatPurchasesAPI::class)` annotation. Support for add-on purchases in the hybrid SDKs is coming soon.
 
 ### Purchasing A Subscription with Add-Ons
 
-When purchasing a multi-line subscription with RevenueCat, the package passed into the PurchaseParams’ constructor will be used as the base item of the multi-line subscription, and the packages passed in to the .addOnPackages() function will be treated as add-on items. You can purchase a multi-line subscription with the SDK like so:
+When purchasing a subscription with add-on with RevenueCat, the package passed into the PurchaseParams’ constructor will be used as the base item of the subscription with add-on, and the packages passed in to the .addOnPackages() function will be treated as add-on items. You can purchase a subscription with add-on with the SDK like so:
 
 import kt1 from "@site/code_blocks/subscription-guidance//subscription-with-addons_1.kt?raw";
 
@@ -72,7 +73,7 @@ import kt2 from "@site/code_blocks/subscription-guidance//subscription-with-addo
 
 ### Limitations
 
-- Purchasing multi-line subscriptions is currently unavailable in our Paywalls product.
+- Purchasing a subscription with add-on is currently unavailable in our Paywalls product.
 - Currently, you can only purchase an add-on by selecting a `StoreProduct` or `Package`, and the SDK automatically chooses a base plan. Support for explicitly selecting a specific SubscriptionOption (base plan) when purchasing a subscription add-on is coming soon.
 - To determine what the customer is actively subscribed to, use the `entitlements` field.
 
@@ -127,7 +128,7 @@ What happens:
 
 - The entire subscription is charged as one payment
 - All add-ons that were active at the end of the previous period continue
-- Any add-ons marked for deferred removal are expired
+- Any add-ons that were removed during the previous period would expire
 
 ### Cancellations
 
