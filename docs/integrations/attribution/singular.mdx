@@ -88,6 +88,10 @@ After you've set up the _Purchases SDK_ to send device data to RevenueCat, you c
 RevenueCat's events do not include receipts from the stores, since we validate purchases before triggering events. Therefore, do NOT enable the 'Reject IAP without Receipt' setting in Singular's Apps page so these events are accepted in Singular after having been validated by RevenueCat.
 :::
 
+:::warning Stripe events will not be forward to RevenueCat
+The Singular integration is currently only designed to support mobile. Stripe events will not send to Singular.
+:::
+
 1. Navigate to your project settings in the RevenueCat dashboard and choose 'Singular' from the Integrations menu
 
 ![Integration setup](/docs_images/integrations/setup-integrations.png)
