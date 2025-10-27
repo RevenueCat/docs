@@ -21,7 +21,7 @@ Google Play’s subscriptions with add-ons enables your customers to subscribe t
 
 - **Auto-renewing only**: Subscription with add-ons are exclusively supported for auto-renewing base plans. As a result, this means that prepaid and installment plans are not supported.
 - **Consistent billing periods**: All items in a subscription with add-on purchase must share the same recurring billing period. For instance, you cannot combine an annual subscription with monthly add-ons.
-- **Maximum items**: Each subscription with add-ons purchase is limited to a maximum of 50 items total. This means 1 base subscription and 49 add-ons.
+- **Item limit**: Each subscription with add-ons purchase is limited to a maximum of 50 items total. This means 1 base subscription and 49 add-ons.
 - **Regional availability**: The feature is not available for customers in India (IN) and South Korea (KR) regions.
 
 ## Product setup
@@ -45,7 +45,7 @@ Subscriptions that include add-ons can be purchased using the native Android SDK
 
 ### Purchasing A Subscription with Add-Ons
 
-When purchasing a subscription with add-on with RevenueCat, the package passed into the PurchaseParams’ constructor will be used as the base item of the subscription with add-on, and the packages passed in to the .addOnPackages() function will be treated as add-on items. You can purchase a subscription with add-on with the SDK like so:
+When purchasing a subscription with add-ons with RevenueCat, the package passed into the PurchaseParams’ constructor will be used as the base item of the subscription with add-ons, and the packages passed in to the .addOnPackages() function will be treated as add-on items. You can purchase a subscription with add-on with the SDK like so:
 
 import kt1 from "@site/code_blocks/subscription-guidance//subscription-with-addons_1.kt?raw";
 
@@ -61,7 +61,7 @@ import kt1 from "@site/code_blocks/subscription-guidance//subscription-with-addo
 
 ### Adding Add-Ons to an Existing Subscription
 
-To subscribe to new add-ons with an existing subscription, the flow is largely the same, but you’ll also pass in the product ID of the existing subscription
+To subscribe to new add-ons with an existing subscription, the flow is largely the same, but you’ll also pass in the product ID of the existing subscription:
 
 import kt2 from "@site/code_blocks/subscription-guidance//subscription-with-addons_2.kt?raw";
 
@@ -77,8 +77,7 @@ import kt2 from "@site/code_blocks/subscription-guidance//subscription-with-addo
 
 ### Limitations
 
-- Currently, you can only purchase an add-on by selecting a `StoreProduct` or `Package`, and the SDK automatically chooses a base plan. Support for explicitly selecting a specific SubscriptionOption (base plan) when purchasing a subscription add-on is coming soon.
-- To determine what the customer is actively subscribed to, use the `entitlements` field.
+- To determine what the customer is actively subscribed to, use the `CustomerInfo`'s `entitlements` field.
 
 ## Customer history
 
@@ -135,7 +134,7 @@ What happens:
 
 ### Cancellations
 
-Cancelling a subscription with add-ons will cancel the entire subscription, along with the base subscription and add-ons. This can be done through the [Google Play Console’s Order management page](https://support.google.com/googleplay/android-developer/answer/2741495), [RevenueCat’s API’s](https://www.revenuecat.com/docs/api-v1#tag/transactions/operation/cancel-a-google-subscription) or directly on the [dashboard](/subscription-guidance/refunds#revenuecat-dashboard).
+Cancelling a subscription with add-ons will cancel the entire subscription, along with the base subscription and add-ons. This can be done through the [Google Play Console’s Order management page](https://support.google.com/googleplay/android-developer/answer/2741495), [RevenueCat’s APIs](https://www.revenuecat.com/docs/api-v1#tag/transactions/operation/cancel-a-google-subscription) or directly on the [dashboard](/subscription-guidance/refunds#revenuecat-dashboard).
 
 :::info
 You cannot cancel individual add-ons separately.
