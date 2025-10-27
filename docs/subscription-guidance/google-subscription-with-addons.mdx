@@ -75,9 +75,9 @@ import kt2 from "@site/code_blocks/subscription-guidance//subscription-with-addo
   ]}
 />
 
-### Limitations
-
-- To determine what the customer is actively subscribed to, use the `CustomerInfo`'s `entitlements` field.
+:::info Checking multiple active entitlements
+To determine what the customer is actively subscribed to, use the `CustomerInfo`'s `entitlements` field.
+:::
 
 ## Customer history
 
@@ -117,20 +117,32 @@ import json1 from "@site/code_blocks/subscription-guidance/subscription-with-add
 Key payload fields:
 
 - `product_id`: The product ID in the parent contains the product ID of the base subscription, while the product ID inside the items array represents each individual product.
-- `price`: The price field in the parent contains the total price of the entire subscription, while the price inside the items array represents each individual product’s price
+- `price`: The price field in the parent contains the total price of the entire subscription, while the price inside the items array represents each individual product’s price.
 - `type`: The type field inside each entry for the items array represents whether the product is a base or add-on.
 
 ## Managing subscriptions with add-ons
 
 ### Renewals
 
-When a subscription with add-ons renews, all individual products that are part of that subscription will renew together.
+When a subscription with add-ons renews, all individual products that are part of that subscription will renew together after any introductory period is concluded.
 
 What happens:
 
-- The entire subscription is charged as one payment
-- All add-ons that were active at the end of the previous period continue
-- Any add-ons that were removed during the previous period would expire
+- The entire subscription is charged as one payment.
+- All add-ons that were active at the end of the previous period continue.
+- Any add-ons that were removed during the previous period would expire.
+
+#### Renewing with introductory periods
+
+![](/docs_images/products/google-play/subscription-with-addons/renewals_with_intro_periods.png)
+
+If the base subscription and add-ons have the same billing period but different introductory periods, they may renew independently until all introductory periods have ended.
+
+In this case:
+
+- Each product will be charged according to its own introductory schedule.
+- Once all introductory periods have completed, the Play Store will resume renewing the products together.
+- Any partial periods (prorations) caused by mismatched introductory periods will also be handled automatically.
 
 ### Cancellations
 
