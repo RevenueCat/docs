@@ -223,6 +223,7 @@ const webSDKCategory = Category({
         Page({ slug: "custom-metadata" }),
       ],
     }),
+    Page({ slug: "web-billing/paywalls" }),
     Page({ slug: "web-billing/managing-customer-subscriptions" }),
     Page({ slug: "web-billing/refunding-payments" }),
     Page({ slug: "web-billing/customer-portal" }),

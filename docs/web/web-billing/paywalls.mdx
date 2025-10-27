@@ -1,0 +1,61 @@
+---
+title: Web Paywalls
+slug: paywalls
+excerpt: How to use RevenueCat Paywalls on the web
+hidden: false
+---
+
+You can use [RevenueCat Paywalls](../../tools/paywalls) as part of a web purchase flow, either in a (hosted) Web Purchase Link, or from the Web SDK. RevenueCat's Paywalls allow you to remotely configure your entire paywall UI without any code changes.
+
+## The paywall experience on web
+
+Paywalls on web mostly behave as they do on mobile platforms, with some exceptions or additional considerations:
+
+#### Screen sizes
+
+When using a paywall on web, you should expect it to be displayed in a greater variety of screen widths. You can use the tablet layout views in the editor to ensure users have a better experience on larger screens.
+
+#### Mobile platform functionality is hidden
+
+Elements like the Restore Purchases link don't have a web equivalent, and are therefore not shown on web.
+
+## Creating a paywall
+
+Follow the instructions in [Creating Paywalls](../../tools/paywalls/creating-paywalls) to build your paywall using the available components, either from an existing template or from scratch.
+
+![Paywalls editor](/docs_images/paywalls/paywalls-editor.png)
+
+## Using a paywall in a Web Purchase Link
+
+Web Purchase Links are a hosted purchase flow that allow you to sell products on the web without code. They include three steps:
+
+1. Package selection
+2. Checkout
+3. Post-purchase (either the built-in success page or a custom redirect)
+
+They offer two alternatives for the package selection step:
+
+- **Default package selection:** Offers a simple design, with minimal configuration. Lightweight brand customization can be configured (see [Customization](../web-billing/customization))
+- **Custom paywall:** Allows full customization, branding and layout. Can be used consistently between iOS, Android and Web.
+
+**How to configure a custom paywall:**
+
+1. Create and configure a web purchase link if you haven't already (see [Creating a Web Purchase Link](web-purchase-links#creating-a-web-purchase-link))
+1. Create a paywall (see [Creating a paywall](#creating-a-paywall)), and add it to the same offering used in your web purchase link
+1. Edit the web purchase link, and change the **Paywall** dropdown to use your custom paywall:
+
+![Paywall dropdown](/docs_images/web/web-billing/web-purchase-link-paywall-selection.png)
+
+_Note: if this dropdown isn't visible, your offering most likely doesn't have a paywall created in it._
+
+4. Test the web purchase link in your sandbox environment (see [Testing Web Purchase Links](testing#testing-web-purchase-links))
+
+The paywall should be presented as the package selection step, allowing you to select any of the available web products and proceed through the web checkout and success pages.
+
+## Presenting a paywall from the Web SDK
+
+:::warning required SDK version
+In order to present a paywall from the Web SDK, you must be using version xxx.xxx or later.
+:::
+
+You can see how to integrate the Web SDK [here](../web-billing/web-sdk).
