@@ -31,7 +31,13 @@
       "transaction_id": "123456789012345",
       "virtual_currency_transaction_id": "vatx123456789012345",
       "type": "VIRTUAL_CURRENCY_TRANSACTION",
-      "id": "12345678-1234-1234-1234-123456789012" 
+      "id": "12345678-1234-1234-1234-123456789012",
+      "experiments": [
+        {
+          "experiment_id": "prexp123",
+          "experiment_variant": "b"
+        }
+      ]
     },
     "api_version": "1.0"
   } 

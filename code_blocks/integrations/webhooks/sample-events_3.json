@@ -43,7 +43,13 @@
     "tax_percentage": 0.0,
     "commission_percentage": 0.3,
     "type": "CANCELLATION",
-    "id": "12345678-ABCD-1234-ABCD-12345678912"
+    "id": "12345678-ABCD-1234-ABCD-12345678912",
+    "experiments": [
+      {
+        "experiment_id": "prexp123",
+        "experiment_variant": "b"
+      }
+    ]
   },
   "api_version": "1.0"
 }
