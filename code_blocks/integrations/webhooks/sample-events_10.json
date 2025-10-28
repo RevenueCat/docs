@@ -30,10 +30,10 @@
     "commission_percentage": 0.3,
     "type" : "PRODUCT_CHANGE",
     "id" : "12345678-1234-1234-1234-12345678912",
-    "price_experiments": [
+    "experiments": [
       {
-        "price_experiment_id": "prexp123",
-        "price_experiment_variant": "b"
+        "experiment_id": "prexp123",
+        "experiment_variant": "b"
       }
     ]
   },
