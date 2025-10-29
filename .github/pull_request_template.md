@@ -1,7 +1,5 @@
-## Motivation / Description
+## Motivation / Description / Changes introduced
 
-## Changes introduced
-
-## Linear ticket (if any)
+## Links to discussion, or Linear ticket (if applicable)
 
 ## Additional comments
