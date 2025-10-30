@@ -502,6 +502,7 @@ const platformResourcesCategory = Category({
             Page({ slug: "apple-app-privacy" }),
             Page({ slug: "apple-family-sharing" }),
             Page({ slug: "handling-refund-requests" }),
+            Page({ slug: "apple-retention-messaging-api" }),
           ],
           index: {
             title: "Apple App Store FAQs",
