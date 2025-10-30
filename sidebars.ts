@@ -968,6 +968,7 @@ const attributionCategory = Category({
         Page({ slug: "adjust" }),
         Page({ slug: "apple-search-ads" }),
         Page({ slug: "appsflyer" }),
+        Page({ slug: "airbridge" }),
         Page({ slug: "branch" }),
         Page({ slug: "kochava" }),
         Page({ slug: "meta-ads" }),
