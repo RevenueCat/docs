@@ -6283,6 +6283,9 @@ components:
       - $amplitudeDeviceId
       - $amplitudeUserId
       - $appleRefundHandlingPreference
+      - $appleAdsAdGroupId
+      - $appleAdsCampaignId
+      - $appleAdsKeywordId
       - $apnsTokens
       - $appsflyerId
       - $appsflyerSharingFilter
