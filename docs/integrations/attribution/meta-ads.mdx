@@ -45,17 +45,17 @@ If `$idfa` or `$gpsAdId` are used for this integration, their values must not be
 
 #### App Events API
 
-| Platform   | Required Attributes                                                  |
-| :--------- | :------------------------------------------------------------------- |
-| App Store  | ✅ `$fbAnonId` or `$idfa`<br/>✅ `$attConsentStatus` == `authorized` |
-| Play Store | ✅ `$fbAnonId` or `$gpsAdId`                                         |
+| Platform   | Required Attributes                                                       |
+| :--------- | :------------------------------------------------------------------------ |
+| App Store  | ✅ <code>$fbAnonId</code> or <code>$idfa</code><br/>✅ <code>$attConsentStatus</code> == <code>authorized</code> |
+| Play Store | ✅ <code>$fbAnonId</code> or <code>$gpsAdId</code>                        |
 
 #### Conversions API
 
 | Platform   | Required Attributes                                                                                                                                         |
 | :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| App Store  | ✅ `$fbAnonId` or `$idfa`<br/>✅ `$attConsentStatus` == `authorized` (or the dashboard setting `Send events when ATT consent is not authorized` is enabled) |
-| Play Store | ✅ `$fbAnonId` or `$gpsAdId`                                                                                                                                |
+| App Store  | ✅ <code>$fbAnonId</code> or <code>$idfa</code><br/>✅ <code>$attConsentStatus</code> == <code>authorized</code> (or the dashboard setting <code>Send events when ATT consent is not authorized</code> is enabled) |
+| Play Store | ✅ <code>$fbAnonId</code> or <code>$gpsAdId</code>                                                                                                          |
 
 :::warning Android ID deprecation
 Due to policy changes from the Play Store, Android ID is no longer collected by RevenueCat's Android SDKs starting on versions 6.9.8+, 7.11.1+, and later major versions.
