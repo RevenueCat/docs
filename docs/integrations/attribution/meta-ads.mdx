@@ -45,17 +45,17 @@ If `$idfa` or `$gpsAdId` are used for this integration, their values must not be
 
 #### App Events API
 
-| Platform   | Required Attributes                                                       |
-| :--------- | :------------------------------------------------------------------------ |
+| Platform   | Required Attributes                                                                                              |
+| :--------- | :--------------------------------------------------------------------------------------------------------------- |
 | App Store  | ✅ <code>$fbAnonId</code> or <code>$idfa</code><br/>✅ <code>$attConsentStatus</code> == <code>authorized</code> |
-| Play Store | ✅ <code>$fbAnonId</code> or <code>$gpsAdId</code>                        |
+| Play Store | ✅ <code>$fbAnonId</code> or <code>$gpsAdId</code>                                                               |
 
 #### Conversions API
 
-| Platform   | Required Attributes                                                                                                                                         |
-| :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Platform   | Required Attributes                                                                                                                                                                                                |
+| :--------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | App Store  | ✅ <code>$fbAnonId</code> or <code>$idfa</code><br/>✅ <code>$attConsentStatus</code> == <code>authorized</code> (or the dashboard setting <code>Send events when ATT consent is not authorized</code> is enabled) |
-| Play Store | ✅ <code>$fbAnonId</code> or <code>$gpsAdId</code>                                                                                                          |
+| Play Store | ✅ <code>$fbAnonId</code> or <code>$gpsAdId</code>                                                                                                                                                                 |
 
 :::warning Android ID deprecation
 Due to policy changes from the Play Store, Android ID is no longer collected by RevenueCat's Android SDKs starting on versions 6.9.8+, 7.11.1+, and later major versions.
@@ -168,13 +168,13 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 ### Check that the required device data is collected
 
-Navigate the the [Customer View](/dashboard-and-metrics/customer-history/basic-information) for the test user that just made a purchase. Make sure that all of the required data from step 1 above is listed as attributes for the user.
+Navigate the the [Customer Profile](/dashboard-and-metrics/customer-profile) for the test user that just made a purchase. Make sure that all of the required data from step 1 above is listed as attributes for the user.
 
 ![](/docs_images/integrations/attribution/meta/required-attributes.png)
 
 ### Check that the Meta event delivered successfully
 
-While still on the Customer View, click into the test purchase event in the [Customer History](/dashboard-and-metrics/customer-history) and make sure that the Meta integration event exists and was delivered successfully.
+While still on the Customer Profile, click into the test purchase event in the [Customer History](/dashboard-and-metrics/customer-profile#customer-history) and make sure that the Meta integration event exists and was delivered successfully.
 
 ![](/docs_images/integrations/attribution/meta/successful-event.png)
 
