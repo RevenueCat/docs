@@ -71,7 +71,7 @@ In sandbox mode, free trial periods are accelerated to enable easier testing. Se
 
 #### Introductory period
 
-Applies a discounted price for a limited time at the beginning of a subscription (AKA introductory offer). Introductory periods are presented to customers in the product selection page (for web purchase links) and the checkout. They automatically renew to the base subscription price at the end of the period.
+Applies a discounted price for a limited time at the beginning of a subscription (AKA introductory offer). Introductory periods are presented to customers in the package selection page (for web purchase links) and the checkout. They automatically renew to the base subscription price at the end of the period.
 
 Introductory periods are always scheduled after a free trial, when both are enabled.
 
