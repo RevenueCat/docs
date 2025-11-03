@@ -8,6 +8,7 @@ import SampleApp from "../components/SampleApp/SampleApp";
 import Button from "@site/src/components/Button/Button";
 import FeatureItem from "@site/src/components/FeatureItem/FeatureItem";
 import ContentCardItem from "@site/src/components/ContentCardItem/ContentCardItem";
+import Badge from "@site/src/components/Badge";
 
 // Define the type for MDX components
 type MDXComponentsType = typeof MDXComponents & {
@@ -18,6 +19,7 @@ type MDXComponentsType = typeof MDXComponents & {
   Button: typeof Button;
   FeatureItem: typeof FeatureItem;
   ContentCardItem: typeof ContentCardItem;
+  Badge: typeof Badge;
 };
 
 const customMDXComponents: MDXComponentsType = {
@@ -30,6 +32,7 @@ const customMDXComponents: MDXComponentsType = {
   Button,
   FeatureItem,
   ContentCardItem,
+  Badge,
 };
 
 export default customMDXComponents;

@@ -23,17 +23,39 @@ Before RevenueCat can integrate with Meta, your app must be running the Meta SDK
 
 ## 2. Send device data to RevenueCat
 
-RevenueCat's Meta integration has different identifier requirements depending on which API you choose to use. The [App Events API](#integrating-with-the-app-events-api) requires device-specific data, while the [Conversions API](#integrating-with-the-conversions-api) makes these identifiers optional.
+The following attributes are used by RevenueCat's Meta integration:
 
-| Key            | Description                                                                                                                                     | Platform | [App Events API](#integrating-with-the-app-events-api) | [Conversions API](#integrating-with-the-conversions-api) |
-| :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :------- | :----------------------------------------------------- | :------------------------------------------------------- |
-| `$idfa`        | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | iOS      | ✅ (required)                                          | ⚠️ (recommended)                                         |
-| `$gpsAdId`     | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | Android  | ✅ (required)                                          | ✅ (required)                                            |
-| `$fbAnonId`    |                                                                                                                                                 | iOS      | ✅ (required)                                          | ⚠️ (recommended)                                         |
-| `$idfv`        | iOS [vendor identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | iOS      | ⚠️ (recommended)                                       | ⚠️ (recommended)                                         |
-| `$ip`          | The IP address of the device                                                                                                                    |          | ⚠️ (recommended)                                       | ⚠️ (recommended)                                         |
-| `$email`       | The email address of the user                                                                                                                   |          | ❌ (optional)                                          | ❌ (optional)                                            |
-| `$phoneNumber` | The phone number of the user                                                                                                                    |          | ❌ (optional)                                          | ❌ (optional)                                            |
+| Key            | Description                                                                                                                                     | Platform |
+| :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :------- |
+| `$idfa`        | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | iOS      |
+| `$gpsAdId`     | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | Android  |
+| `$fbAnonId`    | Facebook anonymous identifier                                                                                                                   | iOS      |
+| `$idfv`        | iOS [vendor identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | iOS      |
+| `$ip`          | The IP address of the device                                                                                                                    | Any      |
+| `$email`       | The email address of the user                                                                                                                   | Any      |
+| `$phoneNumber` | The phone number of the user                                                                                                                    | Any      |
+
+### Required attributes for event delivery
+
+For an event to be successfully dispatched to Meta, the associated customer must have specific attributes set at the time the event is processed. These requirements differ based on which Meta API you're using and which platform an event originates from.
+
+:::info Placeholder values not accepted
+If `$idfa` or `$gpsAdId` are used for this integration, their values must not be empty or zeroed values
+:::
+
+#### App Events API
+
+| Platform   | Required Attributes                                                                                              |
+| :--------- | :--------------------------------------------------------------------------------------------------------------- |
+| App Store  | ✅ <code>$fbAnonId</code> or <code>$idfa</code><br/>✅ <code>$attConsentStatus</code> == <code>authorized</code> |
+| Play Store | ✅ <code>$fbAnonId</code> or <code>$gpsAdId</code>                                                               |
+
+#### Conversions API
+
+| Platform   | Required Attributes                                                                                                                                                                                                |
+| :--------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| App Store  | ✅ <code>$fbAnonId</code> or <code>$idfa</code><br/>✅ <code>$attConsentStatus</code> == <code>authorized</code> (or the dashboard setting <code>Send events when ATT consent is not authorized</code> is enabled) |
+| Play Store | ✅ <code>$fbAnonId</code> or <code>$gpsAdId</code>                                                                                                                                                                 |
 
 :::warning Android ID deprecation
 Due to policy changes from the Play Store, Android ID is no longer collected by RevenueCat's Android SDKs starting on versions 6.9.8+, 7.11.1+, and later major versions.
@@ -41,11 +63,13 @@ Due to policy changes from the Play Store, Android ID is no longer collected by 
 Therefore, Google's Advertising ID acts as the primary device identifier for Android devices in RevenueCat and when connecting with third-party integrations.
 :::
 
-These properties can be set manually, like any other [Attribute](/customers/customer-attributes), or through the helper methods to `collectDeviceIdentifiers()` and `setFbAnonymousId()`.
-
 :::danger Device identifiers with iOS App Tracking Transparency (iOS 14.5+)
 If you are requesting the App Tracking permission through ATT to access the IDFA, you can call `.collectDeviceIdentifiers()` _again_ if the customer accepts the permission to update the `$idfa` attribute in RevenueCat.
 :::
+
+### Setting device attributes
+
+These properties can be set manually, like any other [Attribute](/customers/customer-attributes), or through the helper methods to `collectDeviceIdentifiers()` and `setFbAnonymousId()`.
 
 import swiftContent from "@site/code_blocks/integrations/attribution/facebook-ads_1.swift?raw";
 import flutterContent from "@site/code_blocks/integrations/attribution/facebook-ads_2.js.txt?raw";
@@ -144,13 +168,13 @@ Simulate a new user installing your app, and go through your app flow to complet
 
 ### Check that the required device data is collected
 
-Navigate the the [Customer View](/dashboard-and-metrics/customer-profile#customer-details) for the test user that just made a purchase. Make sure that all of the required data from step 1 above is listed as attributes for the user.
+Navigate the the [Customer Profile](/dashboard-and-metrics/customer-profile) for the test user that just made a purchase. Make sure that all of the required data from step 1 above is listed as attributes for the user.
 
 ![](/docs_images/integrations/attribution/meta/required-attributes.png)
 
 ### Check that the Meta event delivered successfully
 
-While still on the Customer View, click into the test purchase event in the [Customer History](/dashboard-and-metrics/customer-profile) and make sure that the Meta integration event exists and was delivered successfully.
+While still on the Customer Profile, click into the test purchase event in the [Customer History](/dashboard-and-metrics/customer-profile#customer-history) and make sure that the Meta integration event exists and was delivered successfully.
 
 ![](/docs_images/integrations/attribution/meta/successful-event.png)
 

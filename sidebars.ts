@@ -223,6 +223,7 @@ const webSDKCategory = Category({
         Page({ slug: "custom-metadata" }),
       ],
     }),
+    Page({ slug: "web-billing/paywalls" }),
     Page({ slug: "web-billing/managing-customer-subscriptions" }),
     Page({ slug: "web-billing/refunding-payments" }),
     Page({ slug: "web-billing/customer-portal" }),
@@ -320,6 +321,7 @@ const offeringsCategory = Category({
             Page({ slug: "price-changes" }),
             Page({ slug: "refunds" }),
             Page({ slug: "google-prepaid-plans" }),
+            // Page({ slug: "google-subscription-with-addons"}),
           ],
           index: {
             title: "Subscription Products",
@@ -501,6 +503,7 @@ const platformResourcesCategory = Category({
             Page({ slug: "apple-app-privacy" }),
             Page({ slug: "apple-family-sharing" }),
             Page({ slug: "handling-refund-requests" }),
+            Page({ slug: "apple-retention-messaging-api" }),
           ],
           index: {
             title: "Apple App Store FAQs",
@@ -967,6 +970,7 @@ const attributionCategory = Category({
         Page({ slug: "adjust" }),
         Page({ slug: "apple-search-ads" }),
         Page({ slug: "appsflyer" }),
+        Page({ slug: "airbridge" }),
         Page({ slug: "branch" }),
         Page({ slug: "kochava" }),
         Page({ slug: "meta-ads" }),

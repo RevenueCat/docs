@@ -1,0 +1,224 @@
+---
+title: Google Subscription with Add-ons
+slug: google-subscription-with-addons
+hidden: true
+---
+
+:::info
+This feature requires enablement. Please contact our [support team](https://www.revenuecat.com/support) if you're interested in using this feature.
+:::
+
+Google Play’s subscriptions with add-ons enables your customers to subscribe to multiple subscription products at the same time, which will automatically bundle the purchase as one billing cycle. This is particularly useful for apps that offer different types of content or services that can be purchased separately.
+
+## Glossary
+
+- **Base subscription**: This is the primary subscription product and it represents the core content or service that is served to your customers.
+  - Example: A music streaming app’s base subscription could be “Premium music” that provides access to the core music library.
+- **Add-on**: Add-ons are subscription products that can be purchased in addition to a base subscription. They provide additional features, content, or services that enhance the core subscription experience.
+  - Example: Using the same music streaming app, add-ons might include “Hi-fi audio quality” or “Podcast access” that customers can add to their base “Premium music” subscription.
+
+## Requirements
+
+- **Auto-renewing only**: Subscription with add-ons are exclusively supported for auto-renewing base plans. As a result, this means that prepaid and installment plans are not supported.
+- **Consistent billing periods**: All items in a subscription with add-on purchase must share the same recurring billing period. For instance, you cannot combine an annual subscription with monthly add-ons.
+- **Item limit**: Each subscription with add-ons purchase is limited to a maximum of 50 items total. This means 1 base subscription and 49 add-ons.
+- **Regional availability**: The feature is not available for customers in India (IN) and South Korea (KR) regions.
+
+## Product setup
+
+For Google Play, subscriptions with add-ons are regular subscription products set up in Google Play Console. Each “base subscription” and “add-on” is an individual subscription product and there is no special configuration required.
+
+Follow the standard [Google Play Product Setup](/getting-started/entitlements/android-products) process to create your subscription products.
+
+For example:
+
+- Base subscription: `premium_music` (with a monthly base plan)
+- Add-on #1: `hi_fi_audio_quality` (with a monthly base plan)
+- Add-on #2: `podcast_access` (with a monthly base plan)
+
+Make sure these products are imported into RevenueCat and correctly configured to entitlements.
+
+## SDK
+
+Subscriptions that include add-ons can be purchased using the native Android SDK (version 9.12.0 or later). The add-on purchasing APIs are currently marked as experimental, meaning they may change in future releases. To use them, you’ll need to explicitly opt in by annotating any functions that call these APIs with the
+`@OptIn(ExperimentalPreviewRevenueCatPurchasesAPI::class)` annotation. Support for add-on purchases in the hybrid SDKs is coming soon.
+
+### Purchasing A Subscription with Add-Ons
+
+When purchasing a subscription with add-ons with RevenueCat, the package passed into the PurchaseParams’ constructor will be used as the base item of the subscription with add-ons, and the packages passed in to the .addOnPackages() function will be treated as add-on items. You can purchase a subscription with add-on with the SDK like so:
+
+import kt1 from "@site/code_blocks/subscription-guidance//subscription-with-addons_1.kt?raw";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "kotlin",
+      title: "Kotlin",
+      content: kt1,
+    },
+  ]}
+/>
+
+### Adding Add-Ons to an Existing Subscription
+
+To subscribe to new add-ons with an existing subscription, the flow is largely the same, but you’ll also pass in the product ID of the existing subscription:
+
+import kt2 from "@site/code_blocks/subscription-guidance//subscription-with-addons_2.kt?raw";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "kotlin",
+      title: "Kotlin",
+      content: kt2,
+    },
+  ]}
+/>
+
+:::info Checking multiple active entitlements
+To determine what the customer is actively subscribed to, use the `CustomerInfo`'s `entitlements` field.
+:::
+
+## Customer history
+
+On the customer history page, the events related to subscriptions with add-ons will appear as expandable entries. Expanding an event reveals additional details, including which products are the base subscription and which ones are add-ons.
+
+![](/docs_images/products/google-play/subscription-with-addons/customer_timeline.png)
+
+## Events
+
+RevenueCat’s event system has been extended to support Google Play’s subscription with add-ons model. The key concept is that a subscription bundle (base subscription + add-ons) is treated as one unified lifecycle.
+
+### Event types
+
+RevenueCat continues to emit the same event types you’re familiar with, no new add-on specific events are introduced. The additional details about the base subscription and its add-ons are carried in the event payload itself.
+
+### Event payload structure
+
+Each event payload includes an `items` structure that represents the complete subscription at that point in time:
+
+- Parent information: Contains details about the base subscription
+- `items` array: Contains information about each individual product in the purchase (base subscription + add-ons)
+
+Here’s an example of an `INITIAL_PURCHASE` event for a base subscription with add-ons:
+
+import json1 from "@site/code_blocks/subscription-guidance/subscription-with-addons_3.json?raw";
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "json",
+      title: "Json",
+      content: json1,
+    },
+  ]}
+/>
+
+Key payload fields:
+
+- `product_id`: The product ID in the parent contains the product ID of the base subscription, while the product ID inside the items array represents each individual product.
+- `price`: The price field in the parent contains the total price of the entire subscription, while the price inside the items array represents each individual product’s price.
+- `type`: The type field inside each entry for the items array represents whether the product is a base or add-on.
+
+## Managing subscriptions with add-ons
+
+### Renewals
+
+When a subscription with add-ons renews, all individual products that are part of that subscription will renew together after any introductory period is concluded.
+
+What happens:
+
+- The entire subscription is charged as one payment.
+- All add-ons that were active at the end of the previous period continue.
+- Any add-ons that were removed during the previous period would expire.
+
+#### Renewing with introductory periods
+
+![](/docs_images/products/google-play/subscription-with-addons/renewals_with_intro_periods.png)
+
+If the base subscription and add-ons have the same billing period but different introductory periods, they may renew independently until all introductory periods have ended.
+
+In this case:
+
+- Each product will be charged according to its own introductory schedule.
+- Once all introductory periods have completed, the Play Store will resume renewing the products together.
+- Any partial periods (prorations) caused by mismatched introductory periods will also be handled automatically.
+
+### Cancellations
+
+Cancelling a subscription with add-ons will cancel the entire subscription, along with the base subscription and add-ons. This can be done through the [Google Play Console’s Order management page](https://support.google.com/googleplay/android-developer/answer/2741495), [RevenueCat’s APIs](https://www.revenuecat.com/docs/api-v1#tag/transactions/operation/cancel-a-google-subscription) or directly on the [dashboard](/subscription-guidance/refunds#revenuecat-dashboard).
+
+:::info
+You cannot cancel individual add-ons separately.
+:::
+
+What happens:
+
+- The entire subscription (base + all add-ons) is cancelled
+- Access continues until the end of the current billing period
+
+### Product changes
+
+#### Base subscription
+
+You can upgrade or downgrade the base subscription. When the base subscription will change to the new product will depend on the [replacement mode](https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.SubscriptionUpdateParams.ReplacementMode) specified.
+
+#### Add-ons
+
+![](/docs_images/products/google-play/subscription-with-addons/base_addon_purchased_separately.png)
+
+**Adding a new add-on** will always be added immediately with a prorated charge. The amount charged will depend on when in the billing cycle the new add-on is purchased. This is done to align the billing period with the base subscription.
+
+![](/docs_images/products/google-play/subscription-with-addons/addon_deferred_removal.png)
+
+**Removing an add-on** will always be a scheduled deferred removal. The add-on will be removed at the end of the billing cycle, so no prorated refunds will occur.
+
+:::info Adding and removing an add-on will result in add-ons being active at the same time
+If you plan on removing an add-on and adding a new add-on within the same billing cycle, you will have both add-ons active at the same time until the end of the billing cycle. When this happens, you’ll receive an `INITIAL_PURCHASE` event along with the `PRODUCT_CHANGE` that will include all active items (including the one that was newly purchased, along with the one that is set for deferred removal). Once the `RENEWAL` event triggers at the end of the billing cycle, the event will contain all of the active items minus the item removed.
+:::
+
+![](/docs_images/products/google-play/subscription-with-addons/addon_revoked.png)
+
+**Revoking an add-on** will always be immediately performed. This will revoke only the individual add-on and will not affect the entire subscription.
+
+:::warning Add-on revocations do not immediately update
+Please note that the system may not immediately reflect the change in access. Full support for individual add-on revocations will be available in a future update.
+:::
+
+Please refer to Google Play’s documentation on [subscription modification scenarios](https://developer.android.com/google/play/billing/subscription-with-addons#subscription-modifications) for additional information on base and add-on changes.
+
+### Billing issues
+
+When a subscription bundle (base subscription + add-ons) experiences a payment decline, even if it’s just one individual product that faced the failed payment, the entire bundle will enter a grace period (if any) and then account hold.
+
+#### Grace period selection
+
+Google determines the grace period based on the shortest grace period that was configured for the individual products.
+
+#### Account hold
+
+The account hold setting of the product with the minimum grace period selected is applied. If multiple products have the same minimum grace period, but different account hold periods, the longest account hold period is applied to the entire subscription.
+
+Example:
+
+Let’s say you have:
+
+- Base subscription: 7 day grace period with 30 day account hold
+- Add-on: 7 day grace period with 15 day account hold
+
+Then the overall subscription will have the following periods:
+
+- Grace period: 7 days
+- Account hold period: 30 days
+
+When the entire subscription purchase is in account hold, access to all subscription items is revoked until payment recovers, even if the customer had already paid in full for one of the subscriptions. When this occurs, there is some nuance regarding entitlement access while the entire subscription is in an account hold period. For additional information about account hold behavior for subscription with add-ons, please see [Google’s example of account hold](https://developer.android.com/google/play/billing/subscription-with-addons#account-hold).
+
+Google’s example is also illustrated below:
+
+![](/docs_images/products/google-play/subscription-with-addons/account_hold.png)
+
+## Limitations
+
+- Purchasing a subscription with add-on is currently unavailable in our Paywalls product.
+- In Charts, when filtering by the base subscription product, results may include both the base subscription and its add-ons.
+- You can filter by the product name to see related base subscriptions or add-ons, but there isn’t a separate filter specifically for base / add-ons yet.

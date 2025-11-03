@@ -31,9 +31,16 @@ To configure a Web Purchase Link with **Paddle Billing**, see the first steps in
 
 ## Customize the Web Purchase Link
 
-### Landing page - product selection
+### Package selection (paywall)
 
-When customers open your Web Purchase Link, they land on a product selection page. The products shown there come from the offering you’ve linked, and customers can choose from those products.
+When customers open your Web Purchase Link, they land on a package selection page. You can choose from two options for this page:
+
+- **Show the default package selection page** (has lightweight customization and branding options)
+- **Present a paywall** (fully customizable using RevenueCat's [paywall builder](../../tools/paywalls/creating-paywalls))
+
+#### Configuring the default package selection page
+
+The products shown there come from the offering you’ve linked, and customers can choose from those products.
 
 ![](/docs_images/web/web-billing/web-purchase-link-package-example.png)
 
@@ -44,9 +51,13 @@ You can customize:
 - Terms and conditions URL (footer)
 - Look and feel, including colors and shape styling (configured separately in [ the web config's customization](/web/web-billing/customization))
 
-:::info product selection can be skipped
+:::info package selection can be skipped
 It's possible to skip this page, and pre-select a package by passing a `package_id` [URL parameter](#package-id).
 :::
+
+#### Presenting a paywall as the package selection page
+
+To see how to configure a paywall in your web purchase link, see [Web Paywalls](paywalls).
 
 ### Checkout
 
