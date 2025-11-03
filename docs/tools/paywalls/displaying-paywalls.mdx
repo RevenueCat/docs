@@ -279,6 +279,20 @@ For developers who prefer configuring paywalls through Unity's Inspector, you ca
 - Unity Editor is not supported for displaying the paywall UI.
 - Build to device when testing the paywall UI.
 
+### Web
+
+Paywalls are supported on the web through RevenueCat's Web Billing system. To serve your Paywall to customers on the web via a new or exiting Web Purchase Link, [click here](https://www.revenuecat.com/docs/web/web-billing/paywalls).
+
+:::info Web SDK support coming soon
+We're currently working on adding support for web paywalls in the [purchases-js SDK]https://www.revenuecat.com/docs/web/web-billing/web-sdk). Stay tuned!
+:::
+
+:::info Max width
+Paywalls on the web have a maximum width of 968px. If the window the paywall is being displayed in is wider than 968px, the additional space will be filled based on the specified background color of your checkout config. [Learn more](https://www.revenuecat.com/docs/web/web-billing/web-purchase-links)
+
+Individual components can be configured to have their own width settings within that max width of the paywall itself.
+:::
+
 ## Handling paywall navigation
 
 When creating a paywall, consider whether it will be presented in a sheet, or as a full screen view. Sheets won't require a dedicated close button. Full screen views should have either a close button (if presented modally) or a back button (if part of a navigation stack or host) unless you intend to provide a hard paywall to your customers that cannot be bypassed.
