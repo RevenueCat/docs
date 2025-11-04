@@ -6,7 +6,7 @@ hidden: false
 ---
 
 :::info Pre-release feature
-Apple’s Retention Messaging API is currently available to developers through a pre-release program.
+Apple’s Retention Messaging API is currently available to developers through a pre-release program. [Request access from Apple](#request-access-from-apple).
 :::
 
 Apple’s Retention Messaging API allows you show messages to customers who are at risk of canceling their subscription. Retention messages help remind customers of the value of their subscription or present them with alternative options to continue their service.
