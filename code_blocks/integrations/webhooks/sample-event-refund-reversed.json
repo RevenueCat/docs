@@ -38,7 +38,8 @@
     "experiments": [
       {
         "experiment_id": "prexp123",
-        "experiment_variant": "b"
+        "experiment_variant": "b",
+        "enrolled_at_ms": 1762274791000
       }
     ]
   },
