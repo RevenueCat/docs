@@ -1,0 +1,337 @@
+---
+title: Paywalls with Your Own Purchase Infrastructure
+slug: custom-purchase-handling
+excerpt: Use RevenueCat's Paywalls with your existing in-app purchase infrastructure
+hidden: false
+---
+
+import RCCodeBlock from "@site/src/components/RCCodeBlock";
+
+import om1 from "@site/code_blocks/migrating-to-revenuecat/observer-mode_1.swift?raw";
+import om2 from "@site/code_blocks/migrating-to-revenuecat/observer-mode_2.m?raw";
+import om4 from "@site/code_blocks/migrating-to-revenuecat/observer-mode_4.java?raw";
+import om5 from "@site/code_blocks/migrating-to-revenuecat/observer-mode_5.dart?raw";
+import om6 from "@site/code_blocks/migrating-to-revenuecat/observer-mode_6.cs?raw";
+import om7 from "@site/code_blocks/migrating-to-revenuecat/observer-mode_7.js.txt?raw";
+
+import content9 from "@site/code_blocks/customers/user-ids_9.swift?raw";
+import content10 from "@site/code_blocks/customers/user-ids_10.m?raw";
+import content11 from "@site/code_blocks/customers/user-ids_11.kt?raw";
+import content12 from "@site/code_blocks/customers/user-ids_12.java?raw";
+import content13 from "@site/code_blocks/customers/user-ids_13.js.txt?raw";
+import content14 from "@site/code_blocks/customers/user-ids_14.js.txt?raw";
+import content15 from "@site/code_blocks/customers/user-ids_15.js.txt?raw";
+import contentCapacitor2 from "@site/code_blocks/customers/user-ids_configure_with_user_capacitor.ts.txt?raw";
+import content16 from "@site/code_blocks/customers/user-ids_16.cs?raw";
+import contentKmp from "@site/code_blocks/customers/user-ids_kmp.kts?raw";
+
+import userIdIOS from "@site/code_blocks/customers/user-ids_9.swift?raw";
+import userIdAndroid from "@site/code_blocks/customers/user-ids_11.kt?raw";
+import userIdRN from "@site/code_blocks/customers/user-ids_13.js.txt?raw";
+import userIdFlutter from "@site/code_blocks/customers/user-ids_14.js.txt?raw";
+
+import paywallsIOSSwift from "@site/code_blocks/tools/paywalls_3_new.swift?raw";
+import paywallsIOSUIKit from "@site/code_blocks/tools/paywalls_4.swift?raw";
+import paywallsIOSObjC from "@site/code_blocks/tools/paywalls_5.m?raw";
+import paywallsAndroidCompose from "@site/code_blocks/tools/paywalls_3.kt?raw";
+import paywallsAndroidActivity from "@site/code_blocks/tools/paywalls_4.kt?raw";
+import paywallsAndroidJava from "@site/code_blocks/tools/paywalls_activity_java.java?raw";
+import paywallsRN from "@site/code_blocks/tools/paywalls_rn_2_new.ts.txt?raw";
+import paywallsFlutter from "@site/code_blocks/tools/paywalls_flutter_2_new.dart?raw";
+import paywallsKMP from "@site/code_blocks/tools/paywalls_kmp_1_new.kts?raw";
+import paywallsCapacitor from "@site/code_blocks/tools/paywalls_cap_1.ts.txt?raw";
+import paywallsUnity1 from "@site/code_blocks/tools/paywalls_unity_1.cs?raw";
+import paywallsUnity3 from "@site/code_blocks/tools/paywalls_unity_3.cs?raw";
+
+# Paywalls with Your Own Purchase Infrastructure
+
+[RevenueCat Paywalls](/tools/paywalls) can be integrated into your app **even if you have existing in-app purchase infrastructure** that you want to maintain. 
+
+This approach is designed for enterprises that want to leverage **RevenueCat's remote paywall configuration and native rendering capabilities** while continuing to use their own purchase handling, receipt validation, and subscription management systems.
+
+With this integration option, RevenueCat provides the paywall user interface and design tooling, while your existing code handles the actual purchase transactions. This allows you to **modernize your paywall presentation layer and testing capabilities** *without* [migrating](/migrating-to-revenuecat/migration-paths) your entire monetization infrastructure to RevenueCat.
+
+## What's Included
+
+When using Paywalls with your own purchase infrastructure, you get access to:
+
+- [**Paywall Design Editor**](/tools/paywalls/creating-paywalls#building-paywalls) - Visual editor with templates and drag-and-drop components
+- [**One-Line Paywall Rendering**](/tools/paywalls/displaying-paywalls) - Native, cross-platform UI rendering in a single line of code
+- [**Paywall Charts & Analytics**](/dashboard-and-metrics/charts/real-time-charts#coming-soon) - Insights into paywall performance and conversion metrics
+- [**Experiments**](/tools/experiments-v1) - A/B/C/D testing capabilities for paywall and offer variations
+- [**Targeting**](/tools/targeting) - Audience segmentation to serve different paywalls and offers to different users
+- [**Customer Profile**](/dashboard-and-metrics/customer-profile) - Customer information and purchase history
+
+## What You Provide
+
+Your application remains responsible for:
+
+- **Purchase Handling** - Transaction processing via StoreKit, Google Play Billing, or Web
+- **Receipt Validation** - Verifying purchases and managing subscription states
+- **Subscription Management** - Handling entitlements and subscription lifecycle events
+- **Analytics** (Optional) - Tracking purchase events and user behavior in your existing analytics stack
+
+## How It Works
+
+The integration follows a straightforward pattern:
+
+1. Configure your products in the RevenueCat dashboard
+2. Design your paywalls remotely using RevenueCat's Paywall Designer
+3. The RevenueCat SDK fetches and renders paywalls natively in your app
+4. When users interact with the paywall, your existing purchase infrastructure handles the transaction
+
+## Setup
+
+### 1. Create a RevenueCat Project
+
+If you haven't already, [create a project](/projects/overview) in the RevenueCat dashboard. You'll receive an [API key](/projects/authentication#api-keys) that you'll use to configure the SDK.
+
+:::tip Server Notifications
+We strongly recommend setting up [Platform Server Notifications](/platform-resources/server-notifications) to ensure RevenueCat receives timely updates about subscription events.
+:::
+
+### 2. Configure Products
+
+[Configure your products](/projects/configuring-products) in the RevenueCat dashboard to match your existing product SKUs. This allows the paywall designer to reference your products when building paywall layouts.
+
+**For iOS apps:**
+- Create your in-app purchases in [App Store Connect](/getting-started/entitlements/ios-products)
+- Set up an [App Store Connect API key](/service-credentials/itunesconnect-app-specific-shared-secret/app-store-connect-api-key-configuration) to automatically import products and prices into RevenueCat
+- Ensure your App Store Connect product IDs match your imported products in the RevenueCat dashboard
+
+**For Android apps:**
+- Create your subscriptions in [Google Play Console](/getting-started/entitlements/android-products)
+- Set up [Google Play service credentials](/service-credentials/creating-play-service-credentials) to automatically import products and prices into RevenueCat
+- Ensure your Google Play product IDs match your imported products in the RevenueCat dashboard
+
+**For web apps:**
+
+Create your web products in the appropriate payment processor's dashboard and then import them into RevenueCat.
+- [RevenueCat Web Billing](/web/web-billing/overview)
+- [Stripe Billing](/web/integrations/stripe)
+- [Paddle Billing](/web/integrations/paddle)
+- Other payment processors
+
+### 3. Configure the SDK
+
+Configure the RevenueCat SDK with `purchasesAreCompletedBy` set to `.myApp`. This tells the SDK that your application will handle purchase transactions rather than RevenueCat.
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "swift",
+      content: om1,
+    },
+    {
+      type: "objc",
+      content: om2,
+    },
+    {
+      type: "java",
+      content: om4,
+    },
+    {
+      type: "flutter",
+      content: om5,
+    },
+    {
+      type: "react-native",
+      content: om7,
+      name: "React Native",
+    },
+    {
+      type: "unity",
+      content: om6,
+    },
+  ]}
+/>
+
+For more details on this configuration option, including StoreKit version selection and platform-specific considerations, see [Using the SDK with your own IAP Code](/migrating-to-revenuecat/sdk-or-not/finishing-transactions).
+
+### 4. Identifying Users
+
+If your app has user accounts or authentication, you can provide custom App User IDs when configuring the SDK. This allows you to track users across devices and platforms.
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "swift",
+      content: content9,
+    },
+    {
+      type: "objc",
+      content: content10,
+    },
+    {
+      type: "kotlin",
+      content: content11,
+    },
+    {
+      type: "kmp",
+      content: contentKmp,
+    },
+    {
+      type: "java",
+      content: content12,
+    },
+    {
+      type: "flutter",
+      content: content13,
+    },
+    {
+      type: "rn",
+      content: content14,
+    },
+    {
+      type: "cordova",
+      content: content15,
+    },
+    {
+      type: "capacitor",
+      content: contentCapacitor2,
+    },
+    {
+      type: "unity",
+      content: content16,
+    },
+  ]}
+/>
+
+For apps without authentication, RevenueCat will automatically generate anonymous user IDs. Learn more about [identifying users](/customers/identifying-customers).
+
+### 5. Create Offerings
+
+[Create an Offering](/offerings/overview) in the RevenueCat dashboard. An offering is the selection of products that are "offered" to a user on your paywall, and are required for Paywalls, Experiments, and Targeting.
+
+### 6. Design Your Paywall
+
+Use the [Paywall Designer](/tools/paywalls/creating-paywalls) in the RevenueCat dashboard to create your paywall. You can start with a template or build from scratch using the component-based editor.
+
+Key benefits of the Paywall Designer:
+- **Remote Configuration** - Update paywall design and copy without app updates
+- **Live Preview** - See changes in real-time across different orientations, screen sizes, and offer states
+- **Localization** - Manage translations for multiple languages in one place
+- **Templates** - Start from scratch or with one of our professionally-designed templates
+
+### 7. Display Paywalls
+
+First, ensure you've installed the RevenueCat UI SDK for your platform. This is a separate package from the core RevenueCat SDK and is required to display paywalls. See [Paywalls Installation](/tools/paywalls/installation) for platform-specific installation instructions.
+
+Display paywalls in your app using the RevenueCat UI SDK. The SDK handles fetching the paywall configuration, rendering the native UI, and providing callbacks for user interactions.
+
+<RCCodeBlock
+  tabs={[
+    {
+      type: "swift",
+      title: "iOS (SwiftUI)",
+      content: paywallsIOSSwift,
+    },
+    {
+      type: "swift",
+      title: "iOS (UIKit)",
+      content: paywallsIOSUIKit,
+    },
+    {
+      type: "objc",
+      title: "iOS (Objective-C)",
+      content: paywallsIOSObjC,
+    },
+    {
+      type: "kotlin",
+      title: "Android (Compose)",
+      content: paywallsAndroidCompose,
+    },
+    {
+      type: "kotlin",
+      title: "Android (Activity)",
+      content: paywallsAndroidActivity,
+    },
+    {
+      type: "java",
+      title: "Android (Java)",
+      content: paywallsAndroidJava,
+    },
+    {
+      type: "rn",
+      title: "React Native",
+      content: paywallsRN,
+    },
+    {
+      type: "flutter",
+      title: "Flutter",
+      content: paywallsFlutter,
+    },
+    {
+      type: "kmp",
+      title: "Kotlin Multiplatform",
+      content: paywallsKMP,
+    },
+    {
+      type: "capacitor",
+      title: "Capacitor",
+      content: paywallsCapacitor,
+    },
+    {
+      type: "unity",
+      title: "Unity (Present)",
+      content: paywallsUnity1,
+    },
+    {
+      type: "unity",
+      title: "Unity (Options)",
+      content: paywallsUnity3,
+    },
+  ]}
+/>
+
+For complete documentation on displaying paywalls, including advanced customization options, listeners, and all supported platforms, see [Displaying Paywalls](/tools/paywalls/displaying-paywalls).
+
+### 8. Handle Purchases
+
+When a user interacts with purchase buttons in the paywall, you'll need to handle the transaction with your existing purchase infrastructure.
+
+Your purchase handling code should:
+- Detect when a user selects a product and initiates a purchase
+- Process the purchase using your existing IAP implementation (StoreKit, Google Play Billing, etc.)
+- Validate the receipt or transaction
+- Update your internal subscription state
+- Provide appropriate UI feedback to the user
+
+The exact integration pattern may vary depending on your implementation. For details on available paywall events and listeners for your platform, see [Displaying Paywalls](/tools/paywalls/displaying-paywalls).
+
+## Using Experiments
+
+Experiments allow you to run A/B/C/D tests in your app with direct revenue impact measured within the experiment results in the RevenueCat dashboard. When using paywalls with your own purchase infrastructure, you can still leverage Experiments to test different designs, copy, offers, or product arrangements.
+
+The SDK automatically enrolls users in experiments and serves the appropriate paywall variation. You can view experiment results in the RevenueCat dashboard to determine which variations perform best.
+
+Learn more about [creating and analyzing experiments](/tools/experiments-v1/experiments-overview-v1).
+
+## Using Targeting
+
+[Targeting](/tools/targeting) enables you to segment your customers into different audiences, and serve different Offerings (and therefore different paywalls) to these segments. You can create rules based on:
+
+- Custom attributes you define
+- Country
+- App
+- App version
+- RevenueCat SDK version
+- Platform
+
+This allows you to tailor your monetization strategy to different user groups. For example, you might show different pricing to users in different countries or offer special promotions to specific user segments.
+
+Learn more about [setting up Targeting rules](/tools/targeting).
+
+## Testing
+
+During development, use RevenueCat's [Test Store](/test-and-launch/sandbox#test-store) to test your paywall implementation. The Test Store is automatically available for every project and allows you to simulate purchases without processing real transactions.
+
+When you're ready to test with real store configurations, use the [platform's Sandbox environment](/test-and-launch/sandbox#platform-sandboxes-applegoogleamazon).
+
+## Next Steps
+
+- [Contact Sales](https://www.revenuecat.com/talk-to-sales/) to discuss your use case and pricing
+- Learn more about [Paywalls](/tools/paywalls) features and capabilities
+- Explore [Experiments](/tools/experiments-v1/experiments-overview-v1) to optimize conversion rates
+- Review [Targeting](/tools/targeting) capabilities to personalize paywalls for different audiences
+- Explore what a full RevenueCat implementation looks like with our [Quickstart Guide](/getting-started/quickstart)
