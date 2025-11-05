@@ -1,4 +1,5 @@
-// Fetch available packages with Purchases.sharedInstance.getOfferings()
+// Fetch available packages to display on your paywall 
+// with Purchases.sharedInstance.getOfferings()
 
 // You'll need to annotate your function making the purchase with 
 // @OptIn(ExperimentalPreviewRevenueCatPurchasesAPI::class)

@@ -40,14 +40,19 @@ Make sure these products are imported into RevenueCat and correctly configured t
 
 ## SDK
 
-Subscriptions that include add-ons can be purchased using the native Android SDK (version 9.12.0 or later). The add-on purchasing APIs are currently marked as experimental, meaning they may change in future releases. To use them, you’ll need to explicitly opt in by annotating any functions that call these APIs with the
-`@OptIn(ExperimentalPreviewRevenueCatPurchasesAPI::class)` annotation. Support for add-on purchases in the hybrid SDKs is coming soon.
+Subscriptions that include add-ons can be purchased with the following SDKs:
+- Native Android SDK (version 9.12.0 or later). The add-on purchasing APIs are currently marked as experimental, meaning they may change in future releases. To use them, you’ll need to explicitly opt in by annotating any functions that call these APIs with the
+`@OptIn(ExperimentalPreviewRevenueCatPurchasesAPI::class)` annotation. 
+- Flutter SDK: Using beta version 9.9.3-add-ons-beta.1
+
+Support for add-on purchases in other hybrid SDKs is coming soon.
 
 ### Purchasing A Subscription with Add-Ons
 
 When purchasing a subscription with add-ons with RevenueCat, the package passed into the PurchaseParams’ constructor will be used as the base item of the subscription with add-ons, and the packages passed in to the .addOnPackages() function will be treated as add-on items. You can purchase a subscription with add-on with the SDK like so:
 
 import kt1 from "@site/code_blocks/subscription-guidance//subscription-with-addons_1.kt?raw";
+import flutter1 from "@site/code_blocks/subscription-guidance//subscription-with-addons_flutter_1.dart?raw";
 
 <RCCodeBlock
   tabs={[
@@ -55,6 +60,11 @@ import kt1 from "@site/code_blocks/subscription-guidance//subscription-with-addo
       type: "kotlin",
       title: "Kotlin",
       content: kt1,
+    },
+    {
+      type: "flutter",
+      title: "Flutter",
+      content: flutter1,
     },
   ]}
 />
@@ -64,6 +74,7 @@ import kt1 from "@site/code_blocks/subscription-guidance//subscription-with-addo
 To subscribe to new add-ons with an existing subscription, the flow is largely the same, but you’ll also pass in the product ID of the existing subscription:
 
 import kt2 from "@site/code_blocks/subscription-guidance//subscription-with-addons_2.kt?raw";
+import flutter2 from "@site/code_blocks/subscription-guidance//subscription-with-addons_flutter_2.dart?raw";
 
 <RCCodeBlock
   tabs={[
@@ -71,6 +82,11 @@ import kt2 from "@site/code_blocks/subscription-guidance//subscription-with-addo
       type: "kotlin",
       title: "Kotlin",
       content: kt2,
+    },
+    {
+      type: "flutter",
+      title: "Flutter",
+      content: flutter2,
     },
   ]}
 />
