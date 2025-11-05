@@ -59,6 +59,10 @@ After connecting your project to a store, RevenueCat supports automatically impo
 
 Navigate to the **Products** tab in the settings for your project in the RevenueCat dashboard, and click the **+ New** button, then choose **Import Products**. RevenueCat will display a list of products that are available to import.
 
+:::info
+Currently Google's [one-time products](https://support.google.com/googleplay/android-developer/answer/16430488) must be [backwards compatible](https://www.revenuecat.com/docs/getting-started/entitlements/google-subscriptions-and-backwards-compatibility#product-backwards-compatibility) to be automatically imported. Otherwise they must be manually imported, see below for how to do so.
+:::
+
 ### Manually Import Products
 
 Navigate to the **Products** tab in the **Product catalog** section of your project in the RevenueCat dashboard. To add a new product, click the **+ New product** button and enter the product identifier **exactly as it appears in the store**, as well as the store that the product belongs to.
