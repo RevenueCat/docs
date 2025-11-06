@@ -50,9 +50,9 @@ When using Paywalls with your own purchase infrastructure, you get access to Rev
 - [**Paywall Design Editor**](/tools/paywalls/creating-paywalls#building-paywalls) - Visual editor with templates and drag-and-drop components
 - [**Native Paywall Rendering**](/tools/paywalls/displaying-paywalls) - Native, cross-platform UI rendering with the RevenueCat UI SDK
 - [**Paywall Charts & Analytics**](/dashboard-and-metrics/charts/real-time-charts#coming-soon) - Insights into paywall performance and conversion metrics
-- [**Experiments**](/tools/experiments-v1) - A/B/C/D testing capabilities for paywall and offer variations
+- [**Experiments**](/tools/experiments-v1) - multivariate testing capabilities for paywall and offer variations
 - [**Targeting**](/tools/targeting) - Audience segmentation to serve different paywalls and offers to different users
-- [**Customer Profile**](/dashboard-and-metrics/customer-profile) - Customer information and purchase history
+- [**Customer Profile**](/dashboard-and-metrics/customer-profile) - Customer information and purchase history dashboard
 
 ## What You Provide
 
@@ -61,11 +61,11 @@ Your application remains responsible for:
 - **Purchase Handling** - Transaction processing via StoreKit, Google Play Billing, or Web
 - **Receipt Validation** - Verifying purchases and managing subscription states
 - **Subscription Management** - Handling entitlements and subscription lifecycle events
-- **Analytics** (Optional) - Tracking purchase events and user behavior in your existing analytics stack
+- **Analytics** - Tracking purchase events and user behavior in your existing analytics stack
 
 ## How It Works
 
-The integration follows a straightforward pattern:
+The _paywalls-only_ integration follows a straightforward pattern:
 
 1. Configure your products in the RevenueCat dashboard
 2. Design your paywalls remotely using RevenueCat's Paywall Designer
@@ -96,9 +96,9 @@ We strongly recommend setting up [Platform Server Notifications](/platform-resou
 - Set up [Google Play service credentials](/service-credentials/creating-play-service-credentials) to automatically import products and prices into RevenueCat
 - Ensure your Google Play product IDs match your imported products in the RevenueCat dashboard
 
-**For web apps:**
+**For Web apps:**
 
-Create your web products in the appropriate payment processor's dashboard and then import them into RevenueCat.
+Create your Web products in the appropriate payment processor's dashboard and then import them into RevenueCat.
 - [RevenueCat Web Billing](/web/web-billing/overview)
 - [Stripe Billing](/web/integrations/stripe)
 - [Paddle Billing](/web/integrations/paddle)
@@ -142,7 +142,7 @@ For more details on this configuration option, including StoreKit version select
 
 ### 4. Identifying Users
 
-If your app has user accounts or authentication, you can provide custom App User IDs when configuring the SDK. This allows you to track users across devices and platforms.
+If your app has user accounts or authentication, you can provide RevenueCat with custom App User IDs when configuring the SDK. This allows you to track users across devices and platforms.
 
 <RCCodeBlock
   tabs={[
@@ -193,13 +193,13 @@ For apps without authentication, RevenueCat will automatically generate anonymou
 
 ### 5. Create Offerings
 
-[Create an Offering](/offerings/overview) in the RevenueCat dashboard. An offering is the selection of products that are "offered" to a user on your paywall, and are required for Paywalls, Experiments, and Targeting.
+[Create an Offering](/offerings/overview) in the RevenueCat dashboard. An _Offering_ is the selection of products that are "offered" to a user on your paywall, and are required for Paywalls, Experiments, and Targeting.
 
 ### 6. Design Your Paywall
 
 Use the [Paywall Designer](/tools/paywalls/creating-paywalls) in the RevenueCat dashboard to create your paywall. You can start with a template or build from scratch using the component-based editor.
 
-Key benefits of the Paywall Designer:
+**Key benefits of the Paywall Designer:**
 - **Remote Configuration** - Update paywall design and copy without app updates
 - **Live Preview** - See changes in real-time across different orientations, screen sizes, and offer states
 - **Localization** - Manage translations for multiple languages in one place
