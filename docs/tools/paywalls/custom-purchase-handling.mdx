@@ -30,18 +30,10 @@ import userIdAndroid from "@site/code_blocks/customers/user-ids_11.kt?raw";
 import userIdRN from "@site/code_blocks/customers/user-ids_13.js.txt?raw";
 import userIdFlutter from "@site/code_blocks/customers/user-ids_14.js.txt?raw";
 
-import paywallsIOSSwift from "@site/code_blocks/tools/paywalls_3_new.swift?raw";
-import paywallsIOSUIKit from "@site/code_blocks/tools/paywalls_4.swift?raw";
-import paywallsIOSObjC from "@site/code_blocks/tools/paywalls_5.m?raw";
-import paywallsAndroidCompose from "@site/code_blocks/tools/paywalls_3.kt?raw";
-import paywallsAndroidActivity from "@site/code_blocks/tools/paywalls_4.kt?raw";
-import paywallsAndroidJava from "@site/code_blocks/tools/paywalls_activity_java.java?raw";
-import paywallsRN from "@site/code_blocks/tools/paywalls_rn_2_new.ts.txt?raw";
-import paywallsFlutter from "@site/code_blocks/tools/paywalls_flutter_2_new.dart?raw";
-import paywallsKMP from "@site/code_blocks/tools/paywalls_kmp_1_new.kts?raw";
-import paywallsCapacitor from "@site/code_blocks/tools/paywalls_cap_1.ts.txt?raw";
-import paywallsUnity1 from "@site/code_blocks/tools/paywalls_unity_1.cs?raw";
-import paywallsUnity3 from "@site/code_blocks/tools/paywalls_unity_3.cs?raw";
+import paywallsCustomIOS1 from "@site/code_blocks/tools/paywalls_custom_purchase_ios_1.swift?raw";
+import paywallsCustomIOS2 from "@site/code_blocks/tools/paywalls_custom_purchase_ios_2.swift?raw";
+import paywallsCustomAndroid1 from "@site/code_blocks/tools/paywalls_custom_purchase_android_1.kt?raw";
+import paywallsCustomAndroid2 from "@site/code_blocks/tools/paywalls_custom_purchase_android_2.kt?raw";
 
 # Paywalls with Your Own Purchase Infrastructure
 
@@ -56,7 +48,7 @@ With this integration option, RevenueCat provides the paywall user interface and
 When using Paywalls with your own purchase infrastructure, you get access to:
 
 - [**Paywall Design Editor**](/tools/paywalls/creating-paywalls#building-paywalls) - Visual editor with templates and drag-and-drop components
-- [**One-Line Paywall Rendering**](/tools/paywalls/displaying-paywalls) - Native, cross-platform UI rendering in a single line of code
+- [**Native Paywall Rendering**](/tools/paywalls/displaying-paywalls) - Native, cross-platform UI rendering with the RevenueCat UI SDK
 - [**Paywall Charts & Analytics**](/dashboard-and-metrics/charts/real-time-charts#coming-soon) - Insights into paywall performance and conversion metrics
 - [**Experiments**](/tools/experiments-v1) - A/B/C/D testing capabilities for paywall and offer variations
 - [**Targeting**](/tools/targeting) - Audience segmentation to serve different paywalls and offers to different users
@@ -217,87 +209,90 @@ Key benefits of the Paywall Designer:
 
 First, ensure you've installed the RevenueCat UI SDK for your platform. This is a separate package from the core RevenueCat SDK and is required to display paywalls. See [Paywalls Installation](/tools/paywalls/installation) for platform-specific installation instructions.
 
-Display paywalls in your app using the RevenueCat UI SDK. The SDK handles fetching the paywall configuration, rendering the native UI, and providing callbacks for user interactions.
+When using `purchasesAreCompletedBy: .myApp`, you must provide custom purchase and restore logic to the paywall. The SDK will call your handlers when users interact with purchase buttons.
+
+#### iOS Implementation
 
 <RCCodeBlock
   tabs={[
     {
       type: "swift",
-      title: "iOS (SwiftUI)",
-      content: paywallsIOSSwift,
+      title: "PaywallView",
+      content: paywallsCustomIOS1,
     },
     {
       type: "swift",
-      title: "iOS (UIKit)",
-      content: paywallsIOSUIKit,
-    },
-    {
-      type: "objc",
-      title: "iOS (Objective-C)",
-      content: paywallsIOSObjC,
-    },
-    {
-      type: "kotlin",
-      title: "Android (Compose)",
-      content: paywallsAndroidCompose,
-    },
-    {
-      type: "kotlin",
-      title: "Android (Activity)",
-      content: paywallsAndroidActivity,
-    },
-    {
-      type: "java",
-      title: "Android (Java)",
-      content: paywallsAndroidJava,
-    },
-    {
-      type: "rn",
-      title: "React Native",
-      content: paywallsRN,
-    },
-    {
-      type: "flutter",
-      title: "Flutter",
-      content: paywallsFlutter,
-    },
-    {
-      type: "kmp",
-      title: "Kotlin Multiplatform",
-      content: paywallsKMP,
-    },
-    {
-      type: "capacitor",
-      title: "Capacitor",
-      content: paywallsCapacitor,
-    },
-    {
-      type: "unity",
-      title: "Unity (Present)",
-      content: paywallsUnity1,
-    },
-    {
-      type: "unity",
-      title: "Unity (Options)",
-      content: paywallsUnity3,
+      title: "presentPaywallIfNeeded",
+      content: paywallsCustomIOS2,
     },
   ]}
 />
 
-For complete documentation on displaying paywalls, including advanced customization options, listeners, and all supported platforms, see [Displaying Paywalls](/tools/paywalls/displaying-paywalls).
+**Key requirements for iOS:**
+- Provide both `performPurchase` AND `performRestore` callbacks
+- Return tuple: `(userCancelled: Bool, error: Error?)` for purchase
+- Return tuple: `(success: Bool, error: Error?)` for restore
+- Call `Purchases.shared.syncPurchases()` after successful transactions
 
-### 8. Handle Purchases
+#### Android Implementation
 
-When a user interacts with purchase buttons in the paywall, you'll need to handle the transaction with your existing purchase infrastructure.
+<RCCodeBlock
+  tabs={[
+    {
+      type: "kotlin",
+      title: "Compose (Suspend)",
+      content: paywallsCustomAndroid1,
+    },
+    {
+      type: "kotlin",
+      title: "View-based (Callbacks)",
+      content: paywallsCustomAndroid2,
+    },
+  ]}
+/>
 
-Your purchase handling code should:
-- Detect when a user selects a product and initiates a purchase
-- Process the purchase using your existing IAP implementation (StoreKit, Google Play Billing, etc.)
-- Validate the receipt or transaction
-- Update your internal subscription state
-- Provide appropriate UI feedback to the user
+**Key requirements for Android:**
+- Implement `PurchaseLogic` interface (suspend functions) or `PurchaseLogicWithCallback` (callbacks)
+- Return `PurchaseLogicResult.Success`, `.Cancellation`, or `.Error(errorDetails)`
+- Pass your `PurchaseLogic` implementation to `PaywallOptions.Builder`
+- Call `Purchases.sharedInstance.syncPurchases()` after successful transactions
 
-The exact integration pattern may vary depending on your implementation. For details on available paywall events and listeners for your platform, see [Displaying Paywalls](/tools/paywalls/displaying-paywalls).
+:::info Purchase Callbacks
+When using custom purchase handling, standard `PaywallListener` callbacks (like `onPurchaseCompleted`) do NOT fire on Android. Your `PurchaseLogic` implementation controls the entire flow. On iOS, lifecycle callbacks like `onPurchaseStarted` and `onPurchaseCompleted` still fire.
+:::
+
+For complete documentation on displaying paywalls, see [Displaying Paywalls](/tools/paywalls/displaying-paywalls).
+
+### 8. Implementing Purchase Handlers
+
+In the paywall integration above, you provided `performPurchase` and `performRestore` callbacks with placeholder implementations. These callbacks are where you integrate your existing purchase infrastructure.
+
+#### Your Implementation Requirements
+
+When the paywall calls your `performPurchase` handler:
+1. Use the provided `Package` object to access product details and initiate your purchase flow
+2. Process the transaction using your existing IAP infrastructure
+3. **Call `Purchases.shared.syncPurchases()` (iOS) or `Purchases.sharedInstance.syncPurchases()` (Android) after successful purchases** - this is required for billing and analytics
+4. Return the appropriate success/failure result
+
+When the paywall calls your `performRestore` handler:
+1. Trigger your existing restore flow
+2. **Call `syncPurchases()` after successful restores**
+3. Return the appropriate success/failure result
+
+#### Return Values
+
+**iOS:**
+- Success: `(userCancelled: false, error: nil)`
+- User cancelled: `(userCancelled: true, error: nil)`
+- Error: `(userCancelled: false, error: yourError)`
+
+**Android:**
+- Success: `PurchaseLogicResult.Success`
+- User cancelled: `PurchaseLogicResult.Cancellation`
+- Error: `PurchaseLogicResult.Error(errorDetails: PurchasesError(...))`
+
+For more details on SDK configuration options, see [Using the SDK with your own IAP Code](/migrating-to-revenuecat/sdk-or-not/finishing-transactions).
 
 ## Using Experiments
 
