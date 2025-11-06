@@ -7,28 +7,15 @@ hidden: false
 
 import RCCodeBlock from "@site/src/components/RCCodeBlock";
 
-import om1 from "@site/code_blocks/migrating-to-revenuecat/observer-mode_1.swift?raw";
-import om2 from "@site/code_blocks/migrating-to-revenuecat/observer-mode_2.m?raw";
-import om4 from "@site/code_blocks/migrating-to-revenuecat/observer-mode_4.java?raw";
-import om5 from "@site/code_blocks/migrating-to-revenuecat/observer-mode_5.dart?raw";
-import om6 from "@site/code_blocks/migrating-to-revenuecat/observer-mode_6.cs?raw";
-import om7 from "@site/code_blocks/migrating-to-revenuecat/observer-mode_7.js.txt?raw";
+import anonymousIOS from "@site/code_blocks/migrating-to-revenuecat/observer-mode_1.swift?raw";
+import anonymousObjC from "@site/code_blocks/tools/paywalls_custom_config_anonymous_objc.m?raw";
+import anonymousKotlin from "@site/code_blocks/tools/paywalls_custom_config_anonymous_kotlin.kt?raw";
+import anonymousJava from "@site/code_blocks/migrating-to-revenuecat/observer-mode_4.java?raw";
 
-import content9 from "@site/code_blocks/customers/user-ids_9.swift?raw";
-import content10 from "@site/code_blocks/customers/user-ids_10.m?raw";
-import content11 from "@site/code_blocks/customers/user-ids_11.kt?raw";
-import content12 from "@site/code_blocks/customers/user-ids_12.java?raw";
-import content13 from "@site/code_blocks/customers/user-ids_13.js.txt?raw";
-import content14 from "@site/code_blocks/customers/user-ids_14.js.txt?raw";
-import content15 from "@site/code_blocks/customers/user-ids_15.js.txt?raw";
-import contentCapacitor2 from "@site/code_blocks/customers/user-ids_configure_with_user_capacitor.ts.txt?raw";
-import content16 from "@site/code_blocks/customers/user-ids_16.cs?raw";
-import contentKmp from "@site/code_blocks/customers/user-ids_kmp.kts?raw";
-
-import userIdIOS from "@site/code_blocks/customers/user-ids_9.swift?raw";
-import userIdAndroid from "@site/code_blocks/customers/user-ids_11.kt?raw";
-import userIdRN from "@site/code_blocks/customers/user-ids_13.js.txt?raw";
-import userIdFlutter from "@site/code_blocks/customers/user-ids_14.js.txt?raw";
+import customConfigIOS from "@site/code_blocks/tools/paywalls_custom_config_with_user_ios.swift?raw";
+import customConfigObjC from "@site/code_blocks/tools/paywalls_custom_config_with_user_objc.m?raw";
+import customConfigKotlin from "@site/code_blocks/tools/paywalls_custom_config_with_user_kotlin.kt?raw";
+import customConfigJava from "@site/code_blocks/tools/paywalls_custom_config_with_user_java.java?raw";
 
 import paywallsCustomIOS1 from "@site/code_blocks/tools/paywalls_custom_purchase_ios_1.swift?raw";
 import paywallsCustomIOS2 from "@site/code_blocks/tools/paywalls_custom_purchase_ios_2.swift?raw";
@@ -108,94 +95,64 @@ Create your Web products in the appropriate payment processor's dashboard and th
 
 Configure the RevenueCat SDK with `purchasesAreCompletedBy` set to `.myApp`. This tells the SDK that your application will handle purchase transactions rather than RevenueCat.
 
-<RCCodeBlock
-  tabs={[
-    {
-      type: "swift",
-      content: om1,
-    },
-    {
-      type: "objc",
-      content: om2,
-    },
-    {
-      type: "java",
-      content: om4,
-    },
-    {
-      type: "flutter",
-      content: om5,
-    },
-    {
-      type: "react-native",
-      content: om7,
-      name: "React Native",
-    },
-    {
-      type: "unity",
-      content: om6,
-    },
-  ]}
-/>
+If your app has user accounts or authentication, you can also provide custom app user IDs to track users across devices and platforms. For apps without authentication, RevenueCat will automatically generate anonymous user IDs.
 
-For more details on this configuration option, including StoreKit version selection and platform-specific considerations, see [Using the SDK with your own IAP Code](/migrating-to-revenuecat/sdk-or-not/finishing-transactions).
-
-### 4. Identifying Users
-
-If your app has user accounts or authentication, you can provide RevenueCat with custom App User IDs when configuring the SDK. This allows you to track users across devices and platforms.
+#### Anonymous Users
 
 <RCCodeBlock
   tabs={[
     {
       type: "swift",
-      content: content9,
+      content: anonymousIOS,
     },
     {
       type: "objc",
-      content: content10,
+      content: anonymousObjC,
     },
     {
       type: "kotlin",
-      content: content11,
-    },
-    {
-      type: "kmp",
-      content: contentKmp,
+      content: anonymousKotlin,
     },
     {
       type: "java",
-      content: content12,
-    },
-    {
-      type: "flutter",
-      content: content13,
-    },
-    {
-      type: "rn",
-      content: content14,
-    },
-    {
-      type: "cordova",
-      content: content15,
-    },
-    {
-      type: "capacitor",
-      content: contentCapacitor2,
-    },
-    {
-      type: "unity",
-      content: content16,
+      content: anonymousJava,
     },
   ]}
 />
 
-For apps without authentication, RevenueCat will automatically generate anonymous user IDs. Learn more about [identifying users](/customers/identifying-customers).
+#### Identified Users
 
-### 5. Create Offerings
+<RCCodeBlock
+  tabs={[
+    {
+      type: "swift",
+      content: customConfigIOS,
+    },
+    {
+      type: "objc",
+      content: customConfigObjC,
+    },
+    {
+      type: "kotlin",
+      content: customConfigKotlin,
+    },
+    {
+      type: "java",
+      content: customConfigJava,
+    },
+  ]}
+/>
+
+For more details, see:
+- [Initializing the RevenueCat SDK](/getting-started/configuring-sdk#initialization)
+- [Using the RevenueCat SDK with your own IAP Code](/migrating-to-revenuecat/sdk-or-not/finishing-transactions)
+- [Identifying Customers](/customers/identifying-customers)
+
+### 4. Create Offerings
 
 [Create an Offering](/offerings/overview) in the RevenueCat dashboard. An _Offering_ is the selection of products that are "offered" to a user on your paywall, and are required for Paywalls, Experiments, and Targeting.
 
-### 6. Design Your Paywall
+### 5. Design Your Paywall
 
 Use the [Paywall Designer](/tools/paywalls/creating-paywalls) in the RevenueCat dashboard to create your paywall. You can start with a template or build from scratch using the component-based editor.
 
@@ -205,7 +162,7 @@ Use the [Paywall Designer](/tools/paywalls/creating-paywalls) in the RevenueCat 
 - **Localization** - Manage translations for multiple languages in one place
 - **Templates** - Start from scratch or with one of our professionally-designed templates
 
-### 7. Display Paywalls
+### 6. Display Paywalls
 
 First, ensure you've installed the RevenueCat UI SDK for your platform. This is a separate package from the core RevenueCat SDK and is required to display paywalls. See [Paywalls Installation](/tools/paywalls/installation) for platform-specific installation instructions.
 
@@ -263,7 +220,7 @@ When using custom purchase handling, standard `PaywallListener` callbacks (like 
 
 For complete documentation on displaying paywalls, see [Displaying Paywalls](/tools/paywalls/displaying-paywalls).
 
-### 8. Implementing Purchase Handlers
+### 7. Implementing Purchase Handlers
 
 In the paywall integration above, you provided `performPurchase` and `performRestore` callbacks with placeholder implementations. These callbacks are where you integrate your existing purchase infrastructure.
 
