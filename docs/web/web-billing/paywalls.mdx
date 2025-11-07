@@ -64,7 +64,7 @@ const targetElement = document.getElementById("show-paywall-here");
 purchases
   .presentPaywall({
     htmlTarget: targetElement,
-    // offering: optional offering identifier. If omitted, the current offering is used.
+    // offering: optional offering to be used. If omitted, the current offering is used.
   })
   .then((purchaseResult: PurchaseResult) => {
     console.log("Purchase successful!", purchaseResult);
