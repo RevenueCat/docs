@@ -5,8 +5,7 @@ import RevenueCatUI
 struct ContentView: View {
     var body: some View {
         YourAppContent()
-            .presentPaywallIfNeeded(
-                requiredEntitlementIdentifier: "pro",
+            .presentPaywall(
                 myAppPurchaseLogic: MyAppPurchaseLogic(
                     performPurchase: { package in
                         do {

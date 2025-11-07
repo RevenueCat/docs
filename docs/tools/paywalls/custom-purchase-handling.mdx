@@ -37,7 +37,7 @@ When using Paywalls with your own purchase infrastructure, you get access to Rev
 - [**Paywall Design Editor**](/tools/paywalls/creating-paywalls#building-paywalls) - Visual editor with templates and drag-and-drop components
 - [**Native Paywall Rendering**](/tools/paywalls/displaying-paywalls) - Native, cross-platform UI rendering with the RevenueCat UI SDK
 - [**Paywall Charts & Analytics**](/dashboard-and-metrics/charts/real-time-charts#coming-soon) - Insights into paywall performance and conversion metrics
-- [**Experiments**](/tools/experiments-v1) - multivariate testing capabilities for paywall and offer variations
+- [**Experiments**](/tools/experiments-v1) - Multivariate testing capabilities for paywall and offer variations
 - [**Targeting**](/tools/targeting) - Audience segmentation to serve different paywalls and offers to different users
 - [**Customer Profile**](/dashboard-and-metrics/customer-profile) - Customer information and purchase history dashboard
 
@@ -71,10 +71,10 @@ We strongly recommend setting up [Platform Server Notifications](/platform-resou
 
 ### 2. Configure Products
 
-[Configure your products](/projects/configuring-products) in the RevenueCat dashboard to match your existing product SKUs. This allows the paywall designer to reference your products when building paywall layouts.
+[Configure your products](/projects/configuring-products) in the RevenueCat dashboard to match your existing product SKUs.
 
 **For iOS apps:**
-- Create your in-app purchases in [App Store Connect](/getting-started/entitlements/ios-products)
+- Create your In-App Purchases in [App Store Connect](/getting-started/entitlements/ios-products)
 - Set up an [App Store Connect API key](/service-credentials/itunesconnect-app-specific-shared-secret/app-store-connect-api-key-configuration) to automatically import products and prices into RevenueCat
 - Ensure your App Store Connect product IDs match your imported products in the RevenueCat dashboard
 
@@ -97,7 +97,7 @@ Configure the RevenueCat SDK with `purchasesAreCompletedBy` set to `.myApp`. Thi
 
 If your app has user accounts or authentication, you can also provide custom app user IDs to track users across devices and platforms. For apps without authentication, RevenueCat will automatically generate anonymous user IDs.
 
-#### Anonymous Users
+#### Anonymous User Configuration
 
 <RCCodeBlock
   tabs={[
@@ -120,7 +120,7 @@ If your app has user accounts or authentication, you can also provide custom app
   ]}
 />
 
-#### Identified Users
+#### Identified User Configuration
 
 <RCCodeBlock
   tabs={[
@@ -179,7 +179,7 @@ When using `purchasesAreCompletedBy: .myApp`, you must provide custom purchase a
     },
     {
       type: "swift",
-      title: "presentPaywallIfNeeded",
+      title: "presentPaywall",
       content: paywallsCustomIOS2,
     },
   ]}
@@ -215,7 +215,7 @@ When using `purchasesAreCompletedBy: .myApp`, you must provide custom purchase a
 - Call `Purchases.sharedInstance.syncPurchases()` after successful transactions
 
 :::info Purchase Callbacks
-When using custom purchase handling, standard `PaywallListener` callbacks (like `onPurchaseCompleted`) do NOT fire on Android. Your `PurchaseLogic` implementation controls the entire flow. On iOS, lifecycle callbacks like `onPurchaseStarted` and `onPurchaseCompleted` still fire.
+When using custom purchase handling, standard `PaywallListener` callbacks (like `onPurchaseCompleted`) do not fire on Android. Your `PurchaseLogic` implementation controls the entire flow. On iOS, lifecycle callbacks like `onPurchaseStarted` and `onPurchaseCompleted` still fire.
 :::
 
 For complete documentation on displaying paywalls, see [Displaying Paywalls](/tools/paywalls/displaying-paywalls).
@@ -253,15 +253,15 @@ For more details on SDK configuration options, see [Using the SDK with your own 
 
 ## Using Experiments
 
-Experiments allow you to run A/B/C/D tests in your app with direct revenue impact measured within the experiment results in the RevenueCat dashboard. When using paywalls with your own purchase infrastructure, you can still leverage Experiments to test different designs, copy, offers, or product arrangements.
+[Experiments](/tools/experiments-v1) allow you to run multivariate tests in your app with direct revenue impact measured within the experiment results in the RevenueCat dashboard. When using Paywalls with your own purchase infrastructure, you can still leverage Experiments to test different designs, copy, offers, or product arrangements.
 
-The SDK automatically enrolls users in experiments and serves the appropriate paywall variation. You can view experiment results in the RevenueCat dashboard to determine which variations perform best.
+The SDK automatically enrolls users in experiments and serves the appropriate Paywall variation. You can view experiment results in the RevenueCat dashboard to determine which variations perform best.
 
 Learn more about [creating and analyzing experiments](/tools/experiments-v1/experiments-overview-v1).
 
 ## Using Targeting
 
-[Targeting](/tools/targeting) enables you to segment your customers into different audiences, and serve different Offerings (and therefore different paywalls) to these segments. You can create rules based on:
+[Targeting](/tools/targeting) enables you to segment your customers into different audiences, and serve different Offerings (and therefore different Paywalls) to these segments. You can create rules based on:
 
 - Custom attributes you define
 - Country
@@ -272,7 +272,7 @@ Learn more about [creating and analyzing experiments](/tools/experiments-v1/expe
 
 This allows you to tailor your monetization strategy to different user groups. For example, you might show different pricing to users in different countries or offer special promotions to specific user segments.
 
-Learn more about [setting up Targeting rules](/tools/targeting).
+Learn more about [setting up Targeting rules](/tools/targeting#creating-targeting-rules).
 
 ## Testing
 
@@ -284,6 +284,6 @@ When you're ready to test with real store configurations, use the [platform's Sa
 
 - [Contact Sales](https://www.revenuecat.com/talk-to-sales/) to discuss your use case and pricing
 - Learn more about [Paywalls](/tools/paywalls) features and capabilities
-- Explore [Experiments](/tools/experiments-v1/experiments-overview-v1) to optimize conversion rates
+- Explore [Experiments](/tools/experiments-v1) to optimize conversion rates
 - Review [Targeting](/tools/targeting) capabilities to personalize paywalls for different audiences
 - Explore what a full RevenueCat implementation looks like with our [Quickstart Guide](/getting-started/quickstart)
