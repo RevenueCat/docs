@@ -285,6 +285,28 @@ To purchase a package, use the `purchase()` method of the `Purchases` object. It
   ]}
 />
 
+### Presenting a paywall with purchases-js
+
+To render a paywall that RevenueCat manages for you, call `presentPaywall()`. This method displays the configured paywall, guides the customer through checkout, and resolves once the flow is complete. Provide the HTML element where the paywall should be injected. Optionally, pass an offering object retrieved from `purchases.getOfferings()` to select a specific paywall; otherwise the customer's current offering will be used.
+
+```ts title="Presenting a paywall"
+async function showPaywall() {
+  const paywallContainer = document.getElementById("paywall-container");
+
+  try {
+    const offerings = await purchases.getOfferings();
+    const purchaseResult = await purchases.presentPaywall({
+      htmlTarget: paywallContainer,
+      offering: offerings.current ?? undefined, // optional
+    });
+
+    console.log("Paywall completed", purchaseResult);
+  } catch (error) {
+    console.error("Error presenting paywall", error);
+  }
+}
+```
+
 ### Customizing the purchase flow
 
 The `purchase()` method accepts a `PurchaseParams` object to set custom purchase options, including the following:

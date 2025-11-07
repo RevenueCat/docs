@@ -281,11 +281,25 @@ For developers who prefer configuring paywalls through Unity's Inspector, you ca
 
 ### Web
 
-Paywalls are supported on the web through RevenueCat's Web Billing system. To serve your Paywall to customers on the web via a new or exiting Web Purchase Link, [click here](https://www.revenuecat.com/docs/web/web-billing/paywalls).
+Paywalls are supported on the web through RevenueCat's Web Billing system. To serve your Paywall to customers on the web via a new or existing Web Purchase Link, [click here](https://www.revenuecat.com/docs/web/web-billing/paywalls).
 
-:::info Web SDK support coming soon
-We're currently working on adding support for web paywalls in the [purchases-js SDK]https://www.revenuecat.com/docs/web/web-billing/web-sdk). Stay tuned!
-:::
+You can also present the same remotely configured paywall directly within your own web experience using the [purchases-js SDK](https://www.revenuecat.com/docs/web/web-billing/web-sdk). Call `presentPaywall` with the element that should host the paywall. Optionally, provide an offering from `purchases.getOfferings()` to choose which paywall to display. The SDK renders the paywall, runs the purchase, and resolves with the result.
+
+```ts title="Presenting a paywall from purchases-js"
+async function showPaywall() {
+  const paywallContainer = document.getElementById("paywall-container");
+  const offerings = await purchases.getOfferings();
+
+  const purchaseResult = await purchases.presentPaywall({
+    htmlTarget: paywallContainer,
+    offering: offerings.current ?? undefined, // optional – defaults to the current offering
+  });
+
+  console.log("Paywall completed", purchaseResult);
+}
+```
+
+If you omit the `offering` parameter (or pass `undefined`), the paywall from the offering marked as `current` will be displayed.
 
 :::info Max width
 Paywalls on the web have a maximum width of 968px. If the window the paywall is being displayed in is wider than 968px, the additional space will be filled based on the specified background color of your checkout config. [Learn more](https://www.revenuecat.com/docs/web/web-billing/web-purchase-links)
