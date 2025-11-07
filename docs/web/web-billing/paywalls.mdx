@@ -5,11 +5,7 @@ excerpt: How to use RevenueCat Paywalls on the web
 hidden: false
 ---
 
-You can use [RevenueCat Paywalls](../../tools/paywalls) as part of a web purchase flow, in a hosted Web Purchase Link. RevenueCat's Paywalls allow you to remotely configure your entire paywall UI without any code changes.
-
-:::info Web SDK support coming soon
-We're currently working on adding support for web paywalls in the [purchases-js SDK](web-sdk). Stay tuned!
-:::
+You can use [RevenueCat Paywalls](../../tools/paywalls) as part of a web purchase flow in a hosted Web Purchase Link, or directly from your own experience using the [purchases-js SDK](web-sdk). RevenueCat's Paywalls allow you to remotely configure your entire paywall UI without any code changes.
 
 ## The paywall experience on web
 
@@ -60,4 +56,22 @@ The paywall should be presented as the package selection step, allowing you to s
 
 ## Presenting a paywall from the Web SDK
 
-Web SDK support for Paywalls is coming soon. Stay tuned!
+The [purchases-js SDK](web-sdk) can host and manage the complete paywall experience via the `presentPaywall` method. This call renders the paywall, handles the purchase flow, and resolves once control returns to your app.
+
+```ts title="Presenting a paywall"
+const targetElement = document.getElementById("show-paywall-here");
+
+purchases
+  .presentPaywall({
+    htmlTarget: targetElement,
+    // offering: optional offering to be used. If omitted, the current offering is used.
+  })
+  .then((purchaseResult: PurchaseResult) => {
+    console.log("Purchase successful!", purchaseResult);
+  })
+  .catch((err: Error) => {
+    console.error("Error presenting paywall", err);
+  });
+```
+
+If you do not pass an offering, the paywall for the offering marked as `current` will be shown. Passing an offering allows you to present another paywall that is available to the customer.
