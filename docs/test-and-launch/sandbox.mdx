@@ -7,7 +7,7 @@ hidden: false
 
 You don't need to make real purchases in order to test your subscriptions. RevenueCat provides two ways to test your implementation without incurring any costs:
 
-1. **Test Store** - RevenueCat's built-in testing environment that works immediately without platform setup
+1. **[Test Store](/test-and-launch/sandbox/test-store)** - RevenueCat's built-in testing environment that works immediately without platform setup
 2. **Platform Sandboxes** - Apple, Google, and Amazon's sandbox environments for testing real store integrations
 
 Both approaches let you verify your purchase flow works correctly before going to production.
@@ -66,40 +66,11 @@ For the best testing experience, follow this workflow:
 
 ## Testing with RevenueCat Test Store
 
-:::info SDK Version Requirements
-Test Store requires the following minimum SDK versions:
-
-| Platform     | Minimum Version |
-| ------------ | --------------- |
-| iOS          | 5.43.0          |
-| Android      | 9.9.0           |
-| Flutter      | 9.8.0           |
-| React Native | 9.5.4           |
-| Capacitor    | 11.2.6          |
-| Cordova      | 7.2.0           |
-| Unity        | 8.3.0           |
-| KMP          | 2.2.2           |
-| Web (JS)     | 1.15.0          |
-
-Older SDK versions will not support Test Store products.
-:::
-
-Test Store works automatically with the SDK—no additional configuration required beyond using your Test Store API key. Simply:
-
-1. Configure test products in your RevenueCat dashboard
-2. Add products to offerings
-3. Initialize the SDK with your Test Store API key
-4. Make test purchases in your app
+Test Store works automatically with the SDK—no additional configuration required beyond using your Test Store API key.
 
 Test purchases behave like real subscriptions: they update `CustomerInfo`, trigger entitlements, and appear in your RevenueCat dashboard.
 
-:::tip Control test purchase behavior
-You can control whether test purchases (both Test Store and platform sandboxes) grant entitlements using [Sandbox Testing Access](/projects/sandbox-access) settings. This is useful for restricting testing to specific app user IDs.
-:::
-
-:::tip
-See [Configuring SDK](/getting-started/configuring-sdk#testing-with-test-store) for details on using Test Store API keys and switching to production keys.
-:::
+Learn more on the [RevenueCat Test Store documentation](/test-and-launch/sandbox/test-store)
 
 ## Testing with Platform Sandboxes
 

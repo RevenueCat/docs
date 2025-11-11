@@ -1,0 +1,83 @@
+---
+title: RevenueCat Test Store
+slug: test-store
+excerpt: Testing purchases in RevenueCat Test Store
+hidden: false
+---
+
+Test Store is RevenueCat's built-in testing environment that works immediately without platform setup.
+
+Test Store works automatically with the RevenueCat SDK—no additional configuration is required beyond using your Test Store API key. Test purchases made through Test Store **behave like real purchases and subscriptions**: they update `CustomerInfo`, trigger entitlements, and appear in your RevenueCat dashboard.
+
+:::info SDK Version Requirements
+Test Store requires the following minimum SDK versions:
+
+| Platform     | Minimum Version |
+| ------------ | --------------- |
+| iOS          | 5.43.0          |
+| Android      | 9.9.0           |
+| Flutter      | 9.8.0           |
+| React Native | 9.5.4           |
+| Capacitor    | 11.2.6          |
+| Cordova      | 7.2.0           |
+| Unity        | 8.3.0           |
+| KMP          | 2.2.2           |
+| Web (JS)     | 1.15.0          |
+
+Older SDK versions will not support Test Store products.
+:::
+
+## Getting started
+
+During the setup of a _new_ RevenueCat project, you'll have the option to automatically create a Test Store with your products. You can create them manually after setup following the steps below.
+
+1. Create a Test Store
+2. Configure test products and offerings
+3. Initialize the SDK with your Test Store API key
+4. Make test purchases in your app
+
+### Create a Test Store
+
+If you have not created a Test Store for this project, create one on the **Apps and providers** tab in the sidebar. In the _Test configuration_ section, create a new Test Store and you will be presented with an API key to use in the SDK.
+
+### Configure test products and offerings
+
+Next, create products and attach them to an offering so users can purchase them in your app. Do this in the **Product catalog** tab in the sidebar. Create products for the Test Store in the **Products** tab, then attach those products to an offering in the **Offerings** tab. Alternatively, if you already have an existing offering, you can create the Test Store products directly on the offering edit page.
+
+### Initialize the SDK with your Test Store API key
+
+To configure your SDK to use the Test Store instead of the real store, use the **Test Store API Key** generated above whenever you [initialize the RevenueCat SDK](/getting-started/configuring-sdk#testing-with-test-store). Before shipping to production, switch this key back to the platform-specific API keys for each platform your app supports. You can find all your keys in **Project Settings > API keys**.
+
+:::danger CRITICAL: Never submit apps with a Test Store API key
+**Never submit an app to the App Store or Google Play that is configured with a Test Store API key.** Always use the correct platform-specific API key (iOS, Android, etc.) for release builds.
+
+We recommend using build configurations or environment variables to automatically select the correct API key for each build type:
+
+- **Development/Debug builds**: Test Store API key
+- **Production/Release builds**: Platform-specific API key (iOS, Android, etc.)  
+  :::
+
+### Make test purchases in your app
+
+Once the SDK is configured with the correct Test Store API key, you can start making test purchases in your app. Instead of invoking the system in-app purchase flow, your app will present a modal with metadata about the product being purchased, along with buttons to simulate a successful purchase, a failed purchase, or cancel the purchase entirely.
+
+Use these options to manually test how your code responds to different in-app purchase outcomes, or to write automated integration tests without interacting with real store flows.
+
+Purchases through Test Store will be reported as sandbox data. Learn more at [Viewing Non-Production Data](/test-and-launch/sandbox#viewing-non-production-data).
+
+:::tip Control test purchase behavior
+You can control whether test purchases (both Test Store and platform sandboxes) grant entitlements using [Sandbox Testing Access](/projects/sandbox-access) settings. This is useful for restricting testing to specific app user IDs.
+:::
+
+## Subscription renewals and expiration
+
+When testing subscriptions in the Test Store, renewals and expirations occur much faster than with real purchases. **Each test subscription will renew automatically up to 5 times**, after which it will cancel and its associated entitlements will become inactive.
+
+| Product Duration | Test Store Renewal Interval | Total Time Until Subscription Ends (after 5 renewals) |
+| ---------------- | --------------------------- | ----------------------------------------------------- |
+| 1 week           | 5 minutes                   | 25 minutes                                            |
+| 1 month          | 5 minutes                   | 25 minutes                                            |
+| 2 months         | 10 minutes                  | 50 minutes                                            |
+| 3 months         | 15 minutes                  | 75 minutes                                            |
+| 6 months         | 30 minutes                  | 150 minutes                                           |
+| 1 year           | 1 hour                      | 5 hours                                               |

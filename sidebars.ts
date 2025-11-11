@@ -438,6 +438,7 @@ const testCategory = Category({
       slug: "test-and-launch/sandbox",
       itemsPathPrefix: "test-and-launch/sandbox/",
       items: [
+        Page({ slug: "test-store" }),
         Page({ slug: "apple-app-store" }),
         Page({ slug: "google-play-store" }),
         Page({ slug: "amazon-store-sandbox-testing" }),
