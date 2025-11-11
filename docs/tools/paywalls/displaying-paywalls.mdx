@@ -366,7 +366,7 @@ Adding custom fonts to a hybrid app involves adding the font files to the underl
 
 ## Intercepting an initiated purchase
 
-You can intercept a purchase flow before it begins by using the `purchaseInitiatedAction` modifier. This allows you to perform custom logic, such as showing additional information to the user or performing validation checks, before the purchase proceeds.
+You can intercept a purchase flow before it begins by using the `onPurchaseInitiated` view modifier in iOS and the `onPurchasePackageInitiated` method on the `PaywallListener` interface in Android. This allows you to perform custom logic, such as showing additional information to the user or performing validation checks, before the purchase proceeds.
 
 When a user initiates a purchase, your interceptor callback will be invoked with:
 - The `Package` that the user selected
@@ -377,6 +377,17 @@ The purchase flow will pause until you call the `resume` action. If you call `re
 :::info Availability
 This feature is currently available on the native iOS and Android SDKs.
 :::
+
+import onPurchaseInitiatedSwift from '@site/code_blocks/tools/paywalls_on_purchase_initiated_1.swift?raw';
+import onPurchaseInitiatedKotlin from '@site/code_blocks/tools/paywalls_on_purchase_initiated_1.kt?raw';
+
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: onPurchaseInitiatedSwift, name: "iOS" },
+    { type: "kotlin", content: onPurchaseInitiatedKotlin, name: "Android" }
+  ]}
+/>
+
 
 ## Changes from legacy Paywalls
 
