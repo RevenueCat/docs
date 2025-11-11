@@ -364,6 +364,31 @@ To add a custom font to your iOS app, go to _File_ and then _Add Files to “You
 #### Kotlin Multiplatform, React Native, and Flutter
 Adding custom fonts to a hybrid app involves adding the font files to the underlying Android and iOS projects following the instructions above.
 
+## Intercepting an initiated purchase
+
+You can intercept a purchase flow before it begins by using the `onPurchaseInitiated` view modifier in iOS and the `onPurchasePackageInitiated` method on the `PaywallListener` interface in Android. This allows you to perform custom logic, such as showing additional information to the user or performing validation checks, before the purchase proceeds.
+
+When a user initiates a purchase, your interceptor callback will be invoked with:
+- The `Package` that the user selected
+- A `ResumeAction` closure that you must call to either proceed with or cancel the purchase
+
+The purchase flow will pause until you call the `resume` action. If you call `resume(false)`, the purchase will be cancelled. If you call `resume(true)`, the purchase will proceed as normal.
+
+:::info Availability
+This feature is currently available on the native iOS and Android SDKs.
+:::
+
+import onPurchaseInitiatedSwift from '@site/code_blocks/tools/paywalls_on_purchase_initiated_1.swift?raw';
+import onPurchaseInitiatedKotlin from '@site/code_blocks/tools/paywalls_on_purchase_initiated_1.kt?raw';
+
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: onPurchaseInitiatedSwift, name: "iOS" },
+    { type: "kotlin", content: onPurchaseInitiatedKotlin, name: "Android" }
+  ]}
+/>
+
+
 ## Changes from legacy Paywalls
 
 #### Footer Paywalls
