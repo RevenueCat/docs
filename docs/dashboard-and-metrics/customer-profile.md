@@ -71,6 +71,7 @@ Below is a table with all the event types you can expect in the customer history
 | Had their granted Entitlement removed             | A previously granted entitlement was removed from the RevenueCat dashboard or API                           | `CANCELLATION`                  |
 | Granted ... [Currency]                            | Virtual currency was added to the customer's balance through a purchase or subscription                     | `VIRTUAL_CURRENCY_TRANSACTION`  |
 | Spent ... [Currency]                              | Virtual currency was removed from the customer's balance                                                    | `VIRTUAL_CURRENCY_TRANSACTION`  |
+| Enrolled in an experiment                         | Assigned to a variant as part of an [A/B experiment](/tools/experiments-v1).                                | `EXPERIMENT_ENROLLMENT`         |
 
 :::info Missing or incorrect prices
 It is possible for prices to be missing or incorrect, especially for apps that have migrated from a different system to RevenueCat. The stores provide very minimal pricing information for developers, so RevenueCat estimates the transaction price based off the data that is available - if you have old products that are no longer available for sale or changed the price of your products before using RevenueCat, you can expect some prices to be missing or incorrect. We do our best to backfill prices over time if more up-to-date information becomes available.
