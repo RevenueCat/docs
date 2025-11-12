@@ -484,6 +484,55 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>project_configuration:projects:read</code>.'
+    post:
+      summary: Creates a new project
+      operationId: create-project
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:projects:read_write
+      x-release-status: public
+      tags:
+      - Project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectCreate'
+              additionalProperties: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:projects:read_write</code>.'
   /projects/{project_id}/apps:
     get:
       summary: Get a list of apps
@@ -6122,6 +6171,9 @@ components:
       - $amplitudeDeviceId
       - $amplitudeUserId
       - $appleRefundHandlingPreference
+      - $appleAdsAdGroupId
+      - $appleAdsCampaignId
+      - $appleAdsKeywordId
       - $apnsTokens
       - $appsflyerId
       - $appsflyerSharingFilter
@@ -7703,7 +7755,29 @@ components:
           type: integer
           format: int64
           example: 1658399423658
+        icon_url:
+          description: The URL of the project's icon (small size)
+          nullable: true
+          type: string
+          example: https://www.appatar.io/abc123/small
+        icon_url_large:
+          description: The URL of the project's icon (large size)
+          nullable: true
+          type: string
+          example: https://www.appatar.io/abc123/large
       additionalProperties: false
+    ProjectCreate:
+      allOf:
+      - type: object
+        required:
+        - name
+        properties:
+          name:
+            description: The name of the project
+            type: string
+            minLength: 1
+            maxLength: 255
+            nullable: false
     PublicApiKey:
       type: object
       required:
