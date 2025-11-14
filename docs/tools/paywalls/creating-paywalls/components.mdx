@@ -360,6 +360,31 @@ When the countdown reaches zero, the component automatically switches to display
 The countdown updates in real-time while the paywall is displayed, automatically ticking down each second until it reaches zero.
 :::
 
+### Offering time-sensitive packages
+
+A powerful way to use the countdown component is to display different packages in the **Countdown Stack** and **End Stack**. This allows you to offer a special promotional package while the countdown is active, and then show your regular packages once the countdown expires.
+
+For example, you might want to:
+- Show a discounted introductory offer package in the countdown stack
+- Switch to your standard pricing packages in the end stack after the promotion expires
+
+To implement this pattern:
+
+1. Create all the packages you need in your offering (both promotional and regular packages)
+2. In the **Countdown Stack**, add your promotional package components and purchase button
+3. In the **End Stack**, add your regular package components and purchase button
+4. Style each stack to clearly communicate the difference in offers
+
+This approach creates a sense of urgency around your promotional pricing while ensuring customers can still make a purchase after the countdown ends at your regular prices.
+
+:::tip Package setup
+When creating packages for this pattern, consider using custom package identifiers to differentiate between promotional and regular offers:
+- `monthly_promo` / `annual_promo` for promotional packages
+- `monthly_standard` / `annual_standard` for regular packages
+
+All packages must be included in the offering used by the paywall.
+:::
+
 ## Timeline
 
 The timeline component allows you to create a vertical stack of items that can be connected to simulate a timeline, or any other progression you want to illustrate.
