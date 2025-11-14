@@ -50,6 +50,31 @@ We support the following variables:
 | product.relative_discount                  | 19%               | 19%               | 19%               | 19%               | 19%               | 19%               | 19%              |
 | product.store_product_name                 | Pro Access        | Pro Access        | Pro Access        | Pro Access        | Pro Access        | Pro Access        | Pro Access       |
 
+## Countdown variables
+
+When using a [Countdown component](/tools/paywalls/creating-paywalls/components#countdown) on your paywall, you can use countdown-specific variables within any text component inside that countdown. These variables display the time remaining until the countdown's target date.
+
+| Variable                      | Description                                    | Example |
+| :---------------------------- | :--------------------------------------------- | :------ |
+| count_days_with_zero          | Days remaining with leading zero               | 07      |
+| count_days_without_zero       | Days remaining without leading zero            | 7       |
+| count_hours_with_zero         | Hours remaining with leading zero              | 04      |
+| count_hours_without_zero      | Hours remaining without leading zero           | 4       |
+| count_minutes_with_zero       | Minutes remaining with leading zero            | 09      |
+| count_minutes_without_zero    | Minutes remaining without leading zero         | 9       |
+| count_seconds_with_zero       | Seconds remaining with leading zero            | 03      |
+| count_seconds_without_zero    | Seconds remaining without leading zero         | 3       |
+
+The values displayed by these variables depend on the **Count From** setting of your countdown component:
+
+- **Days**: Shows total days with remainder hours (0-23), minutes (0-59), and seconds (0-59)
+- **Hours**: Shows 0 days, total hours, remainder minutes (0-59), and seconds (0-59)
+- **Minutes**: Shows 0 days, 0 hours, total minutes, and seconds (0-59)
+
+:::tip
+Countdown variables are only available within text components that are inside a countdown component. They cannot be used elsewhere on your paywall.
+:::
+
 ## Variable preview values
 The paywall preview is generated using our example values for each package listed above, and therefore will differ from the actual values for the product's you choose to present on your paywall.
 

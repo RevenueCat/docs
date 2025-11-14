@@ -18,6 +18,7 @@ Components are the individual building blocks of your paywall that can be arrang
 | Purchase button | ✅ | The call to action that invokes a purchase attempt of the selected package.                |
 | Button          | ✅ | Used to add other interactions; such as a link to your Privacy Policy, a back button, etc. |
 | Carousel        | ✅ | Used to add a carousel of pages that a customer can swipe through                         |
+| Countdown       | ✅ | Used to display a live countdown timer to a specific date and time                         |
 | Timeline        | ✅ | Used to add a timeline of connected items                     |
 | Tabs | ✅ | Used to display different package groups in different tabs when offering multiple tiers of service, product types, etc. |
 | Switch | ✅ | Used to add a toggle to your paywall that can be used to let customers choose between two different sets of options. |
@@ -300,6 +301,90 @@ Each carousel has a **Page control** component that allows you to customize the 
 ![Page indicator properties](/docs_images/paywalls/paywalls-v2-page-indicator-properties.png)
 
 In addition, the position of the page control component can be set to **Top** or **Bottom** via the carousel component.
+
+## Countdown
+
+The countdown component allows you to display a live countdown timer to a specific date and time. This is useful for creating urgency around limited-time offers, sales, or special promotions on your paywall.
+
+The countdown component contains two configurable stacks:
+
+1. **Countdown Stack**: The content displayed while the countdown is active
+2. **End Stack**: The content displayed when the countdown reaches zero
+
+:::info Dynamic countdowns
+Counting down from a dynamic value like the paywall's open time is not yet supported, but will be coming in the future.
+:::
+
+### Configuring the countdown
+
+To configure your countdown, you'll need to set:
+
+- **Target Date**: The date and time (in UTC) when the countdown will end
+- **Count From**: Choose whether to display the countdown in days, hours, or minutes:
+  - **Days**: Shows total days with remainder hours, minutes, and seconds
+  - **Hours**: Shows total hours with remainder minutes and seconds
+  - **Minutes**: Shows total minutes with remainder seconds
+
+### Countdown variables
+
+Within any text component inside the countdown stack, you can use countdown-specific variables to display the time remaining:
+
+| Variable                      | Description                                    | Example |
+| :---------------------------- | :--------------------------------------------- | :------ |
+| count_days_with_zero          | Days remaining with leading zero               | 07      |
+| count_days_without_zero       | Days remaining without leading zero            | 7       |
+| count_hours_with_zero         | Hours remaining with leading zero              | 04      |
+| count_hours_without_zero      | Hours remaining without leading zero           | 4       |
+| count_minutes_with_zero       | Minutes remaining with leading zero            | 09      |
+| count_minutes_without_zero    | Minutes remaining without leading zero         | 9       |
+| count_seconds_with_zero       | Seconds remaining with leading zero            | 03      |
+| count_seconds_without_zero    | Seconds remaining without leading zero         | 3       |
+
+[Learn more about using variables in text components.](/tools/paywalls/creating-paywalls/variables)
+
+### Example usage
+
+A common countdown format uses text like:
+```
+{{ count_days_with_zero }}:{{ count_hours_with_zero }}:{{ count_minutes_with_zero }}:{{ count_seconds_with_zero }}
+```
+
+This would display as: `07:04:09:03` for 7 days, 4 hours, 9 minutes, and 3 seconds remaining.
+
+You can customize the display however you'd like by adding additional text components with labels, using different formatting, or arranging the components in various layouts within the countdown stack.
+
+### Time's up
+
+When the countdown reaches zero, the component automatically switches to display the **End Stack** content. You can use this to show a message like "Offer expired" or hide the countdown entirely by leaving the end stack empty or minimal.
+
+:::info Real-time updates
+The countdown updates in real-time while the paywall is displayed, automatically ticking down each second until it reaches zero.
+:::
+
+### Offering time-sensitive packages
+
+A powerful way to use the countdown component is to display different packages in the **Countdown Stack** and **End Stack**. This allows you to offer a special promotional package while the countdown is active, and then show your regular packages once the countdown expires.
+
+For example, you might want to:
+- Show a discounted introductory offer package in the countdown stack
+- Switch to your standard pricing packages in the end stack after the promotion expires
+
+To implement this pattern:
+
+1. Create all the packages you need in your offering (both promotional and regular packages)
+2. In the **Countdown Stack**, add your promotional package components and purchase button
+3. In the **End Stack**, add your regular package components and purchase button
+4. Style each stack to clearly communicate the difference in offers
+
+This approach creates a sense of urgency around your promotional pricing while ensuring customers can still make a purchase after the countdown ends at your regular prices.
+
+:::tip Package setup
+When creating packages for this pattern, consider using custom package identifiers to differentiate between promotional and regular offers:
+- `monthly_promo` / `annual_promo` for promotional packages
+- `monthly_standard` / `annual_standard` for regular packages
+
+All packages must be included in the offering used by the paywall.
+:::
 
 ## Timeline
 
