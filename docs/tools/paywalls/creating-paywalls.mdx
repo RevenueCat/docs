@@ -61,8 +61,9 @@ Next, you'll need to select the Offering you want to add a Paywall to. Or, if yo
 
 From there, you can start building by either:
 
-1. Choosing a template, or
-2. Starting from scratch
+1. Choosing a template
+2. Starting from scratch, or
+3. Importing from Figma ([Learn more](/tools/paywalls/creating-paywalls/importing-from-figma))
 
 Unless you have a very specific, custom design in mind that you're looking to create; **we recommend starting with a template.** You can customize any aspect of your paywall once you select a template, it's simply a starting point to explore from.
 
@@ -70,7 +71,7 @@ Unless you have a very specific, custom design in mind that you're looking to cr
 
 ### Using the editor
 
-Once you've selected a template or picked starting from scratch, you'll land on our Paywall Editor, which has the following sections:
+Once you've imported from Figma, selected a template, or picked starting from scratch, you'll land on our Paywall Editor, which has the following sections:
 
 1. **Components**: The list of components on your paywall, their hierarchy, and their options (rename, duplicate, etc).
 2. **Component properties**: The list of configurable properties of the component you've selected.
@@ -134,6 +135,65 @@ To make your paywall available to customers, click **Publish Paywall**. Once a p
 You can also set a published paywall to be inactive, or vice versa, at any time.
 
 [Learn more about displaying paywalls.](/tools/paywalls/displaying-paywalls)
+
+### Importing from Figma
+
+The [RevenueCat plugin in Figma](https://www.figma.com/community/plugin/1571207414894772119/revenuecat) allows you to import paywall designs from Figma into RevenueCat. It's ideal for teams that have dedicated designers working in Figma. It allows designers to create pixel-perfect paywall designs in Figma that can then be seamlessly brought into RevenueCat, reducing the need for manual recreation and ensuring design consistency.
+
+**To import a paywall from Figma:**
+
+1. **Install the RevenueCat plugin** in Figma:
+   - Open Figma and navigate to the [RevenueCat plugin page](https://www.figma.com/community/plugin/1571207414894772119/revenuecat)
+   - Click **Install** to add the plugin to your Figma workspace
+
+2. **Design your paywall** in Figma:
+   - Create your paywall layout in Figma with all the necessary elements (text, images, buttons, etc.), with each frame named to match the component it represents (see the full list of components below)
+
+:::warning Figma auto layout required
+Your paywall designs must be using Figma Autolayout to be imported correctly.
+:::
+
+3. **Export to RevenueCat**:
+   - Open the RevenueCat plugin from your Figma plugins menu
+   - Select the frames you want to export
+   - Authenticate with your RevenueCat account
+   - Choose the project and offering where you want to import the paywall
+   - Click **Export** to add your paywall design in RevenueCat
+
+4. **Refine in the Paywall Editor**:
+   - Once imported, click the link for your paywall in the plugin to open it in the Paywall Editor
+   - You can further customize components, configure package selections, set up localizations, and adjust styling as needed
+
+5. **Publish and deploy**:
+   - After making any final adjustments, save and publish your paywall
+   - The paywall will be available through the RevenueCat SDK and can be served to your customers
+
+#### Component support and mapping
+
+| Status | Component                                           | Example Frame Name / Rule                                        |
+| ------ | --------------------------------------------------- | ---------------------------------------------------------------- |
+| ✅     | **Text** (`text`)                                   | Any node with `type: 'TEXT'`                                     |
+| ✅     | **Image** (`image`)                                 | Any `RECTANGLE`, `ELLIPSE`, `VECTOR`, etc. with `image` property |
+| ✅     | **Stack** (`stack`)                                 | Default for any non-special node with children                   |
+| ✅     | **Button** (`button`)                               | `Button` or `Button(action=purchase)`                            |
+| ✅     | **Package** (`package`)                             | `Package` (exact match)                                          |
+| ✅     | **Purchase Button** (`purchase_button`)             | `Purchase Button` (exact match)                                  |
+| ✅     | **Input Single Choice** (`input_single_choice`)     | `InputSingleChoice(field_id=my_field)`                           |
+| ✅     | **Input Option** (`input_option`)                   | `InputOption(option_id=my_option)`                               |
+| ❌     | **Icon** (`icon`)                                   | Not supported                       |
+| ❌     | **Video** (`video`)                                 | Not supported                                                    |
+| ❌     | **Carousel** (`carousel`)                           | Not supported                                                    |
+| ❌     | **Timeline** (`timeline`)                           | Not supported                                                    |
+| ❌     | **Tabs** (`tabs`)                                   | Not supported                                                    |
+| ❌     | **Tab Control** (`tab_control`)                     | Not supported                                                    |
+| ❌     | **Tab Control Button** (`tab_control_button`)       | Not supported                                                    |
+| ❌     | **Tab Control Toggle** (`tab_control_toggle`)       | Not supported                                                    |
+| ❌     | **Input Multiple Choice** (`input_multiple_choice`) | Not supported                                                    |
+| ❌     | **Countdown** (`countdown`)                         | Not supported                                                    |
+
+:::info Additional component support
+We'll quickly be adding support for the other components in this list, stay tuned!
+:::
 
 ### Duplicating a paywall
 
