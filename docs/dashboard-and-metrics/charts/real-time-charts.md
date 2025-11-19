@@ -32,6 +32,7 @@ You can access Real-time Charts from your dashboard by toggling `Real-time` on i
 - Charts are now updated in real-time as events occur [Learn more](/dashboard-and-metrics/charts/real-time-charts#real-time-reporting)
 - New filters & segments for deeper analysis [Learn more](/dashboard-and-metrics/charts/real-time-charts#new-and-updated-dimensions)
 - A new Trial Conversion Rate chart for measuring that rate by trial start date cohorts, and segmenting it for more granular analysis [Learn more](/dashboard-and-metrics/charts/trial-conversion-rate-chart)
+- Period-over-Period comparisons to track performance changes across time periods [Learn more](/dashboard-and-metrics/charts/real-time-charts#period-over-period-comparisons)
 
 ### Improvements
 
@@ -114,6 +115,29 @@ We've introduced new dimensions for filtering & segmenting, with more coming soo
 
 1. Platform: Now refers to the first seen platform of a customer, not their last seen platform, so that metrics like conversion rates and LTV can be segmented by the platform a customer originated on without it changing over time (e.g. if a customer converts on the web and then downloads your iOS app)
 2. Country: Now prioritizes the app store country of a customer or purchase over the customer's IP-based location. In charts which measure purchases, like Active Subscriptions, the app store storefront that the purchase occurred in will be used as the country; while in charts that measure customer cohorts, like Initial Conversion or Realized LTV per Customer, the first seen app store country of the customer will be used.
+
+### Period-over-Period comparisons
+
+You can now compare chart data against the previous period to identify trends and measure changes in performance.
+
+**How it works:**
+- Enable comparisons using the **Compare** dropdown to compare against the previous period, which uses the same time period length as your selected date range
+- The chart displays both the current period and comparison period as separate lines
+- The summary shows the total for the selected period and the percentage change from the comparison period
+- Hover over any data point to see the percentage change compared to the previous period at that point in time
+
+Period-over-Period comparisons are available on the following charts:
+- Active Subscriptions
+- Active Trials
+- ARR
+- Churn
+- Conversion to Paying
+- MRR
+- New Customers
+- New Trials
+- Realized LTV per Customer
+- Realized LTV per Paying Customer
+- Refund Rate
 
 ### New charts
 
