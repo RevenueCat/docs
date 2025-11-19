@@ -29,6 +29,10 @@ The Tenjin integration requires some device-specific data. RevenueCat will only 
 | `$idfv`     | iOS [vendor identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ❌ (optional)     |
 | `$ip`       | The IP address of the device                                                                                                                    | ❌ (optional)     |
 
+:::info IDFA attribute
+Even if a user has not granted permission to track, the IDFA attribute must be set to the iOS default provided value of `00000000-0000-0000-0000-000000000000` in order for events to be sent to Tenjin.
+:::
+
 :::warning Android ID deprecation
 Due to policy changes from the Play Store, Android ID is no longer collected by RevenueCat's Android SDKs starting on versions 6.9.8+, 7.11.1+, and later major versions.
 
