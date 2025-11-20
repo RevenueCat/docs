@@ -52,12 +52,12 @@ Your application remains responsible for:
 
 ## How It Works
 
-The _paywalls-only_ integration follows a straightforward pattern:
+Using RevenueCat Paywalls with your own purchase infrastructure follows a straightforward pattern:
 
 1. Configure your products in the RevenueCat dashboard
 2. Design your paywalls remotely using RevenueCat's Paywall Designer
-3. The RevenueCat SDK fetches and renders paywalls natively in your app
-4. When users interact with the paywall, your existing purchase infrastructure handles the transaction
+3. Leverage the applicable RevenueCat SDK to fetch and render paywalls natively in your app
+4. When users attempt a purchase, restore, etc. through the RevenueCat Paywall, your existing purchase infrastructure handles the transaction
 
 ## Setup
 
@@ -142,7 +142,7 @@ If your app has user accounts or authentication, you can also provide custom app
   ]}
 />
 
-For more details, see:
+**For more details, see:**
 - [Initializing the RevenueCat SDK](/getting-started/configuring-sdk#initialization)
 - [Using the RevenueCat SDK with your own IAP Code](/migrating-to-revenuecat/sdk-or-not/finishing-transactions)
 - [Identifying Customers](/customers/identifying-customers)
@@ -228,12 +228,12 @@ In the paywall integration above, you provided `performPurchase` and `performRes
 When the paywall calls your `performPurchase` handler:
 1. Use the provided `Package` object to access product details and initiate your purchase flow
 2. Process the transaction using your existing IAP infrastructure
-3. **Call `Purchases.shared.syncPurchases()` (iOS) or `Purchases.sharedInstance.syncPurchases()` (Android) after successful purchases** - this is required for billing and analytics
+3. Call `Purchases.shared.syncPurchases()` (iOS) or `Purchases.sharedInstance.syncPurchases()` (Android) after successful purchases - this is required for billing and analytics
 4. Return the appropriate success/failure result
 
 When the paywall calls your `performRestore` handler:
 1. Trigger your existing restore flow
-2. **Call `syncPurchases()` after successful restores**
+2. Call `syncPurchases()` after successful restores
 3. Return the appropriate success/failure result
 
 #### Return Values
