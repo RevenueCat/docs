@@ -179,7 +179,7 @@ Your paywall designs must be using Figma auto layout to be imported correctly.
 | ✅     | **Text** (`text`)                                   | Any node with `type: 'TEXT'`                                     |
 | ✅     | **Image** (`image`)                                 | Any `RECTANGLE`, `ELLIPSE`, `VECTOR`, etc. with `image` property |
 | ✅     | **Stack** (`stack`)                                 | Default for any non-special node with children                   |
-| ✅     | **Button** (`button`)                               | `Button` or `Button(action=purchase)`                            |
+| ✅     | **Button** (`button`)                               | `Button` or `Button(action=<action_type>)` where `<action_type>` is one of: `restore_purchases`, `navigate_back`, `navigate_to`, or `workflow`. Invalid action types will default to `navigate_back`. |
 | ✅     | **Package** (`package`)                             | `Package` (exact match)                                          |
 | ✅     | **Purchase Button** (`purchase_button`)             | `Purchase Button` (exact match)                                  |
 | ❌     | **Icon** (`icon`)                                   | Not supported                       |
@@ -194,6 +194,14 @@ Your paywall designs must be using Figma auto layout to be imported correctly.
 
 :::info Additional component support
 We'll quickly be adding support for the other components in this list, stay tuned!
+:::
+
+:::info Button action type validation
+When importing buttons from Figma, the action type specified in the button name (e.g., `Button(action=restore_purchases)`) is validated against the supported action types. If an invalid action type is provided, it will automatically default to `navigate_back`. The supported action types are:
+- `restore_purchases`: Restores previous purchases
+- `navigate_back`: Navigates back to the previous screen
+- `navigate_to`: Navigates to a specific destination (requires additional configuration)
+- `workflow`: Triggers a workflow action (requires additional configuration)
 :::
 
 ### Duplicating a paywall
