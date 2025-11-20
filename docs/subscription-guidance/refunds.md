@@ -27,7 +27,7 @@ If you configure an [In-App Purchase Key](/service-credentials/itunesconnect-app
 
 **Handling Refund Requests**
 
-RevenueCat can help influence Apple's refund decisions by providing additional data about your customer's purchase and your preferred resolution when a refund request is submitted. When enabled, RevenueCat automatically sends data to Apple to help inform their refund decisions.
+RevenueCat can help influence Apple's refund decisions by automatically sending additional data about your customer's purchase and your preferred resolution when a refund request is submitted.
 
 For detailed information on configuring this feature, see our [Handling Refund Requests](/platform-resources/apple-platform-resources/handling-refund-requests) documentation.
 
