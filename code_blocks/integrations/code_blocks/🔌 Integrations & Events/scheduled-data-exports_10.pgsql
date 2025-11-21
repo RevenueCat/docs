@@ -2,7 +2,7 @@
 
 WITH
 
-filtered_subscriptipon_transactions AS (
+filtered_subscription_transactions AS (
     SELECT
         *
     FROM [revenuecat_data_table]
@@ -11,7 +11,7 @@ filtered_subscriptipon_transactions AS (
         OR effective_end_time BETWEEN [targeted_start_date] and [targeted_end_date])
         /* Exclude trials, which do not contribute to MRR */
         AND is_trial_period = 'false'
-        AND DATE_DIFF('s', start_time, end_time)::float > 0
+        AND end_time > start_time
         AND ownership_type != 'FAMILY_SHARED'
         AND store != 'promotional'
         AND is_sandbox != 'true'),
@@ -35,14 +35,14 @@ actives AS (
         END
     ) AS num_renewals
     
-  FROM filtered_subscriptipon_transactions
+  FROM filtered_subscription_transactions
   GROUP BY 1),
   
 expirations AS (
   SELECT
     DATE(effective_end_time) AS date,
     COUNT(*) AS num_expirations
-  FROM filtered_subscriptipon_transactions
+  FROM filtered_subscription_transactions
   GROUP BY 1)
 
 SELECT
@@ -50,7 +50,7 @@ SELECT
     COALESCE(a.num_new_actives, 0) AS new_actives,
     COALESCE(a.num_renewals, 0) AS num_renewals,
     COALESCE(e.num_expirations, 0) AS num_expirations,
-    num_expirations - num_renewals AS churned_actives,
+    num_expirations - num_renewals AS churned_actives
 FROM actives a
 FULL JOIN expirations e ON a.date = e.date
 WHERE a.date BETWEEN [targeted_start_date] AND [targeted_end_date]
