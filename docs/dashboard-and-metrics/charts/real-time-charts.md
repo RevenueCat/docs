@@ -11,7 +11,7 @@ We’re excited to welcome you to the beta of our new real-time Charts. We've re
 - A new unified subscription model for consistent reporting across stores
 - Improved definitions for existing dimensions like Platform and Country
 - New dimensions to filter and segment by, including Custom Attributes & Ad Attribution
-- Brand new charts for Trial Conversion Rate and Active Customers, with more for Paywall metrics coming soon
+- Brand new charts for Trial Conversion Rate, Active Customers, and Paywall metrics
 
 :::warning Supported stores
 At this time we support App Store, Play Store, Stripe and RevenueCat Web Billing apps in Real-time Charts. Support for Amazon, Roku, and Paddle is coming soon.
@@ -32,6 +32,7 @@ You can access Real-time Charts from your dashboard by toggling `Real-time` on i
 - Charts are now updated in real-time as events occur [Learn more](/dashboard-and-metrics/charts/real-time-charts#real-time-reporting)
 - New filters & segments for deeper analysis [Learn more](/dashboard-and-metrics/charts/real-time-charts#new-and-updated-dimensions)
 - A new Trial Conversion Rate chart for measuring that rate by trial start date cohorts, and segmenting it for more granular analysis [Learn more](/dashboard-and-metrics/charts/trial-conversion-rate-chart)
+- New Paywall charts for measuring paywall performance [Learn more](/dashboard-and-metrics/charts/real-time-charts#paywall-charts)
 
 ### Improvements
 
@@ -121,15 +122,14 @@ We've introduced new dimensions for filtering & segmenting, with more coming soo
 
 1. Trial Conversion Rate: A new chart to measure the number of trials that started in a given period, and the portion of them that converted to paying customers, so that you can understand how likelihood to pay changes over time and by various dimensions. This differs from the Trial Conversion Funnel in that (1) it is cohorted by trial start date, and (2) focuses just on the conversion from trial to paid, and is therefore segmentable by other dimensions the way our other conversion charts are as well.
 2. Active Customers: A new chart to measure the number of unique customers who were active each day in your app. A "customer" is any user of your app, regardless of whether they've made a purchase, and includes both new customers and existing customers.
-
-#### Coming soon
-
-Paywall conversion, LTV, and abandonment charts for measuring performance of each of your RevenueCat Paywalls.
+3. [Paywall Encounter](/dashboard-and-metrics/charts/paywall-encounter-chart): Measures how many new customers encounter a paywall after opening your app for the first time. This chart is cohorted by first seen date and tracks whether customers see a paywall within a selected timeframe (1, 3, 7, or 14 days). It helps you understand paywall visibility and reach in your customer acquisition flow.
+4. [Paywall Conversion](/dashboard-and-metrics/charts/paywall-conversion-chart): Measures how effectively paywalls convert viewers into paying customers. This chart is cohorted by first paywall impression date, segmented by paywall by default, and tracks initial conversions that occur within 3 days of first impression. It supports multiple conversion types including Initial Conversion, Paid Conversion, Trial Start Rate, and Trial Conversion.
+5. [Paywall LTV](/dashboard-and-metrics/charts/paywall-ltv-chart): Measures the realized lifetime value generated from purchases that derived from an initial conversion within 3 days of first impression. This chart is cohorted by first paywall impression date, segmented by paywall by default, and continues to attribute all subsequent revenue from those conversions indefinitely. You can view total revenue, revenue net of taxes, or proceeds.
+6. [Paywall Abandonment](/dashboard-and-metrics/charts/paywall-abandonment-chart): Measures the proportion of paywall impressions that did not lead to an initial conversion within 3 days. This chart is cohorted by first paywall impression date, segmented by paywall by default, and breaks down abandonment into bounces (no purchase initiated) and purchase cancellations (purchase initiated but not completed).
 
 ## Upcoming changes & improvements
 
 - Real-time charts support App Store & Play Store apps, with additional store support currently in development.
-- Paywall conversion, LTV, and abandonment charts for RevenueCat Paywalls
 
 ## Unsupported charts
 
