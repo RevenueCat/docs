@@ -7,7 +7,6 @@ FROM
 WHERE date(effective_end_time) > [targeted_date]
   AND date(start_time) <= [targeted_date]
   AND is_trial_period = 'false'
-  AND end_time > start_time
   AND ownership_type != 'FAMILY_SHARED'
   AND store != 'promotional'
   AND is_sandbox != 'true'
