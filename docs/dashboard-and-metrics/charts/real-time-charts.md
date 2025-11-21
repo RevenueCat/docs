@@ -132,9 +132,11 @@ You can now compare chart data against the previous period to identify trends an
 - ARR
 - Churn
 - Conversion to Paying
+- Initial Conversion
 - MRR
 - New Customers
 - New Trials
+- Non-subscription Purchases
 - Realized LTV per Customer
 - Realized LTV per Paying Customer
 - Refund Rate
