@@ -120,13 +120,13 @@ We've introduced new dimensions for filtering & segmenting, with more coming soo
 
 You can now compare chart data against the previous period to identify trends and measure changes in performance.
 
-**How it works:**
+#### How it works
 - Enable comparisons using the **Compare** dropdown to compare against the previous period, which uses the same time period length as your selected date range
 - The chart displays both the current period and comparison period as separate lines
 - The summary shows the total for the selected period and the percentage change from the comparison period
 - Hover over any data point to see the percentage change compared to the previous period at that point in time
 
-Period-over-Period comparisons are available on the following charts:
+#### Supported charts
 - Active Subscriptions
 - Active Trials
 - ARR
