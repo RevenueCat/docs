@@ -31,6 +31,8 @@ Apple supports messages with images, but RevenueCat will initially focus on text
 
 These messages are shown to users after they tap Cancel Subscription on the subscription details page. On the Confirm Cancellation screen, users can either complete the cancellation, tap Don’t Cancel, or, depending on the message, redeem an offer or switch to a suggested subscription.
 
+Retention messages are visible only to devices running iOS 15.1 or later, iPadOS 15.1 or later, visionOS 1 or later, or macOS 14 or later.
+
 ## Request access from Apple
 
 Before you're able to start utilizing this feature, you’ll first need to request access from Apple.
