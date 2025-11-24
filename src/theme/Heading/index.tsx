@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
 import clsx from "clsx";
 import { translate } from "@docusaurus/Translate";
 import { useThemeConfig } from "@docusaurus/theme-common";
@@ -38,6 +38,8 @@ export default function Heading({
     },
   );
 
+  const [copied, setCopied] = useState(false);
+
   return (
     <As
       {...props}
@@ -49,6 +51,7 @@ export default function Heading({
         props.className,
         As === "h2" && "mt-16",
         As === "h3" && "mt-12",
+        "flex items-center",
       )}
       id={id}
     >
@@ -58,9 +61,37 @@ export default function Heading({
         to={`#${id}`}
         aria-label={anchorTitle}
         title={anchorTitle}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          navigator.clipboard.writeText(
+            `${window.location.origin}${window.location.pathname}#${id}`,
+          );
+          setCopied(true);
+          setTimeout(() => {
+            setCopied(false);
+          }, 1500);
+        }}
       >
         &#8203;
       </Link>
+      {copied && (
+        <span
+          aria-live="polite"
+          style={{
+            color: "#166534",
+            backgroundColor: "#bbf7d0",
+            height: "fit-content",
+            padding: "4px 8px",
+            fontSize: "12px",
+            borderRadius: "99px",
+            fontWeight: "400",
+            marginLeft: "8px",
+          }}
+        >
+          Copied
+        </span>
+      )}
     </As>
   );
 }
