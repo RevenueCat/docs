@@ -65,7 +65,7 @@ export default function Heading({
           e.preventDefault();
           e.stopPropagation();
           navigator.clipboard.writeText(
-            `${window.location.href.split("#")[0]}#${id}`,
+            `${window.location.origin}${window.location.pathname}#${id}`,
           );
           setCopied(true);
           setTimeout(() => {
@@ -77,6 +77,7 @@ export default function Heading({
       </Link>
       {copied && (
         <span
+          aria-live="polite"
           style={{
             color: "#166534",
             backgroundColor: "#bbf7d0",
