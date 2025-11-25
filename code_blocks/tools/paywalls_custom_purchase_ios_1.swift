@@ -38,59 +38,21 @@ struct ContentView: View {
         }
     }
 
-    // MARK: - Your StoreKit 2 implementation here. Sample below:
+    // MARK: - Your StoreKit Implementation
 
     private func performCustomPurchase(_ package: Package) async throws {
-        // 1. Get the StoreKit 2 Product from the package
-        let productId = package.storeProduct.productIdentifier
-        let products = try await Product.products(for: [productId])
+        // Implement your StoreKit purchase flow here.
+        // See Apple's documentation: https://developer.apple.com/documentation/storekit/in-app-purchase
 
-        guard let skProduct = products.first else {
-            throw NSError(domain: "ProductNotFound", code: 404)
-        }
-
-        // 2. Initiate purchase and handle the result
-        let result = try await skProduct.purchase()
-
-        switch result {
-        case .success(let verificationResult):
-            // 3. Verify the transaction
-            let transaction = try checkVerified(verificationResult)
-
-            // 4. Finish the transaction
-            await transaction.finish()
-
-            // 5. Sync with RevenueCat
-            _ = try? await Purchases.shared.syncPurchases()
-
-        case .userCancelled:
-            // User cancelled - don't throw, just return
-            break
-
-        case .pending:
-            // Handle Ask to Buy or other pending scenarios
-            break
-
-        @unknown default:
-            throw NSError(domain: "UnknownPurchaseResult", code: 500)
-        }
-    }
-
-    private func performCustomRestore() async throws {
-        // Restore all purchases from the App Store
-        try await AppStore.sync()
-
-        // Sync with RevenueCat
+        // Sync with RevenueCat after purchase completes
         _ = try? await Purchases.shared.syncPurchases()
     }
 
-    // Helper to verify StoreKit 2 transactions
-    private func checkVerified<T>(_ result: StoreKit.VerificationResult<T>) throws -> T {
-        switch result {
-        case .unverified:
-            throw NSError(domain: "VerificationFailed", code: 403)
-        case .verified(let safe):
-            return safe
-        }
+    private func performCustomRestore() async throws {
+        // Implement your restore flow here.
+        // See: https://developer.apple.com/documentation/storekit/transaction/currententitlements
+
+        // Sync with RevenueCat after restore completes
+        _ = try? await Purchases.shared.syncPurchases()
     }
 }
