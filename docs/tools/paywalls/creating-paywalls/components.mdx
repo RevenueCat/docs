@@ -306,10 +306,11 @@ In addition, the position of the page control component can be set to **Top** or
 
 The countdown component allows you to display a live countdown timer to a specific date and time. This is useful for creating urgency around limited-time offers, sales, or special promotions on your paywall.
 
-The countdown component contains two configurable stacks:
+The countdown component contains three different configurable stacks:
 
 1. **Countdown Stack**: The content displayed while the countdown is active
 2. **End Stack**: The content displayed when the countdown reaches zero
+3. **Fallback Stack**: The content displayed if the Countdown component is not available on the SDK version being used by the customer. [Learn more](/tools/paywalls/creating-paywalls/components#fallback-stack)
 
 :::info Dynamic countdowns
 Counting down from a dynamic value like the paywall's open time is not yet supported, but will be coming in the future.
@@ -385,6 +386,13 @@ When creating packages for this pattern, consider using custom package identifie
 
 All packages must be included in the offering used by the paywall.
 :::
+
+### Fallback stack
+If you're serving a paywall with a Countdown component on SDK versions that do not support it, the component won't render. Therefore, we recommend enabling the fallback stack for the component so you can customize exactly what you'd like to display in its place.
+
+![Countdown fallback stack properties](/docs_images/paywalls/paywalls-countdown-fallback.png)
+
+Or, alternatively, if you'd like to show a different paywall to customers on unsupported SDK versions/app versions, you can do that via [Targeting](https://www.revenuecat.com/docs/tools/targeting).
 
 ## Timeline
 
