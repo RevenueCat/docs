@@ -64,8 +64,8 @@ class MyActivity : AppCompatActivity() {
         // See Google's documentation: https://developer.android.com/google/play/billing/integrate
 
         // Sync with RevenueCat after purchase completes
-        // Purchases.sharedInstance.syncPurchases()
-        // completion(PurchaseLogicResult.Success)
+        Purchases.sharedInstance.syncPurchases()
+        completion(PurchaseLogicResult.Success)
     }
 
     private fun performCustomRestore(completion: (PurchaseLogicResult) -> Unit) {
@@ -73,7 +73,7 @@ class MyActivity : AppCompatActivity() {
         // See: https://developer.android.com/google/play/billing/integrate#pending
 
         // Sync with RevenueCat after restore completes
-        // Purchases.sharedInstance.syncPurchases()
-        // completion(PurchaseLogicResult.Success)
+        Purchases.sharedInstance.syncPurchases()
+        completion(PurchaseLogicResult.Success)
     }
 }

@@ -68,8 +68,8 @@ private suspend fun performCustomPurchase(
     // See Google's documentation: https://developer.android.com/google/play/billing/integrate
 
     // Sync with RevenueCat after purchase completes
-    // Purchases.sharedInstance.syncPurchases()
-    // continuation.resume(Unit) { }
+    Purchases.sharedInstance.syncPurchases()
+    continuation.resume(Unit) { }
 }
 
 private suspend fun performCustomRestore(): Unit = suspendCancellableCoroutine { continuation ->
@@ -77,6 +77,6 @@ private suspend fun performCustomRestore(): Unit = suspendCancellableCoroutine {
     // See: https://developer.android.com/google/play/billing/integrate#pending
 
     // Sync with RevenueCat after restore completes
-    // Purchases.sharedInstance.syncPurchases()
-    // continuation.resume(Unit) { }
+    Purchases.sharedInstance.syncPurchases()
+    continuation.resume(Unit) { }
 }
