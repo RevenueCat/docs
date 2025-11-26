@@ -63,9 +63,8 @@ The prefix for the URL paths is: https://www.revenuecat.com/docs
 
 ## RevenueCat MCP Server (Model Context Protocol)
 
-- /tools/mcp - Complete MCP server overview and setup guide
-- /tools/mcp/overview - What MCP is and deployment options (cloud vs local)
-- /tools/mcp/setup - Configure MCP server for cloud or local VS Code/Cursor extension
+- /tools/mcp - Complete MCP server overview, what MCP is, and deployment information
+- /tools/mcp/setup - Configure MCP server for your AI assistant
 - /tools/mcp/tools-reference - Complete reference for all 26 MCP server tools
 - /tools/mcp/usage-examples - Natural language interaction examples with MCP
 - /tools/mcp/best-practices-and-troubleshooting - Security and troubleshooting guide
