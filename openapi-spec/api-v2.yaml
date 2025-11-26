@@ -1520,6 +1520,173 @@ paths:
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>,
         <code>customer_information:subscriptions:read_write</code>, <code>customer_information:purchases:read_write</code>.'
+  /projects/{project_id}/customers/{customer_id}/actions/grant_entitlement:
+    post:
+      summary: Grant an entitlement to a customer unless one already exists. As a
+        side effect, a promotional subscription is created.
+      operationId: grant-customer-entitlement
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:customers:read_write
+      x-release-status: public
+      tags:
+      - Customer
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: customer_id
+        in: path
+        description: ID of the customer
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: 19b8de26-77c1-49f1-aa18-019a391603e2
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required:
+              - entitlement_id
+              - expires_at
+              properties:
+                entitlement_id:
+                  nullable: false
+                  type: string
+                  description: The ID of the entitlement to grant to the customer.
+                  minLength: 1
+                  maxLength: 255
+                  example: entla1b2c3d4e5
+                expires_at:
+                  nullable: false
+                  type: integer
+                  format: int64
+                  description: The date after which the access to the entitlement
+                    expires in ms since epoch.
+                  example: 1658399423658
+      responses:
+        '201':
+          description: Entitlement granted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.'
+  /projects/{project_id}/customers/{customer_id}/actions/revoke_granted_entitlement:
+    post:
+      summary: Revoke a granted entitlement from a customer. As a side effect, the
+        promotional subscription associated with the granted entitlement is expired.
+      operationId: revoke-customer-granted-entitlement
+      x-revenuecat-rate-limiting-domain: customer_information
+      x-scopes:
+      - customer_information:customers:read_write
+      x-release-status: public
+      tags:
+      - Customer
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: customer_id
+        in: path
+        description: ID of the customer
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: 19b8de26-77c1-49f1-aa18-019a391603e2
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required:
+              - entitlement_id
+              properties:
+                entitlement_id:
+                  nullable: false
+                  type: string
+                  description: The ID of the granted entitlement to revoke from the
+                    customer.
+                  minLength: 1
+                  maxLength: 255
+                  example: entla1b2c3d4e5
+      responses:
+        '200':
+          description: Entitlement revoked successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.'
   /projects/{project_id}/products/{product_id}:
     get:
       summary: Get a product
