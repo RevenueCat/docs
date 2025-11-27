@@ -229,7 +229,7 @@ const webSDKCategory = Category({
     Page({ slug: "web-billing/customer-portal" }),
     Page({ slug: "web-billing/lifecycle-emails" }),
     SubCategory({
-      label: "External Purchase Integrations",
+      label: "Billing Engine Integrations",
       slug: "payment-integrations",
       itemsPathPrefix: "integrations/",
       items: [Page({ slug: "stripe" }), Page({ slug: "paddle" })],
