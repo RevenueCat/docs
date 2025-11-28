@@ -5,59 +5,108 @@ excerpt: Allow your users to subscribe to your app via Paddle
 hidden: false
 ---
 
-RevenueCat currently supports web payments through Paddle.
+RevenueCat currently supports web payments through Paddle in a number of different configurations.
 
 :::info April 2025 U.S. District Court Ruling on External Payment Options
 A recent U.S. District Court ruling found Apple in violation of a 2021 injunction meant to allow developers to direct users to external payment options, like Paddle. As a result, iOS developers are now permitted to guide users to web-based payment flows without additional Apple fees or restrictive design requirements. You can [find more details on the RevenueCat blog](https://revenuecat.com/blog/growth/introducing-web-paywall-buttons).
-:::
 
 For apps available outside the U.S. App Store, Apple still requires that digital goods and subscriptions be purchased through in-app purchases. Promoting or linking to alternative payment methods within the app for non-U.S. users may lead to app review rejection or removal. Always ensure external payment links are shown only to eligible U.S. users.
+:::
 
-### Supported functionality:
+## Supported features:
 
 - **Importing Paddle purchases to RevenueCat**: Let subscribers purchase on your own website using Paddle, and automatically unlock mobile entitlements based on the Paddle subscription.
-- **Embedded checkout (Web SDK)**: Use RevenueCat's [purchases-js SDK](../web-billing/web-sdk) to initialize a purchase in your web app that uses a Paddle checkout, and creates subscriptions in Paddle Billing.
-- **Embedded checkout (Web Purchase Links)**: Create a [revenuecat-hosted purchase flow](../web-billing/web-purchase-links) which uses a Paddle checkout, and creates subscriptions in Paddle Billing.
+- **Embedded Paddle checkout (Web SDK)**: Use RevenueCat's [purchases-js SDK](../web-billing/web-sdk) to initialize a purchase in your web app that uses a Paddle checkout, and creates subscriptions in Paddle Billing.
+- **Embedded Paddle checkout (Web Purchase Links)**: Create a [revenuecat-hosted purchase flow](../web-billing/web-purchase-links) which uses a Paddle checkout, and creates subscriptions in Paddle Billing.
 - **Redemption Links**: Allow users to purchase anonymously without logging in, and handle purchase redemption in your mobile app.
+- **Web Paywalls**: Present a RevenueCat paywall on the web, attache to a Paddle checkout.
+- **Web Purchase Button**: Present a RevenueCat paywall on mobile, which links out to a Paddle web checkout.
 
 :::info Subscriptions, products and prices are managed in Paddle
 For all of the above features, Paddle acts as the billing engine and merchant of record. This means that Paddle operates the subscription, sends receipts and emails to subscribers, and handles any subscription management. RevenueCat's Web Billing features such has Customer Portal, product configuration and tax handling are not used when integrating with Paddle.
 :::
 
-## 1. Configure your Paddle account
+### Current limitations
 
-:::info Do this in Paddle, for:
+We support purchases that contain only one product. Multiple products on a single purchase are not supported, including one-time setup fees that are included with a subscription purchase.
 
-- Sandbox ([https://sandbox-vendors.paddle.com/](https://sandbox-vendors.paddle.com/))
-- Production ([https://login.paddle.com/](https://login.paddle.com/))
+## Use cases
+
+### Use case 1: Using Paddle to import purchases and grant entitlements
+
+If you want to use a non-RevenueCat purchase flow and simply import purchases in order to grant entitlments to users, follow these steps. This use case doesn't enable any purchases that happen within a RevenueCat purchase flow, but simply import purchases that happen in your Paddle account through external flows (e.g. you integrated Paddle's checkout into your website).
+
+1. Configure your Paddle account
+1. Create a Paddle config in the RevenueCat dashboard and configure purchase tracking
+1. Create products and prices in Paddle (skip if already created)
+1. Import Paddle products to RevenueCat
+1. Create entitlements in RevenueCat
+
+### Use case 2: Using a Paddle checkout in Web Purchase Links
+
+1. Configure your Paddle account
+1. Create a Paddle config in the RevenueCat dashboard and configure purchase tracking
+1. Create products and prices in Paddle (skip if already created)
+1. Import Paddle products to RevenueCat
+1. Create entitlements in RevenueCat
+1. Create an offering and packages in RevenueCat
+1. Create and configure a web purchase link for the offering
+
+### Use case 3: Using a Paddle checkout in an app-to-web flow with RevenueCat Paywalls
+
+1. Configure your Paddle account
+1. Create a Paddle config in the RevenueCat dashboard and configure purchase tracking
+1. Create products and prices in Paddle (skip if already created)
+1. Import Paddle products to RevenueCat
+1. Create entitlements in RevenueCat
+1. Create an offering and packages in RevenueCat
+1. Create a RevenueCat paywall with a web purchase button
+
+### Use case 4: Using a Paddle checkout with the Web SDK
+
+TBD
+
+## Step-by-step instructions
+
+Follow these sections according to the use case you're implementing (above).
+
+:::info Working with sandbox environments in Paddle
+Paddle has entirely separate sandbox accounts that should be created and configured as standalone accounts. Some of the instructions below need to be repeated for both Sandbox and Production accounts.
+
+- 🟠 Sandbox dashboard URL: ([https://sandbox-vendors.paddle.com/](https://sandbox-vendors.paddle.com/))
+- 🟢 Production dashboard URL: ([https://login.paddle.com/](https://login.paddle.com/))
   :::
 
-### Add a registered payment domain
+## Configure your Paddle account
+
+:::info Do this in Paddle, for both sandbox and production accounts
+:::
+
+#### Configure registered payment domains
 
 1. Go to the **Website approval** page under Checkout
 1. Click **Add a new domain**
 1. Enter `pay.rev.cat`
 1. Click **Submit for Approval**
+1. If you're using RevenueCat's Web SDK to host purchases on your own domain, you should repeat the same steps with that domain.
 
-:::info Domain approval required on production
+:::warning Manual domain approval required on production
 
-In your production account, You'll need to Wait for approval from after adding the payment domain. No approval is required on sandbox accounts.
+In your production account, You'll need to wait for approval from after adding the payment domain. No approval is required on sandbox accounts.
 
 :::
 
-### Set a default payment link
+#### Set a default payment link
 
 Go to the [Checkout settings](https://sandbox-vendors.paddle.com/checkout-settings) page under Checkout.
 
-If your Paddle account does not already have a default payment link set, enter `https://pay.rev.cat`.
+If your Paddle account does not already have a default payment link set, enter `https://pay.rev.cat`. If a default payment link is already configured (because you're using the account for other purposes) you can leave this unchanged. It will not affect your app-to-web purchases.
 
-If a default payment link is already configured (because you're using the account for other purposes) you can leave this unchanged. It will not affect your app-to-web purchases.
-
-### Disable abandoned cart emails
+#### Disable abandoned cart emails
 
 The RevenueCat Paddle Billing integration doesn't currently support Paddle's abandoned cart emails. You should disable them [here](https://developer.paddle.com/build/checkout/checkout-recovery#configure-checkout-recovery)
 
-### Add a new API key and define permissions
+#### Add a new API key and define permissions
 
 1. Navigate to the [Authentication](https://sandbox-vendors.paddle.com/authentication-v2) page under Developer Tools
 1. Click the **+ New API key** button
@@ -96,36 +145,45 @@ The RevenueCat Paddle Billing integration doesn't currently support Paddle's aba
 If you close the modal showing the full API key, you will no longer be able to copy it — we recommend you leave this window open until you've saved the key in the RevenueCat config.
 :::
 
-## 2. Create Paddle config in RevenueCat dashboard
+## Create Paddle config in RevenueCat dashboard and configure purchase tracking
 
-:::info Do this in RevenueCat, for:
-
-- Sandbox
-- Production (separate config required)
-
-:::
-
-1. Log in to your RevenueCat account
+1. Log into your RevenueCat account
 1. Go to your project
 1. Go to **Apps & providers**
 1. Add a new web configuration
 1. Select the Paddle provider
 1. Click **Set secret**, paste your Paddle API key and click **Set**
+1. **Configure purchase tracking**:
 
-For this use case, we recommend selecting:
+For most use cases, we recommend selecting the following:
 
-**Automatic purchase tracking** — this tracks all purchases from the Paddle account using webhooks, with no additional setup required.
-**Autogenerated user IDs** — because we're sending users directly from the mobile app, an app user ID will already be provided and associated to the purchase.
+- **Automatic purchase tracking** — this tracks all purchases from the Paddle account using webhooks, with no additional setup required.
+- **Autogenerated user IDs** — because we're sending users directly from the mobile app, an app user ID will already be provided and associated to the purchase. Read more about [tracking purchases from server-to-server notifications](/platform-resources/server-notifications/paddle-server-notifications#tracking-new-purchases-using-paddle-server-notifications).
 
 Finally, click **Connect to Paddle** to initiate and test the connection.
 
-## 3. Create products and prices in Paddle
+#### Manual purchase tracking (optional, advanced)
 
-:::info Do this in Paddle, for:
+You can send your Paddle subscriptions to RevenueCat through the [POST receipt endpoint](/migrating-to-revenuecat/migrating-existing-subscriptions/receipt-imports).
 
-- Sandbox ([https://sandbox-vendors.paddle.com/](https://sandbox-vendors.paddle.com/))
-- Production ([https://login.paddle.com/](https://login.paddle.com/))
-  :::
+The only required fields when sending your Paddle purchase to the RevenueCat API are the following:
+
+- `fetch_token`: Your Paddle subscription ID (`sub_...`) OR your Paddle transaction ID (`txn_...`)
+- `app_user_id`: The App User ID that the subscription should be applied to
+
+**Headers**
+
+- `X-Platform`: Should be set to `paddle`.
+- `Authorization`: It should be `Bearer YOUR_REVENUECAT_PADDLE_APP_PUBLIC_API_KEY`
+
+import curlContent from "@site/code_blocks/getting-started/paddle_1.curl?raw";
+
+<RCCodeBlock tabs={[{ type: "curl", content: curlContent }]} />
+
+## Create products and prices in Paddle
+
+:::info Do this in Paddle, for sandbox and production.
+:::
 
 :::info Product Mapping between RevenueCat and Paddle
 A Price in Paddle maps to a Product in the RevenueCat system. So for example, if you create two prices under the same Paddle product, when you import or manually create the products in the RevenueCat dashboard, you'll notice two separate products.
@@ -153,15 +211,9 @@ The "price name" field defines to what is shown to users in the checkout, as a r
 
 You can read more about **products and prices** in [Paddle's official documentation](https://developer.paddle.com/build/products/create-products-prices).
 
-## 5. Create entitlements in RevenueCat
+## Create entitlements in RevenueCat
 
-:::info Do this in RevenueCat, for:
-
-- Sandbox
-- Production
-  :::
-
-### What is an entitlement?
+#### What is an entitlement?
 
 RevenueCat Entitlements represent a level of access, features, or content that a user is "entitled" to, and are typically unlocked after a user purchases a product.
 
@@ -171,24 +223,18 @@ Most apps only have one entitlement, unlocking all premium features. However, if
 
 [Read more about entitlements](../../getting-started/entitlements)
 
-### Adding an entitlement
+#### Adding an entitlement
 
 1. Go to the **Product catalog** in your RevenueCat dashboard, and select the **Entitlements** tab
 1. Click **+ New entitlement**
 1. Enter an identifier and description for the entitlement, and click **Add**
 
-### Attaching a product to your entitlement
+#### Attaching a product to your entitlement
 
 1. Go to your previously created entitlenment and click **Attach** under associated products
 1. In the table, check the product from your Paddle provider, and click **Attach**
 
-## 6. Create an offering & packages in RevenueCat
-
-:::info Do this in RevenueCat, for:
-
-- Sandbox
-- Production
-  :::
+## Create an offering & packages in RevenueCat
 
 1. Go to the **Product catalog** in your RevenueCat dashboard, and select the **Offerings** tab
 1. Click **New offering** to create a new offering
@@ -198,40 +244,3 @@ Most apps only have one entitlement, unlocking all premium features. However, if
 1. Enter a description
 1. In the products list, find your previously-created Paddle provider and select the corresponding Paddle product (this should correspond with the billing cycle you chose in the identifier)
 1. Click **Save**
-
-## 5. Send Paddle tokens to RevenueCat
-
-:::danger Crucial step
-Failure to complete this step will result in untracked Paddle subscriptions in RevenueCat.
-:::
-
-The following sections provide step-by-step instructions for two methods of sending Paddle tokens to RevenueCat. Whether you prefer a manual integration through the API or automated processing using the "Track new purchases from server-to-sever notifications" feature, this section will guide you in setting up your configuration to ensure all purchases are tracked.
-
-### Manually through our API
-
-You can send your Paddle subscriptions to RevenueCat through the [POST receipt endpoint](/migrating-to-revenuecat/migrating-existing-subscriptions/receipt-imports).
-
-The only required fields when sending your Paddle purchase to the RevenueCat API are the following:
-
-- `fetch_token`: Your Paddle subscription ID (`sub_...`) OR your Paddle transaction ID (`txn_...`)
-- `app_user_id`: The App User ID that the subscription should be applied to
-
-**Headers**
-
-- `X-Platform`: Should be set to `paddle`.
-- `Authorization`: It should be `Bearer YOUR_REVENUECAT_PADDLE_APP_PUBLIC_API_KEY`
-
-import curlContent from "@site/code_blocks/getting-started/paddle_1.curl?raw";
-
-<RCCodeBlock tabs={[{ type: "curl", content: curlContent }]} />
-
-### Track new purchases from server-to-server-notifications
-
-RevenueCat can automatically process Paddle tokens sent through server-to-server notifications. To enable automatic processing of Paddle purchases, ensure the following features are enabled:
-
-- [Paddle Server Notifications](/platform-resources/server-notifications/paddle-server-notifications)
-- [Track new purchases from server-to-server notifications](/platform-resources/server-notifications/paddle-server-notifications#tracking-new-purchases-using-paddle-server-notifications)
-
-## Limitations of the Paddle integration
-
-- We support purchases that contain only one product. Multiple products on a single purchase are not supported.
