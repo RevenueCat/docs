@@ -15,7 +15,7 @@ For apps available outside the U.S. App Store, Apple still requires that digital
 
 ## Supported features:
 
-- **Importing Paddle purchases to RevenueCat**: Let subscribers purchase on your own website using Paddle, and automatically unlock mobile entitlements based on the Paddle subscription.
+- **Import and sync external Paddle purchases**: Let subscribers purchase on your own website using Paddle, and use them to unlock mobile entitlements for your users.
 - **Embedded Paddle checkout (Web SDK)**: Use RevenueCat's [purchases-js SDK](../web-billing/web-sdk) to initialize a purchase in your web app that uses a Paddle checkout, and creates subscriptions in Paddle Billing.
 - **Embedded Paddle checkout (Web Purchase Links)**: Create a [revenuecat-hosted purchase flow](../web-billing/web-purchase-links) which uses a Paddle checkout, and creates subscriptions in Paddle Billing.
 - **Redemption Links**: Allow users to purchase anonymously without logging in, and handle purchase redemption in your mobile app.
@@ -32,39 +32,52 @@ We support purchases that contain only one product. Multiple products on a singl
 
 ## Use cases
 
+Choose the relevant use case below, then follow each section to implement it.
+
 ### Use case 1: Using Paddle to import purchases and grant entitlements
 
 If you want to use a non-RevenueCat purchase flow and simply import purchases in order to grant entitlments to users, follow these steps. This use case doesn't enable any purchases that happen within a RevenueCat purchase flow, but simply import purchases that happen in your Paddle account through external flows (e.g. you integrated Paddle's checkout into your website).
 
-1. Configure your Paddle account
-1. Create a Paddle config in the RevenueCat dashboard and configure purchase tracking
-1. Create products and prices in Paddle (skip if already created)
-1. Import Paddle products to RevenueCat
-1. Create entitlements in RevenueCat
+1. [Configure your Paddle account](#configure-your-paddle-account)
+1. [Create a Paddle config and configure purchase tracking](#create-a-paddle-config-and-configure-purchase-tracking)
+1. [Create products and prices in Paddle](#create-products-and-prices-in-paddle) (skip if already created)
+1. [Import Paddle products to RevenueCat](#import-paddle-products-to-revenuecat)
+1. [Create entitlements in RevenueCat](#create-entitlements-in-revenuecat)
 
 ### Use case 2: Using a Paddle checkout in Web Purchase Links
 
-1. Configure your Paddle account
-1. Create a Paddle config in the RevenueCat dashboard and configure purchase tracking
-1. Create products and prices in Paddle (skip if already created)
-1. Import Paddle products to RevenueCat
-1. Create entitlements in RevenueCat
-1. Create an offering and packages in RevenueCat
-1. Create and configure a web purchase link for the offering
+1. [Configure your Paddle account](#configure-your-paddle-account)
+1. [Create a Paddle config and configure purchase tracking](#create-a-paddle-config-and-configure-purchase-tracking)
+1. [Configure purchase redemption on mobile with Redemption Links](#configure-purchase-redemption-on-mobile-with-redemption-links) (optional)
+1. [Create products and prices in Paddle](#create-products-and-prices-in-paddle) (skip if already created)
+1. [Import Paddle products to RevenueCat](#import-paddle-products-to-revenuecat)
+1. [Create entitlements in RevenueCat](#create-entitlements-in-revenuecat)
+1. [Create an offering and packages in RevenueCat](#create-an-offering--packages-in-revenuecat)
+1. [Create and configure a web purchase link](#create-and-configure-a-web-purchase-link)
+1. [Test the purchase flow in Sandbox](#testing-in-sandbox)
 
 ### Use case 3: Using a Paddle checkout in an app-to-web flow with RevenueCat Paywalls
 
-1. Configure your Paddle account
-1. Create a Paddle config in the RevenueCat dashboard and configure purchase tracking
-1. Create products and prices in Paddle (skip if already created)
-1. Import Paddle products to RevenueCat
-1. Create entitlements in RevenueCat
-1. Create an offering and packages in RevenueCat
-1. Create a RevenueCat paywall with a web purchase button
+1. [Configure your Paddle account](#configure-your-paddle-account)
+1. [Create a Paddle config and configure purchase tracking](#create-a-paddle-config-and-configure-purchase-tracking)
+1. [Create products and prices in Paddle](#create-products-and-prices-in-paddle) (skip if already created)
+1. [Import Paddle products to RevenueCat](#import-paddle-products-to-revenuecat)
+1. [Create entitlements in RevenueCat](#create-entitlements-in-revenuecat)
+1. [Create an offering and packages in RevenueCat](#create-an-offering--packages-in-revenuecat)
+1. [Create a RevenueCat paywall with a web purchase button](#create-and-configure-a-web-purchase-link)
+1. [Test the purchase flow in Sandbox](#testing-in-sandbox)
 
 ### Use case 4: Using a Paddle checkout with the Web SDK
 
-TBD
+1. [Configure your Paddle account](#configure-your-paddle-account)
+1. [Create a Paddle config and configure purchase tracking](#create-a-paddle-config-and-configure-purchase-tracking)
+1. [Configure purchase redemption on mobile with Redemption Links](#configure-purchase-redemption-on-mobile-with-redemption-links) (optional)
+1. [Create products and prices in Paddle](#create-products-and-prices-in-paddle) (skip if already created)
+1. [Import Paddle products to RevenueCat](#import-paddle-products-to-revenuecat)
+1. [Create entitlements in RevenueCat](#create-entitlements-in-revenuecat)
+1. [Create an offering and packages in RevenueCat](#create-an-offering--packages-in-revenuecat)
+1. Implement the purchases-js Web SDK in your web app or landing page
+1. [Test the purchase flow in Sandbox](#testing-in-sandbox)
 
 ## Step-by-step instructions
 
@@ -145,7 +158,7 @@ The RevenueCat Paddle Billing integration doesn't currently support Paddle's aba
 If you close the modal showing the full API key, you will no longer be able to copy it — we recommend you leave this window open until you've saved the key in the RevenueCat config.
 :::
 
-## Create Paddle config in RevenueCat dashboard and configure purchase tracking
+## Create a Paddle config and configure purchase tracking
 
 1. Log into your RevenueCat account
 1. Go to your project
@@ -180,6 +193,14 @@ import curlContent from "@site/code_blocks/getting-started/paddle_1.curl?raw";
 
 <RCCodeBlock tabs={[{ type: "curl", content: curlContent }]} />
 
+## Configure purchase redemption on mobile with Redemption Links
+
+:::info optional step to enable anonymous purchases
+If you're building a web-to-app flow and want to enable purchases without a login, where users are deep-linked into the app post-purchase, you should configure Redemption Links. Without this, you'd need to append user IDs to web purchase links to identify the user.
+:::
+
+Follow the [Redemption Links guide](../web-billing/redemption-links) to configure the customer URL scheme and purchase redemption step in the mobile SDK.
+
 ## Create products and prices in Paddle
 
 :::info Do this in Paddle, for sandbox and production.
@@ -210,6 +231,14 @@ The "price name" field defines to what is shown to users in the checkout, as a r
 ![](/docs_images/web/paddle/create-price.png)
 
 You can read more about **products and prices** in [Paddle's official documentation](https://developer.paddle.com/build/products/create-products-prices).
+
+## Import Paddle products to RevenueCat
+
+1. Go to the **Product catalog** in your RevenueCat dashboard, and select the **Products** tab
+1. Find your previously added Paddle provider, and click **Import**
+1. Check the products you want to use for your web purchases, and click **Import**
+
+The imported products should now be displayed under your Paddle provider on the Products page.
 
 ## Create entitlements in RevenueCat
 
@@ -244,3 +273,80 @@ Most apps only have one entitlement, unlocking all premium features. However, if
 1. Enter a description
 1. In the products list, find your previously-created Paddle provider and select the corresponding Paddle product (this should correspond with the billing cycle you chose in the identifier)
 1. Click **Save**
+
+## Create and configure a web purchase link
+
+1. Click **Web** in the left menu of the **Project** dashboard
+1. Click **Create web purchase link**
+1. For the **Offering**, choose the offering you created earlier
+1. For the **Payment provider**, choose the Paddle config you created earlier
+1. Enter a suitable header and subheader for the package selection page, along with a link to terms & conditions
+
+:::info Package selection skipped by default for web-to-app purchases
+When linking to a web purchase from a RevenueCat paywall, by default the package selection page will be skipped and subscribers will land directly on the checkout with the package selected.
+:::
+
+### Configure the success redirect
+
+To redirect the subscriber back into to your app after the purchase, you can use a custom URL scheme (see instructions below). You could alternatively redirect the subscriber to a [Universal Link](https://developer.apple.com/documentation/xcode/supporting-universal-links-in-your-app), or your own custom page.
+
+**To add a custom URL scheme in iOS:**
+
+1. In Xcode, find your xcodeproj file — Info tab — **URL Types** section.
+1. Then add your custom scheme in the **URL Schemes** field.
+
+**Adding your custom URL scheme in the web purchase link redirect:**
+
+Select the **Redirect to a custom success page** option, and enter your URL scheme in the format `YOUR_CUSTOM_SCHEME://`.
+
+:::warning Important: URL schemes on production can require app updates
+In order to use a URL scheme on production, your users must be using a version of your app that has the URL scheme configured. Distribute app updates before enabling this feature.
+:::
+
+#### Configure the repeat purchase behavior
+
+Define what happens when customers to purchase a product while they already have an active subscription or entitlement. For the app-to-web use case, it's recommended to choose **Show the success page**.
+
+:::info Re-purchasing same product not possible
+Note that customers can't have more than one active subscription to the same product, or re-purchase a non-consumable product.
+:::
+
+## Create a RevenueCat paywall with a web purchase button
+
+**If you have an existing mobile paywall configured:**
+
+1. Make sure your existing paywall is attached to the same offering you've configured for web purchases
+1. Add a web purchase button to your paywall ([Read more](https://www.revenuecat.com/docs/tools/paywalls/creating-paywalls/web-purchase-button))
+
+**If you don't have a mobile paywall configured:**
+
+1. Go to **Paywalls** in the RevenueCat dashboard
+1. Select **+ New paywall**
+1. Choose the offering you created earlier in this guide and click **Add**
+1. [follow this detailed guide](../../tools/paywalls/creating-paywalls) on creating a paywall, and add the mobile packages you want to present.
+1. Add a web purchase button to your paywall ([Read more](https://www.revenuecat.com/docs/tools/paywalls/creating-paywalls/web-purchase-button))
+
+## Integrate the Web SDK into your web app
+
+Follow the [SDK integration guide](http://localhost:3030/docs/web/web-billing/web-sdk#sdk-configuration) to complete the integration.
+
+## Testing in Sandbox
+
+To test the web checkout in sandbox mode, make sure that you:
+
+- Have a paddle config created connected to a Paddle sandbox account
+- Have products and entitlements from that sandbox account
+- Have configured an offering
+- Have created a web purchase link to present your products & packages (not required for Web SDK integrations)
+
+### Testing with a sandbox Web Purchase Link
+
+You can find the sandbox purchase URL by
+
+1. Click **Web** in the left menu of the **Project** dashboard
+1. Click the name of your web purchase link in the **Web purchase links** table
+1. Click **Share URL**
+1. Append a user ID
+1. Click **Copy sandbox URL**
+
+To complete purchases on sandbox, you can use [Paddle's test cards](https://developer.paddle.com/v1/concepts/payment-methods/credit-debit-card#test-payment-method) to simulate a real transaction.
