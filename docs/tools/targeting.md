@@ -138,8 +138,8 @@ Arbitrary key/value pairs that you can define and set for individual customers. 
 
 **Country**:
 
-The storefront a customer is currently using on supported SDK versions\*, or their geolocation otherwise.
-\*Available on all SDK versions from late 2023 and beyond.
+The storefront a customer is currently using on supported SDK versions, **or their geolocation otherwise.**
+Available on all SDK versions from late 2023 and beyond.
 
 **App**:
 
