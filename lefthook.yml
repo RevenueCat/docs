@@ -1,7 +1,7 @@
 # https://lefthook.dev/configuration/
 
-skip_output:
-  - execution_out
+output:
+  - summary
 pre-commit:
   parallel: true
   jobs:
