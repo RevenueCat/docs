@@ -861,6 +861,70 @@ paths:
               schema:
                 "$ref": "#/components/schemas/Subscriber"
       deprecated: false
+  "/subscribers/{app_user_id}/subscriptions/{store_transaction_identifier}/extend":
+    post:
+      summary: "App Store: Extend a Subscription"
+      tags:
+        - transactions
+      description: |
+        Extends the renewal date of an auto-renewable subscription for up to 90 days for a specific customer.
+        
+        This uses Apple's [Extend a Subscription Renewal Date](https://developer.apple.com/documentation/appstoreserverapi/extend_a_subscription_renewal_date) API.
+        
+        **Requires a v1 Secret API key.**
+        
+        Note: Apple limits subscription extensions to two per year per customer.
+      operationId: extend-an-apple-subscription
+      parameters:
+        - name: app_user_id
+          in: path
+          description: The App User ID of the Customer.
+          schema:
+            type: string
+          required: true
+        - name: store_transaction_identifier
+          in: path
+          description: "The identifier of the transaction to extend. This is the `original_transaction_id` from Apple. Example: 1000000819074923"
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - extend_by_days
+                - extend_reason_code
+              properties:
+                extend_by_days:
+                  type: integer
+                  minimum: 1
+                  maximum: 90
+                  description: The number of days to extend the subscription renewal date. Must be between 1 and 90.
+                  example: 30
+                extend_reason_code:
+                  type: integer
+                  minimum: 0
+                  maximum: 3
+                  description: |
+                    The reason code for the subscription extension. See Apple's [extendReasonCode](https://developer.apple.com/documentation/appstoreserverapi/extendreasoncode) documentation.
+                    - `0`: Undeclared - The renewal-date extension reason is undeclared.
+                    - `1`: Customer Satisfaction - The renewal-date extension is for customer satisfaction.
+                    - `2`: Other - The renewal-date extension is for a reason other than the ones listed.
+                    - `3`: Service Issue or Outage - The renewal-date extension is due to a service issue or outage.
+                  example: 1
+      responses:
+        "200":
+          description: |
+            Subscription was successfully extended.
+
+            Returns the updated [Customer Info](#tag/customer_info_model) for the Customer.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Subscriber"
+      deprecated: false
 security:
   - BearerAuth: []
 components:
