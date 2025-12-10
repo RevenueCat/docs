@@ -873,7 +873,7 @@ paths:
         
         **Requires a v1 Secret API key.**
         
-        Note: Apple limits subscription extensions to two per year per customer.
+        Note: Apple limits subscription extensions to two per year per customer. Apple immediately sends the customer an email notification of the extension.
       operationId: extend-an-apple-subscription
       parameters:
         - name: app_user_id
@@ -884,7 +884,7 @@ paths:
           required: true
         - name: store_transaction_identifier
           in: path
-          description: "The identifier of the transaction to extend. This is the `original_transaction_id` from Apple. Example: 1000000819074923"
+          description: "The store transaction identifier of the subscription to extend. Can be original transaction identifier or renewal transaction identifier. Example: 1000000819074923"
           schema:
             type: string
           required: true
