@@ -30,7 +30,7 @@ const AIToolsContainer = ({}: AIToolsContainerProps) => {
     const markdown = await fetch(copyAsMarkdownProvider.baseUrl).then(
       (response) => response.text(),
     );
-    navigator.clipboard.writeText(markdown);
+    void navigator.clipboard.writeText(markdown);
 
     setCopied(true);
     setTimeout(() => {
