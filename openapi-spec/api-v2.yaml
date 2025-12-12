@@ -25,6 +25,8 @@ tags:
   description: Operations about invoices.
 - name: Paywall
   description: Operations about paywalls.
+- name: Integration
+  description: Operations about integrations.
 - name: Project
   description: Operations about projects.
 - name: Subscription Data Model
@@ -1764,6 +1766,309 @@ paths:
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read</code>,
         <code>customer_information:customers:read_write</code>.'
+  /projects/{project_id}/integrations/webhooks:
+    get:
+      summary: List webhook integrations
+      operationId: list-webhook-integrations
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:integrations:read
+      x-release-status: public
+      tags:
+      - Integration
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: starting_after
+        in: query
+        required: false
+        schema:
+          type: string
+          example: ent12354
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          example: 10
+          default: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListWebhookIntegrations'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:integrations:read</code>.'
+    post:
+      summary: Create a webhook integration
+      operationId: create-webhook-integration
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:integrations:read_write
+      x-release-status: public
+      tags:
+      - Integration
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWebhookIntegrationInput'
+              additionalProperties: false
+      responses:
+        '201':
+          description: Webhook integration created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookIntegration'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:integrations:read_write</code>.'
+  /projects/{project_id}/integrations/webhooks/{webhook_integration_id}:
+    get:
+      summary: Get a webhook integration
+      operationId: get-webhook-integration
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:integrations:read
+      x-release-status: public
+      tags:
+      - Integration
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: webhook_integration_id
+        in: path
+        description: The ID of the webhook integration
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+        example: wh_1234567890abcdef
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookIntegration'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:integrations:read</code>.'
+    post:
+      summary: Update a webhook integration
+      operationId: update-webhook-integration
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:integrations:read_write
+      x-release-status: public
+      tags:
+      - Integration
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: webhook_integration_id
+        in: path
+        description: The ID of the webhook integration
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+        example: wh_1234567890abcdef
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWebhookIntegrationInput'
+              additionalProperties: false
+      responses:
+        '200':
+          description: Webhook integration updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookIntegration'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:integrations:read_write</code>.'
+    delete:
+      summary: Delete a webhook integration
+      operationId: delete-webhook-integration
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:integrations:read_write
+      x-release-status: public
+      tags:
+      - Integration
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: webhook_integration_id
+        in: path
+        description: The ID of the webhook integration
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+        example: wh_1234567890abcdef
+      responses:
+        '200':
+          description: Webhook integration deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedObject'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:integrations:read_write</code>.'
   /projects/{project_id}/products/{product_id}:
     get:
       summary: Get a product
@@ -6137,6 +6442,52 @@ components:
           maxLength: 255
           description: The ID of the subscription group (optional)
       additionalProperties: false
+    CreateWebhookIntegrationInput:
+      type: object
+      required:
+      - name
+      - url
+      properties:
+        name:
+          description: The display name of the webhook integration
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: Customer updates webhook
+        url:
+          description: The URL RevenueCat will send webhook notifications to
+          type: string
+          format: uri
+          maxLength: 5000
+          example: https://hooks.example.com/revenuecat
+        authorization_header:
+          description: Optional authorization header that will be sent with webhook
+            notifications
+          type: string
+          nullable: true
+          maxLength: 5000
+          example: Bearer 123456
+        environment:
+          description: The environment the webhook integration is configured for
+          type: string
+          nullable: true
+          enum:
+          - production
+          - sandbox
+          - null
+        event_types:
+          description: Event types that will trigger the webhook
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/WebhookEventType'
+        app_id:
+          description: The ID of the app the webhook integration is scoped to
+          type: string
+          nullable: true
+          minLength: 1
+          maxLength: 255
+          example: app_1234567890abcdef
     Currency:
       type: string
       description: ISO 4217 currency code
@@ -6558,6 +6909,7 @@ components:
           - offering
           - package
           - product
+          - webhook_integration
           type: string
         id:
           description: The ID of the deleted object
@@ -7384,6 +7736,39 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/virtual_currencies
+      additionalProperties: false
+    ListWebhookIntegrations:
+      required:
+      - items
+      - object
+      - url
+      title: WebhookIntegrationList
+      type: object
+      properties:
+        object:
+          description: 'String representing the object''s type. Objects of the same
+            type share the
+
+            same value.'
+          enum:
+          - list
+          type: string
+        items:
+          description: Webhook integrations configured for the project.
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookIntegration'
+        next_page:
+          description: URL to access the next page of webhook integrations. If not
+            present / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/proj1ab2c3d4/integrations/webhooks?starting_after=whintgr1a2b3c4d
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/proj1ab2c3d4/integrations/webhooks
       additionalProperties: false
     MacAppStoreApp:
       type: object
@@ -8890,6 +9275,49 @@ components:
         target_customer:
           description: The target customer after the transfer
           $ref: '#/components/schemas/Customer'
+    UpdateWebhookIntegrationInput:
+      type: object
+      properties:
+        name:
+          description: The display name of the webhook integration
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: Customer updates webhook
+        url:
+          description: The URL RevenueCat will send webhook notifications to
+          type: string
+          format: uri
+          maxLength: 5000
+          example: https://hooks.example.com/revenuecat
+        authorization_header:
+          description: Optional authorization header that will be sent with webhook
+            notifications
+          type: string
+          nullable: true
+          maxLength: 5000
+          example: Bearer 123456
+        environment:
+          description: The environment the webhook integration is configured for
+          type: string
+          nullable: true
+          enum:
+          - production
+          - sandbox
+          - null
+        event_types:
+          description: Event types that will trigger the webhook
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/WebhookEventType'
+        app_id:
+          description: The ID of the app the webhook integration is scoped to
+          type: string
+          nullable: true
+          minLength: 1
+          maxLength: 255
+          example: app_1234567890abcdef
     VirtualCurrencyBalance:
       type: object
       title: VirtualCurrencyBalance
@@ -8916,6 +9344,109 @@ components:
         name:
           description: The name of the virtual currency.
           type: string
+      additionalProperties: false
+    WebhookEventType:
+      type: string
+      description: The type of event that triggers the webhook
+      example: initial_purchase
+      enum:
+      - initial_purchase
+      - renewal
+      - product_change
+      - cancellation
+      - billing_issue
+      - non_renewing_purchase
+      - uncancellation
+      - transfer
+      - subscription_paused
+      - expiration
+      - subscription_extended
+      - invoice_issuance
+      - temporary_entitlement_grant
+      - refund_reversed
+      - virtual_currency_transaction
+      additionalProperties: false
+    WebhookIntegration:
+      type: object
+      required:
+      - id
+      - name
+      - url
+      - project_id
+      - object
+      - created_at
+      - app_id
+      - environment
+      properties:
+        object:
+          description: 'String representing the object''s type. Objects of the same
+            type share the
+
+            same value.'
+          enum:
+          - webhook_integration
+          type: string
+        id:
+          description: The ID of the webhook integration
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: wh_1234567890abcdef
+        project_id:
+          description: The ID of the project the webhook integration belongs to
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: proj_1234567890abcdef
+        name:
+          description: The display name of the webhook integration
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: Customer updates webhook
+        url:
+          description: The URL RevenueCat will send webhook notifications to
+          type: string
+          format: uri
+          maxLength: 5000
+          example: https://hooks.example.com/revenuecat
+        environment:
+          description: The environment the webhook integration is configured for.
+            Only events for the selected environment will be sent.
+          type: string
+          nullable: true
+          enum:
+          - production
+          - sandbox
+          - null
+        event_types:
+          description: Event types that will trigger the webhook. Only events for
+            the selected event types will be sent.
+          type: array
+          nullable: true
+          items:
+            type: string
+            description: 'The event type. Known values include: initial_purchase,
+              renewal, product_change, cancellation, billing_issue, non_renewing_purchase,
+              uncancellation, transfer, subscription_paused, expiration, subscription_extended,
+              invoice_issuance, temporary_entitlement_grant, refund_reversed, virtual_currency_transaction.
+              New event types may be added in the future.'
+            example: initial_purchase
+        app_id:
+          description: The ID of the app the webhook integration is scoped to. If
+            not provided, the webhook integration will be scoped to all apps in the
+            project.
+          type: string
+          nullable: true
+          minLength: 1
+          maxLength: 255
+          example: app_1234567890abcdef
+        created_at:
+          description: The timestamp in ms since epoch when the webhook integration
+            was created
+          type: integer
+          format: int64
+          example: 1658399423658
       additionalProperties: false
   headers:
     RateLimitCurrentLimit:
@@ -9190,5 +9721,6 @@ x-tagGroups:
   - Subscription
   - Invoice
   - Paywall
+  - Integration
   - Project
 openapi: 3.0.3
