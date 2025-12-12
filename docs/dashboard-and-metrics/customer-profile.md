@@ -208,6 +208,8 @@ You can read more about the reason codes in Apple's documentation: [Extend a Sub
 
 In sandbox, the number of days value equals the number of minutes the subscription will be extended for.
 
+Apple subscriptions can also be extended via the API: [Extend a Subscription Renewal Date](/docs/api-v1#tag/transactions/operation/extend-an-apple-subscription).
+
 #### Google Play Subscription Deferrals
 
 Google refers to subscription extensions as **Deferrals**. Google Play subscription renewals can be deferred via the API: [Defer a Google Play Subscription](/docs/api-v1#tag/transactions/operation/defer-a-google-subscription).
