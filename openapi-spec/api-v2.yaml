@@ -6408,7 +6408,6 @@ components:
       - ZM
       - ZW
       - AX
-      additionalProperties: false
     CreateAppStoreConnectInAppPurchaseInput:
       type: object
       properties: {}
@@ -6664,7 +6663,6 @@ components:
       - ZAR
       - ZMW
       - ZWL
-      additionalProperties: false
     Customer:
       type: object
       required:
@@ -6808,7 +6806,6 @@ components:
       maxLength: 40
       pattern: ^[a-zA-Z][a-zA-Z0-9_-]*$
       example: opt_into_marketing
-      additionalProperties: false
     CustomerAttributeReservedName:
       type: string
       enum:
@@ -6864,7 +6861,6 @@ components:
       - $tenjinId
       - $deviceVersion
       example: $email
-      additionalProperties: false
     CustomerEntitlement:
       type: object
       required:
@@ -6935,7 +6931,6 @@ components:
       - P3M
       - P6M
       - P1Y
-      additionalProperties: false
     EligibilityCriteria:
       type: string
       nullable: false
@@ -7035,7 +7030,6 @@ components:
       enum:
       - production
       - sandbox
-      additionalProperties: false
     Error:
       type: object
       required:
@@ -8044,7 +8038,6 @@ components:
       enum:
       - purchased
       - family_shared
-      additionalProperties: false
     Package:
       type: object
       required:
@@ -8366,7 +8359,6 @@ components:
       - consumable
       - non_consumable
       - non_renewing_subscription
-      additionalProperties: false
     ProductsFromEntitlement:
       type: object
       required:
@@ -8820,7 +8812,6 @@ components:
       - ZAR
       - TRY
       - UAH
-      additionalProperties: false
     RokuApp:
       type: object
       properties:
@@ -9365,7 +9356,6 @@ components:
       - temporary_entitlement_grant
       - refund_reversed
       - virtual_currency_transaction
-      additionalProperties: false
     WebhookIntegration:
       type: object
       required:
