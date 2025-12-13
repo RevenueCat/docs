@@ -11,7 +11,7 @@ filtered_subscription_transactions AS (
         OR effective_end_time BETWEEN [targeted_start_date] and [targeted_end_date])
         /* Exclude trials, which do not contribute to MRR */
         AND is_trial_period = 'false'
-        AND DATE_DIFF('s', start_time, end_time)::float > 0
+        AND end_time > start_time
         AND ownership_type != 'FAMILY_SHARED'
         AND store != 'promotional'
         AND is_sandbox != 'true'),
