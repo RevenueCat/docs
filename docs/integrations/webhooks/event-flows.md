@@ -101,7 +101,7 @@ Immediate changes occur:
 
 ### Product Change at Period End
 
-In the case of a product change at period end, a `PRODUCT_CHANGE` event will immediately be sent informing of the upcoming product change. The customer will retain their entitlement based on the original product. When the customer encounters their next renewal, a `RENEWAL` event will be dispatched (for App Store subscriptions) or an `INITIAL_PURCHASE` event (for Google Play subscriptions). The user will be billed at the new product's price, and the user’s entitlements will be replaced by the entitlements from the new product.
+In the case of a product change at period end, a `PRODUCT_CHANGE` event will immediately be sent informing of the upcoming product change. The customer will retain their entitlement based on the original product. When the customer encounters their next renewal, a `RENEWAL` event will be dispatched for both App Store and Google Play subscriptions. The user will be billed at the new product's price, and the user's entitlements will be replaced by the entitlements from the new product.
 
 Changes at period end occur:
 
