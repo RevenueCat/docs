@@ -489,8 +489,7 @@ html[data-theme="dark"] .medium-zoom-overlay {
   background-color: rgba(0, 0, 0, 0.9) !important;
 }
 
-a[href="https://redocly.com/redoc/"]
-{
+a[href="https://redocly.com/redoc/"] {
   display: none !important;
 }
 
@@ -1161,6 +1160,40 @@ html[data-theme="dark"] {
   --button-error-top: #d83f47;
   --button-error-bottom: #c42b33;
   --button-error-active: #e16b71;
+}
+
+/* Markdown table styling for dark mode in Redocusaurus */
+html[data-theme="dark"] .redocusaurus table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+html[data-theme="dark"] .redocusaurus table th {
+  background-color: var(--surface-secondary);
+  color: var(--text-primary);
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+html[data-theme="dark"] .redocusaurus table td {
+  background-color: var(--surface-primary);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.75rem;
+}
+
+html[data-theme="dark"] .redocusaurus table tr:nth-child(even) td {
+  background-color: var(--surface-tertiary);
+}
+
+/* Override Redocusaurus rule that removes bottom border from first column in last row */
+html[data-theme="dark"] .redocusaurus table tr:last-child td:nth-child(1) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* Google Play Checklist - InteractiveCheckbox styles */
