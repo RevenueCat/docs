@@ -1,8 +1,7 @@
 async function applyPromotionalExtension(
   event: WebhookEvent["event"]
 ): Promise<void> {
-  const { store, app_user_id, transaction_id, product_id, expiration_at_ms } =
-    event;
+  const { store, app_user_id, transaction_id, product_id } = event;
 
   switch (store) {
     case "APP_STORE":
@@ -15,7 +14,7 @@ async function applyPromotionalExtension(
       // Google subscriptions use the defer endpoint with subscription ID
       // Extract subscription ID (before the colon) from product_id
       const subscriptionId = product_id.split(":")[0];
-      await deferGoogleSubscription(app_user_id, subscriptionId, expiration_at_ms);
+      await deferGoogleSubscription(app_user_id, subscriptionId);
       break;
 
     case "STRIPE":

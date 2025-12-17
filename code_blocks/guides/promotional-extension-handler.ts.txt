@@ -26,7 +26,6 @@ interface WebhookEvent {
     store: string;
     product_id: string;
     presented_offering_id: string | null;
-    expiration_at_ms: number;
     environment: string;
   };
   api_version: string;
@@ -91,8 +90,7 @@ function isEligibleForPromoExtension(event: WebhookEvent["event"]): boolean {
 async function applyPromotionalExtension(
   event: WebhookEvent["event"]
 ): Promise<void> {
-  const { store, app_user_id, transaction_id, product_id, expiration_at_ms } =
-    event;
+  const { store, app_user_id, transaction_id, product_id } = event;
 
   switch (store) {
     case "APP_STORE":
@@ -104,11 +102,7 @@ async function applyPromotionalExtension(
       // Extract subscription ID (before the colon) from product_id
       // e.g., "subscription_id:base_plan_id" -> "subscription_id"
       const subscriptionId = product_id.split(":")[0];
-      await deferGoogleSubscription(
-        app_user_id,
-        subscriptionId,
-        expiration_at_ms
-      );
+      await deferGoogleSubscription(app_user_id, subscriptionId);
       break;
 
     default:
@@ -148,16 +142,11 @@ async function extendAppleSubscription(
 
 async function deferGoogleSubscription(
   appUserId: string,
-  productId: string,
-  currentExpirationMs: number
+  subscriptionId: string
 ): Promise<void> {
-  // Calculate new expiration time by adding extension days
-  const extensionMs = PROMO_CONFIG.extensionDays * 24 * 60 * 60 * 1000;
-  const newExpirationMs = currentExpirationMs + extensionMs;
-
   const url = `https://api.revenuecat.com/v1/subscribers/${encodeURIComponent(
     appUserId
-  )}/subscriptions/${encodeURIComponent(productId)}/defer`;
+  )}/subscriptions/${encodeURIComponent(subscriptionId)}/defer`;
 
   const response = await fetch(url, {
     method: "POST",
@@ -166,7 +155,7 @@ async function deferGoogleSubscription(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      expiry_time_ms: newExpirationMs,
+      extend_by_days: PROMO_CONFIG.extensionDays,
     }),
   });
 
@@ -177,9 +166,7 @@ async function deferGoogleSubscription(
     );
   }
 
-  console.log(
-    `Deferred Google subscription to ${new Date(newExpirationMs).toISOString()}`
-  );
+  console.log(`Deferred Google subscription by ${PROMO_CONFIG.extensionDays} days`);
 }
 
 const PORT = process.env.PORT || 3000;

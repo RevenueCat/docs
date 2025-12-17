@@ -68,8 +68,8 @@ Google Play Store subscriptions can be extended using the [Defer a Subscription]
 
 | Considerations        | Details                                                   |
 | :-------------------- | :-------------------------------------------------------- |
-| Extension method      | Set a new expiry timestamp (must be in the future)        |
-| Maximum extension     | Up to one year per request                                |
+| Extension method      | Specify `extend_by_days` or set a new `expiry_time_ms`    |
+| Maximum extension     | Up to 365 days (one year) per request                     |
 | Extensions per year   | No limit                                                  |
 | Customer notification | Google does not automatically notify the customer         |
 | Product identifier    | Use the Subscription ID from RevenueCat's Product catalog |
@@ -155,15 +155,12 @@ import googleRequest from "@site/code_blocks/guides/promotional-extension-google
   tabs={[{ type: "ts", content: googleRequest, name: "Google Deferral" }]}
 />
 
-**Parameters:**
+**Parameters (one required):**
 
-| Parameter        | Type    | Description                                          |
-| :--------------- | :------ | :--------------------------------------------------- |
-| `expiry_time_ms` | integer | New expiration timestamp in milliseconds since epoch |
-
-:::tip Calculating the New Expiration
-For Google, you must calculate the new expiration time yourself. Take the current `expiration_at_ms` from the webhook and add your extension period in milliseconds.
-:::
+| Parameter        | Type    | Description                                           |
+| :--------------- | :------ | :---------------------------------------------------- |
+| `extend_by_days` | integer | Number of days to extend (1-365).                     |
+| `expiry_time_ms` | integer | New expiration timestamp in milliseconds since epoch. |
 
 ### Step 5: Complete Handler Implementation
 
