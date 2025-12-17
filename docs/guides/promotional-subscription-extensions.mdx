@@ -5,7 +5,7 @@ excerpt: Automatically extend subscriptions as a promotional offer when customer
 hidden: false
 ---
 
-Promotional subscription extensions allow you to reward customers with additional subscription time when they purchase through a specific offering or promotional campaign. This is a powerful tool for running time-limited promotions, partnership deals, or customer retention campaigns.
+Promotional subscription extensions allow you to reward customers with additional subscription time when they purchase through a specific offering or promotional campaign.
 
 For example, you might offer "Buy a monthly subscription during our holiday sale and get an extra month free!" The customer purchases the subscription at the normal price, and your backend automatically extends their subscription by the promotional period.
 
@@ -38,6 +38,12 @@ The subscription extension and deferral APIs require a **Secret API key**. Never
 ### Apple App Store
 
 Apple App Store subscriptions can be extended using the [Extend a Subscription](/api-v1#tag/transactions/operation/extend-an-apple-subscription) endpoint.
+
+:::warning Use at Your Own Discretion
+It's unclear whether using subscription extensions for promotional offers aligns with Apple's intended use of the API. Apple's documentation primarily references service outages and customer satisfaction issues as example use cases. However, there are real-world examples of apps successfully using extensions in this promotional manner.
+
+Consider your own risk tolerance and consult Apple's latest guidelines before implementing.
+:::
 
 | Considerations        | Details                                                   |
 | :-------------------- | :-------------------------------------------------------- |
