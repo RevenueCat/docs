@@ -142,10 +142,10 @@ import appleRequest from "@site/code_blocks/guides/promotional-extension-apple-r
 
 **Parameters:**
 
-| Parameter            | Type    | Description                     |
-| :------------------- | :------ | :------------------------------ |
-| `extend_by_days`     | integer | Number of days to extend (1-90) |
-| `extend_reason_code` | integer | Reason for extension (0-3)      |
+| Parameter            | Required | Type    | Description                     |
+| :------------------- | :------- | :------ | :------------------------------ |
+| `extend_by_days`     | ✅       | integer | Number of days to extend (1-90) |
+| `extend_reason_code` | ✅       | integer | Reason for extension (0-3)      |
 
 #### Google Play Store Deferral
 
@@ -157,10 +157,10 @@ import googleRequest from "@site/code_blocks/guides/promotional-extension-google
 
 **Parameters (one required):**
 
-| Parameter        | Type    | Description                                           |
-| :--------------- | :------ | :---------------------------------------------------- |
-| `extend_by_days` | integer | Number of days to extend (1-365).                     |
-| `expiry_time_ms` | integer | New expiration timestamp in milliseconds since epoch. |
+| Parameter        | Required                              | Type    | Description                                           |
+| :--------------- | :------------------------------------ | :------ | :---------------------------------------------------- |
+| `extend_by_days` | ✅ Yes, if not using `expiry_time_ms` | integer | Number of days to extend (1-365).                     |
+| `expiry_time_ms` | ✅ Yes, if not using `extend_by_days` | integer | New expiration timestamp in milliseconds since epoch. |
 
 ### Step 5: Complete Handler Implementation
 
