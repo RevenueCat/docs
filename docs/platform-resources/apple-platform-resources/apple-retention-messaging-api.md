@@ -82,7 +82,7 @@ In order to configure promotional-offer or switch-plan message, you'll need to f
 4. **Reference**: Enter a descriptive name for this message (for your internal reference)
 5. **Products**: Select which products this default message applies to
    - If no products are selected, the message applies to all products
-   - You can seelct multiple products
+   - You can select multiple products
    - These products should be overlapping with the products you're planning on configuring for either your promotional offer or switch-plan message
 6. **Customer-facing message**: Add messages for each locale you want this default message to be enabled for. For each locale, provide:
    - **Header**: The main message title (displayed prominently). Max length 66 characters
@@ -113,7 +113,7 @@ Be sure that you have at least one default message created before you promotiona
 ![](/docs_images/platform-resources/apple/retention-messaging-api/retention-messaging-api-promotional-2.png)
 
 4. **Reference**: Enter a descriptive name for this message (for your internal reference)
-5. **Eligibility requirements (optional)**: This is an optional setting where you can have custom targetting. We currently offer the following eligibility criterias:
+5. **Eligibility requirements (optional)**: This is an optional setting where you can have custom targeting. We currently offer the following eligibility criterias:
    - First seen more than N days ago
    - First purchase more than N days ago
    - Storefront in list
@@ -208,7 +208,7 @@ You must have a button in your TestFlight app to open up the "manage subscriptio
 
 **Best practices for sandbox testing:**
 
-- **Start with simple rules**: Begin with basic eligibility criteria. This would be important unless you already have existing sandbox customers that will meet your eligiblity criteria.
+- **Start with simple rules**: Begin with basic eligibility criteria. This would be important unless you already have existing sandbox customers that will meet your eligibility criteria.
 - **Test all locales**: Ensure messages work correctly in all target languages
 - **Verify product associations**: Make sure promotional offers and alternate products are correctly linked
 
