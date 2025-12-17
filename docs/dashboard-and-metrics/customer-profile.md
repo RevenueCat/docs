@@ -183,6 +183,37 @@ The entry point for refunding and cancelling purchases is the "..." menu on the 
 
 Apple doesn’t allow developers to grant refunds themselves, only through Apple customer support. However, Apple refunds are tracked with RevenueCat and accounted for in all charts and integrations.
 
+### Extending Subscription Renewal Dates
+
+You can extend the renewal date of eligible store subscriptions from the Customer Profile by clicking the ellipsis menu of a subscription and selecting "Extend Subscription".
+
+![Extend subscription](/docs_images/customers/extend-apple-subscription.png)
+
+#### Apple Subscription Extensions
+
+Apple App Store subscriptions can be extended for up to 90 days at a time. Please note:
+
+- Apple limits subscription extensions to two per year per customer.
+- Apple immediately sends the customer an email notification of the extension.
+- The customer is not charged for the extension.
+
+When extending a subscriptions, you must specify the number of days (1-90) to extend the subscription, and the reason for the extension. The reason for the extension can be one of the following:
+
+- Non-declared
+- Customer Satisfaction
+- Other
+- Service Issue or Outage
+
+You can read more about the reason codes in Apple's documentation: [Extend a Subscription Renewal Date](https://developer.apple.com/documentation/appstoreserverapi/extend_a_subscription_renewal_date).
+
+In sandbox, the number of days value equals the number of minutes the subscription will be extended for.
+
+Apple subscriptions can also be extended via the API: [Extend a Subscription Renewal Date](/api-v1#tag/transactions/operation/extend-an-apple-subscription).
+
+#### Google Play Subscription Deferrals
+
+Google refers to subscription extensions as **Deferrals**. Google Play subscription renewals can be deferred via the API: [Defer a Google Play Subscription](/api-v1#tag/transactions/operation/defer-a-google-subscription).
+
 ## Next Steps
 
 - [Granted entitlements](/dashboard-and-metrics/customer-profile#entitlements)

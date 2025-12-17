@@ -25,6 +25,8 @@ tags:
   description: Operations about invoices.
 - name: Paywall
   description: Operations about paywalls.
+- name: Integration
+  description: Operations about integrations.
 - name: Project
   description: Operations about projects.
 - name: Subscription Data Model
@@ -116,18 +118,26 @@ tags:
     \ list."
 - name: Rate Limit
   x-traitTag: true
-  description: "We will return the following headers on all successful requests:\n\
-    \n* `RevenueCat-Rate-Limit-Current-Usage`: the number of executed requests for\
-    \ the current rate limiting period, including the current request. The rate limiting\
-    \ period is one minute.\n* `RevenueCat-Rate-Limit-Current-Limit`: the limit in\
-    \ requests per minute for this endpoint\n\nIf you reach the rate limit, as indicated\
-    \ by a 429 error code, we will also include the following header:\n\n* `Retry-After`:\
-    \ the number of seconds to wait until you can retry this request.\n\nBelow is\
-    \ an example of the response body that will be sent when the rate limit is reached.\
-    \ The value of the `backoff_ms` field corresponds to the `Retry-After`` header\
-    \ but specified in milliseconds.\n\n```\n{\n  \"type\": \"rate_limit_error\",\n\
-    \  \"message\": \"Rate limit exceeded\",\n  \"retryable\": true,\n  \"doc_url\"\
-    : \"https://errors.rev.cat/rate-limit-error\",\n  \"backoff_ms\": 1000\n}\n```\n"
+  description: "API v2 uses rate limiting to prevent abuse. Rate limits are configured\
+    \ per domain, and all endpoints within the same domain share the same rate limit.\n\
+    \n## Rate Limits by Domain\n\n| Domain | Rate Limit (requests per minute) |\n\
+    |--------|-----------------------------------|\n| Customer Information | 480 |\n\
+    | Charts & Metrics | 5 |\n| Project Configuration | 60 |\n| Virtual Currencies\
+    \ - Create Transaction | 480 |\n\nEach endpoint belongs to one of these domains.\
+    \ The rate limit applies per API key (for app-level keys) or per developer (for\
+    \ developer-level keys).\n\n## Rate Limit Headers\n\nWe will return the following\
+    \ headers on all successful requests:\n\n* `RevenueCat-Rate-Limit-Current-Usage`:\
+    \ the number of executed requests for the current rate limiting period, including\
+    \ the current request. The rate limiting period is one minute.\n* `RevenueCat-Rate-Limit-Current-Limit`:\
+    \ the limit in requests per minute for this endpoint\n\nIf you reach the rate\
+    \ limit, as indicated by a 429 error code, we will also include the following\
+    \ header:\n\n* `Retry-After`: the number of seconds to wait until you can retry\
+    \ this request.\n\nBelow is an example of the response body that will be sent\
+    \ when the rate limit is reached. The value of the `backoff_ms` field corresponds\
+    \ to the `Retry-After`` header but specified in milliseconds.\n\n```\n{\n  \"\
+    type\": \"rate_limit_error\",\n  \"message\": \"Rate limit exceeded\",\n  \"retryable\"\
+    : true,\n  \"doc_url\": \"https://errors.rev.cat/rate-limit-error\",\n  \"backoff_ms\"\
+    : 1000\n}\n```\n"
 - name: Expandables
   x-traitTag: true
   description: "Expandables allow you to retrieve related data along with the request\
@@ -374,7 +384,9 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: "Create a paywall for an offering of the project.\n This endpoint\
-        \ requires the following permission(s): <code>project_configuration:offerings:read_write</code>."
+        \ requires the following permission(s): <code>project_configuration:offerings:read_write</code>.\
+        \ This endpoint belongs to the <strong>Project Configuration</strong> domain,\
+        \ which has a default rate limit of <strong>60 requests per minute</strong>."
   /projects/{project_id}/apps/{app_id}/public_api_keys:
     get:
       summary: Get a list of the public API keys of an app
@@ -430,7 +442,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects:
     get:
       summary: Get a list of projects
@@ -483,7 +497,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:projects:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:projects:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
     post:
       summary: Creates a new project
       operationId: create-project
@@ -532,7 +548,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:projects:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:projects:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/apps:
     get:
       summary: Get a list of apps
@@ -593,7 +611,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
     post:
       summary: Create an App
       operationId: create-app
@@ -710,7 +730,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/apps/{app_id}:
     get:
       summary: Get an app
@@ -766,7 +788,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
     post:
       summary: Update an app
       operationId: update-app
@@ -1011,7 +1035,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
     delete:
       summary: Delete an app
       operationId: delete-app
@@ -1070,7 +1096,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/apps/{app_id}/store_kit_config:
     get:
       summary: Get the StoreKit configuration for an app
@@ -1126,7 +1154,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/customers:
     get:
       summary: Get a list of customers
@@ -1197,7 +1227,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
     post:
       summary: Create a customer
       operationId: create-customer
@@ -1290,7 +1322,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/customers/{customer_id}:
     get:
       summary: Get a customer
@@ -1364,7 +1398,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
     delete:
       summary: Delete a customer
       operationId: delete-customer
@@ -1428,7 +1464,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/customers/{customer_id}/actions/transfer:
     post:
       summary: Transfer customer's subscriptions and one-time purchases to another
@@ -1519,7 +1557,9 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>,
-        <code>customer_information:subscriptions:read_write</code>, <code>customer_information:purchases:read_write</code>.'
+        <code>customer_information:subscriptions:read_write</code>, <code>customer_information:purchases:read_write</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/customers/{customer_id}/actions/grant_entitlement:
     post:
       summary: Grant an entitlement to a customer unless one already exists. As a
@@ -1606,7 +1646,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/customers/{customer_id}/actions/revoke_granted_entitlement:
     post:
       summary: Revoke a granted entitlement from a customer. As a side effect, the
@@ -1686,7 +1728,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/customers/{customer_id}/actions/assign_offering:
     post:
       summary: Assign or clear an offering override for a customer
@@ -1763,7 +1807,9 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read</code>,
-        <code>customer_information:customers:read_write</code>.'
+        <code>customer_information:customers:read_write</code>. This endpoint belongs
+        to the <strong>Customer Information</strong> domain, which has a default rate
+        limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/customers/blocked_customers:
     get:
       summary: List blocked customers
@@ -1811,7 +1857,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/customers/blocked_customers/{customer_id}:
     post:
       summary: Add a customer to the block list
@@ -1868,7 +1916,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
     delete:
       summary: Remove a customer from the block list
       operationId: unblock-customer
@@ -1924,7 +1974,322 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
+  /projects/{project_id}/integrations/webhooks:
+    get:
+      summary: List webhook integrations
+      operationId: list-webhook-integrations
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:integrations:read
+      x-release-status: public
+      tags:
+      - Integration
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: starting_after
+        in: query
+        required: false
+        schema:
+          type: string
+          example: ent12354
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          example: 10
+          default: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListWebhookIntegrations'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:integrations:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
+    post:
+      summary: Create a webhook integration
+      operationId: create-webhook-integration
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:integrations:read_write
+      x-release-status: public
+      tags:
+      - Integration
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWebhookIntegrationInput'
+              additionalProperties: false
+      responses:
+        '201':
+          description: Webhook integration created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookIntegration'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:integrations:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
+  /projects/{project_id}/integrations/webhooks/{webhook_integration_id}:
+    get:
+      summary: Get a webhook integration
+      operationId: get-webhook-integration
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:integrations:read
+      x-release-status: public
+      tags:
+      - Integration
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: webhook_integration_id
+        in: path
+        description: The ID of the webhook integration
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+        example: wh_1234567890abcdef
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookIntegration'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:integrations:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
+    post:
+      summary: Update a webhook integration
+      operationId: update-webhook-integration
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:integrations:read_write
+      x-release-status: public
+      tags:
+      - Integration
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: webhook_integration_id
+        in: path
+        description: The ID of the webhook integration
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+        example: wh_1234567890abcdef
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWebhookIntegrationInput'
+              additionalProperties: false
+      responses:
+        '200':
+          description: Webhook integration updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookIntegration'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:integrations:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
+    delete:
+      summary: Delete a webhook integration
+      operationId: delete-webhook-integration
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:integrations:read_write
+      x-release-status: public
+      tags:
+      - Integration
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: webhook_integration_id
+        in: path
+        description: The ID of the webhook integration
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+        example: wh_1234567890abcdef
+      responses:
+        '200':
+          description: Webhook integration deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedObject'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:integrations:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/products/{product_id}:
     get:
       summary: Get a product
@@ -1998,7 +2363,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:products:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:products:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
     delete:
       summary: Delete a product
       operationId: delete-product
@@ -2058,7 +2425,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:products:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:products:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/products/{product_id}/create_in_store:
     post:
       summary: Push a product to the store
@@ -2066,7 +2435,9 @@ paths:
         \ You must provide store information including duration and subscription group\
         \ details.\n\n**For in-app purchase products** (consumable, non-consumable,\
         \ non-renewing subscription): No request body is required.\n This endpoint\
-        \ requires the following permission(s): <code>project_configuration:products:read_write</code>."
+        \ requires the following permission(s): <code>project_configuration:products:read_write</code>.\
+        \ This endpoint belongs to the <strong>Project Configuration</strong> domain,\
+        \ which has a default rate limit of <strong>60 requests per minute</strong>."
       operationId: create-product-in-store
       x-revenuecat-rate-limiting-domain: project_configuration
       x-scopes:
@@ -2244,7 +2615,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:products:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:products:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
     post:
       summary: Create a product
       operationId: create-product
@@ -2407,7 +2780,9 @@ paths:
       description: "<div class=\"theme-admonition theme-admonition-info alert alert--warning\"\
         >\n  <div class=\"heading\">Warning</div>\n  <div>This endpoint does not allow\
         \ to create Web Billing products.</div>\nThis endpoint requires the following\
-        \ permission(s): <code>project_configuration:products:read_write</code>."
+        \ permission(s): <code>project_configuration:products:read_write</code>. This\
+        \ endpoint belongs to the <strong>Project Configuration</strong> domain, which\
+        \ has a default rate limit of <strong>60 requests per minute</strong>."
   /projects/{project_id}/entitlements/{entitlement_id}:
     get:
       summary: Get an entitlement
@@ -2481,7 +2856,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
     post:
       summary: Update an entitlement
       operationId: update-entitlement
@@ -2557,7 +2934,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
     delete:
       summary: Delete an entitlement
       operationId: delete-entitlement
@@ -2617,7 +2996,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/entitlements:
     get:
       summary: Get a list of entitlements
@@ -2695,7 +3076,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
     post:
       summary: Create an entitlement
       operationId: create-entitlement
@@ -2769,7 +3152,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/entitlements/{entitlement_id}/products:
     get:
       summary: Get a list of products attached to a given entitlement
@@ -2839,7 +3224,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/entitlements/{entitlement_id}/actions/attach_products:
     post:
       summary: Attach a set of products to an entitlement
@@ -2920,7 +3307,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/entitlements/{entitlement_id}/actions/detach_products:
     post:
       summary: Detach a set of product from an entitlement
@@ -3001,7 +3390,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:entitlements:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/offerings/{offering_id}:
     get:
       summary: Get an offering
@@ -3078,7 +3469,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
     post:
       summary: Update an offering
       operationId: update-offering
@@ -3160,7 +3553,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
     delete:
       summary: Delete an offering and its attached packages
       operationId: delete-offering
@@ -3220,7 +3615,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/offerings:
     get:
       summary: Get a list of offerings
@@ -3301,7 +3698,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
     post:
       summary: Create an offering
       operationId: create-offering
@@ -3379,7 +3778,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/packages/{package_id}:
     get:
       summary: Get a package
@@ -3453,7 +3854,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
     post:
       summary: Update a package
       operationId: update-package
@@ -3532,7 +3935,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
     delete:
       summary: Delete a package
       operationId: delete-package-from-offering
@@ -3592,7 +3997,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/offerings/{offering_id}/packages:
     get:
       summary: Get a list of packages in an offering
@@ -3679,7 +4086,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
     post:
       summary: Create a package
       operationId: create-packages
@@ -3767,7 +4176,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/packages/{package_id}/products:
     get:
       summary: Get a list of products attached to a given package of an offering
@@ -3837,7 +4248,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/packages/{package_id}/actions/attach_products:
     post:
       summary: Attach a set of products to a package
@@ -3928,7 +4341,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/packages/{package_id}/actions/detach_products:
     post:
       summary: Detach a set of products from a package
@@ -4009,7 +4424,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:packages:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/subscriptions/{subscription_id}:
     get:
       summary: Get a subscription
@@ -4066,7 +4483,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/subscriptions/{subscription_id}/transactions:
     get:
       summary: Get a Play Store subscription's transactions
@@ -4123,7 +4542,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/subscriptions/{subscription_id}/transactions/{transaction_id}/actions/refund:
     post:
       summary: Refund a Play Store subscription's transaction
@@ -4195,7 +4616,9 @@ paths:
           $ref: '#/components/responses/InternalError'
       description: "Refund a Play Store subscription's transaction. This endpoint\
         \ does not cancel the subscription or revoke access to it.\n This endpoint\
-        \ requires the following permission(s): <code>customer_information:subscriptions:read_write</code>."
+        \ requires the following permission(s): <code>customer_information:subscriptions:read_write</code>.\
+        \ This endpoint belongs to the <strong>Customer Information</strong> domain,\
+        \ which has a default rate limit of <strong>480 requests per minute</strong>."
   /projects/{project_id}/subscriptions/{subscription_id}/entitlements:
     get:
       summary: Get a list of entitlements associated with a subscription
@@ -4266,7 +4689,9 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: "Lists all Entitlements granted by a Subscription.\n This endpoint\
-        \ requires the following permission(s): <code>customer_information:subscriptions:read</code>."
+        \ requires the following permission(s): <code>customer_information:subscriptions:read</code>.\
+        \ This endpoint belongs to the <strong>Customer Information</strong> domain,\
+        \ which has a default rate limit of <strong>480 requests per minute</strong>."
   /projects/{project_id}/subscriptions/{subscription_id}/actions/cancel:
     post:
       summary: Cancel an active Web Billing subscription
@@ -4329,7 +4754,9 @@ paths:
           $ref: '#/components/responses/InternalError'
       description: "Cancel an active Web Billing subscription. The customer will lose\
         \ access to the associated entitlements at the end of the current period.\n\
-        \ This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>."
+        \ This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>.\
+        \ This endpoint belongs to the <strong>Customer Information</strong> domain,\
+        \ which has a default rate limit of <strong>480 requests per minute</strong>."
   /projects/{project_id}/subscriptions/{subscription_id}/actions/refund:
     post:
       summary: Refund an active Web Billing subscription
@@ -4392,7 +4819,9 @@ paths:
           $ref: '#/components/responses/InternalError'
       description: "Cancel a Web Billing subscription by refunding the most recent\
         \ payment. The customer will immediately lose access to the associated entitlements.\n\
-        \ This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>."
+        \ This endpoint requires the following permission(s): <code>customer_information:subscriptions:read_write</code>.\
+        \ This endpoint belongs to the <strong>Customer Information</strong> domain,\
+        \ which has a default rate limit of <strong>480 requests per minute</strong>."
   /projects/{project_id}/subscriptions/{subscription_id}/authenticated_management_url:
     get:
       summary: Get an authenticated Web Billing customer portal URL
@@ -4451,7 +4880,9 @@ paths:
           $ref: '#/components/responses/InternalError'
       description: "Get a secure, single-use URL that allows customers to access their\
         \ Web Billing customer portal.\n This endpoint requires the following permission(s):\
-        \ <code>customer_information:subscriptions:read</code>."
+        \ <code>customer_information:subscriptions:read</code>. This endpoint belongs\
+        \ to the <strong>Customer Information</strong> domain, which has a default\
+        \ rate limit of <strong>480 requests per minute</strong>."
   /projects/{project_id}/customers/{customer_id}/subscriptions:
     get:
       summary: Get a list of subscriptions associated with a customer
@@ -4529,7 +4960,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/purchases/{purchase_id}:
     get:
       summary: Get a purchase
@@ -4586,7 +5019,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/purchases/{purchase_id}/entitlements:
     get:
       summary: Get a list of entitlements associated with a purchase
@@ -4657,7 +5092,9 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: "Lists all Entitlements granted by a Purchase.\n This endpoint\
-        \ requires the following permission(s): <code>customer_information:purchases:read</code>."
+        \ requires the following permission(s): <code>customer_information:purchases:read</code>.\
+        \ This endpoint belongs to the <strong>Customer Information</strong> domain,\
+        \ which has a default rate limit of <strong>480 requests per minute</strong>."
   /projects/{project_id}/purchases/{purchase_id}/actions/refund:
     post:
       summary: Refund a Web Billing purchase
@@ -4720,7 +5157,9 @@ paths:
           $ref: '#/components/responses/InternalError'
       description: "Refund a Web Billing purchase and revoke access to associated\
         \ granted entitlements.\n This endpoint requires the following permission(s):\
-        \ <code>customer_information:purchases:read_write</code>."
+        \ <code>customer_information:purchases:read_write</code>. This endpoint belongs\
+        \ to the <strong>Customer Information</strong> domain, which has a default\
+        \ rate limit of <strong>480 requests per minute</strong>."
   /projects/{project_id}/customers/{customer_id}/purchases:
     get:
       summary: Get a list of purchases associated with a customer
@@ -4798,7 +5237,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/customers/{customer_id}/active_entitlements:
     get:
       summary: Get a list of customer's active entitlements
@@ -4868,7 +5309,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/customers/{customer_id}/aliases:
     get:
       summary: Get a list of the customer's aliases
@@ -4938,7 +5381,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/customers/{customer_id}/virtual_currencies:
     get:
       summary: Get a list of customer's virtual currencies balances
@@ -5014,7 +5459,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/customers/{customer_id}/virtual_currencies/transactions:
     post:
       summary: Create a virtual currencies transaction
@@ -5107,7 +5554,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read_write</code>.
+        This endpoint belongs to the <strong>Virtual Currencies - Create Transaction</strong>
+        domain, which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/customers/{customer_id}/virtual_currencies/update_balance:
     post:
       summary: Update a virtual currencies balance without creating a transaction
@@ -5200,7 +5649,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:purchases:read_write</code>.
+        This endpoint belongs to the <strong>Virtual Currencies - Create Transaction</strong>
+        domain, which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/customers/{customer_id}/attributes:
     get:
       summary: Get a list of the customer's attributes
@@ -5270,7 +5721,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
     post:
       summary: Set a customer's attributes
       operationId: set-customer-attributes
@@ -5375,7 +5828,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:customers:read_write</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/customers/{customer_id}/invoices:
     get:
       summary: Get a list of the customer's invoices
@@ -5445,7 +5900,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:invoices:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:invoices:read</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/customers/{customer_id}/invoices/{invoice_id}/file:
     get:
       summary: Get an invoice
@@ -5508,7 +5965,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>customer_information:invoices:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>customer_information:invoices:read</code>.
+        This endpoint belongs to the <strong>Customer Information</strong> domain,
+        which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/metrics/overview:
     get:
       summary: Get overview metrics for a project
@@ -5575,7 +6034,9 @@ paths:
           $ref: '#/components/responses/InternalError'
         '503':
           $ref: '#/components/responses/InternalError'
-      description: 'This endpoint requires the following permission(s): <code>charts_metrics:overview:read</code>.'
+      description: 'This endpoint requires the following permission(s): <code>charts_metrics:overview:read</code>.
+        This endpoint belongs to the <strong>Charts & Metrics</strong> domain, which
+        has a default rate limit of <strong>5 requests per minute</strong>.'
   /projects/{project_id}/subscriptions:
     get:
       summary: Search subscriptions by store subscription identifier
@@ -5659,7 +6120,9 @@ paths:
         \ values, whether from a past or current subscription period.\n\nFor example,\
         \ this may include the `transactionId` of any transaction in an Apple App\
         \ Store subscription, or any order ID from a Google Play Store subscription.\n\
-        \ This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>."
+        \ This endpoint requires the following permission(s): <code>customer_information:subscriptions:read</code>.\
+        \ This endpoint belongs to the <strong>Customer Information</strong> domain,\
+        \ which has a default rate limit of <strong>480 requests per minute</strong>."
   /projects/{project_id}/purchases:
     get:
       summary: Search one-time purchases by store purchase identifier
@@ -5741,7 +6204,9 @@ paths:
       description: "Search for a one-time purchases by any of its associated `store_purchase_identifier`\
         \ values.\n\nFor example, this may include the `transactionId` of any transaction\
         \ in an Apple App Store purchase, or any order ID from a Google Play Store\
-        \ purchase.\n This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>."
+        \ purchase.\n This endpoint requires the following permission(s): <code>customer_information:purchases:read</code>.\
+        \ This endpoint belongs to the <strong>Customer Information</strong> domain,\
+        \ which has a default rate limit of <strong>480 requests per minute</strong>."
 components:
   securitySchemes:
     BearerAuth:
@@ -6264,7 +6729,6 @@ components:
       - ZM
       - ZW
       - AX
-      additionalProperties: false
     CreateAppStoreConnectInAppPurchaseInput:
       type: object
       properties: {}
@@ -6298,6 +6762,52 @@ components:
           maxLength: 255
           description: The ID of the subscription group (optional)
       additionalProperties: false
+    CreateWebhookIntegrationInput:
+      type: object
+      required:
+      - name
+      - url
+      properties:
+        name:
+          description: The display name of the webhook integration
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: Customer updates webhook
+        url:
+          description: The URL RevenueCat will send webhook notifications to
+          type: string
+          format: uri
+          maxLength: 5000
+          example: https://hooks.example.com/revenuecat
+        authorization_header:
+          description: Optional authorization header that will be sent with webhook
+            notifications
+          type: string
+          nullable: true
+          maxLength: 5000
+          example: Bearer 123456
+        environment:
+          description: The environment the webhook integration is configured for
+          type: string
+          nullable: true
+          enum:
+          - production
+          - sandbox
+          - null
+        event_types:
+          description: Event types that will trigger the webhook
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/WebhookEventType'
+        app_id:
+          description: The ID of the app the webhook integration is scoped to
+          type: string
+          nullable: true
+          minLength: 1
+          maxLength: 255
+          example: app_1234567890abcdef
     Currency:
       type: string
       description: ISO 4217 currency code
@@ -6474,7 +6984,6 @@ components:
       - ZAR
       - ZMW
       - ZWL
-      additionalProperties: false
     Customer:
       type: object
       required:
@@ -6618,7 +7127,6 @@ components:
       maxLength: 40
       pattern: ^[a-zA-Z][a-zA-Z0-9_-]*$
       example: opt_into_marketing
-      additionalProperties: false
     CustomerAttributeReservedName:
       type: string
       enum:
@@ -6674,7 +7182,6 @@ components:
       - $tenjinId
       - $deviceVersion
       example: $email
-      additionalProperties: false
     CustomerEntitlement:
       type: object
       required:
@@ -6719,6 +7226,7 @@ components:
           - offering
           - package
           - product
+          - webhook_integration
           type: string
         id:
           description: The ID of the deleted object
@@ -6744,7 +7252,6 @@ components:
       - P3M
       - P6M
       - P1Y
-      additionalProperties: false
     EligibilityCriteria:
       type: string
       nullable: false
@@ -6844,7 +7351,6 @@ components:
       enum:
       - production
       - sandbox
-      additionalProperties: false
     Error:
       type: object
       required:
@@ -7569,6 +8075,39 @@ components:
           type: string
           example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/virtual_currencies
       additionalProperties: false
+    ListWebhookIntegrations:
+      required:
+      - items
+      - object
+      - url
+      title: WebhookIntegrationList
+      type: object
+      properties:
+        object:
+          description: 'String representing the object''s type. Objects of the same
+            type share the
+
+            same value.'
+          enum:
+          - list
+          type: string
+        items:
+          description: Webhook integrations configured for the project.
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookIntegration'
+        next_page:
+          description: URL to access the next page of webhook integrations. If not
+            present / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/proj1ab2c3d4/integrations/webhooks?starting_after=whintgr1a2b3c4d
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/proj1ab2c3d4/integrations/webhooks
+      additionalProperties: false
     MacAppStoreApp:
       type: object
       properties:
@@ -7843,7 +8382,6 @@ components:
       enum:
       - purchased
       - family_shared
-      additionalProperties: false
     Package:
       type: object
       required:
@@ -8165,7 +8703,6 @@ components:
       - consumable
       - non_consumable
       - non_renewing_subscription
-      additionalProperties: false
     ProductsFromEntitlement:
       type: object
       required:
@@ -8619,7 +9156,6 @@ components:
       - ZAR
       - TRY
       - UAH
-      additionalProperties: false
     RokuApp:
       type: object
       properties:
@@ -9074,6 +9610,49 @@ components:
         target_customer:
           description: The target customer after the transfer
           $ref: '#/components/schemas/Customer'
+    UpdateWebhookIntegrationInput:
+      type: object
+      properties:
+        name:
+          description: The display name of the webhook integration
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: Customer updates webhook
+        url:
+          description: The URL RevenueCat will send webhook notifications to
+          type: string
+          format: uri
+          maxLength: 5000
+          example: https://hooks.example.com/revenuecat
+        authorization_header:
+          description: Optional authorization header that will be sent with webhook
+            notifications
+          type: string
+          nullable: true
+          maxLength: 5000
+          example: Bearer 123456
+        environment:
+          description: The environment the webhook integration is configured for
+          type: string
+          nullable: true
+          enum:
+          - production
+          - sandbox
+          - null
+        event_types:
+          description: Event types that will trigger the webhook
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/WebhookEventType'
+        app_id:
+          description: The ID of the app the webhook integration is scoped to
+          type: string
+          nullable: true
+          minLength: 1
+          maxLength: 255
+          example: app_1234567890abcdef
     VirtualCurrencyBalance:
       type: object
       title: VirtualCurrencyBalance
@@ -9100,6 +9679,108 @@ components:
         name:
           description: The name of the virtual currency.
           type: string
+      additionalProperties: false
+    WebhookEventType:
+      type: string
+      description: The type of event that triggers the webhook
+      example: initial_purchase
+      enum:
+      - initial_purchase
+      - renewal
+      - product_change
+      - cancellation
+      - billing_issue
+      - non_renewing_purchase
+      - uncancellation
+      - transfer
+      - subscription_paused
+      - expiration
+      - subscription_extended
+      - invoice_issuance
+      - temporary_entitlement_grant
+      - refund_reversed
+      - virtual_currency_transaction
+    WebhookIntegration:
+      type: object
+      required:
+      - id
+      - name
+      - url
+      - project_id
+      - object
+      - created_at
+      - app_id
+      - environment
+      properties:
+        object:
+          description: 'String representing the object''s type. Objects of the same
+            type share the
+
+            same value.'
+          enum:
+          - webhook_integration
+          type: string
+        id:
+          description: The ID of the webhook integration
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: wh_1234567890abcdef
+        project_id:
+          description: The ID of the project the webhook integration belongs to
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: proj_1234567890abcdef
+        name:
+          description: The display name of the webhook integration
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: Customer updates webhook
+        url:
+          description: The URL RevenueCat will send webhook notifications to
+          type: string
+          format: uri
+          maxLength: 5000
+          example: https://hooks.example.com/revenuecat
+        environment:
+          description: The environment the webhook integration is configured for.
+            Only events for the selected environment will be sent.
+          type: string
+          nullable: true
+          enum:
+          - production
+          - sandbox
+          - null
+        event_types:
+          description: Event types that will trigger the webhook. Only events for
+            the selected event types will be sent.
+          type: array
+          nullable: true
+          items:
+            type: string
+            description: 'The event type. Known values include: initial_purchase,
+              renewal, product_change, cancellation, billing_issue, non_renewing_purchase,
+              uncancellation, transfer, subscription_paused, expiration, subscription_extended,
+              invoice_issuance, temporary_entitlement_grant, refund_reversed, virtual_currency_transaction.
+              New event types may be added in the future.'
+            example: initial_purchase
+        app_id:
+          description: The ID of the app the webhook integration is scoped to. If
+            not provided, the webhook integration will be scoped to all apps in the
+            project.
+          type: string
+          nullable: true
+          minLength: 1
+          maxLength: 255
+          example: app_1234567890abcdef
+        created_at:
+          description: The timestamp in ms since epoch when the webhook integration
+            was created
+          type: integer
+          format: int64
+          example: 1658399423658
       additionalProperties: false
   headers:
     RateLimitCurrentLimit:
@@ -9375,5 +10056,6 @@ x-tagGroups:
   - Subscription
   - Invoice
   - Paywall
+  - Integration
   - Project
 openapi: 3.0.3
