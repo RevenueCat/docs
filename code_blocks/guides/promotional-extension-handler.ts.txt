@@ -1,0 +1,189 @@
+import express, { Request, Response } from "express";
+
+const app = express();
+app.use(express.json());
+
+// Your RevenueCat Secret API Key (v1)
+const REVENUECAT_API_KEY = process.env.REVENUECAT_SECRET_API_KEY!;
+const WEBHOOK_AUTH_HEADER = process.env.WEBHOOK_AUTH_HEADER!;
+
+// Configure your promotional extension settings
+const PROMO_CONFIG = {
+  // Offering IDs that qualify for the promotional extension
+  eligibleOfferingIds: ["holiday_promo", "partner_deal", "retention_offer"],
+  // Number of days to extend the subscription
+  extensionDays: 30,
+  // Apple extension reason code (1 = Customer Satisfaction)
+  appleReasonCode: 1,
+};
+
+interface WebhookEvent {
+  event: {
+    type: string;
+    app_user_id: string;
+    original_transaction_id: string;
+    transaction_id: string;
+    store: string;
+    product_id: string;
+    presented_offering_id: string | null;
+    expiration_at_ms: number;
+    environment: string;
+  };
+  api_version: string;
+}
+
+// Webhook endpoint to receive RevenueCat events
+app.post(
+  "/webhooks/revenuecat",
+  async (req: Request, res: Response): Promise<void> => {
+    // Verify the authorization header
+    const authHeader = req.headers.authorization;
+    if (authHeader !== WEBHOOK_AUTH_HEADER) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
+
+    // Respond immediately to avoid timeout
+    res.status(200).json({ received: true });
+
+    // Process the webhook asynchronously
+    const webhookData: WebhookEvent = req.body;
+    await processWebhook(webhookData);
+  }
+);
+
+async function processWebhook(webhookData: WebhookEvent): Promise<void> {
+  const { event } = webhookData;
+
+  // Only process initial purchases
+  if (event.type !== "INITIAL_PURCHASE") {
+    console.log(`Skipping event type: ${event.type}`);
+    return;
+  }
+
+  // Check if this purchase qualifies for promotional extension
+  if (!isEligibleForPromoExtension(event)) {
+    console.log(`Purchase not eligible for promotional extension`);
+    return;
+  }
+
+  try {
+    // Apply the extension based on the store platform
+    await applyPromotionalExtension(event);
+    console.log(
+      `Successfully applied promotional extension for user: ${event.app_user_id}`
+    );
+  } catch (error) {
+    console.error(`Failed to apply promotional extension:`, error);
+    // Implement your error handling/retry logic here
+  }
+}
+
+function isEligibleForPromoExtension(event: WebhookEvent["event"]): boolean {
+  // Check if the offering qualifies for the promotion
+  if (!event.presented_offering_id) {
+    return false;
+  }
+
+  return PROMO_CONFIG.eligibleOfferingIds.includes(event.presented_offering_id);
+}
+
+async function applyPromotionalExtension(
+  event: WebhookEvent["event"]
+): Promise<void> {
+  const { store, app_user_id, transaction_id, product_id, expiration_at_ms } =
+    event;
+
+  switch (store) {
+    case "APP_STORE":
+    case "MAC_APP_STORE":
+      await extendAppleSubscription(app_user_id, transaction_id);
+      break;
+
+    case "PLAY_STORE":
+      // Extract subscription ID (before the colon) from product_id
+      // e.g., "subscription_id:base_plan_id" -> "subscription_id"
+      const subscriptionId = product_id.split(":")[0];
+      await deferGoogleSubscription(
+        app_user_id,
+        subscriptionId,
+        expiration_at_ms
+      );
+      break;
+
+    default:
+      console.log(`Store ${store} does not support subscription extensions`);
+  }
+}
+
+async function extendAppleSubscription(
+  appUserId: string,
+  transactionId: string
+): Promise<void> {
+  const url = `https://api.revenuecat.com/v1/subscribers/${encodeURIComponent(
+    appUserId
+  )}/subscriptions/${transactionId}/extend`;
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${REVENUECAT_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      extend_by_days: PROMO_CONFIG.extensionDays,
+      extend_reason_code: PROMO_CONFIG.appleReasonCode,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorBody = await response.text();
+    throw new Error(
+      `Apple extension failed: ${response.status} - ${errorBody}`
+    );
+  }
+
+  console.log(`Extended Apple subscription by ${PROMO_CONFIG.extensionDays} days`);
+}
+
+async function deferGoogleSubscription(
+  appUserId: string,
+  productId: string,
+  currentExpirationMs: number
+): Promise<void> {
+  // Calculate new expiration time by adding extension days
+  const extensionMs = PROMO_CONFIG.extensionDays * 24 * 60 * 60 * 1000;
+  const newExpirationMs = currentExpirationMs + extensionMs;
+
+  const url = `https://api.revenuecat.com/v1/subscribers/${encodeURIComponent(
+    appUserId
+  )}/subscriptions/${encodeURIComponent(productId)}/defer`;
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${REVENUECAT_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      expiry_time_ms: newExpirationMs,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorBody = await response.text();
+    throw new Error(
+      `Google deferral failed: ${response.status} - ${errorBody}`
+    );
+  }
+
+  console.log(
+    `Deferred Google subscription to ${new Date(newExpirationMs).toISOString()}`
+  );
+}
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Webhook server listening on port ${PORT}`);
+});
+

@@ -1,0 +1,38 @@
+async function applyPromotionalExtension(
+  event: WebhookEvent["event"]
+): Promise<void> {
+  const { store, app_user_id, transaction_id, product_id, expiration_at_ms } =
+    event;
+
+  switch (store) {
+    case "APP_STORE":
+    case "MAC_APP_STORE":
+      // Apple subscriptions use the extend endpoint with transaction ID
+      await extendAppleSubscription(app_user_id, transaction_id);
+      break;
+
+    case "PLAY_STORE":
+      // Google subscriptions use the defer endpoint with subscription ID
+      // Extract subscription ID (before the colon) from product_id
+      const subscriptionId = product_id.split(":")[0];
+      await deferGoogleSubscription(app_user_id, subscriptionId, expiration_at_ms);
+      break;
+
+    case "STRIPE":
+    case "RC_BILLING":
+      // Stripe and Web Billing don't support direct extensions via RevenueCat
+      // You would need to use Stripe's API directly or grant an entitlement
+      console.log(`${store} requires direct integration for extensions`);
+      break;
+
+    case "AMAZON":
+    case "ROKU":
+      // These stores don't support subscription extensions
+      console.log(`${store} does not support subscription extensions`);
+      break;
+
+    default:
+      console.log(`Unknown store: ${store}`);
+  }
+}
+

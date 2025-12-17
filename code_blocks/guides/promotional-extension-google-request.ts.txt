@@ -1,0 +1,24 @@
+// Google Play Store: Defer a subscription renewal date
+const extensionMs = 30 * 24 * 60 * 60 * 1000; // 30 days in milliseconds
+const newExpirationMs = currentExpirationMs + extensionMs;
+
+// Extract subscription ID (before the colon) from product_id
+// e.g., "subscription_id:base_plan_id" -> "subscription_id"
+const subscriptionId = productId.split(":")[0];
+
+const response = await fetch(
+  `https://api.revenuecat.com/v1/subscribers/${encodeURIComponent(
+    appUserId
+  )}/subscriptions/${encodeURIComponent(subscriptionId)}/defer`,
+  {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${REVENUECAT_V1_SECRET_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      expiry_time_ms: newExpirationMs,
+    }),
+  }
+);
+

@@ -1053,12 +1053,12 @@ const playbooksOverviewCategory = Category({
   iconName: "bookmark",
   iconColor: "var(--rc-teal-primary)",
   label: "Playbooks",
-  itemsPathPrefix: "playbooks/",
+  itemsPathPrefix: "",
   items: [
-    Page({ slug: "overview" }),
+    Page({ slug: "playbooks/overview" }),
     SubCategory({
       label: "Monetization Models",
-      itemsPathPrefix: "guides/",
+      itemsPathPrefix: "playbooks/guides/",
       items: [
         Page({ slug: "hard-paywall" }),
         Page({ slug: "freemium" }),
@@ -1072,6 +1072,7 @@ const playbooksOverviewCategory = Category({
         link: "playbooks/guides/monetization-models",
       },
     }),
+    Page({ slug: "guides/promotional-subscription-extensions" }),
   ],
 });
 
