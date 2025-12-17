@@ -1,0 +1,18 @@
+// Apple App Store: Extend a subscription renewal date
+const response = await fetch(
+  `https://api.revenuecat.com/v1/subscribers/${encodeURIComponent(
+    appUserId
+  )}/subscriptions/${transactionId}/extend`,
+  {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${REVENUECAT_V1_SECRET_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      extend_by_days: 30, // 1-90 days
+      extend_reason_code: 1, // 1 = Customer Satisfaction
+    }),
+  }
+);
+

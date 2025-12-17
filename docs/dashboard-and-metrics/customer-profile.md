@@ -212,7 +212,14 @@ Apple subscriptions can also be extended via the API: [Extend a Subscription Ren
 
 #### Google Play Subscription Deferrals
 
-Google refers to subscription extensions as **Deferrals**. Google Play subscription renewals can be deferred via the API: [Defer a Google Play Subscription](/api-v1#tag/transactions/operation/defer-a-google-subscription).
+Google refers to subscription extensions as **Deferrals**. Google Play Store subscriptions can be deferred for up to 365 days at a time. Please note:
+
+- Google **does not** automatically notify the customer about the deferral.
+- The customer is not charged for the deferral.
+
+When extending a subscription, you must specify the number of days (1-365) to defer the subscription.
+
+Google Play subscription renewals can also be deferred via the API: [Defer a Google Play Subscription](/api-v1#tag/transactions/operation/defer-a-google-subscription).
 
 ## Next Steps
 

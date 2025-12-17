@@ -1,0 +1,37 @@
+{
+  "event": {
+    "type": "INITIAL_PURCHASE",
+    "id": "12345678-1234-1234-1234-123456789012",
+    "app_id": "app1234567890",
+    "event_timestamp_ms": 1702819200000,
+    "product_id": "com.yourapp.subscription.monthly",
+    "period_type": "NORMAL",
+    "purchased_at_ms": 1702819200000,
+    "expiration_at_ms": 1705497600000,
+    "environment": "PRODUCTION",
+    "entitlement_ids": ["premium"],
+    "presented_offering_id": "holiday_promo",
+    "transaction_id": "2000000456789012",
+    "original_transaction_id": "2000000456789012",
+    "is_family_share": false,
+    "country_code": "US",
+    "app_user_id": "user_abc123",
+    "aliases": ["$RCAnonymousID:8069238d6049ce87cc529853916d624c"],
+    "original_app_user_id": "user_abc123",
+    "currency": "USD",
+    "price": 9.99,
+    "price_in_purchased_currency": 9.99,
+    "subscriber_attributes": {
+      "$email": {
+        "updated_at_ms": 1702819200000,
+        "value": "customer@example.com"
+      }
+    },
+    "store": "APP_STORE",
+    "tax_percentage": 0.0,
+    "commission_percentage": 0.3,
+    "offer_code": "HOLIDAY2024"
+  },
+  "api_version": "1.0"
+}
+

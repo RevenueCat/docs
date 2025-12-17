@@ -647,8 +647,6 @@ paths:
           application/json:
             schema:
               type: object
-              required:
-                - expiry_time_ms
               properties:
                 expiry_time_ms:
                   type: integer
@@ -656,8 +654,16 @@ paths:
                   description:
                     The desired next expiry time to assign to the subscription,
                     in milliseconds since the Epoch. The given time must be later/greater
-                    than the current expiry time for the subscription.
+                    than the current expiry time for the subscription. Either `expiry_time_ms` or `extend_by_days` must be provided.
                   example: 1708417962662
+                extend_by_days:
+                  type: integer
+                  minimum: 1
+                  maximum: 365
+                  description:
+                    The number of days to extend the subscription renewal date.
+                    Must be between 1 and 365. Either `expiry_time_ms` or `extend_by_days` must be provided.
+                  example: 30
       responses:
         "200":
           description: |
