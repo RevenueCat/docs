@@ -1,0 +1,223 @@
+---
+title: Creating Funnels
+slug: creating-funnels
+hidden: false
+---
+
+Use the Funnel Editor to design multi-step web experiences with customizable screens, branching logic, and seamless checkout integration.
+
+## Creating a new funnel
+
+To create a new funnel, navigate to your project's **Web** section in the RevenueCat Dashboard and click **Create web funnel**. You'll have two options:
+
+1. **From scratch**: Start with a blank funnel and build it step by step
+2. **Using template**: Choose from pre-built funnel templates as a starting point
+
+![Create new funnel](/docs_images/funnels/create-funnel.png)
+
+### Using templates
+
+Templates provide pre-configured funnel structures that you can customize. When you select **Using template**, you'll see a gallery of available templates. Each template includes:
+
+- Pre-configured steps with sample content
+- Example flow logic and connections
+- Suggested component layouts
+
+You can customize any aspect of a template after selecting it: templates are just starting points to help you get started quickly.
+
+## Understanding the Funnel Editor
+
+The Funnel Editor has two main modes:
+
+### Interaction mode
+
+Interaction mode is where you design the flow of your funnel. In this mode, you can:
+
+- See all steps in your funnel as visual nodes
+- Connect steps together to define the user journey
+- Add new steps (screens or checkout)
+- Configure which step is the initial entry point
+- Set up branching logic based on user actions
+
+![Interaction mode](/docs_images/funnels/interaction-mode.png)
+
+### Design mode
+
+Design mode is where you customize the content and appearance of individual screens. When you select a screen step and enter Design mode, you'll see the familiar Paywall Editor interface where you can:
+
+- Add and arrange components (text, images, buttons, etc.)
+- Configure component properties and styling
+- Set up localizations
+- Preview how the screen looks on different devices
+
+![Design mode](/docs_images/funnels/design-mode.png)
+
+## Adding steps to your funnel
+
+Steps are the building blocks of your funnel. There are two types of steps:
+
+### Screen steps
+
+Screen steps are customizable pages built using RevenueCat's Paywall UI builder. To add a screen:
+
+1. Click **Add page** in the left sidebar
+2. Choose one of the following options:
+   - **Blank page**: Start with an empty screen
+   - **From template**: Use a paywall template as the starting point
+   - **From your paywalls**: Copy an existing paywall from your project
+   - **From your funnels**: Copy a screen from another funnel
+
+Once added, you can click on the screen node in Interaction mode and switch to Design mode to customize its content.
+
+### Checkout steps
+
+Checkout steps handle the payment flow. To add a checkout:
+
+1. Click **Add page** in the left sidebar
+2. Select **Checkout**
+
+Checkout steps are automatically configured to use RevenueCat Web Billing and will display the appropriate payment interface based on your project's configuration.
+
+:::info Checkout configuration
+Checkout steps use the app configuration and offering settings from your funnel's settings. Make sure your funnel is associated with the correct app and offering before adding checkout steps.
+:::
+
+## Connecting steps
+
+Steps are connected via **triggers** and **actions**. A trigger is an event that occurs on a step (like a button press), and an action defines what happens next (like navigating to another step).
+
+### Connecting steps visually
+
+In Interaction mode, you can connect steps by:
+
+1. Hovering over a step node to see available trigger handles
+2. Dragging from a trigger handle to another step's target handle
+3. The connection will be created automatically
+
+![Connecting steps](/docs_images/funnels/connecting-steps.png)
+
+### Supported triggers
+
+Different components on your screens can trigger navigation:
+
+| Trigger | Description | Can connect to |
+| :------ | :---------- | :-------------- |
+| **Button press** | When a user clicks a button component | Any screen or checkout step |
+| **Purchase button press** | When a user clicks a purchase button | Checkout steps only |
+| **Option selection** | When a user selects an option in an input component that's setup to immediately advance them | Any screen with an option component |
+
+### Configuring trigger actions
+
+When you connect a trigger to a step, you can configure the action:
+
+1. Click on the connection (edge) between two steps
+2. In the settings panel, you can configure:
+   - **Target step**: Which step to navigate to
+   - **Conditional logic**: Determine which step to navigate to based on conditions like UTM parameters, visitor demographics, other URL parameters, or visitor inputs 
+
+## Customizing screen content
+
+When you select a screen step and enter Design mode, you'll use the same powerful editor that powers RevenueCat Paywalls. This means you have access to all the same components:
+
+### Available components
+
+| Component | Description | Use case |
+| :--------- | :---------- | :------- |
+| **Text** | Customizable text strings | Headlines, descriptions, instructions |
+| **Image** | Uploaded images | Branding, illustrations, screenshots |
+| **Video** | Uploaded videos | Product demos, testimonials |
+| **Icon** | Pre-built icons | Visual indicators, feature highlights |
+| **Stack** | Container for other components | Layout organization |
+| **Button** | Interactive buttons | Navigation, actions, links |
+| **Purchase Button** | Purchase call-to-action | Direct users to checkout |
+| **Input Single Choice** | Radio button selection | Survey questions, preference selection |
+| **Input Multiple Choice** | Checkbox selection | Multi-select questions |
+| **Package** | Product/package display | Show available offerings |
+| **Carousel** | Swipeable content pages | Feature showcases |
+| **Timeline** | Sequential item display | Process steps, milestones |
+| **Tabs** | Tabbed content sections | Organize multiple package groups |
+| **Countdown** | Live countdown timer | Urgency, deadlines |
+
+:::info Input components
+Input components (Single Choice and Multiple Choice) are particularly useful in funnels for collecting customer information that can be used for personalization or analytics.
+:::
+
+For detailed information about each component and its properties, see the [Paywalls Components documentation](/tools/paywalls/creating-paywalls/components).
+
+## Configuring funnel settings
+
+The Settings panel allows you to configure funnel-wide options:
+
+### Initial step
+
+The initial step is the first page users see when they access your funnel. To set the initial step:
+
+1. Open the **Settings** panel from the left sidebar
+2. Under **Initial step**, select the step you want to use as the entry point
+
+You can change the initial step at any time, and the change will be saved as part of your draft.
+
+### Parameters
+
+Funnels support custom parameters that can be passed via URL and used throughout your funnel. Parameters are useful for:
+
+- Including custom tracking data
+- Personalizing the experience based on the source
+
+To add a parameter:
+
+1. Open the **Settings** panel
+2. Under **Parameters**, click **Add parameter**
+3. Configure:
+   - **Name**: The parameter name (e.g., `utm_source`)
+   - **Type**: The data type (`string`, `string[]`, `number`, or `boolean`)
+
+Parameters can be referenced in your funnel's components using variables, similar to how paywall variables work.
+
+:::info UTM Parameters
+Standard UTM parameters are automatically captured and made available to your funnel, you do not need to manually add them as URL parameters.You can use them in your funnel's components to personalize the experience based on the source of the visitor.
+:::
+
+## Saving and publishing
+
+Funnels have two states:
+
+| State | Description |
+| :---- | :---------- |
+| **Draft** | Your work-in-progress funnel. Changes are automatically saved as you work. Draft funnels are not accessible via public URLs. |
+| **Published** | Your live funnel that's accessible via shareable URLs. Published funnels can be viewed by users. |
+
+### Auto-save
+
+The Funnel Editor automatically saves your changes as you work. You'll see an indicator showing when your last changes were saved.
+
+### Publishing
+
+To make your funnel live:
+
+1. Ensure your funnel has at least one step
+2. Click **Publish** in the top-right corner
+3. Confirm the publish action
+
+Once published, your funnel will be available via shareable URLs for both production and sandbox environments.
+
+:::warning Publishing changes
+When you publish a funnel, the current draft becomes the live version. Users accessing your funnel URL will see the published version. You can continue editing after publishing—changes will be saved as drafts until you publish again.
+:::
+
+## Best practices
+
+- **Start with templates**: Unless you have a very specific custom design in mind, start with a template. Templates provide proven structures and can save significant time. 
+- **Keep flows simple**: While funnels support complex branching logic, simpler flows often convert better. Start with linear flows and add branching only when necessary.
+- **Test on mobile**: Funnels are designed mobile-first, but preview your funnel on different screen sizes to ensure a good experience across devices.
+- **Use meaningful step names**: Give your steps descriptive names (like "Welcome Screen" or "Product Selection") to make it easier to manage complex funnels.
+- **Preview before publishing**: Use the preview functionality in Design mode to see how your funnel looks before publishing. Test the flow in Interaction mode to ensure connections work as expected.
+
+## Next steps
+
+- Learn how to [deploy and share your funnel](/tools/funnels/deploying-funnels)
+- Understand [analytics and performance metrics](/tools/funnels/analyzing-funnels)
+- Explore [Paywalls components](/tools/paywalls/creating-paywalls/components) for more design options
+
+
+
