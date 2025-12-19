@@ -223,4 +223,4 @@ You must have a button in your TestFlight app to open up the "manage subscriptio
 
 ![](/docs_images/platform-resources/apple/retention-messaging-api/retention-messaging-api-activate.png)
 
-Under each message type, you can use activate/deactivate button in the upper right to enable or disable messages. Inactive messages won't be displayed to customers.
+Under each message type, you can use the activate/deactivate button in the upper right to enable or disable messages. Inactive messages won't be displayed to customers.
