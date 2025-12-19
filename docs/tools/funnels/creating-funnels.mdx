@@ -130,13 +130,46 @@ When you select a screen step and enter Design mode, you'll use the same powerfu
 | Stack | Container for other components | Layout organization |
 | Button | Interactive buttons | Navigation, actions, links |
 | Purchase Button | Purchase call-to-action | Direct users to checkout |
-| Input Single Choice | Select a single option from a list | Survey questions, preference selection |
-| Input Multiple Choice | Select a configurable number of options from a list | Multi-select questions |
-| Package | Product/package display | Show available offerings |
+| Input: Single Choice | Select a single option from a list | Survey questions, preference selection |
+| Input: Multiple Choice | Select a configurable number of options from a list | Multi-select questions |
+| Package | Product/package display | Show available products |
 | Carousel | Swipeable content pages | Feature showcases |
 | Timeline | Sequential item display | Process steps, milestones |
-| Tabs | Tabbed content sections | Organize multiple package groups |
+| Tabs | Tabbed content sections | Organize multiple packages into groups |
 | Countdown | Live countdown timer | Urgency, deadlines |
+
+### Input components
+
+Single Choice and Multiple Choice input components allow you to collect user selections that can be used for conditional navigation in your funnel.
+
+#### Component structure
+
+Options components have a hierarchical structure:
+
+- **Single Choice** or **Multiple Choice** component: The container component that all child components are nested within
+  - **Identifier**: A unique identifier for the field (required for publishing). This ID is used to reference the field's value in conditional logic.
+  - **Required**: Whether the user must make a selection on this input before being allowed to proceed
+  - **Selection Range** (Multiple Choice only): Constrains how many options can be selected:
+    - **Unlimited**: Users can select any number of options
+    - **Exact**: Users must select exactly a specified number (e.g., exactly 2)
+    - **Range**: Users must select between a minimum and maximum number (e.g., 1-3 options)
+
+- **Options**: Individual selectable options nested inside the input component
+  - **Option ID**: A unique identifier for the option (required for publishing)
+  - **Option Value**: The value that will be stored when this option is selected (required for publishing)
+  - **Stack**: Contains other components (like text or images) that define how the option appears visually
+
+#### Using options in funnels
+
+Options components are particularly powerful in funnels because:
+
+1. **Trigger navigation**: When an option is selected, it can immediately trigger navigation to another step. Configure this by connecting the option's trigger handle to a target step in Interaction mode.
+
+2. **Conditional logic**: Option selections can be used in conditional expressions to determine which step users navigate to. Reference the field's value using the field ID in your conditional logic.
+
+:::info Coming soon
+Selected option values will additionally be provided as dimensions to filter and breakdown analytics by, and as variables for screen content, in the near future.
+::: 
 
 For detailed information about each component and its properties, see the [Paywalls Components documentation](/tools/paywalls/creating-paywalls/components).
 
