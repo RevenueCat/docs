@@ -191,26 +191,6 @@ const paywallsCategory = Category({
   ],
 });
 
-const funnelsCategory = Category({
-  iconName: "workflow",
-  iconColor: "var(--rc-blue-primary)",
-  label: "Funnels",
-  itemsPathPrefix: "",
-  items: [
-    SubCategory({
-      label: "Web Funnels",
-      slug: "tools/funnels",
-      itemsPathPrefix: "tools/funnels/",
-      items: [
-        Page({ slug: "configuring-payments" }),
-        Page({ slug: "creating-funnels" }),
-        Page({ slug: "deploying-funnels" }),
-        Page({ slug: "analyzing-funnels" }),
-      ],
-    }),
-  ],
-});
-
 const webSDKCategory = Category({
   iconName: "desktop",
   iconColor: "var(--text-primary)",
