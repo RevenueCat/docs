@@ -45,12 +45,30 @@ Funnels provide several key advantages for apps investing in user acquisition:
 | **Initial step** | The first step that users see when they access your funnel |
 | **Template** | Pre-built funnel configurations that you can use as starting points |
 
+## Prerequisites
+
+Before creating your first funnel, you need to set up RevenueCat Web Billing. Funnels use Web Billing to process payments through checkout steps, so this configuration is required.
+
+To configure payments for Funnels, you'll need:
+
+- **Stripe account**: Connect your Stripe account to RevenueCat to process payments
+- **Web Billing app**: Create a Web Billing app configuration with your app details, default currency, and branding
+- **Products**: Configure at least one Web Billing product that customers can purchase
+- **Offerings**: Create an offering that groups your Web Billing products (checkout steps use offering settings)
+
+For detailed setup instructions, see [Configuring Payments](/tools/funnels/configuring-payments).
+
+:::info Additional payment providers
+Support for additional payment providers, such as Paddle, is coming soon.
+:::
+
 ## Getting started
 
 To get started with Funnels:
 
-1. [Create a Funnel](/tools/funnels/creating-funnels) in the RevenueCat Dashboard
-2. [Deploy your Funnel](/tools/funnels/deploying-funnels) to get a shareable URL
-3. [Analyze performance](/tools/funnels/analyzing-funnels) to understand conversion rates and optimize your flow
+1. [Configure payments](/tools/funnels/configuring-payments) by setting up RevenueCat Web Billing
+2. [Create a Funnel](/tools/funnels/creating-funnels) in the RevenueCat Dashboard
+3. [Deploy your Funnel](/tools/funnels/deploying-funnels) to get a shareable URL
+4. [Analyze performance](/tools/funnels/analyzing-funnels) to understand conversion rates and optimize your flow
 
 

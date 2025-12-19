@@ -202,6 +202,7 @@ const funnelsCategory = Category({
       slug: "tools/funnels",
       itemsPathPrefix: "tools/funnels/",
       items: [
+        Page({ slug: "configuring-payments" }),
         Page({ slug: "creating-funnels" }),
         Page({ slug: "deploying-funnels" }),
         Page({ slug: "analyzing-funnels" }),

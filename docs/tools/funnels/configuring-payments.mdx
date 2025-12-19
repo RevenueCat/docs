@@ -1,0 +1,115 @@
+---
+title: Configuring Payments
+slug: configuring-payments
+hidden: false
+---
+
+Before you can create and deploy Funnels, you need to set up RevenueCat Web Billing. Funnels use Web Billing to process payments through checkout steps, so this configuration is required.
+
+:::info Checkout steps require Web Billing
+Checkout steps in your funnels automatically use RevenueCat Web Billing and will display the appropriate payment interface based on your project's configuration. Make sure your funnel is associated with the correct app and offering before adding checkout steps.
+:::
+
+## Prerequisites
+
+To use Funnels, you'll need:
+
+- ✅ A Stripe account connected to RevenueCat
+- ✅ A Web Billing app configuration
+- ✅ At least one Web Billing product configured
+- ✅ An offering that includes your Web Billing products
+
+## Step 1: Connect your Stripe account
+
+RevenueCat Web Billing uses Stripe as the payment processor. Before you can create a Web Billing app, you need to connect your Stripe account to RevenueCat.
+
+1. Log into the RevenueCat dashboard
+2. Go to your [account settings](https://app.revenuecat.com/settings/account)
+3. Click **Connect Stripe account**
+4. Install the RevenueCat app from the Stripe App Marketplace
+5. Sign in with RevenueCat from within the Stripe app
+
+:::info Project owner required
+Only the project owner can connect a Stripe account. Collaborators cannot add or remove Stripe connections.
+:::
+
+For detailed instructions, see [Connect to your Stripe account](/web/connect-stripe-account).
+
+## Step 2: Create a Web Billing app
+
+After connecting Stripe, create a Web Billing app configuration in your RevenueCat project:
+
+1. Navigate to **Apps & providers** in your project
+2. Click **+ Add platform** and select **Web Billing**
+3. Configure the following required fields:
+   - **Stripe Account**: Select the connected Stripe account
+   - **Default Currency**: The default currency for product prices
+   - **App Name**: Displayed in purchase flows, emails, and invoices
+   - **Support Email**: Customer support contact information
+4. (Optional) Configure additional settings:
+   - **Store URLs**: Links to your iOS and Android apps
+   - **Redemption Links**: Enable anonymous purchases with mobile redemption
+   - **Appearance**: Customize colors, button styles, and branding
+
+After creating the app, you'll see your **Public API Key** and **Sandbox API Key**. These are used for testing and production environments.
+
+![New Web Billing App](/docs_images/web/web-billing/new-web-billing-configuration.png)
+
+For more details on app configuration, see [Web SDK - App configuration](/web/web-billing/web-sdk#app-configuration).
+
+## Step 3: Create Web Billing products
+
+Create products that customers can purchase through your funnels:
+
+1. Go to **Product catalog → Products**
+2. Select your Web Billing configuration
+3. Click **+ New** to create a product
+4. Configure:
+   - **Product identifier**: Unique ID for the product
+   - **Product type**: Auto-renewing subscription, consumable, or non-consumable
+   - **Duration**: Billing cycle for subscriptions
+   - **Pricing**: Set prices for each currency
+   - **Free trial** (optional): Trial period duration
+   - **Introductory period** (optional): Discounted pricing for a limited time
+
+:::info Product configuration
+Once saved, you can only add prices for new currencies—existing prices cannot be edited. If you need to change pricing, create a new product with the desired pricing.
+:::
+
+For complete product setup instructions, see [Configure Products & Prices](/web/web-billing/product-setup).
+
+## Step 4: Create offerings
+
+Offerings group products together and are required for Funnels. Checkout steps in your funnels use the offering settings to determine which products to display.
+
+1. Go to **Product catalog → Offerings**
+2. Click **+ New** to create an offering
+3. Add packages that group equivalent products across platforms
+4. Mark one offering as the **Default Offering** (this is what funnels will use by default)
+
+:::info Offerings and checkout steps
+When you add a checkout step to your funnel, it uses the offering settings from your funnel configuration. Make sure your funnel is associated with the correct offering that contains your Web Billing products.
+:::
+
+For more information on offerings, see [Offerings overview](/offerings/overview).
+
+## Additional configuration
+
+Once you have the basics set up, you can optionally configure:
+
+- **Multi-currency support**: Offer products in multiple currencies
+- **Localization**: Translate your purchase flow
+- **Payment methods**: Enable Google Pay, Apple Pay, and other payment options
+- **Tax collection**: Set up Stripe Tax for automatic tax calculation
+- **Custom metadata**: Pass custom data with purchases
+
+See [Configure Web Billing](/web/web-billing/configuring-overview) for a complete list of configuration options.
+
+## Next steps
+
+With your Web Billing setup complete, you're ready to:
+
+- [Create your first funnel](/tools/funnels/creating-funnels)
+- [Learn about deploying funnels](/tools/funnels/deploying-funnels)
+- [Understand funnel analytics](/tools/funnels/analyzing-funnels)
+
