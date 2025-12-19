@@ -1158,7 +1158,6 @@ const sidebars = {
     offeringsCategory,
     customersCategory,
     paywallsCategory,
-    funnelsCategory,
     testCategory,
     launchCategory,
     targetingCategory,
