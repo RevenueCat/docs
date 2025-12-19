@@ -4,10 +4,10 @@ slug: configuring-payments
 hidden: true
 ---
 
-Before you can create and deploy Funnels, you need to set up RevenueCat Web Billing. Funnels use Web Billing to process payments through checkout steps, so this configuration is required.
+Before you can create and deploy funnels, you need to set up RevenueCat Web Billing. Funnels use Web Billing to process payments through checkout steps, so this configuration is required.
 
 :::info Checkout steps require Web Billing
-Checkout steps in your funnels automatically use RevenueCat Web Billing and will display the appropriate payment interface based on your project's configuration. Make sure your funnel is associated with the correct app and offering before adding checkout steps.
+Checkout steps in your funnels automatically use RevenueCat Web Billing and will display the appropriate payment interface based on your project's configuration. Make sure your funnel is associated with the correct app and Offering before adding checkout steps.
 :::
 
 ## Prerequisites
@@ -17,7 +17,7 @@ To use Funnels, you'll need:
 - ✅ A Stripe account connected to RevenueCat
 - ✅ A Web Billing app configuration
 - ✅ At least one Web Billing product configured
-- ✅ An offering that includes your Web Billing products
+- ✅ An Offering that includes your Web Billing products
 
 ## Step 1: Connect your Stripe account
 
@@ -78,20 +78,20 @@ Once saved, you can only add prices for new currencies—existing prices cannot 
 
 For complete product setup instructions, see [Configure Products & Prices](/web/web-billing/product-setup).
 
-## Step 4: Create offerings
+## Step 4: Create Offerings
 
-Offerings group products together and are required for Funnels. Checkout steps in your funnels use the offering settings to determine which products to display.
+Offerings group products together and are required for Funnels. Checkout steps in your funnels use the Offering settings to determine which products to display.
 
 1. Go to **Product catalog → Offerings**
-2. Click **+ New** to create an offering
+2. Click **+ New** to create an Offering
 3. Add packages that group equivalent products across platforms
-4. Mark one offering as the **Default Offering** (this is what funnels will use by default)
+4. Mark one Offering as the **Default Offering** (this is what funnels will use by default)
 
 :::info Offerings and checkout steps
-When you add a checkout step to your funnel, it uses the offering settings from your funnel configuration. Make sure your funnel is associated with the correct offering that contains your Web Billing products.
+When you add a checkout step to your funnel, it uses the Offering settings from your funnel configuration. Make sure your funnel is associated with the correct Offering that contains your Web Billing products.
 :::
 
-For more information on offerings, see [Offerings overview](/offerings/overview).
+For more information on Offerings, see [Offerings overview](/offerings/overview).
 
 ## Additional configuration
 
