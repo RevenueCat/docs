@@ -102,7 +102,7 @@ You can also select **Auto translate** to utilize RevenueCat's translation featu
 
 ### Creating a message
 
-Be sure that you have at least one default message created before you promotional-offer or switch-plan message.
+Be sure that you have at least one default message created before creating a promotional-offer or switch-plan message.
 
 1. Go to **Customer Center** → **Retention** tab
 2. Find your app in the **Apple Retention Messaging API** section
