@@ -51,7 +51,14 @@ After connecting Stripe, create a Web Billing app configuration in your RevenueC
    - **Redemption Links**: Enable anonymous purchases with mobile redemption
    - **Appearance**: Customize colors, button styles, and branding
 
-After creating the app, you'll see your **Public API Key** and **Sandbox API Key**. These are used for testing and production environments.
+:::warning Redemption Links are required for anonymous purchases
+Redemption Links are required to use your funnels with anonymous users, such as those coming directly from an ad, a landing page, a social media post, and other traffic sources outside of a logged in app session.
+:::
+
+
+::info Appearance fields
+These fields will influence the appearance of the checkout flow in your funnels, and therefore should match the branding you'll be using throughout the funnel to create a cohesive experience.
+:::
 
 ![New Web Billing App](/docs_images/web/web-billing/new-web-billing-configuration.png)
 
@@ -87,23 +94,11 @@ Offerings group products together and are required for Funnels. Checkout steps i
 3. Add packages that group equivalent products across platforms
 4. Mark one Offering as the **Default Offering** (this is what funnels will use by default)
 
-:::info Offerings and checkout steps
-When you add a checkout step to your funnel, it uses the Offering settings from your funnel configuration. Make sure your funnel is associated with the correct Offering that contains your Web Billing products.
-:::
-
 For more information on Offerings, see [Offerings overview](/offerings/overview).
 
 ## Additional configuration
 
-Once you have the basics set up, you can optionally configure:
-
-- **Multi-currency support**: Offer products in multiple currencies
-- **Localization**: Translate your purchase flow
-- **Payment methods**: Enable Google Pay, Apple Pay, and other payment options
-- **Tax collection**: Set up Stripe Tax for automatic tax calculation
-- **Custom metadata**: Pass custom data with purchases
-
-See [Configure Web Billing](/web/web-billing/configuring-overview) for a complete list of configuration options.
+Once you have the basics set up, you can optionally configure things like multi-currency support, tax collection, and more. See [Configure Web Billing](/web/web-billing/configuring-overview) for a complete list of configuration options.
 
 ## Next steps
 
