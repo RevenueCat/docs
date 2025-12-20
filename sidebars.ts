@@ -155,6 +155,7 @@ const paywallsCategory = Category({
         }),
         Page({ slug: "testing-paywalls" }),
         Page({ slug: "displaying-paywalls" }),
+        Page({ slug: "custom-purchase-handling" }),
         Page({ slug: "change-log" }),
       ],
     }),
