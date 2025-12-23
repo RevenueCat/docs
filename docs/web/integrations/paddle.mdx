@@ -17,9 +17,9 @@ For apps available outside the U.S. App Store, Apple still requires that digital
 
 - **Import and sync external Paddle purchases**: Let subscribers purchase on your own website using Paddle, and use them to unlock mobile entitlements for your users.
 - **Embedded Paddle checkout (Web SDK)**: Use RevenueCat's [purchases-js SDK](../web-billing/web-sdk) to initialize a purchase in your web app that uses a Paddle checkout, and creates subscriptions in Paddle Billing.
-- **Embedded Paddle checkout (Web Purchase Links)**: Create a [revenuecat-hosted purchase flow](../web-billing/web-purchase-links) which uses a Paddle checkout, and creates subscriptions in Paddle Billing.
+- **Hosted Paddle checkout (Web Purchase Links)**: Create a [revenuecat-hosted purchase flow](../web-billing/web-purchase-links) which uses a Paddle checkout, and creates subscriptions in Paddle Billing.
 - **Redemption Links**: Allow users to purchase anonymously without logging in, and handle purchase redemption in your mobile app.
-- **Web Paywalls**: Present a RevenueCat paywall on the web, attache to a Paddle checkout.
+- **Web Paywalls**: Present a RevenueCat paywall on the web, attached to a Paddle checkout.
 - **Web Purchase Button**: Present a RevenueCat paywall on mobile, which links out to a Paddle web checkout.
 
 :::info Subscriptions, products and prices are managed in Paddle
@@ -47,7 +47,7 @@ If you want to use a non-RevenueCat purchase flow and simply import purchases in
 ### Use case 2: Using a Paddle checkout in Web Purchase Links
 
 1. [Configure your Paddle account](#configure-your-paddle-account)
-1. [Create a Paddle config and configure purchase tracking](#create-a-paddle-config-and-configure-purchase-tracking)
+1. [Create a Paddle config](#create-a-paddle-config-and-configure-purchase-tracking)
 1. [Configure purchase redemption on mobile with Redemption Links](#configure-purchase-redemption-on-mobile-with-redemption-links) (optional)
 1. [Create products and prices in Paddle](#create-products-and-prices-in-paddle) (skip if already created)
 1. [Import Paddle products to RevenueCat](#import-paddle-products-to-revenuecat)
@@ -59,7 +59,7 @@ If you want to use a non-RevenueCat purchase flow and simply import purchases in
 ### Use case 3: Using a Paddle checkout in an app-to-web flow with RevenueCat Paywalls
 
 1. [Configure your Paddle account](#configure-your-paddle-account)
-1. [Create a Paddle config and configure purchase tracking](#create-a-paddle-config-and-configure-purchase-tracking)
+1. [Create a Paddle config](#create-a-paddle-config-and-configure-purchase-tracking)
 1. [Create products and prices in Paddle](#create-products-and-prices-in-paddle) (skip if already created)
 1. [Import Paddle products to RevenueCat](#import-paddle-products-to-revenuecat)
 1. [Create entitlements in RevenueCat](#create-entitlements-in-revenuecat)
@@ -70,7 +70,7 @@ If you want to use a non-RevenueCat purchase flow and simply import purchases in
 ### Use case 4: Using a Paddle checkout with the Web SDK
 
 1. [Configure your Paddle account](#configure-your-paddle-account)
-1. [Create a Paddle config and configure purchase tracking](#create-a-paddle-config-and-configure-purchase-tracking)
+1. [Create a Paddle config](#create-a-paddle-config-and-configure-purchase-tracking)
 1. [Configure purchase redemption on mobile with Redemption Links](#configure-purchase-redemption-on-mobile-with-redemption-links) (optional)
 1. [Create products and prices in Paddle](#create-products-and-prices-in-paddle) (skip if already created)
 1. [Import Paddle products to RevenueCat](#import-paddle-products-to-revenuecat)
@@ -150,7 +150,7 @@ The RevenueCat Paddle Billing integration doesn't currently support Paddle's aba
 | Products                       |  ☑  |   ☐   |
 | Reports                        |  ☐   |   ☐   |
 | Subscriptions                  |  ☑  |   ☐   |
-| Transactions                   |  ☑  |   ☑   |
+| Transactions                   |  ☑  |  ☑   |
 
 </details>
 
