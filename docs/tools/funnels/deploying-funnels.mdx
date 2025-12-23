@@ -1,0 +1,117 @@
+---
+title: Deploying Funnels
+slug: deploying-funnels
+hidden: true
+---
+
+Once you've created and published your funnel, you can deploy it by sharing the generated URL with your users. Funnels are hosted by RevenueCat and accessible via unique URLs for each environment.
+
+## Publishing your funnel
+
+Before you can deploy a funnel, it must be published. To publish:
+
+1. Open your funnel in the Funnel Editor
+2. Ensure you have at least one step configured
+3. Click **Publish** in the top-right corner
+4. Confirm the publish action
+
+Once published, your funnel will be available via shareable URLs. You can continue editing after publishing—changes will be saved as drafts until you publish again.
+
+:::info Inactive vs. Published
+- **Inactive**: Your work-in-progress funnel. Changes are automatically saved but not accessible via public URLs.
+- **Published**: Your live funnel that's accessible via shareable URLs. Users will see the published version when they access your funnel URL.
+:::
+
+## Getting your funnel URL
+
+After publishing, you can access your funnel URLs:
+
+1. Open your published funnel in the Funnel Editor
+2. Click **Share URL** in the top-right corner
+3. You'll see URLs for both **Production** and **Sandbox** environments
+
+### Production vs. Sandbox
+
+| Environment | Description | Use case |
+| :---------- | :---------- | :------- |
+| **Production** | Your live funnel with real payment processing | Share with actual customers |
+| **Sandbox** | Test environment with test payment processing | Testing, QA, internal review |
+
+:::warning Environment selection
+Make sure you're using the correct environment URL. Production URLs process real payments, while Sandbox URLs are for testing only.
+:::
+
+## Funnel URL format
+
+Funnel URLs follow this format:
+
+```
+https://signup.cat/{link_id}/{app_user_id}
+```
+
+The URL includes:
+
+- **Base domain**: RevenueCat's hosted funnel domain.
+- **Link ID**: Unique identifier for your funnel.
+- **App User ID**: Path for specifying the user visiting the funnel. If an App User ID is not provided, an anonymous user will be created
+
+:::info Redemption Links
+If your app has Redemption Links enabled, anonymous users who purchase on the web can redeem their purchase in-app using the Redemption Links flow. [Learn more about Redemption Links](/web/web-billing/redemption-links).
+
+If your app does not have Redemption Links enabled, **Funnels cannot be used with anonymous users**. 
+:::
+
+## URL parameters
+
+Funnels support two types of URL parameters: UTM parameters and custom parameters.
+
+### UTM parameters
+
+UTM parameters (such as `utm_source`, `utm_medium`, `utm_campaign`, etc.) are automatically processed by RevenueCat when included in your funnel URLs. You don't need to configure them in your funnel settings—simply include them in the URL when sharing your funnel:
+
+```
+https://signup.cat/{link_id}/?utm_source=email&utm_medium=newsletter&utm_campaign=spring2024
+```
+
+These parameters are automatically tracked in analytics and can be used for filtering and segmentation in your funnel analytics dashboard, or as conditions for the branching logic in your funnel. However, it's your responsibility to include these parameters in the URLs you share—RevenueCat will process them automatically once they're present.
+
+### Custom parameters
+
+Custom URL parameters can be used for branching logic and personalization within your funnel. Unlike UTM parameters, custom parameters must be configured in your funnel settings before they can be accessed.
+
+To configure custom parameters:
+
+1. Open your funnel in the Funnel Editor
+2. Go to **Settings** → **Parameters**
+3. Add parameters with their types (string, number, boolean, or string array)
+
+Once configured, you can include them in your funnel URL and access them in your funnel's branching logic:
+
+```
+https://signup.cat/{link_id}/?custom_param=value
+```
+
+## Updating published funnels
+
+You can update your published funnel at any time:
+
+1. Make your changes in the Funnel Editor
+2. Changes are automatically saved as drafts
+3. When ready, click **Publish** again to make changes live
+
+:::warning Live updates
+When you publish changes, they immediately become live. Users accessing your funnel URL will see the updated version. There's no rollback mechanism, so test thoroughly before publishing.
+:::
+
+### Version history
+
+The Funnel Editor shows when your funnel was last published. You can compare the current draft with the published version using the version picker in the editor header.
+
+## Next steps
+
+- Learn how to [analyze funnel performance](/tools/funnels/analyzing-funnels)
+- Understand [Redemption Links](/web/web-billing/redemption-links) for linking web purchases to in-app accounts
+- Review [payment configuration](/tools/funnels/configuring-payments) for Funnels setup
+
+
+
