@@ -65,4 +65,4 @@ If you are a collaborator on a Project that requires two-factor authentication, 
 
 ### Activating Single Sign-On
 
-Please refer to our [our SSO guide](/projects/sso) for more information on activating SSO on your account.
+Please refer to our [SSO guide](/projects/sso) for more information on activating SSO on your account.
