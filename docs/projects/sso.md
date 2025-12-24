@@ -2,7 +2,7 @@
 title: Single Sign-On (SSO)
 sidebar_label: Single Sign-On (SSO)
 excerpt: Log into RevenueCat using Single Sign-On (SSO)
-hidden: true
+hidden: false
 ---
 
 # Set up Single Sign-On (SSO) for RevenueCat
