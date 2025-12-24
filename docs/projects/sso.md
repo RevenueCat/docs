@@ -62,7 +62,7 @@ In the RevenueCat dashboard:
 2. Add an **SSO Group**
 3. Select the **RevenueCat role** that group should receive
 
-![Collaborators](/docs_images/projects/sso-configure.png)
+![SSO group to role mapping interface](/docs_images/projects/sso-configure.png)
 
 Changes may take a few minutes to sync.
 
