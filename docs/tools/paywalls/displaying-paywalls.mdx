@@ -388,6 +388,70 @@ import onPurchaseInitiatedKotlin from '@site/code_blocks/tools/paywalls_on_purch
   ]}
 />
 
+## Exit offers
+
+Exit offers allow you to present an alternative offer when a user attempts to dismiss your paywall without making a purchase. This is a powerful tool for recovering potentially lost conversions by giving users a second chance to subscribe with a different offer, such as a discounted price or alternative package.
+
+When a user tries to close or navigate back from the paywall, instead of immediately dismissing, a secondary paywall will be displayed with the exit offer.
+
+### How it works
+
+1. User attempts to dismiss the main paywall without purchasing
+2. An exit offer paywall is automatically presented with an alternative offering
+3. User can either:
+   - Subscribe to the exit offer
+   - Dismiss the exit offer, which then dismisses the main paywall
+
+### Configuration
+
+Exit offers are configured entirely in the [Paywalls editor](/tools/paywalls/creating-paywalls) in the RevenueCat dashboard. No code changes are required to use this feature.
+
+To configure an exit offer for your paywall:
+
+1. Create a separate Offering in the RevenueCat dashboard that contains the packages you want to offer as your exit offer (e.g., a discounted package or alternative pricing)
+2. In the Paywalls editor, configure the exit offer settings for your paywall by selecting the offering to display and the presentation mode (sheet or dialog)
+
+Once configured, the exit offer will automatically be presented when users attempt to dismiss the paywall, as long as you're using a supported presentation method.
+
+### Supported presentation methods
+
+Exit offers only work when using the `present` functions that display paywalls in iOS and cross platform SDKs. In Android, they work automatically when using the `PaywallDialog` and `PaywallActivity` classes.
+
+:::warning View-based APIs not supported
+Exit offers will **not** work if you manually embed paywall views/components in your UI (e.g., `PaywallView`, `Paywall` composable, `<RevenueCatUI.Paywall>` component, etc).
+:::
+
+### Platform support
+
+Exit offers are supported on all platforms when using Paywalls v2 (component-based paywalls) via the `present` functions/methods.
+
+:::info Hybrid SDK support
+Hybrid SDKs (React Native, Flutter, KMP, Capacitor, Unity) support exit offers through the underlying native iOS and Android SDKs. Ensure you're using the minimum required versions of the native SDKs listed below.
+:::
+
+#### Required SDK Versions 
+
+| Platform      | Minimum Version | 
+| :------------ | :-------------- |
+| iOS           | 5.52.0+         |
+| Android       | 9.18.0+         |
+| React Native  | Uses native SDK versions |
+| Flutter       | Uses native SDK versions |
+| KMP           | Uses native SDK versions |
+| Capacitor     | Uses native SDK versions |
+| Unity         | Uses native SDK versions |
+
+:::tip Best practices
+When designing exit offers:
+- Consider offering a discount or trial period that wasn't available in the main paywall
+- Keep the exit offer paywall simple and focused on the value proposition
+- Don't overuse exit offers - they should feel like a special opportunity, not an annoyance
+- Test different exit offer strategies with [Experiments](/tools/experiments-v1) to find what works best for your audience
+:::
+
+:::warning User experience considerations
+While exit offers can improve conversion rates, they do add an extra step to the dismissal flow. Make sure to monitor user feedback and metrics to ensure the experience remains positive.
+:::
 
 ## Changes from legacy Paywalls
 
