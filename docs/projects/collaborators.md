@@ -69,4 +69,4 @@ All roles and permission levels are now available on every plan, giving teams th
 
 ### Single Sign-On Collaborators
 
-All users who log into RevenueCat using the SSO domains you configured will be able to collaborate automatically. Their access depends on the SSO groups they are part of. Please refer to [our SSO guide](/projects/sso#4)-Map-SSO-groups-to-RevenueCat-roles) for more information.
+All users who log into RevenueCat using the SSO domains you configured will be able to collaborate automatically. Their access depends on the SSO groups they are part of. Please refer to [our SSO guide](/projects/sso#4-map-sso-groups-to-revenuecat-roles) for more information.
