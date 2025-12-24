@@ -69,22 +69,4 @@ All roles and permission levels are now available on every plan, giving teams th
 
 ### Single Sign-On Collaborators
 
-To add collaborators when using SSO, configure how the SSO Groups map to the RevenueCat roles defined above from **Project Settings > Collaborators**.
-
-![Collaborators](/docs_images/projects/sso-collaborators.png)
-
-Add the SSO Group name, select the role you want to grant.
-
-![Collaborators](/docs_images/projects/sso-configure.png)
-
-Once you save these mappings the collaborators will automatically be synchronized. This may take up to a few minutes.
-
-If multiple RevenueCat roles are assigned to the same SSO group, RevenueCat will provide the group with the _highest_ level of access defined by the following hierarchy.
-
-1. Admin
-1. Developer
-1. Growth
-1. Support
-1. View Only
-
-Once you the collaborators for all your projects are correctly configured, make sure to [activate SSO](/welcome/set-up-revenuecat/security).
+All users who log into RevenueCat using the SSO domains you configured will be able to collaborate automatically. Their access depends on the SSO groups they are part of. Please refer to [our SSO guide](/projects/sso#4)-Map-SSO-groups-to-RevenueCat-roles) for more information.

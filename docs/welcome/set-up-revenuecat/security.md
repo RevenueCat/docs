@@ -65,14 +65,4 @@ If you are a collaborator on a Project that requires two-factor authentication, 
 
 ### Activating Single Sign-On
 
-:::info Enterprise Only
-At this time, Single Sign-On is only available for customers on an [Enterprise plan](https://www.revenuecat.com/pricing/)
-:::
-
-To enable Single Sign-On for your organization navigate to your [**Account > Security > SSO**](https://app.revenuecat.com/settings/security/sso) and click **Activate SSO**.
-
-![Collaborators](/docs_images/projects/sso-activate.png)
-
-:::warning Members of the domain will only be able to use SSO
-When SSO is enabled for your organization, users with your organization’s email domain will be required to sign in through SSO.
-:::
+Please refer to our [our SSO guide](/projects/sso) for more information on activating SSO on your account.
