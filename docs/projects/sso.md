@@ -80,7 +80,7 @@ Changes may take a few minutes to sync.
 
 When configuration is complete, go to [**Account > Security > SSO**](https://app.revenuecat.com/settings/security/sso) and click **Activate SSO**.
 
-![Collaborators](/docs_images/projects/sso-activate.png)
+![SSO activation button in security settings](/docs_images/projects/sso-activate.png)
 
 After activation, users with your configured email domain will be required to sign in using SSO.
 
