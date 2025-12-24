@@ -423,35 +423,10 @@ Exit offers will **not** work if you manually embed paywall views/components in 
 
 ### Platform support
 
-Exit offers are supported on all platforms when using Paywalls v2 (component-based paywalls) via the `present` functions/methods.
-
-:::info Hybrid SDK support
-Hybrid SDKs (React Native, Flutter, KMP, Capacitor, Unity) support exit offers through the underlying native iOS and Android SDKs. Ensure you're using the minimum required versions of the native SDKs listed below.
-:::
-
-#### Required SDK Versions 
-
 | Platform      | Minimum Version | 
 | :------------ | :-------------- |
 | iOS           | 5.52.0+         |
 | Android       | 9.18.0+         |
-| React Native  | Uses native SDK versions |
-| Flutter       | Uses native SDK versions |
-| KMP           | Uses native SDK versions |
-| Capacitor     | Uses native SDK versions |
-| Unity         | Uses native SDK versions |
-
-:::tip Best practices
-When designing exit offers:
-- Consider offering a discount or trial period that wasn't available in the main paywall
-- Keep the exit offer paywall simple and focused on the value proposition
-- Don't overuse exit offers - they should feel like a special opportunity, not an annoyance
-- Test different exit offer strategies with [Experiments](/tools/experiments-v1) to find what works best for your audience
-:::
-
-:::warning User experience considerations
-While exit offers can improve conversion rates, they do add an extra step to the dismissal flow. Make sure to monitor user feedback and metrics to ensure the experience remains positive.
-:::
 
 ## Changes from legacy Paywalls
 
