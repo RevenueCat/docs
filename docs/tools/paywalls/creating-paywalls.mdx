@@ -222,7 +222,7 @@ Unfortunately if you use custom fonts in your paywall, they will not be supporte
 
 ### Configuring exit offers
 
-Exit offers allow you to present an alternative offer when a user attempts to dismiss your paywall without making a purchase. This can help recover potentially lost conversions by giving users a second chance to subscribe with a different offer.
+Exit offers allow you to present an alternative offer when a user dismisses your paywall without making a purchase. This can help recover potentially lost conversions by giving users a second chance to subscribe, with a different offer.
 
 To configure an exit offer for your paywall:
 
@@ -230,10 +230,13 @@ To configure an exit offer for your paywall:
 2. In the Paywalls editor for your main paywall, look for the exit offer configuration settings
 3. Select the offering you want to display as the exit offer
 
-Once configured, the exit offer will automatically be presented when users attempt to dismiss the paywall without purchasing, as long as you're using a supported presentation method, `presentPaywall` functions in iOS and cross platform SDKs, or `PaywallDialog` and `PaywallActivity` in Android.
+Once configured, the exit offer will automatically be presented when users attempt to dismiss the paywall without purchasing. You must also use one of the supported presentation methods: `presentPaywall` in iOS and cross-platform SDKs, or `PaywallDialog` / `PaywallActivity` on Android.
 
-:::tip
-Exit offers work best when they offer clear additional value compared to your main paywall, such as a discount, trial period, or alternative package structure.
+:::tip Best practices
+When designing exit offers:
+- Consider offering a discount or trial period that wasn't available in the main paywall
+- Keep the exit offer paywall simple and focused on the value proposition
+- Don't overuse exit offers - they should feel like a special opportunity, not an annoyance
 :::
 
 [Learn more about exit offers and supported presentation methods.](/tools/paywalls/displaying-paywalls#exit-offers)
