@@ -408,7 +408,7 @@ Exit offers are configured entirely in the [Paywalls editor](/tools/paywalls/cre
 
 ### Supported presentation methods
 
-Exit offers only work when using the `present` functions that display paywalls in iOS and cross platform SDKs. In Android, they work automatically when using the `PaywallDialog` and `PaywallActivity` classes.
+Exit offers only work when using the `presentPaywall` or `presentPaywallIfNeeded` functions that display paywalls in iOS and cross platform SDKs. In Android, they work automatically when using the `PaywallDialog` and `PaywallActivity` classes.
 
 :::warning View-based APIs not supported
 Exit offers will **not** work if you manually embed paywall views/components in your UI (e.g., `PaywallView`, `Paywall` composable, `<RevenueCatUI.Paywall>` component, etc).
