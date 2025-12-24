@@ -220,6 +220,27 @@ Unfortunately if you use custom fonts in your paywall, they will not be supporte
 
 ![Duplicate](/docs_images/paywalls/paywalls-duplicate.png)
 
+### Configuring exit offers
+
+Exit offers allow you to present an alternative offer when a user dismisses your paywall without making a purchase. This can help recover potentially lost conversions by giving users a second chance to subscribe, with a different offer.
+
+To configure an exit offer for your paywall:
+
+1. Create a separate Offering with packages for your exit offer (e.g., a discounted package or alternative pricing), and create a paywall for it
+2. In the Paywalls editor for your main paywall, configure the exit offer settings by selecting the exit offer offering to display
+
+![Exit offer configuration](/docs_images/paywalls/paywalls-exit-offer-configuration.png)
+
+Once configured, the exit offer will automatically be presented when users dismiss the paywall without purchasing. You must also use one of the supported presentation methods.
+:::tip Best practices
+When designing exit offers:
+- Consider offering a discount or trial period that wasn't available in the main paywall
+- Keep the exit offer paywall simple and focused on the value proposition
+- Don't overuse exit offers. They should feel like a special opportunity, not an annoyance
+:::
+
+[Learn more about exit offers, supported presentation methods, and platform requirements.](/tools/paywalls/displaying-paywalls#exit-offers)
+
 ### Safe area preview
 
 The paywall preview in the dashboard includes a preview of the device safe area that will impact how your paywall is rendered. RevenueCat Paywalls will automatically handle the device safe area for you when displaying paywalls on device, but there are a few things you should keep in mind:

@@ -113,7 +113,7 @@ Be sure that you have at least one default message created before creating a pro
 ![](/docs_images/platform-resources/apple/retention-messaging-api/retention-messaging-api-promotional-2.png)
 
 4. **Reference**: Enter a descriptive name for this message (for your internal reference)
-5. **Eligibility requirements (optional)**: This is an optional setting where you can have custom targeting. We currently offer the following eligibility criterias:
+5. **Eligibility requirements (optional)**: This is an optional setting where you can have custom targeting. We currently offer the following eligibility criteria:
    - First seen more than N days ago
    - First purchase more than N days ago
    - Storefront in list

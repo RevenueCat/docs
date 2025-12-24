@@ -388,6 +388,38 @@ import onPurchaseInitiatedKotlin from '@site/code_blocks/tools/paywalls_on_purch
   ]}
 />
 
+## Exit offers
+
+Exit offers allow you to present an alternative offer when a user dismisses your paywall without making a purchase. This is a powerful tool for recovering potentially lost conversions by giving users a second chance to subscribe with a different offer, such as a discounted price or alternative package.
+
+When a user tries to close or navigate back from the paywall, instead of immediately dismissing, a secondary paywall will be displayed with the exit offer.
+
+### How it works
+
+1. User attempts to dismiss the main paywall without purchasing
+2. An exit offer paywall is automatically presented with an alternative offering
+3. The user can either:
+   - Subscribe to the exit offer
+   - Dismiss the exit offer, which then dismisses the main paywall
+
+### Configuration
+
+Exit offers are configured entirely in the [Paywalls editor](/tools/paywalls/creating-paywalls#configuring-exit-offers) in the RevenueCat dashboard. No code changes are required to use this feature. Once configured, the exit offer will automatically be presented when users attempt to dismiss the paywall, as long as you're using a supported presentation method.
+
+### Supported presentation methods
+
+Exit offers only work when using the `presentPaywall` or `presentPaywallIfNeeded` functions that display paywalls in iOS and cross platform SDKs. In Android, they work automatically when using the `PaywallDialog` and `PaywallActivity` classes.
+
+:::warning View-based APIs not supported
+Exit offers will **not** work if you manually embed paywall views/components in your UI (e.g., `PaywallView`, `Paywall` composable, `<RevenueCatUI.Paywall>` component, etc).
+:::
+
+### Platform support
+
+| Platform      | Minimum Version | 
+| :------------ | :-------------- |
+| iOS           | 5.52.0+         |
+| Android       | 9.18.0+         |
 
 ## Changes from legacy Paywalls
 
