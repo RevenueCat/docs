@@ -26,7 +26,6 @@ Components are the individual building blocks of your paywall that can be arrang
 | Feature list | ✅ | Styled components that can be used as a starting point to display a list of features or benefits |
 | Awards | ✅ | Styled components that can be used as a starting point to callout awards your app has received |
 | Express checkout | ✅ | Allows users to show Apple Pay and Google Pay quick purchase buttons on web. |
-| Wallet | ❌ | A component that will be filled with the correct wallet button (Apple Pay or Google Pay). |
 
 :::info Parent components
 Parent components all fundamentally act as containers that can contain other components within them.
@@ -494,8 +493,35 @@ The `_no_trial` packages would represent the packages without a free trial, and 
 
 These component categories are pre-styled components from RevenueCat that can be used as starting points or inspiration to add this type of content to your paywall. Fundamentally, they are no different than any other stacks, and therefore can be customized and configured to your liking.
 
-## Express checkout and Wallet
+## Express checkout
 
-The Express Checkout component allows you to offer quick purchase buttons like Apple Pay and Google Pay directly on your web paywall.
+The express checkout component allows you to offer quick purchase buttons like Apple Pay and Google Pay directly on your paywall when its served on the web. This provides a more seamless, app-like purchasing experience for users on mobile devices from the web, similar to the native app experience.
 
-[Learn more about Express checkout and the Wallet component.](/tools/paywalls/creating-paywalls/express-checkout)
+:::info Web paywalls
+RevenueCat Paywalls can be used on the web through our [Web Purchase Links](/web/web-billing/web-purchase-links), or on your own custom web experience using the [Web SDK](/web/web-billing/overview).
+:::
+
+### How it works
+
+The express Checkout component is designed to handle the different states of digital wallet availability. It contains three different stacks that you can customize:
+
+- **Express checkout available**: Shown when a digital wallet (like Apple Pay or Google Pay) is supported and ready to use on the user's device and browser.
+- **Express checkout unavailable**: Shown when no digital wallet is available. This allows you to show an alternative, like a standard purchase button, to ensure users can still complete their purchase.
+- **Loading state**: Shown while RevenueCat is determining if a digital wallet can be used.
+
+The Wallet component is a placeholder that automatically renders the appropriate digital wallet button (e.g., Apple Pay on iOS/Safari, Google Pay on Android/Chrome) based on the user's device and browser. 
+
+### Customizing the experience
+
+By using the express checkout component alongside other components, you can customize how the express checkout option is presented. For example:
+
+- When express checkout is available, you can show the Wallet component (Apple Pay/Google Pay) prominently, and perhaps a less emphasized Purchase Button below it to give the user the ability to checkout with other payment methods if desired.
+- When express checkout is unavailable, you can show a standard Purchase Button at full prominence that opens the standard checkout flow.
+
+This flexibility allows you to guide users toward the most seamless payment method when available, while always providing a fallback.
+
+### Requirements
+
+Express checkout is currently supported on web paywalls. To use it, ensure you have:
+1. Configured Apple Pay and Google Pay in your Stripe account and registered your domains. See [Payment Methods](../../web/web-billing/payment-methods) for more details.
+2. Added the **Express checkout** component to your paywall in the Paywall Editor.
