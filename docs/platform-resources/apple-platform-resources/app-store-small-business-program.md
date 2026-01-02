@@ -39,7 +39,7 @@ If you applied before December 18, 2020 and were notified of your status by Dece
 
 #### Exit Date
 
-If you leave or have been removed from the program, enter the effective exit date.
+If you leave or have been removed from the program, enter the effective exit date. We typically recommend using the date that Apple sent the email notice of your exiting of the program.
 
 ## Considerations
 
