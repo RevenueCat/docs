@@ -201,7 +201,7 @@ Page({ slug: "installation/ios" });
 // References: /docs/installation/ios.md or ios.mdx
 ```
 
-The final path is constructed as: `itemsPathPrefix + slug`
+The final path is constructed as: `itemsPathPrefix + slug`. New documentation pages are not automatically added to any sidebars - you must add them under a category (or subcategory.)
 
 ### Link Configuration
 
