@@ -78,6 +78,7 @@ const projectsCategory = Category({
           items: [Page({ slug: "projects/oauth-setup" })],
         }),
         Page({ slug: "projects/collaborators" }),
+        Page({ slug: "projects/sso" }),
         Page({ slug: "projects/restore-behavior" }),
         Page({ slug: "projects/sandbox-access" }),
       ],
