@@ -1383,6 +1383,14 @@
   dependencies:
     postcss-value-parser "^4.2.0"
 
+"@csstools/postcss-property-rule-prelude-list@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@csstools/postcss-property-rule-prelude-list/-/postcss-property-rule-prelude-list-1.0.0.tgz#700b7aa41228c02281bda074ae778f36a09da188"
+  integrity sha512-IxuQjUXq19fobgmSSvUDO7fVwijDJaZMvWQugxfEUxmjBeDCVaDuMpsZ31MsTm5xbnhA+ElDi0+rQ7sQQGisFA==
+  dependencies:
+    "@csstools/css-parser-algorithms" "^3.0.5"
+    "@csstools/css-tokenizer" "^3.0.4"
+
 "@csstools/postcss-random-function@^2.0.1":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@csstools/postcss-random-function/-/postcss-random-function-2.0.1.tgz#3191f32fe72936e361dadf7dbfb55a0209e2691e"
@@ -1426,6 +1434,13 @@
   dependencies:
     "@csstools/css-calc" "^2.1.4"
     "@csstools/css-parser-algorithms" "^3.0.5"
+    "@csstools/css-tokenizer" "^3.0.4"
+
+"@csstools/postcss-syntax-descriptor-syntax-production@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@csstools/postcss-syntax-descriptor-syntax-production/-/postcss-syntax-descriptor-syntax-production-1.0.1.tgz#98590e372e547cdae60aef47cfee11f3881307dd"
+  integrity sha512-GneqQWefjM//f4hJ/Kbox0C6f2T7+pi4/fqTqOFGTL3EjnvOReTqO1qUQ30CaUjkwjYq9qZ41hzarrAxCc4gow==
+  dependencies:
     "@csstools/css-tokenizer" "^3.0.4"
 
 "@csstools/postcss-system-ui-font-family@^1.0.0":
@@ -3478,7 +3493,7 @@ astring@^1.8.0:
   resolved "https://registry.yarnpkg.com/astring/-/astring-1.9.0.tgz#cc73e6062a7eb03e7d19c22d8b0b3451fd9bfeef"
   integrity sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==
 
-autoprefixer@^10.4.19, autoprefixer@^10.4.22, autoprefixer@^10.4.23:
+autoprefixer@^10.4.19, autoprefixer@^10.4.23:
   version "10.4.23"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.4.23.tgz#c6aa6db8e7376fcd900f9fd79d143ceebad8c4e6"
   integrity sha512-YYTXSFulfwytnjAPlw8QHncHJmlvFKtczb8InXaAx9Q0LbfDnfEYDE55omerIJKihhmU61Ft+cAOSzQVaBUmeA==
@@ -3639,7 +3654,7 @@ braces@^3.0.3, braces@~3.0.2:
   dependencies:
     fill-range "^7.1.1"
 
-browserslist@^4.0.0, browserslist@^4.23.0, browserslist@^4.24.0, browserslist@^4.24.2, browserslist@^4.24.4, browserslist@^4.28.0, browserslist@^4.28.1:
+browserslist@^4.0.0, browserslist@^4.23.0, browserslist@^4.24.0, browserslist@^4.24.2, browserslist@^4.24.4, browserslist@^4.28.1:
   version "4.28.1"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.28.1.tgz#7f534594628c53c63101079e27e40de490456a95"
   integrity sha512-ZC5Bd0LgJXgwGqUknZY/vkUQ04r8NXnJZ3yYi4vDmSiZmC/pdSN0NbNRPxZpbtO4uAfDUAFffO8IZoM3Gj8IkA==
@@ -4253,10 +4268,10 @@ css-what@^6.0.1, css-what@^6.1.0:
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-6.1.0.tgz#fb5effcf76f1ddea2c81bdfaa4de44e79bac70f4"
   integrity sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==
 
-cssdb@^8.5.2:
-  version "8.5.2"
-  resolved "https://registry.yarnpkg.com/cssdb/-/cssdb-8.5.2.tgz#8a8c16c43785e32749453e589f18debcd936c7d1"
-  integrity sha512-Pmoj9RmD8RIoIzA2EQWO4D4RMeDts0tgAH0VXdlNdxjuBGI3a9wMOIcUwaPNmD4r2qtIa06gqkIf7sECl+cBCg==
+cssdb@^8.6.0:
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/cssdb/-/cssdb-8.6.0.tgz#5381310f5fdac6d249fc4016b7d0f6deb0002f6a"
+  integrity sha512-7ZrRi/Z3cRL1d5I8RuXEWAkRFP3J4GeQRiyVknI4KC70RAU8hT4LysUZDe0y+fYNOktCbxE8sOPUOhyR12UqGQ==
 
 cssesc@^3.0.0:
   version "3.0.0"
@@ -6122,71 +6137,71 @@ launch-editor@^2.6.1:
     picocolors "^1.1.1"
     shell-quote "^1.8.3"
 
-lefthook-darwin-arm64@2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/lefthook-darwin-arm64/-/lefthook-darwin-arm64-2.0.11.tgz#65ecc4453a9c700fc53ac238c6143a3406baab14"
-  integrity sha512-RfpdcJJQXstdgDiIBDRffncayKiXx+0LyMUCunIxDEO2JMXPpYK2hIdpUU0rkitzptAADchG7u1OXJ31rrtIAA==
+lefthook-darwin-arm64@2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/lefthook-darwin-arm64/-/lefthook-darwin-arm64-2.0.13.tgz#e904928cada376069025402bd8cb9aa2aed90457"
+  integrity sha512-KbQqpNSNTugjtPzt97CNcy/XZy5asJ0+uSLoHc4ML8UCJdsXKYJGozJHNwAd0Xfci/rQlj82A7rPOuTdh0jY0Q==
 
-lefthook-darwin-x64@2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/lefthook-darwin-x64/-/lefthook-darwin-x64-2.0.11.tgz#9512c7168831a3db77df98d3208d6ecd24f92fc3"
-  integrity sha512-D013UNKQa4FKgpxDMqdaU109U2/Pidtrt9CobQoq8te4eGUglcwxMzuYVTgaYnenz0FgKxSfVaCZsZgwqeMWqA==
+lefthook-darwin-x64@2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/lefthook-darwin-x64/-/lefthook-darwin-x64-2.0.13.tgz#c9f0eb996eacac065c6057e8c07bc8c3cdb14e5e"
+  integrity sha512-s/vI6sEE8/+rE6CONZzs59LxyuSc/KdU+/3adkNx+Q13R1+p/AvQNeszg3LAHzXmF3NqlxYf8jbj/z5vBzEpRw==
 
-lefthook-freebsd-arm64@2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/lefthook-freebsd-arm64/-/lefthook-freebsd-arm64-2.0.11.tgz#cfa8b0f214b5028b1ef9538d095faf2a69cbfefa"
-  integrity sha512-mgfNqG1tiJkCuGNwPG0LEfnAHGJA+Qzl6KidOtX/Zhxmj/sM+6hxiP4LOeEAhCnaZF5kuPtQgbFzShFHc2BK6A==
+lefthook-freebsd-arm64@2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/lefthook-freebsd-arm64/-/lefthook-freebsd-arm64-2.0.13.tgz#b74a9d8f02bd002747195835a7812a03acfc124e"
+  integrity sha512-iQeJTU7Zl8EJlCMQxNZQpJFAQ9xl40pydUIv5SYnbJ4nqIr9ONuvrioNv6N2LtKP5aBl1nIWQQ9vMjgVyb3k+A==
 
-lefthook-freebsd-x64@2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/lefthook-freebsd-x64/-/lefthook-freebsd-x64-2.0.11.tgz#e69e0ff968a41ecb5d5a7204855ef5d89ae71759"
-  integrity sha512-rnHOlQbJfLGCibr7yHM44kPNgf/tFpEbj/cWVHRhjRdbgYSCAjJk0uKd/EVo3v/vjfId2na0AhWbLvO/aY3wQQ==
+lefthook-freebsd-x64@2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/lefthook-freebsd-x64/-/lefthook-freebsd-x64-2.0.13.tgz#0716c92adb9f8b9d1b06fa99099d95d80e919ea6"
+  integrity sha512-99cAXKRIzpq/u3obUXbOQJCHP+0ZkJbN3TF+1ZQZlRo3Y6+mPSCg9fh/oi6dgbtu4gTI5Ifz3o5p2KZzAIF9ZQ==
 
-lefthook-linux-arm64@2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/lefthook-linux-arm64/-/lefthook-linux-arm64-2.0.11.tgz#58724071d90a8b4d189c40402c0281a8f02596c6"
-  integrity sha512-1XjDo2/4fM0TbJBwxZh8w+WMOFueg9oYHkryM8vc3vp8wTajdWBazg1K37JIS3FUco3tcOs+eWHQg0ekVjpWoA==
+lefthook-linux-arm64@2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/lefthook-linux-arm64/-/lefthook-linux-arm64-2.0.13.tgz#2b04b2ed93966d4bf760ccd1b6e67070b514c234"
+  integrity sha512-RWarenY3kLy/DT4/8dY2bwDlYwlELRq9MIFq+FiMYmoBHES3ckWcLX2JMMlM49Y672paQc7MbneSrNUn/FQWhg==
 
-lefthook-linux-x64@2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/lefthook-linux-x64/-/lefthook-linux-x64-2.0.11.tgz#a7178649d829b5530be1220e189fbd6b3058f567"
-  integrity sha512-OKOcfEvozXhO7+y2xgUzvc2kkqfhluql/sjQSzd8Ka+iK3hM4KCfbfgYx9q61Pjr34a0+i03cuH5DF2dlq/rrg==
+lefthook-linux-x64@2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/lefthook-linux-x64/-/lefthook-linux-x64-2.0.13.tgz#a98a4440d3712d59375f31f24476f709499cf3f1"
+  integrity sha512-QZRcxXGf8Uj/75ITBqoBh0zWhJE7+uFoRxEHwBq0Qjv55Q4KcFm7FBN/IFQCSd14reY5pmY3kDaWVVy60cAGJA==
 
-lefthook-openbsd-arm64@2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/lefthook-openbsd-arm64/-/lefthook-openbsd-arm64-2.0.11.tgz#21ae94713467fa212c5b695f11bdc791b22acc51"
-  integrity sha512-n1KEx196M3SKaWVNTQXGgxzBsiYAsdAy6Of6I6TAZwPhG7yoRrKGkQrhOlPgMzYl36udG1Lk4D+mfY9T0oOUYQ==
+lefthook-openbsd-arm64@2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/lefthook-openbsd-arm64/-/lefthook-openbsd-arm64-2.0.13.tgz#20a3a246f0482da77e4023ae274db7b8636a2cd4"
+  integrity sha512-LAuOWwnNmOlRE0RxKMOhIz5Kr9tXi0rCjzXtDARW9lvfAV6Br2wP+47q0rqQ8m/nVwBYoxfJ/RDunLbb86O1nA==
 
-lefthook-openbsd-x64@2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/lefthook-openbsd-x64/-/lefthook-openbsd-x64-2.0.11.tgz#833223d393cc3a9bf2201d6498d2318f88935206"
-  integrity sha512-WAEtKpYUVvuJMVLA38IBoaPnTNSiaEzvUYxjTBlYTLHJwn7HC2GG6P1cnvoua8rfxb9/Bfi7C3D3IPa9VmB33Q==
+lefthook-openbsd-x64@2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/lefthook-openbsd-x64/-/lefthook-openbsd-x64-2.0.13.tgz#4a62b84f7fe41f38b091f5348c28789db5e8212f"
+  integrity sha512-n9TIN3QLncyxOHomiKKwzDFHKOCm5H28CVNAZFouKqDwEaUGCs5TJI88V85j4/CgmLVUU8uUn4ClVCxIWYG59w==
 
-lefthook-windows-arm64@2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/lefthook-windows-arm64/-/lefthook-windows-arm64-2.0.11.tgz#cbb2442d3dc54193805f99d527e7e62151df9bea"
-  integrity sha512-HBqW1qfAnmmbpet7gSWatB6H5YIFdGxCqzolMCLwY/0o8oPFiMwdNE5RGp5JMmhZdz/h3XlbaUlIhnxoW8dk5g==
+lefthook-windows-arm64@2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/lefthook-windows-arm64/-/lefthook-windows-arm64-2.0.13.tgz#60336a49ec8079289cef17f3efcf127105743e1d"
+  integrity sha512-sdSC4F9Di7y0t43Of9MOA5g/0CmvkM4juQ3sKfUhRcoygetLJn4PR2/pvuDOIaGf4mNMXBP5IrcKaeDON9HrcA==
 
-lefthook-windows-x64@2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/lefthook-windows-x64/-/lefthook-windows-x64-2.0.11.tgz#125c18845bd01f90d0e15d991c0892b462628ca3"
-  integrity sha512-e5TYmV5cBZfRrhPVFCqjauegLI5CjdAd8exyAbMzGHkiwp3ZK145Su/pntgEP3d+ayS9mpgYPJmXYOSL7WHlyg==
+lefthook-windows-x64@2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/lefthook-windows-x64/-/lefthook-windows-x64-2.0.13.tgz#07e1ee6e83f19761de6814bb3d350306f2d46af7"
+  integrity sha512-ccl1v7Fl10qYoghEtjXN+JC1x/y/zLM/NSHf3NFGeKEGBNd1P5d/j6w8zVmhfzi+ekS8whXrcNbRAkLdAqUrSw==
 
-lefthook@^2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/lefthook/-/lefthook-2.0.11.tgz#92ea9f6522cd91abc55fafe98b861f535df00d13"
-  integrity sha512-/91k4dt9MRNkzeSr1iMjNi/z8dNuh+XvNfXrWA6PV+M1ZxiNY6uN6bGnr13n+j7N89f4h7YWBhCqhzhK33M5cA==
+lefthook@^2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/lefthook/-/lefthook-2.0.13.tgz#ed9a19bf446097fb44f161bd79bc4ded563f448a"
+  integrity sha512-D39rCVl7/GpqakvhQvqz07SBpzUWTvWjXKnBZyIy8O6D+Lf9xD6tnbHtG5nWXd9iPvv1AKGQwL9R/e5rNtV6SQ==
   optionalDependencies:
-    lefthook-darwin-arm64 "2.0.11"
-    lefthook-darwin-x64 "2.0.11"
-    lefthook-freebsd-arm64 "2.0.11"
-    lefthook-freebsd-x64 "2.0.11"
-    lefthook-linux-arm64 "2.0.11"
-    lefthook-linux-x64 "2.0.11"
-    lefthook-openbsd-arm64 "2.0.11"
-    lefthook-openbsd-x64 "2.0.11"
-    lefthook-windows-arm64 "2.0.11"
-    lefthook-windows-x64 "2.0.11"
+    lefthook-darwin-arm64 "2.0.13"
+    lefthook-darwin-x64 "2.0.13"
+    lefthook-freebsd-arm64 "2.0.13"
+    lefthook-freebsd-x64 "2.0.13"
+    lefthook-linux-arm64 "2.0.13"
+    lefthook-linux-x64 "2.0.13"
+    lefthook-openbsd-arm64 "2.0.13"
+    lefthook-openbsd-x64 "2.0.13"
+    lefthook-windows-arm64 "2.0.13"
+    lefthook-windows-x64 "2.0.13"
 
 leven@^3.1.0:
   version "3.1.0"
@@ -8154,10 +8169,10 @@ postcss-prefix-selector@^1.16.1:
   resolved "https://registry.yarnpkg.com/postcss-prefix-selector/-/postcss-prefix-selector-1.16.1.tgz#87a77523838b79c0e8aec29f173234b2987cdc04"
   integrity sha512-Umxu+FvKMwlY6TyDzGFoSUnzW+NOfMBLyC1tAkIjgX+Z/qGspJeRjVC903D7mx7TuBpJlwti2ibXtWuA7fKMeQ==
 
-postcss-preset-env@^10.2.1, postcss-preset-env@^10.5.0:
-  version "10.5.0"
-  resolved "https://registry.yarnpkg.com/postcss-preset-env/-/postcss-preset-env-10.5.0.tgz#fa9af5b635c053f6d68f91132eab3a0b5c4e53c8"
-  integrity sha512-xgxFQPAPxeWmsgy8cR7GM1PGAL/smA5E9qU7K//D4vucS01es3M0fDujhDJn3kY8Ip7/vVYcecbe1yY+vBo3qQ==
+postcss-preset-env@^10.2.1, postcss-preset-env@^10.6.0:
+  version "10.6.0"
+  resolved "https://registry.yarnpkg.com/postcss-preset-env/-/postcss-preset-env-10.6.0.tgz#8b2106ce3f0de1f0005929587aa331385076d463"
+  integrity sha512-+LzpUSLCGHUdlZ1YZP7lp7w1MjxInJRSG0uaLyk/V/BM17iU2B7xTO7I8x3uk0WQAcLLh/ffqKzOzfaBvG7Fdw==
   dependencies:
     "@csstools/postcss-alpha-function" "^1.0.1"
     "@csstools/postcss-cascade-layers" "^5.0.2"
@@ -8188,21 +8203,23 @@ postcss-preset-env@^10.2.1, postcss-preset-env@^10.5.0:
     "@csstools/postcss-oklab-function" "^4.0.12"
     "@csstools/postcss-position-area-property" "^1.0.0"
     "@csstools/postcss-progressive-custom-properties" "^4.2.1"
+    "@csstools/postcss-property-rule-prelude-list" "^1.0.0"
     "@csstools/postcss-random-function" "^2.0.1"
     "@csstools/postcss-relative-color-syntax" "^3.0.12"
     "@csstools/postcss-scope-pseudo-class" "^4.0.1"
     "@csstools/postcss-sign-functions" "^1.1.4"
     "@csstools/postcss-stepped-value-functions" "^4.0.9"
+    "@csstools/postcss-syntax-descriptor-syntax-production" "^1.0.1"
     "@csstools/postcss-system-ui-font-family" "^1.0.0"
     "@csstools/postcss-text-decoration-shorthand" "^4.0.3"
     "@csstools/postcss-trigonometric-functions" "^4.0.9"
     "@csstools/postcss-unset-value" "^4.0.0"
-    autoprefixer "^10.4.22"
-    browserslist "^4.28.0"
+    autoprefixer "^10.4.23"
+    browserslist "^4.28.1"
     css-blank-pseudo "^7.0.1"
     css-has-pseudo "^7.0.3"
     css-prefers-color-scheme "^10.0.0"
-    cssdb "^8.5.2"
+    cssdb "^8.6.0"
     postcss-attribute-case-insensitive "^7.0.1"
     postcss-clamp "^4.1.0"
     postcss-color-functional-notation "^7.0.12"
