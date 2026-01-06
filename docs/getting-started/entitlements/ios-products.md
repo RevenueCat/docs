@@ -5,7 +5,7 @@ excerpt: Setting up your in-app purchases in App Store Connect
 hidden: false
 ---
 
-To set up products for iOS, iPadOS, macOS, tvOS, and watchOS, start by logging into [App Store Connect](https://appstoreconnect.apple.com). App Store Connect is Apple's central hub for managing app releases, TestFlight, in-app purchases, and more. **This guide assumes basic knowledge of App Store Connect, as well as having an app set up and ready for adding in-app purchases.** For more information, visit Apple's [documentation and guides for App Store Connect](https://developer.apple.com/support/app-store-connect/).
+To set up products for iOS, iPadOS, macOS, tvOS, and watchOS, start by logging into [App Store Connect](https://appstoreconnect.apple.com). App Store Connect is Apple's central hub for managing app releases, TestFlight, in-app purchases, and more. **This guide assumes basic knowledge of App Store Connect, as well as having an app set up and ready for adding in-app purchases.** If you're setting up your developer account for the first time, start with our [App Store Connect Setup Guide](/platform-resources/apple-platform-resources/app-store-connect-setup-guide). For more information, visit Apple's [documentation and guides for App Store Connect](https://developer.apple.com/support/app-store-connect/ ).
 
 :::info Make sure your Paid Applications Agreement is signed
 Before you set up your products, make sure you have the latest Paid Applications Agreement signed in in the "Business" module in App Store Connect. **You will not be able to test in-app purchases until the latest version of this agreement is signed with Apple**.
