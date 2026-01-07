@@ -173,36 +173,135 @@ Your paywall designs must be using Figma auto layout to be imported correctly.
    - After making any final adjustments, save and publish your paywall
    - The paywall will be available through the RevenueCat SDK and can be served to your customers
 
-#### Component support and mapping
+#### Frame naming conventions
 
-| Status | Component                                           | Example Frame Name / Rule                                        |
-| ------ | --------------------------------------------------- | ---------------------------------------------------------------- |
-| ✅     | **Text** (`text`)                                   | Any node with `type: 'TEXT'`                                     |
-| ✅     | **Image** (`image`)                                 | Any `RECTANGLE`, `ELLIPSE`, `VECTOR`, etc. with `image` property |
-| ✅     | **Stack** (`stack`)                                 | Default for any non-special node with children                   |
-| ✅     | **Button** (`button`)                               | `Button` or `Button(action=<action_type>)` where `<action_type>` is one of: `restore_purchases`, `navigate_back`, `navigate_to`, or `workflow`. Invalid action types will default to `navigate_back`. |
-| ✅     | **Package** (`package`)                             | `Package` (exact match)                                          |
-| ✅     | **Purchase Button** (`purchase_button`)             | `Purchase Button` (exact match)                                  |
-| ❌     | **Icon** (`icon`)                                   | Not supported                       |
-| ❌     | **Video** (`video`)                                 | Not supported                                                    |
-| ❌     | **Carousel** (`carousel`)                           | Not supported                                                    |
-| ❌     | **Timeline** (`timeline`)                           | Not supported                                                    |
-| ❌     | **Tabs** (`tabs`)                                   | Not supported                                                    |
-| ❌     | **Tab Control** (`tab_control`)                     | Not supported                                                    |
-| ❌     | **Tab Control Button** (`tab_control_button`)       | Not supported                                                    |
-| ❌     | **Tab Control Toggle** (`tab_control_toggle`)       | Not supported                                                    |
-| ❌     | **Countdown** (`countdown`)                         | Not supported                                                    |
+To import correctly, you'll need to name your Figma frames to match the [RevenueCat component](/tools/paywalls/creating-paywalls/components) you want to create. For most components, simply name the frame with the component name (e.g., `Footer`). Some components accept parameters using the format `ComponentName(parameter=value)`.
 
-:::info Additional component support
-We'll quickly be adding support for the other components in this list, stay tuned!
-:::
+#### RevenueCat component support
 
-:::info Button action type validation
-When importing buttons from Figma, the action type specified in the button name (e.g., `Button(action=restore_purchases)`) is validated against the supported action types. If an invalid action type is provided, it will automatically default to `navigate_back`. The supported action types are:
-- `restore_purchases`: Restores previous purchases
-- `navigate_back`: Navigates back to the previous screen
-- `navigate_to`: Navigates to a specific destination (requires additional configuration)
-- `workflow`: Triggers a workflow action (requires additional configuration)
+The table below shows which RevenueCat paywall components can be imported from Figma. The "Figma Frame Name" column shows what to name your frame in Figma to create that component.
+
+| Status | RevenueCat Component | Figma Frame Name |
+| ------ | -------------------- | ---------------- |
+| ✅ | **Button** | `Button` or `Button(action=action_type)` — [See button actions](#button-actions) |
+| ✅ | **Carousel** | `Carousel` — [See carousel structure](#carousel-structure) |
+| ✅ | **Footer** | `Footer` |
+| ✅ | **Icon** | `Icon(icon-name)` — e.g., `Icon(star)` or `Icon(check-circle)` |
+| ✅ | **Image** | Automatic — any shape with an image fill |
+| ✅ | **Package** | `Package` — [See package with selected state](#package-with-selected-state) |
+| ✅ | **Purchase Button** | `Purchase Button` |
+| ✅ | **Stack** | Automatic — any frame with auto layout and children |
+| ✅ | **Tabs** | `Tabs` — [See tabs structure](#tabs-structure) |
+| ✅ | **Text** | Automatic — any text layer |
+| ✅ | **Video** | `Video`, or any shape with a video fill |
+| ❌ | **Awards** | Not yet supported |
+| ❌ | **Countdown** | Not yet supported |
+| ❌ | **Feature list** | Not yet supported |
+| ❌ | **Social proof** | Not yet supported |
+| ❌ | **Switch** | Not yet supported |
+| ❌ | **Timeline** | Not yet supported |
+
+#### Button actions
+
+When naming a Button frame, you can specify what action it performs:
+
+| Figma Frame Name | Action |
+| ---------------- | ------ |
+| `Button` | If the button contains text starting with "Restore", it will restore purchases. Otherwise, it navigates back. |
+| `Button(action=restore_purchases)` | Restores previous purchases |
+| `Button(action=navigate_back)` | Closes the paywall |
+| `Button(action=navigate_to)` | Navigates to a URL (configure the URL in RevenueCat after import) |
+| `Button(action=workflow)` | Triggers a workflow (configure the workflow in RevenueCat after import) |
+
+If you specify an invalid action type, it will default to `navigate_back`.
+
+#### Carousel structure
+
+To create a Carousel, your Figma frame structure should look like this:
+
+```
+Carousel
+├── Pages
+│   ├── Page 1 (any frame name)
+│   ├── Page 2 (any frame name)
+│   └── Page 3 (any frame name)
+└── Indicators (optional)
+```
+
+You can also add optional parameters: `Carousel(loop=true)` to enable infinite looping, or `Carousel(auto_advance=true)` to auto-scroll through pages.
+
+#### Package with selected state
+
+A Package component displays a subscription option that customers can select. To show different styling when a package is selected vs. unselected, you'll use Figma's **component variants** feature.
+
+**Basic usage (no selected state):**
+
+Simply name your frame `Package`. The same styling will be used whether the package is selected or not.
+
+**With selected state styling:**
+
+1. Create a **component set** in Figma (select your Package frame and use "Create component set")
+2. Add a property called `State` with two variants:
+   - `State=Default` — How the package looks when **not** selected
+   - `State=Selected` — How the package looks when selected (e.g., different border color, background, checkmark visible)
+
+Your Figma layers panel should look like this:
+
+```
+Package (Component Set)
+├── State=Default
+│   └── (your package content)
+└── State=Selected
+    └── (your package content with selected styling)
+```
+
+When you place instances of this component in your paywall design, the importer will automatically detect both variants and create the appropriate selected state overrides in RevenueCat.
+
+#### Tabs structure
+
+A Tabs component lets customers switch between different views—commonly used to offer different subscription tiers (e.g., "Basic" vs. "Pro") or billing periods (e.g., "Monthly" vs. "Annual"). Tabs require Figma's **component variants** to define the content for each tab.
+
+**How it works:**
+
+1. The `TabButtons` frame contains the clickable tab buttons
+2. Each tab button's content is defined as a separate **component variant**
+3. When a customer taps a tab, RevenueCat shows the corresponding variant's content
+
+**Step 1: Create your Tabs frame structure**
+
+```
+Tabs
+└── TabContent(monthly)
+    ├── TabButtons
+    │   ├── Tab(monthly)
+    │   └── Tab(annual)
+    └── (content for the monthly tab)
+```
+
+The `TabContent` frame should be a **component** with the default variant's identifier (e.g., `TabContent(monthly)` if "monthly" is the default tab).
+
+**Step 2: Create component variants for each tab**
+
+Convert your `TabContent` frame to a component, then create variants for each tab:
+
+```
+TabContent (Component Set)
+├── Type=monthly
+│   ├── TabButtons
+│   │   ├── Tab(monthly)
+│   │   └── Tab(annual)
+│   └── (monthly pricing, features, etc.)
+└── Type=annual
+    ├── TabButtons
+    │   ├── Tab(monthly)
+    │   └── Tab(annual)
+    └── (annual pricing, features, etc.)
+```
+
+**Important:** The identifier in each `Tab(identifier)` must match a variant name (e.g., `Tab(monthly)` corresponds to the `Type=monthly` variant). The `TabButtons` frame should appear in each variant so the tab buttons remain visible when switching tabs.
+
+:::tip Community templates coming soon
+We're creating a set of Figma community templates with pre-built components to make designing paywalls even easier — stay tuned!
 :::
 
 ### Duplicating a paywall
