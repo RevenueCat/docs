@@ -209,11 +209,9 @@ The table below shows which RevenueCat paywall components can be imported from F
 | ✅ | **Tabs** | `Tabs` — [See tabs structure](#tabs-structure) |
 | ✅ | **Text** | Automatic — any text layer |
 | ✅ | **Video** | `Video`, or any shape with a video fill |
-| ✅ | **Express checkout (express purchase button)** | `ExpressPurchaseButton` — [See express checkout structure](#express-checkout-structure) / [Web Paywalls: Express checkout](/web/web-billing/paywalls#express-checkout) |
-| ✅ | **Express checkout (wallet button)** | `WalletButton` — [Web Paywalls: Express checkout](/web/web-billing/paywalls#express-checkout) |
-| ✅ | **Express checkout (skeleton loader)** | `Skeleton` — [Web Paywalls: Express checkout](/web/web-billing/paywalls#express-checkout) |
 | ❌ | **Awards** | Not yet supported |
 | ❌ | **Countdown** | Not yet supported |
+| ❌ | **Express checkout** | Not yet supported |
 | ❌ | **Feature list** | Not yet supported |
 | ❌ | **Social proof** | Not yet supported |
 | ❌ | **Switch** | Not yet supported |
@@ -328,26 +326,6 @@ Additional rules:
 
 - `TabButtons` must be **inside** `TabContent` (not directly under `Tabs`). It can be nested anywhere inside `TabContent`.
 - The `Tab(identifier)` values must match the tab content you export (for example, if you have `Tab(monthly)`, you should also have a `TabContent(monthly)` variant available).
-
-#### Express checkout structure
-
-You can import the components that power the Express checkout quick purchase experience.
-
-For details on how this behaves on the web, see [Web Paywalls: Express checkout](/web/web-billing/paywalls#express-checkout).
-
-`ExpressPurchaseButton` must contain these three child frames:
-
-```text
-ExpressPurchaseButton
-├── WalletAvailable
-├── WalletUnavailable
-└── WalletUnknown
-```
-
-Inside those frames you can use layout/content the same way you build the rest of your paywall (text, images, stacks, etc.). You can also use:
-
-- `WalletButton` to place the Apple Pay / Google Pay button in the appropriate state
-- `Skeleton` to show loading placeholders
 
 :::tip Community templates coming soon
 We're creating a set of Figma community templates with pre-built components to make designing paywalls even easier — stay tuned!
