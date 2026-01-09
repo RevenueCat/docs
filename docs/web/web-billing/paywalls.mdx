@@ -82,14 +82,28 @@ Web paywalls support the **Express checkout** component, which allows users to p
 
 You can configure Express checkout by adding the **Express checkout** and **Wallet** components in the Paywall Editor. For more information, see [Express checkout components](https://www.revenuecat.com/docs/tools/paywalls/creating-paywalls/components#express-checkout).
 
-### How express checkout works
+### FAQs
 
-- The component will render an Apple Pay or Google Pay button, if supported by the user's device and browser.
-- The Web Billing checkout is skipped entirely when users purchase through express checkout.
-- Users have the option to complete their purchase with the full checkout, if they prefer to use a different payment method (using the standard purchase button component).
-- **Tax handling:** If you have automatic tax handling enabled in the web billing config, the billing address from the walley payment method will be used to determine the user's tax location. Subscribers have the ability to modify this in the native payment UI.
-- **Updating payment methods:** After purchasing, subscribers can still update their payment method and manage their subscription through the [Customer Portal](customer-portal)
-- **Error handling:** Any errors related to the payment are reflected in the native payment UI on the device.
+**How does the express checkout present a purchase button to users?**
+The component will render either an Apple Pay or Google Pay button, depending on what's supported by the user's device and browser.
+
+**What's the experience for users who purchase through the express checkout button?**
+If users select the express checkout button, the device's native prompt is shown immediately to capture payment, and the standard Web Billing checkout is skipped entirely.
+
+**What product and pricing features are supported?**
+All Web Billing product types and pricing models are supported, including free trials, introductory offers. Redemption Links are also supported for app2web deep links.
+
+**Can users still purchase through the standard checkout?**
+Yes, as a fallback, users have the option to complete their purchase with the full checkout, if they prefer to use a different payment method or customize their billing details. The secondary button included alongside the express purchase button allows this.
+
+**How is sales tax & VAT handled for users who purchase in this way?**
+If you have automatic tax handling enabled in the web billing config, the billing address from the wallet payment method will be used to determine the user's tax location. Subscribers have the ability to modify this in the device's payment UI.
+
+**Can users who purchase through the express checkout change their payment method later?**
+Yes. After purchasing, subscribers can still update their payment method and manage their subscription through the [Customer Portal](customer-portal)
+
+**How are errors handled in the express checkout flow?**
+Any errors related to the payment are reflected in the native payment UI on the device, or in some cases users can be redirected to an error page.
 
 ### Troubleshooting Apple Pay and Google Pay visibility
 
