@@ -727,6 +727,22 @@ const chartsCategory = Category({
       },
     }),
     SubCategory({
+      label: "Ads",
+      items: [
+        Page({ slug: "charts/ad-impressions-chart" }),
+        Page({ slug: "charts/ad-clicks-chart" }),
+        Page({ slug: "charts/ad-revenue-chart" }),
+        Page({ slug: "charts/ad-ctr-chart" }),
+        Page({ slug: "charts/ad-rpm-chart" }),
+        Page({ slug: "charts/ad-fill-rate-chart" }),
+        Page({ slug: "charts/ad-monetized-customers-chart" }),
+      ],
+      index: {
+        title: "Ads",
+        link: "dashboard-and-metrics/charts/ads",
+      },
+    }),
+    SubCategory({
       label: "Subscriptions",
       items: [
         Page({ slug: "charts/active-subscriptions-chart" }),
