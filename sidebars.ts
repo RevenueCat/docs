@@ -727,6 +727,20 @@ const chartsCategory = Category({
       },
     }),
     SubCategory({
+      label: "Subscriptions",
+      items: [
+        Page({ slug: "charts/active-subscriptions-chart" }),
+        Page({ slug: "charts/active-subscriptions-movement-chart" }),
+        Page({ slug: "charts/new-paid-subscriptions-chart" }),
+        Page({ slug: "charts/subscription-retention-chart" }),
+        Page({ slug: "charts/subscription-status-chart" }),
+      ],
+      index: {
+        title: "Subscriptions",
+        link: "dashboard-and-metrics/charts/subscriptions",
+      },
+    }),
+    SubCategory({
       label: "Ads",
       items: [
         Page({ slug: "charts/ad-impressions-chart" }),
@@ -740,20 +754,6 @@ const chartsCategory = Category({
       index: {
         title: "Ads",
         link: "dashboard-and-metrics/charts/ads",
-      },
-    }),
-    SubCategory({
-      label: "Subscriptions",
-      items: [
-        Page({ slug: "charts/active-subscriptions-chart" }),
-        Page({ slug: "charts/active-subscriptions-movement-chart" }),
-        Page({ slug: "charts/new-paid-subscriptions-chart" }),
-        Page({ slug: "charts/subscription-retention-chart" }),
-        Page({ slug: "charts/subscription-status-chart" }),
-      ],
-      index: {
-        title: "Subscriptions",
-        link: "dashboard-and-metrics/charts/subscriptions",
       },
     }),
     SubCategory({
