@@ -7,7 +7,7 @@ hidden: false
 
 With our Solar Engine integration you can:
 
-- Attribute subscription revenue and lifecycle events to the Solar Engine campaigns that drove them.
+- Attribute subscription revenue and lifecycle events to the campaigns that drove them.
 - Stream trial conversions, renewals, cancellations, and more directly from RevenueCat without relying on an app in the foreground.
 - Continue measuring long-tail revenue from each campaign as subscriptions renew over time.
 
@@ -32,6 +32,8 @@ Solar Engine matches RevenueCat events to campaign cohorts using device and adve
 | `$gpsAdId` | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | Android               |
 | `$ip`      | Device IP address, gathered server-side when enabled                                                                                            | iOS & Android         |
 
+These identifiers can be set manually like any other attribute, or by calling `collectDeviceIdentifiers()` after configuring the _Purchases SDK_. Call it again if a user later grants Ads Tracking permission so the `$idfa` value is updated.
+
 Solar Engine also uses specific identifiers to associate lifecycle events with campaign cohorts. Use the Purchases SDK helpers to forward these identifiers to RevenueCat:
 
 - `setSolarEngineDistinctId()` - The Solar Engine Distinct ID (primary identifier)
@@ -47,8 +49,6 @@ import kotlinContent from "@site/code_blocks/integrations/attribution/solarengin
     { type: "kotlin", content: kotlinContent, name: "Kotlin" },
   ]}
 />
-
-These identifiers can be set manually like any other attribute, or by calling `collectDeviceIdentifiers()` after configuring the _Purchases SDK_. Call it again if a user later grants Ads Tracking permission so the `$idfa` value is updated.
 
 ## 3. Configure Solar Engine in the RevenueCat dashboard
 
