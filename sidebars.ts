@@ -977,6 +977,7 @@ const attributionCategory = Category({
         Page({ slug: "kochava" }),
         Page({ slug: "meta-ads" }),
         Page({ slug: "singular" }),
+        Page({ slug: "solarengine" }),
         Page({ slug: "splitmetrics-acquire" }),
         Page({ slug: "tenjin" }),
       ],
