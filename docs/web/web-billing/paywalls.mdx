@@ -19,12 +19,6 @@ When presenting a paywall on web, you should expect it to be displayed in a grea
 
 Elements like the restore purchases link don't have a web equivalent, and are therefore not shown on web.
 
-#### Express checkout
-
-Web paywalls support **Express checkout**, which allows users to purchase using Apple Pay or Google Pay directly from the paywall. This makes the purchase experience on mobile devices much more seamless, similar to the native app experience.
-
-You can configure Express checkout by adding the **Express checkout** and **Wallet** components in the Paywall Editor. For more information, see [Express checkout components](https://www.revenuecat.com/docs/tools/paywalls/creating-paywalls/components#express-checkout).
-
 ## Creating a paywall
 
 Follow the instructions in [Creating Paywalls](../../tools/paywalls/creating-paywalls) to build your paywall using the available components, either from an existing template or from scratch.
@@ -81,3 +75,29 @@ purchases
 ```
 
 If you do not pass an offering, the paywall for the offering marked as `current` will be shown. Passing an offering allows you to present another paywall that is available to the customer.
+
+## Adding Apple Pay or Google Pay buttons to a web paywall with the express checkout component
+
+Web paywalls support the **Express checkout** component, which allows users to purchase using Apple Pay or Google Pay directly from the paywall. This makes the purchase experience on mobile devices faster, more seamless, and similar to the native app experience.
+
+You can configure Express checkout by adding the **Express checkout** and **Wallet** components in the Paywall Editor. For more information, see [Express checkout components](https://www.revenuecat.com/docs/tools/paywalls/creating-paywalls/components#express-checkout).
+
+### How express checkout works
+
+- The component will render an Apple Pay or Google Pay button, if supported by the user's device and browser.
+- The Web Billing checkout is skipped entirely when users purchase through express checkout.
+- Users have the option to complete their purchase with the full checkout, if they prefer to use a different payment method (using the standard purchase button component).
+- **Tax handling:** If you have automatic tax handling enabled in the web billing config, the billing address from the walley payment method will be used to determine the user's tax location. Subscribers have the ability to modify this in the native payment UI.
+- **Updating payment methods:** After purchasing, subscribers can still update their payment method and manage their subscription through the [Customer Portal](customer-portal)
+- **Error handling:** Any errors related to the payment are reflected in the native payment UI on the device.
+
+### Troubleshooting Apple Pay and Google Pay visibility
+
+In order to present either an Apple Pay or Google Pay button on a web paywall, the following should be true:
+
+- Apple Pay or Google Pay are configured within your Stripe account, and your purchase domain is registered ([see how](payment-methods#configuring-apple-pay--google-pay))
+- Both the device and browser are configured to use the payment method (in some cases this means having a registered credit card on file)
+
+For further troubleshooting, we recommend using [Stripe's test page for wallets](https://docs.stripe.com/testing/wallets) to make sure the payment methods are rendering in the Express Checkout Element demo, and check browser-level settings.
+
+For Apple Pay, read Apple's [device compatibility](https://support.apple.com/en-us/102896) and [region compatibility](https://support.apple.com/en-us/102775) guides to make sure the service is available to you.
