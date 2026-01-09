@@ -66,22 +66,20 @@ After your SDK is ready and device data is flowing, finish the setup in RevenueC
 
 4. Provide event names for each lifecycle event RevenueCat will send, or choose **Use default event names** to populate the recommended mapping:
 
-   | RevenueCat lifecycle event | Default Solar Engine event name | Required |
-   | :------------------------- | :------------------------------ | :------- |
-   | Initial purchase           | `initial_purchase_event`        | ✅       |
-   | Trial started              | `trial_started_event`           | ✅       |
-   | Trial converted            | `trial_converted_event`         | ✅       |
-   | Trial cancelled            | `trial_cancelled_event`         | ✅       |
-   | Renewal                    | `renewal_event`                 | ✅       |
-   | Cancellation               | `cancellation_event`            | ✅       |
-   | Non-renewing purchase      | `non_renewing_purchase_event`   | Optional |
-   | Uncancellation             | `uncancellation_event`          | Optional |
-   | Subscription paused        | `subscription_paused_event`     | Optional |
-   | Expiration                 | `expiration_event`              | Optional |
-   | Billing issue              | `billing_issue_event`           | Optional |
-   | Product change             | `product_change_event`          | Optional |
-
-   Customize any names to match the event definitions you have configured inside Solar Engine.
+   | RevenueCat lifecycle event | Default Solar Engine event name | Event Type                      | Required |
+   | :------------------------- | :------------------------------ | :------------------------------ | :------- |
+   | Initial purchase           | `initial_purchase_event`        | In-App Purchase + rc_event_name | ✅       |
+   | Trial started              | `trial_started_event`           | Custom event                    | ✅       |
+   | Trial converted            | `trial_converted_event`         | In-App Purchase + rc_event_name | ✅       |
+   | Trial cancelled            | `trial_cancelled_event`         | Custom event                    | ✅       |
+   | Renewal                    | `renewal_event`                 | In-App Purchase + rc_event_name | ✅       |
+   | Cancellation               | `cancellation_event`            | Custom event                    | ✅       |
+   | Non-renewing purchase      | `non_renewing_purchase_event`   | In-App Purchase + rc_event_name | Optional |
+   | Uncancellation             | `uncancellation_event`          | Custom event                    | Optional |
+   | Subscription paused        | `subscription_paused_event`     | Custom event                    | Optional |
+   | Expiration                 | `expiration_event`              | Custom event                    | Optional |
+   | Billing issue              | `billing_issue_event`           | Custom event                    | Optional |
+   | Product change             | `product_change_event`          | Custom event                    | Optional |
 
 5. Select how RevenueCat should report revenue totals using the **Revenue reporting mode** menu:
    - `Gross` reports transaction amounts before app store commission and taxes.
