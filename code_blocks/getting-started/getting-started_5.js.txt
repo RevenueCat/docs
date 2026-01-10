@@ -3,9 +3,9 @@ import 'dart:io' show Platform;
 //...
 
 Future<void> initPlatformState() async {
-  await Purchases.setDebugLogsEnabled(true);
+  await Purchases.setLogLevel(LogLevel.debug);
 
-  PurchasesConfiguration configuration;
+  late PurchasesConfiguration configuration;
   if (Platform.isAndroid) {
     configuration = PurchasesConfiguration(<revenuecat_project_google_api_key>);
     if (buildingForAmazon) {
