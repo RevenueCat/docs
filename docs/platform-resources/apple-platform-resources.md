@@ -16,6 +16,9 @@ If you're looking for sample apps, head over to our [Sample Apps](/platform-reso
 
 ## App Store Connect
 
+- [App Store Connect Setup Guide for First-Time Developers →](/platform-resources/apple-platform-resources/app-store-connect-setup-guide)
+  _A complete walkthrough of setting up your first subscription app._
+
 - [Setting up iOS Subscription Offers →](/subscription-guidance/subscription-offers/ios-subscription-offers)
   _Includes Free Trials, Offer Codes, and more_
 
