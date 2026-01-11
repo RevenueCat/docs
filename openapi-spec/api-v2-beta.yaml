@@ -7179,6 +7179,9 @@ components:
       - telemetry_deck_user_id
       - telemetry_deck_app_id
       - $segmentId
+      - $solarEngineDistinctId
+      - $solarEngineAccountId
+      - $solarEngineVisitorId
       - $tenjinId
       - $deviceVersion
       example: $email
