@@ -74,9 +74,9 @@ The table below shows which RevenueCat paywall components can be imported from F
 | Supported | **Tabs** | `Tabs` -- [See tabs structure](#tabs-structure) |
 | Supported | **Text** | Automatic -- any text layer |
 | Supported | **Video** | `Video`, or any shape with a video fill |
+| Supported | **Express checkout** | `ExpressCheckout` -- [See Express checkout structure](#express-checkout-structure) |
 | Not supported | **Awards** | Not yet supported |
 | Not supported | **Countdown** | Not yet supported |
-| Not supported | **Express checkout** | Not yet supported |
 | Not supported | **Feature list** | Not yet supported |
 | Not supported | **Social proof** | Not yet supported |
 | Not supported | **Switch** | Not yet supported |
@@ -144,15 +144,56 @@ Package (Component Set)
 
 When you place instances of this component in your paywall design, the importer will automatically detect both variants and create the appropriate selected state overrides in RevenueCat.
 
+## Express checkout structure
+
+Express checkout lets you swap between three states in your design: available, unavailable, and loading. To import it correctly, create one ExpressCheckout component and provide a paywall variant for each state.
+
+**Step 1: Create your ExpressCheckout frame structure**
+
+```text
+ExpressCheckout(1)
+`- ExpressCheckoutContent(available)
+   `- (content for the available state)
+```
+
+The `ExpressCheckout` node should include an explicit ID (like `1` in the example above) so RevenueCat can match it across variants. The ID can be any simple label, but it must stay the same in every variant.
+
+The `ExpressCheckoutContent` frame must use one of these ids: `available`, `unavailable`, or `loading`.
+
+**Step 2: Duplicate your paywall frame for each state**
+
+Duplicate the paywall frame and update the `ExpressCheckoutContent` id for each state. Keep the paywall name and the `ExpressCheckout(1)` id the same in every variant so the importer can match them.
+
+```text
+Paywall
+`- ExpressCheckout(1)
+   `- ExpressCheckoutContent(available)
+
+Paywall
+`- ExpressCheckout(1)
+   `- ExpressCheckoutContent(unavailable)
+
+Paywall
+`- ExpressCheckout(1)
+   `- ExpressCheckoutContent(loading)
+```
+
+**Step 3: Use Express checkout components**
+
+- `WalletButton` for the available and unavailable states.
+- `Skeleton` for the loading state.
+
+You can also use a normal `Purchase Button` in any state.
+
 ## Tabs structure
 
-A Tabs component lets customers switch between different views, commonly used to offer different subscription tiers (for example "Basic" vs. "Pro") or billing periods (for example "Monthly" vs. "Annual"). Tabs require Figma's **component variants** to define the content for each tab.
+A Tabs component lets customers switch between different views, commonly used to offer different subscription tiers (for example "Basic" vs. "Pro") or billing periods (for example "Monthly" vs. "Annual"). Tabs are imported by matching variants across duplicated paywall frames.
 
 **How it works:**
 
-1. The `TabButtons` frame contains the clickable tab buttons
-2. Each tab button's content is defined as a separate **component variant**
-3. When a customer taps a tab, RevenueCat shows the corresponding variant's content
+1. The `TabButtons` frame contains the clickable tab buttons.
+2. Each tab's content is defined by a `TabContent(tab_id)` variant in a duplicated paywall frame.
+3. When a customer taps a tab, RevenueCat shows the matching `TabContent(tab_id)` content.
 
 **Step 1: Create your Tabs frame structure**
 
@@ -165,24 +206,28 @@ Tabs
    `- (content for the monthly tab)
 ```
 
-The `TabContent` frame should be a **component** with the default variant's identifier (for example `TabContent(monthly)` if "monthly" is the default tab).
+The `TabContent` frame should include the default tab's identifier (for example `TabContent(monthly)` if "monthly" is the default tab).
 
-**Step 2: Create component variants for each tab**
+**Step 2: Duplicate your paywall frame for each tab**
 
-Convert your `TabContent` frame to a component, then create variants for each tab:
+Duplicate the paywall frame and update the `TabContent(tab_id)` content for each tab. Keep the paywall name and the `Tabs` component name the same in every variant so the importer can match them.
 
 ```text
-TabContent (Component Set)
-|- TabContent(monthly)
-|  |- TabButtons
-|  |  |- Tab(monthly)
-|  |  `- Tab(annual)
-|  `- (monthly pricing, features, etc.)
-`- TabContent(annual)
-   |- TabButtons
-   |  |- Tab(monthly)
-   |  `- Tab(annual)
-   `- (annual pricing, features, etc.)
+Paywall
+`- Tabs
+   `- TabContent(monthly)
+      |- TabButtons
+      |  |- Tab(monthly)
+      |  `- Tab(annual)
+      `- (monthly pricing, features, etc.)
+
+Paywall
+`- Tabs
+   `- TabContent(annual)
+      |- TabButtons
+      |  |- Tab(monthly)
+      |  `- Tab(annual)
+      `- (annual pricing, features, etc.)
 ```
 
 **Important:** The identifier in each `Tab(identifier)` must match a `TabContent(identifier)` variant (for example, `Tab(monthly)` must have a corresponding `TabContent(monthly)` variant). The `TabButtons` frame should appear in each variant so the tab buttons remain visible when switching tabs.
