@@ -68,6 +68,17 @@ As of [purchases-android 9.16.0](https://github.com/RevenueCat/purchases-android
 For cross-platform SDKs (React Native, Flutter, etc.), ensure you're using a version that includes purchases-android 9.16.0+.
 :::
 
+### Minimum Versions with Fix
+
+| RevenueCat SDK         | Minimum Version with Fix |
+| :--------------------- | :----------------------- |
+| purchases-android      | 9.16.0                   |
+| react-native-purchases | 9.6.12                   |
+| purchases-flutter      | 9.10.2                   |
+| purchases-unity        | 8.4.12                   |
+| purchases-capacitor    | 11.3.2                   |
+| purchases-kmp          | 2.2.15+17.25.0           |
+
 Starting on Billing Client 8, Google removed the ability to query consumed one-time purchases through Google's Billing Client library. This means that our SDKs using that version of Billing Client won't be able to restore these purchases. This affects the following versions:
 
 | RevenueCat SDK           | Version using Billing Client 8+ |
