@@ -1,0 +1,100 @@
+---
+title: Solar Engine
+slug: solarengine
+excerpt: Integrate Purchases SDK with Solar Engine for precise revenue tracking
+hidden: false
+---
+
+With our Solar Engine integration you can:
+
+- Attribute subscription revenue and lifecycle events to the campaigns that drove them.
+- Stream trial conversions, renewals, cancellations, and more directly from RevenueCat without relying on an app in the foreground.
+- Continue measuring long-tail revenue from each campaign as subscriptions renew over time.
+
+### Integration at a Glance
+
+| Includes Revenue | Supports Negative Revenue | Sends Sandbox Events | Includes Customer Attributes | Sends Transfer Events |                                                                 Optional Event Types                                                                 |
+| :--------------: | :-----------------------: | :------------------: | :--------------------------: | :-------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------: |
+|        ✅        |            ✅             |          ✅          | Standard Reserved Attributes |          ❌           | `non_subscription_purchase_event` `uncancellation_event` `subscription_paused_event` `expiration_event` `billing_issue_event` `product_change_event` |
+
+## 1. Install the Solar Engine SDK
+
+Set up the latest Solar Engine SDK in every platform where you collect purchases before enabling the integration. Refer to the [Solar Engine developer documentation](https://help.solar-engine.com/en/docs/API-Integration-Documentation) for the most up-to-date installation instructions.
+
+## 2. Send device data to RevenueCat
+
+Solar Engine matches RevenueCat events to campaign cohorts using device and advertising identifiers. Make sure your app collects and sends the following [Customer Attributes](/customers/customer-attributes) to RevenueCat before the first purchase occurs:
+
+| Key        | Description                                                                                                                                     | Recommended Platforms |
+| :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------- |
+| `$idfa`    | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | iOS                   |
+| `$idfv`    | iOS [vendor identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | iOS                   |
+| `$gpsAdId` | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | Android               |
+| `$ip`      | Device IP address, gathered server-side when enabled                                                                                            | iOS & Android         |
+
+These identifiers can be set manually like any other attribute, or by calling `collectDeviceIdentifiers()` after configuring the _Purchases SDK_. Call it again if a user later grants Ads Tracking permission so the `$idfa` value is updated.
+
+Solar Engine also uses specific identifiers to associate lifecycle events with campaign cohorts. Use the Purchases SDK helpers to forward these identifiers to RevenueCat:
+
+- `setSolarEngineDistinctId()` - The Solar Engine Distinct ID (primary identifier)
+- `setSolarEngineAccountId()` - The Solar Engine Account ID (optional)
+- `setSolarEngineVisitorId()` - The Solar Engine Visitor ID (optional)
+
+import swiftContent from "@site/code_blocks/integrations/attribution/solarengine_1.swift?raw";
+import kotlinContent from "@site/code_blocks/integrations/attribution/solarengine_2.kt?raw";
+
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent, name: "Swift" },
+    { type: "kotlin", content: kotlinContent, name: "Kotlin" },
+  ]}
+/>
+
+## 3. Configure Solar Engine in the RevenueCat dashboard
+
+After your SDK is ready and device data is flowing, finish the setup in RevenueCat:
+
+1. Navigate to your project settings in the RevenueCat dashboard and choose **Solar Engine** from the Integrations menu.
+
+![](/docs_images/integrations/attribution/solarengine/solarengine-configuration.png)
+
+2. Enter your **iOS App Key** and/or **Android App Key**. These keys authenticate requests from RevenueCat to Solar Engine. You can find them in your Solar Engine dashboard under Attribution > App > Edit App.
+
+![](/docs_images/integrations/attribution/solarengine/solarengine-app-key.png)
+
+3. If your app targets users in China mainland, enable the **Use China Mainland Storage Region** option to ensure data is stored in the appropriate region.
+
+4. Provide event names for each lifecycle event RevenueCat will send, or choose **Use default event names** to populate the recommended mapping:
+
+   | RevenueCat lifecycle event | Default Solar Engine event name | Event Type                      | Required |
+   | :------------------------- | :------------------------------ | :------------------------------ | :------- |
+   | Initial purchase           | `initial_purchase_event`        | In-App Purchase + rc_event_name | ✅       |
+   | Trial started              | `trial_started_event`           | Custom event                    | ✅       |
+   | Trial converted            | `trial_converted_event`         | In-App Purchase + rc_event_name | ✅       |
+   | Trial cancelled            | `trial_cancelled_event`         | Custom event                    | ✅       |
+   | Renewal                    | `renewal_event`                 | In-App Purchase + rc_event_name | ✅       |
+   | Cancellation               | `cancellation_event`            | Custom event                    | ✅       |
+   | Non-renewing purchase      | `non_renewing_purchase_event`   | In-App Purchase + rc_event_name | Optional |
+   | Uncancellation             | `uncancellation_event`          | Custom event                    | Optional |
+   | Subscription paused        | `subscription_paused_event`     | Custom event                    | Optional |
+   | Expiration                 | `expiration_event`              | Custom event                    | Optional |
+   | Billing issue              | `billing_issue_event`           | Custom event                    | Optional |
+   | Product change             | `product_change_event`          | Custom event                    | Optional |
+
+5. Select how RevenueCat should report revenue totals using the **Revenue reporting mode** menu:
+   - `Gross` reports transaction amounts before app store commission and taxes.
+   - `Net` reports revenue after estimated store commission and/or taxes.
+
+6. Click **Add integration** (or **Save**) to enable the connection.
+
+## 4. Test the Solar Engine integration
+
+Before rolling out the integration, run through an end-to-end test:
+
+1. Make a sandbox purchase with a new user after confirming the device identifiers from step 2 are present.
+2. Visit the [Customer View](/dashboard-and-metrics/customer-profile) for the tester and confirm the Solar Engine attributes are listed.
+3. Open the test transaction in Customer History and ensure a Solar Engine event was delivered successfully. You can also review the **Last dispatched events** panel in the integration settings for a delivery log.
+
+:::success You're all set!
+Once configured, you should begin to see RevenueCat lifecycle events appear in Solar Engine aligned with the campaigns that sourced those users.
+:::
