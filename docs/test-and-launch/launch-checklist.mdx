@@ -105,9 +105,13 @@ Using a Test Store API key in production will crash your app. See [Configuring S
 
 ### First release on App Store?
 
-If the app has never been released on the App Store, it must be released before in-app purchases will work in production (even if you download with a code).
+:::info IAPs During App Review
+In-app purchases **will work during in Sandbox and TestFlight as long as they have the status "Ready to Submit"** before your app is approved. Apple reviewers can test and purchase your IAPs as part of their review. You do not need to wait for approval for IAPs to function during review.
+:::
 
-We recommend releasing and waiting up to 24 hours to ensure purchases work before starting marketing/release campaigns.
+However, if the app has never been released on the App Store, it must be **publicly released** before in-app purchases will work in production for your users.
+
+We recommend releasing and waiting up to 24 hours to ensure purchases work for end users before starting marketing/release campaigns.
 
 RevenueCat detects when you launch based on the purchases we receive, so there's nothing you need to do in RevenueCat when you're ready to ship.
 
