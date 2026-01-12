@@ -146,6 +146,7 @@ const paywallsCategory = Category({
           items: [
             Page({ slug: "components" }),
             Page({ slug: "component-properties" }),
+            Page({ slug: "importing-from-figma" }),
             Page({ slug: "web-purchase-button" }),
             Page({ slug: "variables" }),
             Page({ slug: "localization" }),
