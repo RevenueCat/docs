@@ -62,6 +62,12 @@ When testing with sandbox purchases, the `environment` value will be `SANDBOX`. 
 
 Webhooks are commonly used to sync a customer's subscription status across multiple systems. Because different webhook events contain unique information, we recommend calling the `GET /subscribers` [REST API](https://www.revenuecat.com/docs/api-v1#tag/customers) endpoint after receiving any webhook. That way, the customer's information is always in the same format and is easily synced to your database. This approach is simpler than writing custom logic to handle each webhook event, and has the added benefit of making your system more robust and scalable.
 
+## Retrying a Failed Webhook
+
+If your server fails to process a webhook, you can resend the webhook from the [event details page](/dashboard-and-metrics/customer-profile#event-details) once your server issue is resolved.
+
+Locate your webhook integration under the `Integrations` table and click the `Retry` button. The webhook will be immediately dispatched your [webhook's URL](/integrations/webhooks#registering-your-webhook-url).
+
 ## Security and Best Practices
 
 ### Authorization
