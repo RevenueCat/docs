@@ -18,7 +18,7 @@ import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 
 ## Change log
 
-- January 2025: LTV predictions now include trial (non-paying) subscriptions, weighted by their historical conversion rate. This provides a more complete picture of expected cohort revenue and reduces prediction volatility in the early days of a cohort.
+- January 2026: LTV predictions now include trial (non-paying) subscriptions, weighted by their historical conversion rate. This provides a more complete picture of expected cohort revenue and reduces prediction volatility in the early days of a cohort.
 - December 2024: We discovered and fixed a bug that caused predicted LTV of cancelled subscriptions to be fully included in the data, when instead a very small portion of this predicted LTV should be included to account for uncancellations and reactivations.
 
 ## Terminology
