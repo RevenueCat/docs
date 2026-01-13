@@ -64,7 +64,7 @@ From there, you can start building by either:
 
 1. Choosing a template
 2. Starting from scratch, or
-3. Importing from Figma
+3. [Importing from Figma](/tools/paywalls/creating-paywalls/importing-from-figma)
 
 Unless you have a very specific, custom design in mind that you're looking to create; **we recommend starting with a template.** You can customize any aspect of your paywall once you select a template, it's simply a starting point to explore from.
 
@@ -139,71 +139,7 @@ You can also set a published paywall to be inactive, or vice versa, at any time.
 
 ### Importing from Figma
 
-![Figma plugin](/docs_images/paywalls/figma_to_rc.png)
-
-The [RevenueCat plugin in Figma](https://www.figma.com/community/plugin/1571207414894772119/revenuecat) allows you to import paywall designs from Figma into RevenueCat. It's ideal for teams that have dedicated designers working in Figma. It allows designers to create pixel-perfect paywall designs in Figma that can then be seamlessly brought into RevenueCat, reducing the need for manual recreation and ensuring design consistency.
-
-**To import a paywall from Figma:**
-
-1. **Install the RevenueCat plugin** in Figma:
-   - Open Figma and navigate to the [RevenueCat plugin page](https://www.figma.com/community/plugin/1571207414894772119/revenuecat)
-   - Click **Install** to add the plugin to your Figma workspace
-
-2. **Design your paywall** in Figma:
-   - Create your paywall layout in Figma with all the necessary elements (text, images, buttons, etc.), with each frame named to match the component it represents (see the full list of components below)
-
-:::warning Figma auto layout required
-Your paywall designs must be using Figma auto layout to be imported correctly.
-:::
-
-3. **Export to RevenueCat**:
-   - Prepare your frames (use auto layout, check the naming)
-   - Create an API V2 key in your RevenueCat project with `Read & write` in Project configuration permissions
-   - Open the RevenueCat plugin from your Figma plugins menu
-   - Authenticate with your RevenueCat account using the API key you created in the previous step
-   - Select the frames you want to export (each frame will be created as its own paywall in RevenueCat)
-   - Choose the project and offering where you want to import the paywall
-   - Click **Export** to add your paywall design in RevenueCat
-
-4. **Refine in the Paywall Editor**:
-   - Once imported, click the link for your paywall in the plugin to open it in the Paywall Editor
-   - You can further customize components, configure package selections, set up localizations, and adjust styling as needed
-
-5. **Publish and deploy**:
-   - After making any final adjustments, save and publish your paywall
-   - The paywall will be available through the RevenueCat SDK and can be served to your customers
-
-#### Component support and mapping
-
-| Status | Component                                           | Example Frame Name / Rule                                        |
-| ------ | --------------------------------------------------- | ---------------------------------------------------------------- |
-| ✅     | **Text** (`text`)                                   | Any node with `type: 'TEXT'`                                     |
-| ✅     | **Image** (`image`)                                 | Any `RECTANGLE`, `ELLIPSE`, `VECTOR`, etc. with `image` property |
-| ✅     | **Stack** (`stack`)                                 | Default for any non-special node with children                   |
-| ✅     | **Button** (`button`)                               | `Button` or `Button(action=<action_type>)` where `<action_type>` is one of: `restore_purchases`, `navigate_back`, `navigate_to`, or `workflow`. Invalid action types will default to `navigate_back`. |
-| ✅     | **Package** (`package`)                             | `Package` (exact match)                                          |
-| ✅     | **Purchase Button** (`purchase_button`)             | `Purchase Button` (exact match)                                  |
-| ❌     | **Icon** (`icon`)                                   | Not supported                       |
-| ❌     | **Video** (`video`)                                 | Not supported                                                    |
-| ❌     | **Carousel** (`carousel`)                           | Not supported                                                    |
-| ❌     | **Timeline** (`timeline`)                           | Not supported                                                    |
-| ❌     | **Tabs** (`tabs`)                                   | Not supported                                                    |
-| ❌     | **Tab Control** (`tab_control`)                     | Not supported                                                    |
-| ❌     | **Tab Control Button** (`tab_control_button`)       | Not supported                                                    |
-| ❌     | **Tab Control Toggle** (`tab_control_toggle`)       | Not supported                                                    |
-| ❌     | **Countdown** (`countdown`)                         | Not supported                                                    |
-
-:::info Additional component support
-We'll quickly be adding support for the other components in this list, stay tuned!
-:::
-
-:::info Button action type validation
-When importing buttons from Figma, the action type specified in the button name (e.g., `Button(action=restore_purchases)`) is validated against the supported action types. If an invalid action type is provided, it will automatically default to `navigate_back`. The supported action types are:
-- `restore_purchases`: Restores previous purchases
-- `navigate_back`: Navigates back to the previous screen
-- `navigate_to`: Navigates to a specific destination (requires additional configuration)
-- `workflow`: Triggers a workflow action (requires additional configuration)
-:::
+If you already have a design in Figma, use the RevenueCat Figma plugin to import your frames directly into the Paywall Editor. Follow the full import guide in [Importing from Figma](/tools/paywalls/creating-paywalls/importing-from-figma).
 
 ### Duplicating a paywall
 
@@ -252,4 +188,3 @@ The paywall preview in the dashboard includes a preview of the device safe area 
 If your paywall will be displayed in a sheet view instead of a full screen view, you can also preview that view in the paywall editor. Just click on **Preview settings** and select **Sheet view**.
 
 ![Safe area preview](/docs_images/paywalls/safe-area-preview.png)
-
