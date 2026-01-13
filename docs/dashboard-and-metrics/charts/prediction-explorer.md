@@ -18,6 +18,7 @@ import YouTubeEmbed from "@site/src/components/YouTubeEmbed";
 
 ## Change log
 
+- January 2026: LTV predictions now include trial (non-paying) subscriptions, weighted by their historical conversion rate. This provides a more complete picture of expected cohort revenue and reduces prediction volatility in the early days of a cohort.
 - December 2024: We discovered and fixed a bug that caused predicted LTV of cancelled subscriptions to be fully included in the data, when instead a very small portion of this predicted LTV should be included to account for uncancellations and reactivations.
 
 ## Terminology
@@ -51,7 +52,11 @@ RevenueCat predicts the lifetime value (LTV) of paid subscriptions based on the 
 
 ### When we predict LTV
 
-We predict up to 24 month LTV for all paid subscriptions that are not cancelled or expired. Whenever a data point contains predicted revenue, it will be styled with light green or yellow on the right side of the diagonal divider in the table.
+We predict up to 24 month LTV for:
+- **Paid subscriptions** that are not cancelled or expired
+- **Trial subscriptions** that have not yet converted to paid, weighted by their historical conversion probability
+
+Whenever a data point contains predicted revenue, it will be styled with light green or yellow on the right side of the diagonal divider in the table.
 
 ![](/docs_images/charts/prediction-explorer/prediction-explorer.png)
 
@@ -93,6 +98,17 @@ That also means that subscriptions with different attributes, such as those from
 
 It's important to note that cancellation rates also take time to be observed in a cohort. Because of that, **we recommend waiting until a cohort is at least 7-14 days old before comparing their predicted LTV with other cohorts.**
 
+#### Trial subscriptions
+
+We include trial (non-paying) subscriptions in our LTV predictions by estimating their likelihood of converting to paid and weighting their predicted revenue accordingly. If a product doesn't have enough historical data, we use fallback rates based on similar trials.
+
+**How it works:**
+1. We calculate the historical trial-to-paid conversion rate for each product
+2. For each trial subscription, we predict its LTV as if it were a paid subscription
+3. We multiply that predicted LTV by the conversion probability
+
+**Example:** If a product has a 40% trial-to-paid conversion rate, and we predict a trial subscription would generate $100 in LTV if it converted, we include $40 in the predicted LTV for that subscription.
+
 ### On reliability & accuracy
 
 When using the Prediction Explorer to anticipate future performance, its important to keep in mind that many variables can affect the true performance of a cohort over time, such as:
@@ -131,7 +147,7 @@ All future lifetime value predictions contain some degree of risk and uncertaint
 #### Other limitations
 
 1. Products which had a price change may have less accurate predictions for a period following the price change if the new survival rates are not fully observed through changes in cancellation behavior.
-2. We do not (yet) predict conversion _to_ a paid subscription from non-paying customers, which means the total predicted LTV of a cohort only includes those subscriptions that have already converted to paid, and may change over time if additional subscriptions convert to paid.
+2. Trial subscription predictions are based on historical conversion rates and may differ from actual conversion behavior for new products or after significant changes to your trial experience.
 3. For new products, we use survival curves of similar products with enough historical data. This approach, on average, gives reliable results, but your product's retention could turn out to be different than our similar set. Because of that, predictions for products with little historical data should be used with caution.
 
 :::info Stripe performance improvements
@@ -177,3 +193,4 @@ For each period, we:
 | :------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Does Predicted LTV measure revenue before or after store commissions, fees, and taxes? | Predicted LTV is calculated using the total revenue generated or predicted from each cohort, minus refunds, and therefore it does include revenue that the stores may deduct from your Proceeds due to commissions, taxes, or fees. |
 | How can I distinguish realized vs. predicted periods in the CSV export?                | Unfortunately, right now there is no indicator in the CSV export to distinguish between realized vs. predicted periods, so for the moment this can only be done manually through a date comparison or by referencing the Charts UI. |
+| How are trial subscriptions included in predicted LTV? | Trial subscriptions are included in predictions weighted by their historical conversion probability. For example, if a product has a 50% trial-to-paid conversion rate, a trial subscription's predicted LTV is multiplied by 0.5. This means your predictions now include expected revenue from trials before they convert. |
