@@ -56,8 +56,6 @@ We predict up to 24 month LTV for:
 - **Paid subscriptions** that are not cancelled or expired
 - **Trial subscriptions** that have not yet converted to paid, weighted by their historical conversion probability
 
-For trial subscriptions, we estimate the likelihood of conversion based on historical trial-to-paid conversion rates for that product. If a product doesn't have enough historical data, we use fallback rates based on trial duration and store.
-
 Whenever a data point contains predicted revenue, it will be styled with light green or yellow on the right side of the diagonal divider in the table.
 
 ![](/docs_images/charts/prediction-explorer/prediction-explorer.png)
