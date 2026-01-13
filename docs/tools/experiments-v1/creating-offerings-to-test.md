@@ -30,8 +30,12 @@ The Products themselves must first be created in each store in order to be serve
 
 When creating new Products to experiment with, here are a few things to keep in mind:
 
-**New in-app purchases need to be submitted for review to Apple**  
-When creating a new in-app purchase through App Store Connect, it'll need to be submitted to Apple for review and approved before it can be served to customers and offered through RevenueCat. [Learn more.](https://help.apple.com/app-store-connect/#/dev1986a0e5c)
+**New in-app purchases need to be submitted for review to Apple**
+When creating a new in-app purchase through App Store Connect, it'll need to be submitted to Apple for review and approved before it can be served to customers in production via the App Store and offered through RevenueCat. [Learn more.](https://help.apple.com/app-store-connect/#/dev1986a0e5c)
+
+:::info IAPs in Sandbox and TestFlight
+New in-app purchases **will work in Sandbox and TestFlight as long as they're in Ready to Submit status**. Apple reviewers can test your IAPs as part of their review. The approval requirement applies only to making IAPs available for purchase by customers in production via the App Store.
+:::
 
 :::info In-app purchase review times may vary
 
