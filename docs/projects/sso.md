@@ -59,6 +59,10 @@ In the RevenueCat dashboard:
 
 ![Collaborators](/docs_images/projects/sso-collaborators.png)
 
+:::caution
+Enabling SSO **removes all existing project collaborators** and replaces them with SSO group mappings. Make sure the **project owner** completes setup in RevenueCat **and** in your identity provider before activating SSO.
+:::
+
 2. Add an **SSO Group**
 3. Select the **RevenueCat role** that group should receive
 
@@ -68,11 +72,11 @@ Changes may take a few minutes to sync.
 
 **Role precedence (highest wins):**
 
-1. Admin  
-2. Developer  
-3. Growth  
-4. Support  
-5. View Only  
+1. Admin
+2. Developer
+3. Growth
+4. Support
+5. View Only
 
 > Mapping SSO groups updates project collaborators and may affect currently signed-in users.
 
