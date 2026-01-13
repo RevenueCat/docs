@@ -100,7 +100,7 @@ It's important to note that cancellation rates also take time to be observed in 
 
 #### Trial subscriptions
 
-We include trial (non-paying) subscriptions in our LTV predictions by estimating their likelihood of converting to paid and weighting their predicted revenue accordingly.
+We include trial (non-paying) subscriptions in our LTV predictions by estimating their likelihood of converting to paid and weighting their predicted revenue accordingly. If a product doesn't have enough historical data, we use fallback rates based on similar trials.
 
 **How it works:**
 1. We calculate the historical trial-to-paid conversion rate for each product
