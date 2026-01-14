@@ -836,6 +836,7 @@ paths:
                     is amazon.
                   type: object
                   nullable: false
+                  additionalProperties: false
                   properties:
                     package_name:
                       description: The package name of the app
@@ -852,6 +853,7 @@ paths:
                     is app_store.
                   type: object
                   nullable: false
+                  additionalProperties: false
                   properties:
                     bundle_id:
                       description: The bundle ID of the app
@@ -865,11 +867,40 @@ paths:
                       minLength: 32
                       maxLength: 32
                       nullable: true
+                    subscription_private_key:
+                      description: PKCS
+                      type: string
+                    subscription_key_id:
+                      description: In App Key id. The ID of the downloaded in app
+                        key. You can get it from App Store Connect
+                      type: string
+                    subscription_key_issuer:
+                      description: The key Issuer id. See instructions on how to obtain
+                        this in https://www.revenuecat.com/docs/in-app-purchase-key-configuration#3-providing-the-issuer-id-to-revenuecat
+                      type: string
+                    app_store_connect_api_key:
+                      description: App Store Connect API Key downloaded from App Store
+                        Connect in PEM format. Copy the contents of the file in this
+                        field. This is optional and used for advanced features like
+                        product imports.
+                      type: string
+                    app_store_connect_api_key_id:
+                      description: App Store Connect API Key ID. The ID of the downloaded
+                        API key. You can get it from App Store Connect.
+                      type: string
+                    app_store_connect_api_key_issuer:
+                      description: App Store Connect API Key Issuer ID.
+                      type: string
+                    app_store_connect_vendor_number:
+                      description: Your vendor number from App Store Connect. Required
+                        for some features like financial reports.
+                      type: string
                 mac_app_store:
                   description: Legacy Mac App Store type details. Should only be used
                     when type is mac_app_store.
                   type: object
                   nullable: false
+                  additionalProperties: false
                   properties:
                     bundle_id:
                       description: The bundle ID of the app
@@ -890,6 +921,7 @@ paths:
                   required:
                   - package_name
                   nullable: false
+                  additionalProperties: false
                   properties:
                     package_name:
                       description: The package name of the app
@@ -902,6 +934,7 @@ paths:
                     is stripe.
                   type: object
                   nullable: false
+                  additionalProperties: false
                   properties:
                     stripe_account_id:
                       description: It needs to be connected to your RevenueCat account.
@@ -916,6 +949,7 @@ paths:
                     type is rc_billing.
                   type: object
                   nullable: false
+                  additionalProperties: false
                   properties:
                     stripe_account_id:
                       description: It needs to be connected to your RevenueCat account.
@@ -948,6 +982,7 @@ paths:
                     when type is roku.
                   type: object
                   nullable: false
+                  additionalProperties: false
                   properties:
                     roku_api_key:
                       description: Roku Pay API key provided on the Roku Pay Web Services
@@ -974,6 +1009,7 @@ paths:
                     type is paddle.
                   type: object
                   nullable: false
+                  additionalProperties: false
                   properties:
                     paddle_api_key:
                       description: Paddle Server-side API key provided on the Paddle
@@ -7012,6 +7048,9 @@ components:
       - telemetry_deck_user_id
       - telemetry_deck_app_id
       - $segmentId
+      - $solarEngineDistinctId
+      - $solarEngineAccountId
+      - $solarEngineVisitorId
       - $tenjinId
       - $deviceVersion
       example: $email
