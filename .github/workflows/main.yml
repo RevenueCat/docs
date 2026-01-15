@@ -1,22 +1,41 @@
 name: Auto dev-docs Commenter
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened]
 
 jobs:
   comment:
     runs-on: ubuntu-latest
+    permissions:
+      deployments: write
     steps:
-      - name: Add preview URL to PR
+      - name: Create preview deployment annotation
         uses: actions/github-script@v8
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const issue_number = context.issue.number;
-            const message = `Preview this PR here: https://dev-docs.revenuecat.com/pr-${issue_number}/`;
-            github.rest.issues.createComment({
-              ...context.repo,
-              issue_number: issue_number,
-              body: message
+            const prNumber = context.payload.pull_request.number;
+            const headSha = context.payload.pull_request.head.sha;
+            const previewUrl = `https://dev-docs.revenuecat.com/pr-${prNumber}/`;
+
+            // Create deployment
+            const deployment = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: headSha,
+              environment: `preview-pr-${prNumber}`,
+              description: `Preview deployment for PR #${prNumber}`,
+              auto_merge: false,
+              required_contexts: []
+            });
+
+            // Create deployment status with preview URL
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: deployment.data.id,
+              state: 'success',
+              environment_url: previewUrl,
+              description: `Preview available at ${previewUrl}`
             });
