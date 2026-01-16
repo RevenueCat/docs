@@ -64,9 +64,9 @@ Webhooks are commonly used to sync a customer's subscription status across multi
 
 ## Retrying a Failed Webhook
 
-If your server fails to process a webhook, you can resend the webhook from the [event details page](/dashboard-and-metrics/customer-profile#event-details) once your server issue is resolved.
+If your server fails to process a webhook, you can resend the webhook once your server issue is resolved. On the webhook integration page, locate the failed (or retrying) event in the table and click `Retry`. The webhook will be immediately dispatched to your [webhook's URL](/integrations/webhooks#registering-your-webhook-url).
 
-Locate your webhook integration under the `Integrations` table and click the `Retry` button. The webhook will be immediately dispatched your [webhook's URL](/integrations/webhooks#registering-your-webhook-url).
+You can also resend the webhook from the [event details page](/dashboard-and-metrics/customer-profile#event-details).
 
 ## Security and Best Practices
 
