@@ -73,7 +73,6 @@ import content26 from "@site/code_blocks/customers/subscriber-attributes_26.js.t
     },
   ]}
 />
-;
 
 :::warning Attributes are not secure storage
 Since attributes are writable using a [public key](/projects/authentication) they should not be used for managing secure or sensitive information such as subscription status, coins, etc.
@@ -89,12 +88,12 @@ You can display unique paywalls to different customer segments based on custom a
 
 You can specify up to 50 unique custom attributes per subscriber, with key names up to 40 characters long and values up to 500 characters long. Keys cannot start with `$`, since that prefix is withheld for reserved attributes (see below).
 
-**Custom attribute key checklist:**
-✅ Key does not contain whitespace
-✅ Key must start with a letter for non-reserved attributes or "$" for reserved attributes
-✅ Key does not include any non-alphanumeric characters except `-` and `_`
-✅ Key is not more than 40 characters
-✅ Value is not more than 500 characters
+**Custom attribute key checklist:**  
+✅ Key does not contain whitespace  
+✅ Key must start with a letter for non-reserved attributes or "$" for reserved attributes  
+✅ Key does not include any non-alphanumeric characters except `-` and `_`  
+✅ Key is not more than 40 characters  
+✅ Value is not more than 500 characters  
 ✅ No more than 50 custom attributes
 
 ### Reserved attributes
