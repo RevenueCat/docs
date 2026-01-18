@@ -473,6 +473,9 @@ const platformResourcesCategory = Category({
       label: "Apple App Store",
       slug: "platform-resources/apple-platform-resources",
       items: [
+        Page({
+           slug: "platform-resources/apple-platform-resources/app-store-connect-setup-guide",
+        }),
         SubCategory({
           label: "Service Credentials",
           slug: "service-credentials/itunesconnect-app-specific-shared-secret",
