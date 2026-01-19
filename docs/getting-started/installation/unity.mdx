@@ -18,7 +18,6 @@ We provide 2 ways to install our SDK: via Unity Package Manager (UPM) in the Ope
 ### Option 1 (recommended): Install using OpenUPM
 
 1. First you need to import the [EDM4U](https://github.com/googlesamples/unity-jar-resolver) plugin into your project if you haven't already. This plugin will add all the Android and iOS dependencies automatically when building your project. To do this, you can:
-
    - Download the `external-dependency-manager-latest.unitypackage` file from the root of the [EDM4U](https://github.com/googlesamples/unity-jar-resolver) repo.
    - [Import](https://docs.unity3d.com/Manual/AssetPackagesImport.html) the downloaded `unitypackage` to your project.
 
@@ -100,21 +99,29 @@ If you have enabled Minify in Unity, make sure to add these custom rules to your
 
 ## Installation with Unity IAP side by side
 
-:::danger Unity IAP doesn't work with version 6 of the purchases plugin
-Make sure to use version [5.3.0](https://github.com/RevenueCat/purchases-unity/releases/tag/5.3.0) of our plugin. Due to incompatibilities with the version of BillingClient used by Unity IAP, the latest versions of the plugin won't work alongside Unity IAP until Unity IAP gets updated to BillingClient 6.x.x.
+Starting with version 8.0.0, RevenueCat's Purchases Unity SDK is compatible with Unity IAP 5.0.0 and above.
+
+:::info Unity IAP 5.0.0+ required
+If you're using an older version of Unity IAP, you'll need to upgrade to Unity IAP 5.0.0 or later to use the current version of the Purchases Unity SDK.
 :::
 
-### Purchases Unity 5.0.0+
+:::warning Amazon Store Support
+Unity IAP 5 has removed support for the Amazon Appstore. **If you need to support Amazon purchases, we recommend using the latest Purchases Unity SDK (8.0.0+) and letting RevenueCat handle all purchases directly**.
 
-![RevenueCat's Purchases Unity SDK 5.0.0+](https://img.shields.io/badge/Purchases%20Unity-5.0.0%2B-%23f25a5a?style=flat-square)
+Completing transactions with your own IAP code requires consistent configuration across all stores. If you complete purchases with your own IAP code for Amazon, you must also do so for Google Play. However:
 
-**side by side with Unity IAP 4.8.0**
+- Unity IAP 4 supports Amazon but uses an older BillingClient
+- Purchases Unity 4.16.0 (last version compatible with Amazon SDK 2.0.76) doesn't work with the newer Google Play BillingClient required for current Unity IAP versions
+- Unity IAP 5 removed Amazon support entirely
 
-This version is only compatible with version 4.8.0 and above of Unity IAP which are the ones that include BillingClient 5.
+This means you cannot simultaneously support both Google Play and Amazon when completing transactions with Unity IAP. The recommended approach is to use RevenueCat to handle all purchases for both stores.
 
-To install download `Purchases.unityPackage` and install as normal. Then follow the instructions indicated in the "Troubleshooting "duplicated class" errors"
+If your app only supports Amazon (not Google Play) and you want to complete purchases with your own IAP code, you can use [Purchases Unity 4.16.0](https://github.com/RevenueCat/purchases-unity/releases/tag/4.16.0) with Unity IAP 4.
+:::
 
-If using RevenueCat alongside Unity IAP 2.2.0+ or other plugin that includes the Android BillingClient library you will be getting an error when compiling that warns about some BillingClient classes being duplicated.
+### Troubleshooting "duplicated class" errors
+
+If using RevenueCat alongside Unity IAP or other plugin that includes the Android BillingClient library, you may get an error when compiling that warns about some BillingClient classes being duplicated.
 
 The easiest way to remove the error would be to tell Gradle to not include the billingclient library that Unity IAP is already including.
 
@@ -144,25 +151,11 @@ When exporting your project to Android, in the Build Settings window, make sure 
 
 ![](/docs_images/sdk/unity/unity-symlink-sources-unchecked.jpg)
 
-### Installing old versions of the plugin
-
-#### Purchases Unity 4.2.0+
-
-![RevenueCat's Purchases Unity SDK 4.2.0+](https://img.shields.io/badge/Purchases%20Unity-4.2.0%2B-%23f25a5a?style=flat-square)
-
-**side by side with Unity IAP 4.4.0 < 4.8.0**
-
-Download `Purchases-UnityIAP.unityPackage` and install as normal. Skip the rest of the instructions in this page.
-
-#### Purchases Unity 4.0.0 and 4.1.0
-
-![RevenueCat's Purchases Unity SDK 4.1.0+](https://img.shields.io/badge/Purchases%20Unity-4.1.0%2B-%23f25a5a?style=flat-square)
-
-**side by side with Unity IAP 3.3.0 < 4.4.0**
-
-Download `Purchases-UnityIAP.unityPackage` and install as normal. Skip the rest of the instructions in this page.
-
 ### Completing Transactions with your own IAP Code
+
+:::info Not recommended for Amazon Store
+Due to compatibility issues with Unity IAP and Amazon SDK versions, we do not recommend completing transactions with Unity IAP for Amazon Store. See the [Amazon Store Support warning](#installation-with-unity-iap-side-by-side) above for details.
+:::
 
 #### For Google Play (can also be done programmatically, see Configuration section)
 
@@ -173,7 +166,7 @@ Download `Purchases-UnityIAP.unityPackage` and install as normal. Skip the rest 
 ![](/docs_images/sdk/unity/amazon-store.png)
 
 :::warning Important note regarding InAppBillingService (Android Unity only)
-If using RevenueCat alongside Unity IAP or other plugin that includes the Android InAppBillingService class, follow [these instructions ](/getting-started/installation/unity#installation-with-unity-iap-side-by-side)
+If using RevenueCat alongside Unity IAP or other plugin that includes the Android InAppBillingService class, follow [these instructions](/getting-started/installation/unity#troubleshooting-duplicated-class-errors)
 :::
 
 :::danger Important (Android only)
