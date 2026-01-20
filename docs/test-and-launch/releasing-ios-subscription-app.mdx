@@ -1,0 +1,205 @@
+---
+title: Submitting an iOS Subscription App
+slug: submitting-ios-subscription-app
+excerpt: Let's get your iOS app with subscriptions shipped!
+hidden: false
+---
+
+# Submitting an iOS Subscription App
+
+You’ve created your first iOS app, set up your subscriptions, tested everything, and you’re ready to ship to the App Store… but now what?
+
+Before your app can be released, it needs to be reviewed by Apple by submitting it through App Store Connect. Submitting a new app with subscriptions can appear fiddly, and it’s an area where many developers run into issues for the first time, as both your new app and your subscriptions need to be reviewed together. This guide will walk you through everything you need to take your app from an Xcode project to a successful approval from Apple.
+
+Getting everything set up correctly in App Store Connect is important. If something is missing or misconfigured, Apple may reject your app during review. In most cases, this isn’t as scary as it sounds, and you’ll usually be able to resubmit after addressing minor issues. However, rejections can cause delays, so it’s best to get things right the first time.
+
+By following a clear set of steps, you can move confidently from an app in Xcode to submitting it to Apple in the correct way.
+
+## Scope of this guide
+
+This guide focuses specifically on preparing and submitting an iOS app with subscriptions for App Review. It does not cover general App Store metadata such as keywords, App Store descriptions, screenshots, or App Store Optimization.
+
+The goal of this guide is to help you upload your build to App Store Connect, configure your subscriptions correctly, and submit both together for review.
+
+## Guide structure
+
+This guide is broken down into three subscription-focused steps:
+
+- Taking your app from Xcode and uploading it to App Store Connect, ready for submission
+- Making sure all of your subscriptions are set up correctly
+- Submitting your new app and your subscriptions together in the correct way
+
+## Uploading Your Build to App Store Connect
+
+> **Note:** This section uses Xcode to upload your app’s build to App Store Connect. If you use another method to upload your app, the remaining sections of this guide are still fully relevant.
+
+To get started, we need to upload a build of your app to App Store Connect. This does not submit your app to Apple for review yet, but it does make the build available in App Store Connect so it can be selected for submission later.
+
+There are three main steps involved:
+
+- Archiving your app
+- Uploading the archive to App Store Connect
+- Selecting the uploaded build in App Store Connect
+
+### Archiving your app
+
+Open your project in Xcode and make sure:
+
+- Your Bundle Identifier matches the app created in App Store Connect
+- Your signing and provisioning profiles are correctly configured
+
+Make sure the build target is set to **Any iOS Device**:
+
+![Set the build target to "Any iOS Device"](/docs_images/test/releasing-ios-subscription-app/build-target.png)
+
+Then select **Product → Archive**:
+
+![Archive the build in Xcode](/docs_images/test/releasing-ios-subscription-app/build-archive.png)
+
+Once the archive process completes, the list of archives should appear automatically. If it doesn’t, or if you want to access your archives later, you can find them by selecting **Window → Organizer** in Xcode.
+
+![List of archived builds in Xcode's Organizer](/docs_images/test/releasing-ios-subscription-app/xcode-organizer.png)
+
+### Uploading the build
+
+From the Organizer, select **Distribute App**.
+
+Choose **App Store Connect**, and continue through the steps. Once everything is prepared, the upload will begin.
+
+![Distribte tpp to App Store](/docs_images/test/releasing-ios-subscription-app/xcode-distribte-app.png)
+
+The upload may fail if required assets are missing, such as an app icon or required metadata.
+
+When the upload completes successfully, the build will be available in App Store Connect. As a reminder, uploading a build does not automatically submit your app to Apple for review.
+
+### Selecting the build in App Store Connect
+
+Open App Store Connect and navigate to your app. In the _Distribution Information_, scroll to the **Build** section:
+
+![Build selection in App Store Connect](/docs_images/test/releasing-ios-subscription-app/app-store-connect-build-section.png)
+
+Select your new build. It can take some time for a new build to finish processing and appear here, so don’t worry if it isn’t visible immediately. You may be required to add some additional coplience information for the build here.
+
+![Selecting your build in App Store Connect](/docs_images/test/releasing-ios-subscription-app/app-store-connect-build-list.png)
+
+With your build uploaded and selected, you’re now in a good position to move on to setting up your subscriptions, ready for submission.
+
+## Confirming Subscriptions Configurations
+
+Before submitting your new app and subscriptions to Apple, it’s important to double-check that all subscriptions are set up correctly. This helps avoid App Review rejections caused by missing information and ensures your subscriptions are configured exactly as you intend.
+
+### Navigating to subscriptions
+
+- Open your app in App Store Connect
+- Go to **Monetization → Subscriptions**
+
+Here, you’ll find your subscription groups for both Auto-Renewable Subscriptions and Non-Renewing Subscriptions.
+
+![A list of auto-renewable and non-renewing subscription in App Store Connect](/docs_images/test/releasing-ios-subscription-app/app-store-connect-subsciption-group.png)
+
+### Understanding subscription groups
+
+A subscription group is a collection of related subscriptions where a user can only be actively subscribed to one subscription in that group at a time. Because of this, it's really important you have your subscription groups set up in the correct way. A common use case for subscription groups is offering different durations for the same subscription, such as weekly and yearly options. This prevents users from being subscribed to multiple durations at the same time, while still allowing them to move between subscriptions within the group.
+
+If you want users to hold multiple subscriptions for different content, those subscriptions must be placed in different subscription groups.
+
+At the group level, you can also configure a **Billing Grace Period**, which allows a subscription to continue for a limited time if a user’s payment fails.
+
+Selecting a subscription group allows you to view the subscriptions within the group and review group-level settings, such as localization.
+
+### Reviewing individual subscriptions
+
+Select one of the subscriptions within the group to review its configuration.
+
+Here, you’ll see the **Reference Name** for the subscription. This is used internally in App Store Connect for reporting and analytics and is not shown anywhere in your app.
+
+In this top section, make sure the following settings are correct:
+
+- Subscription duration, which defines how long each billing cycle lasts
+- Family Sharing, if you want families to be able to share the subscription
+
+![The internal name, duration and family share options of your subscription](/docs_images/test/releasing-ios-subscription-app/app-store-connect-subscription-name-duration.png)
+
+### Availability
+
+Confirm the subscription is available in all intended regions and countries.
+
+![The availablity of your subscription](/docs_images/test/releasing-ios-subscription-app/app-store-connect-availability.png)
+
+### Pricing
+
+Confirm the pricing for your subscription per region
+
+![The pricing of your subscription](/docs_images/test/releasing-ios-subscription-app/app-store-connect-pricing.png)
+
+### Localization
+
+Localization allows you to configure display names and descriptions for your subscription in different languages. These values are shown to users when they subscribe.
+
+At least one localization is required.
+
+![The pricing of your subscription](/docs_images/test/releasing-ios-subscription-app/app-store-connect-localization.png)
+
+### Optional Image
+
+You can also upload images that are used in other areas, such as win-back offers. Images like this can be very effective in those flows.
+
+![The optional image for your subscription](/docs_images/test/releasing-ios-subscription-app/app-store-connect-subscription-image.png)
+
+### Tax
+
+Make sure the tax category for your subscription is correct. This can be different from your app’s main tax category if required.
+
+![The tax category image for your subscription](/docs_images/test/releasing-ios-subscription-app/app-store-connect-tax-category.png)
+
+### Review information
+
+Finally, upload the review information needed for Apple to review your subscription. This includes:
+
+- A screenshot showing where the subscription appears in your app or what content it unlocks
+- A short description to help the review team understand the subscription
+
+This information is only visible to Apple’s review team.
+
+![The review information for your subscription](/docs_images/test/releasing-ios-subscription-app/app-store-connect-review-information.png)
+
+### Ready to submit
+
+Once all required information is complete, your subscription should move into the **Ready to Submit** state.
+
+If the subscription is still in a **Missing Metadata** state, review the checklist in App Store Connect to identify what’s missing.
+
+### Group Localization
+
+Also make sure the subscription group localization is set. From the subscription groups list, you can configure:
+
+- The display name for the group
+- An optional custom displayable app name
+
+![Localization for the subscription group](/docs_images/test/releasing-ios-subscription-app/app-store-connect-subscription-group-localization.png)
+
+Once everything is set up and you’re happy with your subscriptions, you’re ready to move on to submitting your app and subscriptions to Apple.
+
+## Submitting Your App and Subscriptions to Apple
+
+Once your app’s build is uploaded to App Store Connect and you’ve checked that all of your subscriptions are set up correctly, it’s time to submit the build to Apple.
+
+Head back to the **Distribution Information** section for your app (the area where you upload your App Store screenshots). Here, you’ll find a section titled **In-App Purchases and Subscriptions**, located just under where you select the build you’re submitting for review.
+
+> **Note:** this section may not appear if something isn’t configured correctly. It will only be shown if at least one of your subscriptions is in the **Ready to Submit** state.
+
+![The "in app purchases and subscriptions" section in App Store Connect](/docs_images/test/releasing-ios-subscription-app/app-store-connect-in-app-purchases-and-subscriptions.png)
+
+By attaching your subscriptions here, they will be fully available to Apple’s reviewers during the review process. A successful review means that both your app and your subscriptions are reviewed and approved together.
+
+![Subscriptions attached in the "in app purchases and subscriptions" section in App Store Connect](/docs_images/test/releasing-ios-subscription-app/app-store-connect-subscriptions-attached.png)
+
+As mentioned earlier, for new apps, subscriptions cannot be submitted for review on their own. They must be reviewed alongside a new app version, and this step is what attaches your subscriptions to the app submission.
+
+With your build uploaded and selected, your subscriptions correctly configured and attached, make sure everything is saved and submit your app to Apple. Review times can vary, but they usually average around one to two days.
+
+At this stage, your app and subscriptions are correctly prepared for submission. Other App Store metadata, such as keywords or App Store descriptions, can be reviewed and updated separately as needed.
+
+You can submit this build to Apple with the **Add for Review** button at the top of the **Distribution Information** screen.
+
+Good luck with the submission, and I look forward to seeing your app on the App Store.
