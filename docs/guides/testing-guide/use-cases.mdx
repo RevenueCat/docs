@@ -232,12 +232,10 @@ Purchases.sharedInstance.purchaseWith(
 **Steps:**
 
 1. **Automatic Application of Offers**
-
    - Use `PurchaseParams.Builder` with a `StoreProduct` or `Package`.
    - Verify that the RevenueCat SDK applies the longest eligible free trial or, if not available, the cheapest introductory offer.
 
 2. **Handling Developer-Determined Offers**
-
    - Set up a developer-determined offer on the Google Play Console.
    - Ensure the offer is tagged with `rc-ignore-offer` if it should not be automatically applied.
    - Test purchasing a product and verify that the tagged offer is not automatically selected.
@@ -250,11 +248,9 @@ Purchases.sharedInstance.purchaseWith(
 **Expected Results:**
 
 1. **Automatic Application of Offers:**
-
    - The longest eligible free trial or the cheapest introductory offer is automatically applied as per the defined logic.
 
 2. **Handling Developer-Determined Offers:**
-
    - Offers with the `rc-ignore-offer` tag are not automatically applied, and developer-determined offers are handled according to the set up in the Google Play Console.
 
 3. **Manual Offer Selection:**
@@ -449,21 +445,17 @@ Purchases.shared.getOfferings { (offerings, error) in
 **Steps:**
 
 1. **Launch the app and configure the SDK**
-
    - Start by launching the app and configuring the SDK.
 
 2. **Fetch Offerings**
-
    - Use the `getOfferings()` method to fetch the current offerings configured in the RevenueCat dashboard.
    - Verify that the default offering and its available packages are displayed correctly.
 
 3. **Fetch Offerings by Placement**
-
    - Use `getCurrentOffering(forPlacement: "your-placement-identifier")` to fetch offerings based on a specific placement.
    - Check that the correct offering is displayed based on the placement identifier if user fulfills your targeting rules.
 
 4. **Fetch Custom Offering by Identifier**
-
    - Fetch a specific offering using its identifier (e.g., `"experiment_group"`).
    - Verify that the correct packages associated with the custom offering are displayed.
 
@@ -474,15 +466,12 @@ Purchases.shared.getOfferings { (offerings, error) in
 **Expected Results:**
 
 1. **Fetch Offerings:**
-
    - The SDK fetches the current offerings correctly, and the associated packages are displayed to the user.
 
 2. **Fetch Offerings by Placement:**
-
    - The correct offering is fetched and displayed based on the specified placement identifier.
 
 3. **Fetch Custom Offering by Identifier:**
-
    - The SDK correctly retrieves and displays the custom offering identified by its unique identifier.
 
 4. **Display Packages:**
@@ -536,21 +525,17 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 **Steps:**
 
 1. **Launch the app and configure the SDK**
-
    - Start by configuring the SDK without providing an App User ID to generate an anonymous ID.
 
 2. **Log in with a custom App User ID**
-
    - Use the `.logIn("<my_app_user_id>")` method to log in with a custom App User ID. This should also result in the new app user ID being aliased with the anonymous app user ID.
    - Verify that the `customerInfo` object reflects the custom App User ID.
 
 3. **Log out of the current user**
-
    - Call the `.logOut()` method to log out.
    - Confirm that a new anonymous App User ID is generated.
 
 4. **Log in again with a different custom App User ID**
-
    - Use the `.logIn("<another_app_user_id>")` method.
    - Check that the `customerInfo` updates to the new custom App User ID without merging data from the previous session.
 
@@ -561,19 +546,15 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 **Expected Results:**
 
 1. **Initial Log In with Custom App User ID:**
-
    - The `customerInfo` object should correctly reflect the custom App User ID (`<my_app_user_id>`), showing the associated subscription status and purchase history.
 
 2. **Log Out:**
-
    - A new anonymous App User ID should be generated, and the `customerInfo` should no longer be associated with the previous custom App User ID.
 
 3. **Log In After Log Out:**
-
    - Logging in with a different custom App User ID (`<another_app_user_id>`) should update the `customerInfo` object to reflect this new ID, with no data merged from the previous session unless necessary for a restore or similar operation.
 
 4. **Switching Accounts:**
-
    - When switching from one custom App User ID to another, the `customerInfo` should update to reflect the new custom App User ID without merging.
 
 5. **Anonymous to Custom App User ID:**
@@ -757,7 +738,7 @@ Purchases.shared.logIn("<another_app_user_id>") { (customerInfo, created, error)
 
 **Related docs:**
 
-- [Paywall localization](https://www.revenuecat.com/docs/tools/paywalls/creating-paywalls#localization)
+- [Paywall localization](https://www.revenuecat.com/docs/tools/paywalls/creating-paywalls/localization)
 
 **Preconditions:** App installed, Paywall set up in RevenueCat, fresh App User ID, device and store account is set to the country that localization is to be tested.
 
