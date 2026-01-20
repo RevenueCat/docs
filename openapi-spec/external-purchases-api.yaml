@@ -593,6 +593,10 @@ components:
           description: The environment in which this subscription was created. If
             not present or `null`, will default to `production`.
           default: production
+        metadata:
+          type: object
+          title: Metadata
+          description: Metadata about the purchase.
       additionalProperties: false
       type: object
       required:
@@ -789,6 +793,10 @@ components:
             at the end of the current subscription period. If not present or `null`,
             will default to `unknown`.
           default: unknown
+        metadata:
+          type: object
+          title: Metadata
+          description: Metadata about the subscription.
       additionalProperties: false
       type: object
       required:
