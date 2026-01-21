@@ -63,6 +63,6 @@ To disable two-factor authentication vavigate to your [**Account > Security**](h
 If you are a collaborator on a Project that requires two-factor authentication, you must leave that project before disabling.
 :::
 
-### Activating Single Sign-On
+### Setting Up Single Sign-On
 
 Please refer to our [SSO guide](/projects/sso) for more information on activating SSO on your account.

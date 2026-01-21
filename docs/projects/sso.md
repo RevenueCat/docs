@@ -34,24 +34,29 @@ Your identity provider must support:
 
 ## Step-by-step: Enable SSO
 
-### 1) Request your SSO setup link
+### 1) Request SSO enablement
 
-Contact your **RevenueCat account manager** to request SSO enablement. You’ll receive a secure setup link that allows you to connect SSO and directory sync for your organization to RevenueCat.
+Contact your **RevenueCat account manager** to request SSO enablement for your organization.
 
-### 2) Configure SSO and Directory Sync
+### 2) Configure Your Identity Provider
 
-Using the setup link, configure your identity provider to connect to RevenueCat:
+Once SSO has been enabled for your organization, navigate to your [**Account > Security > SSO**](https://app.revenuecat.com/settings/security/sso) settings and click **Manage SSO Connection**.
 
-- Set up SSO using **SAML or OIDC**
-- Enable **SCIM directory sync**
+This will open the WorkOS Admin Portal where you can configure your SAML or OIDC identity provider settings.
 
-### 3) Create groups in your identity provider
+Configure your identity provider details and test the connection in the WorkOS portal. Once complete, you'll be redirected back to the RevenueCat Dashboard.
+
+### 3) Set Up Directory Synchronization
+
+Configure SCIM provisioning with your identity provider to synchronize user directories and groups.
+
+### 4) Create groups in your identity provider
 
 In your identity provider, create (or select) groups that correspond to the RevenueCat roles you want to grant (for example, Admin, Developer, Support, or View Only).
 
 If a user belongs to multiple groups, RevenueCat will grant the **highest** role.
 
-### 4) Map SSO groups to RevenueCat roles
+### 5) Map SSO groups to RevenueCat roles
 
 In the RevenueCat dashboard:
 
@@ -76,13 +81,39 @@ Changes may take a few minutes to sync.
 
 > Mapping SSO groups updates project collaborators and may affect currently signed-in users.
 
-### 5) Activate SSO
+### 6) Activate SSO
 
-When configuration is complete, go to [**Account > Security > SSO**](https://app.revenuecat.com/settings/security/sso) and click **Activate SSO**.
+Once you've completed the SSO connection setup, directory synchronization, and role mappings, navigate to [**Account > Security > SSO**](https://app.revenuecat.com/settings/security/sso) and click **Activate SSO**.
 
-![SSO activation button in security settings](/docs_images/projects/sso-activate.png)
+:::warning Members of the domain will only be able to use SSO
+When the SSO of your organization is active, users with the domain of your organization will be required to sign in using SSO.
+:::
 
 After activation, users with your configured email domain will be required to sign in using SSO.
+
+## Managing Your SSO Connection
+
+After initial setup, you can manage your SSO connection settings at any time by clicking **Manage SSO Connection** from [**Account > Security > SSO**](https://app.revenuecat.com/settings/security/sso).
+
+This allows you to:
+- Update identity provider configuration
+- Modify SAML or OIDC settings
+- Test your SSO connection
+- View connection status
+
+Changes made in the WorkOS Admin Portal are saved automatically and may take a few moments to reflect in the RevenueCat Dashboard.
+
+## Managing Your Directory Sync
+
+After initial setup, you can manage your directory synchronization settings at any time by clicking **Manage Directory Sync** from [**Account > Security > SSO**](https://app.revenuecat.com/settings/security/sso).
+
+This allows you to:
+- Update SCIM provisioning configuration
+- Modify directory sync settings
+- View synchronization status
+- Test directory connection
+
+Changes made in the WorkOS Admin Portal are saved automatically and may take a few moments to reflect in the RevenueCat Dashboard.
 
 ## Validation checklist
 
