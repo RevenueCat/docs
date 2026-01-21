@@ -596,7 +596,7 @@ components:
         metadata:
           type: object
           title: Metadata
-          description: Metadata about the purchase.
+          description: Metadata about the purchase. Content must be key-value pairs with string, number, boolean, or null values.
       additionalProperties: false
       type: object
       required:
@@ -796,7 +796,7 @@ components:
         metadata:
           type: object
           title: Metadata
-          description: Metadata about the subscription.
+          description: Metadata about the subscription. Content must be key-value pairs with string, number, boolean, or null values.
       additionalProperties: false
       type: object
       required:
