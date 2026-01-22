@@ -4524,8 +4524,8 @@ paths:
         which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/subscriptions/{subscription_id}/transactions:
     get:
-      summary: Get a Play Store subscription's transactions
-      operationId: get-play-store-subscription-transactions
+      summary: Get a Play Store or App Store subscription's transactions
+      operationId: get-play-store-or-app-store-subscription-transactions
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:subscriptions:read
@@ -9632,6 +9632,13 @@ components:
         purchased_at:
           description: The date of the transaction in ms since epoch
           nullable: false
+          type: integer
+          format: int64
+          example: 1658399423658
+        effective_expiration_date:
+          description: The effective expiration date of the transaction in ms since
+            epoch
+          nullable: true
           type: integer
           format: int64
           example: 1658399423658
