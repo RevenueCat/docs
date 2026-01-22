@@ -12,17 +12,15 @@ hidden: false
 This guide walks you through the setup for adding web purchases to your iOS app with RevenueCat Web and Paddle Billing. The flow consists of the following steps:
 
 1. User views RevenueCat paywall (in-app)
-1. User clicks a web purchase button on the pwayall, and lands on a web purchase link in the device browser
+1. User clicks a web purchase button on the paywall, and lands on a web purchase link in the device browser
 1. User completes their purchase in the Paddle Billing checkout (presented within the web purchase link)
 1. User is redirected back into the mobile app, using a custom URL scheme
 1. User is granted access to the premium entitlements associated with the product they purchased
 
 ## Current limitations
 
-1. **Free trials** will not be displayed in the package selection page, or summarized in the checkout
 1. **Product quantity:** Products purchased with a quantity of more than one (via the quantity adjustment in the Paddle checkout) will be reflected as a single product purchase in RevenueCat.
 1. **Customization:** The Paddle overlay checkout only supports a single accent color customization.
-1. **Product descriptions:** The "show product descriptions" setting in web purchase links currently has no effect with Paddle purchases.
 
 ## Before you begin (prerequisites)
 
@@ -86,23 +84,23 @@ The RevenueCat Paddle Billing integration doesn't currently support Paddle's aba
 
 | Permission                     | Read | Write |
 | ------------------------------ | :--: | :---: |
-| Addresses                      |  ☑  |   ☐   |
-| Adjustments                    |  ☑  |   ☐   |
-| Businesses                     |  ☑  |   ☐   |
-| Client-side tokens             |  ☑  |  ☑   |
+| Addresses                      |  ☑   |   ☐   |
+| Adjustments                    |  ☑   |   ☐   |
+| Businesses                     |  ☑   |   ☐   |
+| Client-side tokens             |  ☑   |   ☑   |
 | Customer portal sessions       |  ☐   |   ☐   |
 | Customer authentication tokens |  ☐   |   ☐   |
-| Customers                      |  ☑  |   ☐   |
-| Discounts                      |  ☑  |   ☐   |
-| Notification settings          |  ☑  |  ☑   |
-| Notifications                  |  ☑  |   ☐   |
+| Customers                      |  ☑   |   ☐   |
+| Discounts                      |  ☑   |   ☐   |
+| Notification settings          |  ☑   |   ☑   |
+| Notifications                  |  ☑   |   ☐   |
 | Notification simulations       |  ☐   |   ☐   |
-| Payment methods                |  ☑  |   ☐   |
-| Prices                         |  ☑  |   ☐   |
-| Products                       |  ☑  |   ☐   |
+| Payment methods                |  ☑   |   ☐   |
+| Prices                         |  ☑   |   ☐   |
+| Products                       |  ☑   |   ☐   |
 | Reports                        |  ☐   |   ☐   |
-| Subscriptions                  |  ☑  |   ☐   |
-| Transactions                   |  ☑  |   ☐   |
+| Subscriptions                  |  ☑   |   ☐   |
+| Transactions                   |  ☑   |   ☑   |
 
 </details>
 

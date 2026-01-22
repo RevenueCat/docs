@@ -1,0 +1,235 @@
+---
+title: Promotional Subscription Extensions
+slug: promotional-subscription-extensions
+excerpt: Automatically extend subscriptions as a promotional offer when customers make a purchase
+hidden: false
+---
+
+Promotional subscription extensions allow you to reward customers with additional subscription time when they purchase through a specific offering or promotional campaign.
+
+For example, you might offer "Buy a monthly subscription during our holiday sale and get an extra month free!" The customer purchases the subscription at the normal price, and your backend automatically extends their subscription by the promotional period.
+
+## How It Works
+
+The flow for implementing promotional subscription extensions is:
+
+1. **Customer purchases a subscription** through your eligible offering
+2. **RevenueCat sends an `INITIAL_PURCHASE` webhook** to your server
+3. **Your server identifies the eligible purchase** (e.g., by checking the offering ID)
+4. **Your server calls the RevenueCat API** to extend (Apple) or defer (Google) the subscription
+5. **Customer's subscription is extended** by the promotional period
+
+## Prerequisites
+
+Before implementing promotional subscription extensions, ensure you have:
+
+- A RevenueCat project with your apps configured
+- [Webhooks](/integrations/webhooks) set up to receive events from RevenueCat
+- A **Secret API key** (v1) from your RevenueCat project settings (required for server-side API calls)
+- For Apple: [App Store Server Notifications](/platform-resources/server-notifications/apple-server-notifications) configured
+- For Google: [Real-time Developer Notifications](/platform-resources/server-notifications/google-server-notifications) configured
+
+:::warning Secret API Key Required
+The subscription extension and deferral APIs require a **Secret API key**. Never expose this key in client-side code. All extension requests must be made from your secure backend server.
+:::
+
+## Platform Considerations
+
+### Apple App Store
+
+Apple App Store subscriptions can be extended using the [Extend a Subscription](/api-v1#tag/transactions/operation/extend-an-apple-subscription) endpoint.
+
+:::warning Use at Your Own Discretion
+It's unclear whether using subscription extensions for promotional offers aligns with Apple's intended use of the API. Apple's documentation primarily references service outages and customer satisfaction issues as example use cases. However, there are real-world examples of apps successfully using extensions in this promotional manner.
+
+Consider your own risk tolerance and consult Apple's latest guidelines before implementing.
+:::
+
+| Considerations        | Details                                                   |
+| :-------------------- | :-------------------------------------------------------- |
+| Extension method      | Number of days to extend (1-90)                           |
+| Maximum extension     | 90 days per request                                       |
+| Extensions per year   | Maximum of 2 extensions per customer per year             |
+| Customer notification | Apple immediately emails the customer about the extension |
+| Sandbox behavior      | Extension days are treated as minutes in sandbox          |
+
+**Extension Reason Codes:**
+
+| Code | Reason                  |
+| :--- | :---------------------- |
+| `0`  | Undeclared              |
+| `1`  | Customer Satisfaction   |
+| `2`  | Other                   |
+| `3`  | Service Issue or Outage |
+
+### Google Play Store
+
+Google Play Store subscriptions can be extended using the [Defer a Subscription](/api-v1#tag/transactions/operation/defer-a-google-subscription) endpoint.
+
+| Considerations        | Details                                                   |
+| :-------------------- | :-------------------------------------------------------- |
+| Extension method      | Specify `extend_by_days` or set a new `expiry_time_ms`    |
+| Maximum extension     | Up to 365 days (one year) per request                     |
+| Extensions per year   | No limit                                                  |
+| Customer notification | Google does not automatically notify the customer         |
+| Product identifier    | Use the Subscription ID from RevenueCat's Product catalog |
+
+:::info Google Play Product Identifiers
+For Google Play products set up in RevenueCat after February 2023, the `product_id` in webhooks has the format `<subscription_id>:<base_plan_id>`. When calling the defer endpoint, use only the subscription ID portion (before the colon).
+:::
+
+### Other Platforms
+
+| Platform        | Extension Support |
+| :-------------- | :---------------- |
+| Amazon Appstore | ❌ Not supported  |
+| Roku            | ❌ Not supported  |
+
+## Implementation
+
+### Step 1: Set Up Your Webhook Endpoint
+
+Create an endpoint to receive webhooks from RevenueCat. Your endpoint must:
+
+- Accept `POST` requests with JSON body
+- Return a `200` status code quickly (within 60 seconds)
+- (Optionally) use an authorization header for security
+
+import webhookSetup from "@site/code_blocks/guides/promotional-extension-webhook-setup.ts.txt?raw";
+
+<RCCodeBlock
+  tabs={[{ type: "ts", content: webhookSetup, name: "Webhook Endpoint" }]}
+/>
+
+### Step 2: Handle the INITIAL_PURCHASE Event
+
+When a customer makes a new subscription purchase, RevenueCat sends an `INITIAL_PURCHASE` webhook. Here's an example payload:
+
+import webhookPayload from "@site/code_blocks/guides/promotional-extension-webhook-payload.json?raw";
+
+<RCCodeBlock
+  tabs={[
+    { type: "json", content: webhookPayload, name: "INITIAL_PURCHASE Webhook" },
+  ]}
+/>
+
+Key fields to check for promotional eligibility:
+
+- `presented_offering_id`: The offering shown to the customer at purchase time
+- `offer_code`: Any offer/promo code used during purchase
+- `product_id`: The specific product purchased
+- `store`: The platform (APP_STORE, PLAY_STORE, etc.)
+
+### Step 3: Implement Platform-Specific Extension Logic
+
+The API endpoints differ between Apple and Google. Here's how to handle both platforms:
+
+import platformSwitch from "@site/code_blocks/guides/promotional-extension-platform-switch.ts.txt?raw";
+
+<RCCodeBlock
+  tabs={[{ type: "ts", content: platformSwitch, name: "Platform Router" }]}
+/>
+
+### Step 4: Call the Extension APIs
+
+#### Apple App Store Extension
+
+import appleRequest from "@site/code_blocks/guides/promotional-extension-apple-request.ts.txt?raw";
+
+<RCCodeBlock
+  tabs={[{ type: "ts", content: appleRequest, name: "Apple Extension" }]}
+/>
+
+**Parameters:**
+
+| Parameter            | Required | Type    | Description                     |
+| :------------------- | :------- | :------ | :------------------------------ |
+| `extend_by_days`     | ✅       | integer | Number of days to extend (1-90) |
+| `extend_reason_code` | ✅       | integer | Reason for extension (0-3)      |
+
+#### Google Play Store Deferral
+
+import googleRequest from "@site/code_blocks/guides/promotional-extension-google-request.ts.txt?raw";
+
+<RCCodeBlock
+  tabs={[{ type: "ts", content: googleRequest, name: "Google Deferral" }]}
+/>
+
+**Parameters (one required):**
+
+| Parameter        | Required                              | Type    | Description                                           |
+| :--------------- | :------------------------------------ | :------ | :---------------------------------------------------- |
+| `extend_by_days` | ✅ Yes, if not using `expiry_time_ms` | integer | Number of days to extend (1-365).                     |
+| `expiry_time_ms` | ✅ Yes, if not using `extend_by_days` | integer | New expiration timestamp in milliseconds since epoch. |
+
+### Step 5: Complete Handler Implementation
+
+Here's a complete implementation that handles both platforms:
+
+import fullHandler from "@site/code_blocks/guides/promotional-extension-handler.ts.txt?raw";
+
+<RCCodeBlock
+  tabs={[{ type: "ts", content: fullHandler, name: "Complete Handler" }]}
+/>
+
+## Verifying Extensions
+
+After applying an extension, you can verify it was successful by:
+
+1. **Check the API response**: A successful response returns the updated [Customer Info](/api-v1#tag/customer_info_model)
+2. **Look for the `SUBSCRIPTION_EXTENDED` webhook**: RevenueCat will send this event after a successful extension
+3. **Check the Customer Profile**: In the RevenueCat dashboard, view the customer's profile to see the updated expiration date
+
+## Best Practices
+
+### Avoiding Duplicate Extensions
+
+Before applying an extension, verify one hasn't already been applied to avoid extending a subscription multiple times. There are several approaches:
+
+**1. Track extensions in your database**
+
+Store a record of extensions you've applied, keyed by the `original_transaction_id`. Before extending, check if an extension already exists for that transaction.
+
+**2. Listen for `SUBSCRIPTION_EXTENDED` webhooks**
+
+RevenueCat sends a `SUBSCRIPTION_EXTENDED` webhook after a successful extension. Track these events to know which subscriptions have already been extended.
+
+**3. Compare purchase date to expiration date**
+
+For a standard subscription, the gap between `purchased_at_ms` and `expiration_at_ms` matches the subscription period (e.g., ~30 days for monthly). If the gap is larger than expected, an extension may have already been applied.
+
+**4. Fetch current customer info before extending**
+
+Call the [GET /subscribers](/api-v1#tag/customers/operation/subscribers) endpoint to check the current `expires_date` before applying an extension. Compare it against what you expect based on the original purchase.
+
+### Respond Quickly
+
+RevenueCat will timeout webhook requests after 60 seconds. Always respond with a `200` status immediately, then process the extension asynchronously.
+
+### Monitor Apple's Extension Limits
+
+Apple limits extensions to 2 per customer per year. Consider tracking extensions and repurposing [granted entitlements](/api-v1#tag/entitlements/operation/grant-a-promotional-entitlement) if the limit is reached.
+
+### Handle Sandbox vs Production
+
+The `environment` field in the webhook indicates whether it's a sandbox or production purchase. You may want to:
+
+- Skip extensions for sandbox purchases
+- Use different extension durations for testing
+- Log sandbox events separately
+
+```typescript
+if (event.environment === "SANDBOX") {
+  console.log("Sandbox purchase - skipping promotional extension");
+  return;
+}
+```
+
+## Related Resources
+
+- [Customer Profile - Extending Subscription Renewal Dates](/dashboard-and-metrics/customer-profile#extending-subscription-renewal-dates)
+- [Webhooks Overview](/integrations/webhooks)
+- [Webhook Event Types and Fields](/integrations/webhooks/event-types-and-fields)
+- [Apple: Extend a Subscription](/api-v1#tag/transactions/operation/extend-an-apple-subscription)
+- [Google: Defer a Subscription](/api-v1#tag/transactions/operation/defer-a-google-subscription)
+- [Grant an Entitlement](/api-v1#tag/entitlements/operation/grant-a-promotional-entitlement)

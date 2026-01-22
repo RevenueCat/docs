@@ -71,6 +71,7 @@ Below is a table with all the event types you can expect in the customer history
 | Had their granted Entitlement removed             | A previously granted entitlement was removed from the RevenueCat dashboard or API                           | `CANCELLATION`                  |
 | Granted ... [Currency]                            | Virtual currency was added to the customer's balance through a purchase or subscription                     | `VIRTUAL_CURRENCY_TRANSACTION`  |
 | Spent ... [Currency]                              | Virtual currency was removed from the customer's balance                                                    | `VIRTUAL_CURRENCY_TRANSACTION`  |
+| Enrolled in an experiment                         | Assigned to a variant as part of an [A/B experiment](/tools/experiments-v1).                                | `EXPERIMENT_ENROLLMENT`         |
 
 :::info Missing or incorrect prices
 It is possible for prices to be missing or incorrect, especially for apps that have migrated from a different system to RevenueCat. The stores provide very minimal pricing information for developers, so RevenueCat estimates the transaction price based off the data that is available - if you have old products that are no longer available for sale or changed the price of your products before using RevenueCat, you can expect some prices to be missing or incorrect. We do our best to backfill prices over time if more up-to-date information becomes available.
@@ -181,6 +182,44 @@ Web Billing subscriptions and Google Play subscriptions in the trial period can 
 The entry point for refunding and cancelling purchases is the "..." menu on the subscription in the "Entitlements" card of the customer profile.
 
 Apple doesn’t allow developers to grant refunds themselves, only through Apple customer support. However, Apple refunds are tracked with RevenueCat and accounted for in all charts and integrations.
+
+### Extending Subscription Renewal Dates
+
+You can extend the renewal date of eligible store subscriptions from the Customer Profile by clicking the ellipsis menu of a subscription and selecting "Extend Subscription".
+
+![Extend subscription](/docs_images/customers/extend-apple-subscription.png)
+
+#### Apple Subscription Extensions
+
+Apple App Store subscriptions can be extended for up to 90 days at a time. Please note:
+
+- Apple limits subscription extensions to two per year per customer.
+- Apple immediately sends the customer an email notification of the extension.
+- The customer is not charged for the extension.
+
+When extending a subscriptions, you must specify the number of days (1-90) to extend the subscription, and the reason for the extension. The reason for the extension can be one of the following:
+
+- Non-declared
+- Customer Satisfaction
+- Other
+- Service Issue or Outage
+
+You can read more about the reason codes in Apple's documentation: [Extend a Subscription Renewal Date](https://developer.apple.com/documentation/appstoreserverapi/extend_a_subscription_renewal_date).
+
+In sandbox, the number of days value equals the number of minutes the subscription will be extended for.
+
+Apple subscriptions can also be extended via the API: [Extend a Subscription Renewal Date](/api-v1#tag/transactions/operation/extend-an-apple-subscription).
+
+#### Google Play Subscription Deferrals
+
+Google refers to subscription extensions as **Deferrals**. Google Play Store subscriptions can be deferred for up to 365 days at a time. Please note:
+
+- Google **does not** automatically notify the customer about the deferral.
+- The customer is not charged for the deferral.
+
+When extending a subscription, you must specify the number of days (1-365) to defer the subscription.
+
+Google Play subscription renewals can also be deferred via the API: [Defer a Google Play Subscription](/api-v1#tag/transactions/operation/defer-a-google-subscription).
 
 ## Next Steps
 

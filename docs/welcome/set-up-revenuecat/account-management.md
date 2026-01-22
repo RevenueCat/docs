@@ -74,3 +74,30 @@ Once your projects have been deleted, navigate to your [account settings](https:
 You will be asked to enter your password to confirm.
 
 If your account is managed by an SSO organization, reach out to RevenueCat Support via the dashboard [Contact Us](https://app.revenuecat.com/settings/support) form in your account settings and request your account to be deleted.
+
+<details>
+<summary>Shutting down your RevenueCat account</summary>
+
+RevenueCat's goal is to be useful in your app development journey. If you need to shut down your RevenueCat account and/or remove RevenueCat from your app, follow these steps to ensure a smooth transition.
+
+1. Export your data
+   - If needed, contact [RevenueCat Support](https://app.revenuecat.com/settings/support) to export all user receipts
+   - Download additional data exports from the dashboard:
+     - [Scheduled Data Exports](/integrations/scheduled-data-exports)
+     - Charts exports
+     - Customer list exports
+
+2. If removing RevenueCat from your app, update your application
+   - Remove the RevenueCat SDK from your app
+   - If needed, configure your own purchase validation and subscription management
+
+3. Delete your RevenueCat project
+   - **Warning**: This action is immediate and irreversible. Users still on older app versions will lose access to RevenueCat services
+
+4. Delete your RevenueCat account
+
+Please note that active subscriptions will not be canceled when shutting down your RevenueCat account.
+
+If you have any questions, don't hesitate to reach out to [RevenueCat Support](https://app.revenuecat.com/settings/support).
+
+</details>

@@ -37,12 +37,14 @@ Components are the individual building blocks of your paywall that can be arrang
 | Purchase button | ✅ | The call to action that invokes a purchase attempt of the selected package.                |
 | Button          | ✅ | Used to add other interactions; such as a link to your Privacy Policy, a back button, etc. |
 | Carousel        | ✅ | Used to add a carousel of pages that a customer can swipe through                         |
+| Countdown       | ✅ | Used to display a live countdown timer to a specific date and time                         |
 | Timeline        | ✅ | Used to add a timeline of connected items                     |
 | Tabs | ✅ | Used to display different package groups in different tabs when offering multiple tiers of service, product types, etc. |
 | Switch | ✅ | Used to add a toggle to your paywall that can be used to let customers choose between two different sets of options. |
 | Social proof | ✅ | Styled components that can be used as a starting point to display social proof, testimonials, etc. |
 | Feature list | ✅ | Styled components that can be used as a starting point to display a list of features or benefits |
 | Awards | ✅ | Styled components that can be used as a starting point to callout awards your app has received |
+| Express checkout | ✅ | Allows users to show Apple Pay and Google Pay quick purchase buttons on web. |
 
 :::info Parent components
 Parent components all fundamentally act as containers that can contain other components within them.
@@ -60,8 +62,9 @@ Next, you'll need to select the Offering you want to add a Paywall to. Or, if yo
 
 From there, you can start building by either:
 
-1. Choosing a template, or
-2. Starting from scratch
+1. Choosing a template
+2. Starting from scratch, or
+3. [Importing from Figma](/tools/paywalls/creating-paywalls/importing-from-figma)
 
 Unless you have a very specific, custom design in mind that you're looking to create; **we recommend starting with a template.** You can customize any aspect of your paywall once you select a template, it's simply a starting point to explore from.
 
@@ -69,12 +72,19 @@ Unless you have a very specific, custom design in mind that you're looking to cr
 
 ### Using the editor
 
-Once you've selected a template or picked starting from scratch, you'll land on our Paywall Editor, which has the following sections:
+Once you've imported from Figma, selected a template, or picked starting from scratch, you'll land on our Paywall Editor, which has the following sections:
 
-1. **Components**: The list of components on your paywall, their hierarchy, and their options (rename, duplicate, etc).
-2. **Component properties**: The list of configurable properties of the component you've selected.
-3. **Preview**: The preview of your paywall.
-4. **Control panel**: The options to change the locale, light/dark mode, and other preview settings to see how your paywall looks in various scenarios. The control panel is also where you can manage localizations through one page instead of modifying them component-by-component.
+1. **Left-hand sidebar**: The tabs in the left-hand sidebar include:
+
+    * **Add component:** List of components you can add to your paywall.
+    * **Layers:** The list of components on your paywall, their hierarchy, and their options (rename, duplicate, etc).
+    * **Branding:** Update your saved colors and fonts for quick access when building.
+    * **Media gallery:** Where you can view and add images/videos.
+    * **Localization:** Content of the Localizations used in your paywall as well as where you can add support for more languages.
+    * **Paywall settings:** Where the overarching settings for your paywall live
+
+2. **Preview**: The preview of your paywall.
+3. **Control panel**: The options to change the locale, light/dark mode, and other preview settings to see how your paywall looks in various scenarios.
 
 ![Paywalls editor](/docs_images/paywalls/paywalls-editor.png)
 
@@ -82,7 +92,7 @@ Once you've selected a template or picked starting from scratch, you'll land on 
 
 Components can be added to a paywall in two ways:
 
-1. Directly to the main paywall with the **+ Add Component** button
+1. Directly to the main paywall with the **+Add Component** tab in the left-hand sidebar
 2. Directly within a parent component, such as a stack, with the **+** button in that component's row in the components panel.
 
 Once a component has been added to a paywall, you can determine its order on your paywall by dragging it vertically in the stack, or determine its parent component by dragging it underneath the desired parent and indenting it horizontally.
@@ -134,6 +144,10 @@ You can also set a published paywall to be inactive, or vice versa, at any time.
 
 [Learn more about displaying paywalls.](/tools/paywalls/displaying-paywalls)
 
+### Importing from Figma
+
+If you already have a design in Figma, use the RevenueCat Figma plugin to import your frames directly into the Paywall Editor. Follow the full import guide in [Importing from Figma](/tools/paywalls/creating-paywalls/importing-from-figma).
+
 ### Duplicating a paywall
 
 If you want to use an existing paywall as a starting point for a new paywall, you can duplicate it by clicking on the three horizontal dots to the right of the paywall in the list and selecting either:
@@ -150,6 +164,27 @@ Unfortunately if you use custom fonts in your paywall, they will not be supporte
 
 ![Duplicate](/docs_images/paywalls/paywalls-duplicate.png)
 
+### Configuring exit offers
+
+Exit offers allow you to present an alternative offer when a user dismisses your paywall without making a purchase. This can help recover potentially lost conversions by giving users a second chance to subscribe, with a different offer.
+
+To configure an exit offer for your paywall:
+
+1. Create a separate Offering with packages for your exit offer (e.g., a discounted package or alternative pricing), and create a paywall for it
+2. In the Paywalls editor for your main paywall, configure the exit offer settings by selecting the exit offer offering to display
+
+![Exit offer configuration](/docs_images/paywalls/paywalls-exit-offer-configuration.png)
+
+Once configured, the exit offer will automatically be presented when users dismiss the paywall without purchasing. You must also use one of the supported presentation methods.
+:::tip Best practices
+When designing exit offers:
+- Consider offering a discount or trial period that wasn't available in the main paywall
+- Keep the exit offer paywall simple and focused on the value proposition
+- Don't overuse exit offers. They should feel like a special opportunity, not an annoyance
+:::
+
+[Learn more about exit offers, supported presentation methods, and platform requirements.](/tools/paywalls/displaying-paywalls#exit-offers)
+
 ### Safe area preview
 
 The paywall preview in the dashboard includes a preview of the device safe area that will impact how your paywall is rendered. RevenueCat Paywalls will automatically handle the device safe area for you when displaying paywalls on device, but there are a few things you should keep in mind:
@@ -160,4 +195,3 @@ The paywall preview in the dashboard includes a preview of the device safe area 
 If your paywall will be displayed in a sheet view instead of a full screen view, you can also preview that view in the paywall editor. Just click on **Preview settings** and select **Sheet view**.
 
 ![Safe area preview](/docs_images/paywalls/safe-area-preview.png)
-

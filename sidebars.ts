@@ -78,6 +78,7 @@ const projectsCategory = Category({
           items: [Page({ slug: "projects/oauth-setup" })],
         }),
         Page({ slug: "projects/collaborators" }),
+        Page({ slug: "projects/sso" }),
         Page({ slug: "projects/restore-behavior" }),
         Page({ slug: "projects/sandbox-access" }),
       ],
@@ -145,6 +146,7 @@ const paywallsCategory = Category({
           items: [
             Page({ slug: "components" }),
             Page({ slug: "component-properties" }),
+            Page({ slug: "importing-from-figma" }),
             Page({ slug: "web-purchase-button" }),
             Page({ slug: "variables" }),
             Page({ slug: "localization" }),
@@ -229,7 +231,7 @@ const webSDKCategory = Category({
     Page({ slug: "web-billing/customer-portal" }),
     Page({ slug: "web-billing/lifecycle-emails" }),
     SubCategory({
-      label: "External Purchase Integrations",
+      label: "Billing Engine Integrations",
       slug: "payment-integrations",
       itemsPathPrefix: "integrations/",
       items: [Page({ slug: "stripe" }), Page({ slug: "paddle" })],
@@ -321,7 +323,7 @@ const offeringsCategory = Category({
             Page({ slug: "price-changes" }),
             Page({ slug: "refunds" }),
             Page({ slug: "google-prepaid-plans" }),
-            // Page({ slug: "google-subscription-with-addons"}),
+            Page({ slug: "google-subscription-with-addons" }),
           ],
           index: {
             title: "Subscription Products",
@@ -438,6 +440,7 @@ const testCategory = Category({
       slug: "test-and-launch/sandbox",
       itemsPathPrefix: "test-and-launch/sandbox/",
       items: [
+        Page({ slug: "test-store" }),
         Page({ slug: "apple-app-store" }),
         Page({ slug: "google-play-store" }),
         Page({ slug: "amazon-store-sandbox-testing" }),
@@ -470,6 +473,9 @@ const platformResourcesCategory = Category({
       label: "Apple App Store",
       slug: "platform-resources/apple-platform-resources",
       items: [
+        Page({
+           slug: "platform-resources/apple-platform-resources/app-store-connect-setup-guide",
+        }),
         SubCategory({
           label: "Service Credentials",
           slug: "service-credentials/itunesconnect-app-specific-shared-secret",
@@ -975,6 +981,7 @@ const attributionCategory = Category({
         Page({ slug: "kochava" }),
         Page({ slug: "meta-ads" }),
         Page({ slug: "singular" }),
+        Page({ slug: "solarengine" }),
         Page({ slug: "splitmetrics-acquire" }),
         Page({ slug: "tenjin" }),
       ],
@@ -1052,12 +1059,12 @@ const playbooksOverviewCategory = Category({
   iconName: "bookmark",
   iconColor: "var(--rc-teal-primary)",
   label: "Playbooks",
-  itemsPathPrefix: "playbooks/",
+  itemsPathPrefix: "",
   items: [
-    Page({ slug: "overview" }),
+    Page({ slug: "playbooks/overview" }),
     SubCategory({
       label: "Monetization Models",
-      itemsPathPrefix: "guides/",
+      itemsPathPrefix: "playbooks/guides/",
       items: [
         Page({ slug: "hard-paywall" }),
         Page({ slug: "freemium" }),
@@ -1071,6 +1078,7 @@ const playbooksOverviewCategory = Category({
         link: "playbooks/guides/monetization-models",
       },
     }),
+    Page({ slug: "guides/promotional-subscription-extensions" }),
   ],
 });
 

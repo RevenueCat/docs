@@ -1,0 +1,21 @@
+import express, { Request, Response } from "express";
+
+const app = express();
+app.use(express.json());
+
+const WEBHOOK_AUTH_HEADER = process.env.WEBHOOK_AUTH_HEADER!;
+
+app.post("/webhooks/revenuecat", async (req: Request, res: Response) => {
+  // Verify authorization header
+  const authHeader = req.headers.authorization;
+  if (authHeader !== WEBHOOK_AUTH_HEADER) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
+  // Respond immediately to avoid timeout
+  res.status(200).json({ received: true });
+
+  // Process asynchronously
+  processWebhook(req.body);
+});
+

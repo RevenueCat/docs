@@ -41,6 +41,7 @@
   gap: 4px;
   background-color: #ffffff;
   color: black;
+  height: 28px;
 }
 
 .ai-provider-button:hover {

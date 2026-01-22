@@ -647,8 +647,6 @@ paths:
           application/json:
             schema:
               type: object
-              required:
-                - expiry_time_ms
               properties:
                 expiry_time_ms:
                   type: integer
@@ -656,8 +654,16 @@ paths:
                   description:
                     The desired next expiry time to assign to the subscription,
                     in milliseconds since the Epoch. The given time must be later/greater
-                    than the current expiry time for the subscription.
+                    than the current expiry time for the subscription. Either `expiry_time_ms` or `extend_by_days` must be provided.
                   example: 1708417962662
+                extend_by_days:
+                  type: integer
+                  minimum: 1
+                  maximum: 365
+                  description:
+                    The number of days to extend the subscription renewal date.
+                    Must be between 1 and 365. Either `expiry_time_ms` or `extend_by_days` must be provided.
+                  example: 30
       responses:
         "200":
           description: |
@@ -854,6 +860,70 @@ paths:
         "200":
           description: |
             Subscription was successfully canceled.
+
+            Returns the updated [Customer Info](#tag/customer_info_model) for the Customer.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Subscriber"
+      deprecated: false
+  "/subscribers/{app_user_id}/subscriptions/{store_transaction_identifier}/extend":
+    post:
+      summary: "App Store: Extend a Subscription"
+      tags:
+        - transactions
+      description: |
+        Extends the renewal date of an auto-renewable subscription for up to 90 days for a specific customer.
+        
+        This uses Apple's [Extend a Subscription Renewal Date](https://developer.apple.com/documentation/appstoreserverapi/extend_a_subscription_renewal_date) API.
+        
+        **Requires a v1 Secret API key.**
+        
+        Note: Apple limits subscription extensions to two per year per customer. Apple immediately sends the customer an email notification of the extension.
+      operationId: extend-an-apple-subscription
+      parameters:
+        - name: app_user_id
+          in: path
+          description: The App User ID of the Customer.
+          schema:
+            type: string
+          required: true
+        - name: store_transaction_identifier
+          in: path
+          description: "The store transaction identifier of the subscription to extend. Can be original transaction identifier or renewal transaction identifier. Example: 1000000819074923"
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - extend_by_days
+                - extend_reason_code
+              properties:
+                extend_by_days:
+                  type: integer
+                  minimum: 1
+                  maximum: 90
+                  description: The number of days to extend the subscription renewal date. Must be between 1 and 90.
+                  example: 30
+                extend_reason_code:
+                  type: integer
+                  minimum: 0
+                  maximum: 3
+                  description: |
+                    The reason code for the subscription extension. See Apple's [extendReasonCode](https://developer.apple.com/documentation/appstoreserverapi/extendreasoncode) documentation.
+                    - `0`: Undeclared - The renewal-date extension reason is undeclared.
+                    - `1`: Customer Satisfaction - The renewal-date extension is for customer satisfaction.
+                    - `2`: Other - The renewal-date extension is for a reason other than the ones listed.
+                    - `3`: Service Issue or Outage - The renewal-date extension is due to a service issue or outage.
+                  example: 1
+      responses:
+        "200":
+          description: |
+            Subscription was successfully extended.
 
             Returns the updated [Customer Info](#tag/customer_info_model) for the Customer.
           content:

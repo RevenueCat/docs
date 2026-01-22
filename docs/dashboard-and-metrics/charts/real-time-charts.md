@@ -1,11 +1,11 @@
 ---
-title: Real-time Charts (Beta)
+title: Charts v3 (Beta)
 slug: real-time-charts
-excerpt: Overview of the key changes & improvements of our new real-time Charts beta
+excerpt: Overview of the key changes & improvements of our new Charts v3 beta
 hidden: true
 ---
 
-We’re excited to welcome you to the beta of our new real-time Charts. We've rebuilt charts to give you faster, more flexible insights, including:
+We’re excited to welcome you to the beta of our new Charts v3. We've rebuilt charts to give you faster, more flexible insights, including:
 
 - Real-time reporting on almost all charts
 - A new unified subscription model for consistent reporting across stores
@@ -14,7 +14,7 @@ We’re excited to welcome you to the beta of our new real-time Charts. We've re
 - Brand new charts for Trial Conversion Rate and Active Customers, with more for Paywall metrics coming soon
 
 :::warning Supported stores
-At this time we support App Store, Play Store, Stripe and RevenueCat Web Billing apps in Real-time Charts. Support for Amazon, Roku, and Paddle is coming soon.
+At this time we support App Store, Play Store, Stripe and RevenueCat Web Billing apps in Charts v3. Support for Amazon, Roku, and Paddle is coming soon.
 :::
 
 :::info Feedback
@@ -23,7 +23,7 @@ As you explore the beta and have feedback or questions about the experience, [pl
 
 ## Getting Started
 
-You can access Real-time Charts from your dashboard by toggling `Real-time` on in Charts. Look for the real-time icon next to supported Charts. To see the current version of each chart, simply toggle `Real-time` off.
+You can access Charts v3 from your dashboard by toggling `Charts v3` on in Charts. Look for the real-time icon next to supported Charts. To see the current version of each chart, simply toggle `Charts v3` off.
 
 ## Summary of changes
 
@@ -32,6 +32,7 @@ You can access Real-time Charts from your dashboard by toggling `Real-time` on i
 - Charts are now updated in real-time as events occur [Learn more](/dashboard-and-metrics/charts/real-time-charts#real-time-reporting)
 - New filters & segments for deeper analysis [Learn more](/dashboard-and-metrics/charts/real-time-charts#new-and-updated-dimensions)
 - A new Trial Conversion Rate chart for measuring that rate by trial start date cohorts, and segmenting it for more granular analysis [Learn more](/dashboard-and-metrics/charts/trial-conversion-rate-chart)
+- Period-over-Period comparisons to track performance changes across time periods [Learn more](/dashboard-and-metrics/charts/real-time-charts#period-over-period-comparisons)
 
 ### Improvements
 
@@ -56,13 +57,13 @@ You can now make faster, more informed decisions without waiting for batch updat
 
 ### Improved subscription definition
 
-Our new real-time charts are now modeled on our **Subscriptions** entity, which normalizes the various store-specific behaviors down to a common set of definitions that can be measured across stores, and have consistent events created for them.
+Our new Charts v3 are now modeled on our **Subscriptions** entity, which normalizes the various store-specific behaviors down to a common set of definitions that can be measured across stores, and have consistent events created for them.
 
 You can learn more about the subscription data model [here](https://www.revenuecat.com/docs/api-v2#tag/Subscription-Data-Model).
 
 #### Impact
 
-As a result of that change, you'll see some differences in the data our real-time Charts provide.
+As a result of that change, you'll see some differences in the data our Charts v3 provide.
 
 | Change                                   | Description                                                                                                                                                                   | Impact                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | :--------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -115,6 +116,31 @@ We've introduced new dimensions for filtering & segmenting, with more coming soo
 1. Platform: Now refers to the first seen platform of a customer, not their last seen platform, so that metrics like conversion rates and LTV can be segmented by the platform a customer originated on without it changing over time (e.g. if a customer converts on the web and then downloads your iOS app)
 2. Country: Now prioritizes the app store country of a customer or purchase over the customer's IP-based location. In charts which measure purchases, like Active Subscriptions, the app store storefront that the purchase occurred in will be used as the country; while in charts that measure customer cohorts, like Initial Conversion or Realized LTV per Customer, the first seen app store country of the customer will be used.
 
+### Period-over-Period comparisons
+
+You can now compare chart data against the previous period to identify trends and measure changes in performance.
+
+#### How it works
+- Enable comparisons using the **Compare** dropdown to compare against the previous period, which uses the same time period length as your selected date range
+- The chart displays both the current period and comparison period as separate lines
+- The summary shows the total for the selected period and the percentage change from the comparison period
+- Hover over any data point to see the percentage change compared to the previous period at that point in time
+
+#### Supported charts
+- Active Subscriptions
+- Active Trials
+- ARR
+- Churn
+- Conversion to Paying
+- Initial Conversion
+- MRR
+- New Customers
+- New Trials
+- Non-subscription Purchases
+- Realized LTV per Customer
+- Realized LTV per Paying Customer
+- Refund Rate
+
 ### New charts
 
 #### Available now
@@ -128,7 +154,7 @@ Paywall conversion, LTV, and abandonment charts for measuring performance of eac
 
 ## Upcoming changes & improvements
 
-- Real-time charts support App Store & Play Store apps, with additional store support currently in development.
+- Charts v3 support App Store & Play Store apps, with additional store support currently in development.
 - Paywall conversion, LTV, and abandonment charts for RevenueCat Paywalls
 
 ## Unsupported charts

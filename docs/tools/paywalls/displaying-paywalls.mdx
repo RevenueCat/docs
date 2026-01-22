@@ -281,16 +281,49 @@ For developers who prefer configuring paywalls through Unity's Inspector, you ca
 
 ### Web
 
-Paywalls are supported on the web through RevenueCat's Web Billing system. To serve your Paywall to customers on the web via a new or exiting Web Purchase Link, [click here](https://www.revenuecat.com/docs/web/web-billing/paywalls).
+Paywalls are supported on the web through RevenueCat's Web Billing system. To serve your Paywall to customers on the web via a new or existing Web Purchase Link, [click here](https://www.revenuecat.com/docs/web/web-billing/paywalls).
+You can also present the same remotely configured paywall directly within your own web experience using the [purchases-js SDK](https://www.revenuecat.com/docs/web/web-billing/web-sdk). Call `presentPaywall` with the element that should host the paywall. Optionally, provide an offering from `purchases.getOfferings()` to choose which paywall to display. The SDK renders the paywall, runs the purchase, and resolves with the result.
 
-:::info Web SDK support coming soon
-We're currently working on adding support for web paywalls in the [purchases-js SDK]https://www.revenuecat.com/docs/web/web-billing/web-sdk). Stay tuned!
-:::
+```ts title="Presenting a paywall from purchases-js"
+async function showPaywall() {
+  const paywallContainer = document.getElementById("paywall-container");
+  try{
+      const purchaseResult = await purchases.presentPaywall({
+        htmlTarget: paywallContainer,
+        // no offering specified – defaults to the current offering
+      });
+      console.log("Purchase completed", purchaseResult);
+  } catch (e){
+      console.log("Something went wrong while purchasing through Paywalls");
+  }
+}
+```
+
+If you omit the `offering` parameter (or pass `undefined`), the paywall from the offering marked as `current` will be displayed.
+
+You can also specify an offering by passing it as parameter to `presentPaywall`.
+```ts title="Presenting a paywall from purchases-js with a specific offering"
+async function showPaywall() {
+  const offerings=await purchases.getOfferings();
+  const offeringToUse= offerings.all['offeringIdToUse'];
+  const paywallContainer = document.getElementById("paywall-container");
+  try{
+      const purchaseResult = await purchases.presentPaywall({
+        htmlTarget: paywallContainer,
+        offering: offeringToUse
+      });
+      console.log("Purchase completed", purchaseResult);
+  } catch (e){
+      console.log("Something went wrong while purchasing through Paywalls");
+  }
+}
+```
 
 :::info Max width
-Paywalls on the web have a maximum width of 968px. If the window the paywall is being displayed in is wider than 968px, the additional space will be filled based on the specified background color of your checkout config. [Learn more](https://www.revenuecat.com/docs/web/web-billing/web-purchase-links)
-
+Paywalls on the web have a maximum width of 968px.
 Individual components can be configured to have their own width settings within that max width of the paywall itself.
+
+When used in Web Purchase Links, if the window the paywall is being displayed in is wider than 968px, the additional space will be filled based on the specified background color of your WPL. [Learn more](https://www.revenuecat.com/docs/web/web-billing/web-purchase-links)
 :::
 
 ## Handling paywall navigation
@@ -330,6 +363,68 @@ To add a custom font to your iOS app, go to _File_ and then _Add Files to “You
 
 #### Kotlin Multiplatform, React Native, and Flutter
 Adding custom fonts to a hybrid app involves adding the font files to the underlying Android and iOS projects following the instructions above.
+
+## Intercepting an initiated purchase
+
+You can intercept a purchase flow before it begins by using the `onPurchaseInitiated` view modifier in iOS and the `onPurchasePackageInitiated` method on the `PaywallListener` interface in Android. This allows you to perform custom logic, such as showing additional information to the user or performing validation checks, before the purchase proceeds.
+
+When a user initiates a purchase, your interceptor callback will be invoked with:
+- The `Package` that the user selected
+- A `ResumeAction` closure that you must call to either proceed with or cancel the purchase
+
+The purchase flow will pause until you call the `resume` action. If you call `resume(false)`, the purchase will be cancelled. If you call `resume(true)`, the purchase will proceed as normal.
+
+:::info Availability
+This feature is currently available on the native iOS and Android SDKs.
+:::
+
+import onPurchaseInitiatedSwift from '@site/code_blocks/tools/paywalls_on_purchase_initiated_1.swift?raw';
+import onPurchaseInitiatedKotlin from '@site/code_blocks/tools/paywalls_on_purchase_initiated_1.kt?raw';
+
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: onPurchaseInitiatedSwift, name: "iOS" },
+    { type: "kotlin", content: onPurchaseInitiatedKotlin, name: "Android" }
+  ]}
+/>
+
+## Exit offers
+
+Exit offers allow you to present an alternative offer when a user dismisses your paywall without making a purchase. This is a powerful tool for recovering potentially lost conversions by giving users a second chance to subscribe with a different offer, such as a discounted price or alternative package.
+
+When a user tries to close or navigate back from the paywall, instead of immediately dismissing, a secondary paywall will be displayed with the exit offer.
+
+### How it works
+
+1. User attempts to dismiss the main paywall without purchasing
+2. An exit offer paywall is automatically presented with an alternative offering
+3. The user can either:
+   - Subscribe to the exit offer
+   - Dismiss the exit offer, which then dismisses the main paywall
+
+### Configuration
+
+Exit offers are configured entirely in the [Paywalls editor](/tools/paywalls/creating-paywalls#configuring-exit-offers) in the RevenueCat dashboard. No code changes are required to use this feature. Once configured, the exit offer will automatically be presented when users attempt to dismiss the paywall, as long as you're using a supported presentation method.
+
+### Supported presentation methods
+
+Exit offers only work when using the `presentPaywall` or `presentPaywallIfNeeded` functions that display paywalls in iOS and cross platform SDKs. In Android, they work automatically when using the `PaywallDialog` and `PaywallActivity` classes.
+
+:::warning View-based APIs not supported
+Exit offers will **not** work if you manually embed paywall views/components in your UI (e.g., `PaywallView`, `Paywall` composable, `<RevenueCatUI.Paywall>` component, etc).
+:::
+
+### Platform support
+
+| Platform      | Minimum Version | 
+| :------------ | :-------------- |
+| iOS           | 5.52.0+         |
+| Android       | 9.18.0+         |
+| React Native  | 9.6.15+         |
+| Flutter       | 9.10.5+         |
+| Capacitor     | 12.0.3+         |
+| Unity         | 8.4.15+         |
+| KMP           | Not supported   |
 
 ## Changes from legacy Paywalls
 
