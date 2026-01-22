@@ -27,6 +27,23 @@ hidden: false
 
 ### Common Issues
 
+
+#### OAuth Issues
+
+If you're using OAuth to authenticate with the RevenueCat MCP, you may encounter the following issues:
+
+**Unknown MCP Client**
+
+**Symptoms**: OAuth flow fails with an error indicating the client is not recognized
+**Cause**: RevenueCat uses a simplified public client registration flow and does not allow automatic client additions. Your MCP client may not be registered with our OAuth server.
+**Solution**: Contact [RevenueCat support](https://app.revenuecat.com/settings/support) with your client details so we can allowlist your MCP client.
+
+**Outdated Redirect URIs**
+
+**Symptoms**: OAuth flow fails during the redirect step, or you receive an error about invalid redirect URI
+**Cause**: MCP clients occasionally update their redirect URIs, and our OAuth server configuration may not yet reflect these changes.
+**Solution**: Contact [RevenueCat support](https://app.revenuecat.com/settings/support) with the details of your MCP client and the expected redirect URI so we can update our configuration.
+
 #### API Key Issues
 
 **Symptoms**: Authentication errors or "unauthorized" responses
