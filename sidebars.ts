@@ -1134,7 +1134,7 @@ const supportResourcesCategory = Category({
       slug: "/test-and-launch/app-store-rejections",
     }),
     Link({
-      label: "iOS Test",
+      label: "Submitting an iOS Subscription App",
       slug: "/test-and-launch/submitting-ios-subscription-app",
     }),
   ],
