@@ -38,6 +38,7 @@ For production, set up products in the real stores (Apple, Google, Stripe, etc.)
 - **[Android / Amazon Appstore ](/getting-started/entitlements/amazon-product-setup)**
 - **[Stripe ](/getting-started/entitlements/stripe-products)**
 - **[Paddle ](/getting-started/entitlements/paddle-products)**
+- **[PayPal ](/getting-started/entitlements/paypal-products)**
 
 ### Free trials, promotional offers, and other product configuration
 

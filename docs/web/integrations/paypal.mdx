@@ -1,0 +1,83 @@
+---
+title: PayPal
+slug: paypal
+excerpt: Track PayPal revenue in RevenueCat
+hidden: false
+---
+
+RevenueCat supports PayPal for tracking revenue from purchases that happen outside RevenueCat. This lets you unlock entitlements and report PayPal revenue in RevenueCat.
+
+:::info PayPal is external-only
+PayPal is not supported in RevenueCat Web Billing, Web SDK, Web Purchase Links, or Paywalls.
+:::
+
+## Supported features
+
+- Import and sync PayPal purchases created in your own checkout or backend.
+- Automatic tracking via PayPal webhooks (server-to-server notifications).
+- Manual tracking via the RevenueCat POST receipt endpoint.
+
+### Current limitations
+
+- Only one product per purchase is supported (single item per order or subscription).
+
+## 1. Create PayPal products and plans
+
+Create subscription Products and Plans in PayPal. You will import the PayPal **Plan ID** into RevenueCat as the product identifier.
+
+For detailed steps, see [PayPal Product Setup](/getting-started/entitlements/paypal-products).
+
+## 2. Add a PayPal configuration in RevenueCat
+
+1. Log into your RevenueCat account
+2. Go to your project
+3. Go to **Apps & providers**
+4. Add a new web configuration
+5. Select the PayPal provider
+6. Enter your **Client ID** and **Client Secret** from the PayPal Developer Dashboard
+7. Set whether this is **Sandbox** or **Production**
+
+:::info Sandbox and production are separate
+PayPal sandbox and production environments use different credentials. Create separate RevenueCat configurations for each environment.
+:::
+
+## 3. Configure purchase tracking
+
+To automatically track PayPal purchases, enable **Track new purchases from server-to-server notifications** in the PayPal configuration. RevenueCat will create and manage the required PayPal webhook for you.
+
+### App User ID detection methods
+
+RevenueCat can associate PayPal purchases with an App User ID in two ways:
+
+1. **Use anonymous App User IDs**: RevenueCat will create an anonymous App User ID for each purchase.
+2. **Use PayPal custom_id**: Set PayPal's `custom_id` to the RevenueCat App User ID when you create the subscription or order. RevenueCat will read `custom_id` from webhook events and use it as the App User ID.
+
+If `custom_id` is missing, the purchase will be associated with an anonymous App User ID.
+
+## 4. Import PayPal plans into RevenueCat
+
+1. Go to **Product catalog → Products** in the RevenueCat dashboard
+2. Find your PayPal configuration and click **Import**
+3. Select the PayPal plans you want to use and click **Import**
+
+## 5. Create entitlements in RevenueCat
+
+Follow the [entitlements guide](/getting-started/entitlements) to attach your PayPal products to entitlements.
+
+## 6. Send PayPal tokens to RevenueCat (manual)
+
+If you are not using webhook-based tracking, you can send PayPal purchases to RevenueCat through the [POST receipt endpoint](/migrating-to-revenuecat/migrating-existing-subscriptions/receipt-imports).
+
+The only required fields when sending your PayPal purchase to the RevenueCat API are the following:
+
+- `fetch_token`: Your PayPal subscription ID (starts with `I-`) or a PayPal order/capture ID for one-time purchases.
+- `app_user_id`: The App User ID that the purchase should be applied to.
+
+**Headers**
+
+- `X-Platform`: Should be set to `paypal`.
+- `Authorization`: It should be `Bearer YOUR_REVENUECAT_PAYPAL_APP_PUBLIC_API_KEY`
+
+import curlContent from "@site/code_blocks/getting-started/paypal_1.curl?raw";
+
+<RCCodeBlock tabs={[{ type: "curl", content: curlContent }]} />
