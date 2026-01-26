@@ -58,7 +58,7 @@ When customers spend virtual currency, RevenueCat automatically prioritizes expi
 
 RevenueCat uses the following priority order when deducting virtual currency:
 
-1. **Expiring currency first**: All currency with scheduled expiration dates is deducted before any non-expiring currency. Currency with no scheduled expiration is only deducted **after** all expiring currency is consumed.
+1. **Expiring currency first**: All currency with scheduled expiration dates is deducted before any non-expiring currency. Currency with no scheduled expiration is only deducted after **all** expiring currency is consumed.
 2. **Soonest expiring first**: Among expiring currencies, RevenueCat deducts in chronological order by expiration date (oldest/soonest first).
 
 This approach ensures customers maximize the use of time-limited currency and minimizes the amount of currency that expires unused.
