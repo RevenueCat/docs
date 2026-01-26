@@ -19,7 +19,7 @@ Once configured, RevenueCat automatically handles currency expiration:
 Virtual Currency granted via one time purchases cannot be expired, as that would go against the App Store rules. According to [Apple’s guidelines in section 3.1.1](https://developer.apple.com/app-store/review/guidelines/#in-app-purchase):
 
 > Any credits or in-game currencies purchased via in-app purchase may not expire, and you should make sure you have a restore mechanism for any restorable in-app purchases.
-:::
+> :::
 
 ## Configuration
 
@@ -49,6 +49,46 @@ All expiration events appear in the customer timeline so you can:
 - See exactly when currency expired
 - Track how much currency was deducted by the expiration
 - Understand expiration in relation to other activities
+
+## How Currency is Deducted
+
+When customers spend virtual currency, RevenueCat automatically prioritizes expiring currency to ensure the best customer experience and minimize waste.
+
+### Deduction Order
+
+RevenueCat uses the following priority order when deducting virtual currency:
+
+1. **Expiring currency first**: All currency with scheduled expiration dates is deducted before any non-expiring currency. Currency with no scheduled expiration is only deducted **after** all expiring currency is consumed.
+2. **Soonest expiring first**: Among expiring currencies, RevenueCat deducts in chronological order by expiration date (oldest/soonest first).
+
+This approach ensures customers maximize the use of time-limited currency and minimizes the amount of currency that expires unused.
+
+### Example: Mixed Currency Spending
+
+Consider a scenario where a customer has:
+
+- 1,000 credits from a subscription (expires at end of billing cycle on March 31)
+- 500 credits from a consumable purchase (never expires)
+- Total balance: 1,500 credits
+
+If the customer spends 750 credits:
+
+- ✅ 750 deducted from subscription credits (expiring March 31)
+- ✅ Remaining balance: 250 subscription credits + 500 consumable credits = 750 total
+- ❌ NOT: 500 from consumables + 250 from subscription
+
+At the end of the billing cycle (March 31):
+
+- The remaining 250 subscription credits expire
+- Customer retains: 500 consumable credits
+
+:::tip Why This Matters
+This customer-friendly approach means your users will always use their expiring currency first, reducing confusion about "lost" currency and creating a better experience.
+:::
+
+### Implementation
+
+This deduction priority is **automatic** - you don't need to configure anything or modify your spend API calls. RevenueCat handles the deduction logic internally when you call the [virtual currency transactions endpoint](/offerings/virtual-currency#depositing-or-spending).
 
 ## Product Change Behavior
 
