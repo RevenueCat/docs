@@ -19,6 +19,7 @@ Once configured, RevenueCat automatically handles currency expiration:
 Virtual Currency granted via one time purchases cannot be expired, as that would go against the App Store rules. According to [Apple’s guidelines in section 3.1.1](https://developer.apple.com/app-store/review/guidelines/#in-app-purchase):
 
 > Any credits or in-game currencies purchased via in-app purchase may not expire, and you should make sure you have a restore mechanism for any restorable in-app purchases.
+>
 > :::
 
 ## Configuration
