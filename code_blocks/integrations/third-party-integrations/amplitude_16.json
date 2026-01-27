@@ -1,0 +1,28 @@
+{
+    "api_key": "yourAmplitudeAPIKey",
+    "event": {
+        "event_type": "rc_workflows_step_started_event",
+        "partner_id": "revenuecat",
+        "insert_id": "a12bc3d4-e5fg-678h-91i0-j23klmn45678",
+        "time": 1663786694542,
+        "platform": "iOS",
+        "event_properties": {
+            "entry_reason": "navigation",
+            "environment": "PRODUCTION",
+            "is_first_step": true,
+            "is_last_step": false,
+            "locale": "locale",
+            "page_url": "your_page_url",
+            "screen_height": "screen_height",
+            "screen_width": "screen_width",
+            "source": "source",
+            "step_id": "step_id",
+            "time_zone": "time_zone",
+            "trace_id": "trace_id",
+            "user_agent": "user_agent",
+            "workflow_id": "workflow_id",
+            "app_id": "app_id"
+          },
+         "user_id": "$RCAnonymousID:1234567890ab1cd1234a55b6c78910a3"
+    }
+}

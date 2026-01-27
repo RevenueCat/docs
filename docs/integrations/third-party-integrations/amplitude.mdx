@@ -41,6 +41,16 @@ The Amplitude integration tracks the following events:
 
 For events that have revenue, such as trial conversions and renewals, RevenueCat will automatically record this amount along with the event in Amplitude. Bear in mind that revenue will always be reported in USD. If it's been made with a different currency, we'll automatically convert it to USD. You can find the currency of the original transaction in the `currency` field of the event.
 
+Additionally, you can enable to track events for Funnels. These events are different from the events above as they will be triggered when an action happens in any of your funnels.
+
+The events that are tracked for Funnels are:
+| Event                     | Default Event Name                   | Description                                                                                                                                                                                                                                                                                                                                 |
+| ------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Workflow step started     | rc_workflows_step_started_event      | A workflow step has started and customer was able to see it.                                                                                                                                                                                                                                                                                |
+| Workflow step completed   | rc_workflows_step_completed_event    | A workflow step has been completed. This means a customer clicked in any button (or exited) the step.                                                                                                                                                                                                                                       |
+| Workflow purchase         | rc_workflows_purchase_event          | A workflow purchase has been made. Please note this event is separated of purchase made in the app, and helps you track the performance of your funnel.                                                                                                                                                                                     |
+
+
 ## Setup
 
 ### 1. Set Amplitude User Identity
@@ -123,6 +133,9 @@ import subscriptionPausedContent from "@site/code_blocks/integrations/third-part
 import expirationContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_13.json?raw";
 import billingIssuesContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_14.json?raw";
 import productChangeContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_15.json?raw";
+import workflowsStepStartedContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_16.json?raw";
+import workflowsStepCompletedContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_17.json?raw";
+import workflowsPurchaseContent from "@site/code_blocks/integrations/third-party-integrations/amplitude_18.json?raw";
 
 <RCCodeBlock
   tabs={[
