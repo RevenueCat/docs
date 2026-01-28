@@ -11,6 +11,8 @@ RevenueCat Web provides a set of tools that allow you to easily start selling su
 
 RevenueCat Web includes the following features:
 
+- [Web Billing](configuring-overview): RevenueCat's own billing engine for subscriptions and one-time purchases.
+- Support for a range of 3rd party billing engines (see [below](#supported-billing-engines))
 - **[Web SDK](web-sdk):** A JavaScript SDK to integrate web purchases into your web app.
 - **[Web Purchase Links](web-purchase-links):** A hosted, customizable purchase flow provided by RevenueCat, to enable web purchases with no code.
 - **[Web Purchase Button](../../tools/paywalls/creating-paywalls/web-purchase-button):** A component available in RevenueCat's [paywalls](/tools/paywalls) to link to a web checkout from in-app (app to web).
@@ -38,6 +40,7 @@ Billing engines are the subscription management layer responsible for configurin
 | RevenueCat Web Billing | [Supported](web-sdk) | [Supported](web-purchase-links)          | n/a                                 |
 | Stripe Billing         | Not supported        | Not supported                            | [Supported](../integrations/stripe) |
 | Paddle Billing         | Not supported        | [Supported](../guides/paddle-app-to-web) | [Supported](../integrations/paddle) |
+| PayPal                 | Not supported        | Not supported                            | [Supported](../integrations/paypal) |
 
 ### RevenueCat Web Billing
 
@@ -70,11 +73,17 @@ If you already have a Stripe Billing implementation with active subscriptions an
 
 See [Stripe Billing](/web/integrations/stripe)
 
-### Paddle Billing integration
+### PayPal integration
 
-Similarly to Stripe Billing, the Paddle Billing integration allows you to sell products and subscriptions directly in Paddle Billing, and sync those to RevenueCat. It is currently not supported in our Web SDK or Web Purchase Links, so requires you to use one of Paddle's checkout solutions to handle purchases.
+Similarly to Stripe Billing, the PayPal integration allows you to sell products and subscriptions directly in Paddle Billing, and sync those to RevenueCat. It is currently not supported in our Web SDK or Web Purchase Links, so requires you to use one of PayPal's checkout solutions to handle purchases.
 
 If you already have a Paddle Billing implementation with active subscriptions and customers, you can use this integration to track those purchases in RevenueCat and unlock entitlements for your customers.
+
+See [PayPal](/web/integrations/paypal)
+
+### Paddle Billing integration
+
+The Paddle Billing integration allows you to sell products and subscriptions directly in Paddle Billing, and sync those to RevenueCat. It is also supported as billing provider in the Web SDK and Web Purchase Links, allowing you to manage flows with a Paddle checkout from within RevenueCat.
 
 See [Paddle Billing](/web/integrations/paddle)
 
