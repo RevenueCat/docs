@@ -14,6 +14,7 @@ RevenueCat Web includes the following features:
 - **[Web SDK](web-sdk):** A JavaScript SDK to integrate web purchases into your web app.
 - **[Web Purchase Links](web-purchase-links):** A hosted, customizable purchase flow provided by RevenueCat, to enable web purchases with no code.
 - **[Web Purchase Button](../../tools/paywalls/creating-paywalls/web-purchase-button):** A component available in RevenueCat's [paywalls](/tools/paywalls) to link to a web checkout from in-app (app to web).
+- **[Web Paywalls](paywalls):** RevenueCat's component-based dynamic paywalls, rendered on the web and available through both Web Purchase Links and the Web SDK.
 - **[Redemption Links](redemption-links):** A mechanism for allowing anonymous (non-logged in) users to purchase on the web, and redeem their purchase in-app using app deep linking.
 
 These features enable use cases such as:
@@ -58,7 +59,6 @@ You can integrate Web Billing in two ways:
 Web Billing currently has the following limitations:
 
 - There is no support for coupon codes for discounts ([introductory offers](product-setup#introductory-period) are supported).
-- Support for [RevenueCat Paywalls](../../tools/paywalls) is coming soon.
 - Localization: There is no support for translated content in [lifecycle emails](lifecycle-emails) (english-only) and [web purchase links](web-purchase-links).
 - We do not collect and store the customer's name, shipping address or full billing address. Consequently, Web Billing cannot currently be used in India and in other countries that have this requirement.
 
