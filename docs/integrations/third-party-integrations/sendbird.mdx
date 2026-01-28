@@ -1,0 +1,105 @@
+---
+title: Sendbird
+slug: sendbird
+excerpt: Send RevenueCat subscription events to Sendbird
+hidden: false
+---
+
+RevenueCat can automatically send subscription lifecycle events to Sendbird, enabling you to sync user subscription status with your chat and messaging platform.
+
+With our Sendbird integration, you can:
+
+- Update user metadata with subscription status in real-time
+- Track which users have active subscriptions in Sendbird
+- Trigger in-app messaging based on subscription events
+- Personalize chat experiences based on subscription tier
+
+## Integration at a Glance
+
+| Feature                      | Supported               |
+| ---------------------------- | ----------------------- |
+| Includes Revenue             | ✅                      |
+| Supports Negative Revenue    | ✅                      |
+| Sends Sandbox Events         | ✅ (Requires API token) |
+| Includes Customer Attributes | ✅                      |
+| Sends Transfer Events        | ❌                      |
+
+## Events
+
+The Sendbird integration can send any of the following events:
+
+| Event                     | Default Name                       | Description                                                                                         | App Store | Play Store | Amazon | Stripe | Promo |
+| ------------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------- | --------- | ---------- | ------ | ------ | ----- |
+| Initial Purchase          | rc_initial_purchase_event          | A new subscription has been purchased                                                               | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Trial Started             | rc_trial_started_event             | The start of an auto-renewing subscription product free trial                                       | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Trial Converted           | rc_trial_converted_event           | When an auto-renewing subscription product converts from a free trial to normal paid period         | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Trial Cancelled           | rc_trial_cancelled_event           | When a user turns off renewals for an auto-renewing subscription product during a free trial period | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Renewal                   | rc_renewal_event                   | An existing subscription has been renewed or a lapsed user has resubscribed                         | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Cancellation              | rc_cancellation_event              | A subscription or non-renewing purchase has been cancelled or refunded                              | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Uncancellation            | rc_uncancellation_event            | A non-expired cancelled subscription has been re-enabled                                            | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Non Subscription Purchase | rc_non_subscription_purchase_event | A customer has made a purchase that will not auto-renew                                             | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Subscription Paused       | rc_subscription_paused_event       | A subscription has been paused                                                                      | ❌        | ✅         | ❌     | ❌     | ❌    |
+| Expiration                | rc_expiration_event                | A subscription has expired and access should be removed                                             | ✅        | ✅         | ✅     | ✅     | ✅    |
+| Billing Issue             | rc_billing_issue_event             | There has been a problem trying to charge the subscriber                                            | ✅        | ✅         | ✅     | ✅     | ❌    |
+| Product Change            | rc_product_change_event            | A subscriber has changed the product of their subscription                                          | ✅        | ✅         | ❌     | ✅     | ❌    |
+
+## Setup
+
+### 1. Get your Sendbird Application ID and API Token
+
+1. Log in to your [Sendbird Dashboard](https://dashboard.sendbird.com/)
+2. Navigate to **Settings** → **Application** → **General**
+3. Copy your **Application ID** (displayed at the top of the page)
+4. Under **API tokens**, copy your **Master API token** or generate a **Secondary API token**
+
+:::warning Security Note
+Sendbird recommends using secondary API tokens for external integrations. You can generate these in your dashboard and revoke them if compromised without affecting other integrations.
+:::
+
+### 2. Configure in RevenueCat
+
+1. Go to your RevenueCat project
+2. Navigate to **Integrations** → **Sendbird**
+3. Enter your **Application ID**
+4. Enter your **API Token**
+5. Configure event names (optional - defaults are provided)
+6. Click **Save**
+
+## How It Works
+
+When a subscription event occurs in RevenueCat, we update the user in Sendbird using their `app_user_id`. The integration:
+
+1. Calls the Sendbird API to update the user's metadata
+2. Stores subscription status in user metadata fields:
+   - `rc_event`: The event name
+   - `rc_product_id`: The product identifier
+   - `rc_entitlement_ids`: Comma-separated list of active entitlements
+   - `rc_subscription_status`: Current subscription status
+
+## User Matching
+
+The Sendbird integration uses the RevenueCat `app_user_id` to identify users in Sendbird. Ensure your users are created in Sendbird with the same identifier you use for RevenueCat.
+
+## Testing
+
+1. Configure the integration with your Sendbird credentials
+2. Make a sandbox purchase in your app
+3. In your Sendbird Dashboard, navigate to **Users** and find the user
+4. Verify the user's metadata contains the RevenueCat subscription data
+
+## Sample Event Payload
+
+When RevenueCat sends an event, it updates the Sendbird user with a payload like:
+
+```json
+{
+  "nickname": "user_display_name",
+  "metadata": {
+    "rc_event": "rc_initial_purchase_event",
+    "rc_product_id": "premium_monthly",
+    "rc_entitlement_ids": "pro,premium",
+    "rc_subscription_status": "active",
+    "rc_event_data": "{...}"
+  }
+}
+```
