@@ -112,11 +112,11 @@ The SDK allows additional configuration on first setup:
 - **Purchases Completed By (optional)**: A boolean value to tell RevenueCat not to [complete purchases](/migrating-to-revenuecat/sdk-or-not/finishing-transactions). Only set purchase completion to your app if you have your own code handling purchases.
 - **User Defaults (optional, iOS only)**: A key to override the standard user defaults used to cache `CustomerInfo`. This is required if you need to access `CustomerInfo` in an [iOS App Extension](https://developer.apple.com/app-extensions/).
 
-### Proxies & configuration for users in Mainland China
+### Proxies & configuration for users in Mainland China, Russia, and Myanmar
 
-We’ve received reports of our API being blocked in mainland China.
+We've received reports of our API being blocked in mainland China, Russia, and Myanmar.
 
-While we work on a long-term solution, if your app has a significant user base in this region, set the `proxyURL` property to `https://api.rc-backup.com/` before initializing the RevenueCat SDK. Ensure this configuration occurs prior to SDK setup to prevent connection issues for users in mainland China.
+While we work on a long-term solution, if your app has a significant user base in these regions, set the `proxyURL` property to `https://api.rc-backup.com/` before initializing the RevenueCat SDK. Ensure this configuration occurs prior to SDK setup to prevent connection issues for users in these regions.
 
 :::caution If you already have a proxy server
 If you have your own proxy server and already use the `proxyURL` API, you don't need any further configuration.
