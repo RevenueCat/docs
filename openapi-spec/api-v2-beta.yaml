@@ -9635,9 +9635,22 @@ components:
           type: integer
           format: int64
           example: 1658399423658
+        product_store_identifier:
+          description: The store identifier of the purchased product
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 511
+          example: com.example.product
+        expiration_date:
+          description: The expiration date of the transaction in ms since epoch
+          nullable: true
+          type: integer
+          format: int64
+          example: 1658399423658
         effective_expiration_date:
           description: The effective expiration date of the transaction in ms since
-            epoch
+            epoch, including potential grace period
           nullable: true
           type: integer
           format: int64
