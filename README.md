@@ -8,7 +8,7 @@ This documentation website is built using [Docusaurus](https://docusaurus.io/).
 
    ```bash
    git clone https://github.com/RevenueCat/docs.git
-   cd docusaurus
+   cd docs
    ```
 
 2. **Install dependencies**
