@@ -23,33 +23,26 @@ hidden: false
   - `$rc_lifetime` for lifetime purchases
   - `$rc_custom_*` for custom packages
 
-### Workspace Organization (Local Extension)
-
-- **One workspace per project**: Keep different RevenueCat projects in separate workspaces
-- **Environment separation**: Use different API keys for different environments
-- **Documentation**: Keep your `mcp.json` structure documented for team members
-
 ## Troubleshooting
 
 ### Common Issues
 
-#### MCP Server Not Enabled (Local Extension)
 
-**Symptoms**: No responses from RevenueCat commands in chat
-**Solution**:
+#### OAuth Issues
 
-1. Go to **Cursor Settings → MCP**
-2. Click **Enable**
-3. Click **Refresh**
+If you're using OAuth to authenticate with the RevenueCat MCP, you may encounter the following issues:
 
-#### MCP Server Disconnected
+**Unknown MCP Client**
 
-**Symptoms**: Previously working commands stop responding
-**Solution**:
+**Symptoms**: OAuth flow fails with an error indicating the client is not recognized
+**Cause**: RevenueCat uses a simplified public client registration flow and does not allow automatic client additions. Your MCP client may not be registered with our OAuth server.
+**Solution**: Contact [RevenueCat support](https://app.revenuecat.com/settings/support) with your client details so we can allowlist your MCP client.
 
-1. Go to **Cursor Settings → MCP** (for local extension)
-2. Click **Refresh**
-3. If issues persist, reload the window
+**Outdated Redirect URIs**
+
+**Symptoms**: OAuth flow fails during the redirect step, or you receive an error about invalid redirect URI
+**Cause**: MCP clients occasionally update their redirect URIs, and our OAuth server configuration may not yet reflect these changes.
+**Solution**: Contact [RevenueCat support](https://app.revenuecat.com/settings/support) with the details of your MCP client and the expected redirect URI so we can update our configuration.
 
 #### API Key Issues
 
@@ -59,38 +52,27 @@ hidden: false
 1. Verify your API key is correct
 2. Check key permissions (read vs write)
 3. Ensure the key belongs to the correct project
-4. For local extension: Re-run `RevenueCat: Set Project Secret Key`
-5. For cloud server: Update your Authorization header
-
-#### Missing mcp.json (Local Extension)
-
-**Symptoms**: Extension doesn't work after setting API key
-**Solution**:
-
-1. The extension should create `mcp.json` automatically
-2. If missing, remove and re-add your API key
-3. Check that the MCP server port is correctly configured
+4. Update your Authorization header with the correct API key
 
 ### Debug Information
 
 For troubleshooting:
 
-1. Check the VS Code Developer Console for debug logs (local extension)
-2. Verify `mcp.json` contains the correct server configuration (local extension)
-3. Test with simple commands like "Show me my project details"
-4. Ensure API key has proper permissions in RevenueCat dashboard
+1. Test with simple commands like "Show me my project details"
+2. Ensure API key has proper permissions in RevenueCat dashboard
+3. Check your AI assistant's MCP connection logs
 
 ## Security Considerations
 
-- **Never commit `mcp.json`**: Always add it to `.gitignore` (local extension)
 - **Use environment-specific keys**: Don't use production keys in development
 - **Regular key rotation**: Change API keys periodically
 - **Team access**: Use separate keys for each team member when possible
 - **Monitor usage**: Regularly review API key usage in your RevenueCat dashboard
+- **Secure storage**: Keep your API keys secure and never commit them to version control
 
 ## Error Handling
 
-Both deployment options provide detailed error responses including:
+The MCP server provides detailed error responses including:
 
 - Authentication errors for missing or invalid tokens
 - API errors with full RevenueCat API response details

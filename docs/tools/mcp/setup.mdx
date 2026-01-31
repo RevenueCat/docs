@@ -2,7 +2,7 @@
 title: RevenueCat MCP Server Setup
 sidebar_label: Setup
 slug: setup
-excerpt: Configure RevenueCat MCP Server for cloud or local deployment
+excerpt: Configure RevenueCat MCP Server for your AI assistant
 hidden: false
 ---
 
@@ -12,7 +12,7 @@ import AddToCursor from '@site/src/components/AddToCursor';
 
 RevenueCat MCP Server offers two authentication methods depending on your client:
 
-- **OAuth Authentication**: Available for VSCode and Cursor - provides seamless authentication without managing API keys
+- **OAuth Authentication**: Available for VS Code and Cursor - provides seamless authentication without managing API keys
 - **API v2 Secret Key**: Supported by all MCP clients - requires a RevenueCat API v2 secret key
 
 Choose the method that works best for your client setup.
@@ -158,7 +158,7 @@ All MCP clients support API v2 secret key authentication. This method requires m
 #### Getting Your API Key
 
 1. Open your [RevenueCat dashboard](https://app.revenuecat.com/)
-2. Navigate to your project's **API Keys** page  
+2. Navigate to your project's **API Keys** page
 3. **Create a new API v2 secret key** and copy it
 
 > **💡 Tip**: Create a dedicated API key for the MCP server to keep your credentials organized.
@@ -171,43 +171,3 @@ All MCP clients support API v2 secret key authentication. This method requires m
 > **🔧 Third-Party Integration**:
 >
 If you'd like to integrate your services with RevenueCat MCP Server, please contact us at [RevenueCat Support](mailto:support@revenuecat.com) so we can set up OAuth clients for your application.
-
-## Local MCP Extension Setup
-
-### 1. Install Extension
-
-1. Open VS Code or Cursor
-2. Go to Extensions marketplace
-3. Search for "RevenueCat MCP"
-   > **⚠️ Visual Studio Marketplace**:
-   >
-   > This only works if your VS Code fork has access to the Visual Studio Marketplace.
-   >
-   > If not, you can install the extension manually by downloading the [VSIX file](https://drive.google.com/file/d/1VcyqirfdJtrAMuDnMTBkU8USCbdvMTMn/view?usp=share_link).
-4. Click **Install**
-
-### 2. Configure Extension
-
-1. Open Command Palette (`Cmd+Shift+P` or `Ctrl+Shift+P`)
-2. Run: **RevenueCat: Set Project Secret Key**
-3. Paste your API key when prompted
-
-This creates an `mcp.json` file in your workspace with the MCP server configuration.
-
-> **🔒 Security**: Add `mcp.json` to your `.gitignore` to avoid committing your API credentials.
-
-### 3. Enable MCP in Cursor
-
-1. Go to **Cursor Settings → MCP**
-2. Click the **Enable** button
-3. Click the **Refresh** icon to activate the server
-
-## VS Code Extension Commands
-
-The local extension provides additional VS Code commands for key management:
-
-| Command                                    | Description                           |
-| ------------------------------------------ | ------------------------------------- |
-| `RevenueCat: Set Project Secret Key`       | Set or update your API key            |
-| `RevenueCat: Remove Project Secret Key`    | Delete your stored API key            |
-| `RevenueCat: Show your project secret key` | Display your current API key (masked) |

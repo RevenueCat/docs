@@ -1516,6 +1516,10 @@ const redirects = {
       from: "/targeting.html",
     },
     {
+      to: "/tools/mcp",
+      from: "/tools/mcp/overview",
+    },
+    {
       to: "/projects/authentication",
       from: "/authentication",
     },
