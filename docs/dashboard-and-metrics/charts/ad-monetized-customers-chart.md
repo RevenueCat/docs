@@ -17,7 +17,7 @@ The Ad Monetized Customers chart tracks the number of unique customers who gener
 
 ### Ad dimensions
 
-Ad charts can be filtered and segmented by ad-specific dimensions like Ad Network, Ad Mediator, Ad Placement, and Ad Unit. See [Ad Impressions](/dashboard-and-metrics/charts/ad-impressions-chart#ad-dimensions) for details.
+Ad charts can be filtered and segmented by ad-specific dimensions like Network Name, Mediator Name, Ad Format, Ad Placement, and Ad Unit. See [Ad Impressions](/dashboard-and-metrics/charts/ad-impressions-chart#ad-dimensions) for details.
 
 ## How to use Ad Monetized Customers in your business
 

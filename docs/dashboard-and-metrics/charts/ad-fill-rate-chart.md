@@ -25,7 +25,7 @@ The Ad Fill Rate chart shows how successfully ad requests are being fulfilled wi
 
 ### Ad dimensions
 
-Ad charts can be filtered and segmented by ad-specific dimensions like Ad Network, Ad Mediator, Ad Placement, and Ad Unit. See [Ad Impressions](/dashboard-and-metrics/charts/ad-impressions-chart#ad-dimensions) for details.
+This chart can be filtered and segmented by ad-specific dimensions like Mediator Name, Ad Format, Ad Placement, and Ad Unit.
 
 ## How to use Ad Fill Rate in your business
 

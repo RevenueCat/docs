@@ -25,7 +25,7 @@ The Ad RPM (Revenue Per Mille) chart shows how much you earn for every 1,000 ad 
 
 ### Ad dimensions
 
-Ad charts can be filtered and segmented by ad-specific dimensions like Ad Network, Ad Mediator, Ad Placement, and Ad Unit. See [Ad Impressions](/dashboard-and-metrics/charts/ad-impressions-chart#ad-dimensions) for details.
+Ad charts can be filtered and segmented by ad-specific dimensions like Network Name, Mediator Name, Ad Format, Ad Placement, and Ad Unit. See [Ad Impressions](/dashboard-and-metrics/charts/ad-impressions-chart#ad-dimensions) for details.
 
 ## How to use Ad RPM in your business
 

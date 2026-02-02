@@ -23,9 +23,10 @@ RevenueCat's ad data comes from real-time SDK callbacks and will not match the n
 
 Ad charts can be filtered and segmented by several ad-specific dimensions:
 
-- **Ad Network**: The advertising network that served the ad (e.g., Google Ads, Facebook Audience Network, Unity Ads)
-- **Ad Mediator**: The mediation platform managing multiple ad networks (e.g., AdMob, AppLovin)
-- **Ad Placement**: The contextual placement where the ad appears in your app (optional)
+- **Network Name**: The advertising network that served the ad (e.g., Google Ads, Facebook Audience Network, Unity Ads)
+- **Mediator Name**: The mediation platform managing multiple ad networks (e.g., AdMob, AppLovin)
+- **Ad Format**: The type of ad displayed (e.g., banner, interstitial, rewarded)
+- **Ad Placement**: The contextual placement where the ad appears in your app
 - **Ad Unit**: A unique identifier for a specific ad slot or format in your app
 
 ## How to use Ad Impressions in your business
