@@ -399,86 +399,12 @@ import customVarsActivity from '@site/code_blocks/tools/paywalls_custom_variable
   ]}
 />
 
-### React Native
-
-import customVarsRN from '@site/code_blocks/tools/paywalls_custom_variables_rn.ts.txt?raw';
-
-<RCCodeBlock
-  tabs={[
-    { type: "rn", content: customVarsRN }
-  ]}
-/>
-
-### Flutter
-
-import customVarsFlutter from '@site/code_blocks/tools/paywalls_custom_variables_flutter.dart?raw';
-
-<RCCodeBlock
-  tabs={[
-    { type: "flutter", content: customVarsFlutter }
-  ]}
-/>
-
-:::info Variable naming
-Custom variable keys must start with a letter and can only contain letters, numbers, and underscores. In your paywall text, reference them using the template syntax: `{{ custom.variable_name }}`
-:::
-
-## Custom variables {#custom-variables}
-
-Custom variables allow you to pass dynamic values from your app to display in your paywall text. This is useful for displaying values like user-specific information, app state, or promotional messaging that changes based on your app's context.
-
-When you create custom variables in the [paywall editor](/tools/paywalls/creating-paywalls/variables#custom-variables), you set default values that will be used as fallbacks. When displaying the paywall in your app, you can override these defaults with actual runtime values specific to the user's session.
-
-### iOS
-
-import customVarsSwift from '@site/code_blocks/tools/paywalls_custom_variables_1.swift?raw';
-import customVarsUIKit from '@site/code_blocks/tools/paywalls_custom_variables_2.swift?raw';
-
-<RCCodeBlock
-  tabs={[
-    { type: "swift", title: "SwiftUI", content: customVarsSwift },
-    { type: "swift", title: "UIKit", content: customVarsUIKit }
-  ]}
-/>
-
-### Android
-
-import customVarsKotlin from '@site/code_blocks/tools/paywalls_custom_variables_1.kt?raw';
-import customVarsActivity from '@site/code_blocks/tools/paywalls_custom_variables_2.kt?raw';
-
-<RCCodeBlock
-  tabs={[
-    { type: "kotlin", title: "Composable", content: customVarsKotlin },
-    { type: "kotlin", title: "Activity", content: customVarsActivity }
-  ]}
-/>
-
-### React Native
-
-import customVarsRN from '@site/code_blocks/tools/paywalls_custom_variables_rn.ts.txt?raw';
-
-<RCCodeBlock
-  tabs={[
-    { type: "rn", content: customVarsRN }
-  ]}
-/>
-
-### Flutter
-
-import customVarsFlutter from '@site/code_blocks/tools/paywalls_custom_variables_flutter.dart?raw';
-
-<RCCodeBlock
-  tabs={[
-    { type: "flutter", content: customVarsFlutter }
-  ]}
-/>
-
 :::info Variable naming
 Custom variable keys must start with a letter and can only contain letters, numbers, and underscores. In your paywall text, reference them using the template syntax: `{{ custom.variable_name }}`
 :::
 
 ## Custom fonts
- 
+
 Using custom fonts in your paywall can now be done by uploading font files directly to RevenueCat. See the [Custom fonts](/tools/paywalls/creating-paywalls/components#custom-fonts) section for more information.
 
 ### Including custom fonts in your app
@@ -489,7 +415,7 @@ To improve the performance and reduce loading times of your paywall using custom
 To add a custom font to your Android app, place the font file in the `res/font` folder. Make sure that the filename (without the extension) corresponds to the font name in the paywall editor. See [the official Android documentation](https://developer.android.com/develop/ui/views/text-and-emoji/fonts-in-xml) for more information.
 
 #### iOS
-To add a custom font to your iOS app, go to _File_ and then _Add Files to “Your Project Name”_. The font file should be a target member of your app, and be registered with iOS by adding the "Fonts provided by the application" key to your _Info.plist_ file. Make sure that the filename (without the extension) corresponds to the font name in the paywall editor. See [the official iOS documentation](https://developer.apple.com/documentation/uikit/adding-a-custom-font-to-your-app) for more information.
+To add a custom font to your iOS app, go to _File_ and then _Add Files to "Your Project Name"_. The font file should be a target member of your app, and be registered with iOS by adding the "Fonts provided by the application" key to your _Info.plist_ file. Make sure that the filename (without the extension) corresponds to the font name in the paywall editor. See [the official iOS documentation](https://developer.apple.com/documentation/uikit/adding-a-custom-font-to-your-app) for more information.
 
 #### Kotlin Multiplatform, React Native, and Flutter
 Adding custom fonts to a hybrid app involves adding the font files to the underlying Android and iOS projects following the instructions above.
@@ -546,7 +472,7 @@ Exit offers will **not** work if you manually embed paywall views/components in 
 
 ### Platform support
 
-| Platform      | Minimum Version | 
+| Platform      | Minimum Version |
 | :------------ | :-------------- |
 | iOS           | 5.52.0+         |
 | Android       | 9.18.0+         |
