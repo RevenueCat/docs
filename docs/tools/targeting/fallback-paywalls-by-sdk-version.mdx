@@ -39,9 +39,9 @@ Start by duplicating the paywall you’re currently serving to customers.
 
 When you duplicate a paywall that’s attached to an Offering, RevenueCat will also create a **new Offering copy** for the duplicate. This lets you modify the fallback paywall (and its packages/metadata) without impacting what newer SDK versions see.
 
-:::::tip Naming convention
-Give the duplicate a clear suffix like `-fallback` or `-legacy` (for example, `onboarding_v3_fallback`) so it’s obvious which paywall/Offering is intended for older SDK versions.
-:::::
+::::tip Naming convention
+Give the duplicate a clear suffix for both display name and identifier like `-fallback` or `-legacy` (for example, `onboarding_v3_fallback`) so it’s obvious which paywall/Offering is intended for older SDK versions.
+::::
 
 ## 2. Remove unsupported components from the fallback paywall
 
@@ -58,9 +58,9 @@ Then:
 1. **Save to draft** while you’re iterating.
 2. **Publish** the fallback paywall once it’s ready to serve.
 
-:::::warning Keep the fallback paywall purchase-ready
+::::warning Keep the fallback paywall purchase-ready
 Make sure the fallback paywall still includes everything required to convert (packages, a purchase button, and any required legal links), since this is the paywall older customers will actually see.
-:::::
+::::
 
 ## 3. Create a Targeting Rule for older SDK versions
 
@@ -76,9 +76,9 @@ Now you’ll tell RevenueCat to serve the fallback Offering only when a customer
 
 That’s it: customers on SDK versions **below** your threshold will receive the fallback Offering (and therefore the fallback paywall), while newer SDK versions will continue to receive your primary Offering based on your other rules and/or Default Offering.
 
-:::::tip Rule ordering matters
+::::tip Rule ordering matters
 Targeting Rules are evaluated from top to bottom. Keep your “older SDK → fallback Offering” rule **above** any broader rules (like “Any audience”) so older customers don’t get matched by a more general rule first.
-:::::
+::::
 
 ## Notes for multi-platform apps
 
