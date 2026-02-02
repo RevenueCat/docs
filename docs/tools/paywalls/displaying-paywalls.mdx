@@ -338,14 +338,79 @@ import preferredLocaleSwift from '@site/code_blocks/tools/paywalls_preferred_loc
 import preferredLocaleKotlin from '@site/code_blocks/tools/paywalls_preferred_locale_2.kt?raw';
 import preferredLocaleReactNative from '@site/code_blocks/tools/paywalls_preferred_locale_3.ts.txt?raw';
 
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        title: "iOS",
+        content: preferredLocaleSwift,
+    },
+    {
+        type: 'kotlin',
+        title: "Android",
+        content: preferredLocaleKotlin,
+    },
+    {
+        type: 'rn',
+        title: "React Native",
+        content: preferredLocaleReactNative,
+    },
+
+]}/>
+
+
+## Custom variables
+
+Custom variables allow you to pass dynamic values from your app to display in your paywall text. This is useful for displaying values like user-specific information, app state, or promotional messaging that changes based on your app's context.
+
+When you create custom variables in the [paywall editor](/tools/paywalls/creating-paywalls/variables#custom-variables), you set default values that will be used as fallbacks. When displaying the paywall in your app, you can override these defaults with actual runtime values specific to the user's session.
+
+### iOS
+
+import customVarsSwift from '@site/code_blocks/tools/paywalls_custom_variables_1.swift?raw';
+import customVarsUIKit from '@site/code_blocks/tools/paywalls_custom_variables_2.swift?raw';
+
 <RCCodeBlock
   tabs={[
-    { type: "swift", content: preferredLocaleSwift, name: "iOS" },
-    { type: "kotlin", content: preferredLocaleKotlin, name: "Android" },
-    { type: "rn", content: preferredLocaleReactNative, name: "React Native" }
+    { type: "swift", title: "SwiftUI", content: customVarsSwift },
+    { type: "swift", title: "UIKit", content: customVarsUIKit }
   ]}
 />
 
+### Android
+
+import customVarsKotlin from '@site/code_blocks/tools/paywalls_custom_variables_1.kt?raw';
+import customVarsActivity from '@site/code_blocks/tools/paywalls_custom_variables_2.kt?raw';
+
+<RCCodeBlock
+  tabs={[
+    { type: "kotlin", title: "Composable", content: customVarsKotlin },
+    { type: "kotlin", title: "Activity", content: customVarsActivity }
+  ]}
+/>
+
+### React Native
+
+import customVarsRN from '@site/code_blocks/tools/paywalls_custom_variables_rn.ts.txt?raw';
+
+<RCCodeBlock
+  tabs={[
+    { type: "rn", content: customVarsRN }
+  ]}
+/>
+
+### Flutter
+
+import customVarsFlutter from '@site/code_blocks/tools/paywalls_custom_variables_flutter.dart?raw';
+
+<RCCodeBlock
+  tabs={[
+    { type: "flutter", content: customVarsFlutter }
+  ]}
+/>
+
+:::info Variable naming
+Custom variable keys must start with a letter and can only contain letters, numbers, and underscores. In your paywall text, reference them using the template syntax: `{{ custom.variable_name }}`
+:::
 
 ## Custom fonts
  

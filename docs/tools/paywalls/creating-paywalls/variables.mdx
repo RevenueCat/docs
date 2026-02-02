@@ -50,6 +50,27 @@ We support the following variables:
 | product.relative_discount                  | 19%               | 19%               | 19%               | 19%               | 19%               | 19%               | 19%              |
 | product.store_product_name                 | Pro Access        | Pro Access        | Pro Access        | Pro Access        | Pro Access        | Pro Access        | Pro Access       |
 
+## Custom variables
+
+In addition to the product variables listed above, you can create **Custom variables** to insert dynamic content that isn't tied to a specific product. This is useful for displaying values like user-specific information, app state, or promotional messaging that changes based on your app's context.
+
+### Creating and using custom variables in the editor
+
+To create a custom variable:
+
+1. In the paywall editor, select the **Variables** tab from the left-hand sidebar
+2. Click "Create variable"
+3. Set the name of the variable - this will be how you reference it in your paywall
+4. Give it a default value - this is what will be displayed in the preview and used as a fallback if no value is provided
+
+The default value you set applies across your entire project, ensuring consistency wherever the variable is used. Once created, you can insert the custom variable into any text field using the same `{{ custom.variable_name }}` syntax.
+
+### Passing custom variable values from your app
+
+When displaying a paywall in your app, you'll need to pass actual values for any custom variables you've created. This allows you to provide dynamic, context-specific content based on the user's session or app state.
+
+For details on how to pass custom variable values when presenting a paywall, see [Displaying Paywalls](/tools/paywalls/displaying-paywalls#custom-variables).
+
 ## Countdown variables
 
 When using a [Countdown component](/tools/paywalls/creating-paywalls/components#countdown) on your paywall, you can use countdown-specific variables within any text component inside that countdown. These variables display the time remaining until the countdown's target date.
