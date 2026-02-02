@@ -159,8 +159,13 @@ Select and deselect rows to compare individual campaigns, ad sets, or keywords
 ![](/docs_images/integrations/attribution/apple-search-ads/asa-rows.png)
 
 :::info
-The value of `Unspecified` is used to group transactions that are attributed to an Apple Search Ads ad, but do not have a specified Campaign Name, Ad Group Name, or Keyword. This is almost always because the ad has been delivered through an Apple Search Ads Basic account, where these names are not specified.
-:::
+The value of `Unspecified` is used to group transactions that are attributed to an Apple Search Ads ad, but do not have a specified Campaign Name, Ad Group Name, or Keyword.
+
+This commonly occurs in two scenarios:
+
+- The ad was delivered through an Apple Search Ads Basic account, where these fields are not provided by Apple.
+- The attribution originates from a debug or TestFlight environment, where Apple may return placeholder or empty Apple Search Ads attribution data.
+  :::
 
 :::info
 The value of `Organic` is used to group transactions that are not attributed to an Apple Search Ads campaign. This means it was an organic install or users with limit ad tracking enabled. To exclude organic installs from your charts, you can filter by `Attribution source` and select `Apple Search Ads`.
