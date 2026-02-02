@@ -91,6 +91,10 @@ After adding an authentication step, configure where users will be sent to authe
 2. In the right panel, enter your **External authentication URL**
 3. This should be the URL of your authentication page (e.g., `https://your-auth-system.com/login`)
 
+:::info Query parameters
+If your external authentication URL includes query parameters (e.g., `https://your-auth-system.com/login?tracking_id=123`), they will be preserved when RevenueCat appends the `redirect_uri` and `state` parameters. This is useful for passing tracking information or other data to your authentication system.
+:::
+
 When a user reaches this authentication step, RevenueCat will redirect them to your external authentication URL with two query parameters:
 
 - `redirect_uri`: The callback URL where you must redirect users after authentication
