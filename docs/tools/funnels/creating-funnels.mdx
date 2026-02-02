@@ -71,6 +71,63 @@ Screen steps are customizable pages built using RevenueCat's Paywall UI builder.
 
 Once added, you can click on the screen node in Interaction mode and switch to Design mode to customize its content.
 
+### Authentication steps
+
+Authentication steps allow you to redirect users to your own authentication system (Firebase Auth, Auth0, custom backend, etc.) and bring them back to the funnel once they've logged in. This is useful when you need users to authenticate before proceeding to checkout or accessing certain content.
+
+To add an authentication step:
+
+1. Click **Add page** in the left sidebar
+2. Select **Authentication**
+3. Configure your **External authentication URL**
+
+Once added, the authentication step will appear as a node in your funnel flow. When users reach this step, they'll be redirected to your authentication system and returned to the funnel after successful login.
+
+#### Setting up the redirect flow
+
+When a user reaches an authentication step, RevenueCat will redirect them to your external authentication URL with two query parameters:
+
+- `redirect_uri`: The callback URL where you must redirect users after authentication
+- `state`: A token used to tie the session together (you must return this unchanged)
+
+**Example redirect URL your authentication page will receive:**
+
+```
+https://your-auth-system.com/login?redirect_uri=https://signup.cat/funnel/callback&state=eyJub25jZSI6IjEyMyIsIndvcmtmbG93X2xpbmtfaWQiOi4uLn0=
+```
+
+#### Redirecting back to the funnel
+
+After a user successfully authenticates, your authentication system must redirect back to the `redirect_uri` with two required query parameters:
+
+- `state`: The exact same state value you received (required)
+- `app_user_id`: The authenticated user's ID from your system (required)
+
+**Example callback URL you should redirect to:**
+
+```
+https://signup.cat/funnel/callback?state=eyJub25jZSI6IjEyMyIsIndvcmtmbG93X2xpbmtfaWQiOi4uLn0=&app_user_id=user_12345
+```
+
+:::warning State parameter is required
+You must include the `state` parameter exactly as you received it. Do not modify or parse this value—simply pass it back unchanged.
+:::
+
+#### Callback URL handling
+
+The `redirect_uri` parameter will always point to `/funnel/callback` on the appropriate domain:
+
+- **Default domain**: `https://signup.cat/funnel/callback`
+- **Custom domain**: `https://your-domain.com/funnel/callback` (if you have custom domains configured)
+
+You can either:
+- Use the `redirect_uri` parameter dynamically in your redirect
+- Hard-code the callback URL if you know your domain configuration
+
+#### Auto-advance for authenticated users
+
+If a user who is already authenticated reaches an authentication step, they will automatically advance to the next step without being redirected. This prevents unnecessary re-authentication when users navigate back through your funnel.
+
 ### Checkout steps
 
 Checkout steps handle the payment flow. To add a checkout:
