@@ -85,7 +85,13 @@ Once added, the authentication step will appear as a node in your funnel flow. W
 
 #### Setting up the redirect flow
 
-When a user reaches an authentication step, RevenueCat will redirect them to your external authentication URL with two query parameters:
+After adding an authentication step, configure where users will be sent to authenticate:
+
+1. Click on the authentication step node in Interaction mode
+2. In the right panel, enter your **External authentication URL**
+3. This should be the URL of your authentication page (e.g., `https://your-auth-system.com/login`)
+
+When a user reaches this authentication step, RevenueCat will redirect them to your external authentication URL with two query parameters:
 
 - `redirect_uri`: The callback URL where you must redirect users after authentication
 - `state`: A token used to tie the session together (you must return this unchanged)
@@ -93,7 +99,7 @@ When a user reaches an authentication step, RevenueCat will redirect them to you
 **Example redirect URL your authentication page will receive:**
 
 ```
-https://your-auth-system.com/login?redirect_uri=https://signup.cat/funnel/callback&state=eyJub25jZSI6IjEyMyIsIndvcmtmbG93X2xpbmtfaWQiOi4uLn0=
+https://your-auth-system.com/login?redirect_uri=https%3A%2F%2Fsignup.cat%2Ffunnel%2Fcallback&state=eyJub25jZSI6IjEyMyIsIndvcmtmbG93X2xpbmtfaWQiOi4uLn0=
 ```
 
 #### Redirecting back to the funnel
@@ -110,19 +116,12 @@ https://signup.cat/funnel/callback?state=eyJub25jZSI6IjEyMyIsIndvcmtmbG93X2xpbmt
 ```
 
 :::warning State parameter is required
-You must include the `state` parameter exactly as you received it. Do not modify or parse this value—simply pass it back unchanged.
+You must include the `state` parameter exactly as you received it. Do not modify this value or RevenueCat validation will fail.
 :::
 
-#### Callback URL handling
-
-The `redirect_uri` parameter will always point to `/funnel/callback` on the appropriate domain:
-
-- **Default domain**: `https://signup.cat/funnel/callback`
-- **Custom domain**: `https://your-domain.com/funnel/callback` (if you have custom domains configured)
-
-You can either:
-- Use the `redirect_uri` parameter dynamically in your redirect
-- Hard-code the callback URL if you know your domain configuration
+:::info Callback URL
+The `redirect_uri` parameter will always point to `/funnel/callback` on the appropriate domain (`https://signup.cat/funnel/callback` by default, or your custom domain if configured). You can either use the `redirect_uri` parameter dynamically in your redirect or hard-code the callback URL if you know your domain configuration.
+:::
 
 #### Auto-advance for authenticated users
 
