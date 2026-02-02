@@ -366,6 +366,7 @@ const targetingCategory = Category({
     Page({ slug: "tools/targeting" }),
     Page({ slug: "tools/targeting/placements" }),
     Page({ slug: "tools/targeting/custom-attributes" }),
+    Page({ slug: "tools/targeting/fallback-paywalls-by-sdk-version" }),
   ],
 });
 

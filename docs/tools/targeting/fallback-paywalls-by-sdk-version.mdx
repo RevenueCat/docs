@@ -1,0 +1,87 @@
+---
+title: Fallback paywalls by SDK version
+slug: fallback-paywalls-by-sdk-version
+sidebar_label: Fallback paywalls by SDK version
+hidden: false
+---
+
+Some Paywall components such as [Countdown](/tools/paywalls/creating-paywalls/components#countdown) and [Video](/tools/paywalls/creating-paywalls/components#video-component) have minimum SDK version requirements.
+
+If you publish a paywall that includes unsupported components, customers on older SDK versions may not be able to render it and will fall back to RevenueCat's default paywall.
+
+To avoid that, you can create a **fallback paywall** and use **Targeting** to serve it only to customers on older SDK versions.
+
+## When to use a fallback paywall
+
+In many cases, you can handle SDK compatibility within a single paywall (for example, Countdown has a built-in [Fallback Stack](/tools/paywalls/creating-paywalls/components#fallback-stack) that allows you to customize what is displayed when the component is not supported).
+
+However, a separate fallback paywall is a good fit when:
+
+- You want to remove multiple unsupported components (or significantly simplify the layout).
+- You want a different paywall structure or messaging for older app versions.
+- You want to keep your “modern” paywall design clean without extra component-level fallbacks.
+
+## How to create and serve a fallback paywall (recommended)
+
+The overall workflow is:
+
+1. Duplicate your paywall (this will also duplicate the associated Offering)
+2. Remove unsupported components from the duplicated paywall
+3. Create a Targeting Rule that serves the fallback Offering to older SDK versions
+
+## 1. Duplicate your paywall (and Offering)
+
+Start by duplicating the paywall you’re currently serving to customers.
+
+1. Navigate to **Paywalls** in the RevenueCat Dashboard.
+2. Find the paywall you want to use as the “primary” paywall.
+3. Click the **⋯** menu, then select **Duplicate to this project**.
+
+When you duplicate a paywall that’s attached to an Offering, RevenueCat will also create a **new Offering copy** for the duplicate. This lets you modify the fallback paywall (and its packages/metadata) without impacting what newer SDK versions see.
+
+:::::tip Naming convention
+Give the duplicate a clear suffix like `-fallback` or `-legacy` (for example, `onboarding_v3_fallback`) so it’s obvious which paywall/Offering is intended for older SDK versions.
+:::::
+
+## 2. Remove unsupported components from the fallback paywall
+
+Open the duplicated paywall in the Paywall Editor and remove or replace anything that isn’t supported by your older SDK versions.
+
+Common approaches:
+
+- Replace a **Video** background with an **Image**
+- Replace a **Countdown** with static text (or a simpler “limited-time” message)
+- Simplify complex layouts (carousels, nested stacks, etc.) if needed
+
+Then:
+
+1. **Save to draft** while you’re iterating.
+2. **Publish** the fallback paywall once it’s ready to serve.
+
+:::::warning Keep the fallback paywall purchase-ready
+Make sure the fallback paywall still includes everything required to convert (packages, a purchase button, and any required legal links), since this is the paywall older customers will actually see.
+:::::
+
+## 3. Create a Targeting Rule for older SDK versions
+
+Now you’ll tell RevenueCat to serve the fallback Offering only when a customer is on an older SDK version.
+
+1. Navigate to **Targeting** under **Monetization tools**.
+2. Click **Create a new rule**.
+3. Click **+ Add condition**, then choose **RevenueCat SDK Version**.
+4. Select the SDK flavor you want to target (for example, `purchases-ios`, `purchases-android`, `react-native-purchases`, etc.).
+5. Choose an operator like **less than** and enter the version number that represents the minimum SDK version that supports your primary paywall.
+6. Select the **fallback Offering** (the one created by duplicating the paywall).
+7. Set the rule to **Live** and click **Save**.
+
+That’s it: customers on SDK versions **below** your threshold will receive the fallback Offering (and therefore the fallback paywall), while newer SDK versions will continue to receive your primary Offering based on your other rules and/or Default Offering.
+
+:::::tip Rule ordering matters
+Targeting Rules are evaluated from top to bottom. Keep your “older SDK → fallback Offering” rule **above** any broader rules (like “Any audience”) so older customers don’t get matched by a more general rule first.
+:::::
+
+## Notes for multi-platform apps
+
+If your Project includes multiple apps/SDK flavors (for example iOS and Android), you’ll typically create **one fallback rule per SDK flavor**, since **RevenueCat SDK Version** conditions apply to a specific SDK.
+
+If you also use Placements, you can still use this pattern — just make sure the fallback Offering is selected for the relevant Placement(s) for older SDK versions.
