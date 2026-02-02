@@ -4,15 +4,49 @@ slug: displaying-paywalls
 hidden: false
 ---
 
+:::info On this page
+[**Default Paywall**](#default-paywall)
+
+[**Platform specific instructions**](#platform-specific-instructions): [iOS](#ios) · [Android](#android) · [React Native](#react-native) · [Flutter](#flutter) · [Kotlin Multiplatform](#kotlin-multiplatform) · [Capacitor](#capacitor) · [Unity](#unity) · [Web](#web)
+
+[**Common topics**](#common-topics): [Handling paywall navigation](#handling-paywall-navigation) · [Setting preferred locale](#setting-preferred-locale) · [Custom fonts](#custom-fonts) · [Intercepting an initiated purchase](#intercepting-an-initiated-purchase) · [Exit offers](#exit-offers)
+
+[**Changes from legacy Paywalls**](#changes-from-legacy-paywalls)
+:::
+
+## Default Paywall
+
+If you attempt to display a Paywall for an Offering that doesn't have one configured, or that has a Paywall configured which is not supported on the installed SDK version, the RevenueCatUI SDK will display a default Paywall.
+
+The default paywall displays all packages in the Offering.
+
+On iOS it uses the app's `accentColor` for styling.
+On Android, it uses the app's `Material3`'s `ColorScheme`.
+
+:::tip Targeting
+If your app supports our legacy Paywall templates, consider using Targeting to create an audience that only receives your new Paywall if they're using an SDK version that does not support our current Paywalls. This will ensure that older app versions continue to receive the Offering and Paywall that they support, while any app versions running a supported RC SDK version receive your new Paywall. [Learn more about Targeting.](/tools/targeting)
+:::
+
 ## Platform specific instructions
+
+Choose your platform below for code and guidance on how to display paywalls. Each section covers the main presentation options (e.g. entitlement-based, custom logic, or manual presentation) for that platform.
+
+- [iOS](#ios)
+- [Android](#android)
+- [React Native](#react-native)
+- [Flutter](#flutter)
+- [Kotlin Multiplatform](#kotlin-multiplatform)
+- [Capacitor](#capacitor)
+- [Unity](#unity)
+- [Web](#web)
 
 ### iOS
 
-RevenueCat Paywalls will show paywalls in a sheet or fullscreen on iPhone, and there are multiple ways to do this with SwiftUI and UIKit.
+RevenueCat Paywalls work on iPhone, iPad, and Mac (including Mac Catalyst). You can show paywalls in a sheet or fullscreen using SwiftUI or UIKit:
 
-- Depending on an entitlement with `presentPaywallIfNeeded`
-- Custom logic with `presentPaywallIfNeeded`
-- Manually with `PaywallView` or `PaywallViewController`
+- **Entitlement:** Show the paywall only when the user lacks an entitlement, with `presentPaywallIfNeeded`
+- **Custom Logic:** Custom Logic with `presentPaywallIfNeeded`
+- **Manually:** With `PaywallView` (SwiftUI), or `PaywallViewController` (UIKit in Swift or Objective-C)
 
 import swift1 from '@site/code_blocks/tools/paywalls_1.swift?raw';
 import swift2 from '@site/code_blocks/tools/paywalls_2.swift?raw';
@@ -33,7 +67,7 @@ import objc5 from '@site/code_blocks/tools/paywalls_5.m?raw';
     },
     {
         type: 'swift',
-        title: "Manually",
+        title: "Manually (SwiftUI)",
         content: swift3,
     },
     {
@@ -49,18 +83,29 @@ import objc5 from '@site/code_blocks/tools/paywalls_5.m?raw';
 
 ]}/>
 
-#### Paywalls on iPad
-When using `presentPaywallIfNeeded` to display a paywall on iPad, we'll automatically show a paywall in a modal that is roughly iPhone sized. If instead you prefer to show a paywall that is full screen on iPad, you can use the `PaywallView` or `PaywallViewController` methods instead.
+:::info Objective-C sample
+The Objective-C sample may show parameters such as `displayCloseButton` that have no effect on [current Paywalls](#changes-from-legacy-paywalls). Close buttons are configured in the paywall template. The pattern (create controller, set delegate, present) is correct; see the SDK reference for the latest initializer.
+:::
 
-![Paywalls on iPad](/docs_images/paywalls/paywalls-on-ipad.jpeg)
+For purchase and restore callbacks, use the `PaywallViewControllerDelegate` (UIKit) or the view modifiers on `PaywallView` (SwiftUI).
+
+#### Paywalls on iPad
+The approaches above work on iPad as well. When you use `presentPaywallIfNeeded` on iPad, we show the paywall in a compact, iPhone-sized modal. If you prefer a full-screen paywall on iPad, use the **Manually** approach with `PaywallView` or `PaywallViewController` instead.
+
+<figure>
+  ![Paywalls on iPad](/docs_images/paywalls/paywalls-on-ipad.jpeg)
+  <figcaption>iPhone-sized paywall modal on iPad</figcaption>
+</figure>
+
+For full details on the classes, methods, and listeners above, see the [SDK Reference](/platform-resources/sdk-reference).
 
 ### Android
 
-RevenueCat Paywalls will, by default, show paywalls fullscreen and there are multiple ways to do this with `Activity`s and Jetpack Compose.
+RevenueCat Paywalls will, by default, show paywalls fullscreen and there are multiple ways to do this with `Activity` and Jetpack Compose.
 
-- Depending on an entitlement with `PaywallDialog`
-- Custom logic with `PaywallDialog`
-- Manually with `Paywall`, `PaywallDialog`, or `PaywallActivityLauncher`
+- **Entitlement:** Show the paywall only when the user lacks an entitlement, with `PaywallDialog`
+- **Custom Logic:** Custom Logic with `PaywallDialog`
+- **Manually:** With `Paywall` (Compose), or `PaywallActivityLauncher` (Activity in Kotlin or Java)
 
 import kotlin1 from '@site/code_blocks/tools/paywalls_1.kt?raw';
 import kotlin2 from '@site/code_blocks/tools/paywalls_2.kt?raw';
@@ -81,29 +126,32 @@ import paywallsActivityJava from '@site/code_blocks/tools/paywalls_activity_java
     },
     {
         type: 'kotlin',
-        title: "Manually",
+        title: "Manually (Compose)",
         content: kotlin3,
     },
     {
         type: 'kotlin',
-        title: "Manually (Activity)",
+        title: "Manually (Activity - Kotlin)",
         content: kotlin4,
     },
     {
         type: 'java',
-        title: "Manually (Activity) - Java",
+        title: "Manually (Activity - Java)",
         content: paywallsActivityJava,
     }
 
 ]}/>
 
+For purchase and restore callbacks, use the `PaywallListener` interface (Compose) or `PaywallResultHandler` (Activity).
+
+For full details on the classes, methods, and listeners above, see the [SDK Reference](/platform-resources/sdk-reference).
+
 ### React Native
 
-There are several ways to present paywalls:
+RevenueCat Paywalls for React Native can be presented in two main ways:
 
-- Using `RevenueCatUI.presentPaywall`: this will display a paywall when invoked.
-- Using `RevenueCatUI.presentPaywallIfNeeded`: this will present a paywall only if the customer does not have an unlocked entitlement.
-- Manually presenting `<RevenueCatUI.Paywall>`: this gives you more flexibility on how the paywall is presented.
+- **presentPaywall / presentPaywallIfNeeded:** Display a paywall when invoked, or only when the customer does not have an unlocked entitlement.
+- **Manually:** Use the `<RevenueCatUI.Paywall>` component in your UI for full control over layout and presentation.
 
 import rn1 from '@site/code_blocks/tools/paywalls_rn_1.ts.txt?raw';
 import rn2 from '@site/code_blocks/tools/paywalls_rn_2_new.ts.txt?raw';
@@ -112,22 +160,22 @@ import rn2 from '@site/code_blocks/tools/paywalls_rn_2_new.ts.txt?raw';
   tabs={[
     {
       type: "rn",
-      title: "RevenueCatUI.presentPaywall",
+      title: "presentPaywall / presentPaywallIfNeeded",
       content: rn1,
     },
     {
       type: "rn",
-      title: "RevenueCatUI.Paywall",
+      title: "Paywall (manual)",
       content: rn2,
     },
   ]}
 />
 
-There are also several listeners that can be used to handle the paywall lifecycle, such as `onPurchaseStarted`, `onPurchaseCompleted`, and `onRestoreStarted`.
+For purchase and restore callbacks, use the listeners below (when using `<RevenueCatUI.Paywall>`) or handle the result from `presentPaywall` / `presentPaywallIfNeeded`.
 
 #### Listeners
 
-When using `RevenueCatUI.Paywall`, you may use one of the provided listeners to react to user actions.
+When using `RevenueCatUI.Paywall`, you may use one of the provided listeners to react to user actions (for example, `onPurchaseStarted`, `onPurchaseCompleted`, and `onRestoreStarted`).
 
 Available listeners at this time are:
 
@@ -140,13 +188,14 @@ Available listeners at this time are:
 - onRestoreError
 - onDismiss
 
+For full details on the classes, methods, and listeners above, see the [SDK Reference](/platform-resources/sdk-reference).
+
 ### Flutter
 
-There are several ways to present paywalls:
+RevenueCat Paywalls for Flutter can be presented in two main ways:
 
-- Using `RevenueCatUI.presentPaywall`: this will display a paywall when invoked.
-- Using `RevenueCatUI.presentPaywallIfNeeded`: this will present a paywall only if the customer does not have an unlocked entitlement.
-- Manually presenting `PaywallView`: this gives you more flexibility on how the paywall is presented.
+- **presentPaywall / presentPaywallIfNeeded:** Display a paywall when invoked, or only when the customer does not have an unlocked entitlement.
+- **Manually:** Use `PaywallView` in your widget tree for full control over layout and presentation.
 
 import flutter1 from '@site/code_blocks/tools/paywalls_flutter_1.dart?raw';
 import flutter2 from '@site/code_blocks/tools/paywalls_flutter_2_new.dart?raw';
@@ -155,20 +204,22 @@ import flutter2 from '@site/code_blocks/tools/paywalls_flutter_2_new.dart?raw';
   tabs={[
     {
       type: "flutter",
-      title: "RevenueCatUI.presentPaywall",
+      title: "presentPaywall / presentPaywallIfNeeded",
       content: flutter1,
     },
     {
       type: "flutter",
-      title: "PaywallView",
+      title: "PaywallView (manual)",
       content: flutter2,
     },
   ]}
 />
 
+For purchase and restore callbacks when using `PaywallView`, use the listeners below. When using `presentPaywall` or `presentPaywallIfNeeded`, handle the returned result.
+
 #### Listeners
 
-When using `PaywallView`, you may use one of the provided listeners to react to user actions.
+When using `PaywallView`, you may use one of the provided listeners to react to user actions (for example, `onPurchaseStarted`, `onPurchaseCompleted`, and `onRestoreCompleted`).
 Available listeners at this time are:
 
 - onPurchaseStarted
@@ -178,9 +229,13 @@ Available listeners at this time are:
 - onRestoreError
 - onDismiss
 
+For full details on the classes, methods, and listeners above, see the [SDK Reference](/platform-resources/sdk-reference).
+
 ### Kotlin Multiplatform
 
-You can present a fullscreen Paywall using the `Paywall` composable. You have the flexibility to decide when to call this. You could, for instance, add it to your navigation graph.
+RevenueCat Paywalls for Kotlin Multiplatform use the `Paywall` composable. Add it to your navigation graph or present it when needed.
+
+- **Paywall:** Use the `Paywall` composable in your UI (e.g. in your navigation graph) for full control over when and where the paywall appears.
 
 import kmp1 from "@site/code_blocks/tools/paywalls_kmp_1_new.kts?raw";
 
@@ -194,9 +249,11 @@ import kmp1 from "@site/code_blocks/tools/paywalls_kmp_1_new.kts?raw";
   ]}
 />
 
+For purchase and restore callbacks, use the listeners below.
+
 #### Listeners
 
-When using `Paywall`, you may use one of the provided listeners to react to user actions.
+When using `Paywall`, you may use one of the provided listeners to react to user actions (for example, `onPurchaseStarted`, `onPurchaseCompleted`, and `onRestoreCompleted`).
 Available listeners at this time are:
 
 - onPurchaseStarted
@@ -207,12 +264,13 @@ Available listeners at this time are:
 - onRestoreCompleted
 - onRestoreError
 
+For full details on the classes, methods, and listeners above, see the [SDK Reference](/platform-resources/sdk-reference).
+
 ### Capacitor
 
-There are several ways to present paywalls:
+RevenueCat Paywalls for Capacitor can be presented in two main ways:
 
-- Using `RevenueCatUI.presentPaywall`: this will display a paywall when invoked.
-- Using `RevenueCatUI.presentPaywallIfNeeded`: this will present a paywall only if the customer does not have an unlocked entitlement.
+- **presentPaywall / presentPaywallIfNeeded:** Display a paywall when invoked, or only when the customer does not have an unlocked entitlement.
 
 import cap1 from '@site/code_blocks/tools/paywalls_cap_1.ts.txt?raw';
 
@@ -220,37 +278,38 @@ import cap1 from '@site/code_blocks/tools/paywalls_cap_1.ts.txt?raw';
   tabs={[
     {
       type: "capacitor",
-      title: "RevenueCatUI.presentPaywall",
+      title: "presentPaywall / presentPaywallIfNeeded",
       content: cap1,
     },
   ]}
 />
 
+For purchase and restore callbacks, handle the returned result from `presentPaywall` or `presentPaywallIfNeeded`.
+
+For full details on the classes, methods, and listeners above, see the [SDK Reference](/platform-resources/sdk-reference).
+
 ### Unity
 
 RevenueCat Paywalls for Unity provide native paywall presentation on iOS and Android with simple C# APIs.
 
-There are several ways to present paywalls:
-
-- Using `PaywallsPresenter.Present()`: this will display a paywall when invoked.
-- Using `PaywallsPresenter.PresentIfNeeded()`: this will present a paywall only if the customer does not have an unlocked entitlement.
-- Using `PaywallsBehaviour` component: configure paywalls through Unity's Inspector for Editor workflows.
+- **Present:** Display a paywall when invoked with `PaywallsPresenter.Present()`.
+- **PresentIfNeeded:** Present only if the customer does not have an unlocked entitlement with `PaywallsPresenter.PresentIfNeeded()`.
+- **PaywallOptions / PaywallsBehaviour:** Use `PaywallOptions` in code for options, or the `PaywallsBehaviour` component in the Inspector (see below).
 
 import unity1 from '@site/code_blocks/tools/paywalls_unity_1.cs?raw';
 import unity2 from '@site/code_blocks/tools/paywalls_unity_2.cs?raw';
 import unity3 from '@site/code_blocks/tools/paywalls_unity_3.cs?raw';
-import RCCodeBlock from '@site/src/components/RCCodeBlock';
 
 <RCCodeBlock
   tabs={[
     {
       type: "unity",
-      title: "PaywallsPresenter.Present",
+      title: "Present",
       content: unity1,
     },
     {
       type: "unity",
-      title: "PaywallsPresenter.PresentIfNeeded",
+      title: "PresentIfNeeded",
       content: unity2,
     },
     {
@@ -260,6 +319,8 @@ import RCCodeBlock from '@site/src/components/RCCodeBlock';
     },
   ]}
 />
+
+For callbacks, use the result from `Present()` / `PresentIfNeeded()` or wire up UnityEvent callbacks on `PaywallsBehaviour` (see below).
 
 #### Using PaywallsBehaviour Component
 
@@ -279,10 +340,14 @@ For developers who prefer configuring paywalls through Unity's Inspector, you ca
 - Unity Editor is not supported for displaying the paywall UI.
 - Build to device when testing the paywall UI.
 
+For full details on the classes, methods, and listeners above, see the [SDK Reference](/platform-resources/sdk-reference).
+
 ### Web
 
-Paywalls are supported on the web through RevenueCat's Web Billing system. To serve your Paywall to customers on the web via a new or existing Web Purchase Link, [click here](https://www.revenuecat.com/docs/web/web-billing/paywalls).
-You can also present the same remotely configured paywall directly within your own web experience using the [purchases-js SDK](https://www.revenuecat.com/docs/web/web-billing/web-sdk). Call `presentPaywall` with the element that should host the paywall. Optionally, provide an offering from `purchases.getOfferings()` to choose which paywall to display. The SDK renders the paywall, runs the purchase, and resolves with the result.
+RevenueCat Paywalls on the web are supported through [Web Billing](https://www.revenuecat.com/docs/web/web-billing/paywalls). You can serve a paywall via a Web Purchase Link or embed it in your site using the [purchases-js SDK](https://www.revenuecat.com/docs/web/web-billing/web-sdk).
+
+- **Web Purchase Link:** Serve your paywall to customers via a link; [learn more](https://www.revenuecat.com/docs/web/web-billing/paywalls).
+- **purchases-js:** Call `presentPaywall` with the element that should host the paywall; optionally pass an offering from `purchases.getOfferings()`. The SDK renders the paywall, runs the purchase, and resolves with the result.
 
 ```ts title="Presenting a paywall from purchases-js"
 async function showPaywall() {
@@ -304,7 +369,7 @@ If you omit the `offering` parameter (or pass `undefined`), the paywall from the
 You can also specify an offering by passing it as parameter to `presentPaywall`.
 ```ts title="Presenting a paywall from purchases-js with a specific offering"
 async function showPaywall() {
-  const offerings=await purchases.getOfferings();
+  const offerings = await purchases.getOfferings();
   const offeringToUse= offerings.all['offeringIdToUse'];
   const paywallContainer = document.getElementById("paywall-container");
   try{
@@ -326,11 +391,15 @@ Individual components can be configured to have their own width settings within 
 When used in Web Purchase Links, if the window the paywall is being displayed in is wider than 968px, the additional space will be filled based on the specified background color of your WPL. [Learn more](https://www.revenuecat.com/docs/web/web-billing/web-purchase-links)
 :::
 
-## Handling paywall navigation
+For full details on the classes, methods, and listeners above, see the [SDK Reference](/platform-resources/sdk-reference).
+
+## Common topics
+
+### Handling paywall navigation
 
 When creating a paywall, consider whether it will be presented in a sheet, or as a full screen view. Sheets won't require a dedicated close button. Full screen views should have either a close button (if presented modally) or a back button (if part of a navigation stack or host) unless you intend to provide a hard paywall to your customers that cannot be bypassed.
 
-## Setting preferred locale
+### Setting preferred locale
 
 You can set a preferred locale for your paywalls to display in a specific language. This is useful when you want to override the device's default language for paywall content.
 
@@ -347,24 +416,24 @@ import preferredLocaleReactNative from '@site/code_blocks/tools/paywalls_preferr
 />
 
 
-## Custom fonts
- 
+### Custom fonts
+
 Using custom fonts in your paywall can now be done by uploading font files directly to RevenueCat. See the [Custom fonts](/tools/paywalls/creating-paywalls/components#custom-fonts) section for more information.
 
-### Including custom fonts in your app
+#### Including custom fonts in your app
 
 To improve the performance and reduce loading times of your paywall using custom fonts, you can add the font to your app's resources using the instructions below.
 
-#### Android
+##### Android
 To add a custom font to your Android app, place the font file in the `res/font` folder. Make sure that the filename (without the extension) corresponds to the font name in the paywall editor. See [the official Android documentation](https://developer.android.com/develop/ui/views/text-and-emoji/fonts-in-xml) for more information.
 
-#### iOS
+##### iOS
 To add a custom font to your iOS app, go to _File_ and then _Add Files to “Your Project Name”_. The font file should be a target member of your app, and be registered with iOS by adding the "Fonts provided by the application" key to your _Info.plist_ file. Make sure that the filename (without the extension) corresponds to the font name in the paywall editor. See [the official iOS documentation](https://developer.apple.com/documentation/uikit/adding-a-custom-font-to-your-app) for more information.
 
-#### Kotlin Multiplatform, React Native, and Flutter
+##### Kotlin Multiplatform, React Native, and Flutter
 Adding custom fonts to a hybrid app involves adding the font files to the underlying Android and iOS projects following the instructions above.
 
-## Intercepting an initiated purchase
+### Intercepting an initiated purchase
 
 You can intercept a purchase flow before it begins by using the `onPurchaseInitiated` view modifier in iOS and the `onPurchasePackageInitiated` method on the `PaywallListener` interface in Android. This allows you to perform custom logic, such as showing additional information to the user or performing validation checks, before the purchase proceeds.
 
@@ -388,13 +457,13 @@ import onPurchaseInitiatedKotlin from '@site/code_blocks/tools/paywalls_on_purch
   ]}
 />
 
-## Exit offers
+### Exit offers
 
 Exit offers allow you to present an alternative offer when a user dismisses your paywall without making a purchase. This is a powerful tool for recovering potentially lost conversions by giving users a second chance to subscribe with a different offer, such as a discounted price or alternative package.
 
 When a user tries to close or navigate back from the paywall, instead of immediately dismissing, a secondary paywall will be displayed with the exit offer.
 
-### How it works
+#### How it works
 
 1. User attempts to dismiss the main paywall without purchasing
 2. An exit offer paywall is automatically presented with an alternative offering
@@ -402,11 +471,11 @@ When a user tries to close or navigate back from the paywall, instead of immedia
    - Subscribe to the exit offer
    - Dismiss the exit offer, which then dismisses the main paywall
 
-### Configuration
+#### Configuration
 
 Exit offers are configured entirely in the [Paywalls editor](/tools/paywalls/creating-paywalls#configuring-exit-offers) in the RevenueCat dashboard. No code changes are required to use this feature. Once configured, the exit offer will automatically be presented when users attempt to dismiss the paywall, as long as you're using a supported presentation method.
 
-### Supported presentation methods
+#### Supported presentation methods
 
 Exit offers only work when using the `presentPaywall` or `presentPaywallIfNeeded` functions that display paywalls in iOS and cross platform SDKs. In Android, they work automatically when using the `PaywallDialog` and `PaywallActivity` classes.
 
@@ -414,7 +483,7 @@ Exit offers only work when using the `presentPaywall` or `presentPaywallIfNeeded
 Exit offers will **not** work if you manually embed paywall views/components in your UI (e.g., `PaywallView`, `Paywall` composable, `<RevenueCatUI.Paywall>` component, etc).
 :::
 
-### Platform support
+#### Platform support
 
 | Platform      | Minimum Version | 
 | :------------ | :-------------- |
@@ -428,27 +497,14 @@ Exit offers will **not** work if you manually embed paywall views/components in 
 
 ## Changes from legacy Paywalls
 
-#### Footer Paywalls
+### Footer Paywalls
 
-Our current Paywalls no longer support footer Paywalls. If your app requests the Paywall for an Offering to display that has a current Paywall, it will display a default version of that paywall instead (see below). Footer mode can still be used on legacy Paywalls templates using the existing method, or the new `.originalTemplatePaywallFooter()` method on SDK versions that support our current Paywalls.
+Our current Paywalls no longer support footer Paywalls. If your app requests the Paywall for an Offering to display that has a current Paywall, it will display a default version of that paywall instead (see [Default Paywall](#default-paywall)). Footer mode can still be used on legacy Paywalls templates using the existing method, or the new `.originalTemplatePaywallFooter()` method on SDK versions that support our current Paywalls.
 
-#### Close buttons
+### Close buttons
 
 Our current Paywalls do not require the `displayCloseButton` parameter (or equivalent for other platforms), and it will have no effect if used, since close buttons can be optionally added directly to your paywall as a component if desired.
 
-#### Font provider
+### Font provider
 
 Our current Paywalls do not support passing in a custom font provider as legacy Paywalls did. Instead, you can now configure Paywalls to use the fonts you've already installed in your app directly from the Dashboard. Using the original handler will have no effect on current Paywalls. For more information, [click here](/tools/paywalls/creating-paywalls/components#custom-fonts)
-
-## Default Paywall
-
-If you attempt to display a Paywall for an Offering that doesn't have one configured, or that has a Paywall configured which is not supported on the installed SDK version, the RevenueCatUI SDK will display a default Paywall.
-
-The default paywall displays all packages in the Offering.
-
-On iOS it uses the app's `accentColor` for styling.
-On Android, it uses the app's `Material3`'s `ColorScheme`.
-
-:::tip Targeting
-If your app supports our legacy Paywall templates, consider using Targeting to create an audience that only receives your new Paywall if they're using an SDK version that does not support our current Paywalls. This will ensure that older app versions continue to receive the Offering and Paywall that they support, while any app versions running a supported RC SDK version receive your new Paywall. [Learn more about Targeting.](/tools/targeting)
-:::
