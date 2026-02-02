@@ -338,16 +338,27 @@ import preferredLocaleSwift from '@site/code_blocks/tools/paywalls_preferred_loc
 import preferredLocaleKotlin from '@site/code_blocks/tools/paywalls_preferred_locale_2.kt?raw';
 import preferredLocaleReactNative from '@site/code_blocks/tools/paywalls_preferred_locale_3.ts.txt?raw';
 
-<RCCodeBlock
-  tabs={[
-    { type: "swift", content: preferredLocaleSwift, name: "iOS" },
-    { type: "kotlin", content: preferredLocaleKotlin, name: "Android" },
-    { type: "rn", content: preferredLocaleReactNative, name: "React Native" }
-  ]}
-/>
+<RCCodeBlock tabs={[
+    {
+        type: 'swift',
+        title: "iOS",
+        content: preferredLocaleSwift,
+    },
+    {
+        type: 'kotlin',
+        title: "Android",
+        content: preferredLocaleKotlin,
+    },
+    {
+        type: 'rn',
+        title: "React Native",
+        content: preferredLocaleReactNative,
+    },
+
+]}/>
 
 
-## Custom variables {#custom-variables}
+## Custom variables
 
 Custom variables allow you to pass dynamic values from your app to display in your paywall text. This is useful for displaying values like user-specific information, app state, or promotional messaging that changes based on your app's context.
 
