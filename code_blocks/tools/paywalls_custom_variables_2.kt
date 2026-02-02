@@ -1,7 +1,7 @@
 import com.revenuecat.purchases.CustomerInfo
 import com.revenuecat.purchases.Offering
 import com.revenuecat.purchases.ui.revenuecatui.activity.PaywallActivityLauncher
-import com.revenuecat.purchases.ui.revenuecatui.data.processed.CustomVariableValue
+import com.revenuecat.purchases.ui.revenuecatui.CustomVariableValue
 
 class MyActivity : ComponentActivity() {
     private val paywallActivityLauncher = PaywallActivityLauncher(this)

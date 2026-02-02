@@ -2,7 +2,7 @@ import androidx.compose.runtime.Composable
 import com.revenuecat.purchases.CustomerInfo
 import com.revenuecat.purchases.ui.revenuecatui.PaywallDialog
 import com.revenuecat.purchases.ui.revenuecatui.PaywallOptions
-import com.revenuecat.purchases.ui.revenuecatui.data.processed.CustomVariableValue
+import com.revenuecat.purchases.ui.revenuecatui.CustomVariableValue
 
 @Composable
 fun PaywallWithCustomVariables(
