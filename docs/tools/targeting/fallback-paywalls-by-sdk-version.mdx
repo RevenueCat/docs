@@ -7,7 +7,7 @@ hidden: false
 
 Some Paywall components such as [Countdown](/tools/paywalls/creating-paywalls/components#countdown) and [Video](/tools/paywalls/creating-paywalls/components#video-component) have minimum SDK version requirements.
 
-If you publish a paywall that includes unsupported components, customers on older SDK versions may not be able to render it and will fall back to RevenueCat's default paywall.
+If you publish a paywall that includes components not supported by a customer’s SDK version, the paywall will fail to render for those customers, getting [RevenueCat's default paywall](/tools/paywalls/displaying-paywalls#default-paywall) instead of your intended design.
 
 To customize what paywall older SDK customers get, you can implement a fallback paywall by creating a separate paywall and using Targeting to serve it only to them.
 
