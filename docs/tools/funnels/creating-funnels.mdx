@@ -86,10 +86,10 @@ After adding an authentication step, configure where users will be sent to authe
 
 1. Click on the authentication step in the editor
 2. In the right panel, enter your **External authentication URL**
-3. This should be the URL of your authentication page (e.g., `https://your-auth-system.com/login`)
+3. This should be the URL of your authentication page (e.g., `https://auth.example.com/login`)
 
 :::info Query parameters
-If your external authentication URL includes query parameters (e.g., `https://your-auth-system.com/login?tracking_id=123`), they will be preserved when RevenueCat appends the `redirect_uri` and `state` parameters. This is useful for passing tracking information or other data to your authentication system.
+If your external authentication URL includes query parameters (e.g., `https://auth.example.com/login?tracking_id=123`), they will be preserved when RevenueCat appends the `redirect_uri` and `state` parameters. This is useful for passing tracking information or other data to your authentication system.
 :::
 
 When a user reaches this authentication step, RevenueCat will redirect them to your external authentication URL with two query parameters:
@@ -121,7 +121,7 @@ You must include the `state` parameter exactly as you received it. Do not modify
 :::
 
 :::info Callback URL
-The `redirect_uri` parameter will always point to `/funnel/callback` on the appropriate domain (`https://signup.cat/funnel/callback` by default, or your custom domain if configured). You can either use the `redirect_uri` parameter dynamically in your redirect or hard-code the callback URL if you know your domain configuration.
+The `redirect_uri` parameter will always point to `/funnel/callback` on the appropriate domain (`https://signup.cat/funnel/callback` by default, or your custom domain if configured). For security, we recommend allowlisting these callback URLs in your authentication system. You can either use the `redirect_uri` parameter dynamically in your redirect or hard-code the callback URL if you know your domain configuration.
 :::
 
 #### Auto-advance for authenticated users
