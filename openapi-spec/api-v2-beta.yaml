@@ -8733,6 +8733,7 @@ components:
           $ref: '#/components/schemas/Duration'
           description: The duration of the subscription. Only supported for test store
             products.
+      additionalProperties: false
     ProductType:
       type: string
       nullable: false
