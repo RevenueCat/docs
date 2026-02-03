@@ -74,7 +74,7 @@ Now you’ll tell RevenueCat to serve the fallback Offering only when a customer
 That’s it: customers on SDK versions **below** your threshold will receive the fallback Offering (and therefore the fallback paywall), while newer SDK versions will continue to receive your primary Offering based on your other rules and/or Default Offering.
 
 ::::tip Rule ordering matters
-Targeting Rules are evaluated from top to bottom. Keep your “older SDK → fallback Offering” rule **above** any broader rules (like “Any audience”) so older customers don’t get matched by a more general rule first.
+Targeting Rules are evaluated from top to bottom. Keep your “older SDK → fallback Offering” rule **above** any broader rules (like “Any audience”) so customers using older SDK versions don’t get matched by a more general rule first.
 ::::
 
 ## Notes for multi-platform apps
