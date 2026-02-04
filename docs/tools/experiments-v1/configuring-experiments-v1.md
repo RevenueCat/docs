@@ -50,7 +50,7 @@ Duplicating is particularly useful when you want to:
 
 Regardless of which method you choose, you'll need to configure the experiment settings as described below.
 
-## Required fields
+## Fields
 
 To create your experiment, you must first enter:
 
@@ -106,7 +106,7 @@ Select from any of the available dimensions to filter which new customers are en
 
 **New customers to enroll**
 
-You can modify the % of new customers to enroll in 10% increments based on how much of your audience you want to expose to the test. Keep in mind that the enrolled new customers will be split evenly between all variants. For example, an A/B test (2 variants) that enrolls 10% of new customers would yield 5% in the Control group and 5% in the Treatment group. A 4-variant multivariate test enrolling 20% of new customers would yield 5% in each variant.
+You can modify the % of new customers to enroll (minimum 10%) based on how much of your audience you want to expose to the test. Keep in mind that the enrolled new customers will be split evenly between all variants. For example, an A/B test (2 variants) that enrolls 10% of new customers would yield 5% in the Control group and 5% in the Treatment group. A 4-variant multivariate test enrolling 20% of new customers would yield 5% in each variant.
 
 Once done, select **CREATE EXPERIMENT** to complete the process.
 
