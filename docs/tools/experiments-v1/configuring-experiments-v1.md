@@ -52,13 +52,22 @@ Regardless of which method you choose, you'll need to configure the experiment s
 
 ## Required fields
 
-To create your experiment, you must first enter the following required fields:
+To create your experiment, you must first enter:
 
-- Experiment name
-- Control variant
-  - The Offering(s) that will be used for your Control group
-- Treatment variant
-  - The Offering(s) that will be used for your Treatment group (the variant in your experiment)
+- **Experiment name**: A descriptive name for your test
+- **Experiment type** (optional): Choose from preset types (Introductory offer, Free trial offer, Paywall design, Price point, Subscription duration, Subscription ordering, or Other) to get relevant default metric suggestions
+- **Notes** (optional): Add markdown-formatted notes to document your hypothesis and track insights
+- **Variant A (Control)**: The Offering(s) for your control group (baseline)
+- **Variant B (Treatment)**: The Offering(s) for your first treatment group
+
+### Adding more variants for multivariate testing
+
+You can add up to 2 additional treatment variants:
+- **Variant C (Treatment)**: Optional second treatment variant
+- **Variant D (Treatment)**: Optional third treatment variant
+
+Multivariate experiments allow you to test multiple variations against your control simultaneously, helping you identify the best-performing option more efficiently than running sequential A/B tests.
+
 
 ## Using Placements in Experiments
 
@@ -97,7 +106,7 @@ Select from any of the available dimensions to filter which new customers are en
 
 **New customers to enroll**
 
-You can modify the % of new customers to enroll in 10% increments based on how much of your audience you want to expose to the test. Keep in mind that the enrolled new customers will be split between the two variants, so a test that enrolls 10% of new customers would yield 5% in the Control group and 5% in the Treatment group.
+You can modify the % of new customers to enroll in 10% increments based on how much of your audience you want to expose to the test. Keep in mind that the enrolled new customers will be split evenly between all variants. For example, an A/B test (2 variants) that enrolls 10% of new customers would yield 5% in the Control group and 5% in the Treatment group. A 4-variant multivariate test enrolling 20% of new customers would yield 5% in each variant.
 
 Once done, select **CREATE EXPERIMENT** to complete the process.
 
@@ -105,7 +114,7 @@ Once done, select **CREATE EXPERIMENT** to complete the process.
 
 When viewing a new experiment, you can start, edit, or delete the experiment.
 
-- **Start**: Starts the experiment. Customer enrollment and data collection begins immediately, but results will take up to 24 hours to begin populating.
+- **Start**: Starts the experiment. Customer enrollment and data collection begins immediately, but results will take up to 24 hours to begin populating. After that, results refresh periodically - check the **Last updated** timestamp on the Results page to see when data was last refreshed.
 - **Edit**: Change the name, enrollment criteria, or Offerings in an experiment before it's been started. After it's been started, only the percent of new customers to enroll can be edited.
 - **Delete**: Deletes the experiment.
 
@@ -153,6 +162,38 @@ When an experiment is stopped:
 - New customers will no longer be enrolled
 - Customers who were enrolled will begin receiving the Default Offering on their next paywall view
 - Results will continue to refresh for 400 days after the experiment has ended
+
+## Rolling out a winner
+
+Once you've identified a winning variant from your experiment results, you can roll it out to all your users. RevenueCat provides several options for applying your experiment results:
+
+### Rollout options
+
+When you mark a variant as the winner, you can choose from these rollout strategies:
+
+1. **Set as default offering**: The winning variant's offering becomes your project's default offering, served to all customers who aren't targeted by specific rules
+2. **Create targeting rule**: Create a new targeting rule that serves the winning offering to a specific audience (e.g., specific countries, platforms, or custom attributes)
+3. **Mark winner only**: Record which variant won without immediately changing your offering configuration - useful for tracking insights and planning future rollouts
+
+### How to roll out a winner
+
+1. Navigate to your experiment's results page
+2. Review the performance data to identify the winning variant
+3. Click **Review and mark as winner**
+4. Select your preferred rollout option
+5. Confirm the rollout
+
+| Winner recommendation | Rollout options |
+|:---:|:---:|
+| ![Winner recommendation](/docs_images/experiments/v1/winner-recommendation.png) | ![Winner rollout modal](/docs_images/experiments/v1/winner-rollout-modal.png) |
+
+:::tip Gradual rollouts
+If you want to roll out your winning variant gradually rather than all at once, choose the "Create targeting rule" option and set the rule to apply to a percentage of your audience. You can increase the percentage over time as you gain confidence.
+:::
+
+:::info Experiment data after rollout
+After rolling out a winner, your experiment results remain available for 400 days, allowing you to track long-term performance and learn from your test.
+:::
 
 ## Running multiple tests simultaneously
 
@@ -203,7 +244,7 @@ When an experiment is running, only the percent of new customers to enroll can b
 | Can I edit the Offerings in a started experiment? | Editing an Offering for an active experiment would make the results unusable. Be sure to check before starting your experiment that your chosen Offerings render correctly in your app(s). If you need to make a change to your Offerings, stop the experiment and create a new one with the updated Offerings. |
 | Can I run multiple experiments simultaneously? | Yes, as long as they meet the criteria described above. |
 | Can I run an experiment targeting different app versions for each app in my project? | No, at this time we don't support setting up an experiment in this way. However, you can certainly create unique experiments for each app, and target them by app version to achieve the same result in independent test. |
-| Can I add multiple Treatment groups to a single test? | No, you cannot add multiple Treatment groups to a single test. However, by running multiple tests on the same audience to capture each desired variant you can achieve the same result. |
+| Can I add multiple Treatment groups to a single test? | Yes, experiments support up to 4 variants total: 1 Control (Variant A) and up to 3 Treatment variants (B, C, D). This allows you to test multiple variations simultaneously in a single multivariate experiment. |
 | Can I edit the enrollment criteria of a started experiment? | Before an experiment has been started, all aspects of enrollment criteria can be edited. However, once an experiment has been started, only new customers to enroll can be edited; since editing the audience that an experiment is exposed to would alter the nature of the test. |
 | What's the difference between pausing and stopping an experiment? | Pausing temporarily stops new customer enrollment while existing participants continue to see their assigned variant. The experiment can be resumed later. Stopping permanently ends the experiment: new customers won't be enrolled and existing participants will see the Default Offering on their next paywall view. A stopped experiment cannot be restarted. Both paused and stopped experiments continue collecting data for up to 400 days. |
 | Can I pause an experiment multiple times? | Yes, you can pause and resume an experiment as many times as needed. This allows you to control enrollment based on your testing needs and timeline. |
@@ -213,4 +254,7 @@ When an experiment is running, only the percent of new customers to enroll can b
 | Can I restart an experiment after it's been stopped? | After you choose to stop an experiment, new customers will no longer be enrolled in it, and it cannot be restarted. However, if you need to temporarily halt new enrollments with the option to resume later, consider using the pause feature instead. Paused experiments can be resumed at any time. If you've already stopped an experiment and want to continue testing, create a new experiment and choose the same Offerings as the stopped experiment. You can use the duplicate feature to quickly recreate the same experiment configuration. *(NOTE: Results for stopped experiments will continue to refresh for 400 days after the experiment has ended)* |
 | Can I duplicate an experiment? | Yes, you can duplicate any existing experiment from the experiments list using the context menu. This creates a new experiment with the same configuration as the original, which you can then modify as needed before starting. This is useful for running similar tests or follow-up experiments. |
 | What happens to customers that were enrolled in an experiment after it's been stopped? | New customers will no longer be enrolled in an experiment after it's been stopped, and customers who were already enrolled in the experiment will begin receiving the Default Offering if they reach a paywall again. Since we continually refresh results for 400 days after an experiment has been ended, you may see renewals from these customers in your results, since they were enrolled as part of the test while it was running; but new subscriptions started by these customers after the experiment ended and one-time purchases made after the experiment ended will not be included in the results. |
+| How many variants should I use in my experiment? | Start with 2 variants (A/B test) for most cases. Use 3-4 variants (multivariate) when you have multiple distinct hypotheses to test simultaneously. Keep in mind that more variants require more customers to reach statistical significance, so tests take longer. |
+| What experiment type should I choose? | Choose the preset that best matches what you're testing. Presets provide relevant default metrics: "Price point" suggests revenue metrics, "Free trial offer" suggests trial conversion metrics, etc. You can always customize metrics after selecting a type. |
+| What happens after I pick a winner? | After analyzing your results, you can roll out the winning variant by: (1) Setting the winning variant's offering as your default offering, (2) Creating a new targeting rule to serve the winning offering to specific audiences, or (3) Simply marking a winner without immediate rollout for your records. You'll choose the rollout approach when you declare the winner. |
 

@@ -18,6 +18,18 @@ Through Experiments, you can test any variable related to the products you're se
 
 In addition, by programming your app to be responsive to Offering Metadata, you can test any other paywall variable outside of your product selection as well. [Learn more here](/tools/offering-metadata).
 
+### Testing multiple variations at once
+
+With support for up to 4 variants, you can test multiple hypotheses simultaneously. For example:
+- **Variant A (Control)**: Current $9.99/month pricing
+- **Variant B**: Test $7.99/month (lower price)
+- **Variant C**: Test $12.99/month (higher price) 
+- **Variant D**: Test $9.99/month with 7-day trial (same price, add trial)
+
+This multivariate approach can be faster than running sequential A/B tests, but requires more traffic to reach statistical significance.
+
+When choosing experiment types in the dashboard, select the preset that matches your primary variable (e.g., "Price point" for pricing tests, "Free trial offer" for trial tests). This will suggest relevant metrics to track for your experiment.
+
 ## Setting up a new offering to test your hypothesis
 
 Experiments uses [Offerings](/getting-started/entitlements#offerings) to represent the hypothesis that's being tested (aka: the group of products that will be offered to your customers). An Offering is a collection of Packages that contain Products from each store you're looking to serve that Offering on.
