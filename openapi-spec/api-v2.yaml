@@ -17,6 +17,8 @@ tags:
   description: Operations about packages.
 - name: Product
   description: Operations about products.
+- name: Virtual Currency
+  description: Operations about virtual currencies.
 - name: Purchase
   description: Operations about purchases.
 - name: Subscription
@@ -2652,6 +2654,367 @@ paths:
         \ permission(s): <code>project_configuration:products:read_write</code>. This\
         \ endpoint belongs to the <strong>Project Configuration</strong> domain, which\
         \ has a default rate limit of <strong>60 requests per minute</strong>."
+  /projects/{project_id}/virtual_currencies:
+    get:
+      summary: Get a list of virtual currencies
+      operationId: list-virtual-currencies
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:virtual_currencies:read
+      x-release-status: public
+      tags:
+      - Virtual Currency
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: starting_after
+        in: query
+        required: false
+        schema:
+          type: string
+          example: ent12354
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          example: 10
+          default: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListVirtualCurrencies'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:virtual_currencies:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
+    post:
+      summary: Create a virtual currency
+      operationId: create-virtual-currency
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:virtual_currencies:read_write
+      x-release-status: public
+      tags:
+      - Virtual Currency
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - code
+              - name
+              properties:
+                code:
+                  description: The unique code for this virtual currency
+                  type: string
+                  minLength: 1
+                  maxLength: 10
+                  example: GLD
+                name:
+                  description: The display name of the virtual currency
+                  type: string
+                  minLength: 1
+                  maxLength: 50
+                  example: Gold
+                description:
+                  description: Description of the virtual currency
+                  nullable: true
+                  type: string
+                  minLength: 1
+                  maxLength: 1500
+                  example: Gold currency used in the game
+                product_grants:
+                  description: Product grants that define how products grant this
+                    virtual currency
+                  nullable: true
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/VirtualCurrencyProductGrantInput'
+              additionalProperties: false
+      responses:
+        '201':
+          description: Success. The virtual currency was created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualCurrency'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:virtual_currencies:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
+  /projects/{project_id}/virtual_currencies/{virtual_currency_code}:
+    get:
+      summary: Get a virtual currency
+      operationId: get-virtual-currency
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:virtual_currencies:read
+      x-release-status: public
+      tags:
+      - Virtual Currency
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: virtual_currency_code
+        in: path
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 10
+        description: The virtual currency code
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualCurrency'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:virtual_currencies:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
+    post:
+      summary: Update a virtual currency
+      operationId: update-virtual-currency
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:virtual_currencies:read_write
+      x-release-status: public
+      tags:
+      - Virtual Currency
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: virtual_currency_code
+        in: path
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 10
+        description: The virtual currency code
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: The display name of the virtual currency
+                  type: string
+                  minLength: 1
+                  maxLength: 50
+                  example: Gold
+                description:
+                  description: Description of the virtual currency
+                  nullable: true
+                  type: string
+                  minLength: 1
+                  maxLength: 1500
+                  example: Gold currency used in the game
+                product_grants:
+                  description: Product grants that define how products grant this
+                    virtual currency
+                  nullable: true
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/VirtualCurrencyProductGrantInput'
+              additionalProperties: false
+      responses:
+        '200':
+          description: Success. The virtual currency was updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualCurrency'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:virtual_currencies:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
+    delete:
+      summary: Delete a virtual currency
+      operationId: delete-virtual-currency
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:virtual_currencies:read_write
+      x-release-status: public
+      tags:
+      - Virtual Currency
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: virtual_currency_code
+        in: path
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 10
+        description: The virtual currency code
+      responses:
+        '200':
+          description: Success. The virtual currency was deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedObject'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:virtual_currencies:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/entitlements/{entitlement_id}:
     get:
       summary: Get an entitlement
@@ -7098,6 +7461,7 @@ components:
           - offering
           - package
           - product
+          - virtual_currency
           - webhook_integration
           type: string
         id:
@@ -7891,6 +8255,38 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/subscriptions
+      additionalProperties: false
+    ListVirtualCurrencies:
+      type: object
+      required:
+      - items
+      - next_page
+      - object
+      - url
+      title: VirtualCurrencyList
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value. Always has the value `list`.
+          enum:
+          - list
+          type: string
+        items:
+          description: Details about each object.
+          items:
+            $ref: '#/components/schemas/VirtualCurrency'
+          type: array
+        next_page:
+          description: URL to access the next page of the project's virtual currencies.
+            If not present / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/proj1ab2c3d4/virtual_currencies?starting_after=GLD
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/proj1ab2c3d4/virtual_currencies
       additionalProperties: false
     ListVirtualCurrenciesBalances:
       type: object
@@ -9523,6 +9919,62 @@ components:
           minLength: 1
           maxLength: 255
           example: app_1234567890abcdef
+    VirtualCurrency:
+      type: object
+      required:
+      - project_id
+      - code
+      - name
+      - created_at
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - virtual_currency
+          type: string
+        project_id:
+          description: ID of the project to which the virtual currency belongs
+          nullable: false
+          minLength: 1
+          maxLength: 20
+          type: string
+          example: proj1ab2c3d4
+        code:
+          description: The unique code for this virtual currency
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 10
+          example: GLD
+        name:
+          description: The display name of the virtual currency
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 50
+          example: Gold
+        created_at:
+          description: The date the virtual currency was created at in ms since epoch
+          nullable: false
+          type: integer
+          format: int64
+          example: 1658399423658
+        description:
+          description: Description of the virtual currency
+          nullable: true
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: Gold currency used in the game
+        product_grants:
+          description: The grants that define how products grant this virtual currency
+          nullable: true
+          type: array
+          items:
+            $ref: '#/components/schemas/VirtualCurrencyProductGrant'
+      additionalProperties: false
     VirtualCurrencyBalance:
       type: object
       title: VirtualCurrencyBalance
@@ -9550,6 +10002,78 @@ components:
           description: The name of the virtual currency.
           type: string
       additionalProperties: false
+    VirtualCurrencyProductGrant:
+      type: object
+      required:
+      - object
+      - product_ids
+      - amount
+      - trial_amount
+      - expire_at_cycle_end
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - virtual_currency.product_grant
+          type: string
+        product_ids:
+          description: The list of product IDs that grant this virtual currency
+          type: array
+          minItems: 1
+          items:
+            type: string
+            minLength: 1
+            maxLength: 255
+            example: prode1a2b3c4d5
+        amount:
+          description: The amount of virtual currency granted
+          type: integer
+          minimum: 1
+          example: 100
+        trial_amount:
+          description: The amount of virtual currency granted during trial period
+          nullable: false
+          type: integer
+          minimum: 0
+          example: 0
+        expire_at_cycle_end:
+          description: Whether the grant expires at the end of the subscription cycle
+          nullable: false
+          type: boolean
+          example: false
+      additionalProperties: false
+    VirtualCurrencyProductGrantInput:
+      type: object
+      required:
+      - product_ids
+      - amount
+      properties:
+        product_ids:
+          description: The list of product IDs that grant this virtual currency
+          type: array
+          minItems: 1
+          items:
+            type: string
+            minLength: 1
+            maxLength: 255
+            example: prode1a2b3c4d5
+        amount:
+          description: The amount of virtual currency granted
+          type: integer
+          minimum: 1
+          example: 100
+        trial_amount:
+          description: The amount of virtual currency granted during trial period
+          nullable: true
+          type: integer
+          minimum: 0
+          example: 0
+        expire_at_cycle_end:
+          description: Whether the grant expires at the end of the subscription cycle
+          nullable: true
+          type: boolean
+          example: false
     WebhookEventType:
       type: string
       description: The type of event that triggers the webhook
@@ -9921,6 +10445,7 @@ x-tagGroups:
   - Offering
   - Package
   - Product
+  - Virtual Currency
   - Purchase
   - Subscription
   - Invoice
