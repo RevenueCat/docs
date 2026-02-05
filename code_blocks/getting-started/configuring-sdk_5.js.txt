@@ -6,7 +6,10 @@ Future<void> initPlatformState() async {
   await Purchases.setLogLevel(LogLevel.debug);
   
   PurchasesConfiguration configuration;
-  if (Platform.isAndroid) {
+  if (kIsWeb) {
+    // Only needed if you're targeting web
+    configuration = PurchasesConfiguration(<public_web_billing_api_key>)
+  } else if (Platform.isAndroid) {
     configuration = PurchasesConfiguration(<public_google_api_key>);
     if (buildingForAmazon) { 
       // use your preferred way to determine if this build is for Amazon store
