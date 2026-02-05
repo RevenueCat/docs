@@ -6918,7 +6918,28 @@ components:
               maxLength: 256
     AmazonAppCreate:
       type: object
+      required:
+      - name
+      - type
+      - amazon
       properties:
+        name:
+          description: The name of the app
+          type: string
+          minLength: 1
+          maxLength: 255
+          nullable: false
+        type:
+          description: 'The platform of the app.
+
+            Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
+            for more details.
+
+            '
+          type: string
+          enum:
+          - amazon
+          nullable: false
         amazon:
           description: Amazon type details. Should only be used when type is amazon.
           type: object
@@ -6936,6 +6957,7 @@ components:
               description: Your Amazon Developer Identity Shared Key
               type: string
               nullable: false
+      additionalProperties: false
     App:
       allOf:
       - type: object
@@ -7004,36 +7026,7 @@ components:
       - $ref: '#/components/schemas/PaddleApp'
       additionalProperties: true
     AppCreate:
-      allOf:
-      - type: object
-        required:
-        - name
-        - type
-        properties:
-          name:
-            description: The name of the app
-            type: string
-            minLength: 1
-            maxLength: 255
-            nullable: false
-          type:
-            description: 'The platform of the app.
-
-              Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
-              for more details.
-
-              '
-            type: string
-            enum:
-            - amazon
-            - app_store
-            - mac_app_store
-            - play_store
-            - stripe
-            - rc_billing
-            - roku
-            - paddle
-            nullable: false
+      oneOf:
       - $ref: '#/components/schemas/AmazonAppCreate'
       - $ref: '#/components/schemas/AppStoreAppCreate'
       - $ref: '#/components/schemas/MacAppStoreAppCreate'
@@ -7042,6 +7035,17 @@ components:
       - $ref: '#/components/schemas/RCBillingAppCreate'
       - $ref: '#/components/schemas/RokuAppCreate'
       - $ref: '#/components/schemas/PaddleAppCreate'
+      discriminator:
+        propertyName: type
+        mapping:
+          amazon: '#/components/schemas/AmazonAppCreate'
+          app_store: '#/components/schemas/AppStoreAppCreate'
+          mac_app_store: '#/components/schemas/MacAppStoreAppCreate'
+          play_store: '#/components/schemas/PlayStoreAppCreate'
+          stripe: '#/components/schemas/StripeAppCreate'
+          rc_billing: '#/components/schemas/RCBillingAppCreate'
+          roku: '#/components/schemas/RokuAppCreate'
+          paddle: '#/components/schemas/PaddleAppCreate'
     AppStoreApp:
       type: object
       properties:
@@ -7060,7 +7064,28 @@ components:
               maxLength: 256
     AppStoreAppCreate:
       type: object
+      required:
+      - name
+      - type
+      - app_store
       properties:
+        name:
+          description: The name of the app
+          type: string
+          minLength: 1
+          maxLength: 255
+          nullable: false
+        type:
+          description: 'The platform of the app.
+
+            Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
+            for more details.
+
+            '
+          type: string
+          enum:
+          - app_store
+          nullable: false
         app_store:
           description: App Store type details. Should only be used when type is app_store.
           type: object
@@ -7134,6 +7159,7 @@ components:
               minLength: 1
               maxLength: 20
               nullable: false
+      additionalProperties: false
     AuthenticatedManagementUrl:
       type: object
       required:
@@ -9115,7 +9141,28 @@ components:
               maxLength: 256
     MacAppStoreAppCreate:
       type: object
+      required:
+      - name
+      - type
+      - mac_app_store
       properties:
+        name:
+          description: The name of the app
+          type: string
+          minLength: 1
+          maxLength: 255
+          nullable: false
+        type:
+          description: 'The platform of the app.
+
+            Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
+            for more details.
+
+            '
+          type: string
+          enum:
+          - mac_app_store
+          nullable: false
         mac_app_store:
           description: Mac App Store type details. Should only be used when type is
             mac_app_store.
@@ -9136,6 +9183,7 @@ components:
               minLength: 32
               maxLength: 32
               nullable: false
+      additionalProperties: false
     MonetaryAmount:
       type: object
       required:
@@ -9498,7 +9546,27 @@ components:
               maxLength: 70
     PaddleAppCreate:
       type: object
+      required:
+      - name
+      - type
       properties:
+        name:
+          description: The name of the app
+          type: string
+          minLength: 1
+          maxLength: 255
+          nullable: false
+        type:
+          description: 'The platform of the app.
+
+            Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
+            for more details.
+
+            '
+          type: string
+          enum:
+          - paddle
+          nullable: false
         paddle:
           description: Paddle Billing details. Should only be used when type is paddle.
           type: object
@@ -9521,6 +9589,7 @@ components:
               nullable: true
               type: boolean
               example: true
+      additionalProperties: false
     Paywall:
       type: object
       required:
@@ -9589,7 +9658,28 @@ components:
               maxLength: 256
     PlayStoreAppCreate:
       type: object
+      required:
+      - name
+      - type
+      - play_store
       properties:
+        name:
+          description: The name of the app
+          type: string
+          minLength: 1
+          maxLength: 255
+          nullable: false
+        type:
+          description: 'The platform of the app.
+
+            Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
+            for more details.
+
+            '
+          type: string
+          enum:
+          - play_store
+          nullable: false
         play_store:
           description: Play Store type details. Should only be used when type is play_store.
           type: object
@@ -9603,6 +9693,7 @@ components:
               minLength: 1
               maxLength: 256
               nullable: false
+      additionalProperties: false
     Product:
       type: object
       required:
@@ -10062,7 +10153,27 @@ components:
               $ref: '#/components/schemas/RCBillingCurrency'
     RCBillingAppCreate:
       type: object
+      required:
+      - name
+      - type
       properties:
+        name:
+          description: The name of the app
+          type: string
+          minLength: 1
+          maxLength: 255
+          nullable: false
+        type:
+          description: 'The platform of the app.
+
+            Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
+            for more details.
+
+            '
+          type: string
+          enum:
+          - rc_billing
+          nullable: false
         rc_billing:
           description: Revenue Cat Billing Store type details
           type: object
@@ -10094,6 +10205,7 @@ components:
               maxLength: 320
             default_currency:
               $ref: '#/components/schemas/RCBillingCurrency'
+      additionalProperties: false
     RCBillingCurrency:
       type: string
       description: ISO 4217 currency code
@@ -10168,7 +10280,27 @@ components:
               maxLength: 30
     RokuAppCreate:
       type: object
+      required:
+      - name
+      - type
       properties:
+        name:
+          description: The name of the app
+          type: string
+          minLength: 1
+          maxLength: 255
+          nullable: false
+        type:
+          description: 'The platform of the app.
+
+            Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
+            for more details.
+
+            '
+          type: string
+          enum:
+          - roku
+          nullable: false
         roku:
           description: Roku Channel Store details. Should only be used when type is
             roku.
@@ -10194,6 +10326,7 @@ components:
               nullable: true
               minLength: 1
               maxLength: 30
+      additionalProperties: false
     StoreKitConfigFile:
       type: object
       description: Contents of a generated StoreKit config file for an app
@@ -10264,7 +10397,27 @@ components:
               maxLength: 256
     StripeAppCreate:
       type: object
+      required:
+      - name
+      - type
       properties:
+        name:
+          description: The name of the app
+          type: string
+          minLength: 1
+          maxLength: 255
+          nullable: false
+        type:
+          description: 'The platform of the app.
+
+            Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
+            for more details.
+
+            '
+          type: string
+          enum:
+          - stripe
+          nullable: false
         stripe:
           description: Stripe type details. Should only be used when type is stripe.
           type: object
@@ -10278,6 +10431,7 @@ components:
               minLength: 1
               maxLength: 256
               nullable: true
+      additionalProperties: false
     Subscription:
       type: object
       required:
