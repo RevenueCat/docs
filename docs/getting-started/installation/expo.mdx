@@ -250,3 +250,31 @@ When your app runs inside Expo Go, `react-native-purchases` automatically detect
 This means you can still preview subscription UIs, test integration flows, and continue development without needing to build a custom development client immediately.
 
 However, to fully test in-app purchases and access real RevenueCat functionality, you must use a [development build](/getting-started/installation/expo#create-an-expo-development-build).
+
+## React Native Web Configuration
+
+RevenueCat's React Native SDK supports web platforms, allowing you to manage subscriptions across React Native web, mobile, and desktop apps using the same SDK. This applies to Expo projects that target web platforms.
+
+### Web Product Configuration
+
+To enable web purchases in your Expo app, you'll need to configure products using a [RevenueCat Web Billing app](/web/web-billing/overview).
+
+1. **Create a Web Billing App** in your RevenueCat project dashboard
+2. **Configure your products** for web purchases
+
+For detailed instructions on setting up web products and configuring Web Billing, see the [Web Billing Overview](/web/web-billing/overview).
+
+:::info Web Billing vs In-App Purchases
+Web Billing is RevenueCat's billing engine for web purchases, which uses Stripe as the payment processor. This is separate from iOS/Android in-app purchases but integrates with the same RevenueCat entitlements system, allowing unified subscription management across platforms.
+:::
+
+### Current Limitations
+
+When using the React Native SDK on web with Expo, keep in mind the following:
+
+- **Web Billing Required**: Web purchases require RevenueCat Web Billing setup. Native iOS/Android in-app purchases cannot be processed through the web platform.
+- **Payment Processing**: Web Billing purchases use Stripe as the payment processor through RevenueCat Web Billing.
+- **Customer Portal**: Users can manage their web subscriptions through the RevenueCat-provided customer portal.
+- **Platform Separation**: Web products must be configured separately from iOS/Android products in the RevenueCat dashboard, though entitlements can be shared across platforms.
+- **User Identity**: For unified cross-platform subscriptions, ensure you're using the same `appUserID` across web and mobile platforms.
+- **Unsupported operations**: There are some unsupported operations. Mainly operations `getProducts`, `purchaseProduct` or `restorePurchases` won't work on web environments.

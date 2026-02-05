@@ -127,6 +127,34 @@ import androidBuildFixContent from "@site/code_blocks/getting-started/installati
 
 This solution forces the use of a specific R8 version that resolves the dependency conflicts. For more details, see the [Google Issue Tracker](https://issuetracker.google.com/issues/342522142#comment8).
 
+## React Native Web Configuration
+
+RevenueCat's React Native SDK supports web platforms, allowing you to manage subscriptions across React Native web, mobile, and desktop apps using the same SDK.
+
+### Web Product Configuration
+
+To enable web purchases in your React Native app, you'll need to configure products using a [RevenueCat Web Billing app](/web/web-billing/overview).
+
+1. **Create a Web Billing App** in your RevenueCat project dashboard
+2. **Configure your products** for web purchases
+
+For detailed instructions on setting up web products and configuring Web Billing, see the [Web Billing Overview](/web/web-billing/overview).
+
+:::info Web Billing vs In-App Purchases
+Web Billing is RevenueCat's billing engine for web purchases, which uses Stripe as the payment processor. This is separate from iOS/Android in-app purchases but integrates with the same RevenueCat entitlements system, allowing unified subscription management across platforms.
+:::
+
+### Current Limitations
+
+When using the React Native SDK on web, keep in mind the following:
+
+- **Web Billing Required**: Web purchases require RevenueCat Web Billing setup. Native iOS/Android in-app purchases cannot be processed through the web platform.
+- **Payment Processing**: Web Billing purchases use Stripe as the payment processor through RevenueCat Web Billing.
+- **Customer Portal**: Users can manage their web subscriptions through the RevenueCat-provided customer portal.
+- **Platform Separation**: Web products must be configured separately from iOS/Android products in the RevenueCat dashboard, though entitlements can be shared across platforms.
+- **User Identity**: For unified cross-platform subscriptions, ensure you're using the same `appUserID` across web and mobile platforms.
+- **Unsupported operations**: There are some unsupported operations. Mainly operations `getProducts`, `purchaseProduct` or `restorePurchases` won't work on web environments.
+
 ## Next Steps
 
 - Now that you've installed the Purchases SDK in your React Native app, get started by [initializing an instance of Purchases →](/getting-started/quickstart#3-using-revenuecats-purchases-sdk)

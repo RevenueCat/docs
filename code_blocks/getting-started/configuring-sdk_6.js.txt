@@ -8,7 +8,10 @@ export default function App() {
   useEffect(() => {
     Purchases.setLogLevel(Purchases.LOG_LEVEL.DEBUG);
 
-    if (Platform.OS === 'ios') {
+    if (Platform.OS === 'web') {
+      // Only needed if you're targeting web
+      Purchases.configure({ apiKey: <public_web_billing_api_key> });
+    } else if (Platform.OS === 'ios') {
     	Purchases.configure({ apiKey: <public_apple_api_key> });
     } else if (Platform.OS === 'android') {
     	Purchases.configure({ apiKey: <public_google_api_key> });
