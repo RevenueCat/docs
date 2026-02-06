@@ -904,7 +904,7 @@ const aiToolsCategory = Category({
   items: [
     SubCategory({
       label: "RevenueCat MCP Server",
-      slug: "mcp/overview",
+      slug: "mcp",
       itemsPathPrefix: "mcp/",
       items: [
         Page({ slug: "setup" }),
