@@ -7,6 +7,8 @@ tags:
   description: Operations about apps.
 - name: Charts & Metrics
   description: Operations about chart metrics.
+- name: Collaborator
+  description: Operations about collaborators.
 - name: Customer
   description: Operations about customers.
 - name: Entitlement
@@ -1193,6 +1195,69 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
+  /projects/{project_id}/collaborators:
+    get:
+      summary: Get a list of collaborators
+      operationId: list-collaborators
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:collaborators:read
+      x-release-status: public
+      tags:
+      - Collaborator
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: starting_after
+        in: query
+        required: false
+        schema:
+          type: string
+          example: ent12354
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          example: 10
+          default: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCollaborators'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:collaborators:read</code>.
         This endpoint belongs to the <strong>Project Configuration</strong> domain,
         which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/customers:
@@ -7284,6 +7349,57 @@ components:
           nullable: true
           type: string
           example: Geography
+    Collaborator:
+      type: object
+      required:
+      - id
+      - email
+      - role
+      - accepted_at
+      - has_mfa
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - collaborator
+          type: string
+        id:
+          description: The id of the collaborator
+          nullable: false
+          type: string
+          minLength: 1
+          example: collab1a2b3c4d5
+        name:
+          description: The name of the collaborator
+          nullable: true
+          type: string
+          example: John Doe
+        email:
+          description: The email address of the collaborator
+          nullable: false
+          type: string
+          format: email
+          example: john.doe@example.com
+        role:
+          description: The role of the collaborator
+          nullable: false
+          type: string
+          example: admin
+        accepted_at:
+          description: The date when the collaborator accepted the invitation in ms
+            since epoch
+          nullable: true
+          type: integer
+          format: int64
+          example: 1658399423658
+        has_mfa:
+          description: Whether the collaborator has 2FA enabled
+          nullable: false
+          type: boolean
+          example: true
+      additionalProperties: false
     Country:
       type: string
       nullable: true
@@ -8385,6 +8501,38 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/projec1a2b3c4d/apps
+      additionalProperties: false
+    ListCollaborators:
+      type: object
+      required:
+      - items
+      - next_page
+      - object
+      - url
+      title: CollaboratorList
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value. Always has the value `list`.
+          enum:
+          - list
+          type: string
+        items:
+          description: Details about each object.
+          items:
+            $ref: '#/components/schemas/Collaborator'
+          type: array
+        next_page:
+          description: URL to access the next page of the project's collaborators.
+            If not present / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/proj1ab2c3d4/collaborators?starting_after=collab1a2b3c4d5
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/proj1ab2c3d4/collaborators
       additionalProperties: false
     ListCustomerActiveEntitlements:
       type: object
@@ -11148,6 +11296,7 @@ x-tagGroups:
   tags:
   - App
   - Charts & Metrics
+  - Collaborator
   - Customer
   - Entitlement
   - Offering
