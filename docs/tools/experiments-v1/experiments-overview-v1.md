@@ -5,7 +5,7 @@ slug: experiments-overview-v1
 hidden: false
 ---
 
-Experiments allow you to answer questions about your users' behaviors and app's business by A/B testing two unique paywall configurations in your app and analyzing the full subscription lifecycle to understand which variant is producing more value for your business.
+Experiments allow you to answer questions about your users' behaviors and app's business by A/B testing multiple paywall configurations (2-4 variants) in your app and analyzing the full subscription lifecycle to understand which variant is producing more value for your business.
 
 While price testing is one of the most common forms of A/B testing in mobile apps, Experiments are based on RevenueCat Offerings, which means you can A/B test more than just prices, including: trial length, subscription length, different groupings of products, etc.
 
@@ -24,6 +24,22 @@ If you need help making your paywall more dynamic, see [Displaying Products](/ge
 :::info
 To learn more about creating a new Offering to test, and some tips to keep in mind when creating new Products on the stores, [check out our guide here](/tools/experiments-v1/creating-offerings-to-test).
 :::
+
+## Experiment Types
+
+When creating an experiment, you can choose from preset experiment types that help guide your setup with relevant default metrics:
+
+- **Introductory offer** - Test different introductory pricing strategies
+- **Free trial offer** - Compare trial lengths or presence/absence of trials
+- **Paywall design** - Test different paywall layouts and presentations
+- **Price point** - Compare different price points for your products
+- **Subscription duration** - Test different subscription lengths (monthly vs yearly)
+- **Subscription ordering** - Test different product ordering or prominence
+Choosing the right preset automatically suggests relevant metrics for your experiment type, making it easier to track what matters most for your test.
+
+You can also click **+ New experiment** to create a custom experiment with your own metrics without selecting a preset.
+
+![Experiment type selection](/docs_images/experiments/v1/experiments-type-selection.png)
 
 ![Experiments](/docs_images/experiments/v1/experiments-learn.webp)
 
@@ -55,8 +71,8 @@ Programmatically displaying the `current` Offering in your app when you fetch Of
 :::
 
 1. Create the Offerings that you want to test (make sure your app displays the `current` Offering.) You can skip this step if you already have the Offerings you want to test.
-2. Create an Experiment and choose the Offerings to test. You can create a new experiment from scratch or duplicate an existing experiment to save time when testing similar configurations. By default you can choose one Offering per variant, but by creating Placements your Experiment can instead have a unique Offering displayed for each paywall location in your app. [Learn more here](https://www.revenuecat.com/docs/tools/experiments-v1/configuring-experiments-v1#using-placements-in-experiments).
-3. Run your experiment and monitor the results. There is no time limit on experiments, so stop it when you feel confident choosing an outcome. (Learn more about interpreting your results [here](/tools/experiments-v1/experiments-results-v1))
+2. Create an Experiment and choose between 2-4 variants to test. You can select from experiment type presets (Price point, Free trial offer, etc.) to get relevant default metrics, or create a custom experiment. You can create a new experiment from scratch or duplicate an existing experiment to save time when testing similar configurations. By default you can choose one Offering per variant, but by creating Placements your Experiment can instead have a unique Offering displayed for each paywall location in your app. [Learn more here](https://www.revenuecat.com/docs/tools/experiments-v1/configuring-experiments-v1#using-placements-in-experiments).
+3. Run your experiment and monitor the results. There is no time limit on experiments, so you can pause enrollment if needed and stop it when you feel confident choosing an outcome. (Learn more about interpreting your results [here](/tools/experiments-v1/experiments-results-v1))
 4. Once you’re satisfied with the results you can set the winning Offering(s), if any, as default manually.
 5. Then, you're ready to run a new experiment.
 
@@ -81,6 +97,10 @@ You can't restart a test once it's been stopped.
 **Test only one variable at a time**
 
 It's tempting to try to test multiple variables at once, such as free trial length and price; resist that temptation! The results are often clearer when only one variable is tested. You can run more tests for other variables as you further optimize your LTV.
+
+:::tip Multivariate testing
+With support for up to 4 variants, you can test multiple variations of the same variable simultaneously (e.g., testing $5, $7, and $9 price points in a single experiment). This is different from testing multiple variables at once - each variant should differ by the same variable to keep results interpretable.
+:::
 
 **Run multiple tests simultaneously to isolate variables & audiences**
 

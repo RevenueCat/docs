@@ -25,6 +25,8 @@ You must first verify your email address with us in order to receive Experiment 
 
 We'll send you an email for each experiment you've had running in the last week in the Projects that you've subscribed to receive these summaries for. It will include the latest results for the experiment, focused on the following key metrics.
 
+For multivariate experiments (3-4 variants), the summary includes performance for all variants compared to the control.
+
 | Metric                    | Definition                                                                                                                                                                                         |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Initial conversion rate   | The percent of customers who purchased any product.                                                                                                                                                |
@@ -33,7 +35,7 @@ We'll send you an email for each experiment you've had running in the last week 
 | Realized LTV (revenue)    | The total revenue that's been generated so far (realized).                                                                                                                                         |
 | Realized LTV per customer | The total revenue that's been generated so far (realized), divided by the number of customers. This should frequently be your primary success metric for determining which variant performed best. |
 
-All metrics are reported separately for the Control variant, the Treatment variant, and the relative difference between them.
+All metrics are reported separately for the Control variant, each Treatment variant, and the relative difference between each treatment and control.
 
 :::tip Full results on the Dashboard
 To analyze how these metrics have changed over time, review other metrics, and breakdown performance by product or platform; you can click on the link in the email to go directly to the full results of your experiment.
