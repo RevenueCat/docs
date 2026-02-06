@@ -154,6 +154,38 @@ When an experiment is stopped:
 - Customers who were enrolled will begin receiving the Default Offering on their next paywall view
 - Results will continue to refresh for 400 days after the experiment has ended
 
+## Rolling out a winner
+
+Once you've identified a winning variant from your experiment results, you can roll it out to all your users. RevenueCat provides several options for applying your experiment results:
+
+### Rollout options
+
+When you mark a variant as the winner, you can choose from these rollout strategies:
+
+1. **Set as default offering**: The winning variant's offering becomes your project's default offering, served to all customers who aren't targeted by specific rules
+2. **Create targeting rule**: Create a new targeting rule that serves the winning offering to a specific audience (e.g., specific countries, platforms, or custom attributes)
+3. **Mark winner only**: Record which variant won without immediately changing your offering configuration - useful for tracking insights and planning future rollouts
+
+### How to roll out a winner
+
+1. Navigate to your experiment's results page
+2. Review the performance data to identify the winning variant
+3. Click **Review and mark as winner**
+4. Select your preferred rollout option
+5. Confirm the rollout
+
+| Winner recommendation | Rollout options |
+|:---:|:---:|
+| ![Winner recommendation](/docs_images/experiments/v1/winner-recommendation.png) | ![Winner rollout modal](/docs_images/experiments/v1/winner-rollout-modal.png) |
+
+:::tip Gradual rollouts
+If you want to roll out your winning variant gradually rather than all at once, choose the "Create targeting rule" option and set the rule to apply to a percentage of your audience. You can increase the percentage over time as you gain confidence.
+:::
+
+:::info Experiment data after rollout
+After rolling out a winner, your experiment results remain available for 400 days, allowing you to track long-term performance and learn from your test.
+:::
+
 ## Running multiple tests simultaneously
 
 You can use Experiments to run multiple test simultaneously as long as:
@@ -213,4 +245,5 @@ When an experiment is running, only the percent of new customers to enroll can b
 | Can I restart an experiment after it's been stopped? | After you choose to stop an experiment, new customers will no longer be enrolled in it, and it cannot be restarted. However, if you need to temporarily halt new enrollments with the option to resume later, consider using the pause feature instead. Paused experiments can be resumed at any time. If you've already stopped an experiment and want to continue testing, create a new experiment and choose the same Offerings as the stopped experiment. You can use the duplicate feature to quickly recreate the same experiment configuration. *(NOTE: Results for stopped experiments will continue to refresh for 400 days after the experiment has ended)* |
 | Can I duplicate an experiment? | Yes, you can duplicate any existing experiment from the experiments list using the context menu. This creates a new experiment with the same configuration as the original, which you can then modify as needed before starting. This is useful for running similar tests or follow-up experiments. |
 | What happens to customers that were enrolled in an experiment after it's been stopped? | New customers will no longer be enrolled in an experiment after it's been stopped, and customers who were already enrolled in the experiment will begin receiving the Default Offering if they reach a paywall again. Since we continually refresh results for 400 days after an experiment has been ended, you may see renewals from these customers in your results, since they were enrolled as part of the test while it was running; but new subscriptions started by these customers after the experiment ended and one-time purchases made after the experiment ended will not be included in the results. |
+| What happens after I pick a winner? | After analyzing your results, you can roll out the winning variant by: (1) Setting the winning variant's offering as your default offering, (2) Creating a new targeting rule to serve the winning offering to specific audiences, or (3) Simply marking a winner without immediate rollout for your records. You'll choose the rollout approach when you declare the winner. |
 

@@ -57,7 +57,7 @@ Programmatically displaying the `current` Offering in your app when you fetch Of
 1. Create the Offerings that you want to test (make sure your app displays the `current` Offering.) You can skip this step if you already have the Offerings you want to test.
 2. Create an Experiment and choose the Offerings to test. You can create a new experiment from scratch or duplicate an existing experiment to save time when testing similar configurations. By default you can choose one Offering per variant, but by creating Placements your Experiment can instead have a unique Offering displayed for each paywall location in your app. [Learn more here](https://www.revenuecat.com/docs/tools/experiments-v1/configuring-experiments-v1#using-placements-in-experiments).
 3. Run your experiment and monitor the results. There is no time limit on experiments, so stop it when you feel confident choosing an outcome. (Learn more about interpreting your results [here](/tools/experiments-v1/experiments-results-v1))
-4. Once you’re satisfied with the results you can set the winning Offering(s), if any, as default manually.
+4. Once you’re satisfied with the results roll out the winning variant. You can set the winning Offering as default, create a targeting rule, or simply mark the winner for your records.
 5. Then, you're ready to run a new experiment.
 
 Visit [Configuring Experiments](https://www.revenuecat.com/docs/configuring-experiments-v1) to learn how to setup your first test.
