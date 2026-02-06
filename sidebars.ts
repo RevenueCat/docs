@@ -366,6 +366,7 @@ const targetingCategory = Category({
     Page({ slug: "tools/targeting" }),
     Page({ slug: "tools/targeting/placements" }),
     Page({ slug: "tools/targeting/custom-attributes" }),
+    Page({ slug: "tools/targeting/fallback-paywalls-by-sdk-version" }),
   ],
 });
 
@@ -458,6 +459,7 @@ const launchCategory = Category({
     Page({ slug: "test-and-launch/launch-checklist" }),
     Page({ slug: "test-and-launch/app-store-rejections" }),
     Page({ slug: "platform-resources/developer-store-payments" }),
+    Page({ slug: "test-and-launch/releasing-ios-subscription-app" }),
   ],
 });
 
@@ -474,7 +476,7 @@ const platformResourcesCategory = Category({
       slug: "platform-resources/apple-platform-resources",
       items: [
         Page({
-           slug: "platform-resources/apple-platform-resources/app-store-connect-setup-guide",
+          slug: "platform-resources/apple-platform-resources/app-store-connect-setup-guide",
         }),
         SubCategory({
           label: "Service Credentials",
@@ -1131,6 +1133,10 @@ const supportResourcesCategory = Category({
     Link({
       label: "App Store Rejections",
       slug: "/test-and-launch/app-store-rejections",
+    }),
+    Link({
+      label: "Submitting an iOS Subscription App",
+      slug: "/test-and-launch/submitting-ios-subscription-app",
     }),
   ],
 });

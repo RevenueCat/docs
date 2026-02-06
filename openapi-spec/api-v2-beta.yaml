@@ -17,6 +17,8 @@ tags:
   description: Operations about packages.
 - name: Product
   description: Operations about products.
+- name: Virtual Currency
+  description: Operations about virtual currencies.
 - name: Purchase
   description: Operations about purchases.
 - name: Subscription
@@ -2819,6 +2821,367 @@ paths:
         \ permission(s): <code>project_configuration:products:read_write</code>. This\
         \ endpoint belongs to the <strong>Project Configuration</strong> domain, which\
         \ has a default rate limit of <strong>60 requests per minute</strong>."
+  /projects/{project_id}/virtual_currencies:
+    get:
+      summary: Get a list of virtual currencies
+      operationId: list-virtual-currencies
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:virtual_currencies:read
+      x-release-status: public
+      tags:
+      - Virtual Currency
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: starting_after
+        in: query
+        required: false
+        schema:
+          type: string
+          example: ent12354
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          example: 10
+          default: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListVirtualCurrencies'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:virtual_currencies:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
+    post:
+      summary: Create a virtual currency
+      operationId: create-virtual-currency
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:virtual_currencies:read_write
+      x-release-status: public
+      tags:
+      - Virtual Currency
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - code
+              - name
+              properties:
+                code:
+                  description: The unique code for this virtual currency
+                  type: string
+                  minLength: 1
+                  maxLength: 10
+                  example: GLD
+                name:
+                  description: The display name of the virtual currency
+                  type: string
+                  minLength: 1
+                  maxLength: 50
+                  example: Gold
+                description:
+                  description: Description of the virtual currency
+                  nullable: true
+                  type: string
+                  minLength: 1
+                  maxLength: 1500
+                  example: Gold currency used in the game
+                product_grants:
+                  description: Product grants that define how products grant this
+                    virtual currency
+                  nullable: true
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/VirtualCurrencyProductGrantInput'
+              additionalProperties: false
+      responses:
+        '201':
+          description: Success. The virtual currency was created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualCurrency'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:virtual_currencies:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
+  /projects/{project_id}/virtual_currencies/{virtual_currency_code}:
+    get:
+      summary: Get a virtual currency
+      operationId: get-virtual-currency
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:virtual_currencies:read
+      x-release-status: public
+      tags:
+      - Virtual Currency
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: virtual_currency_code
+        in: path
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 10
+        description: The virtual currency code
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualCurrency'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:virtual_currencies:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
+    post:
+      summary: Update a virtual currency
+      operationId: update-virtual-currency
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:virtual_currencies:read_write
+      x-release-status: public
+      tags:
+      - Virtual Currency
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: virtual_currency_code
+        in: path
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 10
+        description: The virtual currency code
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: The display name of the virtual currency
+                  type: string
+                  minLength: 1
+                  maxLength: 50
+                  example: Gold
+                description:
+                  description: Description of the virtual currency
+                  nullable: true
+                  type: string
+                  minLength: 1
+                  maxLength: 1500
+                  example: Gold currency used in the game
+                product_grants:
+                  description: Product grants that define how products grant this
+                    virtual currency
+                  nullable: true
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/VirtualCurrencyProductGrantInput'
+              additionalProperties: false
+      responses:
+        '200':
+          description: Success. The virtual currency was updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualCurrency'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:virtual_currencies:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
+    delete:
+      summary: Delete a virtual currency
+      operationId: delete-virtual-currency
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:virtual_currencies:read_write
+      x-release-status: public
+      tags:
+      - Virtual Currency
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: virtual_currency_code
+        in: path
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 10
+        description: The virtual currency code
+      responses:
+        '200':
+          description: Success. The virtual currency was deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedObject'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:virtual_currencies:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/entitlements/{entitlement_id}:
     get:
       summary: Get an entitlement
@@ -4524,8 +4887,8 @@ paths:
         which has a default rate limit of <strong>480 requests per minute</strong>.'
   /projects/{project_id}/subscriptions/{subscription_id}/transactions:
     get:
-      summary: Get a Play Store subscription's transactions
-      operationId: get-play-store-subscription-transactions
+      summary: Get a Play Store or App Store subscription's transactions
+      operationId: get-play-store-or-app-store-subscription-transactions
       x-revenuecat-rate-limiting-domain: customer_information
       x-scopes:
       - customer_information:subscriptions:read
@@ -6073,6 +6436,291 @@ paths:
       description: 'This endpoint requires the following permission(s): <code>charts_metrics:overview:read</code>.
         This endpoint belongs to the <strong>Charts & Metrics</strong> domain, which
         has a default rate limit of <strong>5 requests per minute</strong>.'
+  /projects/{project_id}/charts/{chart_name}:
+    get:
+      summary: Get chart data
+      description: "Returns time-series data for a specific chart.\n\n**Response Structure**\n\
+        \nThe response includes:\n- Chart metadata (category, display_name, description)\n\
+        - Time boundaries (start_date, end_date, last_computed_at)\n- Data values\
+        \ (array of data points)\n- Summary statistics\n- Segment information (when\
+        \ segmented)\n\n**Chart Types**\n\nDifferent charts may return data in slightly\
+        \ different formats:\n- Standard charts: values as arrays of data points with\
+        \ timestamps\n- Cohort charts: values include cohort-specific data structures\n\
+        - Segmented charts: include segment information in the response\n\n**Filtering\
+        \ and Segmentation**\n\nUse the `/charts/{chart_name}/options` endpoint to\
+        \ discover available\nfilters and segments for a specific chart before making\
+        \ requests.\n\nFilter parameters vary by chart and can be passed as additional\
+        \ query parameters.\n This endpoint requires the following permission(s):\
+        \ <code>charts_metrics:charts:read</code>. This endpoint belongs to the <strong>Charts\
+        \ & Metrics</strong> domain, which has a default rate limit of <strong>5 requests\
+        \ per minute</strong>."
+      operationId: get-chart-data
+      x-revenuecat-rate-limiting-domain: charts_metrics
+      x-scopes:
+      - charts_metrics:charts:read
+      x-release-status: public
+      tags:
+      - Charts & Metrics
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: chart_name
+        description: 'Name of the chart to retrieve.
+
+          '
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          enum:
+          - actives
+          - actives_movement
+          - actives_new
+          - arr
+          - churn
+          - cohort_explorer
+          - conversion_to_paying
+          - customers_new
+          - ltv_per_customer
+          - ltv_per_paying_customer
+          - mrr
+          - mrr_movement
+          - refund_rate
+          - revenue
+          - subscription_retention
+          - subscription_status
+          - trials
+          - trials_movement
+          - trials_new
+          - customers_active
+          - trial_conversion_rate
+          example: revenue
+      - name: realtime
+        description: Whether to request real-time (v3) charts. Defaults to true. Set
+          to false to request the v2 charts.
+        in: query
+        schema:
+          type: boolean
+          default: true
+      - name: filters
+        description: JSON array of chart filters. Each filter is a ChartFilter object.
+        in: query
+        schema:
+          type: string
+        example: '[{"name":"country","values":["US","UK"]}]'
+      - name: selectors
+        description: JSON object of chart selectors.
+        in: query
+        schema:
+          type: string
+        example: '{"conversion_timeframe":"7_days","revenue_type":"proceeds"}'
+      - name: currency
+        description: ISO 4217 currency code
+        in: query
+        schema:
+          type: string
+          enum:
+          - USD
+          - EUR
+          - GBP
+          - AUD
+          - CAD
+          - JPY
+          - BRL
+          - KRW
+          - CNY
+          - MXN
+          - SEK
+          - PLN
+        example: EUR
+      - name: resolution
+        description: 'Time resolution for the chart data.
+
+          Use the chart options endpoint to discover available resolutions and their
+          IDs.
+
+          '
+        in: query
+        schema:
+          type: string
+          example: '0'
+      - name: start_date
+        description: Start date for the data range (ISO 8601 format)
+        in: query
+        schema:
+          type: string
+          format: date
+          example: '2024-01-01'
+      - name: end_date
+        description: End date for the data range (ISO 8601 format)
+        in: query
+        schema:
+          type: string
+          format: date
+          example: '2024-12-31'
+      - name: segment
+        description: 'Segment the data by this dimension. Use the chart options endpoint
+
+          to discover available segments for a chart.
+
+          '
+        in: query
+        schema:
+          type: string
+          example: country
+      responses:
+        '200':
+          description: Chart data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChartData'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+  /projects/{project_id}/charts/{chart_name}/options:
+    get:
+      summary: Get available options for a chart
+      description: 'Returns the available configuration options for a specific chart.
+
+
+        Use this endpoint to discover:
+
+        - **Resolutions**: Available time granularities (day, week, month, etc.)
+
+        - **Segments**: Dimensions you can segment the data by (country, store, product,
+        etc.)
+
+        - **Filters**: Available filters and their possible values
+
+
+        The options returned are specific to the chart and may vary based on
+
+        your project''s data and configuration.
+
+
+        **Usage**
+
+
+        Call this endpoint before requesting chart data to:
+
+        1. Build dynamic filter UIs
+
+        2. Validate parameters before making chart data requests
+
+        3. Discover available dimensions for analysis
+
+        . This endpoint requires the following permission(s): <code>charts_metrics:charts:read</code>.
+        This endpoint belongs to the <strong>Charts & Metrics</strong> domain, which
+        has a default rate limit of <strong>5 requests per minute</strong>.'
+      operationId: get-chart-options
+      x-revenuecat-rate-limiting-domain: charts_metrics
+      x-scopes:
+      - charts_metrics:charts:read
+      x-release-status: public
+      tags:
+      - Charts & Metrics
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: chart_name
+        description: 'Name of the chart to retrieve.
+
+          '
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          enum:
+          - actives
+          - actives_movement
+          - actives_new
+          - arr
+          - churn
+          - cohort_explorer
+          - conversion_to_paying
+          - customers_new
+          - ltv_per_customer
+          - ltv_per_paying_customer
+          - mrr
+          - mrr_movement
+          - refund_rate
+          - revenue
+          - subscription_retention
+          - subscription_status
+          - trials
+          - trials_movement
+          - trials_new
+          - customers_active
+          - trial_conversion_rate
+          example: revenue
+      - name: realtime
+        description: Whether to request real-time (v3) charts. Defaults to true. Set
+          to false to request the v2 charts.
+        in: query
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Chart options retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChartOptions'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
   /projects/{project_id}/subscriptions:
     get:
       summary: Search subscriptions by store subscription identifier
@@ -6270,7 +6918,28 @@ components:
               maxLength: 256
     AmazonAppCreate:
       type: object
+      required:
+      - name
+      - type
+      - amazon
       properties:
+        name:
+          description: The name of the app
+          type: string
+          minLength: 1
+          maxLength: 255
+          nullable: false
+        type:
+          description: 'The platform of the app.
+
+            Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
+            for more details.
+
+            '
+          type: string
+          enum:
+          - amazon
+          nullable: false
         amazon:
           description: Amazon type details. Should only be used when type is amazon.
           type: object
@@ -6288,6 +6957,7 @@ components:
               description: Your Amazon Developer Identity Shared Key
               type: string
               nullable: false
+      additionalProperties: false
     App:
       allOf:
       - type: object
@@ -6356,36 +7026,7 @@ components:
       - $ref: '#/components/schemas/PaddleApp'
       additionalProperties: true
     AppCreate:
-      allOf:
-      - type: object
-        required:
-        - name
-        - type
-        properties:
-          name:
-            description: The name of the app
-            type: string
-            minLength: 1
-            maxLength: 255
-            nullable: false
-          type:
-            description: 'The platform of the app.
-
-              Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
-              for more details.
-
-              '
-            type: string
-            enum:
-            - amazon
-            - app_store
-            - mac_app_store
-            - play_store
-            - stripe
-            - rc_billing
-            - roku
-            - paddle
-            nullable: false
+      oneOf:
       - $ref: '#/components/schemas/AmazonAppCreate'
       - $ref: '#/components/schemas/AppStoreAppCreate'
       - $ref: '#/components/schemas/MacAppStoreAppCreate'
@@ -6394,6 +7035,17 @@ components:
       - $ref: '#/components/schemas/RCBillingAppCreate'
       - $ref: '#/components/schemas/RokuAppCreate'
       - $ref: '#/components/schemas/PaddleAppCreate'
+      discriminator:
+        propertyName: type
+        mapping:
+          amazon: '#/components/schemas/AmazonAppCreate'
+          app_store: '#/components/schemas/AppStoreAppCreate'
+          mac_app_store: '#/components/schemas/MacAppStoreAppCreate'
+          play_store: '#/components/schemas/PlayStoreAppCreate'
+          stripe: '#/components/schemas/StripeAppCreate'
+          rc_billing: '#/components/schemas/RCBillingAppCreate'
+          roku: '#/components/schemas/RokuAppCreate'
+          paddle: '#/components/schemas/PaddleAppCreate'
     AppStoreApp:
       type: object
       properties:
@@ -6412,7 +7064,28 @@ components:
               maxLength: 256
     AppStoreAppCreate:
       type: object
+      required:
+      - name
+      - type
+      - app_store
       properties:
+        name:
+          description: The name of the app
+          type: string
+          minLength: 1
+          maxLength: 255
+          nullable: false
+        type:
+          description: 'The platform of the app.
+
+            Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
+            for more details.
+
+            '
+          type: string
+          enum:
+          - app_store
+          nullable: false
         app_store:
           description: App Store type details. Should only be used when type is app_store.
           type: object
@@ -6486,6 +7159,7 @@ components:
               minLength: 1
               maxLength: 20
               nullable: false
+      additionalProperties: false
     AuthenticatedManagementUrl:
       type: object
       required:
@@ -6508,6 +7182,275 @@ components:
           maxLength: 255
           example: https://billing.revenuecat.com/app1a2b3c4/sub1ab2c3d4e5?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
       additionalProperties: false
+    ChartData:
+      type: object
+      description: Chart data response containing time-series data and metadata
+      required:
+      - object
+      - category
+      - display_type
+      - display_name
+      - description
+      - resolution
+      - values
+      - yaxis
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - chart_data
+          type: string
+        category:
+          description: Category the chart belongs to
+          type: string
+          example: revenue
+        display_type:
+          description: Type of chart visualization
+          type: string
+          example: line
+        display_name:
+          description: Human-readable name of the chart
+          type: string
+          example: Revenue
+        description:
+          description: Description of what the chart shows
+          type: string
+        documentation_link:
+          description: Link to documentation for this chart
+          nullable: true
+          type: string
+        last_computed_at:
+          description: Timestamp when the chart data was last computed (ms since epoch)
+          nullable: true
+          type: integer
+          format: int64
+        start_date:
+          description: Start date of the data range (ms since epoch)
+          nullable: true
+          type: integer
+          format: int64
+        end_date:
+          description: End date of the data range (ms since epoch)
+          nullable: true
+          type: integer
+          format: int64
+        yaxis_currency:
+          description: Currency used for monetary values
+          type: string
+          example: USD
+        filtering_allowed:
+          description: Whether filtering is allowed for this chart
+          type: boolean
+        segmenting_allowed:
+          description: Whether segmentation is allowed for this chart
+          type: boolean
+        resolution:
+          description: Time resolution of the data points
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - quarter
+          - year
+          example: day
+        values:
+          description: Chart data points. Structure varies by chart type - can be
+            arrays of numbers or objects with timestamps and values.
+          type: array
+          items:
+            oneOf:
+            - type: array
+              items:
+                type: number
+                nullable: true
+            - type: object
+              additionalProperties: true
+        summary:
+          description: Summary statistics for the chart data
+          nullable: true
+          type: object
+          additionalProperties: true
+        yaxis:
+          description: Y-axis configuration including unit
+          type: string
+          example: $
+        segments:
+          description: Segment information when data is segmented
+          nullable: true
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              display_name:
+                type: string
+        segments_limit:
+          description: Maximum number of segments returned
+          nullable: true
+          type: integer
+        measures:
+          description: Measure definitions for the chart (v3 charts)
+          nullable: true
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        user_selectors:
+          description: Currently selected values for user-configurable selectors (keyed
+            by selector name)
+          nullable: true
+          type: object
+          additionalProperties:
+            type: string
+        unsupported_params:
+          description: Parameters that were provided but not supported
+          nullable: true
+          type: object
+          properties:
+            filters:
+              type: array
+              items:
+                type: string
+            segment:
+              type: string
+              nullable: true
+      additionalProperties: false
+    ChartFilterOption:
+      type: object
+      description: A filter option for a chart
+      required:
+      - id
+      - display_name
+      - options
+      properties:
+        id:
+          description: Unique identifier for the filter
+          type: string
+          example: country
+        display_name:
+          description: Human-readable name for the filter
+          type: string
+          example: Country
+        group_display_name:
+          description: Group name for organizing filter options
+          nullable: true
+          type: string
+          example: Geography
+        options:
+          description: Available values for this filter
+          type: array
+          items:
+            type: object
+            required:
+            - id
+            - display_name
+            additionalProperties: true
+            properties:
+              id:
+                description: Unique identifier for the option value
+                type: string
+                example: US
+              display_name:
+                description: Human-readable name for the option value
+                type: string
+                example: United States
+    ChartOptions:
+      type: object
+      description: Available options for filtering and segmenting a chart
+      required:
+      - object
+      - resolutions
+      - segments
+      - filters
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - chart_options
+          type: string
+        resolutions:
+          description: Available time resolutions for the chart
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: Resolution ID to use in requests
+              display_name:
+                type: string
+                description: Human-readable name
+            required:
+            - id
+            - display_name
+          example:
+          - id: '0'
+            display_name: day
+          - id: '1'
+            display_name: week
+          - id: '2'
+            display_name: month
+        segments:
+          description: Available segmentation options
+          type: array
+          items:
+            $ref: '#/components/schemas/ChartSegmentOption'
+        filters:
+          description: Available filter options
+          type: array
+          items:
+            $ref: '#/components/schemas/ChartFilterOption'
+        user_selectors:
+          description: User-configurable selectors for the chart (keyed by selector
+            name)
+          nullable: true
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              default:
+                type: string
+                description: Default value for the selector
+              display_name:
+                type: string
+                description: Human-readable name
+              options:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    display_name:
+                      type: string
+                  required:
+                  - id
+                  - display_name
+      additionalProperties: false
+    ChartSegmentOption:
+      type: object
+      description: A segmentation option for a chart
+      required:
+      - id
+      - display_name
+      properties:
+        id:
+          description: Unique identifier for the segment option
+          type: string
+          example: country
+        display_name:
+          description: Human-readable name for the segment option
+          type: string
+          example: Country
+        group_display_name:
+          description: Group name for organizing segment options
+          nullable: true
+          type: string
+          example: Geography
     Country:
       type: string
       nullable: true
@@ -7265,6 +8208,7 @@ components:
           - offering
           - package
           - product
+          - virtual_currency
           - webhook_integration
           type: string
         id:
@@ -8082,6 +9026,38 @@ components:
           type: string
           example: /v2/projects/proj1ab2c3d4/customers/19b8de26-77c1-49f1-aa18-019a391603e2/subscriptions
       additionalProperties: false
+    ListVirtualCurrencies:
+      type: object
+      required:
+      - items
+      - next_page
+      - object
+      - url
+      title: VirtualCurrencyList
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value. Always has the value `list`.
+          enum:
+          - list
+          type: string
+        items:
+          description: Details about each object.
+          items:
+            $ref: '#/components/schemas/VirtualCurrency'
+          type: array
+        next_page:
+          description: URL to access the next page of the project's virtual currencies.
+            If not present / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/proj1ab2c3d4/virtual_currencies?starting_after=GLD
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/proj1ab2c3d4/virtual_currencies
+      additionalProperties: false
     ListVirtualCurrenciesBalances:
       type: object
       title: VirtualCurrenciesBalancesList
@@ -8165,7 +9141,28 @@ components:
               maxLength: 256
     MacAppStoreAppCreate:
       type: object
+      required:
+      - name
+      - type
+      - mac_app_store
       properties:
+        name:
+          description: The name of the app
+          type: string
+          minLength: 1
+          maxLength: 255
+          nullable: false
+        type:
+          description: 'The platform of the app.
+
+            Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
+            for more details.
+
+            '
+          type: string
+          enum:
+          - mac_app_store
+          nullable: false
         mac_app_store:
           description: Mac App Store type details. Should only be used when type is
             mac_app_store.
@@ -8186,6 +9183,7 @@ components:
               minLength: 32
               maxLength: 32
               nullable: false
+      additionalProperties: false
     MonetaryAmount:
       type: object
       required:
@@ -8548,7 +9546,27 @@ components:
               maxLength: 70
     PaddleAppCreate:
       type: object
+      required:
+      - name
+      - type
       properties:
+        name:
+          description: The name of the app
+          type: string
+          minLength: 1
+          maxLength: 255
+          nullable: false
+        type:
+          description: 'The platform of the app.
+
+            Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
+            for more details.
+
+            '
+          type: string
+          enum:
+          - paddle
+          nullable: false
         paddle:
           description: Paddle Billing details. Should only be used when type is paddle.
           type: object
@@ -8571,6 +9589,7 @@ components:
               nullable: true
               type: boolean
               example: true
+      additionalProperties: false
     Paywall:
       type: object
       required:
@@ -8639,7 +9658,28 @@ components:
               maxLength: 256
     PlayStoreAppCreate:
       type: object
+      required:
+      - name
+      - type
+      - play_store
       properties:
+        name:
+          description: The name of the app
+          type: string
+          minLength: 1
+          maxLength: 255
+          nullable: false
+        type:
+          description: 'The platform of the app.
+
+            Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
+            for more details.
+
+            '
+          type: string
+          enum:
+          - play_store
+          nullable: false
         play_store:
           description: Play Store type details. Should only be used when type is play_store.
           type: object
@@ -8653,6 +9693,7 @@ components:
               minLength: 1
               maxLength: 256
               nullable: false
+      additionalProperties: false
     Product:
       type: object
       required:
@@ -8733,6 +9774,7 @@ components:
           $ref: '#/components/schemas/Duration'
           description: The duration of the subscription. Only supported for test store
             products.
+      additionalProperties: false
     ProductType:
       type: string
       nullable: false
@@ -9111,7 +10153,27 @@ components:
               $ref: '#/components/schemas/RCBillingCurrency'
     RCBillingAppCreate:
       type: object
+      required:
+      - name
+      - type
       properties:
+        name:
+          description: The name of the app
+          type: string
+          minLength: 1
+          maxLength: 255
+          nullable: false
+        type:
+          description: 'The platform of the app.
+
+            Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
+            for more details.
+
+            '
+          type: string
+          enum:
+          - rc_billing
+          nullable: false
         rc_billing:
           description: Revenue Cat Billing Store type details
           type: object
@@ -9143,6 +10205,7 @@ components:
               maxLength: 320
             default_currency:
               $ref: '#/components/schemas/RCBillingCurrency'
+      additionalProperties: false
     RCBillingCurrency:
       type: string
       description: ISO 4217 currency code
@@ -9217,7 +10280,27 @@ components:
               maxLength: 30
     RokuAppCreate:
       type: object
+      required:
+      - name
+      - type
       properties:
+        name:
+          description: The name of the app
+          type: string
+          minLength: 1
+          maxLength: 255
+          nullable: false
+        type:
+          description: 'The platform of the app.
+
+            Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
+            for more details.
+
+            '
+          type: string
+          enum:
+          - roku
+          nullable: false
         roku:
           description: Roku Channel Store details. Should only be used when type is
             roku.
@@ -9243,6 +10326,7 @@ components:
               nullable: true
               minLength: 1
               maxLength: 30
+      additionalProperties: false
     StoreKitConfigFile:
       type: object
       description: Contents of a generated StoreKit config file for an app
@@ -9313,7 +10397,27 @@ components:
               maxLength: 256
     StripeAppCreate:
       type: object
+      required:
+      - name
+      - type
       properties:
+        name:
+          description: The name of the app
+          type: string
+          minLength: 1
+          maxLength: 255
+          nullable: false
+        type:
+          description: 'The platform of the app.
+
+            Mac App Store is disabled by default. See [Legacy Mac Apps](https://www.revenuecat.com/docs/legacy-mac-apps)
+            for more details.
+
+            '
+          type: string
+          enum:
+          - stripe
+          nullable: false
         stripe:
           description: Stripe type details. Should only be used when type is stripe.
           type: object
@@ -9327,6 +10431,7 @@ components:
               minLength: 1
               maxLength: 256
               nullable: true
+      additionalProperties: false
     Subscription:
       type: object
       required:
@@ -9635,6 +10740,26 @@ components:
           type: integer
           format: int64
           example: 1658399423658
+        product_store_identifier:
+          description: The store identifier of the purchased product
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 511
+          example: com.example.product
+        expiration_date:
+          description: The expiration date of the transaction in ms since epoch
+          nullable: true
+          type: integer
+          format: int64
+          example: 1658399423658
+        effective_expiration_date:
+          description: The effective expiration date of the transaction in ms since
+            epoch, including potential grace period
+          nullable: true
+          type: integer
+          format: int64
+          example: 1658399423658
       additionalProperties: false
     Transfer:
       type: object
@@ -9692,6 +10817,62 @@ components:
           minLength: 1
           maxLength: 255
           example: app_1234567890abcdef
+    VirtualCurrency:
+      type: object
+      required:
+      - project_id
+      - code
+      - name
+      - created_at
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - virtual_currency
+          type: string
+        project_id:
+          description: ID of the project to which the virtual currency belongs
+          nullable: false
+          minLength: 1
+          maxLength: 20
+          type: string
+          example: proj1ab2c3d4
+        code:
+          description: The unique code for this virtual currency
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 10
+          example: GLD
+        name:
+          description: The display name of the virtual currency
+          nullable: false
+          type: string
+          minLength: 1
+          maxLength: 50
+          example: Gold
+        created_at:
+          description: The date the virtual currency was created at in ms since epoch
+          nullable: false
+          type: integer
+          format: int64
+          example: 1658399423658
+        description:
+          description: Description of the virtual currency
+          nullable: true
+          type: string
+          minLength: 1
+          maxLength: 1500
+          example: Gold currency used in the game
+        product_grants:
+          description: The grants that define how products grant this virtual currency
+          nullable: true
+          type: array
+          items:
+            $ref: '#/components/schemas/VirtualCurrencyProductGrant'
+      additionalProperties: false
     VirtualCurrencyBalance:
       type: object
       title: VirtualCurrencyBalance
@@ -9719,6 +10900,78 @@ components:
           description: The name of the virtual currency.
           type: string
       additionalProperties: false
+    VirtualCurrencyProductGrant:
+      type: object
+      required:
+      - object
+      - product_ids
+      - amount
+      - trial_amount
+      - expire_at_cycle_end
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - virtual_currency.product_grant
+          type: string
+        product_ids:
+          description: The list of product IDs that grant this virtual currency
+          type: array
+          minItems: 1
+          items:
+            type: string
+            minLength: 1
+            maxLength: 255
+            example: prode1a2b3c4d5
+        amount:
+          description: The amount of virtual currency granted
+          type: integer
+          minimum: 1
+          example: 100
+        trial_amount:
+          description: The amount of virtual currency granted during trial period
+          nullable: false
+          type: integer
+          minimum: 0
+          example: 0
+        expire_at_cycle_end:
+          description: Whether the grant expires at the end of the subscription cycle
+          nullable: false
+          type: boolean
+          example: false
+      additionalProperties: false
+    VirtualCurrencyProductGrantInput:
+      type: object
+      required:
+      - product_ids
+      - amount
+      properties:
+        product_ids:
+          description: The list of product IDs that grant this virtual currency
+          type: array
+          minItems: 1
+          items:
+            type: string
+            minLength: 1
+            maxLength: 255
+            example: prode1a2b3c4d5
+        amount:
+          description: The amount of virtual currency granted
+          type: integer
+          minimum: 1
+          example: 100
+        trial_amount:
+          description: The amount of virtual currency granted during trial period
+          nullable: true
+          type: integer
+          minimum: 0
+          example: 0
+        expire_at_cycle_end:
+          description: Whether the grant expires at the end of the subscription cycle
+          nullable: true
+          type: boolean
+          example: false
     WebhookEventType:
       type: string
       description: The type of event that triggers the webhook
@@ -10091,6 +11344,7 @@ x-tagGroups:
   - Offering
   - Package
   - Product
+  - Virtual Currency
   - Purchase
   - Subscription
   - Invoice

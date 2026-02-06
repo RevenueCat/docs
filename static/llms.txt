@@ -8,58 +8,11 @@ The prefix for the URL paths is: https://www.revenuecat.com/docs
 - Append `.md` to any listed path to fetch the LLM-optimized markdown version, for example `/projects/overview.md` or `/subscription-guidance/subscription-offers/ios-subscription-offers.md`.
 - Markdown mirrors include descriptive fallbacks for interactive content and link back to embedded media.
 
-## Overview and Getting Started
-
-- /welcome/overview - Platform introduction and core concepts of RevenueCat
-- /welcome/building-new - Adding subscriptions to your app for the first time
-- /welcome/existing-apps - Migrating existing subscription apps to RevenueCat
-- /getting-started/quickstart - Complete setup guide from account creation to first purchase
-- /getting-started/installation - SDK installation guides for all supported platforms
-- /getting-started/configuring-sdk - SDK configuration and initialization best practices
-- /getting-started/entitlements - Product configuration, entitlements, and offerings system
-- /getting-started/displaying-products - How to display products and pricing to customers
-- /getting-started/making-purchases - Implementation guide for purchase flows
-- /getting-started/restoring-purchases - Restore purchases functionality across devices
-
-## SDK Implementation Guides
-
-- /getting-started/installation/ios - iOS and Apple Platforms SDK installation
-- /getting-started/installation/android - Android SDK installation and setup
-- /getting-started/installation/flutter - Flutter cross-platform installation
-- /getting-started/installation/reactnative - React Native installation guide
-- /getting-started/installation/unity - Unity game engine integration
-- /getting-started/installation/cordova - Cordova mobile app framework setup
-- /getting-started/installation/capacitor - Capacitor (Ionic) hybrid app setup
-- /getting-started/installation/macos - macOS and Catalyst installation
-- /getting-started/installation/expo - Expo React Native framework setup
-- /getting-started/installation/app-builders - No-code and low-code app builders
-
-## SDK Migration Guides
-
-- /sdk-guides/ios-native-3x-to-4x-migration - iOS SDK migration from 3.x to 4.x
-- /sdk-guides/ios-native-4x-to-5x-migration - iOS SDK migration from 4.x to 5.x
-- /sdk-guides/android-native-4x-to-5x-migration - Android SDK version migration
-- /sdk-guides/android-native-5x-to-6x-migration - Android SDK 5.x to 6.x migration
-- /sdk-guides/android-native-6x-to-7x-migration - Android SDK 6.x to 7.x migration
-- /sdk-guides/android-native-7x-to-8x-migration - Android SDK 7.x to 8.x migration
-
 ## API Reference
-
-- /api-v1/ - REST API v1 complete reference documentation
-- /api-v2/ - REST API v2 complete reference documentation  
-- /api-v2-beta/ - Beta API features and endpoints
-- /external-purchases-api-beta/ - External purchases API for alternative payment methods
-
-## Core Features and Tools
-
-- /tools/paywalls - Remote paywall configuration and management
-- /tools/paywalls/displaying-paywalls - How to present paywalls in your app
-- /tools/paywalls/creating-paywalls - Building and customizing paywalls
-- /tools/experiments-v1 - A/B testing framework for pricing optimization
-- /tools/experiments-v1/creating-offerings-to-test - Setting up price testing experiments
-- /tools/targeting - Customer targeting and segmentation tools
-- /tools/offering-metadata - Dynamic paywall configuration with metadata
-- /tools/customer-center/customer-center-integration-ios - iOS customer support center
+- /api-v1/ - REST API v1 reference (Redoc)
+- /api-v2/ - REST API v2 reference (Redoc)
+- /api-v2-beta/ - REST API v2 beta reference (Redoc)
+- /external-purchases-api-beta/ - External purchases API beta reference (Redoc)
 
 ## RevenueCat MCP Server (Model Context Protocol)
 
@@ -69,153 +22,369 @@ The prefix for the URL paths is: https://www.revenuecat.com/docs
 - /tools/mcp/usage-examples - Natural language interaction examples with MCP
 - /tools/mcp/best-practices-and-troubleshooting - Security and troubleshooting guide
 
-## Product and Offering Management
+## Overview and Getting Started
+- /welcome/building-new - Adding subscriptions to your app
+- /welcome/existing-apps - Using RevenueCat in existing apps
+- /welcome/overview - Welcome to RevenueCat
+- /welcome/set-up-revenuecat - Setting up RevenueCat
+- /welcome/set-up-revenuecat/account-management - Billing and account settings
+- /welcome/set-up-revenuecat/hackerone - HackerOne Vulnerability Disclosure Program
+- /welcome/set-up-revenuecat/security - Account security
 
-- /offerings - Product offering management and configuration
-- /offerings/overview - Offerings system concepts and setup
-- /offerings/products-overview - Individual product configuration
-- /offerings/troubleshooting-offerings - Debugging empty products and offerings
-- /offerings/virtual-currency/subscriptions - Virtual currency grants for subscriptions
-- /offerings/virtual-currency/refunds - Virtual currency balance adjustments for refunds
+## Getting Started
+- /getting-started/configuring-sdk - Configuring the SDK
+- /getting-started/configuring-sdk/ios-app-extensions - iOS App Extensions
+- /getting-started/displaying-products - Displaying Products
+- /getting-started/entitlements - Entitlements
+- /getting-started/entitlements/amazon-product-setup - Amazon Product Setup
+- /getting-started/entitlements/android-products - Google Play Product Setup
+- /getting-started/entitlements/google-subscriptions-and-backwards-compatibility - Google Subscriptions and Backwards Compatibility
+- /getting-started/entitlements/ios-products - iOS Product Setup
+- /getting-started/entitlements/paddle-products - Paddle Product Setup
+- /getting-started/entitlements/roku-products - Roku Product Setup
+- /getting-started/entitlements/stripe-products - Stripe Product Setup
+- /getting-started/installation - Installing the SDK
+- /getting-started/installation/android - Android
+- /getting-started/installation/app-builders - App Builders / No-Code
+- /getting-started/installation/capacitor - Capacitor
+- /getting-started/installation/cordova - Cordova
+- /getting-started/installation/expo - Expo
+- /getting-started/installation/flutter - Flutter
+- /getting-started/installation/ios - iOS & Apple Platforms
+- /getting-started/installation/kotlin-multiplatform - Kotlin Multiplatform
+- /getting-started/installation/macos - macOS / Catalyst
+- /getting-started/installation/reactnative - React Native
+- /getting-started/installation/roku - Roku
+- /getting-started/installation/unity - Unity
+- /getting-started/installation/web-sdk - Web
+- /getting-started/making-purchases - Making Purchases
+- /getting-started/making-purchases/android-with-jetpack-compose - Android with Jetpack Compose
+- /getting-started/quickstart - SDK Quickstart
+- /getting-started/restoring-purchases - Restoring Purchases
+
+## SDK Guides
+- /sdk-guides/android-native-4x-to-5x-migration - Android Native - 4.x to 5.x Migration
+- /sdk-guides/android-native-5x-to-6x-migration - Android Native - 5.x to 6.x Migration
+- /sdk-guides/android-native-6x-to-7x-migration - Android Native - 6.x to 7.x Migration
+- /sdk-guides/android-native-7x-to-8x-migration - Android Native - 7.x to 8.x Migration
+- /sdk-guides/android-native-8x-to-9x-migration - Android Native - 8.x to 9.x Migration
+- /sdk-guides/ios-native-3x-to-4x-migration - iOS Native - 3.x to 4.x Migration
+- /sdk-guides/ios-native-4x-to-5x-migration - iOS Native - 4.x to 5.x Migration
+
+## Product and Offerings
+- /offerings/offerings - Offerings
+- /offerings/products-overview - Product Configuration
+- /offerings/troubleshooting - Troubleshooting Empty Products/Offerings
+- /offerings/virtual-currency - Virtual Currency
+- /offerings/virtual-currency/events - Virtual Currency Events
+- /offerings/virtual-currency/expiring-currencies - Expiring Currencies
+- /offerings/virtual-currency/faq/balance-source-of-truth - Balance Source of Truth
+- /offerings/virtual-currency/faq/virtual-items - Virtual Items
+- /offerings/virtual-currency/refunds - Refunds
+- /offerings/virtual-currency/subscriptions - Subscriptions
 
 ## Customer Management
+- /customers/blocking-customers - Blocking Customers
+- /customers/customer-attributes - Setting Attributes
+- /customers/customer-info - Getting Subscription Status
+- /customers/overview - Customers in RevenueCat
+- /customers/trusted-entitlements - Trusted Entitlements
+- /customers/user-ids - Identifying Customers
 
-- /customers/customer-info - Customer data and subscription status management
-- /customers/user-ids - User identification and authentication patterns
-- /customers/customer-attributes - Custom data and device identifiers
-- /customers/trusted-entitlements - Enhanced security for entitlement verification
+## Projects and Security
+- /projects/authentication - API Keys & Authentication
+- /projects/collaborators - Collaboration
+- /projects/configuring-products - Configuring Products
+- /projects/connect-a-store - Connect Apps & Web Providers
+- /projects/oauth-overview - OAuth 2.0 Authorization
+- /projects/oauth-setup - OAuth 2.0 Implementation Guide
+- /projects/projects-overview - Projects
+- /projects/restore-behavior - Restore Behavior
+- /projects/sandbox-access - Sandbox Testing Access
+- /projects/sso - Single Sign-On (SSO)
 
-## Analytics and Data
+## Core Tools
+- /tools/customer-center - Customer Center
+- /tools/customer-center/customer-center-capacitor - Integrating Customer Center on Capacitor
+- /tools/customer-center/customer-center-change-plans-ios - Configuring Change Plans for Customer Center (iOS)
+- /tools/customer-center/customer-center-configuration - Configure Customer Center
+- /tools/customer-center/customer-center-flutter - Integrating Customer Center on Flutter
+- /tools/customer-center/customer-center-installation - Installing the SDK
+- /tools/customer-center/customer-center-integration - Integrating Customer Center
+- /tools/customer-center/customer-center-integration-android - Integrating Customer Center on Android
+- /tools/customer-center/customer-center-integration-ios - Integrating Customer Center on iOS
+- /tools/customer-center/customer-center-kmp - Integrating Customer Center on Kotlin Multiplatform
+- /tools/customer-center/customer-center-promo-offers-apple - Configuring Apple Promotional Offers for Customer Center
+- /tools/customer-center/customer-center-promo-offers-google - Configuring Google Promotional Offers
+- /tools/customer-center/customer-center-react-native - Integrating Customer Center on React Native
+- /tools/customer-center/customer-center-unity - Integrating Customer Center on Unity
+- /tools/experiments-v1 - Experiments
+- /tools/experiments-v1/configuring-experiments-v1 - Configuring Experiments
+- /tools/experiments-v1/creating-offerings-to-test - Creating Offerings to Test
+- /tools/experiments-v1/experiment-results-summaries - Experiment Results Summaries
+- /tools/experiments-v1/experiments-overview-v1 - Getting Started with Experiments
+- /tools/experiments-v1/experiments-results-v1 - Experiments Results
+- /tools/funnels - Funnels (Beta)
+- /tools/funnels/analyzing-funnels - Analyzing Funnels
+- /tools/funnels/configuring-payments - Configuring Payments
+- /tools/funnels/creating-funnels - Creating Funnels
+- /tools/funnels/deploying-funnels - Deploying Funnels
+- /tools/mcp - RevenueCat MCP Server
+- /tools/mcp/best-practices-and-troubleshooting - Best Practices & Troubleshooting
+- /tools/mcp/overview - RevenueCat MCP Server Overview
+- /tools/mcp/setup - RevenueCat MCP Server Setup
+- /tools/mcp/tools-reference - RevenueCat MCP Tools Reference
+- /tools/mcp/usage-examples - RevenueCat MCP Usage Examples
+- /tools/offering-metadata - Offering metadata
+- /tools/offering-metadata/offering-metadata-examples - Offering metadata example use cases
+- /tools/paywalls - Paywalls
+- /tools/paywalls-legacy - Paywalls (Legacy)
+- /tools/paywalls-legacy/creating-paywalls - Creating Paywalls (Legacy)
+- /tools/paywalls-legacy/displaying-paywalls - Displaying Paywalls
+- /tools/paywalls-legacy/installation - Installing the SDK
+- /tools/paywalls/change-log - Changelog
+- /tools/paywalls/creating-paywalls - Creating Paywalls
+- /tools/paywalls/creating-paywalls/app-review - Getting your paywall approved through app review
+- /tools/paywalls/creating-paywalls/component-properties - Component Properties
+- /tools/paywalls/creating-paywalls/components - Components
+- /tools/paywalls/creating-paywalls/customer-states - Designing for other customer states
+- /tools/paywalls/creating-paywalls/importing-from-figma - Importing from Figma
+- /tools/paywalls/creating-paywalls/localization - Localization
+- /tools/paywalls/creating-paywalls/supporting-offers - Supporting offers
+- /tools/paywalls/creating-paywalls/variables - Variables
+- /tools/paywalls/creating-paywalls/web-purchase-button - Web Purchase Button
+- /tools/paywalls/displaying-paywalls - Displaying Paywalls
+- /tools/paywalls/installation - Installing the SDK
+- /tools/paywalls/testing-paywalls - Testing Paywalls
+- /tools/targeting - Targeting
+- /tools/targeting/custom-attributes - By Custom Attributes
+- /tools/targeting/placements - By Placement
 
-- /dashboard-and-metrics/overview - Revenue analytics and business metrics overview
-- /dashboard-and-metrics/charts - Chart types and metrics visualization
-- /dashboard-and-metrics/charts/app-store-refund-requests-chart - Apple refund request analytics
-- /dashboard-and-metrics/customer-profile - Individual customer purchase tracking
-- /dashboard-and-metrics/customer-lists - Customer segmentation and analysis tools
-- /dashboard-and-metrics/customer-profile#entitlements - Managing active subscriptions
-- /dashboard-and-metrics/customer-profile#delete-customer - Customer account management
+## Platform Resources
+- /platform-resources/amazon-platform-resources - Amazon Platform Resources
+- /platform-resources/amazon-platform-resources/amazon-small-business-accelerator-program - Amazon Small Business Accelerator Program
+- /platform-resources/apple-platform-resources - Apple Platform Resources
+- /platform-resources/apple-platform-resources/app-store-connect-setup-guide - App Store Connect Setup Guide for First-Time Developers
+- /platform-resources/apple-platform-resources/app-store-small-business-program - App Store Small Business Program
+- /platform-resources/apple-platform-resources/apple-app-privacy - Apple App Privacy
+- /platform-resources/apple-platform-resources/apple-family-sharing - Apple Family Sharing
+- /platform-resources/apple-platform-resources/apple-retention-messaging-api - Apple Retention Messaging API
+- /platform-resources/apple-platform-resources/handling-refund-requests - Handling Refund Requests
+- /platform-resources/apple-platform-resources/legacy-mac-apps - Legacy Mac Apps
+- /platform-resources/apple-platform-resources/swiftui-helpers - Using RevenueCat with SwiftUI
+- /platform-resources/developer-store-payments - Payments from Stores and Country Availability
+- /platform-resources/google-platform-resources - Google Platform Resources
+- /platform-resources/google-platform-resources/google-play-pass - Google Play Pass
+- /platform-resources/google-platform-resources/google-play-quota-increase-request - Google Play Quota Increase Request
+- /platform-resources/google-platform-resources/google-plays-data-safety - Google Play's Data Safety
+- /platform-resources/google-platform-resources/reduced-service-fee - 15% Reduced Service Fee
+- /platform-resources/implementation-responsibilities - Implementation Responsibilities
+- /platform-resources/non-subscriptions - Non-Subscription Purchases
+- /platform-resources/sample-apps - Sample Apps
+- /platform-resources/sdk-reference - SDK Reference
+- /platform-resources/server-notifications - Platform Server Notifications
+- /platform-resources/server-notifications/amazon-server-notifications - Amazon Appstore Real-time Notifications
+- /platform-resources/server-notifications/apple-server-notifications - Apple App Store Server Notifications
+- /platform-resources/server-notifications/google-server-notifications - Google Real-Time Developer Notifications
+- /platform-resources/server-notifications/paddle-server-notifications - Paddle Server Notifications
+- /platform-resources/server-notifications/stripe-server-notifications - Stripe Server Notifications
 
-## Integrations and Webhooks
+## Subscription Guidance
+- /subscription-guidance/google-prepaid-plans - Google Prepaid Plans
+- /subscription-guidance/google-subscription-with-addons - Google Subscription with Add-ons
+- /subscription-guidance/how-grace-periods-work - Billing Issues & Grace Periods
+- /subscription-guidance/managing-subscriptions - Upgrades, Downgrades, & Management
+- /subscription-guidance/price-changes - Changing Prices
+- /subscription-guidance/refunds - Handling Refunds
+- /subscription-guidance/subscription-offers - Free Trials & Promo Offers
+- /subscription-guidance/subscription-offers/google-play-offers - Google Play Offers
+- /subscription-guidance/subscription-offers/ios-subscription-offers - iOS Subscription Offers
+- /subscription-guidance/subscription-offers/stripe-free-trials - Stripe Free Trials
 
-- /integrations/integrations - Third-party platform integration overview
-- /integrations/webhooks - Real-time event notification system
-- /integrations/third-party-integrations - Analytics and marketing tool connections
-- /integrations/attribution - Marketing attribution and analytics setup
-- /integrations/attribution/apple-search-ads - Apple Search Ads attribution setup
-- /integrations/stripe-app - Direct Stripe integration for payment processing
-- /integrations/scheduled-data-exports - Automated data export configuration
-- /integrations/data-onboarding - Data integration setup and configuration
-- /integrations/partner-built-integrations - Partner-developed integration solutions
-
-## Testing and Debugging
-
-- /test-and-launch/debugging - View and understand Purchases SDK logs
-- /test-and-launch/debugging/troubleshooting-the-sdks - Common SDK issues and solutions
-- /test-and-launch/debugging/caching - How caching works in RevenueCat
-- /test-and-launch/errors - Error handling and error code reference
-- /test-and-launch/sandbox - Sandbox testing environments for stores
-- /test-and-launch/sandbox/apple-app-store - iOS sandbox testing guide
-- /test-and-launch/sandbox/google-play-store - Android sandbox testing guide
-- /test-and-launch/launch-checklist - Pre-launch validation and testing checklist
-- /test-and-launch/app-store-rejections - Common app store rejection reasons
-
-## Platform Setup and Configuration
-
-- /service-credentials/itunesconnect-app-specific-shared-secret - App Store Connect credentials
-- /service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration - Apple in-app purchase key setup
-- /service-credentials/itunesconnect-app-specific-shared-secret/app-store-connect-api-key-configuration - App Store Connect API key configuration
-- /service-credentials/creating-play-service-credentials - Google Play Developer API setup
-- /service-credentials/creating-play-service-credentials/google-play-checklists - Google Play troubleshooting checklists
-- /service-credentials/amazon-appstore-credentials - Amazon Appstore integration setup
-- /projects/overview - Project creation and management
-- /projects/authentication - API key management and security
-- /projects/connect-a-store - Connecting apps to app stores
-
-## Platform-Specific Resources
-
-### Apple Platform Resources
-- /platform-resources/apple-platform-resources - Apple platforms development resources
-- /platform-resources/apple-platform-resources/apple-app-privacy - App privacy disclosure requirements
-- /platform-resources/apple-platform-resources/app-store-small-business-program - Small business program enrollment
-- /platform-resources/apple-platform-resources/apple-family-sharing - Family sharing subscription support
-- /platform-resources/apple-platform-resources/handling-refund-requests - Apple refund request handling
-- /platform-resources/apple-platform-resources/legacy-mac-apps - Legacy Mac app configuration
-
-### Google Platform Resources
-- /platform-resources/google-platform-resources - Google platform development resources
-- /platform-resources/google-platform-resources/google-play-pass - Google Play Pass program integration
-- /platform-resources/google-platform-resources/google-plays-data-safety - Data safety form requirements
-
-### Amazon Platform Resources
-- /platform-resources/amazon-platform-resources - Amazon Appstore development resources
-- /platform-resources/amazon-platform-resources/amazon-small-business-accelerator-program - Amazon small business program
-
-## Server Notifications
-
-- /platform-resources/server-notifications/apple-server-notifications - Apple App Store server notifications
-- /platform-resources/server-notifications/google-server-notifications - Google Play server notifications
-- /platform-resources/server-notifications/stripe-server-notifications - Stripe webhook configuration
-
-## Subscription Management and Business Logic
-
-- /subscription-guidance/subscription-offers - Free trials and promotional offers
-- /subscription-guidance/subscription-offers/ios-subscription-offers - Apple subscription offers and trials
-- /subscription-guidance/subscription-offers/google-play-offers - Google Play subscription offers
-- /subscription-guidance/refunds - Handling refunds across platforms
-- /subscription-guidance/price-changes - Managing subscription price changes
-- /subscription-guidance/google-prepaid-plans - Google Play prepaid subscription plans
-- /subscription-guidance/managing-subscriptions - Subscription lifecycle management
-
-## Migration and Advanced Topics
-
-- /migrating-to-revenuecat/migration-paths - Migration strategies for existing subscription apps
-- /migrating-to-revenuecat/migrating-existing-subscriptions - Handling existing subscriber base
-- /migrating-to-revenuecat/current-subscriptions - Migrating active subscriptions
-- /migrating-to-revenuecat/swiftystorekit - Migrating from SwiftyStoreKit to RevenueCat
-- /migrating-to-revenuecat/sdk-or-not/finishing-transactions - Transaction completion configuration
-- /migrating-to-revenuecat/sdk-or-not/sdk-less-integration - Using RevenueCat without SDK
+## Migration
+- /migrating-to-revenuecat/migrating-existing-subscriptions - Importing your Historical Purchases
+- /migrating-to-revenuecat/migrating-existing-subscriptions/google-historical-import - Google Historical Import
+- /migrating-to-revenuecat/migrating-existing-subscriptions/receipt-imports - Bulk Imports
+- /migrating-to-revenuecat/migration-paths - Migrate to RevenueCat
+- /migrating-to-revenuecat/sdk-or-not - Do I need the SDK?
+- /migrating-to-revenuecat/sdk-or-not/finishing-transactions - Using the SDK with your own IAP Code (formerly: Observer Mode)
+- /migrating-to-revenuecat/sdk-or-not/sdk-less-integration - Using RevenueCat without the SDK
+- /migrating-to-revenuecat/swiftystorekit - SwiftyStoreKit Migration
 
 ## Web and Alternative Platforms
+- /web/connect-stripe-account - Connect to your Stripe account
+- /web/faq - Web Purchase FAQs
+- /web/guides - RevenueCat Web guides
+- /web/guides/paddle-app-to-web - Paddle app-to-web purchases
+- /web/integrations/paddle - Paddle Billing
+- /web/integrations/stripe - Stripe Billing
+- /web/payment-integrations - External Payments Integrations
+- /web/web-billing/configuring-overview - Configure Web Billing
+- /web/web-billing/custom-metadata - Custom Metadata
+- /web/web-billing/customer-portal - Customer Portal
+- /web/web-billing/customization - Customization
+- /web/web-billing/lifecycle-emails - Lifecycle emails
+- /web/web-billing/localization - Localization
+- /web/web-billing/managing-customer-subscriptions - Managing Subscriptions
+- /web/web-billing/multi-currency-support - Supporting Multiple Currencies
+- /web/web-billing/overview - Integrate RevenueCat Web
+- /web/web-billing/payment-methods - Payment Methods
+- /web/web-billing/paywalls - Web Paywalls
+- /web/web-billing/product-setup - Configure Products & Prices
+- /web/web-billing/redemption-links - Redemption Links
+- /web/web-billing/refunding-payments - Refunding Payments
+- /web/web-billing/subscription-lifecycle - Subscription Lifecycle
+- /web/web-billing/tax - Sales Tax & VAT
+- /web/web-billing/testing - Testing Web Purchases
+- /web/web-billing/web-purchase-links - Web Purchase Links
+- /web/web-billing/web-sdk - Web SDK
 
-- /web/purchases-hybrid-app - Web-based subscription implementation
-- /web/stripe-setup - Stripe integration for web subscriptions
-- /web/connect-stripe-account - Connecting your Stripe account
-- /web/integrations/stripe - Stripe checkout and payment processing
-- /getting-started/entitlements/stripe-products - Stripe product configuration
-- /getting-started/entitlements/paddle-products - Paddle payment provider setup
-- /getting-started/entitlements/ios-products - iOS product setup in App Store Connect
-- /getting-started/entitlements/android-products - Android product setup in Google Play
-- /getting-started/entitlements/amazon-product-setup - Amazon Appstore product configuration
+## Integrations
+- /integrations/attribution - Attribution Providers
+- /integrations/attribution/adjust - Adjust
+- /integrations/attribution/airbridge - Airbridge
+- /integrations/attribution/apple-search-ads - Apple Search Ads & RevenueCat Integration
+- /integrations/attribution/appsflyer - AppsFlyer
+- /integrations/attribution/branch - Branch
+- /integrations/attribution/kochava - Kochava
+- /integrations/attribution/meta-ads - Meta Ads
+- /integrations/attribution/singular - Singular
+- /integrations/attribution/solarengine - Solar Engine
+- /integrations/attribution/splitmetrics-acquire - SplitMetrics Acquire
+- /integrations/attribution/tenjin - Tenjin
+- /integrations/customer-support - Customer Support Tools
+- /integrations/customer-support/intercom - Intercom
+- /integrations/customer-support/zendesk - Zendesk
+- /integrations/data-onboarding - Data Onboarding
+- /integrations/integrations - Events Overview
+- /integrations/partner-built-integrations - Partner-Built Integrations
+- /integrations/scheduled-data-exports - Scheduled Data Exports
+- /integrations/scheduled-data-exports/data-export-version-3 - Data Export Version 3
+- /integrations/scheduled-data-exports/data-export-version-4 - Data Export Version 4
+- /integrations/scheduled-data-exports/data-export-version-5 - Data Export Version 5
+- /integrations/scheduled-data-exports/scheduled-data-exports-azure - Azure Blob Storage
+- /integrations/scheduled-data-exports/scheduled-data-exports-gcp - Google Cloud Storage
+- /integrations/scheduled-data-exports/scheduled-data-exports-s3 - Amazon S3
+- /integrations/stripe-app - Stripe Dashboard App
+- /integrations/third-party-integrations - Third Party Integrations
+- /integrations/third-party-integrations/airship - Airship
+- /integrations/third-party-integrations/amplitude - Amplitude
+- /integrations/third-party-integrations/braze - Braze
+- /integrations/third-party-integrations/clevertap - CleverTap
+- /integrations/third-party-integrations/customerio - Customer.io
+- /integrations/third-party-integrations/discord - Discord
+- /integrations/third-party-integrations/firebase-integration - Firebase
+- /integrations/third-party-integrations/intercom - Intercom
+- /integrations/third-party-integrations/iterable - Iterable
+- /integrations/third-party-integrations/mixpanel - Mixpanel
+- /integrations/third-party-integrations/mparticle - mParticle
+- /integrations/third-party-integrations/onesignal - OneSignal
+- /integrations/third-party-integrations/posthog - PostHog
+- /integrations/third-party-integrations/segment - Segment
+- /integrations/third-party-integrations/slack - Slack
+- /integrations/third-party-integrations/statsig - Statsig
+- /integrations/third-party-integrations/superwall - Superwall
+- /integrations/third-party-integrations/telemetrydeck - TelemetryDeck
+- /integrations/webhooks - Webhooks
+- /integrations/webhooks/event-flows - Common Webhook Flows
+- /integrations/webhooks/event-types-and-fields - Event Types and Fields
+- /integrations/webhooks/sample-events - Sample Events
 
-## Non-Subscription Purchases
+## Dashboard and Metrics
+- /dashboard-and-metrics/anomaly-detection-notifications - Anomaly Detection Notifications
+- /dashboard-and-metrics/audit-logs - Audit Logs
+- /dashboard-and-metrics/charts - Charts Overview
+- /dashboard-and-metrics/charts/active-customers-chart - Active Customers Chart
+- /dashboard-and-metrics/charts/active-subscriptions-chart - Active Subscriptions Chart
+- /dashboard-and-metrics/charts/active-subscriptions-movement-chart - Active Subscriptions Movement Chart
+- /dashboard-and-metrics/charts/active-trials-chart - Active Trials Chart
+- /dashboard-and-metrics/charts/active-trials-movement-chart - Active Trials Movement Chart
+- /dashboard-and-metrics/charts/annual-recurring-revenue-arr-chart - Annual Recurring Revenue (ARR) Chart
+- /dashboard-and-metrics/charts/app-store-refund-requests-chart - App Store Refund Requests Chart
+- /dashboard-and-metrics/charts/charts-feature-incomplete-periods - Charts Feature: Incomplete Periods
+- /dashboard-and-metrics/charts/churn-chart - Churn Chart
+- /dashboard-and-metrics/charts/cohort-explorer - Cohort Explorer
+- /dashboard-and-metrics/charts/conversion-to-paying-chart - Conversion to Paying Chart
+- /dashboard-and-metrics/charts/customer-center-survey-responses-chart - Customer Center Survey Responses Chart
+- /dashboard-and-metrics/charts/initial-conversion-chart - Initial Conversion Chart
+- /dashboard-and-metrics/charts/monthly-recurring-revenue-movement-chart - Monthly Recurring Revenue Movement Chart
+- /dashboard-and-metrics/charts/monthly-recurring-revenue-mrr-chart - Monthly Recurring Revenue (MRR) Chart
+- /dashboard-and-metrics/charts/new-customers-chart - New Customers Chart
+- /dashboard-and-metrics/charts/new-paid-subscriptions-chart - New Paid Subscriptions Chart
+- /dashboard-and-metrics/charts/new-trials-chart - New Trials Chart
+- /dashboard-and-metrics/charts/non-subscription-purchases-chart - Non-subscription Purchases Chart
+- /dashboard-and-metrics/charts/paywall-abandonment-chart - Paywall Abandonment Chart
+- /dashboard-and-metrics/charts/paywall-conversion-chart - Paywall Conversion Chart
+- /dashboard-and-metrics/charts/paywall-encounter-chart - Paywall Encounter Chart
+- /dashboard-and-metrics/charts/paywall-ltv-chart - Paywall LTV Chart
+- /dashboard-and-metrics/charts/play-store-cancel-reasons-chart - Play Store Cancel Reasons Chart
+- /dashboard-and-metrics/charts/prediction-explorer - Prediction Explorer
+- /dashboard-and-metrics/charts/real-time-charts - Charts v3 (Beta)
+- /dashboard-and-metrics/charts/realized-ltv-per-customer-chart - Realized LTV per Customer Chart
+- /dashboard-and-metrics/charts/realized-ltv-per-paying-customer-chart - Realized LTV per Paying Customer Chart
+- /dashboard-and-metrics/charts/refund-rate-chart - Refund Rate Chart
+- /dashboard-and-metrics/charts/revenue-chart - Revenue Chart
+- /dashboard-and-metrics/charts/subscription-retention-chart - Subscription Retention Chart
+- /dashboard-and-metrics/charts/subscription-status-chart - Subscription Status Chart
+- /dashboard-and-metrics/charts/trial-conversion-chart - Trial Conversion Chart
+- /dashboard-and-metrics/charts/trial-conversion-rate-chart - Trial Conversion Rate Chart
+- /dashboard-and-metrics/customer-lists - Customer Lists
+- /dashboard-and-metrics/customer-profile - Customer Profile
+- /dashboard-and-metrics/display-currency - Display Currency
+- /dashboard-and-metrics/overview - Overview Metrics
+- /dashboard-and-metrics/performance-summaries - Performance Summaries
+- /dashboard-and-metrics/reconciling-with-financial-reports - Reconciling with App Store Financial Reports
+- /dashboard-and-metrics/supporting-your-customers - Supporting Your Customers
+- /dashboard-and-metrics/taxes-and-commissions - Taxes and Commissions
 
-- /platform-resources/non-subscriptions - Using RevenueCat beyond subscriptions
-- /platform-resources/implementation-responsibilities - Developer vs RevenueCat responsibilities
-- /platform-resources/developer-store-payments - Store payout information and country availability
+## Testing and Launch
+- /test-and-launch/app-store-rejections - Apple App Store Rejections
+- /test-and-launch/debugging - Debugging
+- /test-and-launch/debugging/caching - Caching
+- /test-and-launch/debugging/troubleshooting-the-sdks - Troubleshooting the SDKs
+- /test-and-launch/errors - Error Handling
+- /test-and-launch/launch-checklist - App Subscription Launch Checklist
+- /test-and-launch/releasing-ios-subscription-app - Submitting an iOS Subscription App
+- /test-and-launch/sandbox - Sandbox Testing
+- /test-and-launch/sandbox/amazon-store-sandbox-testing - Amazon Appstore
+- /test-and-launch/sandbox/apple-app-store - Apple App Store & TestFlight
+- /test-and-launch/sandbox/google-play-store - Google Play Store
+- /test-and-launch/sandbox/test-store - RevenueCat Test Store
 
-## Sample Apps and Code Examples
+## Developer Guides
+- /guides/common-architecture - Common Architecture
+- /guides/environment-strategies - App Environment Strategies
+- /guides/promotional-subscription-extensions - Promotional Subscription Extensions
+- /guides/testing-guide - Testing Guide
+- /guides/testing-guide/export-examples - Examples of exports
+- /guides/testing-guide/use-cases - Testing Use Cases
 
-- /platform-resources/sample-apps - Example apps for all supported platforms
-- /platform-resources/sdk-reference - SDK API reference documentation
+## Playbooks
+- /playbooks/guides/freemium - Freemium Paywalls
+- /playbooks/guides/hard-paywall - Hard Paywalls
+- /playbooks/overview - Playbooks
 
-## Playbooks and Business Guidance
-
-- /playbooks/overview - Implementation playbooks and best practices
-- /playbooks/guides/freemium - Freemium paywall strategy implementation
-- /playbooks/guides/hard-paywall - Hard paywall strategy implementation
-
-## Support and Troubleshooting
-
-- /revenuecat-support/support-first-steps - Getting help and support resources
-- /revenuecat-support/general-troubleshooting - Common issues and solutions
+## Support
+- /revenuecat-support/general-troubleshooting - General Troubleshooting
+- /revenuecat-support/support-first-steps - Support First Steps
 
 ## Known Issues
+- /known-store-issues/play-billing-library - Play Billing Library Known Issues
+- /known-store-issues/play-billing-library/proxy-billing-activity-crash - ProxyBillingActivity Crash
+- /known-store-issues/play-billing-library/restore-consumable-purchases-bc8 - [SOLVED] Restoring consumable purchases won't work in Google's Billing Client 8
+- /known-store-issues/storekit - StoreKit Issues
+- /known-store-issues/storekit/ios-18-2-purchase-sheet-may-fail-to-appear - iOS 18.2.X Purchase Sheet May Fail to Appear
+- /known-store-issues/storekit/ios-18-4-canceled-state-after-successful-purchase - iOS 18.3.1-18.5 Canceled State After Successful Purchase
+- /known-store-issues/storekit/ios-18-4-simulator-fails-to-load-products - iOS 18.4 Simulator Fails to Load Products
+- /known-store-issues/storekit/ios-18-purchase-fails-due-to-failed-storekitdaemon-connection - iOS 18-18.3.2 Purchases May Fail Due to StoreKit Daemon Connection Issue
+- /known-store-issues/xcode-26 - Xcode 26 beta Known Issues
+- /known-store-issues/xcode-26/app-crash-urlsessionconfiguration - URLSessionConfiguration Crash
 
-- /known-store-issues/storekit - Known Apple StoreKit framework issues
-- /known-store-issues/storekit/ios-18-4-simulator-fails-to-load-products - iOS simulator product loading issues
-
-## Developer Tools and Testing
-
-- /guides/testing-guide/use-cases - Testing scenarios and validation steps
-- /guides/subscription-offers - Advanced pricing strategies and promotional offers
-- /guides/environment-strategies - Managing multiple development environments 
+## Service Credentials
+- /service-credentials/amazon-appstore-credentials - Amazon Appstore Shared Secret
+- /service-credentials/creating-play-service-credentials - Google Play Store
+- /service-credentials/creating-play-service-credentials/google-play-checklists - Google Play Checklists
+- /service-credentials/itunesconnect-app-specific-shared-secret - App Store Connect App-Specific Shared Secret
+- /service-credentials/itunesconnect-app-specific-shared-secret/app-store-connect-api-key-configuration - App Store Connect API Key Configuration
+- /service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration - In-App Purchase Key Configuration
+- /service-credentials/roku-credentials - Roku Channel
