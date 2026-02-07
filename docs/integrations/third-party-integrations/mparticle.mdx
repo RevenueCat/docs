@@ -53,11 +53,11 @@ The mParticle integration also requires some device-specific data. RevenueCat wi
 
 | Key            | Description                                                                                                                                     | Required         |
 | :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :--------------- |
-| `$mparticleId` | The unique mParticle user identifier (mpid).                                                                                                    | ✅ (recommended) |
-| `$idfa`        | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ❌ (optional)    |
-| `$idfv`        | iOS [vendor identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ❌ (optional)    |
-| `$gpsAdId`     | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ❌ (optional)    |
-| `$ip`          | The IP address of the device                                                                                                                    | ❌ (optional)    |
+| `$mparticleId` | The unique mParticle user identifier (mpid).                                                                                                    | ✅               |
+| `$idfa`        | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ❌ (recommended) |
+| `$idfv`        | iOS [vendor identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ❌ (recommended) |
+| `$gpsAdId`     | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ❌ (recommended) |
+| `$ip`          | The IP address of the device                                                                                                                    | ❌ (recommended) |
 
 :::warning Android ID deprecation
 Due to policy changes from the Play Store, Android ID is no longer collected by RevenueCat's Android SDKs starting on versions 6.9.8+, 7.11.1+, and later major versions.
