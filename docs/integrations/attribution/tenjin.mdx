@@ -21,13 +21,14 @@ With our Tenjin integration you can:
 
 The Tenjin integration requires some device-specific data. RevenueCat will only send events into Tenjin if the below [Attribute](/customers/customer-attributes) keys which are required have been set for the device.
 
-| Key         | Description                                                                                                                                     | Required          |
-| :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :---------------- |
-| `$tenjinId` | The Tenjin Analytics Installation ID, the unique identifier from Tenjin for the device                                                          | ✅ (recommended)  |
-| `$idfa`     | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ✅ (iOS only)     |
-| `$gpsAdId`  | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ✅ (Android only) |
-| `$idfv`     | iOS [vendor identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ❌ (optional)     |
-| `$ip`       | The IP address of the device                                                                                                                    | ❌ (optional)     |
+| Key           | Description                                                                                                                                     | Required         |
+| :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------- | :--------------- |
+| `$tenjinId`   | Tenjin Id. The Tenjin Analytics Installation ID for the device                                                                                  | ❌ (recommended) |
+| `$idfa`       | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ✅ (iOS)         |
+| `$gpsAdId`    | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ✅ (Android)     |
+| `$amazonAdId` | Amazon [advertising identifier](https://developer.amazon.com/docs/fire-tv/advertising-id.html)                                                  | ✅ (Amazon)      |
+| `$idfv`       | iOS [vendor identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ❌ (recommended) |
+| `$ip`         | The IP address of the device                                                                                                                    | ❌ (recommended) |
 
 :::info IDFA attribute
 Even if a user has not granted permission to track, the IDFA attribute must be set to the iOS default provided value of `00000000-0000-0000-0000-000000000000` in order for events to be sent to Tenjin.

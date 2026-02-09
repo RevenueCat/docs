@@ -23,16 +23,17 @@ Set up the latest Airbridge SDK in every platform where you collect purchases be
 
 ## 2. Send device data to RevenueCat
 
-Airbridge matches RevenueCat events to campaign cohorts using device and advertising identifiers. Make sure your app collects and sends the following [Customer Attributes](/customers/customer-attributes) to RevenueCat before the first purchase occurs:
+Airbridge matches RevenueCat events to campaign cohorts using device and advertising identifiers. No subscriber attributes are strictly required for events to be sent, but collecting the following [Customer Attributes](/customers/customer-attributes) is recommended for accurate attribution:
 
-| Key        | Description                                                                                                                                     | Recommended Platforms |
-| :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------- |
-| `$idfa`    | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | iOS                   |
-| `$idfv`    | iOS [vendor identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | iOS                   |
-| `$gpsAdId` | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | Android               |
-| `$ip`      | Device IP address, gathered server-side when enabled                                                                                            | iOS & Android         |
+| Key                | Description                                                                                                                                     | Required         |
+| :----------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :--------------- |
+| `$airbridgeDevice` | Airbridge DeviceUUID. The unique Airbridge identifier for the device                                                                            | ✅               |
+| `$idfa`            | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ❌ (recommended) |
+| `$gpsAdId`         | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ❌ (recommended) |
+| `$idfv`            | iOS [vendor identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ❌ (recommended) |
+| `$ip`              | The IP address of the device                                                                                                                    | ❌ (recommended) |
 
-Airbridge also requires its DeviceUUID to associate lifecycle events with campaign cohorts. Use the Purchases SDK helper `setAirbridgeDeviceID()` to forward this identifier to RevenueCat — the helper will automatically populate the required customer attributes and is available in both the iOS (Swift) and Android (Kotlin) SDKs.
+These properties can be set manually, like any other [Customer Attributes](/customers/customer-attributes), or through the helper methods `collectDeviceIdentifiers()` and `setAirbridgeDeviceID()`.
 
 import swiftContent from "@site/code_blocks/integrations/attribution/airbridge_1.swift?raw";
 import kotlinContent from "@site/code_blocks/integrations/attribution/airbridge_2.kt?raw";
@@ -44,7 +45,17 @@ import kotlinContent from "@site/code_blocks/integrations/attribution/airbridge_
   ]}
 />
 
-These identifiers can be set manually like any other attribute, or by calling `collectDeviceIdentifiers()` after configuring the _Purchases SDK_. Call it again if a user later grants Ads Tracking permission so the `$idfa` value is updated.
+You should make sure to call `collectDeviceIdentifiers()` after the _Purchases SDK_ is configured, and before the first purchase occurs. It's safe to call this multiple times, as only the new/updated values will be sent to RevenueCat.
+
+:::danger Device identifiers with iOS App Tracking Transparency (iOS 14.5+)
+If you are requesting the App Tracking permission through ATT to access the IDFA, you can call `.collectDeviceIdentifiers()` _again_ if the customer accepts the permission to update the `$idfa` attribute in RevenueCat.
+:::
+
+:::info Import AdSupport Framework (iOS)
+The AdSupport framework is required to access the IDFA parameter on iOS. Don't forget to import this into your project.
+:::
+
+![Import AdSupport Framework](/docs_images/integrations/attribution/import-adsupport-framework.png)
 
 ## 3. Configure Airbridge in the RevenueCat dashboard
 

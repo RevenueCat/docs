@@ -29,27 +29,32 @@ The Kochava integration requires some device-specific data. RevenueCat will only
 $kochavaDeviceId and $deviceVersion are supported on versions 5.4.0+ of the iOS SDK, and 8.8.0+ of the Android SDK. Support in other SDKs is coming soon.
 :::
 
-| Key                | Description                                                                                                                                     | Required         |
-| :----------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :--------------- |
-| `$kochavaDeviceId` | The unique Kochava Device ID.                                                                                                                   | ✅ (required)    |
-| `$ip`              | The IP address of the device. This is gathered server-side when `$ip` is set to `true`.                                                         | ✅ (required)    |
-| `$deviceVersion`   | Device, platform and version information. This is gathered server-side when `$deviceVersion` is set to `true`.                                  | ✅ (required)    |
-| `$idfa`            | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ✅ (recommended) |
-| `$gpsAdId`         | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ✅ (recommended) |
-| `$idfv`            | iOS [vendor identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ✅ (recommended) |
+| Key                | Description                                                                                                                                     | Required                                        |
+| :----------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------- |
+| `$kochavaDeviceId` | The unique Kochava Device ID                                                                                                                    | ✅                                              |
+| `$ip`              | The IP address of the device. This is gathered server-side when `$ip` is set to `true`.                                                         | ✅                                              |
+| `$deviceVersion`   | Device, platform and version information. This is gathered server-side when `$deviceVersion` is set to `true`.                                  | ✅                                              |
+| `$idfa`            | iOS [advertising identifier](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier) UUID        | ✅ (iOS, one of `$idfa` or `$idfv`)             |
+| `$idfv`            | iOS [vendor identifier](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) UUID                              | ✅ (iOS, one of `$idfa` or `$idfv`)             |
+| `$gpsAdId`         | Google [advertising identifier](https://developers.google.com/android/reference/com/google/android/gms/ads/identifier/AdvertisingIdClient.Info) | ✅ (Android, one of `$gpsAdId` or `$androidId`) |
+| `$androidId`       | Android [device identifier](https://developer.android.com/reference/android/provider/Settings.Secure#ANDROID_ID)                                | ✅ (Android, one of `$gpsAdId` or `$androidId`) |
 
-When calling the `setKochavaDeviceId()` helper, all of the required customer attributes will be automatically set. Alternatively, these properties can be set manually, like any other [Attributes](/customers/customer-attributes).
+These properties can be set manually, like any other [Customer Attributes](/customers/customer-attributes), or through the helper methods `collectDeviceIdentifiers()` and `setKochavaDeviceID()`.
 
+import swiftContent from "@site/code_blocks/integrations/attribution/kochava_1.swift?raw";
 import kotlinContent from "@site/code_blocks/integrations/attribution/kochava_2.kt?raw";
 
-{/* Use the RCCodeBlock component to render the code blocks with tabs */}
-
-<RCCodeBlock tabs={[{ type: "kotlin", content: kotlinContent }]} />
+<RCCodeBlock
+  tabs={[
+    { type: "swift", content: swiftContent },
+    { type: "kotlin", content: kotlinContent },
+  ]}
+/>
 
 You should make sure to set attributes after the _Purchases SDK_ is configured, and before the first purchase occurs. It's safe to set attributes multiple times, as only the new/updated values will be sent to RevenueCat.
 
 :::danger Device identifiers with iOS App Tracking Transparency (iOS 14.5+)
-If you are requesting the App Tracking permission through ATT to access the IDFA, you can call `.collectDeviceIdentifiers()` if the customer accepts the permission to update the `$idfa` attribute in RevenueCat.
+If you are requesting the App Tracking permission through ATT to access the IDFA, you can call `.collectDeviceIdentifiers()` _again_ if the customer accepts the permission to update the `$idfa` attribute in RevenueCat.
 :::
 
 :::info Import AdSupport Framework (iOS)
