@@ -8,6 +8,10 @@ If an [App User ID](/customers/user-ids) tries to restore transactions that are 
 
 Note that the behavior set here will affect all apps under the project. Also note that **Share between App User IDs (legacy)** will only be available for legacy projects with this behavior already enabled, not new projects.
 
+:::info Sandbox restore behavior override
+You can optionally set a different restore behavior for sandbox purchases. This is useful for testing different transfer behaviors without affecting your production configuration. To enable this, toggle **Use a different restore behavior for sandbox** in **Project settings > General** and select the desired sandbox restore behavior from the dropdown.
+:::
+
 :::info Transfer behavior also applies to making purchases
 The configured behavior will also apply if an identified App User ID [makes a new purchase](/getting-started/making-purchases) and the device receipt is already associated with a different identified App User ID in RevenueCat. An exception to this is the legacy restore behavior (sharing between App User IDs), which is only applied during restore requests.
 :::
