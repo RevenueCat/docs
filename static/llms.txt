@@ -14,6 +14,14 @@ The prefix for the URL paths is: https://www.revenuecat.com/docs
 - /api-v2-beta/ - REST API v2 beta reference (Redoc)
 - /external-purchases-api-beta/ - External purchases API beta reference (Redoc)
 
+## RevenueCat MCP Server (Model Context Protocol)
+
+- /tools/mcp - Overview of RevenueCat MCP server for AI-powered subscription management
+- /tools/mcp/setup - Configure cloud MCP server for your AI assistant (OAuth or API key auth)
+- /tools/mcp/tools-reference - Complete reference for all 26 MCP server tools
+- /tools/mcp/usage-examples - Natural language interaction examples with MCP
+- /tools/mcp/best-practices-and-troubleshooting - Security and troubleshooting guide
+
 ## Overview and Getting Started
 - /welcome/building-new - Adding subscriptions to your app
 - /welcome/existing-apps - Using RevenueCat in existing apps
