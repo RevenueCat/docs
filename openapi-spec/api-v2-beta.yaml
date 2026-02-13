@@ -5,6 +5,8 @@ info:
 tags:
 - name: App
   description: Operations about apps.
+- name: Audit Log
+  description: Operations about audit logs.
 - name: Charts & Metrics
   description: Operations about chart metrics.
 - name: Collaborator
@@ -1195,6 +1197,85 @@ paths:
         '503':
           $ref: '#/components/responses/InternalError'
       description: 'This endpoint requires the following permission(s): <code>project_configuration:apps:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
+  /projects/{project_id}/audit_logs:
+    get:
+      summary: List audit logs
+      operationId: list-audit-logs
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:audit_logs:read
+      x-release-status: public
+      tags:
+      - Audit Log
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: starting_after
+        description: Cursor for pagination. Returns audit logs after the specified
+          audit log ID, using descending order by audit log ID.
+        in: query
+        required: false
+        schema:
+          type: string
+          example: log1ab2c3d4e5
+      - name: start_date
+        description: Start date for the data range (ISO 8601 format)
+        in: query
+        schema:
+          type: string
+          format: date
+          example: '2024-01-01'
+      - name: end_date
+        description: End date for the data range (ISO 8601 format)
+        in: query
+        schema:
+          type: string
+          format: date
+          example: '2024-12-31'
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          example: 10
+          default: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAuditLogs'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:audit_logs:read</code>.
         This endpoint belongs to the <strong>Project Configuration</strong> domain,
         which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/collaborators:
@@ -2982,6 +3063,7 @@ paths:
                   type: string
                   minLength: 1
                   maxLength: 10
+                  pattern: ^[a-zA-Z0-9_]+$
                   example: GLD
                 name:
                   description: The display name of the virtual currency
@@ -3065,6 +3147,7 @@ paths:
           type: string
           minLength: 1
           maxLength: 10
+          pattern: ^[a-zA-Z0-9_]+$
         description: The virtual currency code
       responses:
         '200':
@@ -3122,6 +3205,7 @@ paths:
           type: string
           minLength: 1
           maxLength: 10
+          pattern: ^[a-zA-Z0-9_]+$
         description: The virtual currency code
       requestBody:
         required: true
@@ -3211,6 +3295,7 @@ paths:
           type: string
           minLength: 1
           maxLength: 10
+          pattern: ^[a-zA-Z0-9_]+$
         description: The virtual currency code
       responses:
         '200':
@@ -6515,10 +6600,12 @@ paths:
         \ and Segmentation**\n\nUse the `/charts/{chart_name}/options` endpoint to\
         \ discover available\nfilters and segments for a specific chart before making\
         \ requests.\n\nFilter parameters vary by chart and can be passed as additional\
-        \ query parameters.\n This endpoint requires the following permission(s):\
-        \ <code>charts_metrics:charts:read</code>. This endpoint belongs to the <strong>Charts\
-        \ & Metrics</strong> domain, which has a default rate limit of <strong>5 requests\
-        \ per minute</strong>."
+        \ query parameters.\n\n**Aggregation**\n\nUse `aggregate` to request summary-only\
+        \ output for supported charts.\nWhen `aggregate` is provided, `values` is\
+        \ returned as an empty array and\n`summary` includes only the requested aggregate\
+        \ operations.\n This endpoint requires the following permission(s): <code>charts_metrics:charts:read</code>.\
+        \ This endpoint belongs to the <strong>Charts & Metrics</strong> domain, which\
+        \ has a default rate limit of <strong>5 requests per minute</strong>."
       operationId: get-chart-data
       x-revenuecat-rate-limiting-domain: charts_metrics
       x-scopes:
@@ -6586,6 +6673,24 @@ paths:
         schema:
           type: string
         example: '{"conversion_timeframe":"7_days","revenue_type":"proceeds"}'
+      - name: aggregate
+        description: 'Comma-separated aggregate operations to return in `summary`
+          without raw `values`.
+
+          '
+        in: query
+        style: form
+        explode: false
+        schema:
+          type: array
+          minItems: 1
+          uniqueItems: true
+          items:
+            type: string
+            enum:
+            - average
+            - total
+          example: average,total
       - name: currency
         description: ISO 4217 currency code
         in: query
@@ -6671,7 +6776,7 @@ paths:
   /projects/{project_id}/charts/{chart_name}/options:
     get:
       summary: Get available options for a chart
-      description: 'Returns the available configuration options for a specific chart.
+      description: 'Returns configuration options for a specific chart.
 
 
         Use this endpoint to discover:
@@ -7225,6 +7330,71 @@ components:
               maxLength: 20
               nullable: false
       additionalProperties: false
+    AuditLog:
+      type: object
+      required:
+      - id
+      - project_id
+      - action_type
+      - target_type
+      - target_identifier
+      - actor_type
+      - actor_identifier
+      - occurred_at
+      - additional_data
+      - object
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value.
+          enum:
+          - audit_log
+          type: string
+        id:
+          type: string
+          maxLength: 255
+          example: log1ab2c3d4e5
+        project_id:
+          nullable: false
+          description: ID of the project to which the audit log belongs.
+          minLength: 1
+          maxLength: 20
+          type: string
+          example: proj1ab2c3d4
+        action_type:
+          type: string
+          description: Action that was performed.
+          example: project_name_updated
+        target_type:
+          type: string
+          description: Type of the target on which the action was performed.
+          example: project
+        target_identifier:
+          type: string
+          description: Identifier of the action target.
+          example: proj1ab2c3d4
+        actor_type:
+          type: string
+          description: Type of actor that performed the action.
+          enum:
+          - user
+          - system
+          - api_key
+        actor_identifier:
+          type: string
+          description: Identifier of the actor that performed the action.
+          example: user_abc123
+        occurred_at:
+          nullable: false
+          description: Timestamp when the action occurred, in milliseconds since epoch.
+          type: integer
+          format: int64
+          example: 1713297600000
+        additional_data:
+          type: object
+          description: Additional metadata associated with the audit log.
+          additionalProperties: true
+      additionalProperties: false
     AuthenticatedManagementUrl:
       type: object
       required:
@@ -7322,7 +7492,8 @@ components:
           example: day
         values:
           description: Chart data points. Structure varies by chart type - can be
-            arrays of numbers or objects with timestamps and values.
+            arrays of numbers or objects with timestamps and values. Returned as an
+            empty array when aggregate operations are requested.
           type: array
           items:
             oneOf:
@@ -8668,6 +8839,38 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/projec1a2b3c4d/apps
+      additionalProperties: false
+    ListAuditLogs:
+      type: object
+      required:
+      - items
+      - next_page
+      - object
+      - url
+      title: AuditLogList
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value. Always has the value `list`.
+          enum:
+          - list
+          type: string
+        items:
+          description: Details about each audit log.
+          items:
+            $ref: '#/components/schemas/AuditLog'
+          type: array
+        next_page:
+          description: URL to access the next page of the project's audit logs. If
+            not present / null, there is no next page.
+          type: string
+          nullable: true
+          example: /v2/projects/proj1ab2c3d4/audit_logs?starting_after=log1ab2c3d4e5
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/proj1ab2c3d4/audit_logs
       additionalProperties: false
     ListBlockedCustomers:
       type: object
@@ -10993,6 +11196,7 @@ components:
           type: string
           minLength: 1
           maxLength: 10
+          pattern: ^[a-zA-Z0-9_]+$
           example: GLD
         name:
           description: The display name of the virtual currency
@@ -11486,6 +11690,7 @@ x-tagGroups:
 - name: Endpoint Reference
   tags:
   - App
+  - Audit Log
   - Charts & Metrics
   - Collaborator
   - Customer
