@@ -13,9 +13,17 @@ The factors we take into account to accurately estimate commissions vary by stor
 
 **App Store**
 
-To determine the commission of a given transaction, we look at both the original purchase date of the transaction and your presence in the App Store Small Business Program to determine whether a 15% or 30% commission will be charged.
+To determine the commission of a given transaction, we look at two main factors: the subscription duration and your enrollment in the App Store Small Business Program.
 
-For more information on the App Store Small Business Program, [click here](/platform-resources/apple-platform-resources/app-store-small-business-program).
+**Subscription Renewals After One Year**
+
+For all auto-renewable subscriptions, Apple reduces its commission from 30% to 15% after a subscriber completes one year of paid service. RevenueCat automatically detects this and adjusts the commission estimate for qualifying renewals.
+
+**App Store Small Business Program**
+
+If you are enrolled in the App Store Small Business Program, your commission rate is 15% on all transactions. RevenueCat uses your declared entry and exit dates for the program to apply this rate.
+
+For more information on the App Store Small Business Program, [click here](/platform-resources/apple-platform-resources/app-store-small-business-program). You can read about Apple's standard subscription commission rates [here](https://developer.apple.com/app-store/subscriptions/#revenue-after-one-year).
 
 **Google Play Store**
 
@@ -29,7 +37,7 @@ We apply a 30% store commission to all transactions from the Amazon Appstore.
 
 **Stripe**
 
-Stripe’s API provides the necessary details to calculate the various fees which might be charged in a transaction, and we sum these fees to calculate the commission charged by Stripe for a given transaction.
+For Stripe transactions, RevenueCat does not currently calculate the `commission_percentage`. This field will always be `NULL` for Stripe events. This is because we do not capture the per-transaction fee amounts (e.g., 2.9% + $0.30) from Stripe's webhooks. As a result, Proceeds-based charts in the RevenueCat dashboard cannot accurately reflect net revenue for Stripe and will coalesce to the gross price.
 
 ## How we estimate taxes
 
@@ -68,6 +76,22 @@ To learn more about enabling Stripe Tax in your Stripe developer account, [click
 :::info VAT handling in different stores
 Keep in mind that not all stores handle VAT the same way. Apple applies VAT to the post-commission revenue from a transaction, while Google applies VAT to the full amount, yielding different tax percentages (e.g. different values for the `tax_percentage` field).
 :::
+
+### A Note on `commission_percentage` vs. Published Store Rates
+
+It is important to understand that the `commission_percentage` field provided by RevenueCat is **not** the same as a store's published commission rate (e.g., 30%). This is because some stores, particularly Apple, calculate their commission on the price *after* taxes have been deducted.
+
+RevenueCat simplifies this by always calculating both `tax_percentage` and `commission_percentage` from the gross (pre-tax) price. This allows you to use a single, consistent formula to calculate your net proceeds:
+
+`proceeds = price * (1 - tax_percentage - commission_percentage)`
+
+For example, for a $100 purchase in a country with 20% VAT and a 30% store commission, the store first calculates the net price ($100 / 1.20 = $83.33). The commission is then taken from that net price ($83.33 * 0.30 = $25). RevenueCat reports this back as `tax_percentage = 0.1667` ($16.67/$100) and `commission_percentage = 0.25` ($25/$100).
+
+### European Union (EU) Alternative Terms
+
+As of early 2024, Apple and Google have introduced alternative fee structures for apps in the European Union to comply with the Digital Markets Act (DMA). These terms involve different commission rates and new fees, such as Apple's Core Technology Fee.
+
+RevenueCat's commission estimation engine does **not** currently support these alternative terms. The calculations described in this document are based on the standard, global fee structures for each store. If you have adopted the EU alternative terms, the commission and proceeds data in RevenueCat will not be accurate for your EU transactions.
 
 ## How to report revenue after commissions and/or taxes in RevenueCat
 
