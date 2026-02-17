@@ -1070,6 +1070,7 @@ const playbooksOverviewCategory = Category({
       items: [
         Page({ slug: "hard-paywall" }),
         Page({ slug: "freemium" }),
+        Page({ slug: "exit-offers" }),
         Link({
           label: "Converting a paid app to subscriptions",
           slug: "https://www.revenuecat.com/blog/engineering/converting-a-paid-ios-app-to-subscriptions/",

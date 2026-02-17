@@ -20,6 +20,7 @@ With Experiments, you can remotely A/B test:
 2. Product offers (e.g. trial length, trial presence, paid introductory offers, etc.)
 3. The number and mix of products offered
 4. Paywall imagery, copy, layout, and more with our Paywalls or Offering Metadata
+5. The effectiveness of different [exit offers](/playbooks/guides/exit-offers) by attaching different exit offer Offerings to each variant.
 
 Plus, you can run multiple tests simultaneously on distinct audience or subsets of the same audience to accelerate your learning, and can do so for any Placement you've configured to optimize each of them.
 

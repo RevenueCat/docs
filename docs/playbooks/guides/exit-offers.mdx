@@ -1,0 +1,117 @@
+---
+title: Exit Offers
+sidebar_label: Exit Offers
+slug: exit-offers
+---
+
+This playbook illustrates how to configure and optimize an Exit Offer strategy, a powerful tool for recovering potentially lost conversions by presenting an alternative offer when a user dismisses your paywall.
+
+## When to Use
+
+An exit offer strategy is ideal when you want to give users a second chance to subscribe before they leave your paywall. This model works well when:
+
+- You want to test different price points or trial lengths.
+- You have a lower-priced or alternative tier that might better suit a user who is hesitant about your primary offering.
+- You want to remind users of your app's value one last time before they navigate away.
+
+## Subscription Configuration Steps
+
+Configuring an exit offer requires setting up a dedicated, separate **Offering** that will be presented when the user dismisses the primary paywall.
+
+### 1. Create an Exit Offer Entitlement (Optional)
+
+If your exit offer unlocks a different set of features than your primary offering, you may want to create a separate [Entitlement](/getting-started/entitlements). However, in most cases, your exit offer will grant the same `pro` or `premium` entitlement.
+
+### 2. Create Exit Offer Products
+
+In the respective app stores, create the specific products for your exit offer. For example, if your primary offering is an annual plan, your exit offer product might be a discounted monthly plan or a plan with a 7-day trial.
+
+For more information on how to set this up, please refer to our [product setup documentation](/offerings/products-overview).
+
+### 3. Create the Exit Offering
+
+This is the most critical step. You must create a new, separate **Offering** in RevenueCat that contains the exit offer products you created in the previous step. 
+
+1.  Navigate to the **Product Catalog** section of your project.
+2.  Create a new [Offering](/offerings/overview) (e.g., `exit_offer`).
+3.  Add a **Package** to this new Offering that contains the discounted or alternative products for iOS, Android, and web.
+
+This separation is what allows you to present a different set of products upon paywall dismissal.
+
+![Screenshot](/docs_images/offerings/offerings-add-package.png)
+
+## Building your Paywall
+
+Once you have two separate Offerings (your primary one and your exit offer one), you need to create a paywall for each.
+
+1.  **Primary Paywall:** Build or select the paywall associated with your primary Offering.
+2.  **Exit Offer Paywall:** Build a second paywall associated with your new `exit_offer` Offering. This is the paywall that users will see when they try to close the primary one.
+
+### Configure the Exit Offer
+
+Now, link the two paywalls together:
+
+1.  Open your **primary paywall** in the Paywall Editor.
+2.  In the **Paywall settings** on the left, find the **Exit offer** section.
+3.  From the **Paywall dismiss** dropdown, select the **Offering** for your exit offer (e.g., `exit_offer`).
+4.  Save your changes.
+
+![Screenshot](/docs_images/paywalls/paywalls-exit-offer-configuration.png)
+
+No code changes are required to enable this feature. Once configured in the dashboard, the SDK will automatically handle presenting the exit offer paywall.
+
+## Presenting your Paywall
+
+Exit offers work automatically, but only when you use a supported presentation method that presents the paywall as a modal or full-screen view. 
+
+### Supported Presentation Methods
+
+| Platform | Method |
+| :--- | :--- |
+| iOS | `presentPaywall()` or `presentPaywallIfNeeded()` |
+| Android | `PaywallDialog` or `PaywallActivity` classes |
+| React Native | `presentPaywall()` or `presentPaywallIfNeeded()` |
+| Flutter | `presentPaywall()` or `presentPaywallIfNeeded()` |
+| Capacitor | `presentPaywall()` or `presentPaywallIfNeeded()` |
+| Unity | `presentPaywall()` or `presentPaywallIfNeeded()` |
+
+:::warning View-based APIs Not Supported
+Exit offers will **not** work if you manually embed paywall views/components in your UI (e.g., `PaywallView`, `Paywall` composable, `<RevenueCatUI.Paywall>` component, etc). The feature relies on intercepting the dismissal of a presented view.
+:::
+
+### Platform Support
+
+| Platform | Minimum Version |
+| :------------ | :-------------- |
+| iOS | 5.52.0+ |
+| Android | 9.18.0+ |
+| React Native | 9.6.15+ |
+| Flutter | 9.10.5+ |
+| Capacitor | 12.0.3+ |
+| Unity | 8.4.15+ |
+| KMP | Not supported |
+
+## Best Practices
+
+1.  **Offer Real Value**
+    -   Provide a genuine discount, a longer trial, or a different package that addresses potential user hesitation (e.g., offer a monthly plan if the main paywall pushed an annual one).
+
+2.  **Keep it Simple**
+    -   The exit offer paywall should be clear and concise. The user is already on their way out; make the new offer easy to understand and accept.
+
+3.  **Don't Overuse**
+    -   Exit offers should feel like a special, one-time opportunity, not a frustrating loop. Ensure the user can easily dismiss the exit offer paywall as well.
+
+## Test your Paywall
+
+-   Confirm that dismissing your primary paywall correctly presents the exit offer paywall.
+-   Verify that the exit offer paywall displays the correct discounted products.
+-   Ensure that dismissing the exit offer paywall successfully closes the entire paywall flow.
+-   Test a purchase from the exit offer to confirm it grants the correct entitlement.
+
+Review our [Testing Guide](/guides/testing-guide/use-cases) to fine-tune your test cases.
+
+## Next Steps
+
+1.  Use [Experiments](/tools/experiments-v1) to A/B test different exit offers to see which one performs best.
+2.  Use [Targeting](/tools/targeting) to show different primary Offerings (with different exit offers) to different user segments.
