@@ -399,6 +399,22 @@ import customVarsActivity from '@site/code_blocks/tools/paywalls_custom_variable
   ]}
 />
 
+### Flutter
+
+import customVarsFlutterPresent from '@site/code_blocks/tools/paywalls_custom_variables_1.dart?raw';
+import customVarsFlutterView from '@site/code_blocks/tools/paywalls_custom_variables_2.dart?raw';
+
+<RCCodeBlock
+  tabs={[
+    { type: "flutter", title: "presentPaywall", content: customVarsFlutterPresent },
+    { type: "flutter", title: "PaywallView", content: customVarsFlutterView }
+  ]}
+/>
+
+:::info Availability
+Custom variables for Flutter paywalls require `purchases_ui_flutter` version 9.12.0 or later.
+:::
+
 :::info Variable naming
 Custom variable keys must start with a letter and can only contain letters, numbers, and underscores. In your paywall text, reference them using the template syntax: `{{ custom.variable_name }}`
 :::
