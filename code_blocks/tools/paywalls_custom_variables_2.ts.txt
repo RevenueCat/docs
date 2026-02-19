@@ -1,0 +1,21 @@
+import React from 'react';
+import { View } from 'react-native';
+import RevenueCatUI, { CustomVariableValue } from 'react-native-purchases-ui';
+
+function PaywallScreen() {
+  return (
+    <View style={{ flex: 1 }}>
+      <RevenueCatUI.Paywall
+        options={{
+          customVariables: {
+            'player_name': CustomVariableValue.string('John'),
+            'level': CustomVariableValue.string('42'),
+          },
+        }}
+        onDismiss={() => {
+          console.log('Paywall dismissed');
+        }}
+      />
+    </View>
+  );
+}

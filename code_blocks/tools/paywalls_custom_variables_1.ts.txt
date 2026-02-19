@@ -1,0 +1,11 @@
+import RevenueCatUI, { CustomVariableValue } from 'react-native-purchases-ui';
+
+async function presentPaywallWithCustomVariables() {
+  const result = await RevenueCatUI.presentPaywall({
+    customVariables: {
+      'player_name': CustomVariableValue.string('John'),
+      'level': CustomVariableValue.string('42'),
+    },
+  });
+  console.log('Paywall result:', result);
+}
