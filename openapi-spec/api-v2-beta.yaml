@@ -320,6 +320,85 @@ tags:
     \n\n#### Family shared subscriptions: regranted\n\n![](/docs/images/api-v2/b3134c1-Family_shared_subscriptions__regranted.png)"
 paths:
   /projects/{project_id}/paywalls:
+    get:
+      summary: Get a list of paywalls
+      operationId: list-paywalls
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:offerings:read
+      x-release-status: public
+      x-expandable-fields:
+      - items.offering: project_configuration:offerings:read
+      tags:
+      - Paywall
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: starting_after
+        in: query
+        required: false
+        schema:
+          type: string
+          example: ent12354
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          example: 10
+          default: 20
+      - name: expand
+        in: query
+        description: "Specifies which fields in the response should be expanded.\n\
+          \ Accepted values are: `items.offering` (requires `project_configuration:offerings:read`\
+          \ permission)."
+        required: false
+        schema:
+          type: array
+          items:
+            maxLength: 5000
+            minLength: 1
+            type: string
+            enum:
+            - items.offering
+            example: items.offering
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPaywalls'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
     post:
       summary: Create a paywall
       operationId: create-paywall
@@ -393,6 +472,147 @@ paths:
         \ requires the following permission(s): <code>project_configuration:offerings:read_write</code>.\
         \ This endpoint belongs to the <strong>Project Configuration</strong> domain,\
         \ which has a default rate limit of <strong>60 requests per minute</strong>."
+  /projects/{project_id}/paywalls/{paywall_id}:
+    get:
+      summary: Get a paywall
+      operationId: get-paywall
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:offerings:read
+      x-release-status: public
+      x-expandable-fields:
+      - offering: project_configuration:offerings:read
+      - components: project_configuration:offerings:read
+      tags:
+      - Paywall
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: paywall_id
+        description: ID of the paywall
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: pwXXXXXXXXXXXXXX
+      - name: expand
+        in: query
+        description: "Specifies which fields in the response should be expanded.\n\
+          \ Accepted values are: `offering` (requires `project_configuration:offerings:read`\
+          \ permission), `components` (requires `project_configuration:offerings:read`\
+          \ permission)."
+        required: false
+        schema:
+          type: array
+          items:
+            maxLength: 5000
+            minLength: 1
+            type: string
+            enum:
+            - offering
+            - components
+            example: offering
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paywall'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
+    delete:
+      summary: Delete a paywall
+      operationId: delete-paywall
+      x-revenuecat-rate-limiting-domain: project_configuration
+      x-scopes:
+      - project_configuration:offerings:read_write
+      x-release-status: public
+      tags:
+      - Paywall
+      parameters:
+      - name: project_id
+        description: ID of the project
+        required: true
+        in: path
+        schema:
+          type: string
+          maxLength: 255
+          example: proj1ab2c3d4
+      - name: paywall_id
+        description: ID of the paywall
+        required: true
+        in: path
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: pwXXXXXXXXXXXXXX
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedObject'
+          headers:
+            RevenueCat-Rate-Limit-Current-Usage:
+              $ref: '#/components/headers/RateLimitCurrentUsage'
+            RevenueCat-Rate-Limit-Current-Limit:
+              $ref: '#/components/headers/RateLimitCurrentLimit'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '423':
+          $ref: '#/components/responses/Locked'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '503':
+          $ref: '#/components/responses/InternalError'
+      description: 'This endpoint requires the following permission(s): <code>project_configuration:offerings:read_write</code>.
+        This endpoint belongs to the <strong>Project Configuration</strong> domain,
+        which has a default rate limit of <strong>60 requests per minute</strong>.'
   /projects/{project_id}/apps/{app_id}/public_api_keys:
     get:
       summary: Get a list of the public API keys of an app
@@ -8494,6 +8714,7 @@ components:
           - entitlement
           - offering
           - package
+          - paywall
           - product
           - virtual_currency
           - webhook_integration
@@ -9184,6 +9405,38 @@ components:
           maxLength: 5000
           type: string
           example: /v2/projects/proj1ab2c3d4/offerings/ofrnge1a2b3c4d5/packages
+      additionalProperties: false
+    ListPaywalls:
+      type: object
+      required:
+      - items
+      - next_page
+      - object
+      - url
+      title: PaywallList
+      properties:
+        object:
+          description: String representing the object's type. Objects of the same
+            type share the same value. Always has the value `list`.
+          enum:
+          - list
+          type: string
+        items:
+          description: Details about each object.
+          items:
+            $ref: '#/components/schemas/Paywall'
+          type: array
+        next_page:
+          description: URL to access the next page of the project's paywalls. If not
+            present / null, there is no next page
+          type: string
+          nullable: true
+          example: /v2/projects/proj1ab2c3d4/paywalls?starting_after=pwXXXXXXXXXXXXXX
+        url:
+          description: The URL where this list can be accessed.
+          maxLength: 5000
+          type: string
+          example: /v2/projects/proj1ab2c3d4/paywalls
       additionalProperties: false
     ListProducts:
       type: object
@@ -9990,6 +10243,89 @@ components:
           type: integer
           format: int64
           example: 1658399423958
+        offering:
+          description: The offering associated with this paywall. Expandable.
+          nullable: true
+          $ref: '#/components/schemas/Offering'
+        components:
+          description: Published and draft components configurations for this paywall.
+            Expandable.
+          nullable: true
+          $ref: '#/components/schemas/PaywallComponents'
+      additionalProperties: false
+    PaywallComponents:
+      type: object
+      required:
+      - published
+      - draft
+      properties:
+        published:
+          description: The currently published version of the paywall. Null if the
+            paywall has never been published.
+          nullable: true
+          $ref: '#/components/schemas/PaywallComponentsVersion'
+        draft:
+          description: The draft version of the paywall if there are unpublished changes.
+            Null if there are no unpublished changes.
+          nullable: true
+          $ref: '#/components/schemas/PaywallComponentsVersion'
+      additionalProperties: false
+    PaywallComponentsVersion:
+      description: A specific version (published or draft) of a paywall's components
+        configuration.
+      type: object
+      nullable: true
+      required:
+      - revision
+      - components_config
+      - default_locale
+      - components_localizations
+      properties:
+        revision:
+          description: The revision number of this version.
+          type: integer
+          nullable: true
+          example: 1
+        components_config:
+          description: The raw, schemaless JSON payload for paywall components configuration.
+          type: object
+          nullable: true
+          additionalProperties: true
+          example:
+            base:
+              stack:
+                id: l7Ylx2UZeA
+                type: stack
+                components:
+                - id: LFVZUCf9yW
+                  type: text
+                  text_lid: OBUxLwsvXb
+              sticky_footer:
+                id: UJJRRPzRuz
+                type: footer
+        default_locale:
+          description: The default locale for the paywall.
+          type: string
+          nullable: true
+          example: en_US
+        components_localizations:
+          description: Localized values keyed by locale code.
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties: true
+          example:
+            en_US:
+              title: Premium
+        fonts:
+          description: Font objects used by the published paywall components. Only
+            present on published versions.
+          type: object
+          nullable: true
+          additionalProperties: true
+          example:
+            CustomFont:
+              src: https://example.com/font.ttf
       additionalProperties: false
     PlayStoreApp:
       type: object
