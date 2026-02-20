@@ -28,3 +28,4 @@ Use the links below to find the set up guide on each of our partner's sites.
 | [Natively](https://docs.buildnatively.com/guides/setup-revenuecat-app)                                             | Low-code platform for building native iOS and Android apps                           |
 | [Teta](https://docs.teta.so/teta-docs/teta-introduction/dashboard/settings/integrations/revenuecat)                | Visual app builder for Flutter with real-time collaboration features                 |
 | [Thunkable](https://docs.thunkable.com/blocks/app-features/in-app-purchase-blocks-with-revenuecat)                 | Drag-and-drop platform for creating mobile apps without coding                       |
+| [Median.co](https://docs.median.co/docs/revenue-cat)      | Platform for turning websites into native iOS and Android apps |
