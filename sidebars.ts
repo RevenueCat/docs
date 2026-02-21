@@ -234,7 +234,11 @@ const webSDKCategory = Category({
       label: "Billing Engine Integrations",
       slug: "payment-integrations",
       itemsPathPrefix: "integrations/",
-      items: [Page({ slug: "stripe" }), Page({ slug: "paddle" })],
+      items: [
+        Page({ slug: "stripe" }),
+        Page({ slug: "paddle" }),
+        Page({ slug: "paypal" }),
+      ],
     }),
     Link({
       label: "Guides",
@@ -341,6 +345,7 @@ const offeringsCategory = Category({
             Page({ slug: "amazon-product-setup" }),
             Page({ slug: "stripe-products" }),
             Page({ slug: "paddle-products" }),
+            Page({ slug: "paypal-products" }),
             Link({
               label: "Web Billing Product Setup",
               slug: "/web/web-billing/product-setup",

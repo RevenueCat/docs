@@ -74,6 +74,12 @@ Paddle is a popular all-in-one payment infrastructure that allows you to accept 
 
 - [Learn more about Paddle](/web/integrations/paddle)
 
+#### PayPal
+
+PayPal lets you accept payments in your own checkout and track that revenue in RevenueCat. This integration is for external purchase syncing only (no Web SDK or Web Billing checkout).
+
+- [Learn more about PayPal](/web/integrations/paypal)
+
 ## Platform Server Notifications
 
 After adding your configurations, we recommend setting up [Platform Server Notifications](/platform-resources/server-notifications). These notifications will ensure RevenueCat is notified of purchases and subscription events as soon as possible, and will speed up [webhooks](/integrations/webhooks) and integration delivery times.
