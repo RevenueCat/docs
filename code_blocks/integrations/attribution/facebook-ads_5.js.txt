@@ -1,0 +1,7 @@
+import Purchases from 'react-native-purchases';
+import { AppEventsLogger } from 'react-native-fbsdk-next';
+
+async function init() {
+  await Purchases.configure({ apiKey: 'public_sdk_key' });
+  AppEventsLogger.activateApp();
+}
