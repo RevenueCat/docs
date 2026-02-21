@@ -72,6 +72,10 @@ Offerings can be paired with a [paywall](/tools/paywalls) that is configured in 
 
 You can read more about how to create and configure paywalls in our [Paywalls](/tools/paywalls) guide.
 
+### Exit Offers
+
+When configuring [exit offers](/tools/paywalls/creating-paywalls#configuring-exit-offers), you'll need to create a separate Offering specifically for the exit offer. This Offering should contain the packages you want to present when a user dismisses your main paywall without purchasing, such as a discounted price or alternative subscription duration. The exit offer Offering will need its own paywall, which will be automatically displayed when the user attempts to close the main paywall.
+
 ## Fetching Offerings
 
 Offerings are fetched through the SDK via the `getOfferings` method. These are pre-fetched in most cases on app launch, so the completion block to get offerings won't need to make a network request in most cases.

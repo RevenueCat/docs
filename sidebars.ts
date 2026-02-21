@@ -234,7 +234,11 @@ const webSDKCategory = Category({
       label: "Billing Engine Integrations",
       slug: "payment-integrations",
       itemsPathPrefix: "integrations/",
-      items: [Page({ slug: "stripe" }), Page({ slug: "paddle" })],
+      items: [
+        Page({ slug: "stripe" }),
+        Page({ slug: "paddle" }),
+        Page({ slug: "platform-resources/paddle/commission" }),
+      ],
     }),
     Link({
       label: "Guides",
@@ -579,7 +583,13 @@ const platformResourcesCategory = Category({
         }),
       ],
     }),
-    Page({ slug: "service-credentials/roku-credentials" }),
+    SubCategory({
+      label: "Roku",
+      slug: "service-credentials/roku-credentials",
+      items: [
+        Page({ slug: "platform-resources/roku/commission" }),
+      ],
+    }),
     SubCategory({
       label: "Web",
       items: [Page({ slug: "web/connect-stripe-account" })],
@@ -1070,6 +1080,7 @@ const playbooksOverviewCategory = Category({
       items: [
         Page({ slug: "hard-paywall" }),
         Page({ slug: "freemium" }),
+        Page({ slug: "exit-offers" }),
         Link({
           label: "Converting a paid app to subscriptions",
           slug: "https://www.revenuecat.com/blog/engineering/converting-a-paid-ios-app-to-subscriptions/",
