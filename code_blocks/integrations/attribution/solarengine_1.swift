@@ -1,11 +1,12 @@
+import AdSupport
 import Purchases
 
 // ...
 Purchases.configure(withAPIKey: "public_sdk_key")
 // ...
 
-// Collect device identifiers (important for attribution matching)
-Purchases.shared.collectDeviceIdentifiers()
+// Automatically collect the $idfa, $idfv, and $ip values
+Purchases.shared.attribution.collectDeviceIdentifiers()
 
 // Retrieve the identifiers from the Solar Engine SDK
 let distinctId = /* Solar Engine SDK Distinct ID (optional) */
